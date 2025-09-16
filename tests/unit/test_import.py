@@ -604,6 +604,11 @@ def test_import_teo():
     from tencentcloud.teo.v20220901 import models
 
 
+def test_import_tione():
+    from tencentcloud.tione.v20211111 import tione_client
+    from tencentcloud.tione.v20211111 import models
+
+
 def test_import_tiw():
     from tencentcloud.tiw.v20190919 import tiw_client
     from tencentcloud.tiw.v20190919 import models
