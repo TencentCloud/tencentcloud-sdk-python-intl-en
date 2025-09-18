@@ -1242,7 +1242,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteLoadBalancer(self, request):
-        r"""This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+        r"""This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DeleteLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerRequest`

@@ -20,7 +20,8 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# 
+# Loading data
+
 FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
 
 # Internal error.

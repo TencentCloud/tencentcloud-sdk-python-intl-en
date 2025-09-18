@@ -140,7 +140,8 @@ FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = 'FailedOperation.KubernetesCrea
 # Kubernetes Delete operation error.
 FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = 'FailedOperation.KubernetesDeleteOperationError'
 
-# 
+# Failed to get Kubernetes resources.
+
 FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = 'FailedOperation.KubernetesGetOperationError'
 
 # Unknown Kubernetes error.

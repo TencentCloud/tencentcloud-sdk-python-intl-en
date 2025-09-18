@@ -15,6 +15,7 @@
 
 
 # Operation failed.
+
 FAILEDOPERATION = 'FailedOperation'
 
 # The account has been registered.

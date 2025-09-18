@@ -29,10 +29,12 @@ INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# The aspect ratio of the image is too large.
+
 INVALIDPARAMETER_IMAGEASPECTRATIOTOOLARGE = 'InvalidParameter.ImageAspectRatioTooLarge'
 
-# 
+# The image file size is too small.
+
 INVALIDPARAMETER_IMAGEDATATOOSMALL = 'InvalidParameter.ImageDataTooSmall'
 
 # The image resolution is too low.
@@ -98,7 +100,8 @@ RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = 'ResourceUnavailable.ImageDownloadError
 # The image resource is incorrect.
 RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = 'ResourceUnavailable.InvalidImageContent'
 
-# 
+# Model invocation failed. Please retry.
+
 RESOURCEUNAVAILABLE_MODELCALLFAILED = 'ResourceUnavailable.ModelCallFailed'
 
 # The resources have been sold out.

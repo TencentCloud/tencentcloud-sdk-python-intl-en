@@ -44,7 +44,8 @@ FAILEDOPERATION_CLIENTJOINSHAREUNIT = 'FailedOperation.ClientJoinShareUnit'
 # The user has not applied to become a sub-customer.
 FAILEDOPERATION_CLIENTNOTAPPLY = 'FailedOperation.ClientNotApply'
 
-# 
+# The maximum number of bindable sub-accounts has been exceeded.
+
 FAILEDOPERATION_EXCEEDMAXBINDCOUNT = 'FailedOperation.ExceedMaxBindCount'
 
 # The uin of the second-level reseller is invalid.
@@ -194,7 +195,8 @@ INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
 # The current region does not support creating a Tencent Cloud International account.
 INVALIDPARAMETERVALUE_UNSUPPORTAREA = 'InvalidParameterValue.UnSupportArea'
 
-# 
+# The allocated amount is out of range: [0,1000000].
+
 INVALIDPARAMETERVALUE_VOUCHERAMOUNTOUTOFRANGE = 'InvalidParameterValue.VoucherAmountOutOfRange'
 
 # Missing parameter

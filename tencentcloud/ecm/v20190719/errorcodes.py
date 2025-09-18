@@ -311,7 +311,8 @@ INVALIDPARAMETERVALUE_RESERVED = 'InvalidParameterValue.Reserved'
 # The specified CIDR block conflicts with another subnet in the same VPC.
 INVALIDPARAMETERVALUE_SUBNETCONFLICT = 'InvalidParameterValue.SubnetConflict'
 
-# 
+# The subnet does not exist.
+
 INVALIDPARAMETERVALUE_SUBNETNOTEXIST = 'InvalidParameterValue.SubnetNotExist'
 
 # The subnet IP range is invalid.
@@ -434,7 +435,8 @@ RESOURCEINSUFFICIENT_INSTANCEQUOTANOTENOUGH = 'ResourceInsufficient.InstanceQuot
 # The number of private images exceeds the limit.
 RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = 'ResourceInsufficient.InvaildPrivateImageNum'
 
-# 
+# Insufficient internal IP addresses in the current subnet.
+
 RESOURCEINSUFFICIENT_PRIVATEIPQUOTANOTENOUGH = 'ResourceInsufficient.PrivateIPQuotaNotEnough'
 
 # The resource does not exist.
@@ -449,7 +451,8 @@ RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = 'ResourceUnavailable.InstanceNotRunning
 # CLB instances have been sold out.
 RESOURCESSOLDOUT_LOADBALANCERSOLDOUT = 'ResourcesSoldOut.LoadBalancerSoldOut'
 
-# 
+# Specific models are sold out.
+
 RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = 'ResourcesSoldOut.SpecifiedInstanceType'
 
 # You don't have the permission to perform this operation.

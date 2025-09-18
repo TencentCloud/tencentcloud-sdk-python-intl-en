@@ -107,7 +107,8 @@ INTERNALERROR_REQUESTTIMEEXCEPTION = 'InternalError.RequestTimeException'
 # This RESTful API does not exist. Please check the RESTful API description.
 INTERNALERROR_RESTAPIINTERFACENOTEXIST = 'InternalError.RestApiInterfaceNotExist'
 
-# The API timed out or SMS packet sending/receiving timed out. You need to check whether your network jitters or contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+# Service access has timed out,Please verify whether there are any network fluctuations or contact [Tencent Cloud SMS Assistant](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+
 INTERNALERROR_SENDANDRECVFAIL = 'InternalError.SendAndRecvFail'
 
 # The request body in the backend body does not have a `Sig` field or the `Sig` field is empty.
@@ -266,7 +267,8 @@ UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = 'UnauthorizedOperation.Servic
 # Failed to verify `SmsSdkAppId`. Please check whether [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) is under the account associated with the [TencentCloud API key](https://console.cloud.tencent.com/cam/capi).
 UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppIdVerifyFail'
 
-# 
+# Operation not supported.
+
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # The request is not supported.

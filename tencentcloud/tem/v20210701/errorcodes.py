@@ -167,7 +167,8 @@ INVALIDPARAMETERVALUE_ATLEASTONESCALERRULESHOULDBEAPPLIED = 'InvalidParameterVal
 # Only one auto scaler can be specified.
 INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = 'InvalidParameterValue.AutoScalerLargerThanOne'
 
-# 
+# The elastic rule name is invalid. Length must be less than 20 characters.
+
 INVALIDPARAMETERVALUE_AUTOSCALERNAMEINVALID = 'InvalidParameterValue.AutoScalerNameInvalid'
 
 # The access mode of other applications cannot be overwritten. 
@@ -182,7 +183,8 @@ INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = 'InvalidParameterValue.ConfigData
 # The configuration is incorrect.
 INVALIDPARAMETERVALUE_CONFIGDATAINVALID = 'InvalidParameterValue.ConfigDataInvalid'
 
-# 
+# createRegion parameter error.
+
 INVALIDPARAMETERVALUE_CREATENAMESPACEUNSUPPORTREGIONERROR = 'InvalidParameterValue.CreateNamespaceUnsupportRegionError'
 
 # The specified desired capacity of the scheduled action is incorrect.
@@ -269,7 +271,8 @@ INVALIDPARAMETERVALUE_PORTISRESERVED = 'InvalidParameterValue.PortIsReserved'
 # Invalid post start
 INVALIDPARAMETERVALUE_POSTSTARTNOTVALID = 'InvalidParameterValue.PostStartNotValid'
 
-# 
+# Invalid pre stop.
+
 INVALIDPARAMETERVALUE_PRESTOPNOTVALID = 'InvalidParameterValue.PreStopNotValid'
 
 # Public image parameter error
@@ -350,7 +353,8 @@ MISSINGPARAMETER_NAMESPACEIDNULL = 'MissingParameter.NamespaceIdNull'
 # The package name cannot be left empty.
 MISSINGPARAMETER_PKGNAMENULL = 'MissingParameter.PkgNameNull'
 
-# 
+# The image repository server cannot be empty.
+
 MISSINGPARAMETER_REPOSERVERNULL = 'MissingParameter.RepoServerNull'
 
 # The scaling rule ID is missing.

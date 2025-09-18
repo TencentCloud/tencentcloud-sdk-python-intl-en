@@ -32,7 +32,8 @@ FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 # Unsupported region.
 FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
 
-# 
+# Unsupported IP type.
+
 FAILEDOPERATION_IPTYPENOTPERMIT = 'FailedOperation.IpTypeNotPermit'
 
 # The instance's primary ENI is not found.
@@ -89,7 +90,8 @@ INVALIDNETWORKINTERFACEID_NOTFOUND = 'InvalidNetworkInterfaceId.NotFound'
 # A parameter error occurred.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# ACL ID does not match the ACL type.
+
 INVALIDPARAMETER_ACLTYPEMISMATCH = 'InvalidParameter.AclTypeMismatch'
 
 # The parameters cannot be specified at the same time.
@@ -194,7 +196,8 @@ INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandW
 # Missing parameters.
 INVALIDPARAMETERVALUE_EMPTY = 'InvalidParameterValue.Empty'
 
-# 
+# Resource format error.
+
 INVALIDPARAMETERVALUE_ILLEGAL = 'InvalidParameterValue.Illegal'
 
 # The billing mode of this instance is different from that of others.
@@ -263,16 +266,20 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # Invalid input parameter format.
 INVALIDPARAMETERVALUE_MALFORMED = 'InvalidParameterValue.Malformed'
 
-# 
+# The specified approval ticket number does not match the resource.
+
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONIDMISMATCH = 'InvalidParameterValue.MemberApprovalApplicationIdMismatch'
 
-# 
+# Workflow service approval ticket not approved.
+
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONNOTAPPROVED = 'InvalidParameterValue.MemberApprovalApplicationNotApproved'
 
-# 
+# Workflow service approval ticket rejected.
+
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONREJECTED = 'InvalidParameterValue.MemberApprovalApplicationRejected'
 
-# 
+# This request requires approval via the BPAAS workflow service, and the approval process is currently being initiated.
+
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = 'InvalidParameterValue.MemberApprovalApplicationStarted'
 
 # The bound instance is missing.
@@ -317,7 +324,8 @@ INVALIDPARAMETERVALUE_NETWORKINTERFACEINSTANCENOTSUPPORT = 'InvalidParameterValu
 # The network interface ID was not found. The private IP address may not be configured on the network interface.
 INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = 'InvalidParameterValue.NetworkInterfaceNotFound'
 
-# 
+# Not UTF-8 encoding.
+
 INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = 'InvalidParameterValue.NotUtf8EncodingError'
 
 # This operation is only available for primary ENIs.
@@ -350,7 +358,8 @@ INVALIDPARAMETERVALUE_RESOURCENOTFOUND = 'InvalidParameterValue.ResourceNotFound
 # The resource does not support this operation.
 INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = 'InvalidParameterValue.ResourceNotSupport'
 
-# 
+# The specified priorities conflict with each other or with existing priorities.
+
 INVALIDPARAMETERVALUE_ROUTEPOLICYPRIORITYCONFLICT = 'InvalidParameterValue.RoutePolicyPriorityConflict'
 
 # Operation failed: The instance to shut down is using the current resource. 
@@ -428,13 +437,16 @@ INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = 'InvalidParameterValue.VpcCidrConflict'
 # This feature is not available for this direct connect gateway.
 INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = 'InvalidParameterValue.VpgTypeNotMatch'
 
-# 
+# The current BGP tunnel subnet: `%(key)s` overlaps with the existing BGP tunnel subnet: `%(value)s`.
+
 INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRCONFLICT = 'InvalidParameterValue.VpnConnBgpTunnelCidrConflict'
 
-# 
+# The BGP tunnel subnet must be a /30 subnet.
+
 INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRMASK = 'InvalidParameterValue.VpnConnBgpTunnelCidrMask'
 
-# 
+# The cloud-side or user-side BGP address: `%(value)s` must be within the BGP tunnel subnet `%(key)s`.
+
 INVALIDPARAMETERVALUE_VPNCONNBGPTUNNELCIDRNOTSUPPORTED = 'InvalidParameterValue.VpnConnBgpTunnelCidrNotSupported'
 
 # Destination IP address range conflicts with CIDR block of the current VPC tunnel.
@@ -515,7 +527,8 @@ LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAlloc
 # Run out of the daily chances to change the IP.
 LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = 'LimitExceeded.DailyChangeAddressQuota'
 
-# 
+# The default VPC quota has been reached.
+
 LIMITEXCEEDED_DEFAULTVPCLIMITEXCEEDED = 'LimitExceeded.DefaultVpcLimitExceeded'
 
 # Exceeded the upper limit of the EIPs bound to the instance.
@@ -527,7 +540,8 @@ LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddres
 # Ran out of the monthly quota of chances to retrieve IPs.
 LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
 
-# 
+# The DNAT rule quota for the NAT gateway has been reached.
+
 LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = 'LimitExceeded.NatGatewayDnatLimitExceeded'
 
 # Reached the upper limit of NAT gateways.
@@ -536,7 +550,8 @@ LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
 # The number of NAT gateways created by the VPC has reached the upper limit.
 LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = 'LimitExceeded.NatGatewayPerVpcLimitExceeded'
 
-# 
+# The number of elastic network interfaces created in the VPC exceeds the quota.
+
 LIMITEXCEEDED_NETWORKINTERFACELIMITEXCEEDED = 'LimitExceeded.NetworkInterfaceLimitExceeded'
 
 # Exceeded the character limit of a filter name.
@@ -593,7 +608,8 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # The IP range resources are insufficient.
 RESOURCEINSUFFICIENT_CIDRBLOCK = 'ResourceInsufficient.CidrBlock'
 
-# 
+# The specified instance type is sold out.
+
 RESOURCEINSUFFICIENT_INSTANCE = 'ResourceInsufficient.Instance'
 
 # The subnet does not have sufficient IPs.
@@ -731,10 +747,12 @@ UNSUPPORTEDOPERATION_DELDEFAULTROUTE = 'UnsupportedOperation.DelDefaultRoute'
 # Unable to delete: This is a route table associated with a subnet.
 UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubnet'
 
-# 
+# The VPN tunnel is updating/deleting/creating, and this operation is not supported.
+
 UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = 'UnsupportedOperation.DeleteVpnConnInvalidState'
 
-# 
+# Delivery failed.
+
 UNSUPPORTEDOPERATION_DELIVERYFAILED = 'UnsupportedOperation.DeliveryFailed'
 
 # Direct connect gateway is updating the BGP Community attribute.
@@ -761,7 +779,8 @@ UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute
 # Multi-cast is not available in the current region.
 UNSUPPORTEDOPERATION_ENABLEMULTICAST = 'UnsupportedOperation.EnableMulticast'
 
-# 
+# The endpoint and endpoint service have inconsistent CdcIds.
+
 UNSUPPORTEDOPERATION_ENDPOINTMISMATCHENDPOINTSERVICECDCID = 'UnsupportedOperation.EndPointMismatchEndPointServiceCdcId'
 
 # The endpoint service itself cannot be set as the endpoint.
@@ -776,13 +795,16 @@ UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTKOINSTANCEENI = 'UnsupportedOperation.Flo
 # Unable to create a flow log: the current ENI is not bound to an instance.
 UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTNULLINSTANCEENI = 'UnsupportedOperation.FlowLogsNotSupportNullInstanceEni'
 
-# 
+# TGW has not yet deployed IPv6 subnets.
+
 UNSUPPORTEDOPERATION_IPV6CIDRNOTDEPLOYED = 'UnsupportedOperation.IPV6CidrNotDeployed'
 
-# 
+# The specified customer token has been used.
+
 UNSUPPORTEDOPERATION_IDEMPOTENTPARAMETERMISMATCH = 'UnsupportedOperation.IdempotentParameterMismatch'
 
-# 
+# The previous idempotent request is still being processed. Please try again later.
+
 UNSUPPORTEDOPERATION_IDEMPOTENTPROCESSING = 'UnsupportedOperation.IdempotentProcessing'
 
 # This type of address does not support this operation.
@@ -791,7 +813,8 @@ UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = 'UnsupportedOperation.Incorr
 # The configured instance does not match with the route table.
 UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = 'UnsupportedOperation.InstanceAndRtbNotMatch'
 
-# 
+# The CdcId of the current cloud connect network `%(value)s` does not match that of the input instance and cannot be associated.
+
 UNSUPPORTEDOPERATION_INSTANCECDCIDNOTMATCHCCNCDCID = 'UnsupportedOperation.InstanceCdcIdNotMatchCcnCdcId'
 
 # The specified instance resource does not match.
@@ -806,7 +829,8 @@ UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = 'UnsupportedOperation.InstanceS
 # Insufficient account balance.
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
 
-# 
+# At least two carriers are required.
+
 UNSUPPORTEDOPERATION_INSUFFICIENTINTERNETSERVICEPROVIDERS = 'UnsupportedOperation.InsufficientInternetServiceProviders'
 
 # Unsupported operation.
@@ -842,13 +866,15 @@ UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
 # The specified CDC instance already has a local gateway.
 UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'
 
-# 
+# The resource is locked.
+
 UNSUPPORTEDOPERATION_LOCKEDRESOURCES = 'UnsupportedOperation.LockedResources'
 
 # The account does not support modifying this attribute of the public IP.
 UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = 'UnsupportedOperation.ModifyAddressAttribute'
 
-# 
+# The VPC instance has an account-level IPv6 whitelist and does not support associating with multi-cloud connect networks.
+
 UNSUPPORTEDOPERATION_MULTIPLEVPCNOTSUPPORTATTACHACCOUNTHASIPV6 = 'UnsupportedOperation.MultipleVpcNotSupportAttachAccountHasIpv6'
 
 # The resource mutual exclusion operation is being executed.
@@ -860,7 +886,8 @@ UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = 'UnsupportedOperation.NatGatewayEi
 # There are IPs associated with this NAT gateway.
 UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = 'UnsupportedOperation.NatGatewayHadEipUnassociate'
 
-# 
+# The NAT gateway has been blocked, and this operation is not supported.
+
 UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = 'UnsupportedOperation.NatGatewayRestricted'
 
 # The private IP specified in the SNAT/DNAT forwarding rule has been bound with another rule.
@@ -899,13 +926,15 @@ UNSUPPORTEDOPERATION_NOTSUPPORTATTACHEDGEANDCROSSBORDERINSTANCE = 'UnsupportedOp
 # The default route table cannot be deleted.
 UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultRouteTable'
 
-# 
+# Unsupported availability zone.
+
 UNSUPPORTEDOPERATION_NOTSUPPORTZONE = 'UnsupportedOperation.NotSupportZone'
 
 # This type of addresses cannot be released.
 UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = 'UnsupportedOperation.NotSupportedAddressIpsChargeType'
 
-# 
+# Egress 2 resources are not available in this region. Please purchase in Beijing/Guangzhou/Nanjing.
+
 UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = 'UnsupportedOperation.NotSupportedPurchaseCenterEgressResource'
 
 # The current CCN instance does not support publishing update routes.
@@ -947,7 +976,8 @@ UNSUPPORTEDOPERATION_RECORDEXISTS = 'UnsupportedOperation.RecordExists'
 # The record does not exist.
 UNSUPPORTEDOPERATION_RECORDNOTEXISTS = 'UnsupportedOperation.RecordNotExists'
 
-# 
+# This security group contains nested security group rules and does not support cross-region cloning.
+
 UNSUPPORTEDOPERATION_REMOTEREGIONSGHASREFERENCEDSG = 'UnsupportedOperation.RemoteRegionSgHasReferencedSg'
 
 # Operation prohibited: The resource is not available.
@@ -959,7 +989,8 @@ UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 # No roles available. Please confirm whether you get the authorization for the role.
 UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
 
-# 
+# The current route table deletion failed. Please check if there are any associated policies.
+
 UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = 'UnsupportedOperation.RouteTableCanNotDelete'
 
 # The routing table is bound to a subnet.
@@ -1052,25 +1083,32 @@ UNSUPPORTEDOPERATION_VPCMISMATCH = 'UnsupportedOperation.VpcMismatch'
 # Operation failed: The tunnel is not available now.
 UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = 'UnsupportedOperation.VpnConnInvalidState'
 
-# 
+# There is a conflict in the SPD local network segment. Please check and try again.
+
 UNSUPPORTEDOPERATION_VPNCONNSPDOVERLAP = 'UnsupportedOperation.VpnConnSPDOverlap'
 
-# 
+# A VPC-type VPN gateway must specify VpcId.
+
 UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = 'UnsupportedOperation.VpnGwVpcIdMustHave'
 
-# 
+# VPN does not support BGP.
+
 UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = 'UnsupportedOperation.VpnUnsupportedBgp'
 
-# 
+# The BGP ASN of the peer gateway is the same as that of an existing tunnel peer or cloud-based VPN.
+
 UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = 'UnsupportedOperation.VpnUnsupportedBgpAsnEqual'
 
-# 
+# `The `%(value)s` does not support reducing VPN bandwidth.
+
 UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBANDWIDTH = 'UnsupportedOperation.VpnUnsupportedModifyBandwidth'
 
-# 
+# VPN does not support modifying BGP ASN.
+
 UNSUPPORTEDOPERATION_VPNUNSUPPORTEDMODIFYBGPASN = 'UnsupportedOperation.VpnUnsupportedModifyBgpAsn'
 
-# 
+# VPN is not configured with BGP ASN.
+
 UNSUPPORTEDOPERATION_VPNUNSUPPORTEDNOTEXISTBGPASN = 'UnsupportedOperation.VpnUnsupportedNotExistBgpAsn'
 
 # The specified resources are not in the same availability zone.

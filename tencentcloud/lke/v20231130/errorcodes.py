@@ -35,7 +35,8 @@ FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# 
+# Parameter error.
+
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Parameter value error.

@@ -14,7 +14,8 @@
 # limitations under the License.
 
 
-# 
+# CAM signature/authentication error.
+
 AUTHFAILURE = 'AuthFailure'
 
 # Operation failed.
@@ -80,7 +81,8 @@ INVALIDPARAMETER_INVALIDEXTRA = 'InvalidParameter.InvalidExtra'
 # Unsupported configuration task type.
 INVALIDPARAMETER_INVALIDTASKTYPE = 'InvalidParameter.InvalidTaskType'
 
-# 
+# The transcoding preprocessing parameter format is incorrect.
+
 INVALIDPARAMETER_PREPROCESSPARAMETER = 'InvalidParameter.PreprocessParameter'
 
 # The format of the real-time recording parameter is invalid.

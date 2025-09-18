@@ -26,7 +26,8 @@ FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 # Recognition by the engine timed out.
 FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = 'FailedOperation.EngineRecognizeTimeout'
 
-# 
+# The field value does not meet expectations.
+
 FAILEDOPERATION_FIELDEXCEPTION = 'FailedOperation.FieldException'
 
 # The ID card information (ID number, name, etc.) is invalid.
@@ -56,7 +57,8 @@ FAILEDOPERATION_IMAGENOTEXT = 'FailedOperation.ImageNoText'
 # The image is too large. Please see the description of image size limit in the output parameters.
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 
-# 
+# The information in the visual zone does not match that in the machine-readable zone.
+
 FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = 'FailedOperation.InconsistencyBetweenMRZAndVRZ'
 
 # The input language is not supported.

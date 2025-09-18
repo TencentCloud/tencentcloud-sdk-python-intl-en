@@ -32826,9 +32826,9 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
         :param _AudioTemplate: Audio stream configuration parameters. specifies this field is valid only when AudioStreamSwitch is on.
         :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
-        :param _CreateTime: Template creation time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _CreateTime: Template creation time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param _UpdateTime: Template last modified time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _UpdateTime: Template last modified time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self._TemplateId = None
@@ -32932,7 +32932,7 @@ class JustInTimeTranscodeTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Template creation time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""Template creation time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._CreateTime
@@ -32943,7 +32943,7 @@ class JustInTimeTranscodeTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Template last modified time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""Template last modified time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._UpdateTime
@@ -48168,11 +48168,11 @@ class RulesProperties(AbstractModel):
 Note: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an empty array.
         :type ChoicesValue: list of str
         :param _Type: The parameter value type.
-<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.
-<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.
-<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.
-<Li>`CUSTOM_NUM`: (integer) custom value.</li>.
-<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).
+<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>
+<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>
+<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>
+<Li>`CUSTOM_NUM`: (integer) custom value.</li>
+<Li> custom_string: parameter value is user-customized, string type.</li> 
         :type Type: str
         :param _Max: Maximum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.
         :type Max: int
@@ -48234,11 +48234,11 @@ Note: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an em
     @property
     def Type(self):
         r"""The parameter value type.
-<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.
-<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.
-<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.
-<Li>`CUSTOM_NUM`: (integer) custom value.</li>.
-<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).
+<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>
+<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>
+<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>
+<Li>`CUSTOM_NUM`: (integer) custom value.</li>
+<Li> custom_string: parameter value is user-customized, string type.</li> 
         :rtype: str
         """
         return self._Type

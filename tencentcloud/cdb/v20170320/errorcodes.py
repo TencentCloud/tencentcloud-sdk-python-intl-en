@@ -77,7 +77,8 @@ FAILEDOPERATION_INSTANCETASKCONFLICTERROR = 'FailedOperation.InstanceTaskConflic
 # Failed to deserialize JSON.
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 
-# 
+# The volume of the returned data is too large. Please narrow down the data query scope.
+
 FAILEDOPERATION_LOGCONTENTOVERLIMIT = 'FailedOperation.LogContentOverLimit'
 
 # No policy modification detected

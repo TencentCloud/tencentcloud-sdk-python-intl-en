@@ -279,6 +279,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeletePackageOrder(self, request):
+        r"""This API is used to disable the paid plan on the international website.
+
+        :param request: Request instance for DeletePackageOrder.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DeletePackageOrderRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DeletePackageOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePackageOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePackageOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRecord(self, request):
         r"""This API is used to delete a record.
 
@@ -546,6 +569,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeRecordGroupList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRecordGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRecordLineCategoryList(self, request):
+        r"""This API is used to return a line list by category.
+
+        :param request: Request instance for DescribeRecordLineCategoryList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineCategoryListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordLineCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordLineCategoryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

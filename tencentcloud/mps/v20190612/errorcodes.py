@@ -125,7 +125,8 @@ INVALIDPARAMETERVALUE_DEFINITIONS = 'InvalidParameterValue.Definitions'
 # Incorrect parameter value: the default template cannot be deleted.
 INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = 'InvalidParameterValue.DeleteDefaultTemplate'
 
-# 
+# DestinationLanguage parameter error.
+
 INVALIDPARAMETERVALUE_DESTINATIONLANGUAGE = 'InvalidParameterValue.DestinationLanguage'
 
 # Invalid switch value used to prohibit transcoding from low bitrate to high bitrate.
@@ -263,7 +264,8 @@ INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = 'InvalidParameterValue.SessionIdTooLong
 # Invalid parameter: incorrect audio channel system.
 INVALIDPARAMETERVALUE_SOUNDSYSTEM = 'InvalidParameterValue.SoundSystem'
 
-# 
+# SourceLanguage parameter error.
+
 INVALIDPARAMETERVALUE_SOURCELANGUAGE = 'InvalidParameterValue.SourceLanguage'
 
 # Source file error.

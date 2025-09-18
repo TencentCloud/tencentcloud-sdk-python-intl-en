@@ -41,7 +41,8 @@ FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 # This operation is not allowed, please submit a ticket to contact us
 FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
 
-# 
+# RTMP is not enabled.
+
 FAILEDOPERATION_NOTRTMPFUNCTION = 'FailedOperation.NotRtmpFunction'
 
 # Query task failed
@@ -179,7 +180,8 @@ INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
 # UserSig is expired or wrong
 INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 
-# 
+# UserSig is not a super administrator.
+
 INVALIDPARAMETER_USERSIGNOTADMIN = 'InvalidParameter.UserSigNotAdmin'
 
 # Invalid RoomId.

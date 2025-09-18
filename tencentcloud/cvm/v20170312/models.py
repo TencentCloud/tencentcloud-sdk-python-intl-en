@@ -9091,6 +9091,142 @@ class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InquiryPriceModifyInstancesChargeTypeRequest(AbstractModel):
+    r"""InquiryPriceModifyInstancesChargeType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :type InstanceIds: list of str
+        :param _InstanceChargeType: Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: monthly subscription.</li>
+
+**Note:** Only supports converting pay-as-you-go instances to annual and monthly subscription instances.
+
+default value: `PREPAID`
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: Prepaid mode, parameter settings related to monthly/annual subscription. through this parameter, specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. 
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param _ModifyPortableDataDisk: Whether to switch the billing mode of elastic data cloud disks simultaneously. valid values: <br><li>true: means switching the billing mode of elastic data cloud disks</li><li>false: means not switching the billing mode of elastic data cloud disks</li><br>default value: false.
+        :type ModifyPortableDataDisk: bool
+        """
+        self._InstanceIds = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
+        self._ModifyPortableDataDisk = None
+
+    @property
+    def InstanceIds(self):
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceChargeType(self):
+        r"""Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: monthly subscription.</li>
+
+**Note:** Only supports converting pay-as-you-go instances to annual and monthly subscription instances.
+
+default value: `PREPAID`
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""Prepaid mode, parameter settings related to monthly/annual subscription. through this parameter, specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. 
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ModifyPortableDataDisk(self):
+        r"""Whether to switch the billing mode of elastic data cloud disks simultaneously. valid values: <br><li>true: means switching the billing mode of elastic data cloud disks</li><li>false: means not switching the billing mode of elastic data cloud disks</li><br>default value: false.
+        :rtype: bool
+        """
+        return self._ModifyPortableDataDisk
+
+    @ModifyPortableDataDisk.setter
+    def ModifyPortableDataDisk(self, ModifyPortableDataDisk):
+        self._ModifyPortableDataDisk = ModifyPortableDataDisk
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._ModifyPortableDataDisk = params.get("ModifyPortableDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceModifyInstancesChargeTypeResponse(AbstractModel):
+    r"""InquiryPriceModifyInstancesChargeType response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: This parameter indicates the price for switching the billing mode of the corresponding configuration instance.
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""This parameter indicates the price for switching the billing mode of the corresponding configuration instance.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InquiryPriceRenewInstancesRequest(AbstractModel):
     r"""InquiryPriceRenewInstances request structure.
 
@@ -13949,6 +14085,123 @@ Note: This parameter is valid only when a hostname is modified.
 
 class ModifyInstancesAttributeResponse(AbstractModel):
     r"""ModifyInstancesAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstancesChargeTypeRequest(AbstractModel):
+    r"""ModifyInstancesChargeType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 30.
+        :type InstanceIds: list of str
+        :param _InstanceChargeType: Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <li>`PREPAID`: monthly subscription.</li> 
+**Note:** Only supports converting pay-as-you-go instances to annual and monthly subscription instances.
+
+default value: `PREPAID`
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: Modified prepaid mode, parameter settings related to monthly/annual subscription. by specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. 
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param _ModifyPortableDataDisk: Whether to switch the billing mode of elastic data cloud disks simultaneously. valid values: <li> true: means switching the billing mode of elastic data cloud disks</li><li> false: means not switching the billing mode of elastic data cloud disks</li>default value: false.
+        :type ModifyPortableDataDisk: bool
+        """
+        self._InstanceIds = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
+        self._ModifyPortableDataDisk = None
+
+    @property
+    def InstanceIds(self):
+        r"""One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 30.
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceChargeType(self):
+        r"""Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <li>`PREPAID`: monthly subscription.</li> 
+**Note:** Only supports converting pay-as-you-go instances to annual and monthly subscription instances.
+
+default value: `PREPAID`
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""Modified prepaid mode, parameter settings related to monthly/annual subscription. by specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. 
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ModifyPortableDataDisk(self):
+        r"""Whether to switch the billing mode of elastic data cloud disks simultaneously. valid values: <li> true: means switching the billing mode of elastic data cloud disks</li><li> false: means not switching the billing mode of elastic data cloud disks</li>default value: false.
+        :rtype: bool
+        """
+        return self._ModifyPortableDataDisk
+
+    @ModifyPortableDataDisk.setter
+    def ModifyPortableDataDisk(self, ModifyPortableDataDisk):
+        self._ModifyPortableDataDisk = ModifyPortableDataDisk
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._ModifyPortableDataDisk = params.get("ModifyPortableDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancesChargeTypeResponse(AbstractModel):
+    r"""ModifyInstancesChargeType response structure.
 
     """
 

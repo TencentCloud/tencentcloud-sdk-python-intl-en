@@ -41,7 +41,8 @@ INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = 'InvalidParameterValue.ErrTextContent
 # 
 INVALIDPARAMETERVALUE_ERRTYPE = 'InvalidParameterValue.ErrType'
 
-# 
+# The number of requests has exceeded the frequency limit.
+
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # Operation not authorized/No valid package/The account is overdue

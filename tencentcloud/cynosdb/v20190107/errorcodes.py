@@ -38,7 +38,8 @@ FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
 # Failed to create a resource pack
 FAILEDOPERATION_CREATESOURCEPACKAGEERROR = 'FailedOperation.CreateSourcePackageError'
 
-# 
+# Failed to set the backup policy. Please try again later. If the failure persists, please contact customer service for handling.
+
 FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = 'FailedOperation.CynosdbMysqlSetBackupStrategy'
 
 # Failed to access the database. Please try again later. If the problem persists, please contact customer service.
@@ -59,7 +60,8 @@ FAILEDOPERATION_GETNETSERVICEINFOERROR = 'FailedOperation.GetNetServiceInfoError
 # Failed to query the details of a read-write instance
 FAILEDOPERATION_GETOSSINFOERROR = 'FailedOperation.GetOssInfoError'
 
-# 
+# The request to query the instance information failed.
+
 FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
 # Insufficient account balance
@@ -119,7 +121,8 @@ INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 # Failed to query instances by security group.
 INTERNALERROR_LISTINSTANCEFAILED = 'InternalError.ListInstanceFailed'
 
-# 
+# Instance query error.
+
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
 
 # Public network operation failed.
@@ -251,7 +254,8 @@ LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 # Audit log is disabled for instance {{1}}. operations cannot be performed.
 OPERATIONDENIED_AUDITLOGCLOSEDERROR = 'OperationDenied.AuditLogClosedError'
 
-# 
+# The audit status is abnormal.
+
 OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
 
 # Failed to verify permissions

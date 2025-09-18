@@ -56,7 +56,8 @@ FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = 'FailedOperation.InquiryRefundPriceFa
 # The image is busy. Please try again later.
 FAILEDOPERATION_INVALIDIMAGESTATE = 'FailedOperation.InvalidImageState'
 
-# 
+# The applicationRole instance does not support the operation.
+
 FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = 'FailedOperation.InvalidInstanceApplicationRole'
 
 # The EMR instance `ins-xxxxxxxx` does not support this operation.
@@ -224,7 +225,8 @@ INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'
 # Automatic snapshot creation is not supported.
 INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = 'InvalidParameter.AutoSnapshotNotSupported'
 
-# 
+# The parameter CdcId is not supported.
+
 INVALIDPARAMETER_CDCNOTSUPPORTED = 'InvalidParameter.CdcNotSupported'
 
 # RootDisk ID should not be passed to DataDiskIds.
@@ -350,7 +352,8 @@ INVALIDPARAMETERVALUE_BUCKETNOTFOUND = 'InvalidParameterValue.BucketNotFound'
 # Invalid `CamRoleName`. This parameter must contain only letters, numbers and symbols (`+`, `=`, `,`, `.`, `@`, `_`, `-`).
 INVALIDPARAMETERVALUE_CAMROLENAMEMALFORMED = 'InvalidParameterValue.CamRoleNameMalformed'
 
-# 
+# CDH disk expansion only supports LOCAL_BASIC and LOCAL_SSD.
+
 INVALIDPARAMETERVALUE_CDHONLYLOCALDATADISKRESIZE = 'InvalidParameterValue.CdhOnlyLocalDataDiskResize'
 
 # Corresponding CHC hosts not found.
@@ -365,7 +368,8 @@ INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.Clou
 # Invalid number of cores.
 INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 
-# 
+# CDC does not support the specified billing mode.
+
 INVALIDPARAMETERVALUE_DEDICATEDCLUSTERNOTSUPPORTEDCHARGETYPE = 'InvalidParameterValue.DedicatedClusterNotSupportedChargeType'
 
 # A deployment VPC already exists.
@@ -380,10 +384,12 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # Duplicate tags.
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
 
-# 
+# The elastic network interface data does not exist.
+
 INVALIDPARAMETERVALUE_ELASTICNETWORKNOTEXIST = 'InvalidParameterValue.ElasticNetworkNotExist'
 
-# 
+# The elastic network interface data VPC subnet does not match; it must be in the same VPC but a different subnet.
+
 INVALIDPARAMETERVALUE_ELASTICNETWORKVPCSUBNETMISMATCH = 'InvalidParameterValue.ElasticNetworkVpcSubnetMismatch'
 
 # The number of requested public IP addresses exceeds the quota of this instance type.
@@ -392,7 +398,8 @@ INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = 'InvalidParameterValue.ExternalIp
 # Non-GPU instances cannot be changed to the GPU instance.
 INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
 
-# 
+# Your High-Performance Computing (HPC) cluster is already bound to another Availability Zone, so you cannot purchase machines in the current Availability Zone.
+
 INVALIDPARAMETERVALUE_HPCCLUSTERIDZONEIDNOTMATCH = 'InvalidParameterValue.HpcClusterIdZoneIdNotMatch'
 
 # Invalid IP format
@@ -419,7 +426,8 @@ INVALIDPARAMETERVALUE_INSTANCENOTSUPPORTEDMIXPRICINGMODEL = 'InvalidParameterVal
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
 
-# 
+# The instance type does not support elastic network interface data.
+
 INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTELASTICNETWORKS = 'InvalidParameterValue.InstanceTypeNotSupportElasticNetworks'
 
 # This type of instances cannot be added to the HPC cluster.
@@ -464,7 +472,8 @@ INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 # The image cannot be used to reinstall the current instance.
 INVALIDPARAMETERVALUE_INVALIDIMAGEIDFORRETSETINSTANCE = 'InvalidParameterValue.InvalidImageIdForRetsetInstance'
 
-# 
+# The specified image ID is a shared image.
+
 INVALIDPARAMETERVALUE_INVALIDIMAGEIDISSHARED = 'InvalidParameterValue.InvalidImageIdIsShared'
 
 # The operating system of the specified image is not available in the current region.
@@ -475,6 +484,9 @@ INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageSta
 
 # The instance configuration is upgraded for free and cannot be downgraded within 3 months.
 INVALIDPARAMETERVALUE_INVALIDINSTANCESOURCE = 'InvalidParameterValue.InvalidInstanceSource'
+
+# The specified instance type does not support exclusive sales payment mode.
+INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEUNDERWRITE = 'InvalidParameterValue.InvalidInstanceTypeUnderwrite'
 
 # Invalid IP address.
 INVALIDPARAMETERVALUE_INVALIDIPFORMAT = 'InvalidParameterValue.InvalidIpFormat'
@@ -491,7 +503,8 @@ INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEVERSIONDESCRIPTION = 'InvalidParamete
 # Invalid license type.
 INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = 'InvalidParameterValue.InvalidLicenseType'
 
-# 
+# The specified elastic network interface id is not a vrdma network interface card.
+
 INVALIDPARAMETERVALUE_INVALIDNETWORKINTERFACEID = 'InvalidParameterValue.InvalidNetworkInterfaceId'
 
 # Invalid parameter value.
@@ -512,7 +525,8 @@ INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUser
 # Invalid fuzzy query string
 INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
 
-# 
+# The specified VpcId or SubnetId was not found in the elastic network interface data structure.
+
 INVALIDPARAMETERVALUE_INVALIDVPCIDSUBNETIDNOTFOUND = 'InvalidParameterValue.InvalidVpcIdSubnetIdNotFound'
 
 # Edge zones do not support this ISP.
@@ -554,7 +568,8 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # The parameter value must be a DHCP-enabled VPC.
 INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = 'InvalidParameterValue.MustDhcpEnabledVpc'
 
-# 
+# The parameter value must be the enabled elastic rdma interface.
+
 INVALIDPARAMETERVALUE_MUSTENABLEDISRDMA = 'InvalidParameterValue.MustEnabledIsRdma'
 
 # The subnet is not in the CDC cluster.
@@ -572,13 +587,15 @@ INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDINSTANCETYPE = 'InvalidParameterValue.P
 # Preheating is not supported in this availability zone.
 INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDZONE = 'InvalidParameterValue.PreheatNotSupportedZone'
 
-# 
+# The pre-warming region is unavailable. Please check if the pre-warming region is correct.
+
 INVALIDPARAMETERVALUE_PREHEATUNAVAILABLEZONES = 'InvalidParameterValue.PreheatUnavailableZones'
 
 #  Invalid parameter value: invalid parameter value range.
 INVALIDPARAMETERVALUE_RANGE = 'InvalidParameterValue.Range'
 
-# 
+# The request requires a regional image.
+
 INVALIDPARAMETERVALUE_REQUIREDLOCATIONIMAGE = 'InvalidParameterValue.RequiredLocationImage'
 
 # Invalid snapshot ID. Provide a snapshot ID in the format of snap-xxxxxxxx, where the letter x refers to lowercase letter or number.
@@ -587,7 +604,8 @@ INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMal
 # Invalid subnet ID. Please provide a subnet ID in the format of subnet-xxxxxxxx, where “x” can be a lowercase letter or number.
 INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = 'InvalidParameterValue.SubnetIdMalformed'
 
-# 
+# The Availability Zone of the subnet ID does not match the Availability Zone of the instance.
+
 INVALIDPARAMETERVALUE_SUBNETIDZONEIDNOTMATCH = 'InvalidParameterValue.SubnetIdZoneIdNotMatch'
 
 # Creation failed: the subnet does not exist. Please specify another subnet.
@@ -617,7 +635,8 @@ INVALIDPARAMETERVALUE_VPCIDMALFORMED = 'InvalidParameterValue.VpcIdMalformed'
 # The specified VpcId doesn't exist.
 INVALIDPARAMETERVALUE_VPCIDNOTEXIST = 'InvalidParameterValue.VpcIdNotExist'
 
-# 
+# The specified VpcId and SubnetId do not match.
+
 INVALIDPARAMETERVALUE_VPCIDSUBNETIDNOTMATCH = 'InvalidParameterValue.VpcIdSubnetIdNotMatch'
 
 # The VPC and instance must be in the same availability zone.
@@ -683,7 +702,8 @@ LIMITEXCEEDED_DISASTERRECOVERGROUP = 'LimitExceeded.DisasterRecoverGroup'
 # The number of EIPs of an ENI contained in a specific instance has exceeded the maximum allowed EIPs of the target instance type. Please delete some EIPs and try again.
 LIMITEXCEEDED_EIPNUMLIMIT = 'LimitExceeded.EipNumLimit'
 
-# 
+# The number of network interfaces exceeds the maximum limit for the instance.
+
 LIMITEXCEEDED_ENILIMITINSTANCETYPE = 'LimitExceeded.EniLimitInstanceType'
 
 # The number of ENIs on a specified instance exceeds the maximum ENIs allowed for the target instance type. Delete some ENIs and try again.
@@ -716,7 +736,8 @@ LIMITEXCEEDED_PREHEATIMAGESNAPSHOTOUTOFQUOTA = 'LimitExceeded.PreheatImageSnapsh
 # Your quota for monthly-subscribed instances is used up. Increase your quota and try again.
 LIMITEXCEEDED_PREPAYQUOTA = 'LimitExceeded.PrepayQuota'
 
-# 
+# The purchased quantity of committed instances has reached the maximum quota.
+
 LIMITEXCEEDED_PREPAYUNDERWRITEQUOTA = 'LimitExceeded.PrepayUnderwriteQuota'
 
 # The number of security groups exceeds the quota limit.
@@ -752,7 +773,8 @@ MISSINGPARAMETER_MONITORSERVICE = 'MissingParameter.MonitorService'
 # An identical job is running.
 MUTEXOPERATION_TASKRUNNING = 'MutexOperation.TaskRunning'
 
-# 
+# Operation not supported for this account.
+
 OPERATIONDENIED_ACCOUNTNOTSUPPORTED = 'OperationDenied.AccountNotSupported'
 
 # A CHC instance without network configured is not allowed for the installation of a cloud image
@@ -776,13 +798,15 @@ REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = 'RegionAbilityLimit.UnsupportedToI
 # The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
 
-# 
+# The disk rollback is in progress. Please try again later.
+
 RESOURCEINUSE_DISKROLLBACKING = 'ResourceInUse.DiskRollbacking'
 
 # The availability zone has been sold out.
 RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = 'ResourceInsufficient.AvailabilityZoneSoldOut'
 
-# 
+# Insufficient subnet resources.
+
 RESOURCEINSUFFICIENT_CIDRBLOCK = 'ResourceInsufficient.CidrBlock'
 
 # The specified cloud disk has been sold out.
@@ -794,7 +818,8 @@ RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = 'ResourceInsufficient.CloudDiskUnava
 # The number of instances exceeded the quota limit of spread placement groups.
 RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = 'ResourceInsufficient.DisasterRecoverGroupCvmQuota'
 
-# 
+# Insufficient security group quota.
+
 RESOURCEINSUFFICIENT_INSUFFICIENTGROUPQUOTA = 'ResourceInsufficient.InsufficientGroupQuota'
 
 # The specified instance type is insufficient.
@@ -812,7 +837,8 @@ RESOURCENOTFOUND_INVALIDPLACEMENTSET = 'ResourceNotFound.InvalidPlacementSet'
 # This instance type is not supported in the AZ.
 RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = 'ResourceNotFound.InvalidZoneInstanceType'
 
-# 
+# The specified key pair does not exist.
+
 RESOURCENOTFOUND_KEYPAIRNOTFOUND = 'ResourceNotFound.KeyPairNotFound'
 
 # No default CBS resources are available.
@@ -842,7 +868,8 @@ RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = 'ResourcesSoldOut.SpecifiedInstanceType
 # A general error occurred during the security group service API call.
 SECGROUPACTIONFAILURE = 'SecGroupActionFailure'
 
-# 
+# Unauthorized operation.
+
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # The specified image does not belong to the user.
@@ -875,10 +902,14 @@ UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.Band
 # The far end ssd disk does not support this operation.
 UNSUPPORTEDOPERATION_CBSREMOTESSDNOTSUPPORT = 'UnsupportedOperation.CbsRemoteSsdNotSupport'
 
+# Commercial image instance use cannot be adjusted for payment mode.
+UNSUPPORTEDOPERATION_COMMERCIALIMAGECHANGECHARGETYPE = 'UnsupportedOperation.CommercialImageChangeChargeType'
+
 # Only one snapshot can be created in 24 hours. 
 UNSUPPORTEDOPERATION_DISKSNAPCREATETIMETOOOLD = 'UnsupportedOperation.DiskSnapCreateTimeTooOld'
 
-# 
+# Edge Zone instances do not support this operation.
+
 UNSUPPORTEDOPERATION_EDGEZONEINSTANCE = 'UnsupportedOperation.EdgeZoneInstance'
 
 # The selected edge zone does not support cloud disk operations.
@@ -896,7 +927,8 @@ UNSUPPORTEDOPERATION_HETEROGENEOUSCHANGEINSTANCEFAMILY = 'UnsupportedOperation.H
 # Instances with hibernation disabled are not supported.
 UNSUPPORTEDOPERATION_HIBERNATIONFORNORMALINSTANCE = 'UnsupportedOperation.HibernationForNormalInstance'
 
-# 
+# The current image does not support hibernation.
+
 UNSUPPORTEDOPERATION_HIBERNATIONOSVERSION = 'UnsupportedOperation.HibernationOsVersion'
 
 # IPv6 instances cannot be migrated from Classiclink to VPC.
@@ -920,7 +952,8 @@ UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = 'UnsupportedOperation.Insta
 # The instance `ins-xxxxxx` with the `Xserver windows2012cndatacenterx86_64` operating system does not support this operation.
 UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = 'UnsupportedOperation.InstanceOsWindows'
 
-# 
+# The current instance is in a failed OS reinstallation state and does not support this operation. We recommend reinstalling the operating system again. Alternatively, you may terminate/return the instance or submit a support ticket.
+
 UNSUPPORTEDOPERATION_INSTANCEREINSTALLFAILED = 'UnsupportedOperation.InstanceReinstallFailed'
 
 # This CVM is blocked. Please submit a ticket.
@@ -986,10 +1019,12 @@ UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = 'UnsupportedOperation.InstanceSta
 # The instance is being terminated, and the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = 'UnsupportedOperation.InstanceStateTerminating'
 
-# 
+# The instance type does not support setting the `Confidentiality` state.
+
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTCONFIDENTIALITY = 'UnsupportedOperation.InstanceTypeNotSupportConfidentiality'
 
-# 
+# The instance type does not support setting the `GridDriverService` state.
+
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTGRIDLICENCE = 'UnsupportedOperation.InstanceTypeNotSupportGridLicence'
 
 # The instance type does not support setting the `EnableJumboFrame` status.
@@ -1010,7 +1045,8 @@ UNSUPPORTEDOPERATION_INVALIDDISK = 'UnsupportedOperation.InvalidDisk'
 # Cloud block storage does not support backup points.
 UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = 'UnsupportedOperation.InvalidDiskBackupQuota'
 
-# 
+# Fast rollback is not supported.
+
 UNSUPPORTEDOPERATION_INVALIDDISKFASTROLLBACK = 'UnsupportedOperation.InvalidDiskFastRollback'
 
 # The image license type does not match the instance. Select another image.
@@ -1124,16 +1160,21 @@ UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.S
 # The specified image does not support synchronization to an encrypted custom image.
 UNSUPPORTEDOPERATION_SYNCENCRYPTIMAGENOTSUPPORT = 'UnsupportedOperation.SyncEncryptImageNotSupport'
 
-# 
+# The request does not support this type of system disk.
+
 UNSUPPORTEDOPERATION_SYSTEMDISKTYPE = 'UnsupportedOperation.SystemDiskType'
 
 # The operation is not supported when TencentCloud Automation Tools are offline.
 UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = 'UnsupportedOperation.TatAgentNotOnline'
 
+# Monthly subscription to subcontracted exclusive sale does not support exclusive sales discount higher than existing annual/monthly subscription discount.
+UNSUPPORTEDOPERATION_UNDERWRITEDISCOUNTGREATERTHANPREPAIDDISCOUNT = 'UnsupportedOperation.UnderwriteDiscountGreaterThanPrepaidDiscount'
+
 # For an underwriting instance, `RenewFlag` can only be set to `NOTIFY_AND_AUTO_RENEW`.
 UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = 'UnsupportedOperation.UnderwritingInstanceTypeOnlySupportAutoRenew'
 
-# 
+# The current instance does not allow resizing to non-ARM instance types.
+
 UNSUPPORTEDOPERATION_UNSUPPORTEDARMCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedARMChangeInstanceFamily'
 
 # The specified model does not support cross-model configuration adjustment.

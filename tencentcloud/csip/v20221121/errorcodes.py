@@ -26,7 +26,8 @@ FAILEDOPERATION = 'FailedOperation'
 # An internal error occurs.
 INTERNALERROR = 'InternalError'
 
-# 
+# Invalid filter
+
 INVALIDFILTER = 'InvalidFilter'
 
 # The parameter is incorrect.
@@ -47,7 +48,8 @@ MISSINGPARAMETER = 'MissingParameter'
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
-# 
+# Region error
+
 REGIONERROR = 'RegionError'
 
 # Too many requests.
@@ -71,10 +73,12 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # The operation is unauthorized.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# 
+# Unauthorized operation for "Operation Audit" product.
+
 UNAUTHORIZEDOPERATION_CLOUDAUDIT = 'UnauthorizedOperation.CloudAudit'
 
-# 
+# Unauthorized operation for the "Object Storage" product.
+
 UNAUTHORIZEDOPERATION_COS = 'UnauthorizedOperation.Cos'
 
 # The parameter is unknown.

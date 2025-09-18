@@ -32,10 +32,12 @@ FAILEDOPERATION_GETCLSTOPICFAILED = 'FailedOperation.GetClsTopicFailed'
 # Failed to pull the COS bucket list
 FAILEDOPERATION_GETCOSBUCKETLISTFAILED = 'FailedOperation.GetCosBucketListFailed'
 
-# 
+# The user currently being queried has not enabled operation audit permissions. If you need to query this user's audit records, please contact them to enable it.
+
 FAILEDOPERATION_MEMBERNOTAUDITROLE = 'FailedOperation.MemberNotAuditRole'
 
-# 
+# The member is not in the group organization.
+
 FAILEDOPERATION_MEMBERNOTINORGANIZATION = 'FailedOperation.MemberNotInOrganization'
 
 # Internal error.
@@ -164,11 +166,13 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # The tracking set does not exist.
 RESOURCENOTFOUND_AUDITNOTEXIST = 'ResourceNotFound.AuditNotExist'
 
-# 
+# The cos bucket does not exist.
+
 RESOURCENOTFOUND_COSNOTEXIST = 'ResourceNotFound.CosNotExist'
 
 # The role doesn’t exist.
 RESOURCENOTFOUND_ROLENOTEXIST = 'ResourceNotFound.RoleNotExist'
 
-# 
+# Unauthorized operation.
+
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
