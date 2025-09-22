@@ -402,7 +402,6 @@ RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScaling
 RESOURCENOTFOUND_BANDWIDTHPACKAGEIDNOTFOUND = 'ResourceNotFound.BandwidthPackageIdNotFound'
 
 # The specified classic load balancer ID does not exist.
-
 RESOURCENOTFOUND_CLASSICLOADBALANCERNOTFOUND = 'ResourceNotFound.ClassicLoadBalancerNotFound'
 
 # The specified CMQ queue does not exist.

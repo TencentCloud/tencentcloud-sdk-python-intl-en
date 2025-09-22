@@ -97,7 +97,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyWebVerificationBizTokenIntl(self, request):
-        r"""This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.
+        r"""This API is used to obtain a BizToken before each call to the Web verification service. Save the BizToken to initiate the verification process and retrieve the result upon completion. The BizToken is valid for 10 minutes.
 
         :param request: Request instance for ApplyWebVerificationBizTokenIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationBizTokenIntlRequest`
@@ -284,7 +284,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetFaceIdResultIntl(self, request):
-        r"""This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for 72 hours (72*3600s) after generation and can be called multiple times.
 
         :param request: Request instance for GetFaceIdResultIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdResultIntlRequest`

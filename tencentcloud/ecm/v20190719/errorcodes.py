@@ -312,7 +312,6 @@ INVALIDPARAMETERVALUE_RESERVED = 'InvalidParameterValue.Reserved'
 INVALIDPARAMETERVALUE_SUBNETCONFLICT = 'InvalidParameterValue.SubnetConflict'
 
 # The subnet does not exist.
-
 INVALIDPARAMETERVALUE_SUBNETNOTEXIST = 'InvalidParameterValue.SubnetNotExist'
 
 # The subnet IP range is invalid.
@@ -436,7 +435,6 @@ RESOURCEINSUFFICIENT_INSTANCEQUOTANOTENOUGH = 'ResourceInsufficient.InstanceQuot
 RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = 'ResourceInsufficient.InvaildPrivateImageNum'
 
 # Insufficient internal IP addresses in the current subnet.
-
 RESOURCEINSUFFICIENT_PRIVATEIPQUOTANOTENOUGH = 'ResourceInsufficient.PrivateIPQuotaNotEnough'
 
 # The resource does not exist.
@@ -452,7 +450,6 @@ RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = 'ResourceUnavailable.InstanceNotRunning
 RESOURCESSOLDOUT_LOADBALANCERSOLDOUT = 'ResourcesSoldOut.LoadBalancerSoldOut'
 
 # Specific models are sold out.
-
 RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = 'ResourcesSoldOut.SpecifiedInstanceType'
 
 # You don't have the permission to perform this operation.

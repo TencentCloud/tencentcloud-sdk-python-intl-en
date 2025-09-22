@@ -45,7 +45,6 @@ FAILEDOPERATION_NOPAYMENT = 'FailedOperation.NoPayment'
 FAILEDOPERATION_NOTAUTHENTICATED = 'FailedOperation.NotAuthenticated'
 
 # Request timeout.
-
 FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeOut'
 
 # Cannot increase the number of disks during rolling restart of scaled-out compute resources.
@@ -64,55 +63,42 @@ INTERNALERROR = 'InternalError'
 INVALIDPARAMETER = 'InvalidParameter'
 
 # AppId value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDAPPID = 'InvalidParameter.InvalidAppId'
 
 # The instance version EsVersion value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDESVERSION = 'InvalidParameter.InvalidEsVersion'
 
 # The value of the created index metadata JSON field IndexMetaJson does not match the expected value.
-
 INVALIDPARAMETER_INVALIDINDEXMETAJSON = 'InvalidParameter.InvalidIndexMetaJson'
 
 # The IndexName value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDINDEXNAME = 'InvalidParameter.InvalidIndexName'
 
 # The IndexType value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDINDEXTYPE = 'InvalidParameter.InvalidIndexType'
 
 # Invalid InstanceId, no corresponding resource found.
-
 INVALIDPARAMETER_INVALIDINSTANCEID = 'InvalidParameter.InvalidInstanceId'
 
 # The page size Limit value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDLIMIT = 'InvalidParameter.InvalidLimit'
 
 # The LogType value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDLOGTYPE = 'InvalidParameter.InvalidLogType'
 
 # The Offset value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
 
 # The sort field OrderByKey value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDORDERBYKEY = 'InvalidParameter.InvalidOrderByKey'
 
 # Invalid lucene syntax
-
 INVALIDPARAMETER_INVALIDQUERYSTRING = 'InvalidParameter.InvalidQueryString'
 
 # The Region value does not match the expected value.
-
 INVALIDPARAMETER_INVALIDREGION = 'InvalidParameter.InvalidRegion'
 
 # The value or format of time-related parameters does not match the expected.
-
 INVALIDPARAMETER_INVALIDTIMEPARAM = 'InvalidParameter.InvalidTimeParam'
 
 # Incorrect parameter value.
@@ -143,11 +129,9 @@ RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'
 RESOURCENOTFOUND = 'ResourceNotFound'
 
 # Failed to obtain cluster resources.
-
 RESOURCENOTFOUND_CLUSTERINFONOTFOUND = 'ResourceNotFound.ClusterInfoNotFound'
 
 # Failed to obtain database resources.
-
 RESOURCENOTFOUND_DBINFONOTFOUND = 'ResourceNotFound.DBInfoNotFound'
 
 # Unauthorized operation.

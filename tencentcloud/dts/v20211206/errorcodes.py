@@ -45,7 +45,6 @@ FAILEDOPERATION_STARTJOBFAILED = 'FailedOperation.StartJobFailed'
 FAILEDOPERATION_STATUSINCONFLICT = 'FailedOperation.StatusInConflict'
 
 # The user has not completed real-name authentication.
-
 FAILEDOPERATION_USERNOTAUTHED = 'FailedOperation.UserNotAuthed'
 
 # An internal error occurred.

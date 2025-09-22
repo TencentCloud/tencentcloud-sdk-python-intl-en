@@ -168,7 +168,7 @@ class TeoClient(AbstractClient):
 
     def CreateAliasDomain(self, request):
         r"""This API is used to create an alias domain name.
-        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, please [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
+        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for CreateAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainRequest`
@@ -492,7 +492,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        r"""This API is used to create a LoadBalancer. For details, see [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+        r"""This API is used to create a LoadBalancer. For details, see [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for CreateLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerRequest`
@@ -3409,7 +3409,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomainStatus(self, request):
         r"""This API is used to modify the status of an alias domain name.
-        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
+        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for ModifyAliasDomainStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusRequest`

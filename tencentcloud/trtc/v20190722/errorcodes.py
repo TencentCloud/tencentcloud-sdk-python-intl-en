@@ -42,7 +42,6 @@ FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
 
 # RTMP is not enabled.
-
 FAILEDOPERATION_NOTRTMPFUNCTION = 'FailedOperation.NotRtmpFunction'
 
 # Query task failed
@@ -181,7 +180,6 @@ INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
 INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 
 # UserSig is not a super administrator.
-
 INVALIDPARAMETER_USERSIGNOTADMIN = 'InvalidParameter.UserSigNotAdmin'
 
 # Invalid RoomId.

@@ -60,7 +60,6 @@ INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 
 # OutputGroups is invalid.
-
 INVALIDPARAMETER_OUTPUTGROUPS = 'InvalidParameter.OutputGroups'
 
 # The OutputStorage is invalid.

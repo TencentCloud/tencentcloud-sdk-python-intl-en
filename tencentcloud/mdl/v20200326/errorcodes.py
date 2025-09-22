@@ -45,7 +45,6 @@ INVALIDPARAMETER_ENDTIME = 'InvalidParameter.EndTime'
 INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = 'InvalidParameter.ExceededQuantityLimit'
 
 # FrameCaptureTemplates parameter is invalid.
-
 INVALIDPARAMETER_FRAMECAPTURETEMPLATES = 'InvalidParameter.FrameCaptureTemplates'
 
 # Invalid `Id`.

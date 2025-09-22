@@ -75,7 +75,6 @@ INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamic
 INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
 
 # Invalid enforced HTTPS redirect.
-
 INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
 
 # Invalid origin server.
@@ -142,7 +141,6 @@ INVALIDPARAMETERVALUE_INVALIDPROXYNAME = 'InvalidParameterValue.InvalidProxyName
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
 # SRV record name incorrect.
-
 INVALIDPARAMETERVALUE_INVALIDSRVNAME = 'InvalidParameterValue.InvalidSRVName'
 
 # This record already exists.

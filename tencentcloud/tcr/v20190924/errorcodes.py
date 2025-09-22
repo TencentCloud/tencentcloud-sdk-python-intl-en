@@ -150,7 +150,6 @@ RESOURCENOTFOUND_TCRRESOURCENOTFOUND = 'ResourceNotFound.TcrResourceNotFound'
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # Unauthorized Operation
-
 UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = 'UnauthorizedOperation.ErrorTcrUnauthorized'
 
 # Unknown parameter error. Please check and try again.

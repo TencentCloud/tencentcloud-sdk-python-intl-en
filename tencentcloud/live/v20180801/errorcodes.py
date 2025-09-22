@@ -324,11 +324,9 @@ INVALIDPARAMETER_CLOUDCRTIDERROR = 'InvalidParameter.CloudCrtIdError'
 INVALIDPARAMETER_CLOUDDOMAINISSTOP = 'InvalidParameter.CloudDomainIsStop'
 
 # Template is in use.
-
 INVALIDPARAMETER_CONFINUSED = 'InvalidParameter.ConfInUsed'
 
 # Configuration not found.
-
 INVALIDPARAMETER_CONFNOTFOUND = 'InvalidParameter.ConfNotFound'
 
 # The certificate is in use.
@@ -395,11 +393,9 @@ INVALIDPARAMETER_INVALIDCROPPARAM = 'InvalidParameter.InvalidCropParam'
 INVALIDPARAMETER_INVALIDLAYERPARAM = 'InvalidParameter.InvalidLayerParam'
 
 # Invalid input parameters for stream mixing.
-
 INVALIDPARAMETER_INVALIDMIXINPUTPARAM = 'InvalidParameter.InvalidMixInputParam'
 
 # Invalid output stream parameters.
-
 INVALIDPARAMETER_INVALIDOUTPUTPARAM = 'InvalidParameter.InvalidOutputParam'
 
 # The output stream ID is already used.
@@ -439,11 +435,9 @@ INVALIDPARAMETER_MPPLUGINNOUSE = 'InvalidParameter.MpPluginNoUse'
 INVALIDPARAMETER_OTHERERROR = 'InvalidParameter.OtherError'
 
 # Transcoding template already exists.
-
 INVALIDPARAMETER_PROCESSORALREADYEXIST = 'InvalidParameter.ProcessorAlreadyExist'
 
 # Rule not found.
-
 INVALIDPARAMETER_RULENOTFOUND = 'InvalidParameter.RuleNotFound'
 
 # The output stream of the same session has changed.
@@ -507,7 +501,6 @@ RESOURCENOTFOUND_DOMAINNORECORD = 'ResourceNotFound.DomainNoRecord'
 RESOURCENOTFOUND_DOMAINNOTEXIST = 'ResourceNotFound.DomainNotExist'
 
 # Data is empty.
-
 RESOURCENOTFOUND_EMPTYDATA = 'ResourceNotFound.EmptyData'
 
 # You are blocked.

@@ -24,7 +24,6 @@ DRYRUNOPERATION = 'DryRunOperation'
 FAILEDOPERATION = 'FailedOperation'
 
 # Loading data
-
 FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
 
 # Internal error.

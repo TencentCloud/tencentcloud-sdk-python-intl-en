@@ -180,7 +180,6 @@ RESOURCEUNAVAILABLE_TOOMANYCREATINGSNAPSHOT = 'ResourceUnavailable.TooManyCreati
 RESOURCEUNAVAILABLE_TYPEERROR = 'ResourceUnavailable.TypeError'
 
 # The cloud disk and the instance are not in the same availability zone.
-
 RESOURCEUNAVAILABLE_ZONENOTMATCH = 'ResourceUnavailable.ZoneNotMatch'
 
 # Order conflict.
@@ -205,7 +204,6 @@ UNAUTHORIZEDOPERATION_ROLENOTEXISTS = 'UnauthorizedOperation.RoleNotExists'
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Detaching cloud disks from EKS is not currently supported.
-
 UNSUPPORTEDOPERATION_DETACHPOD = 'UnsupportedOperation.DetachPod'
 
 # The disk is encrypted.

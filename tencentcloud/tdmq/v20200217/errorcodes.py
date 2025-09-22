@@ -183,7 +183,6 @@ INVALIDPARAMETER_TOKENNOTFOUND = 'InvalidParameter.TokenNotFound'
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # At least one parameter must be provided.
-
 INVALIDPARAMETERVALUE_ATLEASTONE = 'InvalidParameterValue.AtLeastOne'
 
 # The cluster name already exists.

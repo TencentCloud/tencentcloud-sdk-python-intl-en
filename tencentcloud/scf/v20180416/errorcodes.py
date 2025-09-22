@@ -117,7 +117,6 @@ FAILEDOPERATION_PUBLISHLAYERVERSION = 'FailedOperation.PublishLayerVersion'
 FAILEDOPERATION_PUBLISHVERSION = 'FailedOperation.PublishVersion'
 
 # Query failed.
-
 FAILEDOPERATION_QUERYERROR = 'FailedOperation.QueryError'
 
 # The value of ReservedExceedTotal exceeds the limit.
@@ -481,7 +480,6 @@ LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYNUM = 'LimitExceeded.FunctionTo
 LIMITEXCEEDED_LAYERVERSIONS = 'LimitExceeded.LayerVersions'
 
 # The number of layers exceeds the maximum limit.
-
 LIMITEXCEEDED_LAYERS = 'LimitExceeded.Layers'
 
 # Reached the upper limit of dynamic scaling.
@@ -530,7 +528,6 @@ MISSINGPARAMETER = 'MissingParameter'
 OPERATIONDENIED_ACCOUNTISOLATE = 'OperationDenied.AccountIsolate'
 
 # Account does not exist.
-
 OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
 
 # The resource is in use.
@@ -678,7 +675,6 @@ UNSUPPORTEDOPERATION_ALIASBIND = 'UnsupportedOperation.AliasBind'
 UNSUPPORTEDOPERATION_CDN = 'UnsupportedOperation.Cdn'
 
 # The function cannot be copied.
-
 UNSUPPORTEDOPERATION_COPYFUNCTION = 'UnsupportedOperation.CopyFunction'
 
 # Cos operation is not supported.
@@ -691,7 +687,6 @@ UNSUPPORTEDOPERATION_EIPFIXED = 'UnsupportedOperation.EipFixed'
 UNSUPPORTEDOPERATION_NOTSUPPORTREGION = 'UnsupportedOperation.NotSupportRegion'
 
 # Cannot release the version in the current state.
-
 UNSUPPORTEDOPERATION_PUBLISHVERSION = 'UnsupportedOperation.PublishVersion'
 
 # This region is not supported.

@@ -27,7 +27,6 @@ FAILEDOPERATION_FAILEDOPERATIONERROR = 'FailedOperation.FailedOperationError'
 FAILEDOPERATION_NOTALLOWOPERATION = 'FailedOperation.NotAllowOperation'
 
 # Proxy error.
-
 FAILEDOPERATION_PROXYERROR = 'FailedOperation.ProxyError'
 
 # Failed to start the task.
@@ -37,7 +36,6 @@ FAILEDOPERATION_STARTJOBFAILED = 'FailedOperation.StartJobFailed'
 FAILEDOPERATION_STATUSINCONFLICT = 'FailedOperation.StatusInConflict'
 
 # The current state does not allow the operation.
-
 FAILEDOPERATION_STATUSINCONFLICTERROR = 'FailedOperation.StatusInConflictError'
 
 # An internal error occurred.
@@ -92,14 +90,12 @@ INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameter.BizInvalidPar
 INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
 
 # ip address error.
-
 INVALIDPARAMETER_INVALIDIPADDRESS = 'InvalidParameter.InvalidIpAddress'
 
 # The parameter is invalid.
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 
 # Invalid business parameters.
-
 INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
 
 # A data conversion error occurred.

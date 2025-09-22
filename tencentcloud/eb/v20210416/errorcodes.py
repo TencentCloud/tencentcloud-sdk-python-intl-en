@@ -81,7 +81,6 @@ INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 INTERNALERROR_SYSTEM = 'InternalError.System'
 
 # Unknown error.
-
 INTERNALERROR_UNKNOWNINTERNALERROR = 'InternalError.UnknownInternalError'
 
 # Parameter error.

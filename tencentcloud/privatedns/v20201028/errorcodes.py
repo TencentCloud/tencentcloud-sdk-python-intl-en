@@ -48,7 +48,6 @@ FAILEDOPERATION_DATAERROR = 'FailedOperation.DataError'
 FAILEDOPERATION_DELETELASTBINDVPCRECORDFAILED = 'FailedOperation.DeleteLastBindVpcRecordFailed'
 
 # Record deletion failed.
-
 FAILEDOPERATION_DELETERECORDFAILED = 'FailedOperation.DeleteRecordFailed'
 
 # Failed to delete the endpoint.
@@ -73,7 +72,6 @@ FAILEDOPERATION_MODIFYRECORDFAILED = 'FailedOperation.ModifyRecordFailed'
 FAILEDOPERATION_MODIFYZONEFAILED = 'FailedOperation.ModifyZoneFailed'
 
 # Record update failed.
-
 FAILEDOPERATION_UPDATERECORDFAILED = 'FailedOperation.UpdateRecordFailed'
 
 # Internal error.
@@ -128,7 +126,6 @@ INVALIDPARAMETER_ILLEGALVPCINFO = 'InvalidParameter.IllegalVpcInfo'
 INVALIDPARAMETER_INVALIDMX = 'InvalidParameter.InvalidMX'
 
 # This record type does not support MX priority settings.
-
 INVALIDPARAMETER_MXNOTSUPPORTED = 'InvalidParameter.MXNotSupported'
 
 # The number of round-robin DNS AAAA records exceeds 50.

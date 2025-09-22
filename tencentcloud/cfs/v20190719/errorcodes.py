@@ -93,7 +93,6 @@ INVALIDPARAMETER_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameter.SnapshotPol
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # Auto-scaling policy does not exist.
-
 INVALIDPARAMETERVALUE_AUTOPOLICYNOTFOUND = 'InvalidParameterValue.AutoPolicyNotFound'
 
 # The length of the string used to ensure the idempotency of the request exceeds the upper limit of 64 bytes.
@@ -115,7 +114,6 @@ INVALIDPARAMETERVALUE_FSNAMELIMITEXCEEDED = 'InvalidParameterValue.FsNameLimitEx
 INVALIDPARAMETERVALUE_FSSIZELIMITEXCEEDED = 'InvalidParameterValue.FsSizeLimitExceeded'
 
 # Invalid AliveDays value error
-
 INVALIDPARAMETERVALUE_INVALIDALIVEDAYS = 'InvalidParameterValue.InvalidAliveDays'
 
 # Incorrect rule IP.
@@ -128,7 +126,6 @@ INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = 'InvalidParameterValue.InvalidA
 INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = 'InvalidParameterValue.InvalidClientToken'
 
 # The cross-region replication parameter for snapshots is not supported in this region.
-
 INVALIDPARAMETERVALUE_INVALIDDESTINATIONREGIONS = 'InvalidParameterValue.InvalidDestinationRegions'
 
 # Invalid encryption parameter.
@@ -156,7 +153,6 @@ INVALIDPARAMETERVALUE_INVALIDNETINTERFACE = 'InvalidParameterValue.InvalidNetInt
 INVALIDPARAMETERVALUE_INVALIDPARAMDAYOFMONTH = 'InvalidParameterValue.InvalidParamDayOfMonth'
 
 # Invalid parameter: DayOfWeek
-
 INVALIDPARAMETERVALUE_INVALIDPARAMDAYOFWEEK = 'InvalidParameterValue.InvalidParamDayOfWeek'
 
 # Invalid value of `IntervalDays`.
@@ -190,15 +186,12 @@ INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = 'InvalidParameterValue.InvalidRwPerm
 INVALIDPARAMETERVALUE_INVALIDSCALEUPTARGETCAPACITY = 'InvalidParameterValue.InvalidScaleupTargetCapacity'
 
 # Invalid snapshot policy status
-
 INVALIDPARAMETERVALUE_INVALIDSNAPPOLICYSTATUS = 'InvalidParameterValue.InvalidSnapPolicyStatus'
 
 # Invalid snapshot name
-
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTNAME = 'InvalidParameterValue.InvalidSnapshotName'
 
 # Invalid snapshot policy name
-
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTPOLICYNAME = 'InvalidParameterValue.InvalidSnapshotPolicyName'
 
 # The snapshot is invalid.
@@ -262,7 +255,6 @@ INVALIDPARAMETERVALUE_MISSINGPGROUPNAME = 'InvalidParameterValue.MissingPgroupNa
 INVALIDPARAMETERVALUE_MISSINGPOLICYPARAM = 'InvalidParameterValue.MissingPolicyParam'
 
 # Missing parameter(s): Snapshot Name or aliveDays
-
 INVALIDPARAMETERVALUE_MISSINGSNAPNAMEORALIVEDAY = 'InvalidParameterValue.MissingSnapNameOrAliveDay'
 
 # No storage pack is bound to.
@@ -293,11 +285,9 @@ INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = 'InvalidParameterValue.PgroupNam
 INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = 'InvalidParameterValue.RuleNotMatchPgroup'
 
 # Snapshot name exceeds the limit. The name length must not exceed 64 characters.
-
 INVALIDPARAMETERVALUE_SNAPSHOTNAMELIMITEXCEEDED = 'InvalidParameterValue.SnapshotNameLimitExceeded'
 
 # Snapshot policy name exceeds the 64-character limit.
-
 INVALIDPARAMETERVALUE_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameterValue.SnapshotPolicyNameLimitExceeded'
 
 # Invalid parameter value: the number of tag keys exceeds the upper limit (6).

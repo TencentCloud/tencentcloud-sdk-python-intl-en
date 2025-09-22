@@ -900,8 +900,7 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
         :param _VerificationUrl: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
 Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
         :type VerificationUrl: str
-        :param _BizToken: The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.
-Example: 81EEF678-28EE-4759-A82E-6CBBBE6BC442
+        :param _BizToken: A token that identifies a Web verification process, with a validity time of 10 minutes. after the process is complete, the token can be used to obtain the verification result.
         :type BizToken: str
         :param _VerificationURL: The verification URL to be opened with a browser to start the verification process.
 Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
@@ -932,8 +931,7 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
 
     @property
     def BizToken(self):
-        r"""The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.
-Example: 81EEF678-28EE-4759-A82E-6CBBBE6BC442
+        r"""A token that identifies a Web verification process, with a validity time of 10 minutes. after the process is complete, the token can be used to obtain the verification result.
         :rtype: str
         """
         return self._BizToken

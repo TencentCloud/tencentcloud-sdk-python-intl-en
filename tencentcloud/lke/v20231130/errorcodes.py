@@ -36,7 +36,6 @@ FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
 # Parameter error.
-
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Parameter value error.

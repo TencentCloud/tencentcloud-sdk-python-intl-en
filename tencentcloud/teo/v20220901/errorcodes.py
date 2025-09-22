@@ -318,7 +318,6 @@ INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
 INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
 
 # GroupBy parameter exceeds the quantity limit.
-
 INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = 'InvalidParameter.GroupByLimitExceeded'
 
 # To enable gRPC support, HTTP/2 support must be enabled as well.
@@ -436,7 +435,6 @@ INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPag
 INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
 
 # Invalid enforced HTTPS redirect.
-
 INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
 
 # Invalid parameter "https".
@@ -794,11 +792,9 @@ INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = 'InvalidParameterValue.Ali
 INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = 'InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS'
 
 # The client certificate in the edge mTLS configuration must be a CA certificate.
-
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = 'InvalidParameterValue.CertificateVerifyClientMustCa'
 
 # Edge mTLS configuration requires at least one certificate.
-
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyClientNeedCert'
 
 # Currently, only RSA or ECC algorithm certificates are supported for the origin-pull mutual authentication, and the SCA SM2 algorithm certificates are not supported.
@@ -811,7 +807,6 @@ INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = 'InvalidParameter
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert'
 
 # The client CA certificate in edge mTLS configuration allows a maximum of 20 certificates.
-
 INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.ClientCertInfoQuotaLimit'
 
 # It conflicts with existing records.
@@ -1319,7 +1314,6 @@ RESOURCEUNAVAILABLE_SHAREDCNAMEALREADYEXISTS = 'ResourceUnavailable.SharedCNAMEA
 RESOURCEUNAVAILABLE_ZONENOTFOUND = 'ResourceUnavailable.ZoneNotFound'
 
 # Resources are selling fast and currently sold out. Restocking is in progress, so new domains cannot be added at the moment. Please wait patiently.
-
 RESOURCESSOLDOUT_L7LACKOFRESOURCES = 'ResourcesSoldOut.L7LackOfResources'
 
 # Unauthorized operation.

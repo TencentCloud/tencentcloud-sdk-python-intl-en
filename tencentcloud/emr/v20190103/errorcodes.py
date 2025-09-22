@@ -201,7 +201,6 @@ INVALIDPARAMETER_INVALIDCOREDISKTYPE = 'InvalidParameter.InvalidCoreDiskType'
 INVALIDPARAMETER_INVALIDCOSBUCKET = 'InvalidParameter.InvalidCosBucket'
 
 # The CosFileUri parameter value is invalid.
-
 INVALIDPARAMETER_INVALIDCOSFILEURI = 'InvalidParameter.InvalidCosFileURI'
 
 # The count must be greater than 0.

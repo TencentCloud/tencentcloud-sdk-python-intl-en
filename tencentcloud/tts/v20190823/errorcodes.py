@@ -27,7 +27,6 @@ INTERNALERROR_EXCEEDMAXLIMIT = 'InternalError.ExceedMaxLimit'
 INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 
 # No resources available, please try again later.
-
 INTERNALERROR_NORESOURCE = 'InternalError.NoResource'
 
 # The request text contains invalid characters.

@@ -441,21 +441,22 @@ class Activity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: Atomic task type:
-<li>input: start node</li>
-<li>output: end node</li>
-<li>action-trans: transcoding</li>
-<li>action-samplesnapshot: sampled screenshot</li>
-<li>action-AIAnalysis: analysis</li>
-<li>action-AIRecognition: recognition</li>
-<li>action-aiReview: review</li>
-<li>action-animated-graphics: conversion to GIF</li>
-<li>action-image-sprite: image sprite</li>
-<li>action-snapshotByTimeOffset: time point screenshot</li>
-<li>action-adaptive-substream: adaptive bitrate stream</li>
-<li>action-AIQualityControl: media quality inspection</li>
-<li>action-SmartSubtitles: smart subtitle</li>
-<li>action-exec-rules: judgment rule</li>
+        :param _ActivityType: Atomic task type.
+<li>input: starting node.</li>.
+<li>output: termination node.</li>.
+<li>action-trans: specifies transcoding.</li>.
+<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
+<li>action-AIAnalysis: analysis.</li>.
+<li>action-AIRecognition: recognition.</li>.
+<li>action-aiReview: specifies the review action.</li>.
+<li>action-animated-graphics: specifies the animated image.</li>.
+<li>action-image-sprite: specifies the sprite sheet.</li>.
+<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
+<li>action-AIQualityControl: media quality inspection.</li>.
+<li>action-SmartSubtitles: smart subtitling.</li>.
+<li>action-exec-rules: judgment rule.</li>.
+<li>action-SmartErase: smart erasure.</li>.
 
 
 
@@ -472,21 +473,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivityType(self):
-        r"""Atomic task type:
-<li>input: start node</li>
-<li>output: end node</li>
-<li>action-trans: transcoding</li>
-<li>action-samplesnapshot: sampled screenshot</li>
-<li>action-AIAnalysis: analysis</li>
-<li>action-AIRecognition: recognition</li>
-<li>action-aiReview: review</li>
-<li>action-animated-graphics: conversion to GIF</li>
-<li>action-image-sprite: image sprite</li>
-<li>action-snapshotByTimeOffset: time point screenshot</li>
-<li>action-adaptive-substream: adaptive bitrate stream</li>
-<li>action-AIQualityControl: media quality inspection</li>
-<li>action-SmartSubtitles: smart subtitle</li>
-<li>action-exec-rules: judgment rule</li>
+        r"""Atomic task type.
+<li>input: starting node.</li>.
+<li>output: termination node.</li>.
+<li>action-trans: specifies transcoding.</li>.
+<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
+<li>action-AIAnalysis: analysis.</li>.
+<li>action-AIRecognition: recognition.</li>.
+<li>action-aiReview: specifies the review action.</li>.
+<li>action-animated-graphics: specifies the animated image.</li>.
+<li>action-image-sprite: specifies the sprite sheet.</li>.
+<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
+<li>action-AIQualityControl: media quality inspection.</li>.
+<li>action-SmartSubtitles: smart subtitling.</li>.
+<li>action-exec-rules: judgment rule.</li>.
+<li>action-SmartErase: smart erasure.</li>.
 
 
 
@@ -572,6 +574,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _SmartSubtitlesTask: Smart subtitle task.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SmartEraseTask: Smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -585,6 +590,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._QualityControlTask = None
         self._ExecRulesTask = None
         self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
 
     @property
     def TranscodeTask(self):
@@ -721,6 +727,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SmartSubtitlesTask(self, SmartSubtitlesTask):
         self._SmartSubtitlesTask = SmartSubtitlesTask
 
+    @property
+    def SmartEraseTask(self):
+        r"""Smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -759,6 +777,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskInput()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -812,6 +833,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _SmartSubtitlesTask: Smart subtitle task output.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
+        :param _SmartEraseTask: Smart erase task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -825,6 +849,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._QualityControlTask = None
         self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
 
     @property
     def TranscodeTask(self):
@@ -970,6 +995,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SmartSubtitlesTask(self, SmartSubtitlesTask):
         self._SmartSubtitlesTask = SmartSubtitlesTask
 
+    @property
+    def SmartEraseTask(self):
+        r"""Smart erase task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -1008,6 +1045,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskResult()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1026,18 +1066,20 @@ class ActivityResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityType: Atomic task type.
-<Li>Transcode: transcoding</li>
-<Li>SampleSnapshot: sampled screenshot</li>
-<Li>AnimatedGraphics: conversion to GIF</li>
-<Li>SnapshotByTimeOffset: time point screenshot</li>
-<Li>ImageSprites: image sprite</li>
-<Li>AdaptiveDynamicStreaming: adaptive bitrate stream</li>
-<Li>AiContentReview: content review</li>
-<Li>AIRecognition: intelligent recognition</li>
-<Li>AIAnalysis: intelligent analysis</li>
-<li>AiQualityControl: media quality inspection.</li>
+<Li>Transcode: transcoding.</li>.
+<Li>SampleSnapshot: specifies sampled screenshot taking.</li>.
+<Li>AnimatedGraphics: specifies the animated image.</li>.
+<Li>SnapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<Li>ImageSprites: specifies the sprite sheet.</li>.
+<Li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>.
+<Li>AiContentReview: specifies content moderation.</li>.
+<Li>AIRecognition: intelligent identification.</li>.
+<Li>AIAnalysis: specifies ai analysis.</li>.
+<li>AiQualityControl: media quality inspection</li>
 
 <Li>SmartSubtitles: smart subtitle</li>
+
+<Li>SmartErase: smart erasure.</li>.
         :type ActivityType: str
         :param _ActivityResItem: The execution results of the subtasks of the scheme.
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -1048,18 +1090,20 @@ class ActivityResult(AbstractModel):
     @property
     def ActivityType(self):
         r"""Atomic task type.
-<Li>Transcode: transcoding</li>
-<Li>SampleSnapshot: sampled screenshot</li>
-<Li>AnimatedGraphics: conversion to GIF</li>
-<Li>SnapshotByTimeOffset: time point screenshot</li>
-<Li>ImageSprites: image sprite</li>
-<Li>AdaptiveDynamicStreaming: adaptive bitrate stream</li>
-<Li>AiContentReview: content review</li>
-<Li>AIRecognition: intelligent recognition</li>
-<Li>AIAnalysis: intelligent analysis</li>
-<li>AiQualityControl: media quality inspection.</li>
+<Li>Transcode: transcoding.</li>.
+<Li>SampleSnapshot: specifies sampled screenshot taking.</li>.
+<Li>AnimatedGraphics: specifies the animated image.</li>.
+<Li>SnapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<Li>ImageSprites: specifies the sprite sheet.</li>.
+<Li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>.
+<Li>AiContentReview: specifies content moderation.</li>.
+<Li>AIRecognition: intelligent identification.</li>.
+<Li>AIAnalysis: specifies ai analysis.</li>.
+<li>AiQualityControl: media quality inspection</li>
 
 <Li>SmartSubtitles: smart subtitle</li>
+
+<Li>SmartErase: smart erasure.</li>.
         :rtype: str
         """
         return self._ActivityType
@@ -1205,16 +1249,17 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
         :type SubStreamObjectName: str
         :param _SegmentObjectName: After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: Subtitle file to be inserted.
+        :param _AddOnSubtitles: External subtitle feature specifies the subtitle file to be inserted.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: Drm information.
+        :param _DrmInfo: Specifies the Drm information.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: Adaptive transcoding template type.
 Common: audio/video type.
 PureAudio: audio-only.
         :type DefinitionType: str
-        :param _SubtitleTemplate: Specifies the subtitle parameter.
+        :param _SubtitleTemplate: Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _StdExtInfo: Transcoding parameter extension field.
@@ -1308,7 +1353,7 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
 
     @property
     def AddOnSubtitles(self):
-        r"""Subtitle file to be inserted.
+        r"""External subtitle feature specifies the subtitle file to be inserted.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of AddOnSubtitle
         """
@@ -1320,7 +1365,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DrmInfo(self):
-        r"""Drm information.
+        r"""Specifies the Drm information.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1344,7 +1390,7 @@ PureAudio: audio-only.
 
     @property
     def SubtitleTemplate(self):
-        r"""Specifies the subtitle parameter.
+        r"""Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
@@ -1852,15 +1898,16 @@ class AiAnalysisResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Task type. Valid values:
-<li>Classification: intelligent classification.</li>
-<li>Cover: intelligent thumbnail generating.</li>
-<li>Tag: intelligent tagging.</li>
-<li>FrameTag: intelligent frame-by-frame tagging.</li>
-<li>Highlight: intelligent highlights generating.</li>
-
-<li>DeLogo: intelligent removal.</li>
+        :param _Type: Task type. valid values:.
+<Li>Classification: intelligent classification.</li>.
+<Li>Cover: specifies the intelligent cover.</li>.
+<Li>Tag: intelligent tag.</li>.
+<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.
+<Li>Highlight: intelligent highlights</li>.
+<Li>DeLogo: intelligent removal.</li>.
 <li>Description: large model summarization.</li>
+
+<Li>Dubbing: intelligent dubbing.</li>.
         :type Type: str
         :param _ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
@@ -1888,6 +1935,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _HorizontalToVerticalTask: The query result of a landscape-to-portrait task for video analysis, which is valid when the task type is HorizontalToVertical.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
+        :param _DubbingTask: The query result of a Dubbing task for video content analysis, which is valid when the task type is Dubbing.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1900,18 +1950,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HeadTailTask = None
         self._DescriptionTask = None
         self._HorizontalToVerticalTask = None
+        self._DubbingTask = None
 
     @property
     def Type(self):
-        r"""Task type. Valid values:
-<li>Classification: intelligent classification.</li>
-<li>Cover: intelligent thumbnail generating.</li>
-<li>Tag: intelligent tagging.</li>
-<li>FrameTag: intelligent frame-by-frame tagging.</li>
-<li>Highlight: intelligent highlights generating.</li>
-
-<li>DeLogo: intelligent removal.</li>
+        r"""Task type. valid values:.
+<Li>Classification: intelligent classification.</li>.
+<Li>Cover: specifies the intelligent cover.</li>.
+<Li>Tag: intelligent tag.</li>.
+<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.
+<Li>Highlight: intelligent highlights</li>.
+<Li>DeLogo: intelligent removal.</li>.
 <li>Description: large model summarization.</li>
+
+<Li>Dubbing: intelligent dubbing.</li>.
         :rtype: str
         """
         return self._Type
@@ -2036,6 +2088,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HorizontalToVerticalTask(self, HorizontalToVerticalTask):
         self._HorizontalToVerticalTask = HorizontalToVerticalTask
 
+    @property
+    def DubbingTask(self):
+        r"""The query result of a Dubbing task for video content analysis, which is valid when the task type is Dubbing.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
+        """
+        return self._DubbingTask
+
+    @DubbingTask.setter
+    def DubbingTask(self, DubbingTask):
+        self._DubbingTask = DubbingTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2069,6 +2133,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("HorizontalToVerticalTask") is not None:
             self._HorizontalToVerticalTask = AiAnalysisTaskHorizontalToVerticalResult()
             self._HorizontalToVerticalTask._deserialize(params.get("HorizontalToVerticalTask"))
+        if params.get("DubbingTask") is not None:
+            self._DubbingTask = AiAnalysisTaskDubbingResult()
+            self._DubbingTask._deserialize(params.get("DubbingTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2534,12 +2601,20 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _SubtitlePos: Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        :param _VoiceClonedVideo: Specifies the file url of the video after voice cloning.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VoiceClonedVideo: str
+        :param _VoiceClonedMarkFile: Specifies the file address of the voice type clone annotation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VoiceClonedMarkFile: str
         """
         self._Path = None
         self._OutputStorage = None
         self._OriginSubtitlePath = None
         self._TranslateSubtitlePath = None
         self._SubtitlePos = None
+        self._VoiceClonedVideo = None
+        self._VoiceClonedMarkFile = None
 
     @property
     def Path(self):
@@ -2597,6 +2672,30 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SubtitlePos(self, SubtitlePos):
         self._SubtitlePos = SubtitlePos
 
+    @property
+    def VoiceClonedVideo(self):
+        r"""Specifies the file url of the video after voice cloning.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._VoiceClonedVideo
+
+    @VoiceClonedVideo.setter
+    def VoiceClonedVideo(self, VoiceClonedVideo):
+        self._VoiceClonedVideo = VoiceClonedVideo
+
+    @property
+    def VoiceClonedMarkFile(self):
+        r"""Specifies the file address of the voice type clone annotation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._VoiceClonedMarkFile
+
+    @VoiceClonedMarkFile.setter
+    def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
+        self._VoiceClonedMarkFile = VoiceClonedMarkFile
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -2608,6 +2707,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SubtitlePos") is not None:
             self._SubtitlePos = SubtitlePosition()
             self._SubtitlePos._deserialize(params.get("SubtitlePos"))
+        self._VoiceClonedVideo = params.get("VoiceClonedVideo")
+        self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2886,6 +2987,214 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskDescriptionOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingInput(AbstractModel):
+    r"""Intelligent translation task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Video translation template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Video translation template ID.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingOutput(AbstractModel):
+    r"""Intelligent translation result information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoPath: Specifies the video path for translation.
+        :type VideoPath: str
+        :param _SpeakerPath: Specifies the file path of the tag.
+
+        :type SpeakerPath: str
+        :param _OutputStorage: Specifies the storage location of the transcoded video.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._VideoPath = None
+        self._SpeakerPath = None
+        self._OutputStorage = None
+
+    @property
+    def VideoPath(self):
+        r"""Specifies the video path for translation.
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def SpeakerPath(self):
+        r"""Specifies the file path of the tag.
+
+        :rtype: str
+        """
+        return self._SpeakerPath
+
+    @SpeakerPath.setter
+    def SpeakerPath(self, SpeakerPath):
+        self._SpeakerPath = SpeakerPath
+
+    @property
+    def OutputStorage(self):
+        r"""Specifies the storage location of the transcoded video.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._VideoPath = params.get("VideoPath")
+        self._SpeakerPath = params.get("SpeakerPath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDubbingResult(AbstractModel):
+    r"""Intelligent translation result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Describes the task input for intelligent translation.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
+        :param _Output: Describes the task output of intelligent translation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Describes the task input for intelligent translation.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Describes the task output of intelligent translation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDubbingInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDubbingOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -17647,39 +17956,43 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         :param _Name: Smart subtitle template name.
 Length limit: 64 characters.
         :type Name: str
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        :param _VideoSrcLanguage: Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
         :type VideoSrcLanguage: str
         :param _SubtitleType: Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
         :param _Comment: Smart subtitle template description.
 Length limit: 256 characters.
         :type Comment: str
-        :param _SubtitleFormat: Smart subtitle file format.
-vtt: WebVTT format
+        :param _SubtitleFormat: Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
         :type SubtitleFormat: str
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
@@ -17733,28 +18046,30 @@ Length limit: 64 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        r"""Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -17766,9 +18081,10 @@ zh-dialect: Chinese dialect
     @property
     def SubtitleType(self):
         r"""Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :rtype: int
         """
         return self._SubtitleType
@@ -17791,8 +18107,9 @@ Length limit: 256 characters.
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format.
-vtt: WebVTT format
+        r"""Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
         :rtype: str
         """
@@ -23476,6 +23793,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _LiveStreamProcessTask: Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
+        :param _ExtractBlindWatermarkTask: Extracts digital watermark task information. this field has a value only when TaskType is ExtractBlindWatermark.
+        :type ExtractBlindWatermarkTask: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         :param _TaskNotifyConfig: Event notification information of a task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -23491,7 +23810,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param _LiveScheduleTask: The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveScheduleTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23504,6 +23823,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._EditMediaTask = None
         self._WorkflowTask = None
         self._LiveStreamProcessTask = None
+        self._ExtractBlindWatermarkTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -23607,6 +23927,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LiveStreamProcessTask = LiveStreamProcessTask
 
     @property
+    def ExtractBlindWatermarkTask(self):
+        r"""Extracts digital watermark task information. this field has a value only when TaskType is ExtractBlindWatermark.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkTask
+
+    @ExtractBlindWatermarkTask.setter
+    def ExtractBlindWatermarkTask(self, ExtractBlindWatermarkTask):
+        self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask
+
+    @property
     def TaskNotifyConfig(self):
         r"""Event notification information of a task.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -23677,7 +24008,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LiveScheduleTask(self):
         r"""The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
         """
         return self._LiveScheduleTask
@@ -23713,6 +24044,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
         if params.get("LiveStreamProcessTask") is not None:
             self._LiveStreamProcessTask = LiveStreamProcessTask()
             self._LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
+        if params.get("ExtractBlindWatermarkTask") is not None:
+            self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -25912,6 +26246,195 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class EraseArea(AbstractModel):
+    r"""Smart erasure. coordinate configuration of the removal area.
+    The region is defined by the coordinates of the upper left corner and the bottom-right corner.
+    The coordinate origin is the top-left corner of the frame and the coordinate points can be specified using pixel values or percentage units.
+    **For the Automatic Erasing Area:**
+    When the unit is %, the coordinate range is [0,1].
+    When unit is px, X value range is [0, video image width]. Y value range is [0, video image height].
+    **For the Specified area erasing:**
+    Specifies the coordinate range as [0,1) when the unit is %.
+    When unit: px, X value range [0, video image width], Y value range [0, video image height].
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftTopX: X-Axis coordinate of the upper left corner.
+When Unit is set to 1 (percentage Unit), 0.05 indicates the horizontal distance from the upper left corner of the region to the top-left corner of the entire frame is 5% of the frame width.
+        :type LeftTopX: float
+        :param _LeftTopY: Y-Axis coordinate of the upper left corner.
+When Unit is set to 1 (using percentage Unit), 0.1 indicates the vertical distance from the top-left corner of the area to the top-left corner of the entire frame is 10% of the screen height.
+        :type LeftTopY: float
+        :param _RightBottomX: X-Axis coordinate of the bottom-right corner.
+When Unit is set to 1 (percentage Unit), 0.75 indicates the horizontal distance from the bottom-right corner of the region to the top-left corner of the entire frame is 75% of the frame width.
+        :type RightBottomX: float
+        :param _RightBottomY: Y-Axis coordinate of the bottom-right corner.
+When Unit is set to 1 (using percentage Unit), 0.9 indicates the vertical distance from the bottom-right corner of the area to the top-left corner of the entire frame is 90% of the screen height.
+        :type RightBottomY: float
+        :param _Unit: Specifies the coordinate unit.
+-Percentage.
+-2 pixel values.
+        :type Unit: int
+        """
+        self._LeftTopX = None
+        self._LeftTopY = None
+        self._RightBottomX = None
+        self._RightBottomY = None
+        self._Unit = None
+
+    @property
+    def LeftTopX(self):
+        r"""X-Axis coordinate of the upper left corner.
+When Unit is set to 1 (percentage Unit), 0.05 indicates the horizontal distance from the upper left corner of the region to the top-left corner of the entire frame is 5% of the frame width.
+        :rtype: float
+        """
+        return self._LeftTopX
+
+    @LeftTopX.setter
+    def LeftTopX(self, LeftTopX):
+        self._LeftTopX = LeftTopX
+
+    @property
+    def LeftTopY(self):
+        r"""Y-Axis coordinate of the upper left corner.
+When Unit is set to 1 (using percentage Unit), 0.1 indicates the vertical distance from the top-left corner of the area to the top-left corner of the entire frame is 10% of the screen height.
+        :rtype: float
+        """
+        return self._LeftTopY
+
+    @LeftTopY.setter
+    def LeftTopY(self, LeftTopY):
+        self._LeftTopY = LeftTopY
+
+    @property
+    def RightBottomX(self):
+        r"""X-Axis coordinate of the bottom-right corner.
+When Unit is set to 1 (percentage Unit), 0.75 indicates the horizontal distance from the bottom-right corner of the region to the top-left corner of the entire frame is 75% of the frame width.
+        :rtype: float
+        """
+        return self._RightBottomX
+
+    @RightBottomX.setter
+    def RightBottomX(self, RightBottomX):
+        self._RightBottomX = RightBottomX
+
+    @property
+    def RightBottomY(self):
+        r"""Y-Axis coordinate of the bottom-right corner.
+When Unit is set to 1 (using percentage Unit), 0.9 indicates the vertical distance from the bottom-right corner of the area to the top-left corner of the entire frame is 90% of the screen height.
+        :rtype: float
+        """
+        return self._RightBottomY
+
+    @RightBottomY.setter
+    def RightBottomY(self, RightBottomY):
+        self._RightBottomY = RightBottomY
+
+    @property
+    def Unit(self):
+        r"""Specifies the coordinate unit.
+-Percentage.
+-2 pixel values.
+        :rtype: int
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._LeftTopX = params.get("LeftTopX")
+        self._LeftTopY = params.get("LeftTopY")
+        self._RightBottomX = params.get("RightBottomX")
+        self._RightBottomY = params.get("RightBottomY")
+        self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EraseTimeArea(AbstractModel):
+    r"""Smart Erase, specifies the region configuration.
+    Erase the designated region directly within a specified period.
+    When both BeginMs and EndMs are set to 0, directly perform removal of the designated region in the entire video.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginMs: Start time, in ms.
+        :type BeginMs: int
+        :param _EndMs: End time, unit: ms.
+        :type EndMs: int
+        :param _Areas: Erases the domain list within the period.
+        :type Areas: list of EraseArea
+        """
+        self._BeginMs = None
+        self._EndMs = None
+        self._Areas = None
+
+    @property
+    def BeginMs(self):
+        r"""Start time, in ms.
+        :rtype: int
+        """
+        return self._BeginMs
+
+    @BeginMs.setter
+    def BeginMs(self, BeginMs):
+        self._BeginMs = BeginMs
+
+    @property
+    def EndMs(self):
+        r"""End time, unit: ms.
+        :rtype: int
+        """
+        return self._EndMs
+
+    @EndMs.setter
+    def EndMs(self, EndMs):
+        self._EndMs = EndMs
+
+    @property
+    def Areas(self):
+        r"""Erases the domain list within the period.
+        :rtype: list of EraseArea
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+
+    def _deserialize(self, params):
+        self._BeginMs = params.get("BeginMs")
+        self._EndMs = params.get("EndMs")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecRuleTaskData(AbstractModel):
     r"""Conditional judgment output.
 
@@ -26083,6 +26606,212 @@ class ExecuteFunctionResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class ExtractBlindWatermarkTask(AbstractModel):
+    r"""Extract video digital watermark task information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Media processing task ID.
+        :type TaskId: str
+        :param _Status: Task flow status. valid values:.
+<Li>WAITING: waiting.</li>.
+<Li>PROCESSING: processing.</li>.
+<li>FINISH: completed</li>
+        :type Status: str
+        :param _ErrCode: Error code. `0` indicates success. other values indicate failure.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _InputInfo: Target file information for media processing.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _Type: Specifies the digital watermark type. valid values: <li>blind-basic: basic version copyright digital watermark;</li> <li>blind-ab: ab copyright digital watermark.</li>.
+        :type Type: str
+        :param _IsDetected: Indicates whether a watermark is detected. if this parameter is true, the Result field will return the watermark extraction Result. if this parameter is false, the Result field will not return.
+        :type IsDetected: bool
+        :param _Result: Fetched watermark content. this field will not be returned when no detection.
+        :type Result: str
+        :param _ExtractBlindWatermarkConfig: Extracts the digital watermark configuration.
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._InputInfo = None
+        self._Type = None
+        self._IsDetected = None
+        self._Result = None
+        self._ExtractBlindWatermarkConfig = None
+
+    @property
+    def TaskId(self):
+        r"""Media processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""Task flow status. valid values:.
+<Li>WAITING: waiting.</li>.
+<Li>PROCESSING: processing.</li>.
+<li>FINISH: completed</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code. `0` indicates success. other values indicate failure.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InputInfo(self):
+        r"""Target file information for media processing.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def Type(self):
+        r"""Specifies the digital watermark type. valid values: <li>blind-basic: basic version copyright digital watermark;</li> <li>blind-ab: ab copyright digital watermark.</li>.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsDetected(self):
+        r"""Indicates whether a watermark is detected. if this parameter is true, the Result field will return the watermark extraction Result. if this parameter is false, the Result field will not return.
+        :rtype: bool
+        """
+        return self._IsDetected
+
+    @IsDetected.setter
+    def IsDetected(self, IsDetected):
+        self._IsDetected = IsDetected
+
+    @property
+    def Result(self):
+        r"""Fetched watermark content. this field will not be returned when no detection.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""Extracts the digital watermark configuration.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Type = params.get("Type")
+        self._IsDetected = params.get("IsDetected")
+        self._Result = params.get("Result")
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkTaskConfig(AbstractModel):
+    r"""Extracts the digital watermark task configuration for video transcoding.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentDuration: Valid when the watermark type is blind-abseq. specifies the segment duration of the input video. unit: ms.
+Segment duration is 5 seconds by default if left empty.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SegmentDuration: int
+        """
+        self._SegmentDuration = None
+
+    @property
+    def SegmentDuration(self):
+        r"""Valid when the watermark type is blind-abseq. specifies the segment duration of the input video. unit: ms.
+Segment duration is 5 seconds by default if left empty.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
+
+
+    def _deserialize(self, params):
+        self._SegmentDuration = params.get("SegmentDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FaceConfigureInfo(AbstractModel):
@@ -33357,10 +34086,11 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The input type. Valid values:
-<li>`COS`: A COS bucket address.</li>
-<li> `URL`: A URL.</li>
-<li> `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.</li>
+        :param _Type: Type of input source object. valid values:.
+<Li>COS: specifies the cos origin.</li>
+<Li>URL: the url source.</li>
+<Li>AWS-S3: aws source. currently only supports transcoding tasks.</li>
+<Li>VOD: video-on-demand pro edition (VOD Pro). </li>
         :type Type: str
         :param _CosInputInfo: The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
@@ -33370,18 +34100,23 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _S3InputInfo: The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
+        :param _VODInputInfo: The information of the VOD Pro object processed. This parameter is required if `Type` is `VOD`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VODInputInfo: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         self._Type = None
         self._CosInputInfo = None
         self._UrlInputInfo = None
         self._S3InputInfo = None
+        self._VODInputInfo = None
 
     @property
     def Type(self):
-        r"""The input type. Valid values:
-<li>`COS`: A COS bucket address.</li>
-<li> `URL`: A URL.</li>
-<li> `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.</li>
+        r"""Type of input source object. valid values:.
+<Li>COS: specifies the cos origin.</li>
+<Li>URL: the url source.</li>
+<Li>AWS-S3: aws source. currently only supports transcoding tasks.</li>
+<Li>VOD: video-on-demand pro edition (VOD Pro). </li>
         :rtype: str
         """
         return self._Type
@@ -33425,6 +34160,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def S3InputInfo(self, S3InputInfo):
         self._S3InputInfo = S3InputInfo
 
+    @property
+    def VODInputInfo(self):
+        r"""The information of the VOD Pro object processed. This parameter is required if `Type` is `VOD`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
+        """
+        return self._VODInputInfo
+
+    @VODInputInfo.setter
+    def VODInputInfo(self, VODInputInfo):
+        self._VODInputInfo = VODInputInfo
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -33437,6 +34184,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("S3InputInfo") is not None:
             self._S3InputInfo = S3InputInfo()
             self._S3InputInfo._deserialize(params.get("S3InputInfo"))
+        if params.get("VODInputInfo") is not None:
+            self._VODInputInfo = VODInputInfo()
+            self._VODInputInfo._deserialize(params.get("VODInputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37779,37 +38529,42 @@ Length limit: 64 characters.
         :param _Comment: Smart subtitle template description.
 Length limit: 256 characters.
         :type Comment: str
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        :param _VideoSrcLanguage: Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
+
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format.
-vtt: WebVTT format
+        :param _SubtitleFormat: Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
         :type SubtitleFormat: str
         :param _SubtitleType: Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
@@ -37895,28 +38650,31 @@ Length limit: 256 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        r"""Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
+
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -37927,8 +38685,9 @@ zh-dialect: Chinese dialect
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format.
-vtt: WebVTT format
+        r"""Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
         :rtype: str
         """
@@ -37941,9 +38700,10 @@ If this field is left blank, no subtitle file will be generated.
     @property
     def SubtitleType(self):
         r"""Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :rtype: int
         """
         return self._SubtitleType
@@ -41565,6 +42325,10 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _AiQualityControlTask: Media quality inspection type task parameters.
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _SmartSubtitlesTask: Smart subtitle task.
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SmartEraseTask: Smart erase task parameter.
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         :param _TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
@@ -41579,8 +42343,6 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         :type TaskType: str
         :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
         :type ResourceId: str
-        :param _SmartSubtitlesTask: Smart subtitle task.
-        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         :param _SkipMateData: Whether to skip metadata acquisition. Valid values:
 0: do not skip
 1: skip
@@ -41596,13 +42358,14 @@ Default value: 0
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._AiQualityControlTask = None
+        self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
         self._SessionContext = None
         self._TaskType = None
         self._ResourceId = None
-        self._SmartSubtitlesTask = None
         self._SkipMateData = None
 
     @property
@@ -41715,6 +42478,28 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         self._AiQualityControlTask = AiQualityControlTask
 
     @property
+    def SmartSubtitlesTask(self):
+        r"""Smart subtitle task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
+    def SmartEraseTask(self):
+        r"""Smart erase task parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
+    @property
     def TaskNotifyConfig(self):
         r"""Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -41783,17 +42568,6 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         self._ResourceId = ResourceId
 
     @property
-    def SmartSubtitlesTask(self):
-        r"""Smart subtitle task.
-        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        """
-        return self._SmartSubtitlesTask
-
-    @SmartSubtitlesTask.setter
-    def SmartSubtitlesTask(self, SmartSubtitlesTask):
-        self._SmartSubtitlesTask = SmartSubtitlesTask
-
-    @property
     def SkipMateData(self):
         r"""Whether to skip metadata acquisition. Valid values:
 0: do not skip
@@ -41832,6 +42606,12 @@ Default value: 0
         if params.get("AiQualityControlTask") is not None:
             self._AiQualityControlTask = AiQualityControlTaskInput()
             self._AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskInput()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -41840,9 +42620,6 @@ Default value: 0
         self._SessionContext = params.get("SessionContext")
         self._TaskType = params.get("TaskType")
         self._ResourceId = params.get("ResourceId")
-        if params.get("SmartSubtitlesTask") is not None:
-            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
-            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         self._SkipMateData = params.get("SkipMateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -42500,68 +43277,70 @@ class QualityControlItemConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Quality control item name. The quality control item values are as follows:
-<li>LowEvaluation: No reference score.</li>
-<li>Mosaic: Mosaic detection.</li>
-<li>CrashScreen: Screen crash detection.</li>
-<li>Blur: Blur detection.</li>
-<li>BlackWhiteEdge: Black and white edge detection.</li>
-<li>SolidColorScreen: Solid color screen detection.</li>
-<li>LowLighting: Low lighting.</li>
-<li>HighLighting: Overexposure.</li>
-<li>NoVoice: Silence detection.</li>
-<li>LowVoice: Low voice detection.</li>
-<li>HighVoice: High voice detection.</li>
-<li>Jitter: Jitter detection.</li>
-<li>Noise: Noise detection.</li>
-<li>QRCode: QR code detection.</li>
-<li>BarCode: Barcode detection.</li>
-<li>AppletCode: Applet code detection.</li>
-<li>VideoResolutionChanged: The video resolution changed.</li>
-<li>AudioSampleRateChanged: The audio sampling rate changed.</li>
-<li>AudioChannelsChanged: The audio channel count changed.</li>
-<li>ParameterSetsChanged: The stream parameter set information changed.</li>
-<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>
-<li>TimestampFallback: DTS timestamp fallback.</li>
-<li>DtsJitter: Excessive DTS jitter.</li>
-<li>PtsJitter: Excessive PTS jitter.</li>
-<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>
-<li>AudioDroppingFrames: Audio frame loss.</li>
-<li>VideoDroppingFrames: Video frame loss.</li>
-<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>
-<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>
-<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>
-<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>
-<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>
-<li>StreamOpenFailed: Stream opening failed.</li>
-<li>StreamEnd: The stream ended.</li>
-<li>StreamParseFailed: Stream parsing failed.</li>
-<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>
-<li>StreamNALUError: NALU start code error.</li>
-<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>
-<li>AudioStreamLack: No audio stream.</li>
-<li>VideoStreamLack: No video stream.</li>
-<li>LackAudioRecover: Lack of audio stream recovery.</li>
-<li>LackVideoRecover: Lack of video stream recovery.</li>
-<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>
-<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>
-<li>VideoDecodeFailed: Video decoding error.</li>
-<li>AudioDecodeFailed: Audio decoding error.</li>
-<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>
-<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>
-<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>
-<li>VideoRotation: Video image rotation.</li>
-<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>
-<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>
-<li>HLSBadM3u8Format: Invalid m3u8 file.</li>
-<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>
-<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>
-<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>
-<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>
-<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>
-<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>
-<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>
-<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>
+        :param _Type: Quality inspection item name. valid values:.
+<li>LowEvaluation: specifies the no-reference MOS score of the video.</li>.
+<li>AudioEvaluation: specifies the no-reference MOS score of the audio.</li>.
+<Li>Mosaic: mosaic detection.</li>.
+<Li>CrashScreen: specifies screen glitch detection.</li>.
+<Li>Blur: specifies blur detection.</li>.
+<Li>Jitter: jitter detection.</li>.
+<Li>Noise: noise detection.</li>.
+<Li>QRCode: qr code detection.</li>.
+<Li>BarCode: specifies barcode detection.</li>.
+<Li>AppletCode: specifies mini program code detection.</li>.
+<Li>BlackWhiteEdge: specifies black and white edge detection.</li>.
+<Li>SolidColorScreen: specifies solid color screen detection.</li>.
+<Li>LowLighting: specifies low light.</li>.
+<Li>HighLighting: overexposure.</li>.
+<Li>NoVoice: specifies silence detection.</li>.
+<Li>LowVoice: specifies bass detection.</li>.
+<Li>HighVoice: explosion noise detection.</li>.
+<Li>AudioNoise: specifies audio noise detection.</li>.
+<Li>VideoResolutionChanged: specifies the video resolution change.</li>.
+<Li>AudioSampleRateChanged: specifies the audio sample rate change.</li>.
+<Li>AudioChannelsChanged: indicates the audio channel quantity change.</li>.
+<Li>ParameterSetsChanged: indicates the stream parameter set information has changed.</li>.
+<Li>DarOrSarInvalid: indicates an abnormal video aspect ratio.</li>.
+<li>TimestampFallback: specifies DTS timestamp rollback.</li>.
+<li>DtsJitter: specifies excessive DTS jitter.</li>.
+<li>PtsJitter: indicates excessive PTS jitter.</li>.
+<Li>AACDurationDeviation: specifies an improper aac frame timestamp interval.</li>.
+<Li>AudioDroppingFrames: indicates audio frame dropping.</li>.
+<Li>VideoDroppingFrames: specifies video frame dropping.</li>.
+<Li>AVTimestampInterleave: improper audio-video interleaving.</li>.
+<Li>PtsLessThanDts: specifies that the pts of the media stream is less than the dts.</li>.
+<Li>ReceiveFpsJitter: specifies excessive jitter in the network received frame rate.</li>.
+<Li>ReceiveFpsTooSmall: indicates the network received video frame rate is too low.</li>.
+<li>FpsJitter: specifies excessive jitter in the stream frame rate calculated via PTS.</li>.
+<Li>StreamOpenFailed: indicates the stream open failure.</li>.
+<Li>StreamEnd: specifies the stream end.</li>.
+<Li>StreamParseFailed: specifies the stream parsing failure.</li>.
+<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>.
+<Li>StreamNALUError: indicates an nalu start code error.</li>.
+<li>TsStreamNoAud: specifies whether the mpegts H26x stream misses AUD NALU.</li>.
+<Li>AudioStreamLack: no audio stream.</li>.
+<Li>VideoStreamLack: no video stream.</li>.
+<Li>LackAudioRecover: specifies missing audio stream recovery.</li>.
+<Li>LackVideoRecover: missing video stream recovery.</li>.
+<Li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>.
+<Li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>.
+<Li>VideoDecodeFailed: indicates a video decoding error.</li>.
+<Li>AudioDecodeFailed: audio decoding error.</li>.
+<Li>AudioOutOfPhase: specifies opposite phase in dual-channel audio.</li>.
+<Li>VideoDuplicatedFrame: indicates duplicate frames in video streams.</li>.
+<Li>AudioDuplicatedFrame: indicates duplicate frames in audio streams.</li>.
+<Li>VideoRotation: specifies video rotation.</li>.
+<li>TsMultiPrograms: specifies multiple programs in MPEG2-TS streams.</li>.
+<li>Mp4InvalidCodecFourcc: specifies the codec fourcc in Mp4 does not meet Apple HLS requirements.</li>.
+<Li>HLSBadM3u8Format: invalid m3u8 file.</li>.
+<Li>HLSInvalidMasterM3u8: invalid main m3u8 file.</li>.
+<Li>HLSInvalidMediaM3u8: invalid media m3u8 file.</li>.
+<Li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main m3u8.</li>.
+<Li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media m3u8.</li>.
+<li>HLSMediaM3u8DiscontinuityExist: indicates the existence of EXT-X-DISCONTINUITY in media m3u8.</li>.
+<Li>HLSMediaSegmentsStreamNumChange: indicates the number of streams in segments changes.</li>.
+<li>HLSMediaSegmentsPTSJitterDeviation: indicates PTS jumps between segments without EXT-X-DISCONTINUITY.</li>.
+<li>HLSMediaSegmentsDTSJitterDeviation: indicates DTS jumps between segments without EXT-X-DISCONTINUITY.</li>.
 <li>TimecodeTrackExist: TMCD track in MP4.</li>
         :type Type: str
         :param _Switch: Capability configuration switch. Valid values:
@@ -42595,68 +43374,70 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Quality control item name. The quality control item values are as follows:
-<li>LowEvaluation: No reference score.</li>
-<li>Mosaic: Mosaic detection.</li>
-<li>CrashScreen: Screen crash detection.</li>
-<li>Blur: Blur detection.</li>
-<li>BlackWhiteEdge: Black and white edge detection.</li>
-<li>SolidColorScreen: Solid color screen detection.</li>
-<li>LowLighting: Low lighting.</li>
-<li>HighLighting: Overexposure.</li>
-<li>NoVoice: Silence detection.</li>
-<li>LowVoice: Low voice detection.</li>
-<li>HighVoice: High voice detection.</li>
-<li>Jitter: Jitter detection.</li>
-<li>Noise: Noise detection.</li>
-<li>QRCode: QR code detection.</li>
-<li>BarCode: Barcode detection.</li>
-<li>AppletCode: Applet code detection.</li>
-<li>VideoResolutionChanged: The video resolution changed.</li>
-<li>AudioSampleRateChanged: The audio sampling rate changed.</li>
-<li>AudioChannelsChanged: The audio channel count changed.</li>
-<li>ParameterSetsChanged: The stream parameter set information changed.</li>
-<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>
-<li>TimestampFallback: DTS timestamp fallback.</li>
-<li>DtsJitter: Excessive DTS jitter.</li>
-<li>PtsJitter: Excessive PTS jitter.</li>
-<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>
-<li>AudioDroppingFrames: Audio frame loss.</li>
-<li>VideoDroppingFrames: Video frame loss.</li>
-<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>
-<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>
-<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>
-<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>
-<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>
-<li>StreamOpenFailed: Stream opening failed.</li>
-<li>StreamEnd: The stream ended.</li>
-<li>StreamParseFailed: Stream parsing failed.</li>
-<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>
-<li>StreamNALUError: NALU start code error.</li>
-<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>
-<li>AudioStreamLack: No audio stream.</li>
-<li>VideoStreamLack: No video stream.</li>
-<li>LackAudioRecover: Lack of audio stream recovery.</li>
-<li>LackVideoRecover: Lack of video stream recovery.</li>
-<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>
-<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>
-<li>VideoDecodeFailed: Video decoding error.</li>
-<li>AudioDecodeFailed: Audio decoding error.</li>
-<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>
-<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>
-<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>
-<li>VideoRotation: Video image rotation.</li>
-<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>
-<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>
-<li>HLSBadM3u8Format: Invalid m3u8 file.</li>
-<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>
-<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>
-<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>
-<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>
-<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>
-<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>
-<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>
-<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>
+        r"""Quality inspection item name. valid values:.
+<li>LowEvaluation: specifies the no-reference MOS score of the video.</li>.
+<li>AudioEvaluation: specifies the no-reference MOS score of the audio.</li>.
+<Li>Mosaic: mosaic detection.</li>.
+<Li>CrashScreen: specifies screen glitch detection.</li>.
+<Li>Blur: specifies blur detection.</li>.
+<Li>Jitter: jitter detection.</li>.
+<Li>Noise: noise detection.</li>.
+<Li>QRCode: qr code detection.</li>.
+<Li>BarCode: specifies barcode detection.</li>.
+<Li>AppletCode: specifies mini program code detection.</li>.
+<Li>BlackWhiteEdge: specifies black and white edge detection.</li>.
+<Li>SolidColorScreen: specifies solid color screen detection.</li>.
+<Li>LowLighting: specifies low light.</li>.
+<Li>HighLighting: overexposure.</li>.
+<Li>NoVoice: specifies silence detection.</li>.
+<Li>LowVoice: specifies bass detection.</li>.
+<Li>HighVoice: explosion noise detection.</li>.
+<Li>AudioNoise: specifies audio noise detection.</li>.
+<Li>VideoResolutionChanged: specifies the video resolution change.</li>.
+<Li>AudioSampleRateChanged: specifies the audio sample rate change.</li>.
+<Li>AudioChannelsChanged: indicates the audio channel quantity change.</li>.
+<Li>ParameterSetsChanged: indicates the stream parameter set information has changed.</li>.
+<Li>DarOrSarInvalid: indicates an abnormal video aspect ratio.</li>.
+<li>TimestampFallback: specifies DTS timestamp rollback.</li>.
+<li>DtsJitter: specifies excessive DTS jitter.</li>.
+<li>PtsJitter: indicates excessive PTS jitter.</li>.
+<Li>AACDurationDeviation: specifies an improper aac frame timestamp interval.</li>.
+<Li>AudioDroppingFrames: indicates audio frame dropping.</li>.
+<Li>VideoDroppingFrames: specifies video frame dropping.</li>.
+<Li>AVTimestampInterleave: improper audio-video interleaving.</li>.
+<Li>PtsLessThanDts: specifies that the pts of the media stream is less than the dts.</li>.
+<Li>ReceiveFpsJitter: specifies excessive jitter in the network received frame rate.</li>.
+<Li>ReceiveFpsTooSmall: indicates the network received video frame rate is too low.</li>.
+<li>FpsJitter: specifies excessive jitter in the stream frame rate calculated via PTS.</li>.
+<Li>StreamOpenFailed: indicates the stream open failure.</li>.
+<Li>StreamEnd: specifies the stream end.</li>.
+<Li>StreamParseFailed: specifies the stream parsing failure.</li>.
+<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>.
+<Li>StreamNALUError: indicates an nalu start code error.</li>.
+<li>TsStreamNoAud: specifies whether the mpegts H26x stream misses AUD NALU.</li>.
+<Li>AudioStreamLack: no audio stream.</li>.
+<Li>VideoStreamLack: no video stream.</li>.
+<Li>LackAudioRecover: specifies missing audio stream recovery.</li>.
+<Li>LackVideoRecover: missing video stream recovery.</li>.
+<Li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>.
+<Li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>.
+<Li>VideoDecodeFailed: indicates a video decoding error.</li>.
+<Li>AudioDecodeFailed: audio decoding error.</li>.
+<Li>AudioOutOfPhase: specifies opposite phase in dual-channel audio.</li>.
+<Li>VideoDuplicatedFrame: indicates duplicate frames in video streams.</li>.
+<Li>AudioDuplicatedFrame: indicates duplicate frames in audio streams.</li>.
+<Li>VideoRotation: specifies video rotation.</li>.
+<li>TsMultiPrograms: specifies multiple programs in MPEG2-TS streams.</li>.
+<li>Mp4InvalidCodecFourcc: specifies the codec fourcc in Mp4 does not meet Apple HLS requirements.</li>.
+<Li>HLSBadM3u8Format: invalid m3u8 file.</li>.
+<Li>HLSInvalidMasterM3u8: invalid main m3u8 file.</li>.
+<Li>HLSInvalidMediaM3u8: invalid media m3u8 file.</li>.
+<Li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main m3u8.</li>.
+<Li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media m3u8.</li>.
+<li>HLSMediaM3u8DiscontinuityExist: indicates the existence of EXT-X-DISCONTINUITY in media m3u8.</li>.
+<Li>HLSMediaSegmentsStreamNumChange: indicates the number of streams in segments changes.</li>.
+<li>HLSMediaSegmentsPTSJitterDeviation: indicates PTS jumps between segments without EXT-X-DISCONTINUITY.</li>.
+<li>HLSMediaSegmentsDTSJitterDeviation: indicates DTS jumps between segments without EXT-X-DISCONTINUITY.</li>.
 <li>TimecodeTrackExist: TMCD track in MP4.</li>
         :rtype: str
         """
@@ -43168,6 +43949,111 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
         
 
 
+class RawSmartEraseParameter(AbstractModel):
+    r"""Smart erasure custom parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EraseType: Specifies the removal type.
+-subtitle removal.
+-Remove watermark.
+-privacy protection.
+        :type EraseType: str
+        :param _EraseSubtitleConfig: Subtitle erasure configuration.
+When EraseType is subtitle, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: Specifies the watermark removal configuration.
+When EraseType is watermark, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: Privacy protection configuration.
+When EraseType is privacy, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        self._EraseType = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+
+    @property
+    def EraseType(self):
+        r"""Specifies the removal type.
+-subtitle removal.
+-Remove watermark.
+-privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""Subtitle erasure configuration.
+When EraseType is subtitle, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""Specifies the watermark removal configuration.
+When EraseType is watermark, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""Privacy protection configuration.
+When EraseType is privacy, this field is required.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+
+    def _deserialize(self, params):
+        self._EraseType = params.get("EraseType")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = SmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = SmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = SmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RawSmartSubtitleParameter(AbstractModel):
     r"""Custom smart subtitle parameter.
 
@@ -43181,33 +44067,35 @@ class RawSmartSubtitleParameter(AbstractModel):
 2: source language + target language
 The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        :param _VideoSrcLanguage: Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format.
-vtt: WebVTT format
+        :param _SubtitleFormat: Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleFormat: str
         :param _TranslateSwitch: Subtitle translation switch.
 ON: enable translation
@@ -43267,28 +44155,30 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fil: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
+        r"""Video source language for intelligent caption.
+Valid values: 
+zh: Simplified Chinese.
+en: Eenglish.
+Ja: Japanese.
+Ko: Korean.
+zh-PY: Simplified Chinese, English and Cantonese.
+zh-medical: Medical Chinese.
+yue: Cantonese.
+Vi: Vietnamese.
+ms: Malay.
+id: Indonesian.
+fil: Filipino.
+th: Thai.
+pt: Portuguese.
+tr: Turkish.
+ar: Arabic.
+es: Spanish.
 hi: Hindi
-fr: French
-de: German
+Fr: French.
+de: German.
 zh-dialect: Chinese dialect
+zh_en: Simplified Chinese and English
+prime_zh: Simplified Chinese, Chinese Dialect and English.
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -43299,10 +44189,10 @@ zh-dialect: Chinese dialect
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format.
-vtt: WebVTT format
+        r"""Intelligent subtitle file format.
+vtt: WebVTT format.
+srt: SRT format.
 If this field is left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -46382,6 +47272,700 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class SmartErasePrivacyConfig(AbstractModel):
+    r"""Intelligent erasure template privacy protection configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivacyModel: Specifies the privacy protection removal method.
+-Blur: specifies the blur detection.
+-Specifies the mosaic.
+        :type PrivacyModel: str
+        :param _PrivacyTargets: Privacy protection objective. no need to import an array when in use on API Explorer. just add the corresponding item and fill in the value.
+-Human face.
+-License plate.
+        :type PrivacyTargets: list of str
+        """
+        self._PrivacyModel = None
+        self._PrivacyTargets = None
+
+    @property
+    def PrivacyModel(self):
+        r"""Specifies the privacy protection removal method.
+-Blur: specifies the blur detection.
+-Specifies the mosaic.
+        :rtype: str
+        """
+        return self._PrivacyModel
+
+    @PrivacyModel.setter
+    def PrivacyModel(self, PrivacyModel):
+        self._PrivacyModel = PrivacyModel
+
+    @property
+    def PrivacyTargets(self):
+        r"""Privacy protection objective. no need to import an array when in use on API Explorer. just add the corresponding item and fill in the value.
+-Human face.
+-License plate.
+        :rtype: list of str
+        """
+        return self._PrivacyTargets
+
+    @PrivacyTargets.setter
+    def PrivacyTargets(self, PrivacyTargets):
+        self._PrivacyTargets = PrivacyTargets
+
+
+    def _deserialize(self, params):
+        self._PrivacyModel = params.get("PrivacyModel")
+        self._PrivacyTargets = params.get("PrivacyTargets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseSubtitleConfig(AbstractModel):
+    r"""Intelligent erasure template subtitle configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleEraseMethod: Specifies the subtitle erasure method.
+**Automatic erasing:** automatically identifies subtitle text content in videos through AI models and performs seamless erasure to generate new videos. frame interference and unique subtitle styles may cause certain missed or incorrect erasures, which can be handled through specified area erasure.
+When using automatic erasure, if AutoAreas is not specified, the default region (lower middle of the frame) will be erased automatically. if AutoAreas is specified, it will change to erase the designated area.
+**Specified area erasing:** if your subtitle position is fixed, directly specify the erasure area to decrease the chance of removal omission to the maximum extent.
+When your choice is specified area erasure, please import at least one designated region in CustomAreas.
+-Automated removal.
+- specifies the custom specified area erasure.
+
+        :type SubtitleEraseMethod: str
+        :param _SubtitleModel: Subtitle erasure model.
+**Standard version (recommend):** if your subtitle style is standard, normally recommend choose this version for better effectiveness with seamless detail.
+**Regional version:** if your subtitles have special styles such as italics, shadows, or motion effects, we recommend choosing the regional version for larger removal area, though the detail effect is not as good as the standard version.
+-Specifies the standard model.
+-area. specifies the regional model.
+        :type SubtitleModel: str
+        :param _OcrSwitch: Whether OCR subtitle extraction is enabled. default value: OFF.
+Supports enabling OCR subtitle extraction only when SubtitleEraseMethod is set to auto. when enabled, it identifies the longest and most stable text area within the region as the subtitle area, then performs text extraction and removal.
+-ON: enable.
+-OFF. specifies the disabled state.
+        :type OcrSwitch: str
+        :param _SubtitleLang: Subtitle language, for OCR guidance, default value zh_en. this parameter is valid only when OcrSwitch is ON.
+-Chinese and english.
+-multi other.
+Other supported languages:.
+Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnamese, malay, russian, italian, dutch, swedish, finnish, danish, norwegian, hungarian, thai, hindi, arabic, indian-bengali, indian-gujarati, indian-kannada, indian-malayalam, indian-tamil, indian-telugu, slovenian, polish, catalan, bosnian, czech, estonian, croatian, punjabi, marathi, azerbaijani, indonesian, luxembourgish, lithuanian, latvian, maltese, slovak, turkish, kazakh, greek, irish, belarusian, khmer, tagalog, pashto, persian, tajik.
+
+
+        :type SubtitleLang: str
+        :param _SubtitleFormat: Specifies the subtitle file format. default value: vtt. this parameter is valid only when OcrSwitch is set to ON.
+-srt format.
+-vtt: WebVTT format.
+        :type SubtitleFormat: str
+        :param _TransSwitch: Specifies whether to enable subtitle translation. default value: OFF. this parameter is valid only when OcrSwitch is set to ON.
+-ON: enable.
+-OFF. specifies the disabled state.
+        :type TransSwitch: str
+        :param _TransDstLang: Subtitle target language. default value: en. this parameter is valid only when TransSwitch is set to ON.
+Supported languages:.
+Simplified chinese.
+Specifies the language. valid values: en (english).
+Ja: japanese.
+Ko: korean.
+Fr: french.
+es: spanish.
+It: italian.
+de: german.
+tr: turkish.
+Ru: russian.
+pt: portuguese.
+Vi: vietnamese.
+id: indonesian.
+ms: malay.
+Th: thai.
+Ar: arabic.
+hi: Hindi
+        :type TransDstLang: str
+        :param _AutoAreas: Specifies automatic removal of a custom region.
+Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
+Note that this parameter will not take effect when the removal method is custom. for template modification, input [] to clean up the region. the template region information remains unchanged if not imported.
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: Specifies erasure of a custom region.
+Detects and directly performs removal within a specified time range for the selected region.
+Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._SubtitleEraseMethod = None
+        self._SubtitleModel = None
+        self._OcrSwitch = None
+        self._SubtitleLang = None
+        self._SubtitleFormat = None
+        self._TransSwitch = None
+        self._TransDstLang = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def SubtitleEraseMethod(self):
+        r"""Specifies the subtitle erasure method.
+**Automatic erasing:** automatically identifies subtitle text content in videos through AI models and performs seamless erasure to generate new videos. frame interference and unique subtitle styles may cause certain missed or incorrect erasures, which can be handled through specified area erasure.
+When using automatic erasure, if AutoAreas is not specified, the default region (lower middle of the frame) will be erased automatically. if AutoAreas is specified, it will change to erase the designated area.
+**Specified area erasing:** if your subtitle position is fixed, directly specify the erasure area to decrease the chance of removal omission to the maximum extent.
+When your choice is specified area erasure, please import at least one designated region in CustomAreas.
+-Automated removal.
+- specifies the custom specified area erasure.
+
+        :rtype: str
+        """
+        return self._SubtitleEraseMethod
+
+    @SubtitleEraseMethod.setter
+    def SubtitleEraseMethod(self, SubtitleEraseMethod):
+        self._SubtitleEraseMethod = SubtitleEraseMethod
+
+    @property
+    def SubtitleModel(self):
+        r"""Subtitle erasure model.
+**Standard version (recommend):** if your subtitle style is standard, normally recommend choose this version for better effectiveness with seamless detail.
+**Regional version:** if your subtitles have special styles such as italics, shadows, or motion effects, we recommend choosing the regional version for larger removal area, though the detail effect is not as good as the standard version.
+-Specifies the standard model.
+-area. specifies the regional model.
+        :rtype: str
+        """
+        return self._SubtitleModel
+
+    @SubtitleModel.setter
+    def SubtitleModel(self, SubtitleModel):
+        self._SubtitleModel = SubtitleModel
+
+    @property
+    def OcrSwitch(self):
+        r"""Whether OCR subtitle extraction is enabled. default value: OFF.
+Supports enabling OCR subtitle extraction only when SubtitleEraseMethod is set to auto. when enabled, it identifies the longest and most stable text area within the region as the subtitle area, then performs text extraction and removal.
+-ON: enable.
+-OFF. specifies the disabled state.
+        :rtype: str
+        """
+        return self._OcrSwitch
+
+    @OcrSwitch.setter
+    def OcrSwitch(self, OcrSwitch):
+        self._OcrSwitch = OcrSwitch
+
+    @property
+    def SubtitleLang(self):
+        r"""Subtitle language, for OCR guidance, default value zh_en. this parameter is valid only when OcrSwitch is ON.
+-Chinese and english.
+-multi other.
+Other supported languages:.
+Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnamese, malay, russian, italian, dutch, swedish, finnish, danish, norwegian, hungarian, thai, hindi, arabic, indian-bengali, indian-gujarati, indian-kannada, indian-malayalam, indian-tamil, indian-telugu, slovenian, polish, catalan, bosnian, czech, estonian, croatian, punjabi, marathi, azerbaijani, indonesian, luxembourgish, lithuanian, latvian, maltese, slovak, turkish, kazakh, greek, irish, belarusian, khmer, tagalog, pashto, persian, tajik.
+
+
+        :rtype: str
+        """
+        return self._SubtitleLang
+
+    @SubtitleLang.setter
+    def SubtitleLang(self, SubtitleLang):
+        self._SubtitleLang = SubtitleLang
+
+    @property
+    def SubtitleFormat(self):
+        r"""Specifies the subtitle file format. default value: vtt. this parameter is valid only when OcrSwitch is set to ON.
+-srt format.
+-vtt: WebVTT format.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def TransSwitch(self):
+        r"""Specifies whether to enable subtitle translation. default value: OFF. this parameter is valid only when OcrSwitch is set to ON.
+-ON: enable.
+-OFF. specifies the disabled state.
+        :rtype: str
+        """
+        return self._TransSwitch
+
+    @TransSwitch.setter
+    def TransSwitch(self, TransSwitch):
+        self._TransSwitch = TransSwitch
+
+    @property
+    def TransDstLang(self):
+        r"""Subtitle target language. default value: en. this parameter is valid only when TransSwitch is set to ON.
+Supported languages:.
+Simplified chinese.
+Specifies the language. valid values: en (english).
+Ja: japanese.
+Ko: korean.
+Fr: french.
+es: spanish.
+It: italian.
+de: german.
+tr: turkish.
+Ru: russian.
+pt: portuguese.
+Vi: vietnamese.
+id: indonesian.
+ms: malay.
+Th: thai.
+Ar: arabic.
+hi: Hindi
+        :rtype: str
+        """
+        return self._TransDstLang
+
+    @TransDstLang.setter
+    def TransDstLang(self, TransDstLang):
+        self._TransDstLang = TransDstLang
+
+    @property
+    def AutoAreas(self):
+        r"""Specifies automatic removal of a custom region.
+Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
+Note that this parameter will not take effect when the removal method is custom. for template modification, input [] to clean up the region. the template region information remains unchanged if not imported.
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""Specifies erasure of a custom region.
+Detects and directly performs removal within a specified time range for the selected region.
+Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._SubtitleEraseMethod = params.get("SubtitleEraseMethod")
+        self._SubtitleModel = params.get("SubtitleModel")
+        self._OcrSwitch = params.get("OcrSwitch")
+        self._SubtitleLang = params.get("SubtitleLang")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._TransSwitch = params.get("TransSwitch")
+        self._TransDstLang = params.get("TransDstLang")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseTaskInput(AbstractModel):
+    r"""Smart erasure task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Smart erasure template id.
+        :type Definition: int
+        :param _RawParameter: Intelligent erasure custom parameter. valid when Definition is 0. this parameter is used for highly custom scenarios. we recommend you prioritize using Definition to specify intelligent erasure parameters.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
+        :param _OutputStorage: Specifies the target storage for files. if left blank, it inherits the upper-level OutputStorage value.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: Output path of the file, which can be a relative or absolute path.
+Specifies the output path must end with `.{format}`. variable names, please refer to [filename variable explanation](https://www.tencentcloud.com/document/product/1041/33495?has_map=1).
+**Relative path example**:
+<Li>Filename_{Variable name}.{format}</li>
+<li>Filename.{format}</li>
+
+**Absolute path example**:
+<Li>/Custom path/filename_{variable name}.{format}</li>
+
+**Note**: currently does not support the `BatchProcessMedia` api.
+        :type OutputObjectPath: str
+        """
+        self._Definition = None
+        self._RawParameter = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
+
+    @property
+    def Definition(self):
+        r"""Smart erasure template id.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RawParameter(self):
+        r"""Intelligent erasure custom parameter. valid when Definition is 0. this parameter is used for highly custom scenarios. we recommend you prioritize using Definition to specify intelligent erasure parameters.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+    @property
+    def OutputStorage(self):
+        r"""Specifies the target storage for files. if left blank, it inherits the upper-level OutputStorage value.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        r"""Output path of the file, which can be a relative or absolute path.
+Specifies the output path must end with `.{format}`. variable names, please refer to [filename variable explanation](https://www.tencentcloud.com/document/product/1041/33495?has_map=1).
+**Relative path example**:
+<Li>Filename_{Variable name}.{format}</li>
+<li>Filename.{format}</li>
+
+**Absolute path example**:
+<Li>/Custom path/filename_{variable name}.{format}</li>
+
+**Note**: currently does not support the `BatchProcessMedia` api.
+        :rtype: str
+        """
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartEraseParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseTaskResult(AbstractModel):
+    r"""Smart erasure task result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        :param _Output: Output of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        :param _Progress: Task progress.		
+        :type Progress: int
+        :param _BeginProcessTime: Task execution start time in ISO datetime format.
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in ISO datetime format.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Input of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""Task progress.		
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""Task execution start time in ISO datetime format.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""Task execution completion time in ISO datetime format.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartEraseTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDelLogoOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseWatermarkConfig(AbstractModel):
+    r"""smart erasure template watermark configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WatermarkEraseMethod: Specifies the watermark removal method.
+**Auto-Removal:** automatically identifies watermarks in the video using model a and generates a new video after removal. suitable for dynamic watermarks.
+When using automated removal, if you do not specify AutoAreas, the full-screen video will be erased automatically. if AutoAreas is specified, it will change to erase the designated areas.
+**Specified area erasure:** for static watermarks with fixed locations, we recommend you directly specify the erasure area.
+When you choose specified area erasure, import at least one specified region.
+
+-Automated removal.
+-Specifies the custom specified area erasure.
+        :type WatermarkEraseMethod: str
+        :param _WatermarkModel: Specifies the watermark removal model.
+Basic version: average effect, cost-effective, suitable for videos with clean backgrounds or animations.
+Advanced edition: better effectiveness, suitable for mini-drama and reality style video.
+**Supported values**:
+- basic
+- advanced
+        :type WatermarkModel: str
+        :param _AutoAreas: Specifies automatic removal of a custom region.
+Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
+Note that this parameter will not take effect when the removal method is custom.
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: Specifies erasure of a custom region.
+Detects and directly performs removal within a specified time range for the selected region.
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._WatermarkEraseMethod = None
+        self._WatermarkModel = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def WatermarkEraseMethod(self):
+        r"""Specifies the watermark removal method.
+**Auto-Removal:** automatically identifies watermarks in the video using model a and generates a new video after removal. suitable for dynamic watermarks.
+When using automated removal, if you do not specify AutoAreas, the full-screen video will be erased automatically. if AutoAreas is specified, it will change to erase the designated areas.
+**Specified area erasure:** for static watermarks with fixed locations, we recommend you directly specify the erasure area.
+When you choose specified area erasure, import at least one specified region.
+
+-Automated removal.
+-Specifies the custom specified area erasure.
+        :rtype: str
+        """
+        return self._WatermarkEraseMethod
+
+    @WatermarkEraseMethod.setter
+    def WatermarkEraseMethod(self, WatermarkEraseMethod):
+        self._WatermarkEraseMethod = WatermarkEraseMethod
+
+    @property
+    def WatermarkModel(self):
+        r"""Specifies the watermark removal model.
+Basic version: average effect, cost-effective, suitable for videos with clean backgrounds or animations.
+Advanced edition: better effectiveness, suitable for mini-drama and reality style video.
+**Supported values**:
+- basic
+- advanced
+        :rtype: str
+        """
+        return self._WatermarkModel
+
+    @WatermarkModel.setter
+    def WatermarkModel(self, WatermarkModel):
+        self._WatermarkModel = WatermarkModel
+
+    @property
+    def AutoAreas(self):
+        r"""Specifies automatic removal of a custom region.
+Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
+Note that this parameter will not take effect when the removal method is custom.
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""Specifies erasure of a custom region.
+Detects and directly performs removal within a specified time range for the selected region.
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._WatermarkEraseMethod = params.get("WatermarkEraseMethod")
+        self._WatermarkModel = params.get("WatermarkModel")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
     r"""Full speech recognition result.
 
@@ -46530,9 +48114,12 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
         :param _SubtitlePath: Subtitle file path.
         :type SubtitlePath: str
+        :param _OutputStorage: Subtitle file storage location.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -46557,6 +48144,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
+    @property
+    def OutputStorage(self):
+        r"""Subtitle file storage location.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -46566,6 +48164,9 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47005,9 +48606,12 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
         :param _SubtitlePath: Subtitle file path.
         :type SubtitlePath: str
+        :param _OutputStorage: Subtitle file storage location.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -47032,6 +48636,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
+    @property
+    def OutputStorage(self):
+        r"""Subtitle file storage location.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -47041,6 +48656,9 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49374,9 +50992,10 @@ class TaskOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The storage type for a media processing output file. Valid values:
-<li>`COS`: Tencent Cloud COS</li>
-<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
+        :param _Type: Specifies the type of storage location for the media processing service output object. valid values:.
+<Li>COS: cos storage.</li>.
+<Li>AWS-S3: aws storage, suitable for aws tasks only and requires the same region.</li>.
+<Li>VOD: video-on-demand (vod) pro edition</li>.
         :type Type: str
         :param _CosOutputStorage: The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -49384,16 +51003,21 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _S3OutputStorage: The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
+        :param _VODOutputStorage: The VOD Pro application and bucket to save the output file. This parameter is required if `Type` is `VOD`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VODOutputStorage: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         self._Type = None
         self._CosOutputStorage = None
         self._S3OutputStorage = None
+        self._VODOutputStorage = None
 
     @property
     def Type(self):
-        r"""The storage type for a media processing output file. Valid values:
-<li>`COS`: Tencent Cloud COS</li>
-<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
+        r"""Specifies the type of storage location for the media processing service output object. valid values:.
+<Li>COS: cos storage.</li>.
+<Li>AWS-S3: aws storage, suitable for aws tasks only and requires the same region.</li>.
+<Li>VOD: video-on-demand (vod) pro edition</li>.
         :rtype: str
         """
         return self._Type
@@ -49426,6 +51050,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def S3OutputStorage(self, S3OutputStorage):
         self._S3OutputStorage = S3OutputStorage
 
+    @property
+    def VODOutputStorage(self):
+        r"""The VOD Pro application and bucket to save the output file. This parameter is required if `Type` is `VOD`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
+        """
+        return self._VODOutputStorage
+
+    @VODOutputStorage.setter
+    def VODOutputStorage(self, VODOutputStorage):
+        self._VODOutputStorage = VODOutputStorage
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -49435,6 +51071,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("S3OutputStorage") is not None:
             self._S3OutputStorage = S3OutputStorage()
             self._S3OutputStorage._deserialize(params.get("S3OutputStorage"))
+        if params.get("VODOutputStorage") is not None:
+            self._VODOutputStorage = VODOutputStorage()
+            self._VODOutputStorage._deserialize(params.get("VODOutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51738,6 +53377,153 @@ There can be up to 10 tags, each with a length limit of 16 characters.
         self._LabelSet = params.get("LabelSet")
         self._BlockConfidence = params.get("BlockConfidence")
         self._ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VODInputInfo(AbstractModel):
+    r"""VOD Pro object information for MPS.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: Specifies the Bucket ID where the input file resides.
+        :type Bucket: str
+        :param _Region: Specifies the region where the input file's Bucket resides.
+        :type Region: str
+        :param _Object: Path of the input file.
+        :type Object: str
+        :param _SubAppId: VOD Pro application Id.
+        :type SubAppId: int
+        """
+        self._Bucket = None
+        self._Region = None
+        self._Object = None
+        self._SubAppId = None
+
+    @property
+    def Bucket(self):
+        r"""Specifies the Bucket ID where the input file resides.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        r"""Specifies the region where the input file's Bucket resides.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Object(self):
+        r"""Path of the input file.
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def SubAppId(self):
+        r"""VOD Pro application Id.
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Object = params.get("Object")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VODOutputStorage(AbstractModel):
+    r"""VOD Pro output object information for MPS.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: Specifies the destination Bucket ID for the generated output file of MPS.
+        :type Bucket: str
+        :param _Region: Specifies the region of the target Bucket for the output.
+        :type Region: str
+        :param _SubAppId: VOD Pro application Id.
+        :type SubAppId: int
+        """
+        self._Bucket = None
+        self._Region = None
+        self._SubAppId = None
+
+    @property
+    def Bucket(self):
+        r"""Specifies the destination Bucket ID for the generated output file of MPS.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        r"""Specifies the region of the target Bucket for the output.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SubAppId(self):
+        r"""VOD Pro application Id.
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54244,6 +56030,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SmartSubtitlesTaskResult: Execution result of the smart subtitle task.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
+        :param _SmartEraseTaskResult: Execution result of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartEraseTaskResult: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         self._TaskId = None
         self._Status = None
@@ -54257,6 +56046,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._AiRecognitionResultSet = None
         self._AiQualityControlTaskResult = None
         self._SmartSubtitlesTaskResult = None
+        self._SmartEraseTaskResult = None
 
     @property
     def TaskId(self):
@@ -54396,6 +56186,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SmartSubtitlesTaskResult(self, SmartSubtitlesTaskResult):
         self._SmartSubtitlesTaskResult = SmartSubtitlesTaskResult
 
+    @property
+    def SmartEraseTaskResult(self):
+        r"""Execution result of the smart erasure task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        """
+        return self._SmartEraseTaskResult
+
+    @SmartEraseTaskResult.setter
+    def SmartEraseTaskResult(self, SmartEraseTaskResult):
+        self._SmartEraseTaskResult = SmartEraseTaskResult
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -54441,6 +56243,9 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = SmartSubtitlesResult()
                 obj._deserialize(item)
                 self._SmartSubtitlesTaskResult.append(obj)
+        if params.get("SmartEraseTaskResult") is not None:
+            self._SmartEraseTaskResult = SmartEraseTaskResult()
+            self._SmartEraseTaskResult._deserialize(params.get("SmartEraseTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -304,18 +304,23 @@ class MpsClient(AbstractClient):
 
 
     def CreateSchedule(self, request):
-        r"""This API is used to create a scheme for media files uploaded to a specified COS bucket. A scheme may include the following tasks:
-        1. Video transcoding (with watermark)
-        2. Animated screenshot generating
-        3. Time point screencapturing
-        4. Sampled screencapturing
-        5. Image sprite generating
-        6. Adaptive bitrate streaming
-        7. Intelligent content moderation (detection of pornographic and sensitive content)
-        8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame)
-        9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
+        r"""This API is used to set processing rules for uploaded media files under the specified Bucket directory in COS, including:.
+        This API is used to transcode videos with watermarks.
+        This API is used to generate animated images.
+        This API is used to take screenshots at specified time points.
+        This API is used to take sampled screenshots from videos.
+        This API is used to take sprite screenshots of videos.
+        This API is used to transcode to adaptive bitrate streaming.
+        This API is used to perform intelligent content moderation, including porn detection and sensitive information detection.
+        This API is used to perform intelligent content analysis (tag, category, cover, frame tagging).
+        This API is used to perform intelligent content identification (human face, full text, text keyword, full speech, speech keyword).
+        10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
 
-        Note: A scheme is disabled upon creation. You need to manually enable it.
+        11. Smart subtitle (full speech, speech hotword, and speech translation).
+
+        This API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).
+
+        This API is used to create an orchestration, which is in disable status by default and requires manual enablement.
 
         :param request: Request instance for CreateSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateScheduleRequest`
@@ -2151,18 +2156,20 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        r"""This API is used to initiate a processing task for video URLs or media files in COS. Features include:
-        1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).
-        2. Video-to-GIF conversion.
-        3. Time point screenshot of videos.
-        4. Sampled screenshot of videos.
-        5. Image sprite of videos.
-        6. Adaptive bitrate stream conversion for videos.
-        7. Intelligent content moderation (such as pornography detection and sensitive information detection).
-        8. Intelligent content analysis (such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking).
-        9. Intelligent content recognition (such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object).
-        10. Media quality inspection, such as media format diagnosis, audio/visual content moderation (such as jitter, blur, low lighting, overexposure, black edge, white edge, black screen, white screen, screen glitch, noise, mosaic, and QR code), and no-reference quality scoring.
-        11. Smart subtitle (such as full speech, speech hotword, and speech translation).
+        r"""This API is used to initiate a processing task for URL video links or media files in COS. Features include:.
+        This API is used to perform video transcoding, including standard transcoding, TSC transcoding, and audio/video enhancement.
+        This API is used to generate animated images.
+        This API is used to take screenshots at specified time points.
+        This API is used to take sampled screenshots from videos.
+        This API is used to take sprite screenshots of videos.
+        This API is used to transcode to adaptive bitrate streaming.
+        This API is used to perform intelligent content moderation, such as pornography detection and sensitive information detection.
+        This API is used to perform intelligent content analysis such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking.
+        This API is used to perform intelligent content recognition such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition.
+        This API is used to perform media quality inspection, such as media format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, screen glitch, noise, mosaic, QR code, and other issues), and no-reference scoring.
+        11. Smart subtitle (such as ASR, hotword, and speech translation).
+
+        This API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

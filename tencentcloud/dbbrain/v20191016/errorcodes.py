@@ -21,7 +21,6 @@ AUTHFAILURE = 'AuthFailure'
 FAILEDOPERATION = 'FailedOperation'
 
 # Loading data
-
 FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
 
 # Internal error.

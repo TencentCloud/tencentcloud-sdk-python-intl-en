@@ -69,7 +69,6 @@ INTERNALERROR_REQUESTTIMEEXCEPTION = 'InternalError.RequestTimeException'
 INTERNALERROR_RESTAPIINTERFACENOTEXIST = 'InternalError.RestApiInterfaceNotExist'
 
 # Service access has timed out,Please verify whether there are any network fluctuations or contact [Tencent Cloud SMS Assistant](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
-
 INTERNALERROR_SENDANDRECVFAIL = 'InternalError.SendAndRecvFail'
 
 # The request packet in the backend packet does not have a `Sig` field or the `Sig` field is empty.
