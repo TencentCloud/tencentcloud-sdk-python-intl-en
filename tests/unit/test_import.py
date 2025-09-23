@@ -474,6 +474,11 @@ def test_import_pts():
     from tencentcloud.pts.v20210728 import models
 
 
+def test_import_quota():
+    from tencentcloud.quota.v20241204 import quota_client
+    from tencentcloud.quota.v20241204 import models
+
+
 def test_import_rce():
     from tencentcloud.rce.v20201103 import rce_client
     from tencentcloud.rce.v20201103 import models
