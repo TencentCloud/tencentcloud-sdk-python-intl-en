@@ -631,56 +631,44 @@ class ClusterInfo(AbstractModel):
         :type ApiAccessIp: str
         :param _ApiAccessPort: TcaplusDB SDK connection parameter: access port
         :type ApiAccessPort: int
-        :param _OldPasswordExpireTime: If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OldPasswordExpireTime: If the value of PasswordStatus is unmodifiable, it indicates that the old password has not expired. This field will display the expiration time of the old password; otherwise, the value is null.
         :type OldPasswordExpireTime: str
-        :param _ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ApiAccessIpv6: TencentDB for TcaplusDB (TcaplusDB) SDK connection parameters, which are used to access the IPv6 address.
         :type ApiAccessIpv6: str
-        :param _ClusterType: Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClusterType: Cluster type. 0,1: shared cluster; 2: independent cluster.
         :type ClusterType: int
-        :param _ClusterStatus: Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClusterStatus: Cluster status. 0: indicates normal operation; 1: indicates frozen isolation (usually due to arrears); 2: indicates to be recycled (usually when the user proactively triggers deletion); 3: pending release (indicating that resources occupied by this table can be released); 4: changing.
         :type ClusterStatus: int
-        :param _ReadCapacityUnit: Read CU
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ReadCapacityUnit: Read CU.
         :type ReadCapacityUnit: int
-        :param _WriteCapacityUnit: Write CU
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _WriteCapacityUnit: Write CU.
         :type WriteCapacityUnit: int
-        :param _DiskVolume: Disk capacity
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DiskVolume: Disk capacity.
         :type DiskVolume: int
-        :param _ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ServerList: Information about the dedicated server.
         :type ServerList: list of ServerDetailInfo
-        :param _ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ProxyList: Information about the dedicated proxy server.
         :type ProxyList: list of ProxyDetailInfo
         :param _Censorship: Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)
         :type Censorship: int
-        :param _DbaUins: Approver UIN list
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _DbaUins: Approver UIN list.
         :type DbaUins: list of str
-        :param _DataFlowStatus: Whether data subscription is enabled
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DataFlowStatus: Whether data subscription is enabled.
         :type DataFlowStatus: int
-        :param _KafkaInfo: CKafka information when data subscription is enabled
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _KafkaInfo: Kafka information for data subscription.
         :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
-        :param _TxhBackupExpireDay: The number of days after which the cluster Txh backup file will expire and be deleted.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _TxhBackupExpireDay: Retention period for the Txh backup file of the cluster before expiration and deletion.
         :type TxhBackupExpireDay: int
-        :param _UlogBackupExpireDay: The number of days after which the cluster Ulog backup file will expire and be deleted.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _UlogBackupExpireDay: Retention period for the Ulog backup file of the cluster before expiration and deletion.
         :type UlogBackupExpireDay: int
-        :param _IsReadOnlyUlogBackupExpireDay: Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _IsReadOnlyUlogBackupExpireDay: Whether the expiration policy for the Ulog backup file of the cluster is read-only. 0: UlogBackupExpire is read-only and cannot be modified; 1: UlogBackupExpire can be modified.
         :type IsReadOnlyUlogBackupExpireDay: int
-        :param _RestProxyStatus: restproxy Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RestProxyStatus: restproxy status.
         :type RestProxyStatus: int
+        :param _ShardTotalNum: Total number of shards in the cluster.
+        :type ShardTotalNum: int
+        :param _ShardUsedNum: Total number of used shards.
+        :type ShardUsedNum: int
         """
         self._ClusterName = None
         self._ClusterId = None
@@ -712,6 +700,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UlogBackupExpireDay = None
         self._IsReadOnlyUlogBackupExpireDay = None
         self._RestProxyStatus = None
+        self._ShardTotalNum = None
+        self._ShardUsedNum = None
 
     @property
     def ClusterName(self):
@@ -858,8 +848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldPasswordExpireTime(self):
-        r"""If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""If the value of PasswordStatus is unmodifiable, it indicates that the old password has not expired. This field will display the expiration time of the old password; otherwise, the value is null.
         :rtype: str
         """
         return self._OldPasswordExpireTime
@@ -870,8 +859,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessIpv6(self):
-        r"""TcaplusDB SDK connection parameter for accessing IPv6 addresses
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""TencentDB for TcaplusDB (TcaplusDB) SDK connection parameters, which are used to access the IPv6 address.
         :rtype: str
         """
         return self._ApiAccessIpv6
@@ -882,8 +870,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
-        r"""Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cluster type. 0,1: shared cluster; 2: independent cluster.
         :rtype: int
         """
         return self._ClusterType
@@ -894,8 +881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterStatus(self):
-        r"""Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cluster status. 0: indicates normal operation; 1: indicates frozen isolation (usually due to arrears); 2: indicates to be recycled (usually when the user proactively triggers deletion); 3: pending release (indicating that resources occupied by this table can be released); 4: changing.
         :rtype: int
         """
         return self._ClusterStatus
@@ -906,8 +892,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadCapacityUnit(self):
-        r"""Read CU
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Read CU.
         :rtype: int
         """
         return self._ReadCapacityUnit
@@ -918,8 +903,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WriteCapacityUnit(self):
-        r"""Write CU
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Write CU.
         :rtype: int
         """
         return self._WriteCapacityUnit
@@ -930,8 +914,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskVolume(self):
-        r"""Disk capacity
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Disk capacity.
         :rtype: int
         """
         return self._DiskVolume
@@ -942,8 +925,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServerList(self):
-        r"""Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Information about the dedicated server.
         :rtype: list of ServerDetailInfo
         """
         return self._ServerList
@@ -954,8 +936,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProxyList(self):
-        r"""Information of the machine at the access layer (tcaproxy) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Information about the dedicated proxy server.
         :rtype: list of ProxyDetailInfo
         """
         return self._ProxyList
@@ -977,8 +958,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DbaUins(self):
-        r"""Approver UIN list
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Approver UIN list.
         :rtype: list of str
         """
         return self._DbaUins
@@ -989,8 +969,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DataFlowStatus(self):
-        r"""Whether data subscription is enabled
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Whether data subscription is enabled.
         :rtype: int
         """
         return self._DataFlowStatus
@@ -1001,8 +980,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KafkaInfo(self):
-        r"""CKafka information when data subscription is enabled
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Kafka information for data subscription.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         return self._KafkaInfo
@@ -1013,8 +991,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TxhBackupExpireDay(self):
-        r"""The number of days after which the cluster Txh backup file will expire and be deleted.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Retention period for the Txh backup file of the cluster before expiration and deletion.
         :rtype: int
         """
         return self._TxhBackupExpireDay
@@ -1025,8 +1002,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UlogBackupExpireDay(self):
-        r"""The number of days after which the cluster Ulog backup file will expire and be deleted.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Retention period for the Ulog backup file of the cluster before expiration and deletion.
         :rtype: int
         """
         return self._UlogBackupExpireDay
@@ -1037,8 +1013,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsReadOnlyUlogBackupExpireDay(self):
-        r"""Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Whether the expiration policy for the Ulog backup file of the cluster is read-only. 0: UlogBackupExpire is read-only and cannot be modified; 1: UlogBackupExpire can be modified.
         :rtype: int
         """
         return self._IsReadOnlyUlogBackupExpireDay
@@ -1049,8 +1024,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RestProxyStatus(self):
-        r"""restproxy Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""restproxy status.
         :rtype: int
         """
         return self._RestProxyStatus
@@ -1058,6 +1032,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @RestProxyStatus.setter
     def RestProxyStatus(self, RestProxyStatus):
         self._RestProxyStatus = RestProxyStatus
+
+    @property
+    def ShardTotalNum(self):
+        r"""Total number of shards in the cluster.
+        :rtype: int
+        """
+        return self._ShardTotalNum
+
+    @ShardTotalNum.setter
+    def ShardTotalNum(self, ShardTotalNum):
+        self._ShardTotalNum = ShardTotalNum
+
+    @property
+    def ShardUsedNum(self):
+        r"""Total number of used shards.
+        :rtype: int
+        """
+        return self._ShardUsedNum
+
+    @ShardUsedNum.setter
+    def ShardUsedNum(self, ShardUsedNum):
+        self._ShardUsedNum = ShardUsedNum
 
 
     def _deserialize(self, params):
@@ -1103,6 +1099,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UlogBackupExpireDay = params.get("UlogBackupExpireDay")
         self._IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
         self._RestProxyStatus = params.get("RestProxyStatus")
+        self._ShardTotalNum = params.get("ShardTotalNum")
+        self._ShardUsedNum = params.get("ShardUsedNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5767,9 +5765,9 @@ class KafkaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Address: CKafka address
+        :param _Address: Kafka address
         :type Address: str
-        :param _Topic: CKafka topic
+        :param _Topic: Kafka topic
         :type Topic: str
         :param _User: CKafka username
         :type User: str
@@ -5789,7 +5787,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Address(self):
-        r"""CKafka address
+        r"""Kafka address
         :rtype: str
         """
         return self._Address
@@ -5800,7 +5798,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Topic(self):
-        r"""CKafka topic
+        r"""Kafka topic
         :rtype: str
         """
         return self._Topic
@@ -8183,8 +8181,7 @@ class ProxyDetailInfo(AbstractModel):
         :type AverageProcessDelay: int
         :param _SlowProcessSpeed: The speed of processing delayed request packets
         :type SlowProcessSpeed: int
-        :param _Version: Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Version: Version.
         :type Version: str
         """
         self._ProxyUid = None
@@ -8251,8 +8248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        r"""Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version.
         :rtype: str
         """
         return self._Version
@@ -9092,8 +9088,7 @@ class ServerDetailInfo(AbstractModel):
         :type ReadNum: int
         :param _WriteNum: The number of writes
         :type WriteNum: int
-        :param _Version: Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Version: Version.
         :type Version: str
         """
         self._ServerUid = None
@@ -9172,8 +9167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        r"""Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version.
         :rtype: str
         """
         return self._Version

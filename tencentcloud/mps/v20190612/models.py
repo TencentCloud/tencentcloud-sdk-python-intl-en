@@ -41912,12 +41912,24 @@ class ProcessImageRequest(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.
         :type OutputDir: str
+        :param _OutputPath: Output path, which can be a relative or an absolute path.
+The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).
+**Relative path example:**
+<Li>`Filename_{Variablename}.{format}`.</li>
+<Li>`Filename.{format}`.</li>
+
+**Absolute path example:**
+<Li>`/Path/Filename_{Variablename}.{format}`.</li>
+
+If not filled in, default relative path: `{inputName}.{format}`.
+        :type OutputPath: str
         :param _ImageTask: Image processing parameter.
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
         """
         self._InputInfo = None
         self._OutputStorage = None
         self._OutputDir = None
+        self._OutputPath = None
         self._ImageTask = None
 
     @property
@@ -41954,6 +41966,26 @@ class ProcessImageRequest(AbstractModel):
         self._OutputDir = OutputDir
 
     @property
+    def OutputPath(self):
+        r"""Output path, which can be a relative or an absolute path.
+The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).
+**Relative path example:**
+<Li>`Filename_{Variablename}.{format}`.</li>
+<Li>`Filename.{format}`.</li>
+
+**Absolute path example:**
+<Li>`/Path/Filename_{Variablename}.{format}`.</li>
+
+If not filled in, default relative path: `{inputName}.{format}`.
+        :rtype: str
+        """
+        return self._OutputPath
+
+    @OutputPath.setter
+    def OutputPath(self, OutputPath):
+        self._OutputPath = OutputPath
+
+    @property
     def ImageTask(self):
         r"""Image processing parameter.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
@@ -41973,6 +42005,7 @@ class ProcessImageRequest(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputDir = params.get("OutputDir")
+        self._OutputPath = params.get("OutputPath")
         if params.get("ImageTask") is not None:
             self._ImageTask = ImageTaskInput()
             self._ImageTask._deserialize(params.get("ImageTask"))

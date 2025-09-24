@@ -522,20 +522,21 @@ Default value: 1
 4: Motion- and reflection-based liveness detection
 Default value: 4
         :type SecurityLevel: int
-        :param _IdCardType: Card Types Supported for Authentication: Currently supported types are as follows:
-1.HK (Default): Hong Kong (China) Identity Card
-2.ML: Malaysia Identity Card
-3.IndonesiaIDCard: Indonesia Identity Card
-4.PhilippinesVoteID: Philippines Voter ID
-5.PhilippinesDrivingLicense: Philippines Driving License
-6.PhilippinesTinID: Philippines Tin ID
-7.PhilippinesSSSID: Philippines SSS ID
-8.PhilippinesUMID: Philippines UMID
-9.MLIDPassport: Passports of Hong Kong, Macao, Taiwan Regions (China) and Foreign Countries
-10.ThailandIDCard: Thailand Identity Card
-11.MainlandIDCard: Mainland China Identity Card
-12.SingaporeIDCard: Singapore Identity Card
-13.HMTPermit: Exit-Entry Permit for Travel to and from Hong Kong, Macao and Taiwan (China)
+        :param _IdCardType: Specifies the identity document type used for authentication. valid values:.  
+
+HK (default): hong kong (china) identity card.
+2. ML: malaysian identity card.
+Indonesian identity card.
+4. PhilippinesVoteID: specifies the voter card in the philippines.
+5. PhilippinesDrivingLicense: specifies the driving license in philippines.
+6. PhilippinesTinID: specifies the philippines tin id.
+7. PhilippinesSSSID: specifies the SSSID in the philippines.
+8. philippines UMID: specifies the philippines UMID.
+9. MLIDPassport: specifies the passport for hong kong (china), macao (china), and taiwan (china) as well as overseas passports.
+ThailandIDCard: specifies the thai identity card.
+Mainland id card.
+12. SingaporeIDCard: specifies the Singapore id card.
+13. HMTPermit: specifies the hong kong, macau and taiwan travel permit.
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
@@ -546,9 +547,13 @@ Default value: 4
         :param _DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
 This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
         :type DisableCheckOcrWarnings: bool
+        :param _SelectedWarningCodes: Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.
+Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).
+        :type SelectedWarningCodes: list of int
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
-        :param _SdkVersion: ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        :param _SdkVersion: ENHANCED: enhanced.
+BASIC: basic version (default).
         :type SdkVersion: str
         :param _ActionList: This interface is used to control th action sequences.
 Action types are as follows:
@@ -569,6 +574,7 @@ The default value is blink. The different action types passed in this parameter 
         self._NeedVerifyIdCard = None
         self._DisableChangeOcrResult = None
         self._DisableCheckOcrWarnings = None
+        self._SelectedWarningCodes = None
         self._Extra = None
         self._SdkVersion = None
         self._ActionList = None
@@ -606,20 +612,21 @@ Default value: 4
 
     @property
     def IdCardType(self):
-        r"""Card Types Supported for Authentication: Currently supported types are as follows:
-1.HK (Default): Hong Kong (China) Identity Card
-2.ML: Malaysia Identity Card
-3.IndonesiaIDCard: Indonesia Identity Card
-4.PhilippinesVoteID: Philippines Voter ID
-5.PhilippinesDrivingLicense: Philippines Driving License
-6.PhilippinesTinID: Philippines Tin ID
-7.PhilippinesSSSID: Philippines SSS ID
-8.PhilippinesUMID: Philippines UMID
-9.MLIDPassport: Passports of Hong Kong, Macao, Taiwan Regions (China) and Foreign Countries
-10.ThailandIDCard: Thailand Identity Card
-11.MainlandIDCard: Mainland China Identity Card
-12.SingaporeIDCard: Singapore Identity Card
-13.HMTPermit: Exit-Entry Permit for Travel to and from Hong Kong, Macao and Taiwan (China)
+        r"""Specifies the identity document type used for authentication. valid values:.  
+
+HK (default): hong kong (china) identity card.
+2. ML: malaysian identity card.
+Indonesian identity card.
+4. PhilippinesVoteID: specifies the voter card in the philippines.
+5. PhilippinesDrivingLicense: specifies the driving license in philippines.
+6. PhilippinesTinID: specifies the philippines tin id.
+7. PhilippinesSSSID: specifies the SSSID in the philippines.
+8. philippines UMID: specifies the philippines UMID.
+9. MLIDPassport: specifies the passport for hong kong (china), macao (china), and taiwan (china) as well as overseas passports.
+ThailandIDCard: specifies the thai identity card.
+Mainland id card.
+12. SingaporeIDCard: specifies the Singapore id card.
+13. HMTPermit: specifies the hong kong, macau and taiwan travel permit.
         :rtype: str
         """
         return self._IdCardType
@@ -678,6 +685,18 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._DisableCheckOcrWarnings = DisableCheckOcrWarnings
 
     @property
+    def SelectedWarningCodes(self):
+        r"""Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.
+Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).
+        :rtype: list of int
+        """
+        return self._SelectedWarningCodes
+
+    @SelectedWarningCodes.setter
+    def SelectedWarningCodes(self, SelectedWarningCodes):
+        self._SelectedWarningCodes = SelectedWarningCodes
+
+    @property
     def Extra(self):
         r"""A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :rtype: str
@@ -690,7 +709,8 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def SdkVersion(self):
-        r"""ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        r"""ENHANCED: enhanced.
+BASIC: basic version (default).
         :rtype: str
         """
         return self._SdkVersion
@@ -728,6 +748,7 @@ The default value is blink. The different action types passed in this parameter 
         self._NeedVerifyIdCard = params.get("NeedVerifyIdCard")
         self._DisableChangeOcrResult = params.get("DisableChangeOcrResult")
         self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
+        self._SelectedWarningCodes = params.get("SelectedWarningCodes")
         self._Extra = params.get("Extra")
         self._SdkVersion = params.get("SdkVersion")
         self._ActionList = params.get("ActionList")
@@ -748,7 +769,7 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkToken: The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :param _SdkToken: A token that identifies an SDK verification process. the validity time is 10 minutes. after the process is complete, the token can be used to retrieve the verification result.
         :type SdkToken: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -758,7 +779,7 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
 
     @property
     def SdkToken(self):
-        r"""The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        r"""A token that identifies an SDK verification process. the validity time is 10 minutes. after the process is complete, the token can be used to retrieve the verification result.
         :rtype: str
         """
         return self._SdkToken
