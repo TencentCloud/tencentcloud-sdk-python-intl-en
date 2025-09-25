@@ -10231,6 +10231,8 @@ class StartAITranscriptionRequest(AbstractModel):
         :type RoomIdType: int
         :param _RecognizeConfig: Speech recognition configuration.
         :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        :param _TranslationConfig: Translation config.
+        :type TranslationConfig: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -10238,6 +10240,7 @@ class StartAITranscriptionRequest(AbstractModel):
         self._SessionId = None
         self._RoomIdType = None
         self._RecognizeConfig = None
+        self._TranslationConfig = None
 
     @property
     def SdkAppId(self):
@@ -10307,6 +10310,17 @@ class StartAITranscriptionRequest(AbstractModel):
     def RecognizeConfig(self, RecognizeConfig):
         self._RecognizeConfig = RecognizeConfig
 
+    @property
+    def TranslationConfig(self):
+        r"""Translation config.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
+        """
+        return self._TranslationConfig
+
+    @TranslationConfig.setter
+    def TranslationConfig(self, TranslationConfig):
+        self._TranslationConfig = TranslationConfig
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -10319,6 +10333,9 @@ class StartAITranscriptionRequest(AbstractModel):
         if params.get("RecognizeConfig") is not None:
             self._RecognizeConfig = RecognizeConfig()
             self._RecognizeConfig._deserialize(params.get("RecognizeConfig"))
+        if params.get("TranslationConfig") is not None:
+            self._TranslationConfig = TranslationConfig()
+            self._TranslationConfig._deserialize(params.get("TranslationConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11909,6 +11926,42 @@ class TRTCDataResult(AbstractModel):
         
 
 
+class TTSConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: 
+        :type VoiceId: str
+        """
+        self._VoiceId = None
+
+    @property
+    def VoiceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TencentVod(AbstractModel):
     r"""The Tencent Cloud VOD parameters.
 
@@ -12067,6 +12120,57 @@ The default value is `0`, which means others.
         
 
 
+class Terminology(AbstractModel):
+    r"""Translation terminology
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: Source terminology
+        :type Source: str
+        :param _Target: Target terminology
+        :type Target: str
+        """
+        self._Source = None
+        self._Target = None
+
+    @property
+    def Source(self):
+        r"""Source terminology
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""Target terminology
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TimeValue(AbstractModel):
     r"""The quality data, which consists of the `time` and `value` parameters.
 
@@ -12204,6 +12308,94 @@ class TranscriptionParams(AbstractModel):
         self._MaxIdleTime = params.get("MaxIdleTime")
         self._TranscriptionMode = params.get("TranscriptionMode")
         self._TargetUserId = params.get("TargetUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationConfig(AbstractModel):
+    r"""Translation config
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLanguages: Target language, target language list (ISO 639-1).
+        :type TargetLanguages: list of str
+        :param _Mode: 1: Only text translation, 2: Voice simultaneous interpretation.
+        :type Mode: int
+        :param _TTSConfig: Voice simultaneous interpretation configuration: When enabling simultaneous interpretation, this parameter needs to be passed.
+        :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
+        :param _Terminology: Translation terminology.
+        :type Terminology: list of Terminology
+        """
+        self._TargetLanguages = None
+        self._Mode = None
+        self._TTSConfig = None
+        self._Terminology = None
+
+    @property
+    def TargetLanguages(self):
+        r"""Target language, target language list (ISO 639-1).
+        :rtype: list of str
+        """
+        return self._TargetLanguages
+
+    @TargetLanguages.setter
+    def TargetLanguages(self, TargetLanguages):
+        self._TargetLanguages = TargetLanguages
+
+    @property
+    def Mode(self):
+        r"""1: Only text translation, 2: Voice simultaneous interpretation.
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def TTSConfig(self):
+        r"""Voice simultaneous interpretation configuration: When enabling simultaneous interpretation, this parameter needs to be passed.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def Terminology(self):
+        r"""Translation terminology.
+        :rtype: list of Terminology
+        """
+        return self._Terminology
+
+    @Terminology.setter
+    def Terminology(self, Terminology):
+        self._Terminology = Terminology
+
+
+    def _deserialize(self, params):
+        self._TargetLanguages = params.get("TargetLanguages")
+        self._Mode = params.get("Mode")
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("Terminology") is not None:
+            self._Terminology = []
+            for item in params.get("Terminology"):
+                obj = Terminology()
+                obj._deserialize(item)
+                self._Terminology.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1222,6 +1222,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSessionImageVersion(self, request):
+        r"""This API is used to retrieve all built-in images of all minor versions under a specified major version.
+
+        :param request: Request instance for DescribeSessionImageVersion.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSessionImageVersionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSessionImageVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSessionImageVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSessionImageVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSparkAppJob(self, request):
         r"""u200cThis API is used to query the information of a Spark job.
 
