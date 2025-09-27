@@ -47,3 +47,95 @@ class QuotaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAlarm(self, request):
+        r"""Deletes alarm rules
+
+        :param request: Request instance for DeleteAlarm.
+        :type request: :class:`tencentcloud.quota.v20241204.models.DeleteAlarmRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.DeleteAlarmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarm", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAlarms(self, request):
+        r"""This API is used to query the alarm rule list.
+
+        :param request: Request instance for DescribeAlarms.
+        :type request: :class:`tencentcloud.quota.v20241204.models.DescribeAlarmsRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.DescribeAlarmsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableAlarm(self, request):
+        r"""This API is used to enable alarm rules.
+
+        :param request: Request instance for EnableAlarm.
+        :type request: :class:`tencentcloud.quota.v20241204.models.EnableAlarmRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.EnableAlarmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableAlarm", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableAlarmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAlarm(self, request):
+        r"""Modifies alarm rules
+
+        :param request: Request instance for UpdateAlarm.
+        :type request: :class:`tencentcloud.quota.v20241204.models.UpdateAlarmRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.UpdateAlarmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAlarm", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAlarmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# Internal error.
+INTERNALERROR = 'InternalError'
+
+# Parameter value error.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
 # Alarm rule does not exist.
 RESOURCENOTFOUND_ALARMNOTEXIST = 'ResourceNotFound.AlarmNotExist'
 
