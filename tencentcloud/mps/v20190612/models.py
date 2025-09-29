@@ -17946,6 +17946,172 @@ class CreateScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSmartEraseTemplateRequest(AbstractModel):
+    r"""CreateSmartEraseTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Length limit for the smart erasing template name: 64 characters.
+        :type Name: str
+        :param _EraseType: Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :type EraseType: str
+        :param _Comment: Length limit for the description information of the smart erasing template: 256 characters.
+        :type Comment: str
+        :param _EraseSubtitleConfig: Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        self._Name = None
+        self._EraseType = None
+        self._Comment = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+
+    @property
+    def Name(self):
+        r"""Length limit for the smart erasing template name: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EraseType(self):
+        r"""Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def Comment(self):
+        r"""Length limit for the description information of the smart erasing template: 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EraseType = params.get("EraseType")
+        self._Comment = params.get("Comment")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = SmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = SmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = SmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSmartEraseTemplateResponse(AbstractModel):
+    r"""CreateSmartEraseTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart erasing template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the smart erasing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSmartSubtitleTemplateRequest(AbstractModel):
     r"""CreateSmartSubtitleTemplate request structure.
 
@@ -19977,6 +20143,70 @@ class DeleteScheduleRequest(AbstractModel):
 
 class DeleteScheduleResponse(AbstractModel):
     r"""DeleteSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSmartEraseTemplateRequest(AbstractModel):
+    r"""DeleteSmartEraseTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart erasing template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the smart erasing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSmartEraseTemplateResponse(AbstractModel):
+    r"""DeleteSmartEraseTemplate response structure.
 
     """
 
@@ -23319,6 +23549,169 @@ class DescribeSchedulesResponse(AbstractModel):
                 obj = SchedulesInfo()
                 obj._deserialize(item)
                 self._ScheduleInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSmartEraseTemplatesRequest(AbstractModel):
+    r"""DescribeSmartEraseTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: Filtering condition for the unique identifier of the smart erasing template. Length limit of the array: 100.
+        :type Definitions: list of int
+        :param _Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param _Type: Filtering conditions for template type. If this parameter is not specified, all templates are returned. Valid values:
+* Preset: system preset template.
+* Custom: user-defined template.
+        :type Type: str
+        :param _Name: Filtering condition for the smart erasing template name. Length limit: 64 characters.
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        r"""Filtering condition for the unique identifier of the smart erasing template. Length limit of the array: 100.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        r"""Filtering conditions for template type. If this parameter is not specified, all templates are returned. Valid values:
+* Preset: system preset template.
+* Custom: user-defined template.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""Filtering condition for the smart erasing template name. Length limit: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSmartEraseTemplatesResponse(AbstractModel):
+    r"""DescribeSmartEraseTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet the filtering conditions.
+        :type TotalCount: int
+        :param _SmartEraseTemplateSet: List of smart erasing template details.
+        :type SmartEraseTemplateSet: list of SmartEraseTemplateItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SmartEraseTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records that meet the filtering conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SmartEraseTemplateSet(self):
+        r"""List of smart erasing template details.
+        :rtype: list of SmartEraseTemplateItem
+        """
+        return self._SmartEraseTemplateSet
+
+    @SmartEraseTemplateSet.setter
+    def SmartEraseTemplateSet(self, SmartEraseTemplateSet):
+        self._SmartEraseTemplateSet = SmartEraseTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SmartEraseTemplateSet") is not None:
+            self._SmartEraseTemplateSet = []
+            for item in params.get("SmartEraseTemplateSet"):
+                obj = SmartEraseTemplateItem()
+                obj._deserialize(item)
+                self._SmartEraseTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -38510,6 +38903,172 @@ class ModifyScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySmartEraseTemplateRequest(AbstractModel):
+    r"""ModifySmartEraseTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart erasing template.
+        :type Definition: int
+        :param _Name: Length limit for the smart erasing template name: 64 characters.
+        :type Name: str
+        :param _Comment: Length limit for the description information of the smart erasing template: 256 characters.
+        :type Comment: str
+        :param _EraseType: Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :type EraseType: str
+        :param _EraseSubtitleConfig: Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._EraseType = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the smart erasing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Length limit for the smart erasing template name: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Length limit for the description information of the smart erasing template: 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def EraseType(self):
+        r"""Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._EraseType = params.get("EraseType")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = SmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = SmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = SmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySmartEraseTemplateResponse(AbstractModel):
+    r"""ModifySmartEraseTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySmartSubtitleTemplateRequest(AbstractModel):
     r"""ModifySmartSubtitleTemplate request structure.
 
@@ -47868,6 +48427,214 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Progress = params.get("Progress")
         self._BeginProcessTime = params.get("BeginProcessTime")
         self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseTemplateItem(AbstractModel):
+    r"""Smart erasing template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart erasing template.
+        :type Definition: int
+        :param _Name: Smart erasing template name.
+        :type Name: str
+        :param _Comment: Smart erasing template description information.
+        :type Comment: str
+        :param _Type: Template type. Valid values:
+* Preset: system preset template.
+* Custom: user-defined template.
+        :type Type: str
+        :param _EraseType: Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :type EraseType: str
+        :param _EraseSubtitleConfig: Subtitle erasing configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: Watermark erasing configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: Privacy protection configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
+        :param _AliasName: Alias of the preset smart erasing template.
+        :type AliasName: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._EraseType = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AliasName = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the smart erasing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Smart erasing template name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Smart erasing template description information.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""Template type. Valid values:
+* Preset: system preset template.
+* Custom: user-defined template.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EraseType(self):
+        r"""Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""Subtitle erasing configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""Watermark erasing configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""Privacy protection configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+    @property
+    def CreateTime(self):
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AliasName(self):
+        r"""Alias of the preset smart erasing template.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._EraseType = params.get("EraseType")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = SmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = SmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = SmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AliasName = params.get("AliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
