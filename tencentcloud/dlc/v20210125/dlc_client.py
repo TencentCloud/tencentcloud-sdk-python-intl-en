@@ -72,6 +72,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachDataMaskPolicy(self, request):
+        r"""This API is used to bind a DMask policy.
+
+        :param request: Request instance for AttachDataMaskPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AttachDataMaskPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AttachDataMaskPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachDataMaskPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachDataMaskPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AttachUserPolicy(self, request):
         r"""This API is used to bind the authentication policy to the user.
 
@@ -385,6 +408,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateDataEngine", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDataMaskStrategy(self, request):
+        r"""This API is used to create a DMask policy.
+
+        :param request: Request instance for CreateDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataMaskStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

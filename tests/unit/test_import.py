@@ -419,6 +419,11 @@ def test_import_mdp():
     from tencentcloud.mdp.v20200527 import models
 
 
+def test_import_message():
+    from tencentcloud.message.v20181225 import message_client
+    from tencentcloud.message.v20181225 import models
+
+
 def test_import_mongodb():
     from tencentcloud.mongodb.v20190725 import mongodb_client
     from tencentcloud.mongodb.v20190725 import models

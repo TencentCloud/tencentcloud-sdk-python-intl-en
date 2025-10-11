@@ -739,6 +739,8 @@ class ClipRangeInfo(AbstractModel):
 
     @property
     def Offset(self):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         r"""Offset, valid when Type is SpecifyTimeRange.
         :rtype: int
         """
@@ -746,6 +748,8 @@ class ClipRangeInfo(AbstractModel):
 
     @Offset.setter
     def Offset(self, Offset):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         self._Offset = Offset
 
 
@@ -1164,7 +1168,7 @@ class CreateStreamPackageChannelRequest(AbstractModel):
         r"""
         :param _Name: Channel name.
         :type Name: str
-        :param _Protocol: Channel protocol. Valid values: HLS, DASH, CMAF.
+        :param _Protocol: Channel protocol. Valid values: HLS/DASH.
         :type Protocol: str
         :param _CacheInfo: Cache configuration.
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
@@ -1186,7 +1190,7 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""Channel protocol. Valid values: HLS, DASH, CMAF.
+        r"""Channel protocol. Valid values: HLS/DASH.
         :rtype: str
         """
         return self._Protocol
@@ -2087,11 +2091,14 @@ class CreateStreamPackageSourceRequest(AbstractModel):
         :type Type: str
         :param _PackageConfs: source specific configuration.
         :type PackageConfs: list of SourcePackageConf
+        :param _SourceTags: The sourcetag allows ADS to deliver more precise ads based on the Source Tag information
+        :type SourceTags: list of SourceTag
         """
         self._AttachedLocation = None
         self._Name = None
         self._Type = None
         self._PackageConfs = None
+        self._SourceTags = None
 
     @property
     def AttachedLocation(self):
@@ -2137,6 +2144,17 @@ class CreateStreamPackageSourceRequest(AbstractModel):
     def PackageConfs(self, PackageConfs):
         self._PackageConfs = PackageConfs
 
+    @property
+    def SourceTags(self):
+        r"""The sourcetag allows ADS to deliver more precise ads based on the Source Tag information
+        :rtype: list of SourceTag
+        """
+        return self._SourceTags
+
+    @SourceTags.setter
+    def SourceTags(self, SourceTags):
+        self._SourceTags = SourceTags
+
 
     def _deserialize(self, params):
         self._AttachedLocation = params.get("AttachedLocation")
@@ -2148,6 +2166,12 @@ class CreateStreamPackageSourceRequest(AbstractModel):
                 obj = SourcePackageConf()
                 obj._deserialize(item)
                 self._PackageConfs.append(obj)
+        if params.get("SourceTags") is not None:
+            self._SourceTags = []
+            for item in params.get("SourceTags"):
+                obj = SourceTag()
+                obj._deserialize(item)
+                self._SourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8684,11 +8708,14 @@ Optional values: Live, VOD (on demand)
         :type Type: str
         :param _PackageConfs: source configuration.
         :type PackageConfs: list of SourcePackageConf
+        :param _SourceTags: ADS can return more precise advertisements based on Source Tag information.
+        :type SourceTags: list of SourceTag
         """
         self._Id = None
         self._Name = None
         self._Type = None
         self._PackageConfs = None
+        self._SourceTags = None
 
     @property
     def Id(self):
@@ -8735,6 +8762,17 @@ Optional values: Live, VOD (on demand)
     def PackageConfs(self, PackageConfs):
         self._PackageConfs = PackageConfs
 
+    @property
+    def SourceTags(self):
+        r"""ADS can return more precise advertisements based on Source Tag information.
+        :rtype: list of SourceTag
+        """
+        return self._SourceTags
+
+    @SourceTags.setter
+    def SourceTags(self, SourceTags):
+        self._SourceTags = SourceTags
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8746,6 +8784,12 @@ Optional values: Live, VOD (on demand)
                 obj = SourcePackageConf()
                 obj._deserialize(item)
                 self._PackageConfs.append(obj)
+        if params.get("SourceTags") is not None:
+            self._SourceTags = []
+            for item in params.get("SourceTags"):
+                obj = SourceTag()
+                obj._deserialize(item)
+                self._SourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10907,6 +10951,60 @@ class SourcePackageConf(AbstractModel):
         self._GroupName = params.get("GroupName")
         self._Type = params.get("Type")
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceTag(AbstractModel):
+    r"""type SourceTag struct {
+    	Key   string `json:"Key"`
+    	Value string `json:"Value"`
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

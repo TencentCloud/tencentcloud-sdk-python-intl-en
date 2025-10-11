@@ -137,7 +137,7 @@ INVALIDCLIENTTOKEN_TOOLONG = 'InvalidClientToken.TooLong'
 # Invalid filter.
 INVALIDFILTER = 'InvalidFilter'
 
-# [`Filter`](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#Filter)
+# The value of [`Filter`](https://www.tencentcloud.com/document/api/213/15753?from_cn_redirect=1#Filter) exceeds the limit.
 INVALIDFILTERVALUE_LIMITEXCEEDED = 'InvalidFilterValue.LimitExceeded'
 
 # The specified operation on this CDH instance is not support .
