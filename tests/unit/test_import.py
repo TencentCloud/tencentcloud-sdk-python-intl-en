@@ -709,6 +709,11 @@ def test_import_wedata():
     from tencentcloud.wedata.v20210820 import models
 
 
+def test_import_wedata():
+    from tencentcloud.wedata.v20250806 import wedata_client
+    from tencentcloud.wedata.v20250806 import models
+
+
 def test_import_yunjing():
     from tencentcloud.yunjing.v20180228 import yunjing_client
     from tencentcloud.yunjing.v20180228 import models

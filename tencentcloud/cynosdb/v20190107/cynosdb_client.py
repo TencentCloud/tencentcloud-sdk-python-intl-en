@@ -394,6 +394,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIntegrateCluster(self, request):
+        r"""This API is used to create a newly purchased cluster.
+
+        :param request: Request instance for CreateIntegrateCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateIntegrateClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateIntegrateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIntegrateCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIntegrateClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateParamTemplate(self, request):
         r"""This API is used to create parameter templates.
 
@@ -1305,6 +1328,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeInstancesWithinSameCluster", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesWithinSameClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIntegrateTask(self, request):
+        r"""This API is used to query cluster tasks.
+
+        :param request: Request instance for DescribeIntegrateTask.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIntegrateTaskRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIntegrateTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntegrateTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntegrateTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

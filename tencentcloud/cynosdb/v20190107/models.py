@@ -4240,6 +4240,628 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateIntegrateClusterRequest(AbstractModel):
+    r"""CreateIntegrateCluster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone
+        :type Zone: str
+        :param _VpcId: Specifies the ID of the VPC network it belongs to.
+        :type VpcId: str
+        :param _SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param _DbVersion: Database version. valid values:. 
+<li>Specifies the available values for MYSQL: 5.7, 8.0.</li>.
+        :type DbVersion: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ClusterName: Cluster name, length less than 64 characters. each character value ranges from uppercase/lowercase letters, digits, special symbols ('-','_','.').
+        :type ClusterName: str
+        :param _AdminPassword: Account password (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/ with any three types).
+        :type AdminPassword: str
+        :param _Port: Port, default 3306, in the range of [0, 65535).
+        :type Port: int
+        :param _PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. default is pay-as-you-go.
+        :type PayMode: int
+        :param _Count: Number of clusters to purchase. value range: [1,3]. default is 1.
+        :type Count: int
+        :param _StorageLimit: Maximum storage limit of a regular instance, in GB.
+When DbType is MYSQL and the storage billing mode is prepaid, this parameter should not exceed the maximum storage specification corresponding to cpu and memory.
+        :type StorageLimit: int
+        :param _TimeSpan: Specifies the annual and monthly subscription duration.
+        :type TimeSpan: int
+        :param _TimeUnit: Specifies the measurement unit for annual and monthly subscription duration. valid values: 's', 'd', 'm', 'y'.
+        :type TimeUnit: str
+        :param _AutoRenewFlag: Whether annual/monthly subscription is auto-renewed. default value is 0.
+0 identifies the default renewal method, 1 means auto-renew, 2 indicates no auto-renewal.
+        :type AutoRenewFlag: int
+        :param _AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. default value: 0.
+        :type AutoVoucher: int
+        :param _ResourceTags: Specifies the tag array information that needs to be bound during cluster creation.
+        :type ResourceTags: list of Tag
+        :param _StoragePayMode: Specifies the cluster storage billing mode. 0: pay-as-you-go; 1: monthly subscription. default is pay-as-you-go.
+When DbType is MYSQL and the cluster billing mode for computing is postpaid (including DbMode as SERVERLESS), the storage billing mode can only be pay-as-you-go.
+Rollback and clone do not support monthly subscription storage.
+        :type StoragePayMode: int
+        :param _SecurityGroupIds: Security group id array.
+        :type SecurityGroupIds: list of str
+        :param _AlarmPolicyIds: Specifies the Alarm policy Id array.
+        :type AlarmPolicyIds: list of str
+        :param _ClusterParams: Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names. valid values: 1 (case-insensitive), 0 (case-sensitive).
+        :type ClusterParams: list of ParamItem
+        :param _DealMode: Transaction mode. valid values: 0 (place order and pay), 1 (place order).
+        :type DealMode: int
+        :param _ParamTemplateId: Parameter template ID. can be obtained through querying parameter template information DescribeParamTemplates.
+        :type ParamTemplateId: int
+        :param _SlaveZone: Multi-AZ address.
+        :type SlaveZone: str
+        :param _InstanceInitInfos: Initializes configuration information, mainly used to purchase clusters with different specification instances.
+        :type InstanceInitInfos: list of IntegrateInstanceInfo
+        :param _GdnId: Global database unique identifier.
+        :type GdnId: str
+        :param _ProxyConfig: Database proxy configuration.
+        :type ProxyConfig: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfigInfo`
+        :param _AutoArchive: Specifies whether to automatically archive.
+        :type AutoArchive: str
+        :param _AutoArchiveDelayHours: Processing time after pausing.
+        :type AutoArchiveDelayHours: int
+        :param _EncryptMethod: Encryption method (consists of encryption algorithm and key pair version).
+        :type EncryptMethod: str
+        :param _IntegrateCreateClusterConfig: Describes the cluster configuration information.
+        :type IntegrateCreateClusterConfig: :class:`tencentcloud.cynosdb.v20190107.models.IntegrateCreateClusterConfig`
+        :param _StorageVersion: Storage architecture type. valid values: 1.0/2.0. default value: 1.0.
+        :type StorageVersion: str
+        """
+        self._Zone = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._DbVersion = None
+        self._ProjectId = None
+        self._ClusterName = None
+        self._AdminPassword = None
+        self._Port = None
+        self._PayMode = None
+        self._Count = None
+        self._StorageLimit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._AutoRenewFlag = None
+        self._AutoVoucher = None
+        self._ResourceTags = None
+        self._StoragePayMode = None
+        self._SecurityGroupIds = None
+        self._AlarmPolicyIds = None
+        self._ClusterParams = None
+        self._DealMode = None
+        self._ParamTemplateId = None
+        self._SlaveZone = None
+        self._InstanceInitInfos = None
+        self._GdnId = None
+        self._ProxyConfig = None
+        self._AutoArchive = None
+        self._AutoArchiveDelayHours = None
+        self._EncryptMethod = None
+        self._IntegrateCreateClusterConfig = None
+        self._StorageVersion = None
+
+    @property
+    def Zone(self):
+        r"""Availability zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcId(self):
+        r"""Specifies the ID of the VPC network it belongs to.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""Subnet ID.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def DbVersion(self):
+        r"""Database version. valid values:. 
+<li>Specifies the available values for MYSQL: 5.7, 8.0.</li>.
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name, length less than 64 characters. each character value ranges from uppercase/lowercase letters, digits, special symbols ('-','_','.').
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def AdminPassword(self):
+        r"""Account password (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/ with any three types).
+        :rtype: str
+        """
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def Port(self):
+        r"""Port, default 3306, in the range of [0, 65535).
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def PayMode(self):
+        r"""Billing mode. 0: pay-as-you-go; 1: monthly subscription. default is pay-as-you-go.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Count(self):
+        r"""Number of clusters to purchase. value range: [1,3]. default is 1.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def StorageLimit(self):
+        r"""Maximum storage limit of a regular instance, in GB.
+When DbType is MYSQL and the storage billing mode is prepaid, this parameter should not exceed the maximum storage specification corresponding to cpu and memory.
+        :rtype: int
+        """
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def TimeSpan(self):
+        r"""Specifies the annual and monthly subscription duration.
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""Specifies the measurement unit for annual and monthly subscription duration. valid values: 's', 'd', 'm', 'y'.
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def AutoRenewFlag(self):
+        r"""Whether annual/monthly subscription is auto-renewed. default value is 0.
+0 identifies the default renewal method, 1 means auto-renew, 2 indicates no auto-renewal.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def AutoVoucher(self):
+        r"""Whether to automatically select a voucher. 1: yes; 0: no. default value: 0.
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def ResourceTags(self):
+        r"""Specifies the tag array information that needs to be bound during cluster creation.
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def StoragePayMode(self):
+        r"""Specifies the cluster storage billing mode. 0: pay-as-you-go; 1: monthly subscription. default is pay-as-you-go.
+When DbType is MYSQL and the cluster billing mode for computing is postpaid (including DbMode as SERVERLESS), the storage billing mode can only be pay-as-you-go.
+Rollback and clone do not support monthly subscription storage.
+        :rtype: int
+        """
+        return self._StoragePayMode
+
+    @StoragePayMode.setter
+    def StoragePayMode(self, StoragePayMode):
+        self._StoragePayMode = StoragePayMode
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Security group id array.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def AlarmPolicyIds(self):
+        r"""Specifies the Alarm policy Id array.
+        :rtype: list of str
+        """
+        return self._AlarmPolicyIds
+
+    @AlarmPolicyIds.setter
+    def AlarmPolicyIds(self, AlarmPolicyIds):
+        self._AlarmPolicyIds = AlarmPolicyIds
+
+    @property
+    def ClusterParams(self):
+        r"""Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names. valid values: 1 (case-insensitive), 0 (case-sensitive).
+        :rtype: list of ParamItem
+        """
+        return self._ClusterParams
+
+    @ClusterParams.setter
+    def ClusterParams(self, ClusterParams):
+        self._ClusterParams = ClusterParams
+
+    @property
+    def DealMode(self):
+        r"""Transaction mode. valid values: 0 (place order and pay), 1 (place order).
+        :rtype: int
+        """
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+    @property
+    def ParamTemplateId(self):
+        r"""Parameter template ID. can be obtained through querying parameter template information DescribeParamTemplates.
+        :rtype: int
+        """
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def SlaveZone(self):
+        r"""Multi-AZ address.
+        :rtype: str
+        """
+        return self._SlaveZone
+
+    @SlaveZone.setter
+    def SlaveZone(self, SlaveZone):
+        self._SlaveZone = SlaveZone
+
+    @property
+    def InstanceInitInfos(self):
+        r"""Initializes configuration information, mainly used to purchase clusters with different specification instances.
+        :rtype: list of IntegrateInstanceInfo
+        """
+        return self._InstanceInitInfos
+
+    @InstanceInitInfos.setter
+    def InstanceInitInfos(self, InstanceInitInfos):
+        self._InstanceInitInfos = InstanceInitInfos
+
+    @property
+    def GdnId(self):
+        r"""Global database unique identifier.
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
+    @property
+    def ProxyConfig(self):
+        r"""Database proxy configuration.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfigInfo`
+        """
+        return self._ProxyConfig
+
+    @ProxyConfig.setter
+    def ProxyConfig(self, ProxyConfig):
+        self._ProxyConfig = ProxyConfig
+
+    @property
+    def AutoArchive(self):
+        r"""Specifies whether to automatically archive.
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
+    @property
+    def AutoArchiveDelayHours(self):
+        r"""Processing time after pausing.
+        :rtype: int
+        """
+        return self._AutoArchiveDelayHours
+
+    @AutoArchiveDelayHours.setter
+    def AutoArchiveDelayHours(self, AutoArchiveDelayHours):
+        self._AutoArchiveDelayHours = AutoArchiveDelayHours
+
+    @property
+    def EncryptMethod(self):
+        r"""Encryption method (consists of encryption algorithm and key pair version).
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def IntegrateCreateClusterConfig(self):
+        r"""Describes the cluster configuration information.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.IntegrateCreateClusterConfig`
+        """
+        return self._IntegrateCreateClusterConfig
+
+    @IntegrateCreateClusterConfig.setter
+    def IntegrateCreateClusterConfig(self, IntegrateCreateClusterConfig):
+        self._IntegrateCreateClusterConfig = IntegrateCreateClusterConfig
+
+    @property
+    def StorageVersion(self):
+        r"""Storage architecture type. valid values: 1.0/2.0. default value: 1.0.
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._DbVersion = params.get("DbVersion")
+        self._ProjectId = params.get("ProjectId")
+        self._ClusterName = params.get("ClusterName")
+        self._AdminPassword = params.get("AdminPassword")
+        self._Port = params.get("Port")
+        self._PayMode = params.get("PayMode")
+        self._Count = params.get("Count")
+        self._StorageLimit = params.get("StorageLimit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._StoragePayMode = params.get("StoragePayMode")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._AlarmPolicyIds = params.get("AlarmPolicyIds")
+        if params.get("ClusterParams") is not None:
+            self._ClusterParams = []
+            for item in params.get("ClusterParams"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self._ClusterParams.append(obj)
+        self._DealMode = params.get("DealMode")
+        self._ParamTemplateId = params.get("ParamTemplateId")
+        self._SlaveZone = params.get("SlaveZone")
+        if params.get("InstanceInitInfos") is not None:
+            self._InstanceInitInfos = []
+            for item in params.get("InstanceInitInfos"):
+                obj = IntegrateInstanceInfo()
+                obj._deserialize(item)
+                self._InstanceInitInfos.append(obj)
+        self._GdnId = params.get("GdnId")
+        if params.get("ProxyConfig") is not None:
+            self._ProxyConfig = ProxyConfigInfo()
+            self._ProxyConfig._deserialize(params.get("ProxyConfig"))
+        self._AutoArchive = params.get("AutoArchive")
+        self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
+        self._EncryptMethod = params.get("EncryptMethod")
+        if params.get("IntegrateCreateClusterConfig") is not None:
+            self._IntegrateCreateClusterConfig = IntegrateCreateClusterConfig()
+            self._IntegrateCreateClusterConfig._deserialize(params.get("IntegrateCreateClusterConfig"))
+        self._StorageVersion = params.get("StorageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIntegrateClusterResponse(AbstractModel):
+    r"""CreateIntegrateCluster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: Frozen transaction ID.
+        :type TranId: str
+        :param _DealNames: Order ID
+        :type DealNames: list of str
+        :param _ResourceIds: Resource ID list (this field is no longer maintained. please use the dealNames field and the query API DescribeResourcesByDealName to obtain resource ids).
+        :type ResourceIds: list of str
+        :param _ClusterIds: Cluster ID list (this field is no longer maintained. please use the dealNames field to get cluster ids via the DescribeResourcesByDealName api.).
+        :type ClusterIds: list of str
+        :param _BigDealIds: Large order number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
+        self._BigDealIds = None
+        self._RequestId = None
+
+    @property
+    def TranId(self):
+        r"""Frozen transaction ID.
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""Order ID
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""Resource ID list (this field is no longer maintained. please use the dealNames field and the query API DescribeResourcesByDealName to obtain resource ids).
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""Cluster ID list (this field is no longer maintained. please use the dealNames field to get cluster ids via the DescribeResourcesByDealName api.).
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def BigDealIds(self):
+        r"""Large order number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._BigDealIds = params.get("BigDealIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateParamTemplateRequest(AbstractModel):
     r"""CreateParamTemplate request structure.
 
@@ -13638,6 +14260,130 @@ class DescribeInstancesWithinSameClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIntegrateTaskRequest(AbstractModel):
+    r"""DescribeIntegrateTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealId: Large order id. must choose between large order id and sub-order id.
+        :type BigDealId: str
+        :param _DealNames: Order list
+        :type DealNames: list of str
+        """
+        self._BigDealId = None
+        self._DealNames = None
+
+    @property
+    def BigDealId(self):
+        r"""Large order id. must choose between large order id and sub-order id.
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def DealNames(self):
+        r"""Order list
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+
+    def _deserialize(self, params):
+        self._BigDealId = params.get("BigDealId")
+        self._DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntegrateTaskResponse(AbstractModel):
+    r"""DescribeIntegrateTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentStep: Current step.
+        :type CurrentStep: str
+        :param _CurrentProgress: Current progress.
+        :type CurrentProgress: str
+        :param _TaskStatus: Indicates the task status.
+        :type TaskStatus: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CurrentStep = None
+        self._CurrentProgress = None
+        self._TaskStatus = None
+        self._RequestId = None
+
+    @property
+    def CurrentStep(self):
+        r"""Current step.
+        :rtype: str
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def CurrentProgress(self):
+        r"""Current progress.
+        :rtype: str
+        """
+        return self._CurrentProgress
+
+    @CurrentProgress.setter
+    def CurrentProgress(self, CurrentProgress):
+        self._CurrentProgress = CurrentProgress
+
+    @property
+    def TaskStatus(self):
+        r"""Indicates the task status.
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CurrentStep = params.get("CurrentStep")
+        self._CurrentProgress = params.get("CurrentProgress")
+        self._TaskStatus = params.get("TaskStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIsolatedInstancesRequest(AbstractModel):
     r"""DescribeIsolatedInstances request structure.
 
@@ -17999,6 +18745,57 @@ class InstanceInitInfo(AbstractModel):
         
 
 
+class InstanceNameWeight(AbstractModel):
+    r"""Instance weight.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: Instance name. specifies the name defined by InstanceInitInfo.InstanceName in cluster creation.
+        :type InstanceName: str
+        :param _Weight: Weight
+        :type Weight: int
+        """
+        self._InstanceName = None
+        self._Weight = None
+
+    @property
+    def InstanceName(self):
+        r"""Instance name. specifies the name defined by InstanceInitInfo.InstanceName in cluster creation.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Weight(self):
+        r"""Weight
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceNetInfo(AbstractModel):
     r"""Instance network information
 
@@ -18407,6 +19204,188 @@ class InstanceSpec(AbstractModel):
                 obj._deserialize(item)
                 self._ZoneStockInfos.append(obj)
         self._StockCount = params.get("StockCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrateCreateClusterConfig(AbstractModel):
+    r"""Integrated cluster configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BinlogSaveDays: Retention days of binlog. value range: 7-1830.
+        :type BinlogSaveDays: int
+        :param _BackupSaveDays: Specifies the backup retention days. value range: 7-1830.
+        :type BackupSaveDays: int
+        :param _SemiSyncTimeout: Specifies the semi-sync timeout period. value range: [1000,4294967295].
+        :type SemiSyncTimeout: int
+        :param _ProxyEndPointConfigs: proxy connection address configuration message.
+        :type ProxyEndPointConfigs: list of ProxyEndPointConfigInfo
+        """
+        self._BinlogSaveDays = None
+        self._BackupSaveDays = None
+        self._SemiSyncTimeout = None
+        self._ProxyEndPointConfigs = None
+
+    @property
+    def BinlogSaveDays(self):
+        r"""Retention days of binlog. value range: 7-1830.
+        :rtype: int
+        """
+        return self._BinlogSaveDays
+
+    @BinlogSaveDays.setter
+    def BinlogSaveDays(self, BinlogSaveDays):
+        self._BinlogSaveDays = BinlogSaveDays
+
+    @property
+    def BackupSaveDays(self):
+        r"""Specifies the backup retention days. value range: 7-1830.
+        :rtype: int
+        """
+        return self._BackupSaveDays
+
+    @BackupSaveDays.setter
+    def BackupSaveDays(self, BackupSaveDays):
+        self._BackupSaveDays = BackupSaveDays
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""Specifies the semi-sync timeout period. value range: [1000,4294967295].
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
+    @property
+    def ProxyEndPointConfigs(self):
+        r"""proxy connection address configuration message.
+        :rtype: list of ProxyEndPointConfigInfo
+        """
+        return self._ProxyEndPointConfigs
+
+    @ProxyEndPointConfigs.setter
+    def ProxyEndPointConfigs(self, ProxyEndPointConfigs):
+        self._ProxyEndPointConfigs = ProxyEndPointConfigs
+
+
+    def _deserialize(self, params):
+        self._BinlogSaveDays = params.get("BinlogSaveDays")
+        self._BackupSaveDays = params.get("BackupSaveDays")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
+        if params.get("ProxyEndPointConfigs") is not None:
+            self._ProxyEndPointConfigs = []
+            for item in params.get("ProxyEndPointConfigs"):
+                obj = ProxyEndPointConfigInfo()
+                obj._deserialize(item)
+                self._ProxyEndPointConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrateInstanceInfo(AbstractModel):
+    r"""Initializes the configuration information of an instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: Specifies the cpu of the instance.
+        :type Cpu: int
+        :param _Memory: Specifies the instance memory.
+        :type Memory: int
+        :param _InstanceType: Instance type (rw/ro).
+        :type InstanceType: str
+        :param _InstanceCount: Number of instances. value range: [1,15].
+        :type InstanceCount: int
+        :param _DeviceType: Instance machine type. valid values: universal type (common), exclusive type.
+        :type DeviceType: str
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._InstanceType = None
+        self._InstanceCount = None
+        self._DeviceType = None
+
+    @property
+    def Cpu(self):
+        r"""Specifies the cpu of the instance.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Specifies the instance memory.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def InstanceType(self):
+        r"""Instance type (rw/ro).
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceCount(self):
+        r"""Number of instances. value range: [1,15].
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def DeviceType(self):
+        r"""Instance machine type. valid values: universal type (common), exclusive type.
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceCount = params.get("InstanceCount")
+        self._DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25603,6 +26582,107 @@ class PolicyRule(AbstractModel):
         
 
 
+class ProxyConfigInfo(AbstractModel):
+    r"""Access proxy configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyCount: Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.
+        :type ProxyCount: int
+        :param _Cpu: Number of CPU cores
+        :type Cpu: int
+        :param _Mem: Specifies the memory.
+        :type Mem: int
+        :param _Description: Description.
+        :type Description: str
+        :param _ProxyZones: Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ProxyCount = None
+        self._Cpu = None
+        self._Mem = None
+        self._Description = None
+        self._ProxyZones = None
+
+    @property
+    def ProxyCount(self):
+        r"""Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.
+        :rtype: int
+        """
+        return self._ProxyCount
+
+    @ProxyCount.setter
+    def ProxyCount(self, ProxyCount):
+        self._ProxyCount = ProxyCount
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""Specifies the memory.
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Description(self):
+        r"""Description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ProxyZones(self):
+        r"""Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ProxyCount = params.get("ProxyCount")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Description = params.get("Description")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyConnectionPoolInfo(AbstractModel):
     r"""Connection pool information for the database proxy
 
@@ -25659,6 +26739,137 @@ class ProxyConnectionPoolInfo(AbstractModel):
         self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
         self._OpenConnectionPool = params.get("OpenConnectionPool")
         self._ConnectionPoolType = params.get("ConnectionPoolType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyEndPointConfigInfo(AbstractModel):
+    r"""proxy address configuration of the integrated cluster.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqueVpcId: Specifies the ID of the VPC network it belongs to.
+        :type UniqueVpcId: str
+        :param _UniqueSubnetId: Subnet ID.
+        :type UniqueSubnetId: str
+        :param _SecurityGroupIds: Security group id array.
+        :type SecurityGroupIds: list of str
+        :param _WeightMode: Weight mode: system-system allocation, custom-custom.
+        :type WeightMode: str
+        :param _AutoAddRo: Specifies whether to automatically add a read-only instance. valid values: yes, no.
+        :type AutoAddRo: str
+        :param _RwType: Read-Write attribute. valid values: READWRITE, READONLY.
+        :type RwType: str
+        :param _InstanceNameWeights: Weight information.
+        :type InstanceNameWeights: list of InstanceNameWeight
+        """
+        self._UniqueVpcId = None
+        self._UniqueSubnetId = None
+        self._SecurityGroupIds = None
+        self._WeightMode = None
+        self._AutoAddRo = None
+        self._RwType = None
+        self._InstanceNameWeights = None
+
+    @property
+    def UniqueVpcId(self):
+        r"""Specifies the ID of the VPC network it belongs to.
+        :rtype: str
+        """
+        return self._UniqueVpcId
+
+    @UniqueVpcId.setter
+    def UniqueVpcId(self, UniqueVpcId):
+        self._UniqueVpcId = UniqueVpcId
+
+    @property
+    def UniqueSubnetId(self):
+        r"""Subnet ID.
+        :rtype: str
+        """
+        return self._UniqueSubnetId
+
+    @UniqueSubnetId.setter
+    def UniqueSubnetId(self, UniqueSubnetId):
+        self._UniqueSubnetId = UniqueSubnetId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Security group id array.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def WeightMode(self):
+        r"""Weight mode: system-system allocation, custom-custom.
+        :rtype: str
+        """
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def AutoAddRo(self):
+        r"""Specifies whether to automatically add a read-only instance. valid values: yes, no.
+        :rtype: str
+        """
+        return self._AutoAddRo
+
+    @AutoAddRo.setter
+    def AutoAddRo(self, AutoAddRo):
+        self._AutoAddRo = AutoAddRo
+
+    @property
+    def RwType(self):
+        r"""Read-Write attribute. valid values: READWRITE, READONLY.
+        :rtype: str
+        """
+        return self._RwType
+
+    @RwType.setter
+    def RwType(self, RwType):
+        self._RwType = RwType
+
+    @property
+    def InstanceNameWeights(self):
+        r"""Weight information.
+        :rtype: list of InstanceNameWeight
+        """
+        return self._InstanceNameWeights
+
+    @InstanceNameWeights.setter
+    def InstanceNameWeights(self, InstanceNameWeights):
+        self._InstanceNameWeights = InstanceNameWeights
+
+
+    def _deserialize(self, params):
+        self._UniqueVpcId = params.get("UniqueVpcId")
+        self._UniqueSubnetId = params.get("UniqueSubnetId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._WeightMode = params.get("WeightMode")
+        self._AutoAddRo = params.get("AutoAddRo")
+        self._RwType = params.get("RwType")
+        if params.get("InstanceNameWeights") is not None:
+            self._InstanceNameWeights = []
+            for item in params.get("InstanceNameWeights"):
+                obj = InstanceNameWeight()
+                obj._deserialize(item)
+                self._InstanceNameWeights.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -716,6 +716,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDataMaskStrategy(self, request):
+        r"""This API is used to delete a data masking policy.
+
+        :param request: Request instance for DeleteDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataMaskStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSparkApp(self, request):
         r"""This API is used to delete a Spark job.
 
@@ -1052,6 +1075,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDataEnginesScaleDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataEnginesScaleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataMaskStrategies(self, request):
+        r"""This API is used to query the DMask list.
+
+        :param request: Request instance for DescribeDataMaskStrategies.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataMaskStrategiesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataMaskStrategiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataMaskStrategies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataMaskStrategiesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2386,6 +2432,29 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateDataEngineConfig", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataMaskStrategy(self, request):
+        r"""This API is used to update the DMask policy.
+
+        :param request: Request instance for UpdateDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataMaskStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

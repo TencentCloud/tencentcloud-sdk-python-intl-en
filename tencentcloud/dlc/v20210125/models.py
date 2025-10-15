@@ -7906,6 +7906,246 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DataMaskStrategy(AbstractModel):
+    r"""DMask policy information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: Policy ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StrategyId: str
+        :param _UserAppId: User AppId
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserAppId: str
+        :param _Uin: User UIN
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param _SubAccountUin: Specifies the uin of the user sub-account to operate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubAccountUin: str
+        :param _StrategyName: Policy name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StrategyName: str
+        :param _StrategyType: MASK_SHOW_FIRST_4, MASK_SHOW_LAST_4, MASK_HASH, MASK_DATE_SHOW_YEAR, MASK_NULL, MASK_DEFAULT.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StrategyType: str
+        :param _StrategyDesc: Policy description
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StrategyDesc: str
+        :param _Groups: User group policy list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Groups: list of GroupInfo
+        :param _Users: User sub-account uin list, concatenated by ;.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Users: str
+        :param _State: 1: in effect; 0: deleted.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type State: int
+        :param _CreateTime: Policy creation time. timestamp in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param _UpdateTime: Policy update time. timestamp in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: int
+        """
+        self._StrategyId = None
+        self._UserAppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._StrategyName = None
+        self._StrategyType = None
+        self._StrategyDesc = None
+        self._Groups = None
+        self._Users = None
+        self._State = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def StrategyId(self):
+        r"""Policy ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def UserAppId(self):
+        r"""User AppId
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserAppId
+
+    @UserAppId.setter
+    def UserAppId(self, UserAppId):
+        self._UserAppId = UserAppId
+
+    @property
+    def Uin(self):
+        r"""User UIN
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""Specifies the uin of the user sub-account to operate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def StrategyName(self):
+        r"""Policy name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def StrategyType(self):
+        r"""MASK_SHOW_FIRST_4, MASK_SHOW_LAST_4, MASK_HASH, MASK_DATE_SHOW_YEAR, MASK_NULL, MASK_DEFAULT.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyDesc(self):
+        r"""Policy description
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StrategyDesc
+
+    @StrategyDesc.setter
+    def StrategyDesc(self, StrategyDesc):
+        self._StrategyDesc = StrategyDesc
+
+    @property
+    def Groups(self):
+        r"""User group policy list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GroupInfo
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Users(self):
+        r"""User sub-account uin list, concatenated by ;.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def State(self):
+        r"""1: in effect; 0: deleted.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CreateTime(self):
+        r"""Policy creation time. timestamp in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Policy update time. timestamp in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._UserAppId = params.get("UserAppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._StrategyName = params.get("StrategyName")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyDesc = params.get("StrategyDesc")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._Users = params.get("Users")
+        self._State = params.get("State")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataMaskStrategyInfo(AbstractModel):
     r"""DMask policy information.
 
@@ -8265,6 +8505,70 @@ class DeleteDataEngineRequest(AbstractModel):
 
 class DeleteDataEngineResponse(AbstractModel):
     r"""DeleteDataEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataMaskStrategyRequest(AbstractModel):
+    r"""DeleteDataMaskStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: DMask policy Id. specifies the Id of the data masking policy.
+        :type StrategyId: str
+        """
+        self._StrategyId = None
+
+    @property
+    def StrategyId(self):
+        r"""DMask policy Id. specifies the Id of the data masking policy.
+        :rtype: str
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataMaskStrategyResponse(AbstractModel):
+    r"""DeleteDataMaskStrategy response structure.
 
     """
 
@@ -9981,6 +10285,140 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = DataEngineScaleInfo()
                 obj._deserialize(item)
                 self._Scales.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataMaskStrategiesRequest(AbstractModel):
+    r"""DescribeDataMaskStrategies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: The pagination parameter, specifies the amount of data returned per page. it is 10 by default.
+        :type Limit: int
+        :param _Offset: Pagination parameters. data offset. default: 0.
+        :type Offset: int
+        :param _Filters: Filter field. strategy-name: search by policy name.
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""The pagination parameter, specifies the amount of data returned per page. it is 10 by default.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination parameters. data offset. default: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""Filter field. strategy-name: search by policy name.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataMaskStrategiesResponse(AbstractModel):
+    r"""DescribeDataMaskStrategies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total DMask policies.
+        :type TotalCount: int
+        :param _Strategies: DMask policy list. specifies the list of data masking policies.
+        :type Strategies: list of DataMaskStrategy
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Strategies = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total DMask policies.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Strategies(self):
+        r"""DMask policy list. specifies the list of data masking policies.
+        :rtype: list of DataMaskStrategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = DataMaskStrategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23222,6 +23660,72 @@ class UpdateDataEngineRequest(AbstractModel):
 
 class UpdateDataEngineResponse(AbstractModel):
     r"""UpdateDataEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataMaskStrategyRequest(AbstractModel):
+    r"""UpdateDataMaskStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Strategy: Masking policy description.
+        :type Strategy: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        self._Strategy = None
+
+    @property
+    def Strategy(self):
+        r"""Masking policy description.
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+
+    def _deserialize(self, params):
+        if params.get("Strategy") is not None:
+            self._Strategy = DataMaskStrategyInfo()
+            self._Strategy._deserialize(params.get("Strategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataMaskStrategyResponse(AbstractModel):
+    r"""UpdateDataMaskStrategy response structure.
 
     """
 

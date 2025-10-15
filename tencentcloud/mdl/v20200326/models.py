@@ -5944,6 +5944,8 @@ class EventSettingsReq(AbstractModel):
         :type StaticImageActivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
         :param _StaticImageDeactivateSetting: Static image deactivate setting.
         :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
+        :param _MotionGraphicsActivateSetting: Dynamic graphic overlay activate configuration
+        :type MotionGraphicsActivateSetting: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -5956,6 +5958,7 @@ class EventSettingsReq(AbstractModel):
         self._TimedMetadataSetting = None
         self._StaticImageActivateSetting = None
         self._StaticImageDeactivateSetting = None
+        self._MotionGraphicsActivateSetting = None
 
     @property
     def EventType(self):
@@ -6078,6 +6081,17 @@ class EventSettingsReq(AbstractModel):
     def StaticImageDeactivateSetting(self, StaticImageDeactivateSetting):
         self._StaticImageDeactivateSetting = StaticImageDeactivateSetting
 
+    @property
+    def MotionGraphicsActivateSetting(self):
+        r"""Dynamic graphic overlay activate configuration
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
+        """
+        return self._MotionGraphicsActivateSetting
+
+    @MotionGraphicsActivateSetting.setter
+    def MotionGraphicsActivateSetting(self, MotionGraphicsActivateSetting):
+        self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -6107,6 +6121,9 @@ class EventSettingsReq(AbstractModel):
         if params.get("StaticImageDeactivateSetting") is not None:
             self._StaticImageDeactivateSetting = StaticImageDeactivateSetting()
             self._StaticImageDeactivateSetting._deserialize(params.get("StaticImageDeactivateSetting"))
+        if params.get("MotionGraphicsActivateSetting") is not None:
+            self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting()
+            self._MotionGraphicsActivateSetting._deserialize(params.get("MotionGraphicsActivateSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6146,6 +6163,8 @@ class EventSettingsResp(AbstractModel):
         :type StaticImageActivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
         :param _StaticImageDeactivateSetting: Static image deactivate setting.
         :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
+        :param _MotionGraphicsActivateSetting: Dynamic graphic overlay activate configuration.
+        :type MotionGraphicsActivateSetting: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -6158,6 +6177,7 @@ class EventSettingsResp(AbstractModel):
         self._TimedMetadataSetting = None
         self._StaticImageActivateSetting = None
         self._StaticImageDeactivateSetting = None
+        self._MotionGraphicsActivateSetting = None
 
     @property
     def EventType(self):
@@ -6280,6 +6300,17 @@ class EventSettingsResp(AbstractModel):
     def StaticImageDeactivateSetting(self, StaticImageDeactivateSetting):
         self._StaticImageDeactivateSetting = StaticImageDeactivateSetting
 
+    @property
+    def MotionGraphicsActivateSetting(self):
+        r"""Dynamic graphic overlay activate configuration.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
+        """
+        return self._MotionGraphicsActivateSetting
+
+    @MotionGraphicsActivateSetting.setter
+    def MotionGraphicsActivateSetting(self, MotionGraphicsActivateSetting):
+        self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -6309,6 +6340,9 @@ class EventSettingsResp(AbstractModel):
         if params.get("StaticImageDeactivateSetting") is not None:
             self._StaticImageDeactivateSetting = StaticImageDeactivateSetting()
             self._StaticImageDeactivateSetting._deserialize(params.get("StaticImageDeactivateSetting"))
+        if params.get("MotionGraphicsActivateSetting") is not None:
+            self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting()
+            self._MotionGraphicsActivateSetting._deserialize(params.get("MotionGraphicsActivateSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6522,8 +6556,14 @@ class GeneralSetting(AbstractModel):
         r"""
         :param _StaticImageSettings: Static graphic overlay configuration.
         :type StaticImageSettings: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
+        :param _MotionGraphicsSettings: Dynamic graphic overlay configuration.
+        :type MotionGraphicsSettings: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsSetting`
+        :param _ThumbnailSettings: Thumbnail Configuration.
+        :type ThumbnailSettings: :class:`tencentcloud.mdl.v20200326.models.ThumbnailSettings`
         """
         self._StaticImageSettings = None
+        self._MotionGraphicsSettings = None
+        self._ThumbnailSettings = None
 
     @property
     def StaticImageSettings(self):
@@ -6536,11 +6576,39 @@ class GeneralSetting(AbstractModel):
     def StaticImageSettings(self, StaticImageSettings):
         self._StaticImageSettings = StaticImageSettings
 
+    @property
+    def MotionGraphicsSettings(self):
+        r"""Dynamic graphic overlay configuration.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsSetting`
+        """
+        return self._MotionGraphicsSettings
+
+    @MotionGraphicsSettings.setter
+    def MotionGraphicsSettings(self, MotionGraphicsSettings):
+        self._MotionGraphicsSettings = MotionGraphicsSettings
+
+    @property
+    def ThumbnailSettings(self):
+        r"""Thumbnail Configuration.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ThumbnailSettings`
+        """
+        return self._ThumbnailSettings
+
+    @ThumbnailSettings.setter
+    def ThumbnailSettings(self, ThumbnailSettings):
+        self._ThumbnailSettings = ThumbnailSettings
+
 
     def _deserialize(self, params):
         if params.get("StaticImageSettings") is not None:
             self._StaticImageSettings = StaticImageSettings()
             self._StaticImageSettings._deserialize(params.get("StaticImageSettings"))
+        if params.get("MotionGraphicsSettings") is not None:
+            self._MotionGraphicsSettings = MotionGraphicsSetting()
+            self._MotionGraphicsSettings._deserialize(params.get("MotionGraphicsSettings"))
+        if params.get("ThumbnailSettings") is not None:
+            self._ThumbnailSettings = ThumbnailSettings()
+            self._ThumbnailSettings._deserialize(params.get("ThumbnailSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8612,6 +8680,93 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MotionGraphicsActivateSetting(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: Duration in ms, valid when MOTION_Graphics_ACTIVATE, required; An integer in the range of 0-86400000, where 0 represents the duration until the end of the live stream.
+        :type Duration: int
+        :param _Url: The address of HTML5 needs to comply with the format specification of http/https.
+        :type Url: str
+        """
+        self._Duration = None
+        self._Url = None
+
+    @property
+    def Duration(self):
+        r"""Duration in ms, valid when MOTION_Graphics_ACTIVATE, required; An integer in the range of 0-86400000, where 0 represents the duration until the end of the live stream.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Url(self):
+        r"""The address of HTML5 needs to comply with the format specification of http/https.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MotionGraphicsSetting(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MotionGraphicsOverlayEnabled: Whether to enable dynamic graphic overlay, '0' not enabled, '1' enabled; Default 0.
+        :type MotionGraphicsOverlayEnabled: int
+        """
+        self._MotionGraphicsOverlayEnabled = None
+
+    @property
+    def MotionGraphicsOverlayEnabled(self):
+        r"""Whether to enable dynamic graphic overlay, '0' not enabled, '1' enabled; Default 0.
+        :rtype: int
+        """
+        return self._MotionGraphicsOverlayEnabled
+
+    @MotionGraphicsOverlayEnabled.setter
+    def MotionGraphicsOverlayEnabled(self, MotionGraphicsOverlayEnabled):
+        self._MotionGraphicsOverlayEnabled = MotionGraphicsOverlayEnabled
+
+
+    def _deserialize(self, params):
+        self._MotionGraphicsOverlayEnabled = params.get("MotionGraphicsOverlayEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OutputInfo(AbstractModel):
@@ -11846,6 +12001,42 @@ class Tag(AbstractModel):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThumbnailSettings(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbnailEnabled: Generate thumbnail ,0: Disabled ,1: Enabled , Default: 0
+        :type ThumbnailEnabled: int
+        """
+        self._ThumbnailEnabled = None
+
+    @property
+    def ThumbnailEnabled(self):
+        r"""Generate thumbnail ,0: Disabled ,1: Enabled , Default: 0
+        :rtype: int
+        """
+        return self._ThumbnailEnabled
+
+    @ThumbnailEnabled.setter
+    def ThumbnailEnabled(self, ThumbnailEnabled):
+        self._ThumbnailEnabled = ThumbnailEnabled
+
+
+    def _deserialize(self, params):
+        self._ThumbnailEnabled = params.get("ThumbnailEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

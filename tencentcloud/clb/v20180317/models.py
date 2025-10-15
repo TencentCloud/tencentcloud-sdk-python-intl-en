@@ -4712,14 +4712,22 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: Array of IDs of the CLB instances to be deleted. Array length limit: 20.
+        :param _LoadBalancerIds: CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
         :type LoadBalancerIds: list of str
+        :param _ForceDelete: Whether to forcibly delete the CLB instance. True indicates forced deletion; False indicates non-forced deletion, and blocking verification is required.
+The default value is False.
+The deletion operation is blocked by default in the following cases. If you confirm forced deletion, the value of the forced verification parameter ForceDelete should be set to True.
+1. The instance with 20 or more RS bound to the backend is deleted.
+2. The instance with RS bound to the backend and the maximum peak inbound/outbound bandwidth exceeding 10 Mbps within 5 minutes is deleted.
+3. Thirty or more instances are deleted within 5 minutes in a single region.
+        :type ForceDelete: bool
         """
         self._LoadBalancerIds = None
+        self._ForceDelete = None
 
     @property
     def LoadBalancerIds(self):
-        r"""Array of IDs of the CLB instances to be deleted. Array length limit: 20.
+        r"""CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -4728,9 +4736,26 @@ class DeleteLoadBalancerRequest(AbstractModel):
     def LoadBalancerIds(self, LoadBalancerIds):
         self._LoadBalancerIds = LoadBalancerIds
 
+    @property
+    def ForceDelete(self):
+        r"""Whether to forcibly delete the CLB instance. True indicates forced deletion; False indicates non-forced deletion, and blocking verification is required.
+The default value is False.
+The deletion operation is blocked by default in the following cases. If you confirm forced deletion, the value of the forced verification parameter ForceDelete should be set to True.
+1. The instance with 20 or more RS bound to the backend is deleted.
+2. The instance with RS bound to the backend and the maximum peak inbound/outbound bandwidth exceeding 10 Mbps within 5 minutes is deleted.
+3. Thirty or more instances are deleted within 5 minutes in a single region.
+        :rtype: bool
+        """
+        return self._ForceDelete
+
+    @ForceDelete.setter
+    def ForceDelete(self, ForceDelete):
+        self._ForceDelete = ForceDelete
+
 
     def _deserialize(self, params):
         self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._ForceDelete = params.get("ForceDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

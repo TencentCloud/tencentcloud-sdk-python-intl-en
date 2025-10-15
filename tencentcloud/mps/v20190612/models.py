@@ -1829,10 +1829,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleName: str
+        :param _OutputFormat: Output format of the subtitle. valid values: "WebVTT", "TTML".
+Default value: "WebVTT".
+        :type OutputFormat: str
+        :param _DefaultTrack: Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.
+Default value: `false`.
+        :type DefaultTrack: bool
         """
         self._Type = None
         self._Subtitle = None
         self._SubtitleName = None
+        self._OutputFormat = None
+        self._DefaultTrack = None
 
     @property
     def Type(self):
@@ -1874,6 +1882,30 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SubtitleName(self, SubtitleName):
         self._SubtitleName = SubtitleName
 
+    @property
+    def OutputFormat(self):
+        r"""Output format of the subtitle. valid values: "WebVTT", "TTML".
+Default value: "WebVTT".
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
+    @property
+    def DefaultTrack(self):
+        r"""Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.
+Default value: `false`.
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1881,6 +1913,8 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
         self._SubtitleName = params.get("SubtitleName")
+        self._OutputFormat = params.get("OutputFormat")
+        self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1901,13 +1935,14 @@ class AiAnalysisResult(AbstractModel):
         :param _Type: Task type. valid values:.
 <Li>Classification: intelligent classification.</li>.
 <Li>Cover: specifies the intelligent cover.</li>.
-<Li>Tag: intelligent tag.</li>.
-<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.
+<Li>Tag: intelligent tagging.</li>.
+<Li>FrameTag: intelligent frame-by-frame tagging.</li>.
 <Li>Highlight: intelligent highlights</li>.
 <Li>DeLogo: intelligent removal.</li>.
 <li>Description: large model summarization.</li>
 
 <Li>Dubbing: intelligent dubbing.</li>.
+<Li>VideoRemake: specifies video deduplication.</li>.
         :type Type: str
         :param _ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
@@ -1938,6 +1973,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _DubbingTask: The query result of a Dubbing task for video content analysis, which is valid when the task type is Dubbing.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
+        :param _VideoRemakeTask: The query result of a video content deduplication task, which is valid when the task type is VideoRemake.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoRemakeTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1951,19 +1989,21 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._DescriptionTask = None
         self._HorizontalToVerticalTask = None
         self._DubbingTask = None
+        self._VideoRemakeTask = None
 
     @property
     def Type(self):
         r"""Task type. valid values:.
 <Li>Classification: intelligent classification.</li>.
 <Li>Cover: specifies the intelligent cover.</li>.
-<Li>Tag: intelligent tag.</li>.
-<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.
+<Li>Tag: intelligent tagging.</li>.
+<Li>FrameTag: intelligent frame-by-frame tagging.</li>.
 <Li>Highlight: intelligent highlights</li>.
 <Li>DeLogo: intelligent removal.</li>.
 <li>Description: large model summarization.</li>
 
 <Li>Dubbing: intelligent dubbing.</li>.
+<Li>VideoRemake: specifies video deduplication.</li>.
         :rtype: str
         """
         return self._Type
@@ -2100,6 +2140,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def DubbingTask(self, DubbingTask):
         self._DubbingTask = DubbingTask
 
+    @property
+    def VideoRemakeTask(self):
+        r"""The query result of a video content deduplication task, which is valid when the task type is VideoRemake.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
+        """
+        return self._VideoRemakeTask
+
+    @VideoRemakeTask.setter
+    def VideoRemakeTask(self, VideoRemakeTask):
+        self._VideoRemakeTask = VideoRemakeTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2136,6 +2188,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("DubbingTask") is not None:
             self._DubbingTask = AiAnalysisTaskDubbingResult()
             self._DubbingTask._deserialize(params.get("DubbingTask"))
+        if params.get("VideoRemakeTask") is not None:
+            self._VideoRemakeTask = AiAnalysisTaskVideoRemakeResult()
+            self._VideoRemakeTask._deserialize(params.get("VideoRemakeTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4453,6 +4508,197 @@ class AiAnalysisTaskTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeInput(AbstractModel):
+    r"""Video deduplication task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Intelligent deduplication template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Intelligent deduplication template ID.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeOutput(AbstractModel):
+    r"""Video deduplication result information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: Specifies the file path for intelligent video deduplication.
+        :type Path: str
+        :param _OutputStorage: Specifies the storage location for intelligent video deduplication.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        r"""Specifies the file path for intelligent video deduplication.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        r"""Specifies the storage location for intelligent video deduplication.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoRemakeResult(AbstractModel):
+    r"""Video deduplication result data structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Specifies the task status. valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :type Status: str
+        :param _ErrCode: Error code. 0: success. other values: failure.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Deduplication task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
+        :param _Output: Task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""Specifies the task status. valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code. 0: success. other values: failure.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Deduplication task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskVideoRemakeInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskVideoRemakeOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -17092,7 +17338,13 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
-        :param _RecordType: Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
+        :param _RecordType: Recording type. Valid values: 
+
+- video: audio and video recording; 
+- audio: audio recording; 
+- auto: automatic detection;
+
+If it is left blank, "video" will be used as the default value.
         :type RecordType: str
         """
         self._HLSConfigure = None
@@ -17147,7 +17399,13 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
+        r"""Recording type. Valid values: 
+
+- video: audio and video recording; 
+- audio: audio recording; 
+- auto: automatic detection;
+
+If it is left blank, "video" will be used as the default value.
         :rtype: str
         """
         return self._RecordType
@@ -24463,8 +24721,13 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
+        :param _Status: Filters task status. available values:.
+-WAITING.
+-PROCESSING (processing).
+-FINISH (completed).
         :type Status: str
+        :param _SubTaskHasFailed: Indicates whether there is a subtask failure when the task is complete.
+        :type SubTaskHasFailed: bool
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
         :param _ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
@@ -24475,6 +24738,7 @@ class DescribeTasksRequest(AbstractModel):
         :type EndTime: str
         """
         self._Status = None
+        self._SubTaskHasFailed = None
         self._Limit = None
         self._ScrollToken = None
         self._StartTime = None
@@ -24482,7 +24746,10 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
+        r"""Filters task status. available values:.
+-WAITING.
+-PROCESSING (processing).
+-FINISH (completed).
         :rtype: str
         """
         return self._Status
@@ -24490,6 +24757,17 @@ class DescribeTasksRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""Indicates whether there is a subtask failure when the task is complete.
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
 
     @property
     def Limit(self):
@@ -24538,6 +24816,7 @@ class DescribeTasksRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
         self._Limit = params.get("Limit")
         self._ScrollToken = params.get("ScrollToken")
         self._StartTime = params.get("StartTime")
@@ -41076,6 +41355,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Timestamp: int
         :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
         :type Sign: str
+        :param _BatchTaskEvent: Batch processing task information. this field has a value only when EventType is BatchTask.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BatchTaskEvent: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -41087,6 +41369,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ScheduleTaskEvent = None
         self._Timestamp = None
         self._Sign = None
+        self._BatchTaskEvent = None
         self._RequestId = None
 
     @property
@@ -41187,6 +41470,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Sign = Sign
 
     @property
+    def BatchTaskEvent(self):
+        r"""Batch processing task information. this field has a value only when EventType is BatchTask.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        """
+        return self._BatchTaskEvent
+
+    @BatchTaskEvent.setter
+    def BatchTaskEvent(self, BatchTaskEvent):
+        self._BatchTaskEvent = BatchTaskEvent
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -41213,6 +41508,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._ScheduleTaskEvent._deserialize(params.get("ScheduleTaskEvent"))
         self._Timestamp = params.get("Timestamp")
         self._Sign = params.get("Sign")
+        if params.get("BatchTaskEvent") is not None:
+            self._BatchTaskEvent = BatchSubTaskResult()
+            self._BatchTaskEvent._deserialize(params.get("BatchTaskEvent"))
         self._RequestId = params.get("RequestId")
 
 
@@ -44130,23 +44428,25 @@ class QualityControlResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The issue type. Valid values:
-`Jitter`
-`Blur`
-`LowLighting`
-`HighLighting` (overexposure)
-`CrashScreen` (video corruption)
-`BlackWhiteEdge`
-`SolidColorScreen` (blank screen)
-`Noise`
-`Mosaic` (pixelation)
-`QRCode`
-`AppletCode` (Weixin Mini Program code)
-`BarCode`
-`LowVoice`
-`HighVoice`
-`NoVoice`
-`LowEvaluation` (low no-reference video quality score)
+        :param _Type: Exception type. valid values:.
+Jitter: jitter.
+Blur: specifies the blur effect.
+LowLighting: specifies low light.
+HighLighting: overexposure.
+CrashScreen: specifies screen glitch.
+BlackWhiteEdge: specifies the black and white edges.
+SolidColorScreen: specifies the solid color screen.
+Noise: specifies the noise.
+Mosaic: mosaic.
+QRCode: specifies the qr code.
+AppletCode: specifies the mini program code.
+BarCode: specifies the barcode.
+LowVoice: specifies the bass.
+HighVoice: specifies high voice detection.
+NoVoice: specifies mute.
+LowEvaluation: specifies the video no-reference score (MOS) is below the threshold.
+AudioEvaluation: specifies the audio no-reference scoring (MOS) is below the threshold.
+AudioNoise: specifies the audio noise.
         :type Type: str
         :param _QualityControlItems: The information of a checked segment in quality control.
         :type QualityControlItems: list of QualityControlItem
@@ -44156,23 +44456,25 @@ class QualityControlResult(AbstractModel):
 
     @property
     def Type(self):
-        r"""The issue type. Valid values:
-`Jitter`
-`Blur`
-`LowLighting`
-`HighLighting` (overexposure)
-`CrashScreen` (video corruption)
-`BlackWhiteEdge`
-`SolidColorScreen` (blank screen)
-`Noise`
-`Mosaic` (pixelation)
-`QRCode`
-`AppletCode` (Weixin Mini Program code)
-`BarCode`
-`LowVoice`
-`HighVoice`
-`NoVoice`
-`LowEvaluation` (low no-reference video quality score)
+        r"""Exception type. valid values:.
+Jitter: jitter.
+Blur: specifies the blur effect.
+LowLighting: specifies low light.
+HighLighting: overexposure.
+CrashScreen: specifies screen glitch.
+BlackWhiteEdge: specifies the black and white edges.
+SolidColorScreen: specifies the solid color screen.
+Noise: specifies the noise.
+Mosaic: mosaic.
+QRCode: specifies the qr code.
+AppletCode: specifies the mini program code.
+BarCode: specifies the barcode.
+LowVoice: specifies the bass.
+HighVoice: specifies high voice detection.
+NoVoice: specifies mute.
+LowEvaluation: specifies the video no-reference score (MOS) is below the threshold.
+AudioEvaluation: specifies the audio no-reference scoring (MOS) is below the threshold.
+AudioNoise: specifies the audio noise.
         :rtype: str
         """
         return self._Type
@@ -47802,11 +48104,11 @@ class SimpleAesDrm(AbstractModel):
         :param _Uri: The URI of decryption key.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Uri: str
-        :param _Key: The encryption key (a 32-byte string).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Key: Encryption key (32-byte hexadecimal string).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Key: str
-        :param _Vector: The initialization vector for encryption (a 32-byte string).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Vector: Initialization vector for encryption (32-byte hexadecimal string).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vector: str
         """
         self._Uri = None
@@ -47827,8 +48129,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        r"""The encryption key (a 32-byte string).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Encryption key (32-byte hexadecimal string).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Key
@@ -47839,8 +48141,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vector(self):
-        r"""The initialization vector for encryption (a 32-byte string).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Initialization vector for encryption (32-byte hexadecimal string).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Vector
@@ -48668,12 +48970,13 @@ Advanced edition: better effectiveness, suitable for mini-drama and reality styl
 - basic
 - advanced
         :type WatermarkModel: str
-        :param _AutoAreas: Specifies automatic removal of a custom region.
-Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
-Note that this parameter will not take effect when the removal method is custom.
+        :param _AutoAreas: Automatically erase the custom region.
+Automatically detects and erases the targeted removal in the specified region using the AI model.
+Note that this parameter will not take effect when the removal method is custom. to modify the template, input [] for the clean-up region. if not provided, the template region information remains unchanged.
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: Specifies erasure of a custom region.
-Detects and directly performs removal within a specified time range for the selected region.
+        :param _CustomAreas: Specifies the removal of a custom region.
+Specifies to directly perform removal without detection and recognition within a selected time range for the specified region.
+Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
         :type CustomAreas: list of EraseTimeArea
         """
         self._WatermarkEraseMethod = None
@@ -48717,9 +49020,9 @@ Advanced edition: better effectiveness, suitable for mini-drama and reality styl
 
     @property
     def AutoAreas(self):
-        r"""Specifies automatic removal of a custom region.
-Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
-Note that this parameter will not take effect when the removal method is custom.
+        r"""Automatically erase the custom region.
+Automatically detects and erases the targeted removal in the specified region using the AI model.
+Note that this parameter will not take effect when the removal method is custom. to modify the template, input [] for the clean-up region. if not provided, the template region information remains unchanged.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -48730,8 +49033,9 @@ Note that this parameter will not take effect when the removal method is custom.
 
     @property
     def CustomAreas(self):
-        r"""Specifies erasure of a custom region.
-Detects and directly performs removal within a specified time range for the selected region.
+        r"""Specifies the removal of a custom region.
+Specifies to directly perform removal without detection and recognition within a selected time range for the specified region.
+Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -50547,7 +50851,7 @@ It supports 1 to 128 characters consisting of digits, letters, underscores (_), 
 
 Note: different DRM manufacturers have different limitations on the number of substreams. for example, PallyCon limits the number of substreams to no more than 5, and DRMtoday only supports encryption of up to 9 substreams.
         :type KeyServerUrl: str
-        :param _Vector: Encryption initialization vector (32-byte string). the field content is user-customized.
+        :param _Vector: Initialization vector for encryption (32-byte hexadecimal string). the field content is user-customized.
         :type Vector: str
         :param _EncryptionMethod: Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
 
@@ -50593,7 +50897,7 @@ Note: different DRM manufacturers have different limitations on the number of su
 
     @property
     def Vector(self):
-        r"""Encryption initialization vector (32-byte string). the field content is user-customized.
+        r"""Initialization vector for encryption (32-byte hexadecimal string). the field content is user-customized.
         :rtype: str
         """
         return self._Vector
