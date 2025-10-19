@@ -5172,6 +5172,190 @@ class CreatePrometheusAgentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAlertGroupRequest(AbstractModel):
+    r"""CreatePrometheusAlertGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus instance ID.
+        :type InstanceId: str
+        :param _GroupName: Alert group name. Not allowed to have the same name as other Alert groups.
+        :type GroupName: str
+        :param _GroupState: Alert group status.
+2 - enable.
+3 - disabled.
+Specifies to overwrite all alert rule statuses under the `Rules` field when not empty.
+
+        :type GroupState: int
+        :param _AMPReceivers: Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: Specifies the custom Alert notification template.
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: Alert notification cycle (convergence time). defaults to 1h if left empty.
+        :type RepeatInterval: str
+        :param _Rules: Specifies the Alert rule list to be created.
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        """
+        self._InstanceId = None
+        self._GroupName = None
+        self._GroupState = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        r"""prometheus instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupName(self):
+        r"""Alert group name. Not allowed to have the same name as other Alert groups.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupState(self):
+        r"""Alert group status.
+2 - enable.
+3 - disabled.
+Specifies to overwrite all alert rule statuses under the `Rules` field when not empty.
+
+        :rtype: int
+        """
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+    @property
+    def AMPReceivers(self):
+        r"""Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.
+        :rtype: list of str
+        """
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        r"""Specifies the custom Alert notification template.
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        r"""Alert notification cycle (convergence time). defaults to 1h if left empty.
+        :rtype: str
+        """
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def Rules(self):
+        r"""Specifies the Alert rule list to be created.
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupName = params.get("GroupName")
+        self._GroupState = params.get("GroupState")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAlertGroupResponse(AbstractModel):
+    r"""CreatePrometheusAlertGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Created Alert group ID, which matches the regular expression `alert-[a-z0-9]{8}`.
+        :type GroupId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""Created Alert group ID, which matches the regular expression `alert-[a-z0-9]{8}`.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrometheusAlertPolicyRequest(AbstractModel):
     r"""CreatePrometheusAlertPolicy request structure.
 
@@ -7220,6 +7404,85 @@ class DeletePolicyGroupResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrometheusAlertGroupsRequest(AbstractModel):
+    r"""DeletePrometheusAlertGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus instance id.
+        :type InstanceId: str
+        :param _GroupIds: Alert group IDs that needs to be deleted, such as alert-xxxxx.
+        :type GroupIds: list of str
+        """
+        self._InstanceId = None
+        self._GroupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""prometheus instance id.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupIds(self):
+        r"""Alert group IDs that needs to be deleted, such as alert-xxxxx.
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusAlertGroupsResponse(AbstractModel):
+    r"""DeletePrometheusAlertGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17639,6 +17902,173 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAlertGroupsRequest(AbstractModel):
+    r"""DescribePrometheusAlertGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus instance ID
+        :type InstanceId: str
+        :param _Limit: Number of returned results. defaults to 20. maximum value is 100.
+        :type Limit: int
+        :param _Offset: Offset. default value: 0.
+        :type Offset: int
+        :param _GroupId: Alert group ID, such as alert-xxxx.
+List the alert group with the given ID.
+        :type GroupId: str
+        :param _GroupName: Specifies the alert group name.
+List alert groups which name contains the given string.
+        :type GroupName: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def InstanceId(self):
+        r"""prometheus instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""Number of returned results. defaults to 20. maximum value is 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def GroupId(self):
+        r"""Alert group ID, such as alert-xxxx.
+List the alert group with the given ID.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Specifies the alert group name.
+List alert groups which name contains the given string.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusAlertGroupsResponse(AbstractModel):
+    r"""DescribePrometheusAlertGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertGroupSet: Alert group information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlertGroupSet: list of PrometheusAlertGroupSet
+        :param _TotalCount: Total count of Alert groups.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AlertGroupSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AlertGroupSet(self):
+        r"""Alert group information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PrometheusAlertGroupSet
+        """
+        return self._AlertGroupSet
+
+    @AlertGroupSet.setter
+    def AlertGroupSet(self, AlertGroupSet):
+        self._AlertGroupSet = AlertGroupSet
+
+    @property
+    def TotalCount(self):
+        r"""Total count of Alert groups.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AlertGroupSet") is not None:
+            self._AlertGroupSet = []
+            for item in params.get("AlertGroupSet"):
+                obj = PrometheusAlertGroupSet()
+                obj._deserialize(item)
+                self._AlertGroupSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusAlertPolicyRequest(AbstractModel):
     r"""DescribePrometheusAlertPolicy request structure.
 
@@ -27716,6 +28146,508 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PrometheusAlertAllowTimeRange(AbstractModel):
+    r"""Prometheus custom Alert notification period.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: Seconds from 00:00:00.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Start: str
+        :param _End: Seconds from 00:00:00.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type End: str
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""Seconds from 00:00:00.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""Seconds from 00:00:00.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertCustomReceiver(AbstractModel):
+    r"""Prometheus Alert custom notification template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Notification customization type.
+Alertmanager - self-built alertmanager in vpc.
+webhook - webhook address in the vpc.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Url: alertmanager/webhook url (ip in the same vpc as the prometheus instance).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param _AllowedTimeRanges: Specifies the time range for allowing Alert sending.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AllowedTimeRanges: list of PrometheusAlertAllowTimeRange
+        :param _ClusterId: alertmanager intranet cluster ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param _ClusterType: alertmanager resides in the private network cluster type (tke/eks/tdcc).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterType: str
+        """
+        self._Type = None
+        self._Url = None
+        self._AllowedTimeRanges = None
+        self._ClusterId = None
+        self._ClusterType = None
+
+    @property
+    def Type(self):
+        r"""Notification customization type.
+Alertmanager - self-built alertmanager in vpc.
+webhook - webhook address in the vpc.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        r"""alertmanager/webhook url (ip in the same vpc as the prometheus instance).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AllowedTimeRanges(self):
+        r"""Specifies the time range for allowing Alert sending.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PrometheusAlertAllowTimeRange
+        """
+        return self._AllowedTimeRanges
+
+    @AllowedTimeRanges.setter
+    def AllowedTimeRanges(self, AllowedTimeRanges):
+        self._AllowedTimeRanges = AllowedTimeRanges
+
+    @property
+    def ClusterId(self):
+        r"""alertmanager intranet cluster ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        r"""alertmanager resides in the private network cluster type (tke/eks/tdcc).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        if params.get("AllowedTimeRanges") is not None:
+            self._AllowedTimeRanges = []
+            for item in params.get("AllowedTimeRanges"):
+                obj = PrometheusAlertAllowTimeRange()
+                obj._deserialize(item)
+                self._AllowedTimeRanges.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertGroupRuleSet(AbstractModel):
+    r"""Prometheus alert rule information within the group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: Alert rule name. same name is not allowed in the same Alert group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleName: str
+        :param _Labels: Prometheus alert label list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of PrometheusRuleKV
+        :param _Annotations: Prometheus alert annotation list.
+
+Alarm object and Alarm message are special fields of Prometheus Rule Annotations. they need to pass through Annotations for transmission. the corresponding keys are summary and description respectively.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Annotations: list of PrometheusRuleKV
+        :param _Duration: Alert will be triggered after 'Expr' satisfied for 'Duration'.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: str
+        :param _Expr: Alert expression. see <a href="https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Expr: str
+        :param _State: Alert rule status.
+2 - enable.
+3 - disabled.
+Enabled by default if left empty.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type State: int
+        """
+        self._RuleName = None
+        self._Labels = None
+        self._Annotations = None
+        self._Duration = None
+        self._Expr = None
+        self._State = None
+
+    @property
+    def RuleName(self):
+        r"""Alert rule name. same name is not allowed in the same Alert group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Labels(self):
+        r"""Prometheus alert label list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Annotations(self):
+        r"""Prometheus alert annotation list.
+
+Alarm object and Alarm message are special fields of Prometheus Rule Annotations. they need to pass through Annotations for transmission. the corresponding keys are summary and description respectively.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+    @property
+    def Duration(self):
+        r"""Alert will be triggered after 'Expr' satisfied for 'Duration'.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Expr(self):
+        r"""Alert expression. see <a href="https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Expr
+
+    @Expr.setter
+    def Expr(self, Expr):
+        self._Expr = Expr
+
+    @property
+    def State(self):
+        r"""Alert rule status.
+2 - enable.
+3 - disabled.
+Enabled by default if left empty.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
+        self._Duration = params.get("Duration")
+        self._Expr = params.get("Expr")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertGroupSet(AbstractModel):
+    r"""Prometheus alert rule groups information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupId: str
+        :param _GroupName: Alert group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupName: str
+        :param _AMPReceivers: Alert template ID of tencent cloud observability platform (tcop). returns the converted notice ID of the Alert template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: Custom Alert template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: Alert notification interval.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RepeatInterval: str
+        :param _TemplateId: If the Alert group is created via template, returns the template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TemplateId: str
+        :param _Rules: Alert rule details within the group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        :param _CreatedAt: Group creation time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param _UpdatedAt: Group update time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._TemplateId = None
+        self._Rules = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def GroupId(self):
+        r"""Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Alert group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def AMPReceivers(self):
+        r"""Alert template ID of tencent cloud observability platform (tcop). returns the converted notice ID of the Alert template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        r"""Custom Alert template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        r"""Alert notification interval.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def TemplateId(self):
+        r"""If the Alert group is created via template, returns the template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Rules(self):
+        r"""Alert rule details within the group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def CreatedAt(self):
+        r"""Group creation time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""Group update time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        self._TemplateId = params.get("TemplateId")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusAlertManagerConfig(AbstractModel):
     r"""Self-built AlertManager configuration used by the alert channel
 
@@ -34503,6 +35435,301 @@ class UpdatePrometheusAgentStatusResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAlertGroupRequest(AbstractModel):
+    r"""UpdatePrometheusAlertGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus instance ID.
+        :type InstanceId: str
+        :param _GroupId: Alert group ID, such as alert-xxxx.
+        :type GroupId: str
+        :param _GroupName: Alert group name. not allowed to have the same name as other alert groups.
+        :type GroupName: str
+        :param _GroupState: Alert group status.
+2 - enable.
+3 - disabled.
+Specifies the Alert rule status under the `Rules` field to be overwritten when not empty.
+        :type GroupState: int
+        :param _AMPReceivers: Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: Specifies the custom Alert notification template.
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: Alert notification cycle (convergence time). defaults to 1h if left empty.
+        :type RepeatInterval: str
+        :param _Rules: Specifies the Alert rule list to be created.
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        """
+        self._InstanceId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupState = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        r"""prometheus instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupId(self):
+        r"""Alert group ID, such as alert-xxxx.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Alert group name. not allowed to have the same name as other alert groups.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupState(self):
+        r"""Alert group status.
+2 - enable.
+3 - disabled.
+Specifies the Alert rule status under the `Rules` field to be overwritten when not empty.
+        :rtype: int
+        """
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+    @property
+    def AMPReceivers(self):
+        r"""Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.
+        :rtype: list of str
+        """
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        r"""Specifies the custom Alert notification template.
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        r"""Alert notification cycle (convergence time). defaults to 1h if left empty.
+        :rtype: str
+        """
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def Rules(self):
+        r"""Specifies the Alert rule list to be created.
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupState = params.get("GroupState")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAlertGroupResponse(AbstractModel):
+    r"""UpdatePrometheusAlertGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Updated Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.
+        :type GroupId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""Updated Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAlertGroupStateRequest(AbstractModel):
+    r"""UpdatePrometheusAlertGroupState request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TMP instance ID
+        :type InstanceId: str
+        :param _GroupIds: Alarm group ID list, such as alert-xxxx.
+        :type GroupIds: list of str
+        :param _GroupState: Describes the group status of the alarm.
+2 - enable.
+3 - disabled.
+        :type GroupState: int
+        """
+        self._InstanceId = None
+        self._GroupIds = None
+        self._GroupState = None
+
+    @property
+    def InstanceId(self):
+        r"""TMP instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupIds(self):
+        r"""Alarm group ID list, such as alert-xxxx.
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def GroupState(self):
+        r"""Describes the group status of the alarm.
+2 - enable.
+3 - disabled.
+        :rtype: int
+        """
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupIds = params.get("GroupIds")
+        self._GroupState = params.get("GroupState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAlertGroupStateResponse(AbstractModel):
+    r"""UpdatePrometheusAlertGroupState response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

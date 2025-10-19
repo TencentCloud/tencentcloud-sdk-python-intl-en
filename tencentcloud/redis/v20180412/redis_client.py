@@ -625,7 +625,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceAccount(self, request):
-        r"""This API is used to query the information of an instance sub-account.
+        r"""This API is used to view instance account information.
 
         :param request: Request instance for DescribeInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountRequest`
@@ -1430,7 +1430,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSecondLevelBackupInfo(self, request):
-        r"""This API is used to query the second-level backup information on an instance.
+        r"""This API is used to query second-level backup information for the instance.
 
         :param request: Request instance for DescribeSecondLevelBackupInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoRequest`
@@ -1890,7 +1890,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceAccount(self, request):
-        r"""This API is used to modify the instance sub-account.
+        r"""This API is used to modify an instance account.
 
         :param request: Request instance for ModifyInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAccountRequest`
@@ -1936,7 +1936,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceBackupMode(self, request):
-        r"""This API is used to modify the instance backup mode.
+        r"""This API is used to modify the backup mode of an instance.
 
         :param request: Request instance for ModifyInstanceBackupMode.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeRequest`

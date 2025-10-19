@@ -4712,7 +4712,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
+        :param _LoadBalancerIds: CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
         :type LoadBalancerIds: list of str
         :param _ForceDelete: Whether to forcibly delete the CLB instance. True indicates forced deletion; False indicates non-forced deletion, and blocking verification is required.
 The default value is False.
@@ -4727,7 +4727,7 @@ The deletion operation is blocked by default in the following cases. If you conf
 
     @property
     def LoadBalancerIds(self):
-        r"""CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
+        r"""CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.
         :rtype: list of str
         """
         return self._LoadBalancerIds

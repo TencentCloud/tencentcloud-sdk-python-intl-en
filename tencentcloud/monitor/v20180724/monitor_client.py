@@ -327,6 +327,32 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePrometheusAlertGroup(self, request):
+        r"""This API is used to create a Prometheus alert rule groups.
+
+        This API is used to group alert rules, which can include multiple alert rules. Alert messages within the group are sent via the alert group's notification template.
+        This API is used to enable individually creating enabled/disabled alert rules under an alert group.
+
+        :param request: Request instance for CreatePrometheusAlertGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAlertGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAlertGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusAlertGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrometheusAlertGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrometheusAlertPolicy(self, request):
         r"""This API is used to create an alerting rule.
 
@@ -757,6 +783,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DeletePolicyGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePolicyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePrometheusAlertGroups(self, request):
+        r"""This API is used to delete Prometheus alert rule groups.
+
+        :param request: Request instance for DeletePrometheusAlertGroups.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusAlertGroupsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusAlertGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrometheusAlertGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrometheusAlertGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1725,6 +1774,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribePrometheusAgents", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePrometheusAgentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrometheusAlertGroups(self, request):
+        r"""This API is used to query alarm groups under a given prometheus.
+
+        :param request: Request instance for DescribePrometheusAlertGroups.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertGroupsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusAlertGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusAlertGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3232,6 +3304,52 @@ class MonitorClient(AbstractClient):
             body = self.call("UpdatePrometheusAgentStatus", params, headers=headers)
             response = json.loads(body)
             model = models.UpdatePrometheusAgentStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePrometheusAlertGroup(self, request):
+        r"""This API is used to update Prometheus alert rule groups.
+
+        :param request: Request instance for UpdatePrometheusAlertGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePrometheusAlertGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePrometheusAlertGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePrometheusAlertGroupState(self, request):
+        r"""This API is used to batch update the status of alarm groups and set all rules grouped in them to the target status.
+
+        :param request: Request instance for UpdatePrometheusAlertGroupState.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupStateRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAlertGroupStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePrometheusAlertGroupState", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePrometheusAlertGroupStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
