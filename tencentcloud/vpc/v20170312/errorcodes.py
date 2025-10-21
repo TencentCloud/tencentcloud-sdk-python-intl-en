@@ -281,6 +281,9 @@ INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAss
 # A request cannot contain IP addresses with different cluster types.
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
 
+# Missing required parameters. provide at least one.
+INVALIDPARAMETERVALUE_MUSTHASONE = 'InvalidParameterValue.MustHasOne'
+
 # The DNAT forwarding rule of the NAT gateway already exists.
 INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEEXISTED = 'InvalidParameterValue.NatGatewayDnatRuleExisted'
 
@@ -350,7 +353,10 @@ INVALIDPARAMETERVALUE_RESOURCENOTFOUND = 'InvalidParameterValue.ResourceNotFound
 # The resource does not support this operation.
 INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = 'InvalidParameterValue.ResourceNotSupport'
 
-# The specified priorities conflict with each other or with existing priorities.
+# The routing strategy binding rule already exists.
+INVALIDPARAMETERVALUE_ROUTEPOLICYASSOCIATIONEXISTS = 'InvalidParameterValue.RoutePolicyAssociationExists'
+
+# The specified priority conflicts with each other or with an already existing priority.
 INVALIDPARAMETERVALUE_ROUTEPOLICYPRIORITYCONFLICT = 'InvalidParameterValue.RoutePolicyPriorityConflict'
 
 # Operation failed: The instance to shut down is using the current resource. 
@@ -958,6 +964,9 @@ UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 
 # No roles available. Please confirm whether you get the authorization for the role.
 UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
+
+# The routing strategy is associated with the route table and cannot be deleted.
+UNSUPPORTEDOPERATION_ROUTEPOLICYASSOCIATION = 'UnsupportedOperation.RoutePolicyAssociation'
 
 # The current route table deletion failed. Please check if there are any associated policies.
 UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = 'UnsupportedOperation.RouteTableCanNotDelete'

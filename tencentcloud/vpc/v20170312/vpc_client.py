@@ -1160,6 +1160,75 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRoutePolicy(self, request):
+        r"""This API is used to create a VPC route reception policy, including name, description and policy entries.
+
+        :param request: Request instance for CreateRoutePolicy.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRoutePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoutePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRoutePolicyAssociations(self, request):
+        r"""This API is used to create route reception policy bindings (the binding relationship between policy instances and route table instances as well as set priorities).
+
+        :param request: Request instance for CreateRoutePolicyAssociations.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyAssociationsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyAssociationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRoutePolicyAssociations", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoutePolicyAssociationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRoutePolicyEntries(self, request):
+        r"""This API is used to create route reception policy entries.
+
+        :param request: Request instance for CreateRoutePolicyEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateRoutePolicyEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRoutePolicyEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoutePolicyEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRouteTable(self, request):
         r"""This API is used to create a route table.
         * After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.
@@ -2041,6 +2110,75 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteReserveIpAddresses", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteReserveIpAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRoutePolicy(self, request):
+        r"""This API is used to delete a route reception policy and entries.
+
+        :param request: Request instance for DeleteRoutePolicy.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoutePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoutePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRoutePolicyAssociations(self, request):
+        r"""This API is used to delete route reception policy bindings (the binding relationship between route reception policy objects and route tables).
+
+        :param request: Request instance for DeleteRoutePolicyAssociations.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyAssociationsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyAssociationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoutePolicyAssociations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoutePolicyAssociationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRoutePolicyEntries(self, request):
+        r"""This API is used to delete route reception policy entries.
+
+        :param request: Request instance for DeleteRoutePolicyEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutePolicyEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoutePolicyEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoutePolicyEntriesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3418,6 +3556,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeReserveIpAddresses", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReserveIpAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRoutePolicyEntries(self, request):
+        r"""This API is used to query the route reception policy entry list.
+
+        :param request: Request instance for DescribeRoutePolicyEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRoutePolicyEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRoutePolicyEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoutePolicyEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoutePolicyEntriesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5667,6 +5828,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRoutePolicyAttribute(self, request):
+        r"""This API is used to modify the route reception policy attribute.
+
+        :param request: Request instance for ModifyRoutePolicyAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyRoutePolicyAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyRoutePolicyAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoutePolicyAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoutePolicyAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRouteTableAttribute(self, request):
         r"""This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table.
 
@@ -6266,6 +6450,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReplaceRoutePolicyAssociations(self, request):
+        r"""This API is used to modify the binding Priority (Priority) based on the route reception policy instance ID (RoutePolicyId) and route table instance ID (RouteTableId), supporting batch modification.
+
+        :param request: Request instance for ReplaceRoutePolicyAssociations.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutePolicyAssociationsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutePolicyAssociationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceRoutePolicyAssociations", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceRoutePolicyAssociationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaceRoutePolicyEntries(self, request):
+        r"""This API is used to modify specified routing policy entries based on route reception policy rule ID and supports batch modification.
+
+        :param request: Request instance for ReplaceRoutePolicyEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutePolicyEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutePolicyEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceRoutePolicyEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceRoutePolicyEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplaceRouteTableAssociation(self, request):
         r"""This API (ReplaceRouteTableAssociation) is used to modify the route table associated with a subnet.
         * A subnet can only be associated with one route table.
@@ -6398,6 +6628,52 @@ class VpcClient(AbstractClient):
             body = self.call("ResetNatGatewayConnection", params, headers=headers)
             response = json.loads(body)
             model = models.ResetNatGatewayConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetRoutePolicyAssociations(self, request):
+        r"""This API is used to unbind the routing policy instance already bound to a specific route table instance, set up alarms for the new binding routing policy and priority.
+
+        :param request: Request instance for ResetRoutePolicyAssociations.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetRoutePolicyAssociationsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetRoutePolicyAssociationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetRoutePolicyAssociations", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetRoutePolicyAssociationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetRoutePolicyEntries(self, request):
+        r"""This API is used to reset the designated route reception policy entry based on the rule ID and supports batch modification.
+
+        :param request: Request instance for ResetRoutePolicyEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetRoutePolicyEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetRoutePolicyEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetRoutePolicyEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetRoutePolicyEntriesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
