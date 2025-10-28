@@ -966,7 +966,7 @@ class TeoClient(AbstractClient):
 
     def DeleteAliasDomain(self, request):
         r"""This API is used to delete an alias domain name.
-        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
+        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DeleteAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainRequest`
@@ -2255,7 +2255,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLoadBalancerList(self, request):
-        r"""This API is used to query the LoadBalancer list. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+        r"""This API is used to query the LoadBalancer list. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DescribeLoadBalancerList.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListRequest`
@@ -2439,7 +2439,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroupHealthStatus(self, request):
-        r"""This API is used to query the health status of origin server groups under a LoadBalancer. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+        r"""This API is used to query the health status of origin server groups under a LoadBalancer. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DescribeOriginGroupHealthStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusRequest`
@@ -2882,10 +2882,10 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        r"""This API is used to query time-series data for L7 domain services.
-        Notes:
-        1. There is a delay of about 10 minutes for this API. It is recommended to query data from 10 minutes before the current time.
-        2. By default, the API returns traffic and request data after Web Security mitigation (that is, the clean traffic). Users can set `Filters.mitigatedByWebSecurity ` to query data that has been mitigated by Web Security.
+        r"""This API is used to query time series data for L7 domain name business.
+        Create and bind policy Query instance Reset instance access password.
+        This API is used to query data with a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.
+        This API is used to return post-protection traffic request data by default. Users can query defended data in `Filters.mitigatedByWebSecurity`.
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7AnalysisDataRequest`
@@ -2931,10 +2931,10 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        r"""This API is used to query the top N data of the L7 domain services by a specified dimension.
-        Notes:
-        1. There is a delay of about 10 minutes for this API. It is recommended to query data from 10 minutes before the current time.
-        2. By default, the API returns traffic and request data after Web Security mitigation (that is, the clean traffic). Users can set `Filters.mitigatedByWebSecurity ` to query data that has been mitigated by Web Security.
+        r"""This API is used to query the top N data of the L7 domain name business by specified dimension.
+        Create and bind policy Query instance Reset instance access password.
+        This API is used to query data with a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.
+        This API is used to return post-protection traffic request data by default. Users can query defended data in `Filters.mitigatedByWebSecurity`.
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7AnalysisDataRequest`
@@ -3385,7 +3385,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomain(self, request):
         r"""This API is used to modify an alias domain name.
-        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
+        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for ModifyAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainRequest`

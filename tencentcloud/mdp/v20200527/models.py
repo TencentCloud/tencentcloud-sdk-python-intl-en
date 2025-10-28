@@ -399,9 +399,9 @@ class BindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: Channel Id
+        :param _ChannelId: Channel Id.
         :type ChannelId: str
-        :param _CdnDomain: The domain name for CDN playback.
+        :param _CdnDomain: Specifies the playback domain of CDN.
         :type CdnDomain: str
         """
         self._ChannelId = None
@@ -409,7 +409,7 @@ class BindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""Channel Id
+        r"""Channel Id.
         :rtype: str
         """
         return self._ChannelId
@@ -420,7 +420,7 @@ class BindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     @property
     def CdnDomain(self):
-        r"""The domain name for CDN playback.
+        r"""Specifies the playback domain of CDN.
         :rtype: str
         """
         return self._CdnDomain
@@ -11709,9 +11709,9 @@ class UnbindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: Channel Id
+        :param _ChannelId: Channel Id.
         :type ChannelId: str
-        :param _CdnDomain: The domain name for CDN playback.
+        :param _CdnDomain: Specifies the playback domain of CDN.
         :type CdnDomain: str
         """
         self._ChannelId = None
@@ -11719,7 +11719,7 @@ class UnbindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""Channel Id
+        r"""Channel Id.
         :rtype: str
         """
         return self._ChannelId
@@ -11730,7 +11730,7 @@ class UnbindSSAICDNDomainWithChannelRequest(AbstractModel):
 
     @property
     def CdnDomain(self):
-        r"""The domain name for CDN playback.
+        r"""Specifies the playback domain of CDN.
         :rtype: str
         """
         return self._CdnDomain

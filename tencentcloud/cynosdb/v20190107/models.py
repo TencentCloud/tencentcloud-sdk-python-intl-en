@@ -17786,6 +17786,239 @@ class ExportResourcePackageDeductDetailsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GoodsPrice(AbstractModel):
+    r"""Item price.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstancePrice: Specifies the instance price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param _StoragePrice: Specifies the storage price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param _GoodsSpec: Specifies the product specification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GoodsSpec: :class:`tencentcloud.cynosdb.v20190107.models.GoodsSpec`
+        """
+        self._InstancePrice = None
+        self._StoragePrice = None
+        self._GoodsSpec = None
+
+    @property
+    def InstancePrice(self):
+        r"""Specifies the instance price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        """
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def StoragePrice(self):
+        r"""Specifies the storage price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        """
+        return self._StoragePrice
+
+    @StoragePrice.setter
+    def StoragePrice(self, StoragePrice):
+        self._StoragePrice = StoragePrice
+
+    @property
+    def GoodsSpec(self):
+        r"""Specifies the product specification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GoodsSpec`
+        """
+        return self._GoodsSpec
+
+    @GoodsSpec.setter
+    def GoodsSpec(self, GoodsSpec):
+        self._GoodsSpec = GoodsSpec
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self._InstancePrice = TradePrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("StoragePrice") is not None:
+            self._StoragePrice = TradePrice()
+            self._StoragePrice._deserialize(params.get("StoragePrice"))
+        if params.get("GoodsSpec") is not None:
+            self._GoodsSpec = GoodsSpec()
+            self._GoodsSpec._deserialize(params.get("GoodsSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GoodsSpec(AbstractModel):
+    r"""Product specification.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GoodsNum: Number of products
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GoodsNum: int
+        :param _Cpu: Number of CPU cores. required for PREPAID and POSTPAID instance types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param _Memory: Memory size in gb. required for PREPAID and POSTPAID instance types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Memory: int
+        :param _Ccu: Ccu size. required for serverless type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ccu: float
+        :param _StorageLimit: Storage size. required for PREPAID storage type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageLimit: int
+        :param _TimeSpan: Purchase duration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param _TimeUnit: Duration unit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param _DeviceType: Machine type.
+        :type DeviceType: str
+        """
+        self._GoodsNum = None
+        self._Cpu = None
+        self._Memory = None
+        self._Ccu = None
+        self._StorageLimit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._DeviceType = None
+
+    @property
+    def GoodsNum(self):
+        r"""Number of products
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores. required for PREPAID and POSTPAID instance types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Memory size in gb. required for PREPAID and POSTPAID instance types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Ccu(self):
+        r"""Ccu size. required for serverless type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Ccu
+
+    @Ccu.setter
+    def Ccu(self, Ccu):
+        self._Ccu = Ccu
+
+    @property
+    def StorageLimit(self):
+        r"""Storage size. required for PREPAID storage type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def TimeSpan(self):
+        r"""Purchase duration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""Duration unit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def DeviceType(self):
+        r"""Machine type.
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+
+    def _deserialize(self, params):
+        self._GoodsNum = params.get("GoodsNum")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Ccu = params.get("Ccu")
+        self._StorageLimit = params.get("StorageLimit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputAccount(AbstractModel):
     r"""Account. Valid values: `accountName`, `host`.
 
@@ -18270,6 +18503,140 @@ class InquirePriceModifyResponse(AbstractModel):
         if params.get("StoragePrice") is not None:
             self._StoragePrice = TradePrice()
             self._StoragePrice._deserialize(params.get("StoragePrice"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquirePriceMultiSpecRequest(AbstractModel):
+    r"""InquirePriceMultiSpec request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone. specifies the best practice for region provision.
+        :type Zone: str
+        :param _InstancePayMode: Instance purchase type. available values are: PREPAID, POSTPAID, SERVERLESS.
+        :type InstancePayMode: str
+        :param _StoragePayMode: Storage purchase type. available values are: PREPAID, POSTPAID.
+        :type StoragePayMode: str
+        :param _GoodsSpecs: Specifies the product specification.
+        :type GoodsSpecs: list of GoodsSpec
+        """
+        self._Zone = None
+        self._InstancePayMode = None
+        self._StoragePayMode = None
+        self._GoodsSpecs = None
+
+    @property
+    def Zone(self):
+        r"""Availability zone. specifies the best practice for region provision.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstancePayMode(self):
+        r"""Instance purchase type. available values are: PREPAID, POSTPAID, SERVERLESS.
+        :rtype: str
+        """
+        return self._InstancePayMode
+
+    @InstancePayMode.setter
+    def InstancePayMode(self, InstancePayMode):
+        self._InstancePayMode = InstancePayMode
+
+    @property
+    def StoragePayMode(self):
+        r"""Storage purchase type. available values are: PREPAID, POSTPAID.
+        :rtype: str
+        """
+        return self._StoragePayMode
+
+    @StoragePayMode.setter
+    def StoragePayMode(self, StoragePayMode):
+        self._StoragePayMode = StoragePayMode
+
+    @property
+    def GoodsSpecs(self):
+        r"""Specifies the product specification.
+        :rtype: list of GoodsSpec
+        """
+        return self._GoodsSpecs
+
+    @GoodsSpecs.setter
+    def GoodsSpecs(self, GoodsSpecs):
+        self._GoodsSpecs = GoodsSpecs
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._InstancePayMode = params.get("InstancePayMode")
+        self._StoragePayMode = params.get("StoragePayMode")
+        if params.get("GoodsSpecs") is not None:
+            self._GoodsSpecs = []
+            for item in params.get("GoodsSpecs"):
+                obj = GoodsSpec()
+                obj._deserialize(item)
+                self._GoodsSpecs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceMultiSpecResponse(AbstractModel):
+    r"""InquirePriceMultiSpec response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GoodsPrice: Specifies the product price.
+        :type GoodsPrice: list of GoodsPrice
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GoodsPrice = None
+        self._RequestId = None
+
+    @property
+    def GoodsPrice(self):
+        r"""Specifies the product price.
+        :rtype: list of GoodsPrice
+        """
+        return self._GoodsPrice
+
+    @GoodsPrice.setter
+    def GoodsPrice(self, GoodsPrice):
+        self._GoodsPrice = GoodsPrice
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GoodsPrice") is not None:
+            self._GoodsPrice = []
+            for item in params.get("GoodsPrice"):
+                obj = GoodsPrice()
+                obj._deserialize(item)
+                self._GoodsPrice.append(obj)
         self._RequestId = params.get("RequestId")
 
 

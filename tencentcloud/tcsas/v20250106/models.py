@@ -8950,32 +8950,29 @@ class DescribeTeamDetailResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _TeamRoleType: Team role type 1-Mini program team 2-Application team
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TeamRoleType: Team role type 1-mini program team 2-application team
         :type TeamRoleType: int
-        :param _AdminUserAccount: Admin account
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdminUserAccount: Administrator account
         :type AdminUserAccount: str
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
         :param _MemberCount: Number of team members
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberCount: int
         :param _BindMiniTeamCount: Number of bound mini program teams
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BindMiniTeamCount: int
         :param _BindTeamName: Name of the bound team
         :type BindTeamName: str
         :param _RegisterLink: Team registration link
         :type RegisterLink: str
-        :param _ApplicationName: Application name. It’s required when querying details of a mini program team.
+        :param _ApplicationName: Application name. It Is required when querying details of a mini program team.
         :type ApplicationName: str
+        :param _ExpireTime: Team expiration time. 0 means never expire.
+        :type ExpireTime: int
+        :param _Status: Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :type Status: int
         """
         self._TeamName = None
         self._TeamRoleType = None
@@ -8987,11 +8984,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BindTeamName = None
         self._RegisterLink = None
         self._ApplicationName = None
+        self._ExpireTime = None
+        self._Status = None
 
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -9002,8 +9000,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TeamRoleType(self):
-        r"""Team role type 1-Mini program team 2-Application team
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Team role type 1-mini program team 2-application team
         :rtype: int
         """
         return self._TeamRoleType
@@ -9014,8 +9011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminUserAccount(self):
-        r"""Admin account
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Administrator account
         :rtype: str
         """
         return self._AdminUserAccount
@@ -9027,7 +9023,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -9039,7 +9034,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -9051,7 +9045,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MemberCount(self):
         r"""Number of team members
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MemberCount
@@ -9063,7 +9056,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def BindMiniTeamCount(self):
         r"""Number of bound mini program teams
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._BindMiniTeamCount
@@ -9096,7 +9088,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        r"""Application name. It’s required when querying details of a mini program team.
+        r"""Application name. It Is required when querying details of a mini program team.
         :rtype: str
         """
         return self._ApplicationName
@@ -9104,6 +9096,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ApplicationName.setter
     def ApplicationName(self, ApplicationName):
         self._ApplicationName = ApplicationName
+
+    @property
+    def ExpireTime(self):
+        r"""Team expiration time. 0 means never expire.
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        r"""Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
@@ -9117,6 +9131,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BindTeamName = params.get("BindTeamName")
         self._RegisterLink = params.get("RegisterLink")
         self._ApplicationName = params.get("ApplicationName")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9135,30 +9151,27 @@ class DescribeTeamListInfoResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _AdminUserId: Admin ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdminUserId: Administrator user ID
         :type AdminUserId: str
-        :param _AdminUserAccount: Admin account
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdminUserAccount: Administrator account
         :type AdminUserAccount: str
-        :param _AdminUserName: Admin username
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdminUserName: Administrator username
         :type AdminUserName: str
         :param _MemberCount: Number of team members
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberCount: int
         :param _RegisterLink: Team registration link
         :type RegisterLink: str
         :param _TeamRoleTypeList: Team permission type
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamRoleTypeList: list of int
         :param _RelatedTeamId: Associated team ID
         :type RelatedTeamId: int
+        :param _ExpireTime: Team expiration time. 0 means never expire.
+        :type ExpireTime: int
+        :param _Status: Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :type Status: int
         """
         self._TeamId = None
         self._TeamName = None
@@ -9169,11 +9182,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegisterLink = None
         self._TeamRoleTypeList = None
         self._RelatedTeamId = None
+        self._ExpireTime = None
+        self._Status = None
 
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -9185,7 +9199,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -9196,8 +9209,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminUserId(self):
-        r"""Admin ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Administrator user ID
         :rtype: str
         """
         return self._AdminUserId
@@ -9208,8 +9220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminUserAccount(self):
-        r"""Admin account
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Administrator account
         :rtype: str
         """
         return self._AdminUserAccount
@@ -9220,8 +9231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminUserName(self):
-        r"""Admin username
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Administrator username
         :rtype: str
         """
         return self._AdminUserName
@@ -9233,7 +9243,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MemberCount(self):
         r"""Number of team members
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MemberCount
@@ -9256,7 +9265,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamRoleTypeList(self):
         r"""Team permission type
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
         return self._TeamRoleTypeList
@@ -9276,6 +9284,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RelatedTeamId(self, RelatedTeamId):
         self._RelatedTeamId = RelatedTeamId
 
+    @property
+    def ExpireTime(self):
+        r"""Team expiration time. 0 means never expire.
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        r"""Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._TeamId = params.get("TeamId")
@@ -9287,6 +9317,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegisterLink = params.get("RegisterLink")
         self._TeamRoleTypeList = params.get("TeamRoleTypeList")
         self._RelatedTeamId = params.get("RelatedTeamId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9306,11 +9338,11 @@ class DescribeTeamListRequest(AbstractModel):
         r"""
         :param _Offset: Pagination offset
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Page size
         :type Limit: int
         :param _PlatformId: Platform ID
         :type PlatformId: str
-        :param _Keyword: Name of the team to be queried
+        :param _Keyword: Team name to be queried
         :type Keyword: str
         """
         self._Offset = None
@@ -9331,7 +9363,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Page size
         :rtype: int
         """
         return self._Limit
@@ -9353,7 +9385,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Name of the team to be queried
+        r"""Team name to be queried
         :rtype: str
         """
         return self._Keyword
@@ -9803,11 +9835,9 @@ class DescribeTeamPageResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Total count
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeTeamListInfoResp
         """
         self._TotalCount = None
@@ -9815,8 +9845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total count
         :rtype: int
         """
         return self._TotalCount
@@ -9828,7 +9857,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeTeamListInfoResp
         """
         return self._DataList

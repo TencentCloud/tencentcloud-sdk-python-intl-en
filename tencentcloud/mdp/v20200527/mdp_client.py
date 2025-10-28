@@ -73,7 +73,7 @@ class MdpClient(AbstractClient):
 
 
     def BindSSAICDNDomainWithChannel(self, request):
-        r"""BindSSAICDNDomainWithChannel
+        r"""This API is used to bind a CDN playback domain to a channel.
 
         :param request: Request instance for BindSSAICDNDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.BindSSAICDNDomainWithChannelRequest`
@@ -1430,7 +1430,7 @@ class MdpClient(AbstractClient):
 
 
     def UnbindSSAICDNDomainWithChannel(self, request):
-        r"""UnbindSSAICDNDomainWithChannel
+        r"""This API is used to cancel the correlation between a channel and a CDN playback domain.
 
         :param request: Request instance for UnbindSSAICDNDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindSSAICDNDomainWithChannelRequest`
