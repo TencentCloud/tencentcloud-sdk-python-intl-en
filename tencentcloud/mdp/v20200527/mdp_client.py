@@ -72,6 +72,29 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindSSAICDNDomainWithChannel(self, request):
+        r"""BindSSAICDNDomainWithChannel
+
+        :param request: Request instance for BindSSAICDNDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.BindSSAICDNDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.BindSSAICDNDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindSSAICDNDomainWithChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindSSAICDNDomainWithChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStreamPackageChannel(self, request):
         r"""This API is used to create a StreamPackage channel.
 
@@ -1397,6 +1420,29 @@ class MdpClient(AbstractClient):
             body = self.call("UnbindLinearAssemblyCDNDomainWithChannel", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindLinearAssemblyCDNDomainWithChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindSSAICDNDomainWithChannel(self, request):
+        r"""UnbindSSAICDNDomainWithChannel
+
+        :param request: Request instance for UnbindSSAICDNDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindSSAICDNDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.UnbindSSAICDNDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindSSAICDNDomainWithChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindSSAICDNDomainWithChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

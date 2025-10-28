@@ -3230,6 +3230,215 @@ class DescribeDBInstanceNamespaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceNodePropertyRequest(AbstractModel):
+    r"""DescribeDBInstanceNodeProperty request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _NodeIds: Node ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), go to Node Management, and copy the node ID.
+        :type NodeIds: list of str
+        :param _Roles: Node role. Valid values:
+- PRIMARY: primary node.
+- SECONDARY: secondary node.
+- READONLY: read-only node.
+- ARBITER: arbitration node.
+        :type Roles: list of str
+        :param _OnlyHidden: Whether the node is a hidden node. Default value: false.
+        :type OnlyHidden: bool
+        :param _Priority: Priority of the node for electing it as the new primary node. Value range: [0, 100]. A larger value indicates a higher priority.
+        :type Priority: int
+        :param _Votes: Node voting right.- 1: The node has the right to vote.
+- 0: The node does not have the right to vote.
+        :type Votes: int
+        :param _Tags: Node tag.
+        :type Tags: list of NodeTag
+        """
+        self._InstanceId = None
+        self._NodeIds = None
+        self._Roles = None
+        self._OnlyHidden = None
+        self._Priority = None
+        self._Votes = None
+        self._Tags = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeIds(self):
+        r"""Node ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), go to Node Management, and copy the node ID.
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def Roles(self):
+        r"""Node role. Valid values:
+- PRIMARY: primary node.
+- SECONDARY: secondary node.
+- READONLY: read-only node.
+- ARBITER: arbitration node.
+        :rtype: list of str
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def OnlyHidden(self):
+        r"""Whether the node is a hidden node. Default value: false.
+        :rtype: bool
+        """
+        return self._OnlyHidden
+
+    @OnlyHidden.setter
+    def OnlyHidden(self, OnlyHidden):
+        self._OnlyHidden = OnlyHidden
+
+    @property
+    def Priority(self):
+        r"""Priority of the node for electing it as the new primary node. Value range: [0, 100]. A larger value indicates a higher priority.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Votes(self):
+        r"""Node voting right.- 1: The node has the right to vote.
+- 0: The node does not have the right to vote.
+        :rtype: int
+        """
+        return self._Votes
+
+    @Votes.setter
+    def Votes(self, Votes):
+        self._Votes = Votes
+
+    @property
+    def Tags(self):
+        r"""Node tag.
+        :rtype: list of NodeTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeIds = params.get("NodeIds")
+        self._Roles = params.get("Roles")
+        self._OnlyHidden = params.get("OnlyHidden")
+        self._Priority = params.get("Priority")
+        self._Votes = params.get("Votes")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = NodeTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceNodePropertyResponse(AbstractModel):
+    r"""DescribeDBInstanceNodeProperty response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mongos: Mongos node attributes.
+        :type Mongos: list of NodeProperty
+        :param _ReplicateSets: Replica set node information.
+        :type ReplicateSets: list of ReplicateSetInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Mongos = None
+        self._ReplicateSets = None
+        self._RequestId = None
+
+    @property
+    def Mongos(self):
+        r"""Mongos node attributes.
+        :rtype: list of NodeProperty
+        """
+        return self._Mongos
+
+    @Mongos.setter
+    def Mongos(self, Mongos):
+        self._Mongos = Mongos
+
+    @property
+    def ReplicateSets(self):
+        r"""Replica set node information.
+        :rtype: list of ReplicateSetInfo
+        """
+        return self._ReplicateSets
+
+    @ReplicateSets.setter
+    def ReplicateSets(self, ReplicateSets):
+        self._ReplicateSets = ReplicateSets
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Mongos") is not None:
+            self._Mongos = []
+            for item in params.get("Mongos"):
+                obj = NodeProperty()
+                obj._deserialize(item)
+                self._Mongos.append(obj)
+        if params.get("ReplicateSets") is not None:
+            self._ReplicateSets = []
+            for item in params.get("ReplicateSets"):
+                obj = ReplicateSetInfo()
+                obj._deserialize(item)
+                self._ReplicateSets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     r"""DescribeDBInstances request structure.
 
@@ -7325,6 +7534,297 @@ class ModifyNetworkAddress(AbstractModel):
         
 
 
+class NodeProperty(AbstractModel):
+    r"""Node attributes.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Node AZ.
+        :type Zone: str
+        :param _NodeName: Node name.
+        :type NodeName: str
+        :param _Address: Node access address.
+        :type Address: str
+        :param _WanServiceAddress: Public network access address (IP address or domain name) of the node. The example value is an IP address.
+        :type WanServiceAddress: str
+        :param _Role: Node role.
+- PRIMARY: primary node.
+- SECONDARY: secondary node.
+- READONLY: read-only node.
+- ARBITER: arbitration node.
+        :type Role: str
+        :param _Hidden: Whether the node is a hidden node.
+- true: a hidden node.
+- false: not a hidden node.
+        :type Hidden: bool
+        :param _Status: Node status.
+- NORMAL: running normally.
+- STARTUP: starting.
+- STARTUP2: starting and processing the intermediate data.
+- RECOVERING: recovering and not available.
+- DOWN: offline.
+- UNKNOWN: unknown status.
+- ROLLBACK: rolling back.
+- REMOVED: removed.
+        :type Status: str
+        :param _SlaveDelay: Delay time of primary-secondary synchronization, in seconds.
+        :type SlaveDelay: int
+        :param _Priority: Node priority. Value range: [0, 100]. A larger value indicates a higher priority.
+        :type Priority: int
+        :param _Votes: Node voting right.
+- 1: The node has the right to vote.
+- 0: The node does not have the right to vote.
+        :type Votes: int
+        :param _Tags: Node tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of NodeTag
+        :param _ReplicateSetId: Replica set ID.
+        :type ReplicateSetId: str
+        """
+        self._Zone = None
+        self._NodeName = None
+        self._Address = None
+        self._WanServiceAddress = None
+        self._Role = None
+        self._Hidden = None
+        self._Status = None
+        self._SlaveDelay = None
+        self._Priority = None
+        self._Votes = None
+        self._Tags = None
+        self._ReplicateSetId = None
+
+    @property
+    def Zone(self):
+        r"""Node AZ.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeName(self):
+        r"""Node name.
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Address(self):
+        r"""Node access address.
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def WanServiceAddress(self):
+        r"""Public network access address (IP address or domain name) of the node. The example value is an IP address.
+        :rtype: str
+        """
+        return self._WanServiceAddress
+
+    @WanServiceAddress.setter
+    def WanServiceAddress(self, WanServiceAddress):
+        self._WanServiceAddress = WanServiceAddress
+
+    @property
+    def Role(self):
+        r"""Node role.
+- PRIMARY: primary node.
+- SECONDARY: secondary node.
+- READONLY: read-only node.
+- ARBITER: arbitration node.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Hidden(self):
+        r"""Whether the node is a hidden node.
+- true: a hidden node.
+- false: not a hidden node.
+        :rtype: bool
+        """
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
+    @property
+    def Status(self):
+        r"""Node status.
+- NORMAL: running normally.
+- STARTUP: starting.
+- STARTUP2: starting and processing the intermediate data.
+- RECOVERING: recovering and not available.
+- DOWN: offline.
+- UNKNOWN: unknown status.
+- ROLLBACK: rolling back.
+- REMOVED: removed.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SlaveDelay(self):
+        r"""Delay time of primary-secondary synchronization, in seconds.
+        :rtype: int
+        """
+        return self._SlaveDelay
+
+    @SlaveDelay.setter
+    def SlaveDelay(self, SlaveDelay):
+        self._SlaveDelay = SlaveDelay
+
+    @property
+    def Priority(self):
+        r"""Node priority. Value range: [0, 100]. A larger value indicates a higher priority.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Votes(self):
+        r"""Node voting right.
+- 1: The node has the right to vote.
+- 0: The node does not have the right to vote.
+        :rtype: int
+        """
+        return self._Votes
+
+    @Votes.setter
+    def Votes(self, Votes):
+        self._Votes = Votes
+
+    @property
+    def Tags(self):
+        r"""Node tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of NodeTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ReplicateSetId(self):
+        r"""Replica set ID.
+        :rtype: str
+        """
+        return self._ReplicateSetId
+
+    @ReplicateSetId.setter
+    def ReplicateSetId(self, ReplicateSetId):
+        self._ReplicateSetId = ReplicateSetId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._NodeName = params.get("NodeName")
+        self._Address = params.get("Address")
+        self._WanServiceAddress = params.get("WanServiceAddress")
+        self._Role = params.get("Role")
+        self._Hidden = params.get("Hidden")
+        self._Status = params.get("Status")
+        self._SlaveDelay = params.get("SlaveDelay")
+        self._Priority = params.get("Priority")
+        self._Votes = params.get("Votes")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = NodeTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ReplicateSetId = params.get("ReplicateSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTag(AbstractModel):
+    r"""Node tag.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Node tag key.
+        :type TagKey: str
+        :param _TagValue: Node tag value.
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""Node tag key.
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""Node tag value.
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineIsolatedDBInstanceRequest(AbstractModel):
     r"""OfflineIsolatedDBInstance request structure.
 
@@ -7674,6 +8174,47 @@ class ReplicaSetInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._ReplicaSetId = params.get("ReplicaSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplicateSetInfo(AbstractModel):
+    r"""Replica set information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: Node attributes.
+        :type Nodes: list of NodeProperty
+        """
+        self._Nodes = None
+
+    @property
+    def Nodes(self):
+        r"""Node attributes.
+        :rtype: list of NodeProperty
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = NodeProperty()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
