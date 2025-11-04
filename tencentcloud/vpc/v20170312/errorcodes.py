@@ -401,7 +401,7 @@ INVALIDPARAMETERVALUE_TAGNOTEXISTED = 'InvalidParameterValue.TagNotExisted'
 # Unsupported tag.
 INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = 'InvalidParameterValue.TagNotSupportTag'
 
-# 'The tag resource format error.
+# Tag resource format error.
 INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = 'InvalidParameterValue.TagResourceFormatError'
 
 # Exceeded the quota of tag timestamp.
@@ -710,6 +710,9 @@ UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = 'UnsupportedOperation.CcnO
 # The specified route table does not exist.
 UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = 'UnsupportedOperation.CcnRouteTableNotExist'
 
+# Configure the subnet of Cdc before release requires setting the VPC property CdcId.
+UNSUPPORTEDOPERATION_CDCPUBLISHNEEDCDCID = 'UnsupportedOperation.CdcPublishNeedCdcId'
+
 # CDC subnet can only create a route to the local gateway.
 UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = 'UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway'
 
@@ -1003,6 +1006,9 @@ UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPo
 
 # The relayed ENI does not support this operation.
 UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = 'UnsupportedOperation.SubEniNotSupportTrunking'
+
+# The subnet and Vpc have different configured CdcId.
+UNSUPPORTEDOPERATION_SUBNETMISMATCHVPCCDCID = 'UnsupportedOperation.SubnetMismatchVpcCdcId'
 
 # The subnet does not exist.
 UNSUPPORTEDOPERATION_SUBNETNOTEXISTS = 'UnsupportedOperation.SubnetNotExists'

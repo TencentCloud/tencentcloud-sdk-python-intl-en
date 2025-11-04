@@ -2708,8 +2708,7 @@ class AssistantCidr(AbstractModel):
         :type CidrBlock: str
         :param _AssistantType: The secondary CIDR block type. 0: common secondary CIDR block. 1: container secondary CIDR block. Default: 0.
         :type AssistantType: int
-        :param _SubnetSet: Subnets divided by the secondary CIDR.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubnetSet: Subnet Split by Auxiliary CIDR
         :type SubnetSet: list of Subnet
         """
         self._VpcId = None
@@ -2752,8 +2751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetSet(self):
-        r"""Subnets divided by the secondary CIDR.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subnet Split by Auxiliary CIDR
         :rtype: list of Subnet
         """
         return self._SubnetSet
@@ -11100,6 +11098,8 @@ class CreateVpcRequest(AbstractModel):
         :type DomainName: str
         :param _Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param _EnableRouteVpcPublish: Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.
+        :type EnableRouteVpcPublish: bool
         """
         self._VpcName = None
         self._CidrBlock = None
@@ -11107,6 +11107,7 @@ class CreateVpcRequest(AbstractModel):
         self._DnsServers = None
         self._DomainName = None
         self._Tags = None
+        self._EnableRouteVpcPublish = None
 
     @property
     def VpcName(self):
@@ -11174,6 +11175,17 @@ class CreateVpcRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def EnableRouteVpcPublish(self):
+        r"""Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -11187,6 +11199,7 @@ class CreateVpcRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30592,6 +30605,72 @@ class IPSECOptionsSpecification(AbstractModel):
         
 
 
+class ISPIPv6CidrBlock(AbstractModel):
+    r"""Returns multi-operator IPv6 Cidr Block.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6CidrBlock: IPv6 CIdr Block
+        :type IPv6CidrBlock: str
+        :param _ISPType: Network operator type. valid values: 'BGP' (default), 'CMCC' (china mobile), 'CTCC' (china telecom), 'CUCC' (china unicom).
+        :type ISPType: str
+        :param _AddressType: Specifies the type of IPv6 Cidr: `GUA` (global unicast address), `ULA` (unique local address).
+        :type AddressType: str
+        """
+        self._IPv6CidrBlock = None
+        self._ISPType = None
+        self._AddressType = None
+
+    @property
+    def IPv6CidrBlock(self):
+        r"""IPv6 CIdr Block
+        :rtype: str
+        """
+        return self._IPv6CidrBlock
+
+    @IPv6CidrBlock.setter
+    def IPv6CidrBlock(self, IPv6CidrBlock):
+        self._IPv6CidrBlock = IPv6CidrBlock
+
+    @property
+    def ISPType(self):
+        r"""Network operator type. valid values: 'BGP' (default), 'CMCC' (china mobile), 'CTCC' (china telecom), 'CUCC' (china unicom).
+        :rtype: str
+        """
+        return self._ISPType
+
+    @ISPType.setter
+    def ISPType(self, ISPType):
+        self._ISPType = ISPType
+
+    @property
+    def AddressType(self):
+        r"""Specifies the type of IPv6 Cidr: `GUA` (global unicast address), `ULA` (unique local address).
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+
+    def _deserialize(self, params):
+        self._IPv6CidrBlock = params.get("IPv6CidrBlock")
+        self._ISPType = params.get("ISPType")
+        self._AddressType = params.get("AddressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquirePriceCreateDirectConnectGatewayRequest(AbstractModel):
     r"""InquirePriceCreateDirectConnectGateway request structure.
 
@@ -36521,7 +36600,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: Security group can be named freely, but cannot exceed 60 characters.
+        :param _VpcId: VPC instance ID, in the format of vpc-f49l6u0z.
         :type VpcId: str
         :param _VpcName: VPC can be named freely, but the maximum length is 60 characters.
         :type VpcName: str
@@ -36531,6 +36610,8 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type DnsServers: list of str
         :param _DomainName: Domain name
         :type DomainName: str
+        :param _EnableRouteVpcPublish: Vpc association with CCN route publish policy. true enables cidr route publishing. false enables subnet route publishing. the default is subnet route publishing when creating a vpc. to use cidr route publishing, submit a ticket to add to allowlist.
+        :type EnableRouteVpcPublish: bool
         :param _EnableCdcPublish: Whether to publish the CDC subnet to CCN. `true`: Publish; `false`: Do not publish
         :type EnableCdcPublish: bool
         """
@@ -36539,11 +36620,12 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._EnableMulticast = None
         self._DnsServers = None
         self._DomainName = None
+        self._EnableRouteVpcPublish = None
         self._EnableCdcPublish = None
 
     @property
     def VpcId(self):
-        r"""Security group can be named freely, but cannot exceed 60 characters.
+        r"""VPC instance ID, in the format of vpc-f49l6u0z.
         :rtype: str
         """
         return self._VpcId
@@ -36597,6 +36679,17 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._DomainName = DomainName
 
     @property
+    def EnableRouteVpcPublish(self):
+        r"""Vpc association with CCN route publish policy. true enables cidr route publishing. false enables subnet route publishing. the default is subnet route publishing when creating a vpc. to use cidr route publishing, submit a ticket to add to allowlist.
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
+    @property
     def EnableCdcPublish(self):
         r"""Whether to publish the CDC subnet to CCN. `true`: Publish; `false`: Do not publish
         :rtype: bool
@@ -36614,6 +36707,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._EnableMulticast = params.get("EnableMulticast")
         self._DnsServers = params.get("DnsServers")
         self._DomainName = params.get("DomainName")
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
         self._EnableCdcPublish = params.get("EnableCdcPublish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -45794,11 +45888,9 @@ class Subnet(AbstractModel):
         :type TotalIpAddressCount: int
         :param _TagSet: Tag key-value pairs
         :type TagSet: list of Tag
-        :param _CdcId: CDC instance ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _CdcId: CDC instance ID.
         :type CdcId: str
-        :param _IsCdcSubnet: Whether it is a CDC subnet. Valid values: 0: no; 1: yes
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _IsCdcSubnet: Whether the subnet is associated with CDC. valid values: 0 (no), 1 (yes).
         :type IsCdcSubnet: int
         """
         self._VpcId = None
@@ -45986,8 +46078,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CdcId(self):
-        r"""CDC instance ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""CDC instance ID.
         :rtype: str
         """
         return self._CdcId
@@ -45998,8 +46089,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsCdcSubnet(self):
-        r"""Whether it is a CDC subnet. Valid values: 0: no; 1: yes
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Whether the subnet is associated with CDC. valid values: 0 (no), 1 (yes).
         :rtype: int
         """
         return self._IsCdcSubnet
@@ -46825,9 +46915,12 @@ class Vpc(AbstractModel):
         :type Ipv6CidrBlock: str
         :param _TagSet: Tag key-value pair
         :type TagSet: list of Tag
-        :param _AssistantCidrSet: The secondary CIDR block.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AssistantCidrSet: Auxiliary CIDR
         :type AssistantCidrSet: list of AssistantCidr
+        :param _EnableRouteVpcPublish: Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.
+        :type EnableRouteVpcPublish: bool
+        :param _Ipv6CidrBlockSet: Returns the multi-operator IPv6 Cidr Block.
+        :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         """
         self._VpcName = None
         self._VpcId = None
@@ -46842,6 +46935,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Ipv6CidrBlock = None
         self._TagSet = None
         self._AssistantCidrSet = None
+        self._EnableRouteVpcPublish = None
+        self._Ipv6CidrBlockSet = None
 
     @property
     def VpcName(self):
@@ -46977,8 +47072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssistantCidrSet(self):
-        r"""The secondary CIDR block.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Auxiliary CIDR
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet
@@ -46986,6 +47080,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @AssistantCidrSet.setter
     def AssistantCidrSet(self, AssistantCidrSet):
         self._AssistantCidrSet = AssistantCidrSet
+
+    @property
+    def EnableRouteVpcPublish(self):
+        r"""Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.
+        :rtype: bool
+        """
+        return self._EnableRouteVpcPublish
+
+    @EnableRouteVpcPublish.setter
+    def EnableRouteVpcPublish(self, EnableRouteVpcPublish):
+        self._EnableRouteVpcPublish = EnableRouteVpcPublish
+
+    @property
+    def Ipv6CidrBlockSet(self):
+        r"""Returns the multi-operator IPv6 Cidr Block.
+        :rtype: list of ISPIPv6CidrBlock
+        """
+        return self._Ipv6CidrBlockSet
+
+    @Ipv6CidrBlockSet.setter
+    def Ipv6CidrBlockSet(self, Ipv6CidrBlockSet):
+        self._Ipv6CidrBlockSet = Ipv6CidrBlockSet
 
 
     def _deserialize(self, params):
@@ -47012,6 +47128,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self._AssistantCidrSet.append(obj)
+        self._EnableRouteVpcPublish = params.get("EnableRouteVpcPublish")
+        if params.get("Ipv6CidrBlockSet") is not None:
+            self._Ipv6CidrBlockSet = []
+            for item in params.get("Ipv6CidrBlockSet"):
+                obj = ISPIPv6CidrBlock()
+                obj._deserialize(item)
+                self._Ipv6CidrBlockSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

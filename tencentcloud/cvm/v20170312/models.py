@@ -3281,7 +3281,7 @@ class DataDisk(AbstractModel):
         r"""
         :param _DiskSize: Data disk size, unit: GiB. the minimum adjustment step size is 10 GiB. the value ranges of different data disk types vary. for specific limitations, see the storage overview (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). the default value is 0, which means no data disk purchase. for more restrictions, see the product document.
         :type DiskSize: int
-        :param _DiskType: Specifies the data disk type. for restrictions on data disk types, refer to [storage overview](https://www.tencentcloud.comom/document/product/213/4952?from_cn_redirect=1). valid values: <br /><li>LOCAL_BASIC: LOCAL disk</li> <li>LOCAL_SSD: LOCAL SSD</li><li>LOCAL_NVME: LOCAL NVME disk, which is closely related to InstanceType and cannot be specified</li><li>LOCAL_PRO: LOCAL HDD, which is closely related to InstanceType and cannot be specified</li><li>cloud_BASIC: BASIC cloud disk</li><li>cloud_PREMIUM: high-performance cloud block storage</li><li>cloud_SSD: SSD cloud disk</li><li>cloud_HSSD: enhanced SSD cloud disk</li> <li>cloud_TSSD: ultra-fast SSD cbs</li><li>cloud_BSSD: universal SSD cloud disk</li><br />default: LOCAL_BASIC.<br/><br />this parameter is invalid for the `ResizeInstanceDisk` api.
+        :param _DiskType: Specifies the data disk type. for restrictions on data disk types, refer to [storage overview](https://www.tencentcloud.com/document/product/213/4952?from_cn_redirect=1). valid values: <br /><li>LOCAL_BASIC: LOCAL disk</li> <li>LOCAL_SSD: LOCAL SSD</li><li>LOCAL_NVME: LOCAL NVME disk, which is closely related to InstanceType and cannot be specified</li><li>LOCAL_PRO: LOCAL HDD, which is closely related to InstanceType and cannot be specified</li><li>cloud_BASIC: BASIC cloud disk</li><li>cloud_PREMIUM: high-performance cloud block storage</li><li>cloud_SSD: SSD cloud disk</li><li>cloud_HSSD: enhanced SSD cloud disk</li> <li>cloud_TSSD: ultra-fast SSD cbs</li><li>cloud_BSSD: universal SSD cloud disk</li><br />default: LOCAL_BASIC.<br/><br />this parameter is invalid for the `ResizeInstanceDisk` api.
         :type DiskType: str
         :param _DiskId: Specifies the data disk ID.
 This parameter currently only serves as a response parameter for query apis such as `DescribeInstances`, and cannot be used as an input parameter for write apis such as `RunInstances`.
@@ -3336,7 +3336,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiskType(self):
-        r"""Specifies the data disk type. for restrictions on data disk types, refer to [storage overview](https://www.tencentcloud.comom/document/product/213/4952?from_cn_redirect=1). valid values: <br /><li>LOCAL_BASIC: LOCAL disk</li> <li>LOCAL_SSD: LOCAL SSD</li><li>LOCAL_NVME: LOCAL NVME disk, which is closely related to InstanceType and cannot be specified</li><li>LOCAL_PRO: LOCAL HDD, which is closely related to InstanceType and cannot be specified</li><li>cloud_BASIC: BASIC cloud disk</li><li>cloud_PREMIUM: high-performance cloud block storage</li><li>cloud_SSD: SSD cloud disk</li><li>cloud_HSSD: enhanced SSD cloud disk</li> <li>cloud_TSSD: ultra-fast SSD cbs</li><li>cloud_BSSD: universal SSD cloud disk</li><br />default: LOCAL_BASIC.<br/><br />this parameter is invalid for the `ResizeInstanceDisk` api.
+        r"""Specifies the data disk type. for restrictions on data disk types, refer to [storage overview](https://www.tencentcloud.com/document/product/213/4952?from_cn_redirect=1). valid values: <br /><li>LOCAL_BASIC: LOCAL disk</li> <li>LOCAL_SSD: LOCAL SSD</li><li>LOCAL_NVME: LOCAL NVME disk, which is closely related to InstanceType and cannot be specified</li><li>LOCAL_PRO: LOCAL HDD, which is closely related to InstanceType and cannot be specified</li><li>cloud_BASIC: BASIC cloud disk</li><li>cloud_PREMIUM: high-performance cloud block storage</li><li>cloud_SSD: SSD cloud disk</li><li>cloud_HSSD: enhanced SSD cloud disk</li> <li>cloud_TSSD: ultra-fast SSD cbs</li><li>cloud_BSSD: universal SSD cloud disk</li><br />default: LOCAL_BASIC.<br/><br />this parameter is invalid for the `ResizeInstanceDisk` api.
         :rtype: str
         """
         return self._DiskType
@@ -9861,7 +9861,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`. 
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
-        :param _InstanceType: The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.
+        :param _InstanceType: Instance model. Different instance models specify different resource specifications.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfigs](https://www.tencentcloud.comom/document/api/213/15749?from_cn_redirect=1) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :type InstanceType: str
         :param _SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -9873,11 +9874,12 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _InstanceCount: Number of instances to purchase. Value range: 1 (default) to 100. It cannot exceed the remaining CVM quota of the user. For more information on quota, see [Restrictions on CVM Instance Purchase](https://intl.cloud.tencent.com/document/product/213/2664).
         :type InstanceCount: int
-        :param _InstanceName: Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        :param _InstanceName: Instance display name. <li>if no instance display name is specified, it will display 'unnamed' by default.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it means generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}`: when purchasing 1 instance, the instance display name is `server_3`; when purchasing 2 instances, the instance display names are `server_3` and `server_4` respectively. supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances without specifying a pattern string, suffixes `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, `server_`: when purchasing 2 instances, the instance display names are `server_1` and `server_2` respectively.</li> <li>supports up to 128 characters (including pattern strings).</li>.
         :type InstanceName: str
         :param _LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance, or keep the original login settings of the image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param _SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.
+        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
+
         :type SecurityGroupIds: list of str
         :param _EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
@@ -9889,6 +9891,10 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param _InstanceMarketOptions: The market options of the instance.
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param _Metadata: Custom metadata, supports creating key-value pairs of custom metadata when creating a CVM.
+
+**Note: this field is in beta test.**.
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _HpcClusterId: HPC cluster ID.
         :type HpcClusterId: str
         :param _CpuTopology: Information about the CPU topology of an instance. If not specified, it is determined by system resources.
@@ -9914,6 +9920,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._HostName = None
         self._TagSpecification = None
         self._InstanceMarketOptions = None
+        self._Metadata = None
         self._HpcClusterId = None
         self._CpuTopology = None
         self._LaunchTemplate = None
@@ -9966,7 +9973,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.
+        r"""Instance model. Different instance models specify different resource specifications.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfigs](https://www.tencentcloud.comom/document/api/213/15749?from_cn_redirect=1) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :rtype: str
         """
         return self._InstanceType
@@ -10032,7 +10040,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        r"""Instance display name. <li>if no instance display name is specified, it will display 'unnamed' by default.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it means generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}`: when purchasing 1 instance, the instance display name is `server_3`; when purchasing 2 instances, the instance display names are `server_3` and `server_4` respectively. supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances without specifying a pattern string, suffixes `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, `server_`: when purchasing 2 instances, the instance display names are `server_1` and `server_2` respectively.</li> <li>supports up to 128 characters (including pattern strings).</li>.
         :rtype: str
         """
         return self._InstanceName
@@ -10054,7 +10062,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.
+        r"""Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
+
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -10117,6 +10126,19 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
     @InstanceMarketOptions.setter
     def InstanceMarketOptions(self, InstanceMarketOptions):
         self._InstanceMarketOptions = InstanceMarketOptions
+
+    @property
+    def Metadata(self):
+        r"""Custom metadata, supports creating key-value pairs of custom metadata when creating a CVM.
+
+**Note: this field is in beta test.**.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
 
     @property
     def HpcClusterId(self):
@@ -10197,6 +10219,9 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self._InstanceMarketOptions = InstanceMarketOptionsRequest()
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         self._HpcClusterId = params.get("HpcClusterId")
         if params.get("CpuTopology") is not None:
             self._CpuTopology = CpuTopology()
@@ -13943,12 +13968,11 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         r"""
         :param _InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
-        :param _InstanceName: The instance name, which can not exceed 60 characters
-<dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they can not be both specified.</dx-alert>
+        :param _InstanceName: Modified instance name. can be named as required but should not exceed 128 characters.
         :type InstanceName: str
         :param _UserData: User data provided to an instance, which needs to be encoded in Base64 format with a maximum size of 16 KB. For details on obtaining this parameter, refer to the startup commands for [Windows](https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and [Linux](https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).
         :type UserData: str
-        :param _SecurityGroups: IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
+        :param _SecurityGroups: Specifies the security group Id list of the specified instance after modification. the instance will reassociate with the security groups in the specified list, and the associated security group will be unbound.
         :type SecurityGroups: list of str
         :param _CamRoleName: The role bound with the instance. If it is not specified, it indicates to unbind the current role of the CVM.
         :type CamRoleName: str
@@ -13956,9 +13980,9 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type HostName: str
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li>Default value: false.
         :type DisableApiTermination: bool
-        :param _CamRoleType: The role type, which is used in conjunction with `CamRoleName`. The value is obtained in `RoleType` field, returning by `CAM DescribeRoleList` and `GetRole` APIs. Valid value: `user`, `system` and `service_linked`.
-For example, when `LinkedRoleIn` is contained in `CamRoleName` (such as `TKE_QCSLinkedRoleInPrometheusService`), the returned `RoleType` of `DescribeRoleList` and `GetRoleis` is `service_linked`, and the `CamRoleType` `service_linked`.
-When the value obtained in `RoleType` is `user` (default) or `system`, `CamRoleType` can be left empty.
+        :param _CamRoleType: Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.comom/document/product/598/36223?from_cn_redirect=1) or [GetRole](https://www.tencentcloud.comom/document/product/598/36221?from_cn_redirect=1). currently, only user, system, and service_linked types are accepted.
+For example, when CamRoleName contains "LinkedRoleIn" (such as TKE_QCSLinkedRoleInPrometheusService), DescribeRoleList and GetRole return RoleType as service_linked, this parameter must also transmit service_linked.
+The parameter default value is user. this parameter can be omitted if CameRoleName is not of the service_linked kind.
         :type CamRoleType: str
         :param _AutoReboot: Whether to automatically restart an instance when modifying a hostname. If not specified, the instance will automatically restart by default.
 - true: Modify the hostname and automatically restart the instance.
@@ -13989,8 +14013,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def InstanceName(self):
-        r"""The instance name, which can not exceed 60 characters
-<dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they can not be both specified.</dx-alert>
+        r"""Modified instance name. can be named as required but should not exceed 128 characters.
         :rtype: str
         """
         return self._InstanceName
@@ -14012,7 +14035,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def SecurityGroups(self):
-        r"""IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
+        r"""Specifies the security group Id list of the specified instance after modification. the instance will reassociate with the security groups in the specified list, and the associated security group will be unbound.
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -14056,9 +14079,9 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def CamRoleType(self):
-        r"""The role type, which is used in conjunction with `CamRoleName`. The value is obtained in `RoleType` field, returning by `CAM DescribeRoleList` and `GetRole` APIs. Valid value: `user`, `system` and `service_linked`.
-For example, when `LinkedRoleIn` is contained in `CamRoleName` (such as `TKE_QCSLinkedRoleInPrometheusService`), the returned `RoleType` of `DescribeRoleList` and `GetRoleis` is `service_linked`, and the `CamRoleType` `service_linked`.
-When the value obtained in `RoleType` is `user` (default) or `system`, `CamRoleType` can be left empty.
+        r"""Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.comom/document/product/598/36223?from_cn_redirect=1) or [GetRole](https://www.tencentcloud.comom/document/product/598/36221?from_cn_redirect=1). currently, only user, system, and service_linked types are accepted.
+For example, when CamRoleName contains "LinkedRoleIn" (such as TKE_QCSLinkedRoleInPrometheusService), DescribeRoleList and GetRole return RoleType as service_linked, this parameter must also transmit service_linked.
+The parameter default value is user. this parameter can be omitted if CameRoleName is not of the service_linked kind.
         :rtype: str
         """
         return self._CamRoleType
@@ -17369,11 +17392,17 @@ class RunInstancesRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _InstanceCount: The number of instances to be purchased. Value range for pay-as-you-go instances: [1, 100]. Default value: `1`. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on the quota, see [Quota for CVM Instances](https://intl.cloud.tencent.com/document/product/213/2664).
         :type InstanceCount: int
-        :param _InstanceName: Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        :param _MinCount: Specifies the minimum number of instances to create. value range: positive integer not greater than InstanceCount.
+Specifies the minimum purchasable quantity, guarantees to create at least MinCount instances, and creates InstanceCount instances as much as possible.
+Insufficient inventory to meet the minimum purchasable quantity will trigger an error info indicating insufficient stock.
+Only applicable to accounts, regions, and billing modes (annual/monthly subscription, pay-as-you-go, spot instance, exclusive sales) with partial support.
+        :type MinCount: int
+        :param _InstanceName: Instance display name. <li>if no instance display name is specified, it will display 'unnamed' by default.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it means generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}`: when purchasing 1 instance, the instance display name is `server_3`; when purchasing 2 instances, the instance display names are `server_3` and `server_4` respectively. supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances without specifying a pattern string, suffixes `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, `server_`: when purchasing 2 instances, the instance display names are `server_1` and `server_2` respectively.</li> <li>supports up to 128 characters (including pattern strings).</li>.
         :type InstanceName: str
         :param _LoginSettings: Instance login settings. You can use this parameter to set the login method, password and key of the instance, or keep the original login settings of the image. If it's not specified, the user needs to set the login password using the "Reset password" option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param _SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
+
         :type SecurityGroupIds: list of str
         :param _EnhancedService: Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
@@ -17391,7 +17420,8 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         :param _UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
         :type UserData: str
-        :param _Metadata: 
+        :param _Metadata: Custom metadata. specifies the support for creating custom metadata key-value pairs when creating a CVM.
+**Note: this field is in beta test.**.
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _DryRun: Whether the request is a dry run only.
 `true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
@@ -17413,7 +17443,7 @@ If the dry run succeeds, the RequestId will be returned.
         :type ChcIds: list of str
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
         :type DisableApiTermination: bool
-        :param _EnableJumboFrame: 
+        :param _EnableJumboFrame: Whether the instance enables jumbo frames. valid values:<br><li/> true: means the instance enables jumbo frames. only models supporting jumbo frames can be set to true.<br><li/> false: means the instance disables jumbo frames. only models supporting jumbo frames can be set to false.<br> instance specifications supporting jumbo frames: [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1).
         :type EnableJumboFrame: bool
         """
         self._InstanceChargeType = None
@@ -17426,6 +17456,7 @@ If the dry run succeeds, the RequestId will be returned.
         self._VirtualPrivateCloud = None
         self._InternetAccessible = None
         self._InstanceCount = None
+        self._MinCount = None
         self._InstanceName = None
         self._LoginSettings = None
         self._SecurityGroupIds = None
@@ -17562,8 +17593,22 @@ If the dry run succeeds, the RequestId will be returned.
         self._InstanceCount = InstanceCount
 
     @property
+    def MinCount(self):
+        r"""Specifies the minimum number of instances to create. value range: positive integer not greater than InstanceCount.
+Specifies the minimum purchasable quantity, guarantees to create at least MinCount instances, and creates InstanceCount instances as much as possible.
+Insufficient inventory to meet the minimum purchasable quantity will trigger an error info indicating insufficient stock.
+Only applicable to accounts, regions, and billing modes (annual/monthly subscription, pay-as-you-go, spot instance, exclusive sales) with partial support.
+        :rtype: int
+        """
+        return self._MinCount
+
+    @MinCount.setter
+    def MinCount(self, MinCount):
+        self._MinCount = MinCount
+
+    @property
     def InstanceName(self):
-        r"""Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        r"""Instance display name. <li>if no instance display name is specified, it will display 'unnamed' by default.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it means generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}`: when purchasing 1 instance, the instance display name is `server_3`; when purchasing 2 instances, the instance display names are `server_3` and `server_4` respectively. supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances without specifying a pattern string, suffixes `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, `server_`: when purchasing 2 instances, the instance display names are `server_1` and `server_2` respectively.</li> <li>supports up to 128 characters (including pattern strings).</li>.
         :rtype: str
         """
         return self._InstanceName
@@ -17585,7 +17630,8 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def SecurityGroupIds(self):
-        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        r"""Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
+
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -17684,7 +17730,8 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Metadata(self):
-        r"""
+        r"""Custom metadata. specifies the support for creating custom metadata key-value pairs when creating a CVM.
+**Note: this field is in beta test.**.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         """
         return self._Metadata
@@ -17787,7 +17834,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def EnableJumboFrame(self):
-        r"""
+        r"""Whether the instance enables jumbo frames. valid values:<br><li/> true: means the instance enables jumbo frames. only models supporting jumbo frames can be set to true.<br><li/> false: means the instance disables jumbo frames. only models supporting jumbo frames can be set to false.<br> instance specifications supporting jumbo frames: [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1).
         :rtype: bool
         """
         return self._EnableJumboFrame
@@ -17823,6 +17870,7 @@ If the dry run succeeds, the RequestId will be returned.
             self._InternetAccessible = InternetAccessible()
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
         self._InstanceCount = params.get("InstanceCount")
+        self._MinCount = params.get("MinCount")
         self._InstanceName = params.get("InstanceName")
         if params.get("LoginSettings") is not None:
             self._LoginSettings = LoginSettings()
@@ -18820,7 +18868,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: Tag-Bound resource type. "instance" for cloud virtual machine, "host" for cdh, "image" for mirror, and "keypair" for key.
+        :param _ResourceType: Specifies the resource type for Tag binding. valid values: "instance" (cloud virtual machine), "host" (cdh), "image" (mirror), "keypair" (key), "ps" (placement group), "hpc" (hyper computing cluster).
         :type ResourceType: str
         :param _Tags: Tag pair list
         :type Tags: list of Tag
@@ -18830,7 +18878,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""Tag-Bound resource type. "instance" for cloud virtual machine, "host" for cdh, "image" for mirror, and "keypair" for key.
+        r"""Specifies the resource type for Tag binding. valid values: "instance" (cloud virtual machine), "host" (cdh), "image" (mirror), "keypair" (key), "ps" (placement group), "hpc" (hyper computing cluster).
         :rtype: str
         """
         return self._ResourceType

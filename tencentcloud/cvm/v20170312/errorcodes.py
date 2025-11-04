@@ -182,7 +182,7 @@ INVALIDINSTANCEID_MALFORMED = 'InvalidInstanceId.Malformed'
 # No instance found.
 INVALIDINSTANCEID_NOTFOUND = 'InvalidInstanceId.NotFound'
 
-# The specified InstanceName exceeds the maximum length of 60 bytes.
+# The specified InstanceName exceeds the maximum length of 128 bytes.
 INVALIDINSTANCENAME_TOOLONG = 'InvalidInstanceName.TooLong'
 
 # This instance does not meet the [Return Policy](https://intl.cloud.tencent.com/document/product/213/9711?from_cn_redirect=1) for prepaid instances.
@@ -380,10 +380,10 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # Duplicate tags.
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
 
-# The elastic network interface data does not exist.
+# ENI data does not exist.
 INVALIDPARAMETERVALUE_ELASTICNETWORKNOTEXIST = 'InvalidParameterValue.ElasticNetworkNotExist'
 
-# The elastic network interface data VPC subnet does not match; it must be in the same VPC but a different subnet.
+# The eni data vpc subnet is mismatched. it must be in the same vpc but different subnets.
 INVALIDPARAMETERVALUE_ELASTICNETWORKVPCSUBNETMISMATCH = 'InvalidParameterValue.ElasticNetworkVpcSubnetMismatch'
 
 # The number of requested public IP addresses exceeds the quota of this instance type.
@@ -419,7 +419,7 @@ INVALIDPARAMETERVALUE_INSTANCENOTSUPPORTEDMIXPRICINGMODEL = 'InvalidParameterVal
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
 
-# The instance type does not support elastic network interface data.
+# The instance type does not support eni data.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTELASTICNETWORKS = 'InvalidParameterValue.InstanceTypeNotSupportElasticNetworks'
 
 # This type of instances cannot be added to the HPC cluster.
@@ -494,8 +494,11 @@ INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEVERSIONDESCRIPTION = 'InvalidParamete
 # Invalid license type.
 INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = 'InvalidParameterValue.InvalidLicenseType'
 
-# The specified elastic network interface id is not a vrdma network interface card.
+# The specified eni id is not a vrdma network interface card.
 INVALIDPARAMETERVALUE_INVALIDNETWORKINTERFACEID = 'InvalidParameterValue.InvalidNetworkInterfaceId'
+
+# The value of parameter MinCount must be less than InstanceCount.
+INVALIDPARAMETERVALUE_INVALIDPARAMETERMINCOUNT = 'InvalidParameterValue.InvalidParameterMinCount'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'
@@ -515,7 +518,7 @@ INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUser
 # Invalid fuzzy query string
 INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
 
-# The specified VpcId or SubnetId was not found in the elastic network interface data structure.
+# This special VpcId or SubnetId is not found in the elastic network data structure.
 INVALIDPARAMETERVALUE_INVALIDVPCIDSUBNETIDNOTFOUND = 'InvalidParameterValue.InvalidVpcIdSubnetIdNotFound'
 
 # Edge zones do not support this ISP.
@@ -557,7 +560,7 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # The parameter value must be a DHCP-enabled VPC.
 INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = 'InvalidParameterValue.MustDhcpEnabledVpc'
 
-# The parameter value must be the enabled elastic rdma interface.
+# The parameter value must enable the elastic rdma api.
 INVALIDPARAMETERVALUE_MUSTENABLEDISRDMA = 'InvalidParameterValue.MustEnabledIsRdma'
 
 # The subnet is not in the CDC cluster.
@@ -590,7 +593,7 @@ INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMal
 # Invalid subnet ID. Please provide a subnet ID in the format of subnet-xxxxxxxx, where “x” can be a lowercase letter or number.
 INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = 'InvalidParameterValue.SubnetIdMalformed'
 
-# The Availability Zone of the subnet ID does not match the Availability Zone of the instance.
+# The subnet ID availability zone does not match the instance location.
 INVALIDPARAMETERVALUE_SUBNETIDZONEIDNOTMATCH = 'InvalidParameterValue.SubnetIdZoneIdNotMatch'
 
 # Creation failed: the subnet does not exist. Please specify another subnet.
@@ -800,6 +803,9 @@ RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = 'ResourceInsufficient.Disast
 # Insufficient security group quota.
 RESOURCEINSUFFICIENT_INSUFFICIENTGROUPQUOTA = 'ResourceInsufficient.InsufficientGroupQuota'
 
+# Inventory fails to satisfy the minimum purchasable quantity.
+RESOURCEINSUFFICIENT_INSUFFICIENTOFFERINGMINIMUM = 'ResourceInsufficient.InsufficientOfferingMinimum'
+
 # The specified instance type is insufficient.
 RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = 'ResourceInsufficient.SpecifiedInstanceType'
 
@@ -992,11 +998,14 @@ UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = 'UnsupportedOperation.InstanceSta
 # The instance is being terminated, and the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = 'UnsupportedOperation.InstanceStateTerminating'
 
-# The instance type does not support setting the `Confidentiality` state.
+# The instance type does not support setting the `Confidentiality` status.
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTCONFIDENTIALITY = 'UnsupportedOperation.InstanceTypeNotSupportConfidentiality'
 
-# The instance type does not support setting the `GridDriverService` state.
+# The instance type does not support setting the `GridDriverService` status.
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTGRIDLICENCE = 'UnsupportedOperation.InstanceTypeNotSupportGridLicence'
+
+# The instance type does not support setting the HighDensityMode status.
+UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTHIGHDENSITYMODESETTING = 'UnsupportedOperation.InstanceTypeNotSupportHighDensityModeSetting'
 
 # The instance type does not support setting the `EnableJumboFrame` status.
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTJUMBOFRAME = 'UnsupportedOperation.InstanceTypeNotSupportJumboFrame'
@@ -1054,6 +1063,12 @@ UNSUPPORTEDOPERATION_MARKETIMAGECONVERTOSUNSUPPORTED = 'UnsupportedOperation.Mar
 
 # The custom images created with the market images cannot be exported.
 UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.MarketImageExportUnsupported'
+
+# This billing mode does not support the MinCount parameter.
+UNSUPPORTEDOPERATION_MINCOUNTUNSUPPORTEDCHARGETYPE = 'UnsupportedOperation.MinCountUnsupportedChargeType'
+
+# This region does not currently support the MinCount parameter.
+UNSUPPORTEDOPERATION_MINCOUNTUNSUPPORTEDREGION = 'UnsupportedOperation.MinCountUnsupportedRegion'
 
 # Encryption attributes of the system disk cannot be modified. 
 UNSUPPORTEDOPERATION_MODIFYENCRYPTIONNOTSUPPORTED = 'UnsupportedOperation.ModifyEncryptionNotSupported'

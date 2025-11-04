@@ -42815,6 +42815,42 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class OriginPullProtocolParameters(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 
+        :type Protocol: str
+        """
+        self._Protocol = None
+
+    @property
+    def Protocol(self):
+        r"""
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginRecord(AbstractModel):
     r"""Origin group record
 
@@ -43648,7 +43684,7 @@ class PostMaxSize(AbstractModel):
 <li>`on`: Enable;</li>
 <li>`off`: Disable.</li>
         :type Switch: str
-        :param _MaxSize: Maximum limit. value range between 1MB and 500MB. byte.
+        :param _MaxSize: Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).
         :type MaxSize: int
         """
         self._Switch = None
@@ -43669,7 +43705,7 @@ class PostMaxSize(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""Maximum limit. value range between 1MB and 500MB. byte.
+        r"""Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).
         :rtype: int
         """
         return self._MaxSize
@@ -43701,7 +43737,7 @@ class PostMaxSizeParameters(AbstractModel):
         r"""
         :param _Switch: Whether to enable post request file upload limit, in bytes (default limit: 32 * 2<sup>20</sup> bytes). valid values: <li>`on`: enable limit;</li><li>`off`: disable limit.</li>.
         :type Switch: str
-        :param _MaxSize: Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.
+        :param _MaxSize: Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).
         :type MaxSize: int
         """
         self._Switch = None
@@ -43720,7 +43756,7 @@ class PostMaxSizeParameters(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.
+        r"""Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).
         :rtype: int
         """
         return self._MaxSize
@@ -46980,6 +47016,8 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         :param _ForceRedirectHTTPSParameters: Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _OriginPullProtocolParameters: 
+        :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         :param _CompressionParameters: Intelligent compression configuration. this parameter is required when name is set to compression.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
@@ -47055,6 +47093,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         self._UpstreamHTTP2Parameters = None
         self._HostHeaderParameters = None
         self._ForceRedirectHTTPSParameters = None
+        self._OriginPullProtocolParameters = None
         self._CompressionParameters = None
         self._HSTSParameters = None
         self._ClientIPHeaderParameters = None
@@ -47313,6 +47352,17 @@ Note: this field may return null, which indicates a failure to obtain a valid va
     @ForceRedirectHTTPSParameters.setter
     def ForceRedirectHTTPSParameters(self, ForceRedirectHTTPSParameters):
         self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters
+
+    @property
+    def OriginPullProtocolParameters(self):
+        r"""
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
+        """
+        return self._OriginPullProtocolParameters
+
+    @OriginPullProtocolParameters.setter
+    def OriginPullProtocolParameters(self, OriginPullProtocolParameters):
+        self._OriginPullProtocolParameters = OriginPullProtocolParameters
 
     @property
     def CompressionParameters(self):
@@ -47593,6 +47643,9 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("ForceRedirectHTTPSParameters") is not None:
             self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters()
             self._ForceRedirectHTTPSParameters._deserialize(params.get("ForceRedirectHTTPSParameters"))
+        if params.get("OriginPullProtocolParameters") is not None:
+            self._OriginPullProtocolParameters = OriginPullProtocolParameters()
+            self._OriginPullProtocolParameters._deserialize(params.get("OriginPullProtocolParameters"))
         if params.get("CompressionParameters") is not None:
             self._CompressionParameters = CompressionParameters()
             self._CompressionParameters._deserialize(params.get("CompressionParameters"))

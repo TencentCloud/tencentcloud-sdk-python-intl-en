@@ -1502,13 +1502,14 @@ class CvmClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        r"""The API is used to modify the attributes of an instance. Only the name and the associated security groups can be modified for now.
+        r"""This API is used to modify instance attributes.
 
-        * An attribute must be specified in the request.
-        * "Instance name" is a custom name for easier management. Tencent Cloud does not use the name for online support or instance management.
-        * Batch operations are supported. Each request can modify up to 100 instances.
-        * When you modify the security groups associated with an instance is modified, the original security groups are disassociated.
-        * You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.
+        This API is used to modify one attribute of the instance per request. The attribute must be specified.
+        The instance name is only for user convenience in management. Tencent Cloud does not use this name as the basis for online support or to perform instance management operations.
+        This API is used to support batch operations. The maximum of 100 batch instances per request is supported.
+        This API is used to modify the security group association. The originally associated security group of the instance will be unbound.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        This API is used to modify the hostname. The instance restarts immediately after hostname modification, and the new hostname takes effect after restart.
 
         :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesAttributeRequest`
