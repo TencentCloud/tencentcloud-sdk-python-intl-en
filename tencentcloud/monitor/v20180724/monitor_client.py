@@ -190,7 +190,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateExporterIntegration(self, request):
-        r"""This API is used to create an exporter integration.
+        r"""Create an exporter integration in the integration center. Due to the considerable number of integrations, it is advisable to create through the console.  **Prerequisite:** Authorized to create a managed EKS cluster.  **Verification method:** 1. Confirm on the console interface. If no authorization notification appears, it indicates authorization is granted. 2. Query the cluster status via the `DescribePrometheusInstanceInitStatus` API. If the managed cluster does not exist, create it using the `RunPrometheusInstance` API.
 
         :param request: Request instance for CreateExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExporterIntegrationRequest`
