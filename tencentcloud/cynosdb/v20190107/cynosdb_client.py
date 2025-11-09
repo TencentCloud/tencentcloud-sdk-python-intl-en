@@ -348,6 +348,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSDelivery(self, request):
+        r"""This API is used to create log delivery.
+
+        :param request: Request instance for CreateCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClusterDatabase(self, request):
         r"""This API is used to create a database.
 
@@ -578,6 +601,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCLSDelivery(self, request):
+        r"""This API is used to delete log delivery.
+
+        :param request: Request instance for DeleteCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCLSDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteClusterDatabase(self, request):
         r"""This interface is used to delete a database.
 
@@ -661,6 +707,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        r"""This API is used to obtain the instance list of database audit.
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -923,6 +992,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeChangedParamsAfterUpgrade(self, request):
+        r"""this interface is used for querying parameter comparison after specification adjustment.
+
+        :param request: Request instance for DescribeChangedParamsAfterUpgrade.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeChangedParamsAfterUpgradeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeChangedParamsAfterUpgradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChangedParamsAfterUpgrade", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChangedParamsAfterUpgradeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterDatabaseTables(self, request):
         r"""This API is used to access the table list.
 
@@ -937,6 +1029,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeClusterDatabaseTables", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterDatabaseTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterDatabases(self, request):
+        r"""This API is used to obtain cluster database list.
+
+        :param request: Request instance for DescribeClusterDatabases.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabasesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDatabasesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1167,6 +1282,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceCLSLogDelivery(self, request):
+        r"""This API is used to query instance log delivery information.
+
+        :param request: Request instance for DescribeInstanceCLSLogDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceCLSLogDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceCLSLogDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceCLSLogDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceCLSLogDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1742,6 +1880,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeSupportProxyVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSupportProxyVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTasks(self, request):
+        r"""This API is used to query task lists.
+
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2441,6 +2602,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceUpgradeLimitDays(self, request):
+        r"""This API is used to modify the time limit for upgrading the kernel minor version of an instance.
+
+        :param request: Request instance for ModifyInstanceUpgradeLimitDays.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceUpgradeLimitDays", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceUpgradeLimitDaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMaintainPeriodConfig(self, request):
         r"""This API is used to modify maintenance time configuration.
 
@@ -2924,6 +3108,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewClusters(self, request):
+        r"""This API is used to renew the cluster.
+
+        :param request: Request instance for RenewClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RenewClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RenewClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplayInstanceAuditLog(self, request):
         r"""This API is used to replay instance audit logs.
 
@@ -3016,6 +3223,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RollBackCluster(self, request):
+        r"""This API is used to perform cluster rollback.
+
+        :param request: Request instance for RollBackCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RollBackClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollBackClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollBackCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollBackClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackToNewCluster(self, request):
+        r"""This API is used to roll back to a new cluster.
+
+        :param request: Request instance for RollbackToNewCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RollbackToNewClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackToNewClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackToNewCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackToNewClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchClusterDatabases(self, request):
         r"""This API is used to search cluster database lists.
 
@@ -3076,6 +3329,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("SetRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.SetRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartCLSDelivery(self, request):
+        r"""This interface (StartCLSDelivery) is used to enable log delivery functionality.
+
+        :param request: Request instance for StartCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartCLSDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCLSDelivery(self, request):
+        r"""This API is used to stop the log delivery feature.
+
+        :param request: Request instance for StopCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCLSDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

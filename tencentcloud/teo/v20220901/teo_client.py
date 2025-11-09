@@ -118,6 +118,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfirmMultiPathGatewayOriginACL(self, request):
+        r"""This API is used to confirm the latest origin IP range is updated to the origin server firewall when the multi-channel security acceleration gateway's origin IP range changes.
+
+        :param request: Request instance for ConfirmMultiPathGatewayOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmMultiPathGatewayOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ConfirmMultiPathGatewayOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfirmMultiPathGatewayOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfirmMultiPathGatewayOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConfirmOriginACLUpdate(self, request):
         r"""This API is used to confirm that the latest origin ACLs have been updated to the origin server firewall when the origin ACLs change. After confirming the update to the latest version, related change notifications will stop pushing.
 
@@ -2323,6 +2346,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMultiPathGatewayOriginACL(self, request):
+        r"""This API is used to query the binding relationship between a multi-channel security acceleration gateway instance and the origin server IP range, as well as the IP range details. If the MultiPathGatewayNextOriginACL field has a return value, the latest origin server IP range must be synchronized to the origin server firewall configuration.
+
+        :param request: Request instance for DescribeMultiPathGatewayOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMultiPathGatewayRegions(self, request):
         r"""This API is used to query the list of available regions for user-created multi-channel security acceleration gateways (Cloud Gateway).
 
@@ -3977,6 +4023,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyMultiPathGatewaySecretKey", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewayStatus(self, request):
+        r"""This API is used to update the status of a multi-channel security gateway.
+
+        :param request: Request instance for ModifyMultiPathGatewayStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewayStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
