@@ -1118,6 +1118,305 @@ class ReconstructDocumentFailedPage(AbstractModel):
         
 
 
+class ReconstructDocumentSSEConfig(AbstractModel):
+    r"""ReconstructDocumentSSE feature configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableResultType: The form in which tables in a Markdown file are returned.
+- 0: returned as MD.
+- 1: returned as HTML.
+The default is 0.
+        :type TableResultType: str
+        :param _MarkdownImageResponseType: The form in which images in a Markdown file are returned.
+- 0: returned as URL.
+- 1: only return the text content extracted from the image in markdown.
+The default value is 0.
+        :type MarkdownImageResponseType: str
+        :param _ReturnPageFormat: Whether the Markdown file contains page number information.
+        :type ReturnPageFormat: bool
+        :param _PageFormat: The custom output page number style. {{p}} is a placeholder for the page number. Enable ReturnPageFormat to take effect. If empty, the default style is: <page_num>page {{p}}</page_num>.
+        :type PageFormat: str
+        """
+        self._TableResultType = None
+        self._MarkdownImageResponseType = None
+        self._ReturnPageFormat = None
+        self._PageFormat = None
+
+    @property
+    def TableResultType(self):
+        r"""The form in which tables in a Markdown file are returned.
+- 0: returned as MD.
+- 1: returned as HTML.
+The default is 0.
+        :rtype: str
+        """
+        return self._TableResultType
+
+    @TableResultType.setter
+    def TableResultType(self, TableResultType):
+        self._TableResultType = TableResultType
+
+    @property
+    def MarkdownImageResponseType(self):
+        r"""The form in which images in a Markdown file are returned.
+- 0: returned as URL.
+- 1: only return the text content extracted from the image in markdown.
+The default value is 0.
+        :rtype: str
+        """
+        return self._MarkdownImageResponseType
+
+    @MarkdownImageResponseType.setter
+    def MarkdownImageResponseType(self, MarkdownImageResponseType):
+        self._MarkdownImageResponseType = MarkdownImageResponseType
+
+    @property
+    def ReturnPageFormat(self):
+        r"""Whether the Markdown file contains page number information.
+        :rtype: bool
+        """
+        return self._ReturnPageFormat
+
+    @ReturnPageFormat.setter
+    def ReturnPageFormat(self, ReturnPageFormat):
+        self._ReturnPageFormat = ReturnPageFormat
+
+    @property
+    def PageFormat(self):
+        r"""The custom output page number style. {{p}} is a placeholder for the page number. Enable ReturnPageFormat to take effect. If empty, the default style is: <page_num>page {{p}}</page_num>.
+        :rtype: str
+        """
+        return self._PageFormat
+
+    @PageFormat.setter
+    def PageFormat(self, PageFormat):
+        self._PageFormat = PageFormat
+
+
+    def _deserialize(self, params):
+        self._TableResultType = params.get("TableResultType")
+        self._MarkdownImageResponseType = params.get("MarkdownImageResponseType")
+        self._ReturnPageFormat = params.get("ReturnPageFormat")
+        self._PageFormat = params.get("PageFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReconstructDocumentSSERequest(AbstractModel):
+    r"""ReconstructDocumentSSE request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileBase64: The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
+        :type FileBase64: str
+        :param _Config: Document parsing configuration information.	
+        :type Config: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEConfig`
+        """
+        self._FileBase64 = None
+        self._Config = None
+
+    @property
+    def FileBase64(self):
+        r"""The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
+        :rtype: str
+        """
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def Config(self):
+        r"""Document parsing configuration information.	
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._FileBase64 = params.get("FileBase64")
+        if params.get("Config") is not None:
+            self._Config = ReconstructDocumentSSEConfig()
+            self._Config._deserialize(params.get("Config"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReconstructDocumentSSEResponse(AbstractModel):
+    r"""ReconstructDocumentSSE response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID. The unique identifier of the current request.
+        :type TaskId: str
+        :param _ResponseType: Response type. 1: return progress information; 2: return parsing result.
+        :type ResponseType: str
+        :param _Progress: Progress. Value range: 0 to 100.
+        :type Progress: str
+        :param _ProgressMessage: Progress information.
+        :type ProgressMessage: str
+        :param _DocumentRecognizeResultUrl: Temporary download URL for the document parsing result. The file is a zip compressed package, and the URL is valid for 30 minutes. The compressed package contains the following folders: \*.md, \*.jsonl, \*mllm.json, images.
+        :type DocumentRecognizeResultUrl: str
+        :param _FailedPages: Page number where document parsing fails.
+        :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _FailPageNum: 
+        :type FailPageNum: int
+        :param _SuccessPageNum: 
+        :type SuccessPageNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._ResponseType = None
+        self._Progress = None
+        self._ProgressMessage = None
+        self._DocumentRecognizeResultUrl = None
+        self._FailedPages = None
+        self._FailPageNum = None
+        self._SuccessPageNum = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID. The unique identifier of the current request.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ResponseType(self):
+        r"""Response type. 1: return progress information; 2: return parsing result.
+        :rtype: str
+        """
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def Progress(self):
+        r"""Progress. Value range: 0 to 100.
+        :rtype: str
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def ProgressMessage(self):
+        r"""Progress information.
+        :rtype: str
+        """
+        return self._ProgressMessage
+
+    @ProgressMessage.setter
+    def ProgressMessage(self, ProgressMessage):
+        self._ProgressMessage = ProgressMessage
+
+    @property
+    def DocumentRecognizeResultUrl(self):
+        r"""Temporary download URL for the document parsing result. The file is a zip compressed package, and the URL is valid for 30 minutes. The compressed package contains the following folders: \*.md, \*.jsonl, \*mllm.json, images.
+        :rtype: str
+        """
+        return self._DocumentRecognizeResultUrl
+
+    @DocumentRecognizeResultUrl.setter
+    def DocumentRecognizeResultUrl(self, DocumentRecognizeResultUrl):
+        self._DocumentRecognizeResultUrl = DocumentRecognizeResultUrl
+
+    @property
+    def FailedPages(self):
+        r"""Page number where document parsing fails.
+        :rtype: list of ReconstructDocumentFailedPage
+        """
+        return self._FailedPages
+
+    @FailedPages.setter
+    def FailedPages(self, FailedPages):
+        self._FailedPages = FailedPages
+
+    @property
+    def FailPageNum(self):
+        r"""
+        :rtype: int
+        """
+        return self._FailPageNum
+
+    @FailPageNum.setter
+    def FailPageNum(self, FailPageNum):
+        self._FailPageNum = FailPageNum
+
+    @property
+    def SuccessPageNum(self):
+        r"""
+        :rtype: int
+        """
+        return self._SuccessPageNum
+
+    @SuccessPageNum.setter
+    def SuccessPageNum(self, SuccessPageNum):
+        self._SuccessPageNum = SuccessPageNum
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ResponseType = params.get("ResponseType")
+        self._Progress = params.get("Progress")
+        self._ProgressMessage = params.get("ProgressMessage")
+        self._DocumentRecognizeResultUrl = params.get("DocumentRecognizeResultUrl")
+        if params.get("FailedPages") is not None:
+            self._FailedPages = []
+            for item in params.get("FailedPages"):
+                obj = ReconstructDocumentFailedPage()
+                obj._deserialize(item)
+                self._FailedPages.append(obj)
+        self._FailPageNum = params.get("FailPageNum")
+        self._SuccessPageNum = params.get("SuccessPageNum")
+        self._RequestId = params.get("RequestId")
+
+
 class RunRerankRequest(AbstractModel):
     r"""RunRerank request structure.
 

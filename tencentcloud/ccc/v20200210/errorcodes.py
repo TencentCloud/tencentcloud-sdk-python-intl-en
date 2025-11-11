@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # No available AI concurrency licenses. please proceed to purchase on the console.
 FAILEDOPERATION_AICONCURRENTNOPACKAGE = 'FailedOperation.AIConcurrentNoPackage'
 

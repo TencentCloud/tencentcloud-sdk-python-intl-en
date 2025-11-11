@@ -29,11 +29,9 @@ class Acl(AbstractModel):
         :type ResourceType: int
         :param _ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
         :type ResourceName: str
-        :param _Principal: User list. The default value is `User:*`, which means that any user can access. The current user can only be one included in the user list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Principal: List of users, defaults to User:*, means any User is accessible in the entire region. the current User can only be the User in the list of users.
         :type Principal: str
-        :param _Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Host: Defaults to *, indicating any host is accessible in the entire region. currently, ckafka does not support * as the host, however, the following open-source kafka productization will directly support it.
         :type Host: str
         :param _Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE
         :type Operation: int
@@ -71,8 +69,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Principal(self):
-        r"""User list. The default value is `User:*`, which means that any user can access. The current user can only be one included in the user list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of users, defaults to User:*, means any User is accessible in the entire region. the current User can only be the User in the list of users.
         :rtype: str
         """
         return self._Principal
@@ -83,8 +80,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
-        r"""The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Defaults to *, indicating any host is accessible in the entire region. currently, ckafka does not support * as the host, however, the following open-source kafka productization will directly support it.
         :rtype: str
         """
         return self._Host
@@ -142,8 +138,7 @@ class AclResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible data entries
         :type TotalCount: int
-        :param _AclList: ACL list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AclList: ACL list.
         :type AclList: list of Acl
         """
         self._TotalCount = None
@@ -162,8 +157,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AclList(self):
-        r"""ACL list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""ACL list.
         :rtype: list of Acl
         """
         return self._AclList
@@ -199,43 +193,30 @@ class AclRule(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleName: ACL rule name.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RuleName: str
-        :param _InstanceId: Instance ID.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _PatternType: Matching type. Currently, only prefix match is supported. Enumerated value list: PREFIXED
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _PatternType: ACL rule-based matching type. currently only supports prefix match. valid values: PREFIXED.
         :type PatternType: str
-        :param _Pattern: Prefix value for prefix match.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Pattern: Indicates the prefix value for prefix match.
         :type Pattern: str
-        :param _ResourceType: ACL resource type. Only “Topic” is supported. Enumerated value list: Topic.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _ResourceType: Acl resource type, currently only support Topic. valid values: Topic.
         :type ResourceType: str
-        :param _AclList: ACL information contained in the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _AclList: Specifies the ACL information contained in the rule.
         :type AclList: str
-        :param _CreateTimeStamp: Creation time of the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _CreateTimeStamp: Specifies the time when the rule was created.
         :type CreateTimeStamp: str
-        :param _IsApplied: A parameter used to specify whether the preset ACL rule is applied to new topics.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _IsApplied: Specifies whether to apply the preset ACL rule to newly-added topics.
         :type IsApplied: int
         :param _UpdateTimeStamp: Rule update time.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type UpdateTimeStamp: str
-        :param _Comment: Remarks of the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Comment: Specifies the remark of the rule.
         :type Comment: str
-        :param _TopicName: One of the corresponding topic names that is displayed.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _TopicName: One of the displayed corresponding TopicName.
         :type TopicName: str
-        :param _TopicCount: The number of topics that apply this ACL rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _TopicCount: Number of topics to which the ACL rule is applied.
         :type TopicCount: int
-        :param _PatternTypeTitle: Name of rule type.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PatternTypeTitle: Specifies the pattern type.
         :type PatternTypeTitle: str
         """
         self._RuleName = None
@@ -255,7 +236,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def RuleName(self):
         r"""ACL rule name.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RuleName
@@ -266,8 +246,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -278,8 +257,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def PatternType(self):
-        r"""Matching type. Currently, only prefix match is supported. Enumerated value list: PREFIXED
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""ACL rule-based matching type. currently only supports prefix match. valid values: PREFIXED.
         :rtype: str
         """
         return self._PatternType
@@ -290,8 +268,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Pattern(self):
-        r"""Prefix value for prefix match.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Indicates the prefix value for prefix match.
         :rtype: str
         """
         return self._Pattern
@@ -302,8 +279,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ResourceType(self):
-        r"""ACL resource type. Only “Topic” is supported. Enumerated value list: Topic.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Acl resource type, currently only support Topic. valid values: Topic.
         :rtype: str
         """
         return self._ResourceType
@@ -314,8 +290,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AclList(self):
-        r"""ACL information contained in the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the ACL information contained in the rule.
         :rtype: str
         """
         return self._AclList
@@ -326,8 +301,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def CreateTimeStamp(self):
-        r"""Creation time of the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the time when the rule was created.
         :rtype: str
         """
         return self._CreateTimeStamp
@@ -338,8 +312,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def IsApplied(self):
-        r"""A parameter used to specify whether the preset ACL rule is applied to new topics.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies whether to apply the preset ACL rule to newly-added topics.
         :rtype: int
         """
         return self._IsApplied
@@ -351,7 +324,6 @@ Note: `null` may be returned for this field, indicating that no valid values can
     @property
     def UpdateTimeStamp(self):
         r"""Rule update time.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTimeStamp
@@ -362,8 +334,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Comment(self):
-        r"""Remarks of the rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the remark of the rule.
         :rtype: str
         """
         return self._Comment
@@ -374,8 +345,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TopicName(self):
-        r"""One of the corresponding topic names that is displayed.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""One of the displayed corresponding TopicName.
         :rtype: str
         """
         return self._TopicName
@@ -386,8 +356,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TopicCount(self):
-        r"""The number of topics that apply this ACL rule.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Number of topics to which the ACL rule is applied.
         :rtype: int
         """
         return self._TopicCount
@@ -398,8 +367,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def PatternTypeTitle(self):
-        r"""Name of rule type.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the pattern type.
         :rtype: str
         """
         return self._PatternTypeTitle
@@ -442,11 +410,11 @@ class AclRuleInfo(AbstractModel):
         r"""
         :param _Operation: ACL operation types. Enumerated values: `All` (all operations), `Read` (read), `Write` (write).
         :type Operation: str
-        :param _PermissionType: Permission types: `Deny`, `Allow`.
+        :param _PermissionType: Permission type. Deny: Deny. Allow: permission.
         :type PermissionType: str
-        :param _Host: The default value is `*`, which means that any host can access the topic. CKafka currently does not support specifying a host value of * or an IP range.
+        :param _Host: Indicates any host is accessible in the entire region.
         :type Host: str
-        :param _Principal: The list of users allowed to access the topic. Default value: `User:*`, which means all users. The current user must be in the user list. Add the prefix `User:` before the user name (`User:A`, for example).
+        :param _Principal: The User. User:* means any User is accessible in the entire region. the current User can only be the User in the list of users. the input format requires the [User:] prefix. for example, for User A, input User:A.
         :type Principal: str
         """
         self._Operation = None
@@ -467,7 +435,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def PermissionType(self):
-        r"""Permission types: `Deny`, `Allow`.
+        r"""Permission type. Deny: Deny. Allow: permission.
         :rtype: str
         """
         return self._PermissionType
@@ -478,7 +446,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""The default value is `*`, which means that any host can access the topic. CKafka currently does not support specifying a host value of * or an IP range.
+        r"""Indicates any host is accessible in the entire region.
         :rtype: str
         """
         return self._Host
@@ -489,7 +457,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Principal(self):
-        r"""The list of users allowed to access the topic. Default value: `User:*`, which means all users. The current user must be in the user list. Add the prefix `User:` before the user name (`User:A`, for example).
+        r"""The User. User:* means any User is accessible in the entire region. the current User can only be the User in the list of users. the input format requires the [User:] prefix. for example, for User A, input User:A.
         :rtype: str
         """
         return self._Principal
@@ -523,8 +491,7 @@ class AclRuleResp(AbstractModel):
         r"""
         :param _TotalCount: Total number of data entries
         :type TotalCount: int
-        :param _AclRuleList: ACL rule list
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AclRuleList: AclRule list.
         :type AclRuleList: list of AclRule
         """
         self._TotalCount = None
@@ -543,8 +510,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AclRuleList(self):
-        r"""ACL rule list
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""AclRule list.
         :rtype: list of AclRule
         """
         return self._AclRuleList
@@ -581,8 +547,7 @@ class AppIdResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible `AppId`
         :type TotalCount: int
-        :param _AppIdList: List of eligible `AppId`
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AppIdList: Specifies the App Id list that meets the requirements.
         :type AppIdList: list of int
         """
         self._TotalCount = None
@@ -601,8 +566,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppIdList(self):
-        r"""List of eligible `AppId`
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the App Id list that meets the requirements.
         :rtype: list of int
         """
         return self._AppIdList
@@ -634,8 +598,7 @@ class Assignment(AbstractModel):
         r"""
         :param _Version: Assignment version information
         :type Version: int
-        :param _Topics: Topic information list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Topics: topic information list.
         :type Topics: list of GroupInfoTopics
         """
         self._Version = None
@@ -654,8 +617,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topics(self):
-        r"""Topic information list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""topic information list.
         :rtype: list of GroupInfoTopics
         """
         return self._Topics
@@ -741,13 +703,13 @@ class BatchCreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type. Default value: `2` (topic).
         :type ResourceType: int
-        :param _ResourceNames: Resource list array.
+        :param _ResourceNames: Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1).
         :type ResourceNames: list of str
-        :param _RuleList: ACL rule list.
+        :param _RuleList: Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.comom/document/product/597/89217?from_cn_redirect=1).
         :type RuleList: list of AclRuleInfo
         """
         self._InstanceId = None
@@ -757,7 +719,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -779,7 +741,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
-        r"""Resource list array.
+        r"""Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ResourceNames
@@ -790,7 +752,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""ACL rule list.
+        r"""Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.comom/document/product/597/89217?from_cn_redirect=1).
         :rtype: list of AclRuleInfo
         """
         return self._RuleList
@@ -827,9 +789,9 @@ class BatchCreateAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Status code.
+        :param _Result: Status code: 0 - modification succeeded, otherwise modification failed.
         :type Result: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -837,7 +799,7 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Status code.
+        r"""Status code: 0 - modification succeeded, otherwise modification failed.
         :rtype: int
         """
         return self._Result
@@ -848,7 +810,7 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -872,7 +834,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
         r"""
         :param _GroupName: Consumer group name.
         :type GroupName: str
-        :param _InstanceId: Instance name.
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _Partitions: Partition information.
         :type Partitions: list of Partitions
@@ -897,7 +859,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance name.
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -958,7 +920,7 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -977,7 +939,7 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1001,9 +963,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Topic: Topic attribute list
+        :param _Topic: Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type Topic: list of BatchModifyTopicInfo
         """
         self._InstanceId = None
@@ -1011,7 +973,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -1022,7 +984,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""Topic attribute list
+        r"""Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: list of BatchModifyTopicInfo
         """
         return self._Topic
@@ -1059,7 +1021,7 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
         r"""
         :param _Result: Returned result.
         :type Result: list of BatchModifyTopicResultDTO
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -1078,7 +1040,7 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1105,7 +1067,7 @@ class BatchModifyTopicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic name.
+        :param _TopicName: Topic name
         :type TopicName: str
         :param _PartitionNum: The number of partitions.
         :type PartitionNum: int
@@ -1121,12 +1083,14 @@ class BatchModifyTopicInfo(AbstractModel):
         :type UncleanLeaderElectionEnable: bool
         :param _RetentionMs: Message retention period in topic dimension in milliseconds. Value range: 1 minute to 90 days.
         :type RetentionMs: int
-        :param _RetentionBytes: Message retention size in topic dimension. Value range: 1 MB - 1024 GB.
+        :param _RetentionBytes: Specifies the message retention size in the topic dimension in bytes. value range: 1 GB to 1024 GB.
         :type RetentionBytes: int
-        :param _SegmentMs: Segment rolling duration in milliseconds. Value range: 1-90 days.
+        :param _SegmentMs: Duration of Segment shard scrolling in milliseconds. value range: 1 day to 90 days.
         :type SegmentMs: int
         :param _MaxMessageBytes: Message size per batch. Value range: 1 KB - 12 MB.
         :type MaxMessageBytes: int
+        :param _LogMsgTimestampType: Specifies the time type for message storage: CreateTime/LogAppendTime.
+        :type LogMsgTimestampType: str
         """
         self._TopicName = None
         self._PartitionNum = None
@@ -1139,10 +1103,11 @@ class BatchModifyTopicInfo(AbstractModel):
         self._RetentionBytes = None
         self._SegmentMs = None
         self._MaxMessageBytes = None
+        self._LogMsgTimestampType = None
 
     @property
     def TopicName(self):
-        r"""Topic name.
+        r"""Topic name
         :rtype: str
         """
         return self._TopicName
@@ -1230,7 +1195,7 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        r"""Message retention size in topic dimension. Value range: 1 MB - 1024 GB.
+        r"""Specifies the message retention size in the topic dimension in bytes. value range: 1 GB to 1024 GB.
         :rtype: int
         """
         return self._RetentionBytes
@@ -1241,7 +1206,7 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def SegmentMs(self):
-        r"""Segment rolling duration in milliseconds. Value range: 1-90 days.
+        r"""Duration of Segment shard scrolling in milliseconds. value range: 1 day to 90 days.
         :rtype: int
         """
         return self._SegmentMs
@@ -1261,6 +1226,17 @@ class BatchModifyTopicInfo(AbstractModel):
     def MaxMessageBytes(self, MaxMessageBytes):
         self._MaxMessageBytes = MaxMessageBytes
 
+    @property
+    def LogMsgTimestampType(self):
+        r"""Specifies the time type for message storage: CreateTime/LogAppendTime.
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -1274,6 +1250,7 @@ class BatchModifyTopicInfo(AbstractModel):
         self._RetentionBytes = params.get("RetentionBytes")
         self._SegmentMs = params.get("SegmentMs")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1291,16 +1268,13 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _TopicName: Topic name.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TopicName: Topic name
         :type TopicName: str
-        :param _ReturnCode: Status code.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ReturnCode: Operation return code.
         :type ReturnCode: str
-        :param _Message: Message status.
+        :param _Message: Returned information.
         :type Message: str
         """
         self._InstanceId = None
@@ -1310,8 +1284,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -1322,8 +1295,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TopicName(self):
-        r"""Topic name.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Topic name
         :rtype: str
         """
         return self._TopicName
@@ -1334,8 +1306,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReturnCode(self):
-        r"""Status code.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Operation return code.
         :rtype: str
         """
         return self._ReturnCode
@@ -1346,7 +1317,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
-        r"""Message status.
+        r"""Returned information.
         :rtype: str
         """
         return self._Message
@@ -1382,23 +1353,17 @@ class ClusterInfo(AbstractModel):
         :type ClusterId: int
         :param _ClusterName: Cluster name
         :type ClusterName: str
-        :param _MaxDiskSize: The cluster’s maximum disk capacity in GB
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _MaxDiskSize: Maximum disk of the cluster (unit: GB).
         :type MaxDiskSize: int
-        :param _MaxBandWidth: The cluster’s maximum bandwidth in MB/s
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _MaxBandWidth: Maximum bandwidth of the cluster. unit: MB/s.
         :type MaxBandWidth: int
-        :param _AvailableDiskSize: The cluster’s available disk capacity in GB
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _AvailableDiskSize: Current availability of cluster disk (unit: GB).
         :type AvailableDiskSize: int
-        :param _AvailableBandWidth: The cluster’s available bandwidth in MB/s
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _AvailableBandWidth: Available bandwidth of the cluster. unit: MB/s.
         :type AvailableBandWidth: int
-        :param _ZoneId: The AZ where the cluster resides
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _ZoneId: Indicates the AZ to which the cluster belongs.
         :type ZoneId: int
-        :param _ZoneIds: The AZ where the cluster nodes reside. If the cluster is a multi-AZ cluster, this field means multiple AZs where the cluster nodes reside.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _ZoneIds: The AZ where the cluster nodes are located. If the cluster is a cross-AZ cluster, it includes multiple AZs where the cluster nodes are located.
         :type ZoneIds: list of int
         """
         self._ClusterId = None
@@ -1434,8 +1399,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxDiskSize(self):
-        r"""The cluster’s maximum disk capacity in GB
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Maximum disk of the cluster (unit: GB).
         :rtype: int
         """
         return self._MaxDiskSize
@@ -1446,8 +1410,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxBandWidth(self):
-        r"""The cluster’s maximum bandwidth in MB/s
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Maximum bandwidth of the cluster. unit: MB/s.
         :rtype: int
         """
         return self._MaxBandWidth
@@ -1458,8 +1421,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AvailableDiskSize(self):
-        r"""The cluster’s available disk capacity in GB
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Current availability of cluster disk (unit: GB).
         :rtype: int
         """
         return self._AvailableDiskSize
@@ -1470,8 +1432,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AvailableBandWidth(self):
-        r"""The cluster’s available bandwidth in MB/s
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Available bandwidth of the cluster. unit: MB/s.
         :rtype: int
         """
         return self._AvailableBandWidth
@@ -1482,8 +1443,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ZoneId(self):
-        r"""The AZ where the cluster resides
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Indicates the AZ to which the cluster belongs.
         :rtype: int
         """
         return self._ZoneId
@@ -1494,8 +1454,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ZoneIds(self):
-        r"""The AZ where the cluster nodes reside. If the cluster is a multi-AZ cluster, this field means multiple AZs where the cluster nodes reside.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""The AZ where the cluster nodes are located. If the cluster is a cross-AZ cluster, it includes multiple AZs where the cluster nodes are located.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -1531,8 +1490,7 @@ class Config(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Retention: Message retention period
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Retention: Message retention period in milliseconds.
         :type Retention: int
         :param _MinInsyncReplicas: Minimum number of sync replications
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1541,21 +1499,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
 delete: logs will be deleted by save time; compact: logs will be compressed by key; compact, delete: logs will be compressed by key and deleted by save time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CleanUpPolicy: str
-        :param _SegmentMs: Segment rolling duration
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SegmentMs: Duration of Segment shard scrolling in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentMs: int
         :param _UncleanLeaderElectionEnable: 0: false, 1: true.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UncleanLeaderElectionEnable: int
-        :param _SegmentBytes: Number of bytes for segment rolling
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SegmentBytes: Segment specifies the number of bytes for sharding scroll. unit: bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentBytes: int
-        :param _MaxMessageBytes: Maximum number of message bytes
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MaxMessageBytes: Maximum message byte size. unit: bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxMessageBytes: int
-        :param _RetentionBytes: Message retention file size.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _RetentionBytes: Specifies the message retention file size in Bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RetentionBytes: int
+        :param _LogMsgTimestampType: The time type for message saving. CreateTime means the time when the producer created this message. LogAppendTime means the time when the broker received the message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogMsgTimestampType: str
         """
         self._Retention = None
         self._MinInsyncReplicas = None
@@ -1565,11 +1526,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._SegmentBytes = None
         self._MaxMessageBytes = None
         self._RetentionBytes = None
+        self._LogMsgTimestampType = None
 
     @property
     def Retention(self):
-        r"""Message retention period
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Message retention period in milliseconds.
         :rtype: int
         """
         return self._Retention
@@ -1605,8 +1566,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentMs(self):
-        r"""Segment rolling duration
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Duration of Segment shard scrolling in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SegmentMs
@@ -1629,8 +1590,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentBytes(self):
-        r"""Number of bytes for segment rolling
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Segment specifies the number of bytes for sharding scroll. unit: bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SegmentBytes
@@ -1641,8 +1602,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMessageBytes(self):
-        r"""Maximum number of message bytes
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Maximum message byte size. unit: bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MaxMessageBytes
@@ -1653,8 +1614,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionBytes(self):
-        r"""Message retention file size.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the message retention file size in Bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RetentionBytes
@@ -1662,6 +1623,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @RetentionBytes.setter
     def RetentionBytes(self, RetentionBytes):
         self._RetentionBytes = RetentionBytes
+
+    @property
+    def LogMsgTimestampType(self):
+        r"""The time type for message saving. CreateTime means the time when the producer created this message. LogAppendTime means the time when the broker received the message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
 
 
     def _deserialize(self, params):
@@ -1673,6 +1646,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._SegmentBytes = params.get("SegmentBytes")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
         self._RetentionBytes = params.get("RetentionBytes")
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1748,26 +1722,19 @@ class ConsumerGroupResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible consumer groups
         :type TotalCount: int
-        :param _TopicList: Topic list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicList: Topic list.
         :type TopicList: list of ConsumerGroupTopic
-        :param _GroupList: Consumer group list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _GroupList: Specifies the consumption group List.
         :type GroupList: list of ConsumerGroup
-        :param _TotalPartition: Total number of partitions
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalPartition: Total number of partitions.
         :type TotalPartition: int
-        :param _PartitionListForMonitor: List of monitored partitions
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PartitionListForMonitor: Monitored partition list.
         :type PartitionListForMonitor: list of Partition
-        :param _TotalTopic: Total number of topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalTopic: Total number of topics.
         :type TotalTopic: int
-        :param _TopicListForMonitor: List of monitored topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicListForMonitor: Monitored topic list.
         :type TopicListForMonitor: list of ConsumerGroupTopic
-        :param _GroupListForMonitor: List of monitored groups
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _GroupListForMonitor: Monitored group list.
         :type GroupListForMonitor: list of Group
         """
         self._TotalCount = None
@@ -1792,8 +1759,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
-        r"""Topic list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Topic list.
         :rtype: list of ConsumerGroupTopic
         """
         return self._TopicList
@@ -1804,8 +1770,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupList(self):
-        r"""Consumer group list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the consumption group List.
         :rtype: list of ConsumerGroup
         """
         return self._GroupList
@@ -1816,8 +1781,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalPartition(self):
-        r"""Total number of partitions
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Total number of partitions.
         :rtype: int
         """
         return self._TotalPartition
@@ -1828,8 +1792,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionListForMonitor(self):
-        r"""List of monitored partitions
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Monitored partition list.
         :rtype: list of Partition
         """
         return self._PartitionListForMonitor
@@ -1840,8 +1803,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalTopic(self):
-        r"""Total number of topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Total number of topics.
         :rtype: int
         """
         return self._TotalTopic
@@ -1852,8 +1814,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicListForMonitor(self):
-        r"""List of monitored topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Monitored topic list.
         :rtype: list of ConsumerGroupTopic
         """
         return self._TopicListForMonitor
@@ -1864,8 +1825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupListForMonitor(self):
-        r"""List of monitored groups
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Monitored group list.
         :rtype: list of Group
         """
         return self._GroupListForMonitor
@@ -1989,8 +1949,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _Value: Message value
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Value: str
-        :param _Timestamp: Message timestamp
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Timestamp: Message timestamp.
         :type Timestamp: int
         :param _Headers: Message headers
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2063,8 +2022,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Timestamp(self):
-        r"""Message timestamp
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Message timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -2111,17 +2069,17 @@ class CreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID information
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
         :param _Operation: ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
         :type Operation: int
-        :param _PermissionType: Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        :param _PermissionType: Permission type (2:DENY, 3:ALLOW). currently ckafka supports ALLOW (equivalent to allowlist), others used when compatible with open-source kafka acl.
         :type PermissionType: int
         :param _ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
         :type ResourceName: str
-        :param _Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
+        :param _Host: Defaults to *, indicating any host is accessible in the entire region. supports filling in ips or ranges, and uses ";" for separation.
         :type Host: str
         :param _Principal: The list of users allowed to access the topic. Default: User:*, meaning all users. The current user must be in the user list. Add `User:` before the user name (`User:A` for example).
         :type Principal: str
@@ -2139,7 +2097,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID information
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2172,7 +2130,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
-        r"""Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        r"""Permission type (2:DENY, 3:ALLOW). currently ckafka supports ALLOW (equivalent to allowlist), others used when compatible with open-source kafka acl.
         :rtype: int
         """
         return self._PermissionType
@@ -2194,7 +2152,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
+        r"""Defaults to *, indicating any host is accessible in the entire region. supports filling in ips or ranges, and uses ";" for separation.
         :rtype: str
         """
         return self._Host
@@ -2254,7 +2212,7 @@ class CreateAclResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -2273,7 +2231,7 @@ class CreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2297,19 +2255,19 @@ class CreateAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type. Currently, the only valid value is `Topic`.
         :type ResourceType: str
-        :param _PatternType: Matching type. Valid values: `PREFIXED`(match by prefix), `PRESET` (match by preset policy).
+        :param _PatternType: ACL rule-based matching type. currently supports prefix match and PRESET policy. valid values: PREFIXED/PRESET.
         :type PatternType: str
         :param _RuleName: Rule name
         :type RuleName: str
         :param _RuleList: ACL rule list
         :type RuleList: list of AclRuleInfo
-        :param _Pattern: Prefix value for prefix match
+        :param _Pattern: Indicates the prefix for prefix match. this parameter is required when PatternType value is PREFIXED.
         :type Pattern: str
-        :param _IsApplied: A parameter used to specify whether the preset ACL rule is applied to new topics
+        :param _IsApplied: Specifies whether to apply the preset ACL rule to newly-added topics. defaults to 0, which means no. a value of 1 means yes.
         :type IsApplied: int
         :param _Comment: Remarks for ACL rules
         :type Comment: str
@@ -2325,7 +2283,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2347,7 +2305,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
-        r"""Matching type. Valid values: `PREFIXED`(match by prefix), `PRESET` (match by preset policy).
+        r"""ACL rule-based matching type. currently supports prefix match and PRESET policy. valid values: PREFIXED/PRESET.
         :rtype: str
         """
         return self._PatternType
@@ -2380,7 +2338,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        r"""Prefix value for prefix match
+        r"""Indicates the prefix for prefix match. this parameter is required when PatternType value is PREFIXED.
         :rtype: str
         """
         return self._Pattern
@@ -2391,7 +2349,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
-        r"""A parameter used to specify whether the preset ACL rule is applied to new topics
+        r"""Specifies whether to apply the preset ACL rule to newly-added topics. defaults to 0, which means no. a value of 1 means yes.
         :rtype: int
         """
         return self._IsApplied
@@ -2445,7 +2403,7 @@ class CreateAclRuleResponse(AbstractModel):
         r"""
         :param _Result: Unique key of a rule
         :type Result: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -2464,7 +2422,7 @@ class CreateAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2486,13 +2444,13 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _GroupName: Group name.
+        :param _GroupName: Consumer group name.
         :type GroupName: str
-        :param _TopicName: Topic name. You must specify the name of an existing topic for either `TopicName` or `TopicNameList`.
+        :param _TopicName: Topic name. one of TopicName or TopicNameList must display a specified existing topic name.
         :type TopicName: str
-        :param _TopicNameList: Topic name array.
+        :param _TopicNameList: Topic name list.
         :type TopicNameList: list of str
         """
         self._InstanceId = None
@@ -2502,7 +2460,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2513,7 +2471,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""Group name.
+        r"""Consumer group name.
         :rtype: str
         """
         return self._GroupName
@@ -2524,7 +2482,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name. You must specify the name of an existing topic for either `TopicName` or `TopicNameList`.
+        r"""Topic name. one of TopicName or TopicNameList must display a specified existing topic name.
         :rtype: str
         """
         return self._TopicName
@@ -2535,7 +2493,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
-        r"""Topic name array.
+        r"""Topic name list.
         :rtype: list of str
         """
         return self._TopicNameList
@@ -2567,9 +2525,9 @@ class CreateConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Description of the created consumer group.
+        :param _Result: Create consumer group returned results.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -2577,7 +2535,7 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Description of the created consumer group.
+        r"""Create consumer group returned results.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -2588,7 +2546,7 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2612,7 +2570,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param _Name: Name, a string of no more than 128 characters, must start with "AppId-" and can contain letters, digits, and hyphens (-).
         :type Name: str
         :param _PartitionNum: Number of partitions, which should be greater than 0.
         :type PartitionNum: int
@@ -2631,7 +2589,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        r"""Name, a string of no more than 128 characters, must start with "AppId-" and can contain letters, digits, and hyphens (-).
         :rtype: str
         """
         return self._Name
@@ -2715,7 +2673,7 @@ class CreateDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: Returned creation result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -2734,7 +2692,7 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2758,14 +2716,13 @@ class CreateInstancePostData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: This parameter has a fixed value of 0 returned by `CreateInstancePre`. It is only used for backend data alignment  and cannot be used as the query condition for `CheckTaskStatus`. 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _FlowId: CreateInstancePre returns fixed as 0. it cannot be used as a query condition for CheckTaskStatus. this is merely to ensure alignment with the backend data structure.
         :type FlowId: int
-        :param _DealNames: List of order IDs Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DealNames: Order ID list
         :type DealNames: list of str
-        :param _InstanceId: Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: The ckafka cluster instance Id. by default, returns the Id of the first purchased instance when purchasing multiple instances.
         :type InstanceId: str
-        :param _DealNameInstanceIdMapping: Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DealNameInstanceIdMapping: Order and purchase mapping list corresponding to the instance.
         :type DealNameInstanceIdMapping: list of DealInstanceDTO
         """
         self._FlowId = None
@@ -2775,8 +2732,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def FlowId(self):
-        r"""This parameter has a fixed value of 0 returned by `CreateInstancePre`. It is only used for backend data alignment  and cannot be used as the query condition for `CheckTaskStatus`. 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        r"""CreateInstancePre returns fixed as 0. it cannot be used as a query condition for CheckTaskStatus. this is merely to ensure alignment with the backend data structure.
         :rtype: int
         """
         return self._FlowId
@@ -2787,7 +2743,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def DealNames(self):
-        r"""List of order IDs Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order ID list
         :rtype: list of str
         """
         return self._DealNames
@@ -2798,7 +2754,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceId(self):
-        r"""Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The ckafka cluster instance Id. by default, returns the Id of the first purchased instance when purchasing multiple instances.
         :rtype: str
         """
         return self._InstanceId
@@ -2809,7 +2765,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def DealNameInstanceIdMapping(self):
-        r"""Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order and purchase mapping list corresponding to the instance.
         :rtype: list of DealInstanceDTO
         """
         return self._DealNameInstanceIdMapping
@@ -2839,297 +2795,6 @@ Note:  This field may return null, indicating that no valid values can be obtain
         
 
 
-class CreateInstancePostRequest(AbstractModel):
-    r"""CreateInstancePost request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceName: Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
-        :type InstanceName: str
-        :param _BandWidth: Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
-        :type BandWidth: int
-        :param _VpcId: ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
-        :type VpcId: str
-        :param _SubnetId: ID of the subnet  where the default access point of the created instance resides. 
-        :type SubnetId: str
-        :param _InstanceType: Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
-        :type InstanceType: int
-        :param _MsgRetentionTime: The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
-        :type MsgRetentionTime: int
-        :param _ClusterId: Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
-        :type ClusterId: int
-        :param _KafkaVersion: Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
-        :type KafkaVersion: str
-        :param _SpecificationsType: Instance type. Valid values: `standard` (Standard Edition),  `profession`  (Pro Edition)
-        :type SpecificationsType: str
-        :param _DiskType: Instance disk type. Valid values:  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
-        :type DiskType: str
-        :param _DiskSize: Instance disk size, which must meet the requirement of the instance’s specification.
-        :type DiskSize: int
-        :param _Partition: The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
-        :type Partition: int
-        :param _TopicNum: The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
-        :type TopicNum: int
-        :param _ZoneId: AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
-        :type ZoneId: int
-        :param _MultiZoneFlag: Whether the current instance is a multi-AZ instance
-        :type MultiZoneFlag: bool
-        :param _ZoneIds: This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
-        :type ZoneIds: list of int
-        :param _InstanceNum: The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
-        :type InstanceNum: int
-        :param _PublicNetworkMonthly: Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`. The value must be an integer multiple of 3.
-        :type PublicNetworkMonthly: int
-        """
-        self._InstanceName = None
-        self._BandWidth = None
-        self._VpcId = None
-        self._SubnetId = None
-        self._InstanceType = None
-        self._MsgRetentionTime = None
-        self._ClusterId = None
-        self._KafkaVersion = None
-        self._SpecificationsType = None
-        self._DiskType = None
-        self._DiskSize = None
-        self._Partition = None
-        self._TopicNum = None
-        self._ZoneId = None
-        self._MultiZoneFlag = None
-        self._ZoneIds = None
-        self._InstanceNum = None
-        self._PublicNetworkMonthly = None
-
-    @property
-    def InstanceName(self):
-        r"""Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
-        :rtype: str
-        """
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
-
-    @property
-    def BandWidth(self):
-        r"""Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
-        :rtype: int
-        """
-        return self._BandWidth
-
-    @BandWidth.setter
-    def BandWidth(self, BandWidth):
-        self._BandWidth = BandWidth
-
-    @property
-    def VpcId(self):
-        r"""ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
-        :rtype: str
-        """
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def SubnetId(self):
-        r"""ID of the subnet  where the default access point of the created instance resides. 
-        :rtype: str
-        """
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
-
-    @property
-    def InstanceType(self):
-        r"""Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
-        :rtype: int
-        """
-        return self._InstanceType
-
-    @InstanceType.setter
-    def InstanceType(self, InstanceType):
-        self._InstanceType = InstanceType
-
-    @property
-    def MsgRetentionTime(self):
-        r"""The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
-        :rtype: int
-        """
-        return self._MsgRetentionTime
-
-    @MsgRetentionTime.setter
-    def MsgRetentionTime(self, MsgRetentionTime):
-        self._MsgRetentionTime = MsgRetentionTime
-
-    @property
-    def ClusterId(self):
-        r"""Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
-        :rtype: int
-        """
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
-    def KafkaVersion(self):
-        r"""Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
-        :rtype: str
-        """
-        return self._KafkaVersion
-
-    @KafkaVersion.setter
-    def KafkaVersion(self, KafkaVersion):
-        self._KafkaVersion = KafkaVersion
-
-    @property
-    def SpecificationsType(self):
-        r"""Instance type. Valid values: `standard` (Standard Edition),  `profession`  (Pro Edition)
-        :rtype: str
-        """
-        return self._SpecificationsType
-
-    @SpecificationsType.setter
-    def SpecificationsType(self, SpecificationsType):
-        self._SpecificationsType = SpecificationsType
-
-    @property
-    def DiskType(self):
-        r"""Instance disk type. Valid values:  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
-        :rtype: str
-        """
-        return self._DiskType
-
-    @DiskType.setter
-    def DiskType(self, DiskType):
-        self._DiskType = DiskType
-
-    @property
-    def DiskSize(self):
-        r"""Instance disk size, which must meet the requirement of the instance’s specification.
-        :rtype: int
-        """
-        return self._DiskSize
-
-    @DiskSize.setter
-    def DiskSize(self, DiskSize):
-        self._DiskSize = DiskSize
-
-    @property
-    def Partition(self):
-        r"""The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
-        :rtype: int
-        """
-        return self._Partition
-
-    @Partition.setter
-    def Partition(self, Partition):
-        self._Partition = Partition
-
-    @property
-    def TopicNum(self):
-        r"""The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
-        :rtype: int
-        """
-        return self._TopicNum
-
-    @TopicNum.setter
-    def TopicNum(self, TopicNum):
-        self._TopicNum = TopicNum
-
-    @property
-    def ZoneId(self):
-        r"""AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
-        :rtype: int
-        """
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def MultiZoneFlag(self):
-        r"""Whether the current instance is a multi-AZ instance
-        :rtype: bool
-        """
-        return self._MultiZoneFlag
-
-    @MultiZoneFlag.setter
-    def MultiZoneFlag(self, MultiZoneFlag):
-        self._MultiZoneFlag = MultiZoneFlag
-
-    @property
-    def ZoneIds(self):
-        r"""This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
-        :rtype: list of int
-        """
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def InstanceNum(self):
-        r"""The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
-        :rtype: int
-        """
-        return self._InstanceNum
-
-    @InstanceNum.setter
-    def InstanceNum(self, InstanceNum):
-        self._InstanceNum = InstanceNum
-
-    @property
-    def PublicNetworkMonthly(self):
-        r"""Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`. The value must be an integer multiple of 3.
-        :rtype: int
-        """
-        return self._PublicNetworkMonthly
-
-    @PublicNetworkMonthly.setter
-    def PublicNetworkMonthly(self, PublicNetworkMonthly):
-        self._PublicNetworkMonthly = PublicNetworkMonthly
-
-
-    def _deserialize(self, params):
-        self._InstanceName = params.get("InstanceName")
-        self._BandWidth = params.get("BandWidth")
-        self._VpcId = params.get("VpcId")
-        self._SubnetId = params.get("SubnetId")
-        self._InstanceType = params.get("InstanceType")
-        self._MsgRetentionTime = params.get("MsgRetentionTime")
-        self._ClusterId = params.get("ClusterId")
-        self._KafkaVersion = params.get("KafkaVersion")
-        self._SpecificationsType = params.get("SpecificationsType")
-        self._DiskType = params.get("DiskType")
-        self._DiskSize = params.get("DiskSize")
-        self._Partition = params.get("Partition")
-        self._TopicNum = params.get("TopicNum")
-        self._ZoneId = params.get("ZoneId")
-        self._MultiZoneFlag = params.get("MultiZoneFlag")
-        self._ZoneIds = params.get("ZoneIds")
-        self._InstanceNum = params.get("InstanceNum")
-        self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class CreateInstancePostResp(AbstractModel):
     r"""Data structure returned by pay-as-you-go instance APIs
 
@@ -3141,7 +2806,7 @@ class CreateInstancePostResp(AbstractModel):
         :type ReturnCode: str
         :param _ReturnMessage: Message returned by the API. An error message will be returned if the API reports an error. 
         :type ReturnMessage: str
-        :param _Data: Returned data.  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Specifies the Data returned.
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
         """
         self._ReturnCode = None
@@ -3172,7 +2837,7 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def Data(self):
-        r"""Returned data.  Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the Data returned.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
         """
         return self._Data
@@ -3198,51 +2863,6 @@ class CreateInstancePostResp(AbstractModel):
         
 
 
-class CreateInstancePostResponse(AbstractModel):
-    r"""CreateInstancePost response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: Returned result
-        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""Returned result
-        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self._Result = JgwOperateResponse()
-            self._Result._deserialize(params.get("Result"))
-        self._RequestId = params.get("RequestId")
-
-
 class CreateInstancePreData(AbstractModel):
     r"""Data returned by the `CreateInstancePre` API.
 
@@ -3250,15 +2870,13 @@ class CreateInstancePreData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The value returned by `CreateInstancePre` is 0, which is fixed and cannot be used as the query condition of `CheckTaskStatus`. It is only used to ensure the consistency with the backend data structure.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _FlowId: CreateInstancePre returns fixed as 0. it cannot be used as a query condition for CheckTaskStatus. this is merely to ensure alignment with the backend data structure.
         :type FlowId: int
-        :param _DealNames: Order number list.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DealNames: Order ID list
         :type DealNames: list of str
-        :param _InstanceId: Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: The ckafka cluster instance Id. by default, returns the Id of the first purchased instance when purchasing multiple instances.
         :type InstanceId: str
-        :param _DealNameInstanceIdMapping: Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DealNameInstanceIdMapping: Order and purchase mapping list corresponding to the instance.
         :type DealNameInstanceIdMapping: list of DealInstanceDTO
         """
         self._FlowId = None
@@ -3268,8 +2886,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowId(self):
-        r"""The value returned by `CreateInstancePre` is 0, which is fixed and cannot be used as the query condition of `CheckTaskStatus`. It is only used to ensure the consistency with the backend data structure.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""CreateInstancePre returns fixed as 0. it cannot be used as a query condition for CheckTaskStatus. this is merely to ensure alignment with the backend data structure.
         :rtype: int
         """
         return self._FlowId
@@ -3280,8 +2897,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DealNames(self):
-        r"""Order number list.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Order ID list
         :rtype: list of str
         """
         return self._DealNames
@@ -3292,7 +2908,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
-        r"""Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The ckafka cluster instance Id. by default, returns the Id of the first purchased instance when purchasing multiple instances.
         :rtype: str
         """
         return self._InstanceId
@@ -3303,7 +2919,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DealNameInstanceIdMapping(self):
-        r"""Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order and purchase mapping list corresponding to the instance.
         :rtype: list of DealInstanceDTO
         """
         return self._DealNameInstanceIdMapping
@@ -3333,6 +2949,362 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CreateInstancePreRequest(AbstractModel):
+    r"""CreateInstancePre request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: Specifies the ckafka cluster instance Name, an arbitrary string with length no more than 128 characters.
+        :type InstanceName: str
+        :param _ZoneId: Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. [view availability zones](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        :type ZoneId: int
+        :param _Period: Prepaid purchase duration, such as "1m", exactly one month. value ranges from 1m to 36m.
+        :type Period: str
+        :param _InstanceType: Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        :type InstanceType: int
+        :param _VpcId: VPC Id.
+        :type VpcId: str
+        :param _SubnetId: Subnet ID
+        :type SubnetId: str
+        :param _MsgRetentionTime: Optional. maximum retention time of instance logs, in minutes. default value: 1440 (1 day). value range: 1 minute to 90 days.
+        :type MsgRetentionTime: int
+        :param _ClusterId: Specifies the cluster Id when creating an instance.
+        :type ClusterId: int
+        :param _RenewFlag: Auto-Renewal tag for prepaid services. valid values: 0 (default state, not set by the user, initial status), 1 (auto-renew), 2 (explicitly no auto-renew, set by the user).
+        :type RenewFlag: int
+        :param _KafkaVersion: Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value 2.4.1. 2.4.1 and 2.4.2 belong to the same version. any can be passed.
+        :type KafkaVersion: str
+        :param _SpecificationsType: Specifies the instance type. valid values: standard (default), profession, premium.
+        :type SpecificationsType: str
+        :param _DiskSize: Disk size. if it does not match the console specification ratio, the creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        :type DiskSize: int
+        :param _BandWidth: Instance bandwidth. default value: 40 MB/s. minimum value: 20 MB/s. maximum value for advanced edition: 360 MB/s. maximum value for pro edition: 100000 MB/s. standard version fixed bandwidth specifications: 40 MB/s, 100 MB/s, 150 MB/s. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        :type BandWidth: int
+        :param _Partition: Partition size. if it does not match the console specification ratio, creation will fail. default value is 800, step length is 100. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        :type Partition: int
+        :param _Tags: Tag.
+        :type Tags: list of Tag
+        :param _DiskType: Specifies the disk type for a pro/advanced edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        :type DiskType: str
+        :param _MultiZoneFlag: Specifies whether to create a cross-az instance. when the current parameter is true, zoneIds is required.
+        :type MultiZoneFlag: bool
+        :param _ZoneIds: Availability zone list. required item when purchasing a multi-availability zone instance.
+        :type ZoneIds: list of int
+        :param _PublicNetworkMonthly: Public network bandwidth size, in Mbps. the default is no free 3 Mbps bandwidth. for example, for a total of 3 Mbps public network bandwidth, pass 0 here; for a total of 6 Mbps public network bandwidth, pass 3 here. default value is 0. ensure the input parameter is a multiple of 3.
+        :type PublicNetworkMonthly: int
+        :param _InstanceNum: Number of instances to purchase. optional. default value is 1. when you input this parameter, it enables the creation of multiple instances with case-sensitive suffixes added to instanceName.
+        :type InstanceNum: int
+        :param _AutoVoucher: Whether to automatically select a voucher. valid values: 1 (yes), 0 (no). default is 0.
+        :type AutoVoucher: int
+        :param _ElasticBandwidthSwitch: Elastic bandwidth switch. specifies whether to enable elastic bandwidth. valid values: 0 (not enabled, default), 1 (enabled).
+        :type ElasticBandwidthSwitch: int
+        """
+        self._InstanceName = None
+        self._ZoneId = None
+        self._Period = None
+        self._InstanceType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._MsgRetentionTime = None
+        self._ClusterId = None
+        self._RenewFlag = None
+        self._KafkaVersion = None
+        self._SpecificationsType = None
+        self._DiskSize = None
+        self._BandWidth = None
+        self._Partition = None
+        self._Tags = None
+        self._DiskType = None
+        self._MultiZoneFlag = None
+        self._ZoneIds = None
+        self._PublicNetworkMonthly = None
+        self._InstanceNum = None
+        self._AutoVoucher = None
+        self._ElasticBandwidthSwitch = None
+
+    @property
+    def InstanceName(self):
+        r"""Specifies the ckafka cluster instance Name, an arbitrary string with length no more than 128 characters.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ZoneId(self):
+        r"""Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. [view availability zones](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Period(self):
+        r"""Prepaid purchase duration, such as "1m", exactly one month. value ranges from 1m to 36m.
+        :rtype: str
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def InstanceType(self):
+        r"""Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def VpcId(self):
+        r"""VPC Id.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""Subnet ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def MsgRetentionTime(self):
+        r"""Optional. maximum retention time of instance logs, in minutes. default value: 1440 (1 day). value range: 1 minute to 90 days.
+        :rtype: int
+        """
+        return self._MsgRetentionTime
+
+    @MsgRetentionTime.setter
+    def MsgRetentionTime(self, MsgRetentionTime):
+        self._MsgRetentionTime = MsgRetentionTime
+
+    @property
+    def ClusterId(self):
+        r"""Specifies the cluster Id when creating an instance.
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RenewFlag(self):
+        r"""Auto-Renewal tag for prepaid services. valid values: 0 (default state, not set by the user, initial status), 1 (auto-renew), 2 (explicitly no auto-renew, set by the user).
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def KafkaVersion(self):
+        r"""Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value 2.4.1. 2.4.1 and 2.4.2 belong to the same version. any can be passed.
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SpecificationsType(self):
+        r"""Specifies the instance type. valid values: standard (default), profession, premium.
+        :rtype: str
+        """
+        return self._SpecificationsType
+
+    @SpecificationsType.setter
+    def SpecificationsType(self, SpecificationsType):
+        self._SpecificationsType = SpecificationsType
+
+    @property
+    def DiskSize(self):
+        r"""Disk size. if it does not match the console specification ratio, the creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def BandWidth(self):
+        r"""Instance bandwidth. default value: 40 MB/s. minimum value: 20 MB/s. maximum value for advanced edition: 360 MB/s. maximum value for pro edition: 100000 MB/s. standard version fixed bandwidth specifications: 40 MB/s, 100 MB/s, 150 MB/s. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        :rtype: int
+        """
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
+
+    @property
+    def Partition(self):
+        r"""Partition size. if it does not match the console specification ratio, creation will fail. default value is 800, step length is 100. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DiskType(self):
+        r"""Specifies the disk type for a pro/advanced edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def MultiZoneFlag(self):
+        r"""Specifies whether to create a cross-az instance. when the current parameter is true, zoneIds is required.
+        :rtype: bool
+        """
+        return self._MultiZoneFlag
+
+    @MultiZoneFlag.setter
+    def MultiZoneFlag(self, MultiZoneFlag):
+        self._MultiZoneFlag = MultiZoneFlag
+
+    @property
+    def ZoneIds(self):
+        r"""Availability zone list. required item when purchasing a multi-availability zone instance.
+        :rtype: list of int
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def PublicNetworkMonthly(self):
+        r"""Public network bandwidth size, in Mbps. the default is no free 3 Mbps bandwidth. for example, for a total of 3 Mbps public network bandwidth, pass 0 here; for a total of 6 Mbps public network bandwidth, pass 3 here. default value is 0. ensure the input parameter is a multiple of 3.
+        :rtype: int
+        """
+        return self._PublicNetworkMonthly
+
+    @PublicNetworkMonthly.setter
+    def PublicNetworkMonthly(self, PublicNetworkMonthly):
+        self._PublicNetworkMonthly = PublicNetworkMonthly
+
+    @property
+    def InstanceNum(self):
+        r"""Number of instances to purchase. optional. default value is 1. when you input this parameter, it enables the creation of multiple instances with case-sensitive suffixes added to instanceName.
+        :rtype: int
+        """
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def AutoVoucher(self):
+        r"""Whether to automatically select a voucher. valid values: 1 (yes), 0 (no). default is 0.
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def ElasticBandwidthSwitch(self):
+        r"""Elastic bandwidth switch. specifies whether to enable elastic bandwidth. valid values: 0 (not enabled, default), 1 (enabled).
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._ZoneId = params.get("ZoneId")
+        self._Period = params.get("Period")
+        self._InstanceType = params.get("InstanceType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._MsgRetentionTime = params.get("MsgRetentionTime")
+        self._ClusterId = params.get("ClusterId")
+        self._RenewFlag = params.get("RenewFlag")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SpecificationsType = params.get("SpecificationsType")
+        self._DiskSize = params.get("DiskSize")
+        self._BandWidth = params.get("BandWidth")
+        self._Partition = params.get("Partition")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DiskType = params.get("DiskType")
+        self._MultiZoneFlag = params.get("MultiZoneFlag")
+        self._ZoneIds = params.get("ZoneIds")
+        self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        self._InstanceNum = params.get("InstanceNum")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateInstancePreResp(AbstractModel):
     r"""Data structure returned by monthly subscribed instance APIs
 
@@ -3344,8 +3316,7 @@ class CreateInstancePreResp(AbstractModel):
         :type ReturnCode: str
         :param _ReturnMessage: The message indicating whether the operation is successful.
         :type ReturnMessage: str
-        :param _Data: Data returned by the operation.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Data: Specifies the Data returned by the operation.
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
         :param _DeleteRouteTimestamp: Deletion time.  This parameter has been deprecated and will be deleted.  Note: This field may return null, indicating that no valid values can be obtained.
         :type DeleteRouteTimestamp: str
@@ -3379,8 +3350,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        r"""Data returned by the operation.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the Data returned by the operation.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
         """
         return self._Data
@@ -3422,6 +3392,51 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CreateInstancePreResponse(AbstractModel):
+    r"""CreateInstancePre response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateInstancePreResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePartitionRequest(AbstractModel):
     r"""CreatePartition request structure.
 
@@ -3429,11 +3444,11 @@ class CreatePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Topic name
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
-        :param _PartitionNum: Number of topic partitions
+        :param _PartitionNum: Topic partition count. the input parameter is the number of partitions after modification rather than adding partitions. therefore, the input parameter must exceed the current topic partition count.
         :type PartitionNum: int
         """
         self._InstanceId = None
@@ -3442,7 +3457,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -3453,7 +3468,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -3464,7 +3479,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
-        r"""Number of topic partitions
+        r"""Topic partition count. the input parameter is the number of partitions after modification rather than adding partitions. therefore, the input parameter must exceed the current topic partition count.
         :rtype: int
         """
         return self._PartitionNum
@@ -3497,7 +3512,7 @@ class CreatePartitionResponse(AbstractModel):
         r"""
         :param _Result: Returned result set
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -3516,7 +3531,7 @@ class CreatePartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3540,46 +3555,50 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: Instance name, which is a string of up to 64 letters, digits, and hyphens (-). It must start with a letter.
-        :type InstanceName: str
-        :param _VpcId: ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
+        :param _VpcId: VPC Id, obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
         :type VpcId: str
-        :param _SubnetId: ID of the subnet  where the default access point of the created instance resides.
+        :param _SubnetId: Subnet Id. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
         :type SubnetId: str
-        :param _InstanceType: Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        :param _InstanceName: Specifies the cluster instance name of ckafka, an arbitrary character with length not exceeding 128.
+        :type InstanceName: str
+        :param _InstanceType: Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
         :type InstanceType: int
         :param _MsgRetentionTime: The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
         :type MsgRetentionTime: int
         :param _ClusterId: Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
         :type ClusterId: int
-        :param _KafkaVersion: Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        :param _KafkaVersion: Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value "2.4.1". "2.4.1" and "2.4.2" belong to the same version. any one can be passed.
         :type KafkaVersion: str
-        :param _SpecificationsType: Instance type. `standard` (Standard Edition),  `profession`  (Pro Edition)
+        :param _SpecificationsType: Instance type. "standard": standard version. "profession": pro edition. (standard version is only supported on the international site. currently, the chinese site supports pro edition.).
         :type SpecificationsType: str
-        :param _DiskType: Instance disk type.  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        :param _DiskType: Specifies the disk type for a pro edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
         :type DiskType: str
-        :param _BandWidth: Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
+        :param _BandWidth: Specifies the peak bandwidth of the instance private network, with a default value of 40 MB/s. for standard version, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configuration such as peak bandwidth and number of partitions should meet the billing specification of the professional edition. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
         :type BandWidth: int
-        :param _DiskSize: Instance disk size, which must meet the requirement of the instance’s specification.
+        :param _DiskSize: Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
         :type DiskSize: int
-        :param _Partition: The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        :param _Partition: Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
         :type Partition: int
-        :param _TopicNum: The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        :param _TopicNum: Maximum number of topics for the instance should meet the billing specification of the current instance. default value is 800, step length is set to 100.
         :type TopicNum: int
-        :param _ZoneId: AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        :param _ZoneId: Specifies the availability zone of the instance. when creating a multi-az instance, this parameter is the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
         :type ZoneId: int
         :param _MultiZoneFlag: Whether the current instance is a multi-AZ instance
         :type MultiZoneFlag: bool
-        :param _ZoneIds: This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        :param _ZoneIds: Specifies the multi-az id list when the instance is a multi-az instance. note that the multi-az corresponding to parameter ZoneId must be included in this parameter array. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1) api.
         :type ZoneIds: list of int
         :param _InstanceNum: The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
         :type InstanceNum: int
         :param _PublicNetworkMonthly: Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.
         :type PublicNetworkMonthly: int
+        :param _Tags: Tag.
+        :type Tags: list of Tag
+        :param _ElasticBandwidthSwitch: Elastic bandwidth switch. valid values: 0 (disable, default), 1 (enable).
+        :type ElasticBandwidthSwitch: int
         """
-        self._InstanceName = None
         self._VpcId = None
         self._SubnetId = None
+        self._InstanceName = None
         self._InstanceType = None
         self._MsgRetentionTime = None
         self._ClusterId = None
@@ -3595,21 +3614,12 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = None
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
-
-    @property
-    def InstanceName(self):
-        r"""Instance name, which is a string of up to 64 letters, digits, and hyphens (-). It must start with a letter.
-        :rtype: str
-        """
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
+        self._Tags = None
+        self._ElasticBandwidthSwitch = None
 
     @property
     def VpcId(self):
-        r"""ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
+        r"""VPC Id, obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId
@@ -3620,7 +3630,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""ID of the subnet  where the default access point of the created instance resides.
+        r"""Subnet Id. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._SubnetId
@@ -3630,8 +3640,19 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._SubnetId = SubnetId
 
     @property
+    def InstanceName(self):
+        r"""Specifies the cluster instance name of ckafka, an arbitrary character with length not exceeding 128.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
     def InstanceType(self):
-        r"""Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        r"""Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
         :rtype: int
         """
         return self._InstanceType
@@ -3664,7 +3685,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        r"""Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value "2.4.1". "2.4.1" and "2.4.2" belong to the same version. any one can be passed.
         :rtype: str
         """
         return self._KafkaVersion
@@ -3675,7 +3696,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
-        r"""Instance type. `standard` (Standard Edition),  `profession`  (Pro Edition)
+        r"""Instance type. "standard": standard version. "profession": pro edition. (standard version is only supported on the international site. currently, the chinese site supports pro edition.).
         :rtype: str
         """
         return self._SpecificationsType
@@ -3686,7 +3707,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Instance disk type.  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        r"""Specifies the disk type for a pro edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
         :rtype: str
         """
         return self._DiskType
@@ -3697,7 +3718,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
+        r"""Specifies the peak bandwidth of the instance private network, with a default value of 40 MB/s. for standard version, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configuration such as peak bandwidth and number of partitions should meet the billing specification of the professional edition. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
         :rtype: int
         """
         return self._BandWidth
@@ -3708,7 +3729,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Instance disk size, which must meet the requirement of the instance’s specification.
+        r"""Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
         :rtype: int
         """
         return self._DiskSize
@@ -3719,7 +3740,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        r"""Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
         :rtype: int
         """
         return self._Partition
@@ -3730,7 +3751,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def TopicNum(self):
-        r"""The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        r"""Maximum number of topics for the instance should meet the billing specification of the current instance. default value is 800, step length is set to 100.
         :rtype: int
         """
         return self._TopicNum
@@ -3741,7 +3762,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        r"""Specifies the availability zone of the instance. when creating a multi-az instance, this parameter is the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
         :rtype: int
         """
         return self._ZoneId
@@ -3763,7 +3784,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        r"""Specifies the multi-az id list when the instance is a multi-az instance. note that the multi-az corresponding to parameter ZoneId must be included in this parameter array. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1) api.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -3794,11 +3815,33 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     def PublicNetworkMonthly(self, PublicNetworkMonthly):
         self._PublicNetworkMonthly = PublicNetworkMonthly
 
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ElasticBandwidthSwitch(self):
+        r"""Elastic bandwidth switch. valid values: 0 (disable, default), 1 (enable).
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
 
     def _deserialize(self, params):
-        self._InstanceName = params.get("InstanceName")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._InstanceName = params.get("InstanceName")
         self._InstanceType = params.get("InstanceType")
         self._MsgRetentionTime = params.get("MsgRetentionTime")
         self._ClusterId = params.get("ClusterId")
@@ -3814,6 +3857,13 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._InstanceNum = params.get("InstanceNum")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3833,7 +3883,7 @@ class CreatePostPaidInstanceResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -3852,7 +3902,7 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3869,6 +3919,237 @@ class CreatePostPaidInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRouteRequest(AbstractModel):
+    r"""CreateRoute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
+        :type InstanceId: str
+        :param _VipType: <P>Specifies the network type of the route (3: vpc routing; 7: internal support route; 1: public network route).</p>.
+        :type VipType: int
+        :param _VpcId: <p>vpc network Id. required when vipType is 3.</p>.
+        :type VpcId: str
+        :param _SubnetId: <p>Specifies the vpc subnet id. required when vipType is 3.</p>.
+        :type SubnetId: str
+        :param _AccessType: <p>Access type: 0-plaintext; 1-sasl_plaintext; 3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512. defaults to 0. when vipType=3, supports 0,1,3,4,5. when vipType=7, supports 0,1,3. when vipType=1, supports 1,3.</p>.
+        :type AccessType: int
+        :param _AuthFlag: <P>Specifies whether access management is required. this field has been deprecated.</p>.
+        :type AuthFlag: int
+        :param _CallerAppid: <p>Specifies the caller appId.</p>.
+        :type CallerAppid: int
+        :param _PublicNetwork: <P>Public network bandwidth. required for public network route. must be a multiple of 3. no default value.</p>.
+        :type PublicNetwork: int
+        :param _Ip: <p>vip address.</p>.
+        :type Ip: str
+        :param _Note: <P>Specifies the remark information.</p>.
+        :type Note: str
+        :param _SecurityGroupIds: <P>Specifies the ordered list of security group associations.</p>.
+        :type SecurityGroupIds: list of str
+        """
+        self._InstanceId = None
+        self._VipType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AccessType = None
+        self._AuthFlag = None
+        self._CallerAppid = None
+        self._PublicNetwork = None
+        self._Ip = None
+        self._Note = None
+        self._SecurityGroupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VipType(self):
+        r"""<P>Specifies the network type of the route (3: vpc routing; 7: internal support route; 1: public network route).</p>.
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def VpcId(self):
+        r"""<p>vpc network Id. required when vipType is 3.</p>.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>Specifies the vpc subnet id. required when vipType is 3.</p>.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AccessType(self):
+        r"""<p>Access type: 0-plaintext; 1-sasl_plaintext; 3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512. defaults to 0. when vipType=3, supports 0,1,3,4,5. when vipType=7, supports 0,1,3. when vipType=1, supports 1,3.</p>.
+        :rtype: int
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def AuthFlag(self):
+        r"""<P>Specifies whether access management is required. this field has been deprecated.</p>.
+        :rtype: int
+        """
+        return self._AuthFlag
+
+    @AuthFlag.setter
+    def AuthFlag(self, AuthFlag):
+        self._AuthFlag = AuthFlag
+
+    @property
+    def CallerAppid(self):
+        r"""<p>Specifies the caller appId.</p>.
+        :rtype: int
+        """
+        return self._CallerAppid
+
+    @CallerAppid.setter
+    def CallerAppid(self, CallerAppid):
+        self._CallerAppid = CallerAppid
+
+    @property
+    def PublicNetwork(self):
+        r"""<P>Public network bandwidth. required for public network route. must be a multiple of 3. no default value.</p>.
+        :rtype: int
+        """
+        return self._PublicNetwork
+
+    @PublicNetwork.setter
+    def PublicNetwork(self, PublicNetwork):
+        self._PublicNetwork = PublicNetwork
+
+    @property
+    def Ip(self):
+        r"""<p>vip address.</p>.
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Note(self):
+        r"""<P>Specifies the remark information.</p>.
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<P>Specifies the ordered list of security group associations.</p>.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VipType = params.get("VipType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AccessType = params.get("AccessType")
+        self._AuthFlag = params.get("AuthFlag")
+        self._CallerAppid = params.get("CallerAppid")
+        self._PublicNetwork = params.get("PublicNetwork")
+        self._Ip = params.get("Ip")
+        self._Note = params.get("Note")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRouteResponse(AbstractModel):
+    r"""CreateRoute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <P>Returned result.</p>.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<P>Returned result.</p>.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicIpWhiteListRequest(AbstractModel):
     r"""CreateTopicIpWhiteList request structure.
 
@@ -3876,11 +4157,11 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Topic name
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
-        :param _IpWhiteList: IP allowlist list
+        :param _IpWhiteList: Allowlist list. maximum value is 512. upper limit for incoming ips is 512.
         :type IpWhiteList: list of str
         """
         self._InstanceId = None
@@ -3889,7 +4170,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -3900,7 +4181,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -3911,7 +4192,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
-        r"""IP allowlist list
+        r"""Allowlist list. maximum value is 512. upper limit for incoming ips is 512.
         :rtype: list of str
         """
         return self._IpWhiteList
@@ -3944,7 +4225,7 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
         r"""
         :param _Result: Result of deleting topic IP allowlist
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -3963,7 +4244,7 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3987,9 +4268,9 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance Id. you can obtain it by calling the DescribeInstances api.
         :type InstanceId: str
-        :param _TopicName: Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param _TopicName: Can only contain letters, digits, underscores, "-", or ".".
         :type TopicName: str
         :param _PartitionNum: Number of partitions, which should be greater than 0
         :type PartitionNum: int
@@ -4001,23 +4282,23 @@ class CreateTopicRequest(AbstractModel):
         :type IpWhiteList: list of str
         :param _CleanUpPolicy: Log cleanup policy, which is `delete` by default. `delete`: logs will be deleted by save time; `compact`: logs will be compressed by key; `compact, delete`: logs will be compressed by key and deleted by save time.
         :type CleanUpPolicy: str
-        :param _Note: Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        :param _Note: Topic remark is a string of no more than 64 characters. the first character can be a letter or digit, and the remaining part can contain letters, digits, and hyphens (-).
         :type Note: str
-        :param _MinInsyncReplicas: Default value: 1
+        :param _MinInsyncReplicas: Minimum number of synchronous replicas, defaults to 1.
         :type MinInsyncReplicas: int
-        :param _UncleanLeaderElectionEnable: Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false
+        :param _UncleanLeaderElectionEnable: Whether to allow unsynchronized replicas to be elected as leader. valid values: 0 (not allowed), 1 (allowed). default: not allowed.
         :type UncleanLeaderElectionEnable: int
-        :param _RetentionMs: Message retention period in milliseconds, which is optional. Min value: 60,000 ms.
+        :param _RetentionMs: Optional parameter. specifies the message retention period in milliseconds. current min value is 60000. default value is 7200000 ms (2 hours). maximum value is 7776000000 ms (90 days).
         :type RetentionMs: int
-        :param _SegmentMs: Segment rolling duration in ms. The current minimum value is 3,600,000 ms
+        :param _SegmentMs: Duration of Segment shard scrolling in milliseconds. minimum value is 86400000 ms (1 day).
         :type SegmentMs: int
-        :param _MaxMessageBytes: Max message size in bytes. Value range: 1,024 bytes (1 KB) to 8,388,608 bytes (8 MB).
+        :param _MaxMessageBytes: Maximum topic messages in Bytes. value range: 1024 (1 KB) to 12582912 (12 MB).
         :type MaxMessageBytes: int
         :param _EnableAclRule: Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
         :type EnableAclRule: int
         :param _AclRuleName: Name of the preset ACL rule.
         :type AclRuleName: str
-        :param _RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        :param _RetentionBytes: Optional. retain file size. defaults to -1, unit Byte. current min value is 1073741824.
         :type RetentionBytes: int
         :param _Tags: Tag list.
         :type Tags: list of Tag
@@ -4042,7 +4323,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance Id. you can obtain it by calling the DescribeInstances api.
         :rtype: str
         """
         return self._InstanceId
@@ -4053,7 +4334,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        r"""Can only contain letters, digits, underscores, "-", or ".".
         :rtype: str
         """
         return self._TopicName
@@ -4119,7 +4400,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Note(self):
-        r"""Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        r"""Topic remark is a string of no more than 64 characters. the first character can be a letter or digit, and the remaining part can contain letters, digits, and hyphens (-).
         :rtype: str
         """
         return self._Note
@@ -4130,7 +4411,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
-        r"""Default value: 1
+        r"""Minimum number of synchronous replicas, defaults to 1.
         :rtype: int
         """
         return self._MinInsyncReplicas
@@ -4141,7 +4422,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
-        r"""Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false
+        r"""Whether to allow unsynchronized replicas to be elected as leader. valid values: 0 (not allowed), 1 (allowed). default: not allowed.
         :rtype: int
         """
         return self._UncleanLeaderElectionEnable
@@ -4152,7 +4433,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
-        r"""Message retention period in milliseconds, which is optional. Min value: 60,000 ms.
+        r"""Optional parameter. specifies the message retention period in milliseconds. current min value is 60000. default value is 7200000 ms (2 hours). maximum value is 7776000000 ms (90 days).
         :rtype: int
         """
         return self._RetentionMs
@@ -4163,7 +4444,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
-        r"""Segment rolling duration in ms. The current minimum value is 3,600,000 ms
+        r"""Duration of Segment shard scrolling in milliseconds. minimum value is 86400000 ms (1 day).
         :rtype: int
         """
         return self._SegmentMs
@@ -4174,7 +4455,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
-        r"""Max message size in bytes. Value range: 1,024 bytes (1 KB) to 8,388,608 bytes (8 MB).
+        r"""Maximum topic messages in Bytes. value range: 1024 (1 KB) to 12582912 (12 MB).
         :rtype: int
         """
         return self._MaxMessageBytes
@@ -4207,7 +4488,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        r"""Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        r"""Optional. retain file size. defaults to -1, unit Byte. current min value is 1073741824.
         :rtype: int
         """
         return self._RetentionBytes
@@ -4306,7 +4587,7 @@ class CreateTopicResponse(AbstractModel):
         r"""
         :param _Result: Returned creation result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -4325,7 +4606,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4349,7 +4630,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _Name: Username
         :type Name: str
@@ -4362,7 +4643,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -4415,9 +4696,9 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -4425,7 +4706,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -4436,7 +4717,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4451,6 +4732,72 @@ class CreateUserResponse(AbstractModel):
             self._Result = JgwOperateResponse()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class CvmAndIpInfo(AbstractModel):
+    r"""CVM and IP information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CkafkaInstanceId: The ckafka cluster instance Id.
+        :type CkafkaInstanceId: str
+        :param _InstanceId: CVM instance ID (ins-test) or POD IP (10.0.0.30).
+        :type InstanceId: str
+        :param _Ip: IP address.
+        :type Ip: str
+        """
+        self._CkafkaInstanceId = None
+        self._InstanceId = None
+        self._Ip = None
+
+    @property
+    def CkafkaInstanceId(self):
+        r"""The ckafka cluster instance Id.
+        :rtype: str
+        """
+        return self._CkafkaInstanceId
+
+    @CkafkaInstanceId.setter
+    def CkafkaInstanceId(self, CkafkaInstanceId):
+        self._CkafkaInstanceId = CkafkaInstanceId
+
+    @property
+    def InstanceId(self):
+        r"""CVM instance ID (ins-test) or POD IP (10.0.0.30).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Ip(self):
+        r"""IP address.
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._CkafkaInstanceId = params.get("CkafkaInstanceId")
+        self._InstanceId = params.get("InstanceId")
+        self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DatahubTopicDTO(AbstractModel):
@@ -4468,7 +4815,7 @@ class DatahubTopicDTO(AbstractModel):
         :type TopicId: str
         :param _PartitionNum: The number of partitions
         :type PartitionNum: int
-        :param _RetentionMs: Expiration time
+        :param _RetentionMs: Expiration time in milliseconds.
         :type RetentionMs: int
         :param _Note: Remarks
         :type Note: str
@@ -4529,7 +4876,7 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def RetentionMs(self):
-        r"""Expiration time
+        r"""Expiration time in milliseconds.
         :rtype: int
         """
         return self._RetentionMs
@@ -4588,8 +4935,7 @@ class DatahubTopicResp(AbstractModel):
         r"""
         :param _TopicName: Topic name
         :type TopicName: str
-        :param _TopicId: TopicId
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TopicId: Topic Id.
         :type TopicId: str
         """
         self._TopicName = None
@@ -4608,8 +4954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
-        r"""TopicId
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Topic Id.
         :rtype: str
         """
         return self._TopicId
@@ -4639,9 +4984,9 @@ class DealInstanceDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: Order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DealName: Order transaction.
         :type DealName: str
-        :param _InstanceIdList: ID list of the purchased CKafka instances corresponding to the order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceIdList: Order transaction corresponds to the list of purchased CKafka instance ids.
         :type InstanceIdList: list of str
         """
         self._DealName = None
@@ -4649,7 +4994,7 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def DealName(self):
-        r"""Order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order transaction.
         :rtype: str
         """
         return self._DealName
@@ -4660,7 +5005,7 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        r"""ID list of the purchased CKafka instances corresponding to the order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order transaction corresponds to the list of purchased CKafka instance ids.
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -4690,7 +5035,7 @@ class DeleteAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID information
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
@@ -4698,11 +5043,11 @@ class DeleteAclRequest(AbstractModel):
         :type ResourceName: str
         :param _Operation: ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
         :type Operation: int
-        :param _PermissionType: Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        :param _PermissionType: Permission type (2:DENY, 3:ALLOW). currently ckafka supports ALLOW (equivalent to allowlist), others used when compatible with open-source kafka acl.
         :type PermissionType: int
         :param _Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
-        :param _Principal: User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list
+        :param _Principal: List of users, defaults to User:*, means any User is accessible in the entire region. the current User can only be the User in the list of users.
         :type Principal: str
         """
         self._InstanceId = None
@@ -4715,7 +5060,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID information
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -4759,7 +5104,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
-        r"""Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        r"""Permission type (2:DENY, 3:ALLOW). currently ckafka supports ALLOW (equivalent to allowlist), others used when compatible with open-source kafka acl.
         :rtype: int
         """
         return self._PermissionType
@@ -4781,7 +5126,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Principal(self):
-        r"""User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list
+        r"""List of users, defaults to User:*, means any User is accessible in the entire region. the current User can only be the User in the list of users.
         :rtype: str
         """
         return self._Principal
@@ -4818,7 +5163,7 @@ class DeleteAclResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -4837,7 +5182,7 @@ class DeleteAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4854,6 +5199,87 @@ class DeleteAclResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInstancePostRequest(AbstractModel):
+    r"""DeleteInstancePost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstancePostResponse(AbstractModel):
+    r"""DeleteInstancePost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = InstanceDeleteResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstancePreRequest(AbstractModel):
     r"""DeleteInstancePre request structure.
 
@@ -4861,14 +5287,14 @@ class DeleteInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -4899,7 +5325,7 @@ class DeleteInstancePreResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -4918,7 +5344,7 @@ class DeleteInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4942,13 +5368,13 @@ class DeleteRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Unique instance ID.
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _RouteId: Route ID.
+        :param _RouteId: Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.comom/document/product/597/45484?from_cn_redirect=1).
         :type RouteId: int
         :param _CallerAppid: AppId of the caller.
         :type CallerAppid: int
-        :param _DeleteRouteTime: The time when a route was deleted.
+        :param _DeleteRouteTime: Sets the scheduled deletion time for routes. only public network routes support scheduled deletion. available for any time within the next 24 hours.
         :type DeleteRouteTime: str
         """
         self._InstanceId = None
@@ -4958,7 +5384,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Unique instance ID.
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -4969,7 +5395,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
-        r"""Route ID.
+        r"""Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.comom/document/product/597/45484?from_cn_redirect=1).
         :rtype: int
         """
         return self._RouteId
@@ -4991,7 +5417,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def DeleteRouteTime(self):
-        r"""The time when a route was deleted.
+        r"""Sets the scheduled deletion time for routes. only public network routes support scheduled deletion. available for any time within the next 24 hours.
         :rtype: str
         """
         return self._DeleteRouteTime
@@ -5025,7 +5451,7 @@ class DeleteRouteResponse(AbstractModel):
         r"""
         :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5044,7 +5470,7 @@ class DeleteRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5068,14 +5494,28 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DelayTime: Modification time.
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :type InstanceId: str
+        :param _DelayTime: Modifies the scheduled time for deleting routes.
         :type DelayTime: str
         """
+        self._InstanceId = None
         self._DelayTime = None
 
     @property
+    def InstanceId(self):
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
     def DelayTime(self):
-        r"""Modification time.
+        r"""Modifies the scheduled time for deleting routes.
         :rtype: str
         """
         return self._DelayTime
@@ -5086,6 +5526,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._DelayTime = params.get("DelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5104,14 +5545,14 @@ class DeleteRouteTriggerTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5132,9 +5573,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Topic name
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         :param _IpWhiteList: IP allowlist list
         :type IpWhiteList: list of str
@@ -5145,7 +5586,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5156,7 +5597,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -5200,7 +5641,7 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
         r"""
         :param _Result: Result of deleting topic IP allowlist
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5219,7 +5660,7 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5296,7 +5737,7 @@ class DeleteTopicResponse(AbstractModel):
         r"""
         :param _Result: Returned result set
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5315,7 +5756,7 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5339,9 +5780,9 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Name: Username
+        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
         :type Name: str
         """
         self._InstanceId = None
@@ -5349,7 +5790,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5360,7 +5801,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Username
+        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Name
@@ -5392,7 +5833,7 @@ class DeleteUserResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5411,7 +5852,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5435,7 +5876,7 @@ class DescribeACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
@@ -5443,7 +5884,7 @@ class DescribeACLRequest(AbstractModel):
         :type ResourceName: str
         :param _Offset: Offset position
         :type Offset: int
-        :param _Limit: Quantity limit
+        :param _Limit: Number limit. default value is 50. maximum value is 50.
         :type Limit: int
         :param _SearchWord: Keyword match
         :type SearchWord: str
@@ -5457,7 +5898,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5501,7 +5942,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Quantity limit
+        r"""Number limit. default value is 50. maximum value is 50.
         :rtype: int
         """
         return self._Limit
@@ -5548,7 +5989,7 @@ class DescribeACLResponse(AbstractModel):
         r"""
         :param _Result: Returned ACL result set object
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5567,7 +6008,7 @@ class DescribeACLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5591,13 +6032,13 @@ class DescribeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _RuleName: ACL rule name
         :type RuleName: str
-        :param _PatternType: ACL rule matching type
+        :param _PatternType: ACL rule-based matching type (PREFIXED: prefix match, PRESET: PRESET policy).
         :type PatternType: str
-        :param _IsSimplified: Whether to read simplified ACL rules
+        :param _IsSimplified: Specifies whether to read the simplified ACL rule. default value is false, which means not to read the simplified ACL rule.
         :type IsSimplified: bool
         """
         self._InstanceId = None
@@ -5607,7 +6048,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5629,7 +6070,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
-        r"""ACL rule matching type
+        r"""ACL rule-based matching type (PREFIXED: prefix match, PRESET: PRESET policy).
         :rtype: str
         """
         return self._PatternType
@@ -5640,7 +6081,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def IsSimplified(self):
-        r"""Whether to read simplified ACL rules
+        r"""Specifies whether to read the simplified ACL rule. default value is false, which means not to read the simplified ACL rule.
         :rtype: bool
         """
         return self._IsSimplified
@@ -5674,7 +6115,7 @@ class DescribeAclRuleResponse(AbstractModel):
         r"""
         :param _Result: The set of returned ACL rules
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5693,7 +6134,7 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5770,7 +6211,7 @@ class DescribeAppInfoResponse(AbstractModel):
         r"""
         :param _Result: Returned list of eligible `AppId`
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AppIdResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5789,7 +6230,7 @@ class DescribeAppInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5813,14 +6254,14 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CdcId: Cloud Dedicated Cluster (CDC) business parameter.
+        :param _CdcId: cdc cluster Id.
         :type CdcId: str
         """
         self._CdcId = None
 
     @property
     def CdcId(self):
-        r"""Cloud Dedicated Cluster (CDC) business parameter.
+        r"""cdc cluster Id.
         :rtype: str
         """
         return self._CdcId
@@ -5851,7 +6292,7 @@ class DescribeCkafkaZoneResponse(AbstractModel):
         r"""
         :param _Result: Returned results for the query
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -5870,7 +6311,7 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5900,8 +6341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Time: Connection time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Time: str
-        :param _IsUnSupportVersion: Whether it is a supported version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsUnSupportVersion: Specifies whether supported versions are required or not.
         :type IsUnSupportVersion: bool
         """
         self._IpAddr = None
@@ -5934,8 +6374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsUnSupportVersion(self):
-        r"""Whether it is a supported version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies whether supported versions are required or not.
         :rtype: bool
         """
         return self._IsUnSupportVersion
@@ -5966,15 +6405,15 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: CKafka instance ID.
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _GroupName: Name of the group to be queried, which is optional.
+        :param _GroupName: Specifies the group name you want to query.
         :type GroupName: str
-        :param _TopicName: Name of the corresponding topic in the group to be queried, which is optional. If this parameter is specified but `group` is not specified, this parameter will be ignored.
+        :param _TopicName: Specifies the corresponding topic name in the group to be queried by the user. if this parameter is specified while the group is unspecified, ignore this parameter.
         :type TopicName: str
-        :param _Limit: Number of results to be returned in this request
+        :param _Limit: Returns the limit quantity of the consumption group. supports a maximum of 50.
         :type Limit: int
-        :param _Offset: Offset position
+        :param _Offset: Specifies the starting offset amount of the consumer group list.
         :type Offset: int
         """
         self._InstanceId = None
@@ -5985,7 +6424,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""CKafka instance ID.
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -5996,7 +6435,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""Name of the group to be queried, which is optional.
+        r"""Specifies the group name you want to query.
         :rtype: str
         """
         return self._GroupName
@@ -6007,7 +6446,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Name of the corresponding topic in the group to be queried, which is optional. If this parameter is specified but `group` is not specified, this parameter will be ignored.
+        r"""Specifies the corresponding topic name in the group to be queried by the user. if this parameter is specified while the group is unspecified, ignore this parameter.
         :rtype: str
         """
         return self._TopicName
@@ -6018,7 +6457,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned in this request
+        r"""Returns the limit quantity of the consumption group. supports a maximum of 50.
         :rtype: int
         """
         return self._Limit
@@ -6029,7 +6468,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset position
+        r"""Specifies the starting offset amount of the consumer group list.
         :rtype: int
         """
         return self._Offset
@@ -6064,7 +6503,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
         r"""
         :param _Result: Returned consumer group information
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerGroupResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6083,7 +6522,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6100,6 +6539,87 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCvmInfoRequest(AbstractModel):
+    r"""DescribeCvmInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCvmInfoResponse(AbstractModel):
+    r"""DescribeCvmInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ListCvmAndIpInfoRsp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ListCvmAndIpInfoRsp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ListCvmAndIpInfoRsp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDatahubTopicRequest(AbstractModel):
     r"""DescribeDatahubTopic request structure.
 
@@ -6107,14 +6627,14 @@ class DescribeDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Name
+        :param _Name: Elastic topic name.
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        r"""Name
+        r"""Elastic topic name.
         :rtype: str
         """
         return self._Name
@@ -6151,10 +6671,9 @@ class DescribeDatahubTopicResp(AbstractModel):
         :type TopicId: str
         :param _PartitionNum: The number of partitions
         :type PartitionNum: int
-        :param _RetentionMs: Expiration time
+        :param _RetentionMs: Expiration time in milliseconds.
         :type RetentionMs: int
-        :param _Note: Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Note: Remarks.
         :type Note: str
         :param _UserName: Username
         :type UserName: str
@@ -6162,8 +6681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Password: str
         :param _Status: Status (`1`: In use; `2`: Deleting)
         :type Status: int
-        :param _Address: Service routing address
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Address: Specifies the service routing address.
         :type Address: str
         """
         self._Name = None
@@ -6223,7 +6741,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionMs(self):
-        r"""Expiration time
+        r"""Expiration time in milliseconds.
         :rtype: int
         """
         return self._RetentionMs
@@ -6234,8 +6752,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
-        r"""Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Remarks.
         :rtype: str
         """
         return self._Note
@@ -6279,8 +6796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
-        r"""Service routing address
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the service routing address.
         :rtype: str
         """
         return self._Address
@@ -6320,7 +6836,7 @@ class DescribeDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: Returned result object
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6339,7 +6855,7 @@ class DescribeDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6363,20 +6879,29 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: Keyword for query
+        :param _SearchWord: Search term.
         :type SearchWord: str
         :param _Offset: Query offset, which defaults to `0`.
         :type Offset: int
         :param _Limit: Maximum number of results to be returned in this request. Default value: `50`. Maximum value: `50`.
         :type Limit: int
+        :param _QueryFromConnectResource: Specifies whether to query the topic list from the connection.
+        :type QueryFromConnectResource: bool
+        :param _ConnectResourceId: Connection ID.
+        :type ConnectResourceId: str
+        :param _TopicRegularExpression: topic resource expression.
+        :type TopicRegularExpression: str
         """
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
+        self._QueryFromConnectResource = None
+        self._ConnectResourceId = None
+        self._TopicRegularExpression = None
 
     @property
     def SearchWord(self):
-        r"""Keyword for query
+        r"""Search term.
         :rtype: str
         """
         return self._SearchWord
@@ -6407,11 +6932,47 @@ class DescribeDatahubTopicsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def QueryFromConnectResource(self):
+        r"""Specifies whether to query the topic list from the connection.
+        :rtype: bool
+        """
+        return self._QueryFromConnectResource
+
+    @QueryFromConnectResource.setter
+    def QueryFromConnectResource(self, QueryFromConnectResource):
+        self._QueryFromConnectResource = QueryFromConnectResource
+
+    @property
+    def ConnectResourceId(self):
+        r"""Connection ID.
+        :rtype: str
+        """
+        return self._ConnectResourceId
+
+    @ConnectResourceId.setter
+    def ConnectResourceId(self, ConnectResourceId):
+        self._ConnectResourceId = ConnectResourceId
+
+    @property
+    def TopicRegularExpression(self):
+        r"""topic resource expression.
+        :rtype: str
+        """
+        return self._TopicRegularExpression
+
+    @TopicRegularExpression.setter
+    def TopicRegularExpression(self, TopicRegularExpression):
+        self._TopicRegularExpression = TopicRegularExpression
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._QueryFromConnectResource = params.get("QueryFromConnectResource")
+        self._ConnectResourceId = params.get("ConnectResourceId")
+        self._TopicRegularExpression = params.get("TopicRegularExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6431,8 +6992,7 @@ class DescribeDatahubTopicsResp(AbstractModel):
         r"""
         :param _TotalCount: Total count
         :type TotalCount: int
-        :param _TopicList: Topic list
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TopicList: Topic list.
         :type TopicList: list of DatahubTopicDTO
         """
         self._TotalCount = None
@@ -6451,8 +7011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
-        r"""Topic list
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Topic list.
         :rtype: list of DatahubTopicDTO
         """
         return self._TopicList
@@ -6487,10 +7046,9 @@ class DescribeDatahubTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Topic list
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Result: Topic list.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6498,8 +7056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        r"""Topic list
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Topic list.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
         """
         return self._Result
@@ -6510,7 +7067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6534,7 +7091,7 @@ class DescribeGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Group: groupId
+        :param _Group: Consumer group name.
         :type Group: str
         :param _Protocol: Protocol used by the group.
         :type Protocol: str
@@ -6544,7 +7101,7 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Group(self):
-        r"""groupId
+        r"""Consumer group name.
         :rtype: str
         """
         return self._Group
@@ -6585,9 +7142,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: (Filter) filter by instance ID.
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _GroupList: Kafka consumer group (`Consumer-group`), which is an array in the format of `GroupList.0=xxx&GroupList.1=yyy`.
+        :param _GroupList: Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
         :type GroupList: list of str
         """
         self._InstanceId = None
@@ -6595,7 +7152,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""(Filter) filter by instance ID.
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -6606,7 +7163,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
-        r"""Kafka consumer group (`Consumer-group`), which is an array in the format of `GroupList.0=xxx&GroupList.1=yyy`.
+        r"""Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._GroupList
@@ -6636,10 +7193,9 @@ class DescribeGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Result: Returned result.
         :type Result: list of GroupInfoResponse
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6647,8 +7203,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        r"""Returned result
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Returned result.
         :rtype: list of GroupInfoResponse
         """
         return self._Result
@@ -6659,7 +7214,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6686,7 +7241,7 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: (Filter) filter by instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _Group: Kafka consumer group
         :type Group: str
@@ -6708,7 +7263,7 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""(Filter) filter by instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -6797,9 +7352,9 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result object
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6807,7 +7362,7 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result object
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
         """
         return self._Result
@@ -6818,7 +7373,7 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6842,7 +7397,7 @@ class DescribeGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _SearchWord: Search keyword
         :type SearchWord: str
@@ -6850,15 +7405,18 @@ class DescribeGroupRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Maximum number of results to be returned
         :type Limit: int
+        :param _Filters: Only supported for GroupState filter criteria. valid values: Empty, Stable. note: this parameter can only be accessed in versions 2.8/3.2.
+        :type Filters: list of Filter
         """
         self._InstanceId = None
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -6900,12 +7458,29 @@ class DescribeGroupRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""Only supported for GroupState filter criteria. valid values: Empty, Stable. note: this parameter can only be accessed in versions 2.8/3.2.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SearchWord = params.get("SearchWord")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6923,9 +7498,9 @@ class DescribeGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: List of returned results
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -6933,7 +7508,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""List of returned results
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
         """
         return self._Result
@@ -6944,7 +7519,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6968,14 +7543,14 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -7006,7 +7581,7 @@ class DescribeInstanceAttributesResponse(AbstractModel):
         r"""
         :param _Result: Returned result object of instance attributes
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceAttributesResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7025,7 +7600,7 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7160,6 +7735,8 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         r"""This parameter has been deprecated and replaced with `InstanceIdList`.
         :rtype: str
         """
@@ -7167,6 +7744,8 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         self._InstanceIds = InstanceIds
 
     @property
@@ -7232,7 +7811,7 @@ class DescribeInstancesDetailResponse(AbstractModel):
         r"""
         :param _Result: Returned result object of instance details
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDetailResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7251,7 +7830,7 @@ class DescribeInstancesDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7275,11 +7854,11 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: (Filter) filter by instance ID
+        :param _InstanceId: (Query condition) filter by the ckafka cluster instance Id.
         :type InstanceId: str
-        :param _SearchWord: (Filter) filter by instance name. Fuzzy search is supported
+        :param _SearchWord: Search term. example: (query condition) filter by instance name. fuzzy query is supported.
         :type SearchWord: str
-        :param _Status: (Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
+        :param _Status: Instance status (query condition). valid values: 0: creating, 1: running, 2: deleting, 5: isolated, 7: upgrading. default return: all.
         :type Status: list of int
         :param _Offset: Offset. If this parameter is left empty, 0 will be used by default
         :type Offset: int
@@ -7287,7 +7866,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _TagKey: Tag key value (this field has been deprecated).
         :type TagKey: str
-        :param _VpcId: VPC ID.
+        :param _VpcId: (Query condition) VPC Id.
         :type VpcId: str
         """
         self._InstanceId = None
@@ -7300,7 +7879,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""(Filter) filter by instance ID
+        r"""(Query condition) filter by the ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -7311,7 +7890,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""(Filter) filter by instance name. Fuzzy search is supported
+        r"""Search term. example: (query condition) filter by instance name. fuzzy query is supported.
         :rtype: str
         """
         return self._SearchWord
@@ -7322,7 +7901,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
+        r"""Instance status (query condition). valid values: 0: creating, 1: running, 2: deleting, 5: isolated, 7: upgrading. default return: all.
         :rtype: list of int
         """
         return self._Status
@@ -7355,6 +7934,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        warnings.warn("parameter `TagKey` is deprecated", DeprecationWarning) 
+
         r"""Tag key value (this field has been deprecated).
         :rtype: str
         """
@@ -7362,11 +7943,13 @@ class DescribeInstancesRequest(AbstractModel):
 
     @TagKey.setter
     def TagKey(self, TagKey):
+        warnings.warn("parameter `TagKey` is deprecated", DeprecationWarning) 
+
         self._TagKey = TagKey
 
     @property
     def VpcId(self):
-        r"""VPC ID.
+        r"""(Query condition) VPC Id.
         :rtype: str
         """
         return self._VpcId
@@ -7403,7 +7986,7 @@ class DescribeInstancesResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7422,7 +8005,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7527,10 +8110,9 @@ class DescribeRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: List of the returned results of enumerated regions
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Result: Returns the region enumeration result list.
         :type Result: list of Region
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7538,8 +8120,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Result(self):
-        r"""List of the returned results of enumerated regions
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Returns the region enumeration result list.
         :rtype: list of Region
         """
         return self._Result
@@ -7550,7 +8131,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7577,7 +8158,7 @@ class DescribeRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Unique instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _RouteId: Route ID
         :type RouteId: int
@@ -7587,7 +8168,7 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Unique instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -7630,7 +8211,7 @@ class DescribeRouteResponse(AbstractModel):
         r"""
         :param _Result: Returned result set of route information
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7649,7 +8230,7 @@ class DescribeRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7666,6 +8247,154 @@ class DescribeRouteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupRoutesRequest(AbstractModel):
+    r"""DescribeSecurityGroupRoutes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoute: Specifies the routing information.
+        :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        :param _Filters: Filter.
+        :type Filters: list of RouteFilter
+        :param _Offset: Specifies the pagination Offset. default is 0.
+        :type Offset: int
+        :param _Limit: Pagination Limit. default: 20.
+        :type Limit: int
+        :param _SearchWord: Keyword. specifies fuzzy search by instance id, instance name, or vip.
+        :type SearchWord: str
+        """
+        self._InstanceRoute = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+
+    @property
+    def InstanceRoute(self):
+        r"""Specifies the routing information.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        """
+        return self._InstanceRoute
+
+    @InstanceRoute.setter
+    def InstanceRoute(self, InstanceRoute):
+        self._InstanceRoute = InstanceRoute
+
+    @property
+    def Filters(self):
+        r"""Filter.
+        :rtype: list of RouteFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""Specifies the pagination Offset. default is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Pagination Limit. default: 20.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        r"""Keyword. specifies fuzzy search by instance id, instance name, or vip.
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoute") is not None:
+            self._InstanceRoute = InstanceRoute()
+            self._InstanceRoute._deserialize(params.get("InstanceRoute"))
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RouteFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityGroupRoutesResponse(AbstractModel):
+    r"""DescribeSecurityGroupRoutes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returns the security group routing information result object.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteResp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returns the security group routing information result object.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SecurityGroupRouteResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskStatusRequest(AbstractModel):
     r"""DescribeTaskStatus request structure.
 
@@ -7673,14 +8402,14 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Unique task ID
+        :param _FlowId: Flow ID.
         :type FlowId: int
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        r"""Unique task ID
+        r"""Flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -7711,7 +8440,7 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7730,7 +8459,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7754,9 +8483,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Topic name
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         """
         self._InstanceId = None
@@ -7764,7 +8493,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -7775,7 +8504,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -7807,7 +8536,7 @@ class DescribeTopicAttributesResponse(AbstractModel):
         r"""
         :param _Result: Returned result object
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicAttributesResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7826,7 +8555,7 @@ class DescribeTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7850,26 +8579,35 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _SearchWord: (Filter) filter by `topicName`. Fuzzy search is supported
         :type SearchWord: str
         :param _Offset: Offset. If this parameter is left empty, 0 will be used by default
         :type Offset: int
-        :param _Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0
+        :param _Limit: Number of returned results. default: 20. value must be above 0.
         :type Limit: int
         :param _AclRuleName: Name of the preset ACL rule.
         :type AclRuleName: str
+        :param _OrderBy: Sorts based on specific attributes (currently supports PartitionNum/CreateTime). default value: CreateTime.
+        :type OrderBy: str
+        :param _OrderType: 0 - sequential, 1 - reverse order. default value: 0.
+        :type OrderType: int
+        :param _Filters: Currently supports ReplicaNum (number of replicas) filter criteria.
+        :type Filters: list of Filter
         """
         self._InstanceId = None
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
         self._AclRuleName = None
+        self._OrderBy = None
+        self._OrderType = None
+        self._Filters = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -7902,7 +8640,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0
+        r"""Number of returned results. default: 20. value must be above 0.
         :rtype: int
         """
         return self._Limit
@@ -7922,6 +8660,39 @@ class DescribeTopicDetailRequest(AbstractModel):
     def AclRuleName(self, AclRuleName):
         self._AclRuleName = AclRuleName
 
+    @property
+    def OrderBy(self):
+        r"""Sorts based on specific attributes (currently supports PartitionNum/CreateTime). default value: CreateTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        r"""0 - sequential, 1 - reverse order. default value: 0.
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Filters(self):
+        r"""Currently supports ReplicaNum (number of replicas) filter criteria.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7929,6 +8700,14 @@ class DescribeTopicDetailRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AclRuleName = params.get("AclRuleName")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7948,7 +8727,7 @@ class DescribeTopicDetailResponse(AbstractModel):
         r"""
         :param _Result: Returned entity of topic details
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicDetailResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -7967,7 +8746,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7991,9 +8770,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Topic name
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         """
         self._InstanceId = None
@@ -8001,7 +8780,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -8012,7 +8791,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -8090,7 +8869,7 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _SearchWord: Filter by `topicName`. Fuzzy search is supported
         :type SearchWord: str
@@ -8109,7 +8888,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -8186,10 +8965,9 @@ class DescribeTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -8197,8 +8975,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        r"""Returned result
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
         """
         return self._Result
@@ -8209,7 +8986,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8233,7 +9010,7 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _TopicName: Topic name
         :type TopicName: str
@@ -8249,7 +9026,7 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -8316,7 +9093,7 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
         r"""
         :param _Result: Returned results
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -8335,7 +9112,7 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8365,7 +9142,7 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
         :type TopicName: str
         :param _Offset: Offset. If this parameter is left empty, 0 will be used by default.
         :type Offset: int
-        :param _Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param _Limit: Number of returned results. default value: 20. must be greater than 0.
         :type Limit: int
         :param _OutOfSyncReplicaOnly: Filters unsynced replicas only
         :type OutOfSyncReplicaOnly: bool
@@ -8411,7 +9188,7 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        r"""Number of returned results. default value: 20. must be greater than 0.
         :rtype: int
         """
         return self._Limit
@@ -8457,7 +9234,7 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
         r"""
         :param _Result: Returns topic replica details
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -8476,7 +9253,7 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8493,6 +9270,162 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTypeInstancesRequest(AbstractModel):
+    r"""DescribeTypeInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: (Filter condition) filter by instance ID.
+        :type InstanceId: str
+        :param _SearchWord: (Filter condition) filter by instance name. fuzzy query is supported.
+        :type SearchWord: str
+        :param _Status: Instance status (filter condition). valid values: 0: creating, 1: running, 2: deleting. default return: all.
+        :type Status: list of int
+        :param _Offset: Offset. default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned results. default: 10. maximum value: 100.
+        :type Limit: int
+        :param _TagKey: Matches the Tag key.
+        :type TagKey: str
+        """
+        self._InstanceId = None
+        self._SearchWord = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+        self._TagKey = None
+
+    @property
+    def InstanceId(self):
+        r"""(Filter condition) filter by instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SearchWord(self):
+        r"""(Filter condition) filter by instance name. fuzzy query is supported.
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def Status(self):
+        r"""Instance status (filter condition). valid values: 0: creating, 1: running, 2: deleting. default return: all.
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        r"""Offset. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned results. default: 10. maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TagKey(self):
+        r"""Matches the Tag key.
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SearchWord = params.get("SearchWord")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTypeInstancesResponse(AbstractModel):
+    r"""DescribeTypeInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = InstanceResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     r"""DescribeUser request structure.
 
@@ -8500,13 +9433,13 @@ class DescribeUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _SearchWord: Filter by name
         :type SearchWord: str
-        :param _Offset: Offset
+        :param _Offset: Offset.
         :type Offset: int
-        :param _Limit: Number of results to be returned in this request
+        :param _Limit: The number of returns.
         :type Limit: int
         """
         self._InstanceId = None
@@ -8516,7 +9449,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -8538,7 +9471,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset
+        r"""Offset.
         :rtype: int
         """
         return self._Offset
@@ -8549,7 +9482,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned in this request
+        r"""The number of returns.
         :rtype: int
         """
         return self._Limit
@@ -8581,9 +9514,9 @@ class DescribeUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result list
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -8591,7 +9524,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result list
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
         """
         return self._Result
@@ -8602,7 +9535,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8804,13 +9737,13 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Topic: Topic name
+        :param _Topic: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :type Topic: str
         :param _Partition: Partition ID
         :type Partition: int
-        :param _Offset: Offset information, which is required.
+        :param _Offset: Specifies the position information.
         :type Offset: int
         """
         self._InstanceId = None
@@ -8820,7 +9753,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -8831,7 +9764,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""Topic name
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Topic
@@ -8853,7 +9786,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset information, which is required.
+        r"""Specifies the position information.
         :rtype: int
         """
         return self._Offset
@@ -8887,7 +9820,7 @@ class FetchMessageByOffsetResponse(AbstractModel):
         r"""
         :param _Result: Returned results
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -8906,7 +9839,7 @@ class FetchMessageByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8930,7 +9863,7 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
         :param _Topic: Topic name
         :type Topic: str
@@ -8949,7 +9882,7 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -9028,7 +9961,7 @@ class FetchMessageListByOffsetResponse(AbstractModel):
         r"""
         :param _Result: Returned result. Note: The returned list does not display the message content (key and value). To query the message content, call the `FetchMessageByOffset` API.
         :type Result: list of ConsumerRecord
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -9047,7 +9980,151 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class FetchMessageListByTimestampRequest(AbstractModel):
+    r"""FetchMessageListByTimestamp request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The ckafka cluster instance Id.
+        :type InstanceId: str
+        :param _Topic: Topic name
+        :type Topic: str
+        :param _Partition: Partition ID
+        :type Partition: int
+        :param _StartTime: Query start time, a timestamp.
+        :type StartTime: int
+        :param _SinglePartitionRecordNumber: Maximum number of query results. default: 20. value range: 1-20.
+        :type SinglePartitionRecordNumber: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Partition = None
+        self._StartTime = None
+        self._SinglePartitionRecordNumber = None
+
+    @property
+    def InstanceId(self):
+        r"""The ckafka cluster instance Id.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""Topic name
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Partition(self):
+        r"""Partition ID
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def StartTime(self):
+        r"""Query start time, a timestamp.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SinglePartitionRecordNumber(self):
+        r"""Maximum number of query results. default: 20. value range: 1-20.
+        :rtype: int
+        """
+        return self._SinglePartitionRecordNumber
+
+    @SinglePartitionRecordNumber.setter
+    def SinglePartitionRecordNumber(self, SinglePartitionRecordNumber):
+        self._SinglePartitionRecordNumber = SinglePartitionRecordNumber
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Partition = params.get("Partition")
+        self._StartTime = params.get("StartTime")
+        self._SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageListByTimestampResponse(AbstractModel):
+    r"""FetchMessageListByTimestamp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned results. note that the list does not return specific message content (key, value). if necessary, please use the FetchMessageByOffset API to query specific message content.
+        :type Result: list of ConsumerRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned results. note that the list does not return specific message content (key, value). if necessary, please use the FetchMessageByOffset API to query specific message content.
+        :rtype: list of ConsumerRecord
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9068,10 +10145,10 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""Query filter
-    >Key-value pair filters for conditional filtering queries, such as filter ID, name, and status
-    > * If there are multiple `Filter`, the relationship among them is logical `AND`.
-    > * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.
+    r"""Query filter.
+    Describes the key-value pair filter, which is used for conditional filtering queries. for example, filter by ID, name, and status.
+    If there are multiple filters, the logical relationship between them is AND.
+    If the same Filter contains multiple Values, the relationship between Values under the same Filter is logical OR.
     >
 
     """
@@ -9129,14 +10206,14 @@ class Group(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: Group name
+        :param _GroupName: Consumer group name.
         :type GroupName: str
         """
         self._GroupName = None
 
     @property
     def GroupName(self):
-        r"""Group name
+        r"""Consumer group name.
         :rtype: str
         """
         return self._GroupName
@@ -9263,7 +10340,7 @@ Stable: each consumer in the consumer group has joined and is in stable state
         :type Protocol: str
         :param _Members: This array contains information only if `state` is `Stable` and `protocol_type` is `consumer`
         :type Members: list of GroupInfoMember
-        :param _Group: Kafka consumer group
+        :param _Group: Consumer group name.
         :type Group: str
         """
         self._ErrorCode = None
@@ -9335,7 +10412,7 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def Group(self):
-        r"""Kafka consumer group
+        r"""Consumer group name.
         :rtype: str
         """
         return self._Group
@@ -9376,8 +10453,7 @@ class GroupInfoTopics(AbstractModel):
         r"""
         :param _Topic: Name of assigned topics
         :type Topic: str
-        :param _Partitions: Information of assigned partition
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Partitions: Allocates partition info.
         :type Partitions: list of int
         """
         self._Topic = None
@@ -9396,8 +10472,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partitions(self):
-        r"""Information of assigned partition
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Allocates partition info.
         :rtype: list of int
         """
         return self._Partitions
@@ -9431,8 +10506,7 @@ class GroupOffsetPartition(AbstractModel):
         :type Partition: int
         :param _Offset: Offset position submitted by consumer
         :type Offset: int
-        :param _Metadata: Metadata can be passed in for other purposes when the consumer submits messages. Currently, this parameter is usually an empty string
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Metadata: Supports consumers to submit messages with imported metadata for other purposes, currently an empty string.
         :type Metadata: str
         :param _ErrorCode: Error code
         :type ErrorCode: int
@@ -9472,8 +10546,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metadata(self):
-        r"""Metadata can be passed in for other purposes when the consumer submits messages. Currently, this parameter is usually an empty string
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Supports consumers to submit messages with imported metadata for other purposes, currently an empty string.
         :rtype: str
         """
         return self._Metadata
@@ -9542,8 +10615,7 @@ class GroupOffsetResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of eligible results
         :type TotalCount: int
-        :param _TopicList: Array of partitions in the topic, where each element is a JSON object
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicList: The topic partition array, where each element is a json object.
         :type TopicList: list of GroupOffsetTopic
         """
         self._TotalCount = None
@@ -9562,8 +10634,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
-        r"""Array of partitions in the topic, where each element is a JSON object
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""The topic partition array, where each element is a json object.
         :rtype: list of GroupOffsetTopic
         """
         return self._TopicList
@@ -9600,8 +10671,7 @@ class GroupOffsetTopic(AbstractModel):
         r"""
         :param _Topic: Topic name
         :type Topic: str
-        :param _Partitions: Array of partitions in the topic, where each element is a JSON object
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Partitions: The topic partition array, where each element is a json object.
         :type Partitions: list of GroupOffsetPartition
         """
         self._Topic = None
@@ -9620,8 +10690,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partitions(self):
-        r"""Array of partitions in the topic, where each element is a JSON object
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""The topic partition array, where each element is a json object.
         :rtype: list of GroupOffsetPartition
         """
         return self._Partitions
@@ -9656,14 +10725,11 @@ class GroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Count
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Counting.
         :type TotalCount: int
         :param _GroupList: GroupList
-Note: this field may return null, indicating that no valid values can be obtained.
         :type GroupList: list of DescribeGroup
-        :param _GroupCountQuota: Consumer group quota
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _GroupCountQuota: Specifies the consumer group quota.
         :type GroupCountQuota: int
         """
         self._TotalCount = None
@@ -9672,8 +10738,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Count
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Counting.
         :rtype: int
         """
         return self._TotalCount
@@ -9685,7 +10750,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def GroupList(self):
         r"""GroupList
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeGroup
         """
         return self._GroupList
@@ -9696,8 +10760,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupCountQuota(self):
-        r"""Consumer group quota
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the consumer group quota.
         :rtype: int
         """
         return self._GroupCountQuota
@@ -9733,21 +10796,25 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: `standard`: Standard Edition; `profession`: Pro Edition
+        :param _InstanceType: Chinese site standard version fill in standards2 international site standard version fill in standard pro edition fill in profession advanced edition fill in premium.
         :type InstanceType: str
         :param _InstanceChargeParam: Billing mode for instance purchase/renewal. If this parameter is left empty when you purchase an instance, the fees for one month under the monthly subscription mode will be displayed by default.
         :type InstanceChargeParam: :class:`tencentcloud.ckafka.v20190819.models.InstanceChargeParam`
         :param _InstanceNum: The number of instances to be purchased or renewed. If this parameter is left empty, the default value is `1`.
         :type InstanceNum: int
-        :param _Bandwidth: Private network bandwidth in MB/sec, which is required when you purchase an instance.
+        :param _Bandwidth: Specifies the internal network bandwidth size of the instance, in MB/s (required when purchased; bandwidth information is required for pro edition/advanced edition inquiries).
         :type Bandwidth: int
-        :param _InquiryDiskParam: Disk type and size, which is required when you purchase an instance.
+        :param _InquiryDiskParam: Specifies the purchase type and size of the hard disk of the instance. required when purchased. disk information is required for pro edition or advanced edition inquiries.
+
         :type InquiryDiskParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
         :param _MessageRetention: Message retention period in hours, which is required when you purchase an instance.
         :type MessageRetention: int
         :param _Topic: The number of instance topics to be purchased, which is required when you purchase an instance.
         :type Topic: int
-        :param _Partition: The number of instance partitions to be purchased, which is required when you purchase an instance.
+        :param _Partition: Number of partitions for instance purchase, unit: unit (required when purchased; bandwidth information required for pro edition/advanced edition inquiry).
+Partition upper limit. maximum value of 40000. step length of 100.
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+
         :type Partition: int
         :param _ZoneIds: The region for instance purchase, which can be obtained via the `DescribeCkafkaZone` API.
         :type ZoneIds: list of int
@@ -9755,7 +10822,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
         :type CategoryAction: str
         :param _BillType: This field is not required.
         :type BillType: str
-        :param _PublicNetworkParam: Billing mode for public network bandwidth, which is required when you purchase public network bandwidth. Currently, public network bandwidth is only supported for Pro Edition.
+        :param _PublicNetworkParam: Public network bandwidth billing mode. currently only the pro edition supports public network bandwidth. required when purchasing public network bandwidth. value must be a multiple of 3.
         :type PublicNetworkParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
         :param _InstanceId: ID of the instance to be renewed, which is required when you renew an instance.
         :type InstanceId: str
@@ -9776,7 +10843,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""`standard`: Standard Edition; `profession`: Pro Edition
+        r"""Chinese site standard version fill in standards2 international site standard version fill in standard pro edition fill in profession advanced edition fill in premium.
         :rtype: str
         """
         return self._InstanceType
@@ -9809,7 +10876,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""Private network bandwidth in MB/sec, which is required when you purchase an instance.
+        r"""Specifies the internal network bandwidth size of the instance, in MB/s (required when purchased; bandwidth information is required for pro edition/advanced edition inquiries).
         :rtype: int
         """
         return self._Bandwidth
@@ -9820,7 +10887,8 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InquiryDiskParam(self):
-        r"""Disk type and size, which is required when you purchase an instance.
+        r"""Specifies the purchase type and size of the hard disk of the instance. required when purchased. disk information is required for pro edition or advanced edition inquiries.
+
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
         """
         return self._InquiryDiskParam
@@ -9853,7 +10921,10 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""The number of instance partitions to be purchased, which is required when you purchase an instance.
+        r"""Number of partitions for instance purchase, unit: unit (required when purchased; bandwidth information required for pro edition/advanced edition inquiry).
+Partition upper limit. maximum value of 40000. step length of 100.
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+
         :rtype: int
         """
         return self._Partition
@@ -9897,7 +10968,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def PublicNetworkParam(self):
-        r"""Billing mode for public network bandwidth, which is required when you purchase public network bandwidth. Currently, public network bandwidth is only supported for Pro Edition.
+        r"""Public network bandwidth billing mode. currently only the pro edition supports public network bandwidth. required when purchasing public network bandwidth. value must be a multiple of 3.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
         """
         return self._PublicNetworkParam
@@ -9955,8 +11026,7 @@ class InquireCkafkaPriceResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstancePrice: Instance price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstancePrice: Specifies the instance price.
         :type InstancePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
         :param _PublicNetworkBandwidthPrice: Public network bandwidth price
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -9967,8 +11037,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstancePrice(self):
-        r"""Instance price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the instance price.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
         """
         return self._InstancePrice
@@ -10014,9 +11083,9 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Output parameters
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -10024,7 +11093,7 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Output parameters
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
         """
         return self._Result
@@ -10035,7 +11104,7 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10059,20 +11128,15 @@ class InquiryBasePrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: Original unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UnitPrice: Original price unit.
         :type UnitPrice: float
-        :param _UnitPriceDiscount: Discounted unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UnitPriceDiscount: Discount unit price.
         :type UnitPriceDiscount: float
-        :param _OriginalPrice: Original price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OriginalPrice: Total original price.
         :type OriginalPrice: float
-        :param _DiscountPrice: Discounted price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiscountPrice: Total discount price.
         :type DiscountPrice: float
-        :param _Discount: Discount (%)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Discount: Discount (unit: %).
         :type Discount: float
         :param _GoodsNum: Number of purchased items
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10089,8 +11153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TimeUnit: Unit of the validity period (`m`: Month; `h`: Hour)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeUnit: str
-        :param _Value: Purchase quantity
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Purchase quantity.
         :type Value: int
         """
         self._UnitPrice = None
@@ -10107,8 +11170,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
-        r"""Original unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Original price unit.
         :rtype: float
         """
         return self._UnitPrice
@@ -10119,8 +11181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
-        r"""Discounted unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Discount unit price.
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -10131,8 +11192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
-        r"""Original price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total original price.
         :rtype: float
         """
         return self._OriginalPrice
@@ -10143,8 +11203,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
-        r"""Discounted price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total discount price.
         :rtype: float
         """
         return self._DiscountPrice
@@ -10155,8 +11214,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
-        r"""Discount (%)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Discount (unit: %).
         :rtype: float
         """
         return self._Discount
@@ -10227,8 +11285,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        r"""Purchase quantity
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Purchase quantity.
         :rtype: int
         """
         return self._Value
@@ -10279,8 +11336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TopicPrice: Price of additional topics
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
-        :param _InstanceTypePrice: Instance package price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceTypePrice: Instance package price.
         :type InstanceTypePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
         """
         self._BandwidthPrice = None
@@ -10339,8 +11395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypePrice(self):
-        r"""Instance package price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance package price.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
         """
         return self._InstanceTypePrice
@@ -10434,35 +11489,26 @@ class InquiryPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: Original unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UnitPrice: Original price unit.
         :type UnitPrice: float
-        :param _UnitPriceDiscount: Discounted unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UnitPriceDiscount: Discount unit price.
         :type UnitPriceDiscount: float
-        :param _OriginalPrice: Original price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OriginalPrice: Total original price.
         :type OriginalPrice: float
-        :param _DiscountPrice: Discounted price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiscountPrice: Total discount price.
         :type DiscountPrice: float
-        :param _Discount: Discount (%)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Discount: Discount (unit: %).
         :type Discount: float
-        :param _GoodsNum: Number of purchased items
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _GoodsNum: Number of products
         :type GoodsNum: int
-        :param _Currency: Currency for payment
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Currency: Specifies the payment currency.
         :type Currency: str
         :param _DiskType: Dedicated disk response parameter
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param _TimeSpan: Validity period
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TimeSpan: Purchase duration.
         :type TimeSpan: int
-        :param _TimeUnit: Unit of the validity period (`m`: Month; `h`: Hour)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TimeUnit: Specifies the purchase duration unit ("m" for monthly, "h" for hourly).
         :type TimeUnit: str
         :param _Value: Purchase quantity
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10486,8 +11532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
-        r"""Original unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Original price unit.
         :rtype: float
         """
         return self._UnitPrice
@@ -10498,8 +11543,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
-        r"""Discounted unit price
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Discount unit price.
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -10510,8 +11554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
-        r"""Original price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total original price.
         :rtype: float
         """
         return self._OriginalPrice
@@ -10522,8 +11565,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
-        r"""Discounted price in total
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total discount price.
         :rtype: float
         """
         return self._DiscountPrice
@@ -10534,8 +11576,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
-        r"""Discount (%)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Discount (unit: %).
         :rtype: float
         """
         return self._Discount
@@ -10546,8 +11587,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GoodsNum(self):
-        r"""Number of purchased items
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of products
         :rtype: int
         """
         return self._GoodsNum
@@ -10558,8 +11598,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
-        r"""Currency for payment
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the payment currency.
         :rtype: str
         """
         return self._Currency
@@ -10582,8 +11621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
-        r"""Validity period
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Purchase duration.
         :rtype: int
         """
         return self._TimeSpan
@@ -10594,8 +11632,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
-        r"""Unit of the validity period (`m`: Month; `h`: Hour)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the purchase duration unit ("m" for monthly, "h" for hourly).
         :rtype: str
         """
         return self._TimeUnit
@@ -10663,7 +11700,7 @@ class InquiryPublicNetworkParam(AbstractModel):
         r"""
         :param _PublicNetworkChargeType: Public network bandwidth billing mode (`BANDWIDTH_PREPAID`: Monthly subscription; `BANDWIDTH_POSTPAID_BY_HOUR`: Bill-by-hour)
         :type PublicNetworkChargeType: str
-        :param _PublicNetworkMonthly: Public network bandwidth in MB
+        :param _PublicNetworkMonthly: Public network bandwidth, in MB. value must be 0 or a multiple of 3.
         :type PublicNetworkMonthly: int
         """
         self._PublicNetworkChargeType = None
@@ -10682,7 +11719,7 @@ class InquiryPublicNetworkParam(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
-        r"""Public network bandwidth in MB
+        r"""Public network bandwidth, in MB. value must be 0 or a multiple of 3.
         :rtype: int
         """
         return self._PublicNetworkMonthly
@@ -10712,14 +11749,13 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: Specifies the Name of the ckafka cluster instance.
         :type InstanceName: str
-        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :type Status: int
-        :param _IfCommunity: Whether it is an open-source instance. true: yes, false: no
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IfCommunity: Specifies whether the instance is open-source. valid values: true (open-source), false (not open-source).
         :type IfCommunity: bool
         """
         self._InstanceId = None
@@ -10729,7 +11765,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -10740,7 +11776,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""Specifies the Name of the ckafka cluster instance.
         :rtype: str
         """
         return self._InstanceName
@@ -10751,7 +11787,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        r"""Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :rtype: int
         """
         return self._Status
@@ -10762,8 +11798,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IfCommunity(self):
-        r"""Whether it is an open-source instance. true: yes, false: no
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies whether the instance is open-source. valid values: true (open-source), false (not open-source).
         :rtype: bool
         """
         return self._IfCommunity
@@ -10795,9 +11830,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: Specifies the Name of the ckafka cluster instance.
         :type InstanceName: str
         :param _VipList: VIP list information of access point
         :type VipList: list of VipEntity
@@ -10805,7 +11840,7 @@ class InstanceAttributesResponse(AbstractModel):
         :type Vip: str
         :param _Vport: Virtual port
         :type Vport: str
-        :param _Status: Instance status. 0: creating, 1: running, 2: deleting
+        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :type Status: int
         :param _Bandwidth: Instance bandwidth in Mbps
         :type Bandwidth: int
@@ -10836,50 +11871,72 @@ class InstanceAttributesResponse(AbstractModel):
         :param _CreatedTopics: Number of topics already created
         :type CreatedTopics: int
         :param _Tags: Tag array
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
         :param _ExpireTime: Expiration time
-Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: int
-        :param _ZoneIds: Cross-AZ
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ZoneIds: Availability Zone List
         :type ZoneIds: list of int
-        :param _Version: Kafka version information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Version: Specifies the ckafka cluster instance version.
         :type Version: str
-        :param _MaxGroupNum: Maximum number of groups
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MaxGroupNum: Maximum number of groups.
         :type MaxGroupNum: int
-        :param _Cvm: Offering type. `0`: Standard Edition; `1`: Professional Edition
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _Cvm: Sale type. valid values: 0 (standard version), 1 (pro edition).
         :type Cvm: int
-        :param _InstanceType: Type.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _InstanceType: Instance type. valid values:. 
+Specifies the pro edition.    
+Standard version.
+premium. specifies the advanced edition.
+Specifies the serverless version.
         :type InstanceType: str
-        :param _Features: Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Features: Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL means the policy support for configuring subnets.
         :type Features: list of str
-        :param _RetentionTimeConfig: Dynamic message retention policy
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _RetentionTimeConfig: Dynamic message retention policy.
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
-        :param _MaxConnection: Maximum number of connections
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MaxConnection: Maximum number of connections.
         :type MaxConnection: int
         :param _PublicNetwork: Public network bandwidth
-Note: this field may return null, indicating that no valid values can be obtained.
         :type PublicNetwork: int
-        :param _DeleteRouteTimestamp: Time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _DeleteRouteTimestamp: Specifies the deprecated field with no actual meaning.
         :type DeleteRouteTimestamp: str
-        :param _RemainingPartitions: Number of remaining creatable partitions
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _RemainingPartitions: Number of remaining creatable partitions.
         :type RemainingPartitions: int
-        :param _RemainingTopics: Number of remaining creatable topics
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _RemainingTopics: Number of remaining creatable topics.
         :type RemainingTopics: int
-        :param _DynamicDiskConfig: Dynamic disk expansion policy.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DynamicDiskConfig: Scaling policy for dynamic disk.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        :param _InstanceChargeType: Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.
+        :type InstanceChargeType: str
+        :param _ElasticBandwidthSwitch: Whether to enable the elastic bandwidth allowlist.   
+Indicates the allowlist feature with elastic bandwidth enabled.
+0: elastic bandwidth allowlist feature is disabled.
+        :type ElasticBandwidthSwitch: int
+        :param _ElasticBandwidthOpenStatus: Indicates the elastic bandwidth activation status.
+1: indicates elastic bandwidth is disabled.
+Enable elastic bandwidth.
+Enable elastic bandwidth successfully.
+33: disabling elastic bandwidth.
+Indicates that the elastic bandwidth is successfully disabled.
+Enable elastic bandwidth failed.
+Bandwidth failure.
+        :type ElasticBandwidthOpenStatus: int
+        :param _ClusterType: Cluster type.  
+CLOUD_IDC idc cluster.
+CLOUD_CVM_SHARE shared cluster.
+CLOUD_CVM_YUNTI yunti cvm cluster.
+CLOUD_CVM. specifies the cvm cluster.
+CLOUD_CDC cdc cluster.
+CLOUD_EKS_TSE eks cluster.
+        :type ClusterType: str
+        :param _FreePartitionNumber: Number of free partitions.
+        :type FreePartitionNumber: int
+        :param _ElasticFloatBandwidth: Specifies the elastic bandwidth upper limit.
+        :type ElasticFloatBandwidth: int
+        :param _CustomCertId: ssl custom certificate id. only returned for instance clusters with custom certificates.
+        :type CustomCertId: str
+        :param _UncleanLeaderElectionEnable: Default unclean.leader.election.enable configuration for cluster topic: 1 enable 0 disable.
+        :type UncleanLeaderElectionEnable: int
+        :param _DeleteProtectionEnable: Instance deletion protection switch. 1: enabled; 0: disabled.
+        :type DeleteProtectionEnable: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10916,10 +11973,19 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RemainingPartitions = None
         self._RemainingTopics = None
         self._DynamicDiskConfig = None
+        self._InstanceChargeType = None
+        self._ElasticBandwidthSwitch = None
+        self._ElasticBandwidthOpenStatus = None
+        self._ClusterType = None
+        self._FreePartitionNumber = None
+        self._ElasticFloatBandwidth = None
+        self._CustomCertId = None
+        self._UncleanLeaderElectionEnable = None
+        self._DeleteProtectionEnable = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -10930,7 +11996,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""Specifies the Name of the ckafka cluster instance.
         :rtype: str
         """
         return self._InstanceName
@@ -10974,7 +12040,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        r"""Instance status. 0: creating, 1: running, 2: deleting
+        r"""Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :rtype: int
         """
         return self._Status
@@ -11140,7 +12206,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def Tags(self):
         r"""Tag array
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
         return self._Tags
@@ -11152,7 +12217,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def ExpireTime(self):
         r"""Expiration time
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ExpireTime
@@ -11163,8 +12227,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneIds(self):
-        r"""Cross-AZ
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Availability Zone List
         :rtype: list of int
         """
         return self._ZoneIds
@@ -11175,8 +12238,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        r"""Kafka version information
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the ckafka cluster instance version.
         :rtype: str
         """
         return self._Version
@@ -11187,8 +12249,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxGroupNum(self):
-        r"""Maximum number of groups
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Maximum number of groups.
         :rtype: int
         """
         return self._MaxGroupNum
@@ -11199,8 +12260,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cvm(self):
-        r"""Offering type. `0`: Standard Edition; `1`: Professional Edition
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Sale type. valid values: 0 (standard version), 1 (pro edition).
         :rtype: int
         """
         return self._Cvm
@@ -11211,8 +12271,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceType(self):
-        r"""Type.
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Instance type. valid values:. 
+Specifies the pro edition.    
+Standard version.
+premium. specifies the advanced edition.
+Specifies the serverless version.
         :rtype: str
         """
         return self._InstanceType
@@ -11223,8 +12286,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Features(self):
-        r"""Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL means the policy support for configuring subnets.
         :rtype: list of str
         """
         return self._Features
@@ -11235,8 +12297,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionTimeConfig(self):
-        r"""Dynamic message retention policy
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Dynamic message retention policy.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         """
         return self._RetentionTimeConfig
@@ -11247,8 +12308,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxConnection(self):
-        r"""Maximum number of connections
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Maximum number of connections.
         :rtype: int
         """
         return self._MaxConnection
@@ -11260,7 +12320,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def PublicNetwork(self):
         r"""Public network bandwidth
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._PublicNetwork
@@ -11271,8 +12330,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteRouteTimestamp(self):
-        r"""Time
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the deprecated field with no actual meaning.
         :rtype: str
         """
         return self._DeleteRouteTimestamp
@@ -11283,8 +12341,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemainingPartitions(self):
-        r"""Number of remaining creatable partitions
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Number of remaining creatable partitions.
         :rtype: int
         """
         return self._RemainingPartitions
@@ -11295,8 +12352,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RemainingTopics(self):
-        r"""Number of remaining creatable topics
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Number of remaining creatable topics.
         :rtype: int
         """
         return self._RemainingTopics
@@ -11307,8 +12363,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DynamicDiskConfig(self):
-        r"""Dynamic disk expansion policy.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Scaling policy for dynamic disk.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         return self._DynamicDiskConfig
@@ -11316,6 +12371,120 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @DynamicDiskConfig.setter
     def DynamicDiskConfig(self, DynamicDiskConfig):
         self._DynamicDiskConfig = DynamicDiskConfig
+
+    @property
+    def InstanceChargeType(self):
+        r"""Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ElasticBandwidthSwitch(self):
+        r"""Whether to enable the elastic bandwidth allowlist.   
+Indicates the allowlist feature with elastic bandwidth enabled.
+0: elastic bandwidth allowlist feature is disabled.
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
+    @property
+    def ElasticBandwidthOpenStatus(self):
+        r"""Indicates the elastic bandwidth activation status.
+1: indicates elastic bandwidth is disabled.
+Enable elastic bandwidth.
+Enable elastic bandwidth successfully.
+33: disabling elastic bandwidth.
+Indicates that the elastic bandwidth is successfully disabled.
+Enable elastic bandwidth failed.
+Bandwidth failure.
+        :rtype: int
+        """
+        return self._ElasticBandwidthOpenStatus
+
+    @ElasticBandwidthOpenStatus.setter
+    def ElasticBandwidthOpenStatus(self, ElasticBandwidthOpenStatus):
+        self._ElasticBandwidthOpenStatus = ElasticBandwidthOpenStatus
+
+    @property
+    def ClusterType(self):
+        r"""Cluster type.  
+CLOUD_IDC idc cluster.
+CLOUD_CVM_SHARE shared cluster.
+CLOUD_CVM_YUNTI yunti cvm cluster.
+CLOUD_CVM. specifies the cvm cluster.
+CLOUD_CDC cdc cluster.
+CLOUD_EKS_TSE eks cluster.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def FreePartitionNumber(self):
+        r"""Number of free partitions.
+        :rtype: int
+        """
+        return self._FreePartitionNumber
+
+    @FreePartitionNumber.setter
+    def FreePartitionNumber(self, FreePartitionNumber):
+        self._FreePartitionNumber = FreePartitionNumber
+
+    @property
+    def ElasticFloatBandwidth(self):
+        r"""Specifies the elastic bandwidth upper limit.
+        :rtype: int
+        """
+        return self._ElasticFloatBandwidth
+
+    @ElasticFloatBandwidth.setter
+    def ElasticFloatBandwidth(self, ElasticFloatBandwidth):
+        self._ElasticFloatBandwidth = ElasticFloatBandwidth
+
+    @property
+    def CustomCertId(self):
+        r"""ssl custom certificate id. only returned for instance clusters with custom certificates.
+        :rtype: str
+        """
+        return self._CustomCertId
+
+    @CustomCertId.setter
+    def CustomCertId(self, CustomCertId):
+        self._CustomCertId = CustomCertId
+
+    @property
+    def UncleanLeaderElectionEnable(self):
+        r"""Default unclean.leader.election.enable configuration for cluster topic: 1 enable 0 disable.
+        :rtype: int
+        """
+        return self._UncleanLeaderElectionEnable
+
+    @UncleanLeaderElectionEnable.setter
+    def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
+        self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
+
+    @property
+    def DeleteProtectionEnable(self):
+        r"""Instance deletion protection switch. 1: enabled; 0: disabled.
+        :rtype: int
+        """
+        return self._DeleteProtectionEnable
+
+    @DeleteProtectionEnable.setter
+    def DeleteProtectionEnable(self, DeleteProtectionEnable):
+        self._DeleteProtectionEnable = DeleteProtectionEnable
 
 
     def _deserialize(self, params):
@@ -11370,6 +12539,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("DynamicDiskConfig") is not None:
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
+        self._ElasticBandwidthOpenStatus = params.get("ElasticBandwidthOpenStatus")
+        self._ClusterType = params.get("ClusterType")
+        self._FreePartitionNumber = params.get("FreePartitionNumber")
+        self._ElasticFloatBandwidth = params.get("ElasticFloatBandwidth")
+        self._CustomCertId = params.get("CustomCertId")
+        self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self._DeleteProtectionEnable = params.get("DeleteProtectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11497,6 +12675,42 @@ class InstanceConfigDO(AbstractModel):
         
 
 
+class InstanceDeleteResponse(AbstractModel):
+    r"""Deletion of instances returns a task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Specifies the task Id returned after deleting an instance.
+        :type FlowId: int
+        """
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        r"""Specifies the task Id returned after deleting an instance.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceDetail(AbstractModel):
     r"""Instance details
 
@@ -11504,9 +12718,9 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: CKafka cluster instance name.
         :type InstanceName: str
         :param _Vip: Instance VIP information
         :type Vip: str
@@ -11514,11 +12728,11 @@ class InstanceDetail(AbstractModel):
         :type Vport: str
         :param _VipList: Virtual IP list
         :type VipList: list of VipEntity
-        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :type Status: int
         :param _Bandwidth: Instance bandwidth in Mbps
         :type Bandwidth: int
-        :param _DiskSize: Instance storage capacity in GB
+        :param _DiskSize: Specifies the ckafka cluster instance disk size in gb.
         :type DiskSize: int
         :param _ZoneId: AZ ID
         :type ZoneId: int
@@ -11542,44 +12756,31 @@ class InstanceDetail(AbstractModel):
         :type TopicNum: int
         :param _Tags: Tag
         :type Tags: list of Tag
-        :param _Version: Kafka version information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Version: kafka version information.
         :type Version: str
-        :param _ZoneIds: Cross-AZ
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ZoneIds: Cross-Availability zone.
         :type ZoneIds: list of int
-        :param _Cvm: CKafka sale type
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Cvm: ckafka sales type.
         :type Cvm: int
-        :param _InstanceType: CKafka instance type
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _InstanceType: Specifies the cluster instance type of ckafka.
         :type InstanceType: str
-        :param _DiskType: Disk type
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _DiskType: Specifies the ckafka cluster instance disk type.
         :type DiskType: str
-        :param _MaxTopicNumber: Maximum number of topics for the current instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _MaxTopicNumber: Maximum number of topics for current specifications.
         :type MaxTopicNumber: int
-        :param _MaxPartitionNumber: Maximum number of partitions for the current instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _MaxPartitionNumber: Maximum number of partitions for current specifications.
         :type MaxPartitionNumber: int
-        :param _RebalanceTime: Time of scheduled upgrade
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _RebalanceTime: Scheduled configuration upgrade time.
         :type RebalanceTime: str
-        :param _PartitionNumber: Number of partitions in the current instance.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PartitionNumber: Specifies the number of partitions in the current instance.
         :type PartitionNumber: int
-        :param _PublicNetworkChargeType: Public network bandwidth type.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PublicNetworkChargeType: Specifies the public network bandwidth type of the ckafka cluster instance.
         :type PublicNetworkChargeType: str
-        :param _PublicNetwork: Public network bandwidth.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PublicNetwork: Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
         :type PublicNetwork: int
-        :param _ClusterType: Instance type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClusterType: Specifies the underlying cluster type of the ckafka cluster instance.
         :type ClusterType: str
         :param _Features: Instance feature list.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Features: list of str
         """
         self._InstanceId = None
@@ -11617,7 +12818,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -11628,7 +12829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""CKafka cluster instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -11672,7 +12873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        r"""Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
         :rtype: int
         """
         return self._Status
@@ -11694,7 +12895,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
-        r"""Instance storage capacity in GB
+        r"""Specifies the ckafka cluster instance disk size in gb.
         :rtype: int
         """
         return self._DiskSize
@@ -11826,8 +13027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        r"""Kafka version information
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""kafka version information.
         :rtype: str
         """
         return self._Version
@@ -11838,8 +13038,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneIds(self):
-        r"""Cross-AZ
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Cross-Availability zone.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -11850,8 +13049,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cvm(self):
-        r"""CKafka sale type
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""ckafka sales type.
         :rtype: int
         """
         return self._Cvm
@@ -11862,8 +13060,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        r"""CKafka instance type
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the cluster instance type of ckafka.
         :rtype: str
         """
         return self._InstanceType
@@ -11874,8 +13071,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DiskType(self):
-        r"""Disk type
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the ckafka cluster instance disk type.
         :rtype: str
         """
         return self._DiskType
@@ -11886,8 +13082,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxTopicNumber(self):
-        r"""Maximum number of topics for the current instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Maximum number of topics for current specifications.
         :rtype: int
         """
         return self._MaxTopicNumber
@@ -11898,8 +13093,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxPartitionNumber(self):
-        r"""Maximum number of partitions for the current instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Maximum number of partitions for current specifications.
         :rtype: int
         """
         return self._MaxPartitionNumber
@@ -11910,8 +13104,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RebalanceTime(self):
-        r"""Time of scheduled upgrade
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Scheduled configuration upgrade time.
         :rtype: str
         """
         return self._RebalanceTime
@@ -11922,8 +13115,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def PartitionNumber(self):
-        r"""Number of partitions in the current instance.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the number of partitions in the current instance.
         :rtype: int
         """
         return self._PartitionNumber
@@ -11934,8 +13126,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetworkChargeType(self):
-        r"""Public network bandwidth type.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the public network bandwidth type of the ckafka cluster instance.
         :rtype: str
         """
         return self._PublicNetworkChargeType
@@ -11946,8 +13137,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetwork(self):
-        r"""Public network bandwidth.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
         :rtype: int
         """
         return self._PublicNetwork
@@ -11958,8 +13148,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterType(self):
-        r"""Instance type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the underlying cluster type of the ckafka cluster instance.
         :rtype: str
         """
         return self._ClusterType
@@ -11971,7 +13160,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Features(self):
         r"""Instance feature list.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Features
@@ -12152,11 +13340,9 @@ class InstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: List of eligible instances
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: Specifies the list of instances meeting the conditions.
         :type InstanceList: list of Instance
-        :param _TotalCount: Total number of eligible results
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Total results that meet the conditions.
         :type TotalCount: int
         """
         self._InstanceList = None
@@ -12164,8 +13350,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        r"""List of eligible instances
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the list of instances meeting the conditions.
         :rtype: list of Instance
         """
         return self._InstanceList
@@ -12176,8 +13361,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of eligible results
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Total results that meet the conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -12195,6 +13379,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceRoute(AbstractModel):
+    r"""Instance route.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The ckafka cluster instance Id.
+        :type InstanceId: str
+        :param _RouteId: Route ID
+        :type RouteId: int
+        """
+        self._InstanceId = None
+        self._RouteId = None
+
+    @property
+    def InstanceId(self):
+        r"""The ckafka cluster instance Id.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RouteId(self):
+        r"""Route ID
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RouteId = params.get("RouteId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12275,6 +13510,62 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class ListCvmAndIpInfoRsp(AbstractModel):
+    r"""CVM and IP information list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CvmList: cvm and IP list.
+        :type CvmList: list of CvmAndIpInfo
+        :param _TotalCount: Specifies the instance data volume.
+        :type TotalCount: int
+        """
+        self._CvmList = None
+        self._TotalCount = None
+
+    @property
+    def CvmList(self):
+        r"""cvm and IP list.
+        :rtype: list of CvmAndIpInfo
+        """
+        return self._CvmList
+
+    @CvmList.setter
+    def CvmList(self, CvmList):
+        self._CvmList = CvmList
+
+    @property
+    def TotalCount(self):
+        r"""Specifies the instance data volume.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("CvmList") is not None:
+            self._CvmList = []
+            for item in params.get("CvmList"):
+                obj = CvmAndIpInfo()
+                obj._deserialize(item)
+                self._CvmList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAclRuleRequest(AbstractModel):
     r"""ModifyAclRule request structure.
 
@@ -12282,11 +13573,11 @@ class ModifyAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _RuleName: ACL policy name
+        :param _RuleName: ACL rule name.
         :type RuleName: str
-        :param _IsApplied: Whether to be applied to new topics
+        :param _IsApplied: Specifies whether to apply to newly-added topics when importing predefined rule modifications.
         :type IsApplied: int
         """
         self._InstanceId = None
@@ -12295,7 +13586,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -12306,7 +13597,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""ACL policy name
+        r"""ACL rule name.
         :rtype: str
         """
         return self._RuleName
@@ -12317,7 +13608,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
-        r"""Whether to be applied to new topics
+        r"""Specifies whether to apply to newly-added topics when importing predefined rule modifications.
         :rtype: int
         """
         return self._IsApplied
@@ -12350,7 +13641,7 @@ class ModifyAclRuleResponse(AbstractModel):
         r"""
         :param _Result: Unique key of a rule
         :type Result: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -12369,7 +13660,7 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12391,7 +13682,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Name
+        :param _Name: Elastic topic name.
         :type Name: str
         :param _RetentionMs: Message retention period in ms. The current minimum value is 60,000 ms.
         :type RetentionMs: int
@@ -12407,7 +13698,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Name
+        r"""Elastic topic name.
         :rtype: str
         """
         return self._Name
@@ -12479,7 +13770,7 @@ class ModifyDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: Returned result set
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -12498,7 +13789,7 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12522,17 +13813,17 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Kafka instance ID
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _Group: Kafka consumer group
+        :param _Group: Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
         :type Group: str
-        :param _Strategy: Offset resetting policy. Meanings of the input parameters: 0: equivalent to the `shift-by` parameter, which indicates to shift the offset forward or backward by the value of the `shift`. 1: equivalent to `by-duration`, `to-datetime`, `to-earliest`, or `to-latest`, which indicates to move the offset to the specified timestamp. 2: equivalent to `to-offset`, which indicates to move the offset to the specified offset position
+        :param _Strategy: Reset offset strategy. parameter meaning: 0. align with the shift-by parameter, move the offset forward or backward by shift entries. 1. alignment reference (by-duration, to-datetime, to-earliest, to-latest), move the offset to the specified timestamp position. 2. alignment reference (to-offset), move the offset to the specified offset position.
         :type Strategy: int
-        :param _Topics: Indicates the topics to be reset. If this parameter is left empty, all topics will be reset
+        :param _Topics: Specifies the topic name list that needs to reset.
         :type Topics: list of str
         :param _Shift: When `strategy` is 0, this field is required. If it is above zero, the offset will be shifted backward by the value of the `shift`. If it is below zero, the offset will be shifted forward by the value of the `shift`. After a correct reset, the new offset should be (old_offset + shift). Note that if the new offset is smaller than the `earliest` parameter of the partition, it will be set to `earliest`, and if it is greater than the `latest` parameter of the partition, it will be set to `latest`
         :type Shift: int
-        :param _ShiftTimestamp: Unit: ms. When `strategy` is 1, this field is required, where -2 indicates to reset the offset to the initial position, -1 indicates to reset to the latest position (equivalent to emptying), and other values represent the specified time, i.e., the offset of the topic at the specified time will be obtained and then reset. Note that if there is no message at the specified time, the last offset will be obtained
+        :param _ShiftTimestamp: In milliseconds. when strategy is 1, must include this field. among them, -2 means reset offset to the start position, -1 means reset to the latest position (equivalent to clearing), other values represent the specified time. obtain the offset at the specified time in the topic and reset. notably, if no message exists at the specified time, get the last offset.
         :type ShiftTimestamp: int
         :param _Offset: Position of the offset that needs to be reset. When `strategy` is 2, this field is required
         :type Offset: int
@@ -12550,7 +13841,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Kafka instance ID
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -12561,7 +13852,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""Kafka consumer group
+        r"""Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
         :rtype: str
         """
         return self._Group
@@ -12572,7 +13863,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        r"""Offset resetting policy. Meanings of the input parameters: 0: equivalent to the `shift-by` parameter, which indicates to shift the offset forward or backward by the value of the `shift`. 1: equivalent to `by-duration`, `to-datetime`, `to-earliest`, or `to-latest`, which indicates to move the offset to the specified timestamp. 2: equivalent to `to-offset`, which indicates to move the offset to the specified offset position
+        r"""Reset offset strategy. parameter meaning: 0. align with the shift-by parameter, move the offset forward or backward by shift entries. 1. alignment reference (by-duration, to-datetime, to-earliest, to-latest), move the offset to the specified timestamp position. 2. alignment reference (to-offset), move the offset to the specified offset position.
         :rtype: int
         """
         return self._Strategy
@@ -12583,7 +13874,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
-        r"""Indicates the topics to be reset. If this parameter is left empty, all topics will be reset
+        r"""Specifies the topic name list that needs to reset.
         :rtype: list of str
         """
         return self._Topics
@@ -12605,7 +13896,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def ShiftTimestamp(self):
-        r"""Unit: ms. When `strategy` is 1, this field is required, where -2 indicates to reset the offset to the initial position, -1 indicates to reset to the latest position (equivalent to emptying), and other values represent the specified time, i.e., the offset of the topic at the specified time will be obtained and then reset. Note that if there is no message at the specified time, the last offset will be obtained
+        r"""In milliseconds. when strategy is 1, must include this field. among them, -2 means reset offset to the start position, -1 means reset to the latest position (equivalent to clearing), other values represent the specified time. obtain the offset at the specified time in the topic and reset. notably, if no message exists at the specified time, get the last offset.
         :rtype: int
         """
         return self._ShiftTimestamp
@@ -12665,7 +13956,7 @@ class ModifyGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -12684,7 +13975,7 @@ class ModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12710,9 +14001,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
         r"""
         :param _AutoCreateTopicEnable: Automatic creation. true: enabled, false: not enabled
         :type AutoCreateTopicEnable: bool
-        :param _DefaultNumPartitions: Optional. If `auto.create.topic.enable` is set to `true` and this value is not set, 3 will be used by default
+        :param _DefaultNumPartitions: Default number of partitions for a newly created topic. if AutoCreateTopicEnable is set to true and no value is set, defaults to 3.
         :type DefaultNumPartitions: int
-        :param _DefaultReplicationFactor: If `auto.create.topic.enable` is set to `true` but this value is not set, 2 will be used by default
+        :param _DefaultReplicationFactor: Default number of replicas for a newly created topic. if AutoCreateTopicEnable is set to true and not specified, defaults to 2.
         :type DefaultReplicationFactor: int
         """
         self._AutoCreateTopicEnable = None
@@ -12732,7 +14023,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
-        r"""Optional. If `auto.create.topic.enable` is set to `true` and this value is not set, 3 will be used by default
+        r"""Default number of partitions for a newly created topic. if AutoCreateTopicEnable is set to true and no value is set, defaults to 3.
         :rtype: int
         """
         return self._DefaultNumPartitions
@@ -12743,7 +14034,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
-        r"""If `auto.create.topic.enable` is set to `true` but this value is not set, 2 will be used by default
+        r"""Default number of replicas for a newly created topic. if AutoCreateTopicEnable is set to true and not specified, defaults to 2.
         :rtype: int
         """
         return self._DefaultReplicationFactor
@@ -12774,24 +14065,28 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _MsgRetentionTime: Maximum retention period in minutes for instance log, which can be up to 30 days. 0 indicates not to enable the log retention period policy
+        :param _MsgRetentionTime: Maximum retention time of instance logs, in minutes, with a value range of 1min to 90 days.
         :type MsgRetentionTime: int
-        :param _InstanceName: Instance name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        :param _InstanceName: Specifies the Name of the ckafka cluster instance.
         :type InstanceName: str
         :param _Config: Instance configuration
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
         :param _DynamicRetentionConfig: Dynamic message retention policy configuration
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
-        :param _RebalanceTime: Modification of the rebalancing time after upgrade
+        :param _RebalanceTime: Specifies the execution time of a scheduled task for edition upgrade or configuration upgrade in Unix timestamp, accurate to the second.
         :type RebalanceTime: int
-        :param _PublicNetwork: Public network bandwidth
+        :param _PublicNetwork: Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
         :type PublicNetwork: int
         :param _DynamicDiskConfig: Dynamic disk expansion policy configuration.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
-        :param _MaxMessageByte: The size of a single message in bytes at the instance level.
+        :param _MaxMessageByte: Single message size at the instance level (unit: byte). value range: 1024 (excluding) to 12582912 (excluding).
         :type MaxMessageByte: int
+        :param _UncleanLeaderElectionEnable: Whether to allow unsynchronized replicas to be elected as leader. valid values: 1 (enable), 0 (disable).
+        :type UncleanLeaderElectionEnable: int
+        :param _DeleteProtectionEnable: Instance deletion protection switch. 1: enabled; 0: disabled.
+        :type DeleteProtectionEnable: int
         """
         self._InstanceId = None
         self._MsgRetentionTime = None
@@ -12802,10 +14097,12 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self._PublicNetwork = None
         self._DynamicDiskConfig = None
         self._MaxMessageByte = None
+        self._UncleanLeaderElectionEnable = None
+        self._DeleteProtectionEnable = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -12816,7 +14113,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        r"""Maximum retention period in minutes for instance log, which can be up to 30 days. 0 indicates not to enable the log retention period policy
+        r"""Maximum retention time of instance logs, in minutes, with a value range of 1min to 90 days.
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -12827,7 +14124,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        r"""Specifies the Name of the ckafka cluster instance.
         :rtype: str
         """
         return self._InstanceName
@@ -12860,7 +14157,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RebalanceTime(self):
-        r"""Modification of the rebalancing time after upgrade
+        r"""Specifies the execution time of a scheduled task for edition upgrade or configuration upgrade in Unix timestamp, accurate to the second.
         :rtype: int
         """
         return self._RebalanceTime
@@ -12871,7 +14168,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        r"""Public network bandwidth
+        r"""Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
         :rtype: int
         """
         return self._PublicNetwork
@@ -12882,6 +14179,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicDiskConfig(self):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         r"""Dynamic disk expansion policy configuration.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
@@ -12889,11 +14188,13 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @DynamicDiskConfig.setter
     def DynamicDiskConfig(self, DynamicDiskConfig):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         self._DynamicDiskConfig = DynamicDiskConfig
 
     @property
     def MaxMessageByte(self):
-        r"""The size of a single message in bytes at the instance level.
+        r"""Single message size at the instance level (unit: byte). value range: 1024 (excluding) to 12582912 (excluding).
         :rtype: int
         """
         return self._MaxMessageByte
@@ -12901,6 +14202,28 @@ class ModifyInstanceAttributesRequest(AbstractModel):
     @MaxMessageByte.setter
     def MaxMessageByte(self, MaxMessageByte):
         self._MaxMessageByte = MaxMessageByte
+
+    @property
+    def UncleanLeaderElectionEnable(self):
+        r"""Whether to allow unsynchronized replicas to be elected as leader. valid values: 1 (enable), 0 (disable).
+        :rtype: int
+        """
+        return self._UncleanLeaderElectionEnable
+
+    @UncleanLeaderElectionEnable.setter
+    def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
+        self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
+
+    @property
+    def DeleteProtectionEnable(self):
+        r"""Instance deletion protection switch. 1: enabled; 0: disabled.
+        :rtype: int
+        """
+        return self._DeleteProtectionEnable
+
+    @DeleteProtectionEnable.setter
+    def DeleteProtectionEnable(self, DeleteProtectionEnable):
+        self._DeleteProtectionEnable = DeleteProtectionEnable
 
 
     def _deserialize(self, params):
@@ -12919,6 +14242,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         self._MaxMessageByte = params.get("MaxMessageByte")
+        self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self._DeleteProtectionEnable = params.get("DeleteProtectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12938,7 +14263,7 @@ class ModifyInstanceAttributesResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -12957,7 +14282,7 @@ class ModifyInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12981,13 +14306,18 @@ class ModifyInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance name.
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _DiskSize: Estimated disk capacity, which can be increased by increment.
+        :param _DiskSize: Specifies the disk capacity in GB. value range: 100 to 500000 with a step length of 100.
+Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+
         :type DiskSize: int
-        :param _BandWidth: Estimated bandwidth, which can be increased by increment.
+        :param _BandWidth: Peak bandwidth in MB/s.
+Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+
         :type BandWidth: int
-        :param _Partition: Estimated partition count, which can be increased by increment.
+        :param _Partition: Partition upper bound. maximum value of 40000. step length of 100.
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
         :type Partition: int
         """
         self._InstanceId = None
@@ -12997,7 +14327,7 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance name.
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -13008,7 +14338,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Estimated disk capacity, which can be increased by increment.
+        r"""Specifies the disk capacity in GB. value range: 100 to 500000 with a step length of 100.
+Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+
         :rtype: int
         """
         return self._DiskSize
@@ -13019,7 +14351,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""Estimated bandwidth, which can be increased by increment.
+        r"""Peak bandwidth in MB/s.
+Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+
         :rtype: int
         """
         return self._BandWidth
@@ -13030,7 +14364,8 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""Estimated partition count, which can be increased by increment.
+        r"""Partition upper bound. maximum value of 40000. step length of 100.
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
         :rtype: int
         """
         return self._Partition
@@ -13064,7 +14399,7 @@ class ModifyInstancePreResponse(AbstractModel):
         r"""
         :param _Result: Response structure of modifying the configurations of a prepaid instance.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -13083,7 +14418,7 @@ class ModifyInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13107,9 +14442,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Name: Username
+        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
         :type Name: str
         :param _Password: Current user password
         :type Password: str
@@ -13123,7 +14458,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -13134,7 +14469,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Username
+        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Name
@@ -13190,7 +14525,7 @@ class ModifyPasswordResponse(AbstractModel):
         r"""
         :param _Result: Returned result
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -13209,7 +14544,7 @@ class ModifyPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13233,9 +14568,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: The ckafka cluster instance Id.
         :type InstanceId: str
-        :param _TopicName: Topic name.
+        :param _TopicName: Topic name
         :type TopicName: str
         :param _Note: Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
         :type Note: str
@@ -13247,27 +14582,27 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type UncleanLeaderElectionEnable: int
         :param _RetentionMs: Message retention period in ms. The current minimum value is 60,000 ms.
         :type RetentionMs: int
-        :param _SegmentMs: Segment rolling duration in ms. The current minimum value is 86,400,000 ms.
-        :type SegmentMs: int
         :param _MaxMessageBytes: Max message size in bytes. Max value: 8,388,608 bytes (8 MB).
         :type MaxMessageBytes: int
+        :param _SegmentMs: Duration of Segment shard scrolling in milliseconds. current min value is 86400000 ms.
+        :type SegmentMs: int
         :param _CleanUpPolicy: Message deletion policy. Valid values: delete, compact
         :type CleanUpPolicy: str
         :param _IpWhiteList: IP allowlist, which is required if the value of `enableWhileList` is 1.
         :type IpWhiteList: list of str
         :param _EnableAclRule: Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
         :type EnableAclRule: int
-        :param _AclRuleName: Name of the preset ACL rule.
+        :param _AclRuleName: ACL rule name.
         :type AclRuleName: str
         :param _RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
         :type RetentionBytes: int
         :param _Tags: Tag list.
         :type Tags: list of Tag
-        :param _QuotaProducerByteRate: Production throttling in MB/sec.
+        :param _QuotaProducerByteRate: Production traffic throttling in MB/s. set to -1 to disable throttling.
         :type QuotaProducerByteRate: int
-        :param _QuotaConsumerByteRate: Consumption throttling in MB/sec.
+        :param _QuotaConsumerByteRate: Consumption traffic throttling in MB/s. set to -1 for unlimited consumption.
         :type QuotaConsumerByteRate: int
-        :param _ReplicaNum: The number of topic replicas.
+        :param _ReplicaNum: Number of topic replicas. valid values: 1, 3.
         :type ReplicaNum: int
         """
         self._InstanceId = None
@@ -13277,8 +14612,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._MinInsyncReplicas = None
         self._UncleanLeaderElectionEnable = None
         self._RetentionMs = None
-        self._SegmentMs = None
         self._MaxMessageBytes = None
+        self._SegmentMs = None
         self._CleanUpPolicy = None
         self._IpWhiteList = None
         self._EnableAclRule = None
@@ -13291,7 +14626,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""The ckafka cluster instance Id.
         :rtype: str
         """
         return self._InstanceId
@@ -13302,7 +14637,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name.
+        r"""Topic name
         :rtype: str
         """
         return self._TopicName
@@ -13367,17 +14702,6 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._RetentionMs = RetentionMs
 
     @property
-    def SegmentMs(self):
-        r"""Segment rolling duration in ms. The current minimum value is 86,400,000 ms.
-        :rtype: int
-        """
-        return self._SegmentMs
-
-    @SegmentMs.setter
-    def SegmentMs(self, SegmentMs):
-        self._SegmentMs = SegmentMs
-
-    @property
     def MaxMessageBytes(self):
         r"""Max message size in bytes. Max value: 8,388,608 bytes (8 MB).
         :rtype: int
@@ -13387,6 +14711,17 @@ class ModifyTopicAttributesRequest(AbstractModel):
     @MaxMessageBytes.setter
     def MaxMessageBytes(self, MaxMessageBytes):
         self._MaxMessageBytes = MaxMessageBytes
+
+    @property
+    def SegmentMs(self):
+        r"""Duration of Segment shard scrolling in milliseconds. current min value is 86400000 ms.
+        :rtype: int
+        """
+        return self._SegmentMs
+
+    @SegmentMs.setter
+    def SegmentMs(self, SegmentMs):
+        self._SegmentMs = SegmentMs
 
     @property
     def CleanUpPolicy(self):
@@ -13423,7 +14758,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
-        r"""Name of the preset ACL rule.
+        r"""ACL rule name.
         :rtype: str
         """
         return self._AclRuleName
@@ -13456,7 +14791,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaProducerByteRate(self):
-        r"""Production throttling in MB/sec.
+        r"""Production traffic throttling in MB/s. set to -1 to disable throttling.
         :rtype: int
         """
         return self._QuotaProducerByteRate
@@ -13467,7 +14802,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaConsumerByteRate(self):
-        r"""Consumption throttling in MB/sec.
+        r"""Consumption traffic throttling in MB/s. set to -1 for unlimited consumption.
         :rtype: int
         """
         return self._QuotaConsumerByteRate
@@ -13478,7 +14813,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        r"""The number of topic replicas.
+        r"""Number of topic replicas. valid values: 1, 3.
         :rtype: int
         """
         return self._ReplicaNum
@@ -13496,8 +14831,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._MinInsyncReplicas = params.get("MinInsyncReplicas")
         self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self._RetentionMs = params.get("RetentionMs")
-        self._SegmentMs = params.get("SegmentMs")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
+        self._SegmentMs = params.get("SegmentMs")
         self._CleanUpPolicy = params.get("CleanUpPolicy")
         self._IpWhiteList = params.get("IpWhiteList")
         self._EnableAclRule = params.get("EnableAclRule")
@@ -13529,9 +14864,9 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result set
+        :param _Result: Returned result.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -13539,7 +14874,7 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result set
+        r"""Returned result.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -13550,7 +14885,7 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13574,10 +14909,9 @@ class OperateResponseData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: FlowId11
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _FlowId: Flow ID.
         :type FlowId: int
-        :param _RouteDTO: RouteIdDto Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RouteDTO: RouteIdDto
         :type RouteDTO: :class:`tencentcloud.ckafka.v20190819.models.RouteDTO`
         """
         self._FlowId = None
@@ -13585,8 +14919,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
-        r"""FlowId11
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -13597,7 +14930,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RouteDTO(self):
-        r"""RouteIdDto Note: This field may return null, indicating that no valid values can be obtained.
+        r"""RouteIdDto
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.RouteDTO`
         """
         return self._RouteDTO
@@ -13665,11 +14998,9 @@ class PartitionOffset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Partition: Partition, such as "0" or "1"
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Partition: Partition
         :type Partition: str
-        :param _Offset: Offset, such as 100
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Offset: Specifies the offset.
         :type Offset: int
         """
         self._Partition = None
@@ -13677,8 +15008,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
-        r"""Partition, such as "0" or "1"
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Partition
         :rtype: str
         """
         return self._Partition
@@ -13689,8 +15019,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Offset(self):
-        r"""Offset, such as 100
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the offset.
         :rtype: int
         """
         return self._Offset
@@ -13828,20 +15157,15 @@ class Region(AbstractModel):
         :type RegionName: str
         :param _AreaName: Area name
         :type AreaName: str
-        :param _RegionCode: Region code
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _RegionCode: Region code.
         :type RegionCode: str
-        :param _RegionCodeV3: Region code (v3)
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _RegionCodeV3: Region code (V3 version).
         :type RegionCodeV3: str
-        :param _Support: NONE: no special models are supported by default.\nCVM: the CVM type is supported.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Support: Specifies the default value does not support any special type instance type.
         :type Support: str
-        :param _Ipv6: Whether IPv6 is supported. `0` indicates no, and `1` indicates yes.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Ipv6: Whether ipv6 is supported. 0: indicates no support. 1: indicates support.
         :type Ipv6: int
-        :param _MultiZone: Whether cross-AZ clusters are supported.`0` indicates no, and `1` indicates yes.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _MultiZone: Whether cross-az is supported. valid values: 0 (unsupported), 1 (supported).
         :type MultiZone: int
         """
         self._RegionId = None
@@ -13888,8 +15212,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionCode(self):
-        r"""Region code
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Region code.
         :rtype: str
         """
         return self._RegionCode
@@ -13900,8 +15223,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionCodeV3(self):
-        r"""Region code (v3)
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Region code (V3 version).
         :rtype: str
         """
         return self._RegionCodeV3
@@ -13912,8 +15234,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Support(self):
-        r"""NONE: no special models are supported by default.\nCVM: the CVM type is supported.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the default value does not support any special type instance type.
         :rtype: str
         """
         return self._Support
@@ -13924,8 +15245,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Ipv6(self):
-        r"""Whether IPv6 is supported. `0` indicates no, and `1` indicates yes.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Whether ipv6 is supported. 0: indicates no support. 1: indicates support.
         :rtype: int
         """
         return self._Ipv6
@@ -13936,8 +15256,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MultiZone(self):
-        r"""Whether cross-AZ clusters are supported.`0` indicates no, and `1` indicates yes.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Whether cross-az is supported. valid values: 0 (unsupported), 1 (supported).
         :rtype: int
         """
         return self._MultiZone
@@ -13981,7 +15300,7 @@ class Route(AbstractModel):
         :type AccessType: int
         :param _RouteId: Route ID
         :type RouteId: int
-        :param _VipType: VIP network type (1: Public network TGW; 2: Classic network; 3: VPC; 4: Supporting network (IDC environment); 5: SSL public network access; 6: BM VPC; 7: Supporting network (CVM environment)).
+        :param _VipType: Specifies the network type of the route (3: vpc routing; 7: internal support route; 1: public network route).
         :type VipType: int
         :param _VipList: Virtual IP list
         :type VipList: list of VipEntity
@@ -13991,9 +15310,22 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _DomainPort: Domain name port
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DomainPort: int
-        :param _DeleteTimestamp: Timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _DeleteTimestamp: Timestamp.
         :type DeleteTimestamp: str
+        :param _Subnet: Specifies the subnet Id.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Subnet: str
+        :param _BrokerVipList: Virtual IP list (1:1 broker node).
+        :type BrokerVipList: list of VipEntity
+        :param _VpcId: VPC Id. specifies the Id of the vpc.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _Note: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Note: str
+        :param _Status: Route status. 1: creating, 2: creation succeeded, 3: creation failed, 4: deleting, 6: deletion failed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
         """
         self._AccessType = None
         self._RouteId = None
@@ -14002,6 +15334,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Domain = None
         self._DomainPort = None
         self._DeleteTimestamp = None
+        self._Subnet = None
+        self._BrokerVipList = None
+        self._VpcId = None
+        self._Note = None
+        self._Status = None
 
     @property
     def AccessType(self):
@@ -14031,7 +15368,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VipType(self):
-        r"""VIP network type (1: Public network TGW; 2: Classic network; 3: VPC; 4: Supporting network (IDC environment); 5: SSL public network access; 6: BM VPC; 7: Supporting network (CVM environment)).
+        r"""Specifies the network type of the route (3: vpc routing; 7: internal support route; 1: public network route).
         :rtype: int
         """
         return self._VipType
@@ -14077,8 +15414,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteTimestamp(self):
-        r"""Timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Timestamp.
         :rtype: str
         """
         return self._DeleteTimestamp
@@ -14086,6 +15422,65 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @DeleteTimestamp.setter
     def DeleteTimestamp(self, DeleteTimestamp):
         self._DeleteTimestamp = DeleteTimestamp
+
+    @property
+    def Subnet(self):
+        r"""Specifies the subnet Id.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Subnet
+
+    @Subnet.setter
+    def Subnet(self, Subnet):
+        self._Subnet = Subnet
+
+    @property
+    def BrokerVipList(self):
+        r"""Virtual IP list (1:1 broker node).
+        :rtype: list of VipEntity
+        """
+        return self._BrokerVipList
+
+    @BrokerVipList.setter
+    def BrokerVipList(self, BrokerVipList):
+        self._BrokerVipList = BrokerVipList
+
+    @property
+    def VpcId(self):
+        r"""VPC Id. specifies the Id of the vpc.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Note(self):
+        r"""Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def Status(self):
+        r"""Route status. 1: creating, 2: creation succeeded, 3: creation failed, 4: deleting, 6: deletion failed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
@@ -14101,6 +15496,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Domain = params.get("Domain")
         self._DomainPort = params.get("DomainPort")
         self._DeleteTimestamp = params.get("DeleteTimestamp")
+        self._Subnet = params.get("Subnet")
+        if params.get("BrokerVipList") is not None:
+            self._BrokerVipList = []
+            for item in params.get("BrokerVipList"):
+                obj = VipEntity()
+                obj._deserialize(item)
+                self._BrokerVipList.append(obj)
+        self._VpcId = params.get("VpcId")
+        self._Note = params.get("Note")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14118,14 +15523,14 @@ class RouteDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteId: RouteId11 Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RouteId: Route ID
         :type RouteId: int
         """
         self._RouteId = None
 
     @property
     def RouteId(self):
-        r"""RouteId11 Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Route ID
         :rtype: int
         """
         return self._RouteId
@@ -14147,6 +15552,72 @@ class RouteDTO(AbstractModel):
         
 
 
+class RouteFilter(AbstractModel):
+    r"""Routing list filter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Filters by name. currently supports security-group-id. filters by security group association.
+        :type Name: str
+        :param _Values: Filter value. when the filter name is security-group-id, only supports transmission of one value.
+        :type Values: list of str
+        :param _Relation: Filter relationship. supports IN and NOT_IN. default is IN.
+        :type Relation: str
+        """
+        self._Name = None
+        self._Values = None
+        self._Relation = None
+
+    @property
+    def Name(self):
+        r"""Filters by name. currently supports security-group-id. filters by security group association.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""Filter value. when the filter name is security-group-id, only supports transmission of one value.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Relation(self):
+        r"""Filter relationship. supports IN and NOT_IN. default is IN.
+        :rtype: str
+        """
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RouteResponse(AbstractModel):
     r"""Returned object for route information
 
@@ -14154,16 +15625,14 @@ class RouteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Routers: Route information list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Routers: Route Information List
         :type Routers: list of Route
         """
         self._Routers = None
 
     @property
     def Routers(self):
-        r"""Route information list
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Route Information List
         :rtype: list of Route
         """
         return self._Routers
@@ -14191,23 +15660,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SaleInfo(AbstractModel):
-    r"""Sales information of Standard Edition
+    r"""Sales information of versions.
 
     """
 
     def __init__(self):
         r"""
-        :param _Flag: Manually set flag.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Flag: The manually configured flag. valid values: true (sold-out), false (available).
         :type Flag: bool
-        :param _Version: CKafka version (v1.1.1/2.4.2/0.10.2）
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Version: Specifies the ckafka version number (1.1.1/2.4.2/0.10.2).
         :type Version: str
-        :param _Platform: Whether it is Pro Edition or Standard Edition.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Platform: Pro edition, standard version flag.
         :type Platform: str
-        :param _SoldOut: Whether it has been sold out. `true`: sold out.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SoldOut: Specifies whether the item is sold-out. valid values: true (sold-out).
         :type SoldOut: bool
         """
         self._Flag = None
@@ -14217,8 +15682,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Flag(self):
-        r"""Manually set flag.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""The manually configured flag. valid values: true (sold-out), false (available).
         :rtype: bool
         """
         return self._Flag
@@ -14229,8 +15693,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
-        r"""CKafka version (v1.1.1/2.4.2/0.10.2）
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the ckafka version number (1.1.1/2.4.2/0.10.2).
         :rtype: str
         """
         return self._Version
@@ -14241,8 +15704,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Platform(self):
-        r"""Whether it is Pro Edition or Standard Edition.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Pro edition, standard version flag.
         :rtype: str
         """
         return self._Platform
@@ -14253,8 +15715,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SoldOut(self):
-        r"""Whether it has been sold out. `true`: sold out.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies whether the item is sold-out. valid values: true (sold-out).
         :rtype: bool
         """
         return self._SoldOut
@@ -14269,6 +15730,160 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Version = params.get("Version")
         self._Platform = params.get("Platform")
         self._SoldOut = params.get("SoldOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRoute(AbstractModel):
+    r"""Security group routing information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoute: Specifies the routing information.
+        :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        :param _SecurityGroupIds: Specifies the security group list to associate.
+        :type SecurityGroupIds: list of str
+        :param _InstanceName: CKafka cluster instance name.
+        :type InstanceName: str
+        :param _VpcId: Specifies the route vpcId.
+        :type VpcId: str
+        :param _Vip: Route vip.
+        :type Vip: str
+        """
+        self._InstanceRoute = None
+        self._SecurityGroupIds = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._Vip = None
+
+    @property
+    def InstanceRoute(self):
+        r"""Specifies the routing information.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        """
+        return self._InstanceRoute
+
+    @InstanceRoute.setter
+    def InstanceRoute(self, InstanceRoute):
+        self._InstanceRoute = InstanceRoute
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Specifies the security group list to associate.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def InstanceName(self):
+        r"""CKafka cluster instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        r"""Specifies the route vpcId.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Vip(self):
+        r"""Route vip.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoute") is not None:
+            self._InstanceRoute = InstanceRoute()
+            self._InstanceRoute._deserialize(params.get("InstanceRoute"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRouteResp(AbstractModel):
+    r"""Security group routing information returned results.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible security group routes.
+        :type TotalCount: int
+        :param _SecurityGroupRoutes: Eligible security group route information list.
+        :type SecurityGroupRoutes: list of SecurityGroupRoute
+        """
+        self._TotalCount = None
+        self._SecurityGroupRoutes = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible security group routes.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SecurityGroupRoutes(self):
+        r"""Eligible security group route information list.
+        :rtype: list of SecurityGroupRoute
+        """
+        return self._SecurityGroupRoutes
+
+    @SecurityGroupRoutes.setter
+    def SecurityGroupRoutes(self, SecurityGroupRoutes):
+        self._SecurityGroupRoutes = SecurityGroupRoutes
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SecurityGroupRoutes") is not None:
+            self._SecurityGroupRoutes = []
+            for item in params.get("SecurityGroupRoutes"):
+                obj = SecurityGroupRoute()
+                obj._deserialize(item)
+                self._SecurityGroupRoutes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14344,7 +15959,7 @@ class SendMessageResponse(AbstractModel):
         r"""
         :param _MessageId: Message ID list.
         :type MessageId: list of str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._MessageId = None
@@ -14363,7 +15978,7 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14387,14 +16002,11 @@ class SubscribedInfo(AbstractModel):
         r"""
         :param _TopicName: Subscribed topic name
         :type TopicName: str
-        :param _Partition: Subscribed partition
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Partition: Specifies the subscription partition.
         :type Partition: list of int
-        :param _PartitionOffset: Partition offset information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PartitionOffset: Specifies the partition offset information.
         :type PartitionOffset: list of PartitionOffset
-        :param _TopicId: ID of the subscribed topic. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicId: Subscribed topic ID.
         :type TopicId: str
         """
         self._TopicName = None
@@ -14415,8 +16027,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
-        r"""Subscribed partition
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the subscription partition.
         :rtype: list of int
         """
         return self._Partition
@@ -14427,8 +16038,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionOffset(self):
-        r"""Partition offset information
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the partition offset information.
         :rtype: list of PartitionOffset
         """
         return self._PartitionOffset
@@ -14439,8 +16049,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
-        r"""ID of the subscribed topic. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Subscribed topic ID.
         :rtype: str
         """
         return self._TopicId
@@ -14530,7 +16139,7 @@ class TaskStatusResponse(AbstractModel):
         r"""
         :param _Status: Task status. `0` (Successful), `1` (Failed), `2` ( Running)
         :type Status: int
-        :param _Output: Output information Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Output information.
         :type Output: str
         """
         self._Status = None
@@ -14549,7 +16158,7 @@ class TaskStatusResponse(AbstractModel):
 
     @property
     def Output(self):
-        r"""Output information Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Output information.
         :rtype: str
         """
         return self._Output
@@ -14649,10 +16258,9 @@ class TopicAttributesResponse(AbstractModel):
         r"""
         :param _TopicId: Topic ID
         :type TopicId: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Specifies the unix second-level timestamp of the creation time.
         :type CreateTime: int
-        :param _Note: Topic remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Note: Describes the topic remark.
         :type Note: str
         :param _PartitionNum: Number of partitions
         :type PartitionNum: int
@@ -14664,17 +16272,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
         :param _Partitions: Partition details
         :type Partitions: list of TopicPartitionDO
-        :param _EnableAclRule: Switch of the preset ACL rule. `1`: enable, `0`: disable.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _EnableAclRule: ACL preset policy switch. valid values: 1 (on); 0 (off).
         :type EnableAclRule: int
-        :param _AclRuleList: Preset ACL rule list.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _AclRuleList: Preset policy list.
         :type AclRuleList: list of AclRule
-        :param _QuotaConfig: Traffic throttling policy in topic dimension.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _QuotaConfig: topic throttling policy.
         :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
         :param _ReplicaNum: Number of replicas
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ReplicaNum: int
         """
         self._TopicId = None
@@ -14703,7 +16307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Specifies the unix second-level timestamp of the creation time.
         :rtype: int
         """
         return self._CreateTime
@@ -14714,8 +16318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
-        r"""Topic remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Describes the topic remark.
         :rtype: str
         """
         return self._Note
@@ -14781,8 +16384,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableAclRule(self):
-        r"""Switch of the preset ACL rule. `1`: enable, `0`: disable.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""ACL preset policy switch. valid values: 1 (on); 0 (off).
         :rtype: int
         """
         return self._EnableAclRule
@@ -14793,8 +16395,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AclRuleList(self):
-        r"""Preset ACL rule list.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Preset policy list.
         :rtype: list of AclRule
         """
         return self._AclRuleList
@@ -14805,8 +16406,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def QuotaConfig(self):
-        r"""Traffic throttling policy in topic dimension.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""topic throttling policy.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
         """
         return self._QuotaConfig
@@ -14818,7 +16418,6 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @property
     def ReplicaNum(self):
         r"""Number of replicas
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ReplicaNum
@@ -14874,14 +16473,13 @@ class TopicDetail(AbstractModel):
         r"""
         :param _TopicName: Topic name
         :type TopicName: str
-        :param _TopicId: Topic ID
+        :param _TopicId: Topic Id.
         :type TopicId: str
         :param _PartitionNum: Number of partitions
         :type PartitionNum: int
-        :param _ReplicaNum: Number of replicas
+        :param _ReplicaNum: Number of topic replicas. valid values: 1, 3.
         :type ReplicaNum: int
-        :param _Note: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Note: Remarks.
         :type Note: str
         :param _CreateTime: Creation time
         :type CreateTime: int
@@ -14889,21 +16487,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type EnableWhiteList: bool
         :param _IpWhiteListCount: Number of IPs in IP allowlist
         :type IpWhiteListCount: int
-        :param _ForwardCosBucket: COS bucket for data backup: address of the destination COS bucket
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ForwardCosBucket: Data backup cos bucket. specifies the bucket address for archiving to cos.
         :type ForwardCosBucket: str
         :param _ForwardStatus: Status of data backup to COS. 1: not enabled, 0: enabled
         :type ForwardStatus: int
         :param _ForwardInterval: Frequency of data backup to COS
         :type ForwardInterval: int
-        :param _Config: Advanced configuration
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Config: Advanced configuration.
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
-        :param _RetentionTimeConfig: Message retention time configuration (for recording the latest retention time)
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _RetentionTimeConfig: Message retention period configuration (used for dynamic configuration change records).
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
-        :param _Status: `0`: normal, `1`: deleted, `2`: deleting
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Status: 0: normal. 1: deleted. 2: deleting.
         :type Status: int
         :param _Tags: Tag list
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -14938,7 +16532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
-        r"""Topic ID
+        r"""Topic Id.
         :rtype: str
         """
         return self._TopicId
@@ -14960,7 +16554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaNum(self):
-        r"""Number of replicas
+        r"""Number of topic replicas. valid values: 1, 3.
         :rtype: int
         """
         return self._ReplicaNum
@@ -14971,8 +16565,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
-        r"""Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Remarks.
         :rtype: str
         """
         return self._Note
@@ -15016,8 +16609,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardCosBucket(self):
-        r"""COS bucket for data backup: address of the destination COS bucket
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Data backup cos bucket. specifies the bucket address for archiving to cos.
         :rtype: str
         """
         return self._ForwardCosBucket
@@ -15050,8 +16642,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        r"""Advanced configuration
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Advanced configuration.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.Config`
         """
         return self._Config
@@ -15062,8 +16653,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionTimeConfig(self):
-        r"""Message retention time configuration (for recording the latest retention time)
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Message retention period configuration (used for dynamic configuration change records).
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
         """
         return self._RetentionTimeConfig
@@ -15074,8 +16664,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Status(self):
-        r"""`0`: normal, `1`: deleted, `2`: deleting
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""0: normal. 1: deleted. 2: deleting.
         :rtype: int
         """
         return self._Status
@@ -15139,8 +16728,7 @@ class TopicDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicList: List of returned topic details
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicList: List of returned topic details.
         :type TopicList: list of TopicDetail
         :param _TotalCount: Number of all eligible topic details
         :type TotalCount: int
@@ -15150,8 +16738,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
-        r"""List of returned topic details
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of returned topic details.
         :rtype: list of TopicDetail
         """
         return self._TopicList
@@ -15205,17 +16792,13 @@ class TopicInSyncReplicaInfo(AbstractModel):
         :type Replica: str
         :param _InSyncReplica: ISR
         :type InSyncReplica: str
-        :param _BeginOffset: Starting offset
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _BeginOffset: Start Offset.
         :type BeginOffset: int
-        :param _EndOffset: Ending offset
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _EndOffset: End Offset.
         :type EndOffset: int
-        :param _MessageCount: Number of messages
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MessageCount: Message count.
         :type MessageCount: int
-        :param _OutOfSyncReplica: Unsynced replica set
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OutOfSyncReplica: Unsynced replica.
         :type OutOfSyncReplica: str
         """
         self._Partition = None
@@ -15273,8 +16856,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginOffset(self):
-        r"""Starting offset
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Start Offset.
         :rtype: int
         """
         return self._BeginOffset
@@ -15285,8 +16867,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndOffset(self):
-        r"""Ending offset
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""End Offset.
         :rtype: int
         """
         return self._EndOffset
@@ -15297,8 +16878,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessageCount(self):
-        r"""Number of messages
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Message count.
         :rtype: int
         """
         return self._MessageCount
@@ -15309,8 +16889,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutOfSyncReplica(self):
-        r"""Unsynced replica set
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Unsynced replica.
         :rtype: str
         """
         return self._OutOfSyncReplica
@@ -15402,9 +16981,9 @@ class TopicPartitionDO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Partition: Partition ID
+        :param _Partition: Partition ID. specifies the Partition ID.
         :type Partition: int
-        :param _LeaderStatus: Leader running status
+        :param _LeaderStatus: Leader running status. 0 means running normally.
         :type LeaderStatus: int
         :param _IsrNum: ISR quantity
         :type IsrNum: int
@@ -15418,7 +16997,7 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def Partition(self):
-        r"""Partition ID
+        r"""Partition ID. specifies the Partition ID.
         :rtype: int
         """
         return self._Partition
@@ -15429,7 +17008,7 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def LeaderStatus(self):
-        r"""Leader running status
+        r"""Leader running status. 0 means running normally.
         :rtype: int
         """
         return self._LeaderStatus
@@ -15483,11 +17062,9 @@ class TopicResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicList: List of returned topic information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TopicList: List of returned topic information.
         :type TopicList: list of Topic
-        :param _TotalCount: Number of eligible topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Number of eligible topics.
         :type TotalCount: int
         """
         self._TopicList = None
@@ -15495,8 +17072,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
-        r"""List of returned topic information
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of returned topic information.
         :rtype: list of Topic
         """
         return self._TopicList
@@ -15507,8 +17083,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Number of eligible topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Number of eligible topics.
         :rtype: int
         """
         return self._TotalCount
@@ -15543,14 +17118,11 @@ class TopicRetentionTimeConfigRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Expect: Expected value, i.e., the topic message retention time (min) configured
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Expect: Expected value, the message retention period (in minutes) set by user configuration.
         :type Expect: int
-        :param _Current: Current value (min), i.e., the retention time currently in effect, which may be dynamically adjusted
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Current: Current value, which is the current effective value (may contain dynamic adjustment in minutes).
         :type Current: int
-        :param _ModTimeStamp: Last modified time
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _ModTimeStamp: Last modified time.
         :type ModTimeStamp: int
         """
         self._Expect = None
@@ -15559,8 +17131,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Expect(self):
-        r"""Expected value, i.e., the topic message retention time (min) configured
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Expected value, the message retention period (in minutes) set by user configuration.
         :rtype: int
         """
         return self._Expect
@@ -15571,8 +17142,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Current(self):
-        r"""Current value (min), i.e., the retention time currently in effect, which may be dynamically adjusted
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Current value, which is the current effective value (may contain dynamic adjustment in minutes).
         :rtype: int
         """
         return self._Current
@@ -15583,8 +17153,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ModTimeStamp(self):
-        r"""Last modified time
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Last modified time.
         :rtype: int
         """
         return self._ModTimeStamp
@@ -15619,11 +17188,9 @@ class TopicSubscribeGroup(AbstractModel):
         :type TotalCount: int
         :param _StatusCountInfo: Number of consumer group status
         :type StatusCountInfo: str
-        :param _GroupsInfo: Consumer group information
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _GroupsInfo: Consumer group information.
         :type GroupsInfo: list of GroupInfoResponse
-        :param _Status: Whether a request is asynchronous. If there are fewer consumer groups in the instances, the result will be returned directly, and status code is 1. When there are many consumer groups in the instances, cache will be updated asynchronously. When status code is 0, grouping information will not be returned until cache update is completed and status code becomes 1.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Status: Indicates whether the request is asynchronous. instances with fewer groups will return results directly with Status as 1. when there are more groups, the cache will be updated asynchronously. no group information will be returned when Status is 0 until the update is complete and results are returned with Status as 1.
         :type Status: int
         """
         self._TotalCount = None
@@ -15655,8 +17222,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupsInfo(self):
-        r"""Consumer group information
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Consumer group information.
         :rtype: list of GroupInfoResponse
         """
         return self._GroupsInfo
@@ -15667,8 +17233,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        r"""Whether a request is asynchronous. If there are fewer consumer groups in the instances, the result will be returned directly, and status code is 1. When there are many consumer groups in the instances, cache will be updated asynchronously. When status code is 0, grouping information will not be returned until cache update is completed and status code becomes 1.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Indicates whether the request is asynchronous. instances with fewer groups will return results directly with Status as 1. when there are more groups, the cache will be updated asynchronously. no group information will be returned when Status is 0 until the update is complete and results are returned with Status as 1.
         :rtype: int
         """
         return self._Status
@@ -15786,8 +17351,7 @@ class UserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Users: List of eligible users
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Users: Specifies the eligible users list.
         :type Users: list of User
         :param _TotalCount: Total number of eligible users
         :type TotalCount: int
@@ -15797,8 +17361,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Users(self):
-        r"""List of eligible users
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the eligible users list.
         :rtype: list of User
         """
         return self._Users
@@ -15895,25 +17458,26 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID
+        :param _ZoneId: Availability zone
         :type ZoneId: str
         :param _IsInternalApp: Whether it is an internal application.
         :type IsInternalApp: int
-        :param _AppId: Application ID
+        :param _AppId: Application identifier
         :type AppId: int
-        :param _Flag: Flag
+        :param _Flag: Indicates whether the AZ is sold out. true indicates sold out. false indicates not sold out.
         :type Flag: bool
-        :param _ZoneName: Zone name
+        :param _ZoneName: Availability zone name.
         :type ZoneName: str
-        :param _ZoneStatus: Zone status
+        :param _ZoneStatus: Availability zone status. enumerates example: 3: enable, 4: disable. availability zone status is subject to SoldOut.
         :type ZoneStatus: int
         :param _Exflag: Extra flag
         :type Exflag: str
-        :param _SoldOut: JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
+        :param _SoldOut: Specifies whether the item is sold-out. valid values: true (sold-out), false (not sold out).
         :type SoldOut: str
-        :param _SalesInfo: Information on whether Standard Edition has been sold out.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SalesInfo: Specifies the sell-out information of the standard version.
         :type SalesInfo: list of SaleInfo
+        :param _ExtraFlag: Additional flag.
+        :type ExtraFlag: str
         """
         self._ZoneId = None
         self._IsInternalApp = None
@@ -15924,10 +17488,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Exflag = None
         self._SoldOut = None
         self._SalesInfo = None
+        self._ExtraFlag = None
 
     @property
     def ZoneId(self):
-        r"""Zone ID
+        r"""Availability zone
         :rtype: str
         """
         return self._ZoneId
@@ -15949,7 +17514,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppId(self):
-        r"""Application ID
+        r"""Application identifier
         :rtype: int
         """
         return self._AppId
@@ -15960,7 +17525,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Flag(self):
-        r"""Flag
+        r"""Indicates whether the AZ is sold out. true indicates sold out. false indicates not sold out.
         :rtype: bool
         """
         return self._Flag
@@ -15971,7 +17536,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneName(self):
-        r"""Zone name
+        r"""Availability zone name.
         :rtype: str
         """
         return self._ZoneName
@@ -15982,7 +17547,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneStatus(self):
-        r"""Zone status
+        r"""Availability zone status. enumerates example: 3: enable, 4: disable. availability zone status is subject to SoldOut.
         :rtype: int
         """
         return self._ZoneStatus
@@ -15993,6 +17558,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Exflag(self):
+        warnings.warn("parameter `Exflag` is deprecated", DeprecationWarning) 
+
         r"""Extra flag
         :rtype: str
         """
@@ -16000,11 +17567,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @Exflag.setter
     def Exflag(self, Exflag):
+        warnings.warn("parameter `Exflag` is deprecated", DeprecationWarning) 
+
         self._Exflag = Exflag
 
     @property
     def SoldOut(self):
-        r"""JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
+        r"""Specifies whether the item is sold-out. valid values: true (sold-out), false (not sold out).
         :rtype: str
         """
         return self._SoldOut
@@ -16015,8 +17584,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SalesInfo(self):
-        r"""Information on whether Standard Edition has been sold out.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the sell-out information of the standard version.
         :rtype: list of SaleInfo
         """
         return self._SalesInfo
@@ -16024,6 +17592,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @SalesInfo.setter
     def SalesInfo(self, SalesInfo):
         self._SalesInfo = SalesInfo
+
+    @property
+    def ExtraFlag(self):
+        r"""Additional flag.
+        :rtype: str
+        """
+        return self._ExtraFlag
+
+    @ExtraFlag.setter
+    def ExtraFlag(self, ExtraFlag):
+        self._ExtraFlag = ExtraFlag
 
 
     def _deserialize(self, params):
@@ -16041,6 +17620,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = SaleInfo()
                 obj._deserialize(item)
                 self._SalesInfo.append(obj)
+        self._ExtraFlag = params.get("ExtraFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16068,27 +17648,28 @@ class ZoneResponse(AbstractModel):
         :type UnitPrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
         :param _MessagePrice: Pay-as-you-go unit message price
         :type MessagePrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
-        :param _ClusterInfo: Cluster information dedicated to a user
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _ClusterInfo: Specifies the user-exclusive cluster info.
         :type ClusterInfo: list of ClusterInfo
-        :param _Standard: Purchase of Standard Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Standard: Purchase the standard version configuration.
         :type Standard: str
-        :param _StandardS2: Purchase of Standard S2 Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _StandardS2: Purchase the standard version S2 configuration.
         :type StandardS2: str
-        :param _Profession: Purchase of Pro Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Profession: Specifies the configuration for purchasing the professional edition.
         :type Profession: str
-        :param _Physical: Purchase of Physical Dedicated Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _Physical: Purchase physical dedicated edition configuration.
         :type Physical: str
-        :param _PublicNetwork: Public network bandwidth.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PublicNetwork: Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in. abandoned, meaningless.
         :type PublicNetwork: str
-        :param _PublicNetworkLimit: Public network bandwidth configuration.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PublicNetworkLimit: Configures the public network bandwidth.
         :type PublicNetworkLimit: str
+        :param _RequestId: Request ID.
+        :type RequestId: str
+        :param _Offset: Pagination Offset
+        :type Offset: int
+        :param _Limit: Pagination Limit
+        :type Limit: int
+        :param _ForceCheckTag: Mandatory. input tag.
+        :type ForceCheckTag: bool
         """
         self._ZoneList = None
         self._MaxBuyInstanceNum = None
@@ -16102,6 +17683,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Physical = None
         self._PublicNetwork = None
         self._PublicNetworkLimit = None
+        self._RequestId = None
+        self._Offset = None
+        self._Limit = None
+        self._ForceCheckTag = None
 
     @property
     def ZoneList(self):
@@ -16160,8 +17745,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterInfo(self):
-        r"""Cluster information dedicated to a user
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the user-exclusive cluster info.
         :rtype: list of ClusterInfo
         """
         return self._ClusterInfo
@@ -16172,8 +17756,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Standard(self):
-        r"""Purchase of Standard Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Purchase the standard version configuration.
         :rtype: str
         """
         return self._Standard
@@ -16184,8 +17767,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def StandardS2(self):
-        r"""Purchase of Standard S2 Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Purchase the standard version S2 configuration.
         :rtype: str
         """
         return self._StandardS2
@@ -16196,8 +17778,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Profession(self):
-        r"""Purchase of Pro Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Specifies the configuration for purchasing the professional edition.
         :rtype: str
         """
         return self._Profession
@@ -16208,8 +17789,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Physical(self):
-        r"""Purchase of Physical Dedicated Edition configurations
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""Purchase physical dedicated edition configuration.
         :rtype: str
         """
         return self._Physical
@@ -16220,8 +17800,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def PublicNetwork(self):
-        r"""Public network bandwidth.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in. abandoned, meaningless.
         :rtype: str
         """
         return self._PublicNetwork
@@ -16232,8 +17811,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetworkLimit(self):
-        r"""Public network bandwidth configuration.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Configures the public network bandwidth.
         :rtype: str
         """
         return self._PublicNetworkLimit
@@ -16241,6 +17819,50 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @PublicNetworkLimit.setter
     def PublicNetworkLimit(self, PublicNetworkLimit):
         self._PublicNetworkLimit = PublicNetworkLimit
+
+    @property
+    def RequestId(self):
+        r"""Request ID.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def Offset(self):
+        r"""Pagination Offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Pagination Limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ForceCheckTag(self):
+        r"""Mandatory. input tag.
+        :rtype: bool
+        """
+        return self._ForceCheckTag
+
+    @ForceCheckTag.setter
+    def ForceCheckTag(self, ForceCheckTag):
+        self._ForceCheckTag = ForceCheckTag
 
 
     def _deserialize(self, params):
@@ -16270,6 +17892,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Physical = params.get("Physical")
         self._PublicNetwork = params.get("PublicNetwork")
         self._PublicNetworkLimit = params.get("PublicNetworkLimit")
+        self._RequestId = params.get("RequestId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ForceCheckTag = params.get("ForceCheckTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

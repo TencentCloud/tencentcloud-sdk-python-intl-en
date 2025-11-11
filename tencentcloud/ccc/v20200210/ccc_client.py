@@ -586,6 +586,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIAgentInfoList(self, request):
+        r"""This API is used to get the list of Intelligent Agents.
+
+        :param request: Request instance for DescribeAIAgentInfoList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAgentInfoListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAgentInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIAgentInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIAgentInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAIAnalysisResult(self, request):
         r"""This API is used to obtain AI Conversation Analytics results.
 
@@ -1428,6 +1451,29 @@ class CccClient(AbstractClient):
             body = self.call("ResumePredictiveDialingCampaign", params, headers=headers)
             response = json.loads(body)
             model = models.ResumePredictiveDialingCampaignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetStaffStatus(self, request):
+        r"""This API is used to set staff status.
+
+        :param request: Request instance for SetStaffStatus.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.SetStaffStatusRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.SetStaffStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetStaffStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetStaffStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

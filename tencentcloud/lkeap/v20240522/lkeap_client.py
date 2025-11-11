@@ -144,6 +144,24 @@ class LkeapClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReconstructDocumentSSE(self, request):
+        r"""This API is used for quasi-real-time document parsing, using HTTP SSE protocol for communication.
+
+        :param request: Request instance for ReconstructDocumentSSE.
+        :type request: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSERequest`
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("ReconstructDocumentSSE", params, models.ReconstructDocumentSSEResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunRerank(self, request):
         r"""This API is used to reorder the results of multi-channel recall based on the rerank model of knowledge engine fine-tuning model technology, sort the segments according to the relevance between the query and the segment content from high to low score, and output the corresponding scoring results.
 
