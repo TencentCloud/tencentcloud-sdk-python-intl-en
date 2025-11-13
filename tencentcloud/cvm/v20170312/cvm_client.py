@@ -28,7 +28,6 @@ class CvmClient(AbstractClient):
 
     def AllocateHosts(self, request):
         r"""This API is used to create CDH instances with specified configuration.
-        * When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified.
 
         :param request: Request instance for AllocateHosts.
         :type request: :class:`tencentcloud.cvm.v20170312.models.AllocateHostsRequest`

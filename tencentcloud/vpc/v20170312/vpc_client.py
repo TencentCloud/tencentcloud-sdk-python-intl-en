@@ -2773,7 +2773,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackageResources(self, request):
-        r"""This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.
+        r"""This API is used to query the list of resources in a Bandwidth Package according to its unique ID, support conditional filtering of query results and paging query.
 
         :param request: Request instance for DescribeBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageResourcesRequest`

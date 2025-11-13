@@ -3930,9 +3930,21 @@ class BandwidthPackage(AbstractModel):
         r"""
         :param _BandwidthPackageId: The unique ID of the bandwidth package.
         :type BandwidthPackageId: str
-        :param _NetworkType: Bandwidth package type. Values: `BGP`, `SINGLEISP`, `ANYCAST`, `SINGLEISP_CMCC`, `SINGLEISP_CTCC`, `SINGLEISP_CUCC`
+        :param _NetworkType: Bandwidth package type, includes:
+<li>BGP: General BGP bandwidth package</li>
+<li>HIGH_QUALITY_BGP: Dedicated BGP bandwidth package</li>
+<li>ANYCAST: AIA BGP bandwidth package</li>
+<li>SINGLEISP_CMCC: CMCC bandwidth package</li>
+<li>SINGLEISP_CTCC: CTCC bandwidth package</li>
+<li>SINGLEISP_CUCC: CUCC bandwidth package</li>
         :type NetworkType: str
-        :param _ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :param _ChargeType: Bandwidth package billing type, includes:
+<li>ENHANCED95_POSTPAID_BY_MONTH: Pay-as-you-go - Enhanced 95th percentile</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: Postpaid - Main Traffic Billing</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: General BGP, Pay-as-you-go - Bandwidth-based</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: Static single-line, Pay-as-you-go - Daily billed</li>
+<li>TOP5_POSTPAID_BY_MONTH: Pay-as-you-go - Monthly top 5th, If you need to use this Bglling mode, please submit a ticket</li>
+
         :type ChargeType: str
         :param _BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
@@ -3944,7 +3956,9 @@ class BandwidthPackage(AbstractModel):
         :type ResourceSet: list of Resource
         :param _Bandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
         :type Bandwidth: int
-        :param _Egress: 
+        :param _Egress: Network egress. It defaults to `center_egress1`. Valid values:
+center_egress1,center_egress2,center_egress3
+
         :type Egress: str
         """
         self._BandwidthPackageId = None
@@ -3970,7 +3984,13 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""Bandwidth package type. Values: `BGP`, `SINGLEISP`, `ANYCAST`, `SINGLEISP_CMCC`, `SINGLEISP_CTCC`, `SINGLEISP_CUCC`
+        r"""Bandwidth package type, includes:
+<li>BGP: General BGP bandwidth package</li>
+<li>HIGH_QUALITY_BGP: Dedicated BGP bandwidth package</li>
+<li>ANYCAST: AIA BGP bandwidth package</li>
+<li>SINGLEISP_CMCC: CMCC bandwidth package</li>
+<li>SINGLEISP_CTCC: CTCC bandwidth package</li>
+<li>SINGLEISP_CUCC: CUCC bandwidth package</li>
         :rtype: str
         """
         return self._NetworkType
@@ -3981,7 +4001,13 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        r"""Bandwidth package billing type, includes:
+<li>ENHANCED95_POSTPAID_BY_MONTH: Pay-as-you-go - Enhanced 95th percentile</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: Postpaid - Main Traffic Billing</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: General BGP, Pay-as-you-go - Bandwidth-based</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: Static single-line, Pay-as-you-go - Daily billed</li>
+<li>TOP5_POSTPAID_BY_MONTH: Pay-as-you-go - Monthly top 5th, If you need to use this Bglling mode, please submit a ticket</li>
+
         :rtype: str
         """
         return self._ChargeType
@@ -4047,7 +4073,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def Egress(self):
-        r"""
+        r"""Network egress. It defaults to `center_egress1`. Valid values:
+center_egress1,center_egress2,center_egress3
+
         :rtype: str
         """
         return self._Egress
@@ -15910,9 +15938,9 @@ class DescribeAddressesRequest(AbstractModel):
 <li> tag-value - String - Optional - Filter by tag value.</li>
 <li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
-        :param _Offset: The Offset. The default value is 0. For more information about `Offset`, see the relevant section in the API documentation.
+        :param _Offset: The Offset. The default value is 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
-        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API documentation.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Limit: int
         """
         self._AddressIds = None
@@ -15958,7 +15986,7 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""The Offset. The default value is 0. For more information about `Offset`, see the relevant section in the API documentation.
+        r"""The Offset. The default value is 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Offset
@@ -15969,7 +15997,7 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API documentation.
+        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Limit
@@ -16362,13 +16390,13 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
         r"""
         :param _BandwidthPackageId: Unique ID of the bandwidth package in the form of `bwp-11112222`.
         :type BandwidthPackageId: str
-        :param _Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li>resource-id - String - Required: no -  (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
+        :param _Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. The specific filter conditions are as follows:
+<li>resource-id - String - Required: no - (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
 <li>resource-type - String - Required: no - (Filter condition) Filters by the type of resources in a bandwidth package. It now supports only EIP (`Address`) and load balancer (`LoadBalance`).</li>
         :type Filters: list of Filter
-        :param _Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
-        :param _Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Limit: int
         """
         self._BandwidthPackageId = None
@@ -16389,8 +16417,8 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li>resource-id - String - Required: no -  (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
+        r"""Each request can have up to 10 `Filters` and 5 `Filter.Values`. The specific filter conditions are as follows:
+<li>resource-id - String - Required: no - (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
 <li>resource-type - String - Required: no - (Filter condition) Filters by the type of resources in a bandwidth package. It now supports only EIP (`Address`) and load balancer (`LoadBalance`).</li>
         :rtype: list of Filter
         """
@@ -16402,7 +16430,7 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Offset
@@ -16413,7 +16441,7 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Limit
@@ -16515,21 +16543,22 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
         r"""
         :param _BandwidthPackageIds: The unique ID list of bandwidth packages.
         :type BandwidthPackageIds: list of str
-        :param _Filters: Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
-<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
-<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.</li>
-<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Valid values: `TOP5_POSTPAID_BY_MONTH` and `PERCENT95_POSTPAID_BY_MONTH`.</li>
-<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Valid values: `Address` and `LoadBalance`.</li>
-<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as `eip-xxxx` and `lb-xxxx`.</li>
-<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
-<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
-<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+        :param _Filters: Each request can have up to 10 `Filters`. parameters do not support specifying `BandwidthPackageIds` and `Filters` at the same time. detailed filter criteria are as follows:.
+<li>bandwidth-package-id - String - required: no - (filter condition) filter by the unique id of the bandwidth package.</li>.
+<li>bandwidth-package-name - String - required: no - (filter criteria) filter by bandwidth package name. fuzzy filtering is not supported.</li>.
+<li>network-type - String - required: no - (filter condition) filter by bandwidth package type. network type can be found in [BandwidthPackage](https://intl.cloud.tencent.com/document/api/215/15824?from_cn_redirect=1#BandwidthPackage).</li>.
+<li>- charge-type - String - required: no - (filter condition) filter by the billing type of the bandwidth package. the billing type can be found in BandwidthPackage (https://intl.cloud.tencent.com/document/api/215/15824?from_cn_redirect=1#BandwidthPackage).</li>.
+<li>resource.resource-type - String - required: no - (filter criteria) filter by bandwidth package resource type. resource types include 'Address' and 'LoadBalance'.</li>.
+<li>resource.resource-id - String - required: no - (filter criteria) filter by bandwidth package resource id. resource id is in the format of 'eip-xxxx','lb-xxxx'.</li>.
+<li>resource.address-ip - String - required: no - filter by bandwidth package resource ip.</li>.
+<li>tag-key - String - required: no - (filter condition) filter according to the tag key.</li>.
+<li>`tag-value` - String - Optional - Filter by the tag value.</li>
+
+<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key.</li>.
         :type Filters: list of Filter
-        :param _Offset: Offset. This value defaults to 0. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
-        :param _Limit: Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Limit: int
         """
         self._BandwidthPackageIds = None
@@ -16550,17 +16579,18 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
-<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
-<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.</li>
-<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Valid values: `TOP5_POSTPAID_BY_MONTH` and `PERCENT95_POSTPAID_BY_MONTH`.</li>
-<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Valid values: `Address` and `LoadBalance`.</li>
-<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as `eip-xxxx` and `lb-xxxx`.</li>
-<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
-<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
-<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+        r"""Each request can have up to 10 `Filters`. parameters do not support specifying `BandwidthPackageIds` and `Filters` at the same time. detailed filter criteria are as follows:.
+<li>bandwidth-package-id - String - required: no - (filter condition) filter by the unique id of the bandwidth package.</li>.
+<li>bandwidth-package-name - String - required: no - (filter criteria) filter by bandwidth package name. fuzzy filtering is not supported.</li>.
+<li>network-type - String - required: no - (filter condition) filter by bandwidth package type. network type can be found in [BandwidthPackage](https://intl.cloud.tencent.com/document/api/215/15824?from_cn_redirect=1#BandwidthPackage).</li>.
+<li>- charge-type - String - required: no - (filter condition) filter by the billing type of the bandwidth package. the billing type can be found in BandwidthPackage (https://intl.cloud.tencent.com/document/api/215/15824?from_cn_redirect=1#BandwidthPackage).</li>.
+<li>resource.resource-type - String - required: no - (filter criteria) filter by bandwidth package resource type. resource types include 'Address' and 'LoadBalance'.</li>.
+<li>resource.resource-id - String - required: no - (filter criteria) filter by bandwidth package resource id. resource id is in the format of 'eip-xxxx','lb-xxxx'.</li>.
+<li>resource.address-ip - String - required: no - filter by bandwidth package resource ip.</li>.
+<li>tag-key - String - required: no - (filter condition) filter according to the tag key.</li>.
+<li>`tag-value` - String - Optional - Filter by the tag value.</li>
+
+<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key.</li>.
         :rtype: list of Filter
         """
         return self._Filters
@@ -16571,7 +16601,7 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset. This value defaults to 0. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset. This value defaults to 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Offset
@@ -16582,7 +16612,7 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Limit
@@ -19302,9 +19332,9 @@ Note: `IPv6AddressIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Traditional: Indicates whether to query the traditional IPv6 address information.
         :type Traditional: bool
-        :param _Offset: Offset. Default: 0. For more information on Offset, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Offset: Offset. Default: 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
-        :param _Limit: Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Limit: Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Limit: int
         """
         self._IPv6AddressIds = None
@@ -19368,7 +19398,7 @@ Note: `IPv6AddressIds` and `Filters` cannot be specified at the same time.
 
     @property
     def Offset(self):
-        r"""Offset. Default: 0. For more information on Offset, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""Offset. Default: 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Offset
@@ -19379,7 +19409,7 @@ Note: `IPv6AddressIds` and `Filters` cannot be specified at the same time.
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Limit
@@ -19570,9 +19600,9 @@ class DescribeIp6AddressesRequest(AbstractModel):
 <li>address-ip - String - Required: No - (Filter condition) Filter by the IP address of IPv6 instances.</li>
 <li>network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of ENIs.</li>
         :type Filters: list of Filter
-        :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
-        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Limit: int
         """
         self._Ip6AddressIds = None
@@ -19606,7 +19636,7 @@ class DescribeIp6AddressesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Offset
@@ -19617,7 +19647,7 @@ class DescribeIp6AddressesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :rtype: int
         """
         return self._Limit

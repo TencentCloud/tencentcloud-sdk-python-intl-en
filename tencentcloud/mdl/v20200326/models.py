@@ -5926,6 +5926,8 @@ class EventSettingsReq(AbstractModel):
         :type EventType: str
         :param _InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
+        :param _PipelineId: When the type is FIXED_PTS, it is mandatory and defaults to 0
+        :type PipelineId: int
         :param _OutputGroupName: Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.
         :type OutputGroupName: str
         :param _ManifestName: Name of the manifest file for timed recording, which must end with `.m3u8` for HLS and `.mpd` for DASH. This parameter is required if `EventType` is `TIMED_RECORD`.
@@ -5949,6 +5951,7 @@ class EventSettingsReq(AbstractModel):
         """
         self._EventType = None
         self._InputAttachment = None
+        self._PipelineId = None
         self._OutputGroupName = None
         self._ManifestName = None
         self._Destinations = None
@@ -5981,6 +5984,17 @@ class EventSettingsReq(AbstractModel):
     @InputAttachment.setter
     def InputAttachment(self, InputAttachment):
         self._InputAttachment = InputAttachment
+
+    @property
+    def PipelineId(self):
+        r"""When the type is FIXED_PTS, it is mandatory and defaults to 0
+        :rtype: int
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
 
     @property
     def OutputGroupName(self):
@@ -6096,6 +6110,7 @@ class EventSettingsReq(AbstractModel):
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
         self._InputAttachment = params.get("InputAttachment")
+        self._PipelineId = params.get("PipelineId")
         self._OutputGroupName = params.get("OutputGroupName")
         self._ManifestName = params.get("ManifestName")
         if params.get("Destinations") is not None:
@@ -6145,6 +6160,8 @@ class EventSettingsResp(AbstractModel):
         :type EventType: str
         :param _InputAttachment: ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
+        :param _PipelineId: When the type is FIXED_PTS, it is mandatory and defaults to 0
+        :type PipelineId: int
         :param _OutputGroupName: Name of the output group attached. This parameter is not empty if `EventType` is `TIMED_RECORD`.
         :type OutputGroupName: str
         :param _ManifestName: Name of the manifest file for timed recording, which ends with `.m3u8` for HLS and `.mpd` for DASH. This parameter is not empty if `EventType` is `TIMED_RECORD`.
@@ -6168,6 +6185,7 @@ class EventSettingsResp(AbstractModel):
         """
         self._EventType = None
         self._InputAttachment = None
+        self._PipelineId = None
         self._OutputGroupName = None
         self._ManifestName = None
         self._Destinations = None
@@ -6200,6 +6218,17 @@ class EventSettingsResp(AbstractModel):
     @InputAttachment.setter
     def InputAttachment(self, InputAttachment):
         self._InputAttachment = InputAttachment
+
+    @property
+    def PipelineId(self):
+        r"""When the type is FIXED_PTS, it is mandatory and defaults to 0
+        :rtype: int
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
 
     @property
     def OutputGroupName(self):
@@ -6315,6 +6344,7 @@ class EventSettingsResp(AbstractModel):
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
         self._InputAttachment = params.get("InputAttachment")
+        self._PipelineId = params.get("PipelineId")
         self._OutputGroupName = params.get("OutputGroupName")
         self._ManifestName = params.get("ManifestName")
         if params.get("Destinations") is not None:
@@ -12236,7 +12266,7 @@ class TimingSettingsReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartType: Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.
+        :param _StartType: Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`,`FIXED_PTS `. This parameter is required if `EventType` is `INPUT_SWITCH`.
         :type StartType: str
         :param _Time: This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.
 It must be in UTC format, e.g., `2020-01-01T12:00:00Z`.
@@ -12247,15 +12277,18 @@ It specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z
         :param _EndTime: This parameter is required if `EventType` is `TIMED_RECORD`.
 It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the recording start time.
         :type EndTime: str
+        :param _PTS: Effective only when StartType is FIXED_PTS, with a range of 1-8589934592
+        :type PTS: int
         """
         self._StartType = None
         self._Time = None
         self._StartTime = None
         self._EndTime = None
+        self._PTS = None
 
     @property
     def StartType(self):
-        r"""Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.
+        r"""Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`,`FIXED_PTS `. This parameter is required if `EventType` is `INPUT_SWITCH`.
         :rtype: str
         """
         return self._StartType
@@ -12300,12 +12333,24 @@ It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`)
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def PTS(self):
+        r"""Effective only when StartType is FIXED_PTS, with a range of 1-8589934592
+        :rtype: int
+        """
+        return self._PTS
+
+    @PTS.setter
+    def PTS(self, PTS):
+        self._PTS = PTS
+
 
     def _deserialize(self, params):
         self._StartType = params.get("StartType")
         self._Time = params.get("Time")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._PTS = params.get("PTS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12334,11 +12379,14 @@ It indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00
         :param _EndTime: This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
 It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the start time for recording.
         :type EndTime: str
+        :param _PTS: Effective only when StartType is FIXED_PTS, with a range of 1-8589934592
+        :type PTS: int
         """
         self._StartType = None
         self._Time = None
         self._StartTime = None
         self._EndTime = None
+        self._PTS = None
 
     @property
     def StartType(self):
@@ -12387,12 +12435,24 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def PTS(self):
+        r"""Effective only when StartType is FIXED_PTS, with a range of 1-8589934592
+        :rtype: int
+        """
+        return self._PTS
+
+    @PTS.setter
+    def PTS(self, PTS):
+        self._PTS = PTS
+
 
     def _deserialize(self, params):
         self._StartType = params.get("StartType")
         self._Time = params.get("Time")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._PTS = params.get("PTS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

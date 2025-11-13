@@ -1264,6 +1264,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _StdExtInfo: Transcoding parameter extension field.
         :type StdExtInfo: str
+        :param _KeyPTSList: Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KeyPTSList: list of int
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1276,6 +1279,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._DefinitionType = None
         self._SubtitleTemplate = None
         self._StdExtInfo = None
+        self._KeyPTSList = None
 
     @property
     def Definition(self):
@@ -1411,6 +1415,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def StdExtInfo(self, StdExtInfo):
         self._StdExtInfo = StdExtInfo
 
+    @property
+    def KeyPTSList(self):
+        r"""Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
+        return self._KeyPTSList
+
+    @KeyPTSList.setter
+    def KeyPTSList(self, KeyPTSList):
+        self._KeyPTSList = KeyPTSList
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1440,6 +1456,7 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._SubtitleTemplate = SubtitleTemplate()
             self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         self._StdExtInfo = params.get("StdExtInfo")
+        self._KeyPTSList = params.get("KeyPTSList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1925,6 +1942,145 @@ Default value: `false`.
         
 
 
+class AdvancedSuperResolutionConfig(AbstractModel):
+    r"""Super-resolution configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :type Switch: str
+        :param _Type: Type. Valid values:
+<li>standard: standard super-resolution.</li>
+<li>super: advanced super-resolution.</li>
+Default value: standard.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Mode: Image output mode. The default value is percent.
+<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
+<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mode: str
+        :param _Percent: Magnification factor of super-resolution, which can be a decimal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Percent: float
+        :param _Width: Width of the target image. The value cannot exceed 4096.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Width: int
+        :param _Height: Height of the target image. The value cannot exceed 4096.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Height: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Mode = None
+        self._Percent = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Switch(self):
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""Type. Valid values:
+<li>standard: standard super-resolution.</li>
+<li>super: advanced super-resolution.</li>
+Default value: standard.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mode(self):
+        r"""Image output mode. The default value is percent.
+<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
+<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Percent(self):
+        r"""Magnification factor of super-resolution, which can be a decimal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Width(self):
+        r"""Width of the target image. The value cannot exceed 4096.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""Height of the target image. The value cannot exceed 4096.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._Percent = params.get("Percent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisResult(AbstractModel):
     r"""Intelligent analysis results
 
@@ -1932,17 +2088,17 @@ class AiAnalysisResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Task type. valid values:.
-<Li>Classification: intelligent classification.</li>.
-<Li>Cover: specifies the intelligent cover.</li>.
-<Li>Tag: intelligent tagging.</li>.
-<Li>FrameTag: intelligent frame-by-frame tagging.</li>.
-<Li>Highlight: intelligent highlights</li>.
-<Li>DeLogo: intelligent removal.</li>.
-<li>Description: large model summarization.</li>
-
-<Li>Dubbing: intelligent dubbing.</li>.
-<Li>VideoRemake: specifies video deduplication.</li>.
+        :param _Type: Task type. Valid values:
+<li>Classification: smart classification.</li>
+<li>Cover: smart cover.</li>
+<li>Tag: smart tag.</li>
+<li>FrameTag: smart frame tag.</li>
+<li>Highlight: smart highlights.</li>
+<li>DeLogo: smart erasing.</li>
+<li>Description: LLM summary.</li>
+<li>Dubbing: smart dubbing.</li>
+<li>VideoRemake: video deduplication.</li>
+<li>VideoComprehension: video (audio) recognition.</li>
         :type Type: str
         :param _ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
@@ -1976,6 +2132,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _VideoRemakeTask: The query result of a video content deduplication task, which is valid when the task type is VideoRemake.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type VideoRemakeTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
+        :param _VideoComprehensionTask: Query result of the video (audio) recognition task. This parameter is valid when the task type is VideoComprehension.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1990,20 +2149,21 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._HorizontalToVerticalTask = None
         self._DubbingTask = None
         self._VideoRemakeTask = None
+        self._VideoComprehensionTask = None
 
     @property
     def Type(self):
-        r"""Task type. valid values:.
-<Li>Classification: intelligent classification.</li>.
-<Li>Cover: specifies the intelligent cover.</li>.
-<Li>Tag: intelligent tagging.</li>.
-<Li>FrameTag: intelligent frame-by-frame tagging.</li>.
-<Li>Highlight: intelligent highlights</li>.
-<Li>DeLogo: intelligent removal.</li>.
-<li>Description: large model summarization.</li>
-
-<Li>Dubbing: intelligent dubbing.</li>.
-<Li>VideoRemake: specifies video deduplication.</li>.
+        r"""Task type. Valid values:
+<li>Classification: smart classification.</li>
+<li>Cover: smart cover.</li>
+<li>Tag: smart tag.</li>
+<li>FrameTag: smart frame tag.</li>
+<li>Highlight: smart highlights.</li>
+<li>DeLogo: smart erasing.</li>
+<li>Description: LLM summary.</li>
+<li>Dubbing: smart dubbing.</li>
+<li>VideoRemake: video deduplication.</li>
+<li>VideoComprehension: video (audio) recognition.</li>
         :rtype: str
         """
         return self._Type
@@ -2152,6 +2312,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def VideoRemakeTask(self, VideoRemakeTask):
         self._VideoRemakeTask = VideoRemakeTask
 
+    @property
+    def VideoComprehensionTask(self):
+        r"""Query result of the video (audio) recognition task. This parameter is valid when the task type is VideoComprehension.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
+        """
+        return self._VideoComprehensionTask
+
+    @VideoComprehensionTask.setter
+    def VideoComprehensionTask(self, VideoComprehensionTask):
+        self._VideoComprehensionTask = VideoComprehensionTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2191,6 +2363,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("VideoRemakeTask") is not None:
             self._VideoRemakeTask = AiAnalysisTaskVideoRemakeResult()
             self._VideoRemakeTask._deserialize(params.get("VideoRemakeTask"))
+        if params.get("VideoComprehensionTask") is not None:
+            self._VideoComprehensionTask = AiAnalysisTaskVideoComprehensionResult()
+            self._VideoComprehensionTask._deserialize(params.get("VideoComprehensionTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4509,6 +4684,240 @@ class AiAnalysisTaskTagResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskTagOutput()
             self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoComprehensionInput(AbstractModel):
+    r"""Input file for the video (audio) recognition task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Video (audio) recognition template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Video (audio) recognition template ID.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
+    r"""Information about the video (audio) recognition output content result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoComprehensionAnalysisResult: Details of the video (audio) recognition output content.
+        :type VideoComprehensionAnalysisResult: str
+        """
+        self._VideoComprehensionAnalysisResult = None
+
+    @property
+    def VideoComprehensionAnalysisResult(self):
+        r"""Details of the video (audio) recognition output content.
+        :rtype: str
+        """
+        return self._VideoComprehensionAnalysisResult
+
+    @VideoComprehensionAnalysisResult.setter
+    def VideoComprehensionAnalysisResult(self, VideoComprehensionAnalysisResult):
+        self._VideoComprehensionAnalysisResult = VideoComprehensionAnalysisResult
+
+
+    def _deserialize(self, params):
+        self._VideoComprehensionAnalysisResult = params.get("VideoComprehensionAnalysisResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskVideoComprehensionResult(AbstractModel):
+    r"""Video (audio) recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status. Valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :type Status: str
+        :param _ErrCode: Error code. 0: successful; other values: failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input file for video (audio) recognition.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionInput`
+        :param _Output: Output file for video (audio) recognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionOutput`
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.
+        :type ErrCodeExt: str
+        :param _Progress: Task progress
+        :type Progress: int
+        :param _BeginProcessTime: Starting time of task execution, in ISO date and time format.
+        :type BeginProcessTime: str
+        :param _FinishTime: Completion time of task execution, in ISO date and time format.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._ErrCodeExt = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""Task status. Valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code. 0: successful; other values: failed.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Input file for video (audio) recognition.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output file for video (audio) recognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Progress(self):
+        r"""Task progress
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""Starting time of task execution, in ISO date and time format.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""Completion time of task execution, in ISO date and time format.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskVideoComprehensionInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskVideoComprehensionOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12123,7 +12532,8 @@ Cannot be set to 0.
 
 
         :type Bitrate: int
-        :param _SampleRate: Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. For details, see [Audio/Video Transcoding Template](https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+        :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
@@ -12195,7 +12605,8 @@ Cannot be set to 0.
 
     @property
     def SampleRate(self):
-        r"""Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. For details, see [Audio/Video Transcoding Template](https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+        r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
@@ -12283,10 +12694,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Codec: str
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
-        :param _SampleRate: The sampling rate of the audio stream. the sampling rate options supported by different encoding standards are different. for details, see the audio sample rate support scope document (https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+        :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
-Please ensure that the sampling rate of the source audio stream is within the scope of the above options. otherwise, transcoding failure may occur.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
 <li>1: mono-channel.</li>
@@ -12346,10 +12758,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        r"""The sampling rate of the audio stream. the sampling rate options supported by different encoding standards are different. for details, see the audio sample rate support scope document (https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+        r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
-Please ensure that the sampling rate of the source audio stream is within the scope of the above options. otherwise, transcoding failure may occur.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SampleRate
@@ -15699,7 +16112,19 @@ class CosFileUploadTrigger(AbstractModel):
         :type Region: str
         :param _Dir: Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.
         :type Dir: str
-        :param _Formats: Format list of files that can trigger a workflow, such as ["mp4", "flv", "mov"]. If this parameter is left empty, files in all formats can trigger the workflow.
+        :param _Formats: All supported formats are as follows:
+- Video file extension. The following 15 options are supported:
+`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.
+- Audio file extension. The following 7 options are supported:
+`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.
+- Subtitle file extension. The following 2 options are supported:
+`.vtt` and `.srt`.
+- `*`: any file format is supported.
+- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).
+**Note**:
+1. If the input format list includes `*`, it indicates that any file format is supported.
+2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.
+3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.
         :type Formats: list of str
         """
         self._Bucket = None
@@ -15742,7 +16167,19 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Formats(self):
-        r"""Format list of files that can trigger a workflow, such as ["mp4", "flv", "mov"]. If this parameter is left empty, files in all formats can trigger the workflow.
+        r"""All supported formats are as follows:
+- Video file extension. The following 15 options are supported:
+`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.
+- Audio file extension. The following 7 options are supported:
+`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.
+- Subtitle file extension. The following 2 options are supported:
+`.vtt` and `.srt`.
+- `*`: any file format is supported.
+- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).
+**Note**:
+1. If the input format list includes `*`, it indicates that any file format is supported.
+2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.
+3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.
         :rtype: list of str
         """
         return self._Formats
@@ -16338,16 +16775,16 @@ When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
+
 When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
 
 Note:
-
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
-        :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
-Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :param _SegmentType: Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. 
+Note: the shard format of the adaptive bitrate stream is based on this field.
         :type SegmentType: str
         """
         self._Format = None
@@ -16441,12 +16878,12 @@ When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
+
 When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
 
 Note:
-
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :rtype: int
         """
@@ -16458,8 +16895,8 @@ This value only distinguishes template types. The task uses the values of Remove
 
     @property
     def SegmentType(self):
-        r"""HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
-Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        r"""Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. 
+Note: the shard format of the adaptive bitrate stream is based on this field.
         :rtype: str
         """
         return self._SegmentType
@@ -18380,30 +18817,34 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         :param _Name: Smart subtitle template name.
 Length limit: 64 characters.
         :type Name: str
-        :param _VideoSrcLanguage: Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :type VideoSrcLanguage: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language
@@ -18414,38 +18855,55 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
         :param _Comment: Smart subtitle template description.
 Length limit: 256 characters.
         :type Comment: str
-        :param _SubtitleFormat: Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        :param _SubtitleFormat: Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - If this field is unspecified or left blank, no subtitle file will be generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
         :type SubtitleFormat: str
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateSwitch: Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
+        :param _TranslateDstLanguage: Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
+        :param _ProcessType: Subtitle processing type:
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :type ProcessType: int
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -18455,6 +18913,7 @@ hi: Hindi
         self._AsrHotWordsConfigure = None
         self._TranslateSwitch = None
         self._TranslateDstLanguage = None
+        self._ProcessType = None
 
     @property
     def Name(self):
@@ -18470,30 +18929,34 @@ Length limit: 64 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
+        r"""Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -18531,10 +18994,18 @@ Length limit: 256 characters.
 
     @property
     def SubtitleFormat(self):
-        r"""Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        r"""Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - If this field is unspecified or left blank, no subtitle file will be generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -18557,8 +19028,9 @@ If this field is left blank, no subtitle file will be generated.
     @property
     def TranslateSwitch(self):
         r"""Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :rtype: str
         """
         return self._TranslateSwitch
@@ -18569,26 +19041,29 @@ OFF: disable translation
 
     @property
     def TranslateDstLanguage(self):
-        r"""Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
+        r"""Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -18596,6 +19071,20 @@ hi: Hindi
     @TranslateDstLanguage.setter
     def TranslateDstLanguage(self, TranslateDstLanguage):
         self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def ProcessType(self):
+        r"""Subtitle processing type:
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
 
 
     def _deserialize(self, params):
@@ -18609,6 +19098,7 @@ hi: Hindi
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateSwitch = params.get("TranslateSwitch")
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22761,9 +23251,8 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskType: Task type. Currently, the valid values include:
-<Li>WorkflowTask: workflow processing task.</li>
-
-Note: This field may return null, indicating that no valid value can be obtained.
+<li>WorkflowTask: workflow processing task.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <Li>WAITING: waiting.</li>
@@ -22771,6 +23260,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 <li>FINISH: completed.</li>
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: str
+        :param _ErrCode: Error code when the task fails.
+        :type ErrCode: int
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrMsg: str
+        :param _Message: Task exception message.
+        :type Message: str
         :param _ImageProcessTaskResultSet: Execution status and results of the image processing task.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
@@ -22785,6 +23280,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         """
         self._TaskType = None
         self._Status = None
+        self._ErrCode = None
+        self._ErrMsg = None
+        self._Message = None
         self._ImageProcessTaskResultSet = None
         self._CreateTime = None
         self._FinishTime = None
@@ -22793,9 +23291,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def TaskType(self):
         r"""Task type. Currently, the valid values include:
-<Li>WorkflowTask: workflow processing task.</li>
-
-Note: This field may return null, indicating that no valid value can be obtained.
+<li>WorkflowTask: workflow processing task.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TaskType
@@ -22818,6 +23315,39 @@ Note: This field may return null, indicating that no valid value can be obtained
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code when the task fails.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMsg(self):
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def Message(self):
+        r"""Task exception message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def ImageProcessTaskResultSet(self):
@@ -22870,6 +23400,9 @@ Note: This field may return null, indicating that no valid value can be obtained
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMsg = params.get("ErrMsg")
+        self._Message = params.get("Message")
         if params.get("ImageProcessTaskResultSet") is not None:
             self._ImageProcessTaskResultSet = []
             for item in params.get("ImageProcessTaskResultSet"):
@@ -23992,12 +24525,17 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
         :type Type: str
         :param _Name: Condition for filtering smart subtitle templates by ID. Length limit: 64 characters.
         :type Name: str
+        :param _ProcessType: Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+        :type ProcessType: int
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
         self._Name = None
+        self._ProcessType = None
 
     @property
     def Definitions(self):
@@ -24056,6 +24594,19 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def ProcessType(self):
+        r"""Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -24063,6 +24614,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
         self._Name = params.get("Name")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24726,7 +25278,9 @@ class DescribeTasksRequest(AbstractModel):
 -PROCESSING (processing).
 -FINISH (completed).
         :type Status: str
-        :param _SubTaskHasFailed: Indicates whether there is a subtask failure when the task is complete.
+        :param _SubTaskHasFailed: Whether there is a failed subtask when the task ends. If this parameter is left unspecified, ignore it.
+<li>false: filter the main tasks to identify those that have no failed subtasks.</li>
+<li>true: filter the main tasks to identify those that have failed subtasks.</li>
         :type SubTaskHasFailed: bool
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -24760,7 +25314,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def SubTaskHasFailed(self):
-        r"""Indicates whether there is a subtask failure when the task is complete.
+        r"""Whether there is a failed subtask when the task ends. If this parameter is left unspecified, ignore it.
+<li>false: filter the main tasks to identify those that have no failed subtasks.</li>
+<li>true: filter the main tasks to identify those that have failed subtasks.</li>
         :rtype: bool
         """
         return self._SubTaskHasFailed
@@ -24958,6 +25514,26 @@ high_compress: Bitrate priority: Priority is given to reducing file size, which 
 low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
 no_config: Not configured.
         :type CompressType: str
+        :param _EnhanceSceneType: Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+        :type EnhanceSceneType: str
+        :param _EnhanceTranscodeType: Enhanced transcoding type. Valid values:
+<li>Common: standard transcoding.</li>
+<li>TEHD-100: top speed codec video transcoding.</li>
+<li>TEHD-200: top speed codec audio transcoding.</li>
+        :type EnhanceTranscodeType: str
+        :param _EnhanceType: Enhancement type. Valid values:
+<li>VideoEnhance: video enhancement only.</li>
+<li>AudioEnhance (audio enhancement only).</li>
+<li>VideoAudioEnhance: video and audio enhancement included.</li>
+        :type EnhanceType: str
         """
         self._Definitions = None
         self._Type = None
@@ -24969,6 +25545,9 @@ no_config: Not configured.
         self._Name = None
         self._SceneType = None
         self._CompressType = None
+        self._EnhanceSceneType = None
+        self._EnhanceTranscodeType = None
+        self._EnhanceType = None
 
     @property
     def Definitions(self):
@@ -25102,6 +25681,53 @@ no_config: Not configured.
     def CompressType(self, CompressType):
         self._CompressType = CompressType
 
+    @property
+    def EnhanceSceneType(self):
+        r"""Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+        :rtype: str
+        """
+        return self._EnhanceSceneType
+
+    @EnhanceSceneType.setter
+    def EnhanceSceneType(self, EnhanceSceneType):
+        self._EnhanceSceneType = EnhanceSceneType
+
+    @property
+    def EnhanceTranscodeType(self):
+        r"""Enhanced transcoding type. Valid values:
+<li>Common: standard transcoding.</li>
+<li>TEHD-100: top speed codec video transcoding.</li>
+<li>TEHD-200: top speed codec audio transcoding.</li>
+        :rtype: str
+        """
+        return self._EnhanceTranscodeType
+
+    @EnhanceTranscodeType.setter
+    def EnhanceTranscodeType(self, EnhanceTranscodeType):
+        self._EnhanceTranscodeType = EnhanceTranscodeType
+
+    @property
+    def EnhanceType(self):
+        r"""Enhancement type. Valid values:
+<li>VideoEnhance: video enhancement only.</li>
+<li>AudioEnhance (audio enhancement only).</li>
+<li>VideoAudioEnhance: video and audio enhancement included.</li>
+        :rtype: str
+        """
+        return self._EnhanceType
+
+    @EnhanceType.setter
+    def EnhanceType(self, EnhanceType):
+        self._EnhanceType = EnhanceType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -25114,6 +25740,9 @@ no_config: Not configured.
         self._Name = params.get("Name")
         self._SceneType = params.get("SceneType")
         self._CompressType = params.get("CompressType")
+        self._EnhanceSceneType = params.get("EnhanceSceneType")
+        self._EnhanceTranscodeType = params.get("EnhanceTranscodeType")
+        self._EnhanceType = params.get("EnhanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25904,6 +26533,73 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DiffusionEnhanceConfig(AbstractModel):
+    r"""LLM enhancement.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration switch. Valid values:
+ON: enabled.
+OFF: disabled.
+Default value: OFF.
+        :type Switch: str
+        :param _Type: Strength type. Valid values:
+weak
+normal
+strong
+Default value: normal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""Capability configuration switch. Valid values:
+ON: enabled.
+OFF: disabled.
+Default value: OFF.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""Strength type. Valid values:
+weak
+normal
+strong
+Default value: normal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableScheduleRequest(AbstractModel):
     r"""DisableSchedule request structure.
 
@@ -26042,23 +26738,31 @@ class DrmInfo(AbstractModel):
         :param _Type: Encryption type.
 
 - simpleaes
-Can only be used for HLS. format support ts and mp4.
+Can only be used for HLS. format support: ts and mp4.
 Only can be used in slice mode. cannot be used in singlefile mode.
 
 - fairplay:
-Can only be used for HLS. valid values: mp4.
-Available for use in slice mode or singlefile mode.
+Can only be used for HLS. the segment format can only be mp4.
+Supports slice mode or singlefile mode.
 
 - widevine:
-Can be used for HLS and DASH. format can only be mp4.
-Output HLS: available for use in slice mode or singlefile mode.
-Output DASH: can only be in singlefile mode.
+Can be used for HLS and DASH. the slice format can only be mp4.
+Output HLS: specifies the slicing or singlefile mode can be used.
+OutputOutput DASH]: can only be in singlefile mode.
 
 - playready:
-Can be used for HLS and DASH. format can only be mp4.
-Output HLS: available for use in slice mode or singlefile mode.
-Output DASH: can only be singlefile mode.
+Can be used for HLS and DASH. the slice format can only be mp4.
+Output HLS: specifies the slicing or singlefile mode can be used.
+Output DASH: can only be in singlefile mode.
 
+- widevine+fairplay,playready+fairplay,widevine+playready+fairplay:
+Can only be used for HLS. valid values: mp4.
+Supports slice mode or single file mode.
+
+- widevine+playready:
+Applicable to HLS and MPEG-DASH. the format can only be mp4.
+HLS format can use slice mode or single file mode.
+Specifies that only singlefile mode can be used for MPEG-DASH.
         :type Type: str
         :param _SimpleAesDrm: The AES-128 encryption details.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -26075,23 +26779,31 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""Encryption type.
 
 - simpleaes
-Can only be used for HLS. format support ts and mp4.
+Can only be used for HLS. format support: ts and mp4.
 Only can be used in slice mode. cannot be used in singlefile mode.
 
 - fairplay:
-Can only be used for HLS. valid values: mp4.
-Available for use in slice mode or singlefile mode.
+Can only be used for HLS. the segment format can only be mp4.
+Supports slice mode or singlefile mode.
 
 - widevine:
-Can be used for HLS and DASH. format can only be mp4.
-Output HLS: available for use in slice mode or singlefile mode.
-Output DASH: can only be in singlefile mode.
+Can be used for HLS and DASH. the slice format can only be mp4.
+Output HLS: specifies the slicing or singlefile mode can be used.
+OutputOutput DASH]: can only be in singlefile mode.
 
 - playready:
-Can be used for HLS and DASH. format can only be mp4.
-Output HLS: available for use in slice mode or singlefile mode.
-Output DASH: can only be singlefile mode.
+Can be used for HLS and DASH. the slice format can only be mp4.
+Output HLS: specifies the slicing or singlefile mode can be used.
+Output DASH: can only be in singlefile mode.
 
+- widevine+fairplay,playready+fairplay,widevine+playready+fairplay:
+Can only be used for HLS. valid values: mp4.
+Supports slice mode or single file mode.
+
+- widevine+playready:
+Applicable to HLS and MPEG-DASH. the format can only be mp4.
+HLS format can use slice mode or single file mode.
+Specifies that only singlefile mode can be used for MPEG-DASH.
         :rtype: str
         """
         return self._Type
@@ -27840,6 +28552,82 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class FrameRateWithDenConfig(AbstractModel):
+    r"""New frame interpolation configuration, which supports fractional frame rates.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :type Switch: str
+        :param _FpsNum: Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsNum: int
+        :param _FpsDen: Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsDen: int
+        """
+        self._Switch = None
+        self._FpsNum = None
+        self._FpsDen = None
+
+    @property
+    def Switch(self):
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FpsNum(self):
+        r"""Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FpsNum
+
+    @FpsNum.setter
+    def FpsNum(self, FpsNum):
+        self._FpsNum = FpsNum
+
+    @property
+    def FpsDen(self):
+        r"""Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FpsDen
+
+    @FpsDen.setter
+    def FpsDen(self, FpsDen):
+        self._FpsDen = FpsDen
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FpsNum = params.get("FpsNum")
+        self._FpsDen = params.get("FpsDen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     r"""Control parameter of intelligent frame-specific tagging task
 
@@ -28017,8 +28805,8 @@ Default value: ON.
         :param _Type: Type. Valid values:
 <li>HDR10</li>
 <li>HLG</li>
-Default Value: HDR10.
-Note: The video encoding method should be H.265.
+Default value: HDR10.
+Note: The video encoding method should be h264 or h265.
 Note: The video encoding bit depth is 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
@@ -28045,8 +28833,8 @@ Default value: ON.
         r"""Type. Valid values:
 <li>HDR10</li>
 <li>HLG</li>
-Default Value: HDR10.
-Note: The video encoding method should be H.265.
+Default value: HDR10.
+Note: The video encoding method should be h264 or h265.
 Note: The video encoding bit depth is 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -28493,6 +29281,8 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: Super-resolution configuration.
 
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _AdvancedSuperResolutionConfig: Advanced super-resolution configuration.
+        :type AdvancedSuperResolutionConfig: :class:`tencentcloud.mps.v20190612.models.AdvancedSuperResolutionConfig`
         :param _Denoise: Denoising configuration.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
@@ -28513,6 +29303,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         self._SuperResolution = None
+        self._AdvancedSuperResolutionConfig = None
         self._Denoise = None
         self._ImageQualityEnhance = None
         self._ColorEnhance = None
@@ -28531,6 +29322,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @SuperResolution.setter
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
+
+    @property
+    def AdvancedSuperResolutionConfig(self):
+        r"""Advanced super-resolution configuration.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdvancedSuperResolutionConfig`
+        """
+        return self._AdvancedSuperResolutionConfig
+
+    @AdvancedSuperResolutionConfig.setter
+    def AdvancedSuperResolutionConfig(self, AdvancedSuperResolutionConfig):
+        self._AdvancedSuperResolutionConfig = AdvancedSuperResolutionConfig
 
     @property
     def Denoise(self):
@@ -28609,6 +29411,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("AdvancedSuperResolutionConfig") is not None:
+            self._AdvancedSuperResolutionConfig = AdvancedSuperResolutionConfig()
+            self._AdvancedSuperResolutionConfig._deserialize(params.get("AdvancedSuperResolutionConfig"))
         if params.get("Denoise") is not None:
             self._Denoise = ImageDenoiseConfig()
             self._Denoise._deserialize(params.get("Denoise"))
@@ -28814,6 +29619,8 @@ class ImageProcessTaskResult(AbstractModel):
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: str
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrMsg: str
         :param _Message: Error message.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Message: str
@@ -28825,6 +29632,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type Progress: int
         """
         self._Status = None
+        self._ErrMsg = None
         self._Message = None
         self._Output = None
         self._Progress = None
@@ -28840,6 +29648,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ErrMsg(self):
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
 
     @property
     def Message(self):
@@ -28880,6 +29699,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._ErrMsg = params.get("ErrMsg")
         self._Message = params.get("Message")
         if params.get("Output") is not None:
             self._Output = ImageProcessTaskOutput()
@@ -39358,8 +40178,9 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
         :param _Definition: Unique identifier of the smart subtitle template.
         :type Definition: int
         :param _TranslateSwitch: Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :type TranslateSwitch: str
         :param _Name: Smart subtitle template name.
 Length limit: 64 characters.
@@ -39367,36 +40188,47 @@ Length limit: 64 characters.
         :param _Comment: Smart subtitle template description.
 Length limit: 256 characters.
         :type Comment: str
-        :param _VideoSrcLanguage: Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
-
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        :param _SubtitleFormat: Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - Unspecified or left blank: no subtitle file generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
         :type SubtitleFormat: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language
@@ -39407,26 +40239,35 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
+This field is valid when the value of TranslateSwitch is ON.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
+        :param _ProcessType: Subtitle processing type:
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: If the field is unspecified, ASR is used by default.
+        :type ProcessType: int
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -39437,6 +40278,7 @@ hi: Hindi
         self._SubtitleType = None
         self._AsrHotWordsConfigure = None
         self._TranslateDstLanguage = None
+        self._ProcessType = None
 
     @property
     def Definition(self):
@@ -39452,8 +40294,9 @@ hi: Hindi
     @property
     def TranslateSwitch(self):
         r"""Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :rtype: str
         """
         return self._TranslateSwitch
@@ -39488,31 +40331,34 @@ Length limit: 256 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
-
+        r"""Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -39523,10 +40369,18 @@ prime_zh: Simplified Chinese, Chinese Dialect and English.
 
     @property
     def SubtitleFormat(self):
-        r"""Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        r"""Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - Unspecified or left blank: no subtitle file generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -39564,25 +40418,29 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
+This field is valid when the value of TranslateSwitch is ON.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -39590,6 +40448,20 @@ hi: Hindi
     @TranslateDstLanguage.setter
     def TranslateDstLanguage(self, TranslateDstLanguage):
         self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def ProcessType(self):
+        r"""Subtitle processing type:
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: If the field is unspecified, ASR is used by default.
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
 
 
     def _deserialize(self, params):
@@ -39604,6 +40476,7 @@ hi: Hindi
             self._AsrHotWordsConfigure = AsrHotWordsConfigure()
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40806,6 +41679,105 @@ There can be up to 10 tags, each with a length limit of 16 characters.
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverrideEraseParameter(AbstractModel):
+    r"""Custom parameters for smart erasing.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EraseType: Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :type EraseType: str
+        :param _EraseSubtitleConfig: Subtitle erasing configuration.
+This field is required when the value of EraseType is subtitle.
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: Watermark erasing configuration.
+This field is required when the value of EraseType is watermark.
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: Privacy protection configuration.
+This field is required when the value of EraseType is privacy.
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
+        """
+        self._EraseType = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+
+    @property
+    def EraseType(self):
+        r"""Erasing type.
+-subtitle: subtitle removal.
+-watermark: watermark removal.
+-privacy: privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""Subtitle erasing configuration.
+This field is required when the value of EraseType is subtitle.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""Watermark erasing configuration.
+This field is required when the value of EraseType is watermark.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""Privacy protection configuration.
+This field is required when the value of EraseType is privacy.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+
+    def _deserialize(self, params):
+        self._EraseType = params.get("EraseType")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = UpdateSmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = UpdateSmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = UpdateSmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43954,6 +44926,204 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class PureSubtitleTransResult(AbstractModel):
+    r"""Translation result of pure subtitle files.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status (the three valid values are as follows):
+- PROCESSING
+- SUCCESS 
+- FAIL
+        :type Status: str
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of Media Processing Service (MPS) error codes.
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :type ErrCode: int
+        :param _Message: Error message
+        :type Message: str
+        :param _Input: Translation task input information.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: Translation output result of pure subtitle files.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
+        :param _Progress: Task progress.
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        r"""Task status (the three valid values are as follows):
+- PROCESSING
+- SUCCESS 
+- FAIL
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of Media Processing Service (MPS) error codes.
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Translation task input information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Translation output result of pure subtitle files.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""Task progress.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = PureSubtitleTransResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PureSubtitleTransResultOutput(AbstractModel):
+    r"""Detailed output result of translation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: Storage location of the subtitle file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _SubtitleResults: Result set of multilingual translation.
+        :type SubtitleResults: list of SubtitleTransResultItem
+        """
+        self._OutputStorage = None
+        self._SubtitleResults = None
+
+    @property
+    def OutputStorage(self):
+        r"""Storage location of the subtitle file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def SubtitleResults(self):
+        r"""Result set of multilingual translation.
+        :rtype: list of SubtitleTransResultItem
+        """
+        return self._SubtitleResults
+
+    @SubtitleResults.setter
+    def SubtitleResults(self, SubtitleResults):
+        self._SubtitleResults = SubtitleResults
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("SubtitleResults") is not None:
+            self._SubtitleResults = []
+            for item in params.get("SubtitleResults"):
+                obj = SubtitleTransResultItem()
+                obj._deserialize(item)
+                self._SubtitleResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlData(AbstractModel):
     r"""Media quality inspection result output.
 
@@ -44961,68 +46131,90 @@ class RawSmartSubtitleParameter(AbstractModel):
 2: source language + target language
 The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
-        :param _VideoSrcLanguage: Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        :param _SubtitleFormat: Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     -vtt: WebVTT format subtitle.
+     -srt: SRT format subtitle.
+     - If this field is unspecified or left blank, no subtitle file will be generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
         :param _TranslateSwitch: Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
-Note: This field may return null, indicating that no valid value can be obtained.
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
-Note: This field may return null, indicating that no valid value can be obtained.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _ExtInfo: Custom parameter.
         :type ExtInfo: str
+        :param _ProcessType: Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :type ProcessType: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -45031,6 +46223,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._TranslateDstLanguage = None
         self._AsrHotWordsConfigure = None
         self._ExtInfo = None
+        self._ProcessType = None
 
     @property
     def SubtitleType(self):
@@ -45049,30 +46242,34 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def VideoSrcLanguage(self):
-        r"""Video source language for intelligent caption.
-Valid values: 
-zh: Simplified Chinese.
-en: Eenglish.
-Ja: Japanese.
-Ko: Korean.
-zh-PY: Simplified Chinese, English and Cantonese.
-zh-medical: Medical Chinese.
-yue: Cantonese.
-Vi: Vietnamese.
-ms: Malay.
-id: Indonesian.
-fil: Filipino.
-th: Thai.
-pt: Portuguese.
-tr: Turkish.
-ar: Arabic.
-es: Spanish.
-hi: Hindi
-Fr: French.
-de: German.
-zh-dialect: Chinese dialect
-zh_en: Simplified Chinese and English
-prime_zh: Simplified Chinese, Chinese Dialect and English.
+        r"""Source language of the video with smart subtitles.
+Currently, the following languages are supported:
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -45083,10 +46280,19 @@ prime_zh: Simplified Chinese, Chinese Dialect and English.
 
     @property
     def SubtitleFormat(self):
-        r"""Intelligent subtitle file format.
-vtt: WebVTT format.
-srt: SRT format.
-If this field is left blank, no subtitle file will be generated.
+        r"""Smart subtitle file format:
+- Under the ASR recognition and translation processing type:
+     -vtt: WebVTT format subtitle.
+     -srt: SRT format subtitle.
+     - If this field is unspecified or left blank, no subtitle file will be generated.
+- Under the pure subtitle translation processing type:
+    - original: consistent with the source file.
+    - vtt: WebVTT format subtitle.
+    - srt: SRT format subtitle.
+**Note**:
+- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
+- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -45098,9 +46304,10 @@ If this field is left blank, no subtitle file will be generated.
     @property
     def TranslateSwitch(self):
         r"""Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
-Note: This field may return null, indicating that no valid value can be obtained.
+`ON`: translation enabled.
+`OFF`: translation disabled.
+**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TranslateSwitch
@@ -45112,26 +46319,29 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
-Note: This field may return null, indicating that no valid value can be obtained.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -45163,6 +46373,20 @@ Note: This field may return null, indicating that no valid value can be obtained
     def ExtInfo(self, ExtInfo):
         self._ExtInfo = ExtInfo
 
+    @property
+    def ProcessType(self):
+        r"""Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._SubtitleType = params.get("SubtitleType")
@@ -45174,6 +46398,7 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._AsrHotWordsConfigure = AsrHotWordsConfigure()
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._ExtInfo = params.get("ExtInfo")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48495,6 +49720,8 @@ class SmartEraseTaskInput(AbstractModel):
         :param _RawParameter: Intelligent erasure custom parameter. valid when Definition is 0. this parameter is used for highly custom scenarios. we recommend you prioritize using Definition to specify intelligent erasure parameters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
+        :param _OverrideParameter: Custom parameters for smart erasing. When the value of Definition is not 0, this parameter is valid. When certain erasing parameters in this structure are specified, the specified parameters will be used to overwrite those in the smart erasing template. This parameter is used in highly customized scenarios. It is recommended to use only Definition to specify smart erasing parameters.
+        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideEraseParameter`
         :param _OutputStorage: Specifies the target storage for files. if left blank, it inherits the upper-level OutputStorage value.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -48512,6 +49739,7 @@ Specifies the output path must end with `.{format}`. variable names, please refe
         """
         self._Definition = None
         self._RawParameter = None
+        self._OverrideParameter = None
         self._OutputStorage = None
         self._OutputObjectPath = None
 
@@ -48537,6 +49765,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @RawParameter.setter
     def RawParameter(self, RawParameter):
         self._RawParameter = RawParameter
+
+    @property
+    def OverrideParameter(self):
+        r"""Custom parameters for smart erasing. When the value of Definition is not 0, this parameter is valid. When certain erasing parameters in this structure are specified, the specified parameters will be used to overwrite those in the smart erasing template. This parameter is used in highly customized scenarios. It is recommended to use only Definition to specify smart erasing parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideEraseParameter`
+        """
+        return self._OverrideParameter
+
+    @OverrideParameter.setter
+    def OverrideParameter(self, OverrideParameter):
+        self._OverrideParameter = OverrideParameter
 
     @property
     def OutputStorage(self):
@@ -48576,6 +49815,9 @@ Specifies the output path must end with `.{format}`. variable names, please refe
         if params.get("RawParameter") is not None:
             self._RawParameter = RawSmartEraseParameter()
             self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OverrideParameter") is not None:
+            self._OverrideParameter = OverrideEraseParameter()
+            self._OverrideParameter._deserialize(params.get("OverrideParameter"))
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -49216,12 +50458,15 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
         :param _SegmentSet: List of segments for full speech recognition.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        :param _Path: Subtitle file path.
+        :type Path: str
         :param _SubtitlePath: Subtitle file path.
         :type SubtitlePath: str
         :param _OutputStorage: Subtitle file storage location.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
+        self._Path = None
         self._SubtitlePath = None
         self._OutputStorage = None
 
@@ -49236,6 +50481,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @SegmentSet.setter
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
+
+    @property
+    def Path(self):
+        r"""Subtitle file path.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
 
     @property
     def SubtitlePath(self):
@@ -49267,6 +50523,7 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = SmartSubtitleTaskAsrFullTextSegmentItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._Path = params.get("Path")
         self._SubtitlePath = params.get("SubtitlePath")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
@@ -49712,10 +50969,16 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type SubtitlePath: str
         :param _OutputStorage: Subtitle file storage location.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Path: Subtitle file URL.
+        :type Path: str
+        :param _SubtitleResults: Returned translation result during multilingual translation.	
+        :type SubtitleResults: list of SubtitleTransResultItem
         """
         self._SegmentSet = None
         self._SubtitlePath = None
         self._OutputStorage = None
+        self._Path = None
+        self._SubtitleResults = None
 
     @property
     def SegmentSet(self):
@@ -49751,6 +51014,28 @@ Note: This field may return null, indicating that no valid value can be obtained
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def Path(self):
+        r"""Subtitle file URL.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def SubtitleResults(self):
+        r"""Returned translation result during multilingual translation.	
+        :rtype: list of SubtitleTransResultItem
+        """
+        return self._SubtitleResults
+
+    @SubtitleResults.setter
+    def SubtitleResults(self, SubtitleResults):
+        self._SubtitleResults = SubtitleResults
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -49763,6 +51048,13 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Path = params.get("Path")
+        if params.get("SubtitleResults") is not None:
+            self._SubtitleResults = []
+            for item in params.get("SubtitleResults"):
+                obj = SubtitleTransResultItem()
+                obj._deserialize(item)
+                self._SubtitleResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49919,33 +51211,40 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _AsrHotWordsLibraryName: Name of the hotword lexicon associated with the template.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AsrHotWordsLibraryName: str
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fli: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
-hi: Hindi
-fr: French
-de: German
-zh-dialect: Chinese dialect
+        :param _VideoSrcLanguage: List of source languages of the video with smart subtitles.
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format.
-vtt: WebVTT format
-If this field is left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SubtitleFormat: Smart subtitle file format:
+- vtt: WebVTT format.
+- srt: SRT format.
+- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).
+- If this field is unspecified or left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language1: target language
@@ -49958,26 +51257,29 @@ OFF: disable translation
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
-Note: This field may return null, indicating that no valid value can be obtained.
+This field is valid when the value of TranslateSwitch is ON.
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
         :param _CreateTime: Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
@@ -49986,6 +51288,10 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _AliasName: Alias of the preset smart subtitle template.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AliasName: str
+        :param _ProcessType: Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+        :type ProcessType: int
         """
         self._Definition = None
         self._Name = None
@@ -50001,6 +51307,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._CreateTime = None
         self._UpdateTime = None
         self._AliasName = None
+        self._ProcessType = None
 
     @property
     def Definition(self):
@@ -50077,28 +51384,33 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-zh-PY: Chinese-English-Cantonese
-zh-medical: Medical Chinese
-yue: Cantonese
-vi: Vietnamese
-ms: Malay
-id: Indonesian
-fli: Filipino
-th: Thai
-pt: Portuguese
-tr: Turkish
-ar: Arabic
-es: Spanish
-hi: Hindi
-fr: French
-de: German
-zh-dialect: Chinese dialect
+        r"""List of source languages of the video with smart subtitles.
+`zh`: Simplified Chinese.
+`yue`: Cantonese.
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
+`zh_dialect`: Chinese dialect.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`zh_en`: Chinese and English.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -50109,10 +51421,12 @@ zh-dialect: Chinese dialect
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format.
-vtt: WebVTT format
-If this field is left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Smart subtitle file format:
+- vtt: WebVTT format.
+- srt: SRT format.
+- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).
+- If this field is unspecified or left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -50152,26 +51466,29 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field takes effect when TranslateSwitch is set to ON.
-Supported languages:
-zh: Simplified Chinese
-en: English
-ja: Japanese
-ko: Korean
-fr: French
-es: Spanish
-it: Italian
-de: German
-tr: Turkish
-ru: Russian
-pt: Portuguese
-vi: Vietnamese
-id: Indonesian
-ms: Malay
-th: Thai
-ar: Arabic
-hi: Hindi
-Note: This field may return null, indicating that no valid value can be obtained.
+This field is valid when the value of TranslateSwitch is ON.
+`zh`: Simplified Chinese.
+`zh-TW`: Traditional Chinese.
+`en`: English.
+`ja`: Japanese.
+`ko`: Korean.
+`fr`: French.
+`es`: Spanish.
+`it`: Italian.
+`de`: German.
+`tr`: Turkish.
+`ru`: Russian.
+`pt`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`vi`: Vietnamese.
+`id`: Indonesian.
+`ms`: Malay.
+`th`: Thai.
+`ar`: Arabic.
+`hi`: Hindi.
+`fil`: Filipino.
+**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -50214,6 +51531,19 @@ Note: This field may return null, indicating that no valid value can be obtained
     def AliasName(self, AliasName):
         self._AliasName = AliasName
 
+    @property
+    def ProcessType(self):
+        r"""Subtitle processing type.
+- 0: ASR recognition subtitle.
+- 1: pure subtitle translation.
+        :rtype: int
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -50232,6 +51562,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._AliasName = params.get("AliasName")
+        self._ProcessType = params.get("ProcessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50250,8 +51581,9 @@ class SmartSubtitlesResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-<li>AsrFullTextRecognition: full speech recognition</li>
-<li>TransTextRecognition: speech translation</li>
+- AsrFullTextRecognition: full speech recognition.
+- TransTextRecognition: speech translation.
+- PureSubtitleTrans: pure subtitle translation.
         :type Type: str
         :param _AsrFullTextTask: Full speech recognition result. When Type is
  set to AsrFullTextRecognition, this parameter takes effect.
@@ -50262,16 +51594,21 @@ Note: This field may return null, indicating that no valid value can be obtained
  set to TransTextRecognition, this parameter takes effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        :param _PureSubtitleTransTask: The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PureSubtitleTransTask: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
         """
         self._Type = None
         self._AsrFullTextTask = None
         self._TransTextTask = None
+        self._PureSubtitleTransTask = None
 
     @property
     def Type(self):
         r"""Task type. Valid values:
-<li>AsrFullTextRecognition: full speech recognition</li>
-<li>TransTextRecognition: speech translation</li>
+- AsrFullTextRecognition: full speech recognition.
+- TransTextRecognition: speech translation.
+- PureSubtitleTrans: pure subtitle translation.
         :rtype: str
         """
         return self._Type
@@ -50307,6 +51644,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def TransTextTask(self, TransTextTask):
         self._TransTextTask = TransTextTask
 
+    @property
+    def PureSubtitleTransTask(self):
+        r"""The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
+        """
+        return self._PureSubtitleTransTask
+
+    @PureSubtitleTransTask.setter
+    def PureSubtitleTransTask(self, PureSubtitleTransTask):
+        self._PureSubtitleTransTask = PureSubtitleTransTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -50316,6 +51665,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("TransTextTask") is not None:
             self._TransTextTask = SmartSubtitleTaskTransTextResult()
             self._TransTextTask._deserialize(params.get("TransTextTask"))
+        if params.get("PureSubtitleTransTask") is not None:
+            self._PureSubtitleTransTask = PureSubtitleTransResult()
+            self._PureSubtitleTransTask._deserialize(params.get("PureSubtitleTransTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50844,8 +52196,10 @@ class SpekeDrm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: Resource tagging. the field content is user-customized.
+        :param _ResourceId: Resource ID. The field content is user-defined.
 It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
+This field corresponds to the cid field in the Speke request.
+Note: Different DRM vendors have different restrictions on this field (for example, SDMC Technology Co., Ltd. does not support this field containing underscores). For specific rules, check with the vendors.
         :type ResourceId: str
         :param _KeyServerUrl: DRM manufacturer access address. the field content is obtained from the drm manufacturer.
 
@@ -50853,10 +52207,15 @@ Note: different DRM manufacturers have different limitations on the number of su
         :type KeyServerUrl: str
         :param _Vector: Initialization vector for encryption (32-byte hexadecimal string). the field content is user-customized.
         :type Vector: str
-        :param _EncryptionMethod: Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
+        :param _EncryptionMethod: Encryption method. Options:  
+- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  
+- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  
 
-cbcs: supported by PlayReady, Widevine, and FairPlay
-cenc: supported by PlayReady and Widevine
+If not specified:  
+- FairPlay defaults to **cbcs**.  
+- PlayReady and Widevine default to **cenc**.  
+- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  
+- Widevine+PlayReady defaults to **cenc**.
         :type EncryptionMethod: str
         :param _EncryptionPreset: Substream encryption rule. Default value: preset0.
 preset 0: use the same key to encrypt all substreams
@@ -50872,8 +52231,10 @@ preset1: use different keys for each substream
 
     @property
     def ResourceId(self):
-        r"""Resource tagging. the field content is user-customized.
+        r"""Resource ID. The field content is user-defined.
 It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
+This field corresponds to the cid field in the Speke request.
+Note: Different DRM vendors have different restrictions on this field (for example, SDMC Technology Co., Ltd. does not support this field containing underscores). For specific rules, check with the vendors.
         :rtype: str
         """
         return self._ResourceId
@@ -50908,10 +52269,15 @@ Note: different DRM manufacturers have different limitations on the number of su
 
     @property
     def EncryptionMethod(self):
-        r"""Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
+        r"""Encryption method. Options:  
+- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  
+- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  
 
-cbcs: supported by PlayReady, Widevine, and FairPlay
-cenc: supported by PlayReady and Widevine
+If not specified:  
+- FairPlay defaults to **cbcs**.  
+- PlayReady and Widevine default to **cenc**.  
+- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  
+- Widevine+PlayReady defaults to **cenc**.
         :rtype: str
         """
         return self._EncryptionMethod
@@ -51455,6 +52821,91 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ShadowAlpha = params.get("ShadowAlpha")
         self._LineSpacing = params.get("LineSpacing")
         self._Alignment = params.get("Alignment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleTransResultItem(AbstractModel):
+    r"""Subtitle translation output result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Translation marker.
+- Success
+- Error
+        :type Status: str
+        :param _TransSrc: Source language (such as "en").
+        :type TransSrc: str
+        :param _TransDst: Target language (such as "zh").
+        :type TransDst: str
+        :param _Path: Subtitle file URL.
+        :type Path: str
+        """
+        self._Status = None
+        self._TransSrc = None
+        self._TransDst = None
+        self._Path = None
+
+    @property
+    def Status(self):
+        r"""Translation marker.
+- Success
+- Error
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TransSrc(self):
+        r"""Source language (such as "en").
+        :rtype: str
+        """
+        return self._TransSrc
+
+    @TransSrc.setter
+    def TransSrc(self, TransSrc):
+        self._TransSrc = TransSrc
+
+    @property
+    def TransDst(self):
+        r"""Target language (such as "zh").
+        :rtype: str
+        """
+        return self._TransDst
+
+    @TransDst.setter
+    def TransDst(self, TransDst):
+        self._TransDst = TransDst
+
+    @property
+    def Path(self):
+        r"""Subtitle file URL.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TransSrc = params.get("TransSrc")
+        self._TransDst = params.get("TransDst")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53783,6 +55234,438 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class UpdateSmartErasePrivacyConfig(AbstractModel):
+    r"""Privacy protection configuration for the smart erasing template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivacyModel: Erasing method of privacy protection.
+- blur
+- mosaic
+        :type PrivacyModel: str
+        :param _PrivacyTargets: Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face: human face.
+- plate: license plate.
+        :type PrivacyTargets: list of str
+        """
+        self._PrivacyModel = None
+        self._PrivacyTargets = None
+
+    @property
+    def PrivacyModel(self):
+        r"""Erasing method of privacy protection.
+- blur
+- mosaic
+        :rtype: str
+        """
+        return self._PrivacyModel
+
+    @PrivacyModel.setter
+    def PrivacyModel(self, PrivacyModel):
+        self._PrivacyModel = PrivacyModel
+
+    @property
+    def PrivacyTargets(self):
+        r"""Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face: human face.
+- plate: license plate.
+        :rtype: list of str
+        """
+        return self._PrivacyTargets
+
+    @PrivacyTargets.setter
+    def PrivacyTargets(self, PrivacyTargets):
+        self._PrivacyTargets = PrivacyTargets
+
+
+    def _deserialize(self, params):
+        self._PrivacyModel = params.get("PrivacyModel")
+        self._PrivacyTargets = params.get("PrivacyTargets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSmartEraseSubtitleConfig(AbstractModel):
+    r"""Subtitle removal configuration for the smart erasing template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleEraseMethod: Subtitle erasing method.
+**Automatic erasing:** Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.
+When automatic erasing is used, if AutoAreas is not specified, the default area (lower middle part of the image) will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasing:** If the subtitle position is relatively fixed, you are recommended to specify the erasing area directly to minimize missed erasing.
+When you choose specified area erasing, specify at least one area for CustomAreas.
+- auto: automatic erasing.
+- custom: specified area erasing.
+
+        :type SubtitleEraseMethod: str
+        :param _SubtitleModel: Subtitle erasing model.
+**Standard edition (recommended):** For standard subtitle styles, you are recommended to select this edition to ensure better traceless effects in the details.
+**Area edition:** If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.
+- standard: standard edition.
+- area: area edition.
+        :type SubtitleModel: str
+        :param _OcrSwitch: Whether to enable OCR subtitle extraction. The default value is OFF.
+OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When OCR subtitle extraction is enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.
+- ON: enabled.
+-OFF: disabled.
+        :type OcrSwitch: str
+        :param _SubtitleLang: Subtitle language, which is used to guide OCR recognition. The default value is zh_en. This parameter is valid only when OcrSwitch is set to ON.
+- zh_en: Chinese and English.
+- multi: others.
+The following are other languages supported for recognition:
+Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, India-Bengali, India-Gujarati, India-Kannada, India-Malayalam, India-Tamil, India-Telugu, Slovenian, Polish, Catalan, Bosnian, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijani, Indonesian, Luxembourgish, Lithuanian, Latvian, Maltese, Slovak, Turkish, Kazakh, Greek, Irish, Belarusian, Khmer, Tagalog, Pashto, Persian, and Tajik.
+
+        :type SubtitleLang: str
+        :param _SubtitleFormat: Subtitle file format. The default value is vtt. This parameter is valid only when OcrSwitch is set to ON.
+- srt: SRT format.
+- vtt: WebVTT format.
+        :type SubtitleFormat: str
+        :param _TransSwitch: Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to ON.
+- ON: enabled.
+- OFF: disabled.
+        :type TransSwitch: str
+        :param _TransDstLang: Target language for Subtitle translation. The default value is en. This parameter is valid only when TransSwitch is set to ON.
+Currently, the following languages are supported:
+zh: Simplified Chinese.
+en: English.
+ja: Japanese.
+ko: Korean.
+fr: French.
+es: Spanish.
+it: Italian.
+de: German.
+tr: Turkish.
+ru: Russian.
+pt: Portuguese.
+vi: Vietnamese.
+id: Indonesian.
+ms: Malay.
+th: Thai.
+ar: Arabic.
+hi: Hindi.
+        :type TransDstLang: str
+        :param _AutoAreas: Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: Custom area for specified area erasing.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._SubtitleEraseMethod = None
+        self._SubtitleModel = None
+        self._OcrSwitch = None
+        self._SubtitleLang = None
+        self._SubtitleFormat = None
+        self._TransSwitch = None
+        self._TransDstLang = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def SubtitleEraseMethod(self):
+        r"""Subtitle erasing method.
+**Automatic erasing:** Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.
+When automatic erasing is used, if AutoAreas is not specified, the default area (lower middle part of the image) will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasing:** If the subtitle position is relatively fixed, you are recommended to specify the erasing area directly to minimize missed erasing.
+When you choose specified area erasing, specify at least one area for CustomAreas.
+- auto: automatic erasing.
+- custom: specified area erasing.
+
+        :rtype: str
+        """
+        return self._SubtitleEraseMethod
+
+    @SubtitleEraseMethod.setter
+    def SubtitleEraseMethod(self, SubtitleEraseMethod):
+        self._SubtitleEraseMethod = SubtitleEraseMethod
+
+    @property
+    def SubtitleModel(self):
+        r"""Subtitle erasing model.
+**Standard edition (recommended):** For standard subtitle styles, you are recommended to select this edition to ensure better traceless effects in the details.
+**Area edition:** If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.
+- standard: standard edition.
+- area: area edition.
+        :rtype: str
+        """
+        return self._SubtitleModel
+
+    @SubtitleModel.setter
+    def SubtitleModel(self, SubtitleModel):
+        self._SubtitleModel = SubtitleModel
+
+    @property
+    def OcrSwitch(self):
+        r"""Whether to enable OCR subtitle extraction. The default value is OFF.
+OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When OCR subtitle extraction is enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.
+- ON: enabled.
+-OFF: disabled.
+        :rtype: str
+        """
+        return self._OcrSwitch
+
+    @OcrSwitch.setter
+    def OcrSwitch(self, OcrSwitch):
+        self._OcrSwitch = OcrSwitch
+
+    @property
+    def SubtitleLang(self):
+        r"""Subtitle language, which is used to guide OCR recognition. The default value is zh_en. This parameter is valid only when OcrSwitch is set to ON.
+- zh_en: Chinese and English.
+- multi: others.
+The following are other languages supported for recognition:
+Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, India-Bengali, India-Gujarati, India-Kannada, India-Malayalam, India-Tamil, India-Telugu, Slovenian, Polish, Catalan, Bosnian, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijani, Indonesian, Luxembourgish, Lithuanian, Latvian, Maltese, Slovak, Turkish, Kazakh, Greek, Irish, Belarusian, Khmer, Tagalog, Pashto, Persian, and Tajik.
+
+        :rtype: str
+        """
+        return self._SubtitleLang
+
+    @SubtitleLang.setter
+    def SubtitleLang(self, SubtitleLang):
+        self._SubtitleLang = SubtitleLang
+
+    @property
+    def SubtitleFormat(self):
+        r"""Subtitle file format. The default value is vtt. This parameter is valid only when OcrSwitch is set to ON.
+- srt: SRT format.
+- vtt: WebVTT format.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def TransSwitch(self):
+        r"""Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to ON.
+- ON: enabled.
+- OFF: disabled.
+        :rtype: str
+        """
+        return self._TransSwitch
+
+    @TransSwitch.setter
+    def TransSwitch(self, TransSwitch):
+        self._TransSwitch = TransSwitch
+
+    @property
+    def TransDstLang(self):
+        r"""Target language for Subtitle translation. The default value is en. This parameter is valid only when TransSwitch is set to ON.
+Currently, the following languages are supported:
+zh: Simplified Chinese.
+en: English.
+ja: Japanese.
+ko: Korean.
+fr: French.
+es: Spanish.
+it: Italian.
+de: German.
+tr: Turkish.
+ru: Russian.
+pt: Portuguese.
+vi: Vietnamese.
+id: Indonesian.
+ms: Malay.
+th: Thai.
+ar: Arabic.
+hi: Hindi.
+        :rtype: str
+        """
+        return self._TransDstLang
+
+    @TransDstLang.setter
+    def TransDstLang(self, TransDstLang):
+        self._TransDstLang = TransDstLang
+
+    @property
+    def AutoAreas(self):
+        r"""Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""Custom area for specified area erasing.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._SubtitleEraseMethod = params.get("SubtitleEraseMethod")
+        self._SubtitleModel = params.get("SubtitleModel")
+        self._OcrSwitch = params.get("OcrSwitch")
+        self._SubtitleLang = params.get("SubtitleLang")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._TransSwitch = params.get("TransSwitch")
+        self._TransDstLang = params.get("TransDstLang")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSmartEraseWatermarkConfig(AbstractModel):
+    r"""Watermark removal configuration for the smart erasing template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WatermarkEraseMethod: Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+ **Specified area erasing: ** For static watermarks in fixed positions, you are recommended to specify the erasing area directly.When you choose specified area erasing, specify at least one area.
+- auto: automatic erasing.
+- custom: specified area erasing.
+        :type WatermarkEraseMethod: str
+        :param _WatermarkModel: Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
+        :type WatermarkModel: str
+        :param _AutoAreas: Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: Custom area for specified area erasing.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._WatermarkEraseMethod = None
+        self._WatermarkModel = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def WatermarkEraseMethod(self):
+        r"""Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+ **Specified area erasing: ** For static watermarks in fixed positions, you are recommended to specify the erasing area directly.When you choose specified area erasing, specify at least one area.
+- auto: automatic erasing.
+- custom: specified area erasing.
+        :rtype: str
+        """
+        return self._WatermarkEraseMethod
+
+    @WatermarkEraseMethod.setter
+    def WatermarkEraseMethod(self, WatermarkEraseMethod):
+        self._WatermarkEraseMethod = WatermarkEraseMethod
+
+    @property
+    def WatermarkModel(self):
+        r"""Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
+        :rtype: str
+        """
+        return self._WatermarkModel
+
+    @WatermarkModel.setter
+    def WatermarkModel(self, WatermarkModel):
+        self._WatermarkModel = WatermarkModel
+
+    @property
+    def AutoAreas(self):
+        r"""Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""Custom area for specified area erasing.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._WatermarkEraseMethod = params.get("WatermarkEraseMethod")
+        self._WatermarkModel = params.get("WatermarkModel")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UrlInputInfo(AbstractModel):
     r"""The URL of the object to process.
 
@@ -54710,39 +56593,51 @@ class VideoEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FrameRate: Frame interpolation configuration.
+        :param _FrameRate: Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
-        :param _SuperResolution: Super resolution configuration.
+        :param _SuperResolution: Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         :param _Hdr: HDR configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
-        :param _Denoise: Image noise removal configuration.
+        :param _Denoise: Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
-        :param _ImageQualityEnhance: Overall enhancement configuration.
+        :param _ImageQualityEnhance: Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         :param _ColorEnhance: Color enhancement configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _SharpEnhance: Detail enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
-        :param _FaceEnhance: Face enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         :param _LowLightEnhance: Low-light enhancement configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         :param _ScratchRepair: Banding removal configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
-        :param _ArtifactRepair: Artifact removal (smoothing) configuration.
+        :param _ArtifactRepair: Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        :param _EnhanceSceneType: Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+<li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnhanceSceneType: str
+        :param _DiffusionEnhance: Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
+        :param _FrameRateWithDen: New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -54750,15 +56645,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Denoise = None
         self._ImageQualityEnhance = None
         self._ColorEnhance = None
-        self._SharpEnhance = None
-        self._FaceEnhance = None
         self._LowLightEnhance = None
         self._ScratchRepair = None
         self._ArtifactRepair = None
+        self._EnhanceSceneType = None
+        self._DiffusionEnhance = None
+        self._FrameRateWithDen = None
 
     @property
     def FrameRate(self):
-        r"""Frame interpolation configuration.
+        r"""Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
@@ -54770,7 +56666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuperResolution(self):
-        r"""Super resolution configuration.
+        r"""Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
@@ -54794,7 +56690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Denoise(self):
-        r"""Image noise removal configuration.
+        r"""Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
@@ -54806,7 +56702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageQualityEnhance(self):
-        r"""Overall enhancement configuration.
+        r"""Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
@@ -54827,30 +56723,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ColorEnhance.setter
     def ColorEnhance(self, ColorEnhance):
         self._ColorEnhance = ColorEnhance
-
-    @property
-    def SharpEnhance(self):
-        r"""Detail enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
-        """
-        return self._SharpEnhance
-
-    @SharpEnhance.setter
-    def SharpEnhance(self, SharpEnhance):
-        self._SharpEnhance = SharpEnhance
-
-    @property
-    def FaceEnhance(self):
-        r"""Face enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
-        """
-        return self._FaceEnhance
-
-    @FaceEnhance.setter
-    def FaceEnhance(self, FaceEnhance):
-        self._FaceEnhance = FaceEnhance
 
     @property
     def LowLightEnhance(self):
@@ -54878,7 +56750,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ArtifactRepair(self):
-        r"""Artifact removal (smoothing) configuration.
+        r"""Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
@@ -54887,6 +56759,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ArtifactRepair.setter
     def ArtifactRepair(self, ArtifactRepair):
         self._ArtifactRepair = ArtifactRepair
+
+    @property
+    def EnhanceSceneType(self):
+        r"""Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+<li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EnhanceSceneType
+
+    @EnhanceSceneType.setter
+    def EnhanceSceneType(self, EnhanceSceneType):
+        self._EnhanceSceneType = EnhanceSceneType
+
+    @property
+    def DiffusionEnhance(self):
+        r"""Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
+        """
+        return self._DiffusionEnhance
+
+    @DiffusionEnhance.setter
+    def DiffusionEnhance(self, DiffusionEnhance):
+        self._DiffusionEnhance = DiffusionEnhance
+
+    @property
+    def FrameRateWithDen(self):
+        r"""New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
+        """
+        return self._FrameRateWithDen
+
+    @FrameRateWithDen.setter
+    def FrameRateWithDen(self, FrameRateWithDen):
+        self._FrameRateWithDen = FrameRateWithDen
 
 
     def _deserialize(self, params):
@@ -54908,12 +56825,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ColorEnhance") is not None:
             self._ColorEnhance = ColorEnhanceConfig()
             self._ColorEnhance._deserialize(params.get("ColorEnhance"))
-        if params.get("SharpEnhance") is not None:
-            self._SharpEnhance = SharpEnhanceConfig()
-            self._SharpEnhance._deserialize(params.get("SharpEnhance"))
-        if params.get("FaceEnhance") is not None:
-            self._FaceEnhance = FaceEnhanceConfig()
-            self._FaceEnhance._deserialize(params.get("FaceEnhance"))
         if params.get("LowLightEnhance") is not None:
             self._LowLightEnhance = LowLightEnhanceConfig()
             self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
@@ -54923,6 +56834,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ArtifactRepair") is not None:
             self._ArtifactRepair = ArtifactRepairConfig()
             self._ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        self._EnhanceSceneType = params.get("EnhanceSceneType")
+        if params.get("DiffusionEnhance") is not None:
+            self._DiffusionEnhance = DiffusionEnhanceConfig()
+            self._DiffusionEnhance._deserialize(params.get("DiffusionEnhance"))
+        if params.get("FrameRateWithDen") is not None:
+            self._FrameRateWithDen = FrameRateWithDenConfig()
+            self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55010,10 +56928,9 @@ If the Mode parameter is set to CRF, the Bitrate setting will be invalid, and en
 If the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
-        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second.
-This parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.
-Note: It can be used only in the container format of hls.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _HlsTime: Average shard duration. value range: (0-10], unit: second.
+Leaving it blank means auto, which automatically chooses the appropriate segment duration based on video features such as GOP.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HlsTime: int
         :param _SegmentType: HLS segment type. Valid values:
 <li>0: HLS+TS segment</li>
@@ -55099,21 +57016,23 @@ Note: The values of SceneType and CompressType fields only take effect when this
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ScenarioBased: int
         :param _SceneType: Video scenario. Valid values: 
-normal: General transcoding scenario: General transcoding and compression scenario.
-pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+- normal: General transcoding scenario. General transcoding and compression scenario.
+- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+
 Default value: normal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SceneType: str
         :param _CompressType: Transcoding policy. Valid values: 
-ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+
 Default value: standard_compress. 
 Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
@@ -55310,10 +57229,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HlsTime(self):
-        r"""Average segment duration. Value range: (0-10], unit: second.
-This parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.
-Note: It can be used only in the container format of hls.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Average shard duration. value range: (0-10], unit: second.
+Leaving it blank means auto, which automatically chooses the appropriate segment duration based on video features such as GOP.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._HlsTime
@@ -55534,12 +57452,13 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SceneType(self):
         r"""Video scenario. Valid values: 
-normal: General transcoding scenario: General transcoding and compression scenario.
-pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+- normal: General transcoding scenario. General transcoding and compression scenario.
+- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+
 Default value: normal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -55554,10 +57473,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def CompressType(self):
         r"""Transcoding policy. Valid values: 
-ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+
 Default value: standard_compress. 
 Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
@@ -55618,25 +57538,23 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Encoding format for video streams. Optional values:
-<li>h264: H.264 encoding</li>
-<li>h265: H.265 encoding</li>
-<li>h266: H.266 encoding</li>
-<li>av1: AOMedia Video 1 encoding</li>
-<li>vp8: VP8 encoding</li>
-<li>vp9: VP9 encoding</li>
-<li>mpeg2: MPEG2 encoding</li>
-<li>dnxhd: DNxHD encoding</li>
-<li>mv-hevc: MV-HEVC encoding</li>
+        :param _Codec: Encoding format for video streams. valid values:.
+<Li>H264: h.264 encoding.</li>.
+<Li>H265: h.265 encoding.</li>.
+<Li>H266: h.266 encoding.</li>.
+<li>av1: AOMedia Video 1 encoding</li>.
+<li>vp8: vp8 encoding.</li>.
+<li>vp9: vp9 encoding.</li>.
+<li>mpeg2: mpeg2 encoding.</li>.
+<li>dnxhd: specifies dnxhd encoding.</li>.
+<li>mv-hevc: mv-hevc encoding.</li>.
 
-Note: 
-AV1 encoding containers currently only support mp4, webm, and mkv.
-H.266 encoding containers currently only support mp4, hls, ts, and mov. 
-VP8 and VP9 encoding containers currently only support webm and mkv.
-MPEG2 and DNxHD encoding containers currently only support mxf.
-MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: the av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and dnxhd encoding containers currently only support mxf.
+Note: MV-HEVC encoding containers currently only support mp4, hls, and mov. among them, the hls format supports only mp4 segmentation format and requires the input source to be a panoramic video (with multi-perspective).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
         :param _Fps: Video frame rate. Value range:
 When FpsDenominator is empty, the range is [0, 120], in Hz.
@@ -55787,20 +57705,23 @@ Note: This value takes effect only when the value of this field is 1.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ScenarioBased: int
         :param _SceneType: Video scenario. Valid values: 
-normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. 
-materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+- normal: General transcoding scenario. General transcoding and compression scenario.
+- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+
 Default value: normal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SceneType: str
         :param _CompressType: Transcoding policy. Valid values: 
-ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. 
-high_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. 
-low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. 
+- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+
 Default value: standard_compress. 
 Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
@@ -55838,25 +57759,23 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
-        r"""Encoding format for video streams. Optional values:
-<li>h264: H.264 encoding</li>
-<li>h265: H.265 encoding</li>
-<li>h266: H.266 encoding</li>
-<li>av1: AOMedia Video 1 encoding</li>
-<li>vp8: VP8 encoding</li>
-<li>vp9: VP9 encoding</li>
-<li>mpeg2: MPEG2 encoding</li>
-<li>dnxhd: DNxHD encoding</li>
-<li>mv-hevc: MV-HEVC encoding</li>
+        r"""Encoding format for video streams. valid values:.
+<Li>H264: h.264 encoding.</li>.
+<Li>H265: h.265 encoding.</li>.
+<Li>H266: h.266 encoding.</li>.
+<li>av1: AOMedia Video 1 encoding</li>.
+<li>vp8: vp8 encoding.</li>.
+<li>vp9: vp9 encoding.</li>.
+<li>mpeg2: mpeg2 encoding.</li>.
+<li>dnxhd: specifies dnxhd encoding.</li>.
+<li>mv-hevc: mv-hevc encoding.</li>.
 
-Note: 
-AV1 encoding containers currently only support mp4, webm, and mkv.
-H.266 encoding containers currently only support mp4, hls, ts, and mov. 
-VP8 and VP9 encoding containers currently only support webm and mkv.
-MPEG2 and DNxHD encoding containers currently only support mxf.
-MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: the av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and dnxhd encoding containers currently only support mxf.
+Note: MV-HEVC encoding containers currently only support mp4, hls, and mov. among them, the hls format supports only mp4 segmentation format and requires the input source to be a panoramic video (with multi-perspective).
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Codec
@@ -56241,11 +58160,13 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SceneType(self):
         r"""Video scenario. Valid values: 
-normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. 
-materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+- normal: General transcoding scenario. General transcoding and compression scenario.
+- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+
 Default value: normal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -56260,10 +58181,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def CompressType(self):
         r"""Transcoding policy. Valid values: 
-ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. 
-high_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. 
-low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. 
+- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+
 Default value: standard_compress. 
 Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
 Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
