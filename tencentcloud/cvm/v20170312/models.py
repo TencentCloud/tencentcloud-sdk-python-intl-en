@@ -4837,13 +4837,13 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>tag-value</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>tag value</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>tag:tag-key</strong></li>
-<p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace "tag-key" with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
         :type Filters: list of Filter
         :param _Offset: Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
         :type Offset: int
         :param _Limit: Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
         :type Limit: int
-        :param _InstanceType: Instance type, e.g. `S1.SMALL1`
+        :param _InstanceType: Instance type, e.g. `SA5.MEDIUM2`
         :type InstanceType: str
         """
         self._ImageIds = None
@@ -4880,7 +4880,7 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>tag-value</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>tag value</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>tag:tag-key</strong></li>
-<p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace "tag-key" with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4913,7 +4913,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance type, e.g. `S1.SMALL1`
+        r"""Instance type, e.g. `SA5.MEDIUM2`
         :rtype: str
         """
         return self._InstanceType
@@ -9067,7 +9067,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
         :type DryRun: bool
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :type ClientToken: str
-        :param _ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        :param _ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to "unnamed" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :type ReservedInstanceName: str
         """
         self._InstanceCount = None
@@ -9122,7 +9122,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstanceName(self):
-        r"""Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        r"""Reserved instance name.<br><li>The RI name defaults to "unnamed" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :rtype: str
         """
         return self._ReservedInstanceName
@@ -15221,7 +15221,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
         :type DryRun: bool
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :type ClientToken: str
-        :param _ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        :param _ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to "unnamed" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :type ReservedInstanceName: str
         """
         self._InstanceCount = None
@@ -15276,7 +15276,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstanceName(self):
-        r"""Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        r"""Reserved instance name.<br><li>The RI name defaults to "unnamed" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :rtype: str
         """
         return self._ReservedInstanceName
