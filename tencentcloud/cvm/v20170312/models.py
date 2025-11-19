@@ -1140,12 +1140,15 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
         :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param _DeploySecurityGroupIds: Deployment network security group list
         :type DeploySecurityGroupIds: list of str
+        :param _ChcDeployExtraConfig: 
+        :type ChcDeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
         self._ChcIds = None
         self._BmcVirtualPrivateCloud = None
         self._BmcSecurityGroupIds = None
         self._DeployVirtualPrivateCloud = None
         self._DeploySecurityGroupIds = None
+        self._ChcDeployExtraConfig = None
 
     @property
     def ChcIds(self):
@@ -1202,6 +1205,17 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
     def DeploySecurityGroupIds(self, DeploySecurityGroupIds):
         self._DeploySecurityGroupIds = DeploySecurityGroupIds
 
+    @property
+    def ChcDeployExtraConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
+        """
+        return self._ChcDeployExtraConfig
+
+    @ChcDeployExtraConfig.setter
+    def ChcDeployExtraConfig(self, ChcDeployExtraConfig):
+        self._ChcDeployExtraConfig = ChcDeployExtraConfig
+
 
     def _deserialize(self, params):
         self._ChcIds = params.get("ChcIds")
@@ -1213,6 +1227,9 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
             self._DeployVirtualPrivateCloud = VirtualPrivateCloud()
             self._DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
         self._DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        if params.get("ChcDeployExtraConfig") is not None:
+            self._ChcDeployExtraConfig = ChcDeployExtraConfig()
+            self._ChcDeployExtraConfig._deserialize(params.get("ChcDeployExtraConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1264,10 +1281,13 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
         :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param _DeploySecurityGroupIds: Deployment network security group list
         :type DeploySecurityGroupIds: list of str
+        :param _ChcDeployExtraConfig: 
+        :type ChcDeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
         self._ChcIds = None
         self._DeployVirtualPrivateCloud = None
         self._DeploySecurityGroupIds = None
+        self._ChcDeployExtraConfig = None
 
     @property
     def ChcIds(self):
@@ -1302,6 +1322,17 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
     def DeploySecurityGroupIds(self, DeploySecurityGroupIds):
         self._DeploySecurityGroupIds = DeploySecurityGroupIds
 
+    @property
+    def ChcDeployExtraConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
+        """
+        return self._ChcDeployExtraConfig
+
+    @ChcDeployExtraConfig.setter
+    def ChcDeployExtraConfig(self, ChcDeployExtraConfig):
+        self._ChcDeployExtraConfig = ChcDeployExtraConfig
+
 
     def _deserialize(self, params):
         self._ChcIds = params.get("ChcIds")
@@ -1309,6 +1340,9 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
             self._DeployVirtualPrivateCloud = VirtualPrivateCloud()
             self._DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
         self._DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        if params.get("ChcDeployExtraConfig") is not None:
+            self._ChcDeployExtraConfig = ChcDeployExtraConfig()
+            self._ChcDeployExtraConfig._deserialize(params.get("ChcDeployExtraConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2775,6 +2809,8 @@ If the dry run succeeds, the RequestId will be returned.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>TRUE: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>FALSE: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: FALSE.
         :type DisableApiTermination: bool
+        :param _EnableJumboFrame: 
+        :type EnableJumboFrame: bool
         :param _Metadata: Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
 Note: this field is in beta test.
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
@@ -2813,6 +2849,7 @@ Note: this field is in beta test.
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
         self._DisableApiTermination = None
+        self._EnableJumboFrame = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
 
@@ -3131,6 +3168,17 @@ If the dry run succeeds, the RequestId will be returned.
         self._DisableApiTermination = DisableApiTermination
 
     @property
+    def EnableJumboFrame(self):
+        r"""
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
+
+    @property
     def Metadata(self):
         r"""Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
 Note: this field is in beta test.
@@ -3215,6 +3263,7 @@ Note: this field is in beta test.
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._DisableApiTermination = params.get("DisableApiTermination")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
@@ -4119,6 +4168,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         :type CvmInSwGroupQuota: int
         :param _CvmInRackGroupQuota: Quota on instances in a rack-type disaster recovery group.
         :type CvmInRackGroupQuota: int
+        :param _CvmInSwitchGroupQuota: 
+        :type CvmInSwitchGroupQuota: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4127,6 +4178,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         self._CvmInHostGroupQuota = None
         self._CvmInSwGroupQuota = None
         self._CvmInRackGroupQuota = None
+        self._CvmInSwitchGroupQuota = None
         self._RequestId = None
 
     @property
@@ -4164,6 +4216,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CvmInSwGroupQuota(self):
+        warnings.warn("parameter `CvmInSwGroupQuota` is deprecated", DeprecationWarning) 
+
         r"""Quota on instances in a switch-type disaster recovery group.
         :rtype: int
         """
@@ -4171,6 +4225,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @CvmInSwGroupQuota.setter
     def CvmInSwGroupQuota(self, CvmInSwGroupQuota):
+        warnings.warn("parameter `CvmInSwGroupQuota` is deprecated", DeprecationWarning) 
+
         self._CvmInSwGroupQuota = CvmInSwGroupQuota
 
     @property
@@ -4183,6 +4239,17 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
     @CvmInRackGroupQuota.setter
     def CvmInRackGroupQuota(self, CvmInRackGroupQuota):
         self._CvmInRackGroupQuota = CvmInRackGroupQuota
+
+    @property
+    def CvmInSwitchGroupQuota(self):
+        r"""
+        :rtype: int
+        """
+        return self._CvmInSwitchGroupQuota
+
+    @CvmInSwitchGroupQuota.setter
+    def CvmInSwitchGroupQuota(self, CvmInSwitchGroupQuota):
+        self._CvmInSwitchGroupQuota = CvmInSwitchGroupQuota
 
     @property
     def RequestId(self):
@@ -4202,6 +4269,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         self._CvmInHostGroupQuota = params.get("CvmInHostGroupQuota")
         self._CvmInSwGroupQuota = params.get("CvmInSwGroupQuota")
         self._CvmInRackGroupQuota = params.get("CvmInRackGroupQuota")
+        self._CvmInSwitchGroupQuota = params.get("CvmInSwitchGroupQuota")
         self._RequestId = params.get("RequestId")
 
 
@@ -7066,6 +7134,8 @@ Note: This field may return null, indicating that no valid value was found.
         :param _CreateTime: Creation time of a spread placement group.
 Note: This field may return null, indicating that no valid value is found.
         :type CreateTime: str
+        :param _Affinity: 
+        :type Affinity: int
         :param _Tags: List of tags associated with the placement group.
         :type Tags: list of Tag
         """
@@ -7076,6 +7146,7 @@ Note: This field may return null, indicating that no valid value is found.
         self._CurrentNum = None
         self._InstanceIds = None
         self._CreateTime = None
+        self._Affinity = None
         self._Tags = None
 
     @property
@@ -7161,6 +7232,17 @@ Note: This field may return null, indicating that no valid value is found.
         self._CreateTime = CreateTime
 
     @property
+    def Affinity(self):
+        r"""
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+    @property
     def Tags(self):
         r"""List of tags associated with the placement group.
         :rtype: list of Tag
@@ -7180,6 +7262,7 @@ Note: This field may return null, indicating that no valid value is found.
         self._CurrentNum = params.get("CurrentNum")
         self._InstanceIds = params.get("InstanceIds")
         self._CreateTime = params.get("CreateTime")
+        self._Affinity = params.get("Affinity")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):

@@ -49,6 +49,98 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateApmPrometheusRule(self, request):
+        r"""This API is used to create metric match rules between apm Business System and Prometheus Instance.
+
+        :param request: Request instance for CreateApmPrometheusRule.
+        :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmPrometheusRuleRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.CreateApmPrometheusRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApmPrometheusRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApmPrometheusRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateApmSampleConfig(self, request):
+        r"""Create sampling configurations
+
+        :param request: Request instance for CreateApmSampleConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmSampleConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.CreateApmSampleConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApmSampleConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApmSampleConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateProfileTask(self, request):
+        r"""This API is used to create an event task.
+
+        :param request: Request instance for CreateProfileTask.
+        :type request: :class:`tencentcloud.apm.v20210622.models.CreateProfileTaskRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.CreateProfileTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProfileTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProfileTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteApmSampleConfig(self, request):
+        r"""Delete sampling configurations
+
+        :param request: Request instance for DeleteApmSampleConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DeleteApmSampleConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DeleteApmSampleConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApmSampleConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApmSampleConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmAgent(self, request):
         r"""Obtaining APM Access Point.
 
@@ -72,6 +164,52 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmApplicationConfig(self, request):
+        r"""This API is used to query application configuration.
+
+        :param request: Request instance for DescribeApmApplicationConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmAssociation(self, request):
+        r"""This API is used to query the relationship between apm Business System and other product.
+
+        :param request: Request instance for DescribeApmAssociation.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAssociationRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmAssociationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmAssociation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmAssociationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmInstances(self, request):
         r"""This API is used to obtain the list of APM business systems.
 
@@ -86,6 +224,75 @@ class ApmClient(AbstractClient):
             body = self.call("DescribeApmInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeApmInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmPrometheusRule(self, request):
+        r"""This API is used to query the match rule for metrics between apm Business System and Prometheus Instance.
+
+        :param request: Request instance for DescribeApmPrometheusRule.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmPrometheusRuleRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmPrometheusRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmPrometheusRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmPrometheusRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmSampleConfig(self, request):
+        r"""Query sampling configuration
+
+        :param request: Request instance for DescribeApmSampleConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmSampleConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmSampleConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmSampleConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmSampleConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmServiceMetric(self, request):
+        r"""This API is used to obtain the list of APM application metrics.
+
+        :param request: Request instance for DescribeApmServiceMetric.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmServiceMetricRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmServiceMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmServiceMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmServiceMetricResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -257,6 +464,52 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApmApplicationConfig(self, request):
+        r"""Modify application configurations
+
+        :param request: Request instance for ModifyApmApplicationConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApmAssociation(self, request):
+        r"""This API is used to modify the relationship between the apm Business System and other products, including deletion.
+
+        :param request: Request instance for ModifyApmAssociation.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmAssociationRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmAssociationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmAssociation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmAssociationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApmInstance(self, request):
         r"""This API is used to modify the APM business system.
 
@@ -271,6 +524,52 @@ class ApmClient(AbstractClient):
             body = self.call("ModifyApmInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApmPrometheusRule(self, request):
+        r"""This API is used to modify metric match rules between apm Business System and Prometheus Instance.
+
+        :param request: Request instance for ModifyApmPrometheusRule.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmPrometheusRuleRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmPrometheusRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmPrometheusRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmPrometheusRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApmSampleConfig(self, request):
+        r"""Modify sampling configurations
+
+        :param request: Request instance for ModifyApmSampleConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmSampleConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmSampleConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmSampleConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmSampleConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

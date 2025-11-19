@@ -35,11 +35,38 @@ FAILEDOPERATION = 'FailedOperation'
 # Tag access failed.
 FAILEDOPERATION_ACCESSTAGFAIL = 'FailedOperation.AccessTagFail'
 
+# Probe not detected online.
+FAILEDOPERATION_AGENTNOTONLINEERROR = 'FailedOperation.AgentNotOnlineError'
+
+# Error in related configurations of the probe APIs.
+FAILEDOPERATION_AGENTOPERATIONCONFIGINVALID = 'FailedOperation.AgentOperationConfigInvalid'
+
+# The current agent version does not support this feature.
+FAILEDOPERATION_AGENTVERSIONNOTSUPPORTERROR = 'FailedOperation.AgentVersionNotSupportError'
+
 # The token information does not exist.
 FAILEDOPERATION_APMCREDENTIALNOTEXIST = 'FailedOperation.ApmCredentialNotExist'
 
 # The appid does not match the business system information.
 FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = 'FailedOperation.AppIdNotMatchInstanceInfo'
+
+# Association relationship modify request error.
+FAILEDOPERATION_ASSOCIATIONMODIFYREQUESTNOTVALIDERROR = 'FailedOperation.AssociationModifyRequestNotValidError'
+
+# ckafka is inconsistent with the old association information.
+FAILEDOPERATION_CKAFKADIFFASSOCIATIONERROR = 'FailedOperation.CKafkaDiffAssociationError'
+
+# topic cannot be empty.
+FAILEDOPERATION_CKAFKAEMPTYTOPICERROR = 'FailedOperation.CKafkaEmptyTopicError'
+
+# Get route failed.
+FAILEDOPERATION_CKAFKAGETROUTEIDFAILEDERROR = 'FailedOperation.CKafkaGetRouteIDFailedError'
+
+# Get route timeout.
+FAILEDOPERATION_CKAFKAGETROUTETIMEOUTERROR = 'FailedOperation.CKafkaGetRouteTimeoutError'
+
+# CKafka instance unavailable.
+FAILEDOPERATION_CKAFKANOTAVAILABLEERROR = 'FailedOperation.CKafkaNotAvailableError'
 
 # Modification to the API is not allowed when the allowlist is not hit and the business system id is the official demo business system id.
 FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = 'FailedOperation.DemoInstanceNotAllowModified'
@@ -65,6 +92,9 @@ FAILEDOPERATION_INSTANCENOTFOUND = 'FailedOperation.InstanceNotFound'
 # Invalid business system id.
 FAILEDOPERATION_INVALIDINSTANCEID = 'FailedOperation.InvalidInstanceID'
 
+# Invalid API match type.
+FAILEDOPERATION_INVALIDOPERATIONTYPE = 'FailedOperation.InvalidOperationType'
+
 # Invalid input parameter.
 FAILEDOPERATION_INVALIDPARAM = 'FailedOperation.InvalidParam'
 
@@ -89,11 +119,47 @@ FAILEDOPERATION_METRICFILTERSLACKPARAMS = 'FailedOperation.MetricFiltersLackPara
 # Non-Private vpc.
 FAILEDOPERATION_NOTINNERVPC = 'FailedOperation.NotInnerVPC'
 
+# API name cannot be empty.
+FAILEDOPERATION_OPERATIONNAMEISEMPTY = 'FailedOperation.OperationNameIsEmpty'
+
+# Associated product ID unavailable.
+FAILEDOPERATION_PEERIDNOTAVAILABLE = 'FailedOperation.PeerIdNotAvailable'
+
+# Associated product name is unavailable or not currently supported.
+FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = 'FailedOperation.ProductNameNotAvailable'
+
+# The Prometheus instance status is unavailable.
+FAILEDOPERATION_PROMINSTANCENOTAVAILABLEERROR = 'FailedOperation.PromInstanceNotAvailableError'
+
+# Prometheus metric match rule conflict, same metric match rule exists.
+FAILEDOPERATION_PROMRULECONFLICT = 'FailedOperation.PromRuleConflict'
+
+# Prometheus metric match rule is empty.
+FAILEDOPERATION_PROMRULEISEMPTYERR = 'FailedOperation.PromRuleIsEmptyErr'
+
+# Prometheus metric match rule name already exists.
+FAILEDOPERATION_PROMRULENAMECONFLICT = 'FailedOperation.PromRuleNameConflict'
+
+# Prometheus metric match rule request error.
+FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = 'FailedOperation.PromRuleRequestNotValidError'
+
 # Query time range not supported.
 FAILEDOPERATION_QUERYTIMEINTERVALISNOTSUPPORTED = 'FailedOperation.QueryTimeIntervalIsNotSupported'
 
 # This region is not supported.
 FAILEDOPERATION_REGIONNOTSUPPORT = 'FailedOperation.RegionNotSupport'
+
+# Route unavailable.
+FAILEDOPERATION_ROUTENOTAVAILABLEERROR = 'FailedOperation.RouteNotAvailableError'
+
+# Duplicate sampling name under this instance.
+FAILEDOPERATION_SAMPLENAMECONFLICT = 'FailedOperation.SampleNameConflict'
+
+# No such a sampling rule.
+FAILEDOPERATION_SAMPLENOTFOUND = 'FailedOperation.SampleNotFound'
+
+# Sampling rule conflict.
+FAILEDOPERATION_SAMPLERULECONFLICT = 'FailedOperation.SampleRuleConflict'
 
 # Failed to send the query request.
 FAILEDOPERATION_SENDREQUEST = 'FailedOperation.SendRequest'
@@ -103,6 +169,15 @@ FAILEDOPERATION_SERVICELISTEXCEEDINGLIMITNUMBER = 'FailedOperation.ServiceListEx
 
 # Application list is empty.
 FAILEDOPERATION_SERVICELISTNULL = 'FailedOperation.ServiceListNull'
+
+# No application resources were found.
+FAILEDOPERATION_SERVICENOTFOUND = 'FailedOperation.ServiceNotFound'
+
+# serviceId does not match appId.
+FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = 'FailedOperation.ServiceNotMatchAppIdErr'
+
+# topic is unavailable.
+FAILEDOPERATION_TOPICNOTAVAILABLEERROR = 'FailedOperation.TopicNotAvailableError'
 
 # The view name does not exist or is invalid.
 FAILEDOPERATION_VIEWNAMENOTEXISTORILLEGAL = 'FailedOperation.ViewNameNotExistOrIllegal'

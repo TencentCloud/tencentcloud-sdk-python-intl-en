@@ -25328,11 +25328,11 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_ua_os: specifies the l7 access request count metric counted by the operating system type dimension.</li>.
 <li> l7Flow_request_ua: l7 access request count metric counted by the User-Agent dimension.</li>.
         :type MetricName: str
-        :param _ZoneIds: Site ID list. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).  A maximum of 100 site IDs can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. To query account-level data, you must have resource permissions for all sites in this API.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _Limit: Indicates the top N data to be queried. The maximum value is 1000. If this parameter is not input, the default value is 10, indicating querying the top 10 data.
         :type Limit: int
-        :param _Filters: Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.comom/document/product/1552/98219?from_cn_redirect=1#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
+        :param _Filters: Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.com/document/product/1145/56985).
 If needed, limit the site or content identifier by importing the corresponding value in the `ZoneIds.N` parameter.
         :type Filters: list of QueryCondition
         :param _Interval: Query time granularity. this parameter is invalid. to be deprecated.
@@ -25408,7 +25408,7 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def ZoneIds(self):
-        r"""Site ID list. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).  A maximum of 100 site IDs can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. To query account-level data, you must have resource permissions for all sites in this API.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -25430,7 +25430,7 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def Filters(self):
-        r"""Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.comom/document/product/1552/98219?from_cn_redirect=1#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
+        r"""Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.com/document/product/1145/56985).
 If needed, limit the site or content identifier by importing the corresponding value in the `ZoneIds.N` parameter.
         :rtype: list of QueryCondition
         """

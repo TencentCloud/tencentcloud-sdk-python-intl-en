@@ -2242,6 +2242,61 @@ class Coord(AbstractModel):
         
 
 
+class CoordsItem(AbstractModel):
+    r"""Detected coordinate recognition information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Polygon: Coordinates of four points in the image.
+        :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        :param _Coords: Coordinates of two points in the image.
+        :type Coords: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        """
+        self._Polygon = None
+        self._Coords = None
+
+    @property
+    def Polygon(self):
+        r"""Coordinates of four points in the image.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+    @property
+    def Coords(self):
+        r"""Coordinates of two points in the image.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        """
+        return self._Coords
+
+    @Coords.setter
+    def Coords(self, Coords):
+        self._Coords = Coords
+
+
+    def _deserialize(self, params):
+        if params.get("Polygon") is not None:
+            self._Polygon = Polygon()
+            self._Polygon._deserialize(params.get("Polygon"))
+        if params.get("Coords") is not None:
+            self._Coords = ItemCoord()
+            self._Coords._deserialize(params.get("Coords"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DetectedWordCoordPoint(AbstractModel):
     r"""Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
 
@@ -10567,6 +10622,105 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
         self._MRZ = params.get("MRZ")
         self._PortraitImage = params.get("PortraitImage")
         self._PortraitImageBack = params.get("PortraitImageBack")
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeDetectCardCoordsRequest(AbstractModel):
+    r"""RecognizeDetectCardCoords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: the downloaded image should be no more than 7M after Base64 encoding. image download time should be no more than 3 seconds. images stored in tencent cloud's urls guarantee higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
+        :type ImageUrl: str
+        :param _ImageBase64: The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after the downloaded image is encoded in Base64. image download time is not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :type ImageBase64: str
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        r"""The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: the downloaded image should be no more than 7M after Base64 encoding. image download time should be no more than 3 seconds. images stored in tencent cloud's urls guarantee higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after the downloaded image is encoded in Base64. image download time is not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeDetectCardCoordsResponse(AbstractModel):
+    r"""RecognizeDetectCardCoords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemList: Detected coordinate information.
+        :type ItemList: list of CoordsItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ItemList = None
+        self._RequestId = None
+
+    @property
+    def ItemList(self):
+        r"""Detected coordinate information.
+        :rtype: list of CoordsItem
+        """
+        return self._ItemList
+
+    @ItemList.setter
+    def ItemList(self, ItemList):
+        self._ItemList = ItemList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ItemList") is not None:
+            self._ItemList = []
+            for item in params.get("ItemList"):
+                obj = CoordsItem()
+                obj._deserialize(item)
+                self._ItemList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
