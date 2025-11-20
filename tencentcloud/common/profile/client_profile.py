@@ -37,7 +37,7 @@ class ClientProfile(object):
     """
     unsignedPayload = False
 
-    def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
+    def __init__(self, signMethod=None, httpProfile=None, language="en-US",
                  disable_region_breaker=True, region_breaker_profile=None, request_client=None, retryer=None):
         self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
         self.signMethod = "TC3-HMAC-SHA256" if signMethod is None else signMethod
@@ -106,3 +106,4 @@ class RegionBreakerProfile(object):
             if len(region.split("-")) != 2:
                 return False
         return True
+
