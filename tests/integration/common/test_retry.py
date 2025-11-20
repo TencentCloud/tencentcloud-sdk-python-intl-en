@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 import json
 import os
+import pytest
 
 from tencentcloud.common import credential, common_client
 from tencentcloud.common.exception import TencentCloudSDKException
@@ -63,6 +64,7 @@ def test_standard_retryer_call_json_err():
     assert retryer.attempts == max_attempts
 
 
+@pytest.mark.skip("hunyuan.intl.tencentcloudapi.com not ready yet")
 def test_standard_retryer_call_sse():
     service = "hunyuan"
     version = "2023-09-01"

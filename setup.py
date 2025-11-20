@@ -4,6 +4,7 @@
 distutils/setuptools install script.
 """
 import os
+
 from setuptools import setup, find_packages
 
 import tencentcloud
@@ -13,6 +14,7 @@ ROOT = os.path.dirname(__file__)
 setup(
     name='tencentcloud-sdk-python-intl-en',
     install_requires=["requests>=2.16.0"],
+    extras_require={"async": ["httpx>=0.22.0"]},
     version=tencentcloud.__version__,
     description='Tencent Cloud SDK for Python',
     long_description=open('README.rst').read(),
@@ -30,11 +32,11 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.1',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
 )
