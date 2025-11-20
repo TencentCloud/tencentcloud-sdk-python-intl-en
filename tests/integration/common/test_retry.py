@@ -87,6 +87,7 @@ def test_standard_retryer_call_sse():
     assert len(full_content) > 0
 
 
+@pytest.mark.skip("hunyuan.intl.tencentcloudapi.com not ready yet")
 def test_standard_retryer_call_sse_err():
     service = "hunyuan"
     version = "2023-09-01"
