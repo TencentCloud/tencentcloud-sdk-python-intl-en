@@ -16,50 +16,53 @@ import os
 import pytest
 
 from tencentcloud.common import credential
-from tencentcloud.common import common_client
+from tencentcloud.common import common_client_async
 from tencentcloud.common.exception import TencentCloudSDKException
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
 
 
-def test_octet_stream_req_default():
+@pytest.mark.asyncio
+async def test_octet_stream_req_default():
     profile = ClientProfile()
     try:
-        _test_octet_stream_req(profile)
+        await _test_octet_stream_req(profile)
     except TencentCloudSDKException as e:
         assert e.code in ("OperationDenied",  # cls service is not open on console
                           "ResourceNotFound.TopicNotExist")  # topic-id is invalid
 
 
-def test_octet_stream_req_get():
+@pytest.mark.asyncio
+async def test_octet_stream_req_get():
     http_profile = HttpProfile(reqMethod="GET")
     profile = ClientProfile(httpProfile=http_profile)
     try:
-        _test_octet_stream_req(profile)
+        await _test_octet_stream_req(profile)
     except TencentCloudSDKException as e:
         assert e.code == "ClientError"
 
 
-def test_octet_stream_req_signature_v1():
+@pytest.mark.asyncio
+async def test_octet_stream_req_signature_v1():
     profile = ClientProfile(signMethod="HmacSHA1")
     try:
-        _test_octet_stream_req(profile)
+        await _test_octet_stream_req(profile)
     except TencentCloudSDKException as e:
         assert e.code == "ClientError"
 
     profile = ClientProfile(signMethod="HmacSHA256")
     try:
-        _test_octet_stream_req(profile)
+        await _test_octet_stream_req(profile)
     except TencentCloudSDKException as e:
         assert e.code == "ClientError"
 
 
-def _test_octet_stream_req(profile):
+async def _test_octet_stream_req(profile):
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
         os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
-    client = common_client.CommonClient(
+    client = common_client_async.CommonClient(
         "cls", '2020-10-16', cred, "ap-guangzhou", profile=profile)
     fpath = os.path.join(os.path.dirname(__file__), "binary.data")
     with open(fpath, "rb") as f:
@@ -69,4 +72,7 @@ def _test_octet_stream_req(profile):
         "X-CLS-HashKey": "0fffffffffffffffffffffffffffffff",
         "X-CLS-CompressType": "",
     }
-    rsp = client.call_octet_stream("UploadLog", headers, body)
+    opts = {
+        "IsOctetStream": True,
+    }
+    await client.call_and_deserialize("UploadLog", body, headers=headers, opts=opts)

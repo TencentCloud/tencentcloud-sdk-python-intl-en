@@ -16,6 +16,8 @@
 import json
 import os
 import time
+import threading
+
 try:
     # py3
     import configparser
@@ -32,21 +34,22 @@ from tencentcloud.common.common_client import CommonClient
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
 
+
 class Credential(object):
+    """Tencent Cloud Credentials.
+
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+
+    :param secret_id: The secret id of your credential.
+    :type secret_id: str
+    :param secret_key: The secret key of your credential.
+    :type secret_key: str
+    :param token: The federation token of your credential, if this field
+                  is specified, secret_id and secret_key should be set
+                  accordingly, see: https://cloud.tencent.com/document/product/598/13896
+    """
+
     def __init__(self, secret_id, secret_key, token=None):
-        """Tencent Cloud Credentials.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your
-        credentials.
-
-        :param secret_id: The secret id of your credential.
-        :type secret_id: str
-        :param secret_key: The secret key of your credential.
-        :type secret_key: str
-        :param token: The federation token of your credential, if this field
-                      is specified, secret_id and secret_key should be set
-                      accordingly, see: https://cloud.tencent.com/document/product/598/13896
-        """
         if secret_id is None or secret_id.strip() == "":
             raise TencentCloudSDKException("InvalidCredential", "secret id should not be none or empty")
         if secret_id.strip() != secret_id:
@@ -68,9 +71,17 @@ class Credential(object):
     @property
     def secretKey(self):
         return self.secret_key
+    
+    def get_credential_info(self):
+        return self.secret_id, self.secret_key, self.token
 
 
 class CVMRoleCredential(object):
+    """Tencent Cloud Credential via CVM role
+
+    Automatically generates temporary credentials when binding a service role to instance.
+    See https://cloud.tencent.com/document/product/598/85616 for more information.
+    """
     _metadata_endpoint = "http://metadata.tencentyun.com/latest/meta-data/"
     _role_endpoint = _metadata_endpoint + "cam/security-credentials/"
     # In seconds.
@@ -84,6 +95,7 @@ class CVMRoleCredential(object):
         self._secret_key = None
         self._token = None
         self._expired_ts = 0
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
@@ -91,8 +103,9 @@ class CVMRoleCredential(object):
 
     @property
     def secret_id(self):
-        self.update_credential()
-        return self._secret_id
+        with self._lock:
+            self.update_credential()
+            return self._secret_id
 
     @property
     def secretKey(self):
@@ -100,13 +113,15 @@ class CVMRoleCredential(object):
 
     @property
     def secret_key(self):
-        self.update_credential()
-        return self._secret_key
+        with self._lock:
+            self.update_credential()
+            return self._secret_key
 
     @property
     def token(self):
-        self.update_credential()
-        return self._token
+        with self._lock:
+            self.update_credential()
+            return self._token
 
     def get_role_name(self):
         if self.role:
@@ -152,11 +167,27 @@ class CVMRoleCredential(object):
             return None
         return self
 
+    def get_credential_info(self):
+        with self._lock:
+            self.update_credential()
+            return self._secret_id, self._secret_key, self._token
+
 
 class STSAssumeRoleCredential(object):
-    """使用STSAssumeRoleCredential，制动role，
-    可以自动生成临时凭证，并使用临时凭证调用接口
+    """Tencent Cloud Credential via STS service
 
+    Automatically generates temporary credentials for API calls.
+
+    :param secret_id: The secret id of your credential.
+    :type secret_id: str
+    :param secret_key: The secret key of your credential.
+    :type secret_key: str
+    :param role_arn: Resource descriptions of a role，see https://cloud.tencent.com/document/api/1312/48197
+    :type role_arn: str
+    :param role_session_name: User-defined temporary session name
+    :type role_session_name: str
+    :param duration_seconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+    :type duration_seconds: int
     """
     _region = "ap-guangzhou"
     _version = '2018-08-13'
@@ -165,17 +196,7 @@ class STSAssumeRoleCredential(object):
 
     def __init__(self, secret_id, secret_key, role_arn, role_session_name, duration_seconds=7200, endpoint=None):
         """
-        :param secret_id: 接口调用凭证id
-        :type secret_id: str
-        :param secret_key: 接口调用凭证key
-        :type secret_key: str
-        https://cloud.tencent.com/document/api/1312/48197
-        :param role_arn: 角色的资源描述，参考官网文档 https://cloud.tencent.com/document/api/1312/48197 中 RoleArn 参数的描述。
-        :type role_arn: str
-        :param role_session_name: 临时会话名称，由用户自定义名称
-        :type role_session_name: str
-        :param duration_seconds: 获取临时凭证的有效期，默认7200s
-        :type duration_seconds: int
+
         """
         self._long_secret_id = secret_id
         self._long_secret_key = secret_key
@@ -192,46 +213,44 @@ class STSAssumeRoleCredential(object):
         self._tmp_credential = None
         if endpoint:
             self._endpoint = endpoint
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
-        self._need_refresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
-        self._need_refresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
-        self._need_refresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
-        self._need_refresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_key
 
     @property
     def token(self):
-        self._need_refresh()
-        return self._token
+        with self._lock:
+            self._need_refresh()
+            return self._token
+    
+    def get_credential_info(self):
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _need_refresh(self):
-        """
-        https://cloud.tencent.com/document/api/1312/48197
-        此函数自动使用初始secret_id和secret_key，自动调用上述链接中获取临时凭证的接口，并返回临时凭证
-
-        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
-        :type role_arn: str
-        :param role_session_name: 临时会话名称，由用户自定义名称
-        :type role_session_name: str
-        :param duration_seconds: 获取临时凭证的有效期，默认7200s
-        :type duration_seconds: int
-
-        """
-
         if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
             self.get_sts_tmp_role_arn()
 
@@ -258,18 +277,14 @@ class STSAssumeRoleCredential(object):
 
 
 class EnvironmentVariableCredential(object):
+    """Tencent Cloud EnvironmentVariableCredential.
+
+    Acquire credential from environment variables.
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+    Set secret id and secret key as `TENCENTCLOUD_SECRET_ID` and `TENCENTCLOUD_SECRET_KEY `in environment variables.
+    """
 
     def get_credential(self):
-        """Tencent Cloud EnvironmentVariableCredential.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your
-        credentials.
-
-        :param secret_id: The secret id of your credential, get by environment variable TENCENTCLOUD_SECRET_ID
-        :type secret_id: str
-        :param secret_key: The secret key of your credential. get by environment variable TENCENTCLOUD_SECRET_KEY
-        :type secret_key: str
-        """
         self.secret_id = os.environ.get('TENCENTCLOUD_SECRET_ID')
         self.secret_key = os.environ.get('TENCENTCLOUD_SECRET_KEY')
 
@@ -281,26 +296,19 @@ class EnvironmentVariableCredential(object):
 
 
 class ProfileCredential(object):
+    """Tencent Cloud ProfileCredential.
+
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+    default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
+    such as:
+    [default]
+    secret_id=""
+    secret_key=""
+    """
 
     def get_credential(self):
-        """Tencent Cloud ProfileCredential.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
-
-        default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
-        such as:
-        [default]
-        secret_id=""
-        secret_key=""
-
-        :param secret_id: The secret id of your credential.
-        :type secret_id: str
-        :param secret_key: The secret key of your credential.
-        :type secret_key: str
-        """
-        home_path = os.environ.get('HOME') or os.environ.get('HOMEPATH')
-        if os.path.exists(home_path + "/.tencentcloud/credentials"):
-            file_path = home_path + "/.tencentcloud/credentials"
+        if os.path.exists(os.path.expanduser("~/.tencentcloud/credentials")):
+            file_path = os.path.expanduser("~/.tencentcloud/credentials")
         elif os.path.exists("/etc/tencentcloud/credentials"):
             file_path = "/etc/tencentcloud/credentials"
         else:
@@ -369,90 +377,118 @@ class DefaultCredentialProvider(object):
 
 
 class DefaultTkeOIDCRoleArnProvider(object):
-    default_session_name = 'tencentcloud-python-sdk-'
-
-    def __init__(self):
-        self.region = os.getenv('TKE_REGION')
-        if not self.region:
-            raise EnvironmentError("TKE_REGION not exist")
-
-        self.provider_id = os.getenv('TKE_PROVIDER_ID')
-        if not self.provider_id:
-            raise EnvironmentError("TKE_PROVIDER_ID not exist")
-
-        token_file = os.getenv('TKE_WEB_IDENTITY_TOKEN_FILE')
-        if not token_file:
-            raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
-
-        with open(token_file) as f:
-            self.web_identity_token = f.read()
-
-        self.role_arn = os.getenv('TKE_ROLE_ARN')
-        if not self.role_arn:
-            raise EnvironmentError("TKE_ROLE_ARN not exist")
-
-        self.role_session_name = self.default_session_name + str(time.time() * 1e6)  # time in microseconds
-
+    """Acquire credential via TKE IdP automatically."""
     def get_credential(self):
         return self.get_credentials()
 
     def get_credentials(self):
-        return OIDCRoleArnCredential(self.region, self.provider_id, self.web_identity_token, self.role_arn,
-                                     self.role_session_name)
+        cred = OIDCRoleArnCredential('', '', '', '', '', 7200)
+        cred._is_tke = True
+        cred._init_from_tke()
+        return cred
 
 
 class OIDCRoleArnCredential(object):
+    """TencentCloud OIDC Credential
+
+    OIDC is an authentication protocol built on OAuth 2.0. Tencent Cloud CAM supports OIDC role-based SSO.
+    See https://cloud.tencent.com/document/product/598/96013 for more information.
+    This will apply for an OIDC role credential automatically.
+
+    :param region: Region for AssumeRoleWithWebIdentity call. See https://cloud.tencent.com/document/product/1312/73070
+    :type region: str
+    :param provider_id: Identity provider name
+    :type provider_id: str
+    :param web_identity_token: OIDC token issued by the IdP
+    :type web_identity_token: str
+    :param role_arn: Role access description name
+    :type role_arn: str
+    :param role_session_name: Session name
+    :type role_session_name: str
+    :param duration_seconds: The validity period of the temporary credential in seconds. Default value: 7200s. Maximum value: 43200s.
+    :type duration_seconds: int
+    """
     _version = '2018-08-13'
     _service = "sts"
     _action = 'AssumeRoleWithWebIdentity'
+    _default_session_name = 'tencentcloud-python-sdk-'
+    _endpoint = "sts.tencentcloudapi.com"
 
-    def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200):
+    def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200, endpoint=None):
         self._region = region
         self._provider_id = provider_id
         self._web_identity_token = web_identity_token
         self._role_arn = role_arn
         self._role_session_name = role_session_name
         self._duration_seconds = duration_seconds
+        if endpoint:
+            self._endpoint = endpoint
 
         self._token = None
         self._tmp_secret_id = None
         self._tmp_secret_key = None
         self._expired_time = 0
-
-        self._last_role_arn = None
-        self._tmp_credential = None
+        self._is_tke = False
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
-        self._keep_fresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
-        self._keep_fresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
-        self._keep_fresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
-        self._keep_fresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_key
 
     @property
     def token(self):
-        self._keep_fresh()
-        return self._token
+        with self._lock:
+            self._keep_fresh()
+            return self._token
+        
+    def get_credential_info(self):
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id, self._tmp_secret_key, self._token
+
+    @property
+    def endpoint(self):
+        return self._endpoint
+    
+    @endpoint.setter
+    def endpoint(self, endpoint):
+        self._endpoint = endpoint
 
     def _keep_fresh(self):
         if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
             self.refresh()
 
     def refresh(self):
-        common_client = CommonClient(credential=None, region=self._region, version=self._version, service=self._service)
+        if self._is_tke:
+            self._init_from_tke()
+            
+        http_profile = HttpProfile()
+        http_profile.endpoint = self._endpoint
+        client_profile = ClientProfile()
+        client_profile.httpProfile = http_profile
+        
+        common_client = CommonClient(credential=None, region=self._region, version=self._version, 
+                                     service=self._service, profile=client_profile)
         params = {
             "ProviderId": self._provider_id,
             "WebIdentityToken": self._web_identity_token,
@@ -467,4 +503,26 @@ class OIDCRoleArnCredential(object):
         self._token = rsp["Response"]["Credentials"]["Token"]
         self._tmp_secret_id = rsp["Response"]["Credentials"]["TmpSecretId"]
         self._tmp_secret_key = rsp["Response"]["Credentials"]["TmpSecretKey"]
-        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.9
+        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.1
+
+    def _init_from_tke(self):
+        self._region = os.getenv('TKE_REGION')
+        if not self._region:
+            raise EnvironmentError("TKE_REGION not exist")
+
+        self._provider_id = os.getenv('TKE_PROVIDER_ID')
+        if not self._provider_id:
+            raise EnvironmentError("TKE_PROVIDER_ID not exist")
+
+        token_file = os.getenv('TKE_WEB_IDENTITY_TOKEN_FILE')
+        if not token_file:
+            raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
+
+        with open(token_file) as f:
+            self._web_identity_token = f.read()
+
+        self._role_arn = os.getenv('TKE_ROLE_ARN')
+        if not self._role_arn:
+            raise EnvironmentError("TKE_ROLE_ARN not exist")
+
+        self._role_session_name = self._default_session_name + str(time.time() * 1e6)  # time in microsecond

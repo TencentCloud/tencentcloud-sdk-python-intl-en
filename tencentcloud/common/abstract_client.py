@@ -28,17 +28,20 @@ import logging.handlers
 
 try:
     from urllib.parse import urlencode
+    from urllib.parse import urlparse
 except ImportError:
     from urllib import urlencode
+    from urlparse import urlparse
 
 import tencentcloud
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.exception import TencentCloudSDKException as SDKError
-from tencentcloud.common.http.request import ApiRequest
+from tencentcloud.common.http.request import ApiRequest, ResponsePrettyFormatter
 from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.retry import NoopRetryer
 
 warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
 
@@ -77,7 +80,8 @@ class AbstractClient(object):
                                   req_timeout=self.profile.httpProfile.reqTimeout,
                                   proxy=self.profile.httpProfile.proxy,
                                   is_http=is_http,
-                                  certification=self.profile.httpProfile.certification)
+                                  certification=self.profile.httpProfile.certification,
+                                  pre_conn_pool_size=self.profile.httpProfile.pre_conn_pool_size)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
         self.circuit_breaker = None
@@ -131,11 +135,11 @@ class AbstractClient(object):
         elif self.profile.signMethod == "TC3-HMAC-SHA256" or options.get("IsMultipart") is True:
             self._build_req_with_tc3_signature(action, params, req_inter, options)
         elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
-            self._build_req_with_old_signature(action, params, req_inter)
+            self._build_req_with_old_signature(action, params, req_inter, options)
         else:
             raise TencentCloudSDKException("ClientError", "Invalid signature method.")
 
-    def _build_req_with_old_signature(self, action, params, req):
+    def _build_req_with_old_signature(self, action, params, req, options):
         params = copy.deepcopy(self._fix_params(params))
         params['Action'] = action[0].upper() + action[1:]
         params['RequestClient'] = self.request_client
@@ -143,14 +147,16 @@ class AbstractClient(object):
         params['Timestamp'] = int(time.time())
         params['Version'] = self._apiVersion
 
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
+
         if self.region:
             params['Region'] = self.region
 
-        if self.credential.token:
-            params['Token'] = self.credential.token
+        if cred_token:
+            params['Token'] = cred_token
 
-        if self.credential.secret_id:
-            params['SecretId'] = self.credential.secret_id
+        if cred_secret_id:
+            params['SecretId'] = cred_secret_id
 
         if self.profile.signMethod:
             params['SignatureMethod'] = self.profile.signMethod
@@ -158,8 +164,8 @@ class AbstractClient(object):
         if self.profile.language:
             params['Language'] = self.profile.language
 
-        signInParam = self._format_sign_string(params)
-        params['Signature'] = Sign.sign(str(self.credential.secret_key),
+        signInParam = self._format_sign_string(params, options)
+        params['Signature'] = Sign.sign(str(cred_secret_key),
                                         str(signInParam),
                                         str(self.profile.signMethod))
 
@@ -183,8 +189,9 @@ class AbstractClient(object):
             raise SDKError("ClientError",
                            "Invalid request method GET for multipart.")
 
-        endpoint = self._get_endpoint()
+        endpoint = self._get_endpoint(options=options)
         timestamp = int(time.time())
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self.request_client
@@ -194,8 +201,8 @@ class AbstractClient(object):
             req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
         if self.region:
             req.header['X-TC-Region'] = self.region
-        if self.credential.token:
-            req.header['X-TC-Token'] = self.credential.token
+        if cred_token:
+            req.header['X-TC-Token'] = cred_token
         if self.profile.language:
             req.header['X-TC-Language'] = self.profile.language
 
@@ -211,13 +218,13 @@ class AbstractClient(object):
 
         service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
-        signature = self._get_tc3_signature(params, req, date, service, options)
+        signature = self._get_tc3_signature(params, req, date, service, cred_secret_key, options)
 
         auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
-            self.credential.secret_id, date, service, signature)
+            cred_secret_id, date, service, signature)
         req.header["Authorization"] = auth
 
-    def _get_tc3_signature(self, params, req, date, service, options=None):
+    def _get_tc3_signature(self, params, req, date, service, secret_key, options=None):
         options = options or {}
         canonical_uri = req.uri
         canonical_querystring = ""
@@ -254,8 +261,7 @@ class AbstractClient(object):
                                           req.header["X-TC-Timestamp"],
                                           credential_scope,
                                           digest)
-
-        return Sign.sign_tc3(self.credential.secret_key, date, service, string2sign)
+        return Sign.sign_tc3(secret_key, date, service, string2sign)
 
     def _build_req_without_signature(self, action, params, req, options=None):
         content_type = self._default_content_type
@@ -274,7 +280,7 @@ class AbstractClient(object):
             raise SDKError("ClientError",
                            "Invalid request method GET for multipart.")
 
-        endpoint = self._get_endpoint()
+        endpoint = self._get_endpoint(options=options)
         timestamp = int(time.time())
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
@@ -328,22 +334,26 @@ class AbstractClient(object):
 
     def _check_status(self, resp_inter):
         if resp_inter.status_code != 200:
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp_inter))
             raise TencentCloudSDKException("ServerNetworkError", resp_inter.content)
 
-    def _format_sign_string(self, params):
+    def _format_sign_string(self, params, options=None):
         formatParam = {}
         for k in params:
             formatParam[k.replace('_', '.')] = params[k]
         strParam = '&'.join('%s=%s' % (k, formatParam[k]) for k in sorted(formatParam))
-        msg = '%s%s%s?%s' % (self.profile.httpProfile.reqMethod, self._get_endpoint(), self._requestPath, strParam)
+        msg = '%s%s%s?%s' % (
+            self.profile.httpProfile.reqMethod, self._get_endpoint(options=options), self._requestPath, strParam)
         return msg
 
     def _get_service_domain(self):
         rootDomain = self.profile.httpProfile.rootDomain
         return self._service + "." + rootDomain
 
-    def _get_endpoint(self):
+    def _get_endpoint(self, options=None):
         endpoint = self.profile.httpProfile.endpoint
+        if not endpoint and options:
+            endpoint = urlparse(options.get("Endpoint", "")).hostname
         if endpoint is None:
             endpoint = self._get_service_domain()
         return endpoint
@@ -358,6 +368,7 @@ class AbstractClient(object):
             code = data["Response"]["Error"]["Code"]
             message = data["Response"]["Error"]["Message"]
             reqid = data["Response"]["RequestId"]
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
             raise TencentCloudSDKException(code, message, reqid)
         if "DeprecatedWarning" in data["Response"]:
             import warnings
@@ -367,6 +378,7 @@ class AbstractClient(object):
 
     @staticmethod
     def _process_response_sse(resp):
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
         e = {}
 
         for line in resp.iter_lines():
@@ -375,6 +387,7 @@ class AbstractClient(object):
                 e = {}
                 continue
 
+            logger.debug("GetResponse: %s", line)
             line = line.decode('utf-8')
 
             # comment
@@ -398,6 +411,13 @@ class AbstractClient(object):
             elif key == 'retry':
                 e[key] = int(val)
 
+    @staticmethod
+    def _process_response_json(resp, resp_type):
+        resp_obj = json.loads(resp.content)["Response"]
+        model = resp_type()
+        model._deserialize(resp_obj)
+        return model
+
     def _call(self, action, params, options=None, headers=None):
         if headers is None:
             headers = {}
@@ -407,7 +427,7 @@ class AbstractClient(object):
             headers["X-TC-TraceId"] = str(uuid.uuid4())
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
-        req = RequestInternal(self._get_endpoint(),
+        req = RequestInternal(self._get_endpoint(options=options),
                               self.profile.httpProfile.reqMethod,
                               self._requestPath,
                               header=headers)
@@ -419,13 +439,19 @@ class AbstractClient(object):
         return self.request.send_request(req)
 
     def call(self, action, params, options=None, headers=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        return resp.content
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return retryer.send_request(_call_once).content
 
     def _call_with_region_breaker(self, action, params, options=None, headers=None):
-        endpoint = self._get_endpoint()
+        endpoint = self._get_endpoint(options=options)
         generation, need_break = self.circuit_breaker.before_requests()
         if need_break:
             endpoint = self._service + "." + self.profile.region_breaker_profile.backup_endpoint
@@ -451,33 +477,34 @@ class AbstractClient(object):
         self._check_error(resp)
         return resp.content
 
-    def call_octet_stream(self, action, headers, body):
-        """
-        Invoke API with application/ocet-stream content-type.
+    def call_octet_stream(self, action, headers, body, options=None):
+        """Invoke API with application/ocet-stream content-type.
 
         Note:
         1. only specific API can be invoked in such manner.
         2. only TC3-HMAC-SHA256 signature method can be specified.
         3. only POST request method can be specified
 
-        :type action: str
         :param action: Specific API action name.
-        :type headers: dict
+        :type action: str
         :param headers: Header parameters for this API.
-        :type body: bytes
+        :type headers: dict
         :param body: Bytes of requested body
+        :type body: bytes
         """
         if self.profile.signMethod != "TC3-HMAC-SHA256":
             raise SDKError("ClientError", "Invalid signature method.")
         if self.profile.httpProfile.reqMethod != "POST":
             raise SDKError("ClientError", "Invalid request method.")
 
-        req = RequestInternal(self._get_endpoint(),
+        if not options:
+            options = {}
+        req = RequestInternal(self._get_endpoint(options=options),
                               self.profile.httpProfile.reqMethod,
                               self._requestPath,
                               header=headers)
         req.data = body
-        options = {"IsOctetStream": True}
+        options["IsOctetStream"] = True
         self._build_req_inter(action, None, req, options)
 
         resp = self.request.send_request(req)
@@ -486,39 +513,77 @@ class AbstractClient(object):
         return json.loads(resp.content)
 
     def call_json(self, action, params, headers=None, options=None):
-        """
-        Call api with json object and return with json object.
+        """Call api with json object and return with json object.
 
-        :type action: str
         :param action: api name e.g. ``DescribeInstances``
+        :type action: str
+        :param params: Request parameters of this action
         :type params: dict
-        :param params: params with this action
+        :param headers: Request headers, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
         :type headers: dict
-        :param headers: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :param options: Request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         :type options: dict
-        :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        return json.loads(resp.content)
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return json.loads(retryer.send_request(_call_once).content)
 
     def call_sse(self, action, params, headers=None, options=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        return self._process_response_sse(resp)
+        """Call api with json object and return with sse event.
+
+        :param action: api name e.g. ``ChatCompletions``
+        :type action: str
+        :param params: Request parameters of this action
+        :type params: dict
+        :param headers: Request headers, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :type headers: dict
+        :param options: Request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
+        :type options: dict
+        """
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return self._process_response_sse(retryer.send_request(_call_once))
+
+    def _call_and_deserialize(self, action, params, resp_type, headers=None, options=None):
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return self._process_response(retryer.send_request(_call_once), resp_type)
+
+    def _process_response(self, resp, resp_type):
+        if resp.headers.get('Content-Type') == "text/event-stream":
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
+            return self._process_response_sse(resp)
+
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+        return self._process_response_json(resp, resp_type)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
-        """
-        Add a stream handler
+        """Add a stream handler
 
-        :type stream: IO[str]
         :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
-        :type level: int
+        :type stream: IO[str]
         :param level: Logging level, e.g. ``logging.INFO``
-        :type log_format: str
+        :type level: int
         :param log_format: Log message format
+        :type log_format: str
         """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
@@ -531,15 +596,14 @@ class AbstractClient(object):
         log.addHandler(sh)
 
     def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
-        """
-        Add a file handler
+        """Add a file handler
 
-        :type file_path: str
         :param file_path: path of log file
-        :type level: int
+        :type file_path: str
         :param level: Logging level, e.g. ``logging.INFO``
-        :type log_format: str
+        :type level: int
         :param log_format: Log message format
+        :type log_format: str
         """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
@@ -553,9 +617,7 @@ class AbstractClient(object):
         log.addHandler(fh)
 
     def set_default_logger(self):
-        """
-        Set default log handler
-        """
+        """Set default log handler"""
         log = logging.getLogger(LOGGER_NAME)
         log.handlers = []
         logger.addHandler(EmptyHandler())

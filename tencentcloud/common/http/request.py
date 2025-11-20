@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import os
-import socket
 import logging
+
 import requests
 import certifi
+
+from tencentcloud.common.http.pre_conn import PreConnAdapter
 
 try:
     from urllib.parse import urlparse
@@ -25,7 +27,7 @@ def _get_proxy_from_env(host, varname="HTTPS_PROXY"):
 
 
 class ProxyConnection(object):
-    def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False):
+    def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False, pre_conn_pool_size=0):
         self.request_host = host
         self.certification = certification
         if certification is None:
@@ -39,23 +41,29 @@ class ProxyConnection(object):
         if proxy:
             self.proxy = {"http": proxy, "https": proxy}
         self.request_length = 0
+        self._session = requests.Session()
+        if pre_conn_pool_size > 0:
+            adapter = PreConnAdapter(conn_pool_size=pre_conn_pool_size)
+            self._session.mount("https://", adapter)
+            self._session.mount("http://", adapter)
 
     def request(self, method, url, body=None, headers=None):
         headers.setdefault("Host", self.request_host)
-        return requests.request(method=method,
-                                url=url,
-                                data=body,
-                                headers=headers,
-                                proxies=self.proxy,
-                                verify=self.certification,
-                                timeout=self.timeout,
-                                stream=True)
+        return self._session.request(method=method,
+                                     url=url,
+                                     data=body,
+                                     headers=headers,
+                                     proxies=self.proxy,
+                                     verify=self.certification,
+                                     timeout=self.timeout,
+                                     stream=True)
 
 
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None):
+    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None,
+                 pre_conn_pool_size=0):
         self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification,
-                                    is_http=is_http)
+                                    is_http=is_http, pre_conn_pool_size=pre_conn_pool_size)
         self.is_http = is_http
         self.host = host
         self.req_timeout = req_timeout
@@ -89,8 +97,7 @@ class ApiRequest(object):
         url = self._handle_host(req_inter.host)
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
-        if self.debug:
-            logger.debug("SendRequest %s" % req_inter)
+        logger.debug("SendRequest: %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (url, req_inter.data)
             return self.conn.request(req_inter.method, req_inter_url,
@@ -106,7 +113,6 @@ class ApiRequest(object):
         try:
             http_resp = self._request(req_inter)
             self.request_size = self.conn.request_length
-            logger.debug("GetResponse %s" % http_resp)
             return http_resp
         except Exception as e:
             raise TencentCloudSDKException("ClientNetworkError", str(e))
@@ -126,3 +132,30 @@ class RequestInternal(object):
         headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
         return ("Host: %s\nMethod: %s\nUri: %s\nHeader: %s\nData: %s\n"
                 % (self.host, self.method, self.uri, headers, self.data))
+
+
+class ResponsePrettyFormatter(object):
+    def __init__(self, resp, format_body=True, delimiter="\n"):
+        self._resp = resp
+        self._format_body = format_body
+        self._delimiter = delimiter
+
+    def __str__(self):
+        lines = ['%s %d %s' % (self.str_ver(self._resp.raw.version), self._resp.status_code, self._resp.reason)]
+        for k, v in self._resp.headers.items():
+            lines.append('%s: %s' % (k, v))
+        if self._format_body:
+            lines.append('')
+            lines.append(self._resp.text)
+        return self._delimiter.join(lines)
+
+    @staticmethod
+    def str_ver(ver):
+        if ver == 10:
+            return "HTTP/1.0"
+        elif ver == 11:
+            return "HTTP/1.1"
+        elif ver == 20:
+            return "HTTP/2.0"
+        else:
+            return str(ver)
