@@ -70,6 +70,7 @@ async def test_standard_retryer_call_json_err():
 
 
 @pytest.mark.asyncio
+@pytest.mark.skip("hunyuan.intl.tencentcloudapi.com not ready yet")
 async def test_standard_retryer_call_sse():
     service = "hunyuan"
     version = "2023-09-01"
@@ -93,6 +94,7 @@ async def test_standard_retryer_call_sse():
 
 
 @pytest.mark.asyncio
+@pytest.mark.skip("hunyuan.intl.tencentcloudapi.com not ready yet")
 async def test_standard_retryer_call_sse_err():
     service = "hunyuan"
     version = "2023-09-01"
