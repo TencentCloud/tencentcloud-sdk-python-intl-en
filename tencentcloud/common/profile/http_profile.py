@@ -46,7 +46,8 @@ class HttpProfile(object):
         self.scheme = self.protocol
         self.keepAlive = keepAlive
         self.proxy = proxy
-        self.rootDomain = "tencentcloudapi.com" if rootDomain is None else rootDomain
+        self.rootDomain = "intl.tencentcloudapi.com" if rootDomain is None else rootDomain
         self.certification = certification
         self.apigw_endpoint = None
         self.pre_conn_pool_size = 0
+
