@@ -213,7 +213,7 @@ class ClbClient(AbstractClient):
 
     def CreateListener(self, request):
         r"""This API is used to create a listener for a CLB instance.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for CreateListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateListenerRequest`
@@ -1505,8 +1505,8 @@ class ClbClient(AbstractClient):
 
 
     def ModifyListener(self, request):
-        r"""This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        r"""This API is used to modify the attributes of a CLB instance listener, including the listener name, health check parameters, certificate information, and forwarding policy. This API does not support classic CLB instances.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for ModifyListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyListenerRequest`
