@@ -53,7 +53,7 @@ FAILEDOPERATION_IMAGENOSPECIFIEDCARD = 'FailedOperation.ImageNoSpecifiedCard'
 # No text is detected in the image.
 FAILEDOPERATION_IMAGENOTEXT = 'FailedOperation.ImageNoText'
 
-# The image is too large. Please see the description of image size limit in the output parameters.
+# The image size is too large. refer to the image size limit in the reference input.
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 
 # The information in the visual zone does not match that in the machine-readable zone.
@@ -95,11 +95,17 @@ INVALIDPARAMETER_CONFIGFORMATERROR = 'InvalidParameter.ConfigFormatError'
 # Image decoding failed.
 INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = 'InvalidParameter.EngineImageDecodeFailed'
 
+# The size of the image file content is abnormal.
+INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = 'InvalidParameterValue.InvalidFileContentSize'
+
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'
 
 # The file is too large.
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
+
+# Image file download failed.
+RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = 'ResourceUnavailable.ImageDownloadError'
 
 # The account is in arrears.
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'

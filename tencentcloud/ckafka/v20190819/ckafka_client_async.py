@@ -295,6 +295,42 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAclRule(
+            self,
+            request: models.DeleteAclRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAclRuleResponse:
+        """
+        This API is used to delete an ACL rule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAclRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAclRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGroup(
+            self,
+            request: models.DeleteGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGroupResponse:
+        """
+        Delete consumer groups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteInstancePost(
             self,
             request: models.DeleteInstancePostRequest,
@@ -457,19 +493,19 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeAppInfo(
+    async def DescribeCkafkaVersion(
             self,
-            request: models.DescribeAppInfoRequest,
+            request: models.DescribeCkafkaVersionRequest,
             opts: Dict = None,
-    ) -> models.DescribeAppInfoResponse:
+    ) -> models.DescribeCkafkaVersionResponse:
         """
-        This API is used to query the user list.
+        This API is used to query instance version information.
         """
         
         kwargs = {}
-        kwargs["action"] = "DescribeAppInfo"
+        kwargs["action"] = "DescribeCkafkaVersion"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAppInfoResponse
+        kwargs["resp_cls"] = models.DescribeCkafkaVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -962,6 +998,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InstanceScalingDown(
+            self,
+            request: models.InstanceScalingDownRequest,
+            opts: Dict = None,
+    ) -> models.InstanceScalingDownResponse:
+        """
+        This API is used to perform downsizing on a pay-as-you-go instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstanceScalingDown"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstanceScalingDownResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAclRule(
             self,
             request: models.ModifyAclRuleRequest,
@@ -1070,6 +1124,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRoutineMaintenanceTask(
+            self,
+            request: models.ModifyRoutineMaintenanceTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRoutineMaintenanceTaskResponse:
+        """
+        This API is used to set automated ops attributes.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRoutineMaintenanceTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRoutineMaintenanceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTopicAttributes(
             self,
             request: models.ModifyTopicAttributesRequest,
@@ -1101,6 +1173,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "SendMessage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SendMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeBrokerVersion(
+            self,
+            request: models.UpgradeBrokerVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeBrokerVersionResponse:
+        """
+        This API is used to upgrade the broker version.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeBrokerVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeBrokerVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
