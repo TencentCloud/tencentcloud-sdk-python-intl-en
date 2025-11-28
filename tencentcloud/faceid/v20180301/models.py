@@ -566,6 +566,10 @@ Single action example: "blink"
 Multiple action example: "blink,mouth"
 The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
         :type ActionList: str
+        :param _AllowExpiredDocument: Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
+true (default value): Expired HKID is allowed to enter the liveness process.
+false : Expired HKID is rejected and cannot enter the liveness process.
+        :type AllowExpiredDocument: bool
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -578,6 +582,7 @@ The default value is blink. The different action types passed in this parameter 
         self._Extra = None
         self._SdkVersion = None
         self._ActionList = None
+        self._AllowExpiredDocument = None
 
     @property
     def CheckMode(self):
@@ -739,6 +744,19 @@ The default value is blink. The different action types passed in this parameter 
     def ActionList(self, ActionList):
         self._ActionList = ActionList
 
+    @property
+    def AllowExpiredDocument(self):
+        r"""Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
+true (default value): Expired HKID is allowed to enter the liveness process.
+false : Expired HKID is rejected and cannot enter the liveness process.
+        :rtype: bool
+        """
+        return self._AllowExpiredDocument
+
+    @AllowExpiredDocument.setter
+    def AllowExpiredDocument(self, AllowExpiredDocument):
+        self._AllowExpiredDocument = AllowExpiredDocument
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -752,6 +770,7 @@ The default value is blink. The different action types passed in this parameter 
         self._Extra = params.get("Extra")
         self._SdkVersion = params.get("SdkVersion")
         self._ActionList = params.get("ActionList")
+        self._AllowExpiredDocument = params.get("AllowExpiredDocument")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

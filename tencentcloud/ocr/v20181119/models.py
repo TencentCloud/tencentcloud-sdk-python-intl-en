@@ -4382,6 +4382,7 @@ class GetCardVerificationExternalResultResponse(AbstractModel):
         r"""
         :param _Status: Indicates the status. valid values: 
 PASSED
+PROCESSING
 WARNING
         :type Status: str
         :param _WarnInfo: Indicates the anti-counterfeiting information.
@@ -4414,6 +4415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Status(self):
         r"""Indicates the status. valid values: 
 PASSED
+PROCESSING
 WARNING
         :rtype: str
         """

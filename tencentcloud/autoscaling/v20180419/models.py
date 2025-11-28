@@ -7954,26 +7954,42 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
 
 class InstanceNameIndexSettings(AbstractModel):
-    r"""Instance name sequencing settings.
+    r"""Instance name index settings.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Enabled: Whether to enable instance name index. Default value: false. Value range:.
+
+**true**: indicates that instance name index is enabled.
+**false**: indicates that instance name index is disabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Enabled: bool
-        :param _BeginIndex: Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BeginIndex: Begin index number. Value range: [0, 99999999].
+
+Indicates that the scale out activity will be failed when the index out of range. 
+If not specified, carries forward historical index number or 0.
+Lowering the index sequence number may lead to instance name duplication within the group.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BeginIndex: int
+        :param _IndexLength: Instance name index number digits, defaults to 0, means no specified digit count. Value range: 0-8, maximum is integer 8. when using values 1-8, the system checks whether the index number exceeds the maximum digit for this digit count.
+
+If set to 3, index number is in the format: 000, 001, 002 ... 010, 011 ... 100 ... 999. The maximum is 999. 
+Assuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10000 ... 99999999. Max number is 99999999.
+        :type IndexLength: int
         """
         self._Enabled = None
         self._BeginIndex = None
+        self._IndexLength = None
 
     @property
     def Enabled(self):
-        r"""Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Whether to enable instance name index. Default value: false. Value range:.
+
+**true**: indicates that instance name index is enabled.
+**false**: indicates that instance name index is disabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
         return self._Enabled
@@ -7984,8 +8000,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BeginIndex(self):
-        r"""Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Begin index number. Value range: [0, 99999999].
+
+Indicates that the scale out activity will be failed when the index out of range. 
+If not specified, carries forward historical index number or 0.
+Lowering the index sequence number may lead to instance name duplication within the group.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._BeginIndex
@@ -7994,10 +8014,25 @@ Note: This field may return null, indicating that no valid value can be obtained
     def BeginIndex(self, BeginIndex):
         self._BeginIndex = BeginIndex
 
+    @property
+    def IndexLength(self):
+        r"""Instance name index number digits, defaults to 0, means no specified digit count. Value range: 0-8, maximum is integer 8. when using values 1-8, the system checks whether the index number exceeds the maximum digit for this digit count.
+
+If set to 3, index number is in the format: 000, 001, 002 ... 010, 011 ... 100 ... 999. The maximum is 999. 
+Assuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10000 ... 99999999. Max number is 99999999.
+        :rtype: int
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
         self._BeginIndex = params.get("BeginIndex")
+        self._IndexLength = params.get("IndexLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13591,6 +13626,8 @@ Default value: RECREATE.
 <Li>True: when modifying the maximum or minimum value, if a conflict exists with the current expected value, synchronously adjust the expected value. for example, if the input minimum value is 2 while the current expected value is 1, the expected value will be synchronously adjusted to 2.</li>.
 <Li>False: if a conflict exists between the current expected value when modifying the maximum or minimum value, an error message indicates it is not allowed to be modified.</li>.
         :type DesiredCapacitySyncWithMaxMinSize: bool
+        :param _PriorityScaleInUnhealthy: Scaling in unhealthy instances first. If enabled, preferentially selects unhealthy instances during scale in. Default value: False.
+        :type PriorityScaleInUnhealthy: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
@@ -13598,6 +13635,7 @@ Default value: RECREATE.
         self._ReplaceMode = None
         self._AutoUpdateInstanceTags = None
         self._DesiredCapacitySyncWithMaxMinSize = None
+        self._PriorityScaleInUnhealthy = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13673,6 +13711,17 @@ Default value: RECREATE.
     def DesiredCapacitySyncWithMaxMinSize(self, DesiredCapacitySyncWithMaxMinSize):
         self._DesiredCapacitySyncWithMaxMinSize = DesiredCapacitySyncWithMaxMinSize
 
+    @property
+    def PriorityScaleInUnhealthy(self):
+        r"""Scaling in unhealthy instances first. If enabled, preferentially selects unhealthy instances during scale in. Default value: False.
+        :rtype: bool
+        """
+        return self._PriorityScaleInUnhealthy
+
+    @PriorityScaleInUnhealthy.setter
+    def PriorityScaleInUnhealthy(self, PriorityScaleInUnhealthy):
+        self._PriorityScaleInUnhealthy = PriorityScaleInUnhealthy
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
@@ -13681,6 +13730,7 @@ Default value: RECREATE.
         self._ReplaceMode = params.get("ReplaceMode")
         self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
         self._DesiredCapacitySyncWithMaxMinSize = params.get("DesiredCapacitySyncWithMaxMinSize")
+        self._PriorityScaleInUnhealthy = params.get("PriorityScaleInUnhealthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

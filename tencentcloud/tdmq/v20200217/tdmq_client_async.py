@@ -187,6 +187,42 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProCluster(
+            self,
+            request: models.CreateProClusterRequest,
+            opts: Dict = None,
+    ) -> models.CreateProClusterResponse:
+        """
+        This api is used to create a professional cluster with prepayment via api calls.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRabbitMQBinding(
+            self,
+            request: models.CreateRabbitMQBindingRequest,
+            opts: Dict = None,
+    ) -> models.CreateRabbitMQBindingResponse:
+        """
+        This API is used to create a TDMQ for RabbitMQ routing relationship.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRabbitMQBinding"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRabbitMQBindingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRabbitMQUser(
             self,
             request: models.CreateRabbitMQUserRequest,
@@ -211,7 +247,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRabbitMQVipInstanceResponse:
         """
-        This API is used to create a TDMQ for RabbitMQ exclusive instance.
+        This API is used to create a RabbitMQ managed instance.
         """
         
         kwargs = {}
@@ -259,6 +295,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQEnvironmentRole(
+            self,
+            request: models.CreateRocketMQEnvironmentRoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQEnvironmentRoleResponse:
+        """
+        Creates environment role authorization
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQEnvironmentRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQEnvironmentRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQGroup(
             self,
             request: models.CreateRocketMQGroupRequest,
@@ -295,6 +349,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQRole(
+            self,
+            request: models.CreateRocketMQRoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQRoleResponse:
+        """
+        This API is used to create a role.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQTopic(
             self,
             request: models.CreateRocketMQTopicRequest,
@@ -308,6 +380,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "CreateRocketMQTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateRocketMQTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRocketMQVipInstance(
+            self,
+            request: models.CreateRocketMQVipInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQVipInstanceResponse:
+        """
+        This API is used to create a RocketMQ Exclusive Edition instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQVipInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQVipInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -475,6 +565,60 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteProCluster(
+            self,
+            request: models.DeleteProClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProClusterResponse:
+        """
+        This API is used to delete a professional cluster with prepayment via API calls.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRabbitMQBinding(
+            self,
+            request: models.DeleteRabbitMQBindingRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRabbitMQBindingResponse:
+        """
+        This API is used to unbind RabbitMQ routing relationships.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRabbitMQBinding"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRabbitMQBindingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRabbitMQPermission(
+            self,
+            request: models.DeleteRabbitMQPermissionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRabbitMQPermissionResponse:
+        """
+        This API is used to delete RabbitMQ permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRabbitMQPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRabbitMQPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRabbitMQUser(
             self,
             request: models.DeleteRabbitMQUserRequest,
@@ -499,7 +643,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRabbitMQVipInstanceResponse:
         """
-        This API is used to delete a TDMQ for RabbitMQ exclusive instance.
+        This API is used to delete a RabbitMQ managed instance.
         """
         
         kwargs = {}
@@ -547,6 +691,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRocketMQEnvironmentRoles(
+            self,
+            request: models.DeleteRocketMQEnvironmentRolesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRocketMQEnvironmentRolesResponse:
+        """
+        Deletes environment role authorization
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRocketMQEnvironmentRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRocketMQEnvironmentRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRocketMQGroup(
             self,
             request: models.DeleteRocketMQGroupRequest,
@@ -583,6 +745,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRocketMQRoles(
+            self,
+            request: models.DeleteRocketMQRolesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRocketMQRolesResponse:
+        """
+        Deletes roles. Batch deletion is supported.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRocketMQRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRocketMQRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRocketMQTopic(
             self,
             request: models.DeleteRocketMQTopicRequest,
@@ -596,6 +776,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DeleteRocketMQTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRocketMQTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRocketMQVipInstance(
+            self,
+            request: models.DeleteRocketMQVipInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRocketMQVipInstanceResponse:
+        """
+        This API is used to delete a RocketMQ Exclusive Edition instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRocketMQVipInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRocketMQVipInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -722,24 +920,6 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DescribeClusters"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClustersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCmqDeadLetterSourceQueues(
-            self,
-            request: models.DescribeCmqDeadLetterSourceQueuesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCmqDeadLetterSourceQueuesResponse:
-        """
-        This API is used to enumerate the source queues of a CMQ dead letter queue.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCmqDeadLetterSourceQueues"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCmqDeadLetterSourceQueuesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -889,6 +1069,60 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMqMsgTrace(
+            self,
+            request: models.DescribeMqMsgTraceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMqMsgTraceResponse:
+        """
+        Queries message trajectory
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMqMsgTrace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMqMsgTraceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMsg(
+            self,
+            request: models.DescribeMsgRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMsgResponse:
+        """
+        This API is used to get message details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMsg"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMsgResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMsgTrace(
+            self,
+            request: models.DescribeMsgTraceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMsgTraceResponse:
+        """
+        Queries message trajectory
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMsgTrace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMsgTraceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePublisherSummary(
             self,
             request: models.DescribePublisherSummaryRequest,
@@ -961,19 +1195,109 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRabbitMQBindings(
+            self,
+            request: models.DescribeRabbitMQBindingsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQBindingsResponse:
+        """
+        This API is used to query the list of RabbitMQ route relations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRabbitMQExchanges(
+            self,
+            request: models.DescribeRabbitMQExchangesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQExchangesResponse:
+        """
+        This API is used to query the list of TDMQ for RabbitMQ exchanges.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQExchanges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQExchangesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRabbitMQNodeList(
             self,
             request: models.DescribeRabbitMQNodeListRequest,
             opts: Dict = None,
     ) -> models.DescribeRabbitMQNodeListResponse:
         """
-        This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.
+        This API is used to query the RabbitMQ managed node list.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeRabbitMQNodeList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRabbitMQNodeListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRabbitMQPermission(
+            self,
+            request: models.DescribeRabbitMQPermissionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQPermissionResponse:
+        """
+        This API is used to query the list of TDMQ for RabbitMQ permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRabbitMQQueueDetail(
+            self,
+            request: models.DescribeRabbitMQQueueDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQQueueDetailResponse:
+        """
+        This API is used to query the details of RabbitMQ queues.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQQueueDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQQueueDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRabbitMQQueues(
+            self,
+            request: models.DescribeRabbitMQQueuesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQQueuesResponse:
+        """
+        This API is used to query the list of TDMQ for RabbitMQ queues.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQQueues"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQQueuesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -997,13 +1321,31 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRabbitMQVipInstance(
+            self,
+            request: models.DescribeRabbitMQVipInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRabbitMQVipInstanceResponse:
+        """
+        This API is used to obtain information about one RabbitMQ managed instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRabbitMQVipInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRabbitMQVipInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRabbitMQVipInstances(
             self,
             request: models.DescribeRabbitMQVipInstancesRequest,
             opts: Dict = None,
     ) -> models.DescribeRabbitMQVipInstancesResponse:
         """
-        This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.
+        This API is used to query the RabbitMQ managed instance list of user purchases.
         """
         
         kwargs = {}
@@ -1028,24 +1370,6 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DescribeRabbitMQVirtualHost"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRabbitMQVirtualHostResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeRabbitMQVirtualHostList(
-            self,
-            request: models.DescribeRabbitMQVirtualHostListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeRabbitMQVirtualHostListResponse:
-        """
-        This API is used to query the list of TDMQ for RabbitMQ exclusive vhosts.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeRabbitMQVirtualHostList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeRabbitMQVirtualHostListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1087,6 +1411,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRocketMQEnvironmentRoles(
+            self,
+            request: models.DescribeRocketMQEnvironmentRolesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQEnvironmentRolesResponse:
+        """
+        Obtains the namespace role list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQEnvironmentRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQEnvironmentRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRocketMQGroups(
             self,
             request: models.DescribeRocketMQGroupsRequest,
@@ -1123,6 +1465,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRocketMQMsgTrace(
+            self,
+            request: models.DescribeRocketMQMsgTraceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQMsgTraceResponse:
+        """
+        Queries message trajectory
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQMsgTrace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQMsgTraceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRocketMQNamespaces(
             self,
             request: models.DescribeRocketMQNamespacesRequest,
@@ -1141,6 +1501,150 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRocketMQProducers(
+            self,
+            request: models.DescribeRocketMQProducersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQProducersResponse:
+        """
+        This API is used to query the producer client list under a specified topic in RocketMQ.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQProducers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQProducersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQPublicAccessMonitorData(
+            self,
+            request: models.DescribeRocketMQPublicAccessMonitorDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQPublicAccessMonitorDataResponse:
+        """
+        This API is used to pull public network metric monitoring data from TCOP. Currently, only inbound bandwidth and outbound bandwidth metrics from client to LB are supported.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQPublicAccessMonitorData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQPublicAccessMonitorDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQPublicAccessPoint(
+            self,
+            request: models.DescribeRocketMQPublicAccessPointRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQPublicAccessPointResponse:
+        """
+        This API is used to query the public network access information of RocketMQ instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQPublicAccessPoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQPublicAccessPointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQRoles(
+            self,
+            request: models.DescribeRocketMQRolesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQRolesResponse:
+        """
+        Obtains the list of roles
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopUsages(
+            self,
+            request: models.DescribeRocketMQTopUsagesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopUsagesResponse:
+        """
+        Used to obtain the RocketMQ metric sorting list, such as sorting topics under a cluster instance by the most occupied storage space.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopUsages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopUsagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopic(
+            self,
+            request: models.DescribeRocketMQTopicRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopicResponse:
+        """
+        This API is used to obtain RocketMQ topic details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopicMsgs(
+            self,
+            request: models.DescribeRocketMQTopicMsgsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopicMsgsResponse:
+        """
+        Query RocketMQ messages.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopicMsgs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopicMsgsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopicStats(
+            self,
+            request: models.DescribeRocketMQTopicStatsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopicStatsResponse:
+        """
+        This API is used to obtain the topic production details list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopicStats"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopicStatsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRocketMQTopics(
             self,
             request: models.DescribeRocketMQTopicsRequest,
@@ -1154,6 +1658,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DescribeRocketMQTopics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRocketMQTopicsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRocketMQTopicsByGroup(
+            self,
+            request: models.DescribeRocketMQTopicsByGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQTopicsByGroupResponse:
+        """
+        Obtains the list of topics subscribed under a specified consumer group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQTopicsByGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQTopicsByGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1231,6 +1753,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTopicMsgs(
+            self,
+            request: models.DescribeTopicMsgsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicMsgsResponse:
+        """
+        This API is used to query messages.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicMsgs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicMsgsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTopics(
             self,
             request: models.DescribeTopicsRequest,
@@ -1244,6 +1784,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "DescribeTopics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTopicsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportRocketMQMessageDetail(
+            self,
+            request: models.ExportRocketMQMessageDetailRequest,
+            opts: Dict = None,
+    ) -> models.ExportRocketMQMessageDetailResponse:
+        """
+        Export the RocketMQ message details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportRocketMQMessageDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportRocketMQMessageDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1357,6 +1915,42 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyPublicNetworkSecurityPolicy(
+            self,
+            request: models.ModifyPublicNetworkSecurityPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPublicNetworkSecurityPolicyResponse:
+        """
+        This API is used to modify the public network security policy for pulsar Pro Edition.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPublicNetworkSecurityPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPublicNetworkSecurityPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRabbitMQPermission(
+            self,
+            request: models.ModifyRabbitMQPermissionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRabbitMQPermissionResponse:
+        """
+        This API is used to modify RabbitMQ permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRabbitMQPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRabbitMQPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRabbitMQUser(
             self,
             request: models.ModifyRabbitMQUserRequest,
@@ -1411,6 +2005,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRocketMQEnvironmentRole(
+            self,
+            request: models.ModifyRocketMQEnvironmentRoleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRocketMQEnvironmentRoleResponse:
+        """
+        Modifies environment role authorization
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRocketMQEnvironmentRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRocketMQEnvironmentRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRocketMQGroup(
             self,
             request: models.ModifyRocketMQGroupRequest,
@@ -1424,6 +2036,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "ModifyRocketMQGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRocketMQGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRocketMQInstance(
+            self,
+            request: models.ModifyRocketMQInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRocketMQInstanceResponse:
+        """
+        Modify the RocketMQ dedicated instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRocketMQInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRocketMQInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1460,6 +2090,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "ModifyRocketMQNamespace"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRocketMQNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRocketMQRole(
+            self,
+            request: models.ModifyRocketMQRoleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRocketMQRoleResponse:
+        """
+        Modifies roles
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRocketMQRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRocketMQRoleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1543,26 +2191,26 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReceiveMessageResponse:
         """
-        Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.
+        This API is used to receive messages sent to a specified Partitioned Topic. It supports only Partitioned Topic type. When there are no messages in the Partitioned Topic but the API is still called, it throws a ReceiveTimeout exception.
 
-        Instructions on how to use `BatchReceivePolicy`:
+        This API is used to batch receive policies.
 
-        `BatchReceive` has three parameters:
+        This API is used to provide the following three parameters:.
 
-        ● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.
-        ● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.
-        ● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.
+        MaxNumMessages: The maximum number of messages returned by the Receive API each time when using BatchReceive.
+        MaxNumBytes: the maximum size of messages returned by the Receive API in a single BatchReceive operation, in bytes.
+        Timeout: The maximum timeout period for each Receive API call when using BatchReceive is how long, in MS.
 
-        By default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.
+        This API is used to disable the BatchReceive feature if none of the three parameters are specified. If any one of the three parameters has a value greater than 0, BatchReceive is enabled. BatchReceive completes when reaching the threshold specified in any one of the three parameters.
 
-        Note: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.
+        Note: MaxNumMessages and MaxNumBytes are subject to the size of ReceiveQueueSize for each receipt of messages. If ReceiveQueueSize is set to 5 and MaxNumMessages is set to 10, then BatchReceive will receive at most 5 messages at once rather than 10.
 
 
 
-        The API configured with `BatchReceivePolicy` returns multiple messages at a time.
+        This API is used to return multiple messages at one time.
 
-        1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.
-        2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.
+        This API is used to Split multiple messages with the special character '###', allowing the business side to use Split tools in different languages to separate messages after receiving them.
+        Multiple MessageIDs use the special character '###' to separate with each other. After receiving the message, the business side can leverage the Split tool provided by different languages to separate different messages. (Used for filling in the necessary MessageID field information when calling the AcknowledgeMessage API.).
         """
         
         kwargs = {}
@@ -1605,6 +2253,24 @@ class TdmqClient(AbstractClient):
         kwargs["action"] = "ResetRocketMQConsumerOffSet"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResetRocketMQConsumerOffSetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RetryRocketMQDlqMessage(
+            self,
+            request: models.RetryRocketMQDlqMessageRequest,
+            opts: Dict = None,
+    ) -> models.RetryRocketMQDlqMessageResponse:
+        """
+        Resend the RocketMQ dead letter messages.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RetryRocketMQDlqMessage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RetryRocketMQDlqMessageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1709,13 +2375,31 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SendRocketMQMessageResponse:
         """
-        This document is used to send a TDMQ for RocketMQ message.
+        This API is used to send messages through RocketMQ. It is only used for sending a small number of test messages from the console and does not provide SLA. Cloud API is subject to traffic throttling. In real business scenarios, use the RocketMQ SDK to send messages.
         """
         
         kwargs = {}
         kwargs["action"] = "SendRocketMQMessage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SendRocketMQMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetRocketMQPublicAccessPoint(
+            self,
+            request: models.SetRocketMQPublicAccessPointRequest,
+            opts: Dict = None,
+    ) -> models.SetRocketMQPublicAccessPointResponse:
+        """
+        This API is used to enable/disable public network access, and set the security access policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetRocketMQPublicAccessPoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetRocketMQPublicAccessPointResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

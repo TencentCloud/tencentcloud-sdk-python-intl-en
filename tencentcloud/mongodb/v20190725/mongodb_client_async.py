@@ -115,6 +115,42 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLogDownloadTask(
+            self,
+            request: models.CreateLogDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLogDownloadTaskResponse:
+        """
+        This API is used to create a log download task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLogDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLogDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLogDownloadTask(
+            self,
+            request: models.DeleteLogDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLogDownloadTaskResponse:
+        """
+        This API is used to delete a log download task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLogDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLogDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAsyncRequestInfo(
             self,
             request: models.DescribeAsyncRequestInfoRequest,
@@ -295,6 +331,60 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceSSL(
+            self,
+            request: models.DescribeInstanceSSLRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceSSLResponse:
+        """
+        This API is used to view the enabling status of Secure Sockets Layer (SSL) for an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceSSLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogDownloadTasks(
+            self,
+            request: models.DescribeLogDownloadTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogDownloadTasksResponse:
+        """
+        This API is used to query a log download task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogDownloadTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogDownloadTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMongodbLogs(
+            self,
+            request: models.DescribeMongodbLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMongodbLogsResponse:
+        """
+        This API is used to query running logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMongodbLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMongodbLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSecurityGroup(
             self,
             request: models.DescribeSecurityGroupRequest,
@@ -434,6 +524,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "InquirePriceRenewDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InquirePriceRenewDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InstanceEnableSSL(
+            self,
+            request: models.InstanceEnableSSLRequest,
+            opts: Dict = None,
+    ) -> models.InstanceEnableSSLResponse:
+        """
+        This API is used to set the SSL status for an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstanceEnableSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstanceEnableSSLResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -614,6 +722,42 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "TerminateDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TerminateDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeDBInstanceKernelVersion(
+            self,
+            request: models.UpgradeDBInstanceKernelVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        This API is used to upgrade the kernel version of the database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeDBInstanceKernelVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeDBInstanceKernelVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeDbInstanceVersion(
+            self,
+            request: models.UpgradeDbInstanceVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeDbInstanceVersionResponse:
+        """
+        This API is used to upgrade the database kernel across versions. Currently, it is only supported to upgrade from version 3.6 to 4.0, 4.0 to 4.2, 4.2 to 4.4, and 4.4 to 5.0.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeDbInstanceVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeDbInstanceVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # An exception occurred while calling the transaction service.
 FAILEDOPERATION_CALLTRADE = 'FailedOperation.CallTrade'
 
+# Third-Party cloud service exception. try again later.
+FAILEDOPERATION_CLOUDSERVICE = 'FailedOperation.CloudService'
+
 # CMQ backend error.
 FAILEDOPERATION_CMQBACKENDERROR = 'FailedOperation.CmqBackendError'
 
@@ -38,6 +41,9 @@ FAILEDOPERATION_CREATEENVIRONMENTROLE = 'FailedOperation.CreateEnvironmentRole'
 # Failed to create the namespace.
 FAILEDOPERATION_CREATENAMESPACE = 'FailedOperation.CreateNamespace'
 
+# Region not supported for sdk creation.
+FAILEDOPERATION_CREATEPROCLUSTERREGIONNOTEXIST = 'FailedOperation.CreateProClusterRegionNotExist'
+
 # An error occurred while creating the producer.
 FAILEDOPERATION_CREATEPRODUCERERROR = 'FailedOperation.CreateProducerError'
 
@@ -47,7 +53,7 @@ FAILEDOPERATION_CREATEPULSARCLIENTERROR = 'FailedOperation.CreatePulsarClientErr
 # Failed to create the role.
 FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 
-# Failed to create the key.
+# Key creation failed.
 FAILEDOPERATION_CREATESECRETKEY = 'FailedOperation.CreateSecretKey'
 
 # Failed to create the subscription.
@@ -58,6 +64,9 @@ FAILEDOPERATION_CREATETOPIC = 'FailedOperation.CreateTopic'
 
 # Failed to delete the cluster.
 FAILEDOPERATION_DELETECLUSTER = 'FailedOperation.DeleteCluster'
+
+# Cluster deletion protection is enabled. failed to delete the cluster.
+FAILEDOPERATION_DELETECLUSTERPROTECTION = 'FailedOperation.DeleteClusterProtection'
 
 # Failed to delete the environment role.
 FAILEDOPERATION_DELETEENVIRONMENTROLES = 'FailedOperation.DeleteEnvironmentRoles'
@@ -80,14 +89,29 @@ FAILEDOPERATION_DELETETOPICS = 'FailedOperation.DeleteTopics'
 # Failed to query the subscription data.
 FAILEDOPERATION_DESCRIBESUBSCRIPTION = 'FailedOperation.DescribeSubscription'
 
+# Parameters are abnormal. ordering failed.
+FAILEDOPERATION_GENERATEDEALSANDPAYERROR = 'FailedOperation.GenerateDealsAndPayError'
+
 # Failed to get the environment attributes.
 FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = 'FailedOperation.GetEnvironmentAttributesFailed'
 
 # Failed to get the number of topic partitions.
 FAILEDOPERATION_GETTOPICPARTITIONSFAILED = 'FailedOperation.GetTopicPartitionsFailed'
 
+# The instance has enabled deletion protection. if needed, disable deletion protection to delete.
+FAILEDOPERATION_INSTANCECANNOTDELETE = 'FailedOperation.InstanceCanNotDelete'
+
 # This instance is not ready. Please try again later.
 FAILEDOPERATION_INSTANCENOTREADY = 'FailedOperation.InstanceNotReady'
+
+# Existing public network modification is not allowed.
+FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = 'FailedOperation.InvalidExistPublicAccessPointError'
+
+# Invalid parameters.
+FAILEDOPERATION_INVALIDWHITELISTERROR = 'FailedOperation.InvalidWhiteListError'
+
+# Settings not supported for this parameter in the current cluster.
+FAILEDOPERATION_ISOLATECONSUMERENABLE = 'FailedOperation.IsolateConsumerEnable'
 
 # The message size exceeds the upper limit of 1 MB.
 FAILEDOPERATION_MAXMESSAGESIZEERROR = 'FailedOperation.MaxMessageSizeError'
@@ -95,8 +119,20 @@ FAILEDOPERATION_MAXMESSAGESIZEERROR = 'FailedOperation.MaxMessageSizeError'
 # The uploaded `msgID` is incorrect.
 FAILEDOPERATION_MESSAGEIDERROR = 'FailedOperation.MessageIDError'
 
+# Failed to modify the cluster.
+FAILEDOPERATION_MODIFYCLUSTER = 'FailedOperation.ModifyCluster'
+
 # You must clear the associated namespace before proceeding.
 FAILEDOPERATION_NAMESPACEINUSE = 'FailedOperation.NamespaceInUse'
+
+# Resource not found.
+FAILEDOPERATION_ONLINEREFUNDRESOURCENOTEXIT = 'FailedOperation.OnlineRefundResourceNotExit'
+
+# Task in progress. please try again later.
+FAILEDOPERATION_OPERATELATER = 'FailedOperation.OperateLater'
+
+# Product information not found.
+FAILEDOPERATION_PRODUCTNOTEXIST = 'FailedOperation.ProductNotExist'
 
 # An error occurred while receiving the message.
 FAILEDOPERATION_RECEIVEERROR = 'FailedOperation.ReceiveError'
@@ -104,17 +140,26 @@ FAILEDOPERATION_RECEIVEERROR = 'FailedOperation.ReceiveError'
 # Message receiving timed out. Please try again.
 FAILEDOPERATION_RECEIVETIMEOUT = 'FailedOperation.ReceiveTimeout'
 
+# Cross-Region replication validation failed.
+FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = 'FailedOperation.ReplicationDestCheckFailedError'
+
+# Cross-Region replication verification failed.
+FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = 'FailedOperation.ReplicationSourceCheckFailedError'
+
 # Failed to configure message rewind.
 FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = 'FailedOperation.ResetMsgSubOffsetByTimestampFailed'
 
 # You must clear the associated role data before proceeding.
 FAILEDOPERATION_ROLEINUSE = 'FailedOperation.RoleInUse'
 
-# Failed to save the key.
+# Save key failed.
 FAILEDOPERATION_SAVESECRETKEY = 'FailedOperation.SaveSecretKey'
 
 # Message sending timed out.
 FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = 'FailedOperation.SendMessageTimeoutError'
+
+# Failed to send message.
+FAILEDOPERATION_SENDMSG = 'FailedOperation.SendMsg'
 
 # Failed to send the message.
 FAILEDOPERATION_SENDMSGFAILED = 'FailedOperation.SendMsgFailed'
@@ -152,6 +197,9 @@ INTERNALERROR = 'InternalError'
 # The broker service is exceptional.
 INTERNALERROR_BROKERSERVICE = 'InternalError.BrokerService'
 
+# Operation failed.
+INTERNALERROR_FAILEDOPERATION = 'InternalError.FailedOperation'
+
 # Failed to get attributes.
 INTERNALERROR_GETATTRIBUTESFAILED = 'InternalError.GetAttributesFailed'
 
@@ -179,10 +227,16 @@ INVALIDPARAMETER_TENANTNOTFOUND = 'InvalidParameter.TenantNotFound'
 # The correct token was not obtained.
 INVALIDPARAMETER_TOKENNOTFOUND = 'InvalidParameter.TokenNotFound'
 
+# Invalid vpc information or subnet info.
+INVALIDPARAMETER_VPC = 'InvalidParameter.Vpc'
+
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# At least one parameter must be provided.
+# AckTime parameter error.
+INVALIDPARAMETERVALUE_ACKTIME = 'InvalidParameterValue.AckTime'
+
+# At least one parameter needs to be provided.
 INVALIDPARAMETERVALUE_ATLEASTONE = 'InvalidParameterValue.AtLeastOne'
 
 # The cluster name already exists.
@@ -209,6 +263,9 @@ LIMITEXCEEDED_CLUSTERS = 'LimitExceeded.Clusters'
 # The number of environments under the instance exceeds the limit.
 LIMITEXCEEDED_ENVIRONMENTS = 'LimitExceeded.Environments'
 
+# Message trace query time period is too long.
+LIMITEXCEEDED_MSGTIME = 'LimitExceeded.MsgTime'
+
 # The number of namespaces under the instance exceeds the limit.
 LIMITEXCEEDED_NAMESPACES = 'LimitExceeded.Namespaces'
 
@@ -229,6 +286,9 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # A required parameter is missing.
 MISSINGPARAMETER_NEEDMOREPARAMS = 'MissingParameter.NeedMoreParams'
+
+# Tag information is missing.
+MISSINGPARAMETER_TAG = 'MissingParameter.Tag'
 
 # Messages in the subscribed topic are being consumed.
 OPERATIONDENIED_CONSUMERRUNNING = 'OperationDenied.ConsumerRunning'
@@ -281,8 +341,17 @@ RESOURCENOTFOUND_ENVIRONMENTROLE = 'ResourceNotFound.EnvironmentRole'
 # The instance doesn’t exist.
 RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
 
+# Specified message not found.
+RESOURCENOTFOUND_MSG = 'ResourceNotFound.Msg'
+
+# Message production log does not exist.
+RESOURCENOTFOUND_MSGPRODUCELOG = 'ResourceNotFound.MsgProduceLog'
+
 # The namespace does not exist.
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
+
+# Namespace does not exist.
+RESOURCENOTFOUND_NAMSPACE = 'ResourceNotFound.Namspace'
 
 # The role does not exist.
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
@@ -314,8 +383,14 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
+# Policy parameter error.
+UNKNOWNPARAMETER_POLICY = 'UnknownParameter.Policy'
+
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # The instance does not support configuration downgrade.
 UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = 'UnsupportedOperation.InstanceDowngrade'
+
+# Unack operation is not supported in the current cluster.
+UNSUPPORTEDOPERATION_TOPICUNACK = 'UnsupportedOperation.TopicUnack'

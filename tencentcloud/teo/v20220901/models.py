@@ -31516,11 +31516,11 @@ class Https(AbstractModel):
 
 <li>off: Disable.</li>
         :type OcspStapling: str
-        :param _TlsVersion: Tls version settings, valid values:.
-<Li>`TLSv1`: tlsv1 version;</li>.
-<li>`TLSv1.1`: TLSv1.1 version;</li>.
-<li>TLSv1.2: specifies the TLSv1.2 version.</li>.
-<Li>TLSv1.3: specifies the TLSv1.3 version. consecutive versions must be enabled when modifying.</li>.
+        :param _TlsVersion: Tls version settings. valid values:.
+<Li>TLSv1: specifies the tlsv1 version.</li>.
+<Li>TLSv1.1: specifies the tlsv1.1 version.</li>.
+<Li>TLSv1.2: specifies the tlsv1.2 version.</li>.
+<Li>TLSv1.3: specifies the tlsv1.3 version. consecutive versions must be enabled when modifying.</li>.
         :type TlsVersion: list of str
         :param _Hsts: HSTS Configuration
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -31576,11 +31576,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TlsVersion(self):
-        r"""Tls version settings, valid values:.
-<Li>`TLSv1`: tlsv1 version;</li>.
-<li>`TLSv1.1`: TLSv1.1 version;</li>.
-<li>TLSv1.2: specifies the TLSv1.2 version.</li>.
-<Li>TLSv1.3: specifies the TLSv1.3 version. consecutive versions must be enabled when modifying.</li>.
+        r"""Tls version settings. valid values:.
+<Li>TLSv1: specifies the tlsv1 version.</li>.
+<Li>TLSv1.1: specifies the tlsv1.1 version.</li>.
+<Li>TLSv1.2: specifies the tlsv1.2 version.</li>.
+<Li>TLSv1.3: specifies the tlsv1.3 version. consecutive versions must be enabled when modifying.</li>.
         :rtype: list of str
         """
         return self._TlsVersion
@@ -34880,8 +34880,8 @@ class MaxAge(AbstractModel):
 <li>`on`: Follow the origin server and ignore the field MaxAgeTime;</li>
 <li>`off`: Do not follow the origin server and apply the field MaxAgeTime.</li>
         :type FollowOrigin: str
-        :param _MaxAgeTime: Specifies the maximum amount of time (in seconds). Value range: 0 to 315360000.
-Note: The value `0` means not to cache.
+        :param _MaxAgeTime: MaxAge specifies the time setting in seconds. value range: 0–315360000.
+Specifies the time when the cache is disabled if set to 0.
         :type MaxAgeTime: int
         """
         self._FollowOrigin = None
@@ -34902,8 +34902,8 @@ Note: The value `0` means not to cache.
 
     @property
     def MaxAgeTime(self):
-        r"""Specifies the maximum amount of time (in seconds). Value range: 0 to 315360000.
-Note: The value `0` means not to cache.
+        r"""MaxAge specifies the time setting in seconds. value range: 0–315360000.
+Specifies the time when the cache is disabled if set to 0.
         :rtype: int
         """
         return self._MaxAgeTime
@@ -40352,6 +40352,8 @@ The original configuration will apply if it is not specified.
         :param _Grpc: Configuration of gRPC support. 
 The original configuration will apply if it is not specified.
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param _NetworkErrorLogging: Network Error Logging configuration. The original configuration will apply if it is not specified.
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
         :param _ImageOptimize: Image optimization. 
 It is disabled if this parameter is not specified.
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
@@ -40379,6 +40381,7 @@ It is disabled if this parameter is not specified.
         self._Ipv6 = None
         self._ClientIpCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._ImageOptimize = None
         self._StandardDebug = None
         self._JITVideoProcess = None
@@ -40611,6 +40614,17 @@ The original configuration will apply if it is not specified.
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""Network Error Logging configuration. The original configuration will apply if it is not specified.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def ImageOptimize(self):
         r"""Image optimization. 
 It is disabled if this parameter is not specified.
@@ -40701,6 +40715,9 @@ It is disabled if this parameter is not specified.
         if params.get("Grpc") is not None:
             self._Grpc = Grpc()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLogging()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("ImageOptimize") is not None:
             self._ImageOptimize = ImageOptimize()
             self._ImageOptimize._deserialize(params.get("ImageOptimize"))
@@ -41378,6 +41395,86 @@ Note: When using MutualTLS as an input parameter in ModifyHostsCertificate, you 
                 obj = CertificateInfo()
                 obj._deserialize(item)
                 self._CertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkErrorLogging(AbstractModel):
+    r"""Network Error Logging configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Specifies whether the Network Error Logging configuration is enabled. Valid values:.
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""Specifies whether the Network Error Logging configuration is enabled. Valid values:.
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkErrorLoggingParameters(AbstractModel):
+    r"""Network Error Logging configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Specifies whether Network Error Logging configuration is enabled. Valid values:
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""Specifies whether Network Error Logging configuration is enabled. Valid values:
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44201,7 +44298,7 @@ class PostMaxSize(AbstractModel):
 <li>`on`: Enable;</li>
 <li>`off`: Disable.</li>
         :type Switch: str
-        :param _MaxSize: Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).
+        :param _MaxSize: Specifies the maximum limit. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.
         :type MaxSize: int
         """
         self._Switch = None
@@ -44222,7 +44319,7 @@ class PostMaxSize(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).
+        r"""Specifies the maximum limit. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.
         :rtype: int
         """
         return self._MaxSize
@@ -44254,7 +44351,7 @@ class PostMaxSizeParameters(AbstractModel):
         r"""
         :param _Switch: Whether to enable post request file upload limit, in bytes (default limit: 32 * 2<sup>20</sup> bytes). valid values: <li>`on`: enable limit;</li><li>`off`: disable limit.</li>.
         :type Switch: str
-        :param _MaxSize: Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).
+        :param _MaxSize: Specifies the maximum limit for file streaming transmission in POST request upload. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.
         :type MaxSize: int
         """
         self._Switch = None
@@ -44273,7 +44370,7 @@ class PostMaxSizeParameters(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).
+        r"""Specifies the maximum limit for file streaming transmission in POST request upload. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.
         :rtype: int
         """
         return self._MaxSize
@@ -53917,6 +54014,9 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         :param _Grpc: Configuration of grpc support.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        :param _NetworkErrorLogging: Network Error Logging configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLoggingParameters`
         :param _AccelerateMainland: Accelerate optimization and configuration in mainland china.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
@@ -53945,6 +54045,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         self._ClientIPHeader = None
         self._ClientIPCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._AccelerateMainland = None
         self._StandardDebug = None
 
@@ -54193,6 +54294,18 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""Network Error Logging configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLoggingParameters`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def AccelerateMainland(self):
         r"""Accelerate optimization and configuration in mainland china.
 Note: this field may return null, which indicates a failure to obtain a valid value.
@@ -54279,6 +54392,9 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         if params.get("Grpc") is not None:
             self._Grpc = GrpcParameters()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLoggingParameters()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("AccelerateMainland") is not None:
             self._AccelerateMainland = AccelerateMainlandParameters()
             self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
@@ -54485,6 +54601,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _Grpc: Configuration of gRPC support
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param _NetworkErrorLogging: Network Error Logging configuration.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NetworkErrorLogging: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
         :param _ImageOptimize: Image optimization configuration. 
 Note: This field may return `null`, indicating that no valid value was found.
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
@@ -54518,6 +54637,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         self._Https = None
         self._ClientIpCountry = None
         self._Grpc = None
+        self._NetworkErrorLogging = None
         self._ImageOptimize = None
         self._AccelerateMainland = None
         self._StandardDebug = None
@@ -54764,6 +54884,18 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._Grpc = Grpc
 
     @property
+    def NetworkErrorLogging(self):
+        r"""Network Error Logging configuration.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NetworkErrorLogging`
+        """
+        return self._NetworkErrorLogging
+
+    @NetworkErrorLogging.setter
+    def NetworkErrorLogging(self, NetworkErrorLogging):
+        self._NetworkErrorLogging = NetworkErrorLogging
+
+    @property
     def ImageOptimize(self):
         r"""Image optimization configuration. 
 Note: This field may return `null`, indicating that no valid value was found.
@@ -54869,6 +55001,9 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("Grpc") is not None:
             self._Grpc = Grpc()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("NetworkErrorLogging") is not None:
+            self._NetworkErrorLogging = NetworkErrorLogging()
+            self._NetworkErrorLogging._deserialize(params.get("NetworkErrorLogging"))
         if params.get("ImageOptimize") is not None:
             self._ImageOptimize = ImageOptimize()
             self._ImageOptimize._deserialize(params.get("ImageOptimize"))

@@ -654,6 +654,11 @@ def test_import_trabbit_v20230418():
     from tencentcloud.trabbit.v20230418 import models
 
 
+def test_import_trocket_v20230308():
+    from tencentcloud.trocket.v20230308 import trocket_client
+    from tencentcloud.trocket.v20230308 import models
+
+
 def test_import_trro_v20220325():
     from tencentcloud.trro.v20220325 import trro_client
     from tencentcloud.trro.v20220325 import models
