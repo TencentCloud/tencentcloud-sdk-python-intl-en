@@ -165,6 +165,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlindWatermarkTemplate(self, request):
+        r"""This API is used to create a user-defined digital watermark template with an upper limit of 1000.
+
+        :param request: Request instance for CreateBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         r"""This API is used to create a custom content moderation template. Up to 50 templates can be created in total.
 
@@ -248,6 +271,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreatePersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateProcessImageTemplate(self, request):
+        r"""This API is used to create an image processing template.
+
+        :param request: Request instance for CreateProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -631,6 +677,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBlindWatermarkTemplate(self, request):
+        r"""This API is used to delete a user-defined digital watermark template.
+
+        :param request: Request instance for DeleteBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteContentReviewTemplate(self, request):
         r"""This API is used to delete a custom content moderation template.
 
@@ -714,6 +783,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeletePersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProcessImageTemplate(self, request):
+        r"""This API is used to delete an image processing template.
+
+        :param request: Request instance for DeleteProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1114,6 +1206,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBlindWatermarkTemplates(self, request):
+        r"""This API is used to query a user-defined digital watermark template, and the pagination query is supported based on conditions.
+
+        :param request: Request instance for DescribeBlindWatermarkTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBlindWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeBlindWatermarkTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlindWatermarkTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlindWatermarkTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         r"""This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
 
@@ -1243,6 +1358,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribePersonSamples", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePersonSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProcessImageTemplates(self, request):
+        r"""This API is used to query the list of image processing templates.
+
+        :param request: Request instance for DescribeProcessImageTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeProcessImageTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeProcessImageTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProcessImageTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProcessImageTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1703,6 +1841,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractBlindWatermark(self, request):
+        r"""This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.
+
+        :param request: Request instance for ExtractBlindWatermark.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractBlindWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractBlindWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManageTask(self, request):
         r"""This API is used to manage initiated tasks.
 
@@ -1843,6 +2004,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBlindWatermarkTemplate(self, request):
+        r"""This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.
+
+        :param request: Request instance for ModifyBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyContentReviewTemplate(self, request):
         r"""This API is used to modify a custom content moderation template.
 
@@ -1926,6 +2110,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyPersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProcessImageTemplate(self, request):
+        r"""This API is used to modify an image processing template.
+
+        :param request: Request instance for ModifyProcessImageTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyProcessImageTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyProcessImageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProcessImageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProcessImageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

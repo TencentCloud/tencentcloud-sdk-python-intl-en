@@ -10785,6 +10785,10 @@ The default value is blink. The different action types passed in this parameter 
         :type LivenessTimeout: int
         :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.
         :type SelectedWarningCodes: str
+        :param _AllowExpiredDocument: Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
+true (default value): Expired HKID is allowed to enter the liveness process.
+false : Expired HKID is rejected and cannot enter the liveness process.
+        :type AllowExpiredDocument: bool
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -10801,6 +10805,7 @@ The default value is blink. The different action types passed in this parameter 
         self._LivenessRetryLimit = None
         self._LivenessTimeout = None
         self._SelectedWarningCodes = None
+        self._AllowExpiredDocument = None
 
     @property
     def AutoSkipStartPage(self):
@@ -10996,6 +11001,19 @@ The default value is blink. The different action types passed in this parameter 
     def SelectedWarningCodes(self, SelectedWarningCodes):
         self._SelectedWarningCodes = SelectedWarningCodes
 
+    @property
+    def AllowExpiredDocument(self):
+        r"""Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
+true (default value): Expired HKID is allowed to enter the liveness process.
+false : Expired HKID is rejected and cannot enter the liveness process.
+        :rtype: bool
+        """
+        return self._AllowExpiredDocument
+
+    @AllowExpiredDocument.setter
+    def AllowExpiredDocument(self, AllowExpiredDocument):
+        self._AllowExpiredDocument = AllowExpiredDocument
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -11013,6 +11031,7 @@ The default value is blink. The different action types passed in this parameter 
         self._LivenessRetryLimit = params.get("LivenessRetryLimit")
         self._LivenessTimeout = params.get("LivenessTimeout")
         self._SelectedWarningCodes = params.get("SelectedWarningCodes")
+        self._AllowExpiredDocument = params.get("AllowExpiredDocument")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

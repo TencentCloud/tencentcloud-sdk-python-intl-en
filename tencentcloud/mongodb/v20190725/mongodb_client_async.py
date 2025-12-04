@@ -43,6 +43,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAccountUser(
+            self,
+            request: models.CreateAccountUserRequest,
+            opts: Dict = None,
+    ) -> models.CreateAccountUserResponse:
+        """
+        This API is used to customize an account to access the instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAccountUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAccountUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBackupDBInstance(
             self,
             request: models.CreateBackupDBInstanceRequest,
@@ -133,6 +151,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAccountUser(
+            self,
+            request: models.DeleteAccountUserRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAccountUserResponse:
+        """
+        This API is used to delete a custom account of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAccountUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAccountUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLogDownloadTask(
             self,
             request: models.DeleteLogDownloadTaskRequest,
@@ -187,6 +223,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupRules(
+            self,
+            request: models.DescribeBackupRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupRulesResponse:
+        """
+        This API is used to obtain the automatic backup configuration information of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClientConnections(
             self,
             request: models.DescribeClientConnectionsRequest,
@@ -200,6 +254,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DescribeClientConnections"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClientConnectionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCurrentOp(
+            self,
+            request: models.DescribeCurrentOpRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCurrentOpResponse:
+        """
+        This API is used to query the operation currently being performed on a TencentDB for MongoDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCurrentOp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCurrentOpResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -457,6 +529,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableTransparentDataEncryption(
+            self,
+            request: models.EnableTransparentDataEncryptionRequest,
+            opts: Dict = None,
+    ) -> models.EnableTransparentDataEncryptionResponse:
+        """
+        This API is used to enable the transparent data encryption (TDE) capability for TencentDB for MongoDB.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableTransparentDataEncryption"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableTransparentDataEncryptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FlushInstanceRouterConfig(
             self,
             request: models.FlushInstanceRouterConfigRequest,
@@ -565,6 +655,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def KillOps(
+            self,
+            request: models.KillOpsRequest,
+            opts: Dict = None,
+    ) -> models.KillOpsResponse:
+        """
+        This API is used to terminate a specific operation performed on a TencentDB for MongoDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "KillOps"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.KillOpsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBInstanceNetworkAddress(
             self,
             request: models.ModifyDBInstanceNetworkAddressRequest,
@@ -614,6 +722,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ModifyDBInstanceSpec"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBInstanceSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyInstanceParams(
+            self,
+            request: models.ModifyInstanceParamsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceParamsResponse:
+        """
+        This API is used to modify the parameter configuration of a TencentDB for MongoDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceParams"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceParamsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -691,6 +817,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SetAccountUserPrivilege(
+            self,
+            request: models.SetAccountUserPrivilegeRequest,
+            opts: Dict = None,
+    ) -> models.SetAccountUserPrivilegeResponse:
+        """
+        This API is used to set the account permissions of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetAccountUserPrivilege"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetAccountUserPrivilegeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetDBInstanceDeletionProtection(
             self,
             request: models.SetDBInstanceDeletionProtectionRequest,
@@ -704,6 +848,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "SetDBInstanceDeletionProtection"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetDBInstanceDeletionProtectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetInstanceMaintenance(
+            self,
+            request: models.SetInstanceMaintenanceRequest,
+            opts: Dict = None,
+    ) -> models.SetInstanceMaintenanceResponse:
+        """
+        This API is used to set the instance maintenance window.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetInstanceMaintenance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetInstanceMaintenanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -134,6 +134,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBlindWatermarkTemplate(
+            self,
+            request: models.CreateBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateBlindWatermarkTemplateResponse:
+        """
+        This API is used to create a user-defined digital watermark template with an upper limit of 1000.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateContentReviewTemplate(
             self,
             request: models.CreateContentReviewTemplateRequest,
@@ -201,6 +219,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreatePersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreatePersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateProcessImageTemplate(
+            self,
+            request: models.CreateProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateProcessImageTemplateResponse:
+        """
+        This API is used to create an image processing template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -505,6 +541,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBlindWatermarkTemplate(
+            self,
+            request: models.DeleteBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBlindWatermarkTemplateResponse:
+        """
+        This API is used to delete a user-defined digital watermark template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteContentReviewTemplate(
             self,
             request: models.DeleteContentReviewTemplateRequest,
@@ -572,6 +626,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DeletePersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProcessImageTemplate(
+            self,
+            request: models.DeleteProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProcessImageTemplateResponse:
+        """
+        This API is used to delete an image processing template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -883,6 +955,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBlindWatermarkTemplates(
+            self,
+            request: models.DescribeBlindWatermarkTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlindWatermarkTemplatesResponse:
+        """
+        This API is used to query a user-defined digital watermark template, and the pagination query is supported based on conditions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlindWatermarkTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlindWatermarkTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContentReviewTemplates(
             self,
             request: models.DescribeContentReviewTemplatesRequest,
@@ -986,6 +1076,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribePersonSamples"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePersonSamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProcessImageTemplates(
+            self,
+            request: models.DescribeProcessImageTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProcessImageTemplatesResponse:
+        """
+        This API is used to query the list of image processing templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProcessImageTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProcessImageTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1347,6 +1455,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExtractBlindWatermark(
+            self,
+            request: models.ExtractBlindWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.ExtractBlindWatermarkResponse:
+        """
+        This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExtractBlindWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExtractBlindWatermarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ManageTask(
             self,
             request: models.ManageTaskRequest,
@@ -1457,6 +1583,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBlindWatermarkTemplate(
+            self,
+            request: models.ModifyBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBlindWatermarkTemplateResponse:
+        """
+        This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyContentReviewTemplate(
             self,
             request: models.ModifyContentReviewTemplateRequest,
@@ -1524,6 +1668,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ModifyPersonSample"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPersonSampleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyProcessImageTemplate(
+            self,
+            request: models.ModifyProcessImageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProcessImageTemplateResponse:
+        """
+        This API is used to modify an image processing template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProcessImageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProcessImageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

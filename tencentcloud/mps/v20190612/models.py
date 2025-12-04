@@ -1233,6 +1233,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
+        :param _BlindWatermark: Digital watermark parameter.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         :param _OutputStorage: Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -1270,6 +1273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self._Definition = None
         self._WatermarkSet = None
+        self._BlindWatermark = None
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._SubStreamObjectName = None
@@ -1302,6 +1306,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @WatermarkSet.setter
     def WatermarkSet(self, WatermarkSet):
         self._WatermarkSet = WatermarkSet
+
+    @property
+    def BlindWatermark(self):
+        r"""Digital watermark parameter.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
 
     @property
     def OutputStorage(self):
@@ -1436,6 +1452,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self._WatermarkSet.append(obj)
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -13504,6 +13523,168 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class BlindWatermarkInput(AbstractModel):
+    r"""Digital watermark parameter type in the MPS task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Digital watermark template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Digital watermark template ID.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlindWatermarkTemplate(AbstractModel):
+    r"""Digital watermark template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :type Type: str
+        :param _Name: Digital watermark template name.
+        :type Name: str
+        :param _TextContent: Text content of the digital watermark template. The length cannot exceed 64 characters.
+        :type TextContent: str
+        :param _Comment: Description information of the digital watermark template.
+        :type Comment: str
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._TextContent = None
+        self._Comment = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark template. The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._TextContent = params.get("TextContent")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassificationConfigureInfo(AbstractModel):
     r"""Control parameter of intelligent categorization task
 
@@ -17326,6 +17507,130 @@ class CreateAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBlindWatermarkTemplateRequest(AbstractModel):
+    r"""CreateBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>
+        :type Type: str
+        :param _TextContent: Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.
+        :type TextContent: str
+        :param _Name: Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :type Comment: str
+        """
+        self._Type = None
+        self._TextContent = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TextContent = params.get("TextContent")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlindWatermarkTemplateResponse(AbstractModel):
+    r"""CreateBlindWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateContentReviewTemplateRequest(AbstractModel):
     r"""CreateContentReviewTemplate request structure.
 
@@ -18085,6 +18390,117 @@ class CreatePersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateProcessImageTemplateRequest(AbstractModel):
+    r"""CreateProcessImageTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessImageTemplate: Image processing template.
+        :type ProcessImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _Name: Image processing template name. The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Description information of the image processing template. The length cannot exceed 256 characters.
+        :type Comment: str
+        """
+        self._ProcessImageTemplate = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def ProcessImageTemplate(self):
+        r"""Image processing template.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageTemplate
+
+    @ProcessImageTemplate.setter
+    def ProcessImageTemplate(self, ProcessImageTemplate):
+        self._ProcessImageTemplate = ProcessImageTemplate
+
+    @property
+    def Name(self):
+        r"""Image processing template name. The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the image processing template. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessImageTemplate") is not None:
+            self._ProcessImageTemplate = ImageTaskInput()
+            self._ProcessImageTemplate._deserialize(params.get("ProcessImageTemplate"))
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProcessImageTemplateResponse(AbstractModel):
+    r"""CreateProcessImageTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the image processing template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -20469,6 +20885,70 @@ class DeleteAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBlindWatermarkTemplateRequest(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlindWatermarkTemplateResponse(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteContentReviewTemplateRequest(AbstractModel):
     r"""DeleteContentReviewTemplate request structure.
 
@@ -20699,6 +21179,70 @@ class DeletePersonSampleRequest(AbstractModel):
 
 class DeletePersonSampleResponse(AbstractModel):
     r"""DeletePersonSample response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProcessImageTemplateRequest(AbstractModel):
+    r"""DeleteProcessImageTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the image processing template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProcessImageTemplateResponse(AbstractModel):
+    r"""DeleteProcessImageTemplate response structure.
 
     """
 
@@ -22881,6 +23425,169 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBlindWatermarkTemplatesRequest(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.
+        :type Definitions: list of int
+        :param _Name: Filtering condition for the unique identifier of the digital watermark template. The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :type Type: str
+        :param _Offset: Pagination offset. The default value is 0.
+        :type Offset: int
+        :param _Limit: Number of returned records.
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
+        :type Limit: int
+        """
+        self._Definitions = None
+        self._Name = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Definitions(self):
+        r"""Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Name(self):
+        r"""Filtering condition for the unique identifier of the digital watermark template. The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. The default value is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned records.
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet the filtering conditions.
+        :type TotalCount: int
+        :param _BlindWatermarkTemplateSet: List of digital watermark template details.
+        :type BlindWatermarkTemplateSet: list of BlindWatermarkTemplate
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BlindWatermarkTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records that meet the filtering conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BlindWatermarkTemplateSet(self):
+        r"""List of digital watermark template details.
+        :rtype: list of BlindWatermarkTemplate
+        """
+        return self._BlindWatermarkTemplateSet
+
+    @BlindWatermarkTemplateSet.setter
+    def BlindWatermarkTemplateSet(self, BlindWatermarkTemplateSet):
+        self._BlindWatermarkTemplateSet = BlindWatermarkTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BlindWatermarkTemplateSet") is not None:
+            self._BlindWatermarkTemplateSet = []
+            for item in params.get("BlindWatermarkTemplateSet"):
+                obj = BlindWatermarkTemplate()
+                obj._deserialize(item)
+                self._BlindWatermarkTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     r"""DescribeContentReviewTemplates request structure.
 
@@ -23844,6 +24551,199 @@ class DescribePersonSamplesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProcessImageTemplatesRequest(AbstractModel):
+    r"""DescribeProcessImageTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: Filtering condition for the unique identifier of the image processing template. The array length cannot exceed 100.
+        :type Definitions: list of int
+        :param _Offset: Pagination offset. The default value is 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. The default value is 10, and the maximum value is 100.
+        :type Limit: int
+        :param _Name: Filtering condition for the identifier of the image processing template.
+        :type Name: str
+        :param _OrderType: Sorting method. It is valid after OrderBy is set. Valid values: 0: ascending; 1: descending. The default value is 0.
+        :type OrderType: int
+        :param _OrderBy: Sorting field. Valid values:
+Definition: unique identifier of the template.
+Default value: creation time.
+        :type OrderBy: str
+        :param _Type: Filtering condition for the template type. Valid values: <li>Preset: system preset template;</li> <li>Custom: user-defined template.</li>
+        :type Type: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+        self._OrderType = None
+        self._OrderBy = None
+        self._Type = None
+
+    @property
+    def Definitions(self):
+        r"""Filtering condition for the unique identifier of the image processing template. The array length cannot exceed 100.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. The default value is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned entries. The default value is 10, and the maximum value is 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""Filtering condition for the identifier of the image processing template.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OrderType(self):
+        r"""Sorting method. It is valid after OrderBy is set. Valid values: 0: ascending; 1: descending. The default value is 0.
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Valid values:
+Definition: unique identifier of the template.
+Default value: creation time.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Type(self):
+        r"""Filtering condition for the template type. Valid values: <li>Preset: system preset template;</li> <li>Custom: user-defined template.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        self._OrderType = params.get("OrderType")
+        self._OrderBy = params.get("OrderBy")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProcessImageTemplatesResponse(AbstractModel):
+    r"""DescribeProcessImageTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet the filtering conditions.
+        :type TotalCount: int
+        :param _ProcessImageTemplateSet: List of image processing template details.
+        :type ProcessImageTemplateSet: list of ProcessImageTemplate
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProcessImageTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records that meet the filtering conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProcessImageTemplateSet(self):
+        r"""List of image processing template details.
+        :rtype: list of ProcessImageTemplate
+        """
+        return self._ProcessImageTemplateSet
+
+    @ProcessImageTemplateSet.setter
+    def ProcessImageTemplateSet(self, ProcessImageTemplateSet):
+        self._ProcessImageTemplateSet = ProcessImageTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProcessImageTemplateSet") is not None:
+            self._ProcessImageTemplateSet = []
+            for item in params.get("ProcessImageTemplateSet"):
+                obj = ProcessImageTemplate()
+                obj._deserialize(item)
+                self._ProcessImageTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQualityControlTemplatesRequest(AbstractModel):
     r"""DescribeQualityControlTemplates request structure.
 
@@ -24360,6 +25260,11 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
 * Preset: system preset template.
 * Custom: user-defined template.
         :type Type: str
+        :param _EraseType: Erasing type filtering conditions for the smart erasing template.
+- subtitle: subtitle removal.
+- watermark: watermark removal.
+- privacy: privacy protection.
+        :type EraseType: str
         :param _Name: Filtering condition for the smart erasing template name. Length limit: 64 characters.
         :type Name: str
         """
@@ -24367,6 +25272,7 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._EraseType = None
         self._Name = None
 
     @property
@@ -24416,6 +25322,20 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def EraseType(self):
+        r"""Erasing type filtering conditions for the smart erasing template.
+- subtitle: subtitle removal.
+- watermark: watermark removal.
+- privacy: privacy protection.
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
     def Name(self):
         r"""Filtering condition for the smart erasing template name. Length limit: 64 characters.
         :rtype: str
@@ -24432,6 +25352,7 @@ class DescribeSmartEraseTemplatesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._EraseType = params.get("EraseType")
         self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -27992,6 +28913,151 @@ class ExecuteFunctionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExtractBlindWatermarkRequest(AbstractModel):
+    r"""ExtractBlindWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-abseq: ab sequence copyright digital watermark.</li>
+        :type Type: str
+        :param _InputInfo: File input information for the Media Processing Service (MPS) task.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _TaskNotifyConfig: Event notification information of the task. If it is left unspecified, it indicates that no event notification is obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ExtractBlindWatermarkConfig: Configuration of the digital watermark extraction task.
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        :param _ResourceId: Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
+        :type ResourceId: str
+        """
+        self._Type = None
+        self._InputInfo = None
+        self._TaskNotifyConfig = None
+        self._ExtractBlindWatermarkConfig = None
+        self._ResourceId = None
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-abseq: ab sequence copyright digital watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputInfo(self):
+        r"""File input information for the Media Processing Service (MPS) task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def TaskNotifyConfig(self):
+        r"""Event notification information of the task. If it is left unspecified, it indicates that no event notification is obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""Configuration of the digital watermark extraction task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkResponse(AbstractModel):
+    r"""ExtractBlindWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ExtractBlindWatermarkTask(AbstractModel):
     r"""Extract video digital watermark task information.
 
@@ -29080,19 +30146,22 @@ class ImageAreaBoxInfo(AbstractModel):
 Default value: logo.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
-        :param _AreaCoordSet: Coordinates (pixel-level) of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner.
+        :param _AreaCoordSet: Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
 For example, [101, 85, 111, 95].
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AreaCoordSet: list of int
-        :param _BoundingBox: Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.
- - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).
- -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BoundingBox: Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This field takes effect when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+- [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
+- [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BoundingBox: list of float
+        :param _BoundingBoxUnitType: BoundingBox field unit. When the value is set to 0, select the unit automatically according to the field rule. When it is set to 1, the unit is ratio. When it is set to 2, the unit is pixel.
+        :type BoundingBoxUnitType: int
         """
         self._Type = None
         self._AreaCoordSet = None
         self._BoundingBox = None
+        self._BoundingBoxUnitType = None
 
     @property
     def Type(self):
@@ -29111,9 +30180,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AreaCoordSet(self):
-        r"""Coordinates (pixel-level) of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner.
+        r"""Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
 For example, [101, 85, 111, 95].
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -29124,10 +30193,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BoundingBox(self):
-        r"""Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.
- - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).
- -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This field takes effect when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+- [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
+- [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of float
         """
         return self._BoundingBox
@@ -29136,11 +30205,23 @@ Note: This field may return null, indicating that no valid value can be obtained
     def BoundingBox(self, BoundingBox):
         self._BoundingBox = BoundingBox
 
+    @property
+    def BoundingBoxUnitType(self):
+        r"""BoundingBox field unit. When the value is set to 0, select the unit automatically according to the field rule. When it is set to 1, the unit is ratio. When it is set to 2, the unit is pixel.
+        :rtype: int
+        """
+        return self._BoundingBoxUnitType
+
+    @BoundingBoxUnitType.setter
+    def BoundingBoxUnitType(self, BoundingBoxUnitType):
+        self._BoundingBoxUnitType = BoundingBoxUnitType
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._AreaCoordSet = params.get("AreaCoordSet")
         self._BoundingBox = params.get("BoundingBox")
+        self._BoundingBoxUnitType = params.get("BoundingBoxUnitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30653,6 +31734,175 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class LiveAiAnalysisDescriptionItem(AbstractModel):
+    r"""Information about the live streaming summary result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Paragraphs: Segmentation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Paragraphs: list of LiveAiParagraphInfo
+        """
+        self._Paragraphs = None
+
+    @property
+    def Paragraphs(self):
+        r"""Segmentation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LiveAiParagraphInfo
+        """
+        return self._Paragraphs
+
+    @Paragraphs.setter
+    def Paragraphs(self, Paragraphs):
+        self._Paragraphs = Paragraphs
+
+
+    def _deserialize(self, params):
+        if params.get("Paragraphs") is not None:
+            self._Paragraphs = []
+            for item in params.get("Paragraphs"):
+                obj = LiveAiParagraphInfo()
+                obj._deserialize(item)
+                self._Paragraphs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveAiParagraphInfo(AbstractModel):
+    r"""Segment information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: Segment summary.
+        :type Summary: str
+        :param _Title: Segment title.
+        :type Title: str
+        :param _Keywords: Segment keyword.
+        :type Keywords: list of str
+        :param _StartTimeOffset: Starting time point of the segment, in seconds.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End time point of the segment, in seconds.
+        :type EndTimeOffset: float
+        :param _BeginTime: Starting time point of the live streaming segment in ISO date and time format.	
+        :type BeginTime: str
+        :param _EndTime: End time point of the live streaming segment in ISO date and time format.	
+        :type EndTime: str
+        """
+        self._Summary = None
+        self._Title = None
+        self._Keywords = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def Summary(self):
+        r"""Segment summary.
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Title(self):
+        r"""Segment title.
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Keywords(self):
+        r"""Segment keyword.
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def StartTimeOffset(self):
+        r"""Starting time point of the segment, in seconds.
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        r"""End time point of the segment, in seconds.
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def BeginTime(self):
+        r"""Starting time point of the live streaming segment in ISO date and time format.	
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""End time point of the live streaming segment in ISO date and time format.	
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        self._Title = params.get("Title")
+        self._Keywords = params.get("Keywords")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveRecordFile(AbstractModel):
     r"""The information of a live recording file.
 
@@ -31347,14 +32597,22 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultSet: 
+        :param _ResultSet: Live streaming analysis subtask result. Valid values:
+<li>Live streaming video splitting.</li>
+<li>Live streaming highlight.</li>
+<li>Live streaming summary.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ResultSet: list of LiveStreamAiAnalysisResultItem
         """
         self._ResultSet = None
 
     @property
     def ResultSet(self):
-        r"""
+        r"""Live streaming analysis subtask result. Valid values:
+<li>Live streaming video splitting.</li>
+<li>Live streaming highlight.</li>
+<li>Live streaming summary.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of LiveStreamAiAnalysisResultItem
         """
         return self._ResultSet
@@ -31391,22 +32649,27 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
         :param _Type: Result type. Valid values:
 <li>SegmentRecognition: video splitting.</li>
 <li>Highlight: highlight.</li>
+<li>Description: summary.</li>
         :type Type: str
         :param _SegmentResultSet: 
         :type SegmentResultSet: list of SegmentRecognitionItem
         :param _HighlightResultSet: Highlight result. This field is valid when Type is set to Highlight.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HighlightResultSet: list of MediaAiAnalysisHighlightItem
+        :param _DescriptionResult: Summary result. It is valid when Type is Description.
+        :type DescriptionResult: :class:`tencentcloud.mps.v20190612.models.LiveAiAnalysisDescriptionItem`
         """
         self._Type = None
         self._SegmentResultSet = None
         self._HighlightResultSet = None
+        self._DescriptionResult = None
 
     @property
     def Type(self):
         r"""Result type. Valid values:
 <li>SegmentRecognition: video splitting.</li>
 <li>Highlight: highlight.</li>
+<li>Description: summary.</li>
         :rtype: str
         """
         return self._Type
@@ -31438,6 +32701,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HighlightResultSet(self, HighlightResultSet):
         self._HighlightResultSet = HighlightResultSet
 
+    @property
+    def DescriptionResult(self):
+        r"""Summary result. It is valid when Type is Description.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveAiAnalysisDescriptionItem`
+        """
+        return self._DescriptionResult
+
+    @DescriptionResult.setter
+    def DescriptionResult(self, DescriptionResult):
+        self._DescriptionResult = DescriptionResult
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -31453,6 +32727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = MediaAiAnalysisHighlightItem()
                 obj._deserialize(item)
                 self._HighlightResultSet.append(obj)
+        if params.get("DescriptionResult") is not None:
+            self._DescriptionResult = LiveAiAnalysisDescriptionItem()
+            self._DescriptionResult._deserialize(params.get("DescriptionResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33538,7 +34815,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         r"""
         :param _NotifyType: Notification Type:
 TDMQ-CMQ: TDMQ for CMQ.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).
 
 <font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
         :type NotifyType: str
@@ -33568,7 +34845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NotifyType(self):
         r"""Notification Type:
 TDMQ-CMQ: TDMQ for CMQ.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).
 
 <font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
         :rtype: str
@@ -36150,7 +37427,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         r"""
         :param _Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param _ErrCodeExt: The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :param _ErrCodeExt: The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://www.tencentcloud.com/document/api/1041/33691).
         :type ErrCodeExt: str
         :param _ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
@@ -36161,9 +37438,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :param _Output: Output of the image sprite task for videos.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
-        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _BeginProcessTime: Task execution start time in ISO date and time format.
         :type BeginProcessTime: str
-        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _FinishTime: Task execution completion time in ISO date and time format.
         :type FinishTime: str
         """
         self._Status = None
@@ -36188,7 +37465,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        r"""The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://www.tencentcloud.com/document/api/1041/33691).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -36244,7 +37521,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BeginProcessTime(self):
-        r"""Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Task execution start time in ISO date and time format.
         :rtype: str
         """
         return self._BeginProcessTime
@@ -36255,7 +37532,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FinishTime(self):
-        r"""Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Task execution completion time in ISO date and time format.
         :rtype: str
         """
         return self._FinishTime
@@ -38684,6 +39961,115 @@ class ModifyAsrHotwordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBlindWatermarkTemplateRequest(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _Name: Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :type Comment: str
+        :param _TextContent: Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.
+        :type TextContent: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._TextContent = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlindWatermarkTemplateResponse(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyContentReviewTemplateRequest(AbstractModel):
     r"""ModifyContentReviewTemplate request structure.
 
@@ -39444,6 +40830,117 @@ class ModifyPersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProcessImageTemplateRequest(AbstractModel):
+    r"""ModifyProcessImageTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the image processing template.
+        :type Definition: int
+        :param _Name: Image processing template name. The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Template description information. The length cannot exceed 256 characters.
+        :type Comment: str
+        :param _ProcessImageTemplate: Image processing template parameter.
+        :type ProcessImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._ProcessImageTemplate = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Image processing template name. The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Template description information. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ProcessImageTemplate(self):
+        r"""Image processing template parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageTemplate
+
+    @ProcessImageTemplate.setter
+    def ProcessImageTemplate(self, ProcessImageTemplate):
+        self._ProcessImageTemplate = ProcessImageTemplate
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("ProcessImageTemplate") is not None:
+            self._ProcessImageTemplate = ImageTaskInput()
+            self._ProcessImageTemplate._deserialize(params.get("ProcessImageTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProcessImageTemplateResponse(AbstractModel):
+    r"""ModifyProcessImageTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -42030,12 +43527,13 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotificationType: Live stream processing result type, including:
-<li>AiReviewResult: content auditing result.</li>
+        :param _NotificationType: Live stream processing result type. Valid values:
+<li>AiReviewResult: content review result.</li>
 <li>AiRecognitionResult: content recognition result.</li>
-<li>LiveRecordResult: live recording result.</li>
-<li>AiQualityControlResult: media quality inspection result.</li>
-<li>ProcessEof: live stream processing result.</li>
+<li>LiveRecordResult: live streaming recording result.</li>
+<li>AiQualityControlResult: media live quality control result.</li>
+<li>AiAnalysisResult: content analysis result.</li>
+<li>ProcessEof: end of live stream processing.</li>
         :type NotificationType: str
         :param _TaskId: Video processing task ID.
         :type TaskId: str
@@ -42081,12 +43579,13 @@ Note: when this field return null, means no valid values can be obtained.
 
     @property
     def NotificationType(self):
-        r"""Live stream processing result type, including:
-<li>AiReviewResult: content auditing result.</li>
+        r"""Live stream processing result type. Valid values:
+<li>AiReviewResult: content review result.</li>
 <li>AiRecognitionResult: content recognition result.</li>
-<li>LiveRecordResult: live recording result.</li>
-<li>AiQualityControlResult: media quality inspection result.</li>
-<li>ProcessEof: live stream processing result.</li>
+<li>LiveRecordResult: live streaming recording result.</li>
+<li>AiQualityControlResult: media live quality control result.</li>
+<li>AiAnalysisResult: content analysis result.</li>
+<li>ProcessEof: end of live stream processing.</li>
         :rtype: str
         """
         return self._NotificationType
@@ -42330,6 +43829,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BatchTaskEvent: Batch processing task information. this field has a value only when EventType is BatchTask.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type BatchTaskEvent: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        :param _ExtractBlindWatermarkTask: Information about the digital watermark extraction task. This field has a value only when EventType is ExtractBlindWatermark.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtractBlindWatermarkTask: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -42342,6 +43844,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Timestamp = None
         self._Sign = None
         self._BatchTaskEvent = None
+        self._ExtractBlindWatermarkTask = None
         self._RequestId = None
 
     @property
@@ -42454,6 +43957,18 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._BatchTaskEvent = BatchTaskEvent
 
     @property
+    def ExtractBlindWatermarkTask(self):
+        r"""Information about the digital watermark extraction task. This field has a value only when EventType is ExtractBlindWatermark.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
+        """
+        return self._ExtractBlindWatermarkTask
+
+    @ExtractBlindWatermarkTask.setter
+    def ExtractBlindWatermarkTask(self, ExtractBlindWatermarkTask):
+        self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -42483,6 +43998,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("BatchTaskEvent") is not None:
             self._BatchTaskEvent = BatchSubTaskResult()
             self._BatchTaskEvent._deserialize(params.get("BatchTaskEvent"))
+        if params.get("ExtractBlindWatermarkTask") is not None:
+            self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
+            self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -43742,7 +45260,7 @@ class ProcessImageRequest(AbstractModel):
         :param _OutputDir: Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.
         :type OutputDir: str
         :param _OutputPath: Output path, which can be a relative or an absolute path.
-The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).
+The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.com/document/product/1041/33495).
 **Relative path example:**
 <Li>`Filename_{Variablename}.{format}`.</li>
 <Li>`Filename.{format}`.</li>
@@ -43752,6 +45270,10 @@ The path must end with `.{format}`. For details, please refer to the [Filename V
 
 If not filled in, default relative path: `{inputName}.{format}`.
         :type OutputPath: str
+        :param _Definition: Unique identifier of the image processing template.
+        :type Definition: int
+        :param _ResourceId: Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
+        :type ResourceId: str
         :param _ImageTask: Image processing parameter.
         :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
         """
@@ -43759,6 +45281,8 @@ If not filled in, default relative path: `{inputName}.{format}`.
         self._OutputStorage = None
         self._OutputDir = None
         self._OutputPath = None
+        self._Definition = None
+        self._ResourceId = None
         self._ImageTask = None
 
     @property
@@ -43797,7 +45321,7 @@ If not filled in, default relative path: `{inputName}.{format}`.
     @property
     def OutputPath(self):
         r"""Output path, which can be a relative or an absolute path.
-The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).
+The path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.com/document/product/1041/33495).
 **Relative path example:**
 <Li>`Filename_{Variablename}.{format}`.</li>
 <Li>`Filename.{format}`.</li>
@@ -43813,6 +45337,28 @@ If not filled in, default relative path: `{inputName}.{format}`.
     @OutputPath.setter
     def OutputPath(self, OutputPath):
         self._OutputPath = OutputPath
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
     @property
     def ImageTask(self):
@@ -43835,6 +45381,8 @@ If not filled in, default relative path: `{inputName}.{format}`.
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputDir = params.get("OutputDir")
         self._OutputPath = params.get("OutputPath")
+        self._Definition = params.get("Definition")
+        self._ResourceId = params.get("ResourceId")
         if params.get("ImageTask") is not None:
             self._ImageTask = ImageTaskInput()
             self._ImageTask._deserialize(params.get("ImageTask"))
@@ -43889,6 +45437,134 @@ class ProcessImageResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class ProcessImageTemplate(AbstractModel):
+    r"""Image processing template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the image processing template.
+        :type Definition: int
+        :param _Name: Image processing template name.
+        :type Name: str
+        :param _Comment: Description information of the image processing template.
+        :type Comment: str
+        :param _Type: Template type.
+        :type Type: str
+        :param _ProcessImageConfig: Image processing template configuration parameter.
+        :type ProcessImageConfig: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _CreateTime: Template creation time.
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the template.
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._ProcessImageConfig = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Image processing template name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the image processing template.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""Template type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProcessImageConfig(self):
+        r"""Image processing template configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ProcessImageConfig
+
+    @ProcessImageConfig.setter
+    def ProcessImageConfig(self, ProcessImageConfig):
+        self._ProcessImageConfig = ProcessImageConfig
+
+    @property
+    def CreateTime(self):
+        r"""Template creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last modification time of the template.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("ProcessImageConfig") is not None:
+            self._ProcessImageConfig = ImageTaskInput()
+            self._ProcessImageConfig._deserialize(params.get("ProcessImageConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProcessLiveStreamRequest(AbstractModel):
@@ -47669,9 +49345,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _Output: Analysis task output.
         :type Output: list of AiAnalysisResult
-        :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _BeginProcessTime: Task execution start time in ISO date and time format.
         :type BeginProcessTime: str
-        :param _FinishTime: Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _FinishTime: Task execution completion time in ISO date and time format.
         :type FinishTime: str
         """
         self._Status = None
@@ -47751,7 +49427,7 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Task execution start time in ISO date and time format.
         :rtype: str
         """
         return self._BeginProcessTime
@@ -47762,7 +49438,7 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Task execution completion time in ISO date and time format.
         :rtype: str
         """
         return self._FinishTime
@@ -52207,15 +53883,14 @@ Note: different DRM manufacturers have different limitations on the number of su
         :type KeyServerUrl: str
         :param _Vector: Initialization vector for encryption (32-byte hexadecimal string). the field content is user-customized.
         :type Vector: str
-        :param _EncryptionMethod: Encryption method. Options:  
-- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  
-- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  
-
-If not specified:  
-- FairPlay defaults to **cbcs**.  
-- PlayReady and Widevine default to **cenc**.  
-- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  
-- Widevine+PlayReady defaults to **cenc**.
+        :param _EncryptionMethod: Encryption method. Valid values:
+cbcs: supported by PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.
+cenc: supported by PlayReady, Widevine, and Widevine+PlayReady.
+If it is left unspecified:
+Use cbcs for FairPlay by default.
+Use cenc for PlayReady and Widevine by default.
+Use cbcs for Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay by default.
+Use cenc for Widevine+PlayReady by default.
         :type EncryptionMethod: str
         :param _EncryptionPreset: Substream encryption rule. Default value: preset0.
 preset 0: use the same key to encrypt all substreams
@@ -52269,15 +53944,14 @@ Note: different DRM manufacturers have different limitations on the number of su
 
     @property
     def EncryptionMethod(self):
-        r"""Encryption method. Options:  
-- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  
-- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  
-
-If not specified:  
-- FairPlay defaults to **cbcs**.  
-- PlayReady and Widevine default to **cenc**.  
-- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  
-- Widevine+PlayReady defaults to **cenc**.
+        r"""Encryption method. Valid values:
+cbcs: supported by PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.
+cenc: supported by PlayReady, Widevine, and Widevine+PlayReady.
+If it is left unspecified:
+Use cbcs for FairPlay by default.
+Use cenc for PlayReady and Widevine by default.
+Use cbcs for Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay by default.
+Use cenc for Widevine+PlayReady by default.
         :rtype: str
         """
         return self._EncryptionMethod
@@ -54619,6 +56293,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
+        :param _BlindWatermark: Digital watermark parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         :param _MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
         :param _StartTimeOffset: Start time offset of a transcoded video, in seconds.
@@ -54655,6 +56332,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._RawParameter = None
         self._OverrideParameter = None
         self._WatermarkSet = None
+        self._BlindWatermark = None
         self._MosaicSet = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
@@ -54711,6 +56389,18 @@ Note: this field may return `null`, indicating that no valid value was found.
     @WatermarkSet.setter
     def WatermarkSet(self, WatermarkSet):
         self._WatermarkSet = WatermarkSet
+
+    @property
+    def BlindWatermark(self):
+        r"""Digital watermark parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
+        """
+        return self._BlindWatermark
+
+    @BlindWatermark.setter
+    def BlindWatermark(self, BlindWatermark):
+        self._BlindWatermark = BlindWatermark
 
     @property
     def MosaicSet(self):
@@ -54830,6 +56520,9 @@ Note: this field may return `null`, indicating that no valid value was found.
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self._WatermarkSet.append(obj)
+        if params.get("BlindWatermark") is not None:
+            self._BlindWatermark = BlindWatermarkInput()
+            self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         if params.get("MosaicSet") is not None:
             self._MosaicSet = []
             for item in params.get("MosaicSet"):
@@ -56858,22 +58551,21 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Encoding format for video streams. Optional values:
-<li>h264: H.264 encoding</li>
-<li>h265: H.265 encoding</li>
-<li>h266: H.266 encoding</li>
-<li>av1: AOMedia Video 1 encoding</li>
-<li>vp8: VP8 encoding</li>
-<li>vp9: VP9 encoding</li>
-<li>mpeg2: MPEG2 encoding</li>
-<li>dnxhd: DNxHD encoding</li>
-<li>mv-hevc: MV-HEVC encoding</li>
-
-Note: AV1 encoding containers currently only support mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers currently only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+        :param _Codec: Encoding format of video streams. Valid values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding.</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+Note: The av1 codec currently only supports mp4, webm, and mkv.
+Note: The H.266 codec currently only supports mp4, hls, ts, and mov.
+Note: The VP8 and VP9 codecs currently only support webm and mkv.
+Note: The MPEG2 and dnxhd codecs currently only support mxf.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :type Codec: str
         :param _Fps: Video frame rate. Value range:
 When FpsDenominator is empty, the range is [0, 120], in Hz.
@@ -57069,22 +58761,21 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
-        r"""Encoding format for video streams. Optional values:
-<li>h264: H.264 encoding</li>
-<li>h265: H.265 encoding</li>
-<li>h266: H.266 encoding</li>
-<li>av1: AOMedia Video 1 encoding</li>
-<li>vp8: VP8 encoding</li>
-<li>vp9: VP9 encoding</li>
-<li>mpeg2: MPEG2 encoding</li>
-<li>dnxhd: DNxHD encoding</li>
-<li>mv-hevc: MV-HEVC encoding</li>
-
-Note: AV1 encoding containers currently only support mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers currently only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+        r"""Encoding format of video streams. Valid values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding.</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+Note: The av1 codec currently only supports mp4, webm, and mkv.
+Note: The H.266 codec currently only supports mp4, hls, ts, and mov.
+Note: The VP8 and VP9 codecs currently only support webm and mkv.
+Note: The MPEG2 and dnxhd codecs currently only support mxf.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :rtype: str
         """
         return self._Codec

@@ -173,6 +173,71 @@ class AssignProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Auth(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mask: Permission information of the current account.
+- 0: no permissions.
+- 1: read-only.
+- 3: read-write.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mask: int
+        :param _NameSpace: Specifies the name of the database that has the current account permissions.
+- \*: indicates all databases.
+- db.name: indicates the database with a specific name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NameSpace: str
+        """
+        self._Mask = None
+        self._NameSpace = None
+
+    @property
+    def Mask(self):
+        r"""Permission information of the current account.
+- 0: no permissions.
+- 1: read-only.
+- 3: read-write.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Mask
+
+    @Mask.setter
+    def Mask(self, Mask):
+        self._Mask = Mask
+
+    @property
+    def NameSpace(self):
+        r"""Specifies the name of the database that has the current account permissions.
+- \*: indicates all databases.
+- db.name: indicates the database with a specific name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+
+    def _deserialize(self, params):
+        self._Mask = params.get("Mask")
+        self._NameSpace = params.get("NameSpace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupDownloadTask(AbstractModel):
     r"""Backup download task information
 
@@ -757,6 +822,173 @@ class ClientConnection(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAccountUserRequest(AbstractModel):
+    r"""CreateAccountUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _UserName: New account name. The format requirements are as follows:
+- The value range for the character length is [1, 64].
+- Allowed characters include uppercase letters, lowercase letters, digits (1–9), underscores (\_), and hyphens (-).
+        :type UserName: str
+        :param _Password: New account password. The password complexity requirements are as follows:
+- The value range for the character length is [8, 32].
+- It should include at least two of the following: letters, digits, and special characters (the exclamation mark (!), at sign (@), number sign (#), percent sign (%), caret (^), asterisk (*), parentheses (), and underscore (_)).
+        :type Password: str
+        :param _MongoUserPassword: Password corresponding to the mongouser account. mongouser is the default account of the system; it indicates the password set during instance creation.
+        :type MongoUserPassword: str
+        :param _UserDesc: Account remarks.
+        :type UserDesc: str
+        :param _AuthRole: Read/Write permission information of the account.
+        :type AuthRole: list of Auth
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._Password = None
+        self._MongoUserPassword = None
+        self._UserDesc = None
+        self._AuthRole = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""New account name. The format requirements are as follows:
+- The value range for the character length is [1, 64].
+- Allowed characters include uppercase letters, lowercase letters, digits (1–9), underscores (\_), and hyphens (-).
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""New account password. The password complexity requirements are as follows:
+- The value range for the character length is [8, 32].
+- It should include at least two of the following: letters, digits, and special characters (the exclamation mark (!), at sign (@), number sign (#), percent sign (%), caret (^), asterisk (*), parentheses (), and underscore (_)).
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def MongoUserPassword(self):
+        r"""Password corresponding to the mongouser account. mongouser is the default account of the system; it indicates the password set during instance creation.
+        :rtype: str
+        """
+        return self._MongoUserPassword
+
+    @MongoUserPassword.setter
+    def MongoUserPassword(self, MongoUserPassword):
+        self._MongoUserPassword = MongoUserPassword
+
+    @property
+    def UserDesc(self):
+        r"""Account remarks.
+        :rtype: str
+        """
+        return self._UserDesc
+
+    @UserDesc.setter
+    def UserDesc(self, UserDesc):
+        self._UserDesc = UserDesc
+
+    @property
+    def AuthRole(self):
+        r"""Read/Write permission information of the account.
+        :rtype: list of Auth
+        """
+        return self._AuthRole
+
+    @AuthRole.setter
+    def AuthRole(self, AuthRole):
+        self._AuthRole = AuthRole
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._MongoUserPassword = params.get("MongoUserPassword")
+        self._UserDesc = params.get("UserDesc")
+        if params.get("AuthRole") is not None:
+            self._AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self._AuthRole.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountUserResponse(AbstractModel):
+    r"""CreateAccountUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Creates a task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Creates a task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBackupDBInstanceRequest(AbstractModel):
@@ -2401,6 +2633,197 @@ class CreateLogDownloadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CurrentOp(AbstractModel):
+    r"""Current operation on the TencentDB for MongoDB instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpId: Operation number.
+        :type OpId: int
+        :param _Ns: Namespace where the operation is located, in the format of db.collection.
+        :type Ns: str
+        :param _Query: Execution statement of the operation.
+        :type Query: str
+        :param _Op: Operation type.
+- none: special status; idle connections or internal tasks.
+- update: update data.
+- insert: insertion operation.
+- query: query operation.
+- command: command operation.
+- getmore: obtain more data.
+- remove: deletion operation.
+- killcursors: operation of releasing the query cursor.
+        :type Op: str
+        :param _ReplicaSetName: Name of the shard where the operation is performed.
+        :type ReplicaSetName: str
+        :param _NodeName: Name of the node where the operation is performed.
+        :type NodeName: str
+        :param _Operation: Detailed information about the operation.
+        :type Operation: str
+        :param _State: Node role.
+- primary: primary node.
+- secondary: secondary node.
+        :type State: str
+        :param _MicrosecsRunning: Execution time of the operation, in ms.
+        :type MicrosecsRunning: int
+        :param _ExecNode: Information about the node where the current operation is performed.
+        :type ExecNode: str
+        """
+        self._OpId = None
+        self._Ns = None
+        self._Query = None
+        self._Op = None
+        self._ReplicaSetName = None
+        self._NodeName = None
+        self._Operation = None
+        self._State = None
+        self._MicrosecsRunning = None
+        self._ExecNode = None
+
+    @property
+    def OpId(self):
+        r"""Operation number.
+        :rtype: int
+        """
+        return self._OpId
+
+    @OpId.setter
+    def OpId(self, OpId):
+        self._OpId = OpId
+
+    @property
+    def Ns(self):
+        r"""Namespace where the operation is located, in the format of db.collection.
+        :rtype: str
+        """
+        return self._Ns
+
+    @Ns.setter
+    def Ns(self, Ns):
+        self._Ns = Ns
+
+    @property
+    def Query(self):
+        r"""Execution statement of the operation.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Op(self):
+        r"""Operation type.
+- none: special status; idle connections or internal tasks.
+- update: update data.
+- insert: insertion operation.
+- query: query operation.
+- command: command operation.
+- getmore: obtain more data.
+- remove: deletion operation.
+- killcursors: operation of releasing the query cursor.
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def ReplicaSetName(self):
+        r"""Name of the shard where the operation is performed.
+        :rtype: str
+        """
+        return self._ReplicaSetName
+
+    @ReplicaSetName.setter
+    def ReplicaSetName(self, ReplicaSetName):
+        self._ReplicaSetName = ReplicaSetName
+
+    @property
+    def NodeName(self):
+        r"""Name of the node where the operation is performed.
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Operation(self):
+        r"""Detailed information about the operation.
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def State(self):
+        r"""Node role.
+- primary: primary node.
+- secondary: secondary node.
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def MicrosecsRunning(self):
+        r"""Execution time of the operation, in ms.
+        :rtype: int
+        """
+        return self._MicrosecsRunning
+
+    @MicrosecsRunning.setter
+    def MicrosecsRunning(self, MicrosecsRunning):
+        self._MicrosecsRunning = MicrosecsRunning
+
+    @property
+    def ExecNode(self):
+        r"""Information about the node where the current operation is performed.
+        :rtype: str
+        """
+        return self._ExecNode
+
+    @ExecNode.setter
+    def ExecNode(self, ExecNode):
+        self._ExecNode = ExecNode
+
+
+    def _deserialize(self, params):
+        self._OpId = params.get("OpId")
+        self._Ns = params.get("Ns")
+        self._Query = params.get("Query")
+        self._Op = params.get("Op")
+        self._ReplicaSetName = params.get("ReplicaSetName")
+        self._NodeName = params.get("NodeName")
+        self._Operation = params.get("Operation")
+        self._State = params.get("State")
+        self._MicrosecsRunning = params.get("MicrosecsRunning")
+        self._ExecNode = params.get("ExecNode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBInstanceInfo(AbstractModel):
     r"""Instance information
 
@@ -2516,6 +2939,117 @@ class DBInstancePrice(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteAccountUserRequest(AbstractModel):
+    r"""DeleteAccountUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID for the account to be deleted. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :type InstanceId: str
+        :param _UserName: Configures the name of the account to be deleted.
+        :type UserName: str
+        :param _MongoUserPassword: Configures the password corresponding to the mongouser account. mongouser is the default account of the system. Enter the password corresponding to it.
+        :type MongoUserPassword: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._MongoUserPassword = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID for the account to be deleted. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""Configures the name of the account to be deleted.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def MongoUserPassword(self):
+        r"""Configures the password corresponding to the mongouser account. mongouser is the default account of the system. Enter the password corresponding to it.
+        :rtype: str
+        """
+        return self._MongoUserPassword
+
+    @MongoUserPassword.setter
+    def MongoUserPassword(self, MongoUserPassword):
+        self._MongoUserPassword = MongoUserPassword
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._MongoUserPassword = params.get("MongoUserPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountUserResponse(AbstractModel):
+    r"""DeleteAccountUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Account deletion task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Account deletion task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLogDownloadTaskRequest(AbstractModel):
@@ -2958,6 +3492,119 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupRulesRequest(AbstractModel):
+    r"""DescribeBackupRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupRulesResponse(AbstractModel):
+    r"""DescribeBackupRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupSaveTime: Retention period for backup data, in days.
+        :type BackupSaveTime: int
+        :param _BackupTime: Automatic backup start time.
+        :type BackupTime: int
+        :param _BackupMethod: Backup method.
+- 0: logical backup.
+- 1: physical backup.
+        :type BackupMethod: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupSaveTime = None
+        self._BackupTime = None
+        self._BackupMethod = None
+        self._RequestId = None
+
+    @property
+    def BackupSaveTime(self):
+        r"""Retention period for backup data, in days.
+        :rtype: int
+        """
+        return self._BackupSaveTime
+
+    @BackupSaveTime.setter
+    def BackupSaveTime(self, BackupSaveTime):
+        self._BackupSaveTime = BackupSaveTime
+
+    @property
+    def BackupTime(self):
+        r"""Automatic backup start time.
+        :rtype: int
+        """
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def BackupMethod(self):
+        r"""Backup method.
+- 0: logical backup.
+- 1: physical backup.
+        :rtype: int
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupSaveTime = params.get("BackupSaveTime")
+        self._BackupTime = params.get("BackupTime")
+        self._BackupMethod = params.get("BackupMethod")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClientConnectionsRequest(AbstractModel):
     r"""DescribeClientConnections request structure.
 
@@ -3086,6 +3733,268 @@ class DescribeClientConnectionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Clients.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCurrentOpRequest(AbstractModel):
+    r"""DescribeCurrentOp request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID to be queried. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _Ns: Namespace where the operation belongs, in the format of db.collection.
+        :type Ns: str
+        :param _MillisecondRunning: Sets the query and filtering condition to the execution time of the operation task.
+- The default value is 0, and the value range is [0, 3600000], in milliseconds.
+- The result will return the operation whose execution time exceeds the set time.
+        :type MillisecondRunning: int
+        :param _Op: Sets the query and filtering condition to the type of the operation task. Valid values:
+- none: special status; idle connections or internal tasks.
+- update: update data.
+- insert: insertion operation.
+- query: query operation.
+- command: command operation.
+- getmore: obtain more data.
+- remove: deletion operation.
+- killcursors: operation of releasing the query cursor.
+        :type Op: str
+        :param _ReplicaSetName: Filtering condition, such as the shard name.
+        :type ReplicaSetName: str
+        :param _State: Sets the query and filtering condition to the node role.
+- primary: primary node.
+- secondary: secondary node.
+        :type State: str
+        :param _Limit: Number of entries returned per request. The default value is 100, and the value range is [0, 100].
+        :type Limit: int
+        :param _Offset: Offset. The default value is 0, and the value range is [0, 10000].
+        :type Offset: int
+        :param _OrderBy: Sorting field of the returned result set. Currently, sorting by MicrosecsRunning (execution time of the operation task) is supported.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method of the returned result set.
+- ASC: ascending order. The default value is ASC, which indicates sorting in ascending order.
+- DESC: descending order.
+        :type OrderByType: str
+        """
+        self._InstanceId = None
+        self._Ns = None
+        self._MillisecondRunning = None
+        self._Op = None
+        self._ReplicaSetName = None
+        self._State = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID to be queried. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Ns(self):
+        r"""Namespace where the operation belongs, in the format of db.collection.
+        :rtype: str
+        """
+        return self._Ns
+
+    @Ns.setter
+    def Ns(self, Ns):
+        self._Ns = Ns
+
+    @property
+    def MillisecondRunning(self):
+        r"""Sets the query and filtering condition to the execution time of the operation task.
+- The default value is 0, and the value range is [0, 3600000], in milliseconds.
+- The result will return the operation whose execution time exceeds the set time.
+        :rtype: int
+        """
+        return self._MillisecondRunning
+
+    @MillisecondRunning.setter
+    def MillisecondRunning(self, MillisecondRunning):
+        self._MillisecondRunning = MillisecondRunning
+
+    @property
+    def Op(self):
+        r"""Sets the query and filtering condition to the type of the operation task. Valid values:
+- none: special status; idle connections or internal tasks.
+- update: update data.
+- insert: insertion operation.
+- query: query operation.
+- command: command operation.
+- getmore: obtain more data.
+- remove: deletion operation.
+- killcursors: operation of releasing the query cursor.
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def ReplicaSetName(self):
+        r"""Filtering condition, such as the shard name.
+        :rtype: str
+        """
+        return self._ReplicaSetName
+
+    @ReplicaSetName.setter
+    def ReplicaSetName(self, ReplicaSetName):
+        self._ReplicaSetName = ReplicaSetName
+
+    @property
+    def State(self):
+        r"""Sets the query and filtering condition to the node role.
+- primary: primary node.
+- secondary: secondary node.
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Limit(self):
+        r"""Number of entries returned per request. The default value is 100, and the value range is [0, 100].
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. The default value is 0, and the value range is [0, 10000].
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field of the returned result set. Currently, sorting by MicrosecsRunning (execution time of the operation task) is supported.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method of the returned result set.
+- ASC: ascending order. The default value is ASC, which indicates sorting in ascending order.
+- DESC: descending order.
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Ns = params.get("Ns")
+        self._MillisecondRunning = params.get("MillisecondRunning")
+        self._Op = params.get("Op")
+        self._ReplicaSetName = params.get("ReplicaSetName")
+        self._State = params.get("State")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurrentOpResponse(AbstractModel):
+    r"""DescribeCurrentOp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of operations meeting the query conditions.
+        :type TotalCount: int
+        :param _CurrentOps: List of the current operations.
+        :type CurrentOps: list of CurrentOp
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CurrentOps = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of operations meeting the query conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CurrentOps(self):
+        r"""List of the current operations.
+        :rtype: list of CurrentOp
+        """
+        return self._CurrentOps
+
+    @CurrentOps.setter
+    def CurrentOps(self, CurrentOps):
+        self._CurrentOps = CurrentOps
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CurrentOps") is not None:
+            self._CurrentOps = []
+            for item in params.get("CurrentOps"):
+                obj = CurrentOp()
+                obj._deserialize(item)
+                self._CurrentOps.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5604,6 +6513,115 @@ class DescribeSpecInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnableTransparentDataEncryptionRequest(AbstractModel):
+    r"""EnableTransparentDataEncryption request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. For example, cmgo-p8vn****. Log in to the[TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb) to copy the instance ID from the instance list. Currently, the supported general versions include 4.4 and 5.0, and Cloud Disk Edition is not supported.
+        :type InstanceId: str
+        :param _KmsRegion:  Region where the [Key Management Service (KMS)](https://www.tencentcloud.comom/document/product/573/18809?from_cn_redirect=1) instance is located. For example, ap-shanghai.
+        :type KmsRegion: str
+        :param _KeyId: Key ID. If the parameter is left unspecified, there is no specific key ID, Tencent Cloud will generate the key automatically.
+        :type KeyId: str
+        """
+        self._InstanceId = None
+        self._KmsRegion = None
+        self._KeyId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. For example, cmgo-p8vn****. Log in to the[TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb) to copy the instance ID from the instance list. Currently, the supported general versions include 4.4 and 5.0, and Cloud Disk Edition is not supported.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KmsRegion(self):
+        r""" Region where the [Key Management Service (KMS)](https://www.tencentcloud.comom/document/product/573/18809?from_cn_redirect=1) instance is located. For example, ap-shanghai.
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def KeyId(self):
+        r"""Key ID. If the parameter is left unspecified, there is no specific key ID, Tencent Cloud will generate the key automatically.
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._KmsRegion = params.get("KmsRegion")
+        self._KeyId = params.get("KeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableTransparentDataEncryptionResponse(AbstractModel):
+    r"""EnableTransparentDataEncryption response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Asynchronous process ID for enabling TDE, which is used for querying the process status.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Asynchronous process ID for enabling TDE, which is used for querying the process status.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class FlushInstanceRouterConfigRequest(AbstractModel):
     r"""FlushInstanceRouterConfig request structure.
 
@@ -7979,6 +8997,90 @@ class IsolateDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class KillOpsRequest(AbstractModel):
+    r"""KillOps request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _Operations: Operation to be terminated.
+        :type Operations: list of Operation
+        """
+        self._InstanceId = None
+        self._Operations = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Operations(self):
+        r"""Operation to be terminated.
+        :rtype: list of Operation
+        """
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = Operation()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillOpsResponse(AbstractModel):
+    r"""KillOps response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class LogInfo(AbstractModel):
     r"""Log details.
 
@@ -8595,6 +9697,198 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceParamsRequest(AbstractModel):
+    r"""ModifyInstanceParams request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :type InstanceId: str
+        :param _InstanceParams: Specifies the parameter name and value to be modified. For details about the currently supported parameter names and the corresponding valid values, see [DescribeInstanceParams](https://www.tencentcloud.comom/document/product/240/65903?from_cn_redirect=1).
+        :type InstanceParams: list of ModifyMongoDBParamType
+        :param _ModifyType: Operation type. Valid values:
+- IMMEDIATELY: immediate adjustment.
+- DELAY: delayed adjustment. It is an optional field. The default value is immediate adjustment if this parameter is left unspecified.
+        :type ModifyType: str
+        """
+        self._InstanceId = None
+        self._InstanceParams = None
+        self._ModifyType = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceParams(self):
+        r"""Specifies the parameter name and value to be modified. For details about the currently supported parameter names and the corresponding valid values, see [DescribeInstanceParams](https://www.tencentcloud.comom/document/product/240/65903?from_cn_redirect=1).
+        :rtype: list of ModifyMongoDBParamType
+        """
+        return self._InstanceParams
+
+    @InstanceParams.setter
+    def InstanceParams(self, InstanceParams):
+        self._InstanceParams = InstanceParams
+
+    @property
+    def ModifyType(self):
+        r"""Operation type. Valid values:
+- IMMEDIATELY: immediate adjustment.
+- DELAY: delayed adjustment. It is an optional field. The default value is immediate adjustment if this parameter is left unspecified.
+        :rtype: str
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("InstanceParams") is not None:
+            self._InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyMongoDBParamType()
+                obj._deserialize(item)
+                self._InstanceParams.append(obj)
+        self._ModifyType = params.get("ModifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamsResponse(AbstractModel):
+    r"""ModifyInstanceParams response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Changed: Whether the modification on the parameter configuration takes effect.
+- true: the modified parameter value has taken effect.
+- false: execution failed.
+
+        :type Changed: bool
+        :param _TaskId: This parameter is temporarily meaningless (to be compatible with the earlier versions, reserve this parameter at the frontend).
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Changed = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Changed(self):
+        r"""Whether the modification on the parameter configuration takes effect.
+- true: the modified parameter value has taken effect.
+- false: execution failed.
+
+        :rtype: bool
+        """
+        return self._Changed
+
+    @Changed.setter
+    def Changed(self, Changed):
+        self._Changed = Changed
+
+    @property
+    def TaskId(self):
+        r"""This parameter is temporarily meaningless (to be compatible with the earlier versions, reserve this parameter at the frontend).
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Changed = params.get("Changed")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMongoDBParamType(AbstractModel):
+    r"""Modifies the request parameters of a TencentDB for MongoDB instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Parameter name to be modified. Strictly refer to the parameter names supported by the current instance, which are obtained through DescribeInstanceParams.
+        :type Key: str
+        :param _Value: Corresponding value of the parameter name to be modified. Strictly refer to the value ranges corresponding to the parameters obtained through DescribeInstanceParams.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""Parameter name to be modified. Strictly refer to the parameter names supported by the current instance, which are obtained through DescribeInstanceParams.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Corresponding value of the parameter name to be modified. Strictly refer to the value ranges corresponding to the parameters obtained through DescribeInstanceParams.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyNetworkAddress(AbstractModel):
     r"""Database IP to be modified
 
@@ -9014,6 +10308,72 @@ class OfflineIsolatedDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class Operation(AbstractModel):
+    r"""Operation to be terminated.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicaSetName: Name of the shard where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the shard name.
+        :type ReplicaSetName: str
+        :param _NodeName: Name of the node where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the node name.
+        :type NodeName: str
+        :param _OpId: Operation number. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the operation number.
+        :type OpId: int
+        """
+        self._ReplicaSetName = None
+        self._NodeName = None
+        self._OpId = None
+
+    @property
+    def ReplicaSetName(self):
+        r"""Name of the shard where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the shard name.
+        :rtype: str
+        """
+        return self._ReplicaSetName
+
+    @ReplicaSetName.setter
+    def ReplicaSetName(self, ReplicaSetName):
+        self._ReplicaSetName = ReplicaSetName
+
+    @property
+    def NodeName(self):
+        r"""Name of the node where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the node name.
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def OpId(self):
+        r"""Operation number. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the operation number.
+        :rtype: int
+        """
+        return self._OpId
+
+    @OpId.setter
+    def OpId(self, OpId):
+        self._OpId = OpId
+
+
+    def _deserialize(self, params):
+        self._ReplicaSetName = params.get("ReplicaSetName")
+        self._NodeName = params.get("NodeName")
+        self._OpId = params.get("OpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RemoveNodeList(AbstractModel):
@@ -9731,6 +11091,120 @@ class SecurityGroupBound(AbstractModel):
         
 
 
+class SetAccountUserPrivilegeRequest(AbstractModel):
+    r"""SetAccountUserPrivilege request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID for the account to be configured. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _UserName: Sets the account name to access the instance. The setting requirements are as follows: The name should be started with a letter and its length should be 1–64 characters. Only uppercase letters, lowercase letters, digits (1–9), underscores (_), and hyphens (-) can be entered.
+        :type UserName: str
+        :param _AuthRole: Sets the permission information.
+        :type AuthRole: list of Auth
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._AuthRole = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID for the account to be configured. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""Sets the account name to access the instance. The setting requirements are as follows: The name should be started with a letter and its length should be 1–64 characters. Only uppercase letters, lowercase letters, digits (1–9), underscores (_), and hyphens (-) can be entered.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AuthRole(self):
+        r"""Sets the permission information.
+        :rtype: list of Auth
+        """
+        return self._AuthRole
+
+    @AuthRole.setter
+    def AuthRole(self, AuthRole):
+        self._AuthRole = AuthRole
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("AuthRole") is not None:
+            self._AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self._AuthRole.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAccountUserPrivilegeResponse(AbstractModel):
+    r"""SetAccountUserPrivilege response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class SetDBInstanceDeletionProtectionRequest(AbstractModel):
     r"""SetDBInstanceDeletionProtection request structure.
 
@@ -9784,6 +11258,106 @@ class SetDBInstanceDeletionProtectionRequest(AbstractModel):
 
 class SetDBInstanceDeletionProtectionResponse(AbstractModel):
     r"""SetDBInstanceDeletionProtection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SetInstanceMaintenanceRequest(AbstractModel):
+    r"""SetInstanceMaintenance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :type InstanceId: str
+        :param _MaintenanceStart: Start time of the maintenance window. The value range is any hour or half-hour between 00:00 and 23:00, such as 00:00 or 00:30.
+        :type MaintenanceStart: str
+        :param _MaintenanceEnd: End time of the maintenance window.
+- The value range is any hour or half-hour between 00:00 and 23:00. The minimum value of maintenance time is 30 minutes, and the maximum value is 3 hours.
+- The end time should be later than the start time.
+        :type MaintenanceEnd: str
+        """
+        self._InstanceId = None
+        self._MaintenanceStart = None
+        self._MaintenanceEnd = None
+
+    @property
+    def InstanceId(self):
+        r"""Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MaintenanceStart(self):
+        r"""Start time of the maintenance window. The value range is any hour or half-hour between 00:00 and 23:00, such as 00:00 or 00:30.
+        :rtype: str
+        """
+        return self._MaintenanceStart
+
+    @MaintenanceStart.setter
+    def MaintenanceStart(self, MaintenanceStart):
+        self._MaintenanceStart = MaintenanceStart
+
+    @property
+    def MaintenanceEnd(self):
+        r"""End time of the maintenance window.
+- The value range is any hour or half-hour between 00:00 and 23:00. The minimum value of maintenance time is 30 minutes, and the maximum value is 3 hours.
+- The end time should be later than the start time.
+        :rtype: str
+        """
+        return self._MaintenanceEnd
+
+    @MaintenanceEnd.setter
+    def MaintenanceEnd(self, MaintenanceEnd):
+        self._MaintenanceEnd = MaintenanceEnd
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MaintenanceStart = params.get("MaintenanceStart")
+        self._MaintenanceEnd = params.get("MaintenanceEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetInstanceMaintenanceResponse(AbstractModel):
+    r"""SetInstanceMaintenance response structure.
 
     """
 
