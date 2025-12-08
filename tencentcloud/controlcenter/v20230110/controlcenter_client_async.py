@@ -42,3 +42,75 @@ class ControlcenterClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def GetAccountFactoryBaseline(
+            self,
+            request: models.GetAccountFactoryBaselineRequest,
+            opts: Dict = None,
+    ) -> models.GetAccountFactoryBaselineResponse:
+        """
+        This API is used to retrieve user baseline configuration data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetAccountFactoryBaseline"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetAccountFactoryBaselineResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListAccountFactoryBaselineItems(
+            self,
+            request: models.ListAccountFactoryBaselineItemsRequest,
+            opts: Dict = None,
+    ) -> models.ListAccountFactoryBaselineItemsResponse:
+        """
+        This API is used to obtain account factory system baseline items.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAccountFactoryBaselineItems"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAccountFactoryBaselineItemsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListDeployStepTasks(
+            self,
+            request: models.ListDeployStepTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListDeployStepTasksResponse:
+        """
+        This API is used to retrieve the application history of a certain baseline item.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListDeployStepTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListDeployStepTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateAccountFactoryBaseline(
+            self,
+            request: models.UpdateAccountFactoryBaselineRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAccountFactoryBaselineResponse:
+        """
+        This API is used to update the current baseline item configuration of a user. The baseline configuration will be overwritten with the current configuration. When adding new baseline items, the newly-added baseline configuration needs to be added to the existing configuration. When deleting baseline items, the deleted baseline configuration needs to be removed from the existing configuration, then save the latest baseline configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAccountFactoryBaseline"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAccountFactoryBaselineResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

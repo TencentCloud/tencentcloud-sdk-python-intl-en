@@ -11610,9 +11610,9 @@ class SubtitleConf(AbstractModel):
         :type CaptionSelectorName: str
         :param _CaptionSource: Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
         :type CaptionSource: str
-        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.
+        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `. When outputting as WebVTT, a single template can only output one language.
         :type ContentType: int
-        :param _TargetType: Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.
+        :param _TargetType: Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. Support `2` when CaptionSource selects `INPUT`. Support `1` and `3` when CaptionSource selects `ANALYSIS `.
         :type TargetType: int
         :param _SourceLanguage: Original phonetic language.
 Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
@@ -11622,10 +11622,18 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
         :type TargetLanguage: str
         :param _FontStyle: Font style configuration. Required when CaptionSource selects `ANALYSIS `.
         :type FontStyle: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
-        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.
+        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `. When the output is WebVTT, only STEADY can be selected.
         :type StateEffectMode: str
         :param _SteadyStateDelayedTime: Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
         :type SteadyStateDelayedTime: int
+        :param _AudioSelectorName: Audio selector name, required for generating WebVTT subtitles using speech recognition, can be empty.
+        :type AudioSelectorName: str
+        :param _WebVTTFontStyle: Format configuration for speech recognition output on WebVTT.
+        :type WebVTTFontStyle: :class:`tencentcloud.mdl.v20200326.models.WebVTTFontStyle`
+        :param _LanguageCode: Language code, length 2-20. ISO 639-2 three-digit code is recommend.
+        :type LanguageCode: str
+        :param _LanguageDescription: Language description, less than 100 characters in length.
+        :type LanguageDescription: str
         """
         self._Name = None
         self._CaptionSelectorName = None
@@ -11637,6 +11645,10 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
         self._FontStyle = None
         self._StateEffectMode = None
         self._SteadyStateDelayedTime = None
+        self._AudioSelectorName = None
+        self._WebVTTFontStyle = None
+        self._LanguageCode = None
+        self._LanguageDescription = None
 
     @property
     def Name(self):
@@ -11673,7 +11685,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def ContentType(self):
-        r"""Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.
+        r"""Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `. When outputting as WebVTT, a single template can only output one language.
         :rtype: int
         """
         return self._ContentType
@@ -11684,7 +11696,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def TargetType(self):
-        r"""Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.
+        r"""Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. Support `2` when CaptionSource selects `INPUT`. Support `1` and `3` when CaptionSource selects `ANALYSIS `.
         :rtype: int
         """
         return self._TargetType
@@ -11730,7 +11742,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def StateEffectMode(self):
-        r"""There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.
+        r"""There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `. When the output is WebVTT, only STEADY can be selected.
         :rtype: str
         """
         return self._StateEffectMode
@@ -11750,6 +11762,50 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
     def SteadyStateDelayedTime(self, SteadyStateDelayedTime):
         self._SteadyStateDelayedTime = SteadyStateDelayedTime
 
+    @property
+    def AudioSelectorName(self):
+        r"""Audio selector name, required for generating WebVTT subtitles using speech recognition, can be empty.
+        :rtype: str
+        """
+        return self._AudioSelectorName
+
+    @AudioSelectorName.setter
+    def AudioSelectorName(self, AudioSelectorName):
+        self._AudioSelectorName = AudioSelectorName
+
+    @property
+    def WebVTTFontStyle(self):
+        r"""Format configuration for speech recognition output on WebVTT.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.WebVTTFontStyle`
+        """
+        return self._WebVTTFontStyle
+
+    @WebVTTFontStyle.setter
+    def WebVTTFontStyle(self, WebVTTFontStyle):
+        self._WebVTTFontStyle = WebVTTFontStyle
+
+    @property
+    def LanguageCode(self):
+        r"""Language code, length 2-20. ISO 639-2 three-digit code is recommend.
+        :rtype: str
+        """
+        return self._LanguageCode
+
+    @LanguageCode.setter
+    def LanguageCode(self, LanguageCode):
+        self._LanguageCode = LanguageCode
+
+    @property
+    def LanguageDescription(self):
+        r"""Language description, less than 100 characters in length.
+        :rtype: str
+        """
+        return self._LanguageDescription
+
+    @LanguageDescription.setter
+    def LanguageDescription(self, LanguageDescription):
+        self._LanguageDescription = LanguageDescription
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -11764,6 +11820,12 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
             self._FontStyle._deserialize(params.get("FontStyle"))
         self._StateEffectMode = params.get("StateEffectMode")
         self._SteadyStateDelayedTime = params.get("SteadyStateDelayedTime")
+        self._AudioSelectorName = params.get("AudioSelectorName")
+        if params.get("WebVTTFontStyle") is not None:
+            self._WebVTTFontStyle = WebVTTFontStyle()
+            self._WebVTTFontStyle._deserialize(params.get("WebVTTFontStyle"))
+        self._LanguageCode = params.get("LanguageCode")
+        self._LanguageDescription = params.get("LanguageDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13015,6 +13077,177 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("ColorSpaceSettings") is not None:
             self._ColorSpaceSettings = ColorSpaceSetting()
             self._ColorSpaceSettings._deserialize(params.get("ColorSpaceSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebVTTFontStyle(AbstractModel):
+    r"""WebVTT format configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TextColor: Text color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :type TextColor: str
+        :param _BackgroundColor: Background color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :type BackgroundColor: str
+        :param _BackgroundAlpha: Background opacity parameter, a number from 0 to 100, with 0 being the default for full transparency.
+        :type BackgroundAlpha: int
+        :param _FontSize: Font size, in units of vh (1% of height), default value 0 means automatic.
+        :type FontSize: int
+        :param _Line: The position of the text box, default value AUTO, can be empty; represents the percentage of video height, supports integers from 0 to 100.
+        :type Line: str
+        :param _LineAlignment: The alignment of the text box on the Line. Optional values: START, CENTER, END. Which can be empty.
+        :type LineAlignment: str
+        :param _Position: The text box is positioned in another direction as a percentage of the video's width. It defaults to AUTO and can be empty.
+        :type Position: str
+        :param _PositionAlignment: The alignment of the text box on the Position. Optional values are LINE_LEFT, LINE_RIGHT, CENTER, and AUTO. The default value is AUTO, and it can be empty.
+        :type PositionAlignment: str
+        :param _CueSize: Text box size, a percentage of video width/height, with values (0, 100), default AUTO, can be empty.
+        :type CueSize: str
+        :param _TextAlignment: Text alignment, with possible values  START, CENTER, END, LEFT, and RIGHT; the default value is CENTER, which can be empty.
+        :type TextAlignment: str
+        """
+        self._TextColor = None
+        self._BackgroundColor = None
+        self._BackgroundAlpha = None
+        self._FontSize = None
+        self._Line = None
+        self._LineAlignment = None
+        self._Position = None
+        self._PositionAlignment = None
+        self._CueSize = None
+        self._TextAlignment = None
+
+    @property
+    def TextColor(self):
+        r"""Text color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :rtype: str
+        """
+        return self._TextColor
+
+    @TextColor.setter
+    def TextColor(self, TextColor):
+        self._TextColor = TextColor
+
+    @property
+    def BackgroundColor(self):
+        r"""Background color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :rtype: str
+        """
+        return self._BackgroundColor
+
+    @BackgroundColor.setter
+    def BackgroundColor(self, BackgroundColor):
+        self._BackgroundColor = BackgroundColor
+
+    @property
+    def BackgroundAlpha(self):
+        r"""Background opacity parameter, a number from 0 to 100, with 0 being the default for full transparency.
+        :rtype: int
+        """
+        return self._BackgroundAlpha
+
+    @BackgroundAlpha.setter
+    def BackgroundAlpha(self, BackgroundAlpha):
+        self._BackgroundAlpha = BackgroundAlpha
+
+    @property
+    def FontSize(self):
+        r"""Font size, in units of vh (1% of height), default value 0 means automatic.
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def Line(self):
+        r"""The position of the text box, default value AUTO, can be empty; represents the percentage of video height, supports integers from 0 to 100.
+        :rtype: str
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def LineAlignment(self):
+        r"""The alignment of the text box on the Line. Optional values: START, CENTER, END. Which can be empty.
+        :rtype: str
+        """
+        return self._LineAlignment
+
+    @LineAlignment.setter
+    def LineAlignment(self, LineAlignment):
+        self._LineAlignment = LineAlignment
+
+    @property
+    def Position(self):
+        r"""The text box is positioned in another direction as a percentage of the video's width. It defaults to AUTO and can be empty.
+        :rtype: str
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def PositionAlignment(self):
+        r"""The alignment of the text box on the Position. Optional values are LINE_LEFT, LINE_RIGHT, CENTER, and AUTO. The default value is AUTO, and it can be empty.
+        :rtype: str
+        """
+        return self._PositionAlignment
+
+    @PositionAlignment.setter
+    def PositionAlignment(self, PositionAlignment):
+        self._PositionAlignment = PositionAlignment
+
+    @property
+    def CueSize(self):
+        r"""Text box size, a percentage of video width/height, with values (0, 100), default AUTO, can be empty.
+        :rtype: str
+        """
+        return self._CueSize
+
+    @CueSize.setter
+    def CueSize(self, CueSize):
+        self._CueSize = CueSize
+
+    @property
+    def TextAlignment(self):
+        r"""Text alignment, with possible values  START, CENTER, END, LEFT, and RIGHT; the default value is CENTER, which can be empty.
+        :rtype: str
+        """
+        return self._TextAlignment
+
+    @TextAlignment.setter
+    def TextAlignment(self, TextAlignment):
+        self._TextAlignment = TextAlignment
+
+
+    def _deserialize(self, params):
+        self._TextColor = params.get("TextColor")
+        self._BackgroundColor = params.get("BackgroundColor")
+        self._BackgroundAlpha = params.get("BackgroundAlpha")
+        self._FontSize = params.get("FontSize")
+        self._Line = params.get("Line")
+        self._LineAlignment = params.get("LineAlignment")
+        self._Position = params.get("Position")
+        self._PositionAlignment = params.get("PositionAlignment")
+        self._CueSize = params.get("CueSize")
+        self._TextAlignment = params.get("TextAlignment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

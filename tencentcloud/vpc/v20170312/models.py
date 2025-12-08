@@ -32189,13 +32189,13 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: The pay-as-you-go billing method. Unit: CNY.
+        :param _UnitPrice: The pay-as-you-go billing method. Unit: USD.
         :type UnitPrice: float
         :param _ChargeUnit: Pay-as-you-go billing method. Value Range: HOUR: Indicates billing by the hour. Scenarios using this hourly billing unit include: Instances postpaid on an hourly basis (POSTPAID_BY_HOUR), and bandwidth postpaid on an hourly basis (BANDWIDTH_POSTPAID_BY_HOUR). GB: Indicates billing on a per-GB basis. Scenarios using this billing unit include: Traffic postpaid on an hourly basis (TRAFFIC_POSTPAID_BY_HOUR).
         :type ChargeUnit: str
-        :param _OriginalPrice: Original price of the prepaid product. Unit: CNY.
+        :param _OriginalPrice: Original price of the prepaid product. Unit: USD.
         :type OriginalPrice: float
-        :param _DiscountPrice: Discount price of the prepaid product. Unit: CNY.
+        :param _DiscountPrice: Discount price of the prepaid product. Unit: USD.
         :type DiscountPrice: float
         """
         self._UnitPrice = None
@@ -32205,7 +32205,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        r"""The pay-as-you-go billing method. Unit: CNY.
+        r"""The pay-as-you-go billing method. Unit: USD.
         :rtype: float
         """
         return self._UnitPrice
@@ -32227,7 +32227,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""Original price of the prepaid product. Unit: CNY.
+        r"""Original price of the prepaid product. Unit: USD.
         :rtype: float
         """
         return self._OriginalPrice
@@ -32238,7 +32238,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""Discount price of the prepaid product. Unit: CNY.
+        r"""Discount price of the prepaid product. Unit: USD.
         :rtype: float
         """
         return self._DiscountPrice

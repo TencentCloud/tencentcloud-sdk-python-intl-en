@@ -47,3 +47,95 @@ class ControlcenterClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetAccountFactoryBaseline(self, request):
+        r"""This API is used to retrieve user baseline configuration data.
+
+        :param request: Request instance for GetAccountFactoryBaseline.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.GetAccountFactoryBaselineRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.GetAccountFactoryBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAccountFactoryBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAccountFactoryBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAccountFactoryBaselineItems(self, request):
+        r"""This API is used to obtain account factory system baseline items.
+
+        :param request: Request instance for ListAccountFactoryBaselineItems.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAccountFactoryBaselineItems", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAccountFactoryBaselineItemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDeployStepTasks(self, request):
+        r"""This API is used to retrieve the application history of a certain baseline item.
+
+        :param request: Request instance for ListDeployStepTasks.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListDeployStepTasksRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.ListDeployStepTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDeployStepTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDeployStepTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAccountFactoryBaseline(self, request):
+        r"""This API is used to update the current baseline item configuration of a user. The baseline configuration will be overwritten with the current configuration. When adding new baseline items, the newly-added baseline configuration needs to be added to the existing configuration. When deleting baseline items, the deleted baseline configuration needs to be removed from the existing configuration, then save the latest baseline configuration.
+
+        :param request: Request instance for UpdateAccountFactoryBaseline.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.UpdateAccountFactoryBaselineRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.UpdateAccountFactoryBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccountFactoryBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAccountFactoryBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

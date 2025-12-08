@@ -693,7 +693,7 @@ class CreateKeyRequest(AbstractModel):
         :type Alias: str
         :param _Description: CMK description of up to 1,024 bytes in length
         :type Description: str
-        :param _KeyUsage: Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.
+        :param _KeyUsage: Specifies the key purpose, defaults to "ENCRYPT_DECRYPT" indicating the creation of a symmetric encryption/decryption key. other supported purposes include "ASYMMETRIC_DECRYPT_RSA_2048" for RSA2048 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_DECRYPT_SM2" for SM2 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_SIGN_VERIFY_SM2" for SM2 ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_ECC" for ECC ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_RSA_2048" for RSA_2048 ASYMMETRIC keys used for signature verification, and "ASYMMETRIC_SIGN_VERIFY_ECDSA384" for ECDSA384 ASYMMETRIC keys used for signature verification. the complete list of key purposes and algorithm support can be obtained through the ListAlgorithms api.
         :type KeyUsage: str
         :param _Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
@@ -733,7 +733,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
-        r"""Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.
+        r"""Specifies the key purpose, defaults to "ENCRYPT_DECRYPT" indicating the creation of a symmetric encryption/decryption key. other supported purposes include "ASYMMETRIC_DECRYPT_RSA_2048" for RSA2048 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_DECRYPT_SM2" for SM2 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_SIGN_VERIFY_SM2" for SM2 ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_ECC" for ECC ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_RSA_2048" for RSA_2048 ASYMMETRIC keys used for signature verification, and "ASYMMETRIC_SIGN_VERIFY_ECDSA384" for ECDSA384 ASYMMETRIC keys used for signature verification. the complete list of key purposes and algorithm support can be obtained through the ListAlgorithms api.
         :rtype: str
         """
         return self._KeyUsage
@@ -1197,6 +1197,8 @@ class DataKeyMetadata(AbstractModel):
         :type DataKeyId: str
         :param _KeyId: Globally unique id of the CMK.
         :type KeyId: str
+        :param _KeyName: CMK name.
+        :type KeyName: str
         :param _DataKeyName: Key name as a more recognizable and understandable data key.
         :type DataKeyName: str
         :param _NumberOfBytes: Specifies the length of the data key in bytes.
@@ -1236,6 +1238,7 @@ class DataKeyMetadata(AbstractModel):
         """
         self._DataKeyId = None
         self._KeyId = None
+        self._KeyName = None
         self._DataKeyName = None
         self._NumberOfBytes = None
         self._CreateTime = None
@@ -1276,6 +1279,17 @@ class DataKeyMetadata(AbstractModel):
     @KeyId.setter
     def KeyId(self, KeyId):
         self._KeyId = KeyId
+
+    @property
+    def KeyName(self):
+        r"""CMK name.
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
 
     @property
     def DataKeyName(self):
@@ -1479,6 +1493,7 @@ class DataKeyMetadata(AbstractModel):
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
         self._KeyId = params.get("KeyId")
+        self._KeyName = params.get("KeyName")
         self._DataKeyName = params.get("DataKeyName")
         self._NumberOfBytes = params.get("NumberOfBytes")
         self._CreateTime = params.get("CreateTime")
@@ -1984,7 +1999,7 @@ class DescribeKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyMetadata: Specifies the attribute information of the key.
+        :param _KeyMetadata: Specifies the key attribute information.
         :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1994,7 +2009,7 @@ class DescribeKeyResponse(AbstractModel):
 
     @property
     def KeyMetadata(self):
-        r"""Specifies the attribute information of the key.
+        r"""Specifies the key attribute information.
         :rtype: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
         """
         return self._KeyMetadata
@@ -3887,6 +3902,8 @@ class GenerateDataKeyRequest(AbstractModel):
         :type Description: str
         :param _HsmClusterId: HSM cluster ID corresponding to the KMS exclusive edition. if HsmClusterId is specified, it indicates the root key is in this cluster and verifies whether KeyId corresponds to HsmClusterId.
         :type HsmClusterId: str
+        :param _Tags: Tag list. valid at that time when parameter IsHostedByKms=1 and the data key is hosted by kms.
+        :type Tags: list of Tag
         """
         self._KeyId = None
         self._KeySpec = None
@@ -3898,6 +3915,7 @@ class GenerateDataKeyRequest(AbstractModel):
         self._DataKeyName = None
         self._Description = None
         self._HsmClusterId = None
+        self._Tags = None
 
     @property
     def KeyId(self):
@@ -4009,6 +4027,17 @@ class GenerateDataKeyRequest(AbstractModel):
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def Tags(self):
+        r"""Tag list. valid at that time when parameter IsHostedByKms=1 and the data key is hosted by kms.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -4021,6 +4050,12 @@ class GenerateDataKeyRequest(AbstractModel):
         self._DataKeyName = params.get("DataKeyName")
         self._Description = params.get("Description")
         self._HsmClusterId = params.get("HsmClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4047,6 +4082,10 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
         :type CiphertextBlob: str
         :param _DataKeyId: Globally unique id of the data key, returned when KMS hosting is enabled.
         :type DataKeyId: str
+        :param _TagCode: Response code of the Tag operation. 0: success; 1: internal error; 2: business processing error.
+        :type TagCode: int
+        :param _TagMsg: Response of the Tag operation.
+        :type TagMsg: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4054,6 +4093,8 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
         self._Plaintext = None
         self._CiphertextBlob = None
         self._DataKeyId = None
+        self._TagCode = None
+        self._TagMsg = None
         self._RequestId = None
 
     @property
@@ -4102,6 +4143,28 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
         self._DataKeyId = DataKeyId
 
     @property
+    def TagCode(self):
+        r"""Response code of the Tag operation. 0: success; 1: internal error; 2: business processing error.
+        :rtype: int
+        """
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        r"""Response of the Tag operation.
+        :rtype: str
+        """
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -4118,6 +4181,8 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
         self._Plaintext = params.get("Plaintext")
         self._CiphertextBlob = params.get("CiphertextBlob")
         self._DataKeyId = params.get("DataKeyId")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5113,6 +5178,8 @@ When importing plaintext data key, KeyId cannot be empty. the data key is encryp
         :type KeyId: str
         :param _HsmClusterId: HSM cluster ID corresponding to the KMS exclusive edition. if HsmClusterId is specified, it indicates the root key is in this cluster and verifies whether KeyId corresponds to HsmClusterId.
         :type HsmClusterId: str
+        :param _Tags: Tag list
+        :type Tags: list of Tag
         """
         self._DataKeyName = None
         self._ImportKeyMaterial = None
@@ -5120,6 +5187,7 @@ When importing plaintext data key, KeyId cannot be empty. the data key is encryp
         self._Description = None
         self._KeyId = None
         self._HsmClusterId = None
+        self._Tags = None
 
     @property
     def DataKeyName(self):
@@ -5188,6 +5256,17 @@ When importing plaintext data key, KeyId cannot be empty. the data key is encryp
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def Tags(self):
+        r"""Tag list
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DataKeyName = params.get("DataKeyName")
@@ -5196,6 +5275,12 @@ When importing plaintext data key, KeyId cannot be empty. the data key is encryp
         self._Description = params.get("Description")
         self._KeyId = params.get("KeyId")
         self._HsmClusterId = params.get("HsmClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5217,11 +5302,17 @@ class ImportDataKeyResponse(AbstractModel):
         :type KeyId: str
         :param _DataKeyId: Globally unique id of DataKey. no. show on portal/domestic and international sites.
         :type DataKeyId: str
+        :param _TagCode: Response code of the Tag operation. 0: success; 1: internal error; 2: business processing error.
+        :type TagCode: int
+        :param _TagMsg: Response of the Tag operation.
+        :type TagMsg: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._KeyId = None
         self._DataKeyId = None
+        self._TagCode = None
+        self._TagMsg = None
         self._RequestId = None
 
     @property
@@ -5247,6 +5338,28 @@ class ImportDataKeyResponse(AbstractModel):
         self._DataKeyId = DataKeyId
 
     @property
+    def TagCode(self):
+        r"""Response code of the Tag operation. 0: success; 1: internal error; 2: business processing error.
+        :rtype: int
+        """
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        r"""Response of the Tag operation.
+        :rtype: str
+        """
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -5261,6 +5374,8 @@ class ImportDataKeyResponse(AbstractModel):
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._DataKeyId = params.get("DataKeyId")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5926,6 +6041,8 @@ class ListDataKeyDetailRequest(AbstractModel):
         :type KeyId: str
         :param _DataKeyLen: Length of the data key.
         :type DataKeyLen: int
+        :param _TagFilters: Tag filtering conditions.
+        :type TagFilters: list of TagFilter
         """
         self._Offset = None
         self._Limit = None
@@ -5937,6 +6054,7 @@ class ListDataKeyDetailRequest(AbstractModel):
         self._HsmClusterId = None
         self._KeyId = None
         self._DataKeyLen = None
+        self._TagFilters = None
 
     @property
     def Offset(self):
@@ -6048,6 +6166,17 @@ class ListDataKeyDetailRequest(AbstractModel):
     def DataKeyLen(self, DataKeyLen):
         self._DataKeyLen = DataKeyLen
 
+    @property
+    def TagFilters(self):
+        r"""Tag filtering conditions.
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6060,6 +6189,12 @@ class ListDataKeyDetailRequest(AbstractModel):
         self._HsmClusterId = params.get("HsmClusterId")
         self._KeyId = params.get("KeyId")
         self._DataKeyLen = params.get("DataKeyLen")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

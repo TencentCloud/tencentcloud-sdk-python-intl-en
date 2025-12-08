@@ -514,6 +514,11 @@ def test_import_ses_v20201002():
     from tencentcloud.ses.v20201002 import models
 
 
+def test_import_smh_v20210712():
+    from tencentcloud.smh.v20210712 import smh_client
+    from tencentcloud.smh.v20210712 import models
+
+
 def test_import_sms_v20190711():
     from tencentcloud.sms.v20190711 import sms_client
     from tencentcloud.sms.v20190711 import models
