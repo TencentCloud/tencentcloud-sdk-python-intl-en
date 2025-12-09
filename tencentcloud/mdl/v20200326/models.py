@@ -2137,7 +2137,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param _AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
-        :param _CaptionTemplates: Subtitle template configuration, only AVTemplates are valid.
+        :param _CaptionTemplates: Subtitle template configuration.
         :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
@@ -2240,7 +2240,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def CaptionTemplates(self):
-        r"""Subtitle template configuration, only AVTemplates are valid.
+        r"""Subtitle template configuration.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -8025,7 +8025,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param _AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
-        :param _CaptionTemplates: Subtitle template configuration, only AVTemplates are valid.
+        :param _CaptionTemplates: Subtitle template configuration.
         :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
@@ -8140,7 +8140,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def CaptionTemplates(self):
-        r"""Subtitle template configuration, only AVTemplates are valid.
+        r"""Subtitle template configuration.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates

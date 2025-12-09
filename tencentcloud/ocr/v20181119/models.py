@@ -655,6 +655,8 @@ Supported image size: no more than 2M after Base64 encoding. image download time
 Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only use ImageUrlBack.
 
         :type ImageUrlBack: str
+        :param _ReturnHeadImage: Whether to extract the ID portrait. Default value: false.
+        :type ReturnHeadImage: bool
         """
         self._Nationality = None
         self._CardType = None
@@ -662,6 +664,7 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
         self._ImageBase64Back = None
         self._ImageUrlFront = None
         self._ImageUrlBack = None
+        self._ReturnHeadImage = None
 
     @property
     def Nationality(self):
@@ -770,6 +773,17 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
     def ImageUrlBack(self, ImageUrlBack):
         self._ImageUrlBack = ImageUrlBack
 
+    @property
+    def ReturnHeadImage(self):
+        r"""Whether to extract the ID portrait. Default value: false.
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
 
     def _deserialize(self, params):
         self._Nationality = params.get("Nationality")
@@ -778,6 +792,7 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
         self._ImageBase64Back = params.get("ImageBase64Back")
         self._ImageUrlFront = params.get("ImageUrlFront")
         self._ImageUrlBack = params.get("ImageUrlBack")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
