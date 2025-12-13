@@ -2950,6 +2950,142 @@ Note: Up to 20 ports can be input for each rule.
         
 
 
+class ApplyFreeCertificateRequest(AbstractModel):
+    r"""ApplyFreeCertificate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _Domain: Specifies the target domain name for free certificate application.
+        :type Domain: str
+        :param _VerificationMethod: Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
+<li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
+<li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
+
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+        :type VerificationMethod: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+        self._VerificationMethod = None
+
+    @property
+    def ZoneId(self):
+        r"""Site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""Specifies the target domain name for free certificate application.
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerificationMethod(self):
+        r"""Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
+<li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
+<li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
+
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+        :rtype: str
+        """
+        return self._VerificationMethod
+
+    @VerificationMethod.setter
+    def VerificationMethod(self, VerificationMethod):
+        self._VerificationMethod = VerificationMethod
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        self._VerificationMethod = params.get("VerificationMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFreeCertificateResponse(AbstractModel):
+    r"""ApplyFreeCertificate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsVerification: Specifies the verification information for free certificate application when VerificationMethod is dns_challenge.
+        :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        :param _FileVerification: Specifies the verification information related to the free certificate application for the domain name when VerificationMethod is http_challenge.
+        :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DnsVerification = None
+        self._FileVerification = None
+        self._RequestId = None
+
+    @property
+    def DnsVerification(self):
+        r"""Specifies the verification information for free certificate application when VerificationMethod is dns_challenge.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        """
+        return self._DnsVerification
+
+    @DnsVerification.setter
+    def DnsVerification(self, DnsVerification):
+        self._DnsVerification = DnsVerification
+
+    @property
+    def FileVerification(self):
+        r"""Specifies the verification information related to the free certificate application for the domain name when VerificationMethod is http_challenge.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        """
+        return self._FileVerification
+
+    @FileVerification.setter
+    def FileVerification(self, FileVerification):
+        self._FileVerification = FileVerification
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DnsVerification") is not None:
+            self._DnsVerification = DnsVerification()
+            self._DnsVerification._deserialize(params.get("DnsVerification"))
+        if params.get("FileVerification") is not None:
+            self._FileVerification = FileVerification()
+            self._FileVerification._deserialize(params.get("FileVerification"))
+        self._RequestId = params.get("RequestId")
+
+
 class AscriptionInfo(AbstractModel):
     r"""The site ownership information
 
@@ -6197,6 +6333,132 @@ class CheckCnameStatusResponse(AbstractModel):
                 obj = CnameStatus()
                 obj._deserialize(item)
                 self._CnameStatus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CheckFreeCertificateVerificationRequest(AbstractModel):
+    r"""CheckFreeCertificateVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Domain: Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
+        :type Domain: str
+        """
+        self._ZoneId = None
+        self._Domain = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Domain(self):
+        r"""Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckFreeCertificateVerificationResponse(AbstractModel):
+    r"""CheckFreeCertificateVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommonName: Specifies the domain name to which the certificate is issued when the free certificate application succeeds.
+Note: only one free certificate can be applied for a domain name. if a wildcard certificate has been applied for the domain name, its subdomains will use the wildcard certificate.
+        :type CommonName: str
+        :param _SignatureAlgorithm: Specifies the signature algorithm used by the certificate when the free certificate application succeeds. currently only support RSA 2048.
+        :type SignatureAlgorithm: str
+        :param _ExpireTime: Expiration time of the certificate when the free certificate application is successful. the time is in coordinated universal time (UTC), following the ISO 8601 standard date and time format.
+        :type ExpireTime: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CommonName = None
+        self._SignatureAlgorithm = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def CommonName(self):
+        r"""Specifies the domain name to which the certificate is issued when the free certificate application succeeds.
+Note: only one free certificate can be applied for a domain name. if a wildcard certificate has been applied for the domain name, its subdomains will use the wildcard certificate.
+        :rtype: str
+        """
+        return self._CommonName
+
+    @CommonName.setter
+    def CommonName(self, CommonName):
+        self._CommonName = CommonName
+
+    @property
+    def SignatureAlgorithm(self):
+        r"""Specifies the signature algorithm used by the certificate when the free certificate application succeeds. currently only support RSA 2048.
+        :rtype: str
+        """
+        return self._SignatureAlgorithm
+
+    @SignatureAlgorithm.setter
+    def SignatureAlgorithm(self, SignatureAlgorithm):
+        self._SignatureAlgorithm = SignatureAlgorithm
+
+    @property
+    def ExpireTime(self):
+        r"""Expiration time of the certificate when the free certificate application is successful. the time is in coordinated universal time (UTC), following the ISO 8601 standard date and time format.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CommonName = params.get("CommonName")
+        self._SignatureAlgorithm = params.get("SignatureAlgorithm")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -27585,7 +27847,7 @@ class DnsRecord(AbstractModel):
 
 
 class DnsVerification(AbstractModel):
-    r"""
+    r"""Information required for DNS resolution verification when applying for a free certificate in CNAME mode integration to verify ownership of a site or domain name.
 
     """
 
@@ -29574,13 +29836,13 @@ class FileAscriptionInfo(AbstractModel):
 
 
 class FileVerification(AbstractModel):
-    r"""Information required for verifying via a file. It's applicable to sites connected via CNAMEs.
+    r"""Information required for HTTP access verification file when applying for a free certificate in CNAME mode integration to verify ownership of a site or domain name.
 
     """
 
     def __init__(self):
         r"""
-        :param _Path: EdgeOne obtains the file verification information in the format of "Scheme + Host + URL Path", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.
+        :param _Path: EdgeOne backend server will get file verification information via http://{Host}{URL Path} (for example http://www.example.com/.well-known/teo-verification/z12h416twn.txt). among them, this field specifies the URL Path part you need to create, and Host indicates the current accelerated domain.
         :type Path: str
         :param _Content: Content of the verification file. The contents of this field need to be filled into the text file returned by `Path`.
         :type Content: str
@@ -29590,7 +29852,7 @@ class FileVerification(AbstractModel):
 
     @property
     def Path(self):
-        r"""EdgeOne obtains the file verification information in the format of "Scheme + Host + URL Path", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.
+        r"""EdgeOne backend server will get file verification information via http://{Host}{URL Path} (for example http://www.example.com/.well-known/teo-verification/z12h416twn.txt). among them, this field specifies the URL Path part you need to create, and Host indicates the current accelerated domain.
         :rtype: str
         """
         return self._Path
@@ -37009,10 +37271,15 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type ZoneId: str
         :param _Hosts: Domain names that you need to modify the certificate configuration
         :type Hosts: list of str
-        :param _Mode: Certificate configuration mode. Values:
-<li>`disable`: (Default) Do not configure the certificate</li>
-<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>
-<li>`sslcert`: Configure an SSL certificate.</li>
+        :param _Mode: Configures the server certificate mode. valid values:.
+
+- disable: without configuring server certificate.
+- eofreecert: specifies to apply for a free certificate through automatic validation and deploy it. for verification methods, see [free certificate application supported verification methods](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).
+    - In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
+    - When a free certificate application fails, it can cause deployment failure. you can obtain the failure reason through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> .
+- eofreecert_manual: specifies the deployment of free certificates applied through DNS delegation verification or file verification. before deploying a free certificate, you need to trigger the [apply for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1)) api to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
+Note: when deploying a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> api.
+- sslcert: specifies the configuration of the managed service side certificate.
         :type Mode: str
         :param _ServerCertInfo: SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :type ServerCertInfo: list of ServerCertInfo
@@ -37023,7 +37290,7 @@ Default value: `none`.
         :type ApplyType: str
         :param _ClientCertInfo: In the mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for the client to authenticate the EO node. By default, it is disabled. If it is left blank, it indicates retaining the original configuration.
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
-        :param _UpstreamCertInfo: Configures the certificate presented by the EO node during origin-pull for mutual TLS authentication. Disabled by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access.
+        :param _UpstreamCertInfo: Specifies the certificate carried during EO node origin-pull for origin-pull mutual authentication handshake, off by default. leave blank to indicate retaining the original configuration. this configuration is currently in closed beta testing for the allowlist feature. if you need to use it, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
         :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._ZoneId = None
@@ -37058,10 +37325,15 @@ Default value: `none`.
 
     @property
     def Mode(self):
-        r"""Certificate configuration mode. Values:
-<li>`disable`: (Default) Do not configure the certificate</li>
-<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>
-<li>`sslcert`: Configure an SSL certificate.</li>
+        r"""Configures the server certificate mode. valid values:.
+
+- disable: without configuring server certificate.
+- eofreecert: specifies to apply for a free certificate through automatic validation and deploy it. for verification methods, see [free certificate application supported verification methods](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).
+    - In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
+    - When a free certificate application fails, it can cause deployment failure. you can obtain the failure reason through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> .
+- eofreecert_manual: specifies the deployment of free certificates applied through DNS delegation verification or file verification. before deploying a free certificate, you need to trigger the [apply for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1)) api to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
+Note: when deploying a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> api.
+- sslcert: specifies the configuration of the managed service side certificate.
         :rtype: str
         """
         return self._Mode
@@ -37112,7 +37384,7 @@ Default value: `none`.
 
     @property
     def UpstreamCertInfo(self):
-        r"""Configures the certificate presented by the EO node during origin-pull for mutual TLS authentication. Disabled by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access.
+        r"""Specifies the certificate carried during EO node origin-pull for origin-pull mutual authentication handshake, off by default. leave blank to indicate retaining the original configuration. this configuration is currently in closed beta testing for the allowlist feature. if you need to use it, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         return self._UpstreamCertInfo

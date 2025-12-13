@@ -119,6 +119,9 @@ FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType
 # The client certificate for the origin-pull mutual authentication has expired. It is not supported to issue expired certificates.
 FAILEDOPERATION_UPSTREAMCLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamClientCertificateHasExpired'
 
+# 
+FAILEDOPERATION_UPSTREAMVERIFYCUSTOMCACERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamVerifyCustomCACertificateHasExpired'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -764,6 +767,12 @@ INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 # Invalid origin-pull client certificate configuration.
 INVALIDPARAMETER_UPSTREAMCLIENTCERTCHECKERROR = 'InvalidParameter.UpstreamClientCertCheckError'
 
+# 
+INVALIDPARAMETER_UPSTREAMVERIFYCERTCHECKERROR = 'InvalidParameter.UpstreamVerifyCertCheckError'
+
+# 
+INVALIDPARAMETER_UPSTREAMVERIFYCUSTOMCACERTNOINFO = 'InvalidParameter.UpstreamVerifyCustomCACertNoInfo'
+
 # The site is already bound.
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
 
@@ -791,6 +800,9 @@ INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = 'InvalidParameterValue.Ali
 # Alias domain names do not support the configuration of origin-pull mutual authentication for the time being.
 INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = 'InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS'
 
+# 
+INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMVERIFY = 'InvalidParameterValue.AliasDomainNotSupportUpstreamVerify'
+
 # The client certificate in the edge mTLS configuration must be a CA certificate.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = 'InvalidParameterValue.CertificateVerifyClientMustCa'
 
@@ -805,6 +817,15 @@ INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = 'InvalidParameter
 
 # Origin-pull mutual authentication configuration requires at least one certificate.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCAMUSTCA = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCAMustCA'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCAMUSTRSAORECC = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCAMustRSAorECC'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCANEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCANeedCert'
 
 # The client CA certificate in edge mTLS configuration allows a maximum of 20 certificates.
 INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.ClientCertInfoQuotaLimit'
@@ -878,6 +899,9 @@ INVALIDPARAMETERVALUE_NOTINENUMERATION = 'InvalidParameterValue.NotInEnumeration
 # The value is not within the specified range.
 INVALIDPARAMETERVALUE_NOTWITHINRANGE = 'InvalidParameterValue.NotWithinRange'
 
+# 
+INVALIDPARAMETERVALUE_OCDIRECTORIGINDOMAINNOTSUPPORTUPSTREAMVERIFY = 'InvalidParameterValue.OCDirectOriginDomainNotSupportUpstreamVerify'
+
 # The specified origin group does not exist.
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
 
@@ -913,6 +937,9 @@ INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.Unrecognizabl
 
 # One client certificate is allowed at most in the origin-pull mutual authentication configuration.
 INVALIDPARAMETERVALUE_UPSTREAMCLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamClientCertInfoQuotaLimit'
+
+# 
+INVALIDPARAMETERVALUE_UPSTREAMVERIFYCUSTOMCACERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamVerifyCustomCACertInfoQuotaLimit'
 
 # The zone name format is incorrect. Please input a correctly formed domain name.
 INVALIDPARAMETERVALUE_ZONENAMEINVALID = 'InvalidParameterValue.ZoneNameInvalid'
@@ -1048,6 +1075,9 @@ OPERATIONDENIED_HOSTSKEYLESSSERVERINCONSISTENCY = 'OperationDenied.HostsKeylessS
 
 # The origin-pull mutual authentication certificates for the domain name to be changed are inconsistent. Please confirm that the domain name certificates are consistent and try again.
 OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateInconsistency'
+
+# 
+OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEVERIFYINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateVerifyInconsistency'
 
 # The security service must be enabled when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdvancedDefenseSecurityType'
