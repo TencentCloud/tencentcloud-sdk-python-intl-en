@@ -115,6 +115,24 @@ class MdlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateWatermarkDetection(
+            self,
+            request: models.CreateWatermarkDetectionRequest,
+            opts: Dict = None,
+    ) -> models.CreateWatermarkDetectionResponse:
+        """
+        Create a watermark detection task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWatermarkDetection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWatermarkDetectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteStreamLiveChannel(
             self,
             request: models.DeleteStreamLiveChannelRequest,
@@ -470,6 +488,42 @@ class MdlClient(AbstractClient):
         kwargs["action"] = "DescribeStreamLiveWatermarks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeStreamLiveWatermarksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWatermarkDetection(
+            self,
+            request: models.DescribeWatermarkDetectionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWatermarkDetectionResponse:
+        """
+        Describe watermark detection task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWatermarkDetection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWatermarkDetectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWatermarkDetections(
+            self,
+            request: models.DescribeWatermarkDetectionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWatermarkDetectionsResponse:
+        """
+        Batch Describe watermark detection task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWatermarkDetections"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWatermarkDetectionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -476,6 +476,9 @@ INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageSta
 # The instance configuration is upgraded for free and cannot be downgraded within 3 months.
 INVALIDPARAMETERVALUE_INVALIDINSTANCESOURCE = 'InvalidParameterValue.InvalidInstanceSource'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEPERIODICCONTRACT = 'InvalidParameterValue.InvalidInstanceTypePeriodicContract'
+
 # The specified instance type does not support exclusive sales payment mode.
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEUNDERWRITE = 'InvalidParameterValue.InvalidInstanceTypeUnderwrite'
 

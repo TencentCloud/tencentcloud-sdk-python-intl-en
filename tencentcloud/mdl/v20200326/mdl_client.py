@@ -141,6 +141,29 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWatermarkDetection(self, request):
+        r"""Create a watermark detection task
+
+        :param request: Request instance for CreateWatermarkDetection.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateWatermarkDetectionRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateWatermarkDetectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWatermarkDetection", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWatermarkDetectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteStreamLiveChannel(self, request):
         r"""This API is used to delete a StreamLive channel.
 
@@ -592,6 +615,52 @@ class MdlClient(AbstractClient):
             body = self.call("DescribeStreamLiveWatermarks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamLiveWatermarksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWatermarkDetection(self, request):
+        r"""Describe watermark detection task
+
+        :param request: Request instance for DescribeWatermarkDetection.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkDetectionRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkDetectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWatermarkDetection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWatermarkDetectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWatermarkDetections(self, request):
+        r"""Batch Describe watermark detection task
+
+        :param request: Request instance for DescribeWatermarkDetections.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkDetectionsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkDetectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWatermarkDetections", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWatermarkDetectionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

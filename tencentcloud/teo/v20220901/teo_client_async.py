@@ -2387,6 +2387,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTimingL7OriginPullData(
+            self,
+            request: models.DescribeTimingL7OriginPullDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimingL7OriginPullDataResponse:
+        """
+        This API is used to query time series data for layer-7 domain services' origin-pull data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimingL7OriginPullData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimingL7OriginPullDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTopL7AnalysisData(
             self,
             request: models.DescribeTopL7AnalysisDataRequest,

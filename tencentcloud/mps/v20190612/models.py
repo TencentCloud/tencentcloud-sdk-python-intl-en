@@ -16964,8 +16964,9 @@ When the value is 0.
 Note:
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
-        :param _SegmentType: Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. 
-Note: the shard format of the adaptive bitrate stream is based on this field.
+        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
+ 
+Note: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
         :type SegmentType: str
         """
         self._Format = None
@@ -17076,8 +17077,9 @@ This value only distinguishes template types. The task uses the values of Remove
 
     @property
     def SegmentType(self):
-        r"""Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. 
-Note: the shard format of the adaptive bitrate stream is based on this field.
+        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
+ 
+Note: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
         :rtype: str
         """
         return self._SegmentType
@@ -21916,7 +21918,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: Unique ID filter of video content analysis templates. Array length limit: 10.
+        :param _Definitions: Filter condition for the unique identifier of the video content analysis template. The array can contain up to 100 unique identifiers.
         :type Definitions: list of int
         :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
@@ -21937,7 +21939,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""Unique ID filter of video content analysis templates. Array length limit: 10.
+        r"""Filter condition for the unique identifier of the video content analysis template. The array can contain up to 100 unique identifiers.
         :rtype: list of int
         """
         return self._Definitions
@@ -22079,7 +22081,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: Unique ID filter of video content recognition templates. Array length limit: 10.
+        :param _Definitions: Filter condition for the unique identifier of the video content recognition template. The array can contain up to 100 unique identifiers.
         :type Definitions: list of int
         :param _Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -22100,7 +22102,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""Unique ID filter of video content recognition templates. Array length limit: 10.
+        r"""Filter condition for the unique identifier of the video content recognition template. The array can contain up to 100 unique identifiers.
         :rtype: list of int
         """
         return self._Definitions
@@ -26734,6 +26736,193 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
                 obj = TranscodeTemplate()
                 obj._deserialize(item)
                 self._TranscodeTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUsageDataRequest(AbstractModel):
+    r"""DescribeUsageData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type StartTime: str
+        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type EndTime: str
+        :param _Types: Queries the MPS task type. The transcoding task is queried by default.
+<li>Transcode: transcoding.</li>
+<li>Enhance: enhancement.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+<li>AIRecognition: intelligent recognition.</li>
+<li>AIReview: content moderation.</li>
+<li>Snapshot: screenshot.</li>
+<li>AnimatedGraphics: conversion to GIF.</li>
+<li>AiQualityControl: media quality inspection.</li>
+<li>Evaluation: video assessment.</li>
+<li>ImageProcess: image processing.</li>
+<li>AddBlindWatermark: add a basic copyright digital watermark.</li>
+<li>AddNagraWatermark: add a NAGRA digital watermark.</li>
+<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>
+        :type Types: list of str
+        :param _ProcessRegions: MPS park. ap-guangzhou park is returned by default.
+<li>ap-guangzhou: Guangzhou.</li>
+<li>ap-hongkong: Hong Kong (China).</li>
+<li>ap-taipei: Taipei (China).</li>
+<li>ap-singapore: Singapore.</li>
+<li>ap-mumbai: India.</li>
+<li>ap-jakarta: Jakarta.</li>
+<li>ap-seoul: Seoul.</li>
+<li>ap-bangkok: Thailand.</li>
+<li>ap-tokyo: Japan.</li>
+<li>na-siliconvalley: Silicon Valley.</li>
+<li>na-ashburn: Virginia.</li>
+<li>na-toronto: Toronto.</li>
+<li>sa-saopaulo: São Paulo.</li>
+<li>eu-frankfurt: Frankfurt.</li>
+<li>eu-moscow: Russia.</li>
+<li>aws: AWS.</li>
+        :type ProcessRegions: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Types = None
+        self._ProcessRegions = None
+
+    @property
+    def StartTime(self):
+        r"""Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Types(self):
+        r"""Queries the MPS task type. The transcoding task is queried by default.
+<li>Transcode: transcoding.</li>
+<li>Enhance: enhancement.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+<li>AIRecognition: intelligent recognition.</li>
+<li>AIReview: content moderation.</li>
+<li>Snapshot: screenshot.</li>
+<li>AnimatedGraphics: conversion to GIF.</li>
+<li>AiQualityControl: media quality inspection.</li>
+<li>Evaluation: video assessment.</li>
+<li>ImageProcess: image processing.</li>
+<li>AddBlindWatermark: add a basic copyright digital watermark.</li>
+<li>AddNagraWatermark: add a NAGRA digital watermark.</li>
+<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def ProcessRegions(self):
+        r"""MPS park. ap-guangzhou park is returned by default.
+<li>ap-guangzhou: Guangzhou.</li>
+<li>ap-hongkong: Hong Kong (China).</li>
+<li>ap-taipei: Taipei (China).</li>
+<li>ap-singapore: Singapore.</li>
+<li>ap-mumbai: India.</li>
+<li>ap-jakarta: Jakarta.</li>
+<li>ap-seoul: Seoul.</li>
+<li>ap-bangkok: Thailand.</li>
+<li>ap-tokyo: Japan.</li>
+<li>na-siliconvalley: Silicon Valley.</li>
+<li>na-ashburn: Virginia.</li>
+<li>na-toronto: Toronto.</li>
+<li>sa-saopaulo: São Paulo.</li>
+<li>eu-frankfurt: Frankfurt.</li>
+<li>eu-moscow: Russia.</li>
+<li>aws: AWS.</li>
+        :rtype: list of str
+        """
+        return self._ProcessRegions
+
+    @ProcessRegions.setter
+    def ProcessRegions(self, ProcessRegions):
+        self._ProcessRegions = ProcessRegions
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Types = params.get("Types")
+        self._ProcessRegions = params.get("ProcessRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsageDataResponse(AbstractModel):
+    r"""DescribeUsageData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: MPS statistical data overview, which displays an overview and detailed data of the queried task.
+        :type Data: list of TaskStatData
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""MPS statistical data overview, which displays an overview and detailed data of the queried task.
+        :rtype: list of TaskStatData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskStatData()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35411,6 +35600,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MindMapUrl: Address of the mind map of a summary task.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type MindMapUrl: str
+        :param _MindMapPath: Path of the mind map of a summary task.
+        :type MindMapPath: str
+        :param _SubtitlePath: Subtitle file path of the video.
+        :type SubtitlePath: str
+        :param _OutputStorage: Storage location of the summary file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._Description = None
         self._Confidence = None
@@ -35418,6 +35613,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Keywords = None
         self._Paragraphs = None
         self._MindMapUrl = None
+        self._MindMapPath = None
+        self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def Description(self):
@@ -35487,6 +35685,39 @@ Note: This field may return null, indicating that no valid value can be obtained
     def MindMapUrl(self, MindMapUrl):
         self._MindMapUrl = MindMapUrl
 
+    @property
+    def MindMapPath(self):
+        r"""Path of the mind map of a summary task.
+        :rtype: str
+        """
+        return self._MindMapPath
+
+    @MindMapPath.setter
+    def MindMapPath(self, MindMapPath):
+        self._MindMapPath = MindMapPath
+
+    @property
+    def SubtitlePath(self):
+        r"""Subtitle file path of the video.
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+    @property
+    def OutputStorage(self):
+        r"""Storage location of the summary file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
@@ -35500,6 +35731,11 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self._Paragraphs.append(obj)
         self._MindMapUrl = params.get("MindMapUrl")
+        self._MindMapPath = params.get("MindMapPath")
+        self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39423,8 +39659,8 @@ Note:
 
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
-        :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
-Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
+Note: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
         :type SegmentType: str
         """
         self._Definition = None
@@ -39549,8 +39785,8 @@ This value only distinguishes template types. The task uses the values of Remove
 
     @property
     def SegmentType(self):
-        r"""HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
-Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
+Note: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
         :rtype: str
         """
         return self._SegmentType
@@ -45271,6 +45507,7 @@ The path must end with `.{format}`. For details, please refer to the [Filename V
 If not filled in, default relative path: `{inputName}.{format}`.
         :type OutputPath: str
         :param _Definition: Unique identifier of the image processing template.
+The image template feature is in beta testing. If you want to use it, submit a ticket for application.
         :type Definition: int
         :param _ResourceId: Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
         :type ResourceId: str
@@ -45341,6 +45578,7 @@ If not filled in, default relative path: `{inputName}.{format}`.
     @property
     def Definition(self):
         r"""Unique identifier of the image processing template.
+The image template feature is in beta testing. If you want to use it, submit a ticket for application.
         :rtype: int
         """
         return self._Definition
@@ -53865,6 +54103,62 @@ Default value: black.
         
 
 
+class SpecificationDataItem(AbstractModel):
+    r"""Statistical data for the task of the specified specification.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specification: Task specification.
+        :type Specification: str
+        :param _Data: Statistical data.
+        :type Data: list of TaskStatDataItem
+        """
+        self._Specification = None
+        self._Data = None
+
+    @property
+    def Specification(self):
+        r"""Task specification.
+        :rtype: str
+        """
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Data(self):
+        r"""Statistical data.
+        :rtype: list of TaskStatDataItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Specification = params.get("Specification")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpekeDrm(AbstractModel):
     r"""FairPlay, WideVine, PlayReady, and other DRM encryption technologies.
 
@@ -55418,6 +55712,318 @@ class TaskSimpleInfo(AbstractModel):
         self._BeginProcessTime = params.get("BeginProcessTime")
         self._FinishTime = params.get("FinishTime")
         self._SubTaskTypes = params.get("SubTaskTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatData(AbstractModel):
+    r"""Statistical data of the task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: Task type.
+<li>Transcode: transcoding.</li>
+<li>Enhance: enhancement.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+<li>AIRecognition: intelligent recognition.</li>
+<li>AIReview: content moderation.</li>
+<li>Snapshot: screenshot.</li>
+<li>AnimatedGraphics: conversion to GIF.</li>
+<li>ImageProcess: image processing.</li>
+        :type TaskType: str
+        :param _Summary: Statistical data overview of the number of tasks.
+<li>Transcode: The unit of usage is seconds.</li>
+<li>Enhance: The unit of usage is seconds.</li>
+<li>AIAnalysis: The unit of usage is seconds.</li>
+<li>AIRecognition: The unit of usage is seconds.</li>
+<li>AIReview: The unit of usage is seconds.</li>
+<li>Snapshot: The unit of usage is images.</li>
+<li>AnimatedGraphics: The unit of usage is seconds.</li>
+<li>ImageProcess: The unit of usage is images.</li>.
+        :type Summary: list of TaskStatDataItem
+        :param _Details: Statistical data details for tasks of various specifications.
+1. Transcoding specification:
+<li>Audio: audio-only.</li>
+<li>Remuxing: conversion to muxing.</li>
+<li>Other transcoding specifications: {TYPE}.{CODEC}.{SPECIFICATION}.</li> Specifically, valid values for TYPE:
+    Standard: standard transcoding.
+    TESHD-10: TSC transcoding for videos.
+    TESHD-20: TSC transcoding for audios.
+    TESHD-30: TSC transcoding for audios/videos.
+    TESHD-30-SDK: duration-based billing of TSC transcoding SDK for audios/videos.
+    TESHD-30-SDKCores: core number-based billing of TSC transcoding SDK for audios/videos.
+    Edit: video editing.
+  Specifically, valid values for CODEC:
+    H264: H. 264 encoding.
+    H265: H.265 encoding.
+    AV1: AV1 encoding.
+    MV-HEVC: MV-HEVC encoding.
+  Specifically, valid values for SPECIFICATION:
+    SD: standard definition.
+    HD: high definition.
+    FHD: full HD.
+    2K: 2K.
+    4K: 4K.
+For example, TESHD-10.H265.HD indicates TSC transcoding using the H.265 encoding method.
+2. Enhancement specification: video enhancement format: {TYPE}.{CODEC}.{SPECIFICATION}.{FPS}, where valid values for CODEC and SPECIFICATION follow the transcoding descriptions mentioned above, and FPS is valid only when the atomic enhancement type is used; audio enhancement format: {TYPE}.
+Valid values for enhancement TYPE:
+<li>Enhance: common enhancement type, which might be any atomic enhancement type.</li>
+<li>Atomic enhancement type</li>. Valid values for video atomic enhancement type:
+    Sdr2hdr: SDR2HDR.
+    SuperResolution: super resolution.
+    InsertFrame: frame interpolation.
+    ComprehensiveEnhancement: comprehensive enhancement.
+    NoiseReduction: video noise reduction.
+    ColorEnhancement: color enhancement.
+    RemoveScratches: scratch removal.
+    Deburr:  artifacts removal.
+    DetailEnhancement: detail enhancement.
+    LightEnhancement: low-light enhancement.
+    FaceEnhancement: face enhancement.
+  Valid value for audio atomic enhancement type.
+    AudioNoiseReduction
+    VolumeBalance
+    AudioBeautify
+    AudioSeparation
+
+3. Screenshot specification:
+<li>ImageSprite: sprite.</li>
+<li>SampleSnapshot: sampled screenshot.</li>
+<li>SnapshotByTime: time point screenshot.</li>
+4. Image processing specification: {TYPE}.{CODEC}.{SPECIFICATION}.
+<li> ImageCompression: image encoding.</li>
+<li> ImageSuperResolution: image super resolution.</li>
+<li>EnhanceImageColor: image color enhancement.</li>
+5. Intelligent analysis specification:
+<li>AIAnalysis: major category for analysis.</li>
+<li>VideoTag: video tag.</li>
+<li>VideoClassification: video category.</li>
+<li>SmartCover: smart cover.</li>
+<li>FrameLabel: frame tag.</li>
+<li>VideoSplit: video splitting.</li>
+<li>Highlights: highlights.</li>
+<li>OpeningAndEnding: opening and ending clips.</li>
+6. Intelligent recognition specification:
+<li>AIRecognition: major category for recognition without splitting.</li>
+<li>FaceRecognition: face recognition.</li>
+<li>TextRecognition: optical character recognition.</li>
+<li>ObjectRecognition: object recognition.</li>
+<li>VoiceRecognition: automatic speech recognition.</li>
+<li>VoiceTranslation: speech translation.</li>
+7. There are no segmentation specifications for content moderation and conversion to GIF.
+        :type Details: list of SpecificationDataItem
+        """
+        self._TaskType = None
+        self._Summary = None
+        self._Details = None
+
+    @property
+    def TaskType(self):
+        r"""Task type.
+<li>Transcode: transcoding.</li>
+<li>Enhance: enhancement.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+<li>AIRecognition: intelligent recognition.</li>
+<li>AIReview: content moderation.</li>
+<li>Snapshot: screenshot.</li>
+<li>AnimatedGraphics: conversion to GIF.</li>
+<li>ImageProcess: image processing.</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Summary(self):
+        r"""Statistical data overview of the number of tasks.
+<li>Transcode: The unit of usage is seconds.</li>
+<li>Enhance: The unit of usage is seconds.</li>
+<li>AIAnalysis: The unit of usage is seconds.</li>
+<li>AIRecognition: The unit of usage is seconds.</li>
+<li>AIReview: The unit of usage is seconds.</li>
+<li>Snapshot: The unit of usage is images.</li>
+<li>AnimatedGraphics: The unit of usage is seconds.</li>
+<li>ImageProcess: The unit of usage is images.</li>.
+        :rtype: list of TaskStatDataItem
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Details(self):
+        r"""Statistical data details for tasks of various specifications.
+1. Transcoding specification:
+<li>Audio: audio-only.</li>
+<li>Remuxing: conversion to muxing.</li>
+<li>Other transcoding specifications: {TYPE}.{CODEC}.{SPECIFICATION}.</li> Specifically, valid values for TYPE:
+    Standard: standard transcoding.
+    TESHD-10: TSC transcoding for videos.
+    TESHD-20: TSC transcoding for audios.
+    TESHD-30: TSC transcoding for audios/videos.
+    TESHD-30-SDK: duration-based billing of TSC transcoding SDK for audios/videos.
+    TESHD-30-SDKCores: core number-based billing of TSC transcoding SDK for audios/videos.
+    Edit: video editing.
+  Specifically, valid values for CODEC:
+    H264: H. 264 encoding.
+    H265: H.265 encoding.
+    AV1: AV1 encoding.
+    MV-HEVC: MV-HEVC encoding.
+  Specifically, valid values for SPECIFICATION:
+    SD: standard definition.
+    HD: high definition.
+    FHD: full HD.
+    2K: 2K.
+    4K: 4K.
+For example, TESHD-10.H265.HD indicates TSC transcoding using the H.265 encoding method.
+2. Enhancement specification: video enhancement format: {TYPE}.{CODEC}.{SPECIFICATION}.{FPS}, where valid values for CODEC and SPECIFICATION follow the transcoding descriptions mentioned above, and FPS is valid only when the atomic enhancement type is used; audio enhancement format: {TYPE}.
+Valid values for enhancement TYPE:
+<li>Enhance: common enhancement type, which might be any atomic enhancement type.</li>
+<li>Atomic enhancement type</li>. Valid values for video atomic enhancement type:
+    Sdr2hdr: SDR2HDR.
+    SuperResolution: super resolution.
+    InsertFrame: frame interpolation.
+    ComprehensiveEnhancement: comprehensive enhancement.
+    NoiseReduction: video noise reduction.
+    ColorEnhancement: color enhancement.
+    RemoveScratches: scratch removal.
+    Deburr:  artifacts removal.
+    DetailEnhancement: detail enhancement.
+    LightEnhancement: low-light enhancement.
+    FaceEnhancement: face enhancement.
+  Valid value for audio atomic enhancement type.
+    AudioNoiseReduction
+    VolumeBalance
+    AudioBeautify
+    AudioSeparation
+
+3. Screenshot specification:
+<li>ImageSprite: sprite.</li>
+<li>SampleSnapshot: sampled screenshot.</li>
+<li>SnapshotByTime: time point screenshot.</li>
+4. Image processing specification: {TYPE}.{CODEC}.{SPECIFICATION}.
+<li> ImageCompression: image encoding.</li>
+<li> ImageSuperResolution: image super resolution.</li>
+<li>EnhanceImageColor: image color enhancement.</li>
+5. Intelligent analysis specification:
+<li>AIAnalysis: major category for analysis.</li>
+<li>VideoTag: video tag.</li>
+<li>VideoClassification: video category.</li>
+<li>SmartCover: smart cover.</li>
+<li>FrameLabel: frame tag.</li>
+<li>VideoSplit: video splitting.</li>
+<li>Highlights: highlights.</li>
+<li>OpeningAndEnding: opening and ending clips.</li>
+6. Intelligent recognition specification:
+<li>AIRecognition: major category for recognition without splitting.</li>
+<li>FaceRecognition: face recognition.</li>
+<li>TextRecognition: optical character recognition.</li>
+<li>ObjectRecognition: object recognition.</li>
+<li>VoiceRecognition: automatic speech recognition.</li>
+<li>VoiceTranslation: speech translation.</li>
+7. There are no segmentation specifications for content moderation and conversion to GIF.
+        :rtype: list of SpecificationDataItem
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("Summary") is not None:
+            self._Summary = []
+            for item in params.get("Summary"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self._Summary.append(obj)
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = SpecificationDataItem()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatDataItem(AbstractModel):
+    r"""Statistical data of the task, including the number of tasks and usage.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
+        :type Time: str
+        :param _Count: Number of tasks.
+        :type Count: int
+        :param _Usage: Task usage.
+        :type Usage: int
+        """
+        self._Time = None
+        self._Count = None
+        self._Usage = None
+
+    @property
+    def Time(self):
+        r"""Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Count(self):
+        r"""Number of tasks.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Usage(self):
+        r"""Task usage.
+        :rtype: int
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Count = params.get("Count")
+        self._Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

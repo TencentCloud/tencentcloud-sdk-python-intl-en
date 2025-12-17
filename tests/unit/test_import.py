@@ -19,6 +19,11 @@ def test_import_advisor_v20200721():
     from tencentcloud.advisor.v20200721 import models
 
 
+def test_import_ai3d_v20250513():
+    from tencentcloud.ai3d.v20250513 import ai3d_client
+    from tencentcloud.ai3d.v20250513 import models
+
+
 def test_import_aiart_v20221229():
     from tencentcloud.aiart.v20221229 import aiart_client
     from tencentcloud.aiart.v20221229 import models
@@ -337,6 +342,11 @@ def test_import_gse_v20191112():
 def test_import_gwlb_v20240906():
     from tencentcloud.gwlb.v20240906 import gwlb_client
     from tencentcloud.gwlb.v20240906 import models
+
+
+def test_import_hunyuan_v20230901():
+    from tencentcloud.hunyuan.v20230901 import hunyuan_client
+    from tencentcloud.hunyuan.v20230901 import models
 
 
 def test_import_iai_v20200303():

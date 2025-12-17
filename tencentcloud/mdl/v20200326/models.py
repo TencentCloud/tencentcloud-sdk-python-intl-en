@@ -598,6 +598,251 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         
 
 
+class AbWatermarkDetectionInfo(AbstractModel):
+    r"""AbWatermarkDetectionInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 
+        :type TaskId: str
+        :param _Type: 
+        :type Type: str
+        :param _State: 
+        :type State: str
+        :param _Result: 
+        :type Result: str
+        :param _ErrorCode: 
+        :type ErrorCode: int
+        :param _ErrorMsg: 
+        :type ErrorMsg: str
+        :param _InputInfo: 
+        :type InputInfo: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
+        :param _TaskNotifyConfig: 
+        :type TaskNotifyConfig: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
+        :param _CreateTime: 
+        :type CreateTime: int
+        :param _UpdateTime: 
+        :type UpdateTime: int
+        :param _InputFileInfo: 
+        :type InputFileInfo: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
+        """
+        self._TaskId = None
+        self._Type = None
+        self._State = None
+        self._Result = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._InputInfo = None
+        self._TaskNotifyConfig = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._InputFileInfo = None
+
+    @property
+    def TaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def State(self):
+        r"""
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Result(self):
+        r"""
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorCode(self):
+        r"""
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        r"""
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def InputInfo(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def TaskNotifyConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def CreateTime(self):
+        r"""
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def InputFileInfo(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
+        """
+        return self._InputFileInfo
+
+    @InputFileInfo.setter
+    def InputFileInfo(self, InputFileInfo):
+        self._InputFileInfo = InputFileInfo
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Type = params.get("Type")
+        self._State = params.get("State")
+        self._Result = params.get("Result")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = AbWatermarkInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("InputFileInfo") is not None:
+            self._InputFileInfo = InputFileInfo()
+            self._InputFileInfo._deserialize(params.get("InputFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbWatermarkInputInfo(AbstractModel):
+    r"""InputInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _UrlInputInfo: 
+        :type UrlInputInfo: :class:`tencentcloud.mdl.v20200326.models.UrlInputInfo`
+        """
+        self._Type = None
+        self._UrlInputInfo = None
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UrlInputInfo(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.UrlInputInfo`
+        """
+        return self._UrlInputInfo
+
+    @UrlInputInfo.setter
+    def UrlInputInfo(self, UrlInputInfo):
+        self._UrlInputInfo = UrlInputInfo
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("UrlInputInfo") is not None:
+            self._UrlInputInfo = UrlInputInfo()
+            self._UrlInputInfo._deserialize(params.get("UrlInputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AbWatermarkSettingsReq(AbstractModel):
     r"""
 
@@ -3046,6 +3291,136 @@ class CreateTextSettings(AbstractModel):
         
 
 
+class CreateWatermarkDetectionRequest(AbstractModel):
+    r"""CreateWatermarkDetection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Task type, currently supports ExtractVideoABWatermarkId
+        :type Type: str
+        :param _InputInfo: Input information
+        :type InputInfo: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
+        :param _InputFileInfo: Input file information
+        :type InputFileInfo: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
+        :param _TaskNotifyConfig: Input notification configuration
+        :type TaskNotifyConfig: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
+        """
+        self._Type = None
+        self._InputInfo = None
+        self._InputFileInfo = None
+        self._TaskNotifyConfig = None
+
+    @property
+    def Type(self):
+        r"""Task type, currently supports ExtractVideoABWatermarkId
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputInfo(self):
+        r"""Input information
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def InputFileInfo(self):
+        r"""Input file information
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
+        """
+        return self._InputFileInfo
+
+    @InputFileInfo.setter
+    def InputFileInfo(self, InputFileInfo):
+        self._InputFileInfo = InputFileInfo
+
+    @property
+    def TaskNotifyConfig(self):
+        r"""Input notification configuration
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = AbWatermarkInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("InputFileInfo") is not None:
+            self._InputFileInfo = InputFileInfo()
+            self._InputFileInfo._deserialize(params.get("InputFileInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWatermarkDetectionResponse(AbstractModel):
+    r"""CreateWatermarkDetection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DashRemuxSettingsInfo(AbstractModel):
     r"""DASH configuration information.
 
@@ -5271,6 +5646,231 @@ Examples:
         
 
 
+class DescribeWatermarkDetectionRequest(AbstractModel):
+    r"""DescribeWatermarkDetection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""Task Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWatermarkDetectionResponse(AbstractModel):
+    r"""DescribeWatermarkDetection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInfo: Detecting task related information
+        :type TaskInfo: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkDetectionInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def TaskInfo(self):
+        r"""Detecting task related information
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkDetectionInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = AbWatermarkDetectionInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWatermarkDetectionsRequest(AbstractModel):
+    r"""DescribeWatermarkDetections request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time, 2022-12-04T16:50:00+08:00
+        :type StartTime: str
+        :param _EndTime: End time, 2022-12-04T17:50:00+08:00, maximum supported query range of 7 days
+        :type EndTime: str
+        :param _PageNum: Number of pages queried
+        :type PageNum: int
+        :param _PageSize: Single page quantity, 1-100
+        :type PageSize: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def StartTime(self):
+        r"""Start time, 2022-12-04T16:50:00+08:00
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time, 2022-12-04T17:50:00+08:00, maximum supported query range of 7 days
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNum(self):
+        r"""Number of pages queried
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""Single page quantity, 1-100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWatermarkDetectionsResponse(AbstractModel):
+    r"""DescribeWatermarkDetections response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInfos: Watermark detection information
+        :type TaskInfos: list of AbWatermarkDetectionInfo
+        :param _TotalCount: number of tasks
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskInfos(self):
+        r"""Watermark detection information
+        :rtype: list of AbWatermarkDetectionInfo
+        """
+        return self._TaskInfos
+
+    @TaskInfos.setter
+    def TaskInfos(self, TaskInfos):
+        self._TaskInfos = TaskInfos
+
+    @property
+    def TotalCount(self):
+        r"""number of tasks
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfos") is not None:
+            self._TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = AbWatermarkDetectionInfo()
+                obj._deserialize(item)
+                self._TaskInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkInfo(AbstractModel):
     r"""Watermark information
 
@@ -7160,6 +7760,42 @@ class InputAnalysisInfo(AbstractModel):
         if params.get("HighlightSetting") is not None:
             self._HighlightSetting = HighlightInfo()
             self._HighlightSetting._deserialize(params.get("HighlightSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputFileInfo(AbstractModel):
+    r"""InputFileInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentDuration: 
+        :type SegmentDuration: int
+        """
+        self._SegmentDuration = None
+
+    @property
+    def SegmentDuration(self):
+        r"""
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
+
+
+    def _deserialize(self, params):
+        self._SegmentDuration = params.get("SegmentDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12103,6 +12739,57 @@ class Tag(AbstractModel):
         
 
 
+class TaskNotifyConfig(AbstractModel):
+    r"""TaskNotifyConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _NotifyUrl: 
+        :type NotifyUrl: str
+        """
+        self._Type = None
+        self._NotifyUrl = None
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NotifyUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ThumbnailSettings(AbstractModel):
     r"""
 
@@ -12515,6 +13202,42 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._PTS = params.get("PTS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UrlInputInfo(AbstractModel):
+    r"""UrlInputInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

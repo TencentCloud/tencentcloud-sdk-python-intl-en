@@ -552,9 +552,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
         :type SelectedWarningCodes: list of int
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
-        :param _SdkVersion: PLUS: Plus Version.
-ENHANCED: Enhanced Version.
-BASIC: Basic Version (default).
+        :param _SdkVersion: BASIC: Basic Version (default).
         :type SdkVersion: str
         :param _ActionList: This interface is used to control th action sequences.
 Action types are as follows:
@@ -715,9 +713,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
 
     @property
     def SdkVersion(self):
-        r"""PLUS: Plus Version.
-ENHANCED: Enhanced Version.
-BASIC: Basic Version (default).
+        r"""BASIC: Basic Version (default).
         :rtype: str
         """
         return self._SdkVersion
@@ -4344,9 +4340,7 @@ Single action example: "blink"
 Multiple action example: "blink,mouth"
 The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
         :type ActionList: str
-        :param _SdkVersion: PLUS: Plus Version.
-ENHANCED: Enhanced Version.
-BASIC: Basic Version (Default).
+        :param _SdkVersion: BASIC: Basic Version (Default).
         :type SdkVersion: str
         """
         self._CheckMode = None
@@ -4430,9 +4424,7 @@ The default value is blink. The different action types passed in this parameter 
 
     @property
     def SdkVersion(self):
-        r"""PLUS: Plus Version.
-ENHANCED: Enhanced Version.
-BASIC: Basic Version (Default).
+        r"""BASIC: Basic Version (Default).
         :rtype: str
         """
         return self._SdkVersion

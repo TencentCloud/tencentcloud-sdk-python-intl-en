@@ -1169,6 +1169,9 @@ OPERATIONDENIED_ORIGINGROUPLBUSED = 'OperationDenied.OriginGroupLBUsed'
 # The rule engine is in use and cannot be deleted.
 OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = 'OperationDenied.OriginGroupRuleEngineUsed'
 
+# The current root account does not have permission for the data query interface. contact after-sales.
+OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = 'OperationDenied.OriginPullDataNotSupported'
+
 # Ownership verification failed. Please complete the site ownership verification first.
 OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = 'OperationDenied.OwnershipVerificationNotPassed'
 

@@ -140,7 +140,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateBlindWatermarkTemplateResponse:
         """
-        This API is used to create a user-defined digital watermark template with an upper limit of 1000.
+        This API is used to create a user-defined digital watermark template.
         """
         
         kwargs = {}
@@ -1281,6 +1281,26 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUsageData(
+            self,
+            request: models.DescribeUsageDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageDataResponse:
+        """
+        This API is used to return the daily Media Processing Service (MPS) usage information within the specified query time range.
+           1. MPS statistical data from the last 365 days can be queried.
+           2. The query time span should not exceed 90 days.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWatermarkTemplates(
             self,
             request: models.DescribeWatermarkTemplatesRequest,
@@ -1944,20 +1964,19 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessMediaResponse:
         """
-        This API is used to initiate a processing task for URL video links or media files in COS. Features include:.
-        This API is used to perform video transcoding, including standard transcoding, TSC transcoding, and audio/video enhancement.
-        This API is used to generate animated images.
-        This API is used to take screenshots at specified time points.
-        This API is used to take sampled screenshots from videos.
-        This API is used to take sprite screenshots of videos.
-        This API is used to transcode to adaptive bitrate streaming.
-        This API is used to perform intelligent content moderation, such as pornography detection and sensitive information detection.
-        This API is used to perform intelligent content analysis such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking.
-        This API is used to perform intelligent content recognition such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition.
-        This API is used to perform media quality inspection, such as media format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, screen glitch, noise, mosaic, QR code, and other issues), and no-reference scoring.
-        11. Smart subtitle (such as ASR, hotword, and speech translation).
-
-        This API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).
+        This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:
+        - Audio/Video transcoding (such as standard transcoding, top speed codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).
+        - Adaptive bitrate streaming conversion for audios/videos.
+        - Video-to-GIF conversion.
+        - Time point screenshot of videos.
+        - Sampled screenshot of videos.
+        - Image sprite of video screenshots.
+        - Media quality inspection (such as media format diagnosis, audio/video content detection, and scoring without reference, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).
+        - Smart subtitle (such as subtitle generation and translation).
+        - Smart erasing (such as watermark removal, subtitle removal, and privacy protection).
+        - Smart content moderation (such as pornography detection and sensitive information detection).
+        - Smart content analysis (such as tags, classifications, covers, frame tags, video splitting, highlights, opening and ending clips, and marking points for games).
+        - Smart content recognition (such as human faces, full texts, text keywords, full speech, speech keywords, speech translation, and object recognition).
         """
         
         kwargs = {}
