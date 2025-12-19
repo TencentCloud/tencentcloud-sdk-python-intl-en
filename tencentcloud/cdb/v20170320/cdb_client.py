@@ -1242,7 +1242,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        r"""This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.
+        r"""This API is used to query the list of TencentDB for MySQL instances. It supports filtering instances by conditions such as project ID, instance ID, access address, and instance status. It also supports querying the list of information about primary instances, disaster recovery instances, and read-only instances.
+        This API is used to return the availability zone (AZ) status during purchase, which does not change along with the proactive HA switch. If you want to know the AZ status in real time, query through the [DescribeDBInstanceConfig](https://www.tencentcloud.comom/document/product/236/17491?from_cn_redirect=1) API.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesRequest`

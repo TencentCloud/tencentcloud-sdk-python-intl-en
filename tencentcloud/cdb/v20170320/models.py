@@ -868,6 +868,147 @@ class AggregationCondition(AbstractModel):
         
 
 
+class AnalysisNodeInfo(AbstractModel):
+    r"""Analysis engine node information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: Node ID.
+        :type NodeId: str
+        :param _Status: Node status.
+        :type Status: str
+        :param _DataStatus: Data loading status.
+        :type DataStatus: str
+        :param _Cpu: Number of CPU cores, in cores.
+        :type Cpu: int
+        :param _Memory: Memory size, in MB.
+        :type Memory: int
+        :param _Storage: Disk size, in GB.
+        :type Storage: int
+        :param _Zone: Node AZ.
+        :type Zone: str
+        :param _Message: Data synchronization error message.
+        :type Message: str
+        """
+        self._NodeId = None
+        self._Status = None
+        self._DataStatus = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._Zone = None
+        self._Message = None
+
+    @property
+    def NodeId(self):
+        r"""Node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Status(self):
+        r"""Node status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DataStatus(self):
+        r"""Data loading status.
+        :rtype: str
+        """
+        return self._DataStatus
+
+    @DataStatus.setter
+    def DataStatus(self, DataStatus):
+        self._DataStatus = DataStatus
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores, in cores.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Memory size, in MB.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""Disk size, in GB.
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Zone(self):
+        r"""Node AZ.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Message(self):
+        r"""Data synchronization error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Status = params.get("Status")
+        self._DataStatus = params.get("DataStatus")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._Zone = params.get("Zone")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalyzeAuditLogsRequest(AbstractModel):
     r"""AnalyzeAuditLogs request structure.
 
@@ -4584,6 +4725,72 @@ class CloseWanServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class ClusterInfo(AbstractModel):
+    r"""Cluster Edition node information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: Node ID.
+        :type NodeId: str
+        :param _Role: Node type: primary node and secondary node.
+        :type Role: str
+        :param _Zone: Region.
+        :type Zone: str
+        """
+        self._NodeId = None
+        self._Role = None
+        self._Zone = None
+
+    @property
+    def NodeId(self):
+        r"""Node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Role(self):
+        r"""Node type: primary node and secondary node.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Zone(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ColumnPrivilege(AbstractModel):
@@ -12523,11 +12730,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Limit: int
         :param _SecurityGroupId: Security group ID. When it is used as a filter, the `WithSecurityGroup` parameter should be set to 1.
         :type SecurityGroupId: str
-        :param _PayTypes: Billing method. Value range: 0 (monthly subscribed), 1 (hourly).
+        :param _PayTypes: Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.
         :type PayTypes: list of int non-negative
         :param _InstanceNames: Instance name.
         :type InstanceNames: list of str
-        :param _TaskStatus: Instance task status. Valid values: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - enabling secondary instance access <br>4 - enabling public network access <br>5 - batch operation in progress <br>6 - rolling back <br>7 - disabling public network access <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built database <br>13 - dropping tables <br>14 - Disaster recovery instance creating sync task <br>15 - waiting for switch <br>16 - switching <br>17 - upgrade and switch completed <br>19 - parameter settings to be executed
+        :param _TaskStatus: Instance task status. Valid values:<br>0 - no task;<br>1 - upgrading;<br>2 - importing data;<br>3 - enabling secondary nodes;<br>4 - enabling public network access;<br>5 - executing batch operations;<br>6 - rolling back;<br>7 - disabling public network access;<br>8 - changing the password;<br>9 - renaming the instance;<br>10 - restarting;<br>12 - migrating self-built databases;<br>13 - deleting databases and tables;<br>14 - synchronizing the creation of disaster recovery instances;<br>15 - pending upgrade switch;<br>16 - under upgrade switch;<br>17 - upgrade switch completed;<br>19 - parameter settings pending execution;<br>34 - in-place upgrade pending execution.
         :type TaskStatus: list of int non-negative
         :param _EngineVersions: Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.
         :type EngineVersions: list of str
@@ -12539,11 +12746,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SubnetIds: list of int non-negative
         :param _CdbErrors: Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.
         :type CdbErrors: list of int
-        :param _OrderBy: Sort by field of the returned result set. Currently, supported values include "InstanceId", "InstanceName", "CreateTime", and "DeadlineTime".
+        :param _OrderBy: Sorting field of the query results. Valid values: "instanceId", "instanceName", "createTime", and "deadlineTime".
         :type OrderBy: str
-        :param _OrderDirection: Sorting method of the returned result set. Currently, "ASC" or "DESC" is supported.
+        :param _OrderDirection: Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default value is "DESC".
         :type OrderDirection: str
-        :param _WithSecurityGroup: Whether security group ID is used as a filter
+        :param _WithSecurityGroup: Whether to use the security group ID as the filter condition.
+Note: 0 indicates no; 1 indicates yes.
         :type WithSecurityGroup: int
         :param _WithExCluster: Whether dedicated cluster details are included. Value range: 0 (not included), 1 (included)
         :type WithExCluster: int
@@ -12571,14 +12779,17 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UniqueVpcIds: list of str
         :param _UniqSubnetIds: VPC character subnetId
         :type UniqSubnetIds: list of str
-        :param _Tags: Tag key value
+        :param _Tags: Tag key value.
+Note that tags cannot be queried for instances being created.
         :type Tags: list of Tag
         :param _ProxyVips: Database proxy IP
         :type ProxyVips: list of str
         :param _ProxyIds: Database proxy ID
         :type ProxyIds: list of str
-        :param _EngineTypes: Database engine type
+        :param _EngineTypes: Database engine type. Valid values: InnoDB; RocksDB.
         :type EngineTypes: list of str
+        :param _QueryClusterInfo: Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.
+        :type QueryClusterInfo: bool
         """
         self._ProjectId = None
         self._InstanceTypes = None
@@ -12615,6 +12826,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ProxyVips = None
         self._ProxyIds = None
         self._EngineTypes = None
+        self._QueryClusterInfo = None
 
     @property
     def ProjectId(self):
@@ -12695,7 +12907,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PayTypes(self):
-        r"""Billing method. Value range: 0 (monthly subscribed), 1 (hourly).
+        r"""Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.
         :rtype: list of int non-negative
         """
         return self._PayTypes
@@ -12717,7 +12929,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""Instance task status. Valid values: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - enabling secondary instance access <br>4 - enabling public network access <br>5 - batch operation in progress <br>6 - rolling back <br>7 - disabling public network access <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built database <br>13 - dropping tables <br>14 - Disaster recovery instance creating sync task <br>15 - waiting for switch <br>16 - switching <br>17 - upgrade and switch completed <br>19 - parameter settings to be executed
+        r"""Instance task status. Valid values:<br>0 - no task;<br>1 - upgrading;<br>2 - importing data;<br>3 - enabling secondary nodes;<br>4 - enabling public network access;<br>5 - executing batch operations;<br>6 - rolling back;<br>7 - disabling public network access;<br>8 - changing the password;<br>9 - renaming the instance;<br>10 - restarting;<br>12 - migrating self-built databases;<br>13 - deleting databases and tables;<br>14 - synchronizing the creation of disaster recovery instances;<br>15 - pending upgrade switch;<br>16 - under upgrade switch;<br>17 - upgrade switch completed;<br>19 - parameter settings pending execution;<br>34 - in-place upgrade pending execution.
         :rtype: list of int non-negative
         """
         return self._TaskStatus
@@ -12783,7 +12995,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sort by field of the returned result set. Currently, supported values include "InstanceId", "InstanceName", "CreateTime", and "DeadlineTime".
+        r"""Sorting field of the query results. Valid values: "instanceId", "instanceName", "createTime", and "deadlineTime".
         :rtype: str
         """
         return self._OrderBy
@@ -12794,7 +13006,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""Sorting method of the returned result set. Currently, "ASC" or "DESC" is supported.
+        r"""Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default value is "DESC".
         :rtype: str
         """
         return self._OrderDirection
@@ -12805,7 +13017,8 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithSecurityGroup(self):
-        r"""Whether security group ID is used as a filter
+        r"""Whether to use the security group ID as the filter condition.
+Note: 0 indicates no; 1 indicates yes.
         :rtype: int
         """
         return self._WithSecurityGroup
@@ -12959,7 +13172,8 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag key value
+        r"""Tag key value.
+Note that tags cannot be queried for instances being created.
         :rtype: list of Tag
         """
         return self._Tags
@@ -12992,7 +13206,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def EngineTypes(self):
-        r"""Database engine type
+        r"""Database engine type. Valid values: InnoDB; RocksDB.
         :rtype: list of str
         """
         return self._EngineTypes
@@ -13000,6 +13214,17 @@ class DescribeDBInstancesRequest(AbstractModel):
     @EngineTypes.setter
     def EngineTypes(self, EngineTypes):
         self._EngineTypes = EngineTypes
+
+    @property
+    def QueryClusterInfo(self):
+        r"""Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.
+        :rtype: bool
+        """
+        return self._QueryClusterInfo
+
+    @QueryClusterInfo.setter
+    def QueryClusterInfo(self, QueryClusterInfo):
+        self._QueryClusterInfo = QueryClusterInfo
 
 
     def _deserialize(self, params):
@@ -13043,6 +13268,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ProxyVips = params.get("ProxyVips")
         self._ProxyIds = params.get("ProxyIds")
         self._EngineTypes = params.get("EngineTypes")
+        self._QueryClusterInfo = params.get("QueryClusterInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18693,8 +18919,7 @@ class InstanceInfo(AbstractModel):
         :type Zone: str
         :param _InitFlag: Initialization flag. Value range: 0 (not initialized), 1 (initialized)
         :type InitFlag: int
-        :param _RoVipInfo: VIP information of a read-only instance. This field is exclusive to read-only instances where read-only access is enabled separately
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RoVipInfo: Read-only VIP information. This field is available only for read-only instances with dedicated access enabled.
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         :param _Memory: Memory capacity in MB
         :type Memory: int
@@ -18702,8 +18927,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Status: int
         :param _VpcId: VPC ID, such as 51102
         :type VpcId: int
-        :param _SlaveInfo: Information of a secondary server
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SlaveInfo: Secondary server information.
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         :param _InstanceId: Instance ID
         :type InstanceId: str
@@ -18713,8 +18937,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AutoRenew: int
         :param _ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)
         :type ProtectMode: int
-        :param _RoGroups: Details of a read-only group
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RoGroups: Detailed information about the read-only group.
         :type RoGroups: list of RoGroup
         :param _SubnetId: Subnet ID, such as 2333
         :type SubnetId: int
@@ -18730,8 +18953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type DeployMode: int
         :param _TaskStatus: Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed
         :type TaskStatus: int
-        :param _MasterInfo: Details of a primary instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MasterInfo: Detailed information about the primary instance.
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         :param _DeviceType: Instance type
         :type DeviceType: str
@@ -18739,8 +18961,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EngineVersion: str
         :param _InstanceName: Instance name
         :type InstanceName: str
-        :param _DrInfo: Details of a disaster recovery instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DrInfo: Detailed information about the disaster recovery instance.
         :type DrInfo: list of DrInfo
         :param _WanDomain: Public domain name
         :type WanDomain: str
@@ -18768,28 +18989,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Qps: int
         :param _ZoneName: AZ name
         :type ZoneName: str
-        :param _DeviceClass: Physical machine model
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeviceClass: Physical server model.
         :type DeviceClass: str
-        :param _DeployGroupId: Placement group ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _DeployGroupId: Placement group ID.
         :type DeployGroupId: str
-        :param _ZoneId: AZ ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ZoneId: AZ ID.
         :type ZoneId: int
         :param _InstanceNodes: Number of nodes
         :type InstanceNodes: int
-        :param _TagList: List of tags
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TagList: Tag list.
         :type TagList: list of TagInfoItem
-        :param _EngineType: Engine type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EngineType: Engine type.
         :type EngineType: str
-        :param _MaxDelayTime: Maximum delay threshold
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MaxDelayTime: Maximum delay threshold.
         :type MaxDelayTime: int
-        :param _DiskType: Instance disk type, which is returned only for the instances of cloud disk edition. Valid values: `CLOUD_SSD` (SSD), `CLOUD_HSSD` (Enhanced SSD).
+        :param _DiskType: Instance disk type. Valid values are returned only for Cluster Edition and single-node (cloud disk) instances.
+Note:
+1. If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is Enhanced SSD.
+2. If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is Cloud SSD.
+3. If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it indicates that the instance uses a local SSD.
         :type DiskType: str
+        :param _ExpandCpu: Current number of CPU cores for scale-out.
+        :type ExpandCpu: int
+        :param _ClusterInfo: Cluster Edition instance node information.
+        :type ClusterInfo: list of ClusterInfo
+        :param _AnalysisNodeInfos: Analysis engine node list.
+        :type AnalysisNodeInfos: list of AnalysisNodeInfo
+        :param _DeviceBandwidth: Device bandwidth, in GB. This parameter is valid when DeviceClass is specified. For example, 25 means the current device bandwidth is 25 GB; 10 means the current device bandwidth is 10 GB.
+        :type DeviceBandwidth: int
+        :param _DestroyProtect: Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.
+        :type DestroyProtect: str
         """
         self._WanStatus = None
         self._Zone = None
@@ -18837,6 +19066,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EngineType = None
         self._MaxDelayTime = None
         self._DiskType = None
+        self._ExpandCpu = None
+        self._ClusterInfo = None
+        self._AnalysisNodeInfos = None
+        self._DeviceBandwidth = None
+        self._DestroyProtect = None
 
     @property
     def WanStatus(self):
@@ -18873,8 +19107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoVipInfo(self):
-        r"""VIP information of a read-only instance. This field is exclusive to read-only instances where read-only access is enabled separately
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Read-only VIP information. This field is available only for read-only instances with dedicated access enabled.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         """
         return self._RoVipInfo
@@ -18918,8 +19151,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlaveInfo(self):
-        r"""Information of a secondary server
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Secondary server information.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         """
         return self._SlaveInfo
@@ -18974,8 +19206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoGroups(self):
-        r"""Details of a read-only group
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Detailed information about the read-only group.
         :rtype: list of RoGroup
         """
         return self._RoGroups
@@ -19063,8 +19294,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterInfo(self):
-        r"""Details of a primary instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Detailed information about the primary instance.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         """
         return self._MasterInfo
@@ -19108,8 +19338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DrInfo(self):
-        r"""Details of a disaster recovery instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Detailed information about the disaster recovery instance.
         :rtype: list of DrInfo
         """
         return self._DrInfo
@@ -19263,8 +19492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceClass(self):
-        r"""Physical machine model
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Physical server model.
         :rtype: str
         """
         return self._DeviceClass
@@ -19275,8 +19503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeployGroupId(self):
-        r"""Placement group ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Placement group ID.
         :rtype: str
         """
         return self._DeployGroupId
@@ -19287,8 +19514,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        r"""AZ ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""AZ ID.
         :rtype: int
         """
         return self._ZoneId
@@ -19310,8 +19536,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagList(self):
-        r"""List of tags
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Tag list.
         :rtype: list of TagInfoItem
         """
         return self._TagList
@@ -19322,8 +19547,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EngineType(self):
-        r"""Engine type
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Engine type.
         :rtype: str
         """
         return self._EngineType
@@ -19334,8 +19558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxDelayTime(self):
-        r"""Maximum delay threshold
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Maximum delay threshold.
         :rtype: int
         """
         return self._MaxDelayTime
@@ -19346,7 +19569,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        r"""Instance disk type, which is returned only for the instances of cloud disk edition. Valid values: `CLOUD_SSD` (SSD), `CLOUD_HSSD` (Enhanced SSD).
+        r"""Instance disk type. Valid values are returned only for Cluster Edition and single-node (cloud disk) instances.
+Note:
+1. If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is Enhanced SSD.
+2. If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is Cloud SSD.
+3. If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it indicates that the instance uses a local SSD.
         :rtype: str
         """
         return self._DiskType
@@ -19354,6 +19581,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DiskType.setter
     def DiskType(self, DiskType):
         self._DiskType = DiskType
+
+    @property
+    def ExpandCpu(self):
+        r"""Current number of CPU cores for scale-out.
+        :rtype: int
+        """
+        return self._ExpandCpu
+
+    @ExpandCpu.setter
+    def ExpandCpu(self, ExpandCpu):
+        self._ExpandCpu = ExpandCpu
+
+    @property
+    def ClusterInfo(self):
+        r"""Cluster Edition instance node information.
+        :rtype: list of ClusterInfo
+        """
+        return self._ClusterInfo
+
+    @ClusterInfo.setter
+    def ClusterInfo(self, ClusterInfo):
+        self._ClusterInfo = ClusterInfo
+
+    @property
+    def AnalysisNodeInfos(self):
+        r"""Analysis engine node list.
+        :rtype: list of AnalysisNodeInfo
+        """
+        return self._AnalysisNodeInfos
+
+    @AnalysisNodeInfos.setter
+    def AnalysisNodeInfos(self, AnalysisNodeInfos):
+        self._AnalysisNodeInfos = AnalysisNodeInfos
+
+    @property
+    def DeviceBandwidth(self):
+        r"""Device bandwidth, in GB. This parameter is valid when DeviceClass is specified. For example, 25 means the current device bandwidth is 25 GB; 10 means the current device bandwidth is 10 GB.
+        :rtype: int
+        """
+        return self._DeviceBandwidth
+
+    @DeviceBandwidth.setter
+    def DeviceBandwidth(self, DeviceBandwidth):
+        self._DeviceBandwidth = DeviceBandwidth
+
+    @property
+    def DestroyProtect(self):
+        r"""Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.
+        :rtype: str
+        """
+        return self._DestroyProtect
+
+    @DestroyProtect.setter
+    def DestroyProtect(self, DestroyProtect):
+        self._DestroyProtect = DestroyProtect
 
 
     def _deserialize(self, params):
@@ -19424,6 +19706,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EngineType = params.get("EngineType")
         self._MaxDelayTime = params.get("MaxDelayTime")
         self._DiskType = params.get("DiskType")
+        self._ExpandCpu = params.get("ExpandCpu")
+        if params.get("ClusterInfo") is not None:
+            self._ClusterInfo = []
+            for item in params.get("ClusterInfo"):
+                obj = ClusterInfo()
+                obj._deserialize(item)
+                self._ClusterInfo.append(obj)
+        if params.get("AnalysisNodeInfos") is not None:
+            self._AnalysisNodeInfos = []
+            for item in params.get("AnalysisNodeInfos"):
+                obj = AnalysisNodeInfo()
+                obj._deserialize(item)
+                self._AnalysisNodeInfos.append(obj)
+        self._DeviceBandwidth = params.get("DeviceBandwidth")
+        self._DestroyProtect = params.get("DestroyProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25960,12 +26257,13 @@ class RoGroup(AbstractModel):
         :param _RoGroupMode: Read-only group mode. Valid values: `alone` (the system assigns a read-only group automatically), `allinone` (a new read-only group will be created), `join` (an existing read-only group will be used).
         :type RoGroupMode: str
         :param _RoGroupId: Read-only group ID.
+Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.
         :type RoGroupId: str
         :param _RoGroupName: Read-only group name.
         :type RoGroupName: str
         :param _RoOfflineDelay: Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)
         :type RoOfflineDelay: int
-        :param _RoMaxDelayTime: Latency threshold
+        :param _RoMaxDelayTime: Delay threshold, in seconds. Value range: 1–10000. The value is an integer.
         :type RoMaxDelayTime: int
         :param _MinRoInGroup: Minimum number of instances to be retained. If the number of the purchased read-only instances is smaller than the set value, they will not be removed.
         :type MinRoInGroup: int
@@ -25979,20 +26277,15 @@ class RoGroup(AbstractModel):
         :type Vip: str
         :param _Vport: Private network port number of read-only group.
         :type Vport: int
-        :param _UniqVpcId: VPC ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _UniqVpcId: Virtual Private Cloud (VPC) ID.
         :type UniqVpcId: str
         :param _UniqSubnetId: Subnet ID.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type UniqSubnetId: str
-        :param _RoGroupRegion: Read-only group region.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RoGroupRegion: Region of the read-only group.
         :type RoGroupRegion: str
-        :param _RoGroupZone: Read-only group AZ.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RoGroupZone: AZ of the read-only group.
         :type RoGroupZone: str
-        :param _DelayReplicationTime: Replication delay.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DelayReplicationTime: Replication delay time, in seconds. Value range: 1–259200. The value is an integer.
         :type DelayReplicationTime: int
         """
         self._RoGroupMode = None
@@ -26026,6 +26319,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def RoGroupId(self):
         r"""Read-only group ID.
+Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.
         :rtype: str
         """
         return self._RoGroupId
@@ -26058,7 +26352,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoMaxDelayTime(self):
-        r"""Latency threshold
+        r"""Delay threshold, in seconds. Value range: 1–10000. The value is an integer.
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -26135,8 +26429,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Virtual Private Cloud (VPC) ID.
         :rtype: str
         """
         return self._UniqVpcId
@@ -26148,7 +26441,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def UniqSubnetId(self):
         r"""Subnet ID.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -26159,8 +26451,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoGroupRegion(self):
-        r"""Read-only group region.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Region of the read-only group.
         :rtype: str
         """
         return self._RoGroupRegion
@@ -26171,8 +26462,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoGroupZone(self):
-        r"""Read-only group AZ.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""AZ of the read-only group.
         :rtype: str
         """
         return self._RoGroupZone
@@ -26183,8 +26473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayReplicationTime(self):
-        r"""Replication delay.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Replication delay time, in seconds. Value range: 1–259200. The value is an integer.
         :rtype: int
         """
         return self._DelayReplicationTime
@@ -26364,7 +26653,7 @@ class RoInstanceInfo(AbstractModel):
         :type InstanceType: int
         :param _InstanceName: RO instance name
         :type InstanceName: str
-        :param _HourFeeStatus: Pay-as-you-go billing status. Value range: 1 (normal), 2 (in arrears)
+        :param _HourFeeStatus: Pay-as-you-go status. Valid values: 1 - normal; 2 - in arrears.
         :type HourFeeStatus: int
         :param _TaskStatus: RO instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating secondary <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance
         :type TaskStatus: int
@@ -26388,8 +26677,10 @@ class RoInstanceInfo(AbstractModel):
         :type EngineVersion: str
         :param _DeadlineTime: RO instance expiration time in the format of yyyy-mm-dd hh:mm:ss. If it is a pay-as-you-go instance, the value of this field is 0000-00-00 00:00:00
         :type DeadlineTime: str
-        :param _PayType: RO instance billing method. Value range: 0 (monthly subscribed), 1 (pay-as-you-go), 2 (monthly postpaid)
+        :param _PayType: Billing type of the RO instance. Valid values: 0 - yearly/monthly subscription; 1 - pay-as-you-go; 2-postpaid by month.
         :type PayType: int
+        :param _ReplicationStatus: RO replication delay status.
+        :type ReplicationStatus: str
         """
         self._MasterInstanceId = None
         self._RoStatus = None
@@ -26414,6 +26705,7 @@ class RoInstanceInfo(AbstractModel):
         self._EngineVersion = None
         self._DeadlineTime = None
         self._PayType = None
+        self._ReplicationStatus = None
 
     @property
     def MasterInstanceId(self):
@@ -26527,7 +26819,7 @@ class RoInstanceInfo(AbstractModel):
 
     @property
     def HourFeeStatus(self):
-        r"""Pay-as-you-go billing status. Value range: 1 (normal), 2 (in arrears)
+        r"""Pay-as-you-go status. Valid values: 1 - normal; 2 - in arrears.
         :rtype: int
         """
         return self._HourFeeStatus
@@ -26659,7 +26951,7 @@ class RoInstanceInfo(AbstractModel):
 
     @property
     def PayType(self):
-        r"""RO instance billing method. Value range: 0 (monthly subscribed), 1 (pay-as-you-go), 2 (monthly postpaid)
+        r"""Billing type of the RO instance. Valid values: 0 - yearly/monthly subscription; 1 - pay-as-you-go; 2-postpaid by month.
         :rtype: int
         """
         return self._PayType
@@ -26667,6 +26959,17 @@ class RoInstanceInfo(AbstractModel):
     @PayType.setter
     def PayType(self, PayType):
         self._PayType = PayType
+
+    @property
+    def ReplicationStatus(self):
+        r"""RO replication delay status.
+        :rtype: str
+        """
+        return self._ReplicationStatus
+
+    @ReplicationStatus.setter
+    def ReplicationStatus(self, ReplicationStatus):
+        self._ReplicationStatus = ReplicationStatus
 
 
     def _deserialize(self, params):
@@ -26693,6 +26996,7 @@ class RoInstanceInfo(AbstractModel):
         self._EngineVersion = params.get("EngineVersion")
         self._DeadlineTime = params.get("DeadlineTime")
         self._PayType = params.get("PayType")
+        self._ReplicationStatus = params.get("ReplicationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27618,8 +27922,7 @@ class SlaveInfo(AbstractModel):
         r"""
         :param _First: Information of secondary server 1
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
-        :param _Second: Information of secondary server 2
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Second: Second secondary server information.
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self._First = None
@@ -27638,8 +27941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Second(self):
-        r"""Information of secondary server 2
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Second secondary server information.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         return self._Second
@@ -29296,11 +29598,9 @@ class TagInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TagKey: Tag key.
         :type TagKey: str
-        :param _TagValue: Tag value
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TagValue: Tag value.
         :type TagValue: str
         """
         self._TagKey = None
@@ -29308,8 +29608,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagKey(self):
-        r"""Tag key
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Tag key.
         :rtype: str
         """
         return self._TagKey
@@ -29320,8 +29619,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagValue(self):
-        r"""Tag value
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Tag value.
         :rtype: str
         """
         return self._TagValue

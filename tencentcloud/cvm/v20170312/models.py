@@ -9200,7 +9200,7 @@ class InquiryPriceModifyInstancesChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 20.
         :type InstanceIds: list of str
         :param _InstanceChargeType: Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: monthly subscription.</li>
 
@@ -9220,7 +9220,7 @@ default value: `PREPAID`
 
     @property
     def InstanceIds(self):
-        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 20.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14277,7 +14277,7 @@ class ModifyInstancesChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 30.
+        :param _InstanceIds: One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 20.
         :type InstanceIds: list of str
         :param _InstanceChargeType: Modified instance [billing type](https://www.tencentcloud.com/document/product/213/2180?from_cn_redirect=1). <li>`PREPAID`: monthly subscription.</li> 
 **Note:** Only supports converting pay-as-you-go instances to annual and monthly subscription instances.
@@ -14296,7 +14296,7 @@ default value: `PREPAID`
 
     @property
     def InstanceIds(self):
-        r"""One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 30.
+        r"""One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 20.
         :rtype: list of str
         """
         return self._InstanceIds
