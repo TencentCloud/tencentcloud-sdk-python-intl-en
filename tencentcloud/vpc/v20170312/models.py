@@ -380,9 +380,9 @@ class Address(AbstractModel):
         :type InstanceId: str
         :param _CreatedTime: The creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :type CreatedTime: str
-        :param _NetworkInterfaceId: The ID of the bound ENI
+        :param _NetworkInterfaceId: Specifies the bound elastic network interface ID. null means no elastic network interface is bound.
         :type NetworkInterfaceId: str
-        :param _PrivateAddressIp: The private IP of the bound resources
+        :param _PrivateAddressIp: Bound resource internal ip. null means no bound resource internal ip.
         :type PrivateAddressIp: str
         :param _IsArrears: The isolation status of the resource. `True` indicates the EIP is isolated. `False` indicates that the resource is not isolated.
         :type IsArrears: bool
@@ -396,9 +396,11 @@ class Address(AbstractModel):
         :type CascadeRelease: bool
         :param _EipAlgType: Type of the protocol used in EIP ALG
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
-        :param _InternetServiceProvider: The ISP of an EIP/Elastic IP, with possible return values currently including "CMCC", "CTCC", "CUCC" and "BGP"
+        :param _InternetServiceProvider: EIP ISP information. currently may return values including "CMCC" (mobile), "CTCC" (telecom), "CUCC" (china unicom), "BGP" (standard BGP).
         :type InternetServiceProvider: str
-        :param _LocalBgp: Whether the EIP is in a local BGP.
+        :param _LocalBgp: Specifies whether the EIP is a local bandwidth EIP. valid values:.
+<li>true: EIP with local bandwidth.</li>.
+<li>false: not a local bandwidth EIP.</li>.
         :type LocalBgp: bool
         :param _Bandwidth: Bandwidth value of EIP. The EIP for the bill-by-CVM account will return `null`.
 Note: this field may return `null`, indicating that no valid value was found.
@@ -416,14 +418,22 @@ Including:
 <p style="padding-left: 30px;">Bandwidth package.</p>
 Note: this field may return `null`, indicating that no valid value was found.
         :type InternetChargeType: str
-        :param _TagSet: List of tags associated with the EIP
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TagSet: Specifies the Tag list associated with the elastic IP.
         :type TagSet: list of Tag
-        :param _DeadlineDate: The expiration time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DeadlineDate: Prepaid monthly subscription bandwidth IP expiration time.
+Specifies the time format in YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid value was found.
         :type DeadlineDate: str
-        :param _InstanceType: The type of instance bound with the EIP
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _InstanceType: Instance type to which the EIP is bound. valid values:.
+<Li>CVM: indicates cloud virtual machine.</li>.
+<li>Specifies the NAT gateway.</li>.
+<Li>HAVIP: high availability virtual ip.</li>.
+<Li>ENI: specifies the elastic network interface.</li>.
+<Li>CLB: specifies a private network clb.</li>.
+<Li>DHCPIP: elastic private ip address</li>.
+
+
+Note: This field may return null, indicating that no valid value was found.
         :type InstanceType: str
         :param _Egress: Static single-line IP network egress
 Note: This field may return null, indicating that no valid value was found.
@@ -437,11 +447,9 @@ Note: This field may return null, indicating that no valid value was found.
         :param _BandwidthPackageId: Indicates the ID of the Bandwidth Package associated with the current public IP. If the public IP is not billed by Bandwidth Package, this field is empty.
 Note: This field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
-        :param _UnVpcId: Indicates the unique ID of the VPC to which the traditional EIPv6 belongs.
-Note: This field may return null, indicating that no valid value was found.
+        :param _UnVpcId: Specifies the unique ID of the vpc to which the traditional elastic IPv6 belongs.
         :type UnVpcId: str
-        :param _DedicatedClusterId: Indicates the unique ID of the CDC.
-Note: This field may return 'null', indicating that no valid value was found.
+        :param _DedicatedClusterId: Specifies the unique ID of the CDC.
         :type DedicatedClusterId: str
         """
         self._AddressId = None
@@ -540,7 +548,7 @@ Note: This field may return 'null', indicating that no valid value was found.
 
     @property
     def NetworkInterfaceId(self):
-        r"""The ID of the bound ENI
+        r"""Specifies the bound elastic network interface ID. null means no elastic network interface is bound.
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -551,7 +559,7 @@ Note: This field may return 'null', indicating that no valid value was found.
 
     @property
     def PrivateAddressIp(self):
-        r"""The private IP of the bound resources
+        r"""Bound resource internal ip. null means no bound resource internal ip.
         :rtype: str
         """
         return self._PrivateAddressIp
@@ -628,7 +636,7 @@ Note: This field may return 'null', indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
-        r"""The ISP of an EIP/Elastic IP, with possible return values currently including "CMCC", "CTCC", "CUCC" and "BGP"
+        r"""EIP ISP information. currently may return values including "CMCC" (mobile), "CTCC" (telecom), "CUCC" (china unicom), "BGP" (standard BGP).
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -639,7 +647,9 @@ Note: This field may return 'null', indicating that no valid value was found.
 
     @property
     def LocalBgp(self):
-        r"""Whether the EIP is in a local BGP.
+        r"""Specifies whether the EIP is a local bandwidth EIP. valid values:.
+<li>true: EIP with local bandwidth.</li>.
+<li>false: not a local bandwidth EIP.</li>.
         :rtype: bool
         """
         return self._LocalBgp
@@ -684,8 +694,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TagSet(self):
-        r"""List of tags associated with the EIP
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the Tag list associated with the elastic IP.
         :rtype: list of Tag
         """
         return self._TagSet
@@ -696,8 +705,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeadlineDate(self):
-        r"""The expiration time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Prepaid monthly subscription bandwidth IP expiration time.
+Specifies the time format in YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
         return self._DeadlineDate
@@ -708,8 +718,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
-        r"""The type of instance bound with the EIP
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Instance type to which the EIP is bound. valid values:.
+<Li>CVM: indicates cloud virtual machine.</li>.
+<li>Specifies the NAT gateway.</li>.
+<Li>HAVIP: high availability virtual ip.</li>.
+<Li>ENI: specifies the elastic network interface.</li>.
+<Li>CLB: specifies a private network clb.</li>.
+<Li>DHCPIP: elastic private ip address</li>.
+
+
+Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
         return self._InstanceType
@@ -768,8 +786,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UnVpcId(self):
-        r"""Indicates the unique ID of the VPC to which the traditional EIPv6 belongs.
-Note: This field may return null, indicating that no valid value was found.
+        r"""Specifies the unique ID of the vpc to which the traditional elastic IPv6 belongs.
         :rtype: str
         """
         return self._UnVpcId
@@ -780,8 +797,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def DedicatedClusterId(self):
-        r"""Indicates the unique ID of the CDC.
-Note: This field may return 'null', indicating that no valid value was found.
+        r"""Specifies the unique ID of the CDC.
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -1375,9 +1391,13 @@ class AlgType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ftp: Whether FTP ALG is enabled
+        :param _Ftp: Ftp protocol Alg functionality whether enabled, available values:.
+<li>true: enable Ftp protocol Alg functionality.</li>.
+<li>false: disable Ftp protocol Alg functionality.</li>.
         :type Ftp: bool
-        :param _Sip: Whether SIP ALG is enabled
+        :param _Sip: Whether the Sip protocol Alg function is enabled. available values:.
+<li>true: enable Sip protocol Alg function.</li>.
+<li>false: disable Sip protocol Alg function.</li>.
         :type Sip: bool
         """
         self._Ftp = None
@@ -1385,7 +1405,9 @@ class AlgType(AbstractModel):
 
     @property
     def Ftp(self):
-        r"""Whether FTP ALG is enabled
+        r"""Ftp protocol Alg functionality whether enabled, available values:.
+<li>true: enable Ftp protocol Alg functionality.</li>.
+<li>false: disable Ftp protocol Alg functionality.</li>.
         :rtype: bool
         """
         return self._Ftp
@@ -1396,7 +1418,9 @@ class AlgType(AbstractModel):
 
     @property
     def Sip(self):
-        r"""Whether SIP ALG is enabled
+        r"""Whether the Sip protocol Alg function is enabled. available values:.
+<li>true: enable Sip protocol Alg function.</li>.
+<li>false: disable Sip protocol Alg function.</li>.
         :rtype: bool
         """
         return self._Sip
@@ -15920,23 +15944,25 @@ class DescribeAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
+        :param _AddressIds: List of unique IDs for identifying Elastic IP (EIP). The EIP unique ID is in the format of `eip-11112222`. You can use the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API to obtain the AddressId. The parameters `AddressIds` and `Filters.address-id` cannot be specified simultaneously.
         :type AddressIds: list of str
-        :param _Filters: Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:
-<li> address-id - String - Optional - Filter by unique EIP ID, such as `eip-11112222`.</li>
-<li> address-name - String - Optional - Filter by EIP name. Fuzzy filtering is not supported.</li>
-<li> address-ip - String - Optional - Filter by EIP address.</li>
-<li> address-status - String - Optional - Filter by EIP status. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
-<li> instance-id - String - Optional - Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>
-<li> private-ip-address - String - Optional - Filter by the private IP address bound to the EIP.</li>
-<li> network-interface-id - String - Optional - Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>
-<li> is-arrears - String - Optional - Filter by the fact whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>
-<li> address-type - String - Optional - Filter by IP type. Valid values: `WanIP`, `EIP`, `AnycastEIP`, and `HighQualityEIP`. Default value: `EIP`.</li>
-<li> address-isp - String - Optional - Filter by ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
+        :param _Filters: The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` per request is 100. The detailed filter conditions are as follows:
+<li> address-id - String - Optional - Filter by the unique id of the EIP. the unique id of EIP is in the format of `EIP-11112222`. you can obtain the address-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> address-name - String - Optional - Filter by the EIP name. fuzzy filtering is not supported. available for use through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API to obtain the address-name. note: when specifying the address-name parameter, only the first passed in address-name parameter is supported for query execution.</li>
+<li> address-ip - String - Optional - Filter by the ip address of the EIP. you can obtain address-ip through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> address-status - String - Optional - Filter by the EIP status. valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
+<li> instance-id - String - Optional - Filter by instance id bound to EIP. instance id is in the format of ins-11112222. you can obtain instance-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> private-ip-address - String - Optional - Filter by the private ip bound to the EIP. you can obtain private-ip-address through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API. note: when specifying the private-ip-address parameter, only the first passed-in private-ip-address parameter is supported for query execution.</li>
+<li>network-interface-id - String - Optional - Filter by the id of the ENI bound to the EIP. the ENI id is in the format such as `eni-11112222`. you can obtain the network-interface-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> is-arrears - String - Optional - Filters by whether the EIP is overdue. (TRUE: EIP is overdue | FALSE: EIP is in normal fee state).</li>
+<li>instance-type - String - Optional - Filters by the instance type bound to the EIP. valid values: `CVM`, `NAT`, `ENI`, `CLB`, `HAVIP`, `DHCPIP`, `EKS`, `VPCE`, and `WAF`.
+Note: when using only the instance-type filter condition, the system returns by default the list of bound resources for all EIP types (including EIP, AnycastEIP, HighQualityEIP, AntiDDoSEIP, and ResidentialEIP). to query bound resources for a specific EIP type or `WanIP`, specify both the instance-type and address-type parameters to configure.
+<li> address-type - String - Optional - Filter by IP type. valid values: `WanIP`, `EIP`, `AnycastEIP`, `HighQualityEIP`, `AntiDDoSEIP`, and `ResidentialEIP`. default value is `EIP`.</li>
+<li> address-isp - String - Optional - Filter by ISP type. valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
 <li> dedicated-cluster-id - String - Optional - Filter by unique CDC ID, such as `cluster-11112222`.</li>
-<li> tag-key - String - Optional - Filter by tag key.</li>
-<li> tag-value - String - Optional - Filter by tag value.</li>
-<li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+<li>tag-key - String - Optional - Filter by tag key.</li>
+<li>tag-value - String - Optional - Filter by tag value.</li>
+<li>tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
         :param _Offset: The Offset. The default value is 0. For more information on Offset, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/api/213/15688).
         :type Offset: int
@@ -15950,7 +15976,7 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        r"""The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
+        r"""List of unique IDs for identifying Elastic IP (EIP). The EIP unique ID is in the format of `eip-11112222`. You can use the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API to obtain the AddressId. The parameters `AddressIds` and `Filters.address-id` cannot be specified simultaneously.
         :rtype: list of str
         """
         return self._AddressIds
@@ -15961,21 +15987,23 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:
-<li> address-id - String - Optional - Filter by unique EIP ID, such as `eip-11112222`.</li>
-<li> address-name - String - Optional - Filter by EIP name. Fuzzy filtering is not supported.</li>
-<li> address-ip - String - Optional - Filter by EIP address.</li>
-<li> address-status - String - Optional - Filter by EIP status. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
-<li> instance-id - String - Optional - Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>
-<li> private-ip-address - String - Optional - Filter by the private IP address bound to the EIP.</li>
-<li> network-interface-id - String - Optional - Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>
-<li> is-arrears - String - Optional - Filter by the fact whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>
-<li> address-type - String - Optional - Filter by IP type. Valid values: `WanIP`, `EIP`, `AnycastEIP`, and `HighQualityEIP`. Default value: `EIP`.</li>
-<li> address-isp - String - Optional - Filter by ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
+        r"""The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` per request is 100. The detailed filter conditions are as follows:
+<li> address-id - String - Optional - Filter by the unique id of the EIP. the unique id of EIP is in the format of `EIP-11112222`. you can obtain the address-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> address-name - String - Optional - Filter by the EIP name. fuzzy filtering is not supported. available for use through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API to obtain the address-name. note: when specifying the address-name parameter, only the first passed in address-name parameter is supported for query execution.</li>
+<li> address-ip - String - Optional - Filter by the ip address of the EIP. you can obtain address-ip through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> address-status - String - Optional - Filter by the EIP status. valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
+<li> instance-id - String - Optional - Filter by instance id bound to EIP. instance id is in the format of ins-11112222. you can obtain instance-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> private-ip-address - String - Optional - Filter by the private ip bound to the EIP. you can obtain private-ip-address through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API. note: when specifying the private-ip-address parameter, only the first passed-in private-ip-address parameter is supported for query execution.</li>
+<li>network-interface-id - String - Optional - Filter by the id of the ENI bound to the EIP. the ENI id is in the format such as `eni-11112222`. you can obtain the network-interface-id through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702) API.</li>
+<li> is-arrears - String - Optional - Filters by whether the EIP is overdue. (TRUE: EIP is overdue | FALSE: EIP is in normal fee state).</li>
+<li>instance-type - String - Optional - Filters by the instance type bound to the EIP. valid values: `CVM`, `NAT`, `ENI`, `CLB`, `HAVIP`, `DHCPIP`, `EKS`, `VPCE`, and `WAF`.
+Note: when using only the instance-type filter condition, the system returns by default the list of bound resources for all EIP types (including EIP, AnycastEIP, HighQualityEIP, AntiDDoSEIP, and ResidentialEIP). to query bound resources for a specific EIP type or `WanIP`, specify both the instance-type and address-type parameters to configure.
+<li> address-type - String - Optional - Filter by IP type. valid values: `WanIP`, `EIP`, `AnycastEIP`, `HighQualityEIP`, `AntiDDoSEIP`, and `ResidentialEIP`. default value is `EIP`.</li>
+<li> address-isp - String - Optional - Filter by ISP type. valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
 <li> dedicated-cluster-id - String - Optional - Filter by unique CDC ID, such as `cluster-11112222`.</li>
-<li> tag-key - String - Optional - Filter by tag key.</li>
-<li> tag-value - String - Optional - Filter by tag value.</li>
-<li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+<li>tag-key - String - Optional - Filter by tag key.</li>
+<li>tag-value - String - Optional - Filter by tag value.</li>
+<li>tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :rtype: list of Filter
         """
         return self._Filters

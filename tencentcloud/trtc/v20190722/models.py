@@ -600,7 +600,7 @@ class CloudModerationStorage(AbstractModel):
 2: Alibaba Cloud OSS.
 Example value: 0.
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -616,7 +616,7 @@ Example value: test-accesskey.
 To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
 Example value: test-secretkey.
         :type SecretKey: str
-        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
         :type FileNamePrefix: list of str
         """
         self._Vendor = None
@@ -643,7 +643,7 @@ Example value: 0.
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -695,7 +695,7 @@ Example value: test-secretkey.
 
     @property
     def FileNamePrefix(self):
-        r"""Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        r"""Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
         :rtype: list of str
         """
         return self._FileNamePrefix
@@ -735,7 +735,7 @@ class CloudSliceStorage(AbstractModel):
 2: Alibaba Cloud OSS.
 Example value: 0.
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
 Example value: cn-shanghai-1.
 [Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
 Example value: ap-southeast-3.	
@@ -750,7 +750,7 @@ Example value: test-accesskey.
 To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
 Example value: test-secretkey.
         :type SecretKey: str
-        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
         :type FileNamePrefix: list of str
         """
         self._Vendor = None
@@ -777,7 +777,7 @@ Example value: 0.
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
 Example value: cn-shanghai-1.
 [Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
 Example value: ap-southeast-3.	
@@ -828,7 +828,7 @@ Example value: test-secretkey.
 
     @property
     def FileNamePrefix(self):
-        r"""Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        r"""Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
         :rtype: list of str
         """
         return self._FileNamePrefix
@@ -1111,9 +1111,9 @@ class CreateCloudModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
         :type RoomId: str
         :param _UserId: Chatbot's UserId, which is used to enter the room and initiate a moderation task. [*Note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple moderation tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous moderation task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
         :type UserId: str
@@ -1139,7 +1139,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
         :rtype: int
         """
         return self._SdkAppId
@@ -1150,7 +1150,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
         :rtype: str
         """
         return self._RoomId
@@ -1540,9 +1540,9 @@ class CreateCloudSliceTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
         :type RoomId: str
         :param _UserId: Chatbot's UserId, which is used to enter the room and initiate a slicing task. [*note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple slicing tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous slicing task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
         :type UserId: str
@@ -1571,7 +1571,7 @@ class CreateCloudSliceTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
         :rtype: int
         """
         return self._SdkAppId
@@ -1582,7 +1582,7 @@ class CreateCloudSliceTaskRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
         :rtype: str
         """
         return self._RoomId
@@ -7964,7 +7964,7 @@ Yidun: NetEase Yidun moderation. (Valid values: 1: audio slicing moderation; 2: 
         :type ModerationSupplier: str
         :param _ModerationSupplierParam: Configuration information required for submitting content to the third-party moderation supplier.
         :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
-        :param _SaveModerationFile: Whether to save the hit file. 0: not save by default; 1: save.
+        :param _SaveModerationFile: Whether to save file. 0: not save by default; 1: save; 2 save the hit file.
         :type SaveModerationFile: int
         :param _CallbackAllResults: Whether to call back all moderation results: 0: call back all results by default; 1: only call back hit results.
         :type CallbackAllResults: int
@@ -8053,7 +8053,7 @@ Yidun: NetEase Yidun moderation. (Valid values: 1: audio slicing moderation; 2: 
 
     @property
     def SaveModerationFile(self):
-        r"""Whether to save the hit file. 0: not save by default; 1: save.
+        r"""Whether to save file. 0: not save by default; 1: save; 2 save the hit file.
         :rtype: int
         """
         return self._SaveModerationFile

@@ -605,27 +605,27 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: Task ID
         :type TaskId: str
-        :param _Type: 
+        :param _Type: Types of testing
         :type Type: str
-        :param _State: 
+        :param _State: State
         :type State: str
-        :param _Result: 
+        :param _Result: Result
         :type Result: str
-        :param _ErrorCode: 
+        :param _ErrorCode: Error code
         :type ErrorCode: int
-        :param _ErrorMsg: 
+        :param _ErrorMsg: Error message
         :type ErrorMsg: str
-        :param _InputInfo: 
+        :param _InputInfo: Input information
         :type InputInfo: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
-        :param _TaskNotifyConfig: 
+        :param _TaskNotifyConfig: Task notification configuration
         :type TaskNotifyConfig: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
-        :param _CreateTime: 
+        :param _CreateTime: Create time
         :type CreateTime: int
-        :param _UpdateTime: 
+        :param _UpdateTime: Update time
         :type UpdateTime: int
-        :param _InputFileInfo: 
+        :param _InputFileInfo: Input file information
         :type InputFileInfo: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
         """
         self._TaskId = None
@@ -642,7 +642,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""Task ID
         :rtype: str
         """
         return self._TaskId
@@ -653,7 +653,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Types of testing
         :rtype: str
         """
         return self._Type
@@ -664,7 +664,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""
+        r"""State
         :rtype: str
         """
         return self._State
@@ -675,7 +675,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def Result(self):
-        r"""
+        r"""Result
         :rtype: str
         """
         return self._Result
@@ -686,7 +686,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""
+        r"""Error code
         :rtype: int
         """
         return self._ErrorCode
@@ -697,7 +697,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""
+        r"""Error message
         :rtype: str
         """
         return self._ErrorMsg
@@ -708,7 +708,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""
+        r"""Input information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkInputInfo`
         """
         return self._InputInfo
@@ -719,7 +719,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""
+        r"""Task notification configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -730,7 +730,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""Create time
         :rtype: int
         """
         return self._CreateTime
@@ -741,7 +741,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""
+        r"""Update time
         :rtype: int
         """
         return self._UpdateTime
@@ -752,7 +752,7 @@ class AbWatermarkDetectionInfo(AbstractModel):
 
     @property
     def InputFileInfo(self):
-        r"""
+        r"""Input file information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputFileInfo`
         """
         return self._InputFileInfo
@@ -797,9 +797,10 @@ class AbWatermarkInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Input type, optional URL/COS, currently only supports URL
+
         :type Type: str
-        :param _UrlInputInfo: 
+        :param _UrlInputInfo: URL input information
         :type UrlInputInfo: :class:`tencentcloud.mdl.v20200326.models.UrlInputInfo`
         """
         self._Type = None
@@ -807,7 +808,8 @@ class AbWatermarkInputInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Input type, optional URL/COS, currently only supports URL
+
         :rtype: str
         """
         return self._Type
@@ -818,7 +820,7 @@ class AbWatermarkInputInfo(AbstractModel):
 
     @property
     def UrlInputInfo(self):
-        r"""
+        r"""URL input information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.UrlInputInfo`
         """
         return self._UrlInputInfo
@@ -1843,9 +1845,15 @@ class ChannelAlertInfos(AbstractModel):
         :type Pipeline0: list of ChannelPipelineAlerts
         :param _Pipeline1: Alarm details of pipeline 1 under this channel.
         :type Pipeline1: list of ChannelPipelineAlerts
+        :param _PipelineAActiveAlerts: Pipeline 0 total active alarm count
+        :type PipelineAActiveAlerts: int
+        :param _PipelineBActiveAlerts: Pipeline 1 total active alarm count
+        :type PipelineBActiveAlerts: int
         """
         self._Pipeline0 = None
         self._Pipeline1 = None
+        self._PipelineAActiveAlerts = None
+        self._PipelineBActiveAlerts = None
 
     @property
     def Pipeline0(self):
@@ -1869,6 +1877,28 @@ class ChannelAlertInfos(AbstractModel):
     def Pipeline1(self, Pipeline1):
         self._Pipeline1 = Pipeline1
 
+    @property
+    def PipelineAActiveAlerts(self):
+        r"""Pipeline 0 total active alarm count
+        :rtype: int
+        """
+        return self._PipelineAActiveAlerts
+
+    @PipelineAActiveAlerts.setter
+    def PipelineAActiveAlerts(self, PipelineAActiveAlerts):
+        self._PipelineAActiveAlerts = PipelineAActiveAlerts
+
+    @property
+    def PipelineBActiveAlerts(self):
+        r"""Pipeline 1 total active alarm count
+        :rtype: int
+        """
+        return self._PipelineBActiveAlerts
+
+    @PipelineBActiveAlerts.setter
+    def PipelineBActiveAlerts(self, PipelineBActiveAlerts):
+        self._PipelineBActiveAlerts = PipelineBActiveAlerts
+
 
     def _deserialize(self, params):
         if params.get("Pipeline0") is not None:
@@ -1883,6 +1913,8 @@ class ChannelAlertInfos(AbstractModel):
                 obj = ChannelPipelineAlerts()
                 obj._deserialize(item)
                 self._Pipeline1.append(obj)
+        self._PipelineAActiveAlerts = params.get("PipelineAActiveAlerts")
+        self._PipelineBActiveAlerts = params.get("PipelineBActiveAlerts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7777,14 +7809,14 @@ class InputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentDuration: 
+        :param _SegmentDuration: Segment duration, in milliseconds, ranging from 1000-10000, must be a multiple of 1000. The input video duration should be between SegmentDuration * 90 and SegmentDuration * 180
         :type SegmentDuration: int
         """
         self._SegmentDuration = None
 
     @property
     def SegmentDuration(self):
-        r"""
+        r"""Segment duration, in milliseconds, ranging from 1000-10000, must be a multiple of 1000. The input video duration should be between SegmentDuration * 90 and SegmentDuration * 180
         :rtype: int
         """
         return self._SegmentDuration

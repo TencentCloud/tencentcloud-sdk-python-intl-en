@@ -10088,18 +10088,18 @@ class DescribeTelCdrRequest(AbstractModel):
         :type StartTimeStamp: int
         :param _EndTimeStamp: End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.
         :type EndTimeStamp: int
-        :param _InstanceId: Instance id (deprecated).
-        :type InstanceId: int
-        :param _Limit: Maximum number of returned entries (deprecated).
-        :type Limit: int
-        :param _Offset: Offset (deprecated).
-        :type Offset: int
         :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageSize: Page size (required), up to 100.
         :type PageSize: int
         :param _PageNumber: <Page number (required), starting from 0.>.
         :type PageNumber: int
+        :param _InstanceId: Instance id (deprecated).
+        :type InstanceId: int
+        :param _Limit: Maximum number of returned entries (deprecated).
+        :type Limit: int
+        :param _Offset: Offset (deprecated).
+        :type Offset: int
         :param _Phones: Filter by phone number.
         :type Phones: list of str
         :param _SessionIds: Filter by sessionid.
@@ -10107,12 +10107,12 @@ class DescribeTelCdrRequest(AbstractModel):
         """
         self._StartTimeStamp = None
         self._EndTimeStamp = None
-        self._InstanceId = None
-        self._Limit = None
-        self._Offset = None
         self._SdkAppId = None
         self._PageSize = None
         self._PageNumber = None
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
         self._Phones = None
         self._SessionIds = None
 
@@ -10137,6 +10137,39 @@ class DescribeTelCdrRequest(AbstractModel):
     @EndTimeStamp.setter
     def EndTimeStamp(self, EndTimeStamp):
         self._EndTimeStamp = EndTimeStamp
+
+    @property
+    def SdkAppId(self):
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def PageSize(self):
+        r"""Page size (required), up to 100.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""<Page number (required), starting from 0.>.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
     @property
     def InstanceId(self):
@@ -10176,39 +10209,6 @@ class DescribeTelCdrRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def SdkAppId(self):
-        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
-        :rtype: int
-        """
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def PageSize(self):
-        r"""Page size (required), up to 100.
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def PageNumber(self):
-        r"""<Page number (required), starting from 0.>.
-        :rtype: int
-        """
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-    @property
     def Phones(self):
         r"""Filter by phone number.
         :rtype: list of str
@@ -10234,12 +10234,12 @@ class DescribeTelCdrRequest(AbstractModel):
     def _deserialize(self, params):
         self._StartTimeStamp = params.get("StartTimeStamp")
         self._EndTimeStamp = params.get("EndTimeStamp")
-        self._InstanceId = params.get("InstanceId")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
         self._SdkAppId = params.get("SdkAppId")
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         self._Phones = params.get("Phones")
         self._SessionIds = params.get("SessionIds")
         memeber_set = set(params.keys())
@@ -15581,9 +15581,9 @@ VoIP user client timeout.
 
 Audio dial-in 503 VoIP user client error.
 
-Chinese description (https://www.tencentcloud.com/zh/document/product/1229/71847).
+Chinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).
 
-English description (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
+English version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :type EndStatus: int
         :param _SkillGroup: Skill group name.
         :type SkillGroup: str
@@ -15860,9 +15860,9 @@ VoIP user client timeout.
 
 Audio dial-in 503 VoIP user client error.
 
-Chinese description (https://www.tencentcloud.com/zh/document/product/1229/71847).
+Chinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).
 
-English description (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
+English version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :rtype: int
         """
         return self._EndStatus
