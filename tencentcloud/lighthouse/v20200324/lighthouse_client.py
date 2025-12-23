@@ -127,6 +127,30 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelShareBlueprintAcrossAccounts(self, request):
+        r"""This API is used to cancel image sharing across accounts.
+        An image to be canceled sharing must be a custom image that is originally shared from another account to your account.
+
+        :param request: Request instance for CancelShareBlueprintAcrossAccounts.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CancelShareBlueprintAcrossAccountsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CancelShareBlueprintAcrossAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelShareBlueprintAcrossAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelShareBlueprintAcrossAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlueprint(self, request):
         r"""This API is used to create an image.
 
@@ -1464,6 +1488,36 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyImageSharePermission(self, request):
+        r"""This API is used to share and cancel sharing of CVM custom images to the Lighthouse service.
+        Sharing CVM images to Lighthouse requires the following conditions to be met:
+        1. Images that have been shared cannot be shared again.
+        2. Images imported from external sources are not supported for sharing.
+        3. Full-instance images are not supported for sharing.
+        4. Images need to support CloudInit to be eligible for sharing.
+        5. The Platform and OsName of the images must meet the sharing conditions before the images are eligible for sharing.
+        6. Only images in the NORMAL status are supported for sharing.
+
+        :param request: Request instance for ModifyImageSharePermission.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyImageSharePermissionRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyImageSharePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyImageSharePermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyImageSharePermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstancesAttribute(self, request):
         r"""This API is used to modify an instance attribute.
         * The instance name is used only for users’ convenience.
@@ -1795,6 +1849,35 @@ class LighthouseClient(AbstractClient):
             body = self.call("StopInstances", params, headers=headers)
             response = json.loads(body)
             model = models.StopInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SyncBlueprint(self, request):
+        r"""This API is used to synchronize a custom image to other regions.
+
+        * Synchronization to multiple regions is supported. Up to 10 regions are supported.
+        * Synchronization to the source region is not supported.
+        * Only images in the NORMAL status are supported for synchronization.
+        * Synchronization between Chinese mainland regions and regions outside the Chinese mainland is not supported.
+         * You can use the [DescribeBlueprints](https://www.tencentcloud.comom/document/api/1207/47689?from_cn_redirect=1) API to query the image status. When the status is NORMAL, it indicates that the source region synchronization ends.
+
+        :param request: Request instance for SyncBlueprint.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.SyncBlueprintRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.SyncBlueprintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncBlueprint", params, headers=headers)
+            response = json.loads(body)
+            model = models.SyncBlueprintResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

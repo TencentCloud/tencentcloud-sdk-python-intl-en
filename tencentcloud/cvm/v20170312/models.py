@@ -9336,7 +9336,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). The maximum number of instances per request is 100.
         :type InstanceIds: list of str
         :param _InstanceChargePrepaid: Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
@@ -9352,7 +9352,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). The maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9971,7 +9971,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :param _Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project.
  <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
-        :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.tencentcloud.com/cvm/image/index?rid=1&tab=PUBLIC_IMAGE&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
         :type ImageId: str
         :param _InstanceChargeType: The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis<br>Default value: POSTPAID_BY_HOUR.
@@ -9979,15 +9979,15 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`. 
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _InstanceType: Instance model. Different instance models specify different resource specifications.
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfigs](https://www.tencentcloud.comom/document/api/213/15749?from_cn_redirect=1) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfig](https://www.tencentcloud.com/document/product/1119/45686?lang=en) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.com/document/product/213/11518). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :type InstanceType: str
         :param _SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param _DataDisks: Data disk configuration of the instance. If the parameter is not specified, no data disk will be purchased by default. If you want to purchase data disks, you can specify 21 data disks, including up to 1 `LOCAL_BASIC` data disk or `LOCAL_SSD` data disk and up to 20 `CLOUD_BASIC` data disks, `CLOUD_PREMIUM` data disks, or `CLOUD_SSD` data disks.
         :type DataDisks: list of DataDisk
-        :param _VirtualPrivateCloud: VPC configurations (VPC ID, subnet ID, etc). If it’s not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
+        :param _VirtualPrivateCloud: VPC configurations (VPC ID, subnet ID, etc). If It's not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _InternetAccessible: Configuration of public network bandwidth. If it’s not specified, 0 Mbps is used by default.
+        :param _InternetAccessible: Configuration of public network bandwidth. If it's not specified, 0 Mbps is used by default.
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _InstanceCount: Number of instances to purchase. Value range: 1 (default) to 100. It cannot exceed the remaining CVM quota of the user. For more information on quota, see [Restrictions on CVM Instance Purchase](https://intl.cloud.tencent.com/document/product/213/2664).
         :type InstanceCount: int
@@ -9995,8 +9995,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InstanceName: str
         :param _LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance, or keep the original login settings of the image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
-
+        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
         :type SecurityGroupIds: list of str
         :param _EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
@@ -10056,7 +10055,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.tencentcloud.com/cvm/image/index?rid=1&tab=PUBLIC_IMAGE&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
         :rtype: str
         """
@@ -10091,7 +10090,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
     @property
     def InstanceType(self):
         r"""Instance model. Different instance models specify different resource specifications.
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfigs](https://www.tencentcloud.comom/document/api/213/15749?from_cn_redirect=1) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, specifies the specific values obtained BY calling the [DescribeInstanceTypeConfig](https://www.tencentcloud.com/document/product/1119/45686?lang=en) api for the latest specification table or referring to [instance specifications](https://www.tencentcloud.com/document/product/213/11518). if not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>for instances created with the payment mode CDHPAID, indicates this parameter uses the prefix "CDH_" and is generated based on CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :rtype: str
         """
         return self._InstanceType
@@ -10124,7 +10123,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        r"""VPC configurations (VPC ID, subnet ID, etc). If it’s not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
+        r"""VPC configurations (VPC ID, subnet ID, etc). If It's not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -10135,7 +10134,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""Configuration of public network bandwidth. If it’s not specified, 0 Mbps is used by default.
+        r"""Configuration of public network bandwidth. If it's not specified, 0 Mbps is used by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -10179,8 +10178,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
-
+        r"""Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -14083,7 +14081,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        :param _InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
         :param _InstanceName: Modified instance name. can be named as required but should not exceed 128 characters.
         :type InstanceName: str
@@ -14097,7 +14095,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type HostName: str
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li>Default value: false.
         :type DisableApiTermination: bool
-        :param _CamRoleType: Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.comom/document/product/598/36223?from_cn_redirect=1) or [GetRole](https://www.tencentcloud.comom/document/product/598/36221?from_cn_redirect=1). currently, only user, system, and service_linked types are accepted.
+        :param _CamRoleType: Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.com/document/product/1219/67889) or [GetRole](https://www.tencentcloud.com/document/product/598/33557?lang=en). currently, only user, system, and service_linked types are accepted.
 For example, when CamRoleName contains "LinkedRoleIn" (such as TKE_QCSLinkedRoleInPrometheusService), DescribeRoleList and GetRole return RoleType as service_linked, this parameter must also transmit service_linked.
 The parameter default value is user. this parameter can be omitted if CameRoleName is not of the service_linked kind.
         :type CamRoleType: str
@@ -14119,7 +14117,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def InstanceIds(self):
-        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14196,7 +14194,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def CamRoleType(self):
-        r"""Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.comom/document/product/598/36223?from_cn_redirect=1) or [GetRole](https://www.tencentcloud.comom/document/product/598/36221?from_cn_redirect=1). currently, only user, system, and service_linked types are accepted.
+        r"""Role type, used in conjunction with CamRoleName. this value can be obtained from the RoleType field in the API response of CAM [DescribeRoleList](https://www.tencentcloud.com/document/product/1219/67889) or [GetRole](https://www.tencentcloud.com/document/product/598/33557?lang=en). currently, only user, system, and service_linked types are accepted.
 For example, when CamRoleName contains "LinkedRoleIn" (such as TKE_QCSLinkedRoleInPrometheusService), DescribeRoleList and GetRole return RoleType as service_linked, this parameter must also transmit service_linked.
 The parameter default value is user. this parameter can be omitted if CameRoleName is not of the service_linked kind.
         :rtype: str
@@ -15079,7 +15077,7 @@ class Placement(AbstractModel):
         r"""
         :param _Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
-        :param _ProjectId: Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProject](https://www.tencentcloud.com/document/product/651/54679). default value 0 means default project.
+        :param _ProjectId: Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProjects](https://www.tencentcloud.com/document/product/651/54679). default value 0 means default project.
         :type ProjectId: int
         :param _HostIds: Specifies the dedicated host ID list for instance ownership, only used for input parameters. if you purchase a dedicated host and specify this parameter, instances you purchase will be randomly deployed on these dedicated hosts. obtain this parameter by calling the `HostId` field in the return value of [DescribeHosts](https://www.tencentcloud.com/document/product/213/33279?lang=en).
         :type HostIds: list of str
@@ -15104,7 +15102,7 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProject](https://www.tencentcloud.com/document/product/651/54679). default value 0 means default project.
+        r"""Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProjects](https://www.tencentcloud.com/document/product/651/54679). default value 0 means default project.
         :rtype: int
         """
         return self._ProjectId
@@ -15640,7 +15638,7 @@ class RenewInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). The maximum number of instances per request is 100.
         :type InstanceIds: list of str
         :param _InstanceChargePrepaid: Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
 Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
@@ -15654,7 +15652,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
     @property
     def InstanceIds(self):
-        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). The maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -19307,7 +19305,6 @@ The names of availability zones across the network are as follows:
 <li> ap-shenzhen-fsi-2 </li>
 <li> ap-shenzhen-fsi-3 (sold out)</li>
 <li> ap-guangzhou-1 (sold out)</li>
-<li> ap-guangzhou-2 (sold out)</li>
 <li> ap-guangzhou-3 </li>
 <li> ap-guangzhou-4 </li>
 <li> ap-guangzhou-6 </li>
@@ -19380,7 +19377,6 @@ The names of availability zones across the network are as follows:
 <li> ap-shenzhen-fsi-2 </li>
 <li> ap-shenzhen-fsi-3 (sold out)</li>
 <li> ap-guangzhou-1 (sold out)</li>
-<li> ap-guangzhou-2 (sold out)</li>
 <li> ap-guangzhou-3 </li>
 <li> ap-guangzhou-4 </li>
 <li> ap-guangzhou-6 </li>

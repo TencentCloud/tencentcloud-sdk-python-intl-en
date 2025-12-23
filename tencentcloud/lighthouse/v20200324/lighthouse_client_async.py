@@ -106,6 +106,25 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelShareBlueprintAcrossAccounts(
+            self,
+            request: models.CancelShareBlueprintAcrossAccountsRequest,
+            opts: Dict = None,
+    ) -> models.CancelShareBlueprintAcrossAccountsResponse:
+        """
+        This API is used to cancel image sharing across accounts.
+        An image to be canceled sharing must be a custom image that is originally shared from another account to your account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelShareBlueprintAcrossAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelShareBlueprintAcrossAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBlueprint(
             self,
             request: models.CreateBlueprintRequest,
@@ -1168,6 +1187,31 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyImageSharePermission(
+            self,
+            request: models.ModifyImageSharePermissionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageSharePermissionResponse:
+        """
+        This API is used to share and cancel sharing of CVM custom images to the Lighthouse service.
+        Sharing CVM images to Lighthouse requires the following conditions to be met:
+        1. Images that have been shared cannot be shared again.
+        2. Images imported from external sources are not supported for sharing.
+        3. Full-instance images are not supported for sharing.
+        4. Images need to support CloudInit to be eligible for sharing.
+        5. The Platform and OsName of the images must meet the sharing conditions before the images are eligible for sharing.
+        6. Only images in the NORMAL status are supported for sharing.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageSharePermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageSharePermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstancesAttribute(
             self,
             request: models.ModifyInstancesAttributeRequest,
@@ -1438,6 +1482,30 @@ class LighthouseClient(AbstractClient):
         kwargs["action"] = "StopInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SyncBlueprint(
+            self,
+            request: models.SyncBlueprintRequest,
+            opts: Dict = None,
+    ) -> models.SyncBlueprintResponse:
+        """
+        This API is used to synchronize a custom image to other regions.
+
+        * Synchronization to multiple regions is supported. Up to 10 regions are supported.
+        * Synchronization to the source region is not supported.
+        * Only images in the NORMAL status are supported for synchronization.
+        * Synchronization between Chinese mainland regions and regions outside the Chinese mainland is not supported.
+         * You can use the [DescribeBlueprints](https://www.tencentcloud.comom/document/api/1207/47689?from_cn_redirect=1) API to query the image status. When the status is NORMAL, it indicates that the source region synchronization ends.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SyncBlueprint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SyncBlueprintResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
