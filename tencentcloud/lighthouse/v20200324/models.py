@@ -4585,6 +4585,189 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeImagesToShareRequest(AbstractModel):
+    r"""DescribeImagesToShare request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageIds: List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        :type ImageIds: list of str
+        :param _Offset: Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :type Offset: int
+        :param _Limit: Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :type Limit: int
+        :param _Filters: Filter list.
+<li>image-id</li>: filter by [CVM image ID].
+Type: string.
+Required: no.
+<li>image-name</li>: filter by [CVM image name].
+Type: string.
+Required: no.
+
+<li>image-type</li>: filter by [CVM image type].
+Type: string.
+Required: no.
+Valid values:
+PRIVATE_IMAGE: private image (image created by the account).
+PUBLIC_IMAGE: public image (Tencent Cloud official image).
+SHARED_IMAGE: shared image (image shared by other accounts to this account).
+
+The maximum number of Filters per request is 10, and the maximum number of Filter.Values per request is 5.
+ImageIds and Filters cannot be specified simultaneously for parameters.
+        :type Filters: list of Filter
+        """
+        self._ImageIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ImageIds(self):
+        r"""List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def Offset(self):
+        r"""Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Filter list.
+<li>image-id</li>: filter by [CVM image ID].
+Type: string.
+Required: no.
+<li>image-name</li>: filter by [CVM image name].
+Type: string.
+Required: no.
+
+<li>image-type</li>: filter by [CVM image type].
+Type: string.
+Required: no.
+Valid values:
+PRIVATE_IMAGE: private image (image created by the account).
+PUBLIC_IMAGE: public image (Tencent Cloud official image).
+SHARED_IMAGE: shared image (image shared by other accounts to this account).
+
+The maximum number of Filters per request is 10, and the maximum number of Filter.Values per request is 5.
+ImageIds and Filters cannot be specified simultaneously for parameters.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ImageIds = params.get("ImageIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImagesToShareResponse(AbstractModel):
+    r"""DescribeImagesToShare response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of images that meet the conditions.
+        :type TotalCount: int
+        :param _ImageSet: List of CVM image detailed information.
+        :type ImageSet: list of Image
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ImageSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of images that meet the conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ImageSet(self):
+        r"""List of CVM image detailed information.
+        :rtype: list of Image
+        """
+        return self._ImageSet
+
+    @ImageSet.setter
+    def ImageSet(self, ImageSet):
+        self._ImageSet = ImageSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ImageSet") is not None:
+            self._ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = Image()
+                obj._deserialize(item)
+                self._ImageSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceLoginKeyPairAttributeRequest(AbstractModel):
     r"""DescribeInstanceLoginKeyPairAttribute request structure.
 
@@ -8345,6 +8528,259 @@ class GeneralResourceQuota(AbstractModel):
         self._ResourceName = params.get("ResourceName")
         self._ResourceQuotaAvailable = params.get("ResourceQuotaAvailable")
         self._ResourceQuotaTotal = params.get("ResourceQuotaTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Image(AbstractModel):
+    r"""CVM image information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: CVM Image ID, which is the unique identifier of the image.
+        :type ImageId: str
+        :param _ImageName: Image name.
+        :type ImageName: str
+        :param _ImageDescription: Image description.
+        :type ImageDescription: str
+        :param _ImageSize: Image size, in GB.
+        :type ImageSize: int
+        :param _ImageSource: Image source.
+<li>CREATE_IMAGE: custom image.</li>
+<li>EXTERNAL_IMPORT: externally imported image.</li>
+        :type ImageSource: str
+        :param _ImageClass: Image classification.
+<li>SystemImage: system disk image.</li>
+<li>InstanceImage: full-instance image.</li>
+        :type ImageClass: str
+        :param _ImageState: Image status.
+CREATING: creating.
+NORMAL: normal.
+CREATEFAILED: creation failed.
+USING: in use.
+SYNCING: synchronizing.
+IMPORTING: importing.
+IMPORTFAILED: import failed.
+        :type ImageState: str
+        :param _IsSupportCloudinit: Whether the image supports Cloudinit.
+        :type IsSupportCloudinit: bool
+        :param _Architecture: Image architecture.
+        :type Architecture: str
+        :param _OsName: Image operating system.
+        :type OsName: str
+        :param _Platform: Image source platform.
+        :type Platform: str
+        :param _CreatedTime: Image creation time.
+        :type CreatedTime: str
+        :param _IsShareable: Whether the image can be shared to Lighthouse.
+        :type IsShareable: bool
+        :param _UnshareableReason: Reason for not being shared.
+        :type UnshareableReason: str
+        """
+        self._ImageId = None
+        self._ImageName = None
+        self._ImageDescription = None
+        self._ImageSize = None
+        self._ImageSource = None
+        self._ImageClass = None
+        self._ImageState = None
+        self._IsSupportCloudinit = None
+        self._Architecture = None
+        self._OsName = None
+        self._Platform = None
+        self._CreatedTime = None
+        self._IsShareable = None
+        self._UnshareableReason = None
+
+    @property
+    def ImageId(self):
+        r"""CVM Image ID, which is the unique identifier of the image.
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageName(self):
+        r"""Image name.
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageDescription(self):
+        r"""Image description.
+        :rtype: str
+        """
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def ImageSize(self):
+        r"""Image size, in GB.
+        :rtype: int
+        """
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def ImageSource(self):
+        r"""Image source.
+<li>CREATE_IMAGE: custom image.</li>
+<li>EXTERNAL_IMPORT: externally imported image.</li>
+        :rtype: str
+        """
+        return self._ImageSource
+
+    @ImageSource.setter
+    def ImageSource(self, ImageSource):
+        self._ImageSource = ImageSource
+
+    @property
+    def ImageClass(self):
+        r"""Image classification.
+<li>SystemImage: system disk image.</li>
+<li>InstanceImage: full-instance image.</li>
+        :rtype: str
+        """
+        return self._ImageClass
+
+    @ImageClass.setter
+    def ImageClass(self, ImageClass):
+        self._ImageClass = ImageClass
+
+    @property
+    def ImageState(self):
+        r"""Image status.
+CREATING: creating.
+NORMAL: normal.
+CREATEFAILED: creation failed.
+USING: in use.
+SYNCING: synchronizing.
+IMPORTING: importing.
+IMPORTFAILED: import failed.
+        :rtype: str
+        """
+        return self._ImageState
+
+    @ImageState.setter
+    def ImageState(self, ImageState):
+        self._ImageState = ImageState
+
+    @property
+    def IsSupportCloudinit(self):
+        r"""Whether the image supports Cloudinit.
+        :rtype: bool
+        """
+        return self._IsSupportCloudinit
+
+    @IsSupportCloudinit.setter
+    def IsSupportCloudinit(self, IsSupportCloudinit):
+        self._IsSupportCloudinit = IsSupportCloudinit
+
+    @property
+    def Architecture(self):
+        r"""Image architecture.
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def OsName(self):
+        r"""Image operating system.
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def Platform(self):
+        r"""Image source platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def CreatedTime(self):
+        r"""Image creation time.
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def IsShareable(self):
+        r"""Whether the image can be shared to Lighthouse.
+        :rtype: bool
+        """
+        return self._IsShareable
+
+    @IsShareable.setter
+    def IsShareable(self, IsShareable):
+        self._IsShareable = IsShareable
+
+    @property
+    def UnshareableReason(self):
+        r"""Reason for not being shared.
+        :rtype: str
+        """
+        return self._UnshareableReason
+
+    @UnshareableReason.setter
+    def UnshareableReason(self, UnshareableReason):
+        self._UnshareableReason = UnshareableReason
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._ImageName = params.get("ImageName")
+        self._ImageDescription = params.get("ImageDescription")
+        self._ImageSize = params.get("ImageSize")
+        self._ImageSource = params.get("ImageSource")
+        self._ImageClass = params.get("ImageClass")
+        self._ImageState = params.get("ImageState")
+        self._IsSupportCloudinit = params.get("IsSupportCloudinit")
+        self._Architecture = params.get("Architecture")
+        self._OsName = params.get("OsName")
+        self._Platform = params.get("Platform")
+        self._CreatedTime = params.get("CreatedTime")
+        self._IsShareable = params.get("IsShareable")
+        self._UnshareableReason = params.get("UnshareableReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12388,6 +12824,85 @@ class ResetInstancesPasswordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResizeDisksRequest(AbstractModel):
+    r"""ResizeDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.comom/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
+        :type DiskIds: list of str
+        :param _DiskSize: Size of the cloud disk after scale-out, in GB. The value range of the Premium Disk size is [10, 4000], and that of the Cloud SSD size is [20, 4000]. The cloud disk size after scale-out must be greater than the current disk size.
+        :type DiskSize: int
+        """
+        self._DiskIds = None
+        self._DiskSize = None
+
+    @property
+    def DiskIds(self):
+        r"""Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.comom/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def DiskSize(self):
+        r"""Size of the cloud disk after scale-out, in GB. The value range of the Premium Disk size is [10, 4000], and that of the Cloud SSD size is [20, 4000]. The cloud disk size after scale-out must be greater than the current disk size.
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeDisksResponse(AbstractModel):
+    r"""ResizeDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Scene(AbstractModel):
     r"""Scene information
 
@@ -12518,6 +13033,85 @@ class SceneInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ShareBlueprintAcrossAccountsRequest(AbstractModel):
+    r"""ShareBlueprintAcrossAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        :type BlueprintId: str
+        :param _AccountIds: List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        :type AccountIds: list of str
+        """
+        self._BlueprintId = None
+        self._AccountIds = None
+
+    @property
+    def BlueprintId(self):
+        r"""Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def AccountIds(self):
+        r"""List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        :rtype: list of str
+        """
+        return self._AccountIds
+
+    @AccountIds.setter
+    def AccountIds(self, AccountIds):
+        self._AccountIds = AccountIds
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
+        self._AccountIds = params.get("AccountIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareBlueprintAcrossAccountsResponse(AbstractModel):
+    r"""ShareBlueprintAcrossAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Snapshot(AbstractModel):

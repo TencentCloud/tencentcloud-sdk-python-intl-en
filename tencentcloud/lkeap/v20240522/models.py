@@ -1406,13 +1406,57 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FileType: File type.
+**Supported file types**: PDF, DOC, DOCX, PPT, PPTX, MD, TXT, XLS, XLSX, CSV, PNG, JPG, JPEG, BMP, GIF, WEBP, HEIC, EPS, ICNS, IM, PCX, PPM, TIFF, XBM, HEIF, JP2.
+**Supported file sizes**: 
+- Max 100 MB for PDF, DOC, DOCX, PPT, and PPTX .
+- Max 10 MB for MD, TXT, XLS, XLSX, and CSV.
+- Max20 MB for others.
+        :type FileType: str
+        :param _FileUrl: File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. Refer to: [Tencent Cloud COS Documentation](https://www.tencentcloud.com/document/product/436/7749)
+        :type FileUrl: str
         :param _FileBase64: The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
         :type FileBase64: str
+        :param _FileStartPageNumber: The starting page number of the file. When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: The end page number of the file. When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the end page number for recognition, including the current value.
+        :type FileEndPageNumber: int
         :param _Config: Document parsing configuration information.	
         :type Config: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEConfig`
         """
+        self._FileType = None
+        self._FileUrl = None
         self._FileBase64 = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
         self._Config = None
+
+    @property
+    def FileType(self):
+        r"""File type.
+**Supported file types**: PDF, DOC, DOCX, PPT, PPTX, MD, TXT, XLS, XLSX, CSV, PNG, JPG, JPEG, BMP, GIF, WEBP, HEIC, EPS, ICNS, IM, PCX, PPM, TIFF, XBM, HEIF, JP2.
+**Supported file sizes**: 
+- Max 100 MB for PDF, DOC, DOCX, PPT, and PPTX .
+- Max 10 MB for MD, TXT, XLS, XLSX, and CSV.
+- Max20 MB for others.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. Refer to: [Tencent Cloud COS Documentation](https://www.tencentcloud.com/document/product/436/7749)
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
 
     @property
     def FileBase64(self):
@@ -1424,6 +1468,28 @@ class ReconstructDocumentSSERequest(AbstractModel):
     @FileBase64.setter
     def FileBase64(self, FileBase64):
         self._FileBase64 = FileBase64
+
+    @property
+    def FileStartPageNumber(self):
+        r"""The starting page number of the file. When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
+        :rtype: int
+        """
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        r"""The end page number of the file. When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the end page number for recognition, including the current value.
+        :rtype: int
+        """
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
 
     @property
     def Config(self):
@@ -1438,7 +1504,11 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
         self._FileBase64 = params.get("FileBase64")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
         if params.get("Config") is not None:
             self._Config = ReconstructDocumentSSEConfig()
             self._Config._deserialize(params.get("Config"))

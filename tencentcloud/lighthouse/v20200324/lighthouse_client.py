@@ -723,6 +723,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImagesToShare(self, request):
+        r"""This API is used to query the list of Cloud Virtual Machine (CVM) custom images and share the images to Tencent Cloud Lighthouse (Lighthouse).
+
+        :param request: Request instance for DescribeImagesToShare.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeImagesToShareRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeImagesToShareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImagesToShare", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImagesToShareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceLoginKeyPairAttribute(self, request):
         r"""This API is used to query the attributes of the default login key of an instance.
 
@@ -1794,6 +1817,54 @@ class LighthouseClient(AbstractClient):
             body = self.call("ResetInstancesPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ResetInstancesPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResizeDisks(self, request):
+        r"""This API is used to scale out a cloud disk. The operation currently only supports cloud disks of the data disk type that are in the ATTACHED or UNATTACHED status.
+
+        :param request: Request instance for ResizeDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ResizeDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ResizeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ShareBlueprintAcrossAccounts(self, request):
+        r"""This API is used to share an image across accounts.
+        This API is used to share custom images only, and the status of the shared image must be NORMAL.
+        The account receiving the shared image must be a root account.
+
+        :param request: Request instance for ShareBlueprintAcrossAccounts.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ShareBlueprintAcrossAccountsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ShareBlueprintAcrossAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ShareBlueprintAcrossAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.ShareBlueprintAcrossAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

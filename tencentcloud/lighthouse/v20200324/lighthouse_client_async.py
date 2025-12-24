@@ -577,6 +577,24 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImagesToShare(
+            self,
+            request: models.DescribeImagesToShareRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImagesToShareResponse:
+        """
+        This API is used to query the list of Cloud Virtual Machine (CVM) custom images and share the images to Tencent Cloud Lighthouse (Lighthouse).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImagesToShare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImagesToShareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceLoginKeyPairAttribute(
             self,
             request: models.DescribeInstanceLoginKeyPairAttributeRequest,
@@ -1437,6 +1455,44 @@ class LighthouseClient(AbstractClient):
         kwargs["action"] = "ResetInstancesPassword"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResetInstancesPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResizeDisks(
+            self,
+            request: models.ResizeDisksRequest,
+            opts: Dict = None,
+    ) -> models.ResizeDisksResponse:
+        """
+        This API is used to scale out a cloud disk. The operation currently only supports cloud disks of the data disk type that are in the ATTACHED or UNATTACHED status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResizeDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResizeDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ShareBlueprintAcrossAccounts(
+            self,
+            request: models.ShareBlueprintAcrossAccountsRequest,
+            opts: Dict = None,
+    ) -> models.ShareBlueprintAcrossAccountsResponse:
+        """
+        This API is used to share an image across accounts.
+        This API is used to share custom images only, and the status of the shared image must be NORMAL.
+        The account receiving the shared image must be a root account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ShareBlueprintAcrossAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ShareBlueprintAcrossAccountsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
