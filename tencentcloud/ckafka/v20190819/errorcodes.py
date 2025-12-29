@@ -101,6 +101,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # Disk resources are unavailable on the broker.
 RESOURCEUNAVAILABLE_KAFKASTORAGEERROR = 'ResourceUnavailable.KafkaStorageError'
 
+# Resources are sold out.
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
+
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

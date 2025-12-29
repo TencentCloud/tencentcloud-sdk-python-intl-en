@@ -2905,50 +2905,52 @@ class CreateInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: Specifies the ckafka cluster instance Name, an arbitrary string with length no more than 128 characters.
+        :param _InstanceName: <p>Specifies the Name of the ckafka cluster instance, which is any string with a length not more than 128 characters.</p>.
         :type InstanceName: str
-        :param _ZoneId: Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. [view availability zones](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        :param _ZoneId: <P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
         :type ZoneId: int
-        :param _Period: Prepaid purchase duration, such as "1m", exactly one month. value ranges from 1m to 36m.
+        :param _Period: <P>Specifies the prepaid purchase duration, such as "1m" (exactly one month). value ranges from 1m to 36m.</p>.
         :type Period: str
-        :param _InstanceType: Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        :param _InstanceType: <P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.
         :type InstanceType: int
-        :param _VpcId: VPC Id.
+        :param _VpcId: <p>VPC Id.</p>.
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <P>Subnet id.</p>.
         :type SubnetId: str
-        :param _MsgRetentionTime: Optional. maximum retention time of instance logs, in minutes. default value: 1440 (1 day). value range: 1 minute to 90 days.
+        :param _MsgRetentionTime: <P>Optional. specifies the maximum retention time for instance logs, in minutes. default value: 1440 (1 day) when left blank. configurable range: 1 minute to 90 days.</p>.
         :type MsgRetentionTime: int
-        :param _ClusterId: Specifies the cluster Id when creating an instance.
+        :param _ClusterId: <p>Specifies the cluster Id when creating an instance. this parameter indicates the cluster Id.</p>.
         :type ClusterId: int
-        :param _RenewFlag: Auto-Renewal tag for prepaid services. valid values: 0 (default state, not set by the user, initial status), 1 (auto-renew), 2 (explicitly no auto-renew, set by the user).
+        :param _RenewFlag: <P>Auto-Renewal tag for prepaid services. 0 means default state (not set by the user, i.e. initial state), 1 means auto-renew, 2 means explicitly no auto-renew (set by the user).</p>.
         :type RenewFlag: int
-        :param _KafkaVersion: Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value 2.4.1. 2.4.1 and 2.4.2 belong to the same version. any can be passed.
+        :param _KafkaVersion: <p>Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value is 2.4.1. 2.4.1 and 2.4.2 belong to the same version, any one can be passed.</p>.
         :type KafkaVersion: str
-        :param _SpecificationsType: Specifies the instance type. valid values: standard (default), profession, premium.
+        :param _SpecificationsType: <P>Instance type. specifies "standard" for standard edition instance (default), "profession" for professional edition instance, "premium" for advanced edition instance.</p>.
         :type SpecificationsType: str
-        :param _DiskSize: Disk size. if it does not match the console specification ratio, the creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        :param _DiskSize: <P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
         :type DiskSize: int
-        :param _BandWidth: Instance bandwidth. default value: 40 MB/s. minimum value: 20 MB/s. maximum value for advanced edition: 360 MB/s. maximum value for pro edition: 100000 MB/s. standard version fixed bandwidth specifications: 40 MB/s, 100 MB/s, 150 MB/s. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        :param _BandWidth: <p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
         :type BandWidth: int
-        :param _Partition: Partition size. if it does not match the console specification ratio, creation will fail. default value is 800, step length is 100. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        :param _Partition: <P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
         :type Partition: int
-        :param _Tags: Tag.
+        :param _Tags: <p>Tag.</p>.
         :type Tags: list of Tag
-        :param _DiskType: Specifies the disk type for a pro/advanced edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        :param _DiskType: <p>Specifies the instance disk type for pro edition/advanced edition. standard edition instances do not require this field. valid values: "CLOUD_SSD" (SSD CLOUD disk), "CLOUD_BASIC" (high-performance CLOUD block storage). default value: "CLOUD_BASIC".</p>.
         :type DiskType: str
-        :param _MultiZoneFlag: Specifies whether to create a cross-az instance. when the current parameter is true, zoneIds is required.
+        :param _MultiZoneFlag: <p>Specifies whether to create a cross-availability zone instance. when the current parameter is true, zoneIds is required.</p>.
         :type MultiZoneFlag: bool
-        :param _ZoneIds: Availability zone list. required item when purchasing a multi-availability zone instance.
+        :param _ZoneIds: <P>Availability zone list. required item when purchasing multi-availability zone instance.</p>.
         :type ZoneIds: list of int
-        :param _PublicNetworkMonthly: Public network bandwidth size, in Mbps. the default is no free 3 Mbps bandwidth. for example, for a total of 3 Mbps public network bandwidth, pass 0 here; for a total of 6 Mbps public network bandwidth, pass 3 here. default value is 0. ensure the input parameter is a multiple of 3.
+        :param _PublicNetworkMonthly: <p>Specifies the public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. default value: 0. ensure the input parameter is a multiple of 3.</p>.
         :type PublicNetworkMonthly: int
-        :param _InstanceNum: Number of instances to purchase. optional. default value is 1. when you input this parameter, it enables the creation of multiple instances with case-sensitive suffixes added to instanceName.
+        :param _InstanceNum: <p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.
         :type InstanceNum: int
-        :param _AutoVoucher: Whether to automatically select a voucher. valid values: 1 (yes), 0 (no). default is 0.
+        :param _AutoVoucher: <P>Specifies whether to automatically select voucher. valid values: 1-yes; 0-no. default is 0.</p>.
         :type AutoVoucher: int
-        :param _ElasticBandwidthSwitch: Elastic bandwidth switch. specifies whether to enable elastic bandwidth. valid values: 0 (not enabled, default), 1 (enabled).
+        :param _ElasticBandwidthSwitch: <P>Elastic bandwidth switch 0 disable 1 enable (0 default).</p>.
         :type ElasticBandwidthSwitch: int
+        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :type CustomSSLCertId: str
         """
         self._InstanceName = None
         self._ZoneId = None
@@ -2972,10 +2974,11 @@ class CreateInstancePreRequest(AbstractModel):
         self._InstanceNum = None
         self._AutoVoucher = None
         self._ElasticBandwidthSwitch = None
+        self._CustomSSLCertId = None
 
     @property
     def InstanceName(self):
-        r"""Specifies the ckafka cluster instance Name, an arbitrary string with length no more than 128 characters.
+        r"""<p>Specifies the Name of the ckafka cluster instance, which is any string with a length not more than 128 characters.</p>.
         :rtype: str
         """
         return self._InstanceName
@@ -2986,7 +2989,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. [view availability zones](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        r"""<P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
         :rtype: int
         """
         return self._ZoneId
@@ -2997,7 +3000,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""Prepaid purchase duration, such as "1m", exactly one month. value ranges from 1m to 36m.
+        r"""<P>Specifies the prepaid purchase duration, such as "1m" (exactly one month). value ranges from 1m to 36m.</p>.
         :rtype: str
         """
         return self._Period
@@ -3008,7 +3011,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        r"""<P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.
         :rtype: int
         """
         return self._InstanceType
@@ -3019,7 +3022,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC Id.
+        r"""<p>VPC Id.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -3030,7 +3033,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<P>Subnet id.</p>.
         :rtype: str
         """
         return self._SubnetId
@@ -3041,7 +3044,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        r"""Optional. maximum retention time of instance logs, in minutes. default value: 1440 (1 day). value range: 1 minute to 90 days.
+        r"""<P>Optional. specifies the maximum retention time for instance logs, in minutes. default value: 1440 (1 day) when left blank. configurable range: 1 minute to 90 days.</p>.
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -3052,7 +3055,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Specifies the cluster Id when creating an instance.
+        r"""<p>Specifies the cluster Id when creating an instance. this parameter indicates the cluster Id.</p>.
         :rtype: int
         """
         return self._ClusterId
@@ -3063,7 +3066,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""Auto-Renewal tag for prepaid services. valid values: 0 (default state, not set by the user, initial status), 1 (auto-renew), 2 (explicitly no auto-renew, set by the user).
+        r"""<P>Auto-Renewal tag for prepaid services. 0 means default state (not set by the user, i.e. initial state), 1 means auto-renew, 2 means explicitly no auto-renew (set by the user).</p>.
         :rtype: int
         """
         return self._RenewFlag
@@ -3074,7 +3077,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value 2.4.1. 2.4.1 and 2.4.2 belong to the same version. any can be passed.
+        r"""<p>Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value is 2.4.1. 2.4.1 and 2.4.2 belong to the same version, any one can be passed.</p>.
         :rtype: str
         """
         return self._KafkaVersion
@@ -3085,7 +3088,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
-        r"""Specifies the instance type. valid values: standard (default), profession, premium.
+        r"""<P>Instance type. specifies "standard" for standard edition instance (default), "profession" for professional edition instance, "premium" for advanced edition instance.</p>.
         :rtype: str
         """
         return self._SpecificationsType
@@ -3096,7 +3099,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Disk size. if it does not match the console specification ratio, the creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        r"""<P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -3107,7 +3110,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""Instance bandwidth. default value: 40 MB/s. minimum value: 20 MB/s. maximum value for advanced edition: 360 MB/s. maximum value for pro edition: 100000 MB/s. standard version fixed bandwidth specifications: 40 MB/s, 100 MB/s, 150 MB/s. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        r"""<p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._BandWidth
@@ -3118,7 +3121,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""Partition size. if it does not match the console specification ratio, creation will fail. default value is 800, step length is 100. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        r"""<P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._Partition
@@ -3129,7 +3132,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag.
+        r"""<p>Tag.</p>.
         :rtype: list of Tag
         """
         return self._Tags
@@ -3140,7 +3143,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Specifies the disk type for a pro/advanced edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        r"""<p>Specifies the instance disk type for pro edition/advanced edition. standard edition instances do not require this field. valid values: "CLOUD_SSD" (SSD CLOUD disk), "CLOUD_BASIC" (high-performance CLOUD block storage). default value: "CLOUD_BASIC".</p>.
         :rtype: str
         """
         return self._DiskType
@@ -3151,7 +3154,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
-        r"""Specifies whether to create a cross-az instance. when the current parameter is true, zoneIds is required.
+        r"""<p>Specifies whether to create a cross-availability zone instance. when the current parameter is true, zoneIds is required.</p>.
         :rtype: bool
         """
         return self._MultiZoneFlag
@@ -3162,7 +3165,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Availability zone list. required item when purchasing a multi-availability zone instance.
+        r"""<P>Availability zone list. required item when purchasing multi-availability zone instance.</p>.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -3173,7 +3176,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
-        r"""Public network bandwidth size, in Mbps. the default is no free 3 Mbps bandwidth. for example, for a total of 3 Mbps public network bandwidth, pass 0 here; for a total of 6 Mbps public network bandwidth, pass 3 here. default value is 0. ensure the input parameter is a multiple of 3.
+        r"""<p>Specifies the public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. default value: 0. ensure the input parameter is a multiple of 3.</p>.
         :rtype: int
         """
         return self._PublicNetworkMonthly
@@ -3184,7 +3187,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
-        r"""Number of instances to purchase. optional. default value is 1. when you input this parameter, it enables the creation of multiple instances with case-sensitive suffixes added to instanceName.
+        r"""<p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.
         :rtype: int
         """
         return self._InstanceNum
@@ -3195,7 +3198,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically select a voucher. valid values: 1 (yes), 0 (no). default is 0.
+        r"""<P>Specifies whether to automatically select voucher. valid values: 1-yes; 0-no. default is 0.</p>.
         :rtype: int
         """
         return self._AutoVoucher
@@ -3206,7 +3209,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ElasticBandwidthSwitch(self):
-        r"""Elastic bandwidth switch. specifies whether to enable elastic bandwidth. valid values: 0 (not enabled, default), 1 (enabled).
+        r"""<P>Elastic bandwidth switch 0 disable 1 enable (0 default).</p>.
         :rtype: int
         """
         return self._ElasticBandwidthSwitch
@@ -3214,6 +3217,17 @@ class CreateInstancePreRequest(AbstractModel):
     @ElasticBandwidthSwitch.setter
     def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
         self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
+    @property
+    def CustomSSLCertId(self):
+        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :rtype: str
+        """
+        return self._CustomSSLCertId
+
+    @CustomSSLCertId.setter
+    def CustomSSLCertId(self, CustomSSLCertId):
+        self._CustomSSLCertId = CustomSSLCertId
 
 
     def _deserialize(self, params):
@@ -3244,6 +3258,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._InstanceNum = params.get("InstanceNum")
         self._AutoVoucher = params.get("AutoVoucher")
         self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
+        self._CustomSSLCertId = params.get("CustomSSLCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3348,7 +3363,7 @@ class CreateInstancePreResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result.
+        :param _Result: <P>Returned result.</p>.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3358,7 +3373,7 @@ class CreateInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result.
+        r"""<P>Returned result.</p>.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
         """
         return self._Result
@@ -3504,46 +3519,48 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC Id, obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        :param _VpcId: <p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
         :type VpcId: str
-        :param _SubnetId: Subnet Id. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
+        :param _SubnetId: <p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
         :type SubnetId: str
-        :param _InstanceName: Specifies the cluster instance name of ckafka, an arbitrary character with length not exceeding 128.
+        :param _InstanceName: <P>Specifies the cluster instance name of ckafka, with a length not exceeding 128 arbitrary characters.</p>.
         :type InstanceName: str
-        :param _InstanceType: Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        :param _InstanceType: <P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.
         :type InstanceType: int
-        :param _MsgRetentionTime: The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
+        :param _MsgRetentionTime: <P>The default maximum retention time for instance logs, in minutes. default value: 1440 minutes (1 day) when this parameter is not input. maximum: 30 days. if the message retention time is explicitly set for a topic, the topic retention time takes precedence.</p>.
         :type MsgRetentionTime: int
-        :param _ClusterId: Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
+        :param _ClusterId: <p>Specifies the cluster Id when creating an instance. input this parameter to indicate the cluster Id. leave it empty if no cluster is specified.</p>.
         :type ClusterId: int
-        :param _KafkaVersion: Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value "2.4.1". "2.4.1" and "2.4.2" belong to the same version. any one can be passed.
+        :param _KafkaVersion: <P>Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value is "2.4.1". "2.4.1" and "2.4.2" belong to the same version, any one can be passed.</p>.
         :type KafkaVersion: str
-        :param _SpecificationsType: Instance type. "standard": standard version. "profession": pro edition. (standard version is only supported on the international site. currently, the chinese site supports pro edition.).
+        :param _SpecificationsType: <P>Instance type. "standard": standard version, "profession": professional version. (standard version is only supported on the international site. chinese site currently supports professional version)</p>.
         :type SpecificationsType: str
-        :param _DiskType: Specifies the disk type for a pro edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        :param _DiskType: <p>Specifies the instance disk type for pro edition. standard edition instances do not require this field. valid values: "CLOUD_SSD" (SSD CLOUD disk), "CLOUD_BASIC" (high-performance CLOUD block storage). default value: "CLOUD_BASIC".</p>.
         :type DiskType: str
-        :param _BandWidth: Specifies the peak bandwidth of the instance private network, with a default value of 40 MB/s. for standard version, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configuration such as peak bandwidth and number of partitions should meet the billing specification of the professional edition. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        :param _BandWidth: <p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
         :type BandWidth: int
-        :param _DiskSize: Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        :param _DiskSize: <P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
         :type DiskSize: int
-        :param _Partition: Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        :param _Partition: <P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
         :type Partition: int
-        :param _TopicNum: Maximum number of topics for the instance should meet the billing specification of the current instance. default value is 800, step length is set to 100.
+        :param _TopicNum: <P>Specifies the maximum number of topics for the instance, which should meet the billing specification of the current instance. default value is 800. step length is set to 100.</p>.
         :type TopicNum: int
-        :param _ZoneId: Specifies the availability zone of the instance. when creating a multi-az instance, this parameter is the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        :param _ZoneId: Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
         :type ZoneId: int
-        :param _MultiZoneFlag: Whether the current instance is a multi-AZ instance
+        :param _MultiZoneFlag: <P>Specifies whether the current instance is a multi-az instance.</p>.
         :type MultiZoneFlag: bool
-        :param _ZoneIds: Specifies the multi-az id list when the instance is a multi-az instance. note that the multi-az corresponding to parameter ZoneId must be included in this parameter array. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1) api.
+        :param _ZoneIds: <p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
         :type ZoneIds: list of int
-        :param _InstanceNum: The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        :param _InstanceNum: <p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.
         :type InstanceNum: int
-        :param _PublicNetworkMonthly: Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.
+        :param _PublicNetworkMonthly: <p>Public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. ensure the input parameter is a multiple of 3.</p>.
         :type PublicNetworkMonthly: int
-        :param _Tags: Tag.
+        :param _Tags: <p>Tag.</p>.
         :type Tags: list of Tag
-        :param _ElasticBandwidthSwitch: Elastic bandwidth switch. valid values: 0 (disable, default), 1 (enable).
+        :param _ElasticBandwidthSwitch: <P>Specifies the elastic bandwidth switch. 0: disable (default); 1: enable.</p>.
         :type ElasticBandwidthSwitch: int
+        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :type CustomSSLCertId: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -3565,10 +3582,11 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._PublicNetworkMonthly = None
         self._Tags = None
         self._ElasticBandwidthSwitch = None
+        self._CustomSSLCertId = None
 
     @property
     def VpcId(self):
-        r"""VPC Id, obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        r"""<p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -3579,7 +3597,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet Id. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
+        r"""<p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
         :rtype: str
         """
         return self._SubnetId
@@ -3590,7 +3608,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Specifies the cluster instance name of ckafka, an arbitrary character with length not exceeding 128.
+        r"""<P>Specifies the cluster instance name of ckafka, with a length not exceeding 128 arbitrary characters.</p>.
         :rtype: str
         """
         return self._InstanceName
@@ -3601,7 +3619,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.
+        r"""<P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.
         :rtype: int
         """
         return self._InstanceType
@@ -3612,7 +3630,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        r"""The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
+        r"""<P>The default maximum retention time for instance logs, in minutes. default value: 1440 minutes (1 day) when this parameter is not input. maximum: 30 days. if the message retention time is explicitly set for a topic, the topic retention time takes precedence.</p>.
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -3623,7 +3641,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
+        r"""<p>Specifies the cluster Id when creating an instance. input this parameter to indicate the cluster Id. leave it empty if no cluster is specified.</p>.
         :rtype: int
         """
         return self._ClusterId
@@ -3634,7 +3652,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value "2.4.1". "2.4.1" and "2.4.2" belong to the same version. any one can be passed.
+        r"""<P>Instance version. currently supports "2.4.1", "2.4.2", "2.8.1", "3.2.3". default value is "2.4.1". "2.4.1" and "2.4.2" belong to the same version, any one can be passed.</p>.
         :rtype: str
         """
         return self._KafkaVersion
@@ -3645,7 +3663,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
-        r"""Instance type. "standard": standard version. "profession": pro edition. (standard version is only supported on the international site. currently, the chinese site supports pro edition.).
+        r"""<P>Instance type. "standard": standard version, "profession": professional version. (standard version is only supported on the international site. chinese site currently supports professional version)</p>.
         :rtype: str
         """
         return self._SpecificationsType
@@ -3656,7 +3674,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Specifies the disk type for a pro edition instance. you do not need to fill it in for a standard edition instance. valid values: "CLOUD_SSD" for SSD CLOUD disk; "CLOUD_BASIC" for high-performance CLOUD block storage. default value: "CLOUD_BASIC".
+        r"""<p>Specifies the instance disk type for pro edition. standard edition instances do not require this field. valid values: "CLOUD_SSD" (SSD CLOUD disk), "CLOUD_BASIC" (high-performance CLOUD block storage). default value: "CLOUD_BASIC".</p>.
         :rtype: str
         """
         return self._DiskType
@@ -3667,7 +3685,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""Specifies the peak bandwidth of the instance private network, with a default value of 40 MB/s. for standard version, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configuration such as peak bandwidth and number of partitions should meet the billing specification of the professional edition. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+        r"""<p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._BandWidth
@@ -3678,7 +3696,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+        r"""<P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -3689,7 +3707,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+        r"""<P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._Partition
@@ -3700,7 +3718,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def TopicNum(self):
-        r"""Maximum number of topics for the instance should meet the billing specification of the current instance. default value is 800, step length is set to 100.
+        r"""<P>Specifies the maximum number of topics for the instance, which should meet the billing specification of the current instance. default value is 800. step length is set to 100.</p>.
         :rtype: int
         """
         return self._TopicNum
@@ -3711,7 +3729,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Specifies the availability zone of the instance. when creating a multi-az instance, this parameter is the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).
+        r"""Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
         :rtype: int
         """
         return self._ZoneId
@@ -3722,7 +3740,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
-        r"""Whether the current instance is a multi-AZ instance
+        r"""<P>Specifies whether the current instance is a multi-az instance.</p>.
         :rtype: bool
         """
         return self._MultiZoneFlag
@@ -3733,7 +3751,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Specifies the multi-az id list when the instance is a multi-az instance. note that the multi-az corresponding to parameter ZoneId must be included in this parameter array. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1) api.
+        r"""<p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -3744,7 +3762,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
-        r"""The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        r"""<p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.
         :rtype: int
         """
         return self._InstanceNum
@@ -3755,7 +3773,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
-        r"""Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.
+        r"""<p>Public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. ensure the input parameter is a multiple of 3.</p>.
         :rtype: int
         """
         return self._PublicNetworkMonthly
@@ -3766,7 +3784,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag.
+        r"""<p>Tag.</p>.
         :rtype: list of Tag
         """
         return self._Tags
@@ -3777,7 +3795,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ElasticBandwidthSwitch(self):
-        r"""Elastic bandwidth switch. valid values: 0 (disable, default), 1 (enable).
+        r"""<P>Specifies the elastic bandwidth switch. 0: disable (default); 1: enable.</p>.
         :rtype: int
         """
         return self._ElasticBandwidthSwitch
@@ -3785,6 +3803,17 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     @ElasticBandwidthSwitch.setter
     def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
         self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
+    @property
+    def CustomSSLCertId(self):
+        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :rtype: str
+        """
+        return self._CustomSSLCertId
+
+    @CustomSSLCertId.setter
+    def CustomSSLCertId(self, CustomSSLCertId):
+        self._CustomSSLCertId = CustomSSLCertId
 
 
     def _deserialize(self, params):
@@ -3813,6 +3842,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
+        self._CustomSSLCertId = params.get("CustomSSLCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3830,7 +3860,7 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Returned result
+        :param _Result: <P>Returned result.</p>.
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3840,7 +3870,7 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Returned result
+        r"""<P>Returned result.</p>.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
         """
         return self._Result
@@ -5353,6 +5383,117 @@ class DeleteGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteGroupSubscribeTopicRequest(AbstractModel):
+    r"""DeleteGroupSubscribeTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: CKafka cluster instance ID.
+        :type InstanceId: str
+        :param _Group: Consumer group name.
+        :type Group: str
+        :param _Topic: Topic name
+        :type Topic: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Topic = None
+
+    @property
+    def InstanceId(self):
+        r"""CKafka cluster instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""Consumer group name.
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Topic(self):
+        r"""Topic name
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupSubscribeTopicResponse(AbstractModel):
+    r"""DeleteGroupSubscribeTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstancePostRequest(AbstractModel):
     r"""DeleteInstancePost request structure.
 
@@ -6023,6 +6164,108 @@ class DeleteUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescModifyType(AbstractModel):
+    r"""Type query response parameters structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyType: Specifies the renewal type.
+        :type ModifyType: int
+        :param _MigrateFlag: Specifies whether to migrate.
+        :type MigrateFlag: bool
+        :param _MigrateCostTime: Estimated duration of migration in stable mode (seconds).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MigrateCostTime: int
+        :param _UpgradeStrategy: Upgrade mode (1: stable mode, 2: high-speed mode).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpgradeStrategy: int
+        :param _MigrateCostTimeHighSpeed: Indicates the estimated time for migration in high-speed mode, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MigrateCostTimeHighSpeed: int
+        """
+        self._ModifyType = None
+        self._MigrateFlag = None
+        self._MigrateCostTime = None
+        self._UpgradeStrategy = None
+        self._MigrateCostTimeHighSpeed = None
+
+    @property
+    def ModifyType(self):
+        r"""Specifies the renewal type.
+        :rtype: int
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def MigrateFlag(self):
+        r"""Specifies whether to migrate.
+        :rtype: bool
+        """
+        return self._MigrateFlag
+
+    @MigrateFlag.setter
+    def MigrateFlag(self, MigrateFlag):
+        self._MigrateFlag = MigrateFlag
+
+    @property
+    def MigrateCostTime(self):
+        r"""Estimated duration of migration in stable mode (seconds).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MigrateCostTime
+
+    @MigrateCostTime.setter
+    def MigrateCostTime(self, MigrateCostTime):
+        self._MigrateCostTime = MigrateCostTime
+
+    @property
+    def UpgradeStrategy(self):
+        r"""Upgrade mode (1: stable mode, 2: high-speed mode).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._UpgradeStrategy
+
+    @UpgradeStrategy.setter
+    def UpgradeStrategy(self, UpgradeStrategy):
+        self._UpgradeStrategy = UpgradeStrategy
+
+    @property
+    def MigrateCostTimeHighSpeed(self):
+        r"""Indicates the estimated time for migration in high-speed mode, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MigrateCostTimeHighSpeed
+
+    @MigrateCostTimeHighSpeed.setter
+    def MigrateCostTimeHighSpeed(self, MigrateCostTimeHighSpeed):
+        self._MigrateCostTimeHighSpeed = MigrateCostTimeHighSpeed
+
+
+    def _deserialize(self, params):
+        self._ModifyType = params.get("ModifyType")
+        self._MigrateFlag = params.get("MigrateFlag")
+        self._MigrateCostTime = params.get("MigrateCostTime")
+        self._UpgradeStrategy = params.get("UpgradeStrategy")
+        self._MigrateCostTimeHighSpeed = params.get("MigrateCostTimeHighSpeed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeACLRequest(AbstractModel):
     r"""DescribeACL request structure.
 
@@ -6348,10 +6591,24 @@ class DescribeCkafkaVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: Instance version information.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceVersion`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Instance version information.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceVersion`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -6366,6 +6623,9 @@ class DescribeCkafkaVersionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = InstanceVersion()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8140,6 +8400,192 @@ class DescribeInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = InstanceResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModifyTypeRequest(AbstractModel):
+    r"""DescribeModifyType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: CKafka cluster instance ID.
+        :type InstanceId: str
+        :param _BandWidth: Specifies the bandwidth after upgrade. measurement unit: mb.
+        :type BandWidth: int
+        :param _DiskSize: Specifies the disk after upgrade, in gb.
+        :type DiskSize: int
+        :param _DiskType: Disk type, such as CLOUD_PREMIUM.
+        :type DiskType: str
+        :param _Partition: Number of partitions.
+        :type Partition: int
+        :param _Topic: Number of Topics
+        :type Topic: int
+        :param _Type: Instance type, such as sp_ckafka_profession.
+        :type Type: str
+        :param _ModifyEntry: Configuration change portal.
+        :type ModifyEntry: str
+        """
+        self._InstanceId = None
+        self._BandWidth = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._Partition = None
+        self._Topic = None
+        self._Type = None
+        self._ModifyEntry = None
+
+    @property
+    def InstanceId(self):
+        r"""CKafka cluster instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BandWidth(self):
+        r"""Specifies the bandwidth after upgrade. measurement unit: mb.
+        :rtype: int
+        """
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
+
+    @property
+    def DiskSize(self):
+        r"""Specifies the disk after upgrade, in gb.
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        r"""Disk type, such as CLOUD_PREMIUM.
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def Partition(self):
+        r"""Number of partitions.
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Topic(self):
+        r"""Number of Topics
+        :rtype: int
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        r"""Instance type, such as sp_ckafka_profession.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ModifyEntry(self):
+        r"""Configuration change portal.
+        :rtype: str
+        """
+        return self._ModifyEntry
+
+    @ModifyEntry.setter
+    def ModifyEntry(self, ModifyEntry):
+        self._ModifyEntry = ModifyEntry
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BandWidth = params.get("BandWidth")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._Partition = params.get("Partition")
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._ModifyEntry = params.get("ModifyEntry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModifyTypeResponse(AbstractModel):
+    r"""DescribeModifyType response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Specifies the structure of the returned renewal type.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescModifyType`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Specifies the structure of the returned renewal type.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescModifyType`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescModifyType()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -11967,116 +12413,97 @@ class InstanceAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id.
+        :param _InstanceId: <p>ckafka cluster instance Id.</p>.
         :type InstanceId: str
-        :param _InstanceName: Specifies the Name of the ckafka cluster instance.
+        :param _InstanceName: <p>Specifies the Name of the ckafka cluster instance.</p>.
         :type InstanceName: str
-        :param _VipList: VIP list information of access point
+        :param _VipList: <p>Access point VIP list information.</p>.
         :type VipList: list of VipEntity
-        :param _Vip: Virtual IP
+        :param _Vip: <p>Virtual IP.</p>.
         :type Vip: str
-        :param _Vport: Virtual port
+        :param _Vport: <P>Virtual port.</p>.
         :type Vport: str
-        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
+        :param _Status: <P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.
         :type Status: int
-        :param _Bandwidth: Instance bandwidth in Mbps
+        :param _Bandwidth: <p>Instance bandwidth (unit: Mbps).</p>.
         :type Bandwidth: int
-        :param _DiskSize: Instance storage capacity in GB
+        :param _DiskSize: <p>Specifies the instance storage size in GB.</p>.
         :type DiskSize: int
-        :param _ZoneId: AZ
+        :param _ZoneId: <P>Specifies the availability zone.</p>.
         :type ZoneId: int
-        :param _VpcId: VPC ID. If this parameter is empty, it means the basic network
+        :param _VpcId: <p>VPC ID. being empty indicates a basic network.</p>.
         :type VpcId: str
-        :param _SubnetId: Subnet ID. If this parameter is empty, it means the basic network
+        :param _SubnetId: <p>Specifies the subnet ID. being empty indicates the basic network.</p>.
         :type SubnetId: str
-        :param _Healthy: Instance health status. 1: healthy, 2: alarmed, 3: exceptional
+        :param _Healthy: <P>Specifies the instance health status. valid values: 1 (healthy), 2 (alarm), 3 (abnormal).</p>.
         :type Healthy: int
-        :param _HealthyMessage: Instance health information. Currently, the disk utilization is displayed with a maximum length of 256
+        :param _HealthyMessage: <P>Instance health information. currently shows disk utilization rate. maximum length is 256.</p>.
         :type HealthyMessage: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: <P>Creation time.</p>.
         :type CreateTime: int
-        :param _MsgRetentionTime: Message retention period in minutes
+        :param _MsgRetentionTime: <P>Message retention period, in minutes.</p>.
         :type MsgRetentionTime: int
-        :param _Config: Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled
+        :param _Config: <p>Automatic creation Topic configuration. if this field is empty, it indicates that automatic creation is not enabled.</p>.
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.InstanceConfigDO`
-        :param _RemainderPartitions: Number of remaining creatable partitions
+        :param _RemainderPartitions: <P>Number of remaining creatable partitions.</p>.
         :type RemainderPartitions: int
-        :param _RemainderTopics: Number of remaining creatable topics
+        :param _RemainderTopics: <P>Number of remaining creatable topics.</p>.
         :type RemainderTopics: int
-        :param _CreatedPartitions: Number of partitions already created
+        :param _CreatedPartitions: <P>Specifies the current number of partitions created.</p>.
         :type CreatedPartitions: int
-        :param _CreatedTopics: Number of topics already created
+        :param _CreatedTopics: <P>Specifies the current number of topics created.</p>.
         :type CreatedTopics: int
-        :param _Tags: Tag array
+        :param _Tags: <P>Tag array.</p>.
         :type Tags: list of Tag
-        :param _ExpireTime: Expiration time
+        :param _ExpireTime: <P>Specifies the expiration time.</p>.
         :type ExpireTime: int
-        :param _ZoneIds: Availability Zone List
+        :param _ZoneIds: <P>Specifies the availability zone list.</p>.
         :type ZoneIds: list of int
-        :param _Version: Specifies the ckafka cluster instance version.
+        :param _Version: <P>Specifies the ckafka cluster instance version.</p>.
         :type Version: str
-        :param _MaxGroupNum: Maximum number of groups.
+        :param _MaxGroupNum: <P>Specifies the maximum number of groups.</p>.
         :type MaxGroupNum: int
-        :param _Cvm: Sale type. valid values: 0 (standard version), 1 (pro edition).
+        :param _Cvm: <P>Sale type. 0: standard version; 1: pro edition.</p>.
         :type Cvm: int
-        :param _InstanceType: Instance type. valid values:. 
-Specifies the pro edition.    
-Standard version.
-premium. specifies the advanced edition.
-Specifies the serverless version.
+        :param _InstanceType: <p>Instance type. enumerates the list: profession: pro edition; standards2: standard version; premium: advanced edition; serverless: serverless edition.</p>.
         :type InstanceType: str
-        :param _Features: Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL means the policy support for configuring subnets.
+        :param _Features: <p>Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL: indicates that the ACL policy supports setting subnets.</p>.
         :type Features: list of str
-        :param _RetentionTimeConfig: Dynamic message retention policy.
+        :param _RetentionTimeConfig: <P>Dynamic message retention policy.</p>.
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
-        :param _MaxConnection: Maximum number of connections.
+        :param _MaxConnection: <P>Maximum number of connections.</p>.
         :type MaxConnection: int
-        :param _PublicNetwork: Public network bandwidth
+        :param _PublicNetwork: <P>Public network bandwidth.</p>.
         :type PublicNetwork: int
-        :param _DeleteRouteTimestamp: Specifies the deprecated field with no actual meaning.
+        :param _DeleteRouteTimestamp: <P>Deprecated. no actual meaning.</p>.
         :type DeleteRouteTimestamp: str
-        :param _RemainingPartitions: Number of remaining creatable partitions.
+        :param _RemainingPartitions: <P>Number of remaining creatable partitions.</p>.
         :type RemainingPartitions: int
-        :param _RemainingTopics: Number of remaining creatable topics.
+        :param _RemainingTopics: <P>Number of remaining creatable topics.</p>.
         :type RemainingTopics: int
-        :param _DynamicDiskConfig: Scaling policy for dynamic disk.
+        :param _DynamicDiskConfig: <P>Dynamic disk expansion policy.</p>.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
-        :param _SystemMaintenanceTime: Specifies the system maintenance time.
+        :param _SystemMaintenanceTime: <P>Specifies the system maintenance time.</p>.
         :type SystemMaintenanceTime: str
-        :param _MaxMessageByte: Specifies the maximum size of messages at the instance level.
+        :param _MaxMessageByte: <P>Specifies the maximum size of instance level messages.</p>.
         :type MaxMessageByte: int
-        :param _InstanceChargeType: Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.
+        :param _InstanceChargeType: <p>Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.</p>.
         :type InstanceChargeType: str
-        :param _ElasticBandwidthSwitch: Whether to enable the elastic bandwidth allowlist.   
-Indicates the allowlist feature with elastic bandwidth enabled.
-0: elastic bandwidth allowlist feature is disabled.
+        :param _ElasticBandwidthSwitch: <p>Specifies whether to enable the elastic bandwidth allowlist. valid values: 1 (enabled), 0 (disabled).</p>.
         :type ElasticBandwidthSwitch: int
-        :param _ElasticBandwidthOpenStatus: Indicates the elastic bandwidth activation status.
-1: indicates elastic bandwidth is disabled.
-Enable elastic bandwidth.
-Enable elastic bandwidth successfully.
-33: disabling elastic bandwidth.
-Indicates that the elastic bandwidth is successfully disabled.
-Enable elastic bandwidth failed.
-Bandwidth failure.
+        :param _ElasticBandwidthOpenStatus: <P>Specifies the elastic bandwidth activation status. 1: elastic bandwidth is disabled; 16: enabling elastic bandwidth; 32: elastic bandwidth enabled successfully; 33: disabling elastic bandwidth; 34: elastic bandwidth disabled successfully; 64: failed to enable elastic bandwidth; 65: failed to disable elastic bandwidth.</p>.
         :type ElasticBandwidthOpenStatus: int
-        :param _ClusterType: Cluster type.  
-CLOUD_IDC idc cluster.
-CLOUD_CVM_SHARE shared cluster.
-CLOUD_CVM_YUNTI yunti cvm cluster.
-CLOUD_CVM. specifies the cvm cluster.
-CLOUD_CDC cdc cluster.
-CLOUD_EKS_TSE eks cluster.
+        :param _ClusterType: <p>ClusterType<br />CLOUD_IDC IDC cluster<br />CLOUD_CVM_SHARE CVM shared cluster<br />CLOUD_CVM_YUNTI YUNTI CVM cluster<br />CLOUD_CVM CVM cluster<br />CLOUD_CDC CDC cluster<br />CLOUD_EKS_TSE EKS cluster</p>.
         :type ClusterType: str
-        :param _FreePartitionNumber: Number of free partitions.
+        :param _FreePartitionNumber: <P>Specifies the number of free partitions.</p>.
         :type FreePartitionNumber: int
-        :param _ElasticFloatBandwidth: Specifies the elastic bandwidth upper limit.
+        :param _ElasticFloatBandwidth: <P>Specifies the elastic bandwidth upper limit.</p>.
         :type ElasticFloatBandwidth: int
-        :param _CustomCertId: ssl custom certificate id. only returned for instance clusters with custom certificates.
+        :param _CustomCertId: <p>ssl custom certificate id. only returned for instance clusters with custom certificates.</p>.
         :type CustomCertId: str
-        :param _UncleanLeaderElectionEnable: Default unclean.leader.election.enable configuration for cluster topic: 1 enable 0 disable.
+        :param _UncleanLeaderElectionEnable: <P>Specifies the default unclean.leader.election.enable configuration for cluster topics. valid values: 1 (enable), 0 (disable).</p>.
         :type UncleanLeaderElectionEnable: int
-        :param _DeleteProtectionEnable: Instance deletion protection switch. 1: enabled; 0: disabled.
+        :param _DeleteProtectionEnable: <P>Specifies the instance deletion protection switch. valid values: 1 (enabled), 0 (disabled).</p>.
         :type DeleteProtectionEnable: int
         """
         self._InstanceId = None
@@ -12128,7 +12555,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id.
+        r"""<p>ckafka cluster instance Id.</p>.
         :rtype: str
         """
         return self._InstanceId
@@ -12139,7 +12566,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def InstanceName(self):
-        r"""Specifies the Name of the ckafka cluster instance.
+        r"""<p>Specifies the Name of the ckafka cluster instance.</p>.
         :rtype: str
         """
         return self._InstanceName
@@ -12150,7 +12577,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def VipList(self):
-        r"""VIP list information of access point
+        r"""<p>Access point VIP list information.</p>.
         :rtype: list of VipEntity
         """
         return self._VipList
@@ -12161,7 +12588,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Vip(self):
-        r"""Virtual IP
+        r"""<p>Virtual IP.</p>.
         :rtype: str
         """
         return self._Vip
@@ -12172,7 +12599,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Vport(self):
-        r"""Virtual port
+        r"""<P>Virtual port.</p>.
         :rtype: str
         """
         return self._Vport
@@ -12183,7 +12610,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Status(self):
-        r"""Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
+        r"""<P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.
         :rtype: int
         """
         return self._Status
@@ -12194,7 +12621,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Bandwidth(self):
-        r"""Instance bandwidth in Mbps
+        r"""<p>Instance bandwidth (unit: Mbps).</p>.
         :rtype: int
         """
         return self._Bandwidth
@@ -12205,7 +12632,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def DiskSize(self):
-        r"""Instance storage capacity in GB
+        r"""<p>Specifies the instance storage size in GB.</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -12216,7 +12643,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def ZoneId(self):
-        r"""AZ
+        r"""<P>Specifies the availability zone.</p>.
         :rtype: int
         """
         return self._ZoneId
@@ -12227,7 +12654,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def VpcId(self):
-        r"""VPC ID. If this parameter is empty, it means the basic network
+        r"""<p>VPC ID. being empty indicates a basic network.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -12238,7 +12665,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def SubnetId(self):
-        r"""Subnet ID. If this parameter is empty, it means the basic network
+        r"""<p>Specifies the subnet ID. being empty indicates the basic network.</p>.
         :rtype: str
         """
         return self._SubnetId
@@ -12249,7 +12676,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Healthy(self):
-        r"""Instance health status. 1: healthy, 2: alarmed, 3: exceptional
+        r"""<P>Specifies the instance health status. valid values: 1 (healthy), 2 (alarm), 3 (abnormal).</p>.
         :rtype: int
         """
         return self._Healthy
@@ -12260,7 +12687,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def HealthyMessage(self):
-        r"""Instance health information. Currently, the disk utilization is displayed with a maximum length of 256
+        r"""<P>Instance health information. currently shows disk utilization rate. maximum length is 256.</p>.
         :rtype: str
         """
         return self._HealthyMessage
@@ -12271,7 +12698,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""<P>Creation time.</p>.
         :rtype: int
         """
         return self._CreateTime
@@ -12282,7 +12709,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def MsgRetentionTime(self):
-        r"""Message retention period in minutes
+        r"""<P>Message retention period, in minutes.</p>.
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -12293,7 +12720,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Config(self):
-        r"""Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled
+        r"""<p>Automatic creation Topic configuration. if this field is empty, it indicates that automatic creation is not enabled.</p>.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceConfigDO`
         """
         return self._Config
@@ -12304,7 +12731,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def RemainderPartitions(self):
-        r"""Number of remaining creatable partitions
+        r"""<P>Number of remaining creatable partitions.</p>.
         :rtype: int
         """
         return self._RemainderPartitions
@@ -12315,7 +12742,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def RemainderTopics(self):
-        r"""Number of remaining creatable topics
+        r"""<P>Number of remaining creatable topics.</p>.
         :rtype: int
         """
         return self._RemainderTopics
@@ -12326,7 +12753,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def CreatedPartitions(self):
-        r"""Number of partitions already created
+        r"""<P>Specifies the current number of partitions created.</p>.
         :rtype: int
         """
         return self._CreatedPartitions
@@ -12337,7 +12764,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def CreatedTopics(self):
-        r"""Number of topics already created
+        r"""<P>Specifies the current number of topics created.</p>.
         :rtype: int
         """
         return self._CreatedTopics
@@ -12348,7 +12775,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Tags(self):
-        r"""Tag array
+        r"""<P>Tag array.</p>.
         :rtype: list of Tag
         """
         return self._Tags
@@ -12359,7 +12786,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def ExpireTime(self):
-        r"""Expiration time
+        r"""<P>Specifies the expiration time.</p>.
         :rtype: int
         """
         return self._ExpireTime
@@ -12370,7 +12797,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def ZoneIds(self):
-        r"""Availability Zone List
+        r"""<P>Specifies the availability zone list.</p>.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -12381,7 +12808,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Version(self):
-        r"""Specifies the ckafka cluster instance version.
+        r"""<P>Specifies the ckafka cluster instance version.</p>.
         :rtype: str
         """
         return self._Version
@@ -12392,7 +12819,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def MaxGroupNum(self):
-        r"""Maximum number of groups.
+        r"""<P>Specifies the maximum number of groups.</p>.
         :rtype: int
         """
         return self._MaxGroupNum
@@ -12403,7 +12830,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def Cvm(self):
-        r"""Sale type. valid values: 0 (standard version), 1 (pro edition).
+        r"""<P>Sale type. 0: standard version; 1: pro edition.</p>.
         :rtype: int
         """
         return self._Cvm
@@ -12414,11 +12841,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def InstanceType(self):
-        r"""Instance type. valid values:. 
-Specifies the pro edition.    
-Standard version.
-premium. specifies the advanced edition.
-Specifies the serverless version.
+        r"""<p>Instance type. enumerates the list: profession: pro edition; standards2: standard version; premium: advanced edition; serverless: serverless edition.</p>.
         :rtype: str
         """
         return self._InstanceType
@@ -12429,7 +12852,7 @@ Specifies the serverless version.
 
     @property
     def Features(self):
-        r"""Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL means the policy support for configuring subnets.
+        r"""<p>Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL: indicates that the ACL policy supports setting subnets.</p>.
         :rtype: list of str
         """
         return self._Features
@@ -12440,7 +12863,7 @@ Specifies the serverless version.
 
     @property
     def RetentionTimeConfig(self):
-        r"""Dynamic message retention policy.
+        r"""<P>Dynamic message retention policy.</p>.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         """
         return self._RetentionTimeConfig
@@ -12451,7 +12874,7 @@ Specifies the serverless version.
 
     @property
     def MaxConnection(self):
-        r"""Maximum number of connections.
+        r"""<P>Maximum number of connections.</p>.
         :rtype: int
         """
         return self._MaxConnection
@@ -12462,7 +12885,7 @@ Specifies the serverless version.
 
     @property
     def PublicNetwork(self):
-        r"""Public network bandwidth
+        r"""<P>Public network bandwidth.</p>.
         :rtype: int
         """
         return self._PublicNetwork
@@ -12473,7 +12896,7 @@ Specifies the serverless version.
 
     @property
     def DeleteRouteTimestamp(self):
-        r"""Specifies the deprecated field with no actual meaning.
+        r"""<P>Deprecated. no actual meaning.</p>.
         :rtype: str
         """
         return self._DeleteRouteTimestamp
@@ -12484,7 +12907,7 @@ Specifies the serverless version.
 
     @property
     def RemainingPartitions(self):
-        r"""Number of remaining creatable partitions.
+        r"""<P>Number of remaining creatable partitions.</p>.
         :rtype: int
         """
         return self._RemainingPartitions
@@ -12495,7 +12918,7 @@ Specifies the serverless version.
 
     @property
     def RemainingTopics(self):
-        r"""Number of remaining creatable topics.
+        r"""<P>Number of remaining creatable topics.</p>.
         :rtype: int
         """
         return self._RemainingTopics
@@ -12506,7 +12929,7 @@ Specifies the serverless version.
 
     @property
     def DynamicDiskConfig(self):
-        r"""Scaling policy for dynamic disk.
+        r"""<P>Dynamic disk expansion policy.</p>.
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         return self._DynamicDiskConfig
@@ -12517,7 +12940,7 @@ Specifies the serverless version.
 
     @property
     def SystemMaintenanceTime(self):
-        r"""Specifies the system maintenance time.
+        r"""<P>Specifies the system maintenance time.</p>.
         :rtype: str
         """
         return self._SystemMaintenanceTime
@@ -12528,7 +12951,7 @@ Specifies the serverless version.
 
     @property
     def MaxMessageByte(self):
-        r"""Specifies the maximum size of messages at the instance level.
+        r"""<P>Specifies the maximum size of instance level messages.</p>.
         :rtype: int
         """
         return self._MaxMessageByte
@@ -12539,7 +12962,7 @@ Specifies the serverless version.
 
     @property
     def InstanceChargeType(self):
-        r"""Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.
+        r"""<p>Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.</p>.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -12550,9 +12973,7 @@ Specifies the serverless version.
 
     @property
     def ElasticBandwidthSwitch(self):
-        r"""Whether to enable the elastic bandwidth allowlist.   
-Indicates the allowlist feature with elastic bandwidth enabled.
-0: elastic bandwidth allowlist feature is disabled.
+        r"""<p>Specifies whether to enable the elastic bandwidth allowlist. valid values: 1 (enabled), 0 (disabled).</p>.
         :rtype: int
         """
         return self._ElasticBandwidthSwitch
@@ -12563,14 +12984,7 @@ Indicates the allowlist feature with elastic bandwidth enabled.
 
     @property
     def ElasticBandwidthOpenStatus(self):
-        r"""Indicates the elastic bandwidth activation status.
-1: indicates elastic bandwidth is disabled.
-Enable elastic bandwidth.
-Enable elastic bandwidth successfully.
-33: disabling elastic bandwidth.
-Indicates that the elastic bandwidth is successfully disabled.
-Enable elastic bandwidth failed.
-Bandwidth failure.
+        r"""<P>Specifies the elastic bandwidth activation status. 1: elastic bandwidth is disabled; 16: enabling elastic bandwidth; 32: elastic bandwidth enabled successfully; 33: disabling elastic bandwidth; 34: elastic bandwidth disabled successfully; 64: failed to enable elastic bandwidth; 65: failed to disable elastic bandwidth.</p>.
         :rtype: int
         """
         return self._ElasticBandwidthOpenStatus
@@ -12581,13 +12995,7 @@ Bandwidth failure.
 
     @property
     def ClusterType(self):
-        r"""Cluster type.  
-CLOUD_IDC idc cluster.
-CLOUD_CVM_SHARE shared cluster.
-CLOUD_CVM_YUNTI yunti cvm cluster.
-CLOUD_CVM. specifies the cvm cluster.
-CLOUD_CDC cdc cluster.
-CLOUD_EKS_TSE eks cluster.
+        r"""<p>ClusterType<br />CLOUD_IDC IDC cluster<br />CLOUD_CVM_SHARE CVM shared cluster<br />CLOUD_CVM_YUNTI YUNTI CVM cluster<br />CLOUD_CVM CVM cluster<br />CLOUD_CDC CDC cluster<br />CLOUD_EKS_TSE EKS cluster</p>.
         :rtype: str
         """
         return self._ClusterType
@@ -12598,7 +13006,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def FreePartitionNumber(self):
-        r"""Number of free partitions.
+        r"""<P>Specifies the number of free partitions.</p>.
         :rtype: int
         """
         return self._FreePartitionNumber
@@ -12609,7 +13017,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def ElasticFloatBandwidth(self):
-        r"""Specifies the elastic bandwidth upper limit.
+        r"""<P>Specifies the elastic bandwidth upper limit.</p>.
         :rtype: int
         """
         return self._ElasticFloatBandwidth
@@ -12620,7 +13028,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def CustomCertId(self):
-        r"""ssl custom certificate id. only returned for instance clusters with custom certificates.
+        r"""<p>ssl custom certificate id. only returned for instance clusters with custom certificates.</p>.
         :rtype: str
         """
         return self._CustomCertId
@@ -12631,7 +13039,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def UncleanLeaderElectionEnable(self):
-        r"""Default unclean.leader.election.enable configuration for cluster topic: 1 enable 0 disable.
+        r"""<P>Specifies the default unclean.leader.election.enable configuration for cluster topics. valid values: 1 (enable), 0 (disable).</p>.
         :rtype: int
         """
         return self._UncleanLeaderElectionEnable
@@ -12642,7 +13050,7 @@ CLOUD_EKS_TSE eks cluster.
 
     @property
     def DeleteProtectionEnable(self):
-        r"""Instance deletion protection switch. 1: enabled; 0: disabled.
+        r"""<P>Specifies the instance deletion protection switch. valid values: 1 (enabled), 0 (disabled).</p>.
         :rtype: int
         """
         return self._DeleteProtectionEnable
@@ -12885,69 +13293,69 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id.
+        :param _InstanceId: <p>ckafka cluster instance Id.</p>.
         :type InstanceId: str
-        :param _InstanceName: CKafka cluster instance name.
+        :param _InstanceName: <P>Specifies the name of the ckafka cluster instance.</p>.
         :type InstanceName: str
-        :param _Vip: Instance VIP information
+        :param _Vip: <P>Specifies the vip information for accessing the instance.</p>.
         :type Vip: str
-        :param _Vport: Instance port information
+        :param _Vport: <P>Specifies the port information to access the instance.</p>.
         :type Vport: str
-        :param _VipList: Virtual IP list
+        :param _VipList: <p>Specifies the virtual IP list.</p>.
         :type VipList: list of VipEntity
-        :param _Status: Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
+        :param _Status: <P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.
         :type Status: int
-        :param _Bandwidth: Instance bandwidth in Mbps
+        :param _Bandwidth: <p>Specifies the instance bandwidth in Mbps.</p>.
         :type Bandwidth: int
-        :param _DiskSize: Specifies the ckafka cluster instance disk size in gb.
+        :param _DiskSize: <p>Specifies the disk size of the ckafka cluster instance, in gb.</p>.
         :type DiskSize: int
-        :param _ZoneId: AZ ID
+        :param _ZoneId: <p>Specifies the available zone ID.</p>.
         :type ZoneId: int
-        :param _VpcId: vpcId. If this parameter is empty, it means the basic network
+        :param _VpcId: <p>vpcId. if empty, indicates a basic network.</p>.
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <P>Subnet id.</p>.
         :type SubnetId: str
-        :param _RenewFlag: Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no
+        :param _RenewFlag: <P>Specifies whether to renew the instance. int enumeration value: 1 means auto-renew, 2 means explicitly no auto-renew.</p>.
         :type RenewFlag: int
-        :param _Healthy: Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional
+        :param _Healthy: <p>Specifies the instance status. valid values: 1 (healthy), 2 (alarm), 3 (instance status exception).</p>.
         :type Healthy: int
-        :param _HealthyMessage: Instance status information
+        :param _HealthyMessage: <P>Specifies the instance status information.</p>.
         :type HealthyMessage: str
-        :param _CreateTime: Instance creation time
+        :param _CreateTime: <P>Specifies the instance creation time.</p>.
         :type CreateTime: int
-        :param _ExpireTime: Instance expiration time
+        :param _ExpireTime: <P>Specifies the instance expiration time.</p>.
         :type ExpireTime: int
-        :param _IsInternal: Whether it is an internal customer. 1: yes
+        :param _IsInternal: <P>Specifies whether it is an internal customer. a value of 1 indicates an internal customer.</p>.
         :type IsInternal: int
-        :param _TopicNum: Number of topics
+        :param _TopicNum: <p>Specifies the number of topics.</p>.
         :type TopicNum: int
-        :param _Tags: Tag
+        :param _Tags: <P>Specifies the identifier tag.</p>.
         :type Tags: list of Tag
-        :param _Version: kafka version information.
+        :param _Version: <p>kafka version information.</p>.
         :type Version: str
-        :param _ZoneIds: Cross-Availability zone.
+        :param _ZoneIds: <P>Specifies the cross-availability zone.</p>.
         :type ZoneIds: list of int
-        :param _Cvm: ckafka sales type.
+        :param _Cvm: <P>Specifies the ckafka sales type.</p>.
         :type Cvm: int
-        :param _InstanceType: Specifies the cluster instance type of ckafka.
+        :param _InstanceType: <P>Specifies the ckafka cluster instance type.</p>.
         :type InstanceType: str
-        :param _DiskType: Specifies the ckafka cluster instance disk type.
+        :param _DiskType: <P>Specifies the disk type of the ckafka cluster instance.</p>.
         :type DiskType: str
-        :param _MaxTopicNumber: Maximum number of topics for current specifications.
+        :param _MaxTopicNumber: <p>Maximum number of topics for current specifications.</p>.
         :type MaxTopicNumber: int
-        :param _MaxPartitionNumber: Maximum number of partitions for current specifications.
+        :param _MaxPartitionNumber: <p>Specifies the maximum number of partitions for current specifications.</p>.
         :type MaxPartitionNumber: int
-        :param _RebalanceTime: Scheduled configuration upgrade time.
+        :param _RebalanceTime: <P>Specifies the planned configuration upgrade time.</p>.
         :type RebalanceTime: str
-        :param _PartitionNumber: Specifies the number of partitions in the current instance.
+        :param _PartitionNumber: <P>Current number of partitions of the instance.</p>.
         :type PartitionNumber: int
-        :param _PublicNetworkChargeType: Specifies the public network bandwidth type of the ckafka cluster instance.
+        :param _PublicNetworkChargeType: <P>Specifies the public network bandwidth type of the ckafka cluster instance.</p>.
         :type PublicNetworkChargeType: str
-        :param _PublicNetwork: Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
+        :param _PublicNetwork: <p>Specifies the public network bandwidth. value range: 3Mbps to 999Mbps. only supported in pro edition.</p>.
         :type PublicNetwork: int
-        :param _ClusterType: Specifies the underlying cluster type of the ckafka cluster instance.
+        :param _ClusterType: <P>Specifies the underlying cluster type of the ckafka cluster instance.</p>.
         :type ClusterType: str
-        :param _Features: Instance feature list.
+        :param _Features: <P>Specifies the instance feature list.</p>.
         :type Features: list of str
         """
         self._InstanceId = None
@@ -12985,7 +13393,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id.
+        r"""<p>ckafka cluster instance Id.</p>.
         :rtype: str
         """
         return self._InstanceId
@@ -12996,7 +13404,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""CKafka cluster instance name.
+        r"""<P>Specifies the name of the ckafka cluster instance.</p>.
         :rtype: str
         """
         return self._InstanceName
@@ -13007,7 +13415,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Vip(self):
-        r"""Instance VIP information
+        r"""<P>Specifies the vip information for accessing the instance.</p>.
         :rtype: str
         """
         return self._Vip
@@ -13018,7 +13426,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Vport(self):
-        r"""Instance port information
+        r"""<P>Specifies the port information to access the instance.</p>.
         :rtype: str
         """
         return self._Vport
@@ -13029,7 +13437,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def VipList(self):
-        r"""Virtual IP list
+        r"""<p>Specifies the virtual IP list.</p>.
         :rtype: list of VipEntity
         """
         return self._VipList
@@ -13040,7 +13448,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.
+        r"""<P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.
         :rtype: int
         """
         return self._Status
@@ -13051,7 +13459,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""Instance bandwidth in Mbps
+        r"""<p>Specifies the instance bandwidth in Mbps.</p>.
         :rtype: int
         """
         return self._Bandwidth
@@ -13062,7 +13470,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Specifies the ckafka cluster instance disk size in gb.
+        r"""<p>Specifies the disk size of the ckafka cluster instance, in gb.</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -13073,7 +13481,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""AZ ID
+        r"""<p>Specifies the available zone ID.</p>.
         :rtype: int
         """
         return self._ZoneId
@@ -13084,7 +13492,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpcId. If this parameter is empty, it means the basic network
+        r"""<p>vpcId. if empty, indicates a basic network.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -13095,7 +13503,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<P>Subnet id.</p>.
         :rtype: str
         """
         return self._SubnetId
@@ -13106,7 +13514,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no
+        r"""<P>Specifies whether to renew the instance. int enumeration value: 1 means auto-renew, 2 means explicitly no auto-renew.</p>.
         :rtype: int
         """
         return self._RenewFlag
@@ -13117,7 +13525,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Healthy(self):
-        r"""Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional
+        r"""<p>Specifies the instance status. valid values: 1 (healthy), 2 (alarm), 3 (instance status exception).</p>.
         :rtype: int
         """
         return self._Healthy
@@ -13128,7 +13536,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def HealthyMessage(self):
-        r"""Instance status information
+        r"""<P>Specifies the instance status information.</p>.
         :rtype: str
         """
         return self._HealthyMessage
@@ -13139,7 +13547,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Instance creation time
+        r"""<P>Specifies the instance creation time.</p>.
         :rtype: int
         """
         return self._CreateTime
@@ -13150,7 +13558,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""Instance expiration time
+        r"""<P>Specifies the instance expiration time.</p>.
         :rtype: int
         """
         return self._ExpireTime
@@ -13161,7 +13569,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def IsInternal(self):
-        r"""Whether it is an internal customer. 1: yes
+        r"""<P>Specifies whether it is an internal customer. a value of 1 indicates an internal customer.</p>.
         :rtype: int
         """
         return self._IsInternal
@@ -13172,7 +13580,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def TopicNum(self):
-        r"""Number of topics
+        r"""<p>Specifies the number of topics.</p>.
         :rtype: int
         """
         return self._TopicNum
@@ -13183,7 +13591,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag
+        r"""<P>Specifies the identifier tag.</p>.
         :rtype: list of Tag
         """
         return self._Tags
@@ -13194,7 +13602,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Version(self):
-        r"""kafka version information.
+        r"""<p>kafka version information.</p>.
         :rtype: str
         """
         return self._Version
@@ -13205,7 +13613,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Cross-Availability zone.
+        r"""<P>Specifies the cross-availability zone.</p>.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -13216,7 +13624,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Cvm(self):
-        r"""ckafka sales type.
+        r"""<P>Specifies the ckafka sales type.</p>.
         :rtype: int
         """
         return self._Cvm
@@ -13227,7 +13635,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Specifies the cluster instance type of ckafka.
+        r"""<P>Specifies the ckafka cluster instance type.</p>.
         :rtype: str
         """
         return self._InstanceType
@@ -13238,7 +13646,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Specifies the ckafka cluster instance disk type.
+        r"""<P>Specifies the disk type of the ckafka cluster instance.</p>.
         :rtype: str
         """
         return self._DiskType
@@ -13249,7 +13657,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MaxTopicNumber(self):
-        r"""Maximum number of topics for current specifications.
+        r"""<p>Maximum number of topics for current specifications.</p>.
         :rtype: int
         """
         return self._MaxTopicNumber
@@ -13260,7 +13668,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MaxPartitionNumber(self):
-        r"""Maximum number of partitions for current specifications.
+        r"""<p>Specifies the maximum number of partitions for current specifications.</p>.
         :rtype: int
         """
         return self._MaxPartitionNumber
@@ -13271,7 +13679,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RebalanceTime(self):
-        r"""Scheduled configuration upgrade time.
+        r"""<P>Specifies the planned configuration upgrade time.</p>.
         :rtype: str
         """
         return self._RebalanceTime
@@ -13282,7 +13690,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PartitionNumber(self):
-        r"""Specifies the number of partitions in the current instance.
+        r"""<P>Current number of partitions of the instance.</p>.
         :rtype: int
         """
         return self._PartitionNumber
@@ -13293,7 +13701,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetworkChargeType(self):
-        r"""Specifies the public network bandwidth type of the ckafka cluster instance.
+        r"""<P>Specifies the public network bandwidth type of the ckafka cluster instance.</p>.
         :rtype: str
         """
         return self._PublicNetworkChargeType
@@ -13304,7 +13712,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        r"""Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.
+        r"""<p>Specifies the public network bandwidth. value range: 3Mbps to 999Mbps. only supported in pro edition.</p>.
         :rtype: int
         """
         return self._PublicNetwork
@@ -13315,7 +13723,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""Specifies the underlying cluster type of the ckafka cluster instance.
+        r"""<P>Specifies the underlying cluster type of the ckafka cluster instance.</p>.
         :rtype: str
         """
         return self._ClusterType
@@ -13326,7 +13734,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Features(self):
-        r"""Instance feature list.
+        r"""<P>Specifies the instance feature list.</p>.
         :rtype: list of str
         """
         return self._Features
@@ -13762,6 +14170,122 @@ class InstanceScalingDownResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstanceVersion(AbstractModel):
+    r"""Instance version information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KafkaVersion: CKafka cluster instance version.
+        :type KafkaVersion: str
+        :param _CurBrokerVersion: Broker version information.
+        :type CurBrokerVersion: str
+        :param _LatestBrokerVersion: Latest version information.
+        :type LatestBrokerVersion: list of LatestBrokerVersion
+        :param _AllowUpgradeHighVersion: Whether to allow kernel upgrades across major versions.
+        :type AllowUpgradeHighVersion: bool
+        :param _HighVersionSet: Major version allowed for upgrades.
+        :type HighVersionSet: list of str
+        :param _AllowAutoDeleteTimestamp: Whether to allow automatic deletion of consumer groups during minor version configuration.
+        :type AllowAutoDeleteTimestamp: bool
+        """
+        self._KafkaVersion = None
+        self._CurBrokerVersion = None
+        self._LatestBrokerVersion = None
+        self._AllowUpgradeHighVersion = None
+        self._HighVersionSet = None
+        self._AllowAutoDeleteTimestamp = None
+
+    @property
+    def KafkaVersion(self):
+        r"""CKafka cluster instance version.
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def CurBrokerVersion(self):
+        r"""Broker version information.
+        :rtype: str
+        """
+        return self._CurBrokerVersion
+
+    @CurBrokerVersion.setter
+    def CurBrokerVersion(self, CurBrokerVersion):
+        self._CurBrokerVersion = CurBrokerVersion
+
+    @property
+    def LatestBrokerVersion(self):
+        r"""Latest version information.
+        :rtype: list of LatestBrokerVersion
+        """
+        return self._LatestBrokerVersion
+
+    @LatestBrokerVersion.setter
+    def LatestBrokerVersion(self, LatestBrokerVersion):
+        self._LatestBrokerVersion = LatestBrokerVersion
+
+    @property
+    def AllowUpgradeHighVersion(self):
+        r"""Whether to allow kernel upgrades across major versions.
+        :rtype: bool
+        """
+        return self._AllowUpgradeHighVersion
+
+    @AllowUpgradeHighVersion.setter
+    def AllowUpgradeHighVersion(self, AllowUpgradeHighVersion):
+        self._AllowUpgradeHighVersion = AllowUpgradeHighVersion
+
+    @property
+    def HighVersionSet(self):
+        r"""Major version allowed for upgrades.
+        :rtype: list of str
+        """
+        return self._HighVersionSet
+
+    @HighVersionSet.setter
+    def HighVersionSet(self, HighVersionSet):
+        self._HighVersionSet = HighVersionSet
+
+    @property
+    def AllowAutoDeleteTimestamp(self):
+        r"""Whether to allow automatic deletion of consumer groups during minor version configuration.
+        :rtype: bool
+        """
+        return self._AllowAutoDeleteTimestamp
+
+    @AllowAutoDeleteTimestamp.setter
+    def AllowAutoDeleteTimestamp(self, AllowAutoDeleteTimestamp):
+        self._AllowAutoDeleteTimestamp = AllowAutoDeleteTimestamp
+
+
+    def _deserialize(self, params):
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._CurBrokerVersion = params.get("CurBrokerVersion")
+        if params.get("LatestBrokerVersion") is not None:
+            self._LatestBrokerVersion = []
+            for item in params.get("LatestBrokerVersion"):
+                obj = LatestBrokerVersion()
+                obj._deserialize(item)
+                self._LatestBrokerVersion.append(obj)
+        self._AllowUpgradeHighVersion = params.get("AllowUpgradeHighVersion")
+        self._HighVersionSet = params.get("HighVersionSet")
+        self._AllowAutoDeleteTimestamp = params.get("AllowAutoDeleteTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JgwOperateResponse(AbstractModel):
     r"""Returned result value of operation
 
@@ -13822,6 +14346,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Data") is not None:
             self._Data = OperateResponseData()
             self._Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LatestBrokerVersion(AbstractModel):
+    r"""List of the latest version information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KafkaVersion: CKafka cluster instance version.
+        :type KafkaVersion: str
+        :param _BrokerVersion: Broker version number.
+        :type BrokerVersion: str
+        """
+        self._KafkaVersion = None
+        self._BrokerVersion = None
+
+    @property
+    def KafkaVersion(self):
+        r"""CKafka cluster instance version.
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def BrokerVersion(self):
+        r"""Broker version number.
+        :rtype: str
+        """
+        return self._BrokerVersion
+
+    @BrokerVersion.setter
+    def BrokerVersion(self, BrokerVersion):
+        self._BrokerVersion = BrokerVersion
+
+
+    def _deserialize(self, params):
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._BrokerVersion = params.get("BrokerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

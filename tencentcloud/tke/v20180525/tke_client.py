@@ -1567,6 +1567,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeControlPlaneLogs(self, request):
+        r"""This API is used to query plug-in log collection settings.
+
+        :param request: Request instance for DescribeControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeControlPlaneLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeECMInstances(self, request):
         r"""This API is used to obtain the ECM instance information.
 
@@ -2257,6 +2280,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableControlPlaneLogs(self, request):
+        r"""This API is used to delete the log collection configuration of a plugin.
+
+        :param request: Request instance for DisableControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableControlPlaneLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableEncryptionProtection(self, request):
         r"""This API is used to disable encryption protection.
 
@@ -2317,6 +2363,29 @@ class TkeClient(AbstractClient):
             body = self.call("EnableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClusterDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableControlPlaneLogs(self, request):
+        r"""This API is used to create log collection settings for plugins.
+
+        :param request: Request instance for EnableControlPlaneLogs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableControlPlaneLogsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableControlPlaneLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableControlPlaneLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableControlPlaneLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

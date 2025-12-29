@@ -331,6 +331,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteGroupSubscribeTopic(
+            self,
+            request: models.DeleteGroupSubscribeTopicRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGroupSubscribeTopicResponse:
+        """
+        This API is used to delete topics subscribed by a consumption group. The consumption group status must be Empty.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGroupSubscribeTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGroupSubscribeTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteInstancePost(
             self,
             request: models.DeleteInstancePostRequest,
@@ -704,6 +722,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "DescribeInstancesDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstancesDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModifyType(
+            self,
+            request: models.DescribeModifyTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModifyTypeResponse:
+        """
+        This API is used to query instance specification change types.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModifyType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModifyTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

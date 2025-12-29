@@ -417,6 +417,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteGroupSubscribeTopic(self, request):
+        r"""This API is used to delete topics subscribed by a consumption group. The consumption group status must be Empty.
+
+        :param request: Request instance for DeleteGroupSubscribeTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupSubscribeTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupSubscribeTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroupSubscribeTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupSubscribeTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInstancePost(self, request):
         r"""This API is used to delete post-payment instances. It directly performs instance termination by calling API deletion without associating connectors and tasks in pre-check.
 
@@ -891,6 +914,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeInstancesDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModifyType(self, request):
+        r"""This API is used to query instance specification change types.
+
+        :param request: Request instance for DescribeModifyType.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeModifyTypeRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeModifyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModifyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModifyTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
