@@ -302,6 +302,9 @@ INVALIDPARAMETERVALUE_SOUNDSYSTEM = 'InvalidParameterValue.SoundSystem'
 # SourceLanguage parameter error.
 INVALIDPARAMETERVALUE_SOURCELANGUAGE = 'InvalidParameterValue.SourceLanguage'
 
+# A SourceText parameter error occurs.
+INVALIDPARAMETERVALUE_SOURCETEXT = 'InvalidParameterValue.SourceText'
+
 # Source file error.
 INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 
@@ -343,6 +346,9 @@ INVALIDPARAMETERVALUE_TASKID = 'InvalidParameterValue.TaskId'
 
 # Parameter error: text transparency.
 INVALIDPARAMETERVALUE_TEXTALPHA = 'InvalidParameterValue.TextAlpha'
+
+# A TextContent parameter value error occurs.
+INVALIDPARAMETERVALUE_TEXTCONTENT = 'InvalidParameterValue.TextContent'
 
 # Parameter error: text template.
 INVALIDPARAMETERVALUE_TEXTTEMPLATE = 'InvalidParameterValue.TextTemplate'
@@ -416,8 +422,14 @@ RESOURCENOTFOUND_PERSON = 'ResourceNotFound.Person'
 # The resource does not exist: the template does not exist.
 RESOURCENOTFOUND_TEMPLATENOTEXIST = 'ResourceNotFound.TemplateNotExist'
 
+# The user is not registered.
+RESOURCENOTFOUND_USERUNREGISTER = 'ResourceNotFound.UserUnregister'
+
 # The resource does not exist: Keyword.
 RESOURCENOTFOUND_WORD = 'ResourceNotFound.Word'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# The text for a single request exceeds the length limit.
+UNSUPPORTEDOPERATION_TEXTTOOLONG = 'UnsupportedOperation.TextTooLong'

@@ -18897,7 +18897,7 @@ If you do not specify this, the file will be saved to the trigger directory.
         :type OutputDir: str
         :param _TaskNotifyConfig: The notification configuration. If you do not specify this parameter, notifications will not be sent.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :param _ResourceId: Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
         :type ResourceId: str
         """
         self._ScheduleName = None
@@ -18977,7 +18977,7 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def ResourceId(self):
-        r"""Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        r"""Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
         :rtype: str
         """
         return self._ResourceId
@@ -19236,33 +19236,173 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
 Length limit: 64 characters.
         :type Name: str
         :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :type VideoSrcLanguage: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language
@@ -19277,14 +19417,17 @@ Length limit: 256 characters.
 - Under the ASR recognition and translation processing type:
      - vtt: WebVTT format subtitle.
      - srt: SRT format subtitle.
-     - If this field is unspecified or left blank, no subtitle file will be generated.
+     - Unspecified or left blank: no subtitle file generated.
 - Under the pure subtitle translation processing type:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
         :type SubtitleFormat: str
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
@@ -19293,33 +19436,206 @@ Length limit: 256 characters.
 `OFF`: translation disabled.
 **Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+        :param _TranslateDstLanguage: Target language for subtitle translation.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`:Bemba.
+`bew`:Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`:Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat language.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`:Kiga.
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burmese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
-        :param _ProcessType: Subtitle processing type:
+        :param _ProcessType: Subtitle processing type.
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :type ProcessType: int
         """
@@ -19348,33 +19664,173 @@ Length limit: 64 characters.
     @property
     def VideoSrcLanguage(self):
         r"""Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -19416,14 +19872,17 @@ Length limit: 256 characters.
 - Under the ASR recognition and translation processing type:
      - vtt: WebVTT format subtitle.
      - srt: SRT format subtitle.
-     - If this field is unspecified or left blank, no subtitle file will be generated.
+     - Unspecified or left blank: no subtitle file generated.
 - Under the pure subtitle translation processing type:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -19459,28 +19918,200 @@ Length limit: 256 characters.
 
     @property
     def TranslateDstLanguage(self):
-        r"""Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+        r"""Target language for subtitle translation.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`:Bemba.
+`bew`:Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`:Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat language.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`:Kiga.
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burmese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
@@ -19492,9 +20123,10 @@ Currently, the following languages are supported:
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type:
+        r"""Subtitle processing type.
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :rtype: int
         """
@@ -35002,11 +35634,10 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: Notification Type:
-TDMQ-CMQ: TDMQ for CMQ.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).
-
-<font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
+        :param _NotifyType: Notification type:
+TDMQ-CMQ: message queue.
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+<Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
@@ -35032,11 +35663,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyType(self):
-        r"""Notification Type:
-TDMQ-CMQ: TDMQ for CMQ.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).
-
-<font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
+        r"""Notification type:
+TDMQ-CMQ: message queue.
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+<Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
         return self._NotifyType
@@ -41922,33 +42552,173 @@ Length limit: 64 characters.
 Length limit: 256 characters.
         :type Comment: str
         :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: Smart subtitle file format:
 - Under the ASR recognition and translation processing type:
@@ -41959,9 +42729,12 @@ Currently, the following languages are supported:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
         :type SubtitleFormat: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language
@@ -41972,33 +42745,205 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`: Bemba.
+`bew`: Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`: Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`: Kiga
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka.
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew.
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burnese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
         :param _ProcessType: Subtitle processing type:
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: If the field is unspecified, ASR is used by default.
         :type ProcessType: int
         """
@@ -42065,33 +43010,173 @@ Length limit: 256 characters.
     @property
     def VideoSrcLanguage(self):
         r"""Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -42111,9 +43196,12 @@ Currently, the following languages are supported:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -42151,28 +43239,199 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+This field is valid when the value of TranslateSwitch is ON. List of translation languages:
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`: Bemba.
+`bew`: Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`: Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`: Kiga
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka.
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew.
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burnese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
@@ -42187,6 +43446,7 @@ Currently, the following languages are supported:
         r"""Subtitle processing type:
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: If the field is unspecified, ASR is used by default.
         :rtype: int
         """
@@ -46117,7 +47377,7 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 <li> `Online` (default): A task that is executed immediately.</li>
 <li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>
         :type TaskType: str
-        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :param _ResourceId: Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
         :type ResourceId: str
         :param _SkipMateData: Whether to skip metadata acquisition. Valid values:
 0: do not skip
@@ -46334,7 +47594,7 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def ResourceId(self):
-        r"""Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        r"""Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.
         :rtype: str
         """
         return self._ResourceId
@@ -48046,46 +49306,189 @@ class RawSmartSubtitleParameter(AbstractModel):
 The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
         :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: Smart subtitle file format:
 - Under the ASR recognition and translation processing type:
-     -vtt: WebVTT format subtitle.
-     -srt: SRT format subtitle.
-     - If this field is unspecified or left blank, no subtitle file will be generated.
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - Unspecified or left blank: no subtitle file generated.
 - Under the pure subtitle translation processing type:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
         :param _TranslateSwitch: Subtitle translation switch.
@@ -48096,26 +49499,198 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: Target language for subtitle translation.
 This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`: Bemba.
+`bew`: Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`: Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`: Kiga
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka.
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew.
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burmese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
@@ -48124,11 +49699,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _ExtInfo: Custom parameter.
         :type ExtInfo: str
-        :param _ProcessType: Subtitle processing type.
+        :param _ProcessType: Subtitle processing type:
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: 
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -48138,6 +49716,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._AsrHotWordsConfigure = None
         self._ExtInfo = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def SubtitleType(self):
@@ -48157,33 +49736,173 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
     @property
     def VideoSrcLanguage(self):
         r"""Source language of the video with smart subtitles.
-Currently, the following languages are supported:
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
+OCR recognition only supports the following languages:
 `zh_en`: Chinese and English.
+`multi`: others.
+ASR recognition and pure subtitle translation currently support the following languages:
+`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`zh`: Simplified Chinese.
 `en`: English.
 `ja`: Japanese.
 `ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
+`zh-PY`: Chinese, English, and Cantonese.
+`zh_medical`: Chinese (medical scenario).
 `vi`: Vietnamese.
-`id`: Indonesian.
 `ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
+`id`: Indonesian.
 `fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+`th`: Thai.
+`pt`: Portuguese.
+`tr`: Turkish.
+`ar`: Arabic.
+`es`: Spanish.
+`hi`: Hindi.
+`fr`: French.
+`de`: German.
+`it`: Italian.
+`zh_dialect`: Chinese dialect.
+`zh_en`: Chinese and English.
+`yue`: Cantonese.
+`ru`: Russian.
+`prime_zh`: Chinese, English, and Chinese dialects.
+`af-ZA`: Afrikaans (South Africa).
+`sq-AL`: Albanian (Albania).
+`am-ET`: Amharic (Ethiopia).
+`ar-DZ`: Arabic (Algeria).
+`ar-BH`: Arabic (Bahrain).
+`ar-EG`: Arabic (Egypt).
+`ar-IQ`: Arabic (Iraq).
+`ar-IL`: Arabic (Israel).
+`ar-JO`: Arabic (Jordan).
+`ar-KW`: Arabic (Kuwait).
+`ar-LB`: Arabic (Lebanon).
+`ar-MR`: Arabic (Mauritania).
+`ar-MA`: Arabic (Morocco).
+`ar-OM`: Arabic (Oman).
+`ar-QA`: Arabic (Qatar).
+`ar-SA`: Arabic (Saudi Arabia).
+`ar-PS`: Arabic (State of Palestine).
+`ar-SY`: Arabic (Syria).
+`ar-TN`: Arabic (Tunisia).
+`ar-AE`: Arabic (United Arab Emirates).
+`ar-YE`: Arabic (Yemen).
+`hy-AM`: Armenian (Armenia).
+`az-AZ`: Azerbaijani (Azerbaijan).
+`eu-ES`: Basque (Spain).
+`bn-BD`: Bengali (Bangladesh).
+`bn-IN`: Bengali (India).
+`bs-BA`: Bosnian (Bosnia and Herzegovina).
+`bg-BG`: Bulgarian (Bulgaria).
+`my-MM`: Burmese (Myanmar).
+`ca-ES`: Catalan (Spain).
+`hr-HR`: Croatian (Croatia).
+`cs-CZ`: Czech (Czech Republic).
+`da-DK`: Danish (Denmark).
+`nl-BE`: Dutch (Belgium).
+`nl-NL`: Dutch (Holland).
+`en-AU`: English (Australia).
+`en-CA`: English (Canada).
+`en-GH`: English (Ghana).
+`en-HK`: English (Hong Kong (China)).
+`en-IN`: English (India).
+`en-IE`: English (Ireland).
+`en-KE`: English (Kenya).
+`en-NZ`: English (New Zealand).
+`en-NG`: English (Nigeria).
+`en-PK`: English (Pakistan).
+`en-PH`: English (Philippines).
+`en-SG`: English (Singapore).
+`en-ZA`: English (South Africa).
+`en-TZ`: English (Tanzania).
+`en-GB`: English (UK).
+`en-US`: English (US).
+`et-EE`: Estonian (Estonia).
+`fil-PH`: Filipino (Philippines).
+`fi-FI`: Finnish (Finland).
+`fr-BE`: French (Belgium).
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fr-CH`: French (Switzerland).
+`gl-ES`: Galician (Spain).
+`ka-GE`: Georgian (Georgia).
+`el-GR`: Greek (Greece).
+`gu-IN`: Gujarati (India).
+`iw-IL`: Hebrew (Israel).
+`hi-IN`: Hindi (India).
+`hu-HU`: Hungarian (Hungary).
+`is-IS`: Icelandic (Iceland).
+`id-ID`: Indonesian (Indonesia).
+`it-IT`: Italian (Italy).
+`it-CH`: Italian (Switzerland).
+`ja-JP`: Japanese (Japan).
+`jv-ID`: Javanese (Indonesia).
+`kn-IN`: Kannada (India).
+`kk-KZ`: Kazakh (Kazakhstan).
+`km-KH`: Khmer (Cambodia).
+`rw-RW`: Kinyarwanda (Rwanda).
+`ko-KR`: Korean (South Korea).
+`lo-LA`: Lao (Laos).
+`lv-LV`: Latvian (Latvia).
+`lt-LT`: Lithuanian (Lithuania).
+`mk-MK`: Macedonian (North Macedonia).
+`ms-MY`: Malay (Malaysia).
+`ml-IN`: Malayalam (India).
+`mr-IN`: Marathi (India).
+`mn-MN`: Mongolian (Mongolia).
+`ne-NP`: Nepali (Nepal).
+`no-NO`: Bokmål Norwegian (Norway).
+`fa-IR`: Persian (Iran).
+`pl-PL`: Polish (Poland).
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`ro-RO`: Romanian (Romania).
+`ru-RU`: Russian (Russia).
+`sr-RS`: Serbian (Serbia).
+`si-LK`: Sinhalese (Sri Lanka).
+`sk-SK`: Slovak (Slovakia).
+`sl-SI`: Slovenian (Slovenia).
+`st-ZA`: Sesotho (South Africa).
+`es-AR`: Spanish (Argentina).
+`es-BO`: Spanish (Bolivia).
+`es-CL`: Spanish (Chile).
+`es-CO`: Spanish (Colombia).
+`es-CR`: Spanish (Costa Rica).
+`es-DO`: Spanish (Dominican Republic).
+`es-EC`: Spanish (Ecuador).
+`es-SV`: Spanish (El Salvador).
+`es-GT`: Spanish (Guatemala).
+`es-HN`: Spanish (Honduras).
+`es-MX`: Spanish (Mexico).
+`es-NI`: Spanish (Nicaragua).
+`es-PA`: Spanish (Panama).
+`es-PY`: Spanish (Paraguay).
+`es-PE`: Spanish (Peru).
+`es-PR`: Spanish (Puerto Rico).
+`es-ES`: Spanish (Spain).
+`es-US`: Spanish (US).
+`es-UY`: Spanish (Uruguay).
+`es-VE`: Spanish (Venezuela).
+`su-ID`: Sundanese (Indonesia).
+`sw-KE`: Swahili (Kenya).
+`sw-TZ`: Swahili (Tanzania).
+`sv-SE`: Swedish (Sweden).
+`ta-IN`: Tamil (India).
+`ta-MY`: Tamil (Malaysia).
+`ta-SG`: Tamil (Singapore).
+`ta-LK`: Tamil (Sri Lanka).
+`te-IN`: Telugu (India).
+`th-TH`: Thai (Thailand).
+`ts-ZA`: Tsonga (South Africa).
+`tr-TR`: Turkish (Turkey).
+`uk-UA`: Ukrainian (Ukraine).
+`ur-IN`: Urdu (India).
+`ur-PK`: Urdu (Pakistan).
+`uz-UZ`: Uzbek (Uzbekistan).
+`ve-ZA`: Venda (South Africa).
+`vi-VN`: Vietnamese (Vietnam).
+`xh-ZA`: Xhosa (South Africa).
+`zu-ZA`: Zulu (South Africa).
+
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -48196,16 +49915,19 @@ Currently, the following languages are supported:
     def SubtitleFormat(self):
         r"""Smart subtitle file format:
 - Under the ASR recognition and translation processing type:
-     -vtt: WebVTT format subtitle.
-     -srt: SRT format subtitle.
-     - If this field is unspecified or left blank, no subtitle file will be generated.
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
+     - Unspecified or left blank: no subtitle file generated.
 - Under the pure subtitle translation processing type:
     - original: consistent with the source file.
     - vtt: WebVTT format subtitle.
     - srt: SRT format subtitle.
+- Under the OCR recognition and translation processing type:
+     - vtt: WebVTT format subtitle.
+     - srt: SRT format subtitle.
 **Note**:
 - For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation mode, this field cannot be unspecified or left blank.
+- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -48234,26 +49956,198 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
 This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
+`ab`: Abkhaz language.
+`ace`: Acehnese.
+`ach`: Acholi.
+`af`: Afrikaans.
+`ak`: Twi (Akan).
+`am`: Amharic.
 `ar`: Arabic.
+`as`: Assamese.
+`ay`: Aymara.
+`az`: Azerbaijani.
+`ba`: Bashkir.
+`ban`: Balinese.
+`bbc`: Batak Toba.
+`bem`: Bemba.
+`bew`: Betawi.
+`bg`: Bulgarian.
+`bho`: Bhojpuri.
+`bik`: Bikol.
+`bm`: Bambara.
+`bn`: Bengali.
+`br`: Breton.
+`bs`: Bosnian.
+`btx`: Batak Karo.
+`bts`: Batak Simalungun.
+`bua`: Buryat.
+`ca`: Catalan.
+`ceb`: Cebuano.
+`cgg`: Kiga
+`chm`: Meadow Mari language.
+`ckb`: Kurdish (Sorani).
+`cnh`: Hakha Chin.
+`co`: Corsican.
+`crh`: Crimean Tatar.
+`crs`: Seychellois Creole.
+`cs`: Czech.
+`cv`: Chuvash.
+`cy`: Welsh.
+`da`: Danish.
+`de`: German.
+`din`: Dinka.
+`doi`: Dogri.
+`dov`: Dombe.
+`dv`: Divehi.
+`dz`: Dzongkha.
+`ee`: Ewe.
+`el`: Greek.
+`en`: English.
+`eo`: Esperanto.
+`es`: Spanish.
+`et`: Estonian.
+`eu`: Basque.
+`fa`: Persian.
+`ff`: Fula.
+`fi`: Finnish.
+`fil`: Filipino (Tagalog).
+`fj`: Fijian.
+`fr`: French.
+`fr-CA`: French (Canada).
+`fr-FR`: French (France).
+`fy`: Frisian.
+`ga`: Irish.
+`gaa`: Ga.
+`gd`: Scottish Gaelic.
+`gl`: Galician.
+`gn`: Guaraní.
+`gom`: Goan Konkani.
+`gu`: Gujarati.
+`gv`: Manx.
+`ha`: Hausa.
+`haw`: Hawaiian.
+`he`: Hebrew.
 `hi`: Hindi.
-`fil`: Filipino.
+`hil`: Hiligaynon.
+`hmn`: Hmong.
+`hr`: Croatian.
+`hrx`: Hunsrik.
+`ht`: Haitian Creole.
+`hu`: Hungarian.
+`hy`: Armenian.
+`id`: Indonesian.
+`ig`: Igbo.
+`ilo`: Iloko.
+`is`: Icelandic.
+`it`: Italian.
+`iw`: Hebrew.
+`ja`: Japanese.
+`jv`: Javanese.
+`jw`: Javanese.
+`ka`: Georgian.
+`kk`: Kazakh.
+`km`: Khmer.
+`kn`: Kannada.
+`ko`: Korean.
+`kri`: Krio.
+`ku`: Kurdish (Kurmanji).
+`ktu`: Kituba.
+`ky`: Kirghiz.
+`la`: Latin.
+`lb`: Luxembourgish.
+`lg`: Ganda (Luganda).
+`li`: Limburgish.
+`lij`: Ligurian.
+`lmo`: Lombard.
+`ln`: Lingala.
+`lo`: Lao.
+`lt`: Lithuanian.
+`ltg`: Latgalian.
+`luo`: Luo.
+`lus`: Mizo.
+`lv`: Latvian.
+`mai`: Maithili.
+`mak`: Makassar.
+`mg`: Malagasy.
+`mi`: Maori.
+`min`: Minangkabau.
+`mk`: Macedonian.
+`ml`: Malayalam.
+`mn`: Mongolian.
+`mr`: Marathi.
+`ms`: Malay.
+`mt`: Maltese.
+`my`: Burmese.
+`ne`: Nepali.
+`new`: Newar.
+`nl`: Dutch.
+`no`: Norwegian.
+`nr`: Ndebele (South).
+`nso`: Northern Sotho (Sepedi).
+`nus`: Nuer.
+`ny`: Chichewa (Nyanja).
+`oc`: Occitan.
+`om`: Oromo.
+`or`: Odia.
+`pa`: Punjabi.
+`pag`: Pangasinan.
+`pam`: Kapampangan.
+`pap`: Papiamento.
+`pl`: Polish.
+`ps`: Pashto.
+`pt`: Portuguese.
+`pt-BR`: Portuguese (Brazil).
+`pt-PT`: Portuguese (Portugal).
+`qu`: Quechuan.
+`ro`: Romanian.
+`rom`: Romani.
+`rn`: Rundi.
+`ru`: Russian.
+`rw`: Kinyarwanda.
+`sa`: Sanskrit.
+`scn`: Sicilian.
+`sd`: Sindhi.
+`sg`: Sango.
+`shn`: Shan.
+`si`: Sinhalese.
+`sk`: Slovak.
+`sl`: Slovene.
+`sm`: Samoan.
+`sn`: Shona.
+`so`: Somali.
+`sq`: Albanian.
+`sr`: Serbian.
+`ss`: Swati.
+`st`: Sesotho.
+`su`: Sundanese.
+`sv`: Swedish.
+`sw`: Swahili.
+`szl`: Silesian.
+`ta`: Tamil.
+`te`: Telugu.
+`tet`: Tetum.
+`tg`: Tajik.
+`th`: Thai.
+`ti`: Tigrinya.
+`tk`: Turkmen.
+`tl`: Filipino (Tagalog).
+`tn`: Tswana.
+`tr`: Turkish.
+`ts`: Tsonga.
+`tt`: Tatar.
+`ug`: Uyghur.
+`uk`: Ukrainian.
+`ur`: Urdu.
+`uz`: Uzbek.
+`vi`: Vietnamese.
+`xh`: Xhosa.
+`yi`: Yiddish.
+`yo`: Yoruba.
+`yua`: Yucatec Maya.
+`yue`: Cantonese.
+`zh`: Simplified Chinese.
+`zh-TW`: Chinese (Traditional).
+`zu`: Zulu.
 **Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -48289,9 +50183,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type.
+        r"""Subtitle processing type:
 - 0: ASR recognition subtitle.
 - 1: pure subtitle translation.
+- 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :rtype: int
         """
@@ -48300,6 +50195,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @ProcessType.setter
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
+
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
 
 
     def _deserialize(self, params):
@@ -48313,6 +50219,9 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._ExtInfo = params.get("ExtInfo")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51172,6 +53081,77 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class SelectingSubtitleAreasConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoAreas: 
+        :type AutoAreas: list of EraseArea
+        :param _SampleWidth: 
+        :type SampleWidth: int
+        :param _SampleHeight: 
+        :type SampleHeight: int
+        """
+        self._AutoAreas = None
+        self._SampleWidth = None
+        self._SampleHeight = None
+
+    @property
+    def AutoAreas(self):
+        r"""
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def SampleWidth(self):
+        r"""
+        :rtype: int
+        """
+        return self._SampleWidth
+
+    @SampleWidth.setter
+    def SampleWidth(self, SampleWidth):
+        self._SampleWidth = SampleWidth
+
+    @property
+    def SampleHeight(self):
+        r"""
+        :rtype: int
+        """
+        return self._SampleHeight
+
+    @SampleHeight.setter
+    def SampleHeight(self, SampleHeight):
+        self._SampleHeight = SampleHeight
+
+
+    def _deserialize(self, params):
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        self._SampleWidth = params.get("SampleWidth")
+        self._SampleHeight = params.get("SampleHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SharpEnhanceConfig(AbstractModel):
     r"""Detail enhancement configuration.
 
@@ -52676,6 +54656,140 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class SmartSubtitleTaskFullTextResult(AbstractModel):
+    r"""Full-text recognition result for smart subtitle tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: Output information for smart subtitle tasks.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTextResultOutput`
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        r"""Task status, which can be PROCESSING, SUCCESS, or FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Input information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output information for smart subtitle tasks.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTextResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = SmartSubtitleTaskTextResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartSubtitleTaskResultInput(AbstractModel):
     r"""Smart subtitle translation input.
 
@@ -52723,6 +54837,90 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("RawParameter") is not None:
             self._RawParameter = RawSmartSubtitleParameter()
             self._RawParameter._deserialize(params.get("RawParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTextResultOutput(AbstractModel):
+    r"""Smart subtitle recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecognizeSubtitleResult: Subtitle recognition result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecognizeSubtitleResult: list of SubtitleResult
+        :param _TransSubtitleResult: Subtitle translation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransSubtitleResult: list of SubtitleResult
+        :param _OutputStorage: Storage location of the subtitle file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._RecognizeSubtitleResult = None
+        self._TransSubtitleResult = None
+        self._OutputStorage = None
+
+    @property
+    def RecognizeSubtitleResult(self):
+        r"""Subtitle recognition result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubtitleResult
+        """
+        return self._RecognizeSubtitleResult
+
+    @RecognizeSubtitleResult.setter
+    def RecognizeSubtitleResult(self, RecognizeSubtitleResult):
+        self._RecognizeSubtitleResult = RecognizeSubtitleResult
+
+    @property
+    def TransSubtitleResult(self):
+        r"""Subtitle translation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubtitleResult
+        """
+        return self._TransSubtitleResult
+
+    @TransSubtitleResult.setter
+    def TransSubtitleResult(self, TransSubtitleResult):
+        self._TransSubtitleResult = TransSubtitleResult
+
+    @property
+    def OutputStorage(self):
+        r"""Storage location of the subtitle file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        if params.get("RecognizeSubtitleResult") is not None:
+            self._RecognizeSubtitleResult = []
+            for item in params.get("RecognizeSubtitleResult"):
+                obj = SubtitleResult()
+                obj._deserialize(item)
+                self._RecognizeSubtitleResult.append(obj)
+        if params.get("TransSubtitleResult") is not None:
+            self._TransSubtitleResult = []
+            for item in params.get("TransSubtitleResult"):
+                obj = SubtitleResult()
+                obj._deserialize(item)
+                self._TransSubtitleResult.append(obj)
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53498,6 +55696,7 @@ class SmartSubtitlesResult(AbstractModel):
 - AsrFullTextRecognition: full speech recognition.
 - TransTextRecognition: speech translation.
 - PureSubtitleTrans: pure subtitle translation.
+- OcrFullTextRecognition: text-based subtitle extraction.
         :type Type: str
         :param _AsrFullTextTask: Full speech recognition result. When Type is
  set to AsrFullTextRecognition, this parameter takes effect.
@@ -53511,11 +55710,16 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _PureSubtitleTransTask: The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PureSubtitleTransTask: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
+        :param _OcrFullTextTask: Text-based subtitle extraction result. This field is valid when the value of Type is
+OcrFullTextRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskFullTextResult`
         """
         self._Type = None
         self._AsrFullTextTask = None
         self._TransTextTask = None
         self._PureSubtitleTransTask = None
+        self._OcrFullTextTask = None
 
     @property
     def Type(self):
@@ -53523,6 +55727,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 - AsrFullTextRecognition: full speech recognition.
 - TransTextRecognition: speech translation.
 - PureSubtitleTrans: pure subtitle translation.
+- OcrFullTextRecognition: text-based subtitle extraction.
         :rtype: str
         """
         return self._Type
@@ -53570,6 +55775,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PureSubtitleTransTask(self, PureSubtitleTransTask):
         self._PureSubtitleTransTask = PureSubtitleTransTask
 
+    @property
+    def OcrFullTextTask(self):
+        r"""Text-based subtitle extraction result. This field is valid when the value of Type is
+OcrFullTextRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskFullTextResult`
+        """
+        return self._OcrFullTextTask
+
+    @OcrFullTextTask.setter
+    def OcrFullTextTask(self, OcrFullTextTask):
+        self._OcrFullTextTask = OcrFullTextTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -53582,6 +55800,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("PureSubtitleTransTask") is not None:
             self._PureSubtitleTransTask = PureSubtitleTransResult()
             self._PureSubtitleTransTask._deserialize(params.get("PureSubtitleTransTask"))
+        if params.get("OcrFullTextTask") is not None:
+            self._OcrFullTextTask = SmartSubtitleTaskFullTextResult()
+            self._OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54311,6 +56532,72 @@ class SubtitlePosition(AbstractModel):
 
     def _deserialize(self, params):
         self._CenterY = params.get("CenterY")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleResult(AbstractModel):
+    r"""Smart subtitle task result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: Language of the subtitle file.
+        :type Language: str
+        :param _Status: Whether the processing is successful.
+        :type Status: str
+        :param _Path: Subtitle file URL.
+        :type Path: str
+        """
+        self._Language = None
+        self._Status = None
+        self._Path = None
+
+    @property
+    def Language(self):
+        r"""Language of the subtitle file.
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Status(self):
+        r"""Whether the processing is successful.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Path(self):
+        r"""Subtitle file URL.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._Status = params.get("Status")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55812,7 +58099,7 @@ Valid values for enhancement TYPE:
 <li>Highlights: highlights.</li>
 <li>OpeningAndEnding: opening and ending clips.</li>
 6. Intelligent recognition specification:
-<li>AIRecognition: major category for recognition without splitting.</li>
+<li>AIRecognition: major category for recognition.</li>
 <li>FaceRecognition: face recognition.</li>
 <li>TextRecognition: optical character recognition.</li>
 <li>ObjectRecognition: object recognition.</li>
@@ -55928,7 +58215,7 @@ Valid values for enhancement TYPE:
 <li>Highlights: highlights.</li>
 <li>OpeningAndEnding: opening and ending clips.</li>
 6. Intelligent recognition specification:
-<li>AIRecognition: major category for recognition without splitting.</li>
+<li>AIRecognition: major category for recognition.</li>
 <li>FaceRecognition: face recognition.</li>
 <li>TextRecognition: optical character recognition.</li>
 <li>ObjectRecognition: object recognition.</li>
@@ -56484,6 +58771,930 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TextTranslationRequest(AbstractModel):
+    r"""TextTranslation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceText: Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.
+        :type SourceText: str
+        :param _Source: Source language. Valid values:
+    "auto": "automatic recognition (recognized as a language).",
+    "ab": "Abkhaz language.",
+    "ace": Acehnese.",
+    "ach": "Acholi.",
+    "af": "Afrikaans.",
+    "ak": "Twi (Akan).",
+    "am": "Amharic",
+    "ar": "Arabic.",
+    "as": "Assamese.",
+    "ay": "Aymara.",
+    "az": "Azerbaijani.",
+    "ba": "Bashkir.",
+    "ban": "Balinese",
+    "bbc": "Batak Toba.",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "Bulgarian.",
+    "bho": "Bhojpuri.",
+    "bik": "Bikol",
+    "bm": "Bambara.",
+    "bn": "Bengali.",
+    "br": "Breton.",
+    "bs": "Bosnian.",
+    "btx": "Batak Karo.",
+    "bts": "Batak Simalungun.",
+    "bua": "Buryat.",
+    "ca": "Catalan.",
+    "ceb": "Cebuano.",
+    "cgg": "Kiga",
+    "chm": "Meadow Mari language.",
+    "ckb": "Kurdish (Sorani).",
+    "cnh": "Hakha Chin.",
+    "co": "Corsican.",
+    "crh": "Crimean Tatar.",
+    "crs": "Seychellois Creole.",
+    "cs": "Czech.",
+    "cv": "Chuvash.",
+    "cy": "Welsh.",
+    "da": "Danish.",
+    "de": "German.",
+    "din": "Dinka",
+    "doi": "Dogri.",
+    "dov": "Dombe.",
+    "dv": "Divehi.",
+    "dz": "Dzongkha.",
+    "ee": "Ewe",
+    "el": "Greek.",
+    "en": "English.",
+    "eo": "Esperanto.",
+    "es": "Spanish.",
+    "et": "Estonian.",
+    "eu": "Basque.",
+    "fa": "Persian.",
+    "ff": "Fula.",
+    "fi": "Finnish.",
+    "fil": "Filipino (Tagalog).",
+    "fj": "Fijian.",
+    "fr": "French.",
+    "fr-CA": "French (Canada).",
+    "fr-FR": "French (France).",
+    "fy": "Frisian.",
+    "ga": "Irish.",
+    "gaa": "Ga.",
+    "gd": "Scottish Gaelic.",
+    "gl": "Galician.",
+    "gn": "Guarani.",
+    "gom": "Goan Konkani.",
+    "gu": "Gujarati.",
+    "gv": "Manx.",
+    "ha": "Hausa",
+    "haw": "Hawaiian.",
+    "he": "Hebrew.",
+    "hi": "Hindi.",
+    "hil": "Hiligaynon.",
+    "hmn": "Hmong.",
+    "hr": "Croatian.",
+    "hrx": "Hunsrik.",
+    "ht": "Haitian Creole.",
+    "hu": "Hungarian.",
+    "hy": "Armenian.",
+    "id": "Indonesian.",
+    "ig": "Igbo",
+    "ilo": "Iloko.",
+    "is": "Icelandic.",
+    "it": "Italian.",
+    "iw": "Hebrew.",
+    "ja": "Japanese.",
+    "jv": "Javanese.",
+    "jw": "Javanese.",
+    "ka": "Georgian.",
+    "kk": "Kazakh.",
+    "km": "Khmer.",
+    "kn": "Kanada.",
+    "ko": "Korean.",
+    "kri": "Krio",
+    "ku": "Kurdish (Kurmanji).",
+    "ktu": "Kituba.",
+    "ky": "Kirghiz.",
+    "la": "Latin.",
+    "lb": "Luxembourgish.",
+    "lg": "Ganda (Luganda).",
+    "li": "Limburgish.",
+    "lij": "Ligurian.",
+    "lmo": "Lombard.",
+    "ln": "Lingala.",
+    "lo": "Lao.",
+    "lt": "Lithuanian.",
+    "ltg": "Latgalian.",
+    "luo": "Luo",
+    "lus": "Mizo.",
+    "lv": "Latvian.",
+    "mai": "Maithili.",
+    "mak": "Makassar.",
+    "mg": "Malagasy.",
+    "mi": "Maori.",
+    "min": "Minangkabau.",
+    "mk": "Macedonian.",
+    "ml": "Malayalam.",
+    "mn": "Mongolian.",
+    "mr": "Marathi.",
+    "ms": "Malay.",
+    "mt": "Maltese.",
+    "my": "Burmese.",
+    "ne": "Nepali.",
+    "new": "Nepali (Newar).",
+    "nl": "Dutch.",
+    "no": "Norwegian.",
+    "nr": "Ndebele (South).",
+    "nso": "Northern Sotho (Sepedi).",
+    "nus": "Nuer.",
+    "ny": "Chichewa (Nyanja).",
+    "oc": "Occitan.",
+    "om": "Oromo",
+    "or": "Odia (Oria).",
+    "pa": "Punjabi.",
+    "pag": "Pangasinan.",
+    "pam": "Kapampangan.",
+    "pap": "Papiamento",
+    "pl": "Polish.",
+    "ps": "Pashto",
+    "pt": "Portuguese.",
+    "pt-BR": "Portuguese (Brazil).",
+    "pt-PT": "Portuguese (Portugal).",
+    "qu": "Quechuan.",
+    "ro": "Romanian.",
+    "rom": "Romani.",
+    "rn": "Rundi",
+    "ru": "Russian.",
+    "rw": "Kinyarwanda.",
+    "sa": "Sanskrit.",
+    "scn": "Sicilian.",
+    "sd": "Sindhi.",
+    "sg": "Sango",
+    "shn": "Shan.",
+    "si": "Sinhalese.",
+    "sk": "Slovak.",
+    "sl": "Slovene.",
+    "sm": "Samoan.",
+    "sn": "Shona.",
+    "so": "Somali.",
+    "sq": "Albanian.",
+    "sr": "Serbian.",
+    "ss": "Swati.",
+    "st": "Sesotho.",
+    "su": "Sundanese.",
+    "sv": "Swedish.",
+    "sw": "Swahili.",
+    "szl": "Silesian.",
+    "ta": "Tamil.",
+    "te": "Telugu.",
+    "tet": "Tetum.",
+    "tg": "Tajik.",
+    "th": "Thai.",
+    "ti": "Tigrinya.",
+    "tk": "Turkmen.",
+    "tl": " Filipino (Tagalog).",
+    "tn": "Tswana.",
+    "tr": "Turkish.",
+    "ts": "Tsonga.",
+    "tt": "Tatar.",
+    "ug": "Uyghur.",
+    "uk": "Ukrainian.",
+    "ur": "Urdu.",
+    "uz": "Uzbek.",
+    "vi": "Vietnamese.",
+    "xh": "Xhosa.",
+    "yi": "Yiddish.",
+    "yo": "Yoruba.",
+    "yua": "Yucatec Maya.",
+    "yue": "Cantonese.",
+    "zh": "Simplified Chinese.",
+    "zh-TW": "Chinese (Traditional).",
+    "zu": "Zulu."
+        :type Source: str
+        :param _Target: Target language. Valid values:
+    "ab": "Abkhaz language.",
+    "ace": "Acehnese.",
+    "ach": "Acholi.",
+    "af": "Afrikaans.",
+    "ak": "Twi (Akan).",
+    "am": "Amharic",
+    "ar": "Arabic.",
+    "as": "Assamese.",
+    "ay": "Aymara.",
+    "az": "Azerbaijani.",
+    "ba": "Bashkir.",
+    "ban": "Balinese",
+    "bbc": "Batak Toba.",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "Bulgarian.",
+    "bho": "Bhojpuri.",
+    "bik": "Bikol",
+    "bm": "Bambara.",
+    "bn": "Bengali.",
+    "br": "Breton.",
+    "bs": "Bosnian.",
+    "btx": "Batak Karo.",
+    "bts": "Batak Simalungun.",
+    "bua": "Buryat.",
+    "ca": "Catalan.",
+    "ceb": "Cebuano.",
+    "cgg": "Kiga",
+    "chm": "Meadow Mari language.",
+    "ckb": "Kurdish (Sorani).",
+    "cnh": "Hakha Chin.",
+    "co": "Corsican.",
+    "crh": "Crimean Tatar.",
+    "crs": "Seychellois Creole.",
+    "cs": "Czech.",
+    "cv": "Chuvash.",
+    "cy": "Welsh.",
+    "da": "Danish.",
+    "de": "German.",
+    "din": "Dinka",
+    "doi": "Dogri.",
+    "dov": "Dombe.",
+    "dv": "Divehi.",
+    "dz": "Dzongkha.",
+    "ee": "Ewe",
+    "el": "Greek.",
+    "en": "English.",
+    "eo": "Esperanto.",
+    "es": "Spanish.",
+    "et": "Estonian.",
+    "eu": "Basque.",
+    "fa": "Persian.",
+    "ff": "Fula.",
+    "fi": "Finnish.",
+    "fil": "Filipino (Tagalog).",
+    "fj": "Fijian.",
+    "fr": "French.",
+    "fr-CA": "French (Canada).",
+    "fr-FR": "French (France).",
+    "fy": "Frisian.",
+    "ga": "Irish.",
+    "gaa": "Ga.",
+    "gd": "Scottish Gaelic.",
+    "gl": "Galician.",
+    "gn": "Guarani.",
+    "gom": "Goan Konkani.",
+    "gu": "Gujarati.",
+    "gv": "Manx.",
+    "ha": "Hausa",
+    "haw": "Hawaiian.",
+    "he": "Hebrew.",
+    "hi": "Hindi.",
+    "hil": "Hiligaynon.",
+    "hmn": "Hmong.",
+    "hr": "Croatian.",
+    "hrx": "Hunsrik.",
+    "ht": "Haitian Creole.",
+    "hu": "Hungarian.",
+    "hy": "Armenian.",
+    "id": "Indonesian.",
+    "ig": "Igbo",
+    "ilo": "Iloko.",
+    "is": "Icelandic.",
+    "it": "Italian.",
+    "iw": "Hebrew.",
+    "ja": "Japanese.",
+    "jv": "Javanese.",
+    "jw": "Javanese.",
+    "ka": "Georgian.",
+    "kk": "Kazakh.",
+    "km": "Khmer.",
+    "kn": "Kanada.",
+    "ko": "Korean.",
+    "kri": "Krio",
+    "ku": "Kurdish (Kurmanji).",
+    "ktu": "Kituba.",
+    "ky": "Kirghiz.",
+    "la": "Latin.",
+    "lb": "Luxembourgish.",
+    "lg": "Ganda (Luganda).",
+    "li": "Limburgish.",
+    "lij": "Ligurian.",
+    "lmo": "Lombard.",
+    "ln": "Lingala.",
+    "lo": "Lao.",
+    "lt": "Lithuanian.",
+    "ltg": "Latgalian.",
+    "luo": "Luo",
+    "lus": "Mizo.",
+    "lv": "Latvian.",
+    "mai": "Maithili.",
+    "mak": "Makassar.",
+    "mg": "Malagasy.",
+    "mi": "Maori.",
+    "min": "Minangkabau.",
+    "mk": "Macedonian.",
+    "ml": "Malayalam.",
+    "mn": "Mongolian.",
+    "mr": "Marathi.",
+    "ms": "Malay.",
+    "mt": "Maltese.",
+    "my": "Burmese.",
+    "ne": "Nepali.",
+    "new": "Nepali (Newar).",
+    "nl": "Dutch.",
+    "no": "Norwegian.",
+    "nr": "Ndebele (South).",
+    "nso": "Northern Sotho (Sepedi).",
+    "nus": "Nuer.",
+    "ny": "Chichewa (Nyanja).",
+    "oc": "Occitan.",
+    "om": "Oromo",
+    "or": "Odia (Oria).",
+    "pa": "Punjabi.",
+    "pag": "Pangasinan.",
+    "pam": "Kapampangan.",
+    "pap": "Papiamento",
+    "pl": "Polish.",
+    "ps": "Pashto",
+    "pt": "Portuguese.",
+    "pt-BR": "Portuguese (Brazil).",
+    "pt-PT": "Portuguese (Portugal).",
+    "qu": "Quechuan.",
+    "ro": "Romanian.",
+    "rom": "Romani.",
+    "rn": "Rundi",
+    "ru": "Russian.",
+    "rw": "Kinyarwanda.",
+    "sa": "Sanskrit.",
+    "scn": "Sicilian.",
+    "sd": "Sindhi.",
+    "sg": "Sango",
+    "shn": "Shan.",
+    "si": "Sinhalese.",
+    "sk": "Slovak.",
+    "sl": "Slovene.",
+    "sm": "Samoan.",
+    "sn": "Shona.",
+    "so": "Somali.",
+    "sq": "Albanian.",
+    "sr": "Serbian.",
+    "ss": "Swati.",
+    "st": "Sesotho.",
+    "su": "Sundanese.",
+    "sv": "Swedish.",
+    "sw": "Swahili.",
+    "szl": "Silesian.",
+    "ta": "Tamil.",
+    "te": "Telugu.",
+    "tet": "Tetum.",
+    "tg": "Tajik.",
+    "th": "Thai.",
+    "ti": "Tigrinya.",
+    "tk": "Turkmen.",
+    "tl": " Filipino (Tagalog).",
+    "tn": "Tswana.",
+    "tr": "Turkish.",
+    "ts": "Tsonga.",
+    "tt": "Tatar.",
+    "ug": "Uyghur.",
+    "uk": "Ukrainian.",
+    "ur": "Urdu.",
+    "uz": "Uzbek.",
+    "vi": "Vietnamese.",
+    "xh": "Xhosa.",
+    "yi": "Yiddish.",
+    "yo": "Yoruba.",
+    "yua": "Yucatec Maya.",
+    "yue": "Cantonese.",
+    "zh": "Simplified Chinese.",
+    "zh-TW": "Chinese (Traditional).",
+    "zu": "Zulu."
+        :type Target: str
+        :param _UserExtPara: User extension parameter.
+        :type UserExtPara: str
+        """
+        self._SourceText = None
+        self._Source = None
+        self._Target = None
+        self._UserExtPara = None
+
+    @property
+    def SourceText(self):
+        r"""Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.
+        :rtype: str
+        """
+        return self._SourceText
+
+    @SourceText.setter
+    def SourceText(self, SourceText):
+        self._SourceText = SourceText
+
+    @property
+    def Source(self):
+        r"""Source language. Valid values:
+    "auto": "automatic recognition (recognized as a language).",
+    "ab": "Abkhaz language.",
+    "ace": Acehnese.",
+    "ach": "Acholi.",
+    "af": "Afrikaans.",
+    "ak": "Twi (Akan).",
+    "am": "Amharic",
+    "ar": "Arabic.",
+    "as": "Assamese.",
+    "ay": "Aymara.",
+    "az": "Azerbaijani.",
+    "ba": "Bashkir.",
+    "ban": "Balinese",
+    "bbc": "Batak Toba.",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "Bulgarian.",
+    "bho": "Bhojpuri.",
+    "bik": "Bikol",
+    "bm": "Bambara.",
+    "bn": "Bengali.",
+    "br": "Breton.",
+    "bs": "Bosnian.",
+    "btx": "Batak Karo.",
+    "bts": "Batak Simalungun.",
+    "bua": "Buryat.",
+    "ca": "Catalan.",
+    "ceb": "Cebuano.",
+    "cgg": "Kiga",
+    "chm": "Meadow Mari language.",
+    "ckb": "Kurdish (Sorani).",
+    "cnh": "Hakha Chin.",
+    "co": "Corsican.",
+    "crh": "Crimean Tatar.",
+    "crs": "Seychellois Creole.",
+    "cs": "Czech.",
+    "cv": "Chuvash.",
+    "cy": "Welsh.",
+    "da": "Danish.",
+    "de": "German.",
+    "din": "Dinka",
+    "doi": "Dogri.",
+    "dov": "Dombe.",
+    "dv": "Divehi.",
+    "dz": "Dzongkha.",
+    "ee": "Ewe",
+    "el": "Greek.",
+    "en": "English.",
+    "eo": "Esperanto.",
+    "es": "Spanish.",
+    "et": "Estonian.",
+    "eu": "Basque.",
+    "fa": "Persian.",
+    "ff": "Fula.",
+    "fi": "Finnish.",
+    "fil": "Filipino (Tagalog).",
+    "fj": "Fijian.",
+    "fr": "French.",
+    "fr-CA": "French (Canada).",
+    "fr-FR": "French (France).",
+    "fy": "Frisian.",
+    "ga": "Irish.",
+    "gaa": "Ga.",
+    "gd": "Scottish Gaelic.",
+    "gl": "Galician.",
+    "gn": "Guarani.",
+    "gom": "Goan Konkani.",
+    "gu": "Gujarati.",
+    "gv": "Manx.",
+    "ha": "Hausa",
+    "haw": "Hawaiian.",
+    "he": "Hebrew.",
+    "hi": "Hindi.",
+    "hil": "Hiligaynon.",
+    "hmn": "Hmong.",
+    "hr": "Croatian.",
+    "hrx": "Hunsrik.",
+    "ht": "Haitian Creole.",
+    "hu": "Hungarian.",
+    "hy": "Armenian.",
+    "id": "Indonesian.",
+    "ig": "Igbo",
+    "ilo": "Iloko.",
+    "is": "Icelandic.",
+    "it": "Italian.",
+    "iw": "Hebrew.",
+    "ja": "Japanese.",
+    "jv": "Javanese.",
+    "jw": "Javanese.",
+    "ka": "Georgian.",
+    "kk": "Kazakh.",
+    "km": "Khmer.",
+    "kn": "Kanada.",
+    "ko": "Korean.",
+    "kri": "Krio",
+    "ku": "Kurdish (Kurmanji).",
+    "ktu": "Kituba.",
+    "ky": "Kirghiz.",
+    "la": "Latin.",
+    "lb": "Luxembourgish.",
+    "lg": "Ganda (Luganda).",
+    "li": "Limburgish.",
+    "lij": "Ligurian.",
+    "lmo": "Lombard.",
+    "ln": "Lingala.",
+    "lo": "Lao.",
+    "lt": "Lithuanian.",
+    "ltg": "Latgalian.",
+    "luo": "Luo",
+    "lus": "Mizo.",
+    "lv": "Latvian.",
+    "mai": "Maithili.",
+    "mak": "Makassar.",
+    "mg": "Malagasy.",
+    "mi": "Maori.",
+    "min": "Minangkabau.",
+    "mk": "Macedonian.",
+    "ml": "Malayalam.",
+    "mn": "Mongolian.",
+    "mr": "Marathi.",
+    "ms": "Malay.",
+    "mt": "Maltese.",
+    "my": "Burmese.",
+    "ne": "Nepali.",
+    "new": "Nepali (Newar).",
+    "nl": "Dutch.",
+    "no": "Norwegian.",
+    "nr": "Ndebele (South).",
+    "nso": "Northern Sotho (Sepedi).",
+    "nus": "Nuer.",
+    "ny": "Chichewa (Nyanja).",
+    "oc": "Occitan.",
+    "om": "Oromo",
+    "or": "Odia (Oria).",
+    "pa": "Punjabi.",
+    "pag": "Pangasinan.",
+    "pam": "Kapampangan.",
+    "pap": "Papiamento",
+    "pl": "Polish.",
+    "ps": "Pashto",
+    "pt": "Portuguese.",
+    "pt-BR": "Portuguese (Brazil).",
+    "pt-PT": "Portuguese (Portugal).",
+    "qu": "Quechuan.",
+    "ro": "Romanian.",
+    "rom": "Romani.",
+    "rn": "Rundi",
+    "ru": "Russian.",
+    "rw": "Kinyarwanda.",
+    "sa": "Sanskrit.",
+    "scn": "Sicilian.",
+    "sd": "Sindhi.",
+    "sg": "Sango",
+    "shn": "Shan.",
+    "si": "Sinhalese.",
+    "sk": "Slovak.",
+    "sl": "Slovene.",
+    "sm": "Samoan.",
+    "sn": "Shona.",
+    "so": "Somali.",
+    "sq": "Albanian.",
+    "sr": "Serbian.",
+    "ss": "Swati.",
+    "st": "Sesotho.",
+    "su": "Sundanese.",
+    "sv": "Swedish.",
+    "sw": "Swahili.",
+    "szl": "Silesian.",
+    "ta": "Tamil.",
+    "te": "Telugu.",
+    "tet": "Tetum.",
+    "tg": "Tajik.",
+    "th": "Thai.",
+    "ti": "Tigrinya.",
+    "tk": "Turkmen.",
+    "tl": " Filipino (Tagalog).",
+    "tn": "Tswana.",
+    "tr": "Turkish.",
+    "ts": "Tsonga.",
+    "tt": "Tatar.",
+    "ug": "Uyghur.",
+    "uk": "Ukrainian.",
+    "ur": "Urdu.",
+    "uz": "Uzbek.",
+    "vi": "Vietnamese.",
+    "xh": "Xhosa.",
+    "yi": "Yiddish.",
+    "yo": "Yoruba.",
+    "yua": "Yucatec Maya.",
+    "yue": "Cantonese.",
+    "zh": "Simplified Chinese.",
+    "zh-TW": "Chinese (Traditional).",
+    "zu": "Zulu."
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""Target language. Valid values:
+    "ab": "Abkhaz language.",
+    "ace": "Acehnese.",
+    "ach": "Acholi.",
+    "af": "Afrikaans.",
+    "ak": "Twi (Akan).",
+    "am": "Amharic",
+    "ar": "Arabic.",
+    "as": "Assamese.",
+    "ay": "Aymara.",
+    "az": "Azerbaijani.",
+    "ba": "Bashkir.",
+    "ban": "Balinese",
+    "bbc": "Batak Toba.",
+    "bem": "Bemba",
+    "bew": "Betawi",
+    "bg": "Bulgarian.",
+    "bho": "Bhojpuri.",
+    "bik": "Bikol",
+    "bm": "Bambara.",
+    "bn": "Bengali.",
+    "br": "Breton.",
+    "bs": "Bosnian.",
+    "btx": "Batak Karo.",
+    "bts": "Batak Simalungun.",
+    "bua": "Buryat.",
+    "ca": "Catalan.",
+    "ceb": "Cebuano.",
+    "cgg": "Kiga",
+    "chm": "Meadow Mari language.",
+    "ckb": "Kurdish (Sorani).",
+    "cnh": "Hakha Chin.",
+    "co": "Corsican.",
+    "crh": "Crimean Tatar.",
+    "crs": "Seychellois Creole.",
+    "cs": "Czech.",
+    "cv": "Chuvash.",
+    "cy": "Welsh.",
+    "da": "Danish.",
+    "de": "German.",
+    "din": "Dinka",
+    "doi": "Dogri.",
+    "dov": "Dombe.",
+    "dv": "Divehi.",
+    "dz": "Dzongkha.",
+    "ee": "Ewe",
+    "el": "Greek.",
+    "en": "English.",
+    "eo": "Esperanto.",
+    "es": "Spanish.",
+    "et": "Estonian.",
+    "eu": "Basque.",
+    "fa": "Persian.",
+    "ff": "Fula.",
+    "fi": "Finnish.",
+    "fil": "Filipino (Tagalog).",
+    "fj": "Fijian.",
+    "fr": "French.",
+    "fr-CA": "French (Canada).",
+    "fr-FR": "French (France).",
+    "fy": "Frisian.",
+    "ga": "Irish.",
+    "gaa": "Ga.",
+    "gd": "Scottish Gaelic.",
+    "gl": "Galician.",
+    "gn": "Guarani.",
+    "gom": "Goan Konkani.",
+    "gu": "Gujarati.",
+    "gv": "Manx.",
+    "ha": "Hausa",
+    "haw": "Hawaiian.",
+    "he": "Hebrew.",
+    "hi": "Hindi.",
+    "hil": "Hiligaynon.",
+    "hmn": "Hmong.",
+    "hr": "Croatian.",
+    "hrx": "Hunsrik.",
+    "ht": "Haitian Creole.",
+    "hu": "Hungarian.",
+    "hy": "Armenian.",
+    "id": "Indonesian.",
+    "ig": "Igbo",
+    "ilo": "Iloko.",
+    "is": "Icelandic.",
+    "it": "Italian.",
+    "iw": "Hebrew.",
+    "ja": "Japanese.",
+    "jv": "Javanese.",
+    "jw": "Javanese.",
+    "ka": "Georgian.",
+    "kk": "Kazakh.",
+    "km": "Khmer.",
+    "kn": "Kanada.",
+    "ko": "Korean.",
+    "kri": "Krio",
+    "ku": "Kurdish (Kurmanji).",
+    "ktu": "Kituba.",
+    "ky": "Kirghiz.",
+    "la": "Latin.",
+    "lb": "Luxembourgish.",
+    "lg": "Ganda (Luganda).",
+    "li": "Limburgish.",
+    "lij": "Ligurian.",
+    "lmo": "Lombard.",
+    "ln": "Lingala.",
+    "lo": "Lao.",
+    "lt": "Lithuanian.",
+    "ltg": "Latgalian.",
+    "luo": "Luo",
+    "lus": "Mizo.",
+    "lv": "Latvian.",
+    "mai": "Maithili.",
+    "mak": "Makassar.",
+    "mg": "Malagasy.",
+    "mi": "Maori.",
+    "min": "Minangkabau.",
+    "mk": "Macedonian.",
+    "ml": "Malayalam.",
+    "mn": "Mongolian.",
+    "mr": "Marathi.",
+    "ms": "Malay.",
+    "mt": "Maltese.",
+    "my": "Burmese.",
+    "ne": "Nepali.",
+    "new": "Nepali (Newar).",
+    "nl": "Dutch.",
+    "no": "Norwegian.",
+    "nr": "Ndebele (South).",
+    "nso": "Northern Sotho (Sepedi).",
+    "nus": "Nuer.",
+    "ny": "Chichewa (Nyanja).",
+    "oc": "Occitan.",
+    "om": "Oromo",
+    "or": "Odia (Oria).",
+    "pa": "Punjabi.",
+    "pag": "Pangasinan.",
+    "pam": "Kapampangan.",
+    "pap": "Papiamento",
+    "pl": "Polish.",
+    "ps": "Pashto",
+    "pt": "Portuguese.",
+    "pt-BR": "Portuguese (Brazil).",
+    "pt-PT": "Portuguese (Portugal).",
+    "qu": "Quechuan.",
+    "ro": "Romanian.",
+    "rom": "Romani.",
+    "rn": "Rundi",
+    "ru": "Russian.",
+    "rw": "Kinyarwanda.",
+    "sa": "Sanskrit.",
+    "scn": "Sicilian.",
+    "sd": "Sindhi.",
+    "sg": "Sango",
+    "shn": "Shan.",
+    "si": "Sinhalese.",
+    "sk": "Slovak.",
+    "sl": "Slovene.",
+    "sm": "Samoan.",
+    "sn": "Shona.",
+    "so": "Somali.",
+    "sq": "Albanian.",
+    "sr": "Serbian.",
+    "ss": "Swati.",
+    "st": "Sesotho.",
+    "su": "Sundanese.",
+    "sv": "Swedish.",
+    "sw": "Swahili.",
+    "szl": "Silesian.",
+    "ta": "Tamil.",
+    "te": "Telugu.",
+    "tet": "Tetum.",
+    "tg": "Tajik.",
+    "th": "Thai.",
+    "ti": "Tigrinya.",
+    "tk": "Turkmen.",
+    "tl": " Filipino (Tagalog).",
+    "tn": "Tswana.",
+    "tr": "Turkish.",
+    "ts": "Tsonga.",
+    "tt": "Tatar.",
+    "ug": "Uyghur.",
+    "uk": "Ukrainian.",
+    "ur": "Urdu.",
+    "uz": "Uzbek.",
+    "vi": "Vietnamese.",
+    "xh": "Xhosa.",
+    "yi": "Yiddish.",
+    "yo": "Yoruba.",
+    "yua": "Yucatec Maya.",
+    "yue": "Cantonese.",
+    "zh": "Simplified Chinese.",
+    "zh-TW": "Chinese (Traditional).",
+    "zu": "Zulu."
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def UserExtPara(self):
+        r"""User extension parameter.
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        self._SourceText = params.get("SourceText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextTranslationResponse(AbstractModel):
+    r"""TextTranslation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetText: Text after translation.
+        :type TargetText: str
+        :param _Source: Source language. See the input parameter Source.
+        :type Source: str
+        :param _Target: Target language. See the input parameter Target.
+        :type Target: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TargetText = None
+        self._Source = None
+        self._Target = None
+        self._RequestId = None
+
+    @property
+    def TargetText(self):
+        r"""Text after translation.
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def Source(self):
+        r"""Source language. See the input parameter Source.
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""Target language. See the input parameter Target.
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TargetText = params.get("TargetText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._RequestId = params.get("RequestId")
 
 
 class TextWatermarkTemplateInput(AbstractModel):
