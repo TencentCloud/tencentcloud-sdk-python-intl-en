@@ -92,9 +92,9 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type MultiAudioTrackEnabled: int
         :param _AudioTracks: Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
         :type AudioTracks: list of AudioTrackInfo
-        :param _VideoEnhanceEnabled: 
+        :param _VideoEnhanceEnabled: Do you want to enable video enhancement? 1: Enable 0: Do not enable.
         :type VideoEnhanceEnabled: int
-        :param _VideoEnhanceSettings: 
+        :param _VideoEnhanceSettings: Video enhancement configuration array.
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
         :param _GopSize: Key frame interval, 300-10000, optional.
         :type GopSize: int
@@ -102,6 +102,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type GopSizeUnits: str
         :param _ColorSpaceSettings: Color space setting.
         :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
+        :param _ForensicWatermarkIds: Traceability watermark.
+        :type ForensicWatermarkIds: list of str
         """
         self._Name = None
         self._NeedVideo = None
@@ -138,6 +140,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._GopSize = None
         self._GopSizeUnits = None
         self._ColorSpaceSettings = None
+        self._ForensicWatermarkIds = None
 
     @property
     def Name(self):
@@ -478,7 +481,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoEnhanceEnabled(self):
-        r"""
+        r"""Do you want to enable video enhancement? 1: Enable 0: Do not enable.
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -489,7 +492,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoEnhanceSettings(self):
-        r"""
+        r"""Video enhancement configuration array.
         :rtype: list of VideoEnhanceSetting
         """
         return self._VideoEnhanceSettings
@@ -530,6 +533,17 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
     @ColorSpaceSettings.setter
     def ColorSpaceSettings(self, ColorSpaceSettings):
         self._ColorSpaceSettings = ColorSpaceSettings
+
+    @property
+    def ForensicWatermarkIds(self):
+        r"""Traceability watermark.
+        :rtype: list of str
+        """
+        return self._ForensicWatermarkIds
+
+    @ForensicWatermarkIds.setter
+    def ForensicWatermarkIds(self, ForensicWatermarkIds):
+        self._ForensicWatermarkIds = ForensicWatermarkIds
 
 
     def _deserialize(self, params):
@@ -588,6 +602,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         if params.get("ColorSpaceSettings") is not None:
             self._ColorSpaceSettings = ColorSpaceSetting()
             self._ColorSpaceSettings._deserialize(params.get("ColorSpaceSettings"))
+        self._ForensicWatermarkIds = params.get("ForensicWatermarkIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -846,20 +861,20 @@ class AbWatermarkInputInfo(AbstractModel):
 
 
 class AbWatermarkSettingsReq(AbstractModel):
-    r"""
+    r"""AB watermark configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Optional values: A/B.
         :type Type: str
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""
+        r"""Optional values: A/B.
         :rtype: str
         """
         return self._Type
@@ -5412,9 +5427,9 @@ class DescribeTextSettings(AbstractModel):
         :type Text: str
         :param _Location: Origin
         :type Location: str
-        :param _XPos: The watermark image’s horizontal distance from the origin as a percentage of the video width
+        :param _XPos: The watermark image's horizontal distance from the origin as a percentage of the video width
         :type XPos: int
-        :param _YPos: The watermark image’s vertical distance from the origin as a percentage of the video height
+        :param _YPos: The watermark image's vertical distance from the origin as a percentage of the video height
         :type YPos: int
         :param _FontSize: Font size
         :type FontSize: int
@@ -5452,7 +5467,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def XPos(self):
-        r"""The watermark image’s horizontal distance from the origin as a percentage of the video width
+        r"""The watermark image's horizontal distance from the origin as a percentage of the video width
         :rtype: int
         """
         return self._XPos
@@ -5463,7 +5478,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def YPos(self):
-        r"""The watermark image’s vertical distance from the origin as a percentage of the video height
+        r"""The watermark image's vertical distance from the origin as a percentage of the video height
         :rtype: int
         """
         return self._YPos
@@ -12778,9 +12793,9 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Notification type. Currently only supports URLs
         :type Type: str
-        :param _NotifyUrl: 
+        :param _NotifyUrl: Callback URL. Starting with http/https, supporting a maximum of 512 characters
         :type NotifyUrl: str
         """
         self._Type = None
@@ -12788,7 +12803,7 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Notification type. Currently only supports URLs
         :rtype: str
         """
         return self._Type
@@ -12799,7 +12814,7 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        r"""
+        r"""Callback URL. Starting with http/https, supporting a maximum of 512 characters
         :rtype: str
         """
         return self._NotifyUrl
@@ -13251,14 +13266,14 @@ class UrlInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Video URL, starting with http/https, supports up to 512 characters, currently only supports complete single file videos, does not support streaming formats based on playlists and segments (such as HLS or DASH)
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Video URL, starting with http/https, supports up to 512 characters, currently only supports complete single file videos, does not support streaming formats based on playlists and segments (such as HLS or DASH)
         :rtype: str
         """
         return self._Url
@@ -13377,15 +13392,15 @@ class VideoCodecDetail(AbstractModel):
 
 
 class VideoEnhanceSetting(AbstractModel):
-    r"""
+    r"""VideoEnhanceSetting
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Video enhancement types, optional: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance"
         :type Type: str
-        :param _Strength: 
+        :param _Strength: Video enhancement intensity, 0-1.0, granularity 0.1
         :type Strength: float
         """
         self._Type = None
@@ -13393,7 +13408,7 @@ class VideoEnhanceSetting(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Video enhancement types, optional: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance"
         :rtype: str
         """
         return self._Type
@@ -13404,7 +13419,7 @@ class VideoEnhanceSetting(AbstractModel):
 
     @property
     def Strength(self):
-        r"""
+        r"""Video enhancement intensity, 0-1.0, granularity 0.1
         :rtype: float
         """
         return self._Strength
@@ -13537,12 +13552,14 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
         :param _VideoCodecDetails: Video encoding configuration.
         :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
-        :param _VideoEnhanceEnabled: 
+        :param _VideoEnhanceEnabled: Video enhancement switch, 1: on 0: off.
         :type VideoEnhanceEnabled: int
-        :param _VideoEnhanceSettings: 
+        :param _VideoEnhanceSettings: Video enhancement parameter array.
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
         :param _ColorSpaceSettings: Color space setting.
         :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
+        :param _ForensicWatermarkIds: Traceability watermark.
+        :type ForensicWatermarkIds: list of str
         """
         self._Name = None
         self._Vcodec = None
@@ -13565,6 +13582,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._VideoEnhanceEnabled = None
         self._VideoEnhanceSettings = None
         self._ColorSpaceSettings = None
+        self._ForensicWatermarkIds = None
 
     @property
     def Name(self):
@@ -13767,7 +13785,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceEnabled(self):
-        r"""
+        r"""Video enhancement switch, 1: on 0: off.
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -13778,7 +13796,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceSettings(self):
-        r"""
+        r"""Video enhancement parameter array.
         :rtype: list of VideoEnhanceSetting
         """
         return self._VideoEnhanceSettings
@@ -13797,6 +13815,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     @ColorSpaceSettings.setter
     def ColorSpaceSettings(self, ColorSpaceSettings):
         self._ColorSpaceSettings = ColorSpaceSettings
+
+    @property
+    def ForensicWatermarkIds(self):
+        r"""Traceability watermark.
+        :rtype: list of str
+        """
+        return self._ForensicWatermarkIds
+
+    @ForensicWatermarkIds.setter
+    def ForensicWatermarkIds(self, ForensicWatermarkIds):
+        self._ForensicWatermarkIds = ForensicWatermarkIds
 
 
     def _deserialize(self, params):
@@ -13832,6 +13861,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("ColorSpaceSettings") is not None:
             self._ColorSpaceSettings = ColorSpaceSetting()
             self._ColorSpaceSettings._deserialize(params.get("ColorSpaceSettings"))
+        self._ForensicWatermarkIds = params.get("ForensicWatermarkIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
