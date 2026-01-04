@@ -26,6 +26,29 @@ class HunyuanClient(AbstractClient):
     _service = 'hunyuan'
 
 
+    def QueryHunyuan3DPartJob(self, request):
+        r"""This API is used to query the generation task of a component.
+
+        :param request: Request instance for QueryHunyuan3DPartJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuan3DPartJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuan3DPartJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuan3DPartJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuan3DPartJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuanTo3DProJob(self, request):
         r"""This API is used to intelligently generate 3D content based on the HunYuan Large Model and input text descriptions/images.
         This API is used to provide 3 concurrent tasks by default, which can process 3 submitted tasks simultaneously. The next task can be processed only after the previous task is completed.
@@ -50,6 +73,53 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuanTo3DRapidJob(self, request):
+        r"""This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.
+        This API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+
+        :param request: Request instance for QueryHunyuanTo3DRapidJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DRapidJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DRapidJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuanTo3DRapidJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuanTo3DRapidJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuan3DPartJob(self, request):
+        r"""This API is used to automatically perform component identification and generation based on the model structure after inputting a 3D model file.
+
+        :param request: Request instance for SubmitHunyuan3DPartJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuan3DPartJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuan3DPartJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuan3DPartJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuan3DPartJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitHunyuanTo3DProJob(self, request):
         r"""This API is used to intelligently generate 3D content based on the HunYuan Large Model and input text descriptions/images.
         This API is used to provide 3 concurrent tasks by default. Up to 3 submitted tasks can be processed simultaneously. A new task can be processed only after the previous one is completed.
@@ -65,6 +135,30 @@ class HunyuanClient(AbstractClient):
             body = self.call("SubmitHunyuanTo3DProJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitHunyuanTo3DProJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DRapidJob(self, request):
+        r"""This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.
+        This API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+
+        :param request: Request instance for SubmitHunyuanTo3DRapidJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DRapidJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DRapidJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DRapidJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DRapidJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

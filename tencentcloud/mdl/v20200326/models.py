@@ -896,6 +896,140 @@ class AbWatermarkSettingsReq(AbstractModel):
         
 
 
+class AbWatermarkSettingsResp(AbstractModel):
+    r"""AbWatermarkSettingsResp
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: AB watermark type.
+        :type Type: str
+        :param _Content: Watermark payload.
+        :type Content: str
+        """
+        self._Type = None
+        self._Content = None
+
+    @property
+    def Type(self):
+        r"""AB watermark type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        r"""Watermark payload.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdBreakSetting(AbstractModel):
+    r"""AdBreakSetting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: Advertising type, currently supports L-SQUEEZE
+        :type Format: str
+        :param _Duration: Duration, in milliseconds, requires 1000<duration<=600000. The current accuracy is seconds, which is a multiple of 1000
+        :type Duration: int
+        :param _LSqueezeSetting: L-type compression recovery configuration
+        :type LSqueezeSetting: :class:`tencentcloud.mdl.v20200326.models.LSqueezeSetting`
+        :param _AdSource: AdSource type, supports UPLOAD_CREATIVES
+        :type AdSource: str
+        """
+        self._Format = None
+        self._Duration = None
+        self._LSqueezeSetting = None
+        self._AdSource = None
+
+    @property
+    def Format(self):
+        r"""Advertising type, currently supports L-SQUEEZE
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Duration(self):
+        r"""Duration, in milliseconds, requires 1000<duration<=600000. The current accuracy is seconds, which is a multiple of 1000
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def LSqueezeSetting(self):
+        r"""L-type compression recovery configuration
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.LSqueezeSetting`
+        """
+        return self._LSqueezeSetting
+
+    @LSqueezeSetting.setter
+    def LSqueezeSetting(self, LSqueezeSetting):
+        self._LSqueezeSetting = LSqueezeSetting
+
+    @property
+    def AdSource(self):
+        r"""AdSource type, supports UPLOAD_CREATIVES
+        :rtype: str
+        """
+        return self._AdSource
+
+    @AdSource.setter
+    def AdSource(self, AdSource):
+        self._AdSource = AdSource
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._Duration = params.get("Duration")
+        if params.get("LSqueezeSetting") is not None:
+            self._LSqueezeSetting = LSqueezeSetting()
+            self._LSqueezeSetting._deserialize(params.get("LSqueezeSetting"))
+        self._AdSource = params.get("AdSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdditionalRateSetting(AbstractModel):
     r"""additional bit rate configuration.
 
@@ -2289,15 +2423,15 @@ class CreateImageSettings(AbstractModel):
         :type ImageContent: str
         :param _Location: Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
         :type Location: str
-        :param _XPos: The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        :param _XPos: The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :type XPos: int
-        :param _YPos: The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        :param _YPos: The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :type YPos: int
-        :param _Width: The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.
+        :param _Width: The watermark image's width as a percentage of the video width. Value range: 0-100. Default: 10.
 `0` means to scale the width proportionally to the height.
 You cannot set both `Width` and `Height` to `0`.
         :type Width: int
-        :param _Height: The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.
+        :param _Height: The watermark image's height as a percentage of the video height. Value range: 0-100. Default: 10.
 `0` means to scale the height proportionally to the width.
 You cannot set both `Width` and `Height` to `0`.
         :type Height: int
@@ -2345,7 +2479,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def XPos(self):
-        r"""The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._XPos
@@ -2356,7 +2490,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def YPos(self):
-        r"""The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._YPos
@@ -2367,7 +2501,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def Width(self):
-        r"""The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark image's width as a percentage of the video width. Value range: 0-100. Default: 10.
 `0` means to scale the width proportionally to the height.
 You cannot set both `Width` and `Height` to `0`.
         :rtype: int
@@ -2380,7 +2514,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def Height(self):
-        r"""The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark image's height as a percentage of the video height. Value range: 0-100. Default: 10.
 `0` means to scale the height proportionally to the width.
 You cannot set both `Width` and `Height` to `0`.
         :rtype: int
@@ -3238,9 +3372,9 @@ class CreateTextSettings(AbstractModel):
         :type Text: str
         :param _Location: Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
         :type Location: str
-        :param _XPos: The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        :param _XPos: The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :type XPos: int
-        :param _YPos: The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        :param _YPos: The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :type YPos: int
         :param _FontSize: Font size. Value range: 25-50.
         :type FontSize: int
@@ -3278,7 +3412,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def XPos(self):
-        r"""The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._XPos
@@ -3289,7 +3423,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def YPos(self):
-        r"""The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._YPos
@@ -5943,6 +6077,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _AttachedChannels: List of channel IDs the watermark is bound to
 Note: This field may return `null`, indicating that no valid value was found.
         :type AttachedChannels: list of str
+        :param _AbWatermarkSettings: AB watermark configuration.
+        :type AbWatermarkSettings: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsResp`
         """
         self._Id = None
         self._Name = None
@@ -5951,6 +6087,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._TextSettings = None
         self._UpdateTime = None
         self._AttachedChannels = None
+        self._AbWatermarkSettings = None
 
     @property
     def Id(self):
@@ -6033,6 +6170,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     def AttachedChannels(self, AttachedChannels):
         self._AttachedChannels = AttachedChannels
 
+    @property
+    def AbWatermarkSettings(self):
+        r"""AB watermark configuration.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsResp`
+        """
+        return self._AbWatermarkSettings
+
+    @AbWatermarkSettings.setter
+    def AbWatermarkSettings(self, AbWatermarkSettings):
+        self._AbWatermarkSettings = AbWatermarkSettings
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6046,6 +6194,9 @@ Note: This field may return `null`, indicating that no valid value was found.
             self._TextSettings._deserialize(params.get("TextSettings"))
         self._UpdateTime = params.get("UpdateTime")
         self._AttachedChannels = params.get("AttachedChannels")
+        if params.get("AbWatermarkSettings") is not None:
+            self._AbWatermarkSettings = AbWatermarkSettingsResp()
+            self._AbWatermarkSettings._deserialize(params.get("AbWatermarkSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6595,6 +6746,8 @@ class EventSettingsReq(AbstractModel):
         :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         :param _MotionGraphicsActivateSetting: Dynamic graphic overlay activate configuration
         :type MotionGraphicsActivateSetting: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
+        :param _AdBreakSetting: Ad Settings
+        :type AdBreakSetting: :class:`tencentcloud.mdl.v20200326.models.AdBreakSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -6609,6 +6762,7 @@ class EventSettingsReq(AbstractModel):
         self._StaticImageActivateSetting = None
         self._StaticImageDeactivateSetting = None
         self._MotionGraphicsActivateSetting = None
+        self._AdBreakSetting = None
 
     @property
     def EventType(self):
@@ -6753,6 +6907,17 @@ class EventSettingsReq(AbstractModel):
     def MotionGraphicsActivateSetting(self, MotionGraphicsActivateSetting):
         self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting
 
+    @property
+    def AdBreakSetting(self):
+        r"""Ad Settings
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AdBreakSetting`
+        """
+        return self._AdBreakSetting
+
+    @AdBreakSetting.setter
+    def AdBreakSetting(self, AdBreakSetting):
+        self._AdBreakSetting = AdBreakSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -6786,6 +6951,9 @@ class EventSettingsReq(AbstractModel):
         if params.get("MotionGraphicsActivateSetting") is not None:
             self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting()
             self._MotionGraphicsActivateSetting._deserialize(params.get("MotionGraphicsActivateSetting"))
+        if params.get("AdBreakSetting") is not None:
+            self._AdBreakSetting = AdBreakSetting()
+            self._AdBreakSetting._deserialize(params.get("AdBreakSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6829,6 +6997,8 @@ class EventSettingsResp(AbstractModel):
         :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         :param _MotionGraphicsActivateSetting: Dynamic graphic overlay activate configuration.
         :type MotionGraphicsActivateSetting: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsActivateSetting`
+        :param _AdBreakSetting: Ad Settings
+        :type AdBreakSetting: :class:`tencentcloud.mdl.v20200326.models.AdBreakSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -6843,6 +7013,7 @@ class EventSettingsResp(AbstractModel):
         self._StaticImageActivateSetting = None
         self._StaticImageDeactivateSetting = None
         self._MotionGraphicsActivateSetting = None
+        self._AdBreakSetting = None
 
     @property
     def EventType(self):
@@ -6987,6 +7158,17 @@ class EventSettingsResp(AbstractModel):
     def MotionGraphicsActivateSetting(self, MotionGraphicsActivateSetting):
         self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting
 
+    @property
+    def AdBreakSetting(self):
+        r"""Ad Settings
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.AdBreakSetting`
+        """
+        return self._AdBreakSetting
+
+    @AdBreakSetting.setter
+    def AdBreakSetting(self, AdBreakSetting):
+        self._AdBreakSetting = AdBreakSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -7020,6 +7202,9 @@ class EventSettingsResp(AbstractModel):
         if params.get("MotionGraphicsActivateSetting") is not None:
             self._MotionGraphicsActivateSetting = MotionGraphicsActivateSetting()
             self._MotionGraphicsActivateSetting._deserialize(params.get("MotionGraphicsActivateSetting"))
+        if params.get("AdBreakSetting") is not None:
+            self._AdBreakSetting = AdBreakSetting()
+            self._AdBreakSetting._deserialize(params.get("AdBreakSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8577,6 +8762,117 @@ class InputTracks(AbstractModel):
         
 
 
+class LSqueezeSetting(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: Advertising benchmark position, 0 top left, 1 top right, 2 bottom right, 3 bottom left, default value 0, corresponding TOP_LEFT,TOP_RIGHT,BOTTOM_RIGHT,BOTTOM_LEFT
+        :type Location: int
+        :param _OffsetX: The default value for the percentage in the X-axis direction is 20, with a range of 0-50
+        :type OffsetX: int
+        :param _OffsetY: The default value for the percentage in the Y-axis direction is 20, with a range of 0-50
+        :type OffsetY: int
+        :param _BackgroundImgUrl: Background image URL, starting with http/https and ending in jpg/jpeg/png
+        :type BackgroundImgUrl: str
+        :param _SqueezeInPeriod: Compress time. Unit ms, default value 2000, range: 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration
+        :type SqueezeInPeriod: int
+        :param _SqueezeOutPeriod: Restore to full screen time. Unit ms, default value 2000, range 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration
+        :type SqueezeOutPeriod: int
+        """
+        self._Location = None
+        self._OffsetX = None
+        self._OffsetY = None
+        self._BackgroundImgUrl = None
+        self._SqueezeInPeriod = None
+        self._SqueezeOutPeriod = None
+
+    @property
+    def Location(self):
+        r"""Advertising benchmark position, 0 top left, 1 top right, 2 bottom right, 3 bottom left, default value 0, corresponding TOP_LEFT,TOP_RIGHT,BOTTOM_RIGHT,BOTTOM_LEFT
+        :rtype: int
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def OffsetX(self):
+        r"""The default value for the percentage in the X-axis direction is 20, with a range of 0-50
+        :rtype: int
+        """
+        return self._OffsetX
+
+    @OffsetX.setter
+    def OffsetX(self, OffsetX):
+        self._OffsetX = OffsetX
+
+    @property
+    def OffsetY(self):
+        r"""The default value for the percentage in the Y-axis direction is 20, with a range of 0-50
+        :rtype: int
+        """
+        return self._OffsetY
+
+    @OffsetY.setter
+    def OffsetY(self, OffsetY):
+        self._OffsetY = OffsetY
+
+    @property
+    def BackgroundImgUrl(self):
+        r"""Background image URL, starting with http/https and ending in jpg/jpeg/png
+        :rtype: str
+        """
+        return self._BackgroundImgUrl
+
+    @BackgroundImgUrl.setter
+    def BackgroundImgUrl(self, BackgroundImgUrl):
+        self._BackgroundImgUrl = BackgroundImgUrl
+
+    @property
+    def SqueezeInPeriod(self):
+        r"""Compress time. Unit ms, default value 2000, range: 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration
+        :rtype: int
+        """
+        return self._SqueezeInPeriod
+
+    @SqueezeInPeriod.setter
+    def SqueezeInPeriod(self, SqueezeInPeriod):
+        self._SqueezeInPeriod = SqueezeInPeriod
+
+    @property
+    def SqueezeOutPeriod(self):
+        r"""Restore to full screen time. Unit ms, default value 2000, range 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration
+        :rtype: int
+        """
+        return self._SqueezeOutPeriod
+
+    @SqueezeOutPeriod.setter
+    def SqueezeOutPeriod(self, SqueezeOutPeriod):
+        self._SqueezeOutPeriod = SqueezeOutPeriod
+
+
+    def _deserialize(self, params):
+        self._Location = params.get("Location")
+        self._OffsetX = params.get("OffsetX")
+        self._OffsetY = params.get("OffsetY")
+        self._BackgroundImgUrl = params.get("BackgroundImgUrl")
+        self._SqueezeInPeriod = params.get("SqueezeInPeriod")
+        self._SqueezeOutPeriod = params.get("SqueezeOutPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogInfo(AbstractModel):
     r"""Log information.
 
@@ -9509,6 +9805,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         :type TimedMetadataSettings: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
         :param _FrameCaptureTemplateNames: Frame capture template name array. Quantity limit: [0,1].
         :type FrameCaptureTemplateNames: list of str
+        :param _NameModifier: Name modification for sub m3u8.
+        :type NameModifier: str
         """
         self._Name = None
         self._AudioTemplateNames = None
@@ -9518,6 +9816,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._CaptionTemplateNames = None
         self._TimedMetadataSettings = None
         self._FrameCaptureTemplateNames = None
+        self._NameModifier = None
 
     @property
     def Name(self):
@@ -9611,6 +9910,17 @@ Note: this field may return `null`, indicating that no valid value was found.
     def FrameCaptureTemplateNames(self, FrameCaptureTemplateNames):
         self._FrameCaptureTemplateNames = FrameCaptureTemplateNames
 
+    @property
+    def NameModifier(self):
+        r"""Name modification for sub m3u8.
+        :rtype: str
+        """
+        return self._NameModifier
+
+    @NameModifier.setter
+    def NameModifier(self, NameModifier):
+        self._NameModifier = NameModifier
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9625,6 +9935,7 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._TimedMetadataSettings = TimedMetadataSettingInfo()
             self._TimedMetadataSettings._deserialize(params.get("TimedMetadataSettings"))
         self._FrameCaptureTemplateNames = params.get("FrameCaptureTemplateNames")
+        self._NameModifier = params.get("NameModifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9751,11 +10062,20 @@ For other inputs, the quantity is 1.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input audio.
 For other inputs, the quantity is 1.
         :type Audio: list of AudioPipelineInputStatistics
+        :param _SessionId: Session ID
+        :type SessionId: str
+        :param _RTT: Rtt time, in milliseconds
+        :type RTT: int
+        :param _NetworkValid: Is the Network parameter valid? 0 indicates invalid, 1 indicates valid
+        :type NetworkValid: int
         """
         self._Timestamp = None
         self._NetworkIn = None
         self._Video = None
         self._Audio = None
+        self._SessionId = None
+        self._RTT = None
+        self._NetworkValid = None
 
     @property
     def Timestamp(self):
@@ -9805,6 +10125,39 @@ For other inputs, the quantity is 1.
     def Audio(self, Audio):
         self._Audio = Audio
 
+    @property
+    def SessionId(self):
+        r"""Session ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RTT(self):
+        r"""Rtt time, in milliseconds
+        :rtype: int
+        """
+        return self._RTT
+
+    @RTT.setter
+    def RTT(self, RTT):
+        self._RTT = RTT
+
+    @property
+    def NetworkValid(self):
+        r"""Is the Network parameter valid? 0 indicates invalid, 1 indicates valid
+        :rtype: int
+        """
+        return self._NetworkValid
+
+    @NetworkValid.setter
+    def NetworkValid(self, NetworkValid):
+        self._NetworkValid = NetworkValid
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -9821,6 +10174,9 @@ For other inputs, the quantity is 1.
                 obj = AudioPipelineInputStatistics()
                 obj._deserialize(item)
                 self._Audio.append(obj)
+        self._SessionId = params.get("SessionId")
+        self._RTT = params.get("RTT")
+        self._NetworkValid = params.get("NetworkValid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9908,9 +10264,12 @@ In seconds, indicating data time.
         :type Timestamp: int
         :param _NetworkOut: Output bandwidth in bps.
         :type NetworkOut: int
+        :param _NetworkValid: Is the Network parameter valid? 0 indicates invalid, 1 indicates valid
+        :type NetworkValid: int
         """
         self._Timestamp = None
         self._NetworkOut = None
+        self._NetworkValid = None
 
     @property
     def Timestamp(self):
@@ -9935,10 +10294,22 @@ In seconds, indicating data time.
     def NetworkOut(self, NetworkOut):
         self._NetworkOut = NetworkOut
 
+    @property
+    def NetworkValid(self):
+        r"""Is the Network parameter valid? 0 indicates invalid, 1 indicates valid
+        :rtype: int
+        """
+        return self._NetworkValid
+
+    @NetworkValid.setter
+    def NetworkValid(self, NetworkValid):
+        self._NetworkValid = NetworkValid
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
         self._NetworkOut = params.get("NetworkOut")
+        self._NetworkValid = params.get("NetworkValid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10565,7 +10936,7 @@ class SegmentationDescriptorInfo(AbstractModel):
         :type UPID: str
         :param _TypeID: Corresponds to SCTE-35 segmentation_type_id.
         :type TypeID: int
-        :param _Num: Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        :param _Num: Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.
         :type Num: int
         :param _Expected: Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
         :type Expected: int
@@ -10665,7 +11036,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def Num(self):
-        r"""Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        r"""Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.
         :rtype: int
         """
         return self._Num
@@ -10753,7 +11124,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
         :type UPID: str
         :param _TypeID: Corresponds to SCTE-35 segmentation_type_id.
         :type TypeID: int
-        :param _Num: Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        :param _Num: Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.
         :type Num: int
         :param _Expected: Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
         :type Expected: int
@@ -10853,7 +11224,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def Num(self):
-        r"""Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        r"""Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.
         :rtype: int
         """
         return self._Num

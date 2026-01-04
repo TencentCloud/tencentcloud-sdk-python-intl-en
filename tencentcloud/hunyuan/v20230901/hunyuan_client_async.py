@@ -25,6 +25,24 @@ class HunyuanClient(AbstractClient):
     _endpoint = 'hunyuan.intl.tencentcloudapi.com'
     _service = 'hunyuan'
 
+    async def QueryHunyuan3DPartJob(
+            self,
+            request: models.QueryHunyuan3DPartJobRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuan3DPartJobResponse:
+        """
+        This API is used to query the generation task of a component.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuan3DPartJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuan3DPartJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuanTo3DProJob(
             self,
             request: models.QueryHunyuanTo3DProJobRequest,
@@ -44,6 +62,43 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryHunyuanTo3DRapidJob(
+            self,
+            request: models.QueryHunyuanTo3DRapidJobRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuanTo3DRapidJobResponse:
+        """
+        This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.
+        This API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuanTo3DRapidJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuan3DPartJob(
+            self,
+            request: models.SubmitHunyuan3DPartJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuan3DPartJobResponse:
+        """
+        This API is used to automatically perform component identification and generation based on the model structure after inputting a 3D model file.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuan3DPartJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuan3DPartJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitHunyuanTo3DProJob(
             self,
             request: models.SubmitHunyuanTo3DProJobRequest,
@@ -58,6 +113,25 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "SubmitHunyuanTo3DProJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHunyuanTo3DProJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanTo3DRapidJob(
+            self,
+            request: models.SubmitHunyuanTo3DRapidJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanTo3DRapidJobResponse:
+        """
+        This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.
+        This API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanTo3DRapidJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanTo3DRapidJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
