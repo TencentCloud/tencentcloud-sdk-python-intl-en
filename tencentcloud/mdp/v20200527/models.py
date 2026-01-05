@@ -578,9 +578,9 @@ class CdnDomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalSize: 
+        :param _TotalSize: Total list size.
         :type TotalSize: int
-        :param _Records: 
+        :param _Records: List of associated domain name information.
         :type Records: list of DomainRecordInfo
         """
         self._TotalSize = None
@@ -588,7 +588,7 @@ class CdnDomainInfo(AbstractModel):
 
     @property
     def TotalSize(self):
-        r"""
+        r"""Total list size.
         :rtype: int
         """
         return self._TotalSize
@@ -599,7 +599,7 @@ class CdnDomainInfo(AbstractModel):
 
     @property
     def Records(self):
-        r"""
+        r"""List of associated domain name information.
         :rtype: list of DomainRecordInfo
         """
         return self._Records
@@ -801,9 +801,15 @@ class ClipRangeInfo(AbstractModel):
         :type Type: str
         :param _Offset: Offset, valid when Type is SpecifyTimeRange.
         :type Offset: int
+        :param _StartOffset: Start offset, Valid when the Type is SpecifyTimeRange.
+        :type StartOffset: int
+        :param _EndOffset: End offset, valid when Type is SpecifyTimeRange.
+        :type EndOffset: int
         """
         self._Type = None
         self._Offset = None
+        self._StartOffset = None
+        self._EndOffset = None
 
     @property
     def Type(self):
@@ -831,10 +837,34 @@ class ClipRangeInfo(AbstractModel):
 
         self._Offset = Offset
 
+    @property
+    def StartOffset(self):
+        r"""Start offset, Valid when the Type is SpecifyTimeRange.
+        :rtype: int
+        """
+        return self._StartOffset
+
+    @StartOffset.setter
+    def StartOffset(self, StartOffset):
+        self._StartOffset = StartOffset
+
+    @property
+    def EndOffset(self):
+        r"""End offset, valid when Type is SpecifyTimeRange.
+        :rtype: int
+        """
+        return self._EndOffset
+
+    @EndOffset.setter
+    def EndOffset(self, EndOffset):
+        self._EndOffset = EndOffset
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Offset = params.get("Offset")
+        self._StartOffset = params.get("StartOffset")
+        self._EndOffset = params.get("EndOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -908,11 +938,11 @@ class CosInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: 
+        :param _Bucket: COS bucket name
         :type Bucket: str
-        :param _Region: 
+        :param _Region: Region
         :type Region: str
-        :param _Object: 
+        :param _Object: File object path
         :type Object: str
         """
         self._Bucket = None
@@ -921,7 +951,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""
+        r"""COS bucket name
         :rtype: str
         """
         return self._Bucket
@@ -932,7 +962,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -943,7 +973,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Object(self):
-        r"""
+        r"""File object path
         :rtype: str
         """
         return self._Object
@@ -6298,13 +6328,13 @@ class DomainRecordInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CdnDomain: 
+        :param _CdnDomain: Associated playback domain name.
         :type CdnDomain: str
-        :param _Region: 
+        :param _Region: Belonging region.
         :type Region: str
-        :param _ChannelId: 
+        :param _ChannelId: Channel ID.
         :type ChannelId: str
-        :param _Id: 
+        :param _Id: The ID of a record
         :type Id: str
         """
         self._CdnDomain = None
@@ -6314,7 +6344,7 @@ class DomainRecordInfo(AbstractModel):
 
     @property
     def CdnDomain(self):
-        r"""
+        r"""Associated playback domain name.
         :rtype: str
         """
         return self._CdnDomain
@@ -6325,7 +6355,7 @@ class DomainRecordInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Belonging region.
         :rtype: str
         """
         return self._Region
@@ -6336,7 +6366,7 @@ class DomainRecordInfo(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""
+        r"""Channel ID.
         :rtype: str
         """
         return self._ChannelId
@@ -6347,7 +6377,7 @@ class DomainRecordInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""The ID of a record
         :rtype: str
         """
         return self._Id
@@ -6478,6 +6508,8 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
         :type DRMEnabled: bool
         :param _DRMInfo: DRM configuration information.
         :type DRMInfo: :class:`tencentcloud.mdp.v20200527.models.DRMInfo`
+        :param _AbsolutePathEnable: The switch of absolute path.
+        :type AbsolutePathEnable: bool
         """
         self._Name = None
         self._Url = None
@@ -6492,6 +6524,7 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
         self._CustomUrlParam = None
         self._DRMEnabled = None
         self._DRMInfo = None
+        self._AbsolutePathEnable = None
 
     @property
     def Name(self):
@@ -6637,6 +6670,17 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
     def DRMInfo(self, DRMInfo):
         self._DRMInfo = DRMInfo
 
+    @property
+    def AbsolutePathEnable(self):
+        r"""The switch of absolute path.
+        :rtype: bool
+        """
+        return self._AbsolutePathEnable
+
+    @AbsolutePathEnable.setter
+    def AbsolutePathEnable(self, AbsolutePathEnable):
+        self._AbsolutePathEnable = AbsolutePathEnable
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6658,6 +6702,7 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
         if params.get("DRMInfo") is not None:
             self._DRMInfo = DRMInfo()
             self._DRMInfo._deserialize(params.get("DRMInfo"))
+        self._AbsolutePathEnable = params.get("AbsolutePathEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6701,6 +6746,8 @@ class HarvestJobResp(AbstractModel):
         :type ChannelId: str
         :param _Region: The region corresponding to the harvest job.
         :type Region: str
+        :param _CallbackURL: Callback URL after recording is completed
+        :type CallbackURL: str
         """
         self._ID = None
         self._ChannelName = None
@@ -6715,6 +6762,7 @@ class HarvestJobResp(AbstractModel):
         self._CreateTime = None
         self._ChannelId = None
         self._Region = None
+        self._CallbackURL = None
 
     @property
     def ID(self):
@@ -6859,6 +6907,17 @@ class HarvestJobResp(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def CallbackURL(self):
+        r"""Callback URL after recording is completed
+        :rtype: str
+        """
+        return self._CallbackURL
+
+    @CallbackURL.setter
+    def CallbackURL(self, CallbackURL):
+        self._CallbackURL = CallbackURL
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -6874,6 +6933,7 @@ class HarvestJobResp(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ChannelId = params.get("ChannelId")
         self._Region = params.get("Region")
+        self._CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9916,6 +9976,8 @@ class SSAIChannelInfo(AbstractModel):
         :type SSAIInfo: :class:`tencentcloud.mdp.v20200527.models.SSAIConf`
         :param _Region: Region info
         :type Region: str
+        :param _SessionInitPrefix: Used for clickthrough addresses
+        :type SessionInitPrefix: str
         """
         self._ID = None
         self._Name = None
@@ -9923,6 +9985,7 @@ class SSAIChannelInfo(AbstractModel):
         self._PlaybackPrefix = None
         self._SSAIInfo = None
         self._Region = None
+        self._SessionInitPrefix = None
 
     @property
     def ID(self):
@@ -9990,6 +10053,17 @@ class SSAIChannelInfo(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def SessionInitPrefix(self):
+        r"""Used for clickthrough addresses
+        :rtype: str
+        """
+        return self._SessionInitPrefix
+
+    @SessionInitPrefix.setter
+    def SessionInitPrefix(self, SessionInitPrefix):
+        self._SessionInitPrefix = SessionInitPrefix
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -10000,6 +10074,7 @@ class SSAIChannelInfo(AbstractModel):
             self._SSAIInfo = SSAIConf()
             self._SSAIInfo._deserialize(params.get("SSAIInfo"))
         self._Region = params.get("Region")
+        self._SessionInitPrefix = params.get("SessionInitPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11050,9 +11125,10 @@ class SourceTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 
+        :param _Key: The key of the source tag supports capital letters, numbers, underscores, and dashes from 1 to 50 digits
         :type Key: str
-        :param _Value: 
+        :param _Value: The value of the source tag supports letters, numbers, underscores, dashes, periods, and percent signs (%) ranging from 1 to 200 characters
+
         :type Value: str
         """
         self._Key = None
@@ -11060,7 +11136,7 @@ class SourceTag(AbstractModel):
 
     @property
     def Key(self):
-        r"""
+        r"""The key of the source tag supports capital letters, numbers, underscores, and dashes from 1 to 50 digits
         :rtype: str
         """
         return self._Key
@@ -11071,7 +11147,8 @@ class SourceTag(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""The value of the source tag supports letters, numbers, underscores, dashes, periods, and percent signs (%) ranging from 1 to 200 characters
+
         :rtype: str
         """
         return self._Value
@@ -11824,6 +11901,28 @@ class UsageDetail(AbstractModel):
         :type PreReplacedNum: int
         :param _PreReplaceRate: Ad replacement rate.
         :type PreReplaceRate: float
+        :param _ADMarkerFound: Number of ad tags found in the list
+        :type ADMarkerFound: int
+        :param _MakeAdsRequest: Request advertising frequency from ADS
+        :type MakeAdsRequest: int
+        :param _VASTResponse: Received VAST returns from ADS
+        :type VASTResponse: int
+        :param _FilledAvail: Successfully filled the ad count
+        :type FilledAvail: int
+        :param _WarningNoAd: The number of issues encountered during ad replacement execution
+        :type WarningNoAd: int
+        :param _ErrorAdsTimeout: The number of timeouts returned by ADS
+        :type ErrorAdsTimeout: int
+        :param _EmptyVASTResponse: The number of empty VAST responses returned by ADS
+        :type EmptyVASTResponse: int
+        :param _EmptyVMAPResponse: The number of empty VMAP responses returned by ADS
+        :type EmptyVMAPResponse: int
+        :param _Date: Date
+        :type Date: str
+        :param _StartTime: Start time
+        :type StartTime: str
+        :param _EndTime: End time
+        :type EndTime: str
         """
         self._UniqId = None
         self._ChannelId = None
@@ -11843,6 +11942,17 @@ class UsageDetail(AbstractModel):
         self._PreReqNum = None
         self._PreReplacedNum = None
         self._PreReplaceRate = None
+        self._ADMarkerFound = None
+        self._MakeAdsRequest = None
+        self._VASTResponse = None
+        self._FilledAvail = None
+        self._WarningNoAd = None
+        self._ErrorAdsTimeout = None
+        self._EmptyVASTResponse = None
+        self._EmptyVMAPResponse = None
+        self._Date = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def UniqId(self):
@@ -11978,6 +12088,8 @@ class UsageDetail(AbstractModel):
 
     @property
     def AdMarkerTime(self):
+        warnings.warn("parameter `AdMarkerTime` is deprecated", DeprecationWarning) 
+
         r"""Advertising tag time.
         :rtype: float
         """
@@ -11985,10 +12097,14 @@ class UsageDetail(AbstractModel):
 
     @AdMarkerTime.setter
     def AdMarkerTime(self, AdMarkerTime):
+        warnings.warn("parameter `AdMarkerTime` is deprecated", DeprecationWarning) 
+
         self._AdMarkerTime = AdMarkerTime
 
     @property
     def ReplacedTime(self):
+        warnings.warn("parameter `ReplacedTime` is deprecated", DeprecationWarning) 
+
         r"""Personalization replacement time.
         :rtype: float
         """
@@ -11996,10 +12112,14 @@ class UsageDetail(AbstractModel):
 
     @ReplacedTime.setter
     def ReplacedTime(self, ReplacedTime):
+        warnings.warn("parameter `ReplacedTime` is deprecated", DeprecationWarning) 
+
         self._ReplacedTime = ReplacedTime
 
     @property
     def MidFillRate(self):
+        warnings.warn("parameter `MidFillRate` is deprecated", DeprecationWarning) 
+
         r"""Fill factor for personalized ads.
         :rtype: float
         """
@@ -12007,10 +12127,14 @@ class UsageDetail(AbstractModel):
 
     @MidFillRate.setter
     def MidFillRate(self, MidFillRate):
+        warnings.warn("parameter `MidFillRate` is deprecated", DeprecationWarning) 
+
         self._MidFillRate = MidFillRate
 
     @property
     def PreReqNum(self):
+        warnings.warn("parameter `PreReqNum` is deprecated", DeprecationWarning) 
+
         r"""Number of pre-roll ad requests.
         :rtype: int
         """
@@ -12018,10 +12142,14 @@ class UsageDetail(AbstractModel):
 
     @PreReqNum.setter
     def PreReqNum(self, PreReqNum):
+        warnings.warn("parameter `PreReqNum` is deprecated", DeprecationWarning) 
+
         self._PreReqNum = PreReqNum
 
     @property
     def PreReplacedNum(self):
+        warnings.warn("parameter `PreReplacedNum` is deprecated", DeprecationWarning) 
+
         r"""Number of pre-roll ad replacements.
         :rtype: int
         """
@@ -12029,10 +12157,14 @@ class UsageDetail(AbstractModel):
 
     @PreReplacedNum.setter
     def PreReplacedNum(self, PreReplacedNum):
+        warnings.warn("parameter `PreReplacedNum` is deprecated", DeprecationWarning) 
+
         self._PreReplacedNum = PreReplacedNum
 
     @property
     def PreReplaceRate(self):
+        warnings.warn("parameter `PreReplaceRate` is deprecated", DeprecationWarning) 
+
         r"""Ad replacement rate.
         :rtype: float
         """
@@ -12040,7 +12172,130 @@ class UsageDetail(AbstractModel):
 
     @PreReplaceRate.setter
     def PreReplaceRate(self, PreReplaceRate):
+        warnings.warn("parameter `PreReplaceRate` is deprecated", DeprecationWarning) 
+
         self._PreReplaceRate = PreReplaceRate
+
+    @property
+    def ADMarkerFound(self):
+        r"""Number of ad tags found in the list
+        :rtype: int
+        """
+        return self._ADMarkerFound
+
+    @ADMarkerFound.setter
+    def ADMarkerFound(self, ADMarkerFound):
+        self._ADMarkerFound = ADMarkerFound
+
+    @property
+    def MakeAdsRequest(self):
+        r"""Request advertising frequency from ADS
+        :rtype: int
+        """
+        return self._MakeAdsRequest
+
+    @MakeAdsRequest.setter
+    def MakeAdsRequest(self, MakeAdsRequest):
+        self._MakeAdsRequest = MakeAdsRequest
+
+    @property
+    def VASTResponse(self):
+        r"""Received VAST returns from ADS
+        :rtype: int
+        """
+        return self._VASTResponse
+
+    @VASTResponse.setter
+    def VASTResponse(self, VASTResponse):
+        self._VASTResponse = VASTResponse
+
+    @property
+    def FilledAvail(self):
+        r"""Successfully filled the ad count
+        :rtype: int
+        """
+        return self._FilledAvail
+
+    @FilledAvail.setter
+    def FilledAvail(self, FilledAvail):
+        self._FilledAvail = FilledAvail
+
+    @property
+    def WarningNoAd(self):
+        r"""The number of issues encountered during ad replacement execution
+        :rtype: int
+        """
+        return self._WarningNoAd
+
+    @WarningNoAd.setter
+    def WarningNoAd(self, WarningNoAd):
+        self._WarningNoAd = WarningNoAd
+
+    @property
+    def ErrorAdsTimeout(self):
+        r"""The number of timeouts returned by ADS
+        :rtype: int
+        """
+        return self._ErrorAdsTimeout
+
+    @ErrorAdsTimeout.setter
+    def ErrorAdsTimeout(self, ErrorAdsTimeout):
+        self._ErrorAdsTimeout = ErrorAdsTimeout
+
+    @property
+    def EmptyVASTResponse(self):
+        r"""The number of empty VAST responses returned by ADS
+        :rtype: int
+        """
+        return self._EmptyVASTResponse
+
+    @EmptyVASTResponse.setter
+    def EmptyVASTResponse(self, EmptyVASTResponse):
+        self._EmptyVASTResponse = EmptyVASTResponse
+
+    @property
+    def EmptyVMAPResponse(self):
+        r"""The number of empty VMAP responses returned by ADS
+        :rtype: int
+        """
+        return self._EmptyVMAPResponse
+
+    @EmptyVMAPResponse.setter
+    def EmptyVMAPResponse(self, EmptyVMAPResponse):
+        self._EmptyVMAPResponse = EmptyVMAPResponse
+
+    @property
+    def Date(self):
+        r"""Date
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def StartTime(self):
+        r"""Start time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
@@ -12062,6 +12317,17 @@ class UsageDetail(AbstractModel):
         self._PreReqNum = params.get("PreReqNum")
         self._PreReplacedNum = params.get("PreReplacedNum")
         self._PreReplaceRate = params.get("PreReplaceRate")
+        self._ADMarkerFound = params.get("ADMarkerFound")
+        self._MakeAdsRequest = params.get("MakeAdsRequest")
+        self._VASTResponse = params.get("VASTResponse")
+        self._FilledAvail = params.get("FilledAvail")
+        self._WarningNoAd = params.get("WarningNoAd")
+        self._ErrorAdsTimeout = params.get("ErrorAdsTimeout")
+        self._EmptyVASTResponse = params.get("EmptyVASTResponse")
+        self._EmptyVMAPResponse = params.get("EmptyVMAPResponse")
+        self._Date = params.get("Date")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
