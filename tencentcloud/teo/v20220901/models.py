@@ -25129,7 +25129,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :param _MetricNames: Metric list. Valid values:
 <Li>l7Flow_outFlux: L7 EdgeOne response traffic. Unit: byte;</li><Li>l7Flow_inFlux: L7 client request traffic. Unit: byte;</li><Li>l7Flow_flux: L7 total traffic (including EdgeOne response traffic and client request traffic). Unit: byte;</li><Li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth. Unit: bps;</li><Li>l7Flow_inBandwidth: L7 client request bandwidth. Unit: bps;</li><Li>l7Flow_bandwidth: L7 total bandwidth (including EdgeOne response bandwidth and client request bandwidth). Unit: bps;</li><Li>l7Flow_request: L7 request count. Unit: times;</li><Li>l7Flow_avgResponseTime: Average L7 edge response time. Unit: ms (milliseconds);</li><Li>l7Flow_avgFirstByteResponseTime: Average L7 edge first byte response time. Unit: ms.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: Site ID list. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site IDs can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. To query account-level data, you must have resource permissions for all sites in this API.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _Interval: Query period granularity. Valid values:
 <li>min: 1 minute;</li>
@@ -25137,7 +25137,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li>hour: 1 hour;</li>
 <li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
-        :param _Filters: Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.comom/document/product/1552/98219?from_cn_redirect=1#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
+        :param _Filters: Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.com/document/product/1145/56985#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
 If needed, limit the site or content identifier by importing the corresponding value in the `ZoneIds.N` parameter.
         :type Filters: list of QueryCondition
         :param _Area: Data ownership region. this parameter is deprecated. please filter data by client region in `Filters.country`.
@@ -25187,7 +25187,7 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def ZoneIds(self):
-        r"""Site ID list. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site IDs can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. To query account-level data, you must have resource permissions for all sites in this API.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -25213,7 +25213,7 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def Filters(self):
-        r"""Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.comom/document/product/1552/98219?from_cn_redirect=1#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
+        r"""Filter criteria used when filtering data. valid values refer to the available filter options for L7 access traffic, bandwidth, and request count in the [metric analysis filtering condition description](https://www.tencentcloud.com/document/product/1145/56985#1aaf1150-55a4-4b4d-b103-3a8317ac7945).
 If needed, limit the site or content identifier by importing the corresponding value in the `ZoneIds.N` parameter.
         :rtype: list of QueryCondition
         """
