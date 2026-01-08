@@ -2517,7 +2517,7 @@ class BackupConfig(AbstractModel):
         r"""
         :param _ReplicationMode: Replication mode of secondary database 2. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param _Zone: Name of the AZ of secondary database 2, such as ap-shanghai-1
+        :param _Zone: Name of the AZ of secondary database 2, such as ap-shanghai-2
         :type Zone: str
         :param _Vip: Private IP address of secondary database 2
         :type Vip: str
@@ -2542,7 +2542,7 @@ class BackupConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Name of the AZ of secondary database 2, such as ap-shanghai-1
+        r"""Name of the AZ of secondary database 2, such as ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -12154,7 +12154,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: Master instance deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
         :type DeployMode: int
-        :param _Zone: Instance AZ information in the format of "ap-shanghai-1".
+        :param _Zone: Instance AZ information in the format of "ap-shanghai-2".
         :type Zone: str
         :param _SlaveConfig: Configurations of the replica node
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
@@ -12199,7 +12199,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Zone(self):
-        r"""Instance AZ information in the format of "ap-shanghai-1".
+        r"""Instance AZ information in the format of "ap-shanghai-2".
         :rtype: str
         """
         return self._Zone
@@ -26643,7 +26643,7 @@ class RoInstanceInfo(AbstractModel):
         :type Weight: int
         :param _Region: RO instance region name, such as ap-shanghai
         :type Region: str
-        :param _Zone: Name of RO AZ, such as ap-shanghai-1
+        :param _Zone: Name of RO AZ, such as ap-shanghai-2
         :type Zone: str
         :param _InstanceId: RO instance ID in the format of cdbro-c1nl9rpv
         :type InstanceId: str
@@ -26764,7 +26764,7 @@ class RoInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Name of RO AZ, such as ap-shanghai-1
+        r"""Name of RO AZ, such as ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -27871,7 +27871,7 @@ class SlaveConfig(AbstractModel):
         r"""
         :param _ReplicationMode: Replication mode of the secondary database. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param _Zone: AZ name of the secondary database, such as ap-shanghai-1
+        :param _Zone: AZ name of the secondary database, such as ap-shanghai-2
         :type Zone: str
         """
         self._ReplicationMode = None
@@ -27890,7 +27890,7 @@ class SlaveConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ name of the secondary database, such as ap-shanghai-1
+        r"""AZ name of the secondary database, such as ap-shanghai-2
         :rtype: str
         """
         return self._Zone

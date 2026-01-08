@@ -396,26 +396,29 @@ class CreateApplicationRequest(AbstractModel):
         :type PlatformId: str
         :param _TeamId: Team ID
         :type TeamId: str
-        :param _ApplicationType: Application type. 1: Test; 2: Formal
-        :type ApplicationType: int
         :param _Intro: Introduction
         :type Intro: str
+        :param _ApplicationType: Application type. 1: Test; 2: Formal
+        :type ApplicationType: int
         :param _AndroidAppKey: Android app package name
         :type AndroidAppKey: str
         :param _IosAppKey: iOS App bundleId
         :type IosAppKey: str
         :param _Remark: Remarks
         :type Remark: str
+        :param _Scheme: Scheme
+        :type Scheme: str
         """
         self._ApplicationName = None
         self._Logo = None
         self._PlatformId = None
         self._TeamId = None
-        self._ApplicationType = None
         self._Intro = None
+        self._ApplicationType = None
         self._AndroidAppKey = None
         self._IosAppKey = None
         self._Remark = None
+        self._Scheme = None
 
     @property
     def ApplicationName(self):
@@ -462,17 +465,6 @@ class CreateApplicationRequest(AbstractModel):
         self._TeamId = TeamId
 
     @property
-    def ApplicationType(self):
-        r"""Application type. 1: Test; 2: Formal
-        :rtype: int
-        """
-        return self._ApplicationType
-
-    @ApplicationType.setter
-    def ApplicationType(self, ApplicationType):
-        self._ApplicationType = ApplicationType
-
-    @property
     def Intro(self):
         r"""Introduction
         :rtype: str
@@ -484,7 +476,24 @@ class CreateApplicationRequest(AbstractModel):
         self._Intro = Intro
 
     @property
+    def ApplicationType(self):
+        warnings.warn("parameter `ApplicationType` is deprecated", DeprecationWarning) 
+
+        r"""Application type. 1: Test; 2: Formal
+        :rtype: int
+        """
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        warnings.warn("parameter `ApplicationType` is deprecated", DeprecationWarning) 
+
+        self._ApplicationType = ApplicationType
+
+    @property
     def AndroidAppKey(self):
+        warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
+
         r"""Android app package name
         :rtype: str
         """
@@ -492,10 +501,14 @@ class CreateApplicationRequest(AbstractModel):
 
     @AndroidAppKey.setter
     def AndroidAppKey(self, AndroidAppKey):
+        warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
+
         self._AndroidAppKey = AndroidAppKey
 
     @property
     def IosAppKey(self):
+        warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
+
         r"""iOS App bundleId
         :rtype: str
         """
@@ -503,10 +516,14 @@ class CreateApplicationRequest(AbstractModel):
 
     @IosAppKey.setter
     def IosAppKey(self, IosAppKey):
+        warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
+
         self._IosAppKey = IosAppKey
 
     @property
     def Remark(self):
+        warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
+
         r"""Remarks
         :rtype: str
         """
@@ -514,7 +531,20 @@ class CreateApplicationRequest(AbstractModel):
 
     @Remark.setter
     def Remark(self, Remark):
+        warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
+
         self._Remark = Remark
+
+    @property
+    def Scheme(self):
+        r"""Scheme
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
 
 
     def _deserialize(self, params):
@@ -522,11 +552,12 @@ class CreateApplicationRequest(AbstractModel):
         self._Logo = params.get("Logo")
         self._PlatformId = params.get("PlatformId")
         self._TeamId = params.get("TeamId")
-        self._ApplicationType = params.get("ApplicationType")
         self._Intro = params.get("Intro")
+        self._ApplicationType = params.get("ApplicationType")
         self._AndroidAppKey = params.get("AndroidAppKey")
         self._IosAppKey = params.get("IosAppKey")
         self._Remark = params.get("Remark")
+        self._Scheme = params.get("Scheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -590,13 +621,10 @@ class CreateApplicationSensitiveAPIReq(AbstractModel):
     def __init__(self):
         r"""
         :param _APIName: API name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIName: str
         :param _APIDesc: API description
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIDesc: str
-        :param _APIType: API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIType: API type. 1: system; 2: custom.
         :type APIType: int
         """
         self._APIName = None
@@ -606,7 +634,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIName(self):
         r"""API name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIName
@@ -618,7 +645,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIDesc(self):
         r"""API description
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIDesc
@@ -629,8 +655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIType(self):
-        r"""API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API type. 1: system; 2: custom.
         :rtype: int
         """
         return self._APIType
@@ -940,16 +965,12 @@ class CreateGlobalDomainResp(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: Result
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param _RepeatUrls: List of duplicate domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RepeatUrls: Indicates the duplicate domain name.
         :type RepeatUrls: list of str
-        :param _ExistsWhiteUrls: List of allowed domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExistsWhiteUrls: Lists allowed domain names.
         :type ExistsWhiteUrls: list of str
-        :param _ExistsBlackUrls: List of blocked domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExistsBlackUrls: Indicates the domain name already exists in the blocklist.
         :type ExistsBlackUrls: list of str
         """
         self._Result = None
@@ -960,7 +981,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Result(self):
         r"""Result
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
         return self._Result
@@ -971,8 +991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RepeatUrls(self):
-        r"""List of duplicate domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Indicates the duplicate domain name.
         :rtype: list of str
         """
         return self._RepeatUrls
@@ -983,8 +1002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExistsWhiteUrls(self):
-        r"""List of allowed domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Lists allowed domain names.
         :rtype: list of str
         """
         return self._ExistsWhiteUrls
@@ -995,8 +1013,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExistsBlackUrls(self):
-        r"""List of blocked domain names
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Indicates the domain name already exists in the blocklist.
         :rtype: list of str
         """
         return self._ExistsBlackUrls
@@ -1262,7 +1279,6 @@ class CreateMNPDomainACLResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1273,7 +1289,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -1561,7 +1576,6 @@ class CreateMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1572,7 +1586,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -1703,16 +1716,14 @@ class CreateMNPVersionResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: ID of the task to create a mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskId: Specifies the ID of the task to create a mini program version.
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""ID of the task to create a mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the ID of the task to create a mini program version.
         :rtype: str
         """
         return self._TaskId
@@ -1793,7 +1804,6 @@ class CreatePresetKeyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.PresetResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1804,7 +1814,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.PresetResp`
         """
         return self._Data
@@ -2239,7 +2248,6 @@ class DeleteApplicationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2250,7 +2258,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -2529,7 +2536,6 @@ class DeleteMNPResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2540,7 +2546,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -2834,7 +2839,6 @@ class DeleteUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2845,7 +2849,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -2882,14 +2885,14 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
         r"""
         :param _ApplicationId: Application ID
         :type ApplicationId: str
-        :param _AppType: Application platform. 2: Android; 3: iOS
-        :type AppType: int
         :param _PlatformId: Platform ID
         :type PlatformId: str
+        :param _AppType: Application platform. 2: Android; 3: iOS
+        :type AppType: int
         """
         self._ApplicationId = None
-        self._AppType = None
         self._PlatformId = None
+        self._AppType = None
 
     @property
     def ApplicationId(self):
@@ -2903,17 +2906,6 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
         self._ApplicationId = ApplicationId
 
     @property
-    def AppType(self):
-        r"""Application platform. 2: Android; 3: iOS
-        :rtype: int
-        """
-        return self._AppType
-
-    @AppType.setter
-    def AppType(self, AppType):
-        self._AppType = AppType
-
-    @property
     def PlatformId(self):
         r"""Platform ID
         :rtype: str
@@ -2924,11 +2916,26 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
     def PlatformId(self, PlatformId):
         self._PlatformId = PlatformId
 
+    @property
+    def AppType(self):
+        warnings.warn("parameter `AppType` is deprecated", DeprecationWarning) 
+
+        r"""Application platform. 2: Android; 3: iOS
+        :rtype: int
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        warnings.warn("parameter `AppType` is deprecated", DeprecationWarning) 
+
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
-        self._AppType = params.get("AppType")
         self._PlatformId = params.get("PlatformId")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2992,49 +2999,36 @@ class DescribeApplicationListData(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param _AppIdentityId: App ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AppIdentityId: App Id.
         :type AppIdentityId: int
         :param _ApplicationName: Name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
         :param _Logo: Icon
         :type Logo: str
         :param _Remark: Remarks
         :type Remark: str
         :param _AndroidAppKey: Android app package name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AndroidAppKey: str
         :param _IosAppKey: iOS App bundleId
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IosAppKey: str
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _UpdateUser: Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateUser: Specifies the updater.
         :type UpdateUser: str
         :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         :param _Intro: Introduction
         :type Intro: str
-        :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TeamId: Team Id.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _SensitiveApiCount: Number of sensitive APIs
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SensitiveApiCount: Number of sensitive apis.
         :type SensitiveApiCount: int
         :param _ApplicationType: Application type. 1: Test; 2: Formal
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationType: int
         """
         self._ApplicationId = None
@@ -3057,7 +3051,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -3068,8 +3061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppIdentityId(self):
-        r"""App ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""App Id.
         :rtype: int
         """
         return self._AppIdentityId
@@ -3081,7 +3073,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -3115,7 +3106,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AndroidAppKey(self):
         r"""Android app package name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AndroidAppKey
@@ -3127,7 +3117,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IosAppKey(self):
         r"""iOS App bundleId
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IosAppKey
@@ -3139,7 +3128,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -3151,7 +3139,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -3162,8 +3149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateUser(self):
-        r"""Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the updater.
         :rtype: str
         """
         return self._UpdateUser
@@ -3175,7 +3161,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UpdateTime(self):
         r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTime
@@ -3197,8 +3182,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TeamId(self):
-        r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Team Id.
         :rtype: str
         """
         return self._TeamId
@@ -3210,7 +3194,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -3221,8 +3204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SensitiveApiCount(self):
-        r"""Number of sensitive APIs
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of sensitive apis.
         :rtype: int
         """
         return self._SensitiveApiCount
@@ -3234,7 +3216,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationType(self):
         r"""Application type. 1: Test; 2: Formal
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ApplicationType
@@ -3375,10 +3356,8 @@ class DescribeApplicationListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeApplicationListData
         """
         self._TotalCount = None
@@ -3387,7 +3366,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -3399,7 +3377,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeApplicationListData
         """
         return self._DataList
@@ -3531,53 +3508,39 @@ class DescribeApplicationResp(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param _AppIdentityId: Product ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AppIdentityId: Product ID.
         :type AppIdentityId: int
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param _Logo: Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Logo: Specifies the application icon.
         :type Logo: str
         :param _Remark: Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
         :param _AndroidAppKey: Android package name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AndroidAppKey: str
         :param _IosAppKey: iOS bundleId
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IosAppKey: str
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _UpdateUser: Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateUser: Specifies the updater.
         :type UpdateUser: str
         :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param _Intro: Application description
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Intro: Describes the application description.
         :type Intro: str
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _SensitiveApiCount: Number of sensitive APIs
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SensitiveApiCount: Number of sensitive apis.
         :type SensitiveApiCount: int
         :param _ApplicationType: Application type. 1: Test; 2: Formal
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationType: int
+        :param _Scheme: Specifies the application Scheme.
+        :type Scheme: str
         """
         self._ApplicationId = None
         self._AppIdentityId = None
@@ -3595,11 +3558,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TeamName = None
         self._SensitiveApiCount = None
         self._ApplicationType = None
+        self._Scheme = None
 
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -3610,8 +3573,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppIdentityId(self):
-        r"""Product ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product ID.
         :rtype: int
         """
         return self._AppIdentityId
@@ -3623,7 +3585,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -3634,8 +3595,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Logo(self):
-        r"""Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the application icon.
         :rtype: str
         """
         return self._Logo
@@ -3647,7 +3607,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Remark(self):
         r"""Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Remark
@@ -3659,7 +3618,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AndroidAppKey(self):
         r"""Android package name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AndroidAppKey
@@ -3671,7 +3629,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IosAppKey(self):
         r"""iOS bundleId
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IosAppKey
@@ -3683,7 +3640,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -3695,7 +3651,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -3706,8 +3661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateUser(self):
-        r"""Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the updater.
         :rtype: str
         """
         return self._UpdateUser
@@ -3719,7 +3673,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UpdateTime(self):
         r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTime
@@ -3730,8 +3683,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Intro(self):
-        r"""Application description
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Describes the application description.
         :rtype: str
         """
         return self._Intro
@@ -3743,7 +3695,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -3755,7 +3706,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -3766,8 +3716,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SensitiveApiCount(self):
-        r"""Number of sensitive APIs
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of sensitive apis.
         :rtype: int
         """
         return self._SensitiveApiCount
@@ -3779,7 +3728,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationType(self):
         r"""Application type. 1: Test; 2: Formal
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ApplicationType
@@ -3787,6 +3735,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ApplicationType.setter
     def ApplicationType(self, ApplicationType):
         self._ApplicationType = ApplicationType
+
+    @property
+    def Scheme(self):
+        r"""Specifies the application Scheme.
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
 
 
     def _deserialize(self, params):
@@ -3806,6 +3765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TeamName = params.get("TeamName")
         self._SensitiveApiCount = params.get("SensitiveApiCount")
         self._ApplicationType = params.get("ApplicationType")
+        self._Scheme = params.get("Scheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3875,7 +3835,6 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
         :param _APIMethod: API request method
         :type APIMethod: str
         :param _APIDesc: API description
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIDesc: str
         :param _CreateUser: Creator
         :type CreateUser: str
@@ -3886,25 +3845,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _UpdateTime: Update time
         :type UpdateTime: str
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _ApplicationLogo: Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationLogo: Specifies the application icon.
         :type ApplicationLogo: str
-        :param _APIType: API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIType: API type. 1: system; 2: custom.
         :type APIType: int
-        :param _Status: API status. 0: Public; 1: Restricted
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: API status. 0: public; 1: restricted.
         :type Status: int
         """
         self._APIId = None
@@ -3959,7 +3911,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIDesc(self):
         r"""API description
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIDesc
@@ -4015,7 +3966,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -4027,7 +3977,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -4039,7 +3988,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -4051,7 +3999,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -4062,8 +4009,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationLogo(self):
-        r"""Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the application icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -4074,8 +4020,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIType(self):
-        r"""API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API type. 1: system; 2: custom.
         :rtype: int
         """
         return self._APIType
@@ -4086,8 +4031,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""API status. 0: Public; 1: Restricted
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API status. 0: public; 1: restricted.
         :rtype: int
         """
         return self._Status
@@ -4242,10 +4186,8 @@ class DescribeApplicationSensitiveAPIListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeApplicationSensitiveAPIListData
         """
         self._TotalCount = None
@@ -4254,7 +4196,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -4266,7 +4207,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeApplicationSensitiveAPIListData
         """
         return self._DataList
@@ -4346,11 +4286,9 @@ class DescribeDomainInfoParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainUrl: Multiple domain separators ';'
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DomainUrl: Multiple domain separators ';'.
         :type DomainUrl: str
-        :param _DomainType: Domain type 1-requests domain 2-WebView load domain
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DomainType: Domain type 1-requests domain 2-business domain.
         :type DomainType: int
         """
         self._DomainUrl = None
@@ -4358,8 +4296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainUrl(self):
-        r"""Multiple domain separators ';'
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Multiple domain separators ';'.
         :rtype: str
         """
         return self._DomainUrl
@@ -4370,8 +4307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainType(self):
-        r"""Domain type 1-requests domain 2-WebView load domain
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Domain type 1-requests domain 2-business domain.
         :rtype: int
         """
         return self._DomainType
@@ -4543,25 +4479,18 @@ class DescribeGlobalDomainsListData(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: Domain ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainId: int
         :param _DomainUrl: Domain name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainUrl: str
-        :param _DomainType: Type. 1: Allowed; 2: Blocked
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DomainType: Type. 1: allowlist; 2: blocklist.
         :type DomainType: int
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _UpdateUser: Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateUser: Specifies the updater.
         :type UpdateUser: str
         :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
         self._DomainId = None
@@ -4575,7 +4504,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DomainId(self):
         r"""Domain ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DomainId
@@ -4587,7 +4515,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DomainUrl(self):
         r"""Domain name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DomainUrl
@@ -4598,8 +4525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainType(self):
-        r"""Type. 1: Allowed; 2: Blocked
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Type. 1: allowlist; 2: blocklist.
         :rtype: int
         """
         return self._DomainType
@@ -4611,7 +4537,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -4623,7 +4548,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -4634,8 +4558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateUser(self):
-        r"""Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the updater.
         :rtype: str
         """
         return self._UpdateUser
@@ -4647,7 +4570,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UpdateTime(self):
         r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTime
@@ -4682,11 +4604,9 @@ class DescribeGlobalDomainsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of results
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Total number
         :type TotalCount: int
-        :param _DataList: Domain name information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DataList: Describes the domain information.
         :type DataList: list of DescribeGlobalDomainsListData
         """
         self._TotalCount = None
@@ -4694,8 +4614,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of results
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -4706,8 +4625,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataList(self):
-        r"""Domain name information
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Describes the domain information.
         :rtype: list of DescribeGlobalDomainsListData
         """
         return self._DataList
@@ -4843,62 +4761,43 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval request ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalNo: Approval ticket ID
         :type ApprovalNo: str
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param _ApprovalStatus: Approval status : 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalStatus: Approval status. valid values: 1 (processing), 2 (rejected), 3 (approved), 4 (cancelled).
         :type ApprovalStatus: int
         :param _MNPId: Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPId: str
-        :param _MNPVersion: Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersion: Mini program version.
         :type MNPVersion: str
         :param _MNPVersionId: Mini program version ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPVersionId: int
         :param _ApplyUser: Applicant
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplyUser: str
         :param _ApplyTime: Application time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplyTime: str
         :param _MNPName: Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPName: str
         :param _MNPIcon: Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPIcon: str
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param _ApplicationLogo: Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationLogo: Specifies the application icon.
         :type ApplicationLogo: str
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _MNPQrCodeUrl: Mini Program QR code
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPQrCodeUrl: Mini program review qr code.
         :type MNPQrCodeUrl: str
         :param _MNPType: Mini program type
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPType: str
-        :param _ApprovalUser: Approver
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalUser: Specifies the reviewer.
         :type ApprovalUser: str
-        :param _ApprovalTime: Approval time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalTime: Approval time.
         :type ApprovalTime: str
         :param _ApprovalNote: Approval notes
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApprovalNote: str
         """
         self._ApprovalNo = None
@@ -4923,8 +4822,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalNo(self):
-        r"""Approval request ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval ticket ID
         :rtype: str
         """
         return self._ApprovalNo
@@ -4936,7 +4834,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -4947,8 +4844,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status : 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval status. valid values: 1 (processing), 2 (rejected), 3 (approved), 4 (cancelled).
         :rtype: int
         """
         return self._ApprovalStatus
@@ -4960,7 +4856,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPId(self):
         r"""Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPId
@@ -4971,8 +4866,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersion(self):
-        r"""Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program version.
         :rtype: str
         """
         return self._MNPVersion
@@ -4984,7 +4878,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPVersionId(self):
         r"""Mini program version ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MNPVersionId
@@ -4996,7 +4889,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplyUser(self):
         r"""Applicant
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplyUser
@@ -5008,7 +4900,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplyTime(self):
         r"""Application time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplyTime
@@ -5020,7 +4911,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPName(self):
         r"""Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPName
@@ -5032,7 +4922,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPIcon(self):
         r"""Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPIcon
@@ -5044,7 +4933,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -5055,8 +4943,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationLogo(self):
-        r"""Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the application icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -5068,7 +4955,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -5080,7 +4966,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -5091,8 +4976,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPQrCodeUrl(self):
-        r"""Mini Program QR code
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program review qr code.
         :rtype: str
         """
         return self._MNPQrCodeUrl
@@ -5104,7 +4988,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPType(self):
         r"""Mini program type
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPType
@@ -5115,8 +4998,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalUser(self):
-        r"""Approver
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the reviewer.
         :rtype: str
         """
         return self._ApprovalUser
@@ -5127,8 +5009,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalTime(self):
-        r"""Approval time
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval time.
         :rtype: str
         """
         return self._ApprovalTime
@@ -5140,7 +5021,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApprovalNote(self):
         r"""Approval notes
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApprovalNote
@@ -5314,10 +5194,8 @@ class DescribeMNPApprovalListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeMNPApprovalListData
         """
         self._TotalCount = None
@@ -5326,7 +5204,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -5338,7 +5215,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeMNPApprovalListData
         """
         return self._DataList
@@ -5374,7 +5250,6 @@ class DescribeMNPApprovalListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPApprovalListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5385,7 +5260,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPApprovalListResp`
         """
         return self._Data
@@ -5617,35 +5491,25 @@ class DescribeMNPListData(AbstractModel):
         :type TeamName: str
         :param _MNPType: Mini program type
         :type MNPType: str
-        :param _Status: Whether the mini program is released. 1: Released; 2: Removed
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
         :type Status: int
         :param _MNPIntro: Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPIntro: str
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _UpdateUser: Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateUser: Specifies the updater.
         :type UpdateUser: str
         :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param _EffectStatus: Effective status of the bound application. 1: Not effective; 2: Effective
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EffectStatus: Effective status of the bound application. valid values: 1 (not effective), 2 (effective).
         :type EffectStatus: int
-        :param _EffectMNPVersionId: ID of the application bound with the mini program
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EffectMNPVersionId: Specifies the ID of the application bound with the mini program.
         :type EffectMNPVersionId: int
-        :param _EffectMNPVersion: Effective version number of the application that bound with the mini program
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EffectMNPVersion: Specifies the effective version number of the application bound to the mini program.
         :type EffectMNPVersion: str
         """
         self._MNPId = None
@@ -5721,8 +5585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Whether the mini program is released. 1: Released; 2: Removed
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
         :rtype: int
         """
         return self._Status
@@ -5734,7 +5597,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPIntro(self):
         r"""Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPIntro
@@ -5746,7 +5608,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -5758,7 +5619,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -5769,8 +5629,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateUser(self):
-        r"""Updater
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the updater.
         :rtype: str
         """
         return self._UpdateUser
@@ -5782,7 +5641,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UpdateTime(self):
         r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTime
@@ -5794,7 +5652,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -5805,8 +5662,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EffectStatus(self):
-        r"""Effective status of the bound application. 1: Not effective; 2: Effective
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Effective status of the bound application. valid values: 1 (not effective), 2 (effective).
         :rtype: int
         """
         return self._EffectStatus
@@ -5817,8 +5673,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EffectMNPVersionId(self):
-        r"""ID of the application bound with the mini program
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the ID of the application bound with the mini program.
         :rtype: int
         """
         return self._EffectMNPVersionId
@@ -5829,8 +5684,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EffectMNPVersion(self):
-        r"""Effective version number of the application that bound with the mini program
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the effective version number of the application bound to the mini program.
         :rtype: str
         """
         return self._EffectMNPVersion
@@ -5985,10 +5839,8 @@ class DescribeMNPListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeMNPListData
         """
         self._TotalCount = None
@@ -5997,7 +5849,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -6009,7 +5860,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeMNPListData
         """
         return self._DataList
@@ -6045,7 +5895,6 @@ class DescribeMNPListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6056,7 +5905,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPListResp`
         """
         return self._Data
@@ -6092,40 +5940,28 @@ class DescribeMNPManagerDetailData(AbstractModel):
     def __init__(self):
         r"""
         :param _MNPType: Mini program type 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPType: str
         :param _MNPId: Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPId: str
         :param _MNPName: Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPName: str
         :param _MNPIcon: Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPIcon: str
         :param _MNPIntro: Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPIntro: str
         :param _MNPDesc: Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPDesc: str
-        :param _CreateTime: Creation time, timestamp
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CreateTime: Creation time, timestamp.
         :type CreateTime: str
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
-        :param _AccessStatus: Connection status. 1: Not connected; 2: Connected
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccessStatus: Access status. 1: not connected; 2: connected.
         :type AccessStatus: int
-        :param _TeamName: The name of the associated team
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TeamName: Name of the associated team
         :type TeamName: str
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
-        :param _Status: Mini program release status. 1: Released; 2: Removed
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
         :type Status: int
         """
         self._MNPType = None
@@ -6144,7 +5980,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPType(self):
         r"""Mini program type 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPType
@@ -6156,7 +5991,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPId(self):
         r"""Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPId
@@ -6168,7 +6002,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPName(self):
         r"""Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPName
@@ -6180,7 +6013,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPIcon(self):
         r"""Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPIcon
@@ -6192,7 +6024,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPIntro(self):
         r"""Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPIntro
@@ -6204,7 +6035,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPDesc(self):
         r"""Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPDesc
@@ -6215,8 +6045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Creation time, timestamp
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation time, timestamp.
         :rtype: str
         """
         return self._CreateTime
@@ -6228,7 +6057,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -6239,8 +6067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessStatus(self):
-        r"""Connection status. 1: Not connected; 2: Connected
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Access status. 1: not connected; 2: connected.
         :rtype: int
         """
         return self._AccessStatus
@@ -6251,8 +6078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TeamName(self):
-        r"""The name of the associated team
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Name of the associated team
         :rtype: str
         """
         return self._TeamName
@@ -6264,7 +6090,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -6275,8 +6100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Mini program release status. 1: Released; 2: Removed
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
         :rtype: int
         """
         return self._Status
@@ -6479,28 +6303,20 @@ class DescribeMNPPreviewResp(AbstractModel):
     def __init__(self):
         r"""
         :param _MNPId: Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPId: str
         :param _MNPName: Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPName: str
         :param _MNPDesc: Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPDesc: str
-        :param _MNPVersion: Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersion: Mini program version.
         :type MNPVersion: str
-        :param _MNPVersionIntro: Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersionIntro: Describes the mini program version.
         :type MNPVersionIntro: str
-        :param _QRCodeUrl: Mini program QR code
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QRCodeUrl: Specifies the mini program qr code.
         :type QRCodeUrl: str
-        :param _PreviewEntrancePath: Path to the preview
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PreviewEntrancePath: Specifies the path to the preview version.
         :type PreviewEntrancePath: str
-        :param _QRCodeContent: QR code content
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QRCodeContent: Specifies the qr code content.
         :type QRCodeContent: str
         """
         self._MNPId = None
@@ -6515,7 +6331,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPId(self):
         r"""Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPId
@@ -6527,7 +6342,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPName(self):
         r"""Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPName
@@ -6539,7 +6353,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPDesc(self):
         r"""Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPDesc
@@ -6550,8 +6363,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersion(self):
-        r"""Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program version.
         :rtype: str
         """
         return self._MNPVersion
@@ -6562,8 +6374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersionIntro(self):
-        r"""Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Describes the mini program version.
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -6574,8 +6385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QRCodeUrl(self):
-        r"""Mini program QR code
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program qr code.
         :rtype: str
         """
         return self._QRCodeUrl
@@ -6586,8 +6396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PreviewEntrancePath(self):
-        r"""Path to the preview
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the path to the preview version.
         :rtype: str
         """
         return self._PreviewEntrancePath
@@ -6598,8 +6407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QRCodeContent(self):
-        r"""QR code content
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the qr code content.
         :rtype: str
         """
         return self._QRCodeContent
@@ -6636,7 +6444,6 @@ class DescribeMNPPreviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPreviewResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6647,7 +6454,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPreviewResp`
         """
         return self._Data
@@ -6877,25 +6683,18 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
     def __init__(self):
         r"""
         :param _APIId: API ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIId: str
-        :param _APIMethod: API request method
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIMethod: API method.
         :type APIMethod: str
-        :param _ApplyReason: Reason for the request
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplyReason: Reason for application
         :type ApplyReason: str
-        :param _RejectReason: Reason for rejection
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RejectReason: Reason for rejection.
         :type RejectReason: str
-        :param _ApprovalStatus: Approval status. 20: Rejected; 30: Approved
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalStatus: Approval status. valid values: 20 (rejected), 30 (approved).
         :type ApprovalStatus: int
-        :param _APIDesc: API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIDesc: API feature description.
         :type APIDesc: str
-        :param _APIType: API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIType: API type. 1: system; 2: custom.
         :type APIType: int
         """
         self._APIId = None
@@ -6909,7 +6708,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIId(self):
         r"""API ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIId
@@ -6920,8 +6718,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIMethod(self):
-        r"""API request method
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API method.
         :rtype: str
         """
         return self._APIMethod
@@ -6932,8 +6729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplyReason(self):
-        r"""Reason for the request
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reason for application
         :rtype: str
         """
         return self._ApplyReason
@@ -6944,8 +6740,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RejectReason(self):
-        r"""Reason for rejection
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reason for rejection.
         :rtype: str
         """
         return self._RejectReason
@@ -6956,8 +6751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. 20: Rejected; 30: Approved
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval status. valid values: 20 (rejected), 30 (approved).
         :rtype: int
         """
         return self._ApprovalStatus
@@ -6968,8 +6762,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIDesc(self):
-        r"""API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API feature description.
         :rtype: str
         """
         return self._APIDesc
@@ -6980,8 +6773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIType(self):
-        r"""API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API type. 1: system; 2: custom.
         :rtype: int
         """
         return self._APIType
@@ -7036,29 +6828,21 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
         :type ApplyNote: str
         :param _ApprovalStatus: Approval status. 1: Processing; 20: Rejected; 30: Approved
         :type ApprovalStatus: int
-        :param _ApprovalUser: Approver
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalUser: Specifies the review user.
         :type ApprovalUser: str
-        :param _ApprovalTime: Approval time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalTime: Approval time.
         :type ApprovalTime: str
         :param _ApprovalNote: Approval notes
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApprovalNote: str
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param _ApplicationLogo: Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationLogo: Specifies the application icon.
         :type ApplicationLogo: str
-        :param _APIType: API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIType: API type. 1: system; 2: custom.
         :type APIType: int
-        :param _APIDesc: API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIDesc: API feature description.
         :type APIDesc: str
         """
         self._ApprovalNo = None
@@ -7192,8 +6976,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalUser(self):
-        r"""Approver
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the review user.
         :rtype: str
         """
         return self._ApprovalUser
@@ -7204,8 +6987,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalTime(self):
-        r"""Approval time
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval time.
         :rtype: str
         """
         return self._ApprovalTime
@@ -7217,7 +6999,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApprovalNote(self):
         r"""Approval notes
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApprovalNote
@@ -7229,7 +7010,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -7241,7 +7021,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -7252,8 +7031,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationLogo(self):
-        r"""Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the application icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -7264,8 +7042,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIType(self):
-        r"""API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API type. 1: system; 2: custom.
         :rtype: int
         """
         return self._APIType
@@ -7276,8 +7053,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIDesc(self):
-        r"""API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API feature description.
         :rtype: str
         """
         return self._APIDesc
@@ -7619,39 +7395,28 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
     def __init__(self):
         r"""
         :param _APIId: API ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIId: str
-        :param _APIName: API name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIName: API name.
         :type APIName: str
         :param _APIMethod: API request method
-Note: This field may return null, indicating that no valid values can be obtained.
         :type APIMethod: str
-        :param _APIStatus: API status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIStatus: API status.
         :type APIStatus: int
-        :param _APIApplyStatus: API application status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIApplyStatus: API application status.
         :type APIApplyStatus: int
-        :param _RejectReason: Reason for rejection
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RejectReason: Reason for rejection.
         :type RejectReason: str
         :param _ApprovalNo: Approval ID
         :type ApprovalNo: str
         :param _ApplicationId: Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param _ApplicationIcon: Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationIcon: Specifies the application icon.
         :type ApplicationIcon: str
         :param _ApplicationName: Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param _APIType: API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIType: API type. 1: system; 2: custom.
         :type APIType: int
-        :param _APIDesc: API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _APIDesc: API feature description.
         :type APIDesc: str
         """
         self._APIId = None
@@ -7670,7 +7435,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIId(self):
         r"""API ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIId
@@ -7681,8 +7445,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIName(self):
-        r"""API name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API name.
         :rtype: str
         """
         return self._APIName
@@ -7694,7 +7457,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def APIMethod(self):
         r"""API request method
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._APIMethod
@@ -7705,8 +7467,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIStatus(self):
-        r"""API status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API status.
         :rtype: int
         """
         return self._APIStatus
@@ -7717,8 +7478,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIApplyStatus(self):
-        r"""API application status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API application status.
         :rtype: int
         """
         return self._APIApplyStatus
@@ -7729,8 +7489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RejectReason(self):
-        r"""Reason for rejection
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reason for rejection.
         :rtype: str
         """
         return self._RejectReason
@@ -7753,7 +7512,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationId(self):
         r"""Application ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationId
@@ -7764,8 +7522,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationIcon(self):
-        r"""Application icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the application icon.
         :rtype: str
         """
         return self._ApplicationIcon
@@ -7777,7 +7534,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ApplicationName(self):
         r"""Application name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ApplicationName
@@ -7788,8 +7544,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIType(self):
-        r"""API type. 1: System; 2: Custom
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API type. 1: system; 2: custom.
         :rtype: int
         """
         return self._APIType
@@ -7800,8 +7555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def APIDesc(self):
-        r"""API feature description
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""API feature description.
         :rtype: str
         """
         return self._APIDesc
@@ -7953,7 +7707,6 @@ class DescribeMNPSensitiveAPIPermissionListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List data
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -7965,7 +7718,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -8012,8 +7764,7 @@ class DescribeMNPSensitiveAPIPermissionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response parameters
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Response parameters.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8023,8 +7774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response parameters
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Response parameters.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionListResp`
         """
         return self._Data
@@ -8251,60 +8001,42 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPId: Mini program ID.
         :type MNPId: str
-        :param _MNPVersionId: Mini program version ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersionId: Specifies the mini program version primary key id.
         :type MNPVersionId: int
         :param _MNPName: Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPName: str
-        :param _MNPIcon: Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPIcon: Specifies the mini program avatar.
         :type MNPIcon: str
         :param _MNPType: Mini program type
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPType: str
         :param _MNPIntro: Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPIntro: str
         :param _MNPDesc: Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPDesc: str
-        :param _CreateUser: Developer
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CreateUser: Specifies the developer.
         :type CreateUser: str
-        :param _CreateTime: The time when the developer created it
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CreateTime: Developer creation time.
         :type CreateTime: str
-        :param _MNPVersion: Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersion: Mini program version.
         :type MNPVersion: str
-        :param _MNPVersionIntro: Version features
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersionIntro: Describes version features.
         :type MNPVersionIntro: str
-        :param _Phase: Phase. Values: [Develop,Platform,Online]
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Phase: Development Platform Online.
         :type Phase: str
-        :param _ApprovalStatus: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalStatus: 0 pending review; 1 under review; 2 review rejection; 3 pass review; 4 review cancellation.
         :type ApprovalStatus: int
-        :param _ApprovalNo: Approval request number
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApprovalNo: Approval ticket ID
         :type ApprovalNo: str
-        :param _ShowCase: Whether it is a preview
-0: Not a preview; 1: Preview
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ShowCase: Specifies whether it is a trial version.
+Specifies the version type. valid values: 0 (non-preview version); 1 (trial version).
         :type ShowCase: int
-        :param _RollbackVersion: Version number to roll back to
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RollbackVersion: Version number to roll back to.
         :type RollbackVersion: int
-        :param _Status: Release status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Indicates the release status.
         :type Status: int
-        :param _VersionCurrentStatus: Version approval status. 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VersionCurrentStatus: Specifies the current main status of the version. valid values: "0" (pending review), "1" (under review), "2" (review rejection), "3" (pass review), "4" (review cancellation).
         :type VersionCurrentStatus: int
         """
         self._MNPId = None
@@ -8328,8 +8060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPId(self):
-        r"""Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program ID.
         :rtype: str
         """
         return self._MNPId
@@ -8340,8 +8071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program version primary key id.
         :rtype: int
         """
         return self._MNPVersionId
@@ -8353,7 +8083,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPName(self):
         r"""Mini program name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPName
@@ -8364,8 +8093,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program avatar.
         :rtype: str
         """
         return self._MNPIcon
@@ -8377,7 +8105,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPType(self):
         r"""Mini program type
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPType
@@ -8389,7 +8116,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPIntro(self):
         r"""Mini program introduction
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPIntro
@@ -8401,7 +8127,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPDesc(self):
         r"""Mini program description
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPDesc
@@ -8412,8 +8137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUser(self):
-        r"""Developer
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the developer.
         :rtype: str
         """
         return self._CreateUser
@@ -8424,8 +8148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""The time when the developer created it
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Developer creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -8436,8 +8159,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersion(self):
-        r"""Mini program version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program version.
         :rtype: str
         """
         return self._MNPVersion
@@ -8448,8 +8170,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersionIntro(self):
-        r"""Version features
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Describes version features.
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -8460,8 +8181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phase(self):
-        r"""Phase. Values: [Develop,Platform,Online]
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Development Platform Online.
         :rtype: str
         """
         return self._Phase
@@ -8472,8 +8192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalStatus(self):
-        r"""0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""0 pending review; 1 under review; 2 review rejection; 3 pass review; 4 review cancellation.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -8484,8 +8203,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalNo(self):
-        r"""Approval request number
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Approval ticket ID
         :rtype: str
         """
         return self._ApprovalNo
@@ -8496,9 +8214,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShowCase(self):
-        r"""Whether it is a preview
-0: Not a preview; 1: Preview
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies whether it is a trial version.
+Specifies the version type. valid values: 0 (non-preview version); 1 (trial version).
         :rtype: int
         """
         return self._ShowCase
@@ -8509,8 +8226,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RollbackVersion(self):
-        r"""Version number to roll back to
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version number to roll back to.
         :rtype: int
         """
         return self._RollbackVersion
@@ -8521,8 +8237,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Release status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Indicates the release status.
         :rtype: int
         """
         return self._Status
@@ -8533,8 +8248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionCurrentStatus(self):
-        r"""Version approval status. 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the current main status of the version. valid values: "0" (pending review), "1" (under review), "2" (review rejection), "3" (pass review), "4" (review cancellation).
         :rtype: int
         """
         return self._VersionCurrentStatus
@@ -8581,10 +8295,8 @@ class DescribeRevertOnlineVersionPageResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of QueryOnlineVersionResp
         """
         self._TotalCount = None
@@ -8593,7 +8305,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -8605,7 +8316,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of QueryOnlineVersionResp
         """
         return self._DataList
@@ -8641,19 +8351,14 @@ class DescribeRoleListData(AbstractModel):
     def __init__(self):
         r"""
         :param _RoleId: Role ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type RoleId: int
-        :param _RoleName: Role name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RoleName: Role name.
         :type RoleName: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _RoleType: Role type 1-Preset role 2-Custom role
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RoleType: Role type 1-preset role 2-custom role.
         :type RoleType: int
         """
         self._RoleId = None
@@ -8665,7 +8370,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def RoleId(self):
         r"""Role ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RoleId
@@ -8676,8 +8380,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleName(self):
-        r"""Role name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Role name.
         :rtype: str
         """
         return self._RoleName
@@ -8689,7 +8392,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -8701,7 +8403,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -8712,8 +8413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleType(self):
-        r"""Role type 1-Preset role 2-Custom role
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Role type 1-preset role 2-custom role.
         :rtype: int
         """
         return self._RoleType
@@ -8843,10 +8543,8 @@ class DescribeRoleListResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _DataList: List data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeRoleListData
         """
         self._TotalCount = None
@@ -8855,7 +8553,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         r"""Total number of entries
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -8867,7 +8564,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeRoleListData
         """
         return self._DataList
@@ -9463,28 +9159,20 @@ class DescribeTeamMemberInfoResp(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: User ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
         :param _UserAccount: User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserAccount: str
         :param _UserName: User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserName: str
         :param _TeamId: Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamId: str
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
-        :param _TeamRoleName: Team role name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TeamRoleName: Specifies the team role name.
         :type TeamRoleName: str
-        :param _TeamRoleId: Team role ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TeamRoleId: Specifies the team role ID.
         :type TeamRoleId: int
-        :param _CanEdit: Editable or not
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CanEdit: Whether it is editable
         :type CanEdit: bool
         """
         self._UserId = None
@@ -9499,7 +9187,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserId(self):
         r"""User ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserId
@@ -9511,7 +9198,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserAccount(self):
         r"""User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserAccount
@@ -9523,7 +9209,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserName(self):
         r"""User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserName
@@ -9535,7 +9220,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamId(self):
         r"""Team ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamId
@@ -9547,7 +9231,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -9558,8 +9241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TeamRoleName(self):
-        r"""Team role name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the team role name.
         :rtype: str
         """
         return self._TeamRoleName
@@ -9570,8 +9252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TeamRoleId(self):
-        r"""Team role ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the team role ID.
         :rtype: int
         """
         return self._TeamRoleId
@@ -9582,8 +9263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CanEdit(self):
-        r"""Editable or not
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether it is editable
         :rtype: bool
         """
         return self._CanEdit
@@ -9619,11 +9299,9 @@ class DescribeTeamMemberListPageResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of results.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Total number of entries
         :type TotalCount: int
         :param _DataList: List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeTeamMemberInfoResp
         """
         self._TotalCount = None
@@ -9631,8 +9309,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of results.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total number of entries
         :rtype: int
         """
         return self._TotalCount
@@ -9644,7 +9321,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DataList(self):
         r"""List information
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeTeamMemberInfoResp
         """
         return self._DataList
@@ -10039,7 +9715,6 @@ class DescribeTempSecret4UploadFile2CosResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.UploadFileTempSecret`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10050,7 +9725,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.UploadFileTempSecret`
         """
         return self._Data
@@ -10085,18 +9759,14 @@ class DescribeUserDetailResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UserId: User iD.
         :type UserId: str
         :param _UserAccount: User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserAccount: str
         :param _AccountType: User account
-1 - Super admin 2 - Platform admin 3 - Member
-Note: This field may return null, indicating that no valid values can be obtained.
+1 - super admin 2 - platform admin 3 - ordinary member. not passing indicates all.
         :type AccountType: int
         :param _UserName: User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserName: str
         """
         self._UserId = None
@@ -10106,8 +9776,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        r"""User ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""User iD.
         :rtype: str
         """
         return self._UserId
@@ -10119,7 +9788,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserAccount(self):
         r"""User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserAccount
@@ -10131,8 +9799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AccountType(self):
         r"""User account
-1 - Super admin 2 - Platform admin 3 - Member
-Note: This field may return null, indicating that no valid values can be obtained.
+1 - super admin 2 - platform admin 3 - ordinary member. not passing indicates all.
         :rtype: int
         """
         return self._AccountType
@@ -10144,7 +9811,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserName(self):
         r"""User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserName
@@ -10177,25 +9843,18 @@ class DescribeUserListData(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: User ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
         :param _UserAccount: User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserAccount: str
-        :param _AccountType: Account type. 1: Super admin; 2: Platform admin; 3: Member
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountType: Account type. 1: super administrator; 2: platform administrator; 3: ordinary member.
         :type AccountType: int
         :param _UserName: User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UserName: str
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _Status: Status. 1: Normal; 2: Disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Status. 1: normal; 2: disabled.
         :type Status: int
         :param _TeamName: Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TeamName: str
         """
         self._UserId = None
@@ -10209,7 +9868,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserId(self):
         r"""User ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserId
@@ -10221,7 +9879,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserAccount(self):
         r"""User account
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserAccount
@@ -10232,8 +9889,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountType(self):
-        r"""Account type. 1: Super admin; 2: Platform admin; 3: Member
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Account type. 1: super administrator; 2: platform administrator; 3: ordinary member.
         :rtype: int
         """
         return self._AccountType
@@ -10245,7 +9901,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UserName(self):
         r"""User name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserName
@@ -10257,7 +9912,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -10268,8 +9922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Status. 1: Normal; 2: Disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Status. 1: normal; 2: disabled.
         :rtype: int
         """
         return self._Status
@@ -10281,7 +9934,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TeamName(self):
         r"""Team name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TeamName
@@ -10488,7 +10140,6 @@ class DescribeUserListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10499,7 +10150,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserListResp`
         """
         return self._Data
@@ -10586,7 +10236,6 @@ class DescribeUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserDetailResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10597,7 +10246,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserDetailResp`
         """
         return self._Data
@@ -10862,16 +10510,14 @@ class GlobalDomainDeleteResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Response result
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Result: Result.
         :type Result: bool
         """
         self._Result = None
 
     @property
     def Result(self):
-        r"""Response result
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Result.
         :rtype: bool
         """
         return self._Result
@@ -10900,16 +10546,14 @@ class GlobalDomainModifyRespResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 0: Success; 1: Allowed domains; 2: Blocked domains
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Result: 0: success; 1: allowed domains exist; 2: blocked domains exist.
         :type Result: int
         """
         self._Result = None
 
     @property
     def Result(self):
-        r"""0: Success; 1: Allowed domains; 2: Blocked domains
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""0: success; 1: allowed domains exist; 2: blocked domains exist.
         :rtype: int
         """
         return self._Result
@@ -10938,23 +10582,17 @@ class MNPTypeDefine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeName: Mini program category name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TypeName: Specifies the mini program category name.
         :type TypeName: str
-        :param _TypeValue: Mini program category value
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TypeValue: Mini program category value.
         :type TypeValue: list of str
-        :param _TypeId: Category ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TypeId: Category ID.
         :type TypeId: int
         :param _CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: int
         :param _CreateUser: Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUser: str
-        :param _IsSystem: Whether it is a system category
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsSystem: Indicates whether it is a system category.
         :type IsSystem: bool
         """
         self._TypeName = None
@@ -10966,8 +10604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeName(self):
-        r"""Mini program category name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the mini program category name.
         :rtype: str
         """
         return self._TypeName
@@ -10978,8 +10615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeValue(self):
-        r"""Mini program category value
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mini program category value.
         :rtype: list of str
         """
         return self._TypeValue
@@ -10990,8 +10626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeId(self):
-        r"""Category ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Category ID.
         :rtype: int
         """
         return self._TypeId
@@ -11003,7 +10638,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateTime(self):
         r"""Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CreateTime
@@ -11015,7 +10649,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CreateUser(self):
         r"""Creator
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateUser
@@ -11026,8 +10659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsSystem(self):
-        r"""Whether it is a system category
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Indicates whether it is a system category.
         :rtype: bool
         """
         return self._IsSystem
@@ -11077,6 +10709,8 @@ class ModifyApplicationRequest(AbstractModel):
         :type IosAppKey: str
         :param _Remark: Remarks
         :type Remark: str
+        :param _Scheme: Scheme
+        :type Scheme: str
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -11086,6 +10720,7 @@ class ModifyApplicationRequest(AbstractModel):
         self._AndroidAppKey = None
         self._IosAppKey = None
         self._Remark = None
+        self._Scheme = None
 
     @property
     def ApplicationId(self):
@@ -11144,6 +10779,8 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def AndroidAppKey(self):
+        warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
+
         r"""Android app package name
         :rtype: str
         """
@@ -11151,10 +10788,14 @@ class ModifyApplicationRequest(AbstractModel):
 
     @AndroidAppKey.setter
     def AndroidAppKey(self, AndroidAppKey):
+        warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
+
         self._AndroidAppKey = AndroidAppKey
 
     @property
     def IosAppKey(self):
+        warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
+
         r"""iOS App bundleId
         :rtype: str
         """
@@ -11162,10 +10803,14 @@ class ModifyApplicationRequest(AbstractModel):
 
     @IosAppKey.setter
     def IosAppKey(self, IosAppKey):
+        warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
+
         self._IosAppKey = IosAppKey
 
     @property
     def Remark(self):
+        warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
+
         r"""Remarks
         :rtype: str
         """
@@ -11173,7 +10818,20 @@ class ModifyApplicationRequest(AbstractModel):
 
     @Remark.setter
     def Remark(self, Remark):
+        warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
+
         self._Remark = Remark
+
+    @property
+    def Scheme(self):
+        r"""Scheme
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
 
 
     def _deserialize(self, params):
@@ -11185,6 +10843,7 @@ class ModifyApplicationRequest(AbstractModel):
         self._AndroidAppKey = params.get("AndroidAppKey")
         self._IosAppKey = params.get("IosAppKey")
         self._Remark = params.get("Remark")
+        self._Scheme = params.get("Scheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11430,7 +11089,6 @@ class ModifyMNPDomainResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11441,7 +11099,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -11981,7 +11638,6 @@ class ModifyUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11992,7 +11648,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Data(self):
         r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -12027,16 +11682,14 @@ class PresetResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: RSA encryption public key
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Key: RSA encryption public key.
         :type Key: str
         """
         self._Key = None
 
     @property
     def Key(self):
-        r"""RSA encryption public key
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""RSA encryption public key.
         :rtype: str
         """
         return self._Key
@@ -12308,19 +11961,14 @@ class QueryOnlineVersionResp(AbstractModel):
     def __init__(self):
         r"""
         :param _MNPId: Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type MNPId: str
-        :param _MNPVersion: Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersion: Version number
         :type MNPVersion: str
-        :param _MNPVersionId: Version ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersionId: Version ID.
         :type MNPVersionId: int
-        :param _MNPVersionNote: Version note
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MNPVersionNote: Version remarks.
         :type MNPVersionNote: str
         :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
         self._MNPId = None
@@ -12332,7 +11980,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MNPId(self):
         r"""Mini program ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MNPId
@@ -12343,8 +11990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersion(self):
-        r"""Version
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version number
         :rtype: str
         """
         return self._MNPVersion
@@ -12355,8 +12001,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersionId(self):
-        r"""Version ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -12367,8 +12012,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MNPVersionNote(self):
-        r"""Version note
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Version remarks.
         :rtype: str
         """
         return self._MNPVersionNote
@@ -12380,7 +12024,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def UpdateTime(self):
         r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UpdateTime
@@ -12605,22 +12248,20 @@ class ResourceIdInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: Resource ID
-0: No preview
-1. A preview is currently available and uploaded by the current user.
-2. A preview is currently available and uploaded by another user.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ResourceId: Specifies the resource ID returned by the business.
+0: no trial version available.
+A trial version is currently available and uploaded by the current user.
+2: a trial version is currently available and uploaded by another user.
         :type ResourceId: int
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""Resource ID
-0: No preview
-1. A preview is currently available and uploaded by the current user.
-2. A preview is currently available and uploaded by another user.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the resource ID returned by the business.
+0: no trial version available.
+A trial version is currently available and uploaded by the current user.
+2: a trial version is currently available and uploaded by another user.
         :rtype: int
         """
         return self._ResourceId
@@ -12813,16 +12454,14 @@ class StringData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: String type response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: string type response data.
         :type Data: str
         """
         self._Data = None
 
     @property
     def Data(self):
-        r"""String type response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""string type response data.
         :rtype: str
         """
         return self._Data

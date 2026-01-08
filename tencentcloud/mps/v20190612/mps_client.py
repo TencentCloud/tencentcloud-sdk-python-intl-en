@@ -119,6 +119,52 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcImageTask(self, request):
+        r"""This API is used to create an AIGC image generation task.
+
+        :param request: Request instance for CreateAigcImageTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcImageTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAigcImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcImageTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcImageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAigcVideoTask(self, request):
+        r"""This API is used to create an AIGC video generation task.
+
+        :param request: Request instance for CreateAigcVideoTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcVideoTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAigcVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcVideoTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         r"""This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
@@ -1105,6 +1151,52 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcImageTask(self, request):
+        r"""This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+
+        :param request: Request instance for DescribeAigcImageTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcImageTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcImageTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcImageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcVideoTask(self, request):
+        r"""This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+
+        :param request: Request instance for DescribeAigcVideoTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcVideoTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcVideoTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

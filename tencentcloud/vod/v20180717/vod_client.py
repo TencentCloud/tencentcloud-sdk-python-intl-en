@@ -2814,6 +2814,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportMediaKnowledge(self, request):
+        r"""This API is used to import AI analysis results into the knowledge base.
+
+        :param request: Request instance for ImportMediaKnowledge.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ImportMediaKnowledgeRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImportMediaKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportMediaKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportMediaKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InspectMediaQuality(self, request):
         r"""Initiate media quality inspection task.
 
@@ -4081,6 +4104,29 @@ class VodClient(AbstractClient):
             body = self.call("SearchMedia", params, headers=headers)
             response = json.loads(body)
             model = models.SearchMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchMediaBySemantics(self, request):
+        r"""This API is used to conduct semantic search on media using natural language.
+
+        :param request: Request instance for SearchMediaBySemantics.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SearchMediaBySemanticsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SearchMediaBySemanticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchMediaBySemantics", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchMediaBySemanticsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

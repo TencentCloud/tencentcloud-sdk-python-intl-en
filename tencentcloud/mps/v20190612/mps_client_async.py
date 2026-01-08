@@ -98,6 +98,42 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcImageTask(
+            self,
+            request: models.CreateAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcImageTaskResponse:
+        """
+        This API is used to create an AIGC image generation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAigcVideoTask(
+            self,
+            request: models.CreateAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcVideoTaskResponse:
+        """
+        This API is used to create an AIGC video generation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcVideoTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAnimatedGraphicsTemplate(
             self,
             request: models.CreateAnimatedGraphicsTemplateRequest,
@@ -878,6 +914,42 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcImageTask(
+            self,
+            request: models.DescribeAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcImageTaskResponse:
+        """
+        This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcVideoTask(
+            self,
+            request: models.DescribeAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcVideoTaskResponse:
+        """
+        This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcVideoTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

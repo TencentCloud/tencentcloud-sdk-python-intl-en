@@ -2233,6 +2233,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ImportMediaKnowledge(
+            self,
+            request: models.ImportMediaKnowledgeRequest,
+            opts: Dict = None,
+    ) -> models.ImportMediaKnowledgeResponse:
+        """
+        This API is used to import AI analysis results into the knowledge base.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportMediaKnowledge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportMediaKnowledgeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InspectMediaQuality(
             self,
             request: models.InspectMediaQualityRequest,
@@ -3254,6 +3272,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "SearchMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchMediaBySemantics(
+            self,
+            request: models.SearchMediaBySemanticsRequest,
+            opts: Dict = None,
+    ) -> models.SearchMediaBySemanticsResponse:
+        """
+        This API is used to conduct semantic search on media using natural language.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchMediaBySemantics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchMediaBySemanticsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

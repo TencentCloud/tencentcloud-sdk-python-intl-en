@@ -11295,6 +11295,276 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AigcImageExtraParam(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AspectRatio: 
+        :type AspectRatio: str
+        :param _Resolution: 
+        :type Resolution: str
+        """
+        self._AspectRatio = None
+        self._Resolution = None
+
+    @property
+    def AspectRatio(self):
+        r"""
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Resolution(self):
+        r"""
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._AspectRatio = params.get("AspectRatio")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcImageInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 
+        :type ImageUrl: str
+        :param _ReferenceType: 
+        :type ReferenceType: str
+        """
+        self._ImageUrl = None
+        self._ReferenceType = None
+
+    @property
+    def ImageUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReferenceType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcStoreCosParam(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketName: 
+        :type CosBucketName: str
+        :param _CosBucketRegion: 
+        :type CosBucketRegion: str
+        :param _CosBucketPath: 
+        :type CosBucketPath: str
+        """
+        self._CosBucketName = None
+        self._CosBucketRegion = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketName(self):
+        r"""
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketRegion(self):
+        r"""
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketPath(self):
+        r"""
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoExtraParam(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resolution: 
+        :type Resolution: str
+        :param _AspectRatio: 
+        :type AspectRatio: str
+        """
+        self._Resolution = None
+        self._AspectRatio = None
+
+    @property
+    def Resolution(self):
+        r"""
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def AspectRatio(self):
+        r"""
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+
+    def _deserialize(self, params):
+        self._Resolution = params.get("Resolution")
+        self._AspectRatio = params.get("AspectRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoReferenceImageInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 
+        :type ImageUrl: str
+        :param _ReferenceType: 
+        :type ReferenceType: str
+        """
+        self._ImageUrl = None
+        self._ReferenceType = None
+
+    @property
+    def ImageUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReferenceType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     r"""Type of an animated image generating task.
 
@@ -17153,6 +17423,568 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAigcImageTaskRequest(AbstractModel):
+    r"""CreateAigcImageTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: Model Name. Currently supported models include: Hunyuan,GEM,Qwen.
+        :type ModelName: str
+        :param _ModelVersion: Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  
+1. GEM, available options [2.5, 3.0].
+
+        :type ModelVersion: str
+        :param _Prompt: 
+Generate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.
+
+        :type Prompt: str
+        :param _NegativePrompt: Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
+Overhead lighting, vibrant colors  
+Human figures, animals  
+Multiple vehicles, wind
+        :type NegativePrompt: str
+        :param _EnhancePrompt: The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+
+        :type EnhancePrompt: bool
+        :param _ImageInfos: 
+Supports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  
+Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.
+
+        :type ImageInfos: list of AigcImageInfo
+        :param _ExtraParameters: Used to pass additional parameters.
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
+        :param _StoreCosParam: The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _Operator: Interface operator name.
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._EnhancePrompt = None
+        self._ImageInfos = None
+        self._ExtraParameters = None
+        self._StoreCosParam = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""Model Name. Currently supported models include: Hunyuan,GEM,Qwen.
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  
+1. GEM, available options [2.5, 3.0].
+
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Prompt(self):
+        r"""
+Generate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.
+
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        r"""Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
+Overhead lighting, vibrant colors  
+Human figures, animals  
+Multiple vehicles, wind
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def EnhancePrompt(self):
+        r"""The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+
+        :rtype: bool
+        """
+        return self._EnhancePrompt
+
+    @EnhancePrompt.setter
+    def EnhancePrompt(self, EnhancePrompt):
+        self._EnhancePrompt = EnhancePrompt
+
+    @property
+    def ImageInfos(self):
+        r"""
+Supports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  
+Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.
+
+        :rtype: list of AigcImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def ExtraParameters(self):
+        r"""Used to pass additional parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def StoreCosParam(self):
+        r"""The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def Operator(self):
+        r"""Interface operator name.
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._EnhancePrompt = params.get("EnhancePrompt")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcImageExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcImageTaskResponse(AbstractModel):
+    r"""CreateAigcImageTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Returns the task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Returns the task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAigcVideoTaskRequest(AbstractModel):
+    r"""CreateAigcVideoTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV
+        :type ModelName: str
+        :param _ModelVersion: Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  
+1. Hailuo: Available options [02, 2.3].  
+2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  
+3. Vidu: Available options [q2, q2-pro, q2-turbo].  
+4. GV: Available option [3.1].  
+5. OS: Available option [2.0].
+        :type ModelVersion: str
+        :param _Prompt: Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.
+        :type Prompt: str
+        :param _NegativePrompt: Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
+Overhead lighting, vibrant colors  
+Human figures, animals  
+Multiple vehicles, wind
+        :type NegativePrompt: str
+        :param _EnhancePrompt: The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+        :type EnhancePrompt: bool
+        :param _ImageUrl: The URL of the image used to guide video generation, which must be publicly accessible via the internet.  
+Notes:  
+1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  
+2. Supported image formats: JPEG, PNG.  
+3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.
+        :type ImageUrl: str
+        :param _LastImageUrl: The model will utilize the image provided via this parameter as the ending frame for video generation.  
+Supported models for this parameter:  
+1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  
+2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  
+3. Vidu, q2-pro, q2-turbo: Support start&end frames. 
+Notes:  
+1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  
+2. Supported image formats: JPEG, PNG.
+        :type LastImageUrl: str
+        :param _ImageInfos: A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  
+Models supporting multi-image input:  
+1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  
+2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.
+Notes:  
+1. Each image must not exceed 10MB in size.  
+2. Supported image formats: JPEG, PNG.
+        :type ImageInfos: list of AigcVideoReferenceImageInfo
+        :param _Duration: Duration of generated videos.  
+Notes:  
+1. Kling supports 5 and 10 seconds. Default: 5 seconds.  
+2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  
+3. Vidu supports 1 to 10 seconds.  
+4. GV supports 8 seconds. Default: 8 seconds.  
+5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.
+        :type Duration: int
+        :param _ExtraParameters: Used to pass additional parameters.
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
+        :param _StoreCosParam: The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _AdditionalParameters: 
+Used to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {"camera_control":{"type":"simple"}}
+        :type AdditionalParameters: str
+        :param _Operator: Interface operator name.
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._EnhancePrompt = None
+        self._ImageUrl = None
+        self._LastImageUrl = None
+        self._ImageInfos = None
+        self._Duration = None
+        self._ExtraParameters = None
+        self._StoreCosParam = None
+        self._AdditionalParameters = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  
+1. Hailuo: Available options [02, 2.3].  
+2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  
+3. Vidu: Available options [q2, q2-pro, q2-turbo].  
+4. GV: Available option [3.1].  
+5. OS: Available option [2.0].
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Prompt(self):
+        r"""Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        r"""Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
+Overhead lighting, vibrant colors  
+Human figures, animals  
+Multiple vehicles, wind
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def EnhancePrompt(self):
+        r"""The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+        :rtype: bool
+        """
+        return self._EnhancePrompt
+
+    @EnhancePrompt.setter
+    def EnhancePrompt(self, EnhancePrompt):
+        self._EnhancePrompt = EnhancePrompt
+
+    @property
+    def ImageUrl(self):
+        r"""The URL of the image used to guide video generation, which must be publicly accessible via the internet.  
+Notes:  
+1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  
+2. Supported image formats: JPEG, PNG.  
+3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def LastImageUrl(self):
+        r"""The model will utilize the image provided via this parameter as the ending frame for video generation.  
+Supported models for this parameter:  
+1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  
+2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  
+3. Vidu, q2-pro, q2-turbo: Support start&end frames. 
+Notes:  
+1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  
+2. Supported image formats: JPEG, PNG.
+        :rtype: str
+        """
+        return self._LastImageUrl
+
+    @LastImageUrl.setter
+    def LastImageUrl(self, LastImageUrl):
+        self._LastImageUrl = LastImageUrl
+
+    @property
+    def ImageInfos(self):
+        r"""A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  
+Models supporting multi-image input:  
+1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  
+2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.
+Notes:  
+1. Each image must not exceed 10MB in size.  
+2. Supported image formats: JPEG, PNG.
+        :rtype: list of AigcVideoReferenceImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def Duration(self):
+        r"""Duration of generated videos.  
+Notes:  
+1. Kling supports 5 and 10 seconds. Default: 5 seconds.  
+2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  
+3. Vidu supports 1 to 10 seconds.  
+4. GV supports 8 seconds. Default: 8 seconds.  
+5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExtraParameters(self):
+        r"""Used to pass additional parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def StoreCosParam(self):
+        r"""The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def AdditionalParameters(self):
+        r"""
+Used to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {"camera_control":{"type":"simple"}}
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
+    def Operator(self):
+        r"""Interface operator name.
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._EnhancePrompt = params.get("EnhancePrompt")
+        self._ImageUrl = params.get("ImageUrl")
+        self._LastImageUrl = params.get("LastImageUrl")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcVideoReferenceImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        self._Duration = params.get("Duration")
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcVideoExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcVideoTaskResponse(AbstractModel):
+    r"""CreateAigcVideoTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -23048,6 +23880,257 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcImageTaskRequest(AbstractModel):
+    r"""DescribeAigcImageTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: AIGC image task processing task ID.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""AIGC image task processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcImageTaskResponse(AbstractModel):
+    r"""DescribeAigcImageTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Current task status:
+WAIT: Pending,
+RUN: In progress,
+FAIL: Task failed,
+DONE: Task completed successfully.
+
+        :type Status: str
+        :param _ImageUrls: When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.
+        :type ImageUrls: list of str
+        :param _Message: When the task status is FAIL, the failure information is returned.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ImageUrls = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Current task status:
+WAIT: Pending,
+RUN: In progress,
+FAIL: Task failed,
+DONE: Task completed successfully.
+
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ImageUrls(self):
+        r"""When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def Message(self):
+        r"""When the task status is FAIL, the failure information is returned.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ImageUrls = params.get("ImageUrls")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcVideoTaskRequest(AbstractModel):
+    r"""DescribeAigcVideoTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: AIGC video task processing task ID.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""AIGC video task processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcVideoTaskResponse(AbstractModel):
+    r"""DescribeAigcVideoTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Current task status:
+WAIT: Pending,
+RUN: In progress,
+FAIL: Task failed,
+DONE: Task completed successfully.
+        :type Status: str
+        :param _VideoUrls: When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.
+        :type VideoUrls: list of str
+        :param _Resolution: The resolution of the output video. Example: 1080*720.
+        :type Resolution: str
+        :param _Message: When the task status is FAIL, the failure information is returned.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._VideoUrls = None
+        self._Resolution = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Current task status:
+WAIT: Pending,
+RUN: In progress,
+FAIL: Task failed,
+DONE: Task completed successfully.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VideoUrls(self):
+        r"""When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+    @property
+    def Resolution(self):
+        r"""The resolution of the output video. Example: 1080*720.
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Message(self):
+        r"""When the task status is FAIL, the failure information is returned.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._VideoUrls = params.get("VideoUrls")
+        self._Resolution = params.get("Resolution")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
