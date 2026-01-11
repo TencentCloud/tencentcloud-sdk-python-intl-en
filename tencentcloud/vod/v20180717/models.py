@@ -1202,12 +1202,16 @@ class AdaptiveStreamTemplate(AbstractModel):
         :param _TEHDConfig: TESHD transcoding parameters
 Note: This field may return `null`, indicating that no valid value was found.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         """
         self._Video = None
         self._Audio = None
         self._RemoveAudio = None
         self._RemoveVideo = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
 
     @property
     def Video(self):
@@ -1269,6 +1273,18 @@ Note: This field may return `null`, indicating that no valid value was found.
     def TEHDConfig(self, TEHDConfig):
         self._TEHDConfig = TEHDConfig
 
+    @property
+    def EnhanceConfig(self):
+        r"""Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
 
     def _deserialize(self, params):
         if params.get("Video") is not None:
@@ -1282,6 +1298,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12271,6 +12290,69 @@ class AttachMediaSubtitlesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AudioBeautifyInfo(AbstractModel):
+    r"""The audio improvement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable audio improvement. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :type Switch: str
+        :param _Types: The audio improvement options. You can specify multiple options. Valid values:
+<li>`declick`: Noise removal.</li>
+<li>`deesser`: De-essing.</li>
+Default: `declick`.
+        :type Types: list of str
+        """
+        self._Switch = None
+        self._Types = None
+
+    @property
+    def Switch(self):
+        r"""Whether to enable audio improvement. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Types(self):
+        r"""The audio improvement options. You can specify multiple options. Valid values:
+<li>`declick`: Noise removal.</li>
+<li>`deesser`: De-essing.</li>
+Default: `declick`.
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioDenoiseInfo(AbstractModel):
     r"""Noise removal configuration.
 
@@ -12281,12 +12363,11 @@ class AudioDenoiseInfo(AbstractModel):
         :param _Switch: Whether to enable noise removal. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :type Switch: str
         :param _Type: The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
-<li>`weak`</li>
 <li>`normal`</li>
-<li>`strong`</li>
-Default value: `weak`.
+Default value: `normal`.
         :type Type: str
         """
         self._Switch = None
@@ -12297,6 +12378,7 @@ Default value: `weak`.
         r"""Whether to enable noise removal. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :rtype: str
         """
         return self._Switch
@@ -12308,10 +12390,8 @@ Default value: `weak`.
     @property
     def Type(self):
         r"""The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
-<li>`weak`</li>
 <li>`normal`</li>
-<li>`strong`</li>
-Default value: `weak`.
+Default value: `normal`.
         :rtype: str
         """
         return self._Type
@@ -12324,6 +12404,187 @@ Default value: `weak`.
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEnhanceConfig(AbstractModel):
+    r"""The audio enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Denoise: The audio noise reduction configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Denoise: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param _Separate: The audio separation configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Separate: :class:`tencentcloud.vod.v20180717.models.AudioSeparateInfo`
+        :param _VolumeBalance: The volume equalization configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VolumeBalance: :class:`tencentcloud.vod.v20180717.models.AudioVolumeBalanceInfo`
+        :param _Beautify: The audio improvement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Beautify: :class:`tencentcloud.vod.v20180717.models.AudioBeautifyInfo`
+        """
+        self._Denoise = None
+        self._Separate = None
+        self._VolumeBalance = None
+        self._Beautify = None
+
+    @property
+    def Denoise(self):
+        r"""The audio noise reduction configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def Separate(self):
+        r"""The audio separation configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioSeparateInfo`
+        """
+        return self._Separate
+
+    @Separate.setter
+    def Separate(self, Separate):
+        self._Separate = Separate
+
+    @property
+    def VolumeBalance(self):
+        r"""The volume equalization configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioVolumeBalanceInfo`
+        """
+        return self._VolumeBalance
+
+    @VolumeBalance.setter
+    def VolumeBalance(self, VolumeBalance):
+        self._VolumeBalance = VolumeBalance
+
+    @property
+    def Beautify(self):
+        r"""The audio improvement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioBeautifyInfo`
+        """
+        return self._Beautify
+
+    @Beautify.setter
+    def Beautify(self, Beautify):
+        self._Beautify = Beautify
+
+
+    def _deserialize(self, params):
+        if params.get("Denoise") is not None:
+            self._Denoise = AudioDenoiseInfo()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("Separate") is not None:
+            self._Separate = AudioSeparateInfo()
+            self._Separate._deserialize(params.get("Separate"))
+        if params.get("VolumeBalance") is not None:
+            self._VolumeBalance = AudioVolumeBalanceInfo()
+            self._VolumeBalance._deserialize(params.get("VolumeBalance"))
+        if params.get("Beautify") is not None:
+            self._Beautify = AudioBeautifyInfo()
+            self._Beautify._deserialize(params.get("Beautify"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioSeparateInfo(AbstractModel):
+    r"""The audio separation configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable audio separation. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :type Switch: str
+        :param _Type: The scenario. Valid values:
+<li>`normal`: Separate voice and background audio.</li>
+<li>`music`: Separate vocals and instrumentals.</li>
+Default value: `normal`.
+        :type Type: str
+        :param _Track: The output audio track. Valid values:
+<li>`vocal`: Voice.</li>
+<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
+Default value: `vocal`.
+        :type Track: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._Track = None
+
+    @property
+    def Switch(self):
+        r"""Whether to enable audio separation. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""The scenario. Valid values:
+<li>`normal`: Separate voice and background audio.</li>
+<li>`music`: Separate vocals and instrumentals.</li>
+Default value: `normal`.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Track(self):
+        r"""The output audio track. Valid values:
+<li>`vocal`: Voice.</li>
+<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
+Default value: `vocal`.
+        :rtype: str
+        """
+        return self._Track
+
+    @Track.setter
+    def Track(self, Track):
+        self._Track = Track
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Track = params.get("Track")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12768,6 +13029,69 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VolumeParam") is not None:
             self._VolumeParam = AudioVolumeParam()
             self._VolumeParam._deserialize(params.get("VolumeParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioVolumeBalanceInfo(AbstractModel):
+    r"""The volume equalization configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable volume equalization. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :type Switch: str
+        :param _Type: The type. Valid values:
+<li>`loudNorm`: Loudness normalization.</li>
+<li>`gainControl`: Volume leveling.</li>
+Default value: `loudNorm`.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""Whether to enable volume equalization. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `OFF`.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""The type. Valid values:
+<li>`loudNorm`: Loudness normalization.</li>
+<li>`gainControl`: Volume leveling.</li>
+Default value: `loudNorm`.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22779,6 +23103,8 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param _TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: Audio/Video enhancement parameter.
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         :param _SegmentType: The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
 <li>ts: TS segment</li>
 <li>fmp4: fMP4 segment</li>
@@ -22794,6 +23120,7 @@ Default: ts
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._SegmentType = None
 
     @property
@@ -22902,6 +23229,17 @@ Default value: 0.
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""Audio/Video enhancement parameter.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def SegmentType(self):
         r"""The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
 <li>ts: TS segment</li>
@@ -22932,6 +23270,9 @@ Default: ts
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -33014,6 +33355,23 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
+        :param _EnhanceType: Enhancement type. Valid values:
+<li>VideoEnhance: video enhancement only.</li>
+<li>AudioEnhance: audio enhancement only.</li>
+<li>AudioVideoEnhance: video and audio enhancement included.</li>
+<li> AnyEnhance: `VideoEnhance`, `AudioEnhance ` and `AudioVideoEnhance` included.</li>
+<li> None: Not any enhancement type</li>
+        :type EnhanceType: str
+        :param _EnhanceScenarioType: Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+        :type EnhanceScenarioType: str
         """
         self._SubAppId = None
         self._Definitions = None
@@ -33022,6 +33380,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._TEHDType = None
         self._Offset = None
         self._Limit = None
+        self._EnhanceType = None
+        self._EnhanceScenarioType = None
 
     @property
     def SubAppId(self):
@@ -33106,6 +33466,41 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def EnhanceType(self):
+        r"""Enhancement type. Valid values:
+<li>VideoEnhance: video enhancement only.</li>
+<li>AudioEnhance: audio enhancement only.</li>
+<li>AudioVideoEnhance: video and audio enhancement included.</li>
+<li> AnyEnhance: `VideoEnhance`, `AudioEnhance ` and `AudioVideoEnhance` included.</li>
+<li> None: Not any enhancement type</li>
+        :rtype: str
+        """
+        return self._EnhanceType
+
+    @EnhanceType.setter
+    def EnhanceType(self, EnhanceType):
+        self._EnhanceType = EnhanceType
+
+    @property
+    def EnhanceScenarioType(self):
+        r"""Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+        :rtype: str
+        """
+        return self._EnhanceScenarioType
+
+    @EnhanceScenarioType.setter
+    def EnhanceScenarioType(self, EnhanceScenarioType):
+        self._EnhanceScenarioType = EnhanceScenarioType
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -33115,6 +33510,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._TEHDType = params.get("TEHDType")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._EnhanceType = params.get("EnhanceType")
+        self._EnhanceScenarioType = params.get("EnhanceScenarioType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33693,6 +34090,71 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._WordSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DiffusionEnhanceInfo(AbstractModel):
+    r"""LLM enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable LLM enhancement. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: OFF.
+        :type Switch: str
+        :param _Type: The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: normal.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""Whether to enable LLM enhancement. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: OFF.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: normal.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DomainDetailInfo(AbstractModel):
@@ -35343,6 +35805,124 @@ class EmptyTrackItem(AbstractModel):
 
     def _deserialize(self, params):
         self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceConfig(AbstractModel):
+    r"""Audio/Video enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoEnhance: Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoEnhance: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        :param _AudioEnhance: The audio enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioEnhance: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        self._VideoEnhance = None
+        self._AudioEnhance = None
+
+    @property
+    def VideoEnhance(self):
+        r"""Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        """
+        return self._VideoEnhance
+
+    @VideoEnhance.setter
+    def VideoEnhance(self, VideoEnhance):
+        self._VideoEnhance = VideoEnhance
+
+    @property
+    def AudioEnhance(self):
+        r"""The audio enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        return self._AudioEnhance
+
+    @AudioEnhance.setter
+    def AudioEnhance(self, AudioEnhance):
+        self._AudioEnhance = AudioEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self._VideoEnhance = VideoEnhanceConfig()
+            self._VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("AudioEnhance") is not None:
+            self._AudioEnhance = AudioEnhanceConfig()
+            self._AudioEnhance._deserialize(params.get("AudioEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceConfigForUpdate(AbstractModel):
+    r"""Audio/Video enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoEnhance: Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoEnhance: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        :param _AudioEnhance: The audio enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioEnhance: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        self._VideoEnhance = None
+        self._AudioEnhance = None
+
+    @property
+    def VideoEnhance(self):
+        r"""Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoEnhanceConfig`
+        """
+        return self._VideoEnhance
+
+    @VideoEnhance.setter
+    def VideoEnhance(self, VideoEnhance):
+        self._VideoEnhance = VideoEnhance
+
+    @property
+    def AudioEnhance(self):
+        r"""The audio enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioEnhanceConfig`
+        """
+        return self._AudioEnhance
+
+    @AudioEnhance.setter
+    def AudioEnhance(self, AudioEnhance):
+        self._AudioEnhance = AudioEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self._VideoEnhance = VideoEnhanceConfig()
+            self._VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("AudioEnhance") is not None:
+            self._AudioEnhance = AudioEnhanceConfig()
+            self._AudioEnhance._deserialize(params.get("AudioEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38446,6 +39026,78 @@ class ForceRedirect(AbstractModel):
         
 
 
+class FrameRateWithDenInfo(AbstractModel):
+    r"""Frame interpolation configuration, which supports fractional frame rates.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: OFF.
+        :type Switch: str
+        :param _FpsNum: Frame rate numerator. Value range: non-negative number, which should be less than 100 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
+        :type FpsNum: int
+        :param _FpsDen: Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
+        :type FpsDen: int
+        """
+        self._Switch = None
+        self._FpsNum = None
+        self._FpsDen = None
+
+    @property
+    def Switch(self):
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: OFF.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FpsNum(self):
+        r"""Frame rate numerator. Value range: non-negative number, which should be less than 100 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
+        :rtype: int
+        """
+        return self._FpsNum
+
+    @FpsNum.setter
+    def FpsNum(self, FpsNum):
+        self._FpsNum = FpsNum
+
+    @property
+    def FpsDen(self):
+        r"""Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
+        :rtype: int
+        """
+        return self._FpsDen
+
+    @FpsDen.setter
+    def FpsDen(self, FpsDen):
+        self._FpsDen = FpsDen
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FpsNum = params.get("FpsNum")
+        self._FpsDen = params.get("FpsDen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     r"""Control parameter of intelligent frame-specific tagging task
 
@@ -38566,6 +39218,7 @@ class HDRInfo(AbstractModel):
         :param _Switch: Whether to enable HDR. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :type Switch: str
         :param _Type: The HDR type. Valid values:
 <li>`hdr10`</li>
@@ -38573,7 +39226,7 @@ class HDRInfo(AbstractModel):
 
 Note:
 <li>This parameter is valid only if `Switch` is `ON`.</li>
-<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx265`.</li>
+<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx264` or`libx265`.</li>
         :type Type: str
         """
         self._Switch = None
@@ -38584,6 +39237,7 @@ Note:
         r"""Whether to enable HDR. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :rtype: str
         """
         return self._Switch
@@ -38600,7 +39254,7 @@ Note:
 
 Note:
 <li>This parameter is valid only if `Switch` is `ON`.</li>
-<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx265`.</li>
+<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx264` or`libx265`.</li>
         :rtype: str
         """
         return self._Type
@@ -39964,6 +40618,71 @@ class ImageProcessingTemplate(AbstractModel):
                 obj._deserialize(item)
                 self._Operations.append(obj)
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQualityEnhanceInfo(AbstractModel):
+    r"""Overall enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable overall enhancement. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: OFF.
+        :type Switch: str
+        :param _Type: The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""Whether to enable overall enhancement. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: OFF.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53582,6 +54301,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param _TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        :param _EnhanceConfig: Audio/Video enhancement parameter.
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfigForUpdate`
         :param _SegmentType: The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
 <li>ts: TS segment</li>
 <li>fmp4: fMP4 segment</li>
@@ -53597,6 +54318,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._SegmentType = None
 
     @property
@@ -53714,6 +54436,17 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""Audio/Video enhancement parameter.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfigForUpdate`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def SegmentType(self):
         r"""The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
 <li>ts: TS segment</li>
@@ -53744,6 +54477,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfigForUpdate()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfigForUpdate()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -68249,8 +68985,9 @@ class ScratchRepairInfo(AbstractModel):
         :param _Switch: Whether to enable banding removal. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :type Switch: str
-        :param _Intensity: The banding removal strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.
+        :param _Intensity: The banding removal strength. Value range: 0.0 - 1.0. This parameter is valid only if `Switch` is `ON`.
 Default value: `0.0`.
         :type Intensity: float
         :param _Type: The banding removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
@@ -68267,6 +69004,7 @@ Default value: `normal`.
         r"""Whether to enable banding removal. Valid values:
 <li>`ON`</li>
 <li>`OFF`</li>
+Default value: `OFF`.
         :rtype: str
         """
         return self._Switch
@@ -68277,7 +69015,7 @@ Default value: `normal`.
 
     @property
     def Intensity(self):
-        r"""The banding removal strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.
+        r"""The banding removal strength. Value range: 0.0 - 1.0. This parameter is valid only if `Switch` is `ON`.
 Default value: `0.0`.
         :rtype: float
         """
@@ -71926,6 +72664,7 @@ class SuperResolutionInfo(AbstractModel):
 <li>ON</li>
 <li>`OFF`</li>
 If super resolution is enabled, the output resolution will double.
+Default value: `OFF`.
         :type Switch: str
         :param _Type: The super resolution type. This parameter is valid only if `Switch` is `ON`. Valid values:
 <li>`lq`: For low-resolution videos with obvious noise</li>
@@ -71946,6 +72685,7 @@ Default value: `2`.
 <li>ON</li>
 <li>`OFF`</li>
 If super resolution is enabled, the output resolution will double.
+Default value: `OFF`.
         :rtype: str
         """
         return self._Switch
@@ -74276,6 +75016,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _TEHDConfig: TESHD transcoding parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param _EnhanceConfig: Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
         :param _ContainerType: Container filter. Valid values:
 <li>Video: video container that can contain both video stream and audio stream;</li>
 <li>PureAudio: audio container that can contain only audio stream.</li>
@@ -74297,6 +75040,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._EnhanceConfig = None
         self._ContainerType = None
         self._CreateTime = None
         self._UpdateTime = None
@@ -74424,6 +75168,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._TEHDConfig = TEHDConfig
 
     @property
+    def EnhanceConfig(self):
+        r"""Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+    @property
     def ContainerType(self):
         r"""Container filter. Valid values:
 <li>Video: video container that can contain both video stream and audio stream;</li>
@@ -74487,6 +75243,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         self._ContainerType = params.get("ContainerType")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
@@ -76102,6 +76861,252 @@ Default value: `weak`.
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEnhanceConfig(AbstractModel):
+    r"""Video enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnhanceScenarioType: Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+<li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnhanceScenarioType: str
+        :param _SuperResolution: Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuperResolution: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param _Hdr: HDR configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Hdr: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param _Denoise: Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Denoise: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param _ImageQualityEnhance: Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageQualityEnhance: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        :param _ColorEnhance: Color enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColorEnhance: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param _LowLightEnhance: Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LowLightEnhance: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param _ScratchRepair: Banding removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScratchRepair: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param _ArtifactRepair: Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ArtifactRepair: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param _DiffusionEnhance: Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiffusionEnhance: :class:`tencentcloud.vod.v20180717.models.DiffusionEnhanceInfo`
+        :param _FrameRateWithDen: Frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FrameRateWithDen: :class:`tencentcloud.vod.v20180717.models.FrameRateWithDenInfo`
+        """
+        self._EnhanceScenarioType = None
+        self._SuperResolution = None
+        self._Hdr = None
+        self._Denoise = None
+        self._ImageQualityEnhance = None
+        self._ColorEnhance = None
+        self._LowLightEnhance = None
+        self._ScratchRepair = None
+        self._ArtifactRepair = None
+        self._DiffusionEnhance = None
+        self._FrameRateWithDen = None
+
+    @property
+    def EnhanceScenarioType(self):
+        r"""Enhancement scenario configuration. Valid values:
+<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
+<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
+<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
+<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
+<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
+<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
+<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
+<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
+<li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EnhanceScenarioType
+
+    @EnhanceScenarioType.setter
+    def EnhanceScenarioType(self, EnhanceScenarioType):
+        self._EnhanceScenarioType = EnhanceScenarioType
+
+    @property
+    def SuperResolution(self):
+        r"""Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        """
+        return self._SuperResolution
+
+    @SuperResolution.setter
+    def SuperResolution(self, SuperResolution):
+        self._SuperResolution = SuperResolution
+
+    @property
+    def Hdr(self):
+        r"""HDR configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        """
+        return self._Hdr
+
+    @Hdr.setter
+    def Hdr(self, Hdr):
+        self._Hdr = Hdr
+
+    @property
+    def Denoise(self):
+        r"""Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def ImageQualityEnhance(self):
+        r"""Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageQualityEnhanceInfo`
+        """
+        return self._ImageQualityEnhance
+
+    @ImageQualityEnhance.setter
+    def ImageQualityEnhance(self, ImageQualityEnhance):
+        self._ImageQualityEnhance = ImageQualityEnhance
+
+    @property
+    def ColorEnhance(self):
+        r"""Color enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        """
+        return self._ColorEnhance
+
+    @ColorEnhance.setter
+    def ColorEnhance(self, ColorEnhance):
+        self._ColorEnhance = ColorEnhance
+
+    @property
+    def LowLightEnhance(self):
+        r"""Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        """
+        return self._LowLightEnhance
+
+    @LowLightEnhance.setter
+    def LowLightEnhance(self, LowLightEnhance):
+        self._LowLightEnhance = LowLightEnhance
+
+    @property
+    def ScratchRepair(self):
+        r"""Banding removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        """
+        return self._ScratchRepair
+
+    @ScratchRepair.setter
+    def ScratchRepair(self, ScratchRepair):
+        self._ScratchRepair = ScratchRepair
+
+    @property
+    def ArtifactRepair(self):
+        r"""Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        """
+        return self._ArtifactRepair
+
+    @ArtifactRepair.setter
+    def ArtifactRepair(self, ArtifactRepair):
+        self._ArtifactRepair = ArtifactRepair
+
+    @property
+    def DiffusionEnhance(self):
+        r"""Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DiffusionEnhanceInfo`
+        """
+        return self._DiffusionEnhance
+
+    @DiffusionEnhance.setter
+    def DiffusionEnhance(self, DiffusionEnhance):
+        self._DiffusionEnhance = DiffusionEnhance
+
+    @property
+    def FrameRateWithDen(self):
+        r"""Frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FrameRateWithDenInfo`
+        """
+        return self._FrameRateWithDen
+
+    @FrameRateWithDen.setter
+    def FrameRateWithDen(self, FrameRateWithDen):
+        self._FrameRateWithDen = FrameRateWithDen
+
+
+    def _deserialize(self, params):
+        self._EnhanceScenarioType = params.get("EnhanceScenarioType")
+        if params.get("SuperResolution") is not None:
+            self._SuperResolution = SuperResolutionInfo()
+            self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Hdr") is not None:
+            self._Hdr = HDRInfo()
+            self._Hdr._deserialize(params.get("Hdr"))
+        if params.get("Denoise") is not None:
+            self._Denoise = VideoDenoiseInfo()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self._ImageQualityEnhance = ImageQualityEnhanceInfo()
+            self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
+        if params.get("ColorEnhance") is not None:
+            self._ColorEnhance = ColorEnhanceInfo()
+            self._ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self._LowLightEnhance = LowLightEnhanceInfo()
+            self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        if params.get("ScratchRepair") is not None:
+            self._ScratchRepair = ScratchRepairInfo()
+            self._ScratchRepair._deserialize(params.get("ScratchRepair"))
+        if params.get("ArtifactRepair") is not None:
+            self._ArtifactRepair = ArtifactRepairInfo()
+            self._ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        if params.get("DiffusionEnhance") is not None:
+            self._DiffusionEnhance = DiffusionEnhanceInfo()
+            self._DiffusionEnhance._deserialize(params.get("DiffusionEnhance"))
+        if params.get("FrameRateWithDen") is not None:
+            self._FrameRateWithDen = FrameRateWithDenInfo()
+            self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

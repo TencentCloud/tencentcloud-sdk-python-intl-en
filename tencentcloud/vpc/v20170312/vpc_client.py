@@ -6543,6 +6543,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReplaceRoutesWithRoutePolicy(self, request):
+        r"""This API (ReplaceRoutes) modifies the specified routing policy (Route) based on the routing policy ID (RouteId), supporting batch modifications.
+
+        :param request: Request instance for ReplaceRoutesWithRoutePolicy.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutesWithRoutePolicyRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutesWithRoutePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceRoutesWithRoutePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceRoutesWithRoutePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplaceSecurityGroupPolicies(self, request):
         r"""This API is used to batch modify security group policies.
         Policies to modify must be in the same direction. `PolicyIndex` must be specified.

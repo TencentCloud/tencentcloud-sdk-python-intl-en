@@ -5172,6 +5172,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ReplaceRoutesWithRoutePolicy(
+            self,
+            request: models.ReplaceRoutesWithRoutePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ReplaceRoutesWithRoutePolicyResponse:
+        """
+        This API (ReplaceRoutes) modifies the specified routing policy (Route) based on the routing policy ID (RouteId), supporting batch modifications.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReplaceRoutesWithRoutePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReplaceRoutesWithRoutePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReplaceSecurityGroupPolicies(
             self,
             request: models.ReplaceSecurityGroupPoliciesRequest,

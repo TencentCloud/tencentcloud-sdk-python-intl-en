@@ -10765,10 +10765,11 @@ class WebVerificationConfigIntl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSkipStartPage: When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. The default is false. This configuration will not take effect if the downgrade policy is triggered.
+        :param _AutoSkipStartPage: When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. This configuration will not take effect if the downgrade policy is triggered. The default is false.
+Example: false
         :type AutoSkipStartPage: bool
         :param _AutoSkip: When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
-Example value: false
+Example: false
         :type AutoSkip: bool
         :param _CheckMode: Detection mode, parameter values are as follows:
 1: OCR+liveness detection & face comparison;
@@ -10776,9 +10777,9 @@ Example value: false
 3: Liveness detection;
 4: OCR;
 The default value is 2.
-Example value: 3
+Example: 3
         :type CheckMode: int
-        :param _IDCardType: The type of lisence used for verification. The following types are supported.
+        :param _IDCardType: Card Type for verification. The following types are supported:
 1.HKIDCard: Hong Kong (China) ID card
 2.MLIDCard: Malaysia ID card
 3.IndonesialDCard: Indonesia ID card
@@ -10794,35 +10795,60 @@ Example value: 3
 Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
+Example: false
         :type DisableCheckOcrWarnings: bool
-        :param _SecurityLevel: Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;5:Action+Lighting(High security) mode; default value is 3
+        :param _SecurityLevel: Liveness security level, the default value is 3. The currently supported security level are as follows:
+1:Silent mode;
+2:Action mode;
+3:Lighting mode;
+4:Action+Lighting mode;
+5:Action+Lighting(High security) mode.
+Example: 4
         :type SecurityLevel: int
-        :param _SkipPrivacyPolicy: Whether to skip the agreement page, the default is false. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page.
+        :param _SkipPrivacyPolicy: Whether to skip the agreement page. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page. The default is false.
+Example: false
         :type SkipPrivacyPolicy: bool
-        :param _IdCardCutReturn: The default value is false. If it is false, the original ID image will be displayed. If it is true, the cut ID image will be displayed.
+        :param _IdCardCutReturn: whether to display the cropped ID card image. When set to false, the original ID card image is displayed. When set to true, the cropped version is displayed. The default value is false. 
+Example: false
         :type IdCardCutReturn: bool
-        :param _ThemeColor: Front-end theme color, in the format of RGB hexadecimal color code. The default value is "#2d72f1". If the format is incorrect, the default value color will be used. 
+        :param _ThemeColor: Front-end theme color, in the format of RGB hexadecimal color code. If the format is incorrect, the default value color will be used. The default value is "#2d72f1".
+Example: #2d72f1
         :type ThemeColor: str
-        :param _Language: International language, the default value is en (English). Currently supported: th: Thai; en: English; zh-cn: Simplified Chinese; zh-tc: Tradionnal Chinese; id: Bahasa Indonesia.
+        :param _Language: International language, the default value is en (English). The currently supported language are as follows: 
+th: Thai; 
+en: English; 
+zh-cn: Simplified Chinese; 
+zh-tc: Tradionnal Chinese; 
+id: Bahasa Indonesia.
         :type Language: str
-        :param _AutoDowngrade: Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
+        :param _AutoDowngrade: Automatic downgrade mode, the following parameter are supported: 
+1: Downgrade to silent live mode; 
+2: Disable downgrade mode. 
+The default value is 1.
         :type AutoDowngrade: int
         :param _ActionList: This interface is used to control th action sequences.
-Action types are as follows:
-"blink"
-"mouth"
-"nod"
-"shake"
-You can choose 1-2 actions out of the four.
-Single action example: "blink"
-Multiple action example: "blink,mouth"
-The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+The supported action types are as follows:
+"blink";
+"mouth";
+"nod";
+"shake".
+You can choose 1-2 actions out of the four. Single action example: "blink". Multiple action example: "blink,mouth". The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+The default value is blink.
         :type ActionList: str
         :param _LivenessRetryLimit: Control liveness retry number.The value range is 1-99.
+The default value is 99.
         :type LivenessRetryLimit: int
         :param _LivenessTimeout: Specifies the liveness detection timeout period in seconds. value range: (0,600].
+The default value is 45.
         :type LivenessTimeout: int
-        :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.
+        :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective. The supported alarm types are as follows:
+-9101: Incomplete Border Alert;
+-9102: Copy Document Alert;
+-9103: Remediated Document Alert;
+-9104: PS-altered Document Alert;
+-9107: Glare Alert;
+-9108: Blurriness Alert;
+-9109: Alert Not Activated.
         :type SelectedWarningCodes: str
         :param _AllowExpiredDocument: Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
 true (default value): Expired HKID is allowed to enter the liveness process.
@@ -10848,7 +10874,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
 
     @property
     def AutoSkipStartPage(self):
-        r"""When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. The default is false. This configuration will not take effect if the downgrade policy is triggered.
+        r"""When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. This configuration will not take effect if the downgrade policy is triggered. The default is false.
+Example: false
         :rtype: bool
         """
         return self._AutoSkipStartPage
@@ -10860,7 +10887,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     @property
     def AutoSkip(self):
         r"""When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
-Example value: false
+Example: false
         :rtype: bool
         """
         return self._AutoSkip
@@ -10877,7 +10904,7 @@ Example value: false
 3: Liveness detection;
 4: OCR;
 The default value is 2.
-Example value: 3
+Example: 3
         :rtype: int
         """
         return self._CheckMode
@@ -10888,7 +10915,7 @@ Example value: 3
 
     @property
     def IDCardType(self):
-        r"""The type of lisence used for verification. The following types are supported.
+        r"""Card Type for verification. The following types are supported:
 1.HKIDCard: Hong Kong (China) ID card
 2.MLIDCard: Malaysia ID card
 3.IndonesialDCard: Indonesia ID card
@@ -10913,6 +10940,7 @@ Example: HKIDCard
     @property
     def DisableCheckOcrWarnings(self):
         r"""Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
+Example: false
         :rtype: bool
         """
         return self._DisableCheckOcrWarnings
@@ -10923,7 +10951,13 @@ Example: HKIDCard
 
     @property
     def SecurityLevel(self):
-        r"""Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;5:Action+Lighting(High security) mode; default value is 3
+        r"""Liveness security level, the default value is 3. The currently supported security level are as follows:
+1:Silent mode;
+2:Action mode;
+3:Lighting mode;
+4:Action+Lighting mode;
+5:Action+Lighting(High security) mode.
+Example: 4
         :rtype: int
         """
         return self._SecurityLevel
@@ -10934,7 +10968,8 @@ Example: HKIDCard
 
     @property
     def SkipPrivacyPolicy(self):
-        r"""Whether to skip the agreement page, the default is false. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page.
+        r"""Whether to skip the agreement page. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page. The default is false.
+Example: false
         :rtype: bool
         """
         return self._SkipPrivacyPolicy
@@ -10945,7 +10980,8 @@ Example: HKIDCard
 
     @property
     def IdCardCutReturn(self):
-        r"""The default value is false. If it is false, the original ID image will be displayed. If it is true, the cut ID image will be displayed.
+        r"""whether to display the cropped ID card image. When set to false, the original ID card image is displayed. When set to true, the cropped version is displayed. The default value is false. 
+Example: false
         :rtype: bool
         """
         return self._IdCardCutReturn
@@ -10956,7 +10992,8 @@ Example: HKIDCard
 
     @property
     def ThemeColor(self):
-        r"""Front-end theme color, in the format of RGB hexadecimal color code. The default value is "#2d72f1". If the format is incorrect, the default value color will be used. 
+        r"""Front-end theme color, in the format of RGB hexadecimal color code. If the format is incorrect, the default value color will be used. The default value is "#2d72f1".
+Example: #2d72f1
         :rtype: str
         """
         return self._ThemeColor
@@ -10967,7 +11004,12 @@ Example: HKIDCard
 
     @property
     def Language(self):
-        r"""International language, the default value is en (English). Currently supported: th: Thai; en: English; zh-cn: Simplified Chinese; zh-tc: Tradionnal Chinese; id: Bahasa Indonesia.
+        r"""International language, the default value is en (English). The currently supported language are as follows: 
+th: Thai; 
+en: English; 
+zh-cn: Simplified Chinese; 
+zh-tc: Tradionnal Chinese; 
+id: Bahasa Indonesia.
         :rtype: str
         """
         return self._Language
@@ -10978,7 +11020,10 @@ Example: HKIDCard
 
     @property
     def AutoDowngrade(self):
-        r"""Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
+        r"""Automatic downgrade mode, the following parameter are supported: 
+1: Downgrade to silent live mode; 
+2: Disable downgrade mode. 
+The default value is 1.
         :rtype: int
         """
         return self._AutoDowngrade
@@ -10990,15 +11035,13 @@ Example: HKIDCard
     @property
     def ActionList(self):
         r"""This interface is used to control th action sequences.
-Action types are as follows:
-"blink"
-"mouth"
-"nod"
-"shake"
-You can choose 1-2 actions out of the four.
-Single action example: "blink"
-Multiple action example: "blink,mouth"
-The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+The supported action types are as follows:
+"blink";
+"mouth";
+"nod";
+"shake".
+You can choose 1-2 actions out of the four. Single action example: "blink". Multiple action example: "blink,mouth". The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+The default value is blink.
         :rtype: str
         """
         return self._ActionList
@@ -11010,6 +11053,7 @@ The default value is blink. The different action types passed in this parameter 
     @property
     def LivenessRetryLimit(self):
         r"""Control liveness retry number.The value range is 1-99.
+The default value is 99.
         :rtype: int
         """
         return self._LivenessRetryLimit
@@ -11021,6 +11065,7 @@ The default value is blink. The different action types passed in this parameter 
     @property
     def LivenessTimeout(self):
         r"""Specifies the liveness detection timeout period in seconds. value range: (0,600].
+The default value is 45.
         :rtype: int
         """
         return self._LivenessTimeout
@@ -11031,7 +11076,14 @@ The default value is blink. The different action types passed in this parameter 
 
     @property
     def SelectedWarningCodes(self):
-        r"""Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.
+        r"""Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective. The supported alarm types are as follows:
+-9101: Incomplete Border Alert;
+-9102: Copy Document Alert;
+-9103: Remediated Document Alert;
+-9104: PS-altered Document Alert;
+-9107: Glare Alert;
+-9108: Blurriness Alert;
+-9109: Alert Not Activated.
         :rtype: str
         """
         return self._SelectedWarningCodes
