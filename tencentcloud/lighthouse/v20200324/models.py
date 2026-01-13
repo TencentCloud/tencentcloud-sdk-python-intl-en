@@ -1248,9 +1248,9 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BlueprintId: Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        :param _BlueprintId: Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.com/document/product/1207/47689?from_cn_redirect=1) API.
         :type BlueprintId: str
-        :param _AccountIds: List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        :param _AccountIds: List of [account IDs](https://www.tencentcloud.com/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
         :type AccountIds: list of str
         """
         self._BlueprintId = None
@@ -1258,7 +1258,7 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
-        r"""Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        r"""Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.com/document/product/1207/47689?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BlueprintId
@@ -1269,7 +1269,7 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        r"""List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        r"""List of [account IDs](https://www.tencentcloud.com/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
         :rtype: list of str
         """
         return self._AccountIds
@@ -4592,11 +4592,11 @@ class DescribeImagesToShareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageIds: List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        :param _ImageIds: List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1) API.
         :type ImageIds: list of str
-        :param _Offset: Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :param _Offset: Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
-        :param _Limit: Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        :param _Limit: Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
         :param _Filters: Filter list.
 <li>image-id</li>: filter by [CVM image ID].
@@ -4625,7 +4625,7 @@ ImageIds and Filters cannot be specified simultaneously for parameters.
 
     @property
     def ImageIds(self):
-        r"""List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        r"""List of CVM image IDs, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._ImageIds
@@ -4636,7 +4636,7 @@ ImageIds and Filters cannot be specified simultaneously for parameters.
 
     @property
     def Offset(self):
-        r"""Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        r"""Offset. The default value is 0. For more information on `Offset`, see the relevant section in API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -4647,7 +4647,7 @@ ImageIds and Filters cannot be specified simultaneously for parameters.
 
     @property
     def Limit(self):
-        r"""Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.comom/document/product/1207/47578?from_cn_redirect=1).
+        r"""Number of returned results. The default value is 20, and the maximum value is 100. For more information on `Limit`, see the relevant section in API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -11417,7 +11417,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageId: Image ID, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        :param _ImageId: Image ID, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1) API.
         :type ImageId: str
         :param _Permission: Sharing property, including SHARE and CANCEL. Among them, SHARE indicates sharing, and CANCEL indicates canceling sharing.
         :type Permission: str
@@ -11427,7 +11427,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""Image ID, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.comom/document/api/213/15715?from_cn_redirect=1) API.
+        r"""Image ID, which can be obtained through the ImageId in the returned value of the [DescribeImages](https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ImageId
@@ -12831,7 +12831,7 @@ class ResizeDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.comom/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
+        :param _DiskIds: Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.com/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
         :type DiskIds: list of str
         :param _DiskSize: Size of the cloud disk after scale-out, in GB. The value range of the Premium Disk size is [10, 4000], and that of the Cloud SSD size is [20, 4000]. The cloud disk size after scale-out must be greater than the current disk size.
         :type DiskSize: int
@@ -12841,7 +12841,7 @@ class ResizeDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        r"""Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.comom/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
+        r"""Cloud disk ID list, which can be queried via the [DescribeDisks](https://www.tencentcloud.com/document/api/1207/66093?from_cn_redirect=1) API. The maximum length of the list is 15.
         :rtype: list of str
         """
         return self._DiskIds
@@ -13042,9 +13042,9 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BlueprintId: Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        :param _BlueprintId: Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.com/document/product/1207/47689?from_cn_redirect=1) API.
         :type BlueprintId: str
-        :param _AccountIds: List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        :param _AccountIds: List of [account IDs](https://www.tencentcloud.com/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
         :type AccountIds: list of str
         """
         self._BlueprintId = None
@@ -13052,7 +13052,7 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
-        r"""Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.comom/document/product/1207/47689?from_cn_redirect=1) API.
+        r"""Image ID, which can be obtained through the BlueprintId returned by the [DescribeBlueprints](https://www.tencentcloud.com/document/product/1207/47689?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BlueprintId
@@ -13063,7 +13063,7 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        r"""List of [account IDs](https://www.tencentcloud.comom/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
+        r"""List of [account IDs](https://www.tencentcloud.com/document/product/213/4944?from_cn_redirect=1#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id) that receive the shared images. The account ID is different from the QQ number. To query a user account ID, view the account ID column in the account information. The maximum number of accounts is 10.
         :rtype: list of str
         """
         return self._AccountIds

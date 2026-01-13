@@ -1936,7 +1936,7 @@ class LighthouseClient(AbstractClient):
         * Synchronization to the source region is not supported.
         * Only images in the NORMAL status are supported for synchronization.
         * Synchronization between Chinese mainland regions and regions outside the Chinese mainland is not supported.
-         * You can use the [DescribeBlueprints](https://www.tencentcloud.comom/document/api/1207/47689?from_cn_redirect=1) API to query the image status. When the status is NORMAL, it indicates that the source region synchronization ends.
+         * You can use the [DescribeBlueprints](https://www.tencentcloud.com/document/api/1207/47689?from_cn_redirect=1) API to query the image status. When the status is NORMAL, it indicates that the source region synchronization ends.
 
         :param request: Request instance for SyncBlueprint.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.SyncBlueprintRequest`

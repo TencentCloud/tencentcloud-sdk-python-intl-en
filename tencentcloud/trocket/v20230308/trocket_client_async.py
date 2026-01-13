@@ -269,7 +269,7 @@ class TrocketClient(AbstractClient):
 
         -InstanceName, the cluster name, supports fuzzy query and can be obtained from the API return value or console.
         -InstanceId Cluster ID, exact query, obtain from the current API or console.
-        - InstanceType cluster type, see [InstanceItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
+        - InstanceType cluster type, see [InstanceItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
         - Version: cluster edition, enumeration values as follows:.
         -4 RocketMQ 4.x clusters.
         -Deploy a RocketMQ 5.x cluster.
@@ -314,9 +314,9 @@ class TrocketClient(AbstractClient):
         This API is used to describe clusters. It only supports 5.x clusters. Description of the Filters parameter use is as follows:.
 
         -InstanceName Cluster name, supports fuzzy search.
-        - InstanceId The Tencent Cloud RocketMQ instance ID, obtained from the [DescribeFusionInstanceList](https://www.tencentcloud.comom/document/api/1493/106745?from_cn_redirect=1) API or console.
-        - InstanceType cluster type, see [InstanceItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
-        -InstanceStatus cluster status, see [InstanceItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
+        - InstanceId The Tencent Cloud RocketMQ instance ID, obtained from the [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) API or console.
+        - InstanceType cluster type, see [InstanceItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
+        -InstanceStatus cluster status, see [InstanceItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#InstanceItem) data structure, supports multiple selections.
 
         This API is used to demonstrate Filters.
         [{
@@ -416,7 +416,7 @@ class TrocketClient(AbstractClient):
 
         The Filters field is a query filter that supports the following conditions:.
         This API is used to get topic names with fuzzy query support.
-        This api is used to query the migration status. See the data structure in MigratingTopic (https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#MigratingTopic).
+        This api is used to query the migration status. See the data structure in MigratingTopic (https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#MigratingTopic).
         This API is used to manage namespaces, valid only for 4.x clusters.
 
         This API is used to demonstrate Filters.
@@ -547,7 +547,7 @@ class TrocketClient(AbstractClient):
 
         This API is used to query the supported fields of the query parameter Filters as follows:.
         Task status, supports multiple selections.
-        ConnectionType, network connection type, supports multiple selections. See the description of SmoothMigrationTaskItem (https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#SmoothMigrationTaskItem).
+        ConnectionType, network connection type, supports multiple selections. See the description of SmoothMigrationTaskItem (https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#SmoothMigrationTaskItem).
         This API is used to search for an instance by instance ID with precise matching.
         This API is used to query task names with fuzzy search support.
 
@@ -578,7 +578,7 @@ class TrocketClient(AbstractClient):
         The Filters field is a query filter that supports the following fields:.
         This API is used to query consumer group names with fuzzy search support.
         This API is used to check whether the data is Imported.
-        This api is used to check the import status. See SourceClusterGroupConfig (https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#SourceClusterGroupConfig) for details.
+        This api is used to check the import status. See SourceClusterGroupConfig (https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#SourceClusterGroupConfig) for details.
         This API is used to manage namespaces, valid only for 4.x clusters.
 
         This API is used to demonstrate Filters.
@@ -605,7 +605,7 @@ class TrocketClient(AbstractClient):
         """
         This API is used to query topic details. The Offset and Limit parameters are pagination parameters for consumer groups subscribing to this topic. The Filter parameter usage instructions are as follows:.
 
-        -The ConsumerGroup name can be obtained from the [ConsumeGroupItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#ConsumeGroupItem) in the API response of [DescribeConsumerGroupList](https://www.tencentcloud.comom/document/api/1493/101535?from_cn_redirect=1) or from the console.
+        -The ConsumerGroup name can be obtained from the [ConsumeGroupItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#ConsumeGroupItem) in the API response of [DescribeConsumerGroupList](https://www.tencentcloud.com/document/api/1493/101535?from_cn_redirect=1) or from the console.
 
         This API is used to demonstrate Filters.
         [{ "Name": "ConsumerGroup", "Values": ["test_group"] }]
@@ -628,8 +628,8 @@ class TrocketClient(AbstractClient):
         """
         This API is used to search the topic list. Filter parameter usage instructions are as follows:.
 
-        -TopicName supports fuzzy search. Obtain it from the [TopicItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#TopicItem) in the [DescribeTopicList](https://www.tencentcloud.comom/document/api/1493/96030?from_cn_redirect=1) API response or the console.
-        -Search by TopicType, support multiple selections. See the TopicType field in the [DescribeTopic](https://www.tencentcloud.comom/document/api/1493/97945?from_cn_redirect=1) API.
+        -TopicName supports fuzzy search. Obtain it from the [TopicItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#TopicItem) in the [DescribeTopicList](https://www.tencentcloud.com/document/api/1493/96030?from_cn_redirect=1) API response or the console.
+        -Search by TopicType, support multiple selections. See the TopicType field in the [DescribeTopic](https://www.tencentcloud.com/document/api/1493/97945?from_cn_redirect=1) API.
 
         This API is used to demonstrate Filters.
          [{ "Name": "TopicName", "Values": ["test_topic"] }]
@@ -652,7 +652,7 @@ class TrocketClient(AbstractClient):
         """
         This API is used to get topic list by consumer group. Filter parameter usage instructions are as follows:.
 
-        -TopicName. It can be obtained from [TopicItem](https://www.tencentcloud.comom/document/api/1493/96031?from_cn_redirect=1#TopicItem) returned by the API [DescribeTopicList](https://www.tencentcloud.comom/document/api/1493/96030?from_cn_redirect=1) or from the console.
+        -TopicName. It can be obtained from [TopicItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#TopicItem) returned by the API [DescribeTopicList](https://www.tencentcloud.com/document/api/1493/96030?from_cn_redirect=1) or from the console.
 
         This API is used to demonstrate Filters.
         [{ "Name": "TopicName", "Values": ["test_topic"] }]

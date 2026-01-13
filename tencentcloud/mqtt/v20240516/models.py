@@ -142,30 +142,30 @@ class AuthorizationPolicyItem(AbstractModel):
         :type PolicyName: str
         :param _Version: Rule syntax version. currently only support 1. defaults to 1.
         :type Version: int
-        :param _Priority: Policy priority. a smaller priority ID indicates the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Priority: Policy priority. a smaller priority ID indicates the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Priority: int
         :param _Effect: Specifies the decision.
 allow specifies permission for access requests from devices that match this policy.
 deny: denies access requests to the device that override the policy.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Effect: str
         :param _Actions: Operation.
 Specifies the connection.
 Publishes an mqtt message.
 Sub. specifies the subscription to mqtt messages.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Actions: str
-        :param _Resources: Resource. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Resources: Resource. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Resources: str
-        :param _ClientId: Specifies the device ID for connection. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _ClientId: Specifies the device ID for connection. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type ClientId: str
-        :param _Username: Condition - username. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Username: Condition - username. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Username: str
-        :param _Ip: Specifies the client IP address. see the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Ip: Specifies the client IP address. see the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Ip: str
-        :param _Qos: Condition - service quality. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Qos: Condition - service quality. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Qos: str
-        :param _Retain: Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Retain: Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Indicates the match of retain messages.
 2: indicates non-retain messages.
 3: indicates matching retain and non-retain messages.
@@ -240,7 +240,7 @@ Indicates the match of retain messages.
 
     @property
     def Priority(self):
-        r"""Policy priority. a smaller priority ID indicates the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Policy priority. a smaller priority ID indicates the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: int
         """
         return self._Priority
@@ -254,7 +254,7 @@ Indicates the match of retain messages.
         r"""Specifies the decision.
 allow specifies permission for access requests from devices that match this policy.
 deny: denies access requests to the device that override the policy.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Effect
@@ -269,7 +269,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 Specifies the connection.
 Publishes an mqtt message.
 Sub. specifies the subscription to mqtt messages.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Actions
@@ -280,7 +280,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Resources(self):
-        r"""Resource. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Resource. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Resources
@@ -291,7 +291,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def ClientId(self):
-        r"""Specifies the device ID for connection. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Specifies the device ID for connection. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._ClientId
@@ -302,7 +302,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Username(self):
-        r"""Condition - username. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Condition - username. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Username
@@ -313,7 +313,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Ip(self):
-        r"""Specifies the client IP address. see the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Specifies the client IP address. see the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Ip
@@ -324,7 +324,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Qos(self):
-        r"""Condition - service quality. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Condition - service quality. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Qos
@@ -335,7 +335,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Retain(self):
-        r"""Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Indicates the match of retain messages.
 2: indicates non-retain messages.
 3: indicates matching retain and non-retain messages.
@@ -415,7 +415,7 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).
+        :param _Id: Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.com/document/api/1778/111074?from_cn_redirect=1).
         :type Id: int
         :param _Priority: Priority
         :type Priority: int
@@ -425,7 +425,7 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     @property
     def Id(self):
-        r"""Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).
+        r"""Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.com/document/api/1778/111074?from_cn_redirect=1).
         :rtype: int
         """
         return self._Id
@@ -466,25 +466,25 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _PolicyName: Policy name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, "-", and "_".
         :type PolicyName: str
         :param _PolicyVersion: Policy version, defaults to 1. currently only support 1.
         :type PolicyVersion: int
-        :param _Priority: Policy priority. a smaller value indicates higher priority and must be unique. a smaller priority ID means the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Priority: Policy priority. a smaller value indicates higher priority and must be unique. a smaller priority ID means the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Priority: int
         :param _Effect: Specifies the decision.
 allow specifies permission for access requests from devices that match this policy.
 deny: denies access requests to the device that override the policy.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Effect: str
-        :param _Actions: Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Actions: Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Specifies the connection.
 Specifies the publish action.
 Sub. specifies the subscription.
         :type Actions: str
-        :param _Retain: Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Retain: Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Matches message retention.
 Matches non-retention messages.
 3. match retained and non-retained messages.
@@ -493,16 +493,16 @@ Matches non-retention messages.
 0: at most once.
 Minimum once.
 2: exactly once.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Qos: str
-        :param _Resources: Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Resources: Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 
         :type Resources: str
         :param _Username: Specifies the condition-username.
         :type Username: str
         :param _ClientId: Client ID. supports regular expressions.
         :type ClientId: str
-        :param _Ip: Specifies the client IP address, supporting IP or CIDR. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Ip: Specifies the client IP address, supporting IP or CIDR. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :type Ip: str
         :param _Remark: Specifies the remark information with a maximum length of 128 characters.
         :type Remark: str
@@ -523,7 +523,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -556,7 +556,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Priority(self):
-        r"""Policy priority. a smaller value indicates higher priority and must be unique. a smaller priority ID means the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Policy priority. a smaller value indicates higher priority and must be unique. a smaller priority ID means the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: int
         """
         return self._Priority
@@ -570,7 +570,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
         r"""Specifies the decision.
 allow specifies permission for access requests from devices that match this policy.
 deny: denies access requests to the device that override the policy.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Effect
@@ -581,7 +581,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Actions(self):
-        r"""Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Specifies the connection.
 Specifies the publish action.
 Sub. specifies the subscription.
@@ -595,7 +595,7 @@ Sub. specifies the subscription.
 
     @property
     def Retain(self):
-        r"""Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Matches message retention.
 Matches non-retention messages.
 3. match retained and non-retained messages.
@@ -613,7 +613,7 @@ Matches non-retention messages.
 0: at most once.
 Minimum once.
 2: exactly once.
-Refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+Refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Qos
@@ -624,7 +624,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Resources(self):
-        r"""Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 
         :rtype: str
         """
@@ -658,7 +658,7 @@ Refer to the [data plane authorization policy description](https://www.tencentcl
 
     @property
     def Ip(self):
-        r"""Specifies the client IP address, supporting IP or CIDR. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Specifies the client IP address, supporting IP or CIDR. refer to the [data plane authorization policy description](https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
         :rtype: str
         """
         return self._Ip
@@ -768,7 +768,7 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: Instance type, which needs to correspond to SkuCode. for details, see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api.
+        :param _InstanceType: Instance type, which needs to correspond to SkuCode. for details, see the [get MQTT product sales spec](https://www.tencentcloud.com/document/api/1778/116232?from_cn_redirect=1) api.
 BASIC: basic edition.
 PRO edition.
 PLATINUM version.
@@ -776,7 +776,7 @@ PLATINUM version.
         :type InstanceType: str
         :param _Name: Specifies the cluster name, cannot be empty, 3-64 characters, only comprised of digits, letters, "-", and "_".
         :type Name: str
-        :param _SkuCode: Product specification, which must correspond to InstanceType. see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api to obtain details.
+        :param _SkuCode: Product specification, which must correspond to InstanceType. see the [get MQTT product sales spec](https://www.tencentcloud.com/document/api/1778/116232?from_cn_redirect=1) api to obtain details.
         :type SkuCode: str
         :param _Remark: Specifies the remark information with a maximum length of 128 characters.
         :type Remark: str
@@ -812,7 +812,7 @@ PLATINUM version.
 
     @property
     def InstanceType(self):
-        r"""Instance type, which needs to correspond to SkuCode. for details, see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api.
+        r"""Instance type, which needs to correspond to SkuCode. for details, see the [get MQTT product sales spec](https://www.tencentcloud.com/document/api/1778/116232?from_cn_redirect=1) api.
 BASIC: basic edition.
 PRO edition.
 PLATINUM version.
@@ -838,7 +838,7 @@ PLATINUM version.
 
     @property
     def SkuCode(self):
-        r"""Product specification, which must correspond to InstanceType. see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api to obtain details.
+        r"""Product specification, which must correspond to InstanceType. see the [get MQTT product sales spec](https://www.tencentcloud.com/document/api/1778/116232?from_cn_redirect=1) api to obtain details.
         :rtype: str
         """
         return self._SkuCode
@@ -1035,7 +1035,7 @@ class CreateMessageEnrichmentRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _RuleName: Rule name
         :type RuleName: str
@@ -1068,7 +1068,7 @@ eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvZGV2aWNl
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1235,7 +1235,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Username: Specifies the username, which cannot be empty, only supports numbers, uppercase and lowercase letters, and separators ("_", "-"), and must not exceed 32 characters.
         :type Username: str
@@ -1251,7 +1251,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1344,9 +1344,9 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
-        :param _Id: Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).
+        :param _Id: Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.com/document/api/1778/111074?from_cn_redirect=1).
         :type Id: int
         """
         self._InstanceId = None
@@ -1354,7 +1354,7 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1365,7 +1365,7 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).
+        r"""Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.com/document/api/1778/111074?from_cn_redirect=1).
         :rtype: int
         """
         return self._Id
@@ -1517,14 +1517,14 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1581,7 +1581,7 @@ class DeleteMessageEnrichmentRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Id: Message enrichment rule id.
         :type Id: int
@@ -1591,7 +1591,7 @@ class DeleteMessageEnrichmentRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1818,14 +1818,14 @@ class DescribeAuthorizationPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -1902,7 +1902,7 @@ class DescribeClientListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _ClientId: Client ID
         :type ClientId: str
@@ -1915,7 +1915,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -2016,14 +2016,14 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -2615,7 +2615,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Topic: home/room
         :type Topic: str
@@ -2631,7 +2631,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -2744,7 +2744,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _MessageId: Message ID.
         :type MessageId: str
@@ -2757,7 +2757,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -3311,7 +3311,7 @@ class DescribeUserListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Filters: Specifies the supported fields in the query criteria list.
 Username: specifies the Username for filtering, supports fuzzy filtering. type: String.
@@ -3328,7 +3328,7 @@ Username: specifies the Username for filtering, supports fuzzy filtering. type: 
 
     @property
     def InstanceId(self):
-        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -4356,9 +4356,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Specifies the authorization policy ID, which can be obtained from the query authorization policy API (https://www.tencentcloud.comom/document/product/1778/111074?from_cn_redirect=1).
+        :param _Id: Specifies the authorization policy ID, which can be obtained from the query authorization policy API (https://www.tencentcloud.com/document/product/1778/111074?from_cn_redirect=1).
         :type Id: int
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
 
         :type InstanceId: str
         :param _PolicyName: Policy name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, "-", and "_".
@@ -4371,12 +4371,12 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 allow. specifies the permission.
 Denies.
         :type Effect: str
-        :param _Actions: Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Actions: Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Specifies the connection.
 Specifies the publish action.
 Sub. specifies the subscription.
         :type Actions: str
-        :param _Resources: Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        :param _Resources: Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 
         :type Resources: str
         :param _Username: Specifies the condition-username.
@@ -4415,7 +4415,7 @@ Minimum once.
 
     @property
     def Id(self):
-        r"""Specifies the authorization policy ID, which can be obtained from the query authorization policy API (https://www.tencentcloud.comom/document/product/1778/111074?from_cn_redirect=1).
+        r"""Specifies the authorization policy ID, which can be obtained from the query authorization policy API (https://www.tencentcloud.com/document/product/1778/111074?from_cn_redirect=1).
         :rtype: int
         """
         return self._Id
@@ -4426,7 +4426,7 @@ Minimum once.
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
 
         :rtype: str
         """
@@ -4484,7 +4484,7 @@ Denies.
 
     @property
     def Actions(self):
-        r"""Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 Specifies the connection.
 Specifies the publish action.
 Sub. specifies the subscription.
@@ -4498,7 +4498,7 @@ Sub. specifies the subscription.
 
     @property
     def Resources(self):
-        r"""Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 
         :rtype: str
         """
@@ -4641,7 +4641,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Name: Specifies the instance name to be modified, cannot be empty, 3-64 characters, only comprised of digits, letters, "-", and "_".
         :type Name: str
@@ -4680,7 +4680,7 @@ BYOC: one device, one certificate.
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -4860,7 +4860,7 @@ class ModifyMessageEnrichmentRuleRequest(AbstractModel):
         r"""
         :param _Id: Message enrichment rule ID.
         :type Id: int
-        :param _InstanceId: Tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: Tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
 
         :type InstanceId: str
         :param _RuleName: Rule name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, "-", and "_".
@@ -4905,7 +4905,7 @@ Specifies the BASE64-encoded string eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVz
 
     @property
     def InstanceId(self):
-        r"""Tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""Tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
 
         :rtype: str
         """
@@ -5043,7 +5043,7 @@ class ModifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Username: Username.
         :type Username: str
@@ -5056,7 +5056,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -5239,7 +5239,7 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Priorities: Policy ID and priority.
         :type Priorities: list of AuthorizationPolicyPriority
@@ -5249,7 +5249,7 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId
@@ -5323,7 +5323,7 @@ class UpdateMessageEnrichmentRulePriorityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        :param _InstanceId: tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :type InstanceId: str
         :param _Priorities: Policy ID and priority.
         :type Priorities: list of MessageEnrichmentRulePriority
@@ -5333,7 +5333,7 @@ class UpdateMessageEnrichmentRulePriorityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.
+        r"""tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.
         :rtype: str
         """
         return self._InstanceId

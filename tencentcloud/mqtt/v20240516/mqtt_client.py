@@ -489,7 +489,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyAuthorizationPolicy(self, request):
-        r"""This API is used to modify policy rules. See the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).
+        r"""This API is used to modify policy rules. See the data plane authorization policy description (https://www.tencentcloud.com/document/product/1778/109715?from_cn_redirect=1).
 
         :param request: Request instance for ModifyAuthorizationPolicy.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyAuthorizationPolicyRequest`

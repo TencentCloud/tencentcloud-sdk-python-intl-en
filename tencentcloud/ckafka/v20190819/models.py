@@ -652,13 +652,13 @@ class BatchCreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type. Default value: `2` (topic).
         :type ResourceType: int
-        :param _ResourceNames: Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1).
+        :param _ResourceNames: Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1).
         :type ResourceNames: list of str
-        :param _RuleList: Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.comom/document/product/597/89217?from_cn_redirect=1).
+        :param _RuleList: Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.com/document/product/597/89217?from_cn_redirect=1).
         :type RuleList: list of AclRuleInfo
         """
         self._InstanceId = None
@@ -668,7 +668,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -690,7 +690,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
-        r"""Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1).
+        r"""Resource list array, obtainable through the DescribeTopic API (https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ResourceNames
@@ -701,7 +701,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.comom/document/product/597/89217?from_cn_redirect=1).
+        r"""Specifies the set ACL rule list, which can be obtained through the DescribeAclRule API (https://www.tencentcloud.com/document/product/597/89217?from_cn_redirect=1).
         :rtype: list of AclRuleInfo
         """
         return self._RuleList
@@ -912,9 +912,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Topic: Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _Topic: Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type Topic: list of BatchModifyTopicInfo
         """
         self._InstanceId = None
@@ -922,7 +922,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -933,7 +933,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic attribute list (a maximum of 10 per batch), which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: list of BatchModifyTopicInfo
         """
         return self._Topic
@@ -2018,7 +2018,7 @@ class CreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
@@ -2046,7 +2046,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2204,7 +2204,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type. Currently, the only valid value is `Topic`.
         :type ResourceType: str
@@ -2232,7 +2232,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2393,7 +2393,7 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _GroupName: Consumer group name.
         :type GroupName: str
@@ -2409,7 +2409,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -2907,7 +2907,7 @@ class CreateInstancePreRequest(AbstractModel):
         r"""
         :param _InstanceName: <p>Specifies the Name of the ckafka cluster instance, which is any string with a length not more than 128 characters.</p>.
         :type InstanceName: str
-        :param _ZoneId: <P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
+        :param _ZoneId: <P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
         :type ZoneId: int
         :param _Period: <P>Specifies the prepaid purchase duration, such as "1m" (exactly one month). value ranges from 1m to 36m.</p>.
         :type Period: str
@@ -2927,11 +2927,11 @@ class CreateInstancePreRequest(AbstractModel):
         :type KafkaVersion: str
         :param _SpecificationsType: <P>Instance type. specifies "standard" for standard edition instance (default), "profession" for professional edition instance, "premium" for advanced edition instance.</p>.
         :type SpecificationsType: str
-        :param _DiskSize: <P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
+        :param _DiskSize: <P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1</p>.
         :type DiskSize: int
-        :param _BandWidth: <p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
+        :param _BandWidth: <p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1</p>.
         :type BandWidth: int
-        :param _Partition: <P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
+        :param _Partition: <P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1</p>.
         :type Partition: int
         :param _Tags: <p>Tag.</p>.
         :type Tags: list of Tag
@@ -2949,7 +2949,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type AutoVoucher: int
         :param _ElasticBandwidthSwitch: <P>Elastic bandwidth switch 0 disable 1 enable (0 default).</p>.
         :type ElasticBandwidthSwitch: int
-        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.com/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
         :type CustomSSLCertId: str
         """
         self._InstanceName = None
@@ -2989,7 +2989,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""<P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
+        r"""<P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">view availability zones</a></p>.
         :rtype: int
         """
         return self._ZoneId
@@ -3099,7 +3099,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""<P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
+        r"""<P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -3110,7 +3110,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""<p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
+        r"""<p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._BandWidth
@@ -3121,7 +3121,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""<P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
+        r"""<P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._Partition
@@ -3220,7 +3220,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def CustomSSLCertId(self):
-        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.com/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
         :rtype: str
         """
         return self._CustomSSLCertId
@@ -3408,9 +3408,9 @@ class CreatePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         :param _PartitionNum: Topic partition count. the input parameter is the number of partitions after modification rather than adding partitions. therefore, the input parameter must exceed the current topic partition count.
         :type PartitionNum: int
@@ -3421,7 +3421,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -3432,7 +3432,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -3519,9 +3519,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: <p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
+        :param _VpcId: <p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
         :type VpcId: str
-        :param _SubnetId: <p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
+        :param _SubnetId: <p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
         :type SubnetId: str
         :param _InstanceName: <P>Specifies the cluster instance name of ckafka, with a length not exceeding 128 arbitrary characters.</p>.
         :type InstanceName: str
@@ -3537,19 +3537,19 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type SpecificationsType: str
         :param _DiskType: <p>Specifies the instance disk type for pro edition. standard edition instances do not require this field. valid values: "CLOUD_SSD" (SSD CLOUD disk), "CLOUD_BASIC" (high-performance CLOUD block storage). default value: "CLOUD_BASIC".</p>.
         :type DiskType: str
-        :param _BandWidth: <p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
+        :param _BandWidth: <p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1</p>.
         :type BandWidth: int
-        :param _DiskSize: <P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
+        :param _DiskSize: <P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1</p>.
         :type DiskSize: int
-        :param _Partition: <P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
+        :param _Partition: <P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1</p>.
         :type Partition: int
         :param _TopicNum: <P>Specifies the maximum number of topics for the instance, which should meet the billing specification of the current instance. default value is 800. step length is set to 100.</p>.
         :type TopicNum: int
-        :param _ZoneId: Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
+        :param _ZoneId: Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
         :type ZoneId: int
         :param _MultiZoneFlag: <P>Specifies whether the current instance is a multi-az instance.</p>.
         :type MultiZoneFlag: bool
-        :param _ZoneIds: <p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
+        :param _ZoneIds: <p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
         :type ZoneIds: list of int
         :param _InstanceNum: <p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.
         :type InstanceNum: int
@@ -3559,7 +3559,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _ElasticBandwidthSwitch: <P>Specifies the elastic bandwidth switch. 0: disable (default); 1: enable.</p>.
         :type ElasticBandwidthSwitch: int
-        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        :param _CustomSSLCertId: <p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.com/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
         :type CustomSSLCertId: str
         """
         self._VpcId = None
@@ -3586,7 +3586,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""<p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
+        r"""<p>VPC Id, can be obtained through the <a href="https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1">DescribeVpcs</a> api.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -3597,7 +3597,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""<p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
+        r"""<p>Subnet Id, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> api.</p>.
         :rtype: str
         """
         return self._SubnetId
@@ -3685,7 +3685,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""<p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.
+        r"""<p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._BandWidth
@@ -3696,7 +3696,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""<P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.
+        r"""<P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._DiskSize
@@ -3707,7 +3707,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""<P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.
+        r"""<P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1</p>.
         :rtype: int
         """
         return self._Partition
@@ -3729,7 +3729,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
+        r"""Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.
         :rtype: int
         """
         return self._ZoneId
@@ -3751,7 +3751,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""<p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
+        r"""<p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href="https://www.tencentcloud.com/document/product/597/55246?from_cn_redirect=1">DescribeCkafkaZone</a>.</p>.
         :rtype: list of int
         """
         return self._ZoneIds
@@ -3806,7 +3806,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def CustomSSLCertId(self):
-        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
+        r"""<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href="https://www.tencentcloud.com/document/product/400/41673?from_cn_redirect=1">DescribeCertificateDetail</a> api.</p>.
         :rtype: str
         """
         return self._CustomSSLCertId
@@ -3905,7 +3905,7 @@ class CreateRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: <p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
+        :param _InstanceId: <p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
         :type InstanceId: str
         :param _VipType: <P>Specifies the network type of the route (3: vpc routing; 7: internal support route; 1: public network route).</p>.
         :type VipType: int
@@ -3942,7 +3942,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
+        r"""<p>Specifies the ckafka cluster instance id. obtain through the API <a href="https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1">DescribeInstances</a>.</p>.
         :rtype: str
         """
         return self._InstanceId
@@ -4136,9 +4136,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         :param _IpWhiteList: Allowlist list. maximum value is 512. upper limit for incoming ips is 512.
         :type IpWhiteList: list of str
@@ -4149,7 +4149,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -4160,7 +4160,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -4624,7 +4624,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _Name: Username
         :type Name: str
@@ -4637,7 +4637,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5029,7 +5029,7 @@ class DeleteAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
@@ -5054,7 +5054,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5200,7 +5200,7 @@ class DeleteAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance id information. you can obtain it through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: Instance id information. you can obtain it through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _RuleName: acl rule name, obtain through the API DescribeAclRule.
         :type RuleName: str
@@ -5210,7 +5210,7 @@ class DeleteAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance id information. you can obtain it through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""Instance id information. you can obtain it through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5294,9 +5294,9 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Group: Consumer group name, which can be obtained through the DescribeConsumerGroup API (https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        :param _Group: Consumer group name, which can be obtained through the DescribeConsumerGroup API (https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :type Group: str
         """
         self._InstanceId = None
@@ -5304,7 +5304,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5315,7 +5315,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""Consumer group name, which can be obtained through the DescribeConsumerGroup API (https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        r"""Consumer group name, which can be obtained through the DescribeConsumerGroup API (https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :rtype: str
         """
         return self._Group
@@ -5501,14 +5501,14 @@ class DeleteInstancePostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5582,14 +5582,14 @@ class DeleteInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5663,9 +5663,9 @@ class DeleteRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _RouteId: Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.comom/document/product/597/45484?from_cn_redirect=1).
+        :param _RouteId: Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.com/document/product/597/45484?from_cn_redirect=1).
         :type RouteId: int
         :param _CallerAppid: AppId of the caller.
         :type CallerAppid: int
@@ -5679,7 +5679,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -5690,7 +5690,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
-        r"""Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.comom/document/product/597/45484?from_cn_redirect=1).
+        r"""Route id, obtain through the API [DescribeRoute](https://www.tencentcloud.com/document/product/597/45484?from_cn_redirect=1).
         :rtype: int
         """
         return self._RouteId
@@ -5789,7 +5789,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         :param _DelayTime: Modifies the scheduled time for deleting routes.
         :type DelayTime: str
@@ -5799,7 +5799,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -5868,9 +5868,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         :param _IpWhiteList: IP allowlist list
         :type IpWhiteList: list of str
@@ -5881,7 +5881,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -5892,7 +5892,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -6075,9 +6075,9 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
+        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.com/document/product/597/40855?from_cn_redirect=1) api.
         :type Name: str
         """
         self._InstanceId = None
@@ -6085,7 +6085,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -6096,7 +6096,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
+        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.com/document/product/597/40855?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Name
@@ -6273,7 +6273,7 @@ class DescribeACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
@@ -6295,7 +6295,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -6429,7 +6429,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _RuleName: ACL rule name
         :type RuleName: str
@@ -6445,7 +6445,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -6787,7 +6787,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         :param _GroupName: Specifies the group name you want to query.
         :type GroupName: str
@@ -6806,7 +6806,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -6928,14 +6928,14 @@ class DescribeCvmInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -7524,9 +7524,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _GroupList: Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        :param _GroupList: Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :type GroupList: list of str
         """
         self._InstanceId = None
@@ -7534,7 +7534,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -7545,7 +7545,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
-        r"""Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        r"""Kafka group list. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._GroupList
@@ -7925,14 +7925,14 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -9066,9 +9066,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         """
         self._InstanceId = None
@@ -9076,7 +9076,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -9087,7 +9087,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -9162,7 +9162,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _SearchWord: (Filter) filter by `topicName`. Fuzzy search is supported
         :type SearchWord: str
@@ -9190,7 +9190,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -9353,9 +9353,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _TopicName: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type TopicName: str
         """
         self._InstanceId = None
@@ -9363,7 +9363,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -9374,7 +9374,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._TopicName
@@ -10320,9 +10320,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Topic: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        :param _Topic: Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :type Topic: str
         :param _Partition: Partition ID
         :type Partition: int
@@ -10336,7 +10336,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""The ckafka cluster instance Id, which can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -10347,7 +10347,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.comom/document/product/597/40847?from_cn_redirect=1) api.
+        r"""Specifies the topic name, which can be obtained through the [DescribeTopic](https://www.tencentcloud.com/document/product/597/40847?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Topic
@@ -11396,7 +11396,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
         :type Topic: int
         :param _Partition: Number of partitions for instance purchase, unit: unit (required when purchased; bandwidth information required for pro edition/advanced edition inquiry).
 Partition upper limit. maximum value of 40000. step length of 100.
-Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
 
         :type Partition: int
         :param _ZoneIds: The region for instance purchase, which can be obtained via the `DescribeCkafkaZone` API.
@@ -11506,7 +11506,7 @@ Specifies the specifications and limits that can be viewed through the following
     def Partition(self):
         r"""Number of partitions for instance purchase, unit: unit (required when purchased; bandwidth information required for pro edition/advanced edition inquiry).
 Partition upper limit. maximum value of 40000. step length of 100.
-Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
 
         :rtype: int
         """
@@ -14022,21 +14022,21 @@ class InstanceScalingDownRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _UpgradeStrategy: Shrink mode. 1: stable mode. 
 2. specifies high-speed configuration change.
         :type UpgradeStrategy: int
         :param _DiskSize: Specifies the disk capacity in GB. value range: maximum value 500000, step length 100.
-The specifications and limitations can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+The specifications and limitations can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1
 
 
         :type DiskSize: int
         :param _BandWidth: Peak bandwidth in MB/s.
-Specifies the url (https://www.tencentcloud.comom/document/product/597/11745?from_cn_redirect=1) to view specification limits and corresponding step length.
+Specifies the url (https://www.tencentcloud.com/document/product/597/11745?from_cn_redirect=1) to view specification limits and corresponding step length.
         :type BandWidth: int
         :param _Partition: Partition upper limit maximum value of 40000, step length 100.
-Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specification limits can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
 
         :type Partition: int
         """
@@ -14048,7 +14048,7 @@ Specification limits can be viewed through the following link: https://www.tence
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""ckafka cluster instance Id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -14072,7 +14072,7 @@ Specification limits can be viewed through the following link: https://www.tence
     @property
     def DiskSize(self):
         r"""Specifies the disk capacity in GB. value range: maximum value 500000, step length 100.
-The specifications and limitations can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+The specifications and limitations can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1
 
 
         :rtype: int
@@ -14086,7 +14086,7 @@ The specifications and limitations can be viewed through the following link: htt
     @property
     def BandWidth(self):
         r"""Peak bandwidth in MB/s.
-Specifies the url (https://www.tencentcloud.comom/document/product/597/11745?from_cn_redirect=1) to view specification limits and corresponding step length.
+Specifies the url (https://www.tencentcloud.com/document/product/597/11745?from_cn_redirect=1) to view specification limits and corresponding step length.
         :rtype: int
         """
         return self._BandWidth
@@ -14098,7 +14098,7 @@ Specifies the url (https://www.tencentcloud.comom/document/product/597/11745?fro
     @property
     def Partition(self):
         r"""Partition upper limit maximum value of 40000, step length 100.
-Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specification limits can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
 
         :rtype: int
         """
@@ -14710,9 +14710,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
-        :param _Group: Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        :param _Group: Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :type Group: str
         :param _Strategy: Reset offset strategy. parameter meaning: 0. align with the shift-by parameter, move the offset forward or backward by shift entries. 1. alignment reference (by-duration, to-datetime, to-earliest, to-latest), move the offset to the specified timestamp position. 2. alignment reference (to-offset), move the offset to the specified offset position.
         :type Strategy: int
@@ -14738,7 +14738,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -14749,7 +14749,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.comom/document/product/597/40841?from_cn_redirect=1).
+        r"""Consumer group name. obtain through the API [DescribeConsumerGroup](https://www.tencentcloud.com/document/product/597/40841?from_cn_redirect=1).
         :rtype: str
         """
         return self._Group
@@ -14962,7 +14962,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         :param _MsgRetentionTime: Maximum retention time of instance logs, in minutes, with a value range of 1min to 90 days.
         :type MsgRetentionTime: int
@@ -14999,7 +14999,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -15203,18 +15203,18 @@ class ModifyInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        :param _InstanceId: ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :type InstanceId: str
         :param _DiskSize: Specifies the disk capacity in GB. value range: 100 to 500000 with a step length of 100.
-Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+Specification limits can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1
 
         :type DiskSize: int
         :param _BandWidth: Peak bandwidth in MB/s.
-Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1
 
         :type BandWidth: int
         :param _Partition: Partition upper bound. maximum value of 40000. step length of 100.
-Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
         :type Partition: int
         """
         self._InstanceId = None
@@ -15224,7 +15224,7 @@ Specifies the specifications and limits that can be viewed through the following
 
     @property
     def InstanceId(self):
-        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1).
+        r"""ckafka cluster instance Id. obtain through the API [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -15236,7 +15236,7 @@ Specifies the specifications and limits that can be viewed through the following
     @property
     def DiskSize(self):
         r"""Specifies the disk capacity in GB. value range: 100 to 500000 with a step length of 100.
-Specification limits can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1
+Specification limits can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122562.?from_cn_redirect=1
 
         :rtype: int
         """
@@ -15249,7 +15249,7 @@ Specification limits can be viewed through the following link: https://www.tence
     @property
     def BandWidth(self):
         r"""Peak bandwidth in MB/s.
-Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1
+Specifies the specification limits and corresponding step length through the following link: https://www.tencentcloud.com/document/product/597/11745.?from_cn_redirect=1
 
         :rtype: int
         """
@@ -15262,7 +15262,7 @@ Specifies the specification limits and corresponding step length through the fol
     @property
     def Partition(self):
         r"""Partition upper bound. maximum value of 40000. step length of 100.
-Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1
+Specifies the specifications and limits that can be viewed through the following link: https://www.tencentcloud.com/document/product/597/122563.?from_cn_redirect=1
         :rtype: int
         """
         return self._Partition
@@ -15339,9 +15339,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
-        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
+        :param _Name: Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.com/document/product/597/40855?from_cn_redirect=1) api.
         :type Name: str
         :param _Password: Current user password
         :type Password: str
@@ -15355,7 +15355,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""Instance Id. you can obtain it by calling the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId
@@ -15366,7 +15366,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.comom/document/product/597/40855?from_cn_redirect=1) api.
+        r"""Specifies the username, which can be obtained through the [DescribeUser](https://www.tencentcloud.com/document/product/597/40855?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Name
@@ -15465,7 +15465,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Specifies the ckafka cluster instance id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        :param _InstanceId: Specifies the ckafka cluster instance id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :type InstanceId: str
         :param _MaintenanceType: Automated operation and maintenance category. valid values: QUOTA, ANALYSIS, RE_BALANCE, ELASTIC_BANDWIDTH.
         :type MaintenanceType: str
@@ -15502,7 +15502,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Specifies the ckafka cluster instance id. can be obtained through the [DescribeInstances](https://www.tencentcloud.comom/document/product/597/40835?from_cn_redirect=1) api.
+        r"""Specifies the ckafka cluster instance id. can be obtained through the [DescribeInstances](https://www.tencentcloud.com/document/product/597/40835?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._InstanceId

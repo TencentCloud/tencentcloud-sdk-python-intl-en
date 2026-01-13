@@ -17910,7 +17910,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ServiceNodeInfo: Startup process list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceNodeInfo: list of int
-        :param _SoftDeployInfo: Node deployment service list. Only HDFS and YARN should be specified in the deployment service list. For details, see [Mapping Table for Component Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        :param _SoftDeployInfo: Node deployment service list. Only HDFS and YARN should be specified in the deployment service list. For details, see [Mapping Table for Component Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SoftDeployInfo: list of int
         :param _LoadMetricsConditions: Multi-metric trigger condition.
@@ -18152,7 +18152,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SoftDeployInfo(self):
-        r"""Node deployment service list. Only HDFS and YARN should be specified in the deployment service list. For details, see [Mapping Table for Component Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        r"""Node deployment service list. Only HDFS and YARN should be specified in the deployment service list. For details, see [Mapping Table for Component Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -27615,14 +27615,14 @@ class ScaleOutClusterRequest(AbstractModel):
         :type ClientToken: str
         :param _InstanceChargePrepaid: Setting of parameters related to monthly subscription. Through this parameter, you can specify the duration of purchase for monthly subscription instances, whether to set auto-renewal, and other attributes. This parameter is required when the specified instance is subject to the payment mode of prepaid.
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
-        :param _ScriptBootstrapActionConfig: [Bootstrap Actions](https://www.tencentcloud.comom/document/product/589/35656?from_cn_redirect=1) script settings.
+        :param _ScriptBootstrapActionConfig: [Bootstrap Actions](https://www.tencentcloud.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param _SoftDeployInfo: Scale-out deployment service. New nodes inherit services deployed in the current node type by default, including default optional services. This parameter only supports optional service filling, for example: HDFS, YARN, and Impala have been deployed to existing task nodes. When API is used to scale out the task nodes without deploying Impala, only HDFS and YARN are filled for deployment services. For more details, see [Mapping Table of Component Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        :param _SoftDeployInfo: Scale-out deployment service. New nodes inherit services deployed in the current node type by default, including default optional services. This parameter only supports optional service filling, for example: HDFS, YARN, and Impala have been deployed to existing task nodes. When API is used to scale out the task nodes without deploying Impala, only HDFS and YARN are filled for deployment services. For more details, see [Mapping Table of Component Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
         :type SoftDeployInfo: list of int
-        :param _ServiceNodeInfo: Deployment process. By default, all scale-out service processes are deployed. Deployment processes can be modified. For example, HDFS, YARN, or Impala has been deployed for the current Task node. The default deployment services include DataNode,NodeManager,ImpalaServer. If users need to modify deployment process information, the deployment process can be DataNode, NodeManager, ImpalaServerCoordinator or DataNode, NodeManager, ImpalaServerExecutor. For more details, see [Mapping Table of Process Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        :param _ServiceNodeInfo: Deployment process. By default, all scale-out service processes are deployed. Deployment processes can be modified. For example, HDFS, YARN, or Impala has been deployed for the current Task node. The default deployment services include DataNode,NodeManager,ImpalaServer. If users need to modify deployment process information, the deployment process can be DataNode, NodeManager, ImpalaServerCoordinator or DataNode, NodeManager, ImpalaServerExecutor. For more details, see [Mapping Table of Process Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
         :type ServiceNodeInfo: list of int
         :param _DisasterRecoverGroupIds: Spread placement group ID list. Only one can be specified currently.
-This parameter can be obtained by calling the DisasterRecoverGroupId field in the return value of the [DescribeDisasterRecoverGroups](https://www.tencentcloud.comom/document/product/213/17810?from_cn_redirect=1) API.
+This parameter can be obtained by calling the DisasterRecoverGroupId field in the return value of the [DescribeDisasterRecoverGroups](https://www.tencentcloud.com/document/product/213/17810?from_cn_redirect=1) API.
         :type DisasterRecoverGroupIds: list of str
         :param _Tags: List of tags bound to scale-out nodes.
         :type Tags: list of Tag
@@ -27642,7 +27642,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
         :type EnableStartServiceFlag: bool
         :param _ResourceSpec: Specifications settings.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param _Zone: Availability zone of the instance, such as ap-guangzhou-1. This parameter can also be obtained from the Zone field in the return value of [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+        :param _Zone: Availability zone of the instance, such as ap-guangzhou-1. This parameter can also be obtained from the Zone field in the return value of [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
         :type Zone: str
         :param _SubnetId: Subnet, which is the subnet at the time of cluster creation by default.
         :type SubnetId: str
@@ -27732,7 +27732,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
 
     @property
     def ScriptBootstrapActionConfig(self):
-        r"""[Bootstrap Actions](https://www.tencentcloud.comom/document/product/589/35656?from_cn_redirect=1) script settings.
+        r"""[Bootstrap Actions](https://www.tencentcloud.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :rtype: list of ScriptBootstrapActionConfig
         """
         return self._ScriptBootstrapActionConfig
@@ -27743,7 +27743,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
 
     @property
     def SoftDeployInfo(self):
-        r"""Scale-out deployment service. New nodes inherit services deployed in the current node type by default, including default optional services. This parameter only supports optional service filling, for example: HDFS, YARN, and Impala have been deployed to existing task nodes. When API is used to scale out the task nodes without deploying Impala, only HDFS and YARN are filled for deployment services. For more details, see [Mapping Table of Component Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        r"""Scale-out deployment service. New nodes inherit services deployed in the current node type by default, including default optional services. This parameter only supports optional service filling, for example: HDFS, YARN, and Impala have been deployed to existing task nodes. When API is used to scale out the task nodes without deploying Impala, only HDFS and YARN are filled for deployment services. For more details, see [Mapping Table of Component Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
         :rtype: list of int
         """
         return self._SoftDeployInfo
@@ -27754,7 +27754,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
 
     @property
     def ServiceNodeInfo(self):
-        r"""Deployment process. By default, all scale-out service processes are deployed. Deployment processes can be modified. For example, HDFS, YARN, or Impala has been deployed for the current Task node. The default deployment services include DataNode,NodeManager,ImpalaServer. If users need to modify deployment process information, the deployment process can be DataNode, NodeManager, ImpalaServerCoordinator or DataNode, NodeManager, ImpalaServerExecutor. For more details, see [Mapping Table of Process Names](https://www.tencentcloud.comom/document/product/589/98760?from_cn_redirect=1).
+        r"""Deployment process. By default, all scale-out service processes are deployed. Deployment processes can be modified. For example, HDFS, YARN, or Impala has been deployed for the current Task node. The default deployment services include DataNode,NodeManager,ImpalaServer. If users need to modify deployment process information, the deployment process can be DataNode, NodeManager, ImpalaServerCoordinator or DataNode, NodeManager, ImpalaServerExecutor. For more details, see [Mapping Table of Process Names](https://www.tencentcloud.com/document/product/589/98760?from_cn_redirect=1).
         :rtype: list of int
         """
         return self._ServiceNodeInfo
@@ -27766,7 +27766,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
     @property
     def DisasterRecoverGroupIds(self):
         r"""Spread placement group ID list. Only one can be specified currently.
-This parameter can be obtained by calling the DisasterRecoverGroupId field in the return value of the [DescribeDisasterRecoverGroups](https://www.tencentcloud.comom/document/product/213/17810?from_cn_redirect=1) API.
+This parameter can be obtained by calling the DisasterRecoverGroupId field in the return value of the [DescribeDisasterRecoverGroups](https://www.tencentcloud.com/document/product/213/17810?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -27867,7 +27867,7 @@ This parameter can be obtained by calling the DisasterRecoverGroupId field in th
 
     @property
     def Zone(self):
-        r"""Availability zone of the instance, such as ap-guangzhou-1. This parameter can also be obtained from the Zone field in the return value of [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+        r"""Availability zone of the instance, such as ap-guangzhou-1. This parameter can also be obtained from the Zone field in the return value of [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
         :rtype: str
         """
         return self._Zone

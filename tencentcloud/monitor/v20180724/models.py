@@ -28339,7 +28339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Duration: str
-        :param _Expr: Alert expression. see <a href="https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
+        :param _Expr: Alert expression. see <a href="https://www.tencentcloud.com/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Expr: str
         :param _State: Alert rule status.
@@ -28410,7 +28410,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expr(self):
-        r"""Alert expression. see <a href="https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
+        r"""Alert expression. see <a href="https://www.tencentcloud.com/document/product/1416/56008?from_cn_redirect=1">alert rule description</a>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """

@@ -172,7 +172,7 @@ class AddReplicationInstanceRequest(AbstractModel):
         :param _GroupId: Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :type GroupId: str
         :param _InstanceId: Instance ID.
-- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Use Limits](https://www.tencentcloud.comom/document/product/239/71934?from_cn_redirect=1).
+- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Use Limits](https://www.tencentcloud.com/document/product/239/71934?from_cn_redirect=1).
 - Currently, only Redis 4.0 and 5.0 cluster architecture instances support being added to the replication groups.
 - Log in to the [Redis console](https://console.cloud.tencent.com/redis/instance/list), and copy the ID of the instance that needs to be added to the replication group in the instance list.
         :type InstanceId: str
@@ -197,7 +197,7 @@ class AddReplicationInstanceRequest(AbstractModel):
     @property
     def InstanceId(self):
         r"""Instance ID.
-- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Use Limits](https://www.tencentcloud.comom/document/product/239/71934?from_cn_redirect=1).
+- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Use Limits](https://www.tencentcloud.com/document/product/239/71934?from_cn_redirect=1).
 - Currently, only Redis 4.0 and 5.0 cluster architecture instances support being added to the replication groups.
 - Log in to the [Redis console](https://console.cloud.tencent.com/redis/instance/list), and copy the ID of the instance that needs to be added to the replication group in the instance list.
         :rtype: str
@@ -381,7 +381,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
         :param _InstanceIds: Instance ID list. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy the instance ID in the instance list.
         :type InstanceIds: list of str
         :param _TemplateId: ID of the applied parameter template.
-- The parameter template ID can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://www.tencentcloud.comom/document/product/239/58748?from_cn_redirect=1).
+- The parameter template ID can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://www.tencentcloud.com/document/product/239/58748?from_cn_redirect=1).
 - The operation can only be successfully performed when the parameter template version matches the architecture version of the target instance. A version mismatch will trigger an execution error.
         :type TemplateId: str
         """
@@ -402,7 +402,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
     @property
     def TemplateId(self):
         r"""ID of the applied parameter template.
-- The parameter template ID can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://www.tencentcloud.comom/document/product/239/58748?from_cn_redirect=1).
+- The parameter template ID can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://www.tencentcloud.com/document/product/239/58748?from_cn_redirect=1).
 - The operation can only be successfully performed when the parameter template version matches the architecture version of the target instance. A version mismatch will trigger an execution error.
         :rtype: str
         """
@@ -1703,7 +1703,7 @@ class CloneInstancesRequest(AbstractModel):
         :type BillingMode: int
         :param _Period: Purchase duration of an instance. <ul><li>Unit: Month</li><li>Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48`, `60` (for monthly subscription mode).</li><li> Valid value: `1` (for pay-as-you-go mode).</li></ul>
         :type Period: int
-        :param _SecurityGroupIdList: Security group ID. Call the [DescribeInstanceSecurityGroup](https://www.tencentcloud.comom/document/product/239/34447?from_cn_redirect=1) API to obtain the security group ID for the instance.
+        :param _SecurityGroupIdList: Security group ID. Call the [DescribeInstanceSecurityGroup](https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1) API to obtain the security group ID for the instance.
         :type SecurityGroupIdList: list of str
         :param _BackupId: Backup ID of the clone instance, which can be obtained through the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.
         :type BackupId: str
@@ -1821,7 +1821,7 @@ Only instances with second-level backup enabled are supported.
 
     @property
     def SecurityGroupIdList(self):
-        r"""Security group ID. Call the [DescribeInstanceSecurityGroup](https://www.tencentcloud.comom/document/product/239/34447?from_cn_redirect=1) API to obtain the security group ID for the instance.
+        r"""Security group ID. Call the [DescribeInstanceSecurityGroup](https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1) API to obtain the security group ID for the instance.
         :rtype: list of str
         """
         return self._SecurityGroupIdList
@@ -11992,7 +11992,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 - 0: pay-as-you-go.
 - 1: monthly subscription.
         :type BillingMode: int
-        :param _ZoneId: ID of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.comom/document/product/239/4106?from_cn_redirect=1).
+        :param _ZoneId: ID of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1).
 **Note**: Specify at least one parameter from **ZoneId** and **ZoneName**.
         :type ZoneId: int
         :param _RedisShardNum: Number of instance shards.
@@ -12005,7 +12005,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 - true: Replica read-only is not required.
 - false: Replica read-only is required.
         :type ReplicasReadonly: bool
-        :param _ZoneName: Name of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.comom/document/product/239/4106?from_cn_redirect=1).
+        :param _ZoneName: Name of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1).
 **Note**: Specify at least one parameter from **ZoneId** and **ZoneName**.
         :type ZoneName: str
         :param _ProductVersion: Deployment mode.
@@ -12097,7 +12097,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def ZoneId(self):
-        r"""ID of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.comom/document/product/239/4106?from_cn_redirect=1).
+        r"""ID of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1).
 **Note**: Specify at least one parameter from **ZoneId** and **ZoneName**.
         :rtype: int
         """
@@ -12146,7 +12146,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def ZoneName(self):
-        r"""Name of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.comom/document/product/239/4106?from_cn_redirect=1).
+        r"""Name of the AZ to which the instance belongs. See [Regions and AZs](https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1).
 **Note**: Specify at least one parameter from **ZoneId** and **ZoneName**.
         :rtype: str
         """
@@ -16254,7 +16254,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
         :param _SecurityGroupIds: Replaces with the new security group ID list, which is an array of one or more security group IDs.
-- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.comom/document/product/239/41260?from_cn_redirect=1) to bind a security group first.
+- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.com/document/product/239/41260?from_cn_redirect=1) to bind a security group first.
 - To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
 
 **Note:** This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.
@@ -16280,7 +16280,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     @property
     def SecurityGroupIds(self):
         r"""Replaces with the new security group ID list, which is an array of one or more security group IDs.
-- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.comom/document/product/239/41260?from_cn_redirect=1) to bind a security group first.
+- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.com/document/product/239/41260?from_cn_redirect=1) to bind a security group first.
 - To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
 
 **Note:** This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.
@@ -16779,7 +16779,7 @@ class ModifyInstanceEventRequest(AbstractModel):
         r"""
         :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis#/) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _EventId: Event ID. Call the [DescribeInstanceEvents](https://www.tencentcloud.comom/document/product/239/104779?from_cn_redirect=1) API to obtain the ID of the event to be modified.
+        :param _EventId: Event ID. Call the [DescribeInstanceEvents](https://www.tencentcloud.com/document/product/239/104779?from_cn_redirect=1) API to obtain the ID of the event to be modified.
         :type EventId: int
         :param _StartTime: Modifies the scheduled start time of event execution.
         :type StartTime: str
@@ -16810,7 +16810,7 @@ class ModifyInstanceEventRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""Event ID. Call the [DescribeInstanceEvents](https://www.tencentcloud.comom/document/product/239/104779?from_cn_redirect=1) API to obtain the ID of the event to be modified.
+        r"""Event ID. Call the [DescribeInstanceEvents](https://www.tencentcloud.com/document/product/239/104779?from_cn_redirect=1) API to obtain the ID of the event to be modified.
         :rtype: int
         """
         return self._EventId
@@ -20872,9 +20872,9 @@ class RestoreInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ID of the instance to be operated, which can be obtained through the response parameter InstanceId of the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API.
+        :param _InstanceId: ID of the instance to be operated, which can be obtained through the response parameter InstanceId of the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _BackupId: Backup ID, which can be obtained through the response parameter RedisBackupSet of the [DescribeInstanceBackups](https://www.tencentcloud.comom/document/product/239/20011?from_cn_redirect=1) API.
+        :param _BackupId: Backup ID, which can be obtained through the response parameter RedisBackupSet of the [DescribeInstanceBackups](https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1) API.
         :type BackupId: str
         :param _Password: Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)
         :type Password: str
@@ -20885,7 +20885,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ID of the instance to be operated, which can be obtained through the response parameter InstanceId of the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API.
+        r"""ID of the instance to be operated, which can be obtained through the response parameter InstanceId of the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -20896,7 +20896,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""Backup ID, which can be obtained through the response parameter RedisBackupSet of the [DescribeInstanceBackups](https://www.tencentcloud.comom/document/product/239/20011?from_cn_redirect=1) API.
+        r"""Backup ID, which can be obtained through the response parameter RedisBackupSet of the [DescribeInstanceBackups](https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BackupId
@@ -21804,7 +21804,7 @@ class SwitchProxyRequest(AbstractModel):
         :type InstanceId: str
         :param _ProxyID: Proxy ID of an instance, which can be obtained through NodeId of the response parameter **Proxy** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).
         :type ProxyID: str
-        :param _ProxyIDList: Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.comom/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.
+        :param _ProxyIDList: Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.
         :type ProxyIDList: list of str
         """
         self._InstanceId = None
@@ -21835,7 +21835,7 @@ class SwitchProxyRequest(AbstractModel):
 
     @property
     def ProxyIDList(self):
-        r"""Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.comom/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.
+        r"""Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.
         :rtype: list of str
         """
         return self._ProxyIDList
@@ -22842,9 +22842,9 @@ class UpgradeProxyVersionRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _CurrentProxyVersion: Current proxy version. Call the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API to obtain the current proxy version for the instance.
+        :param _CurrentProxyVersion: Current proxy version. Call the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API to obtain the current proxy version for the instance.
         :type CurrentProxyVersion: str
-        :param _UpgradeProxyVersion: Upgradable Redis version. Call the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API to obtain the upgradable Redis version for the instance.
+        :param _UpgradeProxyVersion: Upgradable Redis version. Call the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API to obtain the upgradable Redis version for the instance.
         :type UpgradeProxyVersion: str
         :param _InstanceTypeUpgradeNow: Specifies whether to upgrade immediately.
 - 1: Upgrade immediately.
@@ -22869,7 +22869,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        r"""Current proxy version. Call the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API to obtain the current proxy version for the instance.
+        r"""Current proxy version. Call the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API to obtain the current proxy version for the instance.
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -22880,7 +22880,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def UpgradeProxyVersion(self):
-        r"""Upgradable Redis version. Call the [DescribeInstances](https://www.tencentcloud.comom/document/product/239/20018?from_cn_redirect=1) API to obtain the upgradable Redis version for the instance.
+        r"""Upgradable Redis version. Call the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API to obtain the upgradable Redis version for the instance.
         :rtype: str
         """
         return self._UpgradeProxyVersion

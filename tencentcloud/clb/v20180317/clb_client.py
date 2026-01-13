@@ -74,7 +74,7 @@ class ClbClient(AbstractClient):
 
     def AssociateTargetGroups(self, request):
         r"""This API is used to bind target groups to Cloud Load Balancer listeners (Layer-4 protocol) or forwarding rules (L7 protocol).
-        This API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.
+        This API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.
         This API is used to describe restrictions.
         -Binding a legacy version target group to a Layer-4 listener requires the listener to have backend target groups enabled.
         -Layer-7 bind target group. LocationId is a required item in the data structure TargetGroupAssociation.
@@ -218,7 +218,7 @@ class ClbClient(AbstractClient):
     def CloneLoadBalancer(self, request):
         r"""This API is used to clone a load balancing instance with identical rules and binding relationships based on the designated Cloud Load Balancer. The cloning process is an asynchronous operation. The cloned data is based on the status when calling CloneLoadBalancer. If the source CLB changes after calling CloneLoadBalancer, the change rules will not be cloned.
 
-        Note: The instance creation status can be queried based on the returned requestId by accessing the DescribeTaskStatus API (https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1).
+        Note: The instance creation status can be queried based on the returned requestId by accessing the DescribeTaskStatus API (https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1).
 
         This API is used to describe restriction descriptions.
         This API is used to set instance attribute restrictions.
@@ -332,7 +332,7 @@ class ClbClient(AbstractClient):
 
     def CreateLoadBalancerSnatIps(self, request):
         r"""This API is used to add SnatIp for SnatPro Cloud Load Balancer. If SnatPro is not enabled, it will be auto on after adding SnatIp.
-        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
@@ -356,7 +356,7 @@ class ClbClient(AbstractClient):
 
     def CreateRule(self, request):
         r"""This API is used to create forwarding rules under an existing layer-7 CLB listener. In layer-7 CLB listeners, backend services must be bound to rules instead of the listener.
-        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateRuleRequest`
@@ -449,7 +449,7 @@ class ClbClient(AbstractClient):
 
     def DeleteListener(self, request):
         r"""This API is used to delete listeners (layer-4 and layer-7) under a Cloud Load Balancer instance.
-        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteListenerRequest`
@@ -497,7 +497,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancerListeners(self, request):
         r"""This API is used to delete multiple listeners of Cloud Load Balancer.
-        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteLoadBalancerListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerListenersRequest`
@@ -521,7 +521,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancerSnatIps(self, request):
         r"""This API is used to delete the SnatIp of the SnatPro load balancing.
-        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
@@ -568,7 +568,7 @@ class ClbClient(AbstractClient):
 
     def DeleteRule(self, request):
         r"""This API is used to delete forwarding rules under a layer-7 listener of a load balancing instance.
-        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRuleRequest`
@@ -615,11 +615,11 @@ class ClbClient(AbstractClient):
 
     def DeregisterFunctionTargets(self, request):
         r"""This API is used to unbind a cloud function from the forwarding rule of a Cloud Load Balancer. For a layer-7 (HTTP/HTTPS) listener, the forwarding rule must be specified by LocationId or Domain+Url.
-        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
         This API is used to describe restrictions.
 
         -SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.
-        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.comom/document/product/1199/49090?from_cn_redirect=1).
+        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1).
         -Classic CLB does not support binding SCF.
         -Basic Network Type does not support binding SCF.
         -CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.
@@ -649,7 +649,7 @@ class ClbClient(AbstractClient):
 
     def DeregisterTargetGroupInstances(self, request):
         r"""This API is used to unbind a server from a target group.
-        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesRequest`
@@ -1598,7 +1598,7 @@ class ClbClient(AbstractClient):
 
     def ModifyDomain(self, request):
         r"""This API is used to modify the domain name under a layer-7 (HTTP/HTTPS) listener of Cloud Load Balancer.
-        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for ModifyDomain.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainRequest`
@@ -1622,7 +1622,7 @@ class ClbClient(AbstractClient):
 
     def ModifyDomainAttributes(self, request):
         r"""This API is used to modify domain-level attributes of Cloud Load Balancer layer-7 listener forwarding rules, such as modifying domain name, changing DefaultServer, enabling/disabling Http/2, and modifying certificates.
-        This is an async API. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to check whether this task is successful.
+        This is an async API. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyDomainAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesRequest`
@@ -1696,7 +1696,7 @@ class ClbClient(AbstractClient):
     def ModifyLoadBalancerAttributes(self, request):
         r"""This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.
         Non-bandwidth-upshift users must add their CLB instance to a bandwidth package to configure cross-domain attributes. To modify the network billing mode, go to the console.
-        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyLoadBalancerAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesRequest`
@@ -1770,7 +1770,7 @@ class ClbClient(AbstractClient):
 
     def ModifyRule(self, request):
         r"""This API is used to modify the properties of forwarding rules under a layer-7 (HTTP/HTTPS) listener in Cloud Load Balancer, including forwarding path, health check attributes and forwarding policy.
-        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyRuleRequest`
@@ -1889,7 +1889,7 @@ class ClbClient(AbstractClient):
 
     def ModifyTargetWeight(self, request):
         r"""This API is used to modify the forwarding weight of backend service bound to Cloud Load Balancer.
-        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
+        This is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.
 
         :param request: Request instance for ModifyTargetWeight.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetWeightRequest`
@@ -1916,7 +1916,7 @@ class ClbClient(AbstractClient):
         This API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
         This API is used to describe restrictions.
         -SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.
-        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.comom/document/product/1199/49090?from_cn_redirect=1).
+        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1).
         -Classic CLB does not support binding SCF.
         -Basic Network Type does not support binding SCF.
         -CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.
@@ -1971,7 +1971,7 @@ class ClbClient(AbstractClient):
 
     def RegisterTargets(self, request):
         r"""This API is used to bind one or more backend services to a Cloud Load Balancer listener or layer-7 forwarding rule. Before that, you need to create a related CLB layer-4 listener or layer-7 forwarding rule. For Layer-4 listeners (TCP/UDP), only specify the listener ID. For layer-7 (HTTP/HTTPS) listeners, forwarding rules must be specified through LocationId or Domain+Url.
-        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsRequest`
@@ -2089,7 +2089,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerSecurityGroups(self, request):
-        r"""This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the DescribeLoadBalancers API (https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1). This API follows set semantics.
+        r"""This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the DescribeLoadBalancers API (https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1). This API follows set semantics.
         This API is used to pass in all security groups that should be bound to the Cloud Load Balancer instance during the binding operation (bound + new binding).
         For unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.
 
@@ -2115,7 +2115,7 @@ class ClbClient(AbstractClient):
 
     def SetLoadBalancerStartStatus(self, request):
         r"""This API is used to start or stop a load balancing instance or listener.
-        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
+        This API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.
         This feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.
 
         :param request: Request instance for SetLoadBalancerStartStatus.

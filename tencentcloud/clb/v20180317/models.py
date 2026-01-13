@@ -2707,7 +2707,7 @@ class CloneLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :type LoadBalancerId: str
         :param _LoadBalancerName: Specifies the name of the cloned load balancing instance. rule: 1-60 english letters, chinese characters, digits, connecting lines "-", or underscores "_".
 Note: if the name is identical to that of an existing load balancing instance in the system, the system will automatically generate a name for the created cloud load balancer instance.
@@ -2720,7 +2720,7 @@ Note: A primary AZ loads traffic, while a secondary AZ does not load traffic by 
         :param _SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
 Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use the `DescribeMasterZones` API to query the primary and secondary AZ list of a region.
         :type SlaveZoneId: str
-        :param _ZoneId: Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
+        :param _ZoneId: Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
         :type ZoneId: str
         :param _InternetAccessible: CLB network billing mode, applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
@@ -2732,21 +2732,21 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type Tags: list of TagInfo
         :param _ExclusiveCluster: Exclusive cluster information.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param _BandwidthPackageId: BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).
+        :param _BandwidthPackageId: BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).
         :type BandwidthPackageId: str
         :param _SnatPro: Specifies whether the cross-regional or cross-Vpc IP binding feature is supported.
         :type SnatPro: bool
         :param _SnatIps: Enables cross-regional or cross-Vpc IP binding and creates a SnatIp.
         :type SnatIps: list of SnatIp
-        :param _ClusterIds: Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.comom/document/product/214/49278?from_cn_redirect=1) api.
+        :param _ClusterIds: Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.com/document/product/214/49278?from_cn_redirect=1) api.
         :type ClusterIds: list of str
         :param _SlaType: Performance capacity specification. <li>clb.c2.medium (standard type)</li> <li>clb.c3.small (advanced type 1)</li> <li>clb.c3.medium (advanced type 2)</li> <li>clb.c4.small (high-strength type 1)</li> <li>clb.c4.medium (high-strength type 2)</li> <li>clb.c4.large (high-strength type 3)</li> <li>clb.c4.xlarge (high-strength type 4)</li>.
         :type SlaType: str
         :param _ClusterTag: Specifies the Tag of the Stgw exclusive cluster.
         :type ClusterTag: str
-        :param _Zones: Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
+        :param _Zones: Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
         :type Zones: list of str
-        :param _EipAddressId: The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1).
+        :param _EipAddressId: The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).
         :type EipAddressId: str
         """
         self._LoadBalancerId = None
@@ -2771,7 +2771,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def LoadBalancerId(self):
-        r"""Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2829,7 +2829,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def ZoneId(self):
-        r"""Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
+        r"""Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
         :rtype: str
         """
         return self._ZoneId
@@ -2895,7 +2895,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def BandwidthPackageId(self):
-        r"""BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).
+        r"""BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -2928,7 +2928,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def ClusterIds(self):
-        r"""Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.comom/document/product/214/49278?from_cn_redirect=1) api.
+        r"""Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.com/document/product/214/49278?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._ClusterIds
@@ -2961,7 +2961,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def Zones(self):
-        r"""Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
+        r"""Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
         :rtype: list of str
         """
         return self._Zones
@@ -2972,7 +2972,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def EipAddressId(self):
-        r"""The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1).
+        r"""The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).
         :rtype: str
         """
         return self._EipAddressId
@@ -3912,7 +3912,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
         :param _Vip: Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.
 Note: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.
         :type Vip: str
-        :param _BandwidthPackageId: BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
+        :param _BandwidthPackageId: BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
         :type BandwidthPackageId: str
         :param _ExclusiveCluster: Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
@@ -3929,9 +3929,9 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
         :param _ClusterTag: Tag for the STGW exclusive cluster.
         :type ClusterTag: str
         :param _SlaveZoneId: Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.comom/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type SlaveZoneId: str
-        :param _EipAddressId: The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
+        :param _EipAddressId: The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
         :type EipAddressId: str
         :param _LoadBalancerPassToTarget: Specifies whether to allow CLB traffic to the Target. enable (true): verify security groups on CLB. disable (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.
         :type LoadBalancerPassToTarget: bool
@@ -4140,7 +4140,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def BandwidthPackageId(self):
-        r"""BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
+        r"""BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -4229,7 +4229,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
     @property
     def SlaveZoneId(self):
         r"""Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.comom/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: str
         """
         return self._SlaveZoneId
@@ -4240,7 +4240,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def EipAddressId(self):
-        r"""The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
+        r"""The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
         :rtype: str
         """
         return self._EipAddressId
@@ -4456,9 +4456,9 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.
+        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.
         :type LoadBalancerId: str
-        :param _SnatIps: Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.comom/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.
+        :param _SnatIps: Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.
         :type SnatIps: list of SnatIp
         :param _Number: Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available. It defaults to `1` and the upper limit is `10`.
         :type Number: int
@@ -4469,7 +4469,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.
+        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -4480,7 +4480,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def SnatIps(self):
-        r"""Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.comom/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.
+        r"""Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.
         :rtype: list of SnatIp
         """
         return self._SnatIps
@@ -4555,9 +4555,9 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _ListenerId: Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type ListenerId: str
         :param _Rules: Information of the new forwarding rule
         :type Rules: list of RuleInput
@@ -4568,7 +4568,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -4579,7 +4579,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ListenerId
@@ -5309,9 +5309,9 @@ class DeleteListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _ListenerId: The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type ListenerId: str
         """
         self._LoadBalancerId = None
@@ -5319,7 +5319,7 @@ class DeleteListenerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5330,7 +5330,7 @@ class DeleteListenerRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ListenerId
@@ -5388,9 +5388,9 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
-        :param _ListenerIds: Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _ListenerIds: Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type ListenerIds: list of str
         """
         self._LoadBalancerId = None
@@ -5398,7 +5398,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5409,7 +5409,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        r"""Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._ListenerIds
@@ -5556,7 +5556,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.
+        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.
         :type LoadBalancerId: str
         :param _Ips: Specifies the address array of SnatIp to delete. maximum deletion supported is 20.
         :type Ips: list of str
@@ -5566,7 +5566,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.
+        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5749,17 +5749,17 @@ class DeleteRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        :param _ListenerId: ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :type ListenerId: str
-        :param _LocationIds: Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.
+        :param _LocationIds: Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :type LocationIds: list of str
-        :param _Domain: Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.
+        :param _Domain: Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :type Domain: str
-        :param _Url: Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1).
+        :param _Url: Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).
         :type Url: str
-        :param _NewDefaultServerDomain: A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _NewDefaultServerDomain: A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type NewDefaultServerDomain: str
         """
         self._LoadBalancerId = None
@@ -5771,7 +5771,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5782,7 +5782,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._ListenerId
@@ -5793,7 +5793,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def LocationIds(self):
-        r"""Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.
+        r"""Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LocationIds
@@ -5804,7 +5804,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.
+        r"""Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Domain
@@ -5815,7 +5815,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1).
+        r"""Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).
         :rtype: str
         """
         return self._Url
@@ -5826,7 +5826,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def NewDefaultServerDomain(self):
-        r"""A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._NewDefaultServerDomain
@@ -7245,13 +7245,13 @@ class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UconfigId: Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/product/214/60009?from_cn_redirect=1) api.
+        :param _UconfigId: Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/product/214/60009?from_cn_redirect=1) api.
         :type UconfigId: str
         :param _Offset: Start position of the binding list. Default: 0.
         :type Offset: int
         :param _Limit: Number of binding lists to pull. Default: 20.
         :type Limit: int
-        :param _Domain: Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/product/214/46916?from_cn_redirect=1) API return value.
+        :param _Domain: Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/product/214/46916?from_cn_redirect=1) API return value.
         :type Domain: str
         """
         self._UconfigId = None
@@ -7261,7 +7261,7 @@ class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
 
     @property
     def UconfigId(self):
-        r"""Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/product/214/60009?from_cn_redirect=1) api.
+        r"""Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/product/214/60009?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._UconfigId
@@ -7294,7 +7294,7 @@ class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/product/214/46916?from_cn_redirect=1) API return value.
+        r"""Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/product/214/46916?from_cn_redirect=1) API return value.
         :rtype: str
         """
         return self._Domain
@@ -7397,19 +7397,19 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
         :type Limit: int
         :param _ConfigName: Specifies the name of configs to query. Fuzzy match is supported.
         :type ConfigName: str
-        :param _UconfigIds: Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/api/214/60009?from_cn_redirect=1) api.
+        :param _UconfigIds: Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/api/214/60009?from_cn_redirect=1) api.
         :type UconfigIds: list of str
         :param _Filters: Filter criteria as follows:.
 - loadbalancer-id
 Filter by [cloud load balancer ID]. instance billing mode such as lb-9vxezxza.
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
 - vip
 Filter by [clb VIP]. network billing mode such as "1.1.1.1", "2204::22:3".
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
         :type Filters: list of Filter
         """
         self._ConfigType = None
@@ -7465,7 +7465,7 @@ Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/doc
 
     @property
     def UconfigIds(self):
-        r"""Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/api/214/60009?from_cn_redirect=1) api.
+        r"""Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/api/214/60009?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._UconfigIds
@@ -7481,12 +7481,12 @@ Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/doc
 Filter by [cloud load balancer ID]. instance billing mode such as lb-9vxezxza.
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
 - vip
 Filter by [clb VIP]. network billing mode such as "1.1.1.1", "2204::22:3".
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
         :rtype: list of Filter
         """
         return self._Filters
@@ -7592,7 +7592,7 @@ class DescribeIdleLoadBalancersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number of returned CLB instances. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param _LoadBalancerRegion: The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.comom/document/product/1596/77930?from_cn_redirect=1).
+        :param _LoadBalancerRegion: The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.com/document/product/1596/77930?from_cn_redirect=1).
         :type LoadBalancerRegion: str
         """
         self._Offset = None
@@ -7623,7 +7623,7 @@ class DescribeIdleLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerRegion(self):
-        r"""The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.comom/document/product/1596/77930?from_cn_redirect=1).
+        r"""The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.com/document/product/1596/77930?from_cn_redirect=1).
         :rtype: str
         """
         return self._LoadBalancerRegion
@@ -7890,9 +7890,9 @@ class DescribeListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.
         :type LoadBalancerId: str
-        :param _ListenerIds: Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.
+        :param _ListenerIds: Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.com/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.
         :type ListenerIds: list of str
         :param _Protocol: Type of the listener protocols to be queried. Values: TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.
         :type Protocol: str
@@ -7906,7 +7906,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -7917,7 +7917,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        r"""Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.
+        r"""Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.com/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.
         :rtype: list of str
         """
         return self._ListenerIds
@@ -8034,7 +8034,7 @@ class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertIds: Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.comom/document/api/400/41674?from_cn_redirect=1) api.
+        :param _CertIds: Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.com/document/api/400/41674?from_cn_redirect=1) api.
 Specifies the maximum length of the array is 20.
         :type CertIds: list of str
         """
@@ -8042,7 +8042,7 @@ Specifies the maximum length of the array is 20.
 
     @property
     def CertIds(self):
-        r"""Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.comom/document/api/400/41674?from_cn_redirect=1) api.
+        r"""Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.com/document/api/400/41674?from_cn_redirect=1) api.
 Specifies the maximum length of the array is 20.
         :rtype: list of str
         """
@@ -8311,12 +8311,12 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
 Filter by [clb ID], for example: lb-rbw5skde.
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
 - project-id
 Filters by [project ID]. for example: "0", "123".
 Type: String.
 Required: No
-Method for obtaining: [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1).
+Method for obtaining: [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1).
 - network
 Filters by [clb network type]. for example: Public.
 Type: String.
@@ -8330,7 +8330,7 @@ Required: No
 Filter by the vpc to which the cloud load balancer belongs, such as "vpc-12345678".
 Type: String.
 Required: No
-Method for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+Method for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
 - target-ip
 Filters by the private network IP of the backend destination. for example: "1.1.1.1", "2203::214:4".
 Type: String.
@@ -8339,17 +8339,17 @@ Required: No
 Filter by [availability zone of the cloud load balancer]. for example: "ap-guangzhou-1".
 Type: String.
 Required: No
-Method for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+Method for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
 - tag-key
 Filters by [tag key of the cloud load balancer tag], for example: "name".
 Type: String.
 Required: No
-Method for obtaining: [DescribeTags](https://www.tencentcloud.comom/document/api/651/35316?from_cn_redirect=1).
+Method for obtaining: [DescribeTags](https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1).
 - tag:*
 Filter by [cloud load balancer tag], where ':' is followed by the tag key. for example, to filter by tag key 'name' with tag Values 'zhangsan' and 'lisi', use {"name": "tag:name","Values": ["zhangsan", "lisi"]}.
 Type: String.
 Required: No
-Method for obtaining: [DescribeTagKeys](https://www.tencentcloud.comom/document/api/651/35318?from_cn_redirect=1).
+Method for obtaining: [DescribeTagKeys](https://www.tencentcloud.com/document/api/651/35318?from_cn_redirect=1).
 - fuzzy-search
 Searches by [clb VIP, clb name] using fuzzy search, for example: "1.1".
 Type: String.
@@ -8413,12 +8413,12 @@ Required: No
 Filter by [clb ID], for example: lb-rbw5skde.
 Type: String.
 Required: No
-Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).
+Method for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).
 - project-id
 Filters by [project ID]. for example: "0", "123".
 Type: String.
 Required: No
-Method for obtaining: [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1).
+Method for obtaining: [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1).
 - network
 Filters by [clb network type]. for example: Public.
 Type: String.
@@ -8432,7 +8432,7 @@ Required: No
 Filter by the vpc to which the cloud load balancer belongs, such as "vpc-12345678".
 Type: String.
 Required: No
-Method for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+Method for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
 - target-ip
 Filters by the private network IP of the backend destination. for example: "1.1.1.1", "2203::214:4".
 Type: String.
@@ -8441,17 +8441,17 @@ Required: No
 Filter by [availability zone of the cloud load balancer]. for example: "ap-guangzhou-1".
 Type: String.
 Required: No
-Method for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).
+Method for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).
 - tag-key
 Filters by [tag key of the cloud load balancer tag], for example: "name".
 Type: String.
 Required: No
-Method for obtaining: [DescribeTags](https://www.tencentcloud.comom/document/api/651/35316?from_cn_redirect=1).
+Method for obtaining: [DescribeTags](https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1).
 - tag:*
 Filter by [cloud load balancer tag], where ':' is followed by the tag key. for example, to filter by tag key 'name' with tag Values 'zhangsan' and 'lisi', use {"name": "tag:name","Values": ["zhangsan", "lisi"]}.
 Type: String.
 Required: No
-Method for obtaining: [DescribeTagKeys](https://www.tencentcloud.comom/document/api/651/35318?from_cn_redirect=1).
+Method for obtaining: [DescribeTagKeys](https://www.tencentcloud.com/document/api/651/35318?from_cn_redirect=1).
 - fuzzy-search
 Searches by [clb VIP, clb name] using fuzzy search, for example: "1.1".
 Type: String.
@@ -8590,14 +8590,14 @@ Defaults to CreateTime.
         :type OrderType: int
         :param _SearchKey: Specifies the fuzzy search field for fuzzy matching the name, domain name, VIP address, or ID of a cloud load balancer instance.
         :type SearchKey: str
-        :param _ProjectId: Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.
+        :param _ProjectId: Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.
         :type ProjectId: int
         :param _WithRs: Whether a CLB instance is bound to a real server. 0: no; 1: yes; -1: query all.
         :type WithRs: int
-        :param _VpcId: Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api to obtain it.
+        :param _VpcId: Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api to obtain it.
 Searches for cloud load balancer of basic network type. allows input '0'.
         :type VpcId: str
-        :param _SecurityGroup: Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        :param _SecurityGroup: Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :type SecurityGroup: str
         :param _MasterZone: Primary availability zone ID, such as 100001 (corresponding to Guangzhou Zone 1). You can obtain the list of availability zones through [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1).
         :type MasterZone: str
@@ -8782,7 +8782,7 @@ Defaults to CreateTime.
 
     @property
     def ProjectId(self):
-        r"""Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.
+        r"""Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.
         :rtype: int
         """
         return self._ProjectId
@@ -8804,7 +8804,7 @@ Defaults to CreateTime.
 
     @property
     def VpcId(self):
-        r"""Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api to obtain it.
+        r"""Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api to obtain it.
 Searches for cloud load balancer of basic network type. allows input '0'.
         :rtype: str
         """
@@ -8816,7 +8816,7 @@ Searches for cloud load balancer of basic network type. allows input '0'.
 
     @property
     def SecurityGroup(self):
-        r"""Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        r"""Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroup
@@ -11275,7 +11275,7 @@ class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _InternetAccessible: New bandwidth bandwidth specification
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
@@ -11285,7 +11285,7 @@ class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -11373,14 +11373,14 @@ class InquiryPriceRefundLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         """
         self._LoadBalancerId = None
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -11454,7 +11454,7 @@ class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _LoadBalancerChargePrepaid: Renewal period
         :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
@@ -11464,7 +11464,7 @@ class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -12007,10 +12007,10 @@ class LbRsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VPC ID in string format. Only string format is supported.
-Can be queried through the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api.
+Can be queried through the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api.
         :type VpcId: str
         :param _PrivateIp: Specifies the private IP address for backend querying, which can be CVM or eni.
-Can be queried through the [DescribeAddresses](https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1) api.
+Can be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) api.
         :type PrivateIp: str
         """
         self._VpcId = None
@@ -12019,7 +12019,7 @@ Can be queried through the [DescribeAddresses](https://www.tencentcloud.comom/do
     @property
     def VpcId(self):
         r"""VPC ID in string format. Only string format is supported.
-Can be queried through the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api.
+Can be queried through the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._VpcId
@@ -12031,7 +12031,7 @@ Can be queried through the [DescribeVpcs](https://www.tencentcloud.comom/documen
     @property
     def PrivateIp(self):
         r"""Specifies the private IP address for backend querying, which can be CVM or eni.
-Can be queried through the [DescribeAddresses](https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1) api.
+Can be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._PrivateIp
@@ -12954,7 +12954,7 @@ class LoadBalancer(AbstractModel):
         :param _LoadBalancerName: CLB instance name.
         :type LoadBalancerName: str
         :param _LoadBalancerType: Network type of the load balancing instance.
-OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.comom/document/product/215/16700?from_cn_redirect=1).
+OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
         :type LoadBalancerType: str
         :param _Forward: CLB type identifier. Value range: 1 (CLB); 0 (classic CLB).
         :type Forward: int
@@ -12996,7 +12996,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AnycastZone: str
         :param _AddressIPVersion: IP Version, ipv4 | ipv6
         :type AddressIPVersion: str
-        :param _NumericalVpcId: Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        :param _NumericalVpcId: Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
         :type NumericalVpcId: int
         :param _VipIsp: Specifies the ISP of the load balancer IP address.
 
@@ -13202,7 +13202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LoadBalancerType(self):
         r"""Network type of the load balancing instance.
-OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.comom/document/product/215/16700?from_cn_redirect=1).
+OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
         :rtype: str
         """
         return self._LoadBalancerType
@@ -13419,7 +13419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NumericalVpcId(self):
-        r"""Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        r"""Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
         :rtype: int
         """
         return self._NumericalVpcId
@@ -15350,11 +15350,11 @@ class ModifyDomainAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        :param _ListenerId: ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :type ListenerId: str
-        :param _Domain: Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _Domain: Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type Domain: str
         :param _NewDomain: The one domain name to modify. `NewDomain` and `NewDomains` can not be both specified.
         :type NewDomain: str
@@ -15390,7 +15390,7 @@ True: enable QUIC. False: disable.
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -15401,7 +15401,7 @@ True: enable QUIC. False: disable.
 
     @property
     def ListenerId(self):
-        r"""ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        r"""ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._ListenerId
@@ -15412,7 +15412,7 @@ True: enable QUIC. False: disable.
 
     @property
     def Domain(self):
-        r"""Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Domain
@@ -15574,11 +15574,11 @@ class ModifyDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        :param _ListenerId: ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :type ListenerId: str
-        :param _Domain: An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _Domain: An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type Domain: str
         :param _NewDomain: New domain name. 	Length limit: 1-120. There are three usage formats: non-regular expression, wildcard, and regular expression. A non-regular expression can only contain letters, digits, "-", and ".". In a wildcard, "*" can only be at the beginning or the end. A regular expressions must begin with a "~".
         :type NewDomain: str
@@ -15590,7 +15590,7 @@ class ModifyDomainRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -15601,7 +15601,7 @@ class ModifyDomainRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        r"""ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._ListenerId
@@ -15612,7 +15612,7 @@ class ModifyDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Domain
@@ -16266,7 +16266,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :type LoadBalancerId: str
         :param _LoadBalancerName: Load balancing instance name. rule: 1-60 english letters, chinese characters, digits, hyphens "-", or underscores "_".
         :type LoadBalancerName: str
@@ -16285,7 +16285,7 @@ Specifies no modification if left blank.
         :type DeleteProtect: bool
         :param _ModifyClassicDomain: Modifies the second-level domain name of cloud load balancer from mycloud.com to tencentclb.com. the subdomain will be transformed, and the mycloud.com domain name will become invalid after modification. leave it blank if no modification is required.
         :type ModifyClassicDomain: bool
-        :param _AssociateEndpoint: The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.comom/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
+        :param _AssociateEndpoint: The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
         :type AssociateEndpoint: str
         """
         self._LoadBalancerId = None
@@ -16300,7 +16300,7 @@ Specifies no modification if left blank.
 
     @property
     def LoadBalancerId(self):
-        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16391,7 +16391,7 @@ Specifies no modification if left blank.
 
     @property
     def AssociateEndpoint(self):
-        r"""The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.comom/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
+        r"""The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
         :rtype: str
         """
         return self._AssociateEndpoint
@@ -16561,7 +16561,7 @@ class ModifyLoadBalancersProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ids.
+        :param _LoadBalancerIds: One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ids.
 Specifies the maximum length supported by the list is 20.
         :type LoadBalancerIds: list of str
         :param _ProjectId: Project ID. You can obtain it through the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) API.
@@ -16572,7 +16572,7 @@ Specifies the maximum length supported by the list is 20.
 
     @property
     def LoadBalancerIds(self):
-        r"""One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ids.
+        r"""One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ids.
 Specifies the maximum length supported by the list is 20.
         :rtype: list of str
         """
@@ -16642,11 +16642,11 @@ class ModifyRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :type LoadBalancerId: str
-        :param _ListenerId: ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        :param _ListenerId: ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type ListenerId: str
-        :param _LocationId: Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1).
+        :param _LocationId: Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).
         :type LocationId: str
         :param _Url: New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified.
         :type Url: str
@@ -16684,7 +16684,7 @@ Defaults to 0.
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16695,7 +16695,7 @@ Defaults to 0.
 
     @property
     def ListenerId(self):
-        r"""ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.
+        r"""ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ListenerId
@@ -16706,7 +16706,7 @@ Defaults to 0.
 
     @property
     def LocationId(self):
-        r"""Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1).
+        r"""Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).
         :rtype: str
         """
         return self._LocationId
@@ -18066,7 +18066,7 @@ class RegisterTargetsRequest(AbstractModel):
         :type ListenerId: str
         :param _Targets: List of real servers to be bound. Array length limit: 20.
         :type Targets: list of Target
-        :param _LocationId: Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
+        :param _LocationId: Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
         :type LocationId: str
         :param _Domain: Target forwarding rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
@@ -18115,7 +18115,7 @@ class RegisterTargetsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        r"""Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
+        r"""Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
         :rtype: str
         """
         return self._LocationId
@@ -18713,7 +18713,7 @@ class RsTagRule(AbstractModel):
         :type Targets: list of Target
         :param _LocationId: Forwarding rule ID, which is required only for Layer-7 rules but not for Layer-4 rules.
         :type LocationId: str
-        :param _Tag: Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.comom/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
+        :param _Tag: Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
         :type Tag: str
         """
         self._ListenerId = None
@@ -18756,7 +18756,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def Tag(self):
-        r"""Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.comom/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
+        r"""Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
         :rtype: str
         """
         return self._Tag
@@ -19910,12 +19910,12 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
         :param _UconfigId: Personalized configuration ID. this field is required except when creating a custom configuration, for example: pz-1234abcd.
         :type UconfigId: str
         :param _ConfigContent: Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.
-Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.comom/document/product/214/15171?from_cn_redirect=1).
+Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
         :type ConfigContent: str
         :param _ConfigName: Custom configuration name. specifies the name when creating or modifying a custom configuration. this field is required.
         :type ConfigName: str
         :param _LoadBalancerIds: CLB instance ID. this field is required for bind/unbind operations.
-Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.
+Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.
         :type LoadBalancerIds: list of str
         """
         self._OperationType = None
@@ -19954,7 +19954,7 @@ Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.como
     @property
     def ConfigContent(self):
         r"""Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.
-Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.comom/document/product/214/15171?from_cn_redirect=1).
+Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
         :rtype: str
         """
         return self._ConfigContent
@@ -19977,7 +19977,7 @@ Specifies specific restrictions. view layer-7 personalized configuration (https:
     @property
     def LoadBalancerIds(self):
         r"""CLB instance ID. this field is required for bind/unbind operations.
-Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.
+Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -20053,14 +20053,14 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _LogSetId: Log set ID of cloud log service (CLS).
-<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.comom/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :type LogSetId: str
         :param _LogTopicId: Specifies the log topic ID of cloud log service (CLS).
-<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.comom/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :type LogTopicId: str
         :param _LogType: Log type:
@@ -20076,7 +20076,7 @@ Default: `ACCESS`
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -20088,7 +20088,7 @@ Default: `ACCESS`
     @property
     def LogSetId(self):
         r"""Log set ID of cloud log service (CLS).
-<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.comom/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :rtype: str
         """
@@ -20101,7 +20101,7 @@ Default: `ACCESS`
     @property
     def LogTopicId(self):
         r"""Specifies the log topic ID of cloud log service (CLS).
-<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.comom/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :rtype: str
         """
@@ -20176,10 +20176,10 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _SecurityGroups: Specifies an array of security group ids. a load balancing instance supports a maximum binding of 50 security groups. to unbind all security groups, omit this parameter.
-Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1) api.
+Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1) api.
         :type SecurityGroups: list of str
         """
         self._LoadBalancerId = None
@@ -20187,7 +20187,7 @@ Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.com
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -20199,7 +20199,7 @@ Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.com
     @property
     def SecurityGroups(self):
         r"""Specifies an array of security group ids. a load balancing instance supports a maximum binding of 50 security groups. to unbind all security groups, omit this parameter.
-Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1) api.
+Can be queried through the [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -20259,7 +20259,7 @@ class SetLoadBalancerStartStatusRequest(AbstractModel):
         r"""
         :param _OperationType: Operation type. Start: Start the instance; Stop: Stop the instance.
         :type OperationType: str
-        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _ListenerIds: Listener ID. If this field is empty, it indicates operating the CLB instance; if not empty, it indicates operating the listener.
         :type ListenerIds: list of str
@@ -20281,7 +20281,7 @@ class SetLoadBalancerStartStatusRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -20351,12 +20351,12 @@ class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroup: Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        :param _SecurityGroup: Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :type SecurityGroup: str
         :param _OperationType: ADD: bind a security group;
 DEL: unbind a security group
         :type OperationType: str
-        :param _LoadBalancerIds: ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerIds: ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
 Specifies the maximum length supported by the list is 20.
         :type LoadBalancerIds: list of str
         """
@@ -20366,7 +20366,7 @@ Specifies the maximum length supported by the list is 20.
 
     @property
     def SecurityGroup(self):
-        r"""Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        r"""Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroup
@@ -20389,7 +20389,7 @@ DEL: unbind a security group
 
     @property
     def LoadBalancerIds(self):
-        r"""ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
+        r"""ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
 Specifies the maximum length supported by the list is 20.
         :rtype: list of str
         """
@@ -20450,7 +20450,7 @@ class SlaUpdateParam(AbstractModel):
     def __init__(self):
         r"""
         :param _LoadBalancerId: CLB instance ID.
-Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.
+Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.
         :type LoadBalancerId: str
         :param _SlaType: Specification of the LCU-supported instance. Valid values:<li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).
         :type SlaType: str
@@ -20461,7 +20461,7 @@ Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.como
     @property
     def LoadBalancerId(self):
         r"""CLB instance ID.
-Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.
+Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._LoadBalancerId

@@ -552,7 +552,10 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
         :type SelectedWarningCodes: list of int
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
-        :param _SdkVersion: BASIC: Basic Version (default).
+        :param _SdkVersion: BASIC: Basic version (Default).
+ENHANCE: Enhance version, enable additional output of device risk level field.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :type SdkVersion: str
         :param _ActionList: This interface is used to control th action sequences.
 Action types are as follows:
@@ -713,7 +716,10 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
 
     @property
     def SdkVersion(self):
-        r"""BASIC: Basic Version (default).
+        r"""BASIC: Basic version (Default).
+ENHANCE: Enhance version, enable additional output of device risk level field.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :rtype: str
         """
         return self._SdkVersion
@@ -2390,6 +2396,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardInfoInputJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param _RequestId: The request ID of this verification process.
         :type RequestId: str
+        :param _LivenessInfoTag: Describes the detailed reason for the current liveness detection failure. Output only when SdkVersion is PLUS. Details are as follows:
+01 - User kept eyes closed throughout the process.
+02 - User failed to complete the specified action.
+03 - Suspected photo replay attack.
+04 - Suspected synthetic image.
+05 - Suspected synthetic video.
+06 - Suspected synthetic action.
+07 - Suspected fraud template.
+08 - Suspected watermark existence.
+09 - Light verification failed.
+10 - Face verification failed.
+11 - Poor face quality.
+12 - Unqualified collection quality.
+13 - Suspected adversarial sample attack.
+        :type LivenessInfoTag: list of str
         """
         self._ErrorCode = None
         self._ErrorMsg = None
@@ -2406,6 +2427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsNeedCharge = None
         self._CardInfoInputJson = None
         self._RequestId = None
+        self._LivenessInfoTag = None
 
     @property
     def ErrorCode(self):
@@ -2596,6 +2618,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RequestId(self, RequestId):
         self._RequestId = RequestId
 
+    @property
+    def LivenessInfoTag(self):
+        r"""Describes the detailed reason for the current liveness detection failure. Output only when SdkVersion is PLUS. Details are as follows:
+01 - User kept eyes closed throughout the process.
+02 - User failed to complete the specified action.
+03 - Suspected photo replay attack.
+04 - Suspected synthetic image.
+05 - Suspected synthetic video.
+06 - Suspected synthetic action.
+07 - Suspected fraud template.
+08 - Suspected watermark existence.
+09 - Light verification failed.
+10 - Face verification failed.
+11 - Poor face quality.
+12 - Unqualified collection quality.
+13 - Suspected adversarial sample attack.
+        :rtype: list of str
+        """
+        return self._LivenessInfoTag
+
+    @LivenessInfoTag.setter
+    def LivenessInfoTag(self, LivenessInfoTag):
+        self._LivenessInfoTag = LivenessInfoTag
+
 
     def _deserialize(self, params):
         self._ErrorCode = params.get("ErrorCode")
@@ -2625,6 +2671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._CardInfoInputJson = FileInfo()
             self._CardInfoInputJson._deserialize(params.get("CardInfoInputJson"))
         self._RequestId = params.get("RequestId")
+        self._LivenessInfoTag = params.get("LivenessInfoTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3430,6 +3477,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Address: Address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Address: :class:`tencentcloud.faceid.v20180301.models.Address`
+        :param _FullNameLocal: Localized name.
+        :type FullNameLocal: str
+        :param _FirstNameLocal: Localization.
+        :type FirstNameLocal: str
+        :param _LastNameLocal: Localized surname.
+        :type LastNameLocal: str
         """
         self._LicenseNumber = None
         self._PersonalNumber = None
@@ -3450,6 +3503,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Nationality = None
         self._RegistrationNumber = None
         self._Address = None
+        self._FullNameLocal = None
+        self._FirstNameLocal = None
+        self._LastNameLocal = None
 
     @property
     def LicenseNumber(self):
@@ -3685,6 +3741,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Address(self, Address):
         self._Address = Address
 
+    @property
+    def FullNameLocal(self):
+        r"""Localized name.
+        :rtype: str
+        """
+        return self._FullNameLocal
+
+    @FullNameLocal.setter
+    def FullNameLocal(self, FullNameLocal):
+        self._FullNameLocal = FullNameLocal
+
+    @property
+    def FirstNameLocal(self):
+        r"""Localization.
+        :rtype: str
+        """
+        return self._FirstNameLocal
+
+    @FirstNameLocal.setter
+    def FirstNameLocal(self, FirstNameLocal):
+        self._FirstNameLocal = FirstNameLocal
+
+    @property
+    def LastNameLocal(self):
+        r"""Localized surname.
+        :rtype: str
+        """
+        return self._LastNameLocal
+
+    @LastNameLocal.setter
+    def LastNameLocal(self, LastNameLocal):
+        self._LastNameLocal = LastNameLocal
+
 
     def _deserialize(self, params):
         self._LicenseNumber = params.get("LicenseNumber")
@@ -3708,6 +3797,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Address") is not None:
             self._Address = Address()
             self._Address._deserialize(params.get("Address"))
+        self._FullNameLocal = params.get("FullNameLocal")
+        self._FirstNameLocal = params.get("FirstNameLocal")
+        self._LastNameLocal = params.get("LastNameLocal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4340,7 +4432,10 @@ Single action example: "blink"
 Multiple action example: "blink,mouth"
 The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
         :type ActionList: str
-        :param _SdkVersion: BASIC: Basic Version (Default).
+        :param _SdkVersion: BASIC: Basic version (Default).
+ENHANCE: Enhance version, enable additional output of device risk level field.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :type SdkVersion: str
         """
         self._CheckMode = None
@@ -4424,7 +4519,10 @@ The default value is blink. The different action types passed in this parameter 
 
     @property
     def SdkVersion(self):
-        r"""BASIC: Basic Version (Default).
+        r"""BASIC: Basic version (Default).
+ENHANCE: Enhance version, enable additional output of device risk level field.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :rtype: str
         """
         return self._SdkVersion
@@ -7801,6 +7899,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CurrentIssueDate: The current date of issue
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurrentIssueDate: str
+        :param _HKIDVersion: Hong kong identity card version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HKIDVersion: str
         """
         self._ChineseName = None
         self._FullName = None
@@ -7812,6 +7913,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Symbol = None
         self._IssuedDate = None
         self._CurrentIssueDate = None
+        self._HKIDVersion = None
 
     @property
     def ChineseName(self):
@@ -7937,6 +8039,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CurrentIssueDate(self, CurrentIssueDate):
         self._CurrentIssueDate = CurrentIssueDate
 
+    @property
+    def HKIDVersion(self):
+        r"""Hong kong identity card version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HKIDVersion
+
+    @HKIDVersion.setter
+    def HKIDVersion(self, HKIDVersion):
+        self._HKIDVersion = HKIDVersion
+
 
     def _deserialize(self, params):
         self._ChineseName = params.get("ChineseName")
@@ -7949,6 +8063,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Symbol = params.get("Symbol")
         self._IssuedDate = params.get("IssuedDate")
         self._CurrentIssueDate = params.get("CurrentIssueDate")
+        self._HKIDVersion = params.get("HKIDVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
