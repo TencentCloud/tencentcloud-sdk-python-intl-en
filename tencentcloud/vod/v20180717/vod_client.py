@@ -247,6 +247,52 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcImageTask(self, request):
+        r"""This API is used to generate AIGC images. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>
+
+        :param request: Request instance for CreateAigcImageTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcImageTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcImageTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcImageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAigcVideoTask(self, request):
+        r"""This API is used to generate AIGC videos. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>
+
+        :param request: Request instance for CreateAigcVideoTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcVideoTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcVideoTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         r"""This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
@@ -669,6 +715,29 @@ class VodClient(AbstractClient):
             body = self.call("CreateSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSampleSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSceneAigcImageTask(self, request):
+        r"""This API is used to generate scenario-based AIGC images. <b>This interface is in beta. If you need to use it, please contact us. API calls will incur actual fees.</b>
+
+        :param request: Request instance for CreateSceneAigcImageTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSceneAigcImageTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSceneAigcImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSceneAigcImageTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSceneAigcImageTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

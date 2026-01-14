@@ -201,6 +201,42 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcImageTask(
+            self,
+            request: models.CreateAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcImageTaskResponse:
+        """
+        This API is used to generate AIGC images. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAigcVideoTask(
+            self,
+            request: models.CreateAigcVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcVideoTaskResponse:
+        """
+        This API is used to generate AIGC videos. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcVideoTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAnimatedGraphicsTemplate(
             self,
             request: models.CreateAnimatedGraphicsTemplateRequest,
@@ -537,6 +573,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "CreateSampleSnapshotTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSampleSnapshotTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSceneAigcImageTask(
+            self,
+            request: models.CreateSceneAigcImageTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSceneAigcImageTaskResponse:
+        """
+        This API is used to generate scenario-based AIGC images. <b>This interface is in beta. If you need to use it, please contact us. API calls will incur actual fees.</b>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSceneAigcImageTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSceneAigcImageTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
