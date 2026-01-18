@@ -25,6 +25,24 @@ class HunyuanClient(AbstractClient):
     _endpoint = 'hunyuan.intl.tencentcloudapi.com'
     _service = 'hunyuan'
 
+    async def Convert3DFormat(
+            self,
+            request: models.Convert3DFormatRequest,
+            opts: Dict = None,
+    ) -> models.Convert3DFormatResponse:
+        """
+        After inputting a 3D model file, the 3D model file format can be switched.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "Convert3DFormat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.Convert3DFormatResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuan3DPartJob(
             self,
             request: models.QueryHunyuan3DPartJobRequest,

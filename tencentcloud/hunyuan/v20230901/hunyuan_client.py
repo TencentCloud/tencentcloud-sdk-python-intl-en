@@ -26,6 +26,29 @@ class HunyuanClient(AbstractClient):
     _service = 'hunyuan'
 
 
+    def Convert3DFormat(self, request):
+        r"""After inputting a 3D model file, the 3D model file format can be switched.
+
+        :param request: Request instance for Convert3DFormat.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.Convert3DFormatRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Convert3DFormatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("Convert3DFormat", params, headers=headers)
+            response = json.loads(body)
+            model = models.Convert3DFormatResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuan3DPartJob(self, request):
         r"""This API is used to query the generation task of a component.
 

@@ -95,6 +95,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateApplicationConfig(self, request):
+        r"""This API is used to create the configuration for a specified superapp.
+
+        :param request: Request instance for CreateApplicationConfig.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateApplicationSensitiveAPI(self, request):
         r"""This API is used to create a sensitive API of an application.
 
@@ -486,6 +509,98 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAPPDataDetailLineChart(self, request):
+        r"""This API is used to retrieve the line chart data for selected superapp metrics.
+
+        :param request: Request instance for DescribeAPPDataDetailLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataDetailLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataDetailLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAPPDataDetailLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAPPDataDetailLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAPPDataOverview(self, request):
+        r"""This API is used to retrieve an overview of the superapp data.
+
+        :param request: Request instance for DescribeAPPDataOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAPPDataOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAPPDataOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAdvertisingLineChart(self, request):
+        r"""This API is used to retrieve the advertising line chart data for a mini program within a specified date range.
+
+        :param request: Request instance for DescribeAdvertisingLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAdvertisingLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAdvertisingLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAdvertisingOverview(self, request):
+        r"""This API is used to retrieve an overview of mini program ad metrics within a specified date range.
+
+        :param request: Request instance for DescribeAdvertisingOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAdvertisingOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAdvertisingOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApplication(self, request):
         r"""This API is used to query the application details.
 
@@ -523,6 +638,29 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeApplicationConfigFile", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeApplicationConfigFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApplicationConfigInfos(self, request):
+        r"""This API is used to retrieve the configuration details for an superapp.
+
+        :param request: Request instance for DescribeApplicationConfigInfos.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigInfosRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationConfigInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationConfigInfosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -601,6 +739,397 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGlobalOverviewDataSummary(self, request):
+        r"""This API is used to retrieve a global overview summary of usage statistics.
+
+        :param request: Request instance for DescribeGlobalOverviewDataSummary.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewDataSummaryRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewDataSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalOverviewDataSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalOverviewDataSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGlobalOverviewReportDetail(self, request):
+        r"""This API is used to retrieve the detailed report data for global overview within a specified date range.
+
+        :param request: Request instance for DescribeGlobalOverviewReportDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewReportDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewReportDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalOverviewReportDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalOverviewReportDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAccessAnalysisDetail(self, request):
+        r"""This API is used to retrieve the detailed visit analysis data for a mini game within a specified date range.
+
+        :param request: Request instance for DescribeMNGAccessAnalysisDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAccessAnalysisDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAccessAnalysisDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAccessAnalysisLineChart(self, request):
+        r"""This API is used to retrieve line chart analysis data for mini game visits.
+
+        :param request: Request instance for DescribeMNGAccessAnalysisLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAccessAnalysisLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAccessAnalysisLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAccessAnalysisOverview(self, request):
+        r"""This API is used to retrieve an overview of visit analysis data for a mini game within a specified date range.
+
+        :param request: Request instance for DescribeMNGAccessAnalysisOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAccessAnalysisOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAccessAnalysisOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGActiveUserRealTimeStatistics(self, request):
+        r"""This API is used to retrieve the real-time active user statistics for a mini game.
+
+        :param request: Request instance for DescribeMNGActiveUserRealTimeStatistics.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGActiveUserRealTimeStatisticsRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGActiveUserRealTimeStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGActiveUserRealTimeStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGActiveUserRealTimeStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAdvertisingDetail(self, request):
+        r"""This API is used to retrieve the advertising detailed data for a mini game over a specified period.
+
+        :param request: Request instance for DescribeMNGAdvertisingDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAdvertisingDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAdvertisingDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAdvertisingLineChart(self, request):
+        r"""This API is used to retrieve mini game advertising data in a line chart format.
+
+        :param request: Request instance for DescribeMNGAdvertisingLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAdvertisingLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAdvertisingLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAdvertisingOverview(self, request):
+        r"""This API is used to retrieve an overview of mini game ad metrics within a specified date range.
+
+        :param request: Request instance for DescribeMNGAdvertisingOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAdvertisingOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAdvertisingOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGMAUDataDetail(self, request):
+        r"""This API is used to retrieve the detailed mini game monthly active user data.
+
+        :param request: Request instance for DescribeMNGMAUDataDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUDataDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUDataDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGMAUDataDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGMAUDataDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGMAULineChart(self, request):
+        r"""This API is used to retrieve mini game monthly active user data in a line chart format.
+
+        :param request: Request instance for DescribeMNGMAULineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAULineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAULineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGMAULineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGMAULineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGMAUMonthlyComparisonMetricCard(self, request):
+        r"""This API is used to retrieve MAU comparison data for a mini game between two months.
+
+        :param request: Request instance for DescribeMNGMAUMonthlyComparisonMetricCard.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUMonthlyComparisonMetricCardRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUMonthlyComparisonMetricCardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGMAUMonthlyComparisonMetricCard", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGMAUMonthlyComparisonMetricCardResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGPaymentLineChart(self, request):
+        r"""This API is used to retrieve the line chart data for mini game payment.
+
+        :param request: Request instance for DescribeMNGPaymentLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGPaymentLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGPaymentLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGPaymentOverview(self, request):
+        r"""This API is used to retrieve an overview of mini game payment data within a specified period.
+
+        :param request: Request instance for DescribeMNGPaymentOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGPaymentOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGPaymentOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGPaymentReportDetail(self, request):
+        r"""This API is used to retrieve a detailed payment report data for a mini game.
+
+        :param request: Request instance for DescribeMNGPaymentReportDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentReportDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentReportDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGPaymentReportDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGPaymentReportDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGPaymentRetentionAnalysis(self, request):
+        r"""This API is used to retrieve the mini game payment retention data.
+
+        :param request: Request instance for DescribeMNGPaymentRetentionAnalysis.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentRetentionAnalysisRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentRetentionAnalysisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGPaymentRetentionAnalysis", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGPaymentRetentionAnalysisResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGRetentionData(self, request):
+        r"""This API is used to retrieve user retention data for a mini game within a specified date range.
+
+        :param request: Request instance for DescribeMNGRetentionData.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGRetentionDataRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGRetentionDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGRetentionData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGRetentionDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNP(self, request):
         r"""This API is used to query the mini program details.
 
@@ -615,6 +1144,75 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNP", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPAccessAnalysisOverview(self, request):
+        r"""This API is used to retrieve an overview of visit analysis data for a mini program within a specified date range.
+
+        :param request: Request instance for DescribeMNPAccessAnalysisOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAccessAnalysisOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAccessAnalysisOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPAccessAnalysisOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPAccessAnalysisOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPActiveUserRealTimeStatistics(self, request):
+        r"""This API is used to retrieve the real-time active user statistics for a mini program.
+
+        :param request: Request instance for DescribeMNPActiveUserRealTimeStatistics.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPActiveUserRealTimeStatisticsRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPActiveUserRealTimeStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPActiveUserRealTimeStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPActiveUserRealTimeStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPAdvertisingDetail(self, request):
+        r"""This API is used to retrieve the detailed advertising data for a mini program within a specified date range.
+
+        :param request: Request instance for DescribeMNPAdvertisingDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAdvertisingDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAdvertisingDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPAdvertisingDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPAdvertisingDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,6 +1337,75 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPMAUDataDetail(self, request):
+        r"""This API is used to retrieve the detailed mini program monthly active user data.
+
+        :param request: Request instance for DescribeMNPMAUDataDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUDataDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUDataDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPMAUDataDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPMAUDataDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPMAULineChart(self, request):
+        r"""This API is used to retrieve mini program monthly active user data in a line chart format.
+
+        :param request: Request instance for DescribeMNPMAULineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAULineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAULineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPMAULineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPMAULineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPMAUMetricCard(self, request):
+        r"""This API is used to retrieve MAU comparison data for a mini program between two months.
+
+        :param request: Request instance for DescribeMNPMAUMetricCard.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUMetricCardRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUMetricCardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPMAUMetricCard", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPMAUMetricCardResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPOfflinePackageURL(self, request):
         r"""DescribeMNPOfflinePackageURL
 
@@ -753,6 +1420,29 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNPOfflinePackageURL", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPOfflinePackageURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPPageAnalysisDetail(self, request):
+        r"""This API is used to retrieve the detailed page visit data for a mini program over a specified period.
+
+        :param request: Request instance for DescribeMNPPageAnalysisDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPageAnalysisDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPageAnalysisDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPPageAnalysisDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPPageAnalysisDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -799,6 +1489,75 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNPReleasedVersionHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPReleasedVersionHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPReportDataLineChart(self, request):
+        r"""This API is used to retrieve the line chart data for mini program visit analysis within a given date range.
+
+        :param request: Request instance for DescribeMNPReportDataLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDataLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDataLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPReportDataLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPReportDataLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPReportDetail(self, request):
+        r"""This API is used to retrieve the detailed mini program visit analysis data.
+
+        :param request: Request instance for DescribeMNPReportDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPReportDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPReportDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPRetentionData(self, request):
+        r"""This API is used to retrieve user retention data for a mini program within a specified date range.
+
+        :param request: Request instance for DescribeMNPRetentionData.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPRetentionDataRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPRetentionDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPRetentionData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPRetentionDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -891,6 +1650,75 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNPVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePaymentDataDetail(self, request):
+        r"""This API is used to retrieve the detailed standard payment data for specified  mini programs within a specified date range.
+
+        :param request: Request instance for DescribePaymentDataDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePaymentDataDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePaymentDataDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePaymentDataLineChart(self, request):
+        r"""This API is used to retrieve the line chart data related to standard payment for a mini program within a specified date range.
+
+        :param request: Request instance for DescribePaymentDataLineChart.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataLineChartRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataLineChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePaymentDataLineChart", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePaymentDataLineChartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePaymentDataOverview(self, request):
+        r"""This API is used to retrieve an overview of mini program payment data within a specified date range.
+
+        :param request: Request instance for DescribePaymentDataOverview.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataOverviewRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePaymentDataOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePaymentDataOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1121,6 +1949,29 @@ class TcsasClient(AbstractClient):
             body = self.call("ModifyApplication", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApplicationConfig(self, request):
+        r"""This API is used to edit the configuration of a superapp.
+
+        :param request: Request instance for ModifyApplicationConfig.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ModifyApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ModifyApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApplicationConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

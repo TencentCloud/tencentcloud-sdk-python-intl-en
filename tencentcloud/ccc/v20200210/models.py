@@ -2545,56 +2545,80 @@ Currently, the supported languages are as follows. The English name of the langu
         :type NotifyMessage: str
         :param _NotifyMaxCount: Maximum number of times to trigger ai prompt sound, unlimited by default.
         :type NotifyMaxCount: int
-        :param _CustomTTSConfig: <p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
+        :param _CustomTTSConfig: <p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>.
 <ul>
 <li>Tencent TTS<br>
-For configuration, please refer to <a href="https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">Tencent Cloud TTS documentation link</a></li>
+For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>.
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS type, currently supports &quot;tencent&quot; and "minixmax", other vendors support in progress
-    &quot;AppId&quot;: &quot;Your application ID&quot;, // String required
-    &quot;SecretId&quot;: &quot;Your Secret ID&quot;, // String Required
-    &quot;SecretKey&quot;:  &quot;Your Secret Key&quot;, // String Required
-    &quot;VoiceType&quot;: 101001, // Integer Required, Sound quality ID, includes standard and premium sound quality. Premium sound quality is more realistic and differently priced than standard sound quality. See TTS billing overview for details. For the full list of sound quality IDs, see the TTS sound quality list.
-    "Speed": 1.25, // Integer Optional, speech speed, range: [-2,6], corresponding to different speeds: -2: represents 0.6x -1: represents 0.8x 0: represents 1.0x (default) 1: represents 1.2x 2: represents 1.5x 6: represents 2.5x For more precise speed control, you can retain two decimal places, such as 0.5/1.25/2.81, etc. For parameter value to actual speed conversion, refer to Speed Conversion
-    &quot;Volume&quot;: 5, // Integer Optional, Volume level, range: [0,10], corresponding to 11 levels of volume, default is 0, which represents normal volume.
-    &quot;PrimaryLanguage&quot;: 1, // Integer Optional, Primary language 1- Chinese (default) 2- English 3- Japanese
-    &quot;FastVoiceType&quot;: &quot;xxxx&quot;   // Optional parameter, Fast VRS parameter
-  }
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+"TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
+  "AppId": "your application ID", // String required.
+  "SecretId": "your key ID", // String required.
+  "SecretKey": "your Key", // String required.
+  "VoiceType": 101001, // Integer  required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
+  "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
+  "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
+  "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
+"FastVoiceType": "xxxx"   //  optional parameter. parameters for quick voice clone. 
+  }
 </code></pre>
-
-  </div></div><ul>
-
-</div></div><ul>
+ </div><ul>
+<li>Minimax TTS<br>
+For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>.
+</ul>
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "minimax",  // String TTS type. 
+        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
+        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
+        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
+        &quot;GroupId&quot;: &quot;181000000000000&quot;,
+        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
+        &quot;Speed&quot;: 1.2
+}
+</code></pre>
+</div><ul>
+<li>Volcano TTS</li>.
+</ul>
+<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>.
+Text to speech timbre list - voice technology - volcano engine.
+Large model TTS timbre list - voice technology - volcano engine</p>.
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "volcengine",  // required: String TTS type.
+"AppId": "xxxxxxxx",   // required: String AppId assigned by volcano engine.
+"Token": "TY9d4sQXHxxxxxxx", // required: String type, access Token for volcano engine.
+"Speed": 1.0,            // optional parameter. speaking rate, defaults to 1.0.
+"Volume": 1.0,            // optional parameter, Volume, defaults to 1.0.
+"Cluster": "volcano_tts", // optional parameter, business Cluster, is selected by default.
+"VoiceType": "zh_male_aojiaobazong_moon_bigtts" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.
+}
+</code></pre>
+</div><ul>
 <li>Azure TTS<br>
-For configuration, refer to the<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">Azure TTS documentation</a></li>
+For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>.
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;azure&quot;, // Required: String TTS type
-    &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // Required: String subscription key
-    &quot;Region&quot;: &quot;chinanorth3&quot;,  // Required: String subscription region
-    &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // Required: String Timbre Name required
-    &quot;Language&quot;: &quot;zh-CN&quot;, // Required: String Language for synthesis
-    &quot;Rate&quot;: 1 // Optional: float Playback Speed 0.5-2 default is 1
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "azure", // required: String TTS type.
+"SubscriptionKey": "xxxxxxxx", // required: String subscription Key.
+"Region": "chinanorth3",  // required: String the Region to subscribe to.
+"VoiceName": "zh-CN-XiaoxiaoNeural", // required: String specifies the required VoiceName.
+"Language": "zh-CN", // required: String specifies the synthesis Language.  
+"Rate": 1 // optional: float, speech speed. value range: 0.5–2. default is 1.
 }
 </code></pre>
-
-</div></div><ul>
-<li>Custom</li>
+</div><ul>
+<li>Custom TTS</li>.
 </ul>
-<p>TTS<br>
-Please refer to the specific protocol standards in the <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">Tencent documentation</a></p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-  &quot;TTSType&quot;: &quot;custom&quot;, // Required String
-  &quot;APIKey&quot;: &quot;ApiKey&quot;, // Required String for Authentication
-  &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // Required String, TTS API URL
-  &quot;AudioFormat&quot;: &quot;wav&quot;, // String, optional, expected audio format, such as mp3, ogg_opus, pcm, wav, default is wav, currently only pcm and wav are supported,
-  &quot;SampleRate&quot;: 16000,  // Integer, optional, audio sample rate, default is 16000 (16k), recommended value is 16000
-  &quot;AudioChannel&quot;: 1,    // Integer, optional, number of audio channels, values: 1 or 2, default is 1
+<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">tencent documentation</a></p>.
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "custom", // String required.
+"APIKey": "APIKey", // String required. be used to authenticate.
+"APIUrl": "http://0.0.0.0:8080/stream-audio" // String, required, TTS API URL.
+"AudioFormat": "wav", // String, optional, specifies the desired audio format, such as mp3, ogg_opus, pcm, wav. defaults to wav. currently only support pcm and wav.
+"SampleRate": 16000,  // Integer, optional, audio sample rate, defaults to 16000 (16k), recommended value is 16000.
+"AudioChannel": 1,    // Integer, optional, audio channel quantity. valid values: 1 or 2. default is 1.  
 }
 </code></pre>
-
-</div></div>
+</div>
         :type CustomTTSConfig: str
         :param _PromptVariables: Prompt word variable.
         :type PromptVariables: list of Variable
@@ -2616,11 +2640,22 @@ dify-inputs-xxx specifies the inputs variable for dify.
         :type VadLevel: int
         :param _ToneWord: Transition.
         :type ToneWord: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
-        :param _EnableComplianceAudio: Compliance prompt sound. 
-This parameter specifies whether to play morse code during call initiation (default: true), indicating the conversation content is AI-generated.
-This parameter signifies disabled when set to false. the parameter indicates you understand and agree to the following protocol:.
-Our side fully acknowledges and understands that according to the laws and regulations including the "cybersecurity law" (https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm), "provision on administration of deep synthesis of internet-based information service" (https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm), "interim measures for the management of generative artificial intelligence services" (https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm), and "measures for the identification of artificial intelligence-generated synthetic content" (https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm), explicit and implicit identification shall be added to ai-generated synthetic content. based on business needs, we request tencent cloud not to add explicit identification to generated synthetic content. we commit to lawful and compliant use of such content to avoid confusion or misunderstanding. if the ai-generated synthetic content is used to provide services to the public or spread over networks, we will proactively add explicit identification compliant with legal provisions and national standard requirements and bear the legal obligations for ai-generated synthetic content identification. if we fail to properly fulfill the identification obligations for ai-generated content, resulting in adverse consequences or penalties from the competent department, we will fully assume all related responsibilities.
+        :param _EnableComplianceAudio: Compliant prompt sound. 
+This parameter set to true (default) means call initiation plays morse code, with a Note that the conversation content is AI-generated.
+Passing 'false' to this parameter disables the compliance prompt sound. passing 'false' signifies you have read and agree to the following agreement:.
+Our side fully acknowledges and understands that according to the laws and regulations specified in the "cybersecurity law" (https://www.cac.gov.cn/2016-11/07/c_1119867116.htm), "provision on administration of deep synthesis of internet-based information service" (https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm), "interim measures for the management of generative artificial intelligence services" (https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm), and "measures for the identification of artificial intelligence-generated synthetic content" (https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm), explicit and implicit identification should be added to ai-generated synthetic content. based on business requirements, we request tencent cloud not to add explicit identification to generated synthetic content. we commit to lawful and compliant use of generated synthetic content to avoid causing confusion or misunderstanding. if the generated synthetic content is used to provide services to the public or spread over networks, we will proactively add explicit identification that complies with legal provisions and national standards, and bear the legal obligation for identifying ai-generated synthetic content. our side will fully assume all related responsibilities if adverse consequences arise from failure to appropriately and reasonably fulfill the obligation of ai content identification, or if penalties are imposed by the competent department.
         :type EnableComplianceAudio: bool
+        :param _EnableVoicemailDetection: Whether to enable voice mail recognition.
+        :type EnableVoicemailDetection: bool
+        :param _VoicemailAction: Detect behavior when the peer is voice mail. this parameter is valid only when EnableVoicemailDetection is True.
+0: hang up the phone (default).
+        :type VoicemailAction: int
+        :param _LLMExtraBody: Large model extended parameter, format is json string.
+        :type LLMExtraBody: str
+        :param _MaxCallDurationMs: Maximum call duration, default not limited. unit: milliseconds (ms).
+        :type MaxCallDurationMs: int
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. **only own number supports current parameter.**.
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2655,6 +2690,11 @@ Our side fully acknowledges and understands that according to the laws and regul
         self._VadLevel = None
         self._ToneWord = None
         self._EnableComplianceAudio = None
+        self._EnableVoicemailDetection = None
+        self._VoicemailAction = None
+        self._LLMExtraBody = None
+        self._MaxCallDurationMs = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -3029,56 +3069,80 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def CustomTTSConfig(self):
-        r"""<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
+        r"""<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>.
 <ul>
 <li>Tencent TTS<br>
-For configuration, please refer to <a href="https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">Tencent Cloud TTS documentation link</a></li>
+For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>.
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS type, currently supports &quot;tencent&quot; and "minixmax", other vendors support in progress
-    &quot;AppId&quot;: &quot;Your application ID&quot;, // String required
-    &quot;SecretId&quot;: &quot;Your Secret ID&quot;, // String Required
-    &quot;SecretKey&quot;:  &quot;Your Secret Key&quot;, // String Required
-    &quot;VoiceType&quot;: 101001, // Integer Required, Sound quality ID, includes standard and premium sound quality. Premium sound quality is more realistic and differently priced than standard sound quality. See TTS billing overview for details. For the full list of sound quality IDs, see the TTS sound quality list.
-    "Speed": 1.25, // Integer Optional, speech speed, range: [-2,6], corresponding to different speeds: -2: represents 0.6x -1: represents 0.8x 0: represents 1.0x (default) 1: represents 1.2x 2: represents 1.5x 6: represents 2.5x For more precise speed control, you can retain two decimal places, such as 0.5/1.25/2.81, etc. For parameter value to actual speed conversion, refer to Speed Conversion
-    &quot;Volume&quot;: 5, // Integer Optional, Volume level, range: [0,10], corresponding to 11 levels of volume, default is 0, which represents normal volume.
-    &quot;PrimaryLanguage&quot;: 1, // Integer Optional, Primary language 1- Chinese (default) 2- English 3- Japanese
-    &quot;FastVoiceType&quot;: &quot;xxxx&quot;   // Optional parameter, Fast VRS parameter
-  }
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+"TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
+  "AppId": "your application ID", // String required.
+  "SecretId": "your key ID", // String required.
+  "SecretKey": "your Key", // String required.
+  "VoiceType": 101001, // Integer  required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
+  "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
+  "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
+  "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
+"FastVoiceType": "xxxx"   //  optional parameter. parameters for quick voice clone. 
+  }
 </code></pre>
-
-  </div></div><ul>
-
-</div></div><ul>
+ </div><ul>
+<li>Minimax TTS<br>
+For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>.
+</ul>
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "minimax",  // String TTS type. 
+        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
+        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
+        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
+        &quot;GroupId&quot;: &quot;181000000000000&quot;,
+        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
+        &quot;Speed&quot;: 1.2
+}
+</code></pre>
+</div><ul>
+<li>Volcano TTS</li>.
+</ul>
+<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>.
+Text to speech timbre list - voice technology - volcano engine.
+Large model TTS timbre list - voice technology - volcano engine</p>.
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "volcengine",  // required: String TTS type.
+"AppId": "xxxxxxxx",   // required: String AppId assigned by volcano engine.
+"Token": "TY9d4sQXHxxxxxxx", // required: String type, access Token for volcano engine.
+"Speed": 1.0,            // optional parameter. speaking rate, defaults to 1.0.
+"Volume": 1.0,            // optional parameter, Volume, defaults to 1.0.
+"Cluster": "volcano_tts", // optional parameter, business Cluster, is selected by default.
+"VoiceType": "zh_male_aojiaobazong_moon_bigtts" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.
+}
+</code></pre>
+</div><ul>
 <li>Azure TTS<br>
-For configuration, refer to the<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">Azure TTS documentation</a></li>
+For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>.
 </ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;azure&quot;, // Required: String TTS type
-    &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // Required: String subscription key
-    &quot;Region&quot;: &quot;chinanorth3&quot;,  // Required: String subscription region
-    &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // Required: String Timbre Name required
-    &quot;Language&quot;: &quot;zh-CN&quot;, // Required: String Language for synthesis
-    &quot;Rate&quot;: 1 // Optional: float Playback Speed 0.5-2 default is 1
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "azure", // required: String TTS type.
+"SubscriptionKey": "xxxxxxxx", // required: String subscription Key.
+"Region": "chinanorth3",  // required: String the Region to subscribe to.
+"VoiceName": "zh-CN-XiaoxiaoNeural", // required: String specifies the required VoiceName.
+"Language": "zh-CN", // required: String specifies the synthesis Language.  
+"Rate": 1 // optional: float, speech speed. value range: 0.5–2. default is 1.
 }
 </code></pre>
-
-</div></div><ul>
-<li>Custom</li>
+</div><ul>
+<li>Custom TTS</li>.
 </ul>
-<p>TTS<br>
-Please refer to the specific protocol standards in the <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">Tencent documentation</a></p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-  &quot;TTSType&quot;: &quot;custom&quot;, // Required String
-  &quot;APIKey&quot;: &quot;ApiKey&quot;, // Required String for Authentication
-  &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // Required String, TTS API URL
-  &quot;AudioFormat&quot;: &quot;wav&quot;, // String, optional, expected audio format, such as mp3, ogg_opus, pcm, wav, default is wav, currently only pcm and wav are supported,
-  &quot;SampleRate&quot;: 16000,  // Integer, optional, audio sample rate, default is 16000 (16k), recommended value is 16000
-  &quot;AudioChannel&quot;: 1,    // Integer, optional, number of audio channels, values: 1 or 2, default is 1
+<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">tencent documentation</a></p>.
+<div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+"TTSType": "custom", // String required.
+"APIKey": "APIKey", // String required. be used to authenticate.
+"APIUrl": "http://0.0.0.0:8080/stream-audio" // String, required, TTS API URL.
+"AudioFormat": "wav", // String, optional, specifies the desired audio format, such as mp3, ogg_opus, pcm, wav. defaults to wav. currently only support pcm and wav.
+"SampleRate": 16000,  // Integer, optional, audio sample rate, defaults to 16000 (16k), recommended value is 16000.
+"AudioChannel": 1,    // Integer, optional, audio channel quantity. valid values: 1 or 2. default is 1.  
 }
 </code></pre>
-
-</div></div>
+</div>
         :rtype: str
         """
         return self._CustomTTSConfig
@@ -3185,10 +3249,10 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def EnableComplianceAudio(self):
-        r"""Compliance prompt sound. 
-This parameter specifies whether to play morse code during call initiation (default: true), indicating the conversation content is AI-generated.
-This parameter signifies disabled when set to false. the parameter indicates you understand and agree to the following protocol:.
-Our side fully acknowledges and understands that according to the laws and regulations including the "cybersecurity law" (https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm), "provision on administration of deep synthesis of internet-based information service" (https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm), "interim measures for the management of generative artificial intelligence services" (https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm), and "measures for the identification of artificial intelligence-generated synthetic content" (https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm), explicit and implicit identification shall be added to ai-generated synthetic content. based on business needs, we request tencent cloud not to add explicit identification to generated synthetic content. we commit to lawful and compliant use of such content to avoid confusion or misunderstanding. if the ai-generated synthetic content is used to provide services to the public or spread over networks, we will proactively add explicit identification compliant with legal provisions and national standard requirements and bear the legal obligations for ai-generated synthetic content identification. if we fail to properly fulfill the identification obligations for ai-generated content, resulting in adverse consequences or penalties from the competent department, we will fully assume all related responsibilities.
+        r"""Compliant prompt sound. 
+This parameter set to true (default) means call initiation plays morse code, with a Note that the conversation content is AI-generated.
+Passing 'false' to this parameter disables the compliance prompt sound. passing 'false' signifies you have read and agree to the following agreement:.
+Our side fully acknowledges and understands that according to the laws and regulations specified in the "cybersecurity law" (https://www.cac.gov.cn/2016-11/07/c_1119867116.htm), "provision on administration of deep synthesis of internet-based information service" (https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm), "interim measures for the management of generative artificial intelligence services" (https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm), and "measures for the identification of artificial intelligence-generated synthetic content" (https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm), explicit and implicit identification should be added to ai-generated synthetic content. based on business requirements, we request tencent cloud not to add explicit identification to generated synthetic content. we commit to lawful and compliant use of generated synthetic content to avoid causing confusion or misunderstanding. if the generated synthetic content is used to provide services to the public or spread over networks, we will proactively add explicit identification that complies with legal provisions and national standards, and bear the legal obligation for identifying ai-generated synthetic content. our side will fully assume all related responsibilities if adverse consequences arise from failure to appropriately and reasonably fulfill the obligation of ai content identification, or if penalties are imposed by the competent department.
         :rtype: bool
         """
         return self._EnableComplianceAudio
@@ -3196,6 +3260,62 @@ Our side fully acknowledges and understands that according to the laws and regul
     @EnableComplianceAudio.setter
     def EnableComplianceAudio(self, EnableComplianceAudio):
         self._EnableComplianceAudio = EnableComplianceAudio
+
+    @property
+    def EnableVoicemailDetection(self):
+        r"""Whether to enable voice mail recognition.
+        :rtype: bool
+        """
+        return self._EnableVoicemailDetection
+
+    @EnableVoicemailDetection.setter
+    def EnableVoicemailDetection(self, EnableVoicemailDetection):
+        self._EnableVoicemailDetection = EnableVoicemailDetection
+
+    @property
+    def VoicemailAction(self):
+        r"""Detect behavior when the peer is voice mail. this parameter is valid only when EnableVoicemailDetection is True.
+0: hang up the phone (default).
+        :rtype: int
+        """
+        return self._VoicemailAction
+
+    @VoicemailAction.setter
+    def VoicemailAction(self, VoicemailAction):
+        self._VoicemailAction = VoicemailAction
+
+    @property
+    def LLMExtraBody(self):
+        r"""Large model extended parameter, format is json string.
+        :rtype: str
+        """
+        return self._LLMExtraBody
+
+    @LLMExtraBody.setter
+    def LLMExtraBody(self, LLMExtraBody):
+        self._LLMExtraBody = LLMExtraBody
+
+    @property
+    def MaxCallDurationMs(self):
+        r"""Maximum call duration, default not limited. unit: milliseconds (ms).
+        :rtype: int
+        """
+        return self._MaxCallDurationMs
+
+    @MaxCallDurationMs.setter
+    def MaxCallDurationMs(self, MaxCallDurationMs):
+        self._MaxCallDurationMs = MaxCallDurationMs
+
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. **only own number supports current parameter.**.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
 
 
     def _deserialize(self, params):
@@ -3254,6 +3374,11 @@ Our side fully acknowledges and understands that according to the laws and regul
             self._ToneWord = ToneWordInfo()
             self._ToneWord._deserialize(params.get("ToneWord"))
         self._EnableComplianceAudio = params.get("EnableComplianceAudio")
+        self._EnableVoicemailDetection = params.get("EnableVoicemailDetection")
+        self._VoicemailAction = params.get("VoicemailAction")
+        self._LLMExtraBody = params.get("LLMExtraBody")
+        self._MaxCallDurationMs = params.get("MaxCallDurationMs")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

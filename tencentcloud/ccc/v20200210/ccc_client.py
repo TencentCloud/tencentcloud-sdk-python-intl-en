@@ -190,9 +190,9 @@ class CccClient(AbstractClient):
 
 
     def CreateAICall(self, request):
-        r"""Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.
+        r"""This API is used to **call the AI model directly** to trigger a **single** outbound call. It supports configuring the model, prompt content, voice, and all call elements through API parameters.
 
-        Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/66889).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone numbers. For details, refer to the Intelligent Agent Call Purchase Guide (https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAICall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAICallRequest`

@@ -79,6 +79,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateApplicationConfig(
+            self,
+            request: models.CreateApplicationConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateApplicationConfigResponse:
+        """
+        This API is used to create the configuration for a specified superapp.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApplicationConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateApplicationConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateApplicationSensitiveAPI(
             self,
             request: models.CreateApplicationSensitiveAPIRequest,
@@ -385,6 +403,78 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAPPDataDetailLineChart(
+            self,
+            request: models.DescribeAPPDataDetailLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAPPDataDetailLineChartResponse:
+        """
+        This API is used to retrieve the line chart data for selected superapp metrics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAPPDataDetailLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAPPDataDetailLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAPPDataOverview(
+            self,
+            request: models.DescribeAPPDataOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAPPDataOverviewResponse:
+        """
+        This API is used to retrieve an overview of the superapp data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAPPDataOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAPPDataOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAdvertisingLineChart(
+            self,
+            request: models.DescribeAdvertisingLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAdvertisingLineChartResponse:
+        """
+        This API is used to retrieve the advertising line chart data for a mini program within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAdvertisingLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAdvertisingLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAdvertisingOverview(
+            self,
+            request: models.DescribeAdvertisingOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAdvertisingOverviewResponse:
+        """
+        This API is used to retrieve an overview of mini program ad metrics within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAdvertisingOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAdvertisingOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApplication(
             self,
             request: models.DescribeApplicationRequest,
@@ -416,6 +506,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DescribeApplicationConfigFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeApplicationConfigFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApplicationConfigInfos(
+            self,
+            request: models.DescribeApplicationConfigInfosRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApplicationConfigInfosResponse:
+        """
+        This API is used to retrieve the configuration details for an superapp.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApplicationConfigInfos"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApplicationConfigInfosResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -475,6 +583,312 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeGlobalOverviewDataSummary(
+            self,
+            request: models.DescribeGlobalOverviewDataSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGlobalOverviewDataSummaryResponse:
+        """
+        This API is used to retrieve a global overview summary of usage statistics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGlobalOverviewDataSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGlobalOverviewDataSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeGlobalOverviewReportDetail(
+            self,
+            request: models.DescribeGlobalOverviewReportDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGlobalOverviewReportDetailResponse:
+        """
+        This API is used to retrieve the detailed report data for global overview within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGlobalOverviewReportDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGlobalOverviewReportDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAccessAnalysisDetail(
+            self,
+            request: models.DescribeMNGAccessAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAccessAnalysisDetailResponse:
+        """
+        This API is used to retrieve the detailed visit analysis data for a mini game within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAccessAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAccessAnalysisDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAccessAnalysisLineChart(
+            self,
+            request: models.DescribeMNGAccessAnalysisLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAccessAnalysisLineChartResponse:
+        """
+        This API is used to retrieve line chart analysis data for mini game visits.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAccessAnalysisLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAccessAnalysisLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAccessAnalysisOverview(
+            self,
+            request: models.DescribeMNGAccessAnalysisOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAccessAnalysisOverviewResponse:
+        """
+        This API is used to retrieve an overview of visit analysis data for a mini game within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAccessAnalysisOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAccessAnalysisOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGActiveUserRealTimeStatistics(
+            self,
+            request: models.DescribeMNGActiveUserRealTimeStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGActiveUserRealTimeStatisticsResponse:
+        """
+        This API is used to retrieve the real-time active user statistics for a mini game.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGActiveUserRealTimeStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGActiveUserRealTimeStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAdvertisingDetail(
+            self,
+            request: models.DescribeMNGAdvertisingDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAdvertisingDetailResponse:
+        """
+        This API is used to retrieve the advertising detailed data for a mini game over a specified period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAdvertisingDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAdvertisingDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAdvertisingLineChart(
+            self,
+            request: models.DescribeMNGAdvertisingLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAdvertisingLineChartResponse:
+        """
+        This API is used to retrieve mini game advertising data in a line chart format.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAdvertisingLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAdvertisingLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAdvertisingOverview(
+            self,
+            request: models.DescribeMNGAdvertisingOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAdvertisingOverviewResponse:
+        """
+        This API is used to retrieve an overview of mini game ad metrics within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAdvertisingOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAdvertisingOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGMAUDataDetail(
+            self,
+            request: models.DescribeMNGMAUDataDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGMAUDataDetailResponse:
+        """
+        This API is used to retrieve the detailed mini game monthly active user data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGMAUDataDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGMAUDataDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGMAULineChart(
+            self,
+            request: models.DescribeMNGMAULineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGMAULineChartResponse:
+        """
+        This API is used to retrieve mini game monthly active user data in a line chart format.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGMAULineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGMAULineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGMAUMonthlyComparisonMetricCard(
+            self,
+            request: models.DescribeMNGMAUMonthlyComparisonMetricCardRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGMAUMonthlyComparisonMetricCardResponse:
+        """
+        This API is used to retrieve MAU comparison data for a mini game between two months.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGMAUMonthlyComparisonMetricCard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGMAUMonthlyComparisonMetricCardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGPaymentLineChart(
+            self,
+            request: models.DescribeMNGPaymentLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGPaymentLineChartResponse:
+        """
+        This API is used to retrieve the line chart data for mini game payment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGPaymentLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGPaymentLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGPaymentOverview(
+            self,
+            request: models.DescribeMNGPaymentOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGPaymentOverviewResponse:
+        """
+        This API is used to retrieve an overview of mini game payment data within a specified period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGPaymentOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGPaymentOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGPaymentReportDetail(
+            self,
+            request: models.DescribeMNGPaymentReportDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGPaymentReportDetailResponse:
+        """
+        This API is used to retrieve a detailed payment report data for a mini game.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGPaymentReportDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGPaymentReportDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGPaymentRetentionAnalysis(
+            self,
+            request: models.DescribeMNGPaymentRetentionAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGPaymentRetentionAnalysisResponse:
+        """
+        This API is used to retrieve the mini game payment retention data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGPaymentRetentionAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGPaymentRetentionAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGRetentionData(
+            self,
+            request: models.DescribeMNGRetentionDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGRetentionDataResponse:
+        """
+        This API is used to retrieve user retention data for a mini game within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGRetentionData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGRetentionDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNP(
             self,
             request: models.DescribeMNPRequest,
@@ -488,6 +902,60 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DescribeMNP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPAccessAnalysisOverview(
+            self,
+            request: models.DescribeMNPAccessAnalysisOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPAccessAnalysisOverviewResponse:
+        """
+        This API is used to retrieve an overview of visit analysis data for a mini program within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPAccessAnalysisOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPAccessAnalysisOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPActiveUserRealTimeStatistics(
+            self,
+            request: models.DescribeMNPActiveUserRealTimeStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPActiveUserRealTimeStatisticsResponse:
+        """
+        This API is used to retrieve the real-time active user statistics for a mini program.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPActiveUserRealTimeStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPActiveUserRealTimeStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPAdvertisingDetail(
+            self,
+            request: models.DescribeMNPAdvertisingDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPAdvertisingDetailResponse:
+        """
+        This API is used to retrieve the detailed advertising data for a mini program within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPAdvertisingDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPAdvertisingDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -583,6 +1051,60 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNPMAUDataDetail(
+            self,
+            request: models.DescribeMNPMAUDataDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPMAUDataDetailResponse:
+        """
+        This API is used to retrieve the detailed mini program monthly active user data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPMAUDataDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPMAUDataDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPMAULineChart(
+            self,
+            request: models.DescribeMNPMAULineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPMAULineChartResponse:
+        """
+        This API is used to retrieve mini program monthly active user data in a line chart format.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPMAULineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPMAULineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPMAUMetricCard(
+            self,
+            request: models.DescribeMNPMAUMetricCardRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPMAUMetricCardResponse:
+        """
+        This API is used to retrieve MAU comparison data for a mini program between two months.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPMAUMetricCard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPMAUMetricCardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNPOfflinePackageURL(
             self,
             request: models.DescribeMNPOfflinePackageURLRequest,
@@ -596,6 +1118,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DescribeMNPOfflinePackageURL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNPOfflinePackageURLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPPageAnalysisDetail(
+            self,
+            request: models.DescribeMNPPageAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPPageAnalysisDetailResponse:
+        """
+        This API is used to retrieve the detailed page visit data for a mini program over a specified period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPPageAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPPageAnalysisDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -632,6 +1172,60 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DescribeMNPReleasedVersionHistory"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNPReleasedVersionHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPReportDataLineChart(
+            self,
+            request: models.DescribeMNPReportDataLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPReportDataLineChartResponse:
+        """
+        This API is used to retrieve the line chart data for mini program visit analysis within a given date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPReportDataLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPReportDataLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPReportDetail(
+            self,
+            request: models.DescribeMNPReportDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPReportDetailResponse:
+        """
+        This API is used to retrieve the detailed mini program visit analysis data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPReportDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPReportDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPRetentionData(
+            self,
+            request: models.DescribeMNPRetentionDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPRetentionDataResponse:
+        """
+        This API is used to retrieve user retention data for a mini program within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPRetentionData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPRetentionDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -704,6 +1298,60 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DescribeMNPVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNPVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePaymentDataDetail(
+            self,
+            request: models.DescribePaymentDataDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribePaymentDataDetailResponse:
+        """
+        This API is used to retrieve the detailed standard payment data for specified  mini programs within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePaymentDataDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePaymentDataDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePaymentDataLineChart(
+            self,
+            request: models.DescribePaymentDataLineChartRequest,
+            opts: Dict = None,
+    ) -> models.DescribePaymentDataLineChartResponse:
+        """
+        This API is used to retrieve the line chart data related to standard payment for a mini program within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePaymentDataLineChart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePaymentDataLineChartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePaymentDataOverview(
+            self,
+            request: models.DescribePaymentDataOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribePaymentDataOverviewResponse:
+        """
+        This API is used to retrieve an overview of mini program payment data within a specified date range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePaymentDataOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePaymentDataOverviewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -884,6 +1532,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "ModifyApplication"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApplicationConfig(
+            self,
+            request: models.ModifyApplicationConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApplicationConfigResponse:
+        """
+        This API is used to edit the configuration of a superapp.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApplicationConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApplicationConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
