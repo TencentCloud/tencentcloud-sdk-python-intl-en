@@ -1373,6 +1373,158 @@ DB: Database name.
         
 
 
+class AuditInstanceFilters(AbstractModel):
+    r"""Filter conditions for querying audit instances.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Filter condition name. Valid values: InstanceId - Instance ID, InstanceName - Instance name, ProjectId - Project ID, TagKey - Tag key, Tag - Tag (using a vertical bar as separator, for example: TagKey|Tagvalue).
+        :type Name: str
+        :param _ExactMatch: true indicates exact matching; false indicates fuzzy matching.
+        :type ExactMatch: bool
+        :param _Values: Filter value.
+        :type Values: list of str
+        """
+        self._Name = None
+        self._ExactMatch = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""Filter condition name. Valid values: InstanceId - Instance ID, InstanceName - Instance name, ProjectId - Project ID, TagKey - Tag key, Tag - Tag (using a vertical bar as separator, for example: TagKey|Tagvalue).
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExactMatch(self):
+        r"""true indicates exact matching; false indicates fuzzy matching.
+        :rtype: bool
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+    @property
+    def Values(self):
+        r"""Filter value.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ExactMatch = params.get("ExactMatch")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceInfo(AbstractModel):
+    r"""Audit instance details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _TagList: Tag information.
+        :type TagList: list of TagInfoUnit
+        :param _DbType: Database engine type.
+        :type DbType: str
+        :param _DbVersion: Database engine version.
+        :type DbVersion: str
+        """
+        self._ProjectId = None
+        self._TagList = None
+        self._DbType = None
+        self._DbVersion = None
+
+    @property
+    def ProjectId(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TagList(self):
+        r"""Tag information.
+        :rtype: list of TagInfoUnit
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def DbType(self):
+        r"""Database engine type.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def DbVersion(self):
+        r"""Database engine version.
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._DbType = params.get("DbType")
+        self._DbVersion = params.get("DbVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLog(AbstractModel):
     r"""Audit log details
 
@@ -1748,6 +1900,117 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Bucket()
                 obj._deserialize(item)
                 self._Buckets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFile(AbstractModel):
+    r"""Audit log file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Audit log file name.
+        :type FileName: str
+        :param _CreateTime: Creation time of the audit log file, in the format: "2019-03-20 17:09:13".
+        :type CreateTime: str
+        :param _Status: File status. Possible return values:"creating" - Generating;"failed" - Creation failed;"success" - Generated.
+        :type Status: str
+        :param _FileSize: File size in KB.
+        :type FileSize: int
+        :param _DownloadUrl: Download URL for the audit log.
+        :type DownloadUrl: str
+        :param _ErrMsg: Error message.
+        :type ErrMsg: str
+        """
+        self._FileName = None
+        self._CreateTime = None
+        self._Status = None
+        self._FileSize = None
+        self._DownloadUrl = None
+        self._ErrMsg = None
+
+    @property
+    def FileName(self):
+        r"""Audit log file name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        r"""Creation time of the audit log file, in the format: "2019-03-20 17:09:13".
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""File status. Possible return values:"creating" - Generating;"failed" - Creation failed;"success" - Generated.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileSize(self):
+        r"""File size in KB.
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def DownloadUrl(self):
+        r"""Download URL for the audit log.
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ErrMsg(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._FileSize = params.get("FileSize")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2391,16 +2654,14 @@ class AuditRuleFilters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleFilters: Audit rule 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _RuleFilters: A single audit rule.
         :type RuleFilters: list of RuleFilters
         """
         self._RuleFilters = None
 
     @property
     def RuleFilters(self):
-        r"""Audit rule 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        r"""A single audit rule.
         :rtype: list of RuleFilters
         """
         return self._RuleFilters
@@ -2417,6 +2678,182 @@ Note:  This field may return null, indicating that no valid values can be obtain
                 obj = RuleFilters()
                 obj._deserialize(item)
                 self._RuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleTemplateInfo(AbstractModel):
+    r"""Details of an audit rule template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: Rule template ID.
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: Rule template name.
+        :type RuleTemplateName: str
+        :param _RuleFilters: Filter conditions of the rule template.
+        :type RuleFilters: list of RuleFilters
+        :param _Description: Rule template description.
+        :type Description: str
+        :param _CreateAt: Rule template creation time.
+        :type CreateAt: str
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :type AlarmPolicy: int
+        :param _AffectedInstances: Instances to which this rule template is applied.
+        :type AffectedInstances: list of str
+        :param _Status: Template status. Valid values: 0 - No task, 1 - modifying.
+        :type Status: int
+        :param _UpdateAt: Template update time.
+        :type UpdateAt: str
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._RuleFilters = None
+        self._Description = None
+        self._CreateAt = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+        self._AffectedInstances = None
+        self._Status = None
+        self._UpdateAt = None
+
+    @property
+    def RuleTemplateId(self):
+        r"""Rule template ID.
+        :rtype: str
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        r"""Rule template name.
+        :rtype: str
+        """
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def RuleFilters(self):
+        r"""Filter conditions of the rule template.
+        :rtype: list of RuleFilters
+        """
+        return self._RuleFilters
+
+    @RuleFilters.setter
+    def RuleFilters(self, RuleFilters):
+        self._RuleFilters = RuleFilters
+
+    @property
+    def Description(self):
+        r"""Rule template description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateAt(self):
+        r"""Rule template creation time.
+        :rtype: str
+        """
+        return self._CreateAt
+
+    @CreateAt.setter
+    def CreateAt(self, CreateAt):
+        self._CreateAt = CreateAt
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+    @property
+    def AffectedInstances(self):
+        r"""Instances to which this rule template is applied.
+        :rtype: list of str
+        """
+        return self._AffectedInstances
+
+    @AffectedInstances.setter
+    def AffectedInstances(self, AffectedInstances):
+        self._AffectedInstances = AffectedInstances
+
+    @property
+    def Status(self):
+        r"""Template status. Valid values: 0 - No task, 1 - modifying.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpdateAt(self):
+        r"""Template update time.
+        :rtype: str
+        """
+        return self._UpdateAt
+
+    @UpdateAt.setter
+    def UpdateAt(self, UpdateAt):
+        self._UpdateAt = UpdateAt
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        if params.get("RuleFilters") is not None:
+            self._RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self._RuleFilters.append(obj)
+        self._Description = params.get("Description")
+        self._CreateAt = params.get("CreateAt")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        self._AffectedInstances = params.get("AffectedInstances")
+        self._Status = params.get("Status")
+        self._UpdateAt = params.get("UpdateAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4475,6 +4912,70 @@ class CloneItem(AbstractModel):
         
 
 
+class CloseAuditServiceRequest(AbstractModel):
+    r"""CloseAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    r"""CloseAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloseCDBProxyRequest(AbstractModel):
     r"""CloseCDBProxy request structure.
 
@@ -5189,6 +5690,201 @@ class CreateAccountsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAuditLogFileRequest(AbstractModel):
+    r"""CreateAuditLogFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _StartTime: Start time. We recommend that the interval between start and end time does not exceed 7 days.
+        :type StartTime: str
+        :param _EndTime: End time. We recommend that the interval between start and end time does not exceed 7 days.
+        :type EndTime: str
+        :param _Order: Sort order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "DESC".
+        :type Order: str
+        :param _OrderBy: Field to sort by. Valid values: "timestamp" - Timestamp; "affectRows" - Number of affected rows; "execTime" - Execution time. Default value: "timestamp".
+        :type OrderBy: str
+        :param _Filter: Deprecated.
+        :type Filter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        :param _LogFilter: Filter conditions. You can filter logs based on these conditions.
+        :type LogFilter: list of InstanceAuditLogFilters
+        :param _ColumnFilter: Columns to include in the download.
+        :type ColumnFilter: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
+        self._LogFilter = None
+        self._ColumnFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Start time. We recommend that the interval between start and end time does not exceed 7 days.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time. We recommend that the interval between start and end time does not exceed 7 days.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        r"""Sort order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "DESC".
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""Field to sort by. Valid values: "timestamp" - Timestamp; "affectRows" - Number of affected rows; "execTime" - Execution time. Default value: "timestamp".
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
+        r"""Deprecated.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
+        self._Filter = Filter
+
+    @property
+    def LogFilter(self):
+        r"""Filter conditions. You can filter logs based on these conditions.
+        :rtype: list of InstanceAuditLogFilters
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+    @property
+    def ColumnFilter(self):
+        r"""Columns to include in the download.
+        :rtype: list of str
+        """
+        return self._ColumnFilter
+
+    @ColumnFilter.setter
+    def ColumnFilter(self, ColumnFilter):
+        self._ColumnFilter = ColumnFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilters()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        self._ColumnFilter = params.get("ColumnFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditLogFileResponse(AbstractModel):
+    r"""CreateAuditLogFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Audit log file name.
+        :type FileName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FileName = None
+        self._RequestId = None
+
+    @property
+    def FileName(self):
+        r"""Audit log file name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAuditPolicyRequest(AbstractModel):
     r"""CreateAuditPolicy request structure.
 
@@ -5324,6 +6020,150 @@ class CreateAuditPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAuditRuleTemplateRequest(AbstractModel):
+    r"""CreateAuditRuleTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleFilters: Audit rule.
+        :type RuleFilters: list of RuleFilters
+        :param _RuleTemplateName: Rule template name. Up to 30 characters are allowed.
+        :type RuleTemplateName: str
+        :param _Description: Rule template description. Up to 200 characters are allowed.
+        :type Description: str
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk. Default value: 1.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled. Default value: 0.
+        :type AlarmPolicy: int
+        """
+        self._RuleFilters = None
+        self._RuleTemplateName = None
+        self._Description = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+
+    @property
+    def RuleFilters(self):
+        r"""Audit rule.
+        :rtype: list of RuleFilters
+        """
+        return self._RuleFilters
+
+    @RuleFilters.setter
+    def RuleFilters(self, RuleFilters):
+        self._RuleFilters = RuleFilters
+
+    @property
+    def RuleTemplateName(self):
+        r"""Rule template name. Up to 30 characters are allowed.
+        :rtype: str
+        """
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def Description(self):
+        r"""Rule template description. Up to 200 characters are allowed.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk. Default value: 1.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled. Default value: 0.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self._RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self._RuleFilters.append(obj)
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        self._Description = params.get("Description")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditRuleTemplateResponse(AbstractModel):
+    r"""CreateAuditRuleTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: Generated rule template ID.
+        :type RuleTemplateId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RuleTemplateId = None
+        self._RequestId = None
+
+    @property
+    def RuleTemplateId(self):
+        r"""Generated rule template ID.
+        :rtype: str
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8270,6 +9110,90 @@ class CreateRoInstanceIpResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRotationPasswordRequest(AbstractModel):
+    r"""CreateRotationPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB for MySQL console page.
+        :type InstanceId: str
+        :param _Accounts: Information about the account for which password rotation needs to be enabled. The account and host names are included.
+        :type Accounts: list of Account
+        """
+        self._InstanceId = None
+        self._Accounts = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB for MySQL console page.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Accounts(self):
+        r"""Information about the account for which password rotation needs to be enabled. The account and host names are included.
+        :rtype: list of Account
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRotationPasswordResponse(AbstractModel):
+    r"""CreateRotationPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CustomConfig(AbstractModel):
     r"""Proxy configuration
 
@@ -8625,6 +9549,228 @@ class DeleteAccountsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditLogFileRequest(AbstractModel):
+    r"""DeleteAuditLogFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.
+        :type FileName: str
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        """
+        self._FileName = None
+        self._InstanceId = None
+
+    @property
+    def FileName(self):
+        r"""Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditLogFileResponse(AbstractModel):
+    r"""DeleteAuditLogFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditPolicyRequest(AbstractModel):
+    r"""DeleteAuditPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: Audit policy ID.
+        :type PolicyId: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self._PolicyId = None
+        self._InstanceId = None
+
+    @property
+    def PolicyId(self):
+        r"""Audit policy ID.
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditPolicyResponse(AbstractModel):
+    r"""DeleteAuditPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditRuleTemplatesRequest(AbstractModel):
+    r"""DeleteAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
+        :type RuleTemplateIds: list of str
+        """
+        self._RuleTemplateIds = None
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditRuleTemplatesResponse(AbstractModel):
+    r"""DeleteAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9261,6 +10407,453 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuditConfigRequest(AbstractModel):
+    r"""DescribeAuditConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditConfigResponse(AbstractModel):
+    r"""DescribeAuditConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogExpireDay: Audit log retention period. Valid values: [0, 7, 30, 180, 365, 1095, 1825].
+        :type LogExpireDay: int
+        :param _LogType: Audit log storage type. Valid value: "storage" - Storage type.
+        :type LogType: str
+        :param _IsClosing: Whether the audit service is being disabled. Valid values: "false" - No, "true" - Yes.
+        :type IsClosing: str
+        :param _IsOpening: Whether the audit service is being enabled. Valid values: "false" - No, "true" - Yes.
+        :type IsOpening: str
+        :param _CreateTime: Time when the audit service was activated.
+        :type CreateTime: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._LogExpireDay = None
+        self._LogType = None
+        self._IsClosing = None
+        self._IsOpening = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def LogExpireDay(self):
+        r"""Audit log retention period. Valid values: [0, 7, 30, 180, 365, 1095, 1825].
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def LogType(self):
+        r"""Audit log storage type. Valid value: "storage" - Storage type.
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsClosing(self):
+        r"""Whether the audit service is being disabled. Valid values: "false" - No, "true" - Yes.
+        :rtype: str
+        """
+        return self._IsClosing
+
+    @IsClosing.setter
+    def IsClosing(self, IsClosing):
+        self._IsClosing = IsClosing
+
+    @property
+    def IsOpening(self):
+        r"""Whether the audit service is being enabled. Valid values: "false" - No, "true" - Yes.
+        :rtype: str
+        """
+        return self._IsOpening
+
+    @IsOpening.setter
+    def IsOpening(self, IsOpening):
+        self._IsOpening = IsOpening
+
+    @property
+    def CreateTime(self):
+        r"""Time when the audit service was activated.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._LogType = params.get("LogType")
+        self._IsClosing = params.get("IsClosing")
+        self._IsOpening = params.get("IsOpening")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditInstanceListRequest(AbstractModel):
+    r"""DescribeAuditInstanceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditSwitch: Whether audit is enabled for the instance. Valid values: 1 - Enabled; 0 - Disabled.
+        :type AuditSwitch: int
+        :param _Filters: Filter conditions for querying the instance list.
+        :type Filters: list of AuditInstanceFilters
+        :param _AuditMode: Audit rule mode for the instance. Valid values: 1 - Rule-based audit; 0 - Full audit.
+        :type AuditMode: int
+        :param _Limit: Number of entries to return per request. Default value: 30. Maximum value: 20000.
+        :type Limit: int
+        :param _Offset: Offset. Default value: 0.
+        :type Offset: int
+        """
+        self._AuditSwitch = None
+        self._Filters = None
+        self._AuditMode = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def AuditSwitch(self):
+        r"""Whether audit is enabled for the instance. Valid values: 1 - Enabled; 0 - Disabled.
+        :rtype: int
+        """
+        return self._AuditSwitch
+
+    @AuditSwitch.setter
+    def AuditSwitch(self, AuditSwitch):
+        self._AuditSwitch = AuditSwitch
+
+    @property
+    def Filters(self):
+        r"""Filter conditions for querying the instance list.
+        :rtype: list of AuditInstanceFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def AuditMode(self):
+        r"""Audit rule mode for the instance. Valid values: 1 - Rule-based audit; 0 - Full audit.
+        :rtype: int
+        """
+        return self._AuditMode
+
+    @AuditMode.setter
+    def AuditMode(self, AuditMode):
+        self._AuditMode = AuditMode
+
+    @property
+    def Limit(self):
+        r"""Number of entries to return per request. Default value: 30. Maximum value: 20000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._AuditSwitch = params.get("AuditSwitch")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AuditInstanceFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._AuditMode = params.get("AuditMode")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditInstanceListResponse(AbstractModel):
+    r"""DescribeAuditInstanceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible instances.
+        :type TotalCount: int
+        :param _Items: List of audit instance details.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of InstanceDbAuditStatus
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible instances.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""List of audit instance details.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of InstanceDbAuditStatus
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstanceDbAuditStatus()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    r"""DescribeAuditLogFiles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :type InstanceId: str
+        :param _Limit: Page size. Default value: 20; minimum value: 1; maximum value: 300.
+        :type Limit: int
+        :param _Offset: Pagination offset.
+        :type Offset: int
+        :param _FileName: Audit log file name.
+        :type FileName: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._FileName = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""Page size. Default value: 20; minimum value: 1; maximum value: 300.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FileName(self):
+        r"""Audit log file name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    r"""DescribeAuditLogFiles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible audit log files.
+        :type TotalCount: int
+        :param _Items: Audit log file details.
+        :type Items: list of AuditLogFile
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of eligible audit log files.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Audit log file details.
+        :rtype: list of AuditLogFile
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAuditLogsRequest(AbstractModel):
     r"""DescribeAuditLogs request structure.
 
@@ -9666,6 +11259,354 @@ Note: This field may return `null`, indicating that no valid value was found.
             self._Items = []
             for item in params.get("Items"):
                 obj = AuditPolicy()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleTemplateModifyHistoryRequest(AbstractModel):
+    r"""DescribeAuditRuleTemplateModifyHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :type RuleTemplateIds: list of str
+        :param _StartTime: Start time of the query range.
+        :type StartTime: str
+        :param _EndTime: End time of the query range.
+        :type EndTime: str
+        :param _Limit: Number of entries to return. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sort order. DESC - Sorted by modification time in descending order, ASC - Ascending order. Default value: DESC.
+        :type Order: str
+        """
+        self._RuleTemplateIds = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+    @property
+    def StartTime(self):
+        r"""Start time of the query range.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time of the query range.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""Number of entries to return. Default value: 20. Maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sort order. DESC - Sorted by modification time in descending order, ASC - Ascending order. Default value: DESC.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleTemplateModifyHistoryResponse(AbstractModel):
+    r"""DescribeAuditRuleTemplateModifyHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries.
+        :type TotalCount: int
+        :param _Items: Change details.
+        :type Items: list of RuleTemplateRecordInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of entries.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Change details.
+        :rtype: list of RuleTemplateRecordInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RuleTemplateRecordInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleTemplatesRequest(AbstractModel):
+    r"""DescribeAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateIds: Rule template ID.
+        :type RuleTemplateIds: list of str
+        :param _RuleTemplateNames: Rule template name.
+        :type RuleTemplateNames: list of str
+        :param _Limit: Number of entries to return per request. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param _Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :type AlarmPolicy: int
+        """
+        self._RuleTemplateIds = None
+        self._RuleTemplateNames = None
+        self._Limit = None
+        self._Offset = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Rule template ID.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+    @property
+    def RuleTemplateNames(self):
+        r"""Rule template name.
+        :rtype: list of str
+        """
+        return self._RuleTemplateNames
+
+    @RuleTemplateNames.setter
+    def RuleTemplateNames(self, RuleTemplateNames):
+        self._RuleTemplateNames = RuleTemplateNames
+
+    @property
+    def Limit(self):
+        r"""Number of entries to return per request. Default value: 20. Maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._RuleTemplateNames = params.get("RuleTemplateNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleTemplatesResponse(AbstractModel):
+    r"""DescribeAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible instances.
+        :type TotalCount: int
+        :param _Items: List of rule template details.
+        :type Items: list of AuditRuleTemplateInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible instances.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""List of rule template details.
+        :rtype: list of AuditRuleTemplateInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditRuleTemplateInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")
@@ -18906,6 +20847,329 @@ Range search is supported for:
         
 
 
+class InstanceDbAuditStatus(AbstractModel):
+    r"""Instance audit details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _AuditStatus: Audit status. ON - Audit is enabled, OFF - Audit is disabled.
+        :type AuditStatus: str
+        :param _AuditTask: Task status. Valid values: 0 - No task; 1 - Enabling audit; 2 - Disabling audit.
+        :type AuditTask: int
+        :param _LogExpireDay: Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type LogExpireDay: int
+        :param _HighLogExpireDay: High-frequency storage period. Valid values:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type HighLogExpireDay: int
+        :param _LowLogExpireDay: Low-frequency storage period (in days). This equals the log retention period minus the high-frequency storage period.
+        :type LowLogExpireDay: int
+        :param _BillingAmount: Log storage volume (in GB).
+        :type BillingAmount: float
+        :param _HighRealStorage: High-frequency storage volume (in GB).
+        :type HighRealStorage: float
+        :param _LowRealStorage: Low-frequency storage volume (in GB).
+        :type LowRealStorage: float
+        :param _AuditAll: Whether full audit is enabled. true - Full audit.
+        :type AuditAll: bool
+        :param _CreateAt: Time when the audit service was activated.
+        :type CreateAt: str
+        :param _InstanceInfo: Related information about the instance.
+        :type InstanceInfo: :class:`tencentcloud.cdb.v20170320.models.AuditInstanceInfo`
+        :param _RealStorage: Total storage volume (in GB).
+        :type RealStorage: float
+        :param _OldRule: Whether an audit policy is configured.
+        :type OldRule: bool
+        :param _RuleTemplateIds: Rule template applied to the instance.
+        :type RuleTemplateIds: list of str
+        :param _TrialStatus: Trial status.
+        :type TrialStatus: str
+        :param _TrialStartTime: Trial start time.
+        :type TrialStartTime: int
+        :param _TrialDuration: Trial duration.
+        :type TrialDuration: int
+        :param _TrialCloseTime: Trial end time.
+        :type TrialCloseTime: int
+        :param _TrialDescribeLogHours: Log query time limit during the trial period.
+        :type TrialDescribeLogHours: int
+        """
+        self._InstanceId = None
+        self._AuditStatus = None
+        self._AuditTask = None
+        self._LogExpireDay = None
+        self._HighLogExpireDay = None
+        self._LowLogExpireDay = None
+        self._BillingAmount = None
+        self._HighRealStorage = None
+        self._LowRealStorage = None
+        self._AuditAll = None
+        self._CreateAt = None
+        self._InstanceInfo = None
+        self._RealStorage = None
+        self._OldRule = None
+        self._RuleTemplateIds = None
+        self._TrialStatus = None
+        self._TrialStartTime = None
+        self._TrialDuration = None
+        self._TrialCloseTime = None
+        self._TrialDescribeLogHours = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AuditStatus(self):
+        r"""Audit status. ON - Audit is enabled, OFF - Audit is disabled.
+        :rtype: str
+        """
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def AuditTask(self):
+        r"""Task status. Valid values: 0 - No task; 1 - Enabling audit; 2 - Disabling audit.
+        :rtype: int
+        """
+        return self._AuditTask
+
+    @AuditTask.setter
+    def AuditTask(self, AuditTask):
+        self._AuditTask = AuditTask
+
+    @property
+    def LogExpireDay(self):
+        r"""Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HighLogExpireDay(self):
+        r"""High-frequency storage period. Valid values:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._HighLogExpireDay
+
+    @HighLogExpireDay.setter
+    def HighLogExpireDay(self, HighLogExpireDay):
+        self._HighLogExpireDay = HighLogExpireDay
+
+    @property
+    def LowLogExpireDay(self):
+        r"""Low-frequency storage period (in days). This equals the log retention period minus the high-frequency storage period.
+        :rtype: int
+        """
+        return self._LowLogExpireDay
+
+    @LowLogExpireDay.setter
+    def LowLogExpireDay(self, LowLogExpireDay):
+        self._LowLogExpireDay = LowLogExpireDay
+
+    @property
+    def BillingAmount(self):
+        r"""Log storage volume (in GB).
+        :rtype: float
+        """
+        return self._BillingAmount
+
+    @BillingAmount.setter
+    def BillingAmount(self, BillingAmount):
+        self._BillingAmount = BillingAmount
+
+    @property
+    def HighRealStorage(self):
+        r"""High-frequency storage volume (in GB).
+        :rtype: float
+        """
+        return self._HighRealStorage
+
+    @HighRealStorage.setter
+    def HighRealStorage(self, HighRealStorage):
+        self._HighRealStorage = HighRealStorage
+
+    @property
+    def LowRealStorage(self):
+        r"""Low-frequency storage volume (in GB).
+        :rtype: float
+        """
+        return self._LowRealStorage
+
+    @LowRealStorage.setter
+    def LowRealStorage(self, LowRealStorage):
+        self._LowRealStorage = LowRealStorage
+
+    @property
+    def AuditAll(self):
+        r"""Whether full audit is enabled. true - Full audit.
+        :rtype: bool
+        """
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
+    @property
+    def CreateAt(self):
+        r"""Time when the audit service was activated.
+        :rtype: str
+        """
+        return self._CreateAt
+
+    @CreateAt.setter
+    def CreateAt(self, CreateAt):
+        self._CreateAt = CreateAt
+
+    @property
+    def InstanceInfo(self):
+        r"""Related information about the instance.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AuditInstanceInfo`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+    @property
+    def RealStorage(self):
+        r"""Total storage volume (in GB).
+        :rtype: float
+        """
+        return self._RealStorage
+
+    @RealStorage.setter
+    def RealStorage(self, RealStorage):
+        self._RealStorage = RealStorage
+
+    @property
+    def OldRule(self):
+        r"""Whether an audit policy is configured.
+        :rtype: bool
+        """
+        return self._OldRule
+
+    @OldRule.setter
+    def OldRule(self, OldRule):
+        self._OldRule = OldRule
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Rule template applied to the instance.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+    @property
+    def TrialStatus(self):
+        r"""Trial status.
+        :rtype: str
+        """
+        return self._TrialStatus
+
+    @TrialStatus.setter
+    def TrialStatus(self, TrialStatus):
+        self._TrialStatus = TrialStatus
+
+    @property
+    def TrialStartTime(self):
+        r"""Trial start time.
+        :rtype: int
+        """
+        return self._TrialStartTime
+
+    @TrialStartTime.setter
+    def TrialStartTime(self, TrialStartTime):
+        self._TrialStartTime = TrialStartTime
+
+    @property
+    def TrialDuration(self):
+        r"""Trial duration.
+        :rtype: int
+        """
+        return self._TrialDuration
+
+    @TrialDuration.setter
+    def TrialDuration(self, TrialDuration):
+        self._TrialDuration = TrialDuration
+
+    @property
+    def TrialCloseTime(self):
+        r"""Trial end time.
+        :rtype: int
+        """
+        return self._TrialCloseTime
+
+    @TrialCloseTime.setter
+    def TrialCloseTime(self, TrialCloseTime):
+        self._TrialCloseTime = TrialCloseTime
+
+    @property
+    def TrialDescribeLogHours(self):
+        r"""Log query time limit during the trial period.
+        :rtype: int
+        """
+        return self._TrialDescribeLogHours
+
+    @TrialDescribeLogHours.setter
+    def TrialDescribeLogHours(self, TrialDescribeLogHours):
+        self._TrialDescribeLogHours = TrialDescribeLogHours
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._AuditTask = params.get("AuditTask")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HighLogExpireDay = params.get("HighLogExpireDay")
+        self._LowLogExpireDay = params.get("LowLogExpireDay")
+        self._BillingAmount = params.get("BillingAmount")
+        self._HighRealStorage = params.get("HighRealStorage")
+        self._LowRealStorage = params.get("LowRealStorage")
+        self._AuditAll = params.get("AuditAll")
+        self._CreateAt = params.get("CreateAt")
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = AuditInstanceInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        self._RealStorage = params.get("RealStorage")
+        self._OldRule = params.get("OldRule")
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._TrialStatus = params.get("TrialStatus")
+        self._TrialStartTime = params.get("TrialStartTime")
+        self._TrialDuration = params.get("TrialDuration")
+        self._TrialCloseTime = params.get("TrialCloseTime")
+        self._TrialDescribeLogHours = params.get("TrialDescribeLogHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     r"""Instance details
 
@@ -21039,6 +23303,407 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuditConfigRequest(AbstractModel):
+    r"""ModifyAuditConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _LogExpireDay: Audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type LogExpireDay: int
+        :param _CloseAudit: Whether to disable the audit service. Valid values: true - Disable; false - Do not disable. Default value: false.Notes:1. When the audit service is disabled, your audit logs and files will be deleted, and all audit policies for this instance will be removed.2. At least one of CloseAudit and LogExpireDay must be provided. If both are provided, CloseAudit takes priority.3. You can use this parameter to disable the audit service. Once disabled, the audit service cannot be re-enabled via this API.
+        :type CloseAudit: bool
+        :param _HighLogExpireDay: High-frequency audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type HighLogExpireDay: int
+        """
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._CloseAudit = None
+        self._HighLogExpireDay = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        r"""Audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def CloseAudit(self):
+        r"""Whether to disable the audit service. Valid values: true - Disable; false - Do not disable. Default value: false.Notes:1. When the audit service is disabled, your audit logs and files will be deleted, and all audit policies for this instance will be removed.2. At least one of CloseAudit and LogExpireDay must be provided. If both are provided, CloseAudit takes priority.3. You can use this parameter to disable the audit service. Once disabled, the audit service cannot be re-enabled via this API.
+        :rtype: bool
+        """
+        return self._CloseAudit
+
+    @CloseAudit.setter
+    def CloseAudit(self, CloseAudit):
+        self._CloseAudit = CloseAudit
+
+    @property
+    def HighLogExpireDay(self):
+        r"""High-frequency audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._HighLogExpireDay
+
+    @HighLogExpireDay.setter
+    def HighLogExpireDay(self, HighLogExpireDay):
+        self._HighLogExpireDay = HighLogExpireDay
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._CloseAudit = params.get("CloseAudit")
+        self._HighLogExpireDay = params.get("HighLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditConfigResponse(AbstractModel):
+    r"""ModifyAuditConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuditRuleTemplatesRequest(AbstractModel):
+    r"""ModifyAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :type RuleTemplateIds: list of str
+        :param _RuleFilters: Modified audit rule.
+        :type RuleFilters: list of RuleFilters
+        :param _RuleTemplateName: Modified rule template name.
+        :type RuleTemplateName: str
+        :param _Description: Modified rule template description.
+        :type Description: str
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :type AlarmPolicy: int
+        """
+        self._RuleTemplateIds = None
+        self._RuleFilters = None
+        self._RuleTemplateName = None
+        self._Description = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+    @property
+    def RuleFilters(self):
+        r"""Modified audit rule.
+        :rtype: list of RuleFilters
+        """
+        return self._RuleFilters
+
+    @RuleFilters.setter
+    def RuleFilters(self, RuleFilters):
+        self._RuleFilters = RuleFilters
+
+    @property
+    def RuleTemplateName(self):
+        r"""Modified rule template name.
+        :rtype: str
+        """
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def Description(self):
+        r"""Modified rule template description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        if params.get("RuleFilters") is not None:
+            self._RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self._RuleFilters.append(obj)
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        self._Description = params.get("Description")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditRuleTemplatesResponse(AbstractModel):
+    r"""ModifyAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuditServiceRequest(AbstractModel):
+    r"""ModifyAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _LogExpireDay: Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type LogExpireDay: int
+        :param _HighLogExpireDay: High-frequency log retention period. Default value: 7. This value must be less than or equal to LogExpireDay. Valid values include:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :type HighLogExpireDay: int
+        :param _AuditAll: Modifies the instance audit rule to Full audit.
+        :type AuditAll: bool
+        :param _AuditRuleFilters: Deprecated.
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param _RuleTemplateIds: Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :type RuleTemplateIds: list of str
+        """
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HighLogExpireDay = None
+        self._AuditAll = None
+        self._AuditRuleFilters = None
+        self._RuleTemplateIds = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        r"""Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HighLogExpireDay(self):
+        r"""High-frequency log retention period. Default value: 7. This value must be less than or equal to LogExpireDay. Valid values include:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
+        :rtype: int
+        """
+        return self._HighLogExpireDay
+
+    @HighLogExpireDay.setter
+    def HighLogExpireDay(self, HighLogExpireDay):
+        self._HighLogExpireDay = HighLogExpireDay
+
+    @property
+    def AuditAll(self):
+        r"""Modifies the instance audit rule to Full audit.
+        :rtype: bool
+        """
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
+    @property
+    def AuditRuleFilters(self):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
+        r"""Deprecated.
+        :rtype: list of AuditRuleFilters
+        """
+        return self._AuditRuleFilters
+
+    @AuditRuleFilters.setter
+    def AuditRuleFilters(self, AuditRuleFilters):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
+        self._AuditRuleFilters = AuditRuleFilters
+
+    @property
+    def RuleTemplateIds(self):
+        r"""Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HighLogExpireDay = params.get("HighLogExpireDay")
+        self._AuditAll = params.get("AuditAll")
+        if params.get("AuditRuleFilters") is not None:
+            self._AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self._AuditRuleFilters.append(obj)
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    r"""ModifyAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -27716,6 +30381,237 @@ class RuleFilters(AbstractModel):
         self._Type = params.get("Type")
         self._Compare = params.get("Compare")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplateInfo(AbstractModel):
+    r"""Rule template content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: Rule template ID.
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: Rule template name.
+        :type RuleTemplateName: str
+        :param _RuleFilters: Rule content.
+        :type RuleFilters: list of RuleFilters
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :type AlarmPolicy: int
+        :param _Description: Rule description.
+        :type Description: str
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._RuleFilters = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+        self._Description = None
+
+    @property
+    def RuleTemplateId(self):
+        r"""Rule template ID.
+        :rtype: str
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        r"""Rule template name.
+        :rtype: str
+        """
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def RuleFilters(self):
+        r"""Rule content.
+        :rtype: list of RuleFilters
+        """
+        return self._RuleFilters
+
+    @RuleFilters.setter
+    def RuleFilters(self, RuleFilters):
+        self._RuleFilters = RuleFilters
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+    @property
+    def Description(self):
+        r"""Rule description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        if params.get("RuleFilters") is not None:
+            self._RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self._RuleFilters.append(obj)
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplateRecordInfo(AbstractModel):
+    r"""Rule template change history.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _ModifyBeforeInfo: Details of the original rule template.
+        :type ModifyBeforeInfo: :class:`tencentcloud.cdb.v20170320.models.RuleTemplateInfo`
+        :param _ModifyAfterInfo: Details of the modified rule template.
+        :type ModifyAfterInfo: :class:`tencentcloud.cdb.v20170320.models.RuleTemplateInfo`
+        :param _AffectedInstances: Affected instances.
+        :type AffectedInstances: list of str
+        :param _Operator: Operator (account UIN).
+        :type Operator: str
+        :param _UpdateTime: Time of the change.
+        :type UpdateTime: str
+        """
+        self._TaskId = None
+        self._ModifyBeforeInfo = None
+        self._ModifyAfterInfo = None
+        self._AffectedInstances = None
+        self._Operator = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ModifyBeforeInfo(self):
+        r"""Details of the original rule template.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.RuleTemplateInfo`
+        """
+        return self._ModifyBeforeInfo
+
+    @ModifyBeforeInfo.setter
+    def ModifyBeforeInfo(self, ModifyBeforeInfo):
+        self._ModifyBeforeInfo = ModifyBeforeInfo
+
+    @property
+    def ModifyAfterInfo(self):
+        r"""Details of the modified rule template.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.RuleTemplateInfo`
+        """
+        return self._ModifyAfterInfo
+
+    @ModifyAfterInfo.setter
+    def ModifyAfterInfo(self, ModifyAfterInfo):
+        self._ModifyAfterInfo = ModifyAfterInfo
+
+    @property
+    def AffectedInstances(self):
+        r"""Affected instances.
+        :rtype: list of str
+        """
+        return self._AffectedInstances
+
+    @AffectedInstances.setter
+    def AffectedInstances(self, AffectedInstances):
+        self._AffectedInstances = AffectedInstances
+
+    @property
+    def Operator(self):
+        r"""Operator (account UIN).
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def UpdateTime(self):
+        r"""Time of the change.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("ModifyBeforeInfo") is not None:
+            self._ModifyBeforeInfo = RuleTemplateInfo()
+            self._ModifyBeforeInfo._deserialize(params.get("ModifyBeforeInfo"))
+        if params.get("ModifyAfterInfo") is not None:
+            self._ModifyAfterInfo = RuleTemplateInfo()
+            self._ModifyAfterInfo._deserialize(params.get("ModifyAfterInfo"))
+        self._AffectedInstances = params.get("AffectedInstances")
+        self._Operator = params.get("Operator")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

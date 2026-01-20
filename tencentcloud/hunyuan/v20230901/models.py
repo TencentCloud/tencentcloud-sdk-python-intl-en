@@ -708,6 +708,11 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Model: Tencent HY 3D Global model version
+Defaults to 3.0, with optional choices: 3.0, 3.1
+When selecting version 3.1, the LowPoly parameter is unavailable
+Example value:3.0
+        :type Model: str
         :param _Prompt: Generates 3D content, describes 3D content.
 Supports up to 1024 utf-8 characters.
 Text-To-3D. Specifies either ImageBase64/ImageUrl or Prompt is required. Prompt and ImageBase64/ImageUrl cannot coexist.
@@ -733,9 +738,13 @@ Valid values: jpg, png, jpeg, webp.
 Specifies either ImageBase64/ImageUrl or Prompt is required. Prompt and ImageBase64/ImageUrl cannot coexist.
         :type ImageUrl: str
         :param _MultiViewImages: Multi-Perspective model image. reference value for viewing angle:.
-left view.
-right view.
-back view.
+left: Left view;
+right: Right view;
+back: Rear view;
+top: Top view (only supported in Model 3.1);
+bottom: Bottom view (only supported in Model 3.1);
+left_front: Left front 45 degree view (only supported in Model 3.1);
+right_front: Right front 45 degree view (only supported in Model 3.1);
 
 Each perspective is limited to one image.
 Image size limit. the value must not exceed 8 mb after encoding.
@@ -760,6 +769,7 @@ triangle. specifies the triangular face.
 quadrilateral: mix quadrangle and triangle faces to generate.
         :type PolygonType: str
         """
+        self._Model = None
         self._Prompt = None
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -768,6 +778,20 @@ quadrilateral: mix quadrangle and triangle faces to generate.
         self._FaceCount = None
         self._GenerateType = None
         self._PolygonType = None
+
+    @property
+    def Model(self):
+        r"""Tencent HY 3D Global model version
+Defaults to 3.0, with optional choices: 3.0, 3.1
+When selecting version 3.1, the LowPoly parameter is unavailable
+Example value:3.0
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
 
     @property
     def Prompt(self):
@@ -823,9 +847,13 @@ Specifies either ImageBase64/ImageUrl or Prompt is required. Prompt and ImageBas
     @property
     def MultiViewImages(self):
         r"""Multi-Perspective model image. reference value for viewing angle:.
-left view.
-right view.
-back view.
+left: Left view;
+right: Right view;
+back: Rear view;
+top: Top view (only supported in Model 3.1);
+bottom: Bottom view (only supported in Model 3.1);
+left_front: Left front 45 degree view (only supported in Model 3.1);
+right_front: Right front 45 degree view (only supported in Model 3.1);
 
 Each perspective is limited to one image.
 Image size limit. the value must not exceed 8 mb after encoding.
@@ -894,6 +922,7 @@ quadrilateral: mix quadrangle and triangle faces to generate.
 
 
     def _deserialize(self, params):
+        self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")

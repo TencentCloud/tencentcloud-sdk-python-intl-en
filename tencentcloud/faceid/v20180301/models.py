@@ -554,6 +554,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
         :type Extra: str
         :param _SdkVersion: BASIC: Basic version (Default).
 ENHANCE: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
         :type SdkVersion: str
@@ -718,6 +719,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
     def SdkVersion(self):
         r"""BASIC: Basic version (Default).
 ENHANCE: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
         :rtype: str
@@ -4434,6 +4436,7 @@ The default value is blink. The different action types passed in this parameter 
         :type ActionList: str
         :param _SdkVersion: BASIC: Basic version (Default).
 ENHANCE: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
         :type SdkVersion: str
@@ -4521,6 +4524,7 @@ The default value is blink. The different action types passed in this parameter 
     def SdkVersion(self):
         r"""BASIC: Basic version (Default).
 ENHANCE: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
         :rtype: str

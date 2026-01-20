@@ -164,6 +164,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAuditService(self, request):
+        r"""This API is used to disable the audit service for an instance.
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseCDBProxy(self, request):
         r"""This API is used to disable database proxy.
 
@@ -256,6 +279,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuditLogFile(self, request):
+        r"""This API is used to create an audit log file for a TencentDB instance.
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditLogFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAuditPolicy(self, request):
         r"""This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.
 
@@ -270,6 +316,29 @@ class CdbClient(AbstractClient):
             body = self.call("CreateAuditPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAuditPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAuditRuleTemplate(self, request):
+        r"""This API is used to create an audit rule template.
+
+        :param request: Request instance for CreateAuditRuleTemplate.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditRuleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -528,6 +597,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRotationPassword(self, request):
+        r"""This API is used to enable password rotation.
+
+        :param request: Request instance for CreateRotationPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateRotationPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateRotationPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRotationPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRotationPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccounts(self, request):
         r"""This API (DeleteAccounts) is used to delete TencentDB accounts.
 
@@ -542,6 +634,75 @@ class CdbClient(AbstractClient):
             body = self.call("DeleteAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditLogFile(self, request):
+        r"""This API is used to delete an audit log file of a TencentDB instance.
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditLogFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditPolicy(self, request):
+        r"""This API is used to delete an audit policy.
+
+        :param request: Request instance for DeleteAuditPolicy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditPolicyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditRuleTemplates(self, request):
+        r"""This API is used to delete audit rule templates.
+
+        :param request: Request instance for DeleteAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditRuleTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -689,6 +850,75 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuditConfig(self, request):
+        r"""This API is used to query the service configurations for a TencentDB audit policy, including the audit log retention period.
+
+        :param request: Request instance for DescribeAuditConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        r"""This API is used to obtain the list of audit instances.
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogFiles(self, request):
+        r"""This API is used to query the audit log files of a TencentDB instance.
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAuditLogs(self, request):
         r"""This API is used to query a database audit log.
 
@@ -726,6 +956,52 @@ class CdbClient(AbstractClient):
             body = self.call("DescribeAuditPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditRuleTemplateModifyHistory(self, request):
+        r"""This API is used to query the change history of rule templates.
+
+        :param request: Request instance for DescribeAuditRuleTemplateModifyHistory.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplateModifyHistoryRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplateModifyHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleTemplateModifyHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditRuleTemplateModifyHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditRuleTemplates(self, request):
+        r"""This API is used to query the information of audit rule templates.
+
+        :param request: Request instance for DescribeAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditRuleTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2068,6 +2344,75 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAccountPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditConfig(self, request):
+        r"""This API is used to modify the service configurations for a TencentDB audit policy, including the audit log retention period.
+
+        :param request: Request instance for ModifyAuditConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditRuleTemplates(self, request):
+        r"""This API is used to modify audit rule templates.
+
+        :param request: Request instance for ModifyAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditRuleTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditService(self, request):
+        r"""This API is used to modify the service configurations for a TencentDB instance, including the audit log retention period and the audit rules.
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

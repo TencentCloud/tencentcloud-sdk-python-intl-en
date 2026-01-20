@@ -133,6 +133,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseAuditService(
+            self,
+            request: models.CloseAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseAuditServiceResponse:
+        """
+        This API is used to disable the audit service for an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloseCDBProxy(
             self,
             request: models.CloseCDBProxyRequest,
@@ -205,6 +223,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAuditLogFile(
+            self,
+            request: models.CreateAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditLogFileResponse:
+        """
+        This API is used to create an audit log file for a TencentDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditLogFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAuditPolicy(
             self,
             request: models.CreateAuditPolicyRequest,
@@ -218,6 +254,24 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "CreateAuditPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAuditPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAuditRuleTemplate(
+            self,
+            request: models.CreateAuditRuleTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditRuleTemplateResponse:
+        """
+        This API is used to create an audit rule template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditRuleTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditRuleTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -422,6 +476,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRotationPassword(
+            self,
+            request: models.CreateRotationPasswordRequest,
+            opts: Dict = None,
+    ) -> models.CreateRotationPasswordResponse:
+        """
+        This API is used to enable password rotation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRotationPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRotationPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccounts(
             self,
             request: models.DeleteAccountsRequest,
@@ -435,6 +507,60 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "DeleteAccounts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditLogFile(
+            self,
+            request: models.DeleteAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditLogFileResponse:
+        """
+        This API is used to delete an audit log file of a TencentDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditLogFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditPolicy(
+            self,
+            request: models.DeleteAuditPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditPolicyResponse:
+        """
+        This API is used to delete an audit policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditRuleTemplates(
+            self,
+            request: models.DeleteAuditRuleTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditRuleTemplatesResponse:
+        """
+        This API is used to delete audit rule templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditRuleTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditRuleTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -548,6 +674,60 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAuditConfig(
+            self,
+            request: models.DescribeAuditConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditConfigResponse:
+        """
+        This API is used to query the service configurations for a TencentDB audit policy, including the audit log retention period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditInstanceList(
+            self,
+            request: models.DescribeAuditInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditInstanceListResponse:
+        """
+        This API is used to obtain the list of audit instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogFiles(
+            self,
+            request: models.DescribeAuditLogFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogFilesResponse:
+        """
+        This API is used to query the audit log files of a TencentDB instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAuditLogs(
             self,
             request: models.DescribeAuditLogsRequest,
@@ -579,6 +759,42 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "DescribeAuditPolicies"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditRuleTemplateModifyHistory(
+            self,
+            request: models.DescribeAuditRuleTemplateModifyHistoryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditRuleTemplateModifyHistoryResponse:
+        """
+        This API is used to query the change history of rule templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditRuleTemplateModifyHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditRuleTemplateModifyHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditRuleTemplates(
+            self,
+            request: models.DescribeAuditRuleTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditRuleTemplatesResponse:
+        """
+        This API is used to query the information of audit rule templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditRuleTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditRuleTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1631,6 +1847,60 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "ModifyAccountPrivileges"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAccountPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuditConfig(
+            self,
+            request: models.ModifyAuditConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditConfigResponse:
+        """
+        This API is used to modify the service configurations for a TencentDB audit policy, including the audit log retention period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuditRuleTemplates(
+            self,
+            request: models.ModifyAuditRuleTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditRuleTemplatesResponse:
+        """
+        This API is used to modify audit rule templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditRuleTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditRuleTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuditService(
+            self,
+            request: models.ModifyAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditServiceResponse:
+        """
+        This API is used to modify the service configurations for a TencentDB instance, including the audit log retention period and the audit rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
