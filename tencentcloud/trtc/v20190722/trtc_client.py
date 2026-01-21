@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def ControlAIConversation(self, request):
-        r"""Provides server-side control of AI Conversation
+        r"""This API is used to provide service for server-side robot control.
 
         :param request: Request instance for ControlAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ControlAIConversationRequest`

@@ -49,6 +49,30 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def Describe3DSmartTopologyJob(self, request):
+        r"""The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
+        1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+
+        :param request: Request instance for Describe3DSmartTopologyJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.Describe3DSmartTopologyJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Describe3DSmartTopologyJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("Describe3DSmartTopologyJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.Describe3DSmartTopologyJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuan3DPartJob(self, request):
         r"""This API is used to query the generation task of a component.
 
@@ -111,6 +135,30 @@ class HunyuanClient(AbstractClient):
             body = self.call("QueryHunyuanTo3DRapidJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryHunyuanTo3DRapidJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def Submit3DSmartTopologyJob(self, request):
+        r"""The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
+        1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+
+        :param request: Request instance for Submit3DSmartTopologyJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.Submit3DSmartTopologyJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Submit3DSmartTopologyJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("Submit3DSmartTopologyJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.Submit3DSmartTopologyJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

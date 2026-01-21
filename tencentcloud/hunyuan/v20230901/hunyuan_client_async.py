@@ -43,6 +43,25 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def Describe3DSmartTopologyJob(
+            self,
+            request: models.Describe3DSmartTopologyJobRequest,
+            opts: Dict = None,
+    ) -> models.Describe3DSmartTopologyJobResponse:
+        """
+        The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
+        1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "Describe3DSmartTopologyJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.Describe3DSmartTopologyJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuan3DPartJob(
             self,
             request: models.QueryHunyuan3DPartJobRequest,
@@ -94,6 +113,25 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "QueryHunyuanTo3DRapidJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def Submit3DSmartTopologyJob(
+            self,
+            request: models.Submit3DSmartTopologyJobRequest,
+            opts: Dict = None,
+    ) -> models.Submit3DSmartTopologyJobResponse:
+        """
+        The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
+        1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "Submit3DSmartTopologyJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.Submit3DSmartTopologyJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1013,21 +1013,23 @@ class ControlAIConversationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Unique ID of the task
+        :param _TaskId: Task unique identifier.
         :type TaskId: str
-        :param _Command: Control commands, currently supported commands are as follows:
-- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text
+        :param _Command: Control command. currently supports the following commands: - ServerPushText: server sends text to the AI robot, and the AI robot will broadcast the text. - InvokeLLM: server sends text to the large model to trigger dialogue.
         :type Command: str
-        :param _ServerPushText: The server sends a text broadcast command. This is required when Command is ServerPushText.
+        :param _ServerPushText: Server-Sent broadcast text Command. required when Command is ServerPushText.
         :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        :param _InvokeLLM: The server sends a Command to proactively request the large model. when Command is InvokeLLM, it sends the content request to the large model and adds X-Invoke-LLM="1" to the header.
+        :type InvokeLLM: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
         """
         self._TaskId = None
         self._Command = None
         self._ServerPushText = None
+        self._InvokeLLM = None
 
     @property
     def TaskId(self):
-        r"""Unique ID of the task
+        r"""Task unique identifier.
         :rtype: str
         """
         return self._TaskId
@@ -1038,8 +1040,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def Command(self):
-        r"""Control commands, currently supported commands are as follows:
-- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text
+        r"""Control command. currently supports the following commands: - ServerPushText: server sends text to the AI robot, and the AI robot will broadcast the text. - InvokeLLM: server sends text to the large model to trigger dialogue.
         :rtype: str
         """
         return self._Command
@@ -1050,7 +1051,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def ServerPushText(self):
-        r"""The server sends a text broadcast command. This is required when Command is ServerPushText.
+        r"""Server-Sent broadcast text Command. required when Command is ServerPushText.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
         """
         return self._ServerPushText
@@ -1059,6 +1060,17 @@ class ControlAIConversationRequest(AbstractModel):
     def ServerPushText(self, ServerPushText):
         self._ServerPushText = ServerPushText
 
+    @property
+    def InvokeLLM(self):
+        r"""The server sends a Command to proactively request the large model. when Command is InvokeLLM, it sends the content request to the large model and adds X-Invoke-LLM="1" to the header.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
+        """
+        return self._InvokeLLM
+
+    @InvokeLLM.setter
+    def InvokeLLM(self, InvokeLLM):
+        self._InvokeLLM = InvokeLLM
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1066,6 +1078,9 @@ class ControlAIConversationRequest(AbstractModel):
         if params.get("ServerPushText") is not None:
             self._ServerPushText = ServerPushText()
             self._ServerPushText._deserialize(params.get("ServerPushText"))
+        if params.get("InvokeLLM") is not None:
+            self._InvokeLLM = InvokeLLM()
+            self._InvokeLLM._deserialize(params.get("InvokeLLM"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5557,6 +5572,57 @@ class EventMessage(AbstractModel):
         
 
 
+class InvokeLLM(AbstractModel):
+    r"""Service calling actively initiates requests to the LLM.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Request the content of LLM.
+        :type Content: str
+        :param _Interrupt: Whether to allow the text to interrupt the robot's speaking.
+        :type Interrupt: bool
+        """
+        self._Content = None
+        self._Interrupt = None
+
+    @property
+    def Content(self):
+        r"""Request the content of LLM.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Interrupt(self):
+        r"""Whether to allow the text to interrupt the robot's speaking.
+        :rtype: bool
+        """
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Interrupt = params.get("Interrupt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaxVideoUser(AbstractModel):
     r"""The information of the large video in screen sharing or floating layout mode.
 
@@ -9524,26 +9590,52 @@ class SeriesInfos(AbstractModel):
 
 
 class ServerPushText(AbstractModel):
-    r"""The server controls the AI conversation robot to broadcast the specified text
+    r"""The server controls the chatbot to broadcast the specified text.
 
     """
 
     def __init__(self):
         r"""
-        :param _Text: Server push broadcast text
+        :param _Text: Server push broadcast text.
         :type Text: str
-        :param _Interrupt: Allow this text to interrupt the robot
+        :param _Interrupt: Whether to allow the text to interrupt the robot's speaking.
         :type Interrupt: bool
-        :param _StopAfterPlay: After the text is finished, whether to automatically close the conversation task
+        :param _StopAfterPlay: Broadcast the text and automatically close the dialogue task.
         :type StopAfterPlay: bool
+        :param _Audio: Server push broadcast audio.
+Format description: audio must be mono, sampling rate must be consistent with the corresponding TTS sampling rate, and coded as a Base64 string.
+Input rule: when the Audio field is provided, the system will not accept user-submitted input in the Text field. the system will play the Audio content in the Audio field directly.
+        :type Audio: str
+        :param _DropMode: Defaults to 0. valid at that time only when Interrupt is false.
+-0 means drop messages with Interrupt set to false during the occurrence of interaction.
+-1 indicates that during the occurrence of an interaction, messages with Interrupt as false will not be dropped but cached, waiting to be processed when finished.
+
+Note: if DropMode is 1, multiple messages can be cached. if an interruption occurs subsequently, the cache of messages will be cleared.
+        :type DropMode: int
+        :param _Priority: The message priority of ServerPushText. 0 means interruptible, 1 means not interruptible. currently only support 0. if you need to input 1, submit a ticket to contact us to grant permission.
+Note: after receiving a message with Priority=1, any other messages will be ignored (including messages with Priority=1) until the message processing of Priority=1 is complete. this field can be used together with the Interrupt and DropMode fields.
+Example:.
+-Priority=1, Interrupt=true, interrupts existing interaction and broadcasts immediately. the broadcast will not be interrupted during the process.
+-Priority=1, Interrupt=false, DropMode=1. wait for the current interaction to complete before broadcasting. the broadcast will not be interrupted during the process.
+
+        :type Priority: int
+        :param _AddHistory: Whether to add the text to the llm history context.
+        :type AddHistory: bool
+        :param _MetaInfo: If filled, it will be bound to the subtitle and sent to the terminal. note that the content must be a json string.
+        :type MetaInfo: str
         """
         self._Text = None
         self._Interrupt = None
         self._StopAfterPlay = None
+        self._Audio = None
+        self._DropMode = None
+        self._Priority = None
+        self._AddHistory = None
+        self._MetaInfo = None
 
     @property
     def Text(self):
-        r"""Server push broadcast text
+        r"""Server push broadcast text.
         :rtype: str
         """
         return self._Text
@@ -9554,7 +9646,7 @@ class ServerPushText(AbstractModel):
 
     @property
     def Interrupt(self):
-        r"""Allow this text to interrupt the robot
+        r"""Whether to allow the text to interrupt the robot's speaking.
         :rtype: bool
         """
         return self._Interrupt
@@ -9565,7 +9657,7 @@ class ServerPushText(AbstractModel):
 
     @property
     def StopAfterPlay(self):
-        r"""After the text is finished, whether to automatically close the conversation task
+        r"""Broadcast the text and automatically close the dialogue task.
         :rtype: bool
         """
         return self._StopAfterPlay
@@ -9574,11 +9666,82 @@ class ServerPushText(AbstractModel):
     def StopAfterPlay(self, StopAfterPlay):
         self._StopAfterPlay = StopAfterPlay
 
+    @property
+    def Audio(self):
+        r"""Server push broadcast audio.
+Format description: audio must be mono, sampling rate must be consistent with the corresponding TTS sampling rate, and coded as a Base64 string.
+Input rule: when the Audio field is provided, the system will not accept user-submitted input in the Text field. the system will play the Audio content in the Audio field directly.
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def DropMode(self):
+        r"""Defaults to 0. valid at that time only when Interrupt is false.
+-0 means drop messages with Interrupt set to false during the occurrence of interaction.
+-1 indicates that during the occurrence of an interaction, messages with Interrupt as false will not be dropped but cached, waiting to be processed when finished.
+
+Note: if DropMode is 1, multiple messages can be cached. if an interruption occurs subsequently, the cache of messages will be cleared.
+        :rtype: int
+        """
+        return self._DropMode
+
+    @DropMode.setter
+    def DropMode(self, DropMode):
+        self._DropMode = DropMode
+
+    @property
+    def Priority(self):
+        r"""The message priority of ServerPushText. 0 means interruptible, 1 means not interruptible. currently only support 0. if you need to input 1, submit a ticket to contact us to grant permission.
+Note: after receiving a message with Priority=1, any other messages will be ignored (including messages with Priority=1) until the message processing of Priority=1 is complete. this field can be used together with the Interrupt and DropMode fields.
+Example:.
+-Priority=1, Interrupt=true, interrupts existing interaction and broadcasts immediately. the broadcast will not be interrupted during the process.
+-Priority=1, Interrupt=false, DropMode=1. wait for the current interaction to complete before broadcasting. the broadcast will not be interrupted during the process.
+
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def AddHistory(self):
+        r"""Whether to add the text to the llm history context.
+        :rtype: bool
+        """
+        return self._AddHistory
+
+    @AddHistory.setter
+    def AddHistory(self, AddHistory):
+        self._AddHistory = AddHistory
+
+    @property
+    def MetaInfo(self):
+        r"""If filled, it will be bound to the subtitle and sent to the terminal. note that the content must be a json string.
+        :rtype: str
+        """
+        return self._MetaInfo
+
+    @MetaInfo.setter
+    def MetaInfo(self, MetaInfo):
+        self._MetaInfo = MetaInfo
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
         self._Interrupt = params.get("Interrupt")
         self._StopAfterPlay = params.get("StopAfterPlay")
+        self._Audio = params.get("Audio")
+        self._DropMode = params.get("DropMode")
+        self._Priority = params.get("Priority")
+        self._AddHistory = params.get("AddHistory")
+        self._MetaInfo = params.get("MetaInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

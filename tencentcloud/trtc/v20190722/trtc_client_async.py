@@ -31,7 +31,7 @@ class TrtcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ControlAIConversationResponse:
         """
-        Provides server-side control of AI Conversation
+        This API is used to provide service for server-side robot control.
         """
         
         kwargs = {}
