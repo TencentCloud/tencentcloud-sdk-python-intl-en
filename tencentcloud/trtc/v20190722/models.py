@@ -865,15 +865,20 @@ class CloudStorage(AbstractModel):
         :param _Vendor: The cloud storage provider.
 `0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
         :type Vendor: int
-        :param _Region: The region of cloud storage.
+        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+Example value: cn-shanghai-1.
+
+[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
         :type Region: str
         :param _Bucket: The storage bucket.
         :type Bucket: str
-        :param _AccessKey: The access_key of the cloud storage account.
+        :param _AccessKey: access_key account information of the cloud storage.
+To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
         :type AccessKey: str
-        :param _SecretKey: The secret_key of the cloud storage account.
+        :param _SecretKey: secret_key account information of the cloud storage.
+To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
         :type SecretKey: str
-        :param _FileNamePrefix: The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z), numbers (0-9), underscores (_), and hyphens (-). For example, if the value of this parameter is `["prefix1", "prefix2"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.
+        :param _FileNamePrefix: The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of ["prefix1", "prefix2"].
         :type FileNamePrefix: list of str
         """
         self._Vendor = None
@@ -897,7 +902,10 @@ class CloudStorage(AbstractModel):
 
     @property
     def Region(self):
-        r"""The region of cloud storage.
+        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+Example value: cn-shanghai-1.
+
+[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
         :rtype: str
         """
         return self._Region
@@ -919,7 +927,8 @@ class CloudStorage(AbstractModel):
 
     @property
     def AccessKey(self):
-        r"""The access_key of the cloud storage account.
+        r"""access_key account information of the cloud storage.
+To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
         :rtype: str
         """
         return self._AccessKey
@@ -930,7 +939,8 @@ class CloudStorage(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""The secret_key of the cloud storage account.
+        r"""secret_key account information of the cloud storage.
+To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
         :rtype: str
         """
         return self._SecretKey
@@ -941,7 +951,7 @@ class CloudStorage(AbstractModel):
 
     @property
     def FileNamePrefix(self):
-        r"""The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z), numbers (0-9), underscores (_), and hyphens (-). For example, if the value of this parameter is `["prefix1", "prefix2"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.
+        r"""The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of ["prefix1", "prefix2"].
         :rtype: list of str
         """
         return self._FileNamePrefix
@@ -1316,7 +1326,9 @@ class CreateCloudRecordingRequest(AbstractModel):
         r"""
         :param _SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type SdkAppId: int
-        :param _RoomId: The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
+
         :type RoomId: str
         :param _UserId: The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.
         :type UserId: str
@@ -1336,7 +1348,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         :type MixLayoutParams: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
         :param _ResourceExpiredHour: The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.
         :type ResourceExpiredHour: int
-        :param _PrivateMapKey: The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
+        :param _PrivateMapKey: The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users' [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
         :type PrivateMapKey: str
         """
         self._SdkAppId = None
@@ -1364,7 +1376,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
+
         :rtype: str
         """
         return self._RoomId
@@ -1465,7 +1479,7 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def PrivateMapKey(self):
-        r"""The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
+        r"""The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users' [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
         :rtype: str
         """
         return self._PrivateMapKey
@@ -7491,7 +7505,7 @@ class MixLayout(AbstractModel):
         :type MediaId: int
         :param _ImageLayer: The image layer. 0 is the default value and means the bottommost layer.
         :type ImageLayer: int
-        :param _SubBackgroundImage: The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :param _SubBackgroundImage: The image url supports only jpg, png, and jpeg formats. the resolution limitation is no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension. the url supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.
         :type SubBackgroundImage: str
         """
         self._Top = None
@@ -7614,7 +7628,7 @@ class MixLayout(AbstractModel):
 
     @property
     def SubBackgroundImage(self):
-        r"""The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        r"""The image url supports only jpg, png, and jpeg formats. the resolution limitation is no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension. the url supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.
         :rtype: str
         """
         return self._SubBackgroundImage
@@ -7652,19 +7666,19 @@ class MixLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MixLayoutMode: Layout mode:
-1: Floating
-2: Screen sharing
-3: Grid (default)
-4: Custom
+        :param _MixLayoutMode: Layout mode.
+1: floating layout.
+2: screen sharing layout.
+3: nine-grid layout.
+4: custom layout.
 
-Floating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+Floating layout: by default, the video footage of the first host who enters the room (or a specified host) fills the entire screen. other hosts' video images are arranged horizontally from the bottom-left corner in the room entry sequence, displayed as small pictures floating above the large screen. when the number of screens is less than or equal to 17, each line has 4 (4 x 4 arrangement). when the number of screens exceeds 17, the small pictures are rearranged with 5 per line (5 x 5 arrangement). a maximum of 25 screens are supported. if the user only sends audio, it still occupies a screen position.
 
-Screen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+Screen sharing layout: specifies a large screen position on the left side for one host (if not specified, the large screen position uses the background color). other hosts are arranged vertically on the right side from top to bottom. when the number of screens is less than 17, each column on the right supports up to 8 hosts, occupying a maximum of two columns. when the number of screens exceeds 17, hosts beyond the 17th are arranged horizontally starting from the bottom-left corner. a maximum of 25 screens is supported. if a host only sends audio, it still occupies a screen position.
 
-Grid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.
+Nine-Grid layout: automatically adjust the size of each frame based on the number of hosts. each host's frame size is the same, supporting up to 25 frames.
 
-Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
+Custom layout: customize the layout of each host's video as needed in MixLayoutList.
         :type MixLayoutMode: int
         :param _MixLayoutList: The custom layout details. This parameter is valid if `MixLayoutMode` is set to `4`. Up to 25 videos can be displayed.
         :type MixLayoutList: list of MixLayout
@@ -7677,20 +7691,22 @@ Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
 1: Substream (screen sharing stream)
 This parameter specifies the type of the stream displayed in the big window. If it appears in `MixLayoutList`, it indicates the type of the stream of a specified user.
         :type MediaId: int
-        :param _BackgroundImageUrl: The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.
+        :param _BackgroundImageUrl: The image url supports only jpg, png, and jpeg. the image resolution is limited to no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension, and only specific strings are supported in the url, including a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.
         :type BackgroundImageUrl: str
-        :param _PlaceHolderMode: `1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.
+        :param _PlaceHolderMode: Set to 1 to enable the placeholder image function, and 0 to disable it. default is 0. when enabled, the corresponding placeholder image can be displayed in the preset position if the user has no upload audio and video.
         :type PlaceHolderMode: int
-        :param _BackgroundImageRenderMode: The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.
+        :param _BackgroundImageRenderMode: Handling solution when the background image aspect ratio is not the same, consistent with the RenderMode defined in MixLayoutList.
         :type BackgroundImageRenderMode: int
-        :param _DefaultSubBackgroundImage: The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :param _DefaultSubBackgroundImage: Sub-Picture placeholder image url supports only jpg, png, jpeg. resolution limitation is no more than 2K. image size limit is no more than 5MB. note that the url must carry format extension and supports only specific string literals within the range of a-z a-z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.
         :type DefaultSubBackgroundImage: str
         :param _WaterMarkList: The watermark layout. Up to 25 watermarks are supported.
         :type WaterMarkList: list of WaterMark
-        :param _RenderMode: The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.
+        :param _RenderMode: When the aspect ratio of the background image does not match in the template layout, the handling solution is applied. the custom layout is disabled and aligns with the RenderMode defined in MixLayoutList.
         :type RenderMode: int
         :param _MaxResolutionUserAlign: This parameter is valid only if the screen sharing layout is used. If you set it to `1`, the large video window will appear on the right and the small window on the left. The default value is `0`.
         :type MaxResolutionUserAlign: int
+        :param _PureAudioDisableLayout: Controls whether audio users inside the room occupy the stream mixing layout. this takes effect only in mixed stream recording and template layout. true: represents that audio users do not occupy placeholders. false: represents that audio users occupy placeholders (false by default).
+        :type PureAudioDisableLayout: bool
         """
         self._MixLayoutMode = None
         self._MixLayoutList = None
@@ -7704,22 +7720,23 @@ This parameter specifies the type of the stream displayed in the big window. If 
         self._WaterMarkList = None
         self._RenderMode = None
         self._MaxResolutionUserAlign = None
+        self._PureAudioDisableLayout = None
 
     @property
     def MixLayoutMode(self):
-        r"""Layout mode:
-1: Floating
-2: Screen sharing
-3: Grid (default)
-4: Custom
+        r"""Layout mode.
+1: floating layout.
+2: screen sharing layout.
+3: nine-grid layout.
+4: custom layout.
 
-Floating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+Floating layout: by default, the video footage of the first host who enters the room (or a specified host) fills the entire screen. other hosts' video images are arranged horizontally from the bottom-left corner in the room entry sequence, displayed as small pictures floating above the large screen. when the number of screens is less than or equal to 17, each line has 4 (4 x 4 arrangement). when the number of screens exceeds 17, the small pictures are rearranged with 5 per line (5 x 5 arrangement). a maximum of 25 screens are supported. if the user only sends audio, it still occupies a screen position.
 
-Screen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+Screen sharing layout: specifies a large screen position on the left side for one host (if not specified, the large screen position uses the background color). other hosts are arranged vertically on the right side from top to bottom. when the number of screens is less than 17, each column on the right supports up to 8 hosts, occupying a maximum of two columns. when the number of screens exceeds 17, hosts beyond the 17th are arranged horizontally starting from the bottom-left corner. a maximum of 25 screens is supported. if a host only sends audio, it still occupies a screen position.
 
-Grid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.
+Nine-Grid layout: automatically adjust the size of each frame based on the number of hosts. each host's frame size is the same, supporting up to 25 frames.
 
-Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
+Custom layout: customize the layout of each host's video as needed in MixLayoutList.
         :rtype: int
         """
         return self._MixLayoutMode
@@ -7777,7 +7794,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def BackgroundImageUrl(self):
-        r"""The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.
+        r"""The image url supports only jpg, png, and jpeg. the image resolution is limited to no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension, and only specific strings are supported in the url, including a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.
         :rtype: str
         """
         return self._BackgroundImageUrl
@@ -7788,7 +7805,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def PlaceHolderMode(self):
-        r"""`1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.
+        r"""Set to 1 to enable the placeholder image function, and 0 to disable it. default is 0. when enabled, the corresponding placeholder image can be displayed in the preset position if the user has no upload audio and video.
         :rtype: int
         """
         return self._PlaceHolderMode
@@ -7799,7 +7816,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def BackgroundImageRenderMode(self):
-        r"""The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.
+        r"""Handling solution when the background image aspect ratio is not the same, consistent with the RenderMode defined in MixLayoutList.
         :rtype: int
         """
         return self._BackgroundImageRenderMode
@@ -7810,7 +7827,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def DefaultSubBackgroundImage(self):
-        r"""The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        r"""Sub-Picture placeholder image url supports only jpg, png, jpeg. resolution limitation is no more than 2K. image size limit is no more than 5MB. note that the url must carry format extension and supports only specific string literals within the range of a-z a-z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.
         :rtype: str
         """
         return self._DefaultSubBackgroundImage
@@ -7832,7 +7849,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def RenderMode(self):
-        r"""The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.
+        r"""When the aspect ratio of the background image does not match in the template layout, the handling solution is applied. the custom layout is disabled and aligns with the RenderMode defined in MixLayoutList.
         :rtype: int
         """
         return self._RenderMode
@@ -7851,6 +7868,17 @@ This parameter specifies the type of the stream displayed in the big window. If 
     @MaxResolutionUserAlign.setter
     def MaxResolutionUserAlign(self, MaxResolutionUserAlign):
         self._MaxResolutionUserAlign = MaxResolutionUserAlign
+
+    @property
+    def PureAudioDisableLayout(self):
+        r"""Controls whether audio users inside the room occupy the stream mixing layout. this takes effect only in mixed stream recording and template layout. true: represents that audio users do not occupy placeholders. false: represents that audio users occupy placeholders (false by default).
+        :rtype: bool
+        """
+        return self._PureAudioDisableLayout
+
+    @PureAudioDisableLayout.setter
+    def PureAudioDisableLayout(self, PureAudioDisableLayout):
+        self._PureAudioDisableLayout = PureAudioDisableLayout
 
 
     def _deserialize(self, params):
@@ -7876,6 +7904,7 @@ This parameter specifies the type of the stream displayed in the big window. If 
                 self._WaterMarkList.append(obj)
         self._RenderMode = params.get("RenderMode")
         self._MaxResolutionUserAlign = params.get("MaxResolutionUserAlign")
+        self._PureAudioDisableLayout = params.get("PureAudioDisableLayout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8851,28 +8880,41 @@ class RecordParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordMode: The recording mode.
-1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.
-2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.
+        :param _RecordMode: Recording mode:.
+1: single stream recording, record the audio and video of the subscribed UserId in the room separately, and upload the recording files to cloud storage.
+2: mixed-stream recording. mix the audio and video of the subscribed UserId in the room into an audio-video file and upload the recording file to cloud storage.
         :type RecordMode: int
-        :param _MaxIdleTime: The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.
+        :param _MaxIdleTime: Recording stops automatically when there is no host inside the room for a duration exceeding MaxIdleTime. measurement unit: second. default value: 30 seconds. the value must be greater than or equal to 5 seconds and less than or equal to 86400 seconds (24 hours).
         :type MaxIdleTime: int
-        :param _StreamType: The media type of the streams to record.
-0: Audio and video streams (default)
-1: Audio streams only
-2: Video streams only
+        :param _StreamType: Media stream type for recording.
+0: recording audio and video streams (default).
+1: record audio streams only.
+2: record video stream only.
         :type StreamType: int
-        :param _SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
+        :param _SubscribeStreamUserIds: Specifies the allowlist or blocklist for the subscription stream.
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param _OutputFormat: The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC;  `3` : MP4,  `4` : AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
+        :param _OutputFormat: Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
+
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :type OutputFormat: int
-        :param _AvMerge: Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.
+        :param _AvMerge: In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.
         :type AvMerge: int
-        :param _MaxMediaFileDuration: The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.
-This parameter is invalid if the output format is HLS.
+        :param _MaxMediaFileDuration: If the file format is aac or mp4, the system will automatically split the video file when the length limit is exceeded. measurement unit: minute. defaults to 1440 min (24h). value range: 1-1440. [single file limit is 2G. if file size exceeds 2G or recording duration exceeds 24h, the file will be automatically split.].
+Hls format recording. this parameter is not effective.
         :type MaxMediaFileDuration: int
-        :param _MediaId: The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.
+        :param _MediaId: Specify recording streams. 0: mainstream + auxiliary stream (default); 1: mainstream; 2: auxiliary stream.
         :type MediaId: int
+        :param _FillType: Specifies the type of frame to fill when the upstream video stream stops:
+- 0: Fill with the last frame (freeze the last video frame)
+- 1: Fill with black frames
+        :type FillType: int
+        :param _SubscribeAbility: Specifies whether the recording task subscribes to the stream published by the Mixed Stream Robot. 
+
+- 1: Subscribe. 
+- 0: Do not subscribe (default).
+> Note: 
+When this option is enabled, it is recommended to use the "Subscription Allowlist." Avoid subscribing to both the stream published by the Mixed Stream Robot and the streams published by the hosts simultaneously; otherwise, it will result in audio echoing (duplicate audio) in the recorded file.
+        :type SubscribeAbility: int
         """
         self._RecordMode = None
         self._MaxIdleTime = None
@@ -8882,12 +8924,14 @@ This parameter is invalid if the output format is HLS.
         self._AvMerge = None
         self._MaxMediaFileDuration = None
         self._MediaId = None
+        self._FillType = None
+        self._SubscribeAbility = None
 
     @property
     def RecordMode(self):
-        r"""The recording mode.
-1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.
-2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.
+        r"""Recording mode:.
+1: single stream recording, record the audio and video of the subscribed UserId in the room separately, and upload the recording files to cloud storage.
+2: mixed-stream recording. mix the audio and video of the subscribed UserId in the room into an audio-video file and upload the recording file to cloud storage.
         :rtype: int
         """
         return self._RecordMode
@@ -8898,7 +8942,7 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MaxIdleTime(self):
-        r"""The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.
+        r"""Recording stops automatically when there is no host inside the room for a duration exceeding MaxIdleTime. measurement unit: second. default value: 30 seconds. the value must be greater than or equal to 5 seconds and less than or equal to 86400 seconds (24 hours).
         :rtype: int
         """
         return self._MaxIdleTime
@@ -8909,10 +8953,10 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def StreamType(self):
-        r"""The media type of the streams to record.
-0: Audio and video streams (default)
-1: Audio streams only
-2: Video streams only
+        r"""Media stream type for recording.
+0: recording audio and video streams (default).
+1: record audio streams only.
+2: record video stream only.
         :rtype: int
         """
         return self._StreamType
@@ -8923,7 +8967,7 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def SubscribeStreamUserIds(self):
-        r"""The allowlist/blocklist for stream subscription.
+        r"""Specifies the allowlist or blocklist for the subscription stream.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         """
         return self._SubscribeStreamUserIds
@@ -8934,7 +8978,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def OutputFormat(self):
-        r"""The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC;  `3` : MP4,  `4` : AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
+        r"""Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
+
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :rtype: int
         """
         return self._OutputFormat
@@ -8945,7 +8991,7 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def AvMerge(self):
-        r"""Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.
+        r"""In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.
         :rtype: int
         """
         return self._AvMerge
@@ -8956,8 +9002,8 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MaxMediaFileDuration(self):
-        r"""The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.
-This parameter is invalid if the output format is HLS.
+        r"""If the file format is aac or mp4, the system will automatically split the video file when the length limit is exceeded. measurement unit: minute. defaults to 1440 min (24h). value range: 1-1440. [single file limit is 2G. if file size exceeds 2G or recording duration exceeds 24h, the file will be automatically split.].
+Hls format recording. this parameter is not effective.
         :rtype: int
         """
         return self._MaxMediaFileDuration
@@ -8968,7 +9014,7 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MediaId(self):
-        r"""The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.
+        r"""Specify recording streams. 0: mainstream + auxiliary stream (default); 1: mainstream; 2: auxiliary stream.
         :rtype: int
         """
         return self._MediaId
@@ -8976,6 +9022,35 @@ This parameter is invalid if the output format is HLS.
     @MediaId.setter
     def MediaId(self, MediaId):
         self._MediaId = MediaId
+
+    @property
+    def FillType(self):
+        r"""Specifies the type of frame to fill when the upstream video stream stops:
+- 0: Fill with the last frame (freeze the last video frame)
+- 1: Fill with black frames
+        :rtype: int
+        """
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+    @property
+    def SubscribeAbility(self):
+        r"""Specifies whether the recording task subscribes to the stream published by the Mixed Stream Robot. 
+
+- 1: Subscribe. 
+- 0: Do not subscribe (default).
+> Note: 
+When this option is enabled, it is recommended to use the "Subscription Allowlist." Avoid subscribing to both the stream published by the Mixed Stream Robot and the streams published by the hosts simultaneously; otherwise, it will result in audio echoing (duplicate audio) in the recorded file.
+        :rtype: int
+        """
+        return self._SubscribeAbility
+
+    @SubscribeAbility.setter
+    def SubscribeAbility(self, SubscribeAbility):
+        self._SubscribeAbility = SubscribeAbility
 
 
     def _deserialize(self, params):
@@ -8989,6 +9064,8 @@ This parameter is invalid if the output format is HLS.
         self._AvMerge = params.get("AvMerge")
         self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
         self._MediaId = params.get("MediaId")
+        self._FillType = params.get("FillType")
+        self._SubscribeAbility = params.get("SubscribeAbility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12132,24 +12209,25 @@ class TencentVod(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Procedure: The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.
+        :param _Procedure: Subsequent media task processing operations allow automatic task initiation after media upload is completed. the parameter value is the task flow template name. VOD (video on demand) supports creating task flow templates and template naming.
         :type Procedure: str
-        :param _ExpireTime: The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.
+        :param _ExpireTime: Media file expiry time is the absolute expiration time from the current system time. to save for one day, enter "86400". to retain permanently, enter "0". the default is permanent preservation.
         :type ExpireTime: int
-        :param _StorageRegion: The storage region. Set this parameter if you have special requirements on the storage region.
+        :param _StorageRegion: Specify the upload park, applicable only to the user with special requirement for upload region.
         :type StorageRegion: str
-        :param _ClassId: The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.
-The default value is `0`, which means others.
+        :param _ClassId: Category ID is used to categorize and manage media. you can create a category and obtain the category ID through the create category api.
+The default value is 0, indicating other categories.
         :type ClassId: int
-        :param _SubAppId: The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param _SubAppId: Subapplication ID for video-on-demand (vod). if you need to access resources belonging to a subapplication, fill in this field with the subapplication ID. otherwise, this field is not required.
         :type SubAppId: int
-        :param _SessionContext: The task flow context, which is passed through after the task is completed.
+        :param _SessionContext: Task flow context, passed through when task complete.
         :type SessionContext: str
-        :param _SourceContext: The upload context, which is passed through after upload is completed.
+        :param _SourceContext: Upload context, passed through on upload completion callback.
         :type SourceContext: str
-        :param _MediaType: The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`); `3`: HLS+MP4; `4`: HLS+AAC.
+        :param _MediaType: The recording file format type uploaded to the vod platform. valid values: 0: mp4 (default), 1: hls, 2: aac (valid at that time when StreamType=1 for audio-only recording).
+3: hls+mp4, 4: hls+aac (valid at that time when StreamType=1 is audio-only recording).
         :type MediaType: int
-        :param _UserDefineRecordId: The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.
+        :param _UserDefineRecordId: Only supports API recording upload to vod. this parameter indicates you can customize the recording file name prefix. [length limit: 64 bytes, only allows a combination of uppercase and lowercase letters (a-zA-Z), numbers (0-9), underline, and hyphen]. the prefix is separated from the automatically generated recording file name by `__UserDefine_u_`.
         :type UserDefineRecordId: str
         """
         self._Procedure = None
@@ -12164,7 +12242,7 @@ The default value is `0`, which means others.
 
     @property
     def Procedure(self):
-        r"""The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.
+        r"""Subsequent media task processing operations allow automatic task initiation after media upload is completed. the parameter value is the task flow template name. VOD (video on demand) supports creating task flow templates and template naming.
         :rtype: str
         """
         return self._Procedure
@@ -12175,7 +12253,7 @@ The default value is `0`, which means others.
 
     @property
     def ExpireTime(self):
-        r"""The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.
+        r"""Media file expiry time is the absolute expiration time from the current system time. to save for one day, enter "86400". to retain permanently, enter "0". the default is permanent preservation.
         :rtype: int
         """
         return self._ExpireTime
@@ -12186,7 +12264,7 @@ The default value is `0`, which means others.
 
     @property
     def StorageRegion(self):
-        r"""The storage region. Set this parameter if you have special requirements on the storage region.
+        r"""Specify the upload park, applicable only to the user with special requirement for upload region.
         :rtype: str
         """
         return self._StorageRegion
@@ -12197,8 +12275,8 @@ The default value is `0`, which means others.
 
     @property
     def ClassId(self):
-        r"""The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.
-The default value is `0`, which means others.
+        r"""Category ID is used to categorize and manage media. you can create a category and obtain the category ID through the create category api.
+The default value is 0, indicating other categories.
         :rtype: int
         """
         return self._ClassId
@@ -12209,7 +12287,7 @@ The default value is `0`, which means others.
 
     @property
     def SubAppId(self):
-        r"""The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        r"""Subapplication ID for video-on-demand (vod). if you need to access resources belonging to a subapplication, fill in this field with the subapplication ID. otherwise, this field is not required.
         :rtype: int
         """
         return self._SubAppId
@@ -12220,7 +12298,7 @@ The default value is `0`, which means others.
 
     @property
     def SessionContext(self):
-        r"""The task flow context, which is passed through after the task is completed.
+        r"""Task flow context, passed through when task complete.
         :rtype: str
         """
         return self._SessionContext
@@ -12231,7 +12309,7 @@ The default value is `0`, which means others.
 
     @property
     def SourceContext(self):
-        r"""The upload context, which is passed through after upload is completed.
+        r"""Upload context, passed through on upload completion callback.
         :rtype: str
         """
         return self._SourceContext
@@ -12242,7 +12320,8 @@ The default value is `0`, which means others.
 
     @property
     def MediaType(self):
-        r"""The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`); `3`: HLS+MP4; `4`: HLS+AAC.
+        r"""The recording file format type uploaded to the vod platform. valid values: 0: mp4 (default), 1: hls, 2: aac (valid at that time when StreamType=1 for audio-only recording).
+3: hls+mp4, 4: hls+aac (valid at that time when StreamType=1 is audio-only recording).
         :rtype: int
         """
         return self._MediaType
@@ -12253,7 +12332,7 @@ The default value is `0`, which means others.
 
     @property
     def UserDefineRecordId(self):
-        r"""The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.
+        r"""Only supports API recording upload to vod. this parameter indicates you can customize the recording file name prefix. [length limit: 64 bytes, only allows a combination of uppercase and lowercase letters (a-zA-Z), numbers (0-9), underline, and hyphen]. the prefix is separated from the automatically generated recording file name by `__UserDefine_u_`.
         :rtype: str
         """
         return self._UserDefineRecordId
@@ -13619,7 +13698,7 @@ class WaterMark(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WaterMarkType: The watermark type. 0 (default): image; 1: text (not supported yet).
+        :param _WaterMarkType: The watermark type. 0 (default): image; 1: text; 2: timestamp.
         :type WaterMarkType: int
         :param _WaterMarkImage: The information of watermark images. This parameter is required if the watermark type is image.
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
@@ -13635,7 +13714,7 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkType(self):
-        r"""The watermark type. 0 (default): image; 1: text (not supported yet).
+        r"""The watermark type. 0 (default): image; 1: text; 2: timestamp.
         :rtype: int
         """
         return self._WaterMarkType
@@ -13847,7 +13926,7 @@ class WaterMarkImage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WaterMarkUrl: The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.
+        :param _WaterMarkUrl: The download url address supports only jpg, png, and jpeg with a size limit of no more than 5M. note that the url must carry the format extension and supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.
         :type WaterMarkUrl: str
         :param _Top: The Y axis of the image's top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas height.
         :type Top: int
@@ -13866,7 +13945,7 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
-        r"""The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.
+        r"""The download url address supports only jpg, png, and jpeg with a size limit of no more than 5M. note that the url must carry the format extension and supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.
         :rtype: str
         """
         return self._WaterMarkUrl

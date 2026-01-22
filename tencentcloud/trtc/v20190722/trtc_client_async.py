@@ -72,18 +72,19 @@ class TrtcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudRecordingResponse:
         """
-        API description:
-        This API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.
+        API description:.
+        Start on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.
+        Before official online operation, pay attention to the recording best practices (https://www.tencentcloud.comom/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.
 
-        You can use this API to perform the following operations:
-        * Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter
-        * Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.
-        * Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`
-        * Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template
+        This API is used to achieve the following goals:.
+        Specify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.
+        * This API is used to specify the storage parameter (StorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Video on Demand (VOD), Cloud Object Storage (COS), and third-party AWS are supported.
+        Specify detailed parameters for audio and video transcoding in mixed-stream mode (MixTranscodeParams), including video resolution, video bitrate, video frame rate, and sound quality.
+        * Specify the position and layout of each stream in mixed-stream mode, or configure via an automatic Template.
 
-        Key concepts:
-        * Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.
-        Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.
+        Key nouns:.
+        * Single stream recording: Record the audio and video of subscribed UserIds in the room separately. The recording service uploads the files to your designated cloud storage in real time.
+        Mixed-stream recording: Mix the audio and video of subscribed UserId in the room into a video file and upload the recorded files to your designated cloud storage. (After recording ends, go to the VOD console https://console.cloud.tencent.com/vod/media or the object storage COS console https://console.cloud.tencent.com/cos/bucket to view files).
         """
         
         kwargs = {}
