@@ -26,11 +26,23 @@ FAILEDOPERATION_AGENTPAYDEALCANNOTDOWN = 'FailedOperation.AgentPayDealCannotDown
 # The account balance is insufficient.
 FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 
+# Business side validation failed error code.
+FAILEDOPERATION_BUSINESSCHECKERRCODE = 'FailedOperation.BusinessCheckErrCode'
+
+# Distribution scenario restricted error.
+FAILEDOPERATION_DISTRIBUTEERROR = 'FailedOperation.DistributeError'
+
+# Since parameter issue, result in price inquiry failure.
+FAILEDOPERATION_GETPRICEPARAMERROR = 'FailedOperation.GetPriceParamError'
+
 # Invalid App ID.
 FAILEDOPERATION_INVALIDAPPID = 'FailedOperation.InvalidAppId'
 
 # Order status error. Only unpaid orders support payment.
 FAILEDOPERATION_INVALIDDEAL = 'FailedOperation.InvalidDeal'
+
+# Order type ID is invalid. repurchase.
+FAILEDOPERATION_INVALIDGOODSCATEGORYID = 'FailedOperation.InvalidGoodsCategoryId'
 
 # Vouchers are not available.
 FAILEDOPERATION_INVALIDVOUCHER = 'FailedOperation.InvalidVoucher'
@@ -59,6 +71,9 @@ FAILEDOPERATION_SUMMARYDATANOTREADY = 'FailedOperation.SummaryDataNotReady'
 # This cost allocation tag key does not exist.
 FAILEDOPERATION_TAGKEYNOTEXIST = 'FailedOperation.TagKeyNotExist'
 
+# Order placement allowlist interception.
+FAILEDOPERATION_DEALCREATEWHITELISTERROR = 'FailedOperation.dealCreateWhitelistError'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -68,7 +83,7 @@ INTERNALERROR_DBOPERATERROR = 'InternalError.DbOperatError'
 # Gateway error.
 INTERNALERROR_GATEWAYERROR = 'InternalError.GatewayError'
 
-# An internal system error occurred.
+# Internal system error.
 INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 
 # Undefined exception.
@@ -77,7 +92,10 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# A parameter error occurred.
+# Parameter error.
+INVALIDPARAMETER_APIPARAMERROR = 'InvalidParameter.ApiParamError'
+
+# Parameter error.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # Invalid parameter value.
@@ -97,3 +115,6 @@ UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification
 
 # Operation unsupported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# This act is not currently supported.
+UNSUPPORTEDOPERATION_NOT_SUPPORT_THIS_ACTION = 'UnsupportedOperation.NOT_SUPPORT_THIS_ACTION'

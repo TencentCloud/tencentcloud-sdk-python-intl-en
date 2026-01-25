@@ -118,6 +118,30 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInstance(self, request):
+        r"""Creating an instance resource will generate an order for the newly purchased instance resource and automatically complete the payment using the balance of the Tencent Cloud account. The account calling this API must be granted the finace:trade permission; otherwise, the payment will fail.
+        Currently, the integrated and supported product for purchase includes: Cloud Firewall.
+
+        :param request: Request instance for CreateInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAllocationRule(self, request):
         r"""Delete sharing rule interface.
 

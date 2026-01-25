@@ -26,6 +26,29 @@ class AdvisorClient(AbstractClient):
     _service = 'advisor'
 
 
+    def CreateAdvisorAuthorization(self, request):
+        r"""Enable Tencent Cloud Smart Advisor authorization. This will synchronously enable report interpretation and cloud architecture collaboration permissions.
+
+        :param request: Request instance for CreateAdvisorAuthorization.
+        :type request: :class:`tencentcloud.advisor.v20200721.models.CreateAdvisorAuthorizationRequest`
+        :rtype: :class:`tencentcloud.advisor.v20200721.models.CreateAdvisorAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAdvisorAuthorization", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAdvisorAuthorizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStrategies(self, request):
         r"""This API is used to query information about assessment items.
 

@@ -97,6 +97,25 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInstance(
+            self,
+            request: models.CreateInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateInstanceResponse:
+        """
+        Creating an instance resource will generate an order for the newly purchased instance resource and automatically complete the payment using the balance of the Tencent Cloud account. The account calling this API must be granted the finace:trade permission; otherwise, the payment will fail.
+        Currently, the integrated and supported product for purchase includes: Cloud Firewall.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAllocationRule(
             self,
             request: models.DeleteAllocationRuleRequest,
