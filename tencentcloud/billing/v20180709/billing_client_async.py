@@ -803,3 +803,41 @@ class BillingClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def RefundInstance(
+            self,
+            request: models.RefundInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RefundInstanceResponse:
+        """
+        To unsubscribe from an unneeded instance, only the actual payment amount will be refunded, any used vouchers will not be returned. The refunded amount will be credited to your Tencent Cloud account balance by default.The account calling this API must be granted the finace:RefundInstance permission; otherwise, the refund process will fail.
+        Currently, the integrated and supported product for this operation includes: Cloud Firewall.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RefundInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RefundInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RenewInstance(
+            self,
+            request: models.RenewInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RenewInstanceResponse:
+        """
+        Renewing an instance: when calling this API to renew a server, ensure that your Tencent Cloud account has sufficient balance; otherwise, the renewal will fail. The account calling this API must be granted the finace:tradepermission; otherwise, the renewal will fail.
+        Currently, the integrated and supported product for renewal includes: Cloud Firewall.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

@@ -793,7 +793,7 @@ Url: file size cannot exceed 200MB.
         :param _PolygonType: Polygon type, indicates the model surface is composed of grid components, defaults to triangle
 Reference value:
 triangle: triangle face
-quadrilateral: quadrangle face
+quadrilateral: triangular and quadrilateral mixed face
         :type PolygonType: str
         :param _FaceLevel: Reduction level bit type
 valid values: high, medium, low
@@ -823,7 +823,7 @@ Url: file size cannot exceed 200MB.
         r"""Polygon type, indicates the model surface is composed of grid components, defaults to triangle
 Reference value:
 triangle: triangle face
-quadrilateral: quadrangle face
+quadrilateral: triangular and quadrilateral mixed face
         :rtype: str
         """
         return self._PolygonType

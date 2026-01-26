@@ -1018,3 +1018,51 @@ class BillingClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefundInstance(self, request):
+        r"""To unsubscribe from an unneeded instance, only the actual payment amount will be refunded, any used vouchers will not be returned. The refunded amount will be credited to your Tencent Cloud account balance by default.The account calling this API must be granted the finace:RefundInstance permission; otherwise, the refund process will fail.
+        Currently, the integrated and supported product for this operation includes: Cloud Firewall.
+
+        :param request: Request instance for RefundInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.RefundInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.RefundInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefundInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefundInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewInstance(self, request):
+        r"""Renewing an instance: when calling this API to renew a server, ensure that your Tencent Cloud account has sufficient balance; otherwise, the renewal will fail. The account calling this API must be granted the finace:tradepermission; otherwise, the renewal will fail.
+        Currently, the integrated and supported product for renewal includes: Cloud Firewall.
+
+        :param request: Request instance for RenewInstance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.RenewInstanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.RenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

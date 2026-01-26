@@ -124,7 +124,7 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.Submit3DSmartTopologyJobResponse:
         """
-        The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
+        The SmartTopoly API uses the Polygen 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.
         1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.
         """
         

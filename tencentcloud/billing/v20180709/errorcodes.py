@@ -98,6 +98,9 @@ INVALIDPARAMETER_APIPARAMERROR = 'InvalidParameter.ApiParamError'
 # Parameter error.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
+# The resource is locked.
+INVALIDPARAMETER_RESOURCELOCKED = 'InvalidParameter.ResourceLocked'
+
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
