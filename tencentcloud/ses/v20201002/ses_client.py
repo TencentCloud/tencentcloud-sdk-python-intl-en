@@ -72,6 +72,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomBlacklist(self, request):
+        r"""Add a custom blocklist.
+
+        :param request: Request instance for CreateCustomBlacklist.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateCustomBlacklistRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateCustomBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEmailAddress(self, request):
         r"""After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
 
@@ -234,6 +257,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomBlackList(self, request):
+        r"""Delete a custom blocklist email address.
+
+        :param request: Request instance for DeleteCustomBlackList.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteCustomBlackListRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteCustomBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomBlackListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteEmailAddress(self, request):
         r"""This API is used to delete a sender address.
 
@@ -373,8 +419,7 @@ class SesClient(AbstractClient):
 
 
     def GetSendEmailStatus(self, request):
-        r"""This API is used to get email sending status. Only data within 30 days can be queried.
-        Default API request rate limit: 1 request/sec.
+        r"""Search the email sending status. Only support querying data within 30 days.
 
         :param request: Request instance for GetSendEmailStatus.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`
@@ -465,6 +510,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListCustomBlacklist(self, request):
+        r"""Retrieve the custom blocklist.
+
+        :param request: Request instance for ListCustomBlacklist.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListCustomBlacklistRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListCustomBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListCustomBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListCustomBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListEmailAddress(self, request):
         r"""This API is used to get the list of sender addresses.
 
@@ -525,6 +593,29 @@ class SesClient(AbstractClient):
             body = self.call("ListEmailTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.ListEmailTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListReceiverDetails(self, request):
+        r"""Query ALL recipient email addresses in the recipient list based on the recipient list id with paging query. Filter queries can be based on the recipient email address.
+
+        :param request: Request instance for ListReceiverDetails.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListReceiverDetailsRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListReceiverDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReceiverDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReceiverDetailsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -617,6 +708,29 @@ class SesClient(AbstractClient):
             body = self.call("UpdateAddressUnsubscribeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAddressUnsubscribeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCustomBlackList(self, request):
+        r"""Refresh custom blocklist.
+
+        :param request: Request instance for UpdateCustomBlackList.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateCustomBlackListRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateCustomBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCustomBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCustomBlackListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

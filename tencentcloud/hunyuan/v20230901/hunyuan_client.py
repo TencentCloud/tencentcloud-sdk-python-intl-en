@@ -26,6 +26,29 @@ class HunyuanClient(AbstractClient):
     _service = 'hunyuan'
 
 
+    def ChatTranslations(self, request):
+        r"""Tencent Hunyuan is a large language model (LLM) developed by Tencent R&D. It possesses powerful Chinese creation capacity, logical reasoning in complex context, and reliable task execution power. This API supports streaming or non-streaming calls. When using streaming calls, it follows the SSE protocol.
+
+        1. This API does not currently support returning Image Content.
+        2. By default, this API has account restrictions with a number of concurrencies of 5.
+        3. Please use the SDK to call this API. examples are provided in the Git repository examples/hunyuan/v20230901/ directory for each development language. The SDK link is provided in the "**Developer Resources - SDK**" part under the document.
+        4. We recommend you use API Explorer for quick online debugging interface and download example code in languages, [click to open](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions).
+
+        :param request: Request instance for ChatTranslations.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.ChatTranslationsRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ChatTranslationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("ChatTranslations", params, models.ChatTranslationsResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def Convert3DFormat(self, request):
         r"""After inputting a 3D model file, the 3D model file format can be switched.
 

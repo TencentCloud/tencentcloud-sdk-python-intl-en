@@ -93,11 +93,14 @@ class Attachment(AbstractModel):
         r"""
         :param _FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
         :type FileName: str
-        :param _Content: Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        :param _Content: The Base64-encoded attachment content supports a maximum of 4M. note: tencent cloud API supports up to 8M request packets. the attachment content is expected to expand by 1.5 times after Base64 encoding. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
         :type Content: str
+        :param _FileURL: Attachment URL. do not use the open function.
+        :type FileURL: str
         """
         self._FileName = None
         self._Content = None
+        self._FileURL = None
 
     @property
     def FileName(self):
@@ -112,7 +115,7 @@ class Attachment(AbstractModel):
 
     @property
     def Content(self):
-        r"""Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        r"""The Base64-encoded attachment content supports a maximum of 4M. note: tencent cloud API supports up to 8M request packets. the attachment content is expected to expand by 1.5 times after Base64 encoding. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
         :rtype: str
         """
         return self._Content
@@ -121,10 +124,22 @@ class Attachment(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def FileURL(self):
+        r"""Attachment URL. do not use the open function.
+        :rtype: str
+        """
+        return self._FileURL
+
+    @FileURL.setter
+    def FileURL(self, FileURL):
+        self._FileURL = FileURL
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
         self._Content = params.get("Content")
+        self._FileURL = params.get("FileURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -142,31 +157,32 @@ class BatchSendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
-sender &lt;email address&gt;. For example:
-Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
+        :param _FromEmailAddress: Sender'S email address. please fill in the sender's email address, such as noreply@mail.qcloud.com. if you need to fill in the sender's description, please follow.
+Sender &lt;email address&gt; via fill in, such as:.
+Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
         :type FromEmailAddress: str
-        :param _ReceiverId: Recipient group ID
+        :param _ReceiverId: Recipient list ID.
         :type ReceiverId: int
-        :param _Subject: Email subject
+        :param _Subject: Email subject.
         :type Subject: str
-        :param _TaskType: Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        :param _TaskType: Task type 1: send now 2: scheduled sending 3: cycle (frequency) sending.
         :type TaskType: int
-        :param _ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        :param _ReplyToAddresses: The "reply" email address of the mail. can be filled with an email address you can receive mail from, can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
         :type ReplyToAddresses: str
-        :param _Template: Template when emails are sent using a template
+        :param _Template: When using a template to send, fill in the related parameters of the template.
+<Dx-Alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: Disused
+        :param _Simple: Abandoned<Dx-Alert infotype="notice" title="description">only customers who historically applied for special configuration require the use of it. if you have not applied for special configuration, this field does not exist.</dx-alert>.
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
+        :param _Attachments: Send attachment when required. fill in related parameters (not supported).
         :type Attachments: list of Attachment
-        :param _CycleParam: Parameter required for a recurring sending task
+        :param _CycleParam: Required parameter for sending tasks periodically.
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
-        :param _TimedParam: Parameter required for a scheduled sending task
+        :param _TimedParam: Required parameter for scheduled task assignment.
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param _Unsubscribe: Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        :param _Unsubscribe: Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
         :type Unsubscribe: str
-        :param _ADLocation: Whether to add an ad tag. `0`: Add no tag; `1`: Add before the subject; `2`: Add after the subject.
+        :param _ADLocation: Whether to add an ad flag. valid values: 0 (do not add), 1 (add to the previous subject), 2 (add to the following subject).
         :type ADLocation: int
         """
         self._FromEmailAddress = None
@@ -184,9 +200,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def FromEmailAddress(self):
-        r"""Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
-sender &lt;email address&gt;. For example:
-Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
+        r"""Sender'S email address. please fill in the sender's email address, such as noreply@mail.qcloud.com. if you need to fill in the sender's description, please follow.
+Sender &lt;email address&gt; via fill in, such as:.
+Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
         :rtype: str
         """
         return self._FromEmailAddress
@@ -197,7 +213,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReceiverId(self):
-        r"""Recipient group ID
+        r"""Recipient list ID.
         :rtype: int
         """
         return self._ReceiverId
@@ -208,7 +224,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Subject(self):
-        r"""Email subject
+        r"""Email subject.
         :rtype: str
         """
         return self._Subject
@@ -219,7 +235,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TaskType(self):
-        r"""Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        r"""Task type 1: send now 2: scheduled sending 3: cycle (frequency) sending.
         :rtype: int
         """
         return self._TaskType
@@ -230,7 +246,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReplyToAddresses(self):
-        r"""Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        r"""The "reply" email address of the mail. can be filled with an email address you can receive mail from, can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -241,7 +257,8 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Template(self):
-        r"""Template when emails are sent using a template
+        r"""When using a template to send, fill in the related parameters of the template.
+<Dx-Alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -252,7 +269,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Simple(self):
-        r"""Disused
+        r"""Abandoned<Dx-Alert infotype="notice" title="description">only customers who historically applied for special configuration require the use of it. if you have not applied for special configuration, this field does not exist.</dx-alert>.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -263,7 +280,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Attachments(self):
-        r"""Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
+        r"""Send attachment when required. fill in related parameters (not supported).
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -274,7 +291,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def CycleParam(self):
-        r"""Parameter required for a recurring sending task
+        r"""Required parameter for sending tasks periodically.
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
         return self._CycleParam
@@ -285,7 +302,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TimedParam(self):
-        r"""Parameter required for a scheduled sending task
+        r"""Required parameter for scheduled task assignment.
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
         return self._TimedParam
@@ -296,7 +313,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Unsubscribe(self):
-        r"""Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        r"""Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
         :rtype: str
         """
         return self._Unsubscribe
@@ -307,7 +324,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ADLocation(self):
-        r"""Whether to add an ad tag. `0`: Add no tag; `1`: Add before the subject; `2`: Add after the subject.
+        r"""Whether to add an ad flag. valid values: 0 (do not add), 1 (add to the previous subject), 2 (add to the following subject).
         :rtype: int
         """
         return self._ADLocation
@@ -360,9 +377,9 @@ class BatchSendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Sending task ID
+        :param _TaskId: Send task ID.
         :type TaskId: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskId = None
@@ -370,7 +387,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Sending task ID
+        r"""Send task ID.
         :rtype: int
         """
         return self._TaskId
@@ -381,7 +398,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -396,8 +413,108 @@ class BatchSendEmailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlackAddressDetail(AbstractModel):
+    r"""Blocklist description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Blocklist address id.
+        :type Id: int
+        :param _Email: Email address.
+        :type Email: str
+        :param _CreateTime: Creation time.
+
+
+        :type CreateTime: str
+        :param _ExpireDate: Expiration time
+        :type ExpireDate: str
+        :param _Status: Blocklist status. valid values: 0 (expired), 1 (active).
+        :type Status: int
+        """
+        self._Id = None
+        self._Email = None
+        self._CreateTime = None
+        self._ExpireDate = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""Blocklist address id.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Email(self):
+        r"""Email address.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+
+
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireDate(self):
+        r"""Expiration time
+        :rtype: str
+        """
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+    @property
+    def Status(self):
+        r"""Blocklist status. valid values: 0 (expired), 1 (active).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireDate = params.get("ExpireDate")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlackEmailAddress(AbstractModel):
-    r"""Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.
+    r"""Email blocklist structure describes the blocked email address, blocklist time, and reason.
 
     """
 
@@ -407,9 +524,12 @@ class BlackEmailAddress(AbstractModel):
         :type BounceTime: str
         :param _EmailAddress: Blocklisted email address.
         :type EmailAddress: str
+        :param _IspDesc: Reason for being blacklisted.
+        :type IspDesc: str
         """
         self._BounceTime = None
         self._EmailAddress = None
+        self._IspDesc = None
 
     @property
     def BounceTime(self):
@@ -433,10 +553,22 @@ class BlackEmailAddress(AbstractModel):
     def EmailAddress(self, EmailAddress):
         self._EmailAddress = EmailAddress
 
+    @property
+    def IspDesc(self):
+        r"""Reason for being blacklisted.
+        :rtype: str
+        """
+        return self._IspDesc
+
+    @IspDesc.setter
+    def IspDesc(self, IspDesc):
+        self._IspDesc = IspDesc
+
 
     def _deserialize(self, params):
         self._BounceTime = params.get("BounceTime")
         self._EmailAddress = params.get("EmailAddress")
+        self._IspDesc = params.get("IspDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -541,6 +673,160 @@ class CreateAddressUnsubscribeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCustomBlacklistRequest(AbstractModel):
+    r"""CreateCustomBlacklist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Emails: Add to blocklist email address.
+        :type Emails: list of str
+        :param _ExpireDate: Expiration date.
+        :type ExpireDate: str
+        """
+        self._Emails = None
+        self._ExpireDate = None
+
+    @property
+    def Emails(self):
+        r"""Add to blocklist email address.
+        :rtype: list of str
+        """
+        return self._Emails
+
+    @Emails.setter
+    def Emails(self, Emails):
+        self._Emails = Emails
+
+    @property
+    def ExpireDate(self):
+        r"""Expiration date.
+        :rtype: str
+        """
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+
+    def _deserialize(self, params):
+        self._Emails = params.get("Emails")
+        self._ExpireDate = params.get("ExpireDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomBlacklistResponse(AbstractModel):
+    r"""CreateCustomBlacklist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of recipients.
+        :type TotalCount: int
+        :param _ValidCount: Actual uploaded quantity.
+        :type ValidCount: int
+        :param _TooLongCount: Data too long quantity.
+        :type TooLongCount: int
+        :param _RepeatCount: Repetition count.
+        :type RepeatCount: int
+        :param _InvalidCount: Incorrect format count.
+        :type InvalidCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ValidCount = None
+        self._TooLongCount = None
+        self._RepeatCount = None
+        self._InvalidCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of recipients.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ValidCount(self):
+        r"""Actual uploaded quantity.
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def TooLongCount(self):
+        r"""Data too long quantity.
+        :rtype: int
+        """
+        return self._TooLongCount
+
+    @TooLongCount.setter
+    def TooLongCount(self, TooLongCount):
+        self._TooLongCount = TooLongCount
+
+    @property
+    def RepeatCount(self):
+        r"""Repetition count.
+        :rtype: int
+        """
+        return self._RepeatCount
+
+    @RepeatCount.setter
+    def RepeatCount(self, RepeatCount):
+        self._RepeatCount = RepeatCount
+
+    @property
+    def InvalidCount(self):
+        r"""Incorrect format count.
+        :rtype: int
+        """
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ValidCount = params.get("ValidCount")
+        self._TooLongCount = params.get("TooLongCount")
+        self._RepeatCount = params.get("RepeatCount")
+        self._InvalidCount = params.get("InvalidCount")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateEmailAddressRequest(AbstractModel):
     r"""CreateEmailAddress request structure.
 
@@ -599,14 +885,14 @@ class CreateEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -629,8 +915,14 @@ class CreateEmailIdentityRequest(AbstractModel):
         r"""
         :param _EmailIdentity: Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
         :type EmailIdentity: str
+        :param _DKIMOption: Generated dkim key length. valid values: 0 (1024), 1 (2048).
+        :type DKIMOption: int
+        :param _TagList: tag.
+        :type TagList: list of TagList
         """
         self._EmailIdentity = None
+        self._DKIMOption = None
+        self._TagList = None
 
     @property
     def EmailIdentity(self):
@@ -643,9 +935,38 @@ class CreateEmailIdentityRequest(AbstractModel):
     def EmailIdentity(self, EmailIdentity):
         self._EmailIdentity = EmailIdentity
 
+    @property
+    def DKIMOption(self):
+        r"""Generated dkim key length. valid values: 0 (1024), 1 (2048).
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
+
+    @property
+    def TagList(self):
+        r"""tag.
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._EmailIdentity = params.get("EmailIdentity")
+        self._DKIMOption = params.get("DKIMOption")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -669,7 +990,7 @@ class CreateEmailIdentityResponse(AbstractModel):
         :type VerifiedForSendingStatus: bool
         :param _Attributes: DNS information that needs to be configured.
         :type Attributes: list of DNSAttributes
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IdentityType = None
@@ -712,7 +1033,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -796,7 +1117,7 @@ class CreateEmailTemplateResponse(AbstractModel):
         r"""
         :param _TemplateID: Template ID
         :type TemplateID: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TemplateID = None
@@ -815,7 +1136,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -888,14 +1209,84 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _TotalCount: Total number of recipients.
+        :type TotalCount: int
+        :param _ValidCount: Actual uploaded quantity.
+        :type ValidCount: int
+        :param _TooLongCount: Data too long quantity.
+        :type TooLongCount: int
+        :param _EmptyEmailCount: Number of empty email addresses.
+        :type EmptyEmailCount: int
+        :param _RepeatCount: Repetition count.
+        :type RepeatCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._ValidCount = None
+        self._TooLongCount = None
+        self._EmptyEmailCount = None
+        self._RepeatCount = None
         self._RequestId = None
 
     @property
+    def TotalCount(self):
+        r"""Total number of recipients.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ValidCount(self):
+        r"""Actual uploaded quantity.
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def TooLongCount(self):
+        r"""Data too long quantity.
+        :rtype: int
+        """
+        return self._TooLongCount
+
+    @TooLongCount.setter
+    def TooLongCount(self, TooLongCount):
+        self._TooLongCount = TooLongCount
+
+    @property
+    def EmptyEmailCount(self):
+        r"""Number of empty email addresses.
+        :rtype: int
+        """
+        return self._EmptyEmailCount
+
+    @EmptyEmailCount.setter
+    def EmptyEmailCount(self, EmptyEmailCount):
+        self._EmptyEmailCount = EmptyEmailCount
+
+    @property
+    def RepeatCount(self):
+        r"""Repetition count.
+        :rtype: int
+        """
+        return self._RepeatCount
+
+    @RepeatCount.setter
+    def RepeatCount(self, RepeatCount):
+        self._RepeatCount = RepeatCount
+
+    @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -906,6 +1297,11 @@ class CreateReceiverDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ValidCount = params.get("ValidCount")
+        self._TooLongCount = params.get("TooLongCount")
+        self._EmptyEmailCount = params.get("EmptyEmailCount")
+        self._RepeatCount = params.get("RepeatCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -969,7 +1365,7 @@ class CreateReceiverResponse(AbstractModel):
         r"""
         :param _ReceiverId: Recipient group ID, by which recipient email addresses are uploaded
         :type ReceiverId: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ReceiverId = None
@@ -988,7 +1384,7 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1272,14 +1668,78 @@ class DeleteBlackListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCustomBlackListRequest(AbstractModel):
+    r"""DeleteCustomBlackList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Emails: Email address that needs to be deleted.
+        :type Emails: list of str
+        """
+        self._Emails = None
+
+    @property
+    def Emails(self):
+        r"""Email address that needs to be deleted.
+        :rtype: list of str
+        """
+        return self._Emails
+
+    @Emails.setter
+    def Emails(self, Emails):
+        self._Emails = Emails
+
+
+    def _deserialize(self, params):
+        self._Emails = params.get("Emails")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomBlackListResponse(AbstractModel):
+    r"""DeleteCustomBlackList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1336,14 +1796,14 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1400,14 +1860,14 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1464,14 +1924,14 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1528,14 +1988,14 @@ class DeleteReceiverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1566,12 +2026,18 @@ class EmailIdentity(AbstractModel):
         :type CurrentReputationLevel: int
         :param _DailyQuota: Maximum number of messages sent per day
         :type DailyQuota: int
+        :param _SendIp: Independent ip for domain configuration.
+        :type SendIp: list of str
+        :param _TagList: tag.
+        :type TagList: list of TagList
         """
         self._IdentityName = None
         self._IdentityType = None
         self._SendingEnabled = None
         self._CurrentReputationLevel = None
         self._DailyQuota = None
+        self._SendIp = None
+        self._TagList = None
 
     @property
     def IdentityName(self):
@@ -1628,6 +2094,28 @@ class EmailIdentity(AbstractModel):
     def DailyQuota(self, DailyQuota):
         self._DailyQuota = DailyQuota
 
+    @property
+    def SendIp(self):
+        r"""Independent ip for domain configuration.
+        :rtype: list of str
+        """
+        return self._SendIp
+
+    @SendIp.setter
+    def SendIp(self, SendIp):
+        self._SendIp = SendIp
+
+    @property
+    def TagList(self):
+        r"""tag.
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._IdentityName = params.get("IdentityName")
@@ -1635,6 +2123,13 @@ class EmailIdentity(AbstractModel):
         self._SendingEnabled = params.get("SendingEnabled")
         self._CurrentReputationLevel = params.get("CurrentReputationLevel")
         self._DailyQuota = params.get("DailyQuota")
+        self._SendIp = params.get("SendIp")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1654,16 +2149,19 @@ class EmailSender(AbstractModel):
         r"""
         :param _EmailAddress: Sender address.
         :type EmailAddress: str
-        :param _EmailSenderName: Sender name.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EmailSenderName: Sender alias.
         :type EmailSenderName: str
         :param _CreatedTimestamp: Creation time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+
+
         :type CreatedTimestamp: int
+        :param _SmtpPwdType: smtp password type. 0=not set. 1=already set up.
+        :type SmtpPwdType: int
         """
         self._EmailAddress = None
         self._EmailSenderName = None
         self._CreatedTimestamp = None
+        self._SmtpPwdType = None
 
     @property
     def EmailAddress(self):
@@ -1678,8 +2176,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenderName(self):
-        r"""Sender name.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Sender alias.
         :rtype: str
         """
         return self._EmailSenderName
@@ -1691,7 +2188,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def CreatedTimestamp(self):
         r"""Creation time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+
+
         :rtype: int
         """
         return self._CreatedTimestamp
@@ -1700,11 +2198,23 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def CreatedTimestamp(self, CreatedTimestamp):
         self._CreatedTimestamp = CreatedTimestamp
 
+    @property
+    def SmtpPwdType(self):
+        r"""smtp password type. 0=not set. 1=already set up.
+        :rtype: int
+        """
+        return self._SmtpPwdType
+
+    @SmtpPwdType.setter
+    def SmtpPwdType(self, SmtpPwdType):
+        self._SmtpPwdType = SmtpPwdType
+
 
     def _deserialize(self, params):
         self._EmailAddress = params.get("EmailAddress")
         self._EmailSenderName = params.get("EmailSenderName")
         self._CreatedTimestamp = params.get("CreatedTimestamp")
+        self._SmtpPwdType = params.get("SmtpPwdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1764,7 +2274,7 @@ class GetEmailIdentityResponse(AbstractModel):
         :type VerifiedForSendingStatus: bool
         :param _Attributes: DNS configuration details.
         :type Attributes: list of DNSAttributes
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IdentityType = None
@@ -1807,7 +2317,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1878,7 +2388,7 @@ class GetEmailTemplateResponse(AbstractModel):
         :type TemplateStatus: int
         :param _TemplateName: Template name
         :type TemplateName: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TemplateContent = None
@@ -1921,7 +2431,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2045,7 +2555,7 @@ class GetSendEmailStatusResponse(AbstractModel):
         r"""
         :param _EmailStatusList: Status of sent emails
         :type EmailStatusList: list of SendEmailStatus
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EmailStatusList = None
@@ -2064,7 +2574,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2176,7 +2686,7 @@ class GetStatisticsReportResponse(AbstractModel):
         :type DailyVolumes: list of Volume
         :param _OverallVolume: Overall email sending statistics.
         :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DailyVolumes = None
@@ -2207,7 +2717,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2361,7 +2871,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
         :type Offset: int
         :param _EmailAddress: You can specify an email address to query.
         :type EmailAddress: str
-        :param _TaskID: You can specify a task ID to query.
+        :param _TaskID: This parameter has been deprecated.
         :type TaskID: str
         """
         self._StartDate = None
@@ -2428,7 +2938,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        r"""You can specify a task ID to query.
+        r"""This parameter has been deprecated.
         :rtype: str
         """
         return self._TaskID
@@ -2466,7 +2976,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
         :type BlackList: list of BlackEmailAddress
         :param _TotalCount: Total number of blocklisted addresses.
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._BlackList = None
@@ -2497,7 +3007,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2518,6 +3028,150 @@ class ListBlackEmailAddressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListCustomBlacklistRequest(AbstractModel):
+    r"""ListCustomBlacklist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Offset, int, starts from 0.
+        :type Offset: int
+        :param _Limit: Number limit, int, no more than 100.
+        :type Limit: int
+        :param _Status: Filter the state of the blocklist. valid values: 0 (expired), 1 (active), 2 (all).
+        :type Status: int
+        :param _Email: Email address in blocklist.
+        :type Email: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._Email = None
+
+    @property
+    def Offset(self):
+        r"""Offset, int, starts from 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number limit, int, no more than 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        r"""Filter the state of the blocklist. valid values: 0 (expired), 1 (active), 2 (all).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Email(self):
+        r"""Email address in blocklist.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._Email = params.get("Email")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCustomBlacklistResponse(AbstractModel):
+    r"""ListCustomBlacklist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total Quantity of Lists
+        :type TotalCount: int
+        :param _Data: Blocklist description.
+        :type Data: list of BlackAddressDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total Quantity of Lists
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Blocklist description.
+        :rtype: list of BlackAddressDetail
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BlackAddressDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListEmailAddressRequest(AbstractModel):
     r"""ListEmailAddress request structure.
 
@@ -2531,10 +3185,9 @@ class ListEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailSenders: Details of sender addresses.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EmailSenders: List of sender addresses description.
         :type EmailSenders: list of EmailSender
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EmailSenders = None
@@ -2542,8 +3195,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenders(self):
-        r"""Details of sender addresses.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""List of sender addresses description.
         :rtype: list of EmailSender
         """
         return self._EmailSenders
@@ -2554,7 +3206,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2579,6 +3231,71 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TagList: tag.
+        :type TagList: list of TagList
+        :param _Limit: Pagination limit.
+        :type Limit: int
+        :param _Offset: Paging offset.
+        :type Offset: int
+        """
+        self._TagList = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def TagList(self):
+        r"""tag.
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def Limit(self):
+        r"""Pagination limit.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Paging offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListEmailIdentitiesResponse(AbstractModel):
     r"""ListEmailIdentities response structure.
@@ -2593,12 +3310,15 @@ class ListEmailIdentitiesResponse(AbstractModel):
         :type MaxReputationLevel: int
         :param _MaxDailyQuota: Maximum number of emails sent per domain name
         :type MaxDailyQuota: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EmailIdentities = None
         self._MaxReputationLevel = None
         self._MaxDailyQuota = None
+        self._Total = None
         self._RequestId = None
 
     @property
@@ -2635,8 +3355,19 @@ class ListEmailIdentitiesResponse(AbstractModel):
         self._MaxDailyQuota = MaxDailyQuota
 
     @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2655,6 +3386,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
                 self._EmailIdentities.append(obj)
         self._MaxReputationLevel = params.get("MaxReputationLevel")
         self._MaxDailyQuota = params.get("MaxDailyQuota")
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -2720,7 +3452,7 @@ class ListEmailTemplatesResponse(AbstractModel):
         :type TemplatesMetadata: list of TemplatesMetadata
         :param _TotalCount: Total number of templates
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TemplatesMetadata = None
@@ -2751,7 +3483,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2769,6 +3501,225 @@ class ListEmailTemplatesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TemplatesMetadata.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ListReceiverDetailsRequest(AbstractModel):
+    r"""ListReceiverDetails request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverId: Recipient list ID. specifies the value returned during API creation of a recipient list via the CreateReceiver api.
+        :type ReceiverId: int
+        :param _Offset: Offset, int, starts from 0.
+        :type Offset: int
+        :param _Limit: Number limit, int, no more than 100.
+        :type Limit: int
+        :param _Email: Recipient address. length: 0-50. example: xxx@te.com. fuzzy query is supported.
+        :type Email: str
+        :param _CreateTimeBegin: Find start time.
+        :type CreateTimeBegin: str
+        :param _CreateTimeEnd: Search end time.
+        :type CreateTimeEnd: str
+        :param _Status: 1: valid; 2: invalid.
+        :type Status: int
+        """
+        self._ReceiverId = None
+        self._Offset = None
+        self._Limit = None
+        self._Email = None
+        self._CreateTimeBegin = None
+        self._CreateTimeEnd = None
+        self._Status = None
+
+    @property
+    def ReceiverId(self):
+        r"""Recipient list ID. specifies the value returned during API creation of a recipient list via the CreateReceiver api.
+        :rtype: int
+        """
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def Offset(self):
+        r"""Offset, int, starts from 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number limit, int, no more than 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Email(self):
+        r"""Recipient address. length: 0-50. example: xxx@te.com. fuzzy query is supported.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTimeBegin(self):
+        r"""Find start time.
+        :rtype: str
+        """
+        return self._CreateTimeBegin
+
+    @CreateTimeBegin.setter
+    def CreateTimeBegin(self, CreateTimeBegin):
+        self._CreateTimeBegin = CreateTimeBegin
+
+    @property
+    def CreateTimeEnd(self):
+        r"""Search end time.
+        :rtype: str
+        """
+        return self._CreateTimeEnd
+
+    @CreateTimeEnd.setter
+    def CreateTimeEnd(self, CreateTimeEnd):
+        self._CreateTimeEnd = CreateTimeEnd
+
+    @property
+    def Status(self):
+        r"""1: valid; 2: invalid.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ReceiverId = params.get("ReceiverId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Email = params.get("Email")
+        self._CreateTimeBegin = params.get("CreateTimeBegin")
+        self._CreateTimeEnd = params.get("CreateTimeEnd")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReceiverDetailsResponse(AbstractModel):
+    r"""ListReceiverDetails response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _Data: Data record.
+        :type Data: list of ReceiverDetail
+        :param _ValidCount: Number of valid email addresses.
+        :type ValidCount: int
+        :param _InvalidCount: Number of invalid email addresses.
+        :type InvalidCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._ValidCount = None
+        self._InvalidCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Data record.
+        :rtype: list of ReceiverDetail
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def ValidCount(self):
+        r"""Number of valid email addresses.
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def InvalidCount(self):
+        r"""Number of invalid email addresses.
+        :rtype: int
+        """
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ReceiverDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._ValidCount = params.get("ValidCount")
+        self._InvalidCount = params.get("InvalidCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -2864,7 +3815,7 @@ class ListReceiversResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: Data record
         :type Data: list of ReceiverData
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2895,7 +3846,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3023,7 +3974,7 @@ class ListSendTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: Data record
         :type Data: list of SendTaskData
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3054,7 +4005,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3088,14 +4039,14 @@ class ReceiverData(AbstractModel):
         :type ReceiversName: str
         :param _Count: Total number of recipient email addresses
         :type Count: int
-        :param _Desc: Recipient group description
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param _Desc: Recipient list description.
         :type Desc: str
-        :param _ReceiversStatus: Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param _ReceiversStatus: List status (1 to be uploaded 2 uploading 3 upload complete).
         :type ReceiversStatus: int
         :param _CreateTime: Creation time, such as 2021-09-28 16:40:35
         :type CreateTime: str
+        :param _InvalidCount: Invalid number of recipients.
+        :type InvalidCount: int
         """
         self._ReceiverId = None
         self._ReceiversName = None
@@ -3103,6 +4054,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self._Desc = None
         self._ReceiversStatus = None
         self._CreateTime = None
+        self._InvalidCount = None
 
     @property
     def ReceiverId(self):
@@ -3139,8 +4091,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Desc(self):
-        r"""Recipient group description
-Note: This field may return `null`, indicating that no valid value can be found.
+        r"""Recipient list description.
         :rtype: str
         """
         return self._Desc
@@ -3151,8 +4102,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversStatus(self):
-        r"""Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
-Note: This field may return `null`, indicating that no valid value can be found.
+        r"""List status (1 to be uploaded 2 uploading 3 upload complete).
         :rtype: int
         """
         return self._ReceiversStatus
@@ -3172,6 +4122,17 @@ Note: This field may return `null`, indicating that no valid value can be found.
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def InvalidCount(self):
+        r"""Invalid number of recipients.
+        :rtype: int
+        """
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
 
     def _deserialize(self, params):
         self._ReceiverId = params.get("ReceiverId")
@@ -3180,6 +4141,122 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self._Desc = params.get("Desc")
         self._ReceiversStatus = params.get("ReceiversStatus")
         self._CreateTime = params.get("CreateTime")
+        self._InvalidCount = params.get("InvalidCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiverDetail(AbstractModel):
+    r"""Recipient list details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Email: Recipient's address.
+        :type Email: str
+        :param _CreateTime: Creation time.
+
+
+        :type CreateTime: str
+        :param _TemplateData: Template parameter.
+        :type TemplateData: str
+        :param _Reason: Invalid reason.
+        :type Reason: str
+        :param _Status: 1: valid; 2: invalid.
+        :type Status: int
+        :param _EmailId: Recipient address id.
+        :type EmailId: int
+        """
+        self._Email = None
+        self._CreateTime = None
+        self._TemplateData = None
+        self._Reason = None
+        self._Status = None
+        self._EmailId = None
+
+    @property
+    def Email(self):
+        r"""Recipient's address.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+
+
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TemplateData(self):
+        r"""Template parameter.
+        :rtype: str
+        """
+        return self._TemplateData
+
+    @TemplateData.setter
+    def TemplateData(self, TemplateData):
+        self._TemplateData = TemplateData
+
+    @property
+    def Reason(self):
+        r"""Invalid reason.
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        r"""1: valid; 2: invalid.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EmailId(self):
+        r"""Recipient address id.
+        :rtype: int
+        """
+        return self._EmailId
+
+    @EmailId.setter
+    def EmailId(self, EmailId):
+        self._EmailId = EmailId
+
+
+    def _deserialize(self, params):
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._TemplateData = params.get("TemplateData")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
+        self._EmailId = params.get("EmailId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3197,30 +4274,36 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
-To display the sender name, enter the address in the following format: 
-Sender <email address>
+        :param _FromEmailAddress: Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).
         :type FromEmailAddress: str
-        :param _Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        :param _Destination: Recipient email address, supports up to 50 recipients in mass sending. note: the email content displays all recipient addresses. for non-mass sending, call the API multiple times to send.
         :type Destination: list of str
         :param _Subject: Email subject.
         :type Subject: str
-        :param _ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        :param _ReplyToAddresses: The "reply" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
         :type ReplyToAddresses: str
-        :param _Cc: 
+        :param _Cc: Cc recipient email address, supports up to 20 carbon copies.
         :type Cc: list of str
-        :param _Bcc: 
+        :param _Bcc: Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.
         :type Bcc: list of str
-        :param _Template: Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
+        :param _Template: Use template for sending and fill in related parameters.
+<dx-alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: Disused
+        :param _Simple: This parameter has been deprecated.
+<dx-alert infotype="notice" title="description"> only customers who have applied for special configuration in the past need to use this. if you have not applied for special configuration, this field does not exist.</dx-alert>.
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        :param _Attachments: When sending an attachment, fill in the related parameters. the tencent cloud API request supports a maximum of 8M request packet. the attachment content transits Base64 and is expected to expand by 1.5 times. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
         :type Attachments: list of Attachment
-        :param _Unsubscribe: Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        :param _Unsubscribe: Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
         :type Unsubscribe: str
-        :param _TriggerType: Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
+        :param _TriggerType: Mail trigger type. 0: non-trigger class, default type, select this type for marketing emails and non-instant emails. 1: trigger class, instant delivery emails such as captcha-intl. if the mail exceeds a certain size, the system will automatically select the non-trigger class channel.
         :type TriggerType: int
+        :param _SmtpMessageId: Message-Id field in the smtp header.
+        :type SmtpMessageId: str
+        :param _SmtpHeaders: Other fields that can be set in the smtp header.
+        :type SmtpHeaders: str
+        :param _HeaderFrom: from field in the smtp header. the domain name should be consistent with FromEmailAddress.
+        :type HeaderFrom: str
         """
         self._FromEmailAddress = None
         self._Destination = None
@@ -3233,12 +4316,13 @@ Sender <email address>
         self._Attachments = None
         self._Unsubscribe = None
         self._TriggerType = None
+        self._SmtpMessageId = None
+        self._SmtpHeaders = None
+        self._HeaderFrom = None
 
     @property
     def FromEmailAddress(self):
-        r"""Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
-To display the sender name, enter the address in the following format: 
-Sender <email address>
+        r"""Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).
         :rtype: str
         """
         return self._FromEmailAddress
@@ -3249,7 +4333,7 @@ Sender <email address>
 
     @property
     def Destination(self):
-        r"""Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        r"""Recipient email address, supports up to 50 recipients in mass sending. note: the email content displays all recipient addresses. for non-mass sending, call the API multiple times to send.
         :rtype: list of str
         """
         return self._Destination
@@ -3271,7 +4355,7 @@ Sender <email address>
 
     @property
     def ReplyToAddresses(self):
-        r"""Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        r"""The "reply" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -3282,7 +4366,7 @@ Sender <email address>
 
     @property
     def Cc(self):
-        r"""
+        r"""Cc recipient email address, supports up to 20 carbon copies.
         :rtype: list of str
         """
         return self._Cc
@@ -3293,7 +4377,7 @@ Sender <email address>
 
     @property
     def Bcc(self):
-        r"""
+        r"""Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.
         :rtype: list of str
         """
         return self._Bcc
@@ -3304,7 +4388,8 @@ Sender <email address>
 
     @property
     def Template(self):
-        r"""Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
+        r"""Use template for sending and fill in related parameters.
+<dx-alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -3315,7 +4400,8 @@ Sender <email address>
 
     @property
     def Simple(self):
-        r"""Disused
+        r"""This parameter has been deprecated.
+<dx-alert infotype="notice" title="description"> only customers who have applied for special configuration in the past need to use this. if you have not applied for special configuration, this field does not exist.</dx-alert>.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -3326,7 +4412,7 @@ Sender <email address>
 
     @property
     def Attachments(self):
-        r"""Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        r"""When sending an attachment, fill in the related parameters. the tencent cloud API request supports a maximum of 8M request packet. the attachment content transits Base64 and is expected to expand by 1.5 times. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -3337,7 +4423,7 @@ Sender <email address>
 
     @property
     def Unsubscribe(self):
-        r"""Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        r"""Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
         :rtype: str
         """
         return self._Unsubscribe
@@ -3348,7 +4434,7 @@ Sender <email address>
 
     @property
     def TriggerType(self):
-        r"""Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
+        r"""Mail trigger type. 0: non-trigger class, default type, select this type for marketing emails and non-instant emails. 1: trigger class, instant delivery emails such as captcha-intl. if the mail exceeds a certain size, the system will automatically select the non-trigger class channel.
         :rtype: int
         """
         return self._TriggerType
@@ -3356,6 +4442,39 @@ Sender <email address>
     @TriggerType.setter
     def TriggerType(self, TriggerType):
         self._TriggerType = TriggerType
+
+    @property
+    def SmtpMessageId(self):
+        r"""Message-Id field in the smtp header.
+        :rtype: str
+        """
+        return self._SmtpMessageId
+
+    @SmtpMessageId.setter
+    def SmtpMessageId(self, SmtpMessageId):
+        self._SmtpMessageId = SmtpMessageId
+
+    @property
+    def SmtpHeaders(self):
+        r"""Other fields that can be set in the smtp header.
+        :rtype: str
+        """
+        return self._SmtpHeaders
+
+    @SmtpHeaders.setter
+    def SmtpHeaders(self, SmtpHeaders):
+        self._SmtpHeaders = SmtpHeaders
+
+    @property
+    def HeaderFrom(self):
+        r"""from field in the smtp header. the domain name should be consistent with FromEmailAddress.
+        :rtype: str
+        """
+        return self._HeaderFrom
+
+    @HeaderFrom.setter
+    def HeaderFrom(self, HeaderFrom):
+        self._HeaderFrom = HeaderFrom
 
 
     def _deserialize(self, params):
@@ -3379,6 +4498,9 @@ Sender <email address>
                 self._Attachments.append(obj)
         self._Unsubscribe = params.get("Unsubscribe")
         self._TriggerType = params.get("TriggerType")
+        self._SmtpMessageId = params.get("SmtpMessageId")
+        self._SmtpHeaders = params.get("SmtpHeaders")
+        self._HeaderFrom = params.get("HeaderFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3396,9 +4518,9 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MessageId: Unique ID generated when receiving the message
+        :param _MessageId: Uniquely generated message identifier for receive message.
         :type MessageId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._MessageId = None
@@ -3406,7 +4528,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""Unique ID generated when receiving the message
+        r"""Uniquely generated message identifier for receive message.
         :rtype: str
         """
         return self._MessageId
@@ -3417,7 +4539,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3492,6 +4614,8 @@ class SendEmailStatus(AbstractModel):
         :type UserUnsubscribed: bool
         :param _UserComplainted: Whether the recipient has reported the sender
         :type UserComplainted: bool
+        :param _UserComplained: Whether the user reports the sender.
+        :type UserComplained: bool
         """
         self._MessageId = None
         self._ToEmailAddress = None
@@ -3505,6 +4629,7 @@ class SendEmailStatus(AbstractModel):
         self._UserClicked = None
         self._UserUnsubscribed = None
         self._UserComplainted = None
+        self._UserComplained = None
 
     @property
     def MessageId(self):
@@ -3658,6 +4783,8 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserComplainted(self):
+        warnings.warn("parameter `UserComplainted` is deprecated", DeprecationWarning) 
+
         r"""Whether the recipient has reported the sender
         :rtype: bool
         """
@@ -3665,7 +4792,20 @@ class SendEmailStatus(AbstractModel):
 
     @UserComplainted.setter
     def UserComplainted(self, UserComplainted):
+        warnings.warn("parameter `UserComplainted` is deprecated", DeprecationWarning) 
+
         self._UserComplainted = UserComplainted
+
+    @property
+    def UserComplained(self):
+        r"""Whether the user reports the sender.
+        :rtype: bool
+        """
+        return self._UserComplained
+
+    @UserComplained.setter
+    def UserComplained(self, UserComplained):
+        self._UserComplained = UserComplained
 
 
     def _deserialize(self, params):
@@ -3681,6 +4821,7 @@ class SendEmailStatus(AbstractModel):
         self._UserClicked = params.get("UserClicked")
         self._UserUnsubscribed = params.get("UserUnsubscribed")
         self._UserComplainted = params.get("UserComplainted")
+        self._UserComplained = params.get("UserComplained")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3720,8 +4861,7 @@ class SendTaskData(AbstractModel):
         :type UpdateTime: str
         :param _Subject: Email subject
         :type Subject: str
-        :param _Template: Template and template data
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param _Template: Template and template data.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param _CycleParam: Parameters of a recurring task
 Note: This field may return `null`, indicating that no valid value can be found.
@@ -3729,8 +4869,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :param _TimedParam: Parameters of a scheduled task
 Note: This field may return `null`, indicating that no valid value can be found.
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param _ErrMsg: Task exception information
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param _ErrMsg: Task exception information.
         :type ErrMsg: str
         :param _ReceiversName: Recipient group name
         :type ReceiversName: str
@@ -3875,8 +5014,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Template(self):
-        r"""Template and template data
-Note: This field may return `null`, indicating that no valid value can be found.
+        r"""Template and template data.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -3911,8 +5049,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ErrMsg(self):
-        r"""Task exception information
-Note: This field may return `null`, indicating that no valid value can be found.
+        r"""Task exception information.
         :rtype: str
         """
         return self._ErrMsg
@@ -4007,6 +5144,57 @@ class Simple(AbstractModel):
     def _deserialize(self, params):
         self._Html = params.get("Html")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagList(AbstractModel):
+    r"""Tag.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Product.
+        :type TagKey: str
+        :param _TagValue: ses
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""Product.
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""ses
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4349,6 +5537,100 @@ class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateCustomBlackListRequest(AbstractModel):
+    r"""UpdateCustomBlackList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Blocklist id that needs to change.
+        :type Id: int
+        :param _Email: After modification email address.
+        :type Email: str
+        :param _ExpireDate: Expiration time. if left empty, it indicates permanent validity.
+        :type ExpireDate: str
+        """
+        self._Id = None
+        self._Email = None
+        self._ExpireDate = None
+
+    @property
+    def Id(self):
+        r"""Blocklist id that needs to change.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Email(self):
+        r"""After modification email address.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def ExpireDate(self):
+        r"""Expiration time. if left empty, it indicates permanent validity.
+        :rtype: str
+        """
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Email = params.get("Email")
+        self._ExpireDate = params.get("ExpireDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomBlackListResponse(AbstractModel):
+    r"""UpdateCustomBlackList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateEmailIdentityRequest(AbstractModel):
     r"""UpdateEmailIdentity request structure.
 
@@ -4398,7 +5680,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
         :type VerifiedForSendingStatus: bool
         :param _Attributes: DNS information that needs to be configured.
         :type Attributes: list of DNSAttributes
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IdentityType = None
@@ -4441,7 +5723,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4521,14 +5803,14 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4617,14 +5899,14 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4646,7 +5928,6 @@ class Volume(AbstractModel):
     def __init__(self):
         r"""
         :param _SendDate: Date
-Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SendDate: str
         :param _RequestCount: Number of email requests.
         :type RequestCount: int
@@ -4660,8 +5941,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type ClickedCount: int
         :param _BounceCount: Number of bounced emails.
         :type BounceCount: int
-        :param _UnsubscribeCount: Number of users who canceled subscriptions.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _UnsubscribeCount: Number of users for unsubscription.
         :type UnsubscribeCount: int
         """
         self._SendDate = None
@@ -4676,7 +5956,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def SendDate(self):
         r"""Date
-Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SendDate
@@ -4753,8 +6032,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnsubscribeCount(self):
-        r"""Number of users who canceled subscriptions.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Number of users for unsubscription.
         :rtype: int
         """
         return self._UnsubscribeCount

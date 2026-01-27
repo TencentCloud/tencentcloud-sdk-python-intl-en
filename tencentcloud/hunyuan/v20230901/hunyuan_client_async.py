@@ -25,6 +25,29 @@ class HunyuanClient(AbstractClient):
     _endpoint = 'hunyuan.intl.tencentcloudapi.com'
     _service = 'hunyuan'
 
+    async def ChatTranslations(
+            self,
+            request: models.ChatTranslationsRequest,
+            opts: Dict = None,
+    ) -> models.ChatTranslationsResponse:
+        """
+        Tencent Hunyuan is a large language model (LLM) developed by Tencent R&D. It possesses powerful Chinese creation capacity, logical reasoning in complex context, and reliable task execution power. This API supports streaming or non-streaming calls. When using streaming calls, it follows the SSE protocol.
+
+        1. This API does not currently support returning Image Content.
+        2. By default, this API has account restrictions with a number of concurrencies of 5.
+        3. Please use the SDK to call this API. examples are provided in the Git repository examples/hunyuan/v20230901/ directory for each development language. The SDK link is provided in the "**Developer Resources - SDK**" part under the document.
+        4. We recommend you use API Explorer for quick online debugging interface and download example code in languages, [click to open](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChatTranslations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChatTranslationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def Convert3DFormat(
             self,
             request: models.Convert3DFormatRequest,

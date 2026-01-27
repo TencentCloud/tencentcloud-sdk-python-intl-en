@@ -61,6 +61,24 @@ class SesClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCustomBlacklist(
+            self,
+            request: models.CreateCustomBlacklistRequest,
+            opts: Dict = None,
+    ) -> models.CreateCustomBlacklistResponse:
+        """
+        Add a custom blocklist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCustomBlacklist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCustomBlacklistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateEmailAddress(
             self,
             request: models.CreateEmailAddressRequest,
@@ -188,6 +206,24 @@ class SesClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCustomBlackList(
+            self,
+            request: models.DeleteCustomBlackListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCustomBlackListResponse:
+        """
+        Delete a custom blocklist email address.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCustomBlackList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCustomBlackListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteEmailAddress(
             self,
             request: models.DeleteEmailAddressRequest,
@@ -302,8 +338,7 @@ class SesClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetSendEmailStatusResponse:
         """
-        This API is used to get email sending status. Only data within 30 days can be queried.
-        Default API request rate limit: 1 request/sec.
+        Search the email sending status. Only support querying data within 30 days.
         """
         
         kwargs = {}
@@ -369,6 +404,24 @@ class SesClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListCustomBlacklist(
+            self,
+            request: models.ListCustomBlacklistRequest,
+            opts: Dict = None,
+    ) -> models.ListCustomBlacklistResponse:
+        """
+        Retrieve the custom blocklist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListCustomBlacklist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListCustomBlacklistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListEmailAddress(
             self,
             request: models.ListEmailAddressRequest,
@@ -418,6 +471,24 @@ class SesClient(AbstractClient):
         kwargs["action"] = "ListEmailTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListEmailTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListReceiverDetails(
+            self,
+            request: models.ListReceiverDetailsRequest,
+            opts: Dict = None,
+    ) -> models.ListReceiverDetailsResponse:
+        """
+        Query ALL recipient email addresses in the recipient list based on the recipient list id with paging query. Filter queries can be based on the recipient email address.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListReceiverDetails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListReceiverDetailsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -490,6 +561,24 @@ class SesClient(AbstractClient):
         kwargs["action"] = "UpdateAddressUnsubscribeConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAddressUnsubscribeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateCustomBlackList(
+            self,
+            request: models.UpdateCustomBlackListRequest,
+            opts: Dict = None,
+    ) -> models.UpdateCustomBlackListResponse:
+        """
+        Refresh custom blocklist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateCustomBlackList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateCustomBlackListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

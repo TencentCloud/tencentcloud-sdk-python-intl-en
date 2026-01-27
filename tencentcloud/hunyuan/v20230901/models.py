@@ -18,6 +18,312 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ChatTranslationsRequest(AbstractModel):
+    r"""ChatTranslations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: Model name. optional values include hunyuan-translation.
+Please read the introduction in [the product overview](https://www.tencentcloud.com/document/product/1284/75277) for model descriptions.
+
+Note:
+Different models have different pricing. according to [the purchase guide](https://www.tencentcloud.com/document/product/1284/77186), call as needed.
+        :type Model: str
+        :param _Stream: Streaming call switch.
+Note:.
+1. it defaults to non-streaming (false) when no value is passed.
+2. for streaming calls, the results are incrementally returned via the SSE protocol (the return value is taken from Choices[n].Delta, and incremental data must be concatenated to obtain the complete result).
+3. for non-streaming calls:.
+The calling method is the same as an ordinary HTTP request.
+The API response is time-consuming. if needed, set it to true for reduced latency.
+Only return the final result once (return value takes the value from Choices[n].Message).
+
+Note:.
+When making an SDK call, streaming and non-streaming calls require **different ways** to obtain the return value. refer to the comments or sample code in the SDK (in the examples/hunyuan/v20230901/ directory of each language SDK code repository).
+        :type Stream: bool
+        :param _Text: Text to be translated.
+        :type Text: str
+        :param _Source: Source language.
+Supported language list:. 
+Simplified chinese: zh, traditional chinese: zh-TR, cantonese: yue, english: en, french: fr, portuguese: pt, spanish: es, japanese: ja, turkish: TR, russian: ru, arabic: ar, korean: ko, thai: th, italian: it, german: de, vietnamese: vi, malay: ms, indonesian: id.
+The following languages are supported only by the hunyuan-translation model:.
+Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: my, persian: fa, gujarati: gu, urdu: ur, telugu: te, marathi: mr, hebrew: he, bengali: bn, tamil: ta, ukrainian: uk, tibetan: bo, kazakh: kk, mongolian: mn, uyghur: ug.
+        :type Source: str
+        :param _Target: Target language.
+Supported language list:. 
+Simplified chinese: zh, traditional chinese: zh-TR, cantonese: yue, english: en, french: fr, portuguese: pt, spanish: es, japanese: ja, turkish: TR, russian: ru, arabic: ar, korean: ko, thai: th, italian: it, german: de, vietnamese: vi, malay: ms, indonesian: id.
+The following languages are supported only by the hunyuan-translation model:.
+Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: my, persian: fa, gujarati: gu, urdu: ur, telugu: te, marathi: mr, hebrew: he, bengali: bn, tamil: ta, ukrainian: uk, tibetan: bo, kazakh: kk, mongolian: mn, uyghur: ug.
+        :type Target: str
+        :param _Field: Domain of the text to be translated, such as game plot.
+        :type Field: str
+        :param _References: Reference example, up to 10.
+        :type References: list of Reference
+        """
+        self._Model = None
+        self._Stream = None
+        self._Text = None
+        self._Source = None
+        self._Target = None
+        self._Field = None
+        self._References = None
+
+    @property
+    def Model(self):
+        r"""Model name. optional values include hunyuan-translation.
+Please read the introduction in [the product overview](https://www.tencentcloud.com/document/product/1284/75277) for model descriptions.
+
+Note:
+Different models have different pricing. according to [the purchase guide](https://www.tencentcloud.com/document/product/1284/77186), call as needed.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Stream(self):
+        r"""Streaming call switch.
+Note:.
+1. it defaults to non-streaming (false) when no value is passed.
+2. for streaming calls, the results are incrementally returned via the SSE protocol (the return value is taken from Choices[n].Delta, and incremental data must be concatenated to obtain the complete result).
+3. for non-streaming calls:.
+The calling method is the same as an ordinary HTTP request.
+The API response is time-consuming. if needed, set it to true for reduced latency.
+Only return the final result once (return value takes the value from Choices[n].Message).
+
+Note:.
+When making an SDK call, streaming and non-streaming calls require **different ways** to obtain the return value. refer to the comments or sample code in the SDK (in the examples/hunyuan/v20230901/ directory of each language SDK code repository).
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def Text(self):
+        r"""Text to be translated.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Source(self):
+        r"""Source language.
+Supported language list:. 
+Simplified chinese: zh, traditional chinese: zh-TR, cantonese: yue, english: en, french: fr, portuguese: pt, spanish: es, japanese: ja, turkish: TR, russian: ru, arabic: ar, korean: ko, thai: th, italian: it, german: de, vietnamese: vi, malay: ms, indonesian: id.
+The following languages are supported only by the hunyuan-translation model:.
+Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: my, persian: fa, gujarati: gu, urdu: ur, telugu: te, marathi: mr, hebrew: he, bengali: bn, tamil: ta, ukrainian: uk, tibetan: bo, kazakh: kk, mongolian: mn, uyghur: ug.
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""Target language.
+Supported language list:. 
+Simplified chinese: zh, traditional chinese: zh-TR, cantonese: yue, english: en, french: fr, portuguese: pt, spanish: es, japanese: ja, turkish: TR, russian: ru, arabic: ar, korean: ko, thai: th, italian: it, german: de, vietnamese: vi, malay: ms, indonesian: id.
+The following languages are supported only by the hunyuan-translation model:.
+Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: my, persian: fa, gujarati: gu, urdu: ur, telugu: te, marathi: mr, hebrew: he, bengali: bn, tamil: ta, ukrainian: uk, tibetan: bo, kazakh: kk, mongolian: mn, uyghur: ug.
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Field(self):
+        r"""Domain of the text to be translated, such as game plot.
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def References(self):
+        r"""Reference example, up to 10.
+        :rtype: list of Reference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Stream = params.get("Stream")
+        self._Text = params.get("Text")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._Field = params.get("Field")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = Reference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatTranslationsResponse(AbstractModel):
+    r"""ChatTranslations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Request'S RequestId this time.
+        :type Id: str
+        :param _Note: Disclaimer.
+        :type Note: str
+        :param _Created: Unix timestamp, in seconds.
+        :type Created: int
+        :param _Usage: Token statistical information.
+Billing by Token quantity.
+        :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        :param _Choices: Reply content.
+        :type Choices: list of TranslationChoice
+        :param _ErrorMsg: Error message.
+If the service encounters an exception during streaming return, return this error.
+        :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Note = None
+        self._Created = None
+        self._Usage = None
+        self._Choices = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""Request'S RequestId this time.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Note(self):
+        r"""Disclaimer.
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def Created(self):
+        r"""Unix timestamp, in seconds.
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        r"""Token statistical information.
+Billing by Token quantity.
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Choices(self):
+        r"""Reply content.
+        :rtype: list of TranslationChoice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def ErrorMsg(self):
+        r"""Error message.
+If the service encounters an exception during streaming return, return this error.
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Note = params.get("Note")
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = TranslationChoice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        if params.get("ErrorMsg") is not None:
+            self._ErrorMsg = ErrorMsg()
+            self._ErrorMsg._deserialize(params.get("ErrorMsg"))
+        self._RequestId = params.get("RequestId")
+
+
 class Convert3DFormatRequest(AbstractModel):
     r"""Convert3DFormat request structure.
 
@@ -249,6 +555,63 @@ class Describe3DSmartTopologyJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ErrorMsg(AbstractModel):
+    r"""Runtime exception message.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: Error message.
+        :type Msg: str
+        :param _Code: Error code.
+4000 internal service error.
+4001 request model timeout.
+
+        :type Code: int
+        """
+        self._Msg = None
+        self._Code = None
+
+    @property
+    def Msg(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Code(self):
+        r"""Error code.
+4000 internal service error.
+4001 request model timeout.
+
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class File3D(AbstractModel):
     r"""3D file.
 
@@ -356,6 +719,42 @@ class InputFile3D(AbstractModel):
     def _deserialize(self, params):
         self._Url = params.get("Url")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptTokensDetails(AbstractModel):
+    r"""Specifies the detailed information of the input token.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CachedTokens: The number of cache tokens.
+        :type CachedTokens: str
+        """
+        self._CachedTokens = None
+
+    @property
+    def CachedTokens(self):
+        r"""The number of cache tokens.
+        :rtype: str
+        """
+        return self._CachedTokens
+
+    @CachedTokens.setter
+    def CachedTokens(self, CachedTokens):
+        self._CachedTokens = CachedTokens
+
+
+    def _deserialize(self, params):
+        self._CachedTokens = params.get("CachedTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -777,6 +1176,72 @@ DONE: successful
         self._RequestId = params.get("RequestId")
 
 
+class Reference(AbstractModel):
+    r"""Translate dialogue reference example.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Translate text type, enumerate "sentence" means sentence, "term" means terminology.
+        :type Type: str
+        :param _Text: Original.
+        :type Text: str
+        :param _Translation: Translation.
+        :type Translation: str
+        """
+        self._Type = None
+        self._Text = None
+        self._Translation = None
+
+    @property
+    def Type(self):
+        r"""Translate text type, enumerate "sentence" means sentence, "term" means terminology.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        r"""Original.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Translation(self):
+        r"""Translation.
+        :rtype: str
+        """
+        return self._Translation
+
+    @Translation.setter
+    def Translation(self, Translation):
+        self._Translation = Translation
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        self._Translation = params.get("Translation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Submit3DSmartTopologyJobRequest(AbstractModel):
     r"""Submit3DSmartTopologyJob request structure.
 
@@ -1000,7 +1465,7 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
         r"""
         :param _Model: Tencent HY 3D Global model version
 Defaults to 3.0, with optional choices: 3.0, 3.1
-When selecting version 3.1, the LowPoly parameter is unavailable
+When selecting version 3.1, the [LowPoly] and [Sketch] parameter is unavailable
 Example value:3.0
         :type Model: str
         :param _Prompt: Generates 3D content, describes 3D content.
@@ -1073,7 +1538,7 @@ quadrilateral: mix quadrangle and triangle faces to generate
     def Model(self):
         r"""Tencent HY 3D Global model version
 Defaults to 3.0, with optional choices: 3.0, 3.1
-When selecting version 3.1, the LowPoly parameter is unavailable
+When selecting version 3.1, the [LowPoly] and [Sketch] parameter is unavailable
 Example value:3.0
         :rtype: str
         """
@@ -1438,6 +1903,280 @@ class SubmitHunyuanTo3DRapidJobResponse(AbstractModel):
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
+
+
+class TranslationChoice(AbstractModel):
+    r"""Translate the reply returned by the translation api, support multiple.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinishReason: End flag, can be stop or sensitive.
+stop means output ends normally.
+sensitive only appears when streaming output review is enabled, indicating security review not passed.
+        :type FinishReason: str
+        :param _Index: Index value, used when streaming.
+        :type Index: int
+        :param _Delta: Incremental return value used when streaming this field.
+        :type Delta: :class:`tencentcloud.hunyuan.v20230901.models.TranslationDelta`
+        :param _Message: Return value, used when non-streaming.
+        :type Message: :class:`tencentcloud.hunyuan.v20230901.models.TranslationMessage`
+        """
+        self._FinishReason = None
+        self._Index = None
+        self._Delta = None
+        self._Message = None
+
+    @property
+    def FinishReason(self):
+        r"""End flag, can be stop or sensitive.
+stop means output ends normally.
+sensitive only appears when streaming output review is enabled, indicating security review not passed.
+        :rtype: str
+        """
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Index(self):
+        r"""Index value, used when streaming.
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Delta(self):
+        r"""Incremental return value used when streaming this field.
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.TranslationDelta`
+        """
+        return self._Delta
+
+    @Delta.setter
+    def Delta(self, Delta):
+        self._Delta = Delta
+
+    @property
+    def Message(self):
+        r"""Return value, used when non-streaming.
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.TranslationMessage`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._FinishReason = params.get("FinishReason")
+        self._Index = params.get("Index")
+        if params.get("Delta") is not None:
+            self._Delta = TranslationDelta()
+            self._Delta._deserialize(params.get("Delta"))
+        if params.get("Message") is not None:
+            self._Message = TranslationMessage()
+            self._Message._deserialize(params.get("Message"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationDelta(AbstractModel):
+    r"""Translate the API response content (streaming return).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: Role name.
+        :type Role: str
+        :param _Content: Content details.
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""Role name.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""Content details.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationMessage(AbstractModel):
+    r"""Translate the session content via translation api.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: Role. valid values: system, user, assistant, tool.
+        :type Role: str
+        :param _Content: Text content.
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""Role. valid values: system, user, assistant, tool.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""Text content.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Usage(AbstractModel):
+    r"""Token quantity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: Input Token quantity.
+        :type PromptTokens: int
+        :param _CompletionTokens: Output Token quantity.
+        :type CompletionTokens: int
+        :param _TotalTokens: Total Token quantity.
+        :type TotalTokens: int
+        :param _PromptTokensDetails: Details of the input token.
+        :type PromptTokensDetails: :class:`tencentcloud.hunyuan.v20230901.models.PromptTokensDetails`
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+        self._PromptTokensDetails = None
+
+    @property
+    def PromptTokens(self):
+        r"""Input Token quantity.
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        r"""Output Token quantity.
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        r"""Total Token quantity.
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def PromptTokensDetails(self):
+        r"""Details of the input token.
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.PromptTokensDetails`
+        """
+        return self._PromptTokensDetails
+
+    @PromptTokensDetails.setter
+    def PromptTokensDetails(self, PromptTokensDetails):
+        self._PromptTokensDetails = PromptTokensDetails
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        if params.get("PromptTokensDetails") is not None:
+            self._PromptTokensDetails = PromptTokensDetails()
+            self._PromptTokensDetails._deserialize(params.get("PromptTokensDetails"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ViewImage(AbstractModel):
