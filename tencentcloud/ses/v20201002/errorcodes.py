@@ -146,6 +146,9 @@ INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = 'InvalidParameterValue.IllegalEmailA
 # The sender alias is incorrect.
 INVALIDPARAMETERVALUE_ILLEGALSENDERNAME = 'InvalidParameterValue.IllegalSenderName'
 
+# The template parameter attached to the recipient address cannot contain html tags.
+INVALIDPARAMETERVALUE_INVALIDTEMPLATEDATA = 'InvalidParameterValue.InValidTemplateData'
+
 # Invalid domain value.
 INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = 'InvalidParameterValue.InvalidEmailIdentity'
 
@@ -190,6 +193,9 @@ INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataErr
 
 # The name of a template parameter variable is not the same as the original name.
 INVALIDPARAMETERVALUE_TEMPLATEDATAINCONSISTENT = 'InvalidParameterValue.TemplateDataInconsistent'
+
+# The template parameter (entire JSON structure) attached to a single recipient address exceeds the length limit of 800 bytes.
+INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = 'InvalidParameterValue.TemplateDataLenLimit'
 
 # Invalid template name. Make sure the characters and length of the template name are valid.
 INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'

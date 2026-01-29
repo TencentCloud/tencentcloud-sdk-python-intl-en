@@ -141,6 +141,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCFWAssetStatistics(self, request):
+        r"""Cloud Defense Asset Center Statistics
+
+        :param request: Request instance for DescribeCFWAssetStatistics.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCFWAssetStatisticsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCFWAssetStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCFWAssetStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCFWAssetStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCVMAssetInfo(self, request):
         r"""This API is used to query details of CVM assets.
 
@@ -178,6 +201,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeCVMAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCVMAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterAssets(self, request):
+        r"""This example shows you how to obtain the cluster list.
+
+        :param request: Request instance for DescribeClusterAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeClusterAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterAssetsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -279,6 +325,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGatewayAssets(self, request):
+        r"""Obtain Gateway List
+
+        :param request: Request instance for DescribeGatewayAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeGatewayAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeGatewayAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatewayAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatewayAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeListenerList(self, request):
         r"""This API is used to query the list of TCP listeners.
 
@@ -293,6 +362,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeListenerList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeListenerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNICAssets(self, request):
+        r"""Obtain Network Interface Card List
+
+        :param request: Request instance for DescribeNICAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNICAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeNICAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNICAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNICAssetsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,6 +440,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOtherCloudAssets(self, request):
+        r"""Asset list.
+
+        :param request: Request instance for DescribeOtherCloudAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOtherCloudAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeOtherCloudAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOtherCloudAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOtherCloudAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePublicIpAssets(self, request):
         r"""This API is used to query the list of public IP assets.
 
@@ -362,6 +477,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribePublicIpAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePublicIpAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRepositoryImageAssets(self, request):
+        r"""Repository Image List
+
+        :param request: Request instance for DescribeRepositoryImageAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRepositoryImageAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRepositoryImageAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRepositoryImageAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRepositoryImageAssetsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -753,6 +891,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVpcAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOrganizationAccountStatus(self, request):
+        r"""Modify Group Account Status
+
+        :param request: Request instance for ModifyOrganizationAccountStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOrganizationAccountStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOrganizationAccountStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

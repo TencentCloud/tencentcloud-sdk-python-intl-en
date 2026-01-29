@@ -115,6 +115,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCFWAssetStatistics(
+            self,
+            request: models.DescribeCFWAssetStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCFWAssetStatisticsResponse:
+        """
+        Cloud Defense Asset Center Statistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCFWAssetStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCFWAssetStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCVMAssetInfo(
             self,
             request: models.DescribeCVMAssetInfoRequest,
@@ -146,6 +164,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCVMAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCVMAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterAssets(
+            self,
+            request: models.DescribeClusterAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterAssetsResponse:
+        """
+        This example shows you how to obtain the cluster list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterAssetsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -223,6 +259,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeGatewayAssets(
+            self,
+            request: models.DescribeGatewayAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGatewayAssetsResponse:
+        """
+        Obtain Gateway List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGatewayAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGatewayAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeListenerList(
             self,
             request: models.DescribeListenerListRequest,
@@ -236,6 +290,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeListenerList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeListenerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNICAssets(
+            self,
+            request: models.DescribeNICAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNICAssetsResponse:
+        """
+        Obtain Network Interface Card List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNICAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNICAssetsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,6 +349,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOtherCloudAssets(
+            self,
+            request: models.DescribeOtherCloudAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOtherCloudAssetsResponse:
+        """
+        Asset list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOtherCloudAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOtherCloudAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePublicIpAssets(
             self,
             request: models.DescribePublicIpAssetsRequest,
@@ -290,6 +380,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribePublicIpAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePublicIpAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRepositoryImageAssets(
+            self,
+            request: models.DescribeRepositoryImageAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRepositoryImageAssetsResponse:
+        """
+        Repository Image List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRepositoryImageAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRepositoryImageAssetsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -596,6 +704,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeVpcAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVpcAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyOrganizationAccountStatus(
+            self,
+            request: models.ModifyOrganizationAccountStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyOrganizationAccountStatusResponse:
+        """
+        Modify Group Account Status
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyOrganizationAccountStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyOrganizationAccountStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
