@@ -1808,11 +1808,11 @@ class CreateImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageName: Image name
+        :param _ImageName: Image name.
         :type ImageName: str
         :param _InstanceId: ID of the instance from which an image will be created. This parameter is required when using instance to create an image.
         :type InstanceId: str
-        :param _ImageDescription: Image description
+        :param _ImageDescription: Image description.
         :type ImageDescription: str
         :param _ForcePoweroff: Whether to perform forced power-off operation to create an image.
 Valid values:<br><li>true: indicates that an image is created after forced power-off operation</li><br><li>false: indicates that an image is created in the power-on state</li><br><br>Default value: false.<br><br>Creating an image in the power-on state may result in some unbacked-up data, affecting data security.
@@ -1846,7 +1846,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ImageName(self):
-        r"""Image name
+        r"""Image name.
         :rtype: str
         """
         return self._ImageName
@@ -1868,7 +1868,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ImageDescription(self):
-        r"""Image description
+        r"""Image description.
         :rtype: str
         """
         return self._ImageDescription

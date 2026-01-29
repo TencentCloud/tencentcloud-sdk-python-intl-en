@@ -18,6 +18,1747 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AKInfo(AbstractModel):
+    r"""AK brief information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: ak id.
+        :type ID: int
+        :param _Name: ak specific value. returns temporary key when temporary key is used.
+        :type Name: str
+        :param _User: Associated account.
+        :type User: str
+        :param _Remark: Remarks
+        :type Remark: str
+        """
+        self._ID = None
+        self._Name = None
+        self._User = None
+        self._Remark = None
+
+    @property
+    def ID(self):
+        r"""ak id.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""ak specific value. returns temporary key when temporary key is used.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def User(self):
+        r"""Associated account.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._User = params.get("User")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAlarm(AbstractModel):
+    r"""Access key Alarm record.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Alarm name.
+        :type Name: str
+        :param _Level: Alarm level.
+0 - unavailable 1 - Note 2 - low risk 3 - medium risk 4 - high risk 5 - critical.
+        :type Level: int
+        :param _ID: Alarm record ID.
+        :type ID: int
+        :param _AlarmRuleID: Alarm rule ID.
+        :type AlarmRuleID: int
+        :param _AlarmType: Alarm type
+Abnormal call.
+Leak monitoring.
+        :type AlarmType: int
+        :param _AccessKey: Access key.
+        :type AccessKey: str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _AccessKeyRemark: Access key remark.
+        :type AccessKeyRemark: str
+        :param _LastAlarmTime: Last Alarm Time
+        :type LastAlarmTime: str
+        :param _Status: Alarm status.
+0 - unprocessed 1 - processed 2 - ignored.
+        :type Status: int
+        :param _Date: Aggregate date.
+        :type Date: str
+        :param _Tag: Alarm Tag.
+        :type Tag: list of str
+        :param _Uin: Account associate Uin belonging to main account.
+        :type Uin: str
+        :param _Nickname: Nickname of the main account.
+        :type Nickname: str
+        :param _SubUin: Sub-Account Uin belonging to.
+        :type SubUin: str
+        :param _SubNickname: Sub-Account nickname.
+        :type SubNickname: str
+        :param _Type: Account type.
+0 root account AK 1 sub-account AK 2 temporary key.
+        :type Type: int
+        :param _AppID: App ID
+        :type AppID: int
+        :param _LeakEvidence: Leakage evidence.
+        :type LeakEvidence: list of str
+        :param _IsSupportEditWhiteAccount: Whether editing a trusted account is supported.
+        :type IsSupportEditWhiteAccount: bool
+        :param _Evidence: Alarm evidence.
+        :type Evidence: str
+        :param _RuleKey: Alarm rule flag.
+        :type RuleKey: str
+        :param _CloudType: Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :type CloudType: int
+        :param _AIStatus: Alarm AI analysis status.
+-Analysis failed.
+0 not analyzed.
+Under analysis.
+2 analysis successful, real Alarm.
+3 analysis successful, suspicious Alarm.
+        :type AIStatus: int
+        :param _FirstAlarmTimestamp: First Alarm timestamp (in seconds).
+        :type FirstAlarmTimestamp: int
+        :param _LastAlarmTimestamp: Last Alarm timestamp (in seconds).
+        :type LastAlarmTimestamp: int
+        """
+        self._Name = None
+        self._Level = None
+        self._ID = None
+        self._AlarmRuleID = None
+        self._AlarmType = None
+        self._AccessKey = None
+        self._AccessKeyID = None
+        self._AccessKeyRemark = None
+        self._LastAlarmTime = None
+        self._Status = None
+        self._Date = None
+        self._Tag = None
+        self._Uin = None
+        self._Nickname = None
+        self._SubUin = None
+        self._SubNickname = None
+        self._Type = None
+        self._AppID = None
+        self._LeakEvidence = None
+        self._IsSupportEditWhiteAccount = None
+        self._Evidence = None
+        self._RuleKey = None
+        self._CloudType = None
+        self._AIStatus = None
+        self._FirstAlarmTimestamp = None
+        self._LastAlarmTimestamp = None
+
+    @property
+    def Name(self):
+        r"""Alarm name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Level(self):
+        r"""Alarm level.
+0 - unavailable 1 - Note 2 - low risk 3 - medium risk 4 - high risk 5 - critical.
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def ID(self):
+        r"""Alarm record ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AlarmRuleID(self):
+        r"""Alarm rule ID.
+        :rtype: int
+        """
+        return self._AlarmRuleID
+
+    @AlarmRuleID.setter
+    def AlarmRuleID(self, AlarmRuleID):
+        self._AlarmRuleID = AlarmRuleID
+
+    @property
+    def AlarmType(self):
+        r"""Alarm type
+Abnormal call.
+Leak monitoring.
+        :rtype: int
+        """
+        return self._AlarmType
+
+    @AlarmType.setter
+    def AlarmType(self, AlarmType):
+        self._AlarmType = AlarmType
+
+    @property
+    def AccessKey(self):
+        r"""Access key.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def AccessKeyRemark(self):
+        r"""Access key remark.
+        :rtype: str
+        """
+        return self._AccessKeyRemark
+
+    @AccessKeyRemark.setter
+    def AccessKeyRemark(self, AccessKeyRemark):
+        self._AccessKeyRemark = AccessKeyRemark
+
+    @property
+    def LastAlarmTime(self):
+        r"""Last Alarm Time
+        :rtype: str
+        """
+        return self._LastAlarmTime
+
+    @LastAlarmTime.setter
+    def LastAlarmTime(self, LastAlarmTime):
+        self._LastAlarmTime = LastAlarmTime
+
+    @property
+    def Status(self):
+        r"""Alarm status.
+0 - unprocessed 1 - processed 2 - ignored.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Date(self):
+        r"""Aggregate date.
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Tag(self):
+        r"""Alarm Tag.
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Uin(self):
+        r"""Account associate Uin belonging to main account.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        r"""Nickname of the main account.
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def SubUin(self):
+        r"""Sub-Account Uin belonging to.
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubNickname(self):
+        r"""Sub-Account nickname.
+        :rtype: str
+        """
+        return self._SubNickname
+
+    @SubNickname.setter
+    def SubNickname(self, SubNickname):
+        self._SubNickname = SubNickname
+
+    @property
+    def Type(self):
+        r"""Account type.
+0 root account AK 1 sub-account AK 2 temporary key.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppID(self):
+        r"""App ID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def LeakEvidence(self):
+        r"""Leakage evidence.
+        :rtype: list of str
+        """
+        return self._LeakEvidence
+
+    @LeakEvidence.setter
+    def LeakEvidence(self, LeakEvidence):
+        self._LeakEvidence = LeakEvidence
+
+    @property
+    def IsSupportEditWhiteAccount(self):
+        r"""Whether editing a trusted account is supported.
+        :rtype: bool
+        """
+        return self._IsSupportEditWhiteAccount
+
+    @IsSupportEditWhiteAccount.setter
+    def IsSupportEditWhiteAccount(self, IsSupportEditWhiteAccount):
+        self._IsSupportEditWhiteAccount = IsSupportEditWhiteAccount
+
+    @property
+    def Evidence(self):
+        r"""Alarm evidence.
+        :rtype: str
+        """
+        return self._Evidence
+
+    @Evidence.setter
+    def Evidence(self, Evidence):
+        self._Evidence = Evidence
+
+    @property
+    def RuleKey(self):
+        r"""Alarm rule flag.
+        :rtype: str
+        """
+        return self._RuleKey
+
+    @RuleKey.setter
+    def RuleKey(self, RuleKey):
+        self._RuleKey = RuleKey
+
+    @property
+    def CloudType(self):
+        r"""Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def AIStatus(self):
+        r"""Alarm AI analysis status.
+-Analysis failed.
+0 not analyzed.
+Under analysis.
+2 analysis successful, real Alarm.
+3 analysis successful, suspicious Alarm.
+        :rtype: int
+        """
+        return self._AIStatus
+
+    @AIStatus.setter
+    def AIStatus(self, AIStatus):
+        self._AIStatus = AIStatus
+
+    @property
+    def FirstAlarmTimestamp(self):
+        r"""First Alarm timestamp (in seconds).
+        :rtype: int
+        """
+        return self._FirstAlarmTimestamp
+
+    @FirstAlarmTimestamp.setter
+    def FirstAlarmTimestamp(self, FirstAlarmTimestamp):
+        self._FirstAlarmTimestamp = FirstAlarmTimestamp
+
+    @property
+    def LastAlarmTimestamp(self):
+        r"""Last Alarm timestamp (in seconds).
+        :rtype: int
+        """
+        return self._LastAlarmTimestamp
+
+    @LastAlarmTimestamp.setter
+    def LastAlarmTimestamp(self, LastAlarmTimestamp):
+        self._LastAlarmTimestamp = LastAlarmTimestamp
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Level = params.get("Level")
+        self._ID = params.get("ID")
+        self._AlarmRuleID = params.get("AlarmRuleID")
+        self._AlarmType = params.get("AlarmType")
+        self._AccessKey = params.get("AccessKey")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._AccessKeyRemark = params.get("AccessKeyRemark")
+        self._LastAlarmTime = params.get("LastAlarmTime")
+        self._Status = params.get("Status")
+        self._Date = params.get("Date")
+        self._Tag = params.get("Tag")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._SubUin = params.get("SubUin")
+        self._SubNickname = params.get("SubNickname")
+        self._Type = params.get("Type")
+        self._AppID = params.get("AppID")
+        self._LeakEvidence = params.get("LeakEvidence")
+        self._IsSupportEditWhiteAccount = params.get("IsSupportEditWhiteAccount")
+        self._Evidence = params.get("Evidence")
+        self._RuleKey = params.get("RuleKey")
+        self._CloudType = params.get("CloudType")
+        self._AIStatus = params.get("AIStatus")
+        self._FirstAlarmTimestamp = params.get("FirstAlarmTimestamp")
+        self._LastAlarmTimestamp = params.get("LastAlarmTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAlarmCount(AbstractModel):
+    r"""Alarm count for access key.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Access key ID.
+        :type ID: int
+        :param _AccessKey: Access key.
+        :type AccessKey: str
+        :param _AlarmCount: Alarm count.
+        :type AlarmCount: int
+        :param _AccessKeyStatus: Security credentials status. valid values: 0 (disabled), 1 (enabled), 2 (deleted).
+        :type AccessKeyStatus: int
+        :param _AccessKeyCreateTime: AK creation time.
+        :type AccessKeyCreateTime: str
+        :param _LastAccessTime: AK last usage time. returns "-" if never used.
+        :type LastAccessTime: str
+        """
+        self._ID = None
+        self._AccessKey = None
+        self._AlarmCount = None
+        self._AccessKeyStatus = None
+        self._AccessKeyCreateTime = None
+        self._LastAccessTime = None
+
+    @property
+    def ID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AccessKey(self):
+        r"""Access key.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def AlarmCount(self):
+        r"""Alarm count.
+        :rtype: int
+        """
+        return self._AlarmCount
+
+    @AlarmCount.setter
+    def AlarmCount(self, AlarmCount):
+        self._AlarmCount = AlarmCount
+
+    @property
+    def AccessKeyStatus(self):
+        r"""Security credentials status. valid values: 0 (disabled), 1 (enabled), 2 (deleted).
+        :rtype: int
+        """
+        return self._AccessKeyStatus
+
+    @AccessKeyStatus.setter
+    def AccessKeyStatus(self, AccessKeyStatus):
+        self._AccessKeyStatus = AccessKeyStatus
+
+    @property
+    def AccessKeyCreateTime(self):
+        r"""AK creation time.
+        :rtype: str
+        """
+        return self._AccessKeyCreateTime
+
+    @AccessKeyCreateTime.setter
+    def AccessKeyCreateTime(self, AccessKeyCreateTime):
+        self._AccessKeyCreateTime = AccessKeyCreateTime
+
+    @property
+    def LastAccessTime(self):
+        r"""AK last usage time. returns "-" if never used.
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._AccessKey = params.get("AccessKey")
+        self._AlarmCount = params.get("AlarmCount")
+        self._AccessKeyStatus = params.get("AccessKeyStatus")
+        self._AccessKeyCreateTime = params.get("AccessKeyCreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAlarmInfo(AbstractModel):
+    r"""Access key asset Alarm information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Alarm type/risktype.
+Alarm type:.
+Abnormal calls.
+Leakage detection.
+2 custom.
+
+Risk type:.
+Configuration risk.
+Custom risk.
+        :type Type: int
+        :param _Count: Alarm count/number of risks.
+        :type Count: int
+        """
+        self._Type = None
+        self._Count = None
+
+    @property
+    def Type(self):
+        r"""Alarm type/risktype.
+Alarm type:.
+Abnormal calls.
+Leakage detection.
+2 custom.
+
+Risk type:.
+Configuration risk.
+Custom risk.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Count(self):
+        r"""Alarm count/number of risks.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAsset(AbstractModel):
+    r"""Access key asset information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: AK id.
+        :type ID: int
+        :param _Name: AK name.
+        :type Name: str
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _AppID: Account associate APPID.
+        :type AppID: int
+        :param _Uin: Account associate Uin belonging to main account.
+        :type Uin: str
+        :param _Nickname: Nickname of the main account.
+        :type Nickname: str
+        :param _SubUin: Sub-Account Uin belonging to.
+        :type SubUin: str
+        :param _SubNickname: Sub-Account nickname.
+        :type SubNickname: str
+        :param _Type: Root account AK.
+Sub-Account AK.
+2 temporary key.
+        :type Type: int
+        :param _Advice: Security advice enumeration.
+Normal.
+Process now.
+2 recommend reinforcement.
+        :type Advice: int
+        :param _AccessKeyAlarmList: Alarm information list.
+        :type AccessKeyAlarmList: list of AccessKeyAlarmInfo
+        :param _AccessKeyRiskList: Risk information list.
+        :type AccessKeyRiskList: list of AccessKeyAlarmInfo
+        :param _IPCount: Source IP quantity.
+        :type IPCount: int
+        :param _CreateTime: Creation time.
+
+
+        :type CreateTime: str
+        :param _LastAccessTime: Last access Time
+        :type LastAccessTime: str
+        :param _Status: AK status. 
+0: disabled.
+1: enabled.
+2: deleted (deleted in cam, the security center still retains the previous log).
+        :type Status: int
+        :param _CheckStatus: 0 means detected.
+1 indicates detecting.
+        :type CheckStatus: int
+        :param _CloudType: Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :type CloudType: int
+        """
+        self._ID = None
+        self._Name = None
+        self._Remark = None
+        self._AppID = None
+        self._Uin = None
+        self._Nickname = None
+        self._SubUin = None
+        self._SubNickname = None
+        self._Type = None
+        self._Advice = None
+        self._AccessKeyAlarmList = None
+        self._AccessKeyRiskList = None
+        self._IPCount = None
+        self._CreateTime = None
+        self._LastAccessTime = None
+        self._Status = None
+        self._CheckStatus = None
+        self._CloudType = None
+
+    @property
+    def ID(self):
+        r"""AK id.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""AK name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AppID(self):
+        r"""Account associate APPID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        r"""Account associate Uin belonging to main account.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        r"""Nickname of the main account.
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def SubUin(self):
+        r"""Sub-Account Uin belonging to.
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubNickname(self):
+        r"""Sub-Account nickname.
+        :rtype: str
+        """
+        return self._SubNickname
+
+    @SubNickname.setter
+    def SubNickname(self, SubNickname):
+        self._SubNickname = SubNickname
+
+    @property
+    def Type(self):
+        r"""Root account AK.
+Sub-Account AK.
+2 temporary key.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Advice(self):
+        r"""Security advice enumeration.
+Normal.
+Process now.
+2 recommend reinforcement.
+        :rtype: int
+        """
+        return self._Advice
+
+    @Advice.setter
+    def Advice(self, Advice):
+        self._Advice = Advice
+
+    @property
+    def AccessKeyAlarmList(self):
+        r"""Alarm information list.
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyAlarmList
+
+    @AccessKeyAlarmList.setter
+    def AccessKeyAlarmList(self, AccessKeyAlarmList):
+        self._AccessKeyAlarmList = AccessKeyAlarmList
+
+    @property
+    def AccessKeyRiskList(self):
+        r"""Risk information list.
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyRiskList
+
+    @AccessKeyRiskList.setter
+    def AccessKeyRiskList(self, AccessKeyRiskList):
+        self._AccessKeyRiskList = AccessKeyRiskList
+
+    @property
+    def IPCount(self):
+        r"""Source IP quantity.
+        :rtype: int
+        """
+        return self._IPCount
+
+    @IPCount.setter
+    def IPCount(self, IPCount):
+        self._IPCount = IPCount
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+
+
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastAccessTime(self):
+        r"""Last access Time
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def Status(self):
+        r"""AK status. 
+0: disabled.
+1: enabled.
+2: deleted (deleted in cam, the security center still retains the previous log).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CheckStatus(self):
+        r"""0 means detected.
+1 indicates detecting.
+        :rtype: int
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def CloudType(self):
+        r"""Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._SubUin = params.get("SubUin")
+        self._SubNickname = params.get("SubNickname")
+        self._Type = params.get("Type")
+        self._Advice = params.get("Advice")
+        if params.get("AccessKeyAlarmList") is not None:
+            self._AccessKeyAlarmList = []
+            for item in params.get("AccessKeyAlarmList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyAlarmList.append(obj)
+        if params.get("AccessKeyRiskList") is not None:
+            self._AccessKeyRiskList = []
+            for item in params.get("AccessKeyRiskList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyRiskList.append(obj)
+        self._IPCount = params.get("IPCount")
+        self._CreateTime = params.get("CreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._Status = params.get("Status")
+        self._CheckStatus = params.get("CheckStatus")
+        self._CloudType = params.get("CloudType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyRisk(AbstractModel):
+    r"""Access key risk record.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Risk name.
+        :type Name: str
+        :param _Level: Risk level.
+0 - unavailable 1 - Note 2 - low risk 3 - medium risk 4 - high risk 5 - critical.
+        :type Level: int
+        :param _ID: Risk record ID.
+        :type ID: int
+        :param _RiskRuleID: Risk rule ID.
+        :type RiskRuleID: int
+        :param _RiskType: Risk type.
+Configuration risk.
+        :type RiskType: int
+        :param _AccessKey: Access key.
+        :type AccessKey: str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _AccessKeyRemark: Access key remark.
+        :type AccessKeyRemark: str
+        :param _RiskTime: Detection time of risk.
+        :type RiskTime: str
+        :param _Status: Risk status.
+0 - unprocessed 2 - ignored 3 - converged.
+        :type Status: int
+        :param _Tag: Risk Tag.
+        :type Tag: list of str
+        :param _Evidence: Risk evidence.
+        :type Evidence: str
+        :param _Description: Risk description.
+        :type Description: str
+        :param _Uin: Account associate Uin belonging to main account.
+        :type Uin: str
+        :param _Nickname: Nickname of the main account.
+        :type Nickname: str
+        :param _SubUin: Sub-Account Uin belonging to.
+        :type SubUin: str
+        :param _SubNickname: Sub-Account nickname.
+        :type SubNickname: str
+        :param _Type: Account type.
+0 root account AK 1 sub-account AK.
+2 temporary key.
+        :type Type: int
+        :param _CheckStatus: Detection status.
+0: detected.
+1 indicates detecting.
+        :type CheckStatus: int
+        :param _AppID: App ID
+        :type AppID: int
+        :param _QueryParam: Query parameter corresponding to the risk.
+        :type QueryParam: str
+        :param _CloudType: Cloud type 0 for tencent cloud 4 for alibaba cloud.
+        :type CloudType: int
+        :param _RelatedAK: Related AK list, including AK name and remark.
+        :type RelatedAK: list of AKInfo
+        """
+        self._Name = None
+        self._Level = None
+        self._ID = None
+        self._RiskRuleID = None
+        self._RiskType = None
+        self._AccessKey = None
+        self._AccessKeyID = None
+        self._AccessKeyRemark = None
+        self._RiskTime = None
+        self._Status = None
+        self._Tag = None
+        self._Evidence = None
+        self._Description = None
+        self._Uin = None
+        self._Nickname = None
+        self._SubUin = None
+        self._SubNickname = None
+        self._Type = None
+        self._CheckStatus = None
+        self._AppID = None
+        self._QueryParam = None
+        self._CloudType = None
+        self._RelatedAK = None
+
+    @property
+    def Name(self):
+        r"""Risk name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Level(self):
+        r"""Risk level.
+0 - unavailable 1 - Note 2 - low risk 3 - medium risk 4 - high risk 5 - critical.
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def ID(self):
+        r"""Risk record ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def RiskRuleID(self):
+        r"""Risk rule ID.
+        :rtype: int
+        """
+        return self._RiskRuleID
+
+    @RiskRuleID.setter
+    def RiskRuleID(self, RiskRuleID):
+        self._RiskRuleID = RiskRuleID
+
+    @property
+    def RiskType(self):
+        r"""Risk type.
+Configuration risk.
+        :rtype: int
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AccessKey(self):
+        r"""Access key.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def AccessKeyRemark(self):
+        r"""Access key remark.
+        :rtype: str
+        """
+        return self._AccessKeyRemark
+
+    @AccessKeyRemark.setter
+    def AccessKeyRemark(self, AccessKeyRemark):
+        self._AccessKeyRemark = AccessKeyRemark
+
+    @property
+    def RiskTime(self):
+        r"""Detection time of risk.
+        :rtype: str
+        """
+        return self._RiskTime
+
+    @RiskTime.setter
+    def RiskTime(self, RiskTime):
+        self._RiskTime = RiskTime
+
+    @property
+    def Status(self):
+        r"""Risk status.
+0 - unprocessed 2 - ignored 3 - converged.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tag(self):
+        r"""Risk Tag.
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Evidence(self):
+        r"""Risk evidence.
+        :rtype: str
+        """
+        return self._Evidence
+
+    @Evidence.setter
+    def Evidence(self, Evidence):
+        self._Evidence = Evidence
+
+    @property
+    def Description(self):
+        r"""Risk description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Uin(self):
+        r"""Account associate Uin belonging to main account.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        r"""Nickname of the main account.
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def SubUin(self):
+        r"""Sub-Account Uin belonging to.
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubNickname(self):
+        r"""Sub-Account nickname.
+        :rtype: str
+        """
+        return self._SubNickname
+
+    @SubNickname.setter
+    def SubNickname(self, SubNickname):
+        self._SubNickname = SubNickname
+
+    @property
+    def Type(self):
+        r"""Account type.
+0 root account AK 1 sub-account AK.
+2 temporary key.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CheckStatus(self):
+        r"""Detection status.
+0: detected.
+1 indicates detecting.
+        :rtype: int
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def AppID(self):
+        r"""App ID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def QueryParam(self):
+        r"""Query parameter corresponding to the risk.
+        :rtype: str
+        """
+        return self._QueryParam
+
+    @QueryParam.setter
+    def QueryParam(self, QueryParam):
+        self._QueryParam = QueryParam
+
+    @property
+    def CloudType(self):
+        r"""Cloud type 0 for tencent cloud 4 for alibaba cloud.
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def RelatedAK(self):
+        r"""Related AK list, including AK name and remark.
+        :rtype: list of AKInfo
+        """
+        return self._RelatedAK
+
+    @RelatedAK.setter
+    def RelatedAK(self, RelatedAK):
+        self._RelatedAK = RelatedAK
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Level = params.get("Level")
+        self._ID = params.get("ID")
+        self._RiskRuleID = params.get("RiskRuleID")
+        self._RiskType = params.get("RiskType")
+        self._AccessKey = params.get("AccessKey")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._AccessKeyRemark = params.get("AccessKeyRemark")
+        self._RiskTime = params.get("RiskTime")
+        self._Status = params.get("Status")
+        self._Tag = params.get("Tag")
+        self._Evidence = params.get("Evidence")
+        self._Description = params.get("Description")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._SubUin = params.get("SubUin")
+        self._SubNickname = params.get("SubNickname")
+        self._Type = params.get("Type")
+        self._CheckStatus = params.get("CheckStatus")
+        self._AppID = params.get("AppID")
+        self._QueryParam = params.get("QueryParam")
+        self._CloudType = params.get("CloudType")
+        if params.get("RelatedAK") is not None:
+            self._RelatedAK = []
+            for item in params.get("RelatedAK"):
+                obj = AKInfo()
+                obj._deserialize(item)
+                self._RelatedAK.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyUser(AbstractModel):
+    r"""Access key account information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Account ID.
+        :type ID: int
+        :param _Name: Account name
+        :type Name: str
+        :param _Type: 0 root account 1 sub-account.
+        :type Type: int
+        :param _AccessType: Access method.
+0 API
+1 console and API.
+        :type AccessType: int
+        :param _Advice: Security recommendation enumerate 0 normal 1 process immediately 2 recommend reinforcement.
+        :type Advice: int
+        :param _AccessKeyAlarmList: Alarm information list.
+        :type AccessKeyAlarmList: list of AccessKeyAlarmInfo
+        :param _AccessKeyRiskList: Risk information list.
+        :type AccessKeyRiskList: list of AccessKeyAlarmInfo
+        :param _AppID: Account associate APPID.
+        :type AppID: int
+        :param _Nickname: Nickname of the main account.
+        :type Nickname: str
+        :param _SubNickname: Sub-Account nickname.
+        :type SubNickname: str
+        :param _Uin: Account Uin belonging to main account.
+        :type Uin: str
+        :param _SubUin: Account self uin, same as root account uin when it is the root account.
+        :type SubUin: str
+        :param _LoginIP: Login IP.
+        :type LoginIP: str
+        :param _LoginLocation: Login address.
+        :type LoginLocation: str
+        :param _LoginTime: Log-In time.
+        :type LoginTime: str
+        :param _ISP: ISP name
+        :type ISP: str
+        :param _ActionFlag: Whether operation protection is enabled.
+0 not enabled.
+1: enabled.
+        :type ActionFlag: int
+        :param _LoginFlag: Is login protection enabled?.
+0 not enabled.
+1: enabled.
+        :type LoginFlag: int
+        :param _CheckStatus: 0 means detected. 1 means detecting.
+        :type CheckStatus: int
+        :param _CloudType: Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :type CloudType: int
+        """
+        self._ID = None
+        self._Name = None
+        self._Type = None
+        self._AccessType = None
+        self._Advice = None
+        self._AccessKeyAlarmList = None
+        self._AccessKeyRiskList = None
+        self._AppID = None
+        self._Nickname = None
+        self._SubNickname = None
+        self._Uin = None
+        self._SubUin = None
+        self._LoginIP = None
+        self._LoginLocation = None
+        self._LoginTime = None
+        self._ISP = None
+        self._ActionFlag = None
+        self._LoginFlag = None
+        self._CheckStatus = None
+        self._CloudType = None
+
+    @property
+    def ID(self):
+        r"""Account ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""Account name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""0 root account 1 sub-account.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AccessType(self):
+        r"""Access method.
+0 API
+1 console and API.
+        :rtype: int
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Advice(self):
+        r"""Security recommendation enumerate 0 normal 1 process immediately 2 recommend reinforcement.
+        :rtype: int
+        """
+        return self._Advice
+
+    @Advice.setter
+    def Advice(self, Advice):
+        self._Advice = Advice
+
+    @property
+    def AccessKeyAlarmList(self):
+        r"""Alarm information list.
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyAlarmList
+
+    @AccessKeyAlarmList.setter
+    def AccessKeyAlarmList(self, AccessKeyAlarmList):
+        self._AccessKeyAlarmList = AccessKeyAlarmList
+
+    @property
+    def AccessKeyRiskList(self):
+        r"""Risk information list.
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyRiskList
+
+    @AccessKeyRiskList.setter
+    def AccessKeyRiskList(self, AccessKeyRiskList):
+        self._AccessKeyRiskList = AccessKeyRiskList
+
+    @property
+    def AppID(self):
+        r"""Account associate APPID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Nickname(self):
+        r"""Nickname of the main account.
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def SubNickname(self):
+        r"""Sub-Account nickname.
+        :rtype: str
+        """
+        return self._SubNickname
+
+    @SubNickname.setter
+    def SubNickname(self, SubNickname):
+        self._SubNickname = SubNickname
+
+    @property
+    def Uin(self):
+        r"""Account Uin belonging to main account.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        r"""Account self uin, same as root account uin when it is the root account.
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def LoginIP(self):
+        r"""Login IP.
+        :rtype: str
+        """
+        return self._LoginIP
+
+    @LoginIP.setter
+    def LoginIP(self, LoginIP):
+        self._LoginIP = LoginIP
+
+    @property
+    def LoginLocation(self):
+        r"""Login address.
+        :rtype: str
+        """
+        return self._LoginLocation
+
+    @LoginLocation.setter
+    def LoginLocation(self, LoginLocation):
+        self._LoginLocation = LoginLocation
+
+    @property
+    def LoginTime(self):
+        r"""Log-In time.
+        :rtype: str
+        """
+        return self._LoginTime
+
+    @LoginTime.setter
+    def LoginTime(self, LoginTime):
+        self._LoginTime = LoginTime
+
+    @property
+    def ISP(self):
+        r"""ISP name
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def ActionFlag(self):
+        r"""Whether operation protection is enabled.
+0 not enabled.
+1: enabled.
+        :rtype: int
+        """
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
+
+    @property
+    def LoginFlag(self):
+        r"""Is login protection enabled?.
+0 not enabled.
+1: enabled.
+        :rtype: int
+        """
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def CheckStatus(self):
+        r"""0 means detected. 1 means detecting.
+        :rtype: int
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def CloudType(self):
+        r"""Cloud vendor type 0: tencent cloud 1: amazon web services 2: microsoft azure 3: google cloud 4: alibaba cloud 5: huawei cloud.
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._AccessType = params.get("AccessType")
+        self._Advice = params.get("Advice")
+        if params.get("AccessKeyAlarmList") is not None:
+            self._AccessKeyAlarmList = []
+            for item in params.get("AccessKeyAlarmList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyAlarmList.append(obj)
+        if params.get("AccessKeyRiskList") is not None:
+            self._AccessKeyRiskList = []
+            for item in params.get("AccessKeyRiskList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyRiskList.append(obj)
+        self._AppID = params.get("AppID")
+        self._Nickname = params.get("Nickname")
+        self._SubNickname = params.get("SubNickname")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._LoginIP = params.get("LoginIP")
+        self._LoginLocation = params.get("LoginLocation")
+        self._LoginTime = params.get("LoginTime")
+        self._ISP = params.get("ISP")
+        self._ActionFlag = params.get("ActionFlag")
+        self._LoginFlag = params.get("LoginFlag")
+        self._CheckStatus = params.get("CheckStatus")
+        self._CloudType = params.get("CloudType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddNewBindRoleUserRequest(AbstractModel):
     r"""AddNewBindRoleUser request structure.
 
@@ -1581,6 +3322,192 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class AssetProcessItem(AbstractModel):
+    r"""Host process content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: Cloud account ID.
+        :type CloudAccountID: str
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _AppID: Tenant ID.
+        :type AppID: int
+        :param _CloudAccountName: Account name.
+        :type CloudAccountName: str
+        :param _InstanceID: Instance ID.
+        :type InstanceID: str
+        :param _PublicIp: Public IP address
+        :type PublicIp: str
+        :param _PrivateIp: Private IP address
+        :type PrivateIp: str
+        :param _ProcessID: Process ID
+        :type ProcessID: str
+        :param _ProcessName: Process name
+        :type ProcessName: str
+        :param _CmdLine: Command line
+        :type CmdLine: str
+        :param _Port: Listening port list.
+        :type Port: str
+        """
+        self._CloudAccountID = None
+        self._InstanceName = None
+        self._AppID = None
+        self._CloudAccountName = None
+        self._InstanceID = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._ProcessID = None
+        self._ProcessName = None
+        self._CmdLine = None
+        self._Port = None
+
+    @property
+    def CloudAccountID(self):
+        r"""Cloud account ID.
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def InstanceName(self):
+        r"""Instance name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppID(self):
+        r"""Tenant ID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def CloudAccountName(self):
+        r"""Account name.
+        :rtype: str
+        """
+        return self._CloudAccountName
+
+    @CloudAccountName.setter
+    def CloudAccountName(self, CloudAccountName):
+        self._CloudAccountName = CloudAccountName
+
+    @property
+    def InstanceID(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def PublicIp(self):
+        r"""Public IP address
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""Private IP address
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def ProcessID(self):
+        r"""Process ID
+        :rtype: str
+        """
+        return self._ProcessID
+
+    @ProcessID.setter
+    def ProcessID(self, ProcessID):
+        self._ProcessID = ProcessID
+
+    @property
+    def ProcessName(self):
+        r"""Process name
+        :rtype: str
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def CmdLine(self):
+        r"""Command line
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
+    @property
+    def Port(self):
+        r"""Listening port list.
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._InstanceName = params.get("InstanceName")
+        self._AppID = params.get("AppID")
+        self._CloudAccountName = params.get("CloudAccountName")
+        self._InstanceID = params.get("InstanceID")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._ProcessID = params.get("ProcessID")
+        self._ProcessName = params.get("ProcessName")
+        self._CmdLine = params.get("CmdLine")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetTag(AbstractModel):
     r"""Asset tags
 
@@ -1588,11 +3515,9 @@ class AssetTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key. It supports alphanumeric characters and underscores (_).
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _TagKey: Tag Key, can be letters, digits, and underscores.
         :type TagKey: str
-        :param _TagValue: Tag value. It supports alphanumeric characters and underscores (_).
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _TagValue: Tag Value, can be letters, digits, and underscores.
         :type TagValue: str
         """
         self._TagKey = None
@@ -1600,8 +3525,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TagKey(self):
-        r"""Tag key. It supports alphanumeric characters and underscores (_).
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Tag Key, can be letters, digits, and underscores.
         :rtype: str
         """
         return self._TagKey
@@ -1612,8 +3536,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TagValue(self):
-        r"""Tag value. It supports alphanumeric characters and underscores (_).
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Tag Value, can be letters, digits, and underscores.
         :rtype: str
         """
         return self._TagValue
@@ -2280,7 +4203,8 @@ class AssetViewVULRisk(AbstractModel):
         r"""
         :param _AffectAsset: Affected assets
         :type AffectAsset: str
-        :param _Level: Risk level
+        :param _Level: Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+
         :type Level: str
         :param _InstanceType: Asset type
         :type InstanceType: str
@@ -2294,7 +4218,7 @@ class AssetViewVULRisk(AbstractModel):
         :type FirstTime: str
         :param _Status: Status of the risk. `0`: Not handled, `1`: Handled; `2`: Ignored
         :type Status: int
-        :param _Id: Unique ID of the asset
+        :param _Id: Risk ID
         :type Id: str
         :param _Index: Frontend index
         :type Index: str
@@ -2304,35 +4228,33 @@ class AssetViewVULRisk(AbstractModel):
         :type InstanceName: str
         :param _AppId: User `appid`
         :type AppId: str
-        :param _Nick: User name.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Nick: User Nickname
         :type Nick: str
-        :param _Uin: User `uin`
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Uin: User UIN
         :type Uin: str
         :param _VULType: Vulnerability type
         :type VULType: str
         :param _Port: Port
         :type Port: str
-        :param _Describe: Description
+        :param _Describe: Vulnerability description
         :type Describe: str
-        :param _AppName: Components affected by the vulnerability 
+        :param _AppName: Vulnerability impact component.
         :type AppName: str
-        :param _References: Reference information about the vulnerability
+        :param _References: Technology reference.
         :type References: str
-        :param _AppVersion: Version
+        :param _AppVersion: Vulnerability impact version.
         :type AppVersion: str
-        :param _VULURL: Vulnerability URL
+        :param _VULURL: Risks.
         :type VULURL: str
         :param _VULName: Vulnerability name
         :type VULName: str
         :param _CVE: CVE number
         :type CVE: str
-        :param _Fix: Fix suggestion
+        :param _Fix: Fixing solution
         :type Fix: str
         :param _POCId: POC ID
         :type POCId: str
-        :param _From: Source of the task
+        :param _From: Scan Source
         :type From: str
         :param _CWPVersion: CWPP edition
         :type CWPVersion: int
@@ -2342,10 +4264,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :type IsSupportDetect: bool
         :param _InstanceUUID: Instance UUID
         :type InstanceUUID: str
-        :param _Payload: Pay load
+        :param _Payload: Payload
         :type Payload: str
-        :param _EMGCVulType: Whether it's an emergency vulnerability. Values: `1` (emergency vulnerability); `0` (non-emergency vulnerability
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _EMGCVulType: Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
         :type EMGCVulType: int
         """
         self._AffectAsset = None
@@ -2395,7 +4316,8 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Level(self):
-        r"""Risk level
+        r"""Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+
         :rtype: str
         """
         return self._Level
@@ -2472,7 +4394,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Id(self):
-        r"""Unique ID of the asset
+        r"""Risk ID
         :rtype: str
         """
         return self._Id
@@ -2527,8 +4449,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Nick(self):
-        r"""User name.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""User Nickname
         :rtype: str
         """
         return self._Nick
@@ -2539,8 +4460,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Uin(self):
-        r"""User `uin`
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""User UIN
         :rtype: str
         """
         return self._Uin
@@ -2573,7 +4493,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Describe(self):
-        r"""Description
+        r"""Vulnerability description
         :rtype: str
         """
         return self._Describe
@@ -2584,7 +4504,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AppName(self):
-        r"""Components affected by the vulnerability 
+        r"""Vulnerability impact component.
         :rtype: str
         """
         return self._AppName
@@ -2595,7 +4515,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def References(self):
-        r"""Reference information about the vulnerability
+        r"""Technology reference.
         :rtype: str
         """
         return self._References
@@ -2606,7 +4526,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AppVersion(self):
-        r"""Version
+        r"""Vulnerability impact version.
         :rtype: str
         """
         return self._AppVersion
@@ -2617,7 +4537,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VULURL(self):
-        r"""Vulnerability URL
+        r"""Risks.
         :rtype: str
         """
         return self._VULURL
@@ -2650,7 +4570,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Fix(self):
-        r"""Fix suggestion
+        r"""Fixing solution
         :rtype: str
         """
         return self._Fix
@@ -2672,7 +4592,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def From(self):
-        r"""Source of the task
+        r"""Scan Source
         :rtype: str
         """
         return self._From
@@ -2727,7 +4647,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Payload(self):
-        r"""Pay load
+        r"""Payload
         :rtype: str
         """
         return self._Payload
@@ -2738,8 +4658,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def EMGCVulType(self):
-        r"""Whether it's an emergency vulnerability. Values: `1` (emergency vulnerability); `0` (non-emergency vulnerability
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
         :rtype: int
         """
         return self._EMGCVulType
@@ -3484,6 +5403,298 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SubCategory = params.get("SubCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CFGViewCFGRisk(AbstractModel):
+    r"""Configuration Risk Objects from Configuration's Perspective
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoHandleCount: Impact assets.
+        :type NoHandleCount: int
+        :param _Level: Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+        :type Level: str
+        :param _RecentTime: Latest Recognition Time
+        :type RecentTime: str
+        :param _FirstTime: First Recognition Time
+        :type FirstTime: str
+        :param _AffectAssetCount: Status. 0-Unprocessed; 1-Disposed; 2-Ignored.
+        :type AffectAssetCount: int
+        :param _Id: Unique ID of Asset
+        :type Id: str
+        :param _From: Asset Subtype
+        :type From: str
+        :param _Index: Front-end Index
+        :type Index: str
+        :param _AppId: User appid.
+        :type AppId: str
+        :param _Nick: User Nickname
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nick: str
+        :param _Uin: User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param _CFGName: Configuration name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFGName: str
+        :param _CheckType: Check type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CheckType: str
+        :param _CFGSTD: -
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFGSTD: str
+        :param _CFGDescribe: Description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFGDescribe: str
+        :param _CFGFix: Fixing suggestion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFGFix: str
+        :param _CFGHelpURL: Help documentation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFGHelpURL: str
+        """
+        self._NoHandleCount = None
+        self._Level = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._AffectAssetCount = None
+        self._Id = None
+        self._From = None
+        self._Index = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+        self._CFGName = None
+        self._CheckType = None
+        self._CFGSTD = None
+        self._CFGDescribe = None
+        self._CFGFix = None
+        self._CFGHelpURL = None
+
+    @property
+    def NoHandleCount(self):
+        r"""Impact assets.
+        :rtype: int
+        """
+        return self._NoHandleCount
+
+    @NoHandleCount.setter
+    def NoHandleCount(self, NoHandleCount):
+        self._NoHandleCount = NoHandleCount
+
+    @property
+    def Level(self):
+        r"""Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def RecentTime(self):
+        r"""Latest Recognition Time
+        :rtype: str
+        """
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        r"""First Recognition Time
+        :rtype: str
+        """
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def AffectAssetCount(self):
+        r"""Status. 0-Unprocessed; 1-Disposed; 2-Ignored.
+        :rtype: int
+        """
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def Id(self):
+        r"""Unique ID of Asset
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def From(self):
+        r"""Asset Subtype
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Index(self):
+        r"""Front-end Index
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def AppId(self):
+        r"""User appid.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        r"""User Nickname
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        r"""User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def CFGName(self):
+        r"""Configuration name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CFGName
+
+    @CFGName.setter
+    def CFGName(self, CFGName):
+        self._CFGName = CFGName
+
+    @property
+    def CheckType(self):
+        r"""Check type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def CFGSTD(self):
+        r"""-
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CFGSTD
+
+    @CFGSTD.setter
+    def CFGSTD(self, CFGSTD):
+        self._CFGSTD = CFGSTD
+
+    @property
+    def CFGDescribe(self):
+        r"""Description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CFGDescribe
+
+    @CFGDescribe.setter
+    def CFGDescribe(self, CFGDescribe):
+        self._CFGDescribe = CFGDescribe
+
+    @property
+    def CFGFix(self):
+        r"""Fixing suggestion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CFGFix
+
+    @CFGFix.setter
+    def CFGFix(self, CFGFix):
+        self._CFGFix = CFGFix
+
+    @property
+    def CFGHelpURL(self):
+        r"""Help documentation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CFGHelpURL
+
+    @CFGHelpURL.setter
+    def CFGHelpURL(self, CFGHelpURL):
+        self._CFGHelpURL = CFGHelpURL
+
+
+    def _deserialize(self, params):
+        self._NoHandleCount = params.get("NoHandleCount")
+        self._Level = params.get("Level")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._Id = params.get("Id")
+        self._From = params.get("From")
+        self._Index = params.get("Index")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._CFGName = params.get("CFGName")
+        self._CheckType = params.get("CheckType")
+        self._CFGSTD = params.get("CFGSTD")
+        self._CFGDescribe = params.get("CFGDescribe")
+        self._CFGFix = params.get("CFGFix")
+        self._CFGHelpURL = params.get("CFGHelpURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4385,6 +6596,430 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class CallRecord(AbstractModel):
+    r"""Record details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallID: Invocation record ID.
+        :type CallID: str
+        :param _AccessKey: Access key.
+        :type AccessKey: str
+        :param _AccessKeyRemark: Access key remark.
+        :type AccessKeyRemark: str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _SourceIP: Source IP of the call.
+        :type SourceIP: str
+        :param _SourceIPRemark: Source IP of the call remark.
+        :type SourceIPRemark: str
+        :param _Region: Source IP region of the call.
+        :type Region: str
+        :param _IPType: IP type 0: within the account (unremarked) 1: outside the account (unremarked) 2: within the account (remarked) 3: outside the account (remarked).
+        :type IPType: int
+        :param _EventName: Call interface name.
+        :type EventName: str
+        :param _ProductName: Call the product name.
+        :type ProductName: str
+        :param _EventType: Invocation type.
+0: console invocation.
+1:API
+        :type EventType: int
+        :param _UserType: Type of user: CAMUser/root/AssumedRole.
+
+        :type UserType: str
+        :param _UserName: User/Role name.
+        :type UserName: str
+        :param _PolicySet: Policy List
+        :type PolicySet: list of str
+        :param _CallCount: Number of calls.
+        :type CallCount: int
+        :param _Code: Error code.
+0: Successful
+        :type Code: int
+        :param _FirstCallTime: First time call time.
+        :type FirstCallTime: str
+        :param _LastCallTime: Call time.
+        :type LastCallTime: str
+        :param _InstanceID: IP associated asset ID. if an empty string, means not associated with.
+        :type InstanceID: str
+        :param _InstanceName: Associated asset name of the IP.
+        :type InstanceName: str
+        :param _Date: Aggregate date.
+        :type Date: str
+        :param _AppID: appid
+        :type AppID: int
+        :param _ShowStatus: Display status.
+        :type ShowStatus: bool
+        :param _ISP: Carrier.
+        :type ISP: str
+        :param _VpcInfo: vpc information list outside the account.
+        :type VpcInfo: list of SourceIPVpcInfo
+        :param _ReqClient: Request client list.
+        :type ReqClient: list of str
+        """
+        self._CallID = None
+        self._AccessKey = None
+        self._AccessKeyRemark = None
+        self._AccessKeyID = None
+        self._SourceIP = None
+        self._SourceIPRemark = None
+        self._Region = None
+        self._IPType = None
+        self._EventName = None
+        self._ProductName = None
+        self._EventType = None
+        self._UserType = None
+        self._UserName = None
+        self._PolicySet = None
+        self._CallCount = None
+        self._Code = None
+        self._FirstCallTime = None
+        self._LastCallTime = None
+        self._InstanceID = None
+        self._InstanceName = None
+        self._Date = None
+        self._AppID = None
+        self._ShowStatus = None
+        self._ISP = None
+        self._VpcInfo = None
+        self._ReqClient = None
+
+    @property
+    def CallID(self):
+        r"""Invocation record ID.
+        :rtype: str
+        """
+        return self._CallID
+
+    @CallID.setter
+    def CallID(self, CallID):
+        self._CallID = CallID
+
+    @property
+    def AccessKey(self):
+        r"""Access key.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def AccessKeyRemark(self):
+        r"""Access key remark.
+        :rtype: str
+        """
+        return self._AccessKeyRemark
+
+    @AccessKeyRemark.setter
+    def AccessKeyRemark(self, AccessKeyRemark):
+        self._AccessKeyRemark = AccessKeyRemark
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SourceIP(self):
+        r"""Source IP of the call.
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def SourceIPRemark(self):
+        r"""Source IP of the call remark.
+        :rtype: str
+        """
+        return self._SourceIPRemark
+
+    @SourceIPRemark.setter
+    def SourceIPRemark(self, SourceIPRemark):
+        self._SourceIPRemark = SourceIPRemark
+
+    @property
+    def Region(self):
+        r"""Source IP region of the call.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IPType(self):
+        r"""IP type 0: within the account (unremarked) 1: outside the account (unremarked) 2: within the account (remarked) 3: outside the account (remarked).
+        :rtype: int
+        """
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def EventName(self):
+        r"""Call interface name.
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def ProductName(self):
+        r"""Call the product name.
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def EventType(self):
+        r"""Invocation type.
+0: console invocation.
+1:API
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def UserType(self):
+        r"""Type of user: CAMUser/root/AssumedRole.
+
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def UserName(self):
+        r"""User/Role name.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PolicySet(self):
+        r"""Policy List
+        :rtype: list of str
+        """
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
+
+    @property
+    def CallCount(self):
+        r"""Number of calls.
+        :rtype: int
+        """
+        return self._CallCount
+
+    @CallCount.setter
+    def CallCount(self, CallCount):
+        self._CallCount = CallCount
+
+    @property
+    def Code(self):
+        r"""Error code.
+0: Successful
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def FirstCallTime(self):
+        r"""First time call time.
+        :rtype: str
+        """
+        return self._FirstCallTime
+
+    @FirstCallTime.setter
+    def FirstCallTime(self, FirstCallTime):
+        self._FirstCallTime = FirstCallTime
+
+    @property
+    def LastCallTime(self):
+        r"""Call time.
+        :rtype: str
+        """
+        return self._LastCallTime
+
+    @LastCallTime.setter
+    def LastCallTime(self, LastCallTime):
+        self._LastCallTime = LastCallTime
+
+    @property
+    def InstanceID(self):
+        r"""IP associated asset ID. if an empty string, means not associated with.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceName(self):
+        r"""Associated asset name of the IP.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Date(self):
+        r"""Aggregate date.
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AppID(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def ShowStatus(self):
+        r"""Display status.
+        :rtype: bool
+        """
+        return self._ShowStatus
+
+    @ShowStatus.setter
+    def ShowStatus(self, ShowStatus):
+        self._ShowStatus = ShowStatus
+
+    @property
+    def ISP(self):
+        r"""Carrier.
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def VpcInfo(self):
+        r"""vpc information list outside the account.
+        :rtype: list of SourceIPVpcInfo
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def ReqClient(self):
+        r"""Request client list.
+        :rtype: list of str
+        """
+        return self._ReqClient
+
+    @ReqClient.setter
+    def ReqClient(self, ReqClient):
+        self._ReqClient = ReqClient
+
+
+    def _deserialize(self, params):
+        self._CallID = params.get("CallID")
+        self._AccessKey = params.get("AccessKey")
+        self._AccessKeyRemark = params.get("AccessKeyRemark")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SourceIP = params.get("SourceIP")
+        self._SourceIPRemark = params.get("SourceIPRemark")
+        self._Region = params.get("Region")
+        self._IPType = params.get("IPType")
+        self._EventName = params.get("EventName")
+        self._ProductName = params.get("ProductName")
+        self._EventType = params.get("EventType")
+        self._UserType = params.get("UserType")
+        self._UserName = params.get("UserName")
+        self._PolicySet = params.get("PolicySet")
+        self._CallCount = params.get("CallCount")
+        self._Code = params.get("Code")
+        self._FirstCallTime = params.get("FirstCallTime")
+        self._LastCallTime = params.get("LastCallTime")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceName = params.get("InstanceName")
+        self._Date = params.get("Date")
+        self._AppID = params.get("AppID")
+        self._ShowStatus = params.get("ShowStatus")
+        self._ISP = params.get("ISP")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = SourceIPVpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._ReqClient = params.get("ReqClient")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClbListenerListInfo(AbstractModel):
     r"""CLB instance and listener information
 
@@ -4691,6 +7326,269 @@ class CloudCountDesc(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAccessKeyCheckTaskRequest(AbstractModel):
+    r"""CreateAccessKeyCheckTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _RiskIDList: Risk list.
+        :type RiskIDList: list of int
+        :param _AccessKeyList: Access key list.
+        :type AccessKeyList: list of str
+        :param _SubUinList: Account uin list.
+        :type SubUinList: list of str
+        :param _RiskRuleIDList: Risk rule id list.
+        :type RiskRuleIDList: list of int
+        """
+        self._MemberId = None
+        self._RiskIDList = None
+        self._AccessKeyList = None
+        self._SubUinList = None
+        self._RiskRuleIDList = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RiskIDList(self):
+        r"""Risk list.
+        :rtype: list of int
+        """
+        return self._RiskIDList
+
+    @RiskIDList.setter
+    def RiskIDList(self, RiskIDList):
+        self._RiskIDList = RiskIDList
+
+    @property
+    def AccessKeyList(self):
+        r"""Access key list.
+        :rtype: list of str
+        """
+        return self._AccessKeyList
+
+    @AccessKeyList.setter
+    def AccessKeyList(self, AccessKeyList):
+        self._AccessKeyList = AccessKeyList
+
+    @property
+    def SubUinList(self):
+        r"""Account uin list.
+        :rtype: list of str
+        """
+        return self._SubUinList
+
+    @SubUinList.setter
+    def SubUinList(self, SubUinList):
+        self._SubUinList = SubUinList
+
+    @property
+    def RiskRuleIDList(self):
+        r"""Risk rule id list.
+        :rtype: list of int
+        """
+        return self._RiskRuleIDList
+
+    @RiskRuleIDList.setter
+    def RiskRuleIDList(self, RiskRuleIDList):
+        self._RiskRuleIDList = RiskRuleIDList
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._RiskIDList = params.get("RiskIDList")
+        self._AccessKeyList = params.get("AccessKeyList")
+        self._SubUinList = params.get("SubUinList")
+        self._RiskRuleIDList = params.get("RiskRuleIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessKeyCheckTaskResponse(AbstractModel):
+    r"""CreateAccessKeyCheckTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 0 indicates success. 1 indicates failure.
+        :type Code: int
+        :param _Msg: Error message
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        r"""0 indicates success. 1 indicates failure.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAccessKeySyncTaskRequest(AbstractModel):
+    r"""CreateAccessKeySyncTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessKeySyncTaskResponse(AbstractModel):
+    r"""CreateAccessKeySyncTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskID: Initiate a sync task.
+        :type TaskID: int
+        :param _Code: 0: success; 1: failure.
+        :type Code: int
+        :param _Msg: Error message
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskID = None
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def TaskID(self):
+        r"""Initiate a sync task.
+        :rtype: int
+        """
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def Code(self):
+        r"""0: success; 1: failure.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDomainAndIpRequest(AbstractModel):
@@ -5058,6 +7956,286 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
         self._Status = params.get("Status")
         self._UnAuthAsset = params.get("UnAuthAsset")
         self._RequestId = params.get("RequestId")
+
+
+class CsipRiskCenterStatistics(AbstractModel):
+    r"""Risk center risk overview statistics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PortTotal: Total Number of Port Risks
+        :type PortTotal: int
+        :param _PortHighLevel: High Port Risk Count
+        :type PortHighLevel: int
+        :param _WeakPasswordTotal: 	Total number of weak password risks.
+        :type WeakPasswordTotal: int
+        :param _WeakPasswordHighLevel: High Weak Password Risk Count
+        :type WeakPasswordHighLevel: int
+        :param _WebsiteTotal: Website Risk Count
+        :type WebsiteTotal: int
+        :param _WebsiteHighLevel: Number of High Risks on Websites
+        :type WebsiteHighLevel: int
+        :param _LastScanTime: Time of the Latest Scan
+        :type LastScanTime: str
+        :param _VULTotal: Number of vulnerability risks.
+        :type VULTotal: int
+        :param _VULHighLevel: Number of High-Risk Vulnerability Risks
+        :type VULHighLevel: int
+        :param _CFGTotal: Number of Configuration Item Risks
+        :type CFGTotal: int
+        :param _CFGHighLevel: Number of High-Risk Configuration Item Risks
+        :type CFGHighLevel: int
+        :param _ServerTotal: Mapping Service Risk Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServerTotal: int
+        :param _ServerHighLevel: High Mapping Service Risk Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServerHighLevel: int
+        :param _HostBaseLineRiskTotal: Number of host baseline risks.
+        :type HostBaseLineRiskTotal: int
+        :param _HostBaseLineRiskHighLevel: Number of high-risk risks.
+        :type HostBaseLineRiskHighLevel: int
+        :param _PodBaseLineRiskTotal: Baseline risk count of the container.
+        :type PodBaseLineRiskTotal: int
+        :param _PodBaseLineRiskHighLevel: Number of high-risk baseline risks in the container.
+        :type PodBaseLineRiskHighLevel: int
+        """
+        self._PortTotal = None
+        self._PortHighLevel = None
+        self._WeakPasswordTotal = None
+        self._WeakPasswordHighLevel = None
+        self._WebsiteTotal = None
+        self._WebsiteHighLevel = None
+        self._LastScanTime = None
+        self._VULTotal = None
+        self._VULHighLevel = None
+        self._CFGTotal = None
+        self._CFGHighLevel = None
+        self._ServerTotal = None
+        self._ServerHighLevel = None
+        self._HostBaseLineRiskTotal = None
+        self._HostBaseLineRiskHighLevel = None
+        self._PodBaseLineRiskTotal = None
+        self._PodBaseLineRiskHighLevel = None
+
+    @property
+    def PortTotal(self):
+        r"""Total Number of Port Risks
+        :rtype: int
+        """
+        return self._PortTotal
+
+    @PortTotal.setter
+    def PortTotal(self, PortTotal):
+        self._PortTotal = PortTotal
+
+    @property
+    def PortHighLevel(self):
+        r"""High Port Risk Count
+        :rtype: int
+        """
+        return self._PortHighLevel
+
+    @PortHighLevel.setter
+    def PortHighLevel(self, PortHighLevel):
+        self._PortHighLevel = PortHighLevel
+
+    @property
+    def WeakPasswordTotal(self):
+        r"""	Total number of weak password risks.
+        :rtype: int
+        """
+        return self._WeakPasswordTotal
+
+    @WeakPasswordTotal.setter
+    def WeakPasswordTotal(self, WeakPasswordTotal):
+        self._WeakPasswordTotal = WeakPasswordTotal
+
+    @property
+    def WeakPasswordHighLevel(self):
+        r"""High Weak Password Risk Count
+        :rtype: int
+        """
+        return self._WeakPasswordHighLevel
+
+    @WeakPasswordHighLevel.setter
+    def WeakPasswordHighLevel(self, WeakPasswordHighLevel):
+        self._WeakPasswordHighLevel = WeakPasswordHighLevel
+
+    @property
+    def WebsiteTotal(self):
+        r"""Website Risk Count
+        :rtype: int
+        """
+        return self._WebsiteTotal
+
+    @WebsiteTotal.setter
+    def WebsiteTotal(self, WebsiteTotal):
+        self._WebsiteTotal = WebsiteTotal
+
+    @property
+    def WebsiteHighLevel(self):
+        r"""Number of High Risks on Websites
+        :rtype: int
+        """
+        return self._WebsiteHighLevel
+
+    @WebsiteHighLevel.setter
+    def WebsiteHighLevel(self, WebsiteHighLevel):
+        self._WebsiteHighLevel = WebsiteHighLevel
+
+    @property
+    def LastScanTime(self):
+        r"""Time of the Latest Scan
+        :rtype: str
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def VULTotal(self):
+        r"""Number of vulnerability risks.
+        :rtype: int
+        """
+        return self._VULTotal
+
+    @VULTotal.setter
+    def VULTotal(self, VULTotal):
+        self._VULTotal = VULTotal
+
+    @property
+    def VULHighLevel(self):
+        r"""Number of High-Risk Vulnerability Risks
+        :rtype: int
+        """
+        return self._VULHighLevel
+
+    @VULHighLevel.setter
+    def VULHighLevel(self, VULHighLevel):
+        self._VULHighLevel = VULHighLevel
+
+    @property
+    def CFGTotal(self):
+        r"""Number of Configuration Item Risks
+        :rtype: int
+        """
+        return self._CFGTotal
+
+    @CFGTotal.setter
+    def CFGTotal(self, CFGTotal):
+        self._CFGTotal = CFGTotal
+
+    @property
+    def CFGHighLevel(self):
+        r"""Number of High-Risk Configuration Item Risks
+        :rtype: int
+        """
+        return self._CFGHighLevel
+
+    @CFGHighLevel.setter
+    def CFGHighLevel(self, CFGHighLevel):
+        self._CFGHighLevel = CFGHighLevel
+
+    @property
+    def ServerTotal(self):
+        r"""Mapping Service Risk Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ServerTotal
+
+    @ServerTotal.setter
+    def ServerTotal(self, ServerTotal):
+        self._ServerTotal = ServerTotal
+
+    @property
+    def ServerHighLevel(self):
+        r"""High Mapping Service Risk Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ServerHighLevel
+
+    @ServerHighLevel.setter
+    def ServerHighLevel(self, ServerHighLevel):
+        self._ServerHighLevel = ServerHighLevel
+
+    @property
+    def HostBaseLineRiskTotal(self):
+        r"""Number of host baseline risks.
+        :rtype: int
+        """
+        return self._HostBaseLineRiskTotal
+
+    @HostBaseLineRiskTotal.setter
+    def HostBaseLineRiskTotal(self, HostBaseLineRiskTotal):
+        self._HostBaseLineRiskTotal = HostBaseLineRiskTotal
+
+    @property
+    def HostBaseLineRiskHighLevel(self):
+        r"""Number of high-risk risks.
+        :rtype: int
+        """
+        return self._HostBaseLineRiskHighLevel
+
+    @HostBaseLineRiskHighLevel.setter
+    def HostBaseLineRiskHighLevel(self, HostBaseLineRiskHighLevel):
+        self._HostBaseLineRiskHighLevel = HostBaseLineRiskHighLevel
+
+    @property
+    def PodBaseLineRiskTotal(self):
+        r"""Baseline risk count of the container.
+        :rtype: int
+        """
+        return self._PodBaseLineRiskTotal
+
+    @PodBaseLineRiskTotal.setter
+    def PodBaseLineRiskTotal(self, PodBaseLineRiskTotal):
+        self._PodBaseLineRiskTotal = PodBaseLineRiskTotal
+
+    @property
+    def PodBaseLineRiskHighLevel(self):
+        r"""Number of high-risk baseline risks in the container.
+        :rtype: int
+        """
+        return self._PodBaseLineRiskHighLevel
+
+    @PodBaseLineRiskHighLevel.setter
+    def PodBaseLineRiskHighLevel(self, PodBaseLineRiskHighLevel):
+        self._PodBaseLineRiskHighLevel = PodBaseLineRiskHighLevel
+
+
+    def _deserialize(self, params):
+        self._PortTotal = params.get("PortTotal")
+        self._PortHighLevel = params.get("PortHighLevel")
+        self._WeakPasswordTotal = params.get("WeakPasswordTotal")
+        self._WeakPasswordHighLevel = params.get("WeakPasswordHighLevel")
+        self._WebsiteTotal = params.get("WebsiteTotal")
+        self._WebsiteHighLevel = params.get("WebsiteHighLevel")
+        self._LastScanTime = params.get("LastScanTime")
+        self._VULTotal = params.get("VULTotal")
+        self._VULHighLevel = params.get("VULHighLevel")
+        self._CFGTotal = params.get("CFGTotal")
+        self._CFGHighLevel = params.get("CFGHighLevel")
+        self._ServerTotal = params.get("ServerTotal")
+        self._ServerHighLevel = params.get("ServerHighLevel")
+        self._HostBaseLineRiskTotal = params.get("HostBaseLineRiskTotal")
+        self._HostBaseLineRiskHighLevel = params.get("HostBaseLineRiskHighLevel")
+        self._PodBaseLineRiskTotal = params.get("PodBaseLineRiskTotal")
+        self._PodBaseLineRiskHighLevel = params.get("PodBaseLineRiskHighLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DBAssetVO(AbstractModel):
@@ -6025,6 +9203,1328 @@ class DeleteRiskScanTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAbnormalCallRecordRequest(AbstractModel):
+    r"""DescribeAbnormalCallRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRuleID: Alarm rule ID.
+        :type AlarmRuleID: int
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AccessKey: Access key.
+        :type AccessKey: str
+        :param _SourceIP: Source IP of the call.
+        :type SourceIP: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AlarmRuleID = None
+        self._MemberId = None
+        self._AccessKey = None
+        self._SourceIP = None
+        self._Filter = None
+
+    @property
+    def AlarmRuleID(self):
+        r"""Alarm rule ID.
+        :rtype: int
+        """
+        return self._AlarmRuleID
+
+    @AlarmRuleID.setter
+    def AlarmRuleID(self, AlarmRuleID):
+        self._AlarmRuleID = AlarmRuleID
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AccessKey(self):
+        r"""Access key.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SourceIP(self):
+        r"""Source IP of the call.
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AlarmRuleID = params.get("AlarmRuleID")
+        self._MemberId = params.get("MemberId")
+        self._AccessKey = params.get("AccessKey")
+        self._SourceIP = params.get("SourceIP")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAbnormalCallRecordResponse(AbstractModel):
+    r"""DescribeAbnormalCallRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Invocation record list.
+        :type Data: list of CallRecord
+        :param _Total: Total number of records.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Invocation record list.
+        :rtype: list of CallRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number of records.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CallRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyAlarmDetailRequest(AbstractModel):
+    r"""DescribeAccessKeyAlarmDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Alarm record ID.
+        :type ID: int
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._ID = None
+        self._MemberId = None
+
+    @property
+    def ID(self):
+        r"""Alarm record ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyAlarmDetailResponse(AbstractModel):
+    r"""DescribeAccessKeyAlarmDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmInfo: Alarm information.
+        :type AlarmInfo: :class:`tencentcloud.csip.v20221121.models.AccessKeyAlarm`
+        :param _CamCount: Number of CAM policies in the associated account.
+        :type CamCount: int
+        :param _RiskCount: Number of AK risks.
+        :type RiskCount: int
+        :param _AlarmDesc: Alarm policy description.
+        :type AlarmDesc: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AlarmInfo = None
+        self._CamCount = None
+        self._RiskCount = None
+        self._AlarmDesc = None
+        self._RequestId = None
+
+    @property
+    def AlarmInfo(self):
+        r"""Alarm information.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyAlarm`
+        """
+        return self._AlarmInfo
+
+    @AlarmInfo.setter
+    def AlarmInfo(self, AlarmInfo):
+        self._AlarmInfo = AlarmInfo
+
+    @property
+    def CamCount(self):
+        r"""Number of CAM policies in the associated account.
+        :rtype: int
+        """
+        return self._CamCount
+
+    @CamCount.setter
+    def CamCount(self, CamCount):
+        self._CamCount = CamCount
+
+    @property
+    def RiskCount(self):
+        r"""Number of AK risks.
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def AlarmDesc(self):
+        r"""Alarm policy description.
+        :rtype: str
+        """
+        return self._AlarmDesc
+
+    @AlarmDesc.setter
+    def AlarmDesc(self, AlarmDesc):
+        self._AlarmDesc = AlarmDesc
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AlarmInfo") is not None:
+            self._AlarmInfo = AccessKeyAlarm()
+            self._AlarmInfo._deserialize(params.get("AlarmInfo"))
+        self._CamCount = params.get("CamCount")
+        self._RiskCount = params.get("RiskCount")
+        self._AlarmDesc = params.get("AlarmDesc")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyAlarmRequest(AbstractModel):
+    r"""DescribeAccessKeyAlarm request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _SourceIPID: ID of the source IP.
+        :type SourceIPID: int
+        :param _SubUin: Account UIN
+        :type SubUin: str
+        """
+        self._Filter = None
+        self._MemberId = None
+        self._AccessKeyID = None
+        self._SourceIPID = None
+        self._SubUin = None
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SourceIPID(self):
+        r"""ID of the source IP.
+        :rtype: int
+        """
+        return self._SourceIPID
+
+    @SourceIPID.setter
+    def SourceIPID(self, SourceIPID):
+        self._SourceIPID = SourceIPID
+
+    @property
+    def SubUin(self):
+        r"""Account UIN
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SourceIPID = params.get("SourceIPID")
+        self._SubUin = params.get("SubUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyAlarmResponse(AbstractModel):
+    r"""DescribeAccessKeyAlarm response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Alarm list.
+        :type Data: list of AccessKeyAlarm
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Alarm list.
+        :rtype: list of AccessKeyAlarm
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AccessKeyAlarm()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyAssetRequest(AbstractModel):
+    r"""DescribeAccessKeyAsset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyAssetResponse(AbstractModel):
+    r"""DescribeAccessKeyAsset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Access key asset list.
+        :type Data: list of AccessKeyAsset
+        :param _Total: Total quantity.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Access key asset list.
+        :rtype: list of AccessKeyAsset
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AccessKeyAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyRiskDetailRequest(AbstractModel):
+    r"""DescribeAccessKeyRiskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Risk record ID.
+        :type ID: int
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._ID = None
+        self._MemberId = None
+
+    @property
+    def ID(self):
+        r"""Risk record ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyRiskDetailResponse(AbstractModel):
+    r"""DescribeAccessKeyRiskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskInfo: Risk list.
+        :type RiskInfo: :class:`tencentcloud.csip.v20221121.models.AccessKeyRisk`
+        :param _CamCount: Total number of CAM policies.
+        :type CamCount: int
+        :param _AlarmCount: Number of associated alarms for the account.
+        :type AlarmCount: int
+        :param _AccessType: Access method 0 API 1 console and API.
+        :type AccessType: int
+        :param _AccessKeyAlarmCount: Access key Alarm count list.
+        :type AccessKeyAlarmCount: list of AccessKeyAlarmCount
+        :param _ActionFlag: Whether operation protection is enabled. valid values: 0 (not enabled), 1 (enabled).
+        :type ActionFlag: int
+        :param _LoginFlag: Whether login protection is enabled. valid values: 0 (not enabled), 1 (enabled).
+        :type LoginFlag: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RiskInfo = None
+        self._CamCount = None
+        self._AlarmCount = None
+        self._AccessType = None
+        self._AccessKeyAlarmCount = None
+        self._ActionFlag = None
+        self._LoginFlag = None
+        self._RequestId = None
+
+    @property
+    def RiskInfo(self):
+        r"""Risk list.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyRisk`
+        """
+        return self._RiskInfo
+
+    @RiskInfo.setter
+    def RiskInfo(self, RiskInfo):
+        self._RiskInfo = RiskInfo
+
+    @property
+    def CamCount(self):
+        r"""Total number of CAM policies.
+        :rtype: int
+        """
+        return self._CamCount
+
+    @CamCount.setter
+    def CamCount(self, CamCount):
+        self._CamCount = CamCount
+
+    @property
+    def AlarmCount(self):
+        r"""Number of associated alarms for the account.
+        :rtype: int
+        """
+        return self._AlarmCount
+
+    @AlarmCount.setter
+    def AlarmCount(self, AlarmCount):
+        self._AlarmCount = AlarmCount
+
+    @property
+    def AccessType(self):
+        r"""Access method 0 API 1 console and API.
+        :rtype: int
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def AccessKeyAlarmCount(self):
+        r"""Access key Alarm count list.
+        :rtype: list of AccessKeyAlarmCount
+        """
+        return self._AccessKeyAlarmCount
+
+    @AccessKeyAlarmCount.setter
+    def AccessKeyAlarmCount(self, AccessKeyAlarmCount):
+        self._AccessKeyAlarmCount = AccessKeyAlarmCount
+
+    @property
+    def ActionFlag(self):
+        r"""Whether operation protection is enabled. valid values: 0 (not enabled), 1 (enabled).
+        :rtype: int
+        """
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
+
+    @property
+    def LoginFlag(self):
+        r"""Whether login protection is enabled. valid values: 0 (not enabled), 1 (enabled).
+        :rtype: int
+        """
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RiskInfo") is not None:
+            self._RiskInfo = AccessKeyRisk()
+            self._RiskInfo._deserialize(params.get("RiskInfo"))
+        self._CamCount = params.get("CamCount")
+        self._AlarmCount = params.get("AlarmCount")
+        self._AccessType = params.get("AccessType")
+        if params.get("AccessKeyAlarmCount") is not None:
+            self._AccessKeyAlarmCount = []
+            for item in params.get("AccessKeyAlarmCount"):
+                obj = AccessKeyAlarmCount()
+                obj._deserialize(item)
+                self._AccessKeyAlarmCount.append(obj)
+        self._ActionFlag = params.get("ActionFlag")
+        self._LoginFlag = params.get("LoginFlag")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyRiskRequest(AbstractModel):
+    r"""DescribeAccessKeyRisk request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _SubUin: Account UIN
+        :type SubUin: str
+        """
+        self._Filter = None
+        self._MemberId = None
+        self._AccessKeyID = None
+        self._SubUin = None
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SubUin(self):
+        r"""Account UIN
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SubUin = params.get("SubUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyRiskResponse(AbstractModel):
+    r"""DescribeAccessKeyRisk response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Risk list.
+        :type Data: list of AccessKeyRisk
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Risk list.
+        :rtype: list of AccessKeyRisk
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AccessKeyRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyUserDetailRequest(AbstractModel):
+    r"""DescribeAccessKeyUserDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubUin: Account uin itself.
+        :type SubUin: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._SubUin = None
+        self._MemberId = None
+
+    @property
+    def SubUin(self):
+        r"""Account uin itself.
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._SubUin = params.get("SubUin")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyUserDetailResponse(AbstractModel):
+    r"""DescribeAccessKeyUserDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: Account detailed information.
+        :type User: :class:`tencentcloud.csip.v20221121.models.AccessKeyUser`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._User = None
+        self._RequestId = None
+
+    @property
+    def User(self):
+        r"""Account detailed information.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccessKeyUser`
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("User") is not None:
+            self._User = AccessKeyUser()
+            self._User._deserialize(params.get("User"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessKeyUserListRequest(AbstractModel):
+    r"""DescribeAccessKeyUserList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyUserListResponse(AbstractModel):
+    r"""DescribeAccessKeyUserList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Account list.
+        :type Data: list of AccessKeyUser
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Account list.
+        :rtype: list of AccessKeyUser
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AccessKeyUser()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAssetProcessListRequest(AbstractModel):
+    r"""DescribeAssetProcessList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filters: Filtered Content
+        :type Filters: list of Filters
+        :param _Limit: Pagination size.
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sorting type
+        :type Order: str
+        :param _By: Sorting field.
+        :type By: str
+        :param _Provider: Cloud service provider.
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""Filtered Content
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sorting type
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Provider(self):
+        r"""Cloud service provider.
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetProcessListResponse(AbstractModel):
+    r"""DescribeAssetProcessList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Process quantity.
+        :type TotalCount: int
+        :param _AssetProcessList: Process list.
+        :type AssetProcessList: list of AssetProcessItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AssetProcessList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Process quantity.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AssetProcessList(self):
+        r"""Process list.
+        :rtype: list of AssetProcessItem
+        """
+        return self._AssetProcessList
+
+    @AssetProcessList.setter
+    def AssetProcessList(self, AssetProcessList):
+        self._AssetProcessList = AssetProcessList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AssetProcessList") is not None:
+            self._AssetProcessList = []
+            for item in params.get("AssetProcessList"):
+                obj = AssetProcessItem()
+                obj._deserialize(item)
+                self._AssetProcessList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCFWAssetStatisticsRequest(AbstractModel):
     r"""DescribeCFWAssetStatistics request structure.
 
@@ -6221,6 +10721,104 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
         self._ServerTotal = params.get("ServerTotal")
         self._WeakPasswordTotal = params.get("WeakPasswordTotal")
         self._VULTotal = params.get("VULTotal")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSIPRiskStatisticsRequest(AbstractModel):
+    r"""DescribeCSIPRiskStatistics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filtered Content
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filtered Content
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSIPRiskStatisticsResponse(AbstractModel):
+    r"""DescribeCSIPRiskStatistics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Asset Overview Data
+        :type Data: :class:`tencentcloud.csip.v20221121.models.CsipRiskCenterStatistics`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Asset Overview Data
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CsipRiskCenterStatistics`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CsipRiskCenterStatistics()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -6607,6 +11205,167 @@ Note: This field may return·null, indicating that no valid values can be obtain
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._OsList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCallRecordRequest(AbstractModel):
+    r"""DescribeCallRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AccessKeyID: Access key ID.
+        :type AccessKeyID: int
+        :param _SourceIPID: ID of the source IP for the call.
+        :type SourceIPID: int
+        :param _AccUin: Access account uin.
+        :type AccUin: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._AccessKeyID = None
+        self._SourceIPID = None
+        self._AccUin = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AccessKeyID(self):
+        r"""Access key ID.
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SourceIPID(self):
+        r"""ID of the source IP for the call.
+        :rtype: int
+        """
+        return self._SourceIPID
+
+    @SourceIPID.setter
+    def SourceIPID(self, SourceIPID):
+        self._SourceIPID = SourceIPID
+
+    @property
+    def AccUin(self):
+        r"""Access account uin.
+        :rtype: str
+        """
+        return self._AccUin
+
+    @AccUin.setter
+    def AccUin(self, AccUin):
+        self._AccUin = AccUin
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SourceIPID = params.get("SourceIPID")
+        self._AccUin = params.get("AccUin")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallRecordResponse(AbstractModel):
+    r"""DescribeCallRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Invocation record list.
+        :type Data: list of CallRecord
+        :param _Total: Total number of records.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Invocation record list.
+        :rtype: list of CallRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number of records.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CallRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -7566,6 +12325,408 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExposeAssetCategoryRequest(AbstractModel):
+    r"""DescribeExposeAssetCategory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExposeAssetCategoryResponse(AbstractModel):
+    r"""DescribeExposeAssetCategory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExposeAssetTypeList: Cloud boundary analytics asset classification list.
+        :type ExposeAssetTypeList: list of ExposeAssetTypeItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ExposeAssetTypeList = None
+        self._RequestId = None
+
+    @property
+    def ExposeAssetTypeList(self):
+        r"""Cloud boundary analytics asset classification list.
+        :rtype: list of ExposeAssetTypeItem
+        """
+        return self._ExposeAssetTypeList
+
+    @ExposeAssetTypeList.setter
+    def ExposeAssetTypeList(self, ExposeAssetTypeList):
+        self._ExposeAssetTypeList = ExposeAssetTypeList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ExposeAssetTypeList") is not None:
+            self._ExposeAssetTypeList = []
+            for item in params.get("ExposeAssetTypeList"):
+                obj = ExposeAssetTypeItem()
+                obj._deserialize(item)
+                self._ExposeAssetTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExposePathRequest(AbstractModel):
+    r"""DescribeExposePath request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AssetId: Asset ID.
+        :type AssetId: str
+        :param _Ip: Asset IP.
+        :type Ip: str
+        :param _Domain: Asset domain name.
+        :type Domain: str
+        :param _Port: Port or port range.
+        :type Port: str
+        """
+        self._MemberId = None
+        self._AssetId = None
+        self._Ip = None
+        self._Domain = None
+        self._Port = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetId(self):
+        r"""Asset ID.
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Ip(self):
+        r"""Asset IP.
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Domain(self):
+        r"""Asset domain name.
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Port(self):
+        r"""Port or port range.
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._AssetId = params.get("AssetId")
+        self._Ip = params.get("Ip")
+        self._Domain = params.get("Domain")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExposePathResponse(AbstractModel):
+    r"""DescribeExposePath response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Cloud boundary analysis path within node.
+        :type Content: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        r"""Cloud boundary analysis path within node.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExposuresRequest(AbstractModel):
+    r"""DescribeExposures request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filters: Filtered Content
+        :type Filters: list of Filters
+        :param _Limit: Pagination size.
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sorting type
+        :type Order: str
+        :param _By: Sorting field.
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""Filtered Content
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sorting type
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExposuresResponse(AbstractModel):
+    r"""DescribeExposures response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Cloud boundary analytics number of assets.
+        :type TotalCount: int
+        :param _ExposeList: Cloud boundary analytics asset list.
+        :type ExposeList: list of ExposesItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ExposeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Cloud boundary analytics number of assets.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ExposeList(self):
+        r"""Cloud boundary analytics asset list.
+        :rtype: list of ExposesItem
+        """
+        return self._ExposeList
+
+    @ExposeList.setter
+    def ExposeList(self, ExposeList):
+        self._ExposeList = ExposeList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ExposeList") is not None:
+            self._ExposeList = []
+            for item in params.get("ExposeList"):
+                obj = ExposesItem()
+                obj._deserialize(item)
+                self._ExposeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGatewayAssetsRequest(AbstractModel):
     r"""DescribeGatewayAssets request structure.
 
@@ -7759,6 +12920,215 @@ class DescribeGatewayAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHighBaseLineRiskListRequest(AbstractModel):
+    r"""DescribeHighBaseLineRiskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filters: Filtered Content
+        :type Filters: list of Filters
+        :param _Limit: Pagination size.
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sorting type
+        :type Order: str
+        :param _By: Sorting field.
+        :type By: str
+        :param _CloudAccountID: Cloud account ID.
+        :type CloudAccountID: str
+        :param _Provider: Cloud service provider.
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._CloudAccountID = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""Filtered Content
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sorting type
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def CloudAccountID(self):
+        r"""Cloud account ID.
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def Provider(self):
+        r"""Cloud service provider.
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHighBaseLineRiskListResponse(AbstractModel):
+    r"""DescribeHighBaseLineRiskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of high-risk risks.
+        :type TotalCount: int
+        :param _HighBaseLineRiskList: High-Risk baseline risk list.
+        :type HighBaseLineRiskList: list of HighBaseLineRiskItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._HighBaseLineRiskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of high-risk risks.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HighBaseLineRiskList(self):
+        r"""High-Risk baseline risk list.
+        :rtype: list of HighBaseLineRiskItem
+        """
+        return self._HighBaseLineRiskList
+
+    @HighBaseLineRiskList.setter
+    def HighBaseLineRiskList(self, HighBaseLineRiskList):
+        self._HighBaseLineRiskList = HighBaseLineRiskList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("HighBaseLineRiskList") is not None:
+            self._HighBaseLineRiskList = []
+            for item in params.get("HighBaseLineRiskList"):
+                obj = HighBaseLineRiskItem()
+                obj._deserialize(item)
+                self._HighBaseLineRiskList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9404,13 +14774,27 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
         :param _Filter: Filter conditions
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: Asset tags
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9436,6 +14820,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9836,6 +15221,242 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._PasswordTypeLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
+    r"""DescribeRiskCenterCFGViewCFGRiskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filtered Content
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filtered Content
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskCenterCFGViewCFGRiskListResponse(AbstractModel):
+    r"""DescribeRiskCenterCFGViewCFGRiskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries
+        :type TotalCount: int
+        :param _Data: Configuration Risk List from Asset's Perspective
+        :type Data: list of CFGViewCFGRisk
+        :param _StatusLists: Status list
+        :type StatusLists: list of FilterDataObject
+        :param _LevelLists: Danger Level List
+        :type LevelLists: list of FilterDataObject
+        :param _CFGNameLists: Configuration Name List
+        :type CFGNameLists: list of FilterDataObject
+        :param _CheckTypeLists: Check Type List
+        :type CheckTypeLists: list of FilterDataObject
+        :param _InstanceTypeLists: Asset Type List
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _FromLists: Source List
+        :type FromLists: list of FilterDataObject
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._StatusLists = None
+        self._LevelLists = None
+        self._CFGNameLists = None
+        self._CheckTypeLists = None
+        self._InstanceTypeLists = None
+        self._FromLists = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of entries
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Configuration Risk List from Asset's Perspective
+        :rtype: list of CFGViewCFGRisk
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def StatusLists(self):
+        r"""Status list
+        :rtype: list of FilterDataObject
+        """
+        return self._StatusLists
+
+    @StatusLists.setter
+    def StatusLists(self, StatusLists):
+        self._StatusLists = StatusLists
+
+    @property
+    def LevelLists(self):
+        r"""Danger Level List
+        :rtype: list of FilterDataObject
+        """
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def CFGNameLists(self):
+        r"""Configuration Name List
+        :rtype: list of FilterDataObject
+        """
+        return self._CFGNameLists
+
+    @CFGNameLists.setter
+    def CFGNameLists(self, CFGNameLists):
+        self._CFGNameLists = CFGNameLists
+
+    @property
+    def CheckTypeLists(self):
+        r"""Check Type List
+        :rtype: list of FilterDataObject
+        """
+        return self._CheckTypeLists
+
+    @CheckTypeLists.setter
+    def CheckTypeLists(self, CheckTypeLists):
+        self._CheckTypeLists = CheckTypeLists
+
+    @property
+    def InstanceTypeLists(self):
+        r"""Asset Type List
+        :rtype: list of FilterDataObject
+        """
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def FromLists(self):
+        r"""Source List
+        :rtype: list of FilterDataObject
+        """
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CFGViewCFGRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("StatusLists") is not None:
+            self._StatusLists = []
+            for item in params.get("StatusLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._StatusLists.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("CFGNameLists") is not None:
+            self._CFGNameLists = []
+            for item in params.get("CFGNameLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CFGNameLists.append(obj)
+        if params.get("CheckTypeLists") is not None:
+            self._CheckTypeLists = []
+            for item in params.get("CheckTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CheckTypeLists.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10663,6 +16284,205 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._RequestId = params.get("RequestId")
 
 
+class DescribeScanStatisticRequest(AbstractModel):
+    r"""DescribeScanStatistic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _TaskLogId: Health check task id.
+        :type TaskLogId: str
+        """
+        self._MemberId = None
+        self._TaskLogId = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskLogId(self):
+        r"""Health check task id.
+        :rtype: str
+        """
+        return self._TaskLogId
+
+    @TaskLogId.setter
+    def TaskLogId(self, TaskLogId):
+        self._TaskLogId = TaskLogId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskLogId = params.get("TaskLogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScanStatisticResponse(AbstractModel):
+    r"""DescribeScanStatistic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PortServiceCount: Port service quantity.
+        :type PortServiceCount: int
+        :param _WebAppCount: Number of Web services.
+        :type WebAppCount: int
+        :param _WeakPasswordCount: Weak Password Risk Count
+        :type WeakPasswordCount: int
+        :param _VulCount: Vulnerability risk quantity.
+        :type VulCount: int
+        :param _HighRiskPortServiceCount: High-Risk port service quantity.
+        :type HighRiskPortServiceCount: int
+        :param _RiskWebAppCount: Number of Web services at risk.
+        :type RiskWebAppCount: int
+        :param _PortServiceIncrement: Newly-Added port services in the last 7 days.
+        :type PortServiceIncrement: int
+        :param _WebAppIncrement: Newly-Added Web services in the last 7 days.
+        :type WebAppIncrement: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PortServiceCount = None
+        self._WebAppCount = None
+        self._WeakPasswordCount = None
+        self._VulCount = None
+        self._HighRiskPortServiceCount = None
+        self._RiskWebAppCount = None
+        self._PortServiceIncrement = None
+        self._WebAppIncrement = None
+        self._RequestId = None
+
+    @property
+    def PortServiceCount(self):
+        r"""Port service quantity.
+        :rtype: int
+        """
+        return self._PortServiceCount
+
+    @PortServiceCount.setter
+    def PortServiceCount(self, PortServiceCount):
+        self._PortServiceCount = PortServiceCount
+
+    @property
+    def WebAppCount(self):
+        r"""Number of Web services.
+        :rtype: int
+        """
+        return self._WebAppCount
+
+    @WebAppCount.setter
+    def WebAppCount(self, WebAppCount):
+        self._WebAppCount = WebAppCount
+
+    @property
+    def WeakPasswordCount(self):
+        r"""Weak Password Risk Count
+        :rtype: int
+        """
+        return self._WeakPasswordCount
+
+    @WeakPasswordCount.setter
+    def WeakPasswordCount(self, WeakPasswordCount):
+        self._WeakPasswordCount = WeakPasswordCount
+
+    @property
+    def VulCount(self):
+        r"""Vulnerability risk quantity.
+        :rtype: int
+        """
+        return self._VulCount
+
+    @VulCount.setter
+    def VulCount(self, VulCount):
+        self._VulCount = VulCount
+
+    @property
+    def HighRiskPortServiceCount(self):
+        r"""High-Risk port service quantity.
+        :rtype: int
+        """
+        return self._HighRiskPortServiceCount
+
+    @HighRiskPortServiceCount.setter
+    def HighRiskPortServiceCount(self, HighRiskPortServiceCount):
+        self._HighRiskPortServiceCount = HighRiskPortServiceCount
+
+    @property
+    def RiskWebAppCount(self):
+        r"""Number of Web services at risk.
+        :rtype: int
+        """
+        return self._RiskWebAppCount
+
+    @RiskWebAppCount.setter
+    def RiskWebAppCount(self, RiskWebAppCount):
+        self._RiskWebAppCount = RiskWebAppCount
+
+    @property
+    def PortServiceIncrement(self):
+        r"""Newly-Added port services in the last 7 days.
+        :rtype: int
+        """
+        return self._PortServiceIncrement
+
+    @PortServiceIncrement.setter
+    def PortServiceIncrement(self, PortServiceIncrement):
+        self._PortServiceIncrement = PortServiceIncrement
+
+    @property
+    def WebAppIncrement(self):
+        r"""Newly-Added Web services in the last 7 days.
+        :rtype: int
+        """
+        return self._WebAppIncrement
+
+    @WebAppIncrement.setter
+    def WebAppIncrement(self, WebAppIncrement):
+        self._WebAppIncrement = WebAppIncrement
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PortServiceCount = params.get("PortServiceCount")
+        self._WebAppCount = params.get("WebAppCount")
+        self._WeakPasswordCount = params.get("WeakPasswordCount")
+        self._VulCount = params.get("VulCount")
+        self._HighRiskPortServiceCount = params.get("HighRiskPortServiceCount")
+        self._RiskWebAppCount = params.get("RiskWebAppCount")
+        self._PortServiceIncrement = params.get("PortServiceIncrement")
+        self._WebAppIncrement = params.get("WebAppIncrement")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScanTaskListRequest(AbstractModel):
     r"""DescribeScanTaskList request structure.
 
@@ -10952,6 +16772,122 @@ Note: This field may return·null, indicating that no valid values can be obtain
             self._Data._deserialize(params.get("Data"))
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSourceIPAssetRequest(AbstractModel):
+    r"""DescribeSourceIPAsset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceIPAssetResponse(AbstractModel):
+    r"""DescribeSourceIPAsset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Access key asset list.
+        :type Data: list of SourceIPAsset
+        :param _Total: Total quantity.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Access key asset list.
+        :rtype: list of SourceIPAsset
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SourceIPAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -11555,6 +17491,373 @@ class DescribeTaskLogURLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserCallRecordRequest(AbstractModel):
+    r"""DescribeUserCallRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubUin: Account UIN
+        :type SubUin: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._SubUin = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def SubUin(self):
+        r"""Account UIN
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._SubUin = params.get("SubUin")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserCallRecordResponse(AbstractModel):
+    r"""DescribeUserCallRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Account call record list.
+        :type Data: list of UserCallRecord
+        :param _Total: Total number of records.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Account call record list.
+        :rtype: list of UserCallRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number of records.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = UserCallRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVULListRequest(AbstractModel):
+    r"""DescribeVULList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Query condition.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Query condition.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVULListResponse(AbstractModel):
+    r"""DescribeVULList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _Data: Vulnerability list
+        :type Data: list of VULBaseInfo
+        :param _VULTypeLists: Vulnerability Type List
+        :type VULTypeLists: list of FilterDataObject
+        :param _RiskLevels: Risk level list.
+        :type RiskLevels: list of FilterDataObject
+        :param _Tags: Tag.
+        :type Tags: list of FilterDataObject
+        :param _ProductSupport: Product support.
+        :type ProductSupport: list of FilterDataObject
+        :param _CheckStatus: Product support.
+        :type CheckStatus: list of FilterDataObject
+        :param _AttackHeat: Attack intensity enumeration.
+        :type AttackHeat: list of FilterDataObject
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._VULTypeLists = None
+        self._RiskLevels = None
+        self._Tags = None
+        self._ProductSupport = None
+        self._CheckStatus = None
+        self._AttackHeat = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Vulnerability list
+        :rtype: list of VULBaseInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def VULTypeLists(self):
+        r"""Vulnerability Type List
+        :rtype: list of FilterDataObject
+        """
+        return self._VULTypeLists
+
+    @VULTypeLists.setter
+    def VULTypeLists(self, VULTypeLists):
+        self._VULTypeLists = VULTypeLists
+
+    @property
+    def RiskLevels(self):
+        r"""Risk level list.
+        :rtype: list of FilterDataObject
+        """
+        return self._RiskLevels
+
+    @RiskLevels.setter
+    def RiskLevels(self, RiskLevels):
+        self._RiskLevels = RiskLevels
+
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of FilterDataObject
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ProductSupport(self):
+        r"""Product support.
+        :rtype: list of FilterDataObject
+        """
+        return self._ProductSupport
+
+    @ProductSupport.setter
+    def ProductSupport(self, ProductSupport):
+        self._ProductSupport = ProductSupport
+
+    @property
+    def CheckStatus(self):
+        r"""Product support.
+        :rtype: list of FilterDataObject
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def AttackHeat(self):
+        r"""Attack intensity enumeration.
+        :rtype: list of FilterDataObject
+        """
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VULBaseInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("VULTypeLists") is not None:
+            self._VULTypeLists = []
+            for item in params.get("VULTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VULTypeLists.append(obj)
+        if params.get("RiskLevels") is not None:
+            self._RiskLevels = []
+            for item in params.get("RiskLevels"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._RiskLevels.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ProductSupport") is not None:
+            self._ProductSupport = []
+            for item in params.get("ProductSupport"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ProductSupport.append(obj)
+        if params.get("CheckStatus") is not None:
+            self._CheckStatus = []
+            for item in params.get("CheckStatus"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CheckStatus.append(obj)
+        if params.get("AttackHeat") is not None:
+            self._AttackHeat = []
+            for item in params.get("AttackHeat"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._AttackHeat.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
     r"""DescribeVULRiskAdvanceCFGList request structure.
 
@@ -11739,6 +18042,187 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVULRiskDetailRequest(AbstractModel):
+    r"""DescribeVULRiskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _RiskId: Risk id.
+        :type RiskId: str
+        :param _PCMGRId: pcMgrId
+        :type PCMGRId: str
+        """
+        self._MemberId = None
+        self._RiskId = None
+        self._PCMGRId = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RiskId(self):
+        r"""Risk id.
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def PCMGRId(self):
+        r"""pcMgrId
+        :rtype: str
+        """
+        return self._PCMGRId
+
+    @PCMGRId.setter
+    def PCMGRId(self, PCMGRId):
+        self._PCMGRId = PCMGRId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._RiskId = params.get("RiskId")
+        self._PCMGRId = params.get("PCMGRId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVULRiskDetailResponse(AbstractModel):
+    r"""DescribeVULRiskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceSupport: Security product support.
+        :type ServiceSupport: list of ServiceSupport
+        :param _VulTrend: Vulnerability trends.
+        :type VulTrend: list of VulTrend
+        :param _VulData: Vulnerability supplementary information.
+        :type VulData: :class:`tencentcloud.csip.v20221121.models.VULRiskInfo`
+        :param _QuestionId: Assistant q&a id.
+        :type QuestionId: str
+        :param _SessionId: Session ID
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ServiceSupport = None
+        self._VulTrend = None
+        self._VulData = None
+        self._QuestionId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def ServiceSupport(self):
+        r"""Security product support.
+        :rtype: list of ServiceSupport
+        """
+        return self._ServiceSupport
+
+    @ServiceSupport.setter
+    def ServiceSupport(self, ServiceSupport):
+        self._ServiceSupport = ServiceSupport
+
+    @property
+    def VulTrend(self):
+        r"""Vulnerability trends.
+        :rtype: list of VulTrend
+        """
+        return self._VulTrend
+
+    @VulTrend.setter
+    def VulTrend(self, VulTrend):
+        self._VulTrend = VulTrend
+
+    @property
+    def VulData(self):
+        r"""Vulnerability supplementary information.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VULRiskInfo`
+        """
+        return self._VulData
+
+    @VulData.setter
+    def VulData(self, VulData):
+        self._VulData = VulData
+
+    @property
+    def QuestionId(self):
+        r"""Assistant q&a id.
+        :rtype: str
+        """
+        return self._QuestionId
+
+    @QuestionId.setter
+    def QuestionId(self, QuestionId):
+        self._QuestionId = QuestionId
+
+    @property
+    def SessionId(self):
+        r"""Session ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceSupport") is not None:
+            self._ServiceSupport = []
+            for item in params.get("ServiceSupport"):
+                obj = ServiceSupport()
+                obj._deserialize(item)
+                self._ServiceSupport.append(obj)
+        if params.get("VulTrend") is not None:
+            self._VulTrend = []
+            for item in params.get("VulTrend"):
+                obj = VulTrend()
+                obj._deserialize(item)
+                self._VulTrend.append(obj)
+        if params.get("VulData") is not None:
+            self._VulData = VULRiskInfo()
+            self._VulData._deserialize(params.get("VulData"))
+        self._QuestionId = params.get("QuestionId")
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVpcAssetsRequest(AbstractModel):
     r"""DescribeVpcAssets request structure.
 
@@ -11897,6 +18381,431 @@ class DescribeVpcAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulRiskListRequest(AbstractModel):
+    r"""DescribeVulRiskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filters: Filtered Content
+        :type Filters: list of Filters
+        :param _Limit: Pagination size.
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sorting type
+        :type Order: str
+        :param _By: Sorting field.
+        :type By: str
+        :param _CloudAccountID: Cloud account ID.
+        :type CloudAccountID: str
+        :param _Provider: Cloud service provider.
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._CloudAccountID = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""Filtered Content
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sorting type
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def CloudAccountID(self):
+        r"""Cloud account ID.
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def Provider(self):
+        r"""Cloud service provider.
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulRiskListResponse(AbstractModel):
+    r"""DescribeVulRiskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of vulnerabilities
+        :type TotalCount: int
+        :param _VulRiskList: Vulnerability list
+        :type VulRiskList: list of VulRiskItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VulRiskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of vulnerabilities
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VulRiskList(self):
+        r"""Vulnerability list
+        :rtype: list of VulRiskItem
+        """
+        return self._VulRiskList
+
+    @VulRiskList.setter
+    def VulRiskList(self, VulRiskList):
+        self._VulRiskList = VulRiskList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VulRiskList") is not None:
+            self._VulRiskList = []
+            for item in params.get("VulRiskList"):
+                obj = VulRiskItem()
+                obj._deserialize(item)
+                self._VulRiskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulViewVulRiskListRequest(AbstractModel):
+    r"""DescribeVulViewVulRiskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filtered Content
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: Asset tag
+        :type Tags: list of AssetTag
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._Tags = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filtered Content
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Tags(self):
+        r"""Asset tag
+        :rtype: list of AssetTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulViewVulRiskListResponse(AbstractModel):
+    r"""DescribeVulViewVulRiskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries
+        :type TotalCount: int
+        :param _Data: Vulnerability Risk List from Vulnerability Asset's Perspective
+        :type Data: list of VULViewVULRiskData
+        :param _LevelLists: Danger Level List
+        :type LevelLists: list of FilterDataObject
+        :param _FromLists: Source List
+        :type FromLists: list of FilterDataObject
+        :param _VULTypeLists: Vulnerability Type List
+        :type VULTypeLists: list of FilterDataObject
+        :param _Tags: tag enumeration.
+        :type Tags: list of FilterDataObject
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._LevelLists = None
+        self._FromLists = None
+        self._VULTypeLists = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of entries
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Vulnerability Risk List from Vulnerability Asset's Perspective
+        :rtype: list of VULViewVULRiskData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def LevelLists(self):
+        r"""Danger Level List
+        :rtype: list of FilterDataObject
+        """
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def FromLists(self):
+        r"""Source List
+        :rtype: list of FilterDataObject
+        """
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def VULTypeLists(self):
+        r"""Vulnerability Type List
+        :rtype: list of FilterDataObject
+        """
+        return self._VULTypeLists
+
+    @VULTypeLists.setter
+    def VULTypeLists(self, VULTypeLists):
+        self._VULTypeLists = VULTypeLists
+
+    @property
+    def Tags(self):
+        r"""tag enumeration.
+        :rtype: list of FilterDataObject
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VULViewVULRiskData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
+        if params.get("VULTypeLists") is not None:
+            self._VULTypeLists = []
+            for item in params.get("VULTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VULTypeLists.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12589,6 +19498,648 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class ExposeAssetTypeItem(AbstractModel):
+    r"""Exposed asset category.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: Cloud service provider.
+        :type Provider: str
+        :param _ProviderName: Vendor name.
+        :type ProviderName: str
+        :param _AssetType: Asset type.
+        :type AssetType: str
+        :param _AssetTypeName: Asset type name.
+        :type AssetTypeName: str
+        """
+        self._Provider = None
+        self._ProviderName = None
+        self._AssetType = None
+        self._AssetTypeName = None
+
+    @property
+    def Provider(self):
+        r"""Cloud service provider.
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def ProviderName(self):
+        r"""Vendor name.
+        :rtype: str
+        """
+        return self._ProviderName
+
+    @ProviderName.setter
+    def ProviderName(self, ProviderName):
+        self._ProviderName = ProviderName
+
+    @property
+    def AssetType(self):
+        r"""Asset type.
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetTypeName(self):
+        r"""Asset type name.
+        :rtype: str
+        """
+        return self._AssetTypeName
+
+    @AssetTypeName.setter
+    def AssetTypeName(self, AssetTypeName):
+        self._AssetTypeName = AssetTypeName
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._ProviderName = params.get("ProviderName")
+        self._AssetType = params.get("AssetType")
+        self._AssetTypeName = params.get("AssetTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExposesItem(AbstractModel):
+    r"""Exposed assets.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: Cloud service provider.
+        :type Provider: str
+        :param _CloudAccountName: Account name.
+        :type CloudAccountName: str
+        :param _CloudAccountId: Cloud account.
+        :type CloudAccountId: str
+        :param _Domain: Domain
+        :type Domain: str
+        :param _Ip: IP
+        :type Ip: str
+        :param _Port: Port or port range.
+        :type Port: str
+        :param _Status: Open.
+        :type Status: str
+        :param _RiskType: Risk type.
+        :type RiskType: str
+        :param _AclType: acl type.
+        :type AclType: str
+        :param _AclList: ACL list.
+        :type AclList: str
+        :param _AssetId: Asset ID.
+        :type AssetId: str
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _AssetType: Asset type.
+        :type AssetType: str
+        :param _PortServiceCount: Port service quantity.
+        :type PortServiceCount: int
+        :param _HighRiskPortServiceCount: Number of high-risk ports.
+        :type HighRiskPortServiceCount: int
+        :param _WebAppCount: Number of web applications.
+        :type WebAppCount: int
+        :param _RiskWebAppCount: Number of web applications at risk.
+        :type RiskWebAppCount: int
+        :param _WeakPasswordCount: Number of Weak Passwords
+        :type WeakPasswordCount: int
+        :param _VulCount: Number of vulnerabilities
+        :type VulCount: int
+        :param _CreateTime: First detection time
+        :type CreateTime: str
+        :param _UpdateTime: Latest update time.
+        :type UpdateTime: str
+        :param _AssetTypeName: Instance Type Name
+        :type AssetTypeName: str
+        :param _DisplayStatus: Open status.
+        :type DisplayStatus: str
+        :param _DisplayRiskType: Port status.
+        :type DisplayRiskType: str
+        :param _ScanTaskStatus: Scan task status.
+        :type ScanTaskStatus: str
+        :param _Uuid: uuid
+        :type Uuid: str
+        :param _HasScan: Whether a security check has been performed.
+        :type HasScan: str
+        :param _AppId: Tenant ID.
+        :type AppId: int
+        :param _AppIdStr: Tenant ID string.
+        :type AppIdStr: str
+        :param _ExposureID: Record ID
+        :type ExposureID: int
+        :param _PortDetectCount: Number of ports open.
+        :type PortDetectCount: int
+        :param _PortDetectResult: Port exposure result.
+        :type PortDetectResult: str
+        :param _Tag: Tag.
+        :type Tag: str
+        :param _Comment: Remarks
+        :type Comment: str
+        :param _ToGovernedRiskCount: Number of risks to be governed.
+        :type ToGovernedRiskCount: int
+        :param _ToGovernedRiskContent: Risk content to be governed.
+        :type ToGovernedRiskContent: str
+        """
+        self._Provider = None
+        self._CloudAccountName = None
+        self._CloudAccountId = None
+        self._Domain = None
+        self._Ip = None
+        self._Port = None
+        self._Status = None
+        self._RiskType = None
+        self._AclType = None
+        self._AclList = None
+        self._AssetId = None
+        self._InstanceName = None
+        self._AssetType = None
+        self._PortServiceCount = None
+        self._HighRiskPortServiceCount = None
+        self._WebAppCount = None
+        self._RiskWebAppCount = None
+        self._WeakPasswordCount = None
+        self._VulCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AssetTypeName = None
+        self._DisplayStatus = None
+        self._DisplayRiskType = None
+        self._ScanTaskStatus = None
+        self._Uuid = None
+        self._HasScan = None
+        self._AppId = None
+        self._AppIdStr = None
+        self._ExposureID = None
+        self._PortDetectCount = None
+        self._PortDetectResult = None
+        self._Tag = None
+        self._Comment = None
+        self._ToGovernedRiskCount = None
+        self._ToGovernedRiskContent = None
+
+    @property
+    def Provider(self):
+        r"""Cloud service provider.
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def CloudAccountName(self):
+        r"""Account name.
+        :rtype: str
+        """
+        return self._CloudAccountName
+
+    @CloudAccountName.setter
+    def CloudAccountName(self, CloudAccountName):
+        self._CloudAccountName = CloudAccountName
+
+    @property
+    def CloudAccountId(self):
+        r"""Cloud account.
+        :rtype: str
+        """
+        return self._CloudAccountId
+
+    @CloudAccountId.setter
+    def CloudAccountId(self, CloudAccountId):
+        self._CloudAccountId = CloudAccountId
+
+    @property
+    def Domain(self):
+        r"""Domain
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Ip(self):
+        r"""IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        r"""Port or port range.
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Status(self):
+        r"""Open.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskType(self):
+        r"""Risk type.
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AclType(self):
+        r"""acl type.
+        :rtype: str
+        """
+        return self._AclType
+
+    @AclType.setter
+    def AclType(self, AclType):
+        self._AclType = AclType
+
+    @property
+    def AclList(self):
+        r"""ACL list.
+        :rtype: str
+        """
+        return self._AclList
+
+    @AclList.setter
+    def AclList(self, AclList):
+        self._AclList = AclList
+
+    @property
+    def AssetId(self):
+        r"""Asset ID.
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def InstanceName(self):
+        r"""Instance name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AssetType(self):
+        r"""Asset type.
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def PortServiceCount(self):
+        r"""Port service quantity.
+        :rtype: int
+        """
+        return self._PortServiceCount
+
+    @PortServiceCount.setter
+    def PortServiceCount(self, PortServiceCount):
+        self._PortServiceCount = PortServiceCount
+
+    @property
+    def HighRiskPortServiceCount(self):
+        r"""Number of high-risk ports.
+        :rtype: int
+        """
+        return self._HighRiskPortServiceCount
+
+    @HighRiskPortServiceCount.setter
+    def HighRiskPortServiceCount(self, HighRiskPortServiceCount):
+        self._HighRiskPortServiceCount = HighRiskPortServiceCount
+
+    @property
+    def WebAppCount(self):
+        r"""Number of web applications.
+        :rtype: int
+        """
+        return self._WebAppCount
+
+    @WebAppCount.setter
+    def WebAppCount(self, WebAppCount):
+        self._WebAppCount = WebAppCount
+
+    @property
+    def RiskWebAppCount(self):
+        r"""Number of web applications at risk.
+        :rtype: int
+        """
+        return self._RiskWebAppCount
+
+    @RiskWebAppCount.setter
+    def RiskWebAppCount(self, RiskWebAppCount):
+        self._RiskWebAppCount = RiskWebAppCount
+
+    @property
+    def WeakPasswordCount(self):
+        r"""Number of Weak Passwords
+        :rtype: int
+        """
+        return self._WeakPasswordCount
+
+    @WeakPasswordCount.setter
+    def WeakPasswordCount(self, WeakPasswordCount):
+        self._WeakPasswordCount = WeakPasswordCount
+
+    @property
+    def VulCount(self):
+        r"""Number of vulnerabilities
+        :rtype: int
+        """
+        return self._VulCount
+
+    @VulCount.setter
+    def VulCount(self, VulCount):
+        self._VulCount = VulCount
+
+    @property
+    def CreateTime(self):
+        r"""First detection time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Latest update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AssetTypeName(self):
+        r"""Instance Type Name
+        :rtype: str
+        """
+        return self._AssetTypeName
+
+    @AssetTypeName.setter
+    def AssetTypeName(self, AssetTypeName):
+        self._AssetTypeName = AssetTypeName
+
+    @property
+    def DisplayStatus(self):
+        r"""Open status.
+        :rtype: str
+        """
+        return self._DisplayStatus
+
+    @DisplayStatus.setter
+    def DisplayStatus(self, DisplayStatus):
+        self._DisplayStatus = DisplayStatus
+
+    @property
+    def DisplayRiskType(self):
+        r"""Port status.
+        :rtype: str
+        """
+        return self._DisplayRiskType
+
+    @DisplayRiskType.setter
+    def DisplayRiskType(self, DisplayRiskType):
+        self._DisplayRiskType = DisplayRiskType
+
+    @property
+    def ScanTaskStatus(self):
+        r"""Scan task status.
+        :rtype: str
+        """
+        return self._ScanTaskStatus
+
+    @ScanTaskStatus.setter
+    def ScanTaskStatus(self, ScanTaskStatus):
+        self._ScanTaskStatus = ScanTaskStatus
+
+    @property
+    def Uuid(self):
+        r"""uuid
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def HasScan(self):
+        r"""Whether a security check has been performed.
+        :rtype: str
+        """
+        return self._HasScan
+
+    @HasScan.setter
+    def HasScan(self, HasScan):
+        self._HasScan = HasScan
+
+    @property
+    def AppId(self):
+        r"""Tenant ID.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppIdStr(self):
+        r"""Tenant ID string.
+        :rtype: str
+        """
+        return self._AppIdStr
+
+    @AppIdStr.setter
+    def AppIdStr(self, AppIdStr):
+        self._AppIdStr = AppIdStr
+
+    @property
+    def ExposureID(self):
+        r"""Record ID
+        :rtype: int
+        """
+        return self._ExposureID
+
+    @ExposureID.setter
+    def ExposureID(self, ExposureID):
+        self._ExposureID = ExposureID
+
+    @property
+    def PortDetectCount(self):
+        r"""Number of ports open.
+        :rtype: int
+        """
+        return self._PortDetectCount
+
+    @PortDetectCount.setter
+    def PortDetectCount(self, PortDetectCount):
+        self._PortDetectCount = PortDetectCount
+
+    @property
+    def PortDetectResult(self):
+        r"""Port exposure result.
+        :rtype: str
+        """
+        return self._PortDetectResult
+
+    @PortDetectResult.setter
+    def PortDetectResult(self, PortDetectResult):
+        self._PortDetectResult = PortDetectResult
+
+    @property
+    def Tag(self):
+        r"""Tag.
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Comment(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ToGovernedRiskCount(self):
+        r"""Number of risks to be governed.
+        :rtype: int
+        """
+        return self._ToGovernedRiskCount
+
+    @ToGovernedRiskCount.setter
+    def ToGovernedRiskCount(self, ToGovernedRiskCount):
+        self._ToGovernedRiskCount = ToGovernedRiskCount
+
+    @property
+    def ToGovernedRiskContent(self):
+        r"""Risk content to be governed.
+        :rtype: str
+        """
+        return self._ToGovernedRiskContent
+
+    @ToGovernedRiskContent.setter
+    def ToGovernedRiskContent(self, ToGovernedRiskContent):
+        self._ToGovernedRiskContent = ToGovernedRiskContent
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._CloudAccountName = params.get("CloudAccountName")
+        self._CloudAccountId = params.get("CloudAccountId")
+        self._Domain = params.get("Domain")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._Status = params.get("Status")
+        self._RiskType = params.get("RiskType")
+        self._AclType = params.get("AclType")
+        self._AclList = params.get("AclList")
+        self._AssetId = params.get("AssetId")
+        self._InstanceName = params.get("InstanceName")
+        self._AssetType = params.get("AssetType")
+        self._PortServiceCount = params.get("PortServiceCount")
+        self._HighRiskPortServiceCount = params.get("HighRiskPortServiceCount")
+        self._WebAppCount = params.get("WebAppCount")
+        self._RiskWebAppCount = params.get("RiskWebAppCount")
+        self._WeakPasswordCount = params.get("WeakPasswordCount")
+        self._VulCount = params.get("VulCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AssetTypeName = params.get("AssetTypeName")
+        self._DisplayStatus = params.get("DisplayStatus")
+        self._DisplayRiskType = params.get("DisplayRiskType")
+        self._ScanTaskStatus = params.get("ScanTaskStatus")
+        self._Uuid = params.get("Uuid")
+        self._HasScan = params.get("HasScan")
+        self._AppId = params.get("AppId")
+        self._AppIdStr = params.get("AppIdStr")
+        self._ExposureID = params.get("ExposureID")
+        self._PortDetectCount = params.get("PortDetectCount")
+        self._PortDetectResult = params.get("PortDetectResult")
+        self._Tag = params.get("Tag")
+        self._Comment = params.get("Comment")
+        self._ToGovernedRiskCount = params.get("ToGovernedRiskCount")
+        self._ToGovernedRiskContent = params.get("ToGovernedRiskContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""Query filters
 
@@ -12761,6 +20312,78 @@ class FilterDataObject(AbstractModel):
     def _deserialize(self, params):
         self._Value = params.get("Value")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filters(AbstractModel):
+    r"""Filters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Values: Instance ID content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Values: list of str
+        :param _ExactMatch: Fuzzy matching.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExactMatch: str
+        """
+        self._Name = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Name(self):
+        r"""Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""Instance ID content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        r"""Fuzzy matching.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13241,6 +20864,267 @@ class GateWayAsset(AbstractModel):
         self._Status = params.get("Status")
         self._EngineRegion = params.get("EngineRegion")
         self._WeakPasswordRisk = params.get("WeakPasswordRisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighBaseLineRiskItem(AbstractModel):
+    r"""High-Risk baseline risk content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: Cloud account ID.
+        :type CloudAccountID: str
+        :param _AssetID: Instance ID.
+        :type AssetID: str
+        :param _InstanceStatus: Instance status
+        :type InstanceStatus: str
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _RiskName: Risk name.
+        :type RiskName: str
+        :param _RiskCategory: Risk classification.
+        :type RiskCategory: str
+        :param _RiskLevel: Risk level.
+        :type RiskLevel: str
+        :param _RiskDesc: Risk description.
+        :type RiskDesc: str
+        :param _RiskResult: Risk result.
+        :type RiskResult: str
+        :param _FixAdvice: Fixing suggestion
+        :type FixAdvice: str
+        :param _RiskCategoryName: Linux vulnerability.
+        :type RiskCategoryName: str
+        :param _RiskLevelName: Risk name.
+        :type RiskLevelName: str
+        :param _InstanceStatusName: Instance status
+        :type InstanceStatusName: str
+        :param _CreateTime: First detection time
+        :type CreateTime: str
+        :param _UpdateTime: Last discovery time
+        :type UpdateTime: str
+        :param _AppID: Tenant ID.
+        :type AppID: int
+        """
+        self._CloudAccountID = None
+        self._AssetID = None
+        self._InstanceStatus = None
+        self._InstanceName = None
+        self._RiskName = None
+        self._RiskCategory = None
+        self._RiskLevel = None
+        self._RiskDesc = None
+        self._RiskResult = None
+        self._FixAdvice = None
+        self._RiskCategoryName = None
+        self._RiskLevelName = None
+        self._InstanceStatusName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AppID = None
+
+    @property
+    def CloudAccountID(self):
+        r"""Cloud account ID.
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def AssetID(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._AssetID
+
+    @AssetID.setter
+    def AssetID(self, AssetID):
+        self._AssetID = AssetID
+
+    @property
+    def InstanceStatus(self):
+        r"""Instance status
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceName(self):
+        r"""Instance name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RiskName(self):
+        r"""Risk name.
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskCategory(self):
+        r"""Risk classification.
+        :rtype: str
+        """
+        return self._RiskCategory
+
+    @RiskCategory.setter
+    def RiskCategory(self, RiskCategory):
+        self._RiskCategory = RiskCategory
+
+    @property
+    def RiskLevel(self):
+        r"""Risk level.
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskDesc(self):
+        r"""Risk description.
+        :rtype: str
+        """
+        return self._RiskDesc
+
+    @RiskDesc.setter
+    def RiskDesc(self, RiskDesc):
+        self._RiskDesc = RiskDesc
+
+    @property
+    def RiskResult(self):
+        r"""Risk result.
+        :rtype: str
+        """
+        return self._RiskResult
+
+    @RiskResult.setter
+    def RiskResult(self, RiskResult):
+        self._RiskResult = RiskResult
+
+    @property
+    def FixAdvice(self):
+        r"""Fixing suggestion
+        :rtype: str
+        """
+        return self._FixAdvice
+
+    @FixAdvice.setter
+    def FixAdvice(self, FixAdvice):
+        self._FixAdvice = FixAdvice
+
+    @property
+    def RiskCategoryName(self):
+        r"""Linux vulnerability.
+        :rtype: str
+        """
+        return self._RiskCategoryName
+
+    @RiskCategoryName.setter
+    def RiskCategoryName(self, RiskCategoryName):
+        self._RiskCategoryName = RiskCategoryName
+
+    @property
+    def RiskLevelName(self):
+        r"""Risk name.
+        :rtype: str
+        """
+        return self._RiskLevelName
+
+    @RiskLevelName.setter
+    def RiskLevelName(self, RiskLevelName):
+        self._RiskLevelName = RiskLevelName
+
+    @property
+    def InstanceStatusName(self):
+        r"""Instance status
+        :rtype: str
+        """
+        return self._InstanceStatusName
+
+    @InstanceStatusName.setter
+    def InstanceStatusName(self, InstanceStatusName):
+        self._InstanceStatusName = InstanceStatusName
+
+    @property
+    def CreateTime(self):
+        r"""First detection time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last discovery time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AppID(self):
+        r"""Tenant ID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._AssetID = params.get("AssetID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceName = params.get("InstanceName")
+        self._RiskName = params.get("RiskName")
+        self._RiskCategory = params.get("RiskCategory")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskDesc = params.get("RiskDesc")
+        self._RiskResult = params.get("RiskResult")
+        self._FixAdvice = params.get("FixAdvice")
+        self._RiskCategoryName = params.get("RiskCategoryName")
+        self._RiskLevelName = params.get("RiskLevelName")
+        self._InstanceStatusName = params.get("InstanceStatusName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AppID = params.get("AppID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14060,6 +21944,287 @@ class ModifyRiskCenterRiskStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRiskCenterScanTaskRequest(AbstractModel):
+    r"""ModifyRiskCenterScanTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: Task name.
+        :type TaskName: str
+        :param _ScanAssetType: 0: Full Scan; 1: Specified Asset Scan; 2: Excluded Asset Scan; 3: Manual Entry Scan. 1 and 2 require the Assets field; 3 requires SelfDefiningAssets.
+        :type ScanAssetType: int
+        :param _ScanItem: Scan items. port/poc/weakpass/webcontent/configrisk
+        :type ScanItem: list of str
+        :param _ScanPlanType: 0: Periodic Task; 1: Scan Now; 2: Scheduled Scan; 3: Custom. If 0, 2, 3, ScanPlanContent is required.
+        :type ScanPlanType: int
+        :param _TaskId: Task ID to be Modified
+        :type TaskId: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Assets: Scanned Asset Information List
+        :type Assets: list of TaskAssetObject
+        :param _ScanPlanContent: Scan Plan Details
+        :type ScanPlanContent: str
+        :param _SelfDefiningAssets: IP/Domain/URL Array
+        :type SelfDefiningAssets: list of str
+        :param _TaskAdvanceCFG: Advanced configuration.
+        :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
+        :param _TaskMode: Checkup Mode. 0: Standard Mode; 1: Quick Mode; 2: Advanced Mode. Standard Mode by default.
+        :type TaskMode: int
+        :param _FinishWebHook: Task complete callback webhook url.
+        :type FinishWebHook: str
+        """
+        self._TaskName = None
+        self._ScanAssetType = None
+        self._ScanItem = None
+        self._ScanPlanType = None
+        self._TaskId = None
+        self._MemberId = None
+        self._Assets = None
+        self._ScanPlanContent = None
+        self._SelfDefiningAssets = None
+        self._TaskAdvanceCFG = None
+        self._TaskMode = None
+        self._FinishWebHook = None
+
+    @property
+    def TaskName(self):
+        r"""Task name.
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ScanAssetType(self):
+        r"""0: Full Scan; 1: Specified Asset Scan; 2: Excluded Asset Scan; 3: Manual Entry Scan. 1 and 2 require the Assets field; 3 requires SelfDefiningAssets.
+        :rtype: int
+        """
+        return self._ScanAssetType
+
+    @ScanAssetType.setter
+    def ScanAssetType(self, ScanAssetType):
+        self._ScanAssetType = ScanAssetType
+
+    @property
+    def ScanItem(self):
+        r"""Scan items. port/poc/weakpass/webcontent/configrisk
+        :rtype: list of str
+        """
+        return self._ScanItem
+
+    @ScanItem.setter
+    def ScanItem(self, ScanItem):
+        self._ScanItem = ScanItem
+
+    @property
+    def ScanPlanType(self):
+        r"""0: Periodic Task; 1: Scan Now; 2: Scheduled Scan; 3: Custom. If 0, 2, 3, ScanPlanContent is required.
+        :rtype: int
+        """
+        return self._ScanPlanType
+
+    @ScanPlanType.setter
+    def ScanPlanType(self, ScanPlanType):
+        self._ScanPlanType = ScanPlanType
+
+    @property
+    def TaskId(self):
+        r"""Task ID to be Modified
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Assets(self):
+        r"""Scanned Asset Information List
+        :rtype: list of TaskAssetObject
+        """
+        return self._Assets
+
+    @Assets.setter
+    def Assets(self, Assets):
+        self._Assets = Assets
+
+    @property
+    def ScanPlanContent(self):
+        r"""Scan Plan Details
+        :rtype: str
+        """
+        return self._ScanPlanContent
+
+    @ScanPlanContent.setter
+    def ScanPlanContent(self, ScanPlanContent):
+        self._ScanPlanContent = ScanPlanContent
+
+    @property
+    def SelfDefiningAssets(self):
+        r"""IP/Domain/URL Array
+        :rtype: list of str
+        """
+        return self._SelfDefiningAssets
+
+    @SelfDefiningAssets.setter
+    def SelfDefiningAssets(self, SelfDefiningAssets):
+        self._SelfDefiningAssets = SelfDefiningAssets
+
+    @property
+    def TaskAdvanceCFG(self):
+        r"""Advanced configuration.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
+        """
+        return self._TaskAdvanceCFG
+
+    @TaskAdvanceCFG.setter
+    def TaskAdvanceCFG(self, TaskAdvanceCFG):
+        self._TaskAdvanceCFG = TaskAdvanceCFG
+
+    @property
+    def TaskMode(self):
+        r"""Checkup Mode. 0: Standard Mode; 1: Quick Mode; 2: Advanced Mode. Standard Mode by default.
+        :rtype: int
+        """
+        return self._TaskMode
+
+    @TaskMode.setter
+    def TaskMode(self, TaskMode):
+        self._TaskMode = TaskMode
+
+    @property
+    def FinishWebHook(self):
+        r"""Task complete callback webhook url.
+        :rtype: str
+        """
+        return self._FinishWebHook
+
+    @FinishWebHook.setter
+    def FinishWebHook(self, FinishWebHook):
+        self._FinishWebHook = FinishWebHook
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._ScanAssetType = params.get("ScanAssetType")
+        self._ScanItem = params.get("ScanItem")
+        self._ScanPlanType = params.get("ScanPlanType")
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Assets") is not None:
+            self._Assets = []
+            for item in params.get("Assets"):
+                obj = TaskAssetObject()
+                obj._deserialize(item)
+                self._Assets.append(obj)
+        self._ScanPlanContent = params.get("ScanPlanContent")
+        self._SelfDefiningAssets = params.get("SelfDefiningAssets")
+        if params.get("TaskAdvanceCFG") is not None:
+            self._TaskAdvanceCFG = TaskAdvanceCFG()
+            self._TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))
+        self._TaskMode = params.get("TaskMode")
+        self._FinishWebHook = params.get("FinishWebHook")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRiskCenterScanTaskResponse(AbstractModel):
+    r"""ModifyRiskCenterScanTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _Status: 0: Modification succeeded; others: Failed; -1: Unauthenticated assets exist.
+        :type Status: int
+        :param _UnAuthAsset: Unauthenticated Asset List
+        :type UnAuthAsset: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._UnAuthAsset = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""0: Modification succeeded; others: Failed; -1: Unauthenticated assets exist.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UnAuthAsset(self):
+        r"""Unauthenticated Asset List
+        :rtype: list of str
+        """
+        return self._UnAuthAsset
+
+    @UnAuthAsset.setter
+    def UnAuthAsset(self, UnAuthAsset):
+        self._UnAuthAsset = UnAuthAsset
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._UnAuthAsset = params.get("UnAuthAsset")
         self._RequestId = params.get("RequestId")
 
 
@@ -15270,6 +23435,87 @@ class OrganizationUserInfo(AbstractModel):
         self._TcMemberType = params.get("TcMemberType")
         self._SubUserCount = params.get("SubUserCount")
         self._JoinTypeInfo = params.get("JoinTypeInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PortRiskAdvanceCFGParamItem(AbstractModel):
+    r"""Port Risk Advanced Configuration Item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PortSets: Port Collection, separated by commas.
+        :type PortSets: str
+        :param _CheckType: Detection Item Type. 0-System-Defined; 1-User-Defined.
+        :type CheckType: int
+        :param _Detail: Detection item description
+        :type Detail: str
+        :param _Enable: Enable/Disable. 1-Enable; 0-Disable.
+        :type Enable: int
+        """
+        self._PortSets = None
+        self._CheckType = None
+        self._Detail = None
+        self._Enable = None
+
+    @property
+    def PortSets(self):
+        r"""Port Collection, separated by commas.
+        :rtype: str
+        """
+        return self._PortSets
+
+    @PortSets.setter
+    def PortSets(self, PortSets):
+        self._PortSets = PortSets
+
+    @property
+    def CheckType(self):
+        r"""Detection Item Type. 0-System-Defined; 1-User-Defined.
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def Detail(self):
+        r"""Detection item description
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Enable(self):
+        r"""Enable/Disable. 1-Enable; 0-Disable.
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._PortSets = params.get("PortSets")
+        self._CheckType = params.get("CheckType")
+        self._Detail = params.get("Detail")
+        self._Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17465,6 +25711,507 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class ServiceSupport(AbstractModel):
+    r"""Product support.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: Product name.
+"cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
+        :type ServiceName: str
+        :param _SupportHandledCount: Total number of processed assets.
+        :type SupportHandledCount: int
+        :param _SupportTotalCount: Total number of supported assets.
+        :type SupportTotalCount: int
+        :param _IsSupport: Whether the product is supported: 1 for supported; 0 for unsupported.
+        :type IsSupport: bool
+        """
+        self._ServiceName = None
+        self._SupportHandledCount = None
+        self._SupportTotalCount = None
+        self._IsSupport = None
+
+    @property
+    def ServiceName(self):
+        r"""Product name.
+"cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def SupportHandledCount(self):
+        r"""Total number of processed assets.
+        :rtype: int
+        """
+        return self._SupportHandledCount
+
+    @SupportHandledCount.setter
+    def SupportHandledCount(self, SupportHandledCount):
+        self._SupportHandledCount = SupportHandledCount
+
+    @property
+    def SupportTotalCount(self):
+        r"""Total number of supported assets.
+        :rtype: int
+        """
+        return self._SupportTotalCount
+
+    @SupportTotalCount.setter
+    def SupportTotalCount(self, SupportTotalCount):
+        self._SupportTotalCount = SupportTotalCount
+
+    @property
+    def IsSupport(self):
+        r"""Whether the product is supported: 1 for supported; 0 for unsupported.
+        :rtype: bool
+        """
+        return self._IsSupport
+
+    @IsSupport.setter
+    def IsSupport(self, IsSupport):
+        self._IsSupport = IsSupport
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._SupportHandledCount = params.get("SupportHandledCount")
+        self._SupportTotalCount = params.get("SupportTotalCount")
+        self._IsSupport = params.get("IsSupport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceIPAsset(AbstractModel):
+    r"""Access key asset information (source IP perspective).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: id of the source IP.
+        :type ID: int
+        :param _SourceIP: Source IP.
+        :type SourceIP: str
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _AppID: Account associate APPID.
+        :type AppID: int
+        :param _Region: IP region.
+        :type Region: str
+        :param _EventType: API call method.
+-1: uncounted.
+0: console invocation.
+1:API
+        :type EventType: int
+        :param _IPType: IP type.
+0: within the account (unremarked).
+1: external accounts (unremarked).
+2: within the account (remarked).
+3: external account (remarked).
+        :type IPType: int
+        :param _AccessKeyAlarmList: Alarm information list.
+        :type AccessKeyAlarmList: list of AccessKeyAlarmInfo
+        :param _AKInfo: ak information list.
+        :type AKInfo: list of AKInfo
+        :param _ActionCount: Number of API calls.
+        :type ActionCount: int
+        :param _LastAccessTime: Last access Time
+        :type LastAccessTime: str
+        :param _InstanceID: IP associated instance ID. if an empty string, represents an asset not within the account.
+        :type InstanceID: str
+        :param _InstanceName: Associated instance name.
+        :type InstanceName: str
+        :param _Uin: Account associate Uin.
+        :type Uin: str
+        :param _Nickname: Nickname.
+        :type Nickname: str
+        :param _ShowStatus: Display status.
+        :type ShowStatus: bool
+        :param _ISP: ISP field.
+        :type ISP: str
+        :param _VpcInfo: vpc information outside the account.
+        :type VpcInfo: list of SourceIPVpcInfo
+        :param _CloudType: Cloud type.
+0 for tencent cloud.
+        :type CloudType: int
+        """
+        self._ID = None
+        self._SourceIP = None
+        self._Remark = None
+        self._AppID = None
+        self._Region = None
+        self._EventType = None
+        self._IPType = None
+        self._AccessKeyAlarmList = None
+        self._AKInfo = None
+        self._ActionCount = None
+        self._LastAccessTime = None
+        self._InstanceID = None
+        self._InstanceName = None
+        self._Uin = None
+        self._Nickname = None
+        self._ShowStatus = None
+        self._ISP = None
+        self._VpcInfo = None
+        self._CloudType = None
+
+    @property
+    def ID(self):
+        r"""id of the source IP.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def SourceIP(self):
+        r"""Source IP.
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AppID(self):
+        r"""Account associate APPID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Region(self):
+        r"""IP region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def EventType(self):
+        r"""API call method.
+-1: uncounted.
+0: console invocation.
+1:API
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def IPType(self):
+        r"""IP type.
+0: within the account (unremarked).
+1: external accounts (unremarked).
+2: within the account (remarked).
+3: external account (remarked).
+        :rtype: int
+        """
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def AccessKeyAlarmList(self):
+        r"""Alarm information list.
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyAlarmList
+
+    @AccessKeyAlarmList.setter
+    def AccessKeyAlarmList(self, AccessKeyAlarmList):
+        self._AccessKeyAlarmList = AccessKeyAlarmList
+
+    @property
+    def AKInfo(self):
+        r"""ak information list.
+        :rtype: list of AKInfo
+        """
+        return self._AKInfo
+
+    @AKInfo.setter
+    def AKInfo(self, AKInfo):
+        self._AKInfo = AKInfo
+
+    @property
+    def ActionCount(self):
+        r"""Number of API calls.
+        :rtype: int
+        """
+        return self._ActionCount
+
+    @ActionCount.setter
+    def ActionCount(self, ActionCount):
+        self._ActionCount = ActionCount
+
+    @property
+    def LastAccessTime(self):
+        r"""Last access Time
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def InstanceID(self):
+        r"""IP associated instance ID. if an empty string, represents an asset not within the account.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceName(self):
+        r"""Associated instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Uin(self):
+        r"""Account associate Uin.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        r"""Nickname.
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def ShowStatus(self):
+        r"""Display status.
+        :rtype: bool
+        """
+        return self._ShowStatus
+
+    @ShowStatus.setter
+    def ShowStatus(self, ShowStatus):
+        self._ShowStatus = ShowStatus
+
+    @property
+    def ISP(self):
+        r"""ISP field.
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def VpcInfo(self):
+        r"""vpc information outside the account.
+        :rtype: list of SourceIPVpcInfo
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def CloudType(self):
+        r"""Cloud type.
+0 for tencent cloud.
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._SourceIP = params.get("SourceIP")
+        self._Remark = params.get("Remark")
+        self._AppID = params.get("AppID")
+        self._Region = params.get("Region")
+        self._EventType = params.get("EventType")
+        self._IPType = params.get("IPType")
+        if params.get("AccessKeyAlarmList") is not None:
+            self._AccessKeyAlarmList = []
+            for item in params.get("AccessKeyAlarmList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyAlarmList.append(obj)
+        if params.get("AKInfo") is not None:
+            self._AKInfo = []
+            for item in params.get("AKInfo"):
+                obj = AKInfo()
+                obj._deserialize(item)
+                self._AKInfo.append(obj)
+        self._ActionCount = params.get("ActionCount")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceName = params.get("InstanceName")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._ShowStatus = params.get("ShowStatus")
+        self._ISP = params.get("ISP")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = SourceIPVpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._CloudType = params.get("CloudType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceIPVpcInfo(AbstractModel):
+    r"""Source IP of the call public account information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Account name
+        :type Name: str
+        :param _AppID: App ID of the VPC.
+        :type AppID: int
+        :param _VpcID: vpc id
+        :type VpcID: str
+        :param _VpcName: vpc name.
+        :type VpcName: str
+        """
+        self._Name = None
+        self._AppID = None
+        self._VpcID = None
+        self._VpcName = None
+
+    @property
+    def Name(self):
+        r"""Account name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppID(self):
+        r"""App ID of the VPC.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def VpcID(self):
+        r"""vpc id
+        :rtype: str
+        """
+        return self._VpcID
+
+    @VpcID.setter
+    def VpcID(self, VpcID):
+        self._VpcID = VpcID
+
+    @property
+    def VpcName(self):
+        r"""vpc name.
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AppID = params.get("AppID")
+        self._VpcID = params.get("VpcID")
+        self._VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopRiskCenterTaskRequest(AbstractModel):
     r"""StopRiskCenterTask request structure.
 
@@ -18270,6 +27017,8 @@ class TaskAdvanceCFG(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PortRisk: Port Risk Advanced Configuration
+        :type PortRisk: list of PortRiskAdvanceCFGParamItem
         :param _VulRisk: Advanced vulnerability scan configuration
         :type VulRisk: list of TaskCenterVulRiskInputParam
         :param _WeakPwdRisk: Advanced weak password check configuration
@@ -18277,9 +27026,21 @@ class TaskAdvanceCFG(AbstractModel):
         :param _CFGRisk: Advanced configuration risk scan configuration
         :type CFGRisk: list of TaskCenterCFGRiskInputParam
         """
+        self._PortRisk = None
         self._VulRisk = None
         self._WeakPwdRisk = None
         self._CFGRisk = None
+
+    @property
+    def PortRisk(self):
+        r"""Port Risk Advanced Configuration
+        :rtype: list of PortRiskAdvanceCFGParamItem
+        """
+        return self._PortRisk
+
+    @PortRisk.setter
+    def PortRisk(self, PortRisk):
+        self._PortRisk = PortRisk
 
     @property
     def VulRisk(self):
@@ -18316,6 +27077,12 @@ class TaskAdvanceCFG(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("PortRisk") is not None:
+            self._PortRisk = []
+            for item in params.get("PortRisk"):
+                obj = PortRiskAdvanceCFGParamItem()
+                obj._deserialize(item)
+                self._PortRisk.append(obj)
         if params.get("VulRisk") is not None:
             self._VulRisk = []
             for item in params.get("VulRisk"):
@@ -18351,22 +27118,17 @@ class TaskAssetObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetName: Asset name
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _AssetName: Asset name.
         :type AssetName: str
-        :param _InstanceType: 	Asset category
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _InstanceType: Asset type.
         :type InstanceType: str
-        :param _AssetType: Asset sub-category
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _AssetType: Asset category.
         :type AssetType: str
         :param _Asset: IP, domain name, asset ID, database ID, and more
         :type Asset: str
-        :param _Region: Region
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Region: Region.
         :type Region: str
-        :param _Arn: The ID specific for an asset synched from another cloud platform
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Arn: Unique ID of Multi-Cloud Assets
         :type Arn: str
         """
         self._AssetName = None
@@ -18378,8 +27140,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AssetName(self):
-        r"""Asset name
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Asset name.
         :rtype: str
         """
         return self._AssetName
@@ -18390,8 +27151,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def InstanceType(self):
-        r"""	Asset category
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Asset type.
         :rtype: str
         """
         return self._InstanceType
@@ -18402,8 +27162,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AssetType(self):
-        r"""Asset sub-category
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Asset category.
         :rtype: str
         """
         return self._AssetType
@@ -18425,8 +27184,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Region(self):
-        r"""Region
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Region.
         :rtype: str
         """
         return self._Region
@@ -18437,8 +27195,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Arn(self):
-        r"""The ID specific for an asset synched from another cloud platform
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Unique ID of Multi-Cloud Assets
         :rtype: str
         """
         return self._Arn
@@ -19015,6 +27772,1024 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class UpdateAccessKeyAlarmStatusRequest(AbstractModel):
+    r"""UpdateAccessKeyAlarmStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Status  0: unprocessed 1: fixed 2: ignored.
+        :type Status: int
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _AlarmIDList: Alarm ID list.
+        :type AlarmIDList: list of int
+        :param _RiskIDList: Risk ID list.
+        :type RiskIDList: list of int
+        """
+        self._Status = None
+        self._MemberId = None
+        self._AlarmIDList = None
+        self._RiskIDList = None
+
+    @property
+    def Status(self):
+        r"""Status  0: unprocessed 1: fixed 2: ignored.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AlarmIDList(self):
+        r"""Alarm ID list.
+        :rtype: list of int
+        """
+        return self._AlarmIDList
+
+    @AlarmIDList.setter
+    def AlarmIDList(self, AlarmIDList):
+        self._AlarmIDList = AlarmIDList
+
+    @property
+    def RiskIDList(self):
+        r"""Risk ID list.
+        :rtype: list of int
+        """
+        return self._RiskIDList
+
+    @RiskIDList.setter
+    def RiskIDList(self, RiskIDList):
+        self._RiskIDList = RiskIDList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        self._AlarmIDList = params.get("AlarmIDList")
+        self._RiskIDList = params.get("RiskIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAccessKeyAlarmStatusResponse(AbstractModel):
+    r"""UpdateAccessKeyAlarmStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 0: Success; 1: Failure
+        :type Code: int
+        :param _Msg: Error message
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        r"""0: Success; 1: Failure
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateAccessKeyRemarkRequest(AbstractModel):
+    r"""UpdateAccessKeyRemark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _SourceIPList: Source IP name.
+        :type SourceIPList: list of str
+        :param _AccessKeyList: ak name.
+        :type AccessKeyList: list of str
+        :param _SourceIPIDList: ID of the source IP.
+        :type SourceIPIDList: list of int non-negative
+        :param _AccessKeyIDList: AK ID.
+        :type AccessKeyIDList: list of int non-negative
+        """
+        self._Remark = None
+        self._MemberId = None
+        self._SourceIPList = None
+        self._AccessKeyList = None
+        self._SourceIPIDList = None
+        self._AccessKeyIDList = None
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SourceIPList(self):
+        r"""Source IP name.
+        :rtype: list of str
+        """
+        return self._SourceIPList
+
+    @SourceIPList.setter
+    def SourceIPList(self, SourceIPList):
+        self._SourceIPList = SourceIPList
+
+    @property
+    def AccessKeyList(self):
+        r"""ak name.
+        :rtype: list of str
+        """
+        return self._AccessKeyList
+
+    @AccessKeyList.setter
+    def AccessKeyList(self, AccessKeyList):
+        self._AccessKeyList = AccessKeyList
+
+    @property
+    def SourceIPIDList(self):
+        r"""ID of the source IP.
+        :rtype: list of int non-negative
+        """
+        return self._SourceIPIDList
+
+    @SourceIPIDList.setter
+    def SourceIPIDList(self, SourceIPIDList):
+        self._SourceIPIDList = SourceIPIDList
+
+    @property
+    def AccessKeyIDList(self):
+        r"""AK ID.
+        :rtype: list of int non-negative
+        """
+        return self._AccessKeyIDList
+
+    @AccessKeyIDList.setter
+    def AccessKeyIDList(self, AccessKeyIDList):
+        self._AccessKeyIDList = AccessKeyIDList
+
+
+    def _deserialize(self, params):
+        self._Remark = params.get("Remark")
+        self._MemberId = params.get("MemberId")
+        self._SourceIPList = params.get("SourceIPList")
+        self._AccessKeyList = params.get("AccessKeyList")
+        self._SourceIPIDList = params.get("SourceIPIDList")
+        self._AccessKeyIDList = params.get("AccessKeyIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAccessKeyRemarkResponse(AbstractModel):
+    r"""UpdateAccessKeyRemark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 0: success; 1: failure.
+        :type Code: int
+        :param _Msg: Error message
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        r"""0: success; 1: failure.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class UserCallRecord(AbstractModel):
+    r"""Record details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceIP: Source IP of the call.
+        :type SourceIP: str
+        :param _EventType: Invocation type.
+0: console invocation.
+1:API
+        :type EventType: int
+        :param _CallCount: Number of calls.
+        :type CallCount: int
+        :param _Code: Error code.
+0: Successful
+        :type Code: int
+        :param _FirstCallTime: First time call time.
+        :type FirstCallTime: str
+        :param _LastCallTime: Call time.
+        :type LastCallTime: str
+        :param _SourceIPRemark: Source IP of the call remark.
+        :type SourceIPRemark: str
+        :param _Region: Source IP region of the call.
+        :type Region: str
+        :param _UserName: User/Role name.
+        :type UserName: str
+        :param _Date: Aggregate date.
+        :type Date: str
+        :param _AppID: appid
+        :type AppID: int
+        :param _ISP: Carrier.
+        :type ISP: str
+        """
+        self._SourceIP = None
+        self._EventType = None
+        self._CallCount = None
+        self._Code = None
+        self._FirstCallTime = None
+        self._LastCallTime = None
+        self._SourceIPRemark = None
+        self._Region = None
+        self._UserName = None
+        self._Date = None
+        self._AppID = None
+        self._ISP = None
+
+    @property
+    def SourceIP(self):
+        r"""Source IP of the call.
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def EventType(self):
+        r"""Invocation type.
+0: console invocation.
+1:API
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def CallCount(self):
+        r"""Number of calls.
+        :rtype: int
+        """
+        return self._CallCount
+
+    @CallCount.setter
+    def CallCount(self, CallCount):
+        self._CallCount = CallCount
+
+    @property
+    def Code(self):
+        r"""Error code.
+0: Successful
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def FirstCallTime(self):
+        r"""First time call time.
+        :rtype: str
+        """
+        return self._FirstCallTime
+
+    @FirstCallTime.setter
+    def FirstCallTime(self, FirstCallTime):
+        self._FirstCallTime = FirstCallTime
+
+    @property
+    def LastCallTime(self):
+        r"""Call time.
+        :rtype: str
+        """
+        return self._LastCallTime
+
+    @LastCallTime.setter
+    def LastCallTime(self, LastCallTime):
+        self._LastCallTime = LastCallTime
+
+    @property
+    def SourceIPRemark(self):
+        r"""Source IP of the call remark.
+        :rtype: str
+        """
+        return self._SourceIPRemark
+
+    @SourceIPRemark.setter
+    def SourceIPRemark(self, SourceIPRemark):
+        self._SourceIPRemark = SourceIPRemark
+
+    @property
+    def Region(self):
+        r"""Source IP region of the call.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def UserName(self):
+        r"""User/Role name.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Date(self):
+        r"""Aggregate date.
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AppID(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def ISP(self):
+        r"""Carrier.
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+
+    def _deserialize(self, params):
+        self._SourceIP = params.get("SourceIP")
+        self._EventType = params.get("EventType")
+        self._CallCount = params.get("CallCount")
+        self._Code = params.get("Code")
+        self._FirstCallTime = params.get("FirstCallTime")
+        self._LastCallTime = params.get("LastCallTime")
+        self._SourceIPRemark = params.get("SourceIPRemark")
+        self._Region = params.get("Region")
+        self._UserName = params.get("UserName")
+        self._Date = params.get("Date")
+        self._AppID = params.get("AppID")
+        self._ISP = params.get("ISP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VULBaseInfo(AbstractModel):
+    r"""Emergency vulnerability basic data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: Risk level.
+High - high risk, middle - medium risk, low - low risk, info - Note.
+        :type Level: str
+        :param _Component: Component.
+        :type Component: str
+        :param _PublishTime: Release date.
+        :type PublishTime: str
+        :param _LastScanTime: Last scan time
+        :type LastScanTime: str
+        :param _AffectAssetCount: Number of Affected Assets
+        :type AffectAssetCount: int
+        :param _RiskId: Risk ID
+        :type RiskId: str
+        :param _VULType: Vulnerability type.
+        :type VULType: str
+        :param _VULName: Vulnerability name
+        :type VULName: str
+        :param _CVE: cve
+        :type CVE: str
+        :param _Describe: Description
+        :type Describe: str
+        :param _Payload: Vulnerability Payload
+        :type Payload: str
+        :param _AppName: Vulnerability impact component.
+        :type AppName: str
+        :param _References: Technology reference.
+        :type References: str
+        :param _AppVersion: Vulnerability impact version.
+        :type AppVersion: str
+        :param _VULURL: Risks.
+        :type VULURL: str
+        :param _Nick: User Nickname
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nick: str
+        :param _AppId: User appid.
+        :type AppId: str
+        :param _Uin: User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param _Fix: Fixing suggestion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fix: str
+        :param _EMGCVulType: Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EMGCVulType: int
+        :param _CVSS: CVSS score
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CVSS: float
+        :param _AttackHeat: Attack intensity.
+0/1/2/3 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AttackHeat: int
+        :param _ScanStatus: Detection status 0 unscanned 1 scan in progress 2 scan complete.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScanStatus: int
+        :param _IsSuggest: 1/0 whether compulsory.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsSuggest: int
+        :param _VulTag: Tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VulTag: list of str
+        :param _SupportProduct: Support products: "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix" (comma-separated).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportProduct: str
+        :param _TaskId: Vulnerability detection task id.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _Index: Primary key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Index: str
+        :param _PcmgrID: Vulnerability id old version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PcmgrID: str
+        :param _TvdID: Vulnerability id new version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TvdID: str
+        """
+        self._Level = None
+        self._Component = None
+        self._PublishTime = None
+        self._LastScanTime = None
+        self._AffectAssetCount = None
+        self._RiskId = None
+        self._VULType = None
+        self._VULName = None
+        self._CVE = None
+        self._Describe = None
+        self._Payload = None
+        self._AppName = None
+        self._References = None
+        self._AppVersion = None
+        self._VULURL = None
+        self._Nick = None
+        self._AppId = None
+        self._Uin = None
+        self._Fix = None
+        self._EMGCVulType = None
+        self._CVSS = None
+        self._AttackHeat = None
+        self._ScanStatus = None
+        self._IsSuggest = None
+        self._VulTag = None
+        self._SupportProduct = None
+        self._TaskId = None
+        self._Index = None
+        self._PcmgrID = None
+        self._TvdID = None
+
+    @property
+    def Level(self):
+        r"""Risk level.
+High - high risk, middle - medium risk, low - low risk, info - Note.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Component(self):
+        r"""Component.
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def PublishTime(self):
+        r"""Release date.
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def LastScanTime(self):
+        r"""Last scan time
+        :rtype: str
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def AffectAssetCount(self):
+        r"""Number of Affected Assets
+        :rtype: int
+        """
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def RiskId(self):
+        r"""Risk ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def VULType(self):
+        r"""Vulnerability type.
+        :rtype: str
+        """
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def VULName(self):
+        r"""Vulnerability name
+        :rtype: str
+        """
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def CVE(self):
+        r"""cve
+        :rtype: str
+        """
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def Describe(self):
+        r"""Description
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def Payload(self):
+        r"""Vulnerability Payload
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def AppName(self):
+        r"""Vulnerability impact component.
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def References(self):
+        r"""Technology reference.
+        :rtype: str
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def AppVersion(self):
+        r"""Vulnerability impact version.
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def VULURL(self):
+        r"""Risks.
+        :rtype: str
+        """
+        return self._VULURL
+
+    @VULURL.setter
+    def VULURL(self, VULURL):
+        self._VULURL = VULURL
+
+    @property
+    def Nick(self):
+        r"""User Nickname
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def AppId(self):
+        r"""User appid.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Fix(self):
+        r"""Fixing suggestion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def EMGCVulType(self):
+        r"""Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EMGCVulType
+
+    @EMGCVulType.setter
+    def EMGCVulType(self, EMGCVulType):
+        self._EMGCVulType = EMGCVulType
+
+    @property
+    def CVSS(self):
+        r"""CVSS score
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def AttackHeat(self):
+        r"""Attack intensity.
+0/1/2/3 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def ScanStatus(self):
+        r"""Detection status 0 unscanned 1 scan in progress 2 scan complete.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ScanStatus
+
+    @ScanStatus.setter
+    def ScanStatus(self, ScanStatus):
+        self._ScanStatus = ScanStatus
+
+    @property
+    def IsSuggest(self):
+        r"""1/0 whether compulsory.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IsSuggest
+
+    @IsSuggest.setter
+    def IsSuggest(self, IsSuggest):
+        self._IsSuggest = IsSuggest
+
+    @property
+    def VulTag(self):
+        r"""Tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._VulTag
+
+    @VulTag.setter
+    def VulTag(self, VulTag):
+        self._VulTag = VulTag
+
+    @property
+    def SupportProduct(self):
+        r"""Support products: "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix" (comma-separated).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SupportProduct
+
+    @SupportProduct.setter
+    def SupportProduct(self, SupportProduct):
+        self._SupportProduct = SupportProduct
+
+    @property
+    def TaskId(self):
+        r"""Vulnerability detection task id.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Index(self):
+        r"""Primary key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def PcmgrID(self):
+        r"""Vulnerability id old version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PcmgrID
+
+    @PcmgrID.setter
+    def PcmgrID(self, PcmgrID):
+        self._PcmgrID = PcmgrID
+
+    @property
+    def TvdID(self):
+        r"""Vulnerability id new version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TvdID
+
+    @TvdID.setter
+    def TvdID(self, TvdID):
+        self._TvdID = TvdID
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
+        self._Component = params.get("Component")
+        self._PublishTime = params.get("PublishTime")
+        self._LastScanTime = params.get("LastScanTime")
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._RiskId = params.get("RiskId")
+        self._VULType = params.get("VULType")
+        self._VULName = params.get("VULName")
+        self._CVE = params.get("CVE")
+        self._Describe = params.get("Describe")
+        self._Payload = params.get("Payload")
+        self._AppName = params.get("AppName")
+        self._References = params.get("References")
+        self._AppVersion = params.get("AppVersion")
+        self._VULURL = params.get("VULURL")
+        self._Nick = params.get("Nick")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Fix = params.get("Fix")
+        self._EMGCVulType = params.get("EMGCVulType")
+        self._CVSS = params.get("CVSS")
+        self._AttackHeat = params.get("AttackHeat")
+        self._ScanStatus = params.get("ScanStatus")
+        self._IsSuggest = params.get("IsSuggest")
+        self._VulTag = params.get("VulTag")
+        self._SupportProduct = params.get("SupportProduct")
+        self._TaskId = params.get("TaskId")
+        self._Index = params.get("Index")
+        self._PcmgrID = params.get("PcmgrID")
+        self._TvdID = params.get("TvdID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VULRiskAdvanceCFGList(AbstractModel):
     r"""List of advanced vulnerability scan configurations
 
@@ -19250,6 +29025,92 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._EMGCVulType = params.get("EMGCVulType")
         self._VULDescribe = params.get("VULDescribe")
         self._ImpactComponent = params.get("ImpactComponent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VULRiskInfo(AbstractModel):
+    r"""Vulnerability risk information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fix: Fixing suggestion
+        :type Fix: str
+        :param _References: Technology reference/reference link.
+        :type References: str
+        :param _Describe: Vulnerability description
+        :type Describe: str
+        :param _ImpactComponent: Affected component.
+        :type ImpactComponent: list of VulImpactComponentInfo
+        """
+        self._Fix = None
+        self._References = None
+        self._Describe = None
+        self._ImpactComponent = None
+
+    @property
+    def Fix(self):
+        r"""Fixing suggestion
+        :rtype: str
+        """
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def References(self):
+        r"""Technology reference/reference link.
+        :rtype: str
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def Describe(self):
+        r"""Vulnerability description
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def ImpactComponent(self):
+        r"""Affected component.
+        :rtype: list of VulImpactComponentInfo
+        """
+        return self._ImpactComponent
+
+    @ImpactComponent.setter
+    def ImpactComponent(self, ImpactComponent):
+        self._ImpactComponent = ImpactComponent
+
+
+    def _deserialize(self, params):
+        self._Fix = params.get("Fix")
+        self._References = params.get("References")
+        self._Describe = params.get("Describe")
+        if params.get("ImpactComponent") is not None:
+            self._ImpactComponent = []
+            for item in params.get("ImpactComponent"):
+                obj = VulImpactComponentInfo()
+                obj._deserialize(item)
+                self._ImpactComponent.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19649,6 +29510,507 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class VULViewVULRiskData(AbstractModel):
+    r"""Vulnerability Risk Objects from Vulnerability's Perspective
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Port: Port.
+        :type Port: str
+        :param _NoHandleCount: Impact assets.
+        :type NoHandleCount: int
+        :param _Level: Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+        :type Level: str
+        :param _Component: Component.
+        :type Component: str
+        :param _RecentTime: Latest Recognition Time
+        :type RecentTime: str
+        :param _FirstTime: First Recognition Time
+        :type FirstTime: str
+        :param _AffectAssetCount: Number of Affected Assets
+        :type AffectAssetCount: int
+        :param _RiskId: Risk ID
+        :type RiskId: str
+        :param _From: Scan Source. See API Return Enumeration Type for details.
+        :type From: str
+        :param _Index: Front-end Index
+        :type Index: str
+        :param _VULType: Vulnerability type.
+        :type VULType: str
+        :param _VULName: Vulnerability name
+        :type VULName: str
+        :param _CVE: cve
+        :type CVE: str
+        :param _Payload: Vulnerability Payload
+        :type Payload: str
+        :param _AppName: Vulnerability impact component.
+        :type AppName: str
+        :param _AppVersion: Vulnerability impact version.
+        :type AppVersion: str
+        :param _VULURL: Risks.
+        :type VULURL: str
+        :param _Nick: User Nickname
+        :type Nick: str
+        :param _AppId: User appid.
+        :type AppId: str
+        :param _Uin: User UIN
+        :type Uin: str
+        :param _EMGCVulType: Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
+        :type EMGCVulType: int
+        :param _CVSS: CVSS score
+        :type CVSS: float
+        :param _PCMGRId: PCMGRId
+        :type PCMGRId: str
+        :param _VulTag: Vulnerability tag. during searching, emergency mandatory parameter VulTag=SuggestRepair/EMGCVul.
+        :type VulTag: list of str
+        :param _DisclosureTime: Vulnerability disclosure time.
+        :type DisclosureTime: str
+        :param _AttackHeat: Attack intensity.
+        :type AttackHeat: int
+        :param _IsSuggest: Whether a mandatory vulnerability: 1 - yes; 0 - no.
+        :type IsSuggest: int
+        :param _HandleTaskId: Disposal task id.
+        :type HandleTaskId: str
+        :param _EngineSource: Engine source.
+        :type EngineSource: str
+        :param _VulRiskId: New vulnerability risk id.
+        :type VulRiskId: str
+        :param _TvdID: New version vulnerability id.
+        :type TvdID: str
+        :param _IsOneClick: Is it possible to perform a one-click physical examination. valid values: 1-yes, 0-not allowed.
+        :type IsOneClick: int
+        """
+        self._Port = None
+        self._NoHandleCount = None
+        self._Level = None
+        self._Component = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._AffectAssetCount = None
+        self._RiskId = None
+        self._From = None
+        self._Index = None
+        self._VULType = None
+        self._VULName = None
+        self._CVE = None
+        self._Payload = None
+        self._AppName = None
+        self._AppVersion = None
+        self._VULURL = None
+        self._Nick = None
+        self._AppId = None
+        self._Uin = None
+        self._EMGCVulType = None
+        self._CVSS = None
+        self._PCMGRId = None
+        self._VulTag = None
+        self._DisclosureTime = None
+        self._AttackHeat = None
+        self._IsSuggest = None
+        self._HandleTaskId = None
+        self._EngineSource = None
+        self._VulRiskId = None
+        self._TvdID = None
+        self._IsOneClick = None
+
+    @property
+    def Port(self):
+        r"""Port.
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def NoHandleCount(self):
+        r"""Impact assets.
+        :rtype: int
+        """
+        return self._NoHandleCount
+
+    @NoHandleCount.setter
+    def NoHandleCount(self, NoHandleCount):
+        self._NoHandleCount = NoHandleCount
+
+    @property
+    def Level(self):
+        r"""Risk level: low - low risk, high - high risk, middle - medium risk, info - note, extreme - critical.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Component(self):
+        r"""Component.
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def RecentTime(self):
+        r"""Latest Recognition Time
+        :rtype: str
+        """
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        r"""First Recognition Time
+        :rtype: str
+        """
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def AffectAssetCount(self):
+        r"""Number of Affected Assets
+        :rtype: int
+        """
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def RiskId(self):
+        r"""Risk ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def From(self):
+        r"""Scan Source. See API Return Enumeration Type for details.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Index(self):
+        r"""Front-end Index
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def VULType(self):
+        r"""Vulnerability type.
+        :rtype: str
+        """
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def VULName(self):
+        r"""Vulnerability name
+        :rtype: str
+        """
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def CVE(self):
+        r"""cve
+        :rtype: str
+        """
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def Payload(self):
+        r"""Vulnerability Payload
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def AppName(self):
+        r"""Vulnerability impact component.
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppVersion(self):
+        r"""Vulnerability impact version.
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def VULURL(self):
+        r"""Risks.
+        :rtype: str
+        """
+        return self._VULURL
+
+    @VULURL.setter
+    def VULURL(self, VULURL):
+        self._VULURL = VULURL
+
+    @property
+    def Nick(self):
+        r"""User Nickname
+        :rtype: str
+        """
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def AppId(self):
+        r"""User appid.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""User UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def EMGCVulType(self):
+        r"""Emergency Vulnerability Type. 1-Emergency Vulnerability; 0-Non-emergency Vulnerability.
+        :rtype: int
+        """
+        return self._EMGCVulType
+
+    @EMGCVulType.setter
+    def EMGCVulType(self, EMGCVulType):
+        self._EMGCVulType = EMGCVulType
+
+    @property
+    def CVSS(self):
+        r"""CVSS score
+        :rtype: float
+        """
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def PCMGRId(self):
+        r"""PCMGRId
+        :rtype: str
+        """
+        return self._PCMGRId
+
+    @PCMGRId.setter
+    def PCMGRId(self, PCMGRId):
+        self._PCMGRId = PCMGRId
+
+    @property
+    def VulTag(self):
+        r"""Vulnerability tag. during searching, emergency mandatory parameter VulTag=SuggestRepair/EMGCVul.
+        :rtype: list of str
+        """
+        return self._VulTag
+
+    @VulTag.setter
+    def VulTag(self, VulTag):
+        self._VulTag = VulTag
+
+    @property
+    def DisclosureTime(self):
+        r"""Vulnerability disclosure time.
+        :rtype: str
+        """
+        return self._DisclosureTime
+
+    @DisclosureTime.setter
+    def DisclosureTime(self, DisclosureTime):
+        self._DisclosureTime = DisclosureTime
+
+    @property
+    def AttackHeat(self):
+        r"""Attack intensity.
+        :rtype: int
+        """
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def IsSuggest(self):
+        r"""Whether a mandatory vulnerability: 1 - yes; 0 - no.
+        :rtype: int
+        """
+        return self._IsSuggest
+
+    @IsSuggest.setter
+    def IsSuggest(self, IsSuggest):
+        self._IsSuggest = IsSuggest
+
+    @property
+    def HandleTaskId(self):
+        r"""Disposal task id.
+        :rtype: str
+        """
+        return self._HandleTaskId
+
+    @HandleTaskId.setter
+    def HandleTaskId(self, HandleTaskId):
+        self._HandleTaskId = HandleTaskId
+
+    @property
+    def EngineSource(self):
+        r"""Engine source.
+        :rtype: str
+        """
+        return self._EngineSource
+
+    @EngineSource.setter
+    def EngineSource(self, EngineSource):
+        self._EngineSource = EngineSource
+
+    @property
+    def VulRiskId(self):
+        r"""New vulnerability risk id.
+        :rtype: str
+        """
+        return self._VulRiskId
+
+    @VulRiskId.setter
+    def VulRiskId(self, VulRiskId):
+        self._VulRiskId = VulRiskId
+
+    @property
+    def TvdID(self):
+        r"""New version vulnerability id.
+        :rtype: str
+        """
+        return self._TvdID
+
+    @TvdID.setter
+    def TvdID(self, TvdID):
+        self._TvdID = TvdID
+
+    @property
+    def IsOneClick(self):
+        r"""Is it possible to perform a one-click physical examination. valid values: 1-yes, 0-not allowed.
+        :rtype: int
+        """
+        return self._IsOneClick
+
+    @IsOneClick.setter
+    def IsOneClick(self, IsOneClick):
+        self._IsOneClick = IsOneClick
+
+
+    def _deserialize(self, params):
+        self._Port = params.get("Port")
+        self._NoHandleCount = params.get("NoHandleCount")
+        self._Level = params.get("Level")
+        self._Component = params.get("Component")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._RiskId = params.get("RiskId")
+        self._From = params.get("From")
+        self._Index = params.get("Index")
+        self._VULType = params.get("VULType")
+        self._VULName = params.get("VULName")
+        self._CVE = params.get("CVE")
+        self._Payload = params.get("Payload")
+        self._AppName = params.get("AppName")
+        self._AppVersion = params.get("AppVersion")
+        self._VULURL = params.get("VULURL")
+        self._Nick = params.get("Nick")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._EMGCVulType = params.get("EMGCVulType")
+        self._CVSS = params.get("CVSS")
+        self._PCMGRId = params.get("PCMGRId")
+        self._VulTag = params.get("VulTag")
+        self._DisclosureTime = params.get("DisclosureTime")
+        self._AttackHeat = params.get("AttackHeat")
+        self._IsSuggest = params.get("IsSuggest")
+        self._HandleTaskId = params.get("HandleTaskId")
+        self._EngineSource = params.get("EngineSource")
+        self._VulRiskId = params.get("VulRiskId")
+        self._TvdID = params.get("TvdID")
+        self._IsOneClick = params.get("IsOneClick")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Vpc(AbstractModel):
     r"""List of VPCs
 
@@ -19898,6 +30260,418 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._Nick = params.get("Nick")
         self._IsNewAsset = params.get("IsNewAsset")
         self._IsCore = params.get("IsCore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulImpactComponentInfo(AbstractModel):
+    r"""Vulnerability impact component information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: Component name
+        :type Component: str
+        :param _Version: Version name.
+        :type Version: str
+        """
+        self._Component = None
+        self._Version = None
+
+    @property
+    def Component(self):
+        r"""Component name
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Version(self):
+        r"""Version name.
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Component = params.get("Component")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulRiskItem(AbstractModel):
+    r"""Host vulnerability risk content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: Cloud account ID.
+        :type CloudAccountID: str
+        :param _AssetID: Instance ID.
+        :type AssetID: str
+        :param _InstanceStatus: Instance status
+        :type InstanceStatus: str
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _CreateTime: Creation time.
+
+
+        :type CreateTime: str
+        :param _UpdateTime: Update time
+        :type UpdateTime: str
+        :param _VulName: Vulnerability name
+        :type VulName: str
+        :param _VulCategory: Vulnerability type.
+        :type VulCategory: str
+        :param _VulLevel: Vulnerability level
+        :type VulLevel: str
+        :param _CveID: CVE id.
+        :type CveID: str
+        :param _Description: Vulnerability description
+        :type Description: str
+        :param _ContainerID: Container ID.
+        :type ContainerID: str
+        :param _Fix: Vulnerability risk remediation recommendation.
+        :type Fix: str
+        :param _VulCategoryName: Linux vulnerability.
+        :type VulCategoryName: str
+        :param _VulLevelName: Vulnerability level name.
+        :type VulLevelName: str
+        :param _InstanceStatusName: Instance status chinese information.
+        :type InstanceStatusName: str
+        :param _AppID: Tenant ID.
+        :type AppID: int
+        """
+        self._CloudAccountID = None
+        self._AssetID = None
+        self._InstanceStatus = None
+        self._InstanceName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._VulName = None
+        self._VulCategory = None
+        self._VulLevel = None
+        self._CveID = None
+        self._Description = None
+        self._ContainerID = None
+        self._Fix = None
+        self._VulCategoryName = None
+        self._VulLevelName = None
+        self._InstanceStatusName = None
+        self._AppID = None
+
+    @property
+    def CloudAccountID(self):
+        r"""Cloud account ID.
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def AssetID(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._AssetID
+
+    @AssetID.setter
+    def AssetID(self, AssetID):
+        self._AssetID = AssetID
+
+    @property
+    def InstanceStatus(self):
+        r"""Instance status
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceName(self):
+        r"""Instance name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+
+
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Update time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def VulName(self):
+        r"""Vulnerability name
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def VulCategory(self):
+        r"""Vulnerability type.
+        :rtype: str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def VulLevel(self):
+        r"""Vulnerability level
+        :rtype: str
+        """
+        return self._VulLevel
+
+    @VulLevel.setter
+    def VulLevel(self, VulLevel):
+        self._VulLevel = VulLevel
+
+    @property
+    def CveID(self):
+        r"""CVE id.
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def Description(self):
+        r"""Vulnerability description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ContainerID(self):
+        r"""Container ID.
+        :rtype: str
+        """
+        return self._ContainerID
+
+    @ContainerID.setter
+    def ContainerID(self, ContainerID):
+        self._ContainerID = ContainerID
+
+    @property
+    def Fix(self):
+        r"""Vulnerability risk remediation recommendation.
+        :rtype: str
+        """
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def VulCategoryName(self):
+        r"""Linux vulnerability.
+        :rtype: str
+        """
+        return self._VulCategoryName
+
+    @VulCategoryName.setter
+    def VulCategoryName(self, VulCategoryName):
+        self._VulCategoryName = VulCategoryName
+
+    @property
+    def VulLevelName(self):
+        r"""Vulnerability level name.
+        :rtype: str
+        """
+        return self._VulLevelName
+
+    @VulLevelName.setter
+    def VulLevelName(self, VulLevelName):
+        self._VulLevelName = VulLevelName
+
+    @property
+    def InstanceStatusName(self):
+        r"""Instance status chinese information.
+        :rtype: str
+        """
+        return self._InstanceStatusName
+
+    @InstanceStatusName.setter
+    def InstanceStatusName(self, InstanceStatusName):
+        self._InstanceStatusName = InstanceStatusName
+
+    @property
+    def AppID(self):
+        r"""Tenant ID.
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._AssetID = params.get("AssetID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceName = params.get("InstanceName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._VulName = params.get("VulName")
+        self._VulCategory = params.get("VulCategory")
+        self._VulLevel = params.get("VulLevel")
+        self._CveID = params.get("CveID")
+        self._Description = params.get("Description")
+        self._ContainerID = params.get("ContainerID")
+        self._Fix = params.get("Fix")
+        self._VulCategoryName = params.get("VulCategoryName")
+        self._VulLevelName = params.get("VulLevelName")
+        self._InstanceStatusName = params.get("InstanceStatusName")
+        self._AppID = params.get("AppID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulTrend(AbstractModel):
+    r"""Vulnerability trends, attack trend, users affected, affect assets.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectAssetCount: Number of affected assets.
+        :type AffectAssetCount: int
+        :param _AffectUserCount: Number of users affected.
+        :type AffectUserCount: int
+        :param _AttackCount: Number of attacks.
+        :type AttackCount: int
+        :param _Date: Time
+        :type Date: str
+        """
+        self._AffectAssetCount = None
+        self._AffectUserCount = None
+        self._AttackCount = None
+        self._Date = None
+
+    @property
+    def AffectAssetCount(self):
+        r"""Number of affected assets.
+        :rtype: int
+        """
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def AffectUserCount(self):
+        r"""Number of users affected.
+        :rtype: int
+        """
+        return self._AffectUserCount
+
+    @AffectUserCount.setter
+    def AffectUserCount(self, AffectUserCount):
+        self._AffectUserCount = AffectUserCount
+
+    @property
+    def AttackCount(self):
+        r"""Number of attacks.
+        :rtype: int
+        """
+        return self._AttackCount
+
+    @AttackCount.setter
+    def AttackCount(self, AttackCount):
+        self._AttackCount = AttackCount
+
+    @property
+    def Date(self):
+        r"""Time
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+
+    def _deserialize(self, params):
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._AffectUserCount = params.get("AffectUserCount")
+        self._AttackCount = params.get("AttackCount")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
