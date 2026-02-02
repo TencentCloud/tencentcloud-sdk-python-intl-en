@@ -832,7 +832,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOtherCloudAssets(self, request):
-        r"""Asset list.
+        r"""Gets the list of other cloud assets
 
         :param request: Request instance for DescribeOtherCloudAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOtherCloudAssetsRequest`
@@ -891,6 +891,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeRepositoryImageAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRepositoryImageAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRiskCallRecord(self, request):
+        r"""Retrieve risk call record list.
+
+        :param request: Request instance for DescribeRiskCallRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCallRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCallRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskCallRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskCallRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1476,7 +1499,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyOrganizationAccountStatus(self, request):
-        r"""Modify Group Account Status
+        r"""Modify group account status
 
         :param request: Request instance for ModifyOrganizationAccountStatus.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusRequest`

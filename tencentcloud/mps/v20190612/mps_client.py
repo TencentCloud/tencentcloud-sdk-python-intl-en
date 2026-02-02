@@ -120,7 +120,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAigcImageTask(self, request):
-        r"""This API is used to create an AIGC image generation task.
+        r"""This API is used to create AIGC image generation tasks.
 
         :param request: Request instance for CreateAigcImageTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcImageTaskRequest`
@@ -143,7 +143,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAigcVideoTask(self, request):
-        r"""This API is used to create an AIGC video generation task.
+        r"""This API is used to create AI video generation tasks.
 
         :param request: Request instance for CreateAigcVideoTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcVideoTaskRequest`
@@ -1161,7 +1161,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAigcImageTask(self, request):
-        r"""This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        r"""This API is used to query the progress of AIGC image generation tasks and obtain the generation results.
 
         :param request: Request instance for DescribeAigcImageTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcImageTaskRequest`
@@ -1184,7 +1184,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAigcVideoTask(self, request):
-        r"""This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        r"""This API is used to query the progress of AIGC video generation tasks and obtain the generation results.
 
         :param request: Request instance for DescribeAigcVideoTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcVideoTaskRequest`
@@ -2597,6 +2597,29 @@ class MpsClient(AbstractClient):
             body = self.call("ProcessMedia", params, headers=headers)
             response = json.loads(body)
             model = models.ProcessMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecognizeAudio(self, request):
+        r"""This API is used to return the speech recognition results synchronously.
+
+        :param request: Request instance for RecognizeAudio.
+        :type request: :class:`tencentcloud.mps.v20190612.models.RecognizeAudioRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RecognizeAudioResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeAudio", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeAudioResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

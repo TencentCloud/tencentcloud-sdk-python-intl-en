@@ -113,7 +113,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CheckCnameStatusResponse:
         """
-        This API is used to query the CNAME status of a domain name.
+        When the site access type is CNAME, all domain names under the site must configure CNAME records as specified by the CNAME domain assigned by EdgeOne.
+        You can obtain the designated CNAME domain name assigned by EdgeOne for the integration domain through this API, and validate the configuration status of the CNAME for the integration domain through this API.
         """
         
         kwargs = {}

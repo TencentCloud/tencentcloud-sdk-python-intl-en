@@ -661,7 +661,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeOtherCloudAssetsResponse:
         """
-        Asset list.
+        Gets the list of other cloud assets
         """
         
         kwargs = {}
@@ -704,6 +704,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeRepositoryImageAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRepositoryImageAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskCallRecord(
+            self,
+            request: models.DescribeRiskCallRecordRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskCallRecordResponse:
+        """
+        Retrieve risk call record list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskCallRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskCallRecordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1165,7 +1183,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyOrganizationAccountStatusResponse:
         """
-        Modify Group Account Status
+        Modify group account status
         """
         
         kwargs = {}

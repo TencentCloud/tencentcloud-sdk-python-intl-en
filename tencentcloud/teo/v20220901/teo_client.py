@@ -129,7 +129,8 @@ class TeoClient(AbstractClient):
 
 
     def CheckCnameStatus(self, request):
-        r"""This API is used to query the CNAME status of a domain name.
+        r"""When the site access type is CNAME, all domain names under the site must configure CNAME records as specified by the CNAME domain assigned by EdgeOne.
+        You can obtain the designated CNAME domain name assigned by EdgeOne for the integration domain through this API, and validate the configuration status of the CNAME for the integration domain through this API.
 
         :param request: Request instance for CheckCnameStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.CheckCnameStatusRequest`

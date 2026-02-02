@@ -1973,10 +1973,7 @@ class AdvancedSuperResolutionConfig(AbstractModel):
 <li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type. Valid values:
-<li>standard: standard super-resolution.</li>
-<li>super: advanced super-resolution.</li>
-Default value: standard.
+        :param _Type: Type. Valid values:<li>standard: standard super-resolution.</li><li>super: super advanced super-resolution.</li><li>ultra: ultra advanced super-resolution.</li>Default value: standard.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Mode: Image output mode. The default value is percent.
@@ -1985,15 +1982,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>percent: magnification factor of super-resolution, which can be a decimal.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Mode: str
-        :param _Percent: Magnification factor of super-resolution, which can be a decimal.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Percent: Scale factor of super-resolution, which can be a decimal.Note: This is used when Mode is percent.Note: This field may return null, indicating that no valid values can be obtained.
         :type Percent: float
-        :param _Width: Width of the target image. The value cannot exceed 4096.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Width: Width of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
         :type Width: int
-        :param _Height: Height of the target image. The value cannot exceed 4096.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Height: Height of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
         :type Height: int
+        :param _LongSide: Long side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :type LongSide: int
+        :param _ShortSide: Short side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShortSide: int
         """
         self._Switch = None
         self._Type = None
@@ -2001,6 +1999,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Percent = None
         self._Width = None
         self._Height = None
+        self._LongSide = None
+        self._ShortSide = None
 
     @property
     def Switch(self):
@@ -2018,10 +2018,7 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type. Valid values:
-<li>standard: standard super-resolution.</li>
-<li>super: advanced super-resolution.</li>
-Default value: standard.
+        r"""Type. Valid values:<li>standard: standard super-resolution.</li><li>super: super advanced super-resolution.</li><li>ultra: ultra advanced super-resolution.</li>Default value: standard.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2048,8 +2045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        r"""Magnification factor of super-resolution, which can be a decimal.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Scale factor of super-resolution, which can be a decimal.Note: This is used when Mode is percent.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
         return self._Percent
@@ -2060,8 +2056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
-        r"""Width of the target image. The value cannot exceed 4096.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Width of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Width
@@ -2072,8 +2067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        r"""Height of the target image. The value cannot exceed 4096.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Height of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Height
@@ -2081,6 +2075,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Height.setter
     def Height(self, Height):
         self._Height = Height
+
+    @property
+    def LongSide(self):
+        r"""Long side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LongSide
+
+    @LongSide.setter
+    def LongSide(self, LongSide):
+        self._LongSide = LongSide
+
+    @property
+    def ShortSide(self):
+        r"""Short side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ShortSide
+
+    @ShortSide.setter
+    def ShortSide(self, ShortSide):
+        self._ShortSide = ShortSide
 
 
     def _deserialize(self, params):
@@ -2090,6 +2106,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Percent = params.get("Percent")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        self._LongSide = params.get("LongSide")
+        self._ShortSide = params.get("ShortSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2107,17 +2125,8 @@ class AiAnalysisResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Task type. Valid values:
-<li>Classification: smart classification.</li>
-<li>Cover: smart cover.</li>
-<li>Tag: smart tag.</li>
-<li>FrameTag: smart frame tag.</li>
-<li>Highlight: smart highlights.</li>
-<li>DeLogo: smart erasing.</li>
-<li>Description: LLM summary.</li>
-<li>Dubbing: smart dubbing.</li>
-<li>VideoRemake: video deduplication.</li>
-<li>VideoComprehension: video (audio) recognition.</li>
+        :param _Type: Task type. Valid values:<li>Classification: intelligent classification.</li><li>Cover: intelligent cover.</li><li>Tag: intelligent tagging.</li><li>FrameTag: intelligent frame-level tagging.</li><li>Highlight: intelligent highlights.</li><li>DeLogo: intelligent removal.</li><li>Description: LLM summarization.</li><li>Dubbing: intelligent dubbing.</li><li>VideoRemake: video recreation.</li><li>VideoComprehension: video (audio) recognition.</li>
+<li>Cutout: video matting.</li><li>Reel: intelligent video editing.</li>
         :type Type: str
         :param _ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
@@ -2154,6 +2163,10 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _VideoComprehensionTask: Query result of the video (audio) recognition task. This parameter is valid when the task type is VideoComprehension.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
+        :param _CutoutTask: Query result of a video matting task for video analysis, which is valid if the task type is Cutout.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CutoutTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
+        :param _ReelTask: Query result of a video editing task for video analysis, which is valid if the task type is Reel.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReelTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2169,20 +2182,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DubbingTask = None
         self._VideoRemakeTask = None
         self._VideoComprehensionTask = None
+        self._CutoutTask = None
+        self._ReelTask = None
 
     @property
     def Type(self):
-        r"""Task type. Valid values:
-<li>Classification: smart classification.</li>
-<li>Cover: smart cover.</li>
-<li>Tag: smart tag.</li>
-<li>FrameTag: smart frame tag.</li>
-<li>Highlight: smart highlights.</li>
-<li>DeLogo: smart erasing.</li>
-<li>Description: LLM summary.</li>
-<li>Dubbing: smart dubbing.</li>
-<li>VideoRemake: video deduplication.</li>
-<li>VideoComprehension: video (audio) recognition.</li>
+        r"""Task type. Valid values:<li>Classification: intelligent classification.</li><li>Cover: intelligent cover.</li><li>Tag: intelligent tagging.</li><li>FrameTag: intelligent frame-level tagging.</li><li>Highlight: intelligent highlights.</li><li>DeLogo: intelligent removal.</li><li>Description: LLM summarization.</li><li>Dubbing: intelligent dubbing.</li><li>VideoRemake: video recreation.</li><li>VideoComprehension: video (audio) recognition.</li>
+<li>Cutout: video matting.</li><li>Reel: intelligent video editing.</li>
         :rtype: str
         """
         return self._Type
@@ -2343,6 +2349,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VideoComprehensionTask(self, VideoComprehensionTask):
         self._VideoComprehensionTask = VideoComprehensionTask
 
+    @property
+    def CutoutTask(self):
+        r"""Query result of a video matting task for video analysis, which is valid if the task type is Cutout.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
+        """
+        return self._CutoutTask
+
+    @CutoutTask.setter
+    def CutoutTask(self, CutoutTask):
+        self._CutoutTask = CutoutTask
+
+    @property
+    def ReelTask(self):
+        r"""Query result of a video editing task for video analysis, which is valid if the task type is Reel.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
+        """
+        return self._ReelTask
+
+    @ReelTask.setter
+    def ReelTask(self, ReelTask):
+        self._ReelTask = ReelTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2385,6 +2413,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("VideoComprehensionTask") is not None:
             self._VideoComprehensionTask = AiAnalysisTaskVideoComprehensionResult()
             self._VideoComprehensionTask._deserialize(params.get("VideoComprehensionTask"))
+        if params.get("CutoutTask") is not None:
+            self._CutoutTask = AiAnalysisTaskCutoutResult()
+            self._CutoutTask._deserialize(params.get("CutoutTask"))
+        if params.get("ReelTask") is not None:
+            self._ReelTask = AiAnalysisTaskReelResult()
+            self._ReelTask._deserialize(params.get("ReelTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2786,6 +2820,240 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskCoverOutput()
             self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutInput(AbstractModel):
+    r"""Input type of the intelligent video matting task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: ID of the intelligent video matting template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""ID of the intelligent video matting template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutOutput(AbstractModel):
+    r"""Video matting result information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: File path for the intelligent video matting.
+        :type Path: str
+        :param _OutputStorage: Storage location for the intelligent video matting.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        r"""File path for the intelligent video matting.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        r"""Storage location for the intelligent video matting.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskCutoutResult(AbstractModel):
+    r"""Data structure of the video matting result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input of the video matting task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutInput`
+        :param _Output: Output of the video matting task.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
+        :param _Progress: Task progress.
+        :type Progress: int
+        :param _BeginProcessTime: Task start time, in ISO date and time format.
+        :type BeginProcessTime: str
+        :param _FinishTime: Task completion time, in ISO date and time format.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Input of the video matting task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output of the video matting task.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""Task progress.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""Task start time, in ISO date and time format.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""Task completion time, in ISO date and time format.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskCutoutInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskCutoutOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3295,11 +3563,14 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         :param _SpeakerPath: Specifies the file path of the tag.
 
         :type SpeakerPath: str
+        :param _VoiceId: Voice type ID.
+        :type VoiceId: str
         :param _OutputStorage: Specifies the storage location of the transcoded video.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
         self._SpeakerPath = None
+        self._VoiceId = None
         self._OutputStorage = None
 
     @property
@@ -3326,6 +3597,17 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         self._SpeakerPath = SpeakerPath
 
     @property
+    def VoiceId(self):
+        r"""Voice type ID.
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
     def OutputStorage(self):
         r"""Specifies the storage location of the transcoded video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -3340,6 +3622,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
         self._SpeakerPath = params.get("SpeakerPath")
+        self._VoiceId = params.get("VoiceId")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -4317,6 +4600,276 @@ Note: This field may return null, indicating that no valid value can be obtained
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelInput(AbstractModel):
+    r"""Input type of the intelligent video editing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: ID of the intelligent video editing template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""ID of the intelligent video editing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelOutput(AbstractModel):
+    r"""Intelligent video editing result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoPath: Path of the edited video.
+        :type VideoPath: str
+        :param _ScriptPath: Script file path.
+
+        :type ScriptPath: str
+        :param _OutputStorage: Storage location of the edited video.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._VideoPath = None
+        self._ScriptPath = None
+        self._OutputStorage = None
+
+    @property
+    def VideoPath(self):
+        r"""Path of the edited video.
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def ScriptPath(self):
+        r"""Script file path.
+
+        :rtype: str
+        """
+        return self._ScriptPath
+
+    @ScriptPath.setter
+    def ScriptPath(self, ScriptPath):
+        self._ScriptPath = ScriptPath
+
+    @property
+    def OutputStorage(self):
+        r"""Storage location of the edited video.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._VideoPath = params.get("VideoPath")
+        self._ScriptPath = params.get("ScriptPath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskReelResult(AbstractModel):
+    r"""Type of the intelligent video editing result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. 0: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input of the intelligent video editing task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
+        :param _Output: Output of the intelligent video editing task.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrCodeExt: str
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
+        :param _BeginProcessTime: Task start time, in ISO date and time format.Note: This field may return null, indicating that no valid values can be obtained.
+        :type BeginProcessTime: str
+        :param _FinishTime: Task completion time, in ISO date and time format.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._ErrCodeExt = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""Error code. 0: Task successful. Other values: Task failed.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""Input of the intelligent video editing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output of the intelligent video editing task.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ErrCodeExt(self):
+        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Progress(self):
+        r"""Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""Task start time, in ISO date and time format.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""Task completion time, in ISO date and time format.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskReelInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskReelOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11296,15 +11849,15 @@ class AiSampleWordInfo(AbstractModel):
 
 
 class AigcImageExtraParam(AbstractModel):
-    r"""
+    r"""Extended parameters used for AIGC image generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _AspectRatio: 
+        :param _AspectRatio: The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.
         :type AspectRatio: str
-        :param _Resolution: 
+        :param _Resolution: Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.
         :type Resolution: str
         """
         self._AspectRatio = None
@@ -11312,7 +11865,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""
+        r"""The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.
         :rtype: str
         """
         return self._AspectRatio
@@ -11323,7 +11876,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""
+        r"""Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.
         :rtype: str
         """
         return self._Resolution
@@ -11347,15 +11900,16 @@ class AigcImageExtraParam(AbstractModel):
 
 
 class AigcImageInfo(AbstractModel):
-    r"""
+    r"""Image information for AIGC generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 
+        :param _ImageUrl: Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.
         :type ImageUrl: str
-        :param _ReferenceType: 
+        :param _ReferenceType: Reference type.
+Note:1. When the model uses Vidu's q2 multi-reference image generation, this can also be used to specify the subject ID.2. If the GV model is used, this serves as the reference method. Valid values are asset and style.
         :type ReferenceType: str
         """
         self._ImageUrl = None
@@ -11363,7 +11917,7 @@ class AigcImageInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""
+        r"""Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.
         :rtype: str
         """
         return self._ImageUrl
@@ -11374,7 +11928,8 @@ class AigcImageInfo(AbstractModel):
 
     @property
     def ReferenceType(self):
-        r"""
+        r"""Reference type.
+Note:1. When the model uses Vidu's q2 multi-reference image generation, this can also be used to specify the subject ID.2. If the GV model is used, this serves as the reference method. Valid values are asset and style.
         :rtype: str
         """
         return self._ReferenceType
@@ -11398,17 +11953,17 @@ class AigcImageInfo(AbstractModel):
 
 
 class AigcStoreCosParam(AbstractModel):
-    r"""
+    r"""Information required for uploading AIGC result files to COS. The LVB_QCSRole role needs to be created and authorized.
 
     """
 
     def __init__(self):
         r"""
-        :param _CosBucketName: 
+        :param _CosBucketName: Name of the COS bucket to store to. This value is required if you need to store the results in COS. Example value: bucket.
         :type CosBucketName: str
-        :param _CosBucketRegion: 
+        :param _CosBucketRegion: Region of the COS bucket to store to. This is required if you need to upload the results to COS. Example value: ap-guangzhou.
         :type CosBucketRegion: str
-        :param _CosBucketPath: 
+        :param _CosBucketPath: Path of the COS bucket to store to.Optional.Example value: my_file.
         :type CosBucketPath: str
         """
         self._CosBucketName = None
@@ -11417,7 +11972,7 @@ class AigcStoreCosParam(AbstractModel):
 
     @property
     def CosBucketName(self):
-        r"""
+        r"""Name of the COS bucket to store to. This value is required if you need to store the results in COS. Example value: bucket.
         :rtype: str
         """
         return self._CosBucketName
@@ -11428,7 +11983,7 @@ class AigcStoreCosParam(AbstractModel):
 
     @property
     def CosBucketRegion(self):
-        r"""
+        r"""Region of the COS bucket to store to. This is required if you need to upload the results to COS. Example value: ap-guangzhou.
         :rtype: str
         """
         return self._CosBucketRegion
@@ -11439,7 +11994,7 @@ class AigcStoreCosParam(AbstractModel):
 
     @property
     def CosBucketPath(self):
-        r"""
+        r"""Path of the COS bucket to store to.Optional.Example value: my_file.
         :rtype: str
         """
         return self._CosBucketPath
@@ -11464,23 +12019,33 @@ class AigcStoreCosParam(AbstractModel):
 
 
 class AigcVideoExtraParam(AbstractModel):
-    r"""
+    r"""Extended parameters used for AIGC video generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _Resolution: 
+        :param _Resolution: The resolution of the generated video, which is related to the selected model and set video duration.Supported resolution options for different models:1. Kling: 720P (default) and 1080P.2. Hailuo: 768P (default) and 1080P.3. Vidu: 720P (default) and 1080P.4. GV: 720P (default) and 1080P.5. OS: 720P. For images, only 1280x720 and 720x1280 are supported. Resolution cannot be specified.Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.
         :type Resolution: str
-        :param _AspectRatio: 
+        :param _AspectRatio: The aspect ratio of the generated video.Support for this parameter by different models:1. Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.2. Hailuo does not support this parameter.3. Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.4. GV supports 16:9 (default) and 9:16.5. OS only supports this parameter for text-to-video, with aspect ratios of 16:9 (default) and 9:16.Note: For more information about the supported aspect ratios of specific models, see the model website.
         :type AspectRatio: str
+        :param _LogoAdd: Indicates whether to add a logo watermark.1. Hailuo supports this parameter.2. Kling supports this parameter.
+3. Vidu supports this parameter.
+        :type LogoAdd: int
+        :param _EnableAudio: Indicates whether to generate audio for the video. Valid values: true or false.Models that support this parameter:1. GV. Default value: true.2. OS. Default value: true.
+        :type EnableAudio: bool
+        :param _OffPeak: Indicates whether to use the off-peak scheduling mode. Only Vidu supports this parameter.Tasks submitted in off-peak mode will be processed within 48 hours. Uncompleted tasks will be canceled.
+        :type OffPeak: bool
         """
         self._Resolution = None
         self._AspectRatio = None
+        self._LogoAdd = None
+        self._EnableAudio = None
+        self._OffPeak = None
 
     @property
     def Resolution(self):
-        r"""
+        r"""The resolution of the generated video, which is related to the selected model and set video duration.Supported resolution options for different models:1. Kling: 720P (default) and 1080P.2. Hailuo: 768P (default) and 1080P.3. Vidu: 720P (default) and 1080P.4. GV: 720P (default) and 1080P.5. OS: 720P. For images, only 1280x720 and 720x1280 are supported. Resolution cannot be specified.Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.
         :rtype: str
         """
         return self._Resolution
@@ -11491,7 +12056,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""
+        r"""The aspect ratio of the generated video.Support for this parameter by different models:1. Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.2. Hailuo does not support this parameter.3. Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.4. GV supports 16:9 (default) and 9:16.5. OS only supports this parameter for text-to-video, with aspect ratios of 16:9 (default) and 9:16.Note: For more information about the supported aspect ratios of specific models, see the model website.
         :rtype: str
         """
         return self._AspectRatio
@@ -11500,10 +12065,47 @@ class AigcVideoExtraParam(AbstractModel):
     def AspectRatio(self, AspectRatio):
         self._AspectRatio = AspectRatio
 
+    @property
+    def LogoAdd(self):
+        r"""Indicates whether to add a logo watermark.1. Hailuo supports this parameter.2. Kling supports this parameter.
+3. Vidu supports this parameter.
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def EnableAudio(self):
+        r"""Indicates whether to generate audio for the video. Valid values: true or false.Models that support this parameter:1. GV. Default value: true.2. OS. Default value: true.
+        :rtype: bool
+        """
+        return self._EnableAudio
+
+    @EnableAudio.setter
+    def EnableAudio(self, EnableAudio):
+        self._EnableAudio = EnableAudio
+
+    @property
+    def OffPeak(self):
+        r"""Indicates whether to use the off-peak scheduling mode. Only Vidu supports this parameter.Tasks submitted in off-peak mode will be processed within 48 hours. Uncompleted tasks will be canceled.
+        :rtype: bool
+        """
+        return self._OffPeak
+
+    @OffPeak.setter
+    def OffPeak(self, OffPeak):
+        self._OffPeak = OffPeak
+
 
     def _deserialize(self, params):
         self._Resolution = params.get("Resolution")
         self._AspectRatio = params.get("AspectRatio")
+        self._LogoAdd = params.get("LogoAdd")
+        self._EnableAudio = params.get("EnableAudio")
+        self._OffPeak = params.get("OffPeak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11515,15 +12117,16 @@ class AigcVideoExtraParam(AbstractModel):
 
 
 class AigcVideoReferenceImageInfo(AbstractModel):
-    r"""
+    r"""Reference image information for AIGC video generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 
+        :param _ImageUrl: Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.
         :type ImageUrl: str
-        :param _ReferenceType: 
+        :param _ReferenceType: Reference type.
+Note:1. If the GV model is used, this serves as the reference method. Valid values are asset and style.
         :type ReferenceType: str
         """
         self._ImageUrl = None
@@ -11531,7 +12134,7 @@ class AigcVideoReferenceImageInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""
+        r"""Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.
         :rtype: str
         """
         return self._ImageUrl
@@ -11542,7 +12145,8 @@ class AigcVideoReferenceImageInfo(AbstractModel):
 
     @property
     def ReferenceType(self):
-        r"""
+        r"""Reference type.
+Note:1. If the GV model is used, this serves as the reference method. Valid values are asset and style.
         :rtype: str
         """
         return self._ReferenceType
@@ -12822,7 +13426,7 @@ Cannot be set to 0.
 
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
@@ -12895,7 +13499,7 @@ Cannot be set to 0.
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
@@ -12984,7 +13588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13048,7 +13652,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13846,9 +14450,9 @@ class BlindWatermarkTemplate(AbstractModel):
         :type TextContent: str
         :param _Comment: Description information of the digital watermark template.
         :type Comment: str
-        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         """
         self._Definition = None
@@ -13916,7 +14520,7 @@ class BlindWatermarkTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -13927,7 +14531,7 @@ class BlindWatermarkTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -17234,9 +17838,7 @@ When the value is 0.
 Note:
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
-        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
- 
-Note: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
+        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.
         :type SegmentType: str
         """
         self._Format = None
@@ -17347,9 +17949,7 @@ This value only distinguishes template types. The task uses the values of Remove
 
     @property
     def SegmentType(self):
-        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
- 
-Note: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
+        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.
         :rtype: str
         """
         return self._SegmentType
@@ -17433,34 +18033,26 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: Model Name. Currently supported models include: Hunyuan,GEM,Qwen.
+        :param _ModelName: Model name.
+Supported models:Hunyuan,
+GEM,
+Qwen.
         :type ModelName: str
-        :param _ModelVersion: Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  
-1. GEM, available options [2.5, 3.0].
-
+        :param _ModelVersion: Specific version number of the model. By default, the system uses the supported stable version of the model.1. GEM: [2.5 and 3.0].
         :type ModelVersion: str
-        :param _Prompt: 
-Generate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.
-
+        :param _Prompt: Description of the generated image. (Note: A maximum of 1000 characters is supported.) This parameter is required when no reference image is specified.
         :type Prompt: str
-        :param _NegativePrompt: Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
-Overhead lighting, vibrant colors  
-Human figures, animals  
-Multiple vehicles, wind
+        :param _NegativePrompt: Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.
         :type NegativePrompt: str
-        :param _EnhancePrompt: The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
-
+        :param _EnhancePrompt: The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
         :type EnhancePrompt: bool
-        :param _ImageInfos: 
-Supports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  
-Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.
-
+        :param _ImageInfos: Reference resource images. By default, one image can be specified.Model that supports multiple images:1. GEM supports up to 3 resource images.Note:1. The recommended image size is less than 7 MB. Different models have different limits.2. Supported image format: JPEG, PNG, and WebP.
         :type ImageInfos: list of AigcImageInfo
-        :param _ExtraParameters: Used to pass additional parameters.
+        :param _ExtraParameters: Additional parameters required for the model.
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
-        :param _StoreCosParam: The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :param _StoreCosParam: COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _Operator: Interface operator name.
+        :param _Operator: API operator name.
         :type Operator: str
         """
         self._ModelName = None
@@ -17475,7 +18067,10 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def ModelName(self):
-        r"""Model Name. Currently supported models include: Hunyuan,GEM,Qwen.
+        r"""Model name.
+Supported models:Hunyuan,
+GEM,
+Qwen.
         :rtype: str
         """
         return self._ModelName
@@ -17486,9 +18081,7 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def ModelVersion(self):
-        r"""Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  
-1. GEM, available options [2.5, 3.0].
-
+        r"""Specific version number of the model. By default, the system uses the supported stable version of the model.1. GEM: [2.5 and 3.0].
         :rtype: str
         """
         return self._ModelVersion
@@ -17499,9 +18092,7 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def Prompt(self):
-        r"""
-Generate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.
-
+        r"""Description of the generated image. (Note: A maximum of 1000 characters is supported.) This parameter is required when no reference image is specified.
         :rtype: str
         """
         return self._Prompt
@@ -17512,10 +18103,7 @@ Generate a description of the image. (Note: The maximum supported length is 1000
 
     @property
     def NegativePrompt(self):
-        r"""Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
-Overhead lighting, vibrant colors  
-Human figures, animals  
-Multiple vehicles, wind
+        r"""Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.
         :rtype: str
         """
         return self._NegativePrompt
@@ -17526,8 +18114,7 @@ Multiple vehicles, wind
 
     @property
     def EnhancePrompt(self):
-        r"""The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
-
+        r"""The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -17538,10 +18125,7 @@ Multiple vehicles, wind
 
     @property
     def ImageInfos(self):
-        r"""
-Supports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  
-Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.
-
+        r"""Reference resource images. By default, one image can be specified.Model that supports multiple images:1. GEM supports up to 3 resource images.Note:1. The recommended image size is less than 7 MB. Different models have different limits.2. Supported image format: JPEG, PNG, and WebP.
         :rtype: list of AigcImageInfo
         """
         return self._ImageInfos
@@ -17552,7 +18136,7 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def ExtraParameters(self):
-        r"""Used to pass additional parameters.
+        r"""Additional parameters required for the model.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
         """
         return self._ExtraParameters
@@ -17563,7 +18147,7 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def StoreCosParam(self):
-        r"""The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        r"""COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -17574,7 +18158,7 @@ Recommended image size should be under 7MB, with support for JPEG, PNG, and WebP
 
     @property
     def Operator(self):
-        r"""Interface operator name.
+        r"""API operator name.
         :rtype: str
         """
         return self._Operator
@@ -17620,7 +18204,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Returns the task ID.
+        :param _TaskId: Returned task ID.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17630,7 +18214,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Returns the task ID.
+        r"""Returned task ID.
         :rtype: str
         """
         return self._TaskId
@@ -17663,67 +18247,44 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV
+        :param _ModelName: Model name.
+Supported models:Hunyuan,
+Hailuo,
+Kling,
+Vidu,
+OS,
+GV.
         :type ModelName: str
-        :param _ModelVersion: Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  
-1. Hailuo: Available options [02, 2.3].  
-2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  
-3. Vidu: Available options [q2, q2-pro, q2-turbo].  
-4. GV: Available option [3.1].  
-5. OS: Available option [2.0].
+        :param _ModelVersion: Specific version number of the model. By default, the system uses the supported stable version of the model.1. Hailuo: [02 and 2.3].2. Kling: [2.0, 2.1, 2.5, O1, and 2.6].3. Vidu: [q2, q2-pro, and q2-turbo].4. GV: [3.1].5. OS: [2.0].
         :type ModelVersion: str
-        :param _Prompt: Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.
+        :param _SceneType: Scenario for the generated video.Note: Not all models support scenarios.1. Kling supports motion control (motion_control).2. Mingmou supports landscape-to-portrait conversion (land2port).3. Vidu supports special effect templates (template_effect).
+        :type SceneType: str
+        :param _Prompt: Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.
         :type Prompt: str
-        :param _NegativePrompt: Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
-Overhead lighting, vibrant colors  
-Human figures, animals  
-Multiple vehicles, wind
+        :param _NegativePrompt: Content you want to prevent the model from generating.Note: Not all models support this.For example:Top lighting and bright color.People and animals.Multiple vehicles and wind.
         :type NegativePrompt: str
-        :param _EnhancePrompt: The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+        :param _EnhancePrompt: The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
         :type EnhancePrompt: bool
-        :param _ImageUrl: The URL of the image used to guide video generation, which must be publicly accessible via the internet.  
-Notes:  
-1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  
-2. Supported image formats: JPEG, PNG.  
-3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.
+        :param _ImageUrl: Image URL for video generation. The URL must be accessible from the public network.Note:1. The recommended image size is no more than 10 MB. Different models have different size limits.2. Supported image formats: JPEG and PNG.3. If the OS model is used, the input image dimension should be 1280x720 or 720x1280.
         :type ImageUrl: str
-        :param _LastImageUrl: The model will utilize the image provided via this parameter as the ending frame for video generation.  
-Supported models for this parameter:  
-1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  
-2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  
-3. Vidu, q2-pro, q2-turbo: Support start&end frames. 
-Notes:  
-1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  
-2. Supported image formats: JPEG, PNG.
+        :param _LastImageUrl: The model will generate a video using the image of this parameter as the ending frame.Models that support this parameter:1. GV. If the ending frame image is specified, ImageUrl is required as the starting frame.2. Kling. Version 2.1 supports starting and ending frames with a resolution of 1080P.3. Vidu. q2-pro and q2-turbo support starting and ending frames.Note:1. The recommended image size is no more than 10 MB. Different models have different limits.2. Supported image formats: JPEG and PNG.
         :type LastImageUrl: str
-        :param _ImageInfos: A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  
-Models supporting multi-image input:  
-1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  
-2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.
-Notes:  
-1. Each image must not exceed 10MB in size.  
-2. Supported image formats: JPEG, PNG.
+        :param _ImageInfos: List of up to 3 asset images, used to describe the images the model should use for video generation.Model that supports multiple images:1. GV. If multiple images are specified, ImageUrl and LastImageUrl are unavailable.2. Vidu supports video generation with multiple reference images. The q2 model accepts 1 to 7 images. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.Note:1. The image size cannot exceed 10 MB.2. Supported image formats: JPEG and PNG.
         :type ImageInfos: list of AigcVideoReferenceImageInfo
-        :param _Duration: Duration of generated videos.  
-Notes:  
-1. Kling supports 5 and 10 seconds. Default: 5 seconds.  
-2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  
-3. Vidu supports 1 to 10 seconds.  
-4. GV supports 8 seconds. Default: 8 seconds.  
-5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.
+        :param _Duration: Duration of the generated video.Note:1. Kling supports 5 and 10 seconds. Default value: 5 seconds.2. The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.3. Vidu supports 1 to 10 seconds.4. GV supports 8 seconds. Default value: 8 seconds.5. OS supports 4, 8, and 12 seconds. Default value: 8 seconds.
         :type Duration: int
-        :param _ExtraParameters: Used to pass additional parameters.
+        :param _ExtraParameters: Additional parameters required.
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
-        :param _StoreCosParam: The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        :param _StoreCosParam: COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _AdditionalParameters: 
-Used to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {"camera_control":{"type":"simple"}}
+        :param _AdditionalParameters: Special scenario parameters required by the model, formatted as a JSON serialized string.Example:{\"camera_control\":{\"type\":\"simple\"}}
         :type AdditionalParameters: str
-        :param _Operator: Interface operator name.
+        :param _Operator: API operator name.
         :type Operator: str
         """
         self._ModelName = None
         self._ModelVersion = None
+        self._SceneType = None
         self._Prompt = None
         self._NegativePrompt = None
         self._EnhancePrompt = None
@@ -17738,7 +18299,13 @@ Used to pass specific scenario parameters required by the model, serialized into
 
     @property
     def ModelName(self):
-        r"""Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV
+        r"""Model name.
+Supported models:Hunyuan,
+Hailuo,
+Kling,
+Vidu,
+OS,
+GV.
         :rtype: str
         """
         return self._ModelName
@@ -17749,12 +18316,7 @@ Used to pass specific scenario parameters required by the model, serialized into
 
     @property
     def ModelVersion(self):
-        r"""Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  
-1. Hailuo: Available options [02, 2.3].  
-2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  
-3. Vidu: Available options [q2, q2-pro, q2-turbo].  
-4. GV: Available option [3.1].  
-5. OS: Available option [2.0].
+        r"""Specific version number of the model. By default, the system uses the supported stable version of the model.1. Hailuo: [02 and 2.3].2. Kling: [2.0, 2.1, 2.5, O1, and 2.6].3. Vidu: [q2, q2-pro, and q2-turbo].4. GV: [3.1].5. OS: [2.0].
         :rtype: str
         """
         return self._ModelVersion
@@ -17764,8 +18326,19 @@ Used to pass specific scenario parameters required by the model, serialized into
         self._ModelVersion = ModelVersion
 
     @property
+    def SceneType(self):
+        r"""Scenario for the generated video.Note: Not all models support scenarios.1. Kling supports motion control (motion_control).2. Mingmou supports landscape-to-portrait conversion (land2port).3. Vidu supports special effect templates (template_effect).
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
     def Prompt(self):
-        r"""Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.
+        r"""Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.
         :rtype: str
         """
         return self._Prompt
@@ -17776,10 +18349,7 @@ Used to pass specific scenario parameters required by the model, serialized into
 
     @property
     def NegativePrompt(self):
-        r"""Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  
-Overhead lighting, vibrant colors  
-Human figures, animals  
-Multiple vehicles, wind
+        r"""Content you want to prevent the model from generating.Note: Not all models support this.For example:Top lighting and bright color.People and animals.Multiple vehicles and wind.
         :rtype: str
         """
         return self._NegativePrompt
@@ -17790,7 +18360,7 @@ Multiple vehicles, wind
 
     @property
     def EnhancePrompt(self):
-        r"""The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.
+        r"""The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -17801,11 +18371,7 @@ Multiple vehicles, wind
 
     @property
     def ImageUrl(self):
-        r"""The URL of the image used to guide video generation, which must be publicly accessible via the internet.  
-Notes:  
-1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  
-2. Supported image formats: JPEG, PNG.  
-3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.
+        r"""Image URL for video generation. The URL must be accessible from the public network.Note:1. The recommended image size is no more than 10 MB. Different models have different size limits.2. Supported image formats: JPEG and PNG.3. If the OS model is used, the input image dimension should be 1280x720 or 720x1280.
         :rtype: str
         """
         return self._ImageUrl
@@ -17816,14 +18382,7 @@ Notes:
 
     @property
     def LastImageUrl(self):
-        r"""The model will utilize the image provided via this parameter as the ending frame for video generation.  
-Supported models for this parameter:  
-1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  
-2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  
-3. Vidu, q2-pro, q2-turbo: Support start&end frames. 
-Notes:  
-1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  
-2. Supported image formats: JPEG, PNG.
+        r"""The model will generate a video using the image of this parameter as the ending frame.Models that support this parameter:1. GV. If the ending frame image is specified, ImageUrl is required as the starting frame.2. Kling. Version 2.1 supports starting and ending frames with a resolution of 1080P.3. Vidu. q2-pro and q2-turbo support starting and ending frames.Note:1. The recommended image size is no more than 10 MB. Different models have different limits.2. Supported image formats: JPEG and PNG.
         :rtype: str
         """
         return self._LastImageUrl
@@ -17834,13 +18393,7 @@ Notes:
 
     @property
     def ImageInfos(self):
-        r"""A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  
-Models supporting multi-image input:  
-1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  
-2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.
-Notes:  
-1. Each image must not exceed 10MB in size.  
-2. Supported image formats: JPEG, PNG.
+        r"""List of up to 3 asset images, used to describe the images the model should use for video generation.Model that supports multiple images:1. GV. If multiple images are specified, ImageUrl and LastImageUrl are unavailable.2. Vidu supports video generation with multiple reference images. The q2 model accepts 1 to 7 images. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.Note:1. The image size cannot exceed 10 MB.2. Supported image formats: JPEG and PNG.
         :rtype: list of AigcVideoReferenceImageInfo
         """
         return self._ImageInfos
@@ -17851,13 +18404,7 @@ Notes:
 
     @property
     def Duration(self):
-        r"""Duration of generated videos.  
-Notes:  
-1. Kling supports 5 and 10 seconds. Default: 5 seconds.  
-2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  
-3. Vidu supports 1 to 10 seconds.  
-4. GV supports 8 seconds. Default: 8 seconds.  
-5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.
+        r"""Duration of the generated video.Note:1. Kling supports 5 and 10 seconds. Default value: 5 seconds.2. The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.3. Vidu supports 1 to 10 seconds.4. GV supports 8 seconds. Default value: 8 seconds.5. OS supports 4, 8, and 12 seconds. Default value: 8 seconds.
         :rtype: int
         """
         return self._Duration
@@ -17868,7 +18415,7 @@ Notes:
 
     @property
     def ExtraParameters(self):
-        r"""Used to pass additional parameters.
+        r"""Additional parameters required.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
         """
         return self._ExtraParameters
@@ -17879,7 +18426,7 @@ Notes:
 
     @property
     def StoreCosParam(self):
-        r"""The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.
+        r"""COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -17890,8 +18437,7 @@ Notes:
 
     @property
     def AdditionalParameters(self):
-        r"""
-Used to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {"camera_control":{"type":"simple"}}
+        r"""Special scenario parameters required by the model, formatted as a JSON serialized string.Example:{\"camera_control\":{\"type\":\"simple\"}}
         :rtype: str
         """
         return self._AdditionalParameters
@@ -17902,7 +18448,7 @@ Used to pass specific scenario parameters required by the model, serialized into
 
     @property
     def Operator(self):
-        r"""Interface operator name.
+        r"""API operator name.
         :rtype: str
         """
         return self._Operator
@@ -17915,6 +18461,7 @@ Used to pass specific scenario parameters required by the model, serialized into
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
         self._EnhancePrompt = params.get("EnhancePrompt")
@@ -17952,7 +18499,8 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.
+        :param _TaskId: ID of the successfully created task.
+The task progress and generation results can be obtained by calling the query API.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17962,7 +18510,8 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.
+        r"""ID of the successfully created task.
+The task progress and generation results can be obtained by calling the query API.
         :rtype: str
         """
         return self._TaskId
@@ -20182,7 +20731,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `mr-IN`: Marathi (India).
 `mn-MN`: Mongolian (Mongolia).
 `ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
+`no-NO`: Bokmal Norwegian (Norway).
 `fa-IR`: Persian (Iran).
 `pl-PL`: Polish (Poland).
 `pt-BR`: Portuguese (Brazil).
@@ -20234,7 +20783,6 @@ ASR recognition and pure subtitle translation currently support the following la
 `vi-VN`: Vietnamese (Vietnam).
 `xh-ZA`: Xhosa (South Africa).
 `zu-ZA`: Zulu (South Africa).
-
         :type VideoSrcLanguage: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language
@@ -20269,200 +20817,8 @@ Length limit: 256 characters.
 **Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`:Bemba.
-`bew`:Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`:Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat language.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`:Kiga.
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burmese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
         :param _ProcessType: Subtitle processing type.
 - 0: ASR recognition subtitle.
@@ -20470,6 +20826,8 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
 - 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -20480,6 +20838,7 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
         self._TranslateSwitch = None
         self._TranslateDstLanguage = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Name(self):
@@ -20610,7 +20969,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `mr-IN`: Marathi (India).
 `mn-MN`: Mongolian (Mongolia).
 `ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
+`no-NO`: Bokmal Norwegian (Norway).
 `fa-IR`: Persian (Iran).
 `pl-PL`: Polish (Poland).
 `pt-BR`: Portuguese (Brazil).
@@ -20662,7 +21021,6 @@ ASR recognition and pure subtitle translation currently support the following la
 `vi-VN`: Vietnamese (Vietnam).
 `xh-ZA`: Xhosa (South Africa).
 `zu-ZA`: Zulu (South Africa).
-
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -20751,200 +21109,8 @@ Length limit: 256 characters.
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`:Bemba.
-`bew`:Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`:Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat language.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`:Kiga.
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burmese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -20968,6 +21134,17 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""Area configurations for the subtitle OCR extraction box.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20981,6 +21158,9 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
         self._TranslateSwitch = params.get("TranslateSwitch")
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23890,14 +24070,14 @@ class DescribeAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: AIGC image task processing task ID.
+        :param _TaskId: ID of the created AIGC image generation task.
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""AIGC image task processing task ID.
+        r"""ID of the created AIGC image generation task.
         :rtype: str
         """
         return self._TaskId
@@ -23926,14 +24106,9 @@ class DescribeAigcImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Current task status:
-WAIT: Pending,
-RUN: In progress,
-FAIL: Task failed,
-DONE: Task completed successfully.
-
+        :param _Status: Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.
         :type Status: str
-        :param _ImageUrls: When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.
+        :param _ImageUrls: When the task status is DONE, the list of image URLs is returned. The images are stored for 12 hours. Please retrieve them as soon as possible.
         :type ImageUrls: list of str
         :param _Message: When the task status is FAIL, the failure information is returned.
         :type Message: str
@@ -23947,12 +24122,7 @@ DONE: Task completed successfully.
 
     @property
     def Status(self):
-        r"""Current task status:
-WAIT: Pending,
-RUN: In progress,
-FAIL: Task failed,
-DONE: Task completed successfully.
-
+        r"""Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.
         :rtype: str
         """
         return self._Status
@@ -23963,7 +24133,7 @@ DONE: Task completed successfully.
 
     @property
     def ImageUrls(self):
-        r"""When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.
+        r"""When the task status is DONE, the list of image URLs is returned. The images are stored for 12 hours. Please retrieve them as soon as possible.
         :rtype: list of str
         """
         return self._ImageUrls
@@ -24009,14 +24179,14 @@ class DescribeAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: AIGC video task processing task ID.
+        :param _TaskId: Task ID returned when the AIGC video generation task is created.
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""AIGC video task processing task ID.
+        r"""Task ID returned when the AIGC video generation task is created.
         :rtype: str
         """
         return self._TaskId
@@ -24045,15 +24215,11 @@ class DescribeAigcVideoTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Current task status:
-WAIT: Pending,
-RUN: In progress,
-FAIL: Task failed,
-DONE: Task completed successfully.
+        :param _Status: Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.
         :type Status: str
-        :param _VideoUrls: When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.
+        :param _VideoUrls: When the task status is DONE, the list of video URLs is returned. The videos are stored for 12 hours. Please retrieve them as soon as possible.
         :type VideoUrls: list of str
-        :param _Resolution: The resolution of the output video. Example: 1080*720.
+        :param _Resolution: Output video resolution. Example: 1080*720.
         :type Resolution: str
         :param _Message: When the task status is FAIL, the failure information is returned.
         :type Message: str
@@ -24068,11 +24234,7 @@ DONE: Task completed successfully.
 
     @property
     def Status(self):
-        r"""Current task status:
-WAIT: Pending,
-RUN: In progress,
-FAIL: Task failed,
-DONE: Task completed successfully.
+        r"""Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.
         :rtype: str
         """
         return self._Status
@@ -24083,7 +24245,7 @@ DONE: Task completed successfully.
 
     @property
     def VideoUrls(self):
-        r"""When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.
+        r"""When the task status is DONE, the list of video URLs is returned. The videos are stored for 12 hours. Please retrieve them as soon as possible.
         :rtype: list of str
         """
         return self._VideoUrls
@@ -24094,7 +24256,7 @@ DONE: Task completed successfully.
 
     @property
     def Resolution(self):
-        r"""The resolution of the output video. Example: 1080*720.
+        r"""Output video resolution. Example: 1080*720.
         :rtype: str
         """
         return self._Resolution
@@ -25686,7 +25848,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type Status: str
         :param _ErrCode: Error code when the task fails.
         :type ErrCode: int
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Task exception message.
         :type Message: str
@@ -25753,7 +25915,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -28461,24 +28623,12 @@ class DescribeUsageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _StartTime: Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type StartTime: str
-        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type EndTime: str
-        :param _Types: Queries the MPS task type. The transcoding task is queried by default.
-<li>Transcode: transcoding.</li>
-<li>Enhance: enhancement.</li>
-<li>AIAnalysis: intelligent analysis.</li>
-<li>AIRecognition: intelligent recognition.</li>
-<li>AIReview: content moderation.</li>
-<li>Snapshot: screenshot.</li>
-<li>AnimatedGraphics: conversion to GIF.</li>
-<li>AiQualityControl: media quality inspection.</li>
-<li>Evaluation: video assessment.</li>
-<li>ImageProcess: image processing.</li>
-<li>AddBlindWatermark: add a basic copyright digital watermark.</li>
-<li>AddNagraWatermark: add a NAGRA digital watermark.</li>
-<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>
+        :param _Types: Type of MPS tasks to query. The transcoding tasks are queried by default.<li>Transcode: transcoding.</li><li>Enhance: enhancement.</li><li>AIAnalysis: intelligent analysis.</li><li>AIRecognition: intelligent identification.</li><li>AIReview: content moderation.</li><li>Snapshot: screenshot.</li><li>AnimatedGraphics: animated graphics.</li><li>AiQualityControl: quality inspection.</li><li>Evaluation: video evaluation.</li><li>ImageProcess: image processing.</li>
+<li>AddBlindWatermark: adding basic copyright digital watermarks.</li><li>AddNagraWatermark: adding NAGRA digital watermarks.</li><li>ExtractBlindWatermark: extracting basic copyright digital watermarks.</li><li>AIGC: AIGC</li>
         :type Types: list of str
         :param _ProcessRegions: MPS park. ap-guangzhou park is returned by default.
 <li>ap-guangzhou: Guangzhou.</li>
@@ -28493,7 +28643,7 @@ class DescribeUsageDataRequest(AbstractModel):
 <li>na-siliconvalley: Silicon Valley.</li>
 <li>na-ashburn: Virginia.</li>
 <li>na-toronto: Toronto.</li>
-<li>sa-saopaulo: São Paulo.</li>
+<li>sa-saopaulo: Sao Paulo.</li>
 <li>eu-frankfurt: Frankfurt.</li>
 <li>eu-moscow: Russia.</li>
 <li>aws: AWS.</li>
@@ -28506,7 +28656,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._StartTime
@@ -28517,7 +28667,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._EndTime
@@ -28528,20 +28678,8 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def Types(self):
-        r"""Queries the MPS task type. The transcoding task is queried by default.
-<li>Transcode: transcoding.</li>
-<li>Enhance: enhancement.</li>
-<li>AIAnalysis: intelligent analysis.</li>
-<li>AIRecognition: intelligent recognition.</li>
-<li>AIReview: content moderation.</li>
-<li>Snapshot: screenshot.</li>
-<li>AnimatedGraphics: conversion to GIF.</li>
-<li>AiQualityControl: media quality inspection.</li>
-<li>Evaluation: video assessment.</li>
-<li>ImageProcess: image processing.</li>
-<li>AddBlindWatermark: add a basic copyright digital watermark.</li>
-<li>AddNagraWatermark: add a NAGRA digital watermark.</li>
-<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>
+        r"""Type of MPS tasks to query. The transcoding tasks are queried by default.<li>Transcode: transcoding.</li><li>Enhance: enhancement.</li><li>AIAnalysis: intelligent analysis.</li><li>AIRecognition: intelligent identification.</li><li>AIReview: content moderation.</li><li>Snapshot: screenshot.</li><li>AnimatedGraphics: animated graphics.</li><li>AiQualityControl: quality inspection.</li><li>Evaluation: video evaluation.</li><li>ImageProcess: image processing.</li>
+<li>AddBlindWatermark: adding basic copyright digital watermarks.</li><li>AddNagraWatermark: adding NAGRA digital watermarks.</li><li>ExtractBlindWatermark: extracting basic copyright digital watermarks.</li><li>AIGC: AIGC</li>
         :rtype: list of str
         """
         return self._Types
@@ -28565,7 +28703,7 @@ class DescribeUsageDataRequest(AbstractModel):
 <li>na-siliconvalley: Silicon Valley.</li>
 <li>na-ashburn: Virginia.</li>
 <li>na-toronto: Toronto.</li>
-<li>sa-saopaulo: São Paulo.</li>
+<li>sa-saopaulo: Sao Paulo.</li>
 <li>eu-frankfurt: Frankfurt.</li>
 <li>eu-moscow: Russia.</li>
 <li>aws: AWS.</li>
@@ -32550,9 +32688,12 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _OutputStorage: Storage location of the output file.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Content: Processing result of the image-to-text task.
+        :type Content: str
         """
         self._Path = None
         self._OutputStorage = None
+        self._Content = None
 
     @property
     def Path(self):
@@ -32578,12 +32719,24 @@ Note: This field may return null, indicating that no valid value can be obtained
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def Content(self):
+        r"""Processing result of the image-to-text task.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32604,7 +32757,7 @@ class ImageProcessTaskResult(AbstractModel):
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: str
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Error message.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -32636,7 +32789,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -36719,7 +36872,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         r"""
         :param _NotifyType: Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
@@ -36748,7 +36901,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NotifyType(self):
         r"""Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
@@ -41372,8 +41525,7 @@ Note:
 
 This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
-        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
-Note: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
+        :param _SegmentType: Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.
         :type SegmentType: str
         """
         self._Definition = None
@@ -41498,8 +41650,7 @@ This value only distinguishes template types. The task uses the values of Remove
 
     @property
     def SegmentType(self):
-        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.
-Note: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.
+        r"""Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.
         :rtype: str
         """
         return self._SegmentType
@@ -43749,7 +43900,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `mr-IN`: Marathi (India).
 `mn-MN`: Mongolian (Mongolia).
 `ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
+`no-NO`: Bokmal Norwegian (Norway).
 `fa-IR`: Persian (Iran).
 `pl-PL`: Polish (Poland).
 `pt-BR`: Portuguese (Brazil).
@@ -43802,6 +43953,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `xh-ZA`: Xhosa (South Africa).
 `zu-ZA`: Zulu (South Africa).
 
+
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: Smart subtitle file format:
 - Under the ASR recognition and translation processing type:
@@ -43828,200 +43980,8 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`: Bemba.
-`bew`: Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`: Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`: Kiga
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka.
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew.
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burnese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :type TranslateDstLanguage: str
         :param _ProcessType: Subtitle processing type:
 - 0: ASR recognition subtitle.
@@ -44029,6 +43989,8 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
 - 2: OCR recognition subtitle.
 **Note**: If the field is unspecified, ASR is used by default.
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -44040,6 +44002,7 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
         self._AsrHotWordsConfigure = None
         self._TranslateDstLanguage = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Definition(self):
@@ -44207,7 +44170,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `mr-IN`: Marathi (India).
 `mn-MN`: Mongolian (Mongolia).
 `ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
+`no-NO`: Bokmal Norwegian (Norway).
 `fa-IR`: Persian (Iran).
 `pl-PL`: Polish (Poland).
 `pt-BR`: Portuguese (Brazil).
@@ -44259,6 +44222,7 @@ ASR recognition and pure subtitle translation currently support the following la
 `vi-VN`: Vietnamese (Vietnam).
 `xh-ZA`: Xhosa (South Africa).
 `zu-ZA`: Zulu (South Africa).
+
 
         :rtype: str
         """
@@ -44322,200 +44286,8 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`: Bemba.
-`bew`: Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`: Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`: Kiga
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka.
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew.
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burnese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -44539,6 +44311,17 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""Area configurations for the subtitle OCR extraction box.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -44553,6 +44336,9 @@ This field is valid when the value of TranslateSwitch is ON. List of translation
             self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50581,200 +50367,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateSwitch: str
         :param _TranslateDstLanguage: Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`: Bemba.
-`bew`: Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`: Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`: Kiga
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka.
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew.
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burmese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
         :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
@@ -50788,7 +50382,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 - 2: OCR recognition subtitle.
 **Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: 
+        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._SubtitleType = None
@@ -51038,200 +50632,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TranslateDstLanguage(self):
         r"""Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON. List of translation languages:
-`ab`: Abkhaz language.
-`ace`: Acehnese.
-`ach`: Acholi.
-`af`: Afrikaans.
-`ak`: Twi (Akan).
-`am`: Amharic.
-`ar`: Arabic.
-`as`: Assamese.
-`ay`: Aymara.
-`az`: Azerbaijani.
-`ba`: Bashkir.
-`ban`: Balinese.
-`bbc`: Batak Toba.
-`bem`: Bemba.
-`bew`: Betawi.
-`bg`: Bulgarian.
-`bho`: Bhojpuri.
-`bik`: Bikol.
-`bm`: Bambara.
-`bn`: Bengali.
-`br`: Breton.
-`bs`: Bosnian.
-`btx`: Batak Karo.
-`bts`: Batak Simalungun.
-`bua`: Buryat.
-`ca`: Catalan.
-`ceb`: Cebuano.
-`cgg`: Kiga
-`chm`: Meadow Mari language.
-`ckb`: Kurdish (Sorani).
-`cnh`: Hakha Chin.
-`co`: Corsican.
-`crh`: Crimean Tatar.
-`crs`: Seychellois Creole.
-`cs`: Czech.
-`cv`: Chuvash.
-`cy`: Welsh.
-`da`: Danish.
-`de`: German.
-`din`: Dinka.
-`doi`: Dogri.
-`dov`: Dombe.
-`dv`: Divehi.
-`dz`: Dzongkha.
-`ee`: Ewe.
-`el`: Greek.
-`en`: English.
-`eo`: Esperanto.
-`es`: Spanish.
-`et`: Estonian.
-`eu`: Basque.
-`fa`: Persian.
-`ff`: Fula.
-`fi`: Finnish.
-`fil`: Filipino (Tagalog).
-`fj`: Fijian.
-`fr`: French.
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fy`: Frisian.
-`ga`: Irish.
-`gaa`: Ga.
-`gd`: Scottish Gaelic.
-`gl`: Galician.
-`gn`: Guaraní.
-`gom`: Goan Konkani.
-`gu`: Gujarati.
-`gv`: Manx.
-`ha`: Hausa.
-`haw`: Hawaiian.
-`he`: Hebrew.
-`hi`: Hindi.
-`hil`: Hiligaynon.
-`hmn`: Hmong.
-`hr`: Croatian.
-`hrx`: Hunsrik.
-`ht`: Haitian Creole.
-`hu`: Hungarian.
-`hy`: Armenian.
-`id`: Indonesian.
-`ig`: Igbo.
-`ilo`: Iloko.
-`is`: Icelandic.
-`it`: Italian.
-`iw`: Hebrew.
-`ja`: Japanese.
-`jv`: Javanese.
-`jw`: Javanese.
-`ka`: Georgian.
-`kk`: Kazakh.
-`km`: Khmer.
-`kn`: Kannada.
-`ko`: Korean.
-`kri`: Krio.
-`ku`: Kurdish (Kurmanji).
-`ktu`: Kituba.
-`ky`: Kirghiz.
-`la`: Latin.
-`lb`: Luxembourgish.
-`lg`: Ganda (Luganda).
-`li`: Limburgish.
-`lij`: Ligurian.
-`lmo`: Lombard.
-`ln`: Lingala.
-`lo`: Lao.
-`lt`: Lithuanian.
-`ltg`: Latgalian.
-`luo`: Luo.
-`lus`: Mizo.
-`lv`: Latvian.
-`mai`: Maithili.
-`mak`: Makassar.
-`mg`: Malagasy.
-`mi`: Maori.
-`min`: Minangkabau.
-`mk`: Macedonian.
-`ml`: Malayalam.
-`mn`: Mongolian.
-`mr`: Marathi.
-`ms`: Malay.
-`mt`: Maltese.
-`my`: Burmese.
-`ne`: Nepali.
-`new`: Newar.
-`nl`: Dutch.
-`no`: Norwegian.
-`nr`: Ndebele (South).
-`nso`: Northern Sotho (Sepedi).
-`nus`: Nuer.
-`ny`: Chichewa (Nyanja).
-`oc`: Occitan.
-`om`: Oromo.
-`or`: Odia.
-`pa`: Punjabi.
-`pag`: Pangasinan.
-`pam`: Kapampangan.
-`pap`: Papiamento.
-`pl`: Polish.
-`ps`: Pashto.
-`pt`: Portuguese.
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`qu`: Quechuan.
-`ro`: Romanian.
-`rom`: Romani.
-`rn`: Rundi.
-`ru`: Russian.
-`rw`: Kinyarwanda.
-`sa`: Sanskrit.
-`scn`: Sicilian.
-`sd`: Sindhi.
-`sg`: Sango.
-`shn`: Shan.
-`si`: Sinhalese.
-`sk`: Slovak.
-`sl`: Slovene.
-`sm`: Samoan.
-`sn`: Shona.
-`so`: Somali.
-`sq`: Albanian.
-`sr`: Serbian.
-`ss`: Swati.
-`st`: Sesotho.
-`su`: Sundanese.
-`sv`: Swedish.
-`sw`: Swahili.
-`szl`: Silesian.
-`ta`: Tamil.
-`te`: Telugu.
-`tet`: Tetum.
-`tg`: Tajik.
-`th`: Thai.
-`ti`: Tigrinya.
-`tk`: Turkmen.
-`tl`: Filipino (Tagalog).
-`tn`: Tswana.
-`tr`: Turkish.
-`ts`: Tsonga.
-`tt`: Tatar.
-`ug`: Uyghur.
-`uk`: Ukrainian.
-`ur`: Urdu.
-`uz`: Uzbek.
-`vi`: Vietnamese.
-`xh`: Xhosa.
-`yi`: Yiddish.
-`yo`: Yoruba.
-`yua`: Yucatec Maya.
-`yue`: Cantonese.
-`zh`: Simplified Chinese.
-`zh-TW`: Chinese (Traditional).
-`zu`: Zulu.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
+`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -51281,7 +50683,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""
+        r"""Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -51611,6 +51013,270 @@ Default value: 0 px.
         if params.get("ImageTemplate") is not None:
             self._ImageTemplate = RawImageWatermarkInput()
             self._ImageTemplate._deserialize(params.get("ImageTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeAudioRequest(AbstractModel):
+    r"""RecognizeAudio request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: Base64-encoded audio data.
+        :type AudioData: str
+        :param _Source: Target language for recognition. If this is not specified, the language is automatically identified (auto).Note: If the automatic identification provides unsatisfactory results, you can specify the language to improve the accuracy.Supported languages:auto: automatic identification.zh: Simplified Chinese.en: English.ja: Japanese.ko: Korean.vi: Vietnamese.ms: Malay.id: Indonesian.fil: Filipino.th: Thai.pt: Portuguese.tr: Turkish.ar: Arabic.es: Spanish.hi: Hindi.fr: French.de: German.it: Italian.yue: Cantonese.ru: Russian.af: Afrikaans.sq: Albanian.am: Amharic.hy: Armenian.az: Azerbaijani.eu: Basque.bn: Bengali.bs: Bosnian.bg: Bulgarian.my: Burmese.ca: Catalan.hr: Croatian.cs: Czech.da: Danish.nl: Dutch.et: Estonian.fi: Finnish.gl: Galician.ka: Georgian.el: Greek.gu: Gujarati.iw: Hebrew.hu: Hungarian.is: Icelandic.jv: Javanese.kn: Kannada.kk: Kazakh.km: Khmer.rw: Kinyarwanda.lo: Lao.lv: Latvian.lt: Lithuanian.mk: Macedonian.ml: Malayalam.mr: Marathi.mn: Mongolian.ne: Nepali.no: Norwegian Bokmal.fa: Persian.pl: Polish.ro: Romanian.sr: Serbian.si: Sinhala.sk: Slovak.sl: Slovenian.st: Southern Sotho.su: Sundanese.sw: Swahili.sv: Swedish.ta: Tamil.te: Telugu.ts: Tsonga.uk: Ukrainian.ur: Urdu.uz: Uzbek.ve: Vendaxh: Xhosa.zu: Zulu.
+
+        :type Source: str
+        :param _AudioFormat: Audio data format. Default value: pcm.Supported formats:pcm (mono 16-bit PCM data with a sample rate of 16000).ogg-opus (mono Opus-encoded Ogg data with sample rates of 16000, 24000, or 48000).
+        :type AudioFormat: str
+        :param _SampleRate: Audio sample rate.Supported sample rates:pcm 16000
+ogg-opus 16000 / 24000 / 48000
+        :type SampleRate: int
+        :param _UserExtPara: Extended parameter. This is left empty by default. Use this parameter for special requirements.
+        :type UserExtPara: str
+        """
+        self._AudioData = None
+        self._Source = None
+        self._AudioFormat = None
+        self._SampleRate = None
+        self._UserExtPara = None
+
+    @property
+    def AudioData(self):
+        r"""Base64-encoded audio data.
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def Source(self):
+        r"""Target language for recognition. If this is not specified, the language is automatically identified (auto).Note: If the automatic identification provides unsatisfactory results, you can specify the language to improve the accuracy.Supported languages:auto: automatic identification.zh: Simplified Chinese.en: English.ja: Japanese.ko: Korean.vi: Vietnamese.ms: Malay.id: Indonesian.fil: Filipino.th: Thai.pt: Portuguese.tr: Turkish.ar: Arabic.es: Spanish.hi: Hindi.fr: French.de: German.it: Italian.yue: Cantonese.ru: Russian.af: Afrikaans.sq: Albanian.am: Amharic.hy: Armenian.az: Azerbaijani.eu: Basque.bn: Bengali.bs: Bosnian.bg: Bulgarian.my: Burmese.ca: Catalan.hr: Croatian.cs: Czech.da: Danish.nl: Dutch.et: Estonian.fi: Finnish.gl: Galician.ka: Georgian.el: Greek.gu: Gujarati.iw: Hebrew.hu: Hungarian.is: Icelandic.jv: Javanese.kn: Kannada.kk: Kazakh.km: Khmer.rw: Kinyarwanda.lo: Lao.lv: Latvian.lt: Lithuanian.mk: Macedonian.ml: Malayalam.mr: Marathi.mn: Mongolian.ne: Nepali.no: Norwegian Bokmal.fa: Persian.pl: Polish.ro: Romanian.sr: Serbian.si: Sinhala.sk: Slovak.sl: Slovenian.st: Southern Sotho.su: Sundanese.sw: Swahili.sv: Swedish.ta: Tamil.te: Telugu.ts: Tsonga.uk: Ukrainian.ur: Urdu.uz: Uzbek.ve: Vendaxh: Xhosa.zu: Zulu.
+
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def AudioFormat(self):
+        r"""Audio data format. Default value: pcm.Supported formats:pcm (mono 16-bit PCM data with a sample rate of 16000).ogg-opus (mono Opus-encoded Ogg data with sample rates of 16000, 24000, or 48000).
+        :rtype: str
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def SampleRate(self):
+        r"""Audio sample rate.Supported sample rates:pcm 16000
+ogg-opus 16000 / 24000 / 48000
+        :rtype: int
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def UserExtPara(self):
+        r"""Extended parameter. This is left empty by default. Use this parameter for special requirements.
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._Source = params.get("Source")
+        self._AudioFormat = params.get("AudioFormat")
+        self._SampleRate = params.get("SampleRate")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeAudioResponse(AbstractModel):
+    r"""RecognizeAudio response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Recognition result of the entire audio.
+        :type Text: str
+        :param _AudioLength: Audio duration, in seconds.
+        :type AudioLength: float
+        :param _Sentence: Recognition results of individual sentences.
+        :type Sentence: list of RecognizeAudioSentence
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Text = None
+        self._AudioLength = None
+        self._Sentence = None
+        self._RequestId = None
+
+    @property
+    def Text(self):
+        r"""Recognition result of the entire audio.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def AudioLength(self):
+        r"""Audio duration, in seconds.
+        :rtype: float
+        """
+        return self._AudioLength
+
+    @AudioLength.setter
+    def AudioLength(self, AudioLength):
+        self._AudioLength = AudioLength
+
+    @property
+    def Sentence(self):
+        r"""Recognition results of individual sentences.
+        :rtype: list of RecognizeAudioSentence
+        """
+        return self._Sentence
+
+    @Sentence.setter
+    def Sentence(self, Sentence):
+        self._Sentence = Sentence
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._AudioLength = params.get("AudioLength")
+        if params.get("Sentence") is not None:
+            self._Sentence = []
+            for item in params.get("Sentence"):
+                obj = RecognizeAudioSentence()
+                obj._deserialize(item)
+                self._Sentence.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeAudioSentence(AbstractModel):
+    r"""Result of the sentence recognition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: Start time in the audio, in seconds.
+        :type Start: float
+        :param _End: End time in the audio, in seconds.
+        :type End: float
+        :param _Text: Audio recognition result.
+        :type Text: str
+        :param _WordsInfo: Word timestamp result.
+        :type WordsInfo: list of WordResult
+        """
+        self._Start = None
+        self._End = None
+        self._Text = None
+        self._WordsInfo = None
+
+    @property
+    def Start(self):
+        r"""Start time in the audio, in seconds.
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""End time in the audio, in seconds.
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Text(self):
+        r"""Audio recognition result.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def WordsInfo(self):
+        r"""Word timestamp result.
+        :rtype: list of WordResult
+        """
+        return self._WordsInfo
+
+    @WordsInfo.setter
+    def WordsInfo(self, WordsInfo):
+        self._WordsInfo = WordsInfo
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Text = params.get("Text")
+        if params.get("WordsInfo") is not None:
+            self._WordsInfo = []
+            for item in params.get("WordsInfo"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._WordsInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52713,7 +52379,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -52742,7 +52408,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54165,17 +53831,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class SelectingSubtitleAreasConfig(AbstractModel):
-    r"""
+    r"""Area configurations for the subtitle OCR extraction box.
 
     """
 
     def __init__(self):
         r"""
-        :param _AutoAreas: 
+        :param _AutoAreas: Automatically selects custom areas.For the selected areas, the AI model is used to automatically detect and extract the target content.
         :type AutoAreas: list of EraseArea
-        :param _SampleWidth: 
+        :param _SampleWidth: Width of the sample video or image, in pixels.
         :type SampleWidth: int
-        :param _SampleHeight: 
+        :param _SampleHeight: Height of the sample video or image, in pixels.
         :type SampleHeight: int
         """
         self._AutoAreas = None
@@ -54184,7 +53850,7 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""Automatically selects custom areas.For the selected areas, the AI model is used to automatically detect and extract the target content.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -54195,7 +53861,7 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def SampleWidth(self):
-        r"""
+        r"""Width of the sample video or image, in pixels.
         :rtype: int
         """
         return self._SampleWidth
@@ -54206,7 +53872,7 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def SampleHeight(self):
-        r"""
+        r"""Height of the sample video or image, in pixels.
         :rtype: int
         """
         return self._SampleHeight
@@ -54818,7 +54484,7 @@ class SmartEraseTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -54857,7 +54523,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54989,9 +54655,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ErasePrivacyConfig: Privacy protection configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
-        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _AliasName: Alias of the preset smart erasing template.
         :type AliasName: str
@@ -55106,7 +54772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -55117,7 +54783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -55534,12 +55200,15 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Wordlist: list of WordResult
+        :param _SpeakerId: Speaker ID (if speaker recognition is enabled).
+        :type SpeakerId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
         self._Wordlist = None
+        self._SpeakerId = None
 
     @property
     def Confidence(self):
@@ -55598,6 +55267,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Wordlist(self, Wordlist):
         self._Wordlist = Wordlist
 
+    @property
+    def SpeakerId(self):
+        r"""Speaker ID (if speaker recognition is enabled).
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -55610,6 +55290,7 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        self._SpeakerId = params.get("SpeakerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55748,7 +55429,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
         :type ErrCode: int
@@ -55784,7 +55465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -56434,12 +56115,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 `fil`: Filipino.
 `auto`: automatic recognition (it is only supported in pure subtitle translation).
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format:
-- vtt: WebVTT format.
-- srt: SRT format.
-- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).
-- If this field is unspecified or left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubtitleFormat: Smart subtitle file format.
+- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
         :param _SubtitleType: Smart subtitle language type.
 0: source language1: target language
@@ -56483,10 +56160,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AliasName: Alias of the preset smart subtitle template.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AliasName: str
-        :param _ProcessType: Subtitle processing type.
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
+        :param _ProcessType: Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._Definition = None
         self._Name = None
@@ -56503,6 +56180,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._UpdateTime = None
         self._AliasName = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
 
     @property
     def Definition(self):
@@ -56616,12 +56294,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format:
-- vtt: WebVTT format.
-- srt: SRT format.
-- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).
-- If this field is unspecified or left blank, no subtitle file will be generated.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Smart subtitle file format.
+- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -56728,9 +56402,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type.
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
+        r"""Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.
         :rtype: int
         """
         return self._ProcessType
@@ -56738,6 +56410,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @ProcessType.setter
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
+
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
 
 
     def _deserialize(self, params):
@@ -56758,6 +56441,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._UpdateTime = params.get("UpdateTime")
         self._AliasName = params.get("AliasName")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56915,7 +56601,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -56983,7 +56669,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def OutputObjectPath(self):
         r"""Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -59345,7 +59031,7 @@ class TaskStatDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
+        :param _Time: Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
         :type Time: str
         :param _Count: Number of tasks.
         :type Count: int
@@ -59358,7 +59044,7 @@ class TaskStatDataItem(AbstractModel):
 
     @property
     def Time(self):
-        r"""Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
+        r"""Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).
         :rtype: str
         """
         return self._Time

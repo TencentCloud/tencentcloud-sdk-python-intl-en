@@ -104,7 +104,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcImageTaskResponse:
         """
-        This API is used to create an AIGC image generation task.
+        This API is used to create AIGC image generation tasks.
         """
         
         kwargs = {}
@@ -122,7 +122,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcVideoTaskResponse:
         """
-        This API is used to create an AIGC video generation task.
+        This API is used to create AI video generation tasks.
         """
         
         kwargs = {}
@@ -925,7 +925,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAigcImageTaskResponse:
         """
-        This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        This API is used to query the progress of AIGC image generation tasks and obtain the generation results.
         """
         
         kwargs = {}
@@ -943,7 +943,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAigcVideoTaskResponse:
         """
-        This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        This API is used to query the progress of AIGC video generation tasks and obtain the generation results.
         """
         
         kwargs = {}
@@ -2055,6 +2055,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ProcessMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ProcessMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RecognizeAudio(
+            self,
+            request: models.RecognizeAudioRequest,
+            opts: Dict = None,
+    ) -> models.RecognizeAudioResponse:
+        """
+        This API is used to return the speech recognition results synchronously.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RecognizeAudio"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RecognizeAudioResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
