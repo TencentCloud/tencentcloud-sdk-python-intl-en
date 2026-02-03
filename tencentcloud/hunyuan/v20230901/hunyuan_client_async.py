@@ -85,6 +85,24 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHunyuanTo3DUVJob(
+            self,
+            request: models.DescribeHunyuanTo3DUVJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHunyuanTo3DUVJobResponse:
+        """
+        Query component splitting tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHunyuanTo3DUVJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHunyuanTo3DUVJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryHunyuan3DPartJob(
             self,
             request: models.QueryHunyuan3DPartJobRequest,
@@ -136,6 +154,24 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "QueryHunyuanTo3DRapidJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryHunyuanTo3DTextureEditJob(
+            self,
+            request: models.QueryHunyuanTo3DTextureEditJobRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuanTo3DTextureEditJobResponse:
+        """
+        Query 3D texture edit tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuanTo3DTextureEditJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuanTo3DTextureEditJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -211,6 +247,42 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "SubmitHunyuanTo3DRapidJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanTo3DTextureEditJob(
+            self,
+            request: models.SubmitHunyuanTo3DTextureEditJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanTo3DTextureEditJobResponse:
+        """
+        After inputting the 3D model, perform 3D model texture redrawing based on semantics or images.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanTo3DTextureEditJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanTo3DTextureEditJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanTo3DUVJob(
+            self,
+            request: models.SubmitHunyuanTo3DUVJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanTo3DUVJobResponse:
+        """
+        After inputting the model, UV unfolding can be performed based on the model texture to output the corresponding UV texture
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanTo3DUVJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanTo3DUVJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -10644,14 +10644,14 @@ class QueryInputStreamStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: The StreamLive input ID.
+        :param _Id: The StreamLive input ID.Currently, only RTMP_PUSH and RTMPS_PUSH are supported
         :type Id: str
         """
         self._Id = None
 
     @property
     def Id(self):
-        r"""The StreamLive input ID.
+        r"""The StreamLive input ID.Currently, only RTMP_PUSH and RTMPS_PUSH are supported
         :rtype: str
         """
         return self._Id

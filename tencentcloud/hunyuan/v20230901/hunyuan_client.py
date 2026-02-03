@@ -96,6 +96,29 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHunyuanTo3DUVJob(self, request):
+        r"""Query component splitting tasks.
+
+        :param request: Request instance for DescribeHunyuanTo3DUVJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.DescribeHunyuanTo3DUVJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.DescribeHunyuanTo3DUVJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHunyuanTo3DUVJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHunyuanTo3DUVJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuan3DPartJob(self, request):
         r"""This API is used to query the generation task of a component.
 
@@ -158,6 +181,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("QueryHunyuanTo3DRapidJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryHunyuanTo3DRapidJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryHunyuanTo3DTextureEditJob(self, request):
+        r"""Query 3D texture edit tasks.
+
+        :param request: Request instance for QueryHunyuanTo3DTextureEditJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DTextureEditJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DTextureEditJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuanTo3DTextureEditJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuanTo3DTextureEditJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -253,6 +299,52 @@ class HunyuanClient(AbstractClient):
             body = self.call("SubmitHunyuanTo3DRapidJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitHunyuanTo3DRapidJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DTextureEditJob(self, request):
+        r"""After inputting the 3D model, perform 3D model texture redrawing based on semantics or images.
+
+        :param request: Request instance for SubmitHunyuanTo3DTextureEditJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DTextureEditJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DTextureEditJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DTextureEditJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DTextureEditJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DUVJob(self, request):
+        r"""After inputting the model, UV unfolding can be performed based on the model texture to output the corresponding UV texture
+
+        :param request: Request instance for SubmitHunyuanTo3DUVJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DUVJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DUVJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DUVJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DUVJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

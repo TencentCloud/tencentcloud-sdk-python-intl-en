@@ -14443,13 +14443,27 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: Group account member ID
+        :type MemberId: list of str
         :param _Filter: Filter conditions
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: Asset tags
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        r"""Group account member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -14475,6 +14489,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
