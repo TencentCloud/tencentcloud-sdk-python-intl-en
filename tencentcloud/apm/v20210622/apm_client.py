@@ -328,6 +328,25 @@ class ApmClient(AbstractClient):
     def DescribeGeneralMetricData(self, request):
         r"""This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.
         The API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.
+        **Usage of the General Interface for Fetching Metric Data**
+        DescribeGeneralMetricData is a general interface for querying metric data, supporting flexible data retrieval. The query method of this interface is similar to using the following SQL statement:
+        SELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}.
+        1. View (ViewName)
+        Determines the data domain you want to query.
+        Examples: service_metric (Service Monitoring View), db_metric (Database View), etc. For views supported by APM, please refer to [Metric Views](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=)
+        2. Metrics (Metrics)
+        Used to specify one or more metric items to be included in the returned results.
+        Examples: request_count (Total Requests), duration_avg (Average Latency), error_rate (Error Rate). For metrics supported by APM, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
+        3. Filters (Filters)
+        Supports one or more filtering conditions in the form of Key-Value pairs.
+        Example: Querying only a specific service: service.name = "order-service". Common dimensions and specific dimensions supported by each ViewName can be used as keys in filtering conditions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
+        4. Aggregation (GroupBy)
+        Supports one or more aggregation dimensions, equivalent to the GROUP BY clause in SQL.
+        Example: Grouping by the interface name operation to view the performance of each interface. Common dimensions and specific dimensions supported by each ViewName can be used as aggregation dimensions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
+        5. Granularity (Period)
+        This parameter determines whether the data needs to be aggregated by time slices.
+            - Period = 1 (Time Series Mode): The returned results are aggregated by time slices. The multiple values contained in the TimeSerial and DataSerial correspond one-to-one, representing the aggregation results for specific time slices. Time Series Mode is primarily used for displaying time trend charts.
+            - Period = 0 (Summary Statistics Mode): In the returned results, the DataSerial contains only a single value, representing the summarized data for the entire time range.
 
         :param request: Request instance for DescribeGeneralMetricData.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralMetricDataRequest`

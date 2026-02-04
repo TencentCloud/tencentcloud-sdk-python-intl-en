@@ -507,6 +507,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckTrafficMirror(
+            self,
+            request: models.CheckTrafficMirrorRequest,
+            opts: Dict = None,
+    ) -> models.CheckTrafficMirrorResponse:
+        """
+        This API is used to check the collector and receiver for traffic mirroring (public IP address type).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckTrafficMirror"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckTrafficMirrorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloneSecurityGroup(
             self,
             request: models.CloneSecurityGroupRequest,
@@ -1204,6 +1222,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "CreateSubnets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSubnetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTrafficMirror(
+            self,
+            request: models.CreateTrafficMirrorRequest,
+            opts: Dict = None,
+    ) -> models.CreateTrafficMirrorResponse:
+        """
+        This API is used to create a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTrafficMirror"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTrafficMirrorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1909,6 +1945,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DeleteTemplateMember"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTemplateMemberResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTrafficMirror(
+            self,
+            request: models.DeleteTrafficMirrorRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTrafficMirrorResponse:
+        """
+        This API is used to delete a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTrafficMirror"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTrafficMirrorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3094,6 +3148,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DescribeTaskResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTaskResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTrafficMirrors(
+            self,
+            request: models.DescribeTrafficMirrorsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTrafficMirrorsResponse:
+        """
+        This API is used to query the information of a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTrafficMirrors"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTrafficMirrorsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4784,6 +4856,25 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTrafficMirrorAttribute(
+            self,
+            request: models.ModifyTrafficMirrorAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTrafficMirrorAttributeResponse:
+        """
+        This API is used to modify the attributes of a traffic mirroring instance.
+        Note: Only the name and description can be modified.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTrafficMirrorAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTrafficMirrorAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyVpcAttribute(
             self,
             request: models.ModifyVpcAttributeRequest,
@@ -5319,6 +5410,61 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetTrafficMirrorFilter(
+            self,
+            request: models.ResetTrafficMirrorFilterRequest,
+            opts: Dict = None,
+    ) -> models.ResetTrafficMirrorFilterResponse:
+        """
+        This API is used to update a traffic mirroring instance filter rule.
+        Note: A traffic mirroring instance cannot simultaneously support filtering based on NAT gateway and five tuple rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetTrafficMirrorFilter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetTrafficMirrorFilterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetTrafficMirrorSrcs(
+            self,
+            request: models.ResetTrafficMirrorSrcsRequest,
+            opts: Dict = None,
+    ) -> models.ResetTrafficMirrorSrcsResponse:
+        """
+        This API is used to reset the collection object of a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetTrafficMirrorSrcs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetTrafficMirrorSrcsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetTrafficMirrorTarget(
+            self,
+            request: models.ResetTrafficMirrorTargetRequest,
+            opts: Dict = None,
+    ) -> models.ResetTrafficMirrorTargetResponse:
+        """
+        This API is used to update the receiving destination information of a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetTrafficMirrorTarget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetTrafficMirrorTargetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetVpnConnection(
             self,
             request: models.ResetVpnConnectionRequest,
@@ -5428,6 +5574,42 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartTrafficMirror(
+            self,
+            request: models.StartTrafficMirrorRequest,
+            opts: Dict = None,
+    ) -> models.StartTrafficMirrorResponse:
+        """
+        This API is used to start a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartTrafficMirror"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartTrafficMirrorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopTrafficMirror(
+            self,
+            request: models.StopTrafficMirrorRequest,
+            opts: Dict = None,
+    ) -> models.StopTrafficMirrorResponse:
+        """
+        This API is used to stop a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopTrafficMirror"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopTrafficMirrorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TransformAddress(
             self,
             request: models.TransformAddressRequest,
@@ -5520,6 +5702,42 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "UnassignPrivateIpAddresses"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnassignPrivateIpAddressesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTrafficMirrorAllFilter(
+            self,
+            request: models.UpdateTrafficMirrorAllFilterRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTrafficMirrorAllFilterResponse:
+        """
+        This API is used to update the filter rule or collection object of a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTrafficMirrorAllFilter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTrafficMirrorAllFilterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTrafficMirrorDirection(
+            self,
+            request: models.UpdateTrafficMirrorDirectionRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTrafficMirrorDirectionResponse:
+        """
+        This API is used to update the collection direction of a traffic mirroring instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTrafficMirrorDirection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTrafficMirrorDirectionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

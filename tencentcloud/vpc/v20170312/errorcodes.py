@@ -95,6 +95,9 @@ INVALIDPARAMETER_ACLTYPEMISMATCH = 'InvalidParameter.AclTypeMismatch'
 # The parameters cannot be specified at the same time.
 INVALIDPARAMETER_COEXIST = 'InvalidParameter.Coexist'
 
+# The current IP address has already been used in the traffic mirroring of another public IP address type.
+INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameter.DuplicatedLbTrafficMirrorCollectors'
+
 # The specified filter condition does not exist.
 INVALIDPARAMETER_FILTERINVALIDKEY = 'InvalidParameter.FilterInvalidKey'
 
@@ -109,6 +112,9 @@ INVALIDPARAMETER_INVALIDFILTER = 'InvalidParameter.InvalidFilter'
 
 # The next hop type does not match with the next hop gateway.
 INVALIDPARAMETER_NEXTHOPMISMATCH = 'InvalidParameter.NextHopMismatch'
+
+# The region of the current public IP address does not support traffic collection.
+INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = 'InvalidParameter.UnsupportedLbTrafficMirrorAz'
 
 # The cross-AZ placement group of the DC gateway doesn't exist.
 INVALIDPARAMETER_VPGHAGROUPNOTFOUND = 'InvalidParameter.VpgHaGroupNotFound'
@@ -188,6 +194,12 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # The parameter value already exists.
 INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 
+# The current IP address has already been used in the traffic mirroring of another public IP address type.
+INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors'
+
+# The current receiver has already been used in the traffic mirroring of another public IP address type.
+INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORRECIVERENDPOINT = 'InvalidParameterValue.DuplicatedLbTrafficMirrorReciverEndpoint'
+
 # Exceeded the upper limit.
 INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
 
@@ -248,6 +260,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInsta
 # Invalid IPv6 addresses.
 INVALIDPARAMETERVALUE_INVALIDIPV6 = 'InvalidParameterValue.InvalidIpv6'
 
+# The receiver is neither an existing virtual machine IP address nor a routable IDC room IP address.
+INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = 'InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint'
+
 # Invalid original bandwidth value.
 INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = 'InvalidParameterValue.InvalidOldBandwidth'
 
@@ -274,6 +289,9 @@ INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONREJECTED = 'InvalidParameterValue
 
 # This request requires approval via the BPAAS workflow service, and the approval process is currently being initiated.
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = 'InvalidParameterValue.MemberApprovalApplicationStarted'
+
+# The private network bandwidth for the traffic mirroring target is insufficient.
+INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = 'InvalidParameterValue.MirrorLackTargetResource'
 
 # The bound instance is missing.
 INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAssociateEntity'
@@ -322,6 +340,12 @@ INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = 'InvalidParameterValue.NetworkI
 
 # Not UTF-8 encoding.
 INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = 'InvalidParameterValue.NotUtf8EncodingError'
+
+# The traffic mirroring collection object has already been used.
+INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = 'InvalidParameterValue.ObjectUseInTrafficMirror'
+
+# The VPC for traffic mirroring collection is not the current VPC ID.
+INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = 'InvalidParameterValue.ObjectVpcNotCurrentVpc'
 
 # This operation is only available for primary ENIs.
 INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = 'InvalidParameterValue.OnlySupportedForMasterNetworkCard'
@@ -427,6 +451,12 @@ INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 
 # 
 INVALIDPARAMETERVALUE_UNSUPPORTEDEGRESS = 'InvalidParameterValue.UnsupportedEgress'
+
+# The region of the current public IP address does not support traffic collection.
+INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = 'InvalidParameterValue.UnsupportedLbTrafficMirrorAz'
+
+# The current traffic mirroring does not support this operation.
+INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = 'InvalidParameterValue.UnsupportedTrafficMirrorAction'
 
 # Destination IP address range conflicts with CIDR of the current VPC.
 INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = 'InvalidParameterValue.VpcCidrConflict'
@@ -842,6 +872,9 @@ UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 # The current status of the route does not support publishing to CCN. Please retry later.
 UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
 
+# IPv6 is not supported.
+UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = 'UnsupportedOperation.Ipv6NotSupport'
+
 # The account of the instance associated with the current CCN is not a Financial Cloud account.
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'
 
@@ -938,6 +971,9 @@ UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = 'UnsupportedOperati
 # The specified value is a primary IP.
 UNSUPPORTEDOPERATION_PRIMARYIP = 'UnsupportedOperation.PrimaryIp'
 
+# Public CLBs are not supported.
+UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = 'UnsupportedOperation.PublicClbNotSupport'
+
 # At least one EIP exists on the NAT gateway, and the EIP cannot be unbound.
 UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = 'UnsupportedOperation.PublicIpAddressDisassociate'
 
@@ -1030,6 +1066,12 @@ UNSUPPORTEDOPERATION_TAGNOTPERMIT = 'UnsupportedOperation.TagNotPermit'
 
 # The specified tag key is reserved for system usage.
 UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = 'UnsupportedOperation.TagSystemReservedTagKey'
+
+# Traffic mirroring does not support the target CLB.
+UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = 'UnsupportedOperation.TrafficMirrorNotSupportClb'
+
+# The collector and receiver for traffic mirroring cannot be the same.
+UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = 'UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget'
 
 # The account ID does not exist.
 UNSUPPORTEDOPERATION_UINNOTFOUND = 'UnsupportedOperation.UinNotFound'

@@ -759,6 +759,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CacheInfo(self):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         r"""Cache configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
@@ -767,6 +769,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @CacheInfo.setter
     def CacheInfo(self, CacheInfo):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         self._CacheInfo = CacheInfo
 
 
@@ -1310,6 +1314,8 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @property
     def CacheInfo(self):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         r"""Cache configuration.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
@@ -1317,6 +1323,8 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @CacheInfo.setter
     def CacheInfo(self, CacheInfo):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         self._CacheInfo = CacheInfo
 
 
@@ -3422,14 +3430,14 @@ class DeleteStreamPackageSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: SourceLocation Id.
+        :param _Id: Source Id.
         :type Id: str
         """
         self._Id = None
 
     @property
     def Id(self):
-        r"""SourceLocation Id.
+        r"""Source Id.
         :rtype: str
         """
         return self._Id
@@ -8183,6 +8191,8 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @property
     def CacheInfo(self):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         r"""Cache configuration.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
@@ -8190,6 +8200,8 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @CacheInfo.setter
     def CacheInfo(self, CacheInfo):
+        warnings.warn("parameter `CacheInfo` is deprecated", DeprecationWarning) 
+
         self._CacheInfo = CacheInfo
 
 

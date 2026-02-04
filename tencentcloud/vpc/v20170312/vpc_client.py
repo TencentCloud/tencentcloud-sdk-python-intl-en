@@ -628,6 +628,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckTrafficMirror(self, request):
+        r"""This API is used to check the collector and receiver for traffic mirroring (public IP address type).
+
+        :param request: Request instance for CheckTrafficMirror.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CheckTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckTrafficMirrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckTrafficMirror", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckTrafficMirrorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneSecurityGroup(self, request):
         r"""This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.
 
@@ -1496,6 +1519,29 @@ class VpcClient(AbstractClient):
             body = self.call("CreateSubnets", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSubnetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTrafficMirror(self, request):
+        r"""This API is used to create a traffic mirroring instance.
+
+        :param request: Request instance for CreateTrafficMirror.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateTrafficMirrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTrafficMirror", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTrafficMirrorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2391,6 +2437,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteTemplateMember", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTemplateMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTrafficMirror(self, request):
+        r"""This API is used to delete a traffic mirroring instance.
+
+        :param request: Request instance for DeleteTrafficMirror.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficMirrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrafficMirror", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrafficMirrorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3901,6 +3970,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeTaskResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTrafficMirrors(self, request):
+        r"""This API is used to query the information of a traffic mirroring instance.
+
+        :param request: Request instance for DescribeTrafficMirrors.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficMirrorsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficMirrorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrors", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrafficMirrorsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6050,6 +6142,30 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyTrafficMirrorAttribute(self, request):
+        r"""This API is used to modify the attributes of a traffic mirroring instance.
+        Note: Only the name and description can be modified.
+
+        :param request: Request instance for ModifyTrafficMirrorAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTrafficMirrorAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyTrafficMirrorAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTrafficMirrorAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTrafficMirrorAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVpcAttribute(self, request):
         r"""This API (ModifyVpcAttribute) is used to modify VPC attributes.
 
@@ -6730,6 +6846,76 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetTrafficMirrorFilter(self, request):
+        r"""This API is used to update a traffic mirroring instance filter rule.
+        Note: A traffic mirroring instance cannot simultaneously support filtering based on NAT gateway and five tuple rules.
+
+        :param request: Request instance for ResetTrafficMirrorFilter.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorFilterRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorFilterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetTrafficMirrorFilter", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetTrafficMirrorFilterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetTrafficMirrorSrcs(self, request):
+        r"""This API is used to reset the collection object of a traffic mirroring instance.
+
+        :param request: Request instance for ResetTrafficMirrorSrcs.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorSrcsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorSrcsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetTrafficMirrorSrcs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetTrafficMirrorSrcsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetTrafficMirrorTarget(self, request):
+        r"""This API is used to update the receiving destination information of a traffic mirroring instance.
+
+        :param request: Request instance for ResetTrafficMirrorTarget.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorTargetRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetTrafficMirrorTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetTrafficMirrorTarget", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetTrafficMirrorTargetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetVpnConnection(self, request):
         r"""The API is used to reset a VPN tunnel.
 
@@ -6869,6 +7055,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartTrafficMirror(self, request):
+        r"""This API is used to start a traffic mirroring instance.
+
+        :param request: Request instance for StartTrafficMirror.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.StartTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.StartTrafficMirrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartTrafficMirror", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartTrafficMirrorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopTrafficMirror(self, request):
+        r"""This API is used to stop a traffic mirroring instance.
+
+        :param request: Request instance for StopTrafficMirror.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.StopTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.StopTrafficMirrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopTrafficMirror", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopTrafficMirrorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TransformAddress(self, request):
         r"""This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
         * Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).
@@ -6982,6 +7214,52 @@ class VpcClient(AbstractClient):
             body = self.call("UnassignPrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             model = models.UnassignPrivateIpAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTrafficMirrorAllFilter(self, request):
+        r"""This API is used to update the filter rule or collection object of a traffic mirroring instance.
+
+        :param request: Request instance for UpdateTrafficMirrorAllFilter.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UpdateTrafficMirrorAllFilterRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UpdateTrafficMirrorAllFilterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTrafficMirrorAllFilter", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTrafficMirrorAllFilterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTrafficMirrorDirection(self, request):
+        r"""This API is used to update the collection direction of a traffic mirroring instance.
+
+        :param request: Request instance for UpdateTrafficMirrorDirection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UpdateTrafficMirrorDirectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UpdateTrafficMirrorDirectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTrafficMirrorDirection", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTrafficMirrorDirectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

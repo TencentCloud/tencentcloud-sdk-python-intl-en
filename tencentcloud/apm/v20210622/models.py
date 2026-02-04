@@ -5009,7 +5009,7 @@ class DescribeGeneralMetricDataRequest(AbstractModel):
 - if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.
  -If the time span is (0,12) hours, it is aggregated by one-minute granularity.
  -If the time span is [12,48] hours, it is aggregated at a five-minute granularity.
- -If the time span is (48, +∞) hours, it is aggregated at an hourly granularity.
+ -If the time span is (48, +inf) hours, it is aggregated at an hourly granularity.
         :type Period: int
         :param _OrderBy: Sort query metrics.
 Key: enter the tencentcloud api metric name. [for details, see](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1) .
@@ -5115,7 +5115,7 @@ Value: specify the sorting method:.
 - if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.
  -If the time span is (0,12) hours, it is aggregated by one-minute granularity.
  -If the time span is [12,48] hours, it is aggregated at a five-minute granularity.
- -If the time span is (48, +∞) hours, it is aggregated at an hourly granularity.
+ -If the time span is (48, +inf) hours, it is aggregated at an hourly granularity.
         :rtype: int
         """
         return self._Period
