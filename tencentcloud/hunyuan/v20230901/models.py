@@ -2242,7 +2242,7 @@ class SubmitHunyuanTo3DTextureEditJobRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _File3D: File URL of the 3D model file that requires texture edit
-Supported formats: FBX, OBJ, GLB
+Supported formats: FBX
 3D model limit: less than 100000 faces
         :type File3D: :class:`tencentcloud.hunyuan.v20230901.models.InputFile3D`
         :param _Image: Reference image for 3D model texture editing: Base64 data and image Url
@@ -2267,7 +2267,7 @@ Example value: true
     @property
     def File3D(self):
         r"""File URL of the 3D model file that requires texture edit
-Supported formats: FBX, OBJ, GLB
+Supported formats: FBX
 3D model limit: less than 100000 faces
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.InputFile3D`
         """
