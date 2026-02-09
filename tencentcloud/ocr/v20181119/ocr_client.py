@@ -1405,7 +1405,7 @@ class OcrClient(AbstractClient):
 
     def RecognizeThaiPinkCard(self, request):
         r"""This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
-        Currently, this API is not generally available. For more information, please [contact your sales rep](https://intl.cloud.tencent.com/about/connect?from_cn_redirect=1).
+        Currently, this API is not generally available. For more information, please [contact your sales rep](https://intl.cloud.tencent.com/zh/contact-us).
 
         A maximum of 5 requests can be initiated per second for this API.
 

@@ -16254,8 +16254,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         :type IssuingAgency: str
         :param _RefNumber: Ref number
         :type RefNumber: str
-        :param _AdvancedInfo: Field confidence:
- { "ID": { "Confidence": 0.9999 }, "ThaiName": { "Confidence": 0.9996 } }
+        :param _AdvancedInfo: This field is deprecated and will always return "1". Usage is not recommended.
         :type AdvancedInfo: str
         :param _PortraitImage: Identity photo
         :type PortraitImage: str
@@ -16458,14 +16457,17 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        r"""Field confidence:
- { "ID": { "Confidence": 0.9999 }, "ThaiName": { "Confidence": 0.9996 } }
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
+        r"""This field is deprecated and will always return "1". Usage is not recommended.
         :rtype: str
         """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
     def AdvancedInfo(self, AdvancedInfo):
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
         self._AdvancedInfo = AdvancedInfo
 
     @property
