@@ -4488,10 +4488,11 @@ class SendEmailRequest(AbstractModel):
         r"""
         :param _FromEmailAddress: Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).
         :type FromEmailAddress: str
-        :param _Destination: Recipient email address, supports up to 50 recipients in mass sending. note: the email content displays all recipient addresses. for non-mass sending, call the API multiple times to send.
-        :type Destination: list of str
         :param _Subject: Email subject.
         :type Subject: str
+        :param _Destination: Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.
+Specifies that at least one of the Destination, Cc, or Bcc parameters must exist.
+        :type Destination: list of str
         :param _ReplyToAddresses: The "reply" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
         :type ReplyToAddresses: str
         :param _Cc: Cc recipient email address, supports up to 20 carbon copies.
@@ -4518,8 +4519,8 @@ class SendEmailRequest(AbstractModel):
         :type HeaderFrom: str
         """
         self._FromEmailAddress = None
-        self._Destination = None
         self._Subject = None
+        self._Destination = None
         self._ReplyToAddresses = None
         self._Cc = None
         self._Bcc = None
@@ -4544,17 +4545,6 @@ class SendEmailRequest(AbstractModel):
         self._FromEmailAddress = FromEmailAddress
 
     @property
-    def Destination(self):
-        r"""Recipient email address, supports up to 50 recipients in mass sending. note: the email content displays all recipient addresses. for non-mass sending, call the API multiple times to send.
-        :rtype: list of str
-        """
-        return self._Destination
-
-    @Destination.setter
-    def Destination(self, Destination):
-        self._Destination = Destination
-
-    @property
     def Subject(self):
         r"""Email subject.
         :rtype: str
@@ -4564,6 +4554,18 @@ class SendEmailRequest(AbstractModel):
     @Subject.setter
     def Subject(self, Subject):
         self._Subject = Subject
+
+    @property
+    def Destination(self):
+        r"""Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.
+Specifies that at least one of the Destination, Cc, or Bcc parameters must exist.
+        :rtype: list of str
+        """
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
 
     @property
     def ReplyToAddresses(self):
@@ -4691,8 +4693,8 @@ class SendEmailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FromEmailAddress = params.get("FromEmailAddress")
-        self._Destination = params.get("Destination")
         self._Subject = params.get("Subject")
+        self._Destination = params.get("Destination")
         self._ReplyToAddresses = params.get("ReplyToAddresses")
         self._Cc = params.get("Cc")
         self._Bcc = params.get("Bcc")
