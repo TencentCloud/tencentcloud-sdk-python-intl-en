@@ -191,7 +191,7 @@ class HunyuanClient(AbstractClient):
 
 
     def QueryHunyuanTo3DTextureEditJob(self, request):
-        r"""Query 3D texture edit tasks.
+        r"""Query 3D texture edit tasks, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.
 
         :param request: Request instance for QueryHunyuanTo3DTextureEditJob.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DTextureEditJobRequest`
@@ -309,7 +309,7 @@ class HunyuanClient(AbstractClient):
 
 
     def SubmitHunyuanTo3DTextureEditJob(self, request):
-        r"""After inputting the 3D model, perform 3D model texture redrawing based on semantics or images.
+        r"""After inputting the 3D model, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.
 
         :param request: Request instance for SubmitHunyuanTo3DTextureEditJob.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DTextureEditJobRequest`

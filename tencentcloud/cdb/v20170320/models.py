@@ -1450,9 +1450,9 @@ class AuditInstanceInfo(AbstractModel):
         :type ProjectId: int
         :param _TagList: Tag information.
         :type TagList: list of TagInfoUnit
-        :param _DbType: Database engine type.
+        :param _DbType: Database kernel type.
         :type DbType: str
-        :param _DbVersion: Database engine version.
+        :param _DbVersion: Database kernel version.
         :type DbVersion: str
         """
         self._ProjectId = None
@@ -1484,7 +1484,7 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def DbType(self):
-        r"""Database engine type.
+        r"""Database kernel type.
         :rtype: str
         """
         return self._DbType
@@ -1495,7 +1495,7 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def DbVersion(self):
-        r"""Database engine version.
+        r"""Database kernel version.
         :rtype: str
         """
         return self._DbVersion

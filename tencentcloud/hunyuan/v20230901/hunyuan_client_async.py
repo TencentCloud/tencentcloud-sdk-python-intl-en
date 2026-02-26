@@ -165,7 +165,7 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryHunyuanTo3DTextureEditJobResponse:
         """
-        Query 3D texture edit tasks.
+        Query 3D texture edit tasks, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.
         """
         
         kwargs = {}
@@ -258,7 +258,7 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SubmitHunyuanTo3DTextureEditJobResponse:
         """
-        After inputting the 3D model, perform 3D model texture redrawing based on semantics or images.
+        After inputting the 3D model, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.
         """
         
         kwargs = {}
