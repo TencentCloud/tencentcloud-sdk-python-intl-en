@@ -18,6 +18,222 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbuseReport(AbstractModel):
+    r"""Reported spam data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverTime: Send time.
+        :type DeliverTime: str
+        :param _OriginalMailFrom: Sender address.
+        :type OriginalMailFrom: str
+        :param _OriginalRcptTo: Receive email.
+        :type OriginalRcptTo: str
+        :param _FromDomain: Sender domain name.
+        :type FromDomain: str
+        :param _ComplainTime: Complaint time.
+        :type ComplainTime: str
+        :param _Mta: Recipient domain name.
+        :type Mta: str
+        :param _SourceIp: Source IP
+        :type SourceIp: str
+        :param _InsertTime: Data time.
+        :type InsertTime: str
+        :param _TemplateId: Template ID
+        :type TemplateId: str
+        :param _BulkId: bulkId
+        :type BulkId: str
+        :param _MessageId: Message-Id in mail.
+        :type MessageId: str
+        :param _AbuseTime: Complaint time.
+        :type AbuseTime: str
+        :param _Subject: Email subject.
+        :type Subject: str
+        """
+        self._DeliverTime = None
+        self._OriginalMailFrom = None
+        self._OriginalRcptTo = None
+        self._FromDomain = None
+        self._ComplainTime = None
+        self._Mta = None
+        self._SourceIp = None
+        self._InsertTime = None
+        self._TemplateId = None
+        self._BulkId = None
+        self._MessageId = None
+        self._AbuseTime = None
+        self._Subject = None
+
+    @property
+    def DeliverTime(self):
+        r"""Send time.
+        :rtype: str
+        """
+        return self._DeliverTime
+
+    @DeliverTime.setter
+    def DeliverTime(self, DeliverTime):
+        self._DeliverTime = DeliverTime
+
+    @property
+    def OriginalMailFrom(self):
+        r"""Sender address.
+        :rtype: str
+        """
+        return self._OriginalMailFrom
+
+    @OriginalMailFrom.setter
+    def OriginalMailFrom(self, OriginalMailFrom):
+        self._OriginalMailFrom = OriginalMailFrom
+
+    @property
+    def OriginalRcptTo(self):
+        r"""Receive email.
+        :rtype: str
+        """
+        return self._OriginalRcptTo
+
+    @OriginalRcptTo.setter
+    def OriginalRcptTo(self, OriginalRcptTo):
+        self._OriginalRcptTo = OriginalRcptTo
+
+    @property
+    def FromDomain(self):
+        r"""Sender domain name.
+        :rtype: str
+        """
+        return self._FromDomain
+
+    @FromDomain.setter
+    def FromDomain(self, FromDomain):
+        self._FromDomain = FromDomain
+
+    @property
+    def ComplainTime(self):
+        r"""Complaint time.
+        :rtype: str
+        """
+        return self._ComplainTime
+
+    @ComplainTime.setter
+    def ComplainTime(self, ComplainTime):
+        self._ComplainTime = ComplainTime
+
+    @property
+    def Mta(self):
+        r"""Recipient domain name.
+        :rtype: str
+        """
+        return self._Mta
+
+    @Mta.setter
+    def Mta(self, Mta):
+        self._Mta = Mta
+
+    @property
+    def SourceIp(self):
+        r"""Source IP
+        :rtype: str
+        """
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def InsertTime(self):
+        r"""Data time.
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def TemplateId(self):
+        r"""Template ID
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def BulkId(self):
+        r"""bulkId
+        :rtype: str
+        """
+        return self._BulkId
+
+    @BulkId.setter
+    def BulkId(self, BulkId):
+        self._BulkId = BulkId
+
+    @property
+    def MessageId(self):
+        r"""Message-Id in mail.
+        :rtype: str
+        """
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def AbuseTime(self):
+        r"""Complaint time.
+        :rtype: str
+        """
+        return self._AbuseTime
+
+    @AbuseTime.setter
+    def AbuseTime(self, AbuseTime):
+        self._AbuseTime = AbuseTime
+
+    @property
+    def Subject(self):
+        r"""Email subject.
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+
+    def _deserialize(self, params):
+        self._DeliverTime = params.get("DeliverTime")
+        self._OriginalMailFrom = params.get("OriginalMailFrom")
+        self._OriginalRcptTo = params.get("OriginalRcptTo")
+        self._FromDomain = params.get("FromDomain")
+        self._ComplainTime = params.get("ComplainTime")
+        self._Mta = params.get("Mta")
+        self._SourceIp = params.get("SourceIp")
+        self._InsertTime = params.get("InsertTime")
+        self._TemplateId = params.get("TemplateId")
+        self._BulkId = params.get("BulkId")
+        self._MessageId = params.get("MessageId")
+        self._AbuseTime = params.get("AbuseTime")
+        self._Subject = params.get("Subject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddressUnsubscribeConfigData(AbstractModel):
     r"""Address-Level unsubscribe configuration.
 
@@ -2382,6 +2598,225 @@ class EmailSender(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetAbuseReportRequest(AbstractModel):
+    r"""GetAbuseReport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Limit: Limit quantity (default: 1000).
+        :type Limit: int
+        :param _FromDomain: Sender domain name.
+        :type FromDomain: str
+        :param _FromAddress: Sender address.
+        :type FromAddress: str
+        :param _Mta: Recipient domain name.
+        :type Mta: str
+        :param _ToAddress: Receive email.
+        :type ToAddress: str
+        :param _TemplateId: Template ID
+        :type TemplateId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._FromDomain = None
+        self._FromAddress = None
+        self._Mta = None
+        self._ToAddress = None
+        self._TemplateId = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Limit quantity (default: 1000).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FromDomain(self):
+        r"""Sender domain name.
+        :rtype: str
+        """
+        return self._FromDomain
+
+    @FromDomain.setter
+    def FromDomain(self, FromDomain):
+        self._FromDomain = FromDomain
+
+    @property
+    def FromAddress(self):
+        r"""Sender address.
+        :rtype: str
+        """
+        return self._FromAddress
+
+    @FromAddress.setter
+    def FromAddress(self, FromAddress):
+        self._FromAddress = FromAddress
+
+    @property
+    def Mta(self):
+        r"""Recipient domain name.
+        :rtype: str
+        """
+        return self._Mta
+
+    @Mta.setter
+    def Mta(self, Mta):
+        self._Mta = Mta
+
+    @property
+    def ToAddress(self):
+        r"""Receive email.
+        :rtype: str
+        """
+        return self._ToAddress
+
+    @ToAddress.setter
+    def ToAddress(self, ToAddress):
+        self._ToAddress = ToAddress
+
+    @property
+    def TemplateId(self):
+        r"""Template ID
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FromDomain = params.get("FromDomain")
+        self._FromAddress = params.get("FromAddress")
+        self._Mta = params.get("Mta")
+        self._ToAddress = params.get("ToAddress")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAbuseReportResponse(AbstractModel):
+    r"""GetAbuseReport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Log data.
+        :type Data: list of AbuseReport
+        :param _TotalCount: Total quantity.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Log data.
+        :rtype: list of AbuseReport
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AbuseReport()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetEmailIdentityRequest(AbstractModel):

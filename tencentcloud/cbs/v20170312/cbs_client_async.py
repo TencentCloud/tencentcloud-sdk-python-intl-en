@@ -734,6 +734,26 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewDisk(
+            self,
+            request: models.RenewDiskRequest,
+            opts: Dict = None,
+    ) -> models.RenewDiskResponse:
+        """
+        This API is used to renew cloud disks.
+
+        This API is used to support renewal along with mounted instances. The parameter specifies CurInstanceDeadline in [DiskChargePrepaid](https://www.tencentcloud.com/document/product/362/15669?from_cn_redirect=1#DiskChargePrepaid), and renewal will be at the expiry date after the instance is renewed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewDisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewDiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResizeDisk(
             self,
             request: models.ResizeDiskRequest,

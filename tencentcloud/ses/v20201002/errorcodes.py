@@ -122,8 +122,20 @@ FAILEDOPERATION_WRONGCONTENTJSON = 'FailedOperation.WrongContentJson'
 # Internal error.
 INTERNALERROR = 'InternalError'
 
+# Query database timeout or fail.
+INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDataBaseFailed'
+
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# AppId does not exist.
+INVALIDPARAMETER_APPIDISREQUIRED = 'InvalidParameter.AppIdIsRequired'
+
+# End time format error.
+INVALIDPARAMETER_INVALIDENDTIMEFORMAT = 'InvalidParameter.InvalidEndTimeFormat'
+
+# Start time format error.
+INVALIDPARAMETER_INVALIDSTARTTIMEFORMAT = 'InvalidParameter.InvalidStartTimeFormat'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

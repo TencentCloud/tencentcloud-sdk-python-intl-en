@@ -910,6 +910,31 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewDisk(self, request):
+        r"""This API is used to renew cloud disks.
+
+        This API is used to support renewal along with mounted instances. The parameter specifies CurInstanceDeadline in [DiskChargePrepaid](https://www.tencentcloud.com/document/product/362/15669?from_cn_redirect=1#DiskChargePrepaid), and renewal will be at the expiry date after the instance is renewed.
+
+        :param request: Request instance for RenewDisk.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.RenewDiskRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.RenewDiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewDisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResizeDisk(self, request):
         r"""This API is used to expand cloud disks.
 

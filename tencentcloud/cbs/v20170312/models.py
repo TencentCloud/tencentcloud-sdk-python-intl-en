@@ -4572,11 +4572,17 @@ class DiskChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :param _Period: Specifies the duration for purchasing cloud block storage (cbs) in months. default unit: month. valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :type Period: int
-        :param _RenewFlag: Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.
+        :param _RenewFlag: Automatic renewal flag. valid values:.
+<ul>
+<Li>NOTIFY_AND_AUTO_RENEW: notifies expiry and renews automatically.</li>.
+<Li>NOTIFY_AND_MANUAL_RENEW: notifies expiry but does not renew automatically.</li>.
+<Li>DISABLE_NOTIFY_AND_MANUAL_RENEW: no notification is sent upon expiration, and the instance is not renewed automatically.</li>.
+</ul>
+Default value: NOTIFY_AND_MANUAL_RENEW.
         :type RenewFlag: str
-        :param _CurInstanceDeadline: You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.
+        :param _CurInstanceDeadline: Specifies the current expiration time of the child machine when the expiration time of the cloud block storage needs to align with the mounted child machine. you can input this parameter. if Period is input at this time, it indicates the duration of child machine renewal. the cloud disk will automatically renew according to the expiration time after the child machine is renewed.
         :type CurInstanceDeadline: str
         """
         self._Period = None
@@ -4585,7 +4591,7 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        r"""Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        r"""Specifies the duration for purchasing cloud block storage (cbs) in months. default unit: month. valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :rtype: int
         """
         return self._Period
@@ -4596,7 +4602,13 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.
+        r"""Automatic renewal flag. valid values:.
+<ul>
+<Li>NOTIFY_AND_AUTO_RENEW: notifies expiry and renews automatically.</li>.
+<Li>NOTIFY_AND_MANUAL_RENEW: notifies expiry but does not renew automatically.</li>.
+<Li>DISABLE_NOTIFY_AND_MANUAL_RENEW: no notification is sent upon expiration, and the instance is not renewed automatically.</li>.
+</ul>
+Default value: NOTIFY_AND_MANUAL_RENEW.
         :rtype: str
         """
         return self._RenewFlag
@@ -4607,7 +4619,7 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def CurInstanceDeadline(self):
-        r"""You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.
+        r"""Specifies the current expiration time of the child machine when the expiration time of the cloud block storage needs to align with the mounted child machine. you can input this parameter. if Period is input at this time, it indicates the duration of child machine renewal. the cloud disk will automatically renew according to the expiration time after the child machine is renewed.
         :rtype: str
         """
         return self._CurInstanceDeadline
@@ -5438,19 +5450,21 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskChargeType: Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.
+        :param _DiskChargeType: Cloud disk billing mode. <br>
+<li>PREPAID: Prepaid by month.</li>
+<li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.</li>
         :type DiskChargeType: str
-        :param _DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
+        :param _DiskType: Hard disk media type. valid values: <ul> <li>CLOUD_PREMIUM: high-performance CLOUD block storage</li> <li>CLOUD_SSD: SSD CLOUD disk</li> <li>CLOUD_HSSD: enhanced SSD CLOUD disk</li> <li>CLOUD_TSSD: ultra-fast SSD cbs</li> </ul>.
         :type DiskType: str
-        :param _DiskSize: Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :param _DiskSize: Specifies the disk capacity in GiB. for the cloud disk size range, please refer to the product type of cloud block storage (https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1).
         :type DiskSize: int
-        :param _ProjectId: ID of the project to which the cloud disk belongs.
+        :param _ProjectId: cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1). default to the default project.
         :type ProjectId: int
-        :param _DiskCount: Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.
+        :param _DiskCount: Specifies the number of cloud block storage (cbs) disks to purchase. defaults to 1 if left blank.
         :type DiskCount: int
-        :param _ThroughputPerformance: Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).
+        :param _ThroughputPerformance: Specifies the additional performance value of the CBS disk in MiB/s. extra performance is only supported for enhanced SSD (CLOUD_HSSD) and ultra-fast SSD (CLOUD_TSSD) CBS disks exceeding 460GiB in size.
         :type ThroughputPerformance: int
-        :param _DiskChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.
+        :param _DiskChargePrepaid: Prepaid mode, that is, the settings for the monthly subscription-related parameters. through this parameter, you can specify the purchase duration of the monthly subscribed cloud disk, whether to enable auto-renewal, and other attributes. this parameter is required for creating a prepaid cloud disk, but no need to specify it when creating an hourly postpaid cloud disk.
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         :param _DiskBackupQuota: Specifies the cloud disk backup point quota.
         :type DiskBackupQuota: int
@@ -5466,7 +5480,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
-        r"""Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.
+        r"""Cloud disk billing mode. <br>
+<li>PREPAID: Prepaid by month.</li>
+<li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.</li>
         :rtype: str
         """
         return self._DiskChargeType
@@ -5477,7 +5493,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
+        r"""Hard disk media type. valid values: <ul> <li>CLOUD_PREMIUM: high-performance CLOUD block storage</li> <li>CLOUD_SSD: SSD CLOUD disk</li> <li>CLOUD_HSSD: enhanced SSD CLOUD disk</li> <li>CLOUD_TSSD: ultra-fast SSD cbs</li> </ul>.
         :rtype: str
         """
         return self._DiskType
@@ -5488,7 +5504,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        r"""Specifies the disk capacity in GiB. for the cloud disk size range, please refer to the product type of cloud block storage (https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1).
         :rtype: int
         """
         return self._DiskSize
@@ -5499,7 +5515,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""ID of the project to which the cloud disk belongs.
+        r"""cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1). default to the default project.
         :rtype: int
         """
         return self._ProjectId
@@ -5510,7 +5526,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
-        r"""Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.
+        r"""Specifies the number of cloud block storage (cbs) disks to purchase. defaults to 1 if left blank.
         :rtype: int
         """
         return self._DiskCount
@@ -5521,7 +5537,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        r"""Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).
+        r"""Specifies the additional performance value of the CBS disk in MiB/s. extra performance is only supported for enhanced SSD (CLOUD_HSSD) and ultra-fast SSD (CLOUD_TSSD) CBS disks exceeding 460GiB in size.
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -5532,7 +5548,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
-        r"""Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.
+        r"""Prepaid mode, that is, the settings for the monthly subscription-related parameters. through this parameter, you can specify the purchase duration of the monthly subscribed cloud disk, whether to enable auto-renewal, and other attributes. this parameter is required for creating a prepaid cloud disk, but no need to specify it when creating an hourly postpaid cloud disk.
         :rtype: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         """
         return self._DiskChargePrepaid
@@ -5583,7 +5599,7 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
         r"""
         :param _DiskPrice: Describes the price of newly purchased cloud disks.
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DiskPrice = None
@@ -5602,7 +5618,7 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6799,55 +6815,55 @@ class Price(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: Original price of a monthly-subscribed cloud disk, in USD.
+        :param _UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OriginalPrice: float
+        :type UnitPriceDiscount: float
         :param _DiscountPrice: Discounted price of a monthly-subscribed cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiscountPrice: float
         :param _UnitPrice: Original unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPrice: float
-        :param _ChargeUnit: Billing unit of a postpaid cloud disk. Value range: <br><li>HOUR: Billed by hour.
-Note: This field may return null, indicating that no valid value was found.
-        :type ChargeUnit: str
-        :param _UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPriceDiscount: float
-        :param _OriginalPriceHigh: Original payment of a monthly-subscribed cloud disk, in USD, with six decimal places.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OriginalPriceHigh: str
-        :param _DiscountPriceHigh: Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DiscountPriceHigh: str
         :param _UnitPriceHigh: Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceHigh: str
+        :param _OriginalPriceHigh: Original payment of a monthly-subscribed cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OriginalPriceHigh: str
+        :param _OriginalPrice: Original price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param _DiscountPriceHigh: Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiscountPriceHigh: str
         :param _UnitPriceDiscountHigh: Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceDiscountHigh: str
+        :param _ChargeUnit: Billing unit for postpaid cloud disk. valid values:<br><li>HOUR: the billing unit for postpaid cloud disk is calculated hourly.</li>.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChargeUnit: str
         """
-        self._OriginalPrice = None
+        self._UnitPriceDiscount = None
         self._DiscountPrice = None
         self._UnitPrice = None
-        self._ChargeUnit = None
-        self._UnitPriceDiscount = None
-        self._OriginalPriceHigh = None
-        self._DiscountPriceHigh = None
         self._UnitPriceHigh = None
+        self._OriginalPriceHigh = None
+        self._OriginalPrice = None
+        self._DiscountPriceHigh = None
         self._UnitPriceDiscountHigh = None
+        self._ChargeUnit = None
 
     @property
-    def OriginalPrice(self):
-        r"""Original price of a monthly-subscribed cloud disk, in USD.
+    def UnitPriceDiscount(self):
+        r"""Discount unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
-        return self._OriginalPrice
+        return self._UnitPriceDiscount
 
-    @OriginalPrice.setter
-    def OriginalPrice(self, OriginalPrice):
-        self._OriginalPrice = OriginalPrice
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
 
     @property
     def DiscountPrice(self):
@@ -6874,28 +6890,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._UnitPrice = UnitPrice
 
     @property
-    def ChargeUnit(self):
-        r"""Billing unit of a postpaid cloud disk. Value range: <br><li>HOUR: Billed by hour.
-Note: This field may return null, indicating that no valid value was found.
+    def UnitPriceHigh(self):
+        r"""Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
-        return self._ChargeUnit
+        return self._UnitPriceHigh
 
-    @ChargeUnit.setter
-    def ChargeUnit(self, ChargeUnit):
-        self._ChargeUnit = ChargeUnit
-
-    @property
-    def UnitPriceDiscount(self):
-        r"""Discount unit price of a pay-as-you-go cloud disk, in USD.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: float
-        """
-        return self._UnitPriceDiscount
-
-    @UnitPriceDiscount.setter
-    def UnitPriceDiscount(self, UnitPriceDiscount):
-        self._UnitPriceDiscount = UnitPriceDiscount
+    @UnitPriceHigh.setter
+    def UnitPriceHigh(self, UnitPriceHigh):
+        self._UnitPriceHigh = UnitPriceHigh
 
     @property
     def OriginalPriceHigh(self):
@@ -6910,6 +6914,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._OriginalPriceHigh = OriginalPriceHigh
 
     @property
+    def OriginalPrice(self):
+        r"""Original price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
     def DiscountPriceHigh(self):
         r"""Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -6920,18 +6936,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @DiscountPriceHigh.setter
     def DiscountPriceHigh(self, DiscountPriceHigh):
         self._DiscountPriceHigh = DiscountPriceHigh
-
-    @property
-    def UnitPriceHigh(self):
-        r"""Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._UnitPriceHigh
-
-    @UnitPriceHigh.setter
-    def UnitPriceHigh(self, UnitPriceHigh):
-        self._UnitPriceHigh = UnitPriceHigh
 
     @property
     def UnitPriceDiscountHigh(self):
@@ -6945,17 +6949,29 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def UnitPriceDiscountHigh(self, UnitPriceDiscountHigh):
         self._UnitPriceDiscountHigh = UnitPriceDiscountHigh
 
+    @property
+    def ChargeUnit(self):
+        r"""Billing unit for postpaid cloud disk. valid values:<br><li>HOUR: the billing unit for postpaid cloud disk is calculated hourly.</li>.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
 
     def _deserialize(self, params):
-        self._OriginalPrice = params.get("OriginalPrice")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
         self._DiscountPrice = params.get("DiscountPrice")
         self._UnitPrice = params.get("UnitPrice")
-        self._ChargeUnit = params.get("ChargeUnit")
-        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
-        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
         self._UnitPriceHigh = params.get("UnitPriceHigh")
+        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
         self._UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        self._ChargeUnit = params.get("ChargeUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6964,6 +6980,87 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewDiskRequest(AbstractModel):
+    r"""RenewDisk request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskChargePrepaid: Specifies the parameter CurInstanceDeadline in the scenario where the cloud disk and mounted instance renew together. at this point, the cloud disk renewal aligns with the instance renewal expiry date.
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        :param _DiskId: Cloud disk ID, which can be queried by calling the [DescribeDisks](https://www.tencentcloud.com/document/product/362/16315?from_cn_redirect=1) API.
+        :type DiskId: str
+        """
+        self._DiskChargePrepaid = None
+        self._DiskId = None
+
+    @property
+    def DiskChargePrepaid(self):
+        r"""Specifies the parameter CurInstanceDeadline in the scenario where the cloud disk and mounted instance renew together. at this point, the cloud disk renewal aligns with the instance renewal expiry date.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        """
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def DiskId(self):
+        r"""Cloud disk ID, which can be queried by calling the [DescribeDisks](https://www.tencentcloud.com/document/product/362/16315?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+
+    def _deserialize(self, params):
+        if params.get("DiskChargePrepaid") is not None:
+            self._DiskChargePrepaid = DiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDiskResponse(AbstractModel):
+    r"""RenewDisk response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResizeDiskRequest(AbstractModel):

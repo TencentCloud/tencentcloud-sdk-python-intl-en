@@ -3223,7 +3223,7 @@ class Encryption(AbstractModel):
         r"""
         :param _EncryptList: When using the encryption service, fill in the fields to be encrypted. One or more encrypted fields can be entered in this interface.
         :type EncryptList: list of str
-        :param _CiphertextBlob: Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://cloud.tencent.com/document/product/1007/47180">Data Encryption</a> document.
+        :param _CiphertextBlob: Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://www.tencentcloud.com/document/product/1061/77849?lang=en&pg=">Data Encryption</a> document.
         :type CiphertextBlob: str
         :param _Iv: initialization vector for CBC encryption (a customer-defined string with a length of 16 characters).
         :type Iv: str
@@ -3251,7 +3251,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        r"""Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://cloud.tencent.com/document/product/1007/47180">Data Encryption</a> document.
+        r"""Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://www.tencentcloud.com/document/product/1061/77849?lang=en&pg=">Data Encryption</a> document.
         :rtype: str
         """
         return self._CiphertextBlob
@@ -10962,10 +10962,10 @@ The supported action types are as follows:
 You can choose 1-2 actions out of the four. Single action example: "blink". Multiple action example: "blink,mouth". The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
 The default value is blink.
         :type ActionList: str
-        :param _LivenessRetryLimit: Control liveness retry number.The value range is 1-99.
+        :param _LivenessRetryLimit: Maximum liveness verification attempts. Valid range: [1,99].
 The default value is 99.
         :type LivenessRetryLimit: int
-        :param _LivenessTimeout: Specifies the liveness detection timeout period in seconds. value range: (0,600].
+        :param _LivenessTimeout: Specifies the liveness detection timeout period in seconds. Value range: (0,600].
 The default value is 45.
         :type LivenessTimeout: int
         :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective. The supported alarm types are as follows:
@@ -11179,7 +11179,7 @@ The default value is blink.
 
     @property
     def LivenessRetryLimit(self):
-        r"""Control liveness retry number.The value range is 1-99.
+        r"""Maximum liveness verification attempts. Valid range: [1,99].
 The default value is 99.
         :rtype: int
         """
@@ -11191,7 +11191,7 @@ The default value is 99.
 
     @property
     def LivenessTimeout(self):
-        r"""Specifies the liveness detection timeout period in seconds. value range: (0,600].
+        r"""Specifies the liveness detection timeout period in seconds. Value range: (0,600].
 The default value is 45.
         :rtype: int
         """
