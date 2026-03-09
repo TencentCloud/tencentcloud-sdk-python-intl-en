@@ -994,19 +994,18 @@ Values:
         :type InternetChargeType: str
         :param _BundleSalesState: Package sale status. Valid values: AVAILABLE, SOLD_OUT
         :type BundleSalesState: str
-        :param _BundleType: Bundle type. 
-Valid values: 
-<li>STARTER_BUNDLE: Starter bundle</li>
-<li>GENERAL_BUNDLE: General bundle</li>
-<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>
-<li>STORAGE_BUNDLE: Storage-optimized bundle</li>
-<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>
-<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>
-<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>
-<li>BEFAST_BUNDLE: BeFast bundle </li>
+        :param _BundleType: Package type.
+Value range:.
+<Li>GENERAL_BUNDLE: general.</li>.
+<Li>STORAGE_BUNDLE: storage type</li>.
+<Li>ENTERPRISE_BUNDLE: enterprise type</li>.
+<Li>EXCLUSIVE_BUNDLE: exclusive</li>.
+<Li>BEFAST_BUNDLE: beefast bundle</li>.
+<Li>STARTER_BUNDLE: entry-level.</li>.
+<Li>CAREFREE_BUNDLE: carefree</li>.
+<Li>RAZOR_SPEED_BUNDLE: razor speed bundle</li>.
         :type BundleType: str
-        :param _BundleTypeDescription: Bundle type description 
-Note: This parameter may return null, indicating that no valid values can be obtained.
+        :param _BundleTypeDescription: Package type description.
         :type BundleTypeDescription: str
         :param _BundleDisplayLabel: Package tag.
 Valid values:
@@ -1014,6 +1013,8 @@ Valid values:
 "NORMAL": regular package
 "CAREFREE": carefree package
         :type BundleDisplayLabel: str
+        :param _TrafficUnlimited: Whether the traffic volume is unlimited.
+        :type TrafficUnlimited: bool
         """
         self._BundleId = None
         self._Memory = None
@@ -1030,6 +1031,7 @@ Valid values:
         self._BundleType = None
         self._BundleTypeDescription = None
         self._BundleDisplayLabel = None
+        self._TrafficUnlimited = None
 
     @property
     def BundleId(self):
@@ -1167,16 +1169,16 @@ Values:
 
     @property
     def BundleType(self):
-        r"""Bundle type. 
-Valid values: 
-<li>STARTER_BUNDLE: Starter bundle</li>
-<li>GENERAL_BUNDLE: General bundle</li>
-<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>
-<li>STORAGE_BUNDLE: Storage-optimized bundle</li>
-<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>
-<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>
-<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>
-<li>BEFAST_BUNDLE: BeFast bundle </li>
+        r"""Package type.
+Value range:.
+<Li>GENERAL_BUNDLE: general.</li>.
+<Li>STORAGE_BUNDLE: storage type</li>.
+<Li>ENTERPRISE_BUNDLE: enterprise type</li>.
+<Li>EXCLUSIVE_BUNDLE: exclusive</li>.
+<Li>BEFAST_BUNDLE: beefast bundle</li>.
+<Li>STARTER_BUNDLE: entry-level.</li>.
+<Li>CAREFREE_BUNDLE: carefree</li>.
+<Li>RAZOR_SPEED_BUNDLE: razor speed bundle</li>.
         :rtype: str
         """
         return self._BundleType
@@ -1187,8 +1189,7 @@ Valid values:
 
     @property
     def BundleTypeDescription(self):
-        r"""Bundle type description 
-Note: This parameter may return null, indicating that no valid values can be obtained.
+        r"""Package type description.
         :rtype: str
         """
         return self._BundleTypeDescription
@@ -1212,6 +1213,17 @@ Valid values:
     def BundleDisplayLabel(self, BundleDisplayLabel):
         self._BundleDisplayLabel = BundleDisplayLabel
 
+    @property
+    def TrafficUnlimited(self):
+        r"""Whether the traffic volume is unlimited.
+        :rtype: bool
+        """
+        return self._TrafficUnlimited
+
+    @TrafficUnlimited.setter
+    def TrafficUnlimited(self, TrafficUnlimited):
+        self._TrafficUnlimited = TrafficUnlimited
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -1231,6 +1243,7 @@ Valid values:
         self._BundleType = params.get("BundleType")
         self._BundleTypeDescription = params.get("BundleTypeDescription")
         self._BundleDisplayLabel = params.get("BundleDisplayLabel")
+        self._TrafficUnlimited = params.get("TrafficUnlimited")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2361,18 +2374,17 @@ class DataDiskPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: Cloud disk ID.
+        :param _DiskId: <p>Cloud disk ID.</p>.
         :type DiskId: str
-        :param _OriginalDiskPrice: Cloud disk unit price.
+        :param _OriginalDiskPrice: <P>Cloud block storage (cbs) unit price.</p><p>unit: usd</p>.
         :type OriginalDiskPrice: float
-        :param _OriginalPrice: Total price of cloud disk
+        :param _OriginalPrice: <P>Total CBS price.</p><p>unit: usd</p>.
         :type OriginalPrice: float
-        :param _Discount: Discount.
+        :param _Discount: <p>Discount.</p>.
         :type Discount: float
-        :param _DiscountPrice: Discounted total price.
+        :param _DiscountPrice: <P>Discounted total price.</p><p>unit: usd</p>.
         :type DiscountPrice: float
-        :param _InstanceId: ID of the instance to which the data disk is mounted.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _InstanceId: <p>Instance ID for data disk mounting.</p>.
         :type InstanceId: str
         """
         self._DiskId = None
@@ -2384,7 +2396,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiskId(self):
-        r"""Cloud disk ID.
+        r"""<p>Cloud disk ID.</p>.
         :rtype: str
         """
         return self._DiskId
@@ -2395,7 +2407,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalDiskPrice(self):
-        r"""Cloud disk unit price.
+        r"""<P>Cloud block storage (cbs) unit price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalDiskPrice
@@ -2406,7 +2418,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPrice(self):
-        r"""Total price of cloud disk
+        r"""<P>Total CBS price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalPrice
@@ -2417,7 +2429,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Discount(self):
-        r"""Discount.
+        r"""<p>Discount.</p>.
         :rtype: float
         """
         return self._Discount
@@ -2428,7 +2440,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPrice(self):
-        r"""Discounted total price.
+        r"""<P>Discounted total price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._DiscountPrice
@@ -2439,8 +2451,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        r"""ID of the instance to which the data disk is mounted.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Instance ID for data disk mounting.</p>.
         :rtype: str
         """
         return self._InstanceId
@@ -3351,31 +3362,32 @@ class DescribeBundlesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleIds: Package ID list.
+        :param _BundleIds: List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).
         :type BundleIds: list of str
         :param _Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
         :param _Filters: Filter list.
-<li>bundle-id</li>Filter by the **bundle ID**.
-Type: String
+<li>bundle-id</li>Filter by [bundle id].
+Type: String.
 Required: No
-<li>`support-platform-type`<li>Filter by the **system type**.
-Values: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).
-Type: String
+<li>`support-platform-type`</li>Filter by the system type.
+Value: LINUX_UNIX (LINUX/UNIX system); WINDOWS (WINDOWS systems).
+Type: String.
 Required: No
-<li>bundle-type</li>Filter by the **bundle type**.
-Values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);
-Type: String
+<li>bundle-type</li>Filter by [package type].
+Valid values: GENERAL_BUNDLE (GENERAL BUNDLE); STORAGE_BUNDLE (STORAGE BUNDLE); ENTERPRISE_BUNDLE (ENTERPRISE BUNDLE); EXCLUSIVE_BUNDLE (dedicated BUNDLE); BEFAST_BUNDLE (SPEED BUNDLE); STARTER_BUNDLE (STARTER BUNDLE); CAREFREE_BUNDLE (CAREFREE BUNDLE); RAZOR_SPEED_BUNDLE (RAZOR SPEED BUNDLE).
+Type: String.
 Required: No
-<li>bundle-state</li>Filter by the **bundle status**.
-Values: `ONLINE`, `OFFLINE`
-Type: String
+<li>bundle-state</li>Filter by [package status].
+Valid values: ONLINE, OFFLINE.
+Type: String.
 Required: No
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. the parameter does not support specifying both `BundleIds` and `Filters`.
         :type Filters: list of Filter
-        :param _Zones: AZ list, which contains all AZs by default.
+        :param _Zones: AZ list. default to all availability zones.
+<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.
         :type Zones: list of str
         """
         self._BundleIds = None
@@ -3386,7 +3398,7 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def BundleIds(self):
-        r"""Package ID list.
+        r"""List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._BundleIds
@@ -3420,22 +3432,22 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
     @property
     def Filters(self):
         r"""Filter list.
-<li>bundle-id</li>Filter by the **bundle ID**.
-Type: String
+<li>bundle-id</li>Filter by [bundle id].
+Type: String.
 Required: No
-<li>`support-platform-type`<li>Filter by the **system type**.
-Values: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).
-Type: String
+<li>`support-platform-type`</li>Filter by the system type.
+Value: LINUX_UNIX (LINUX/UNIX system); WINDOWS (WINDOWS systems).
+Type: String.
 Required: No
-<li>bundle-type</li>Filter by the **bundle type**.
-Values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);
-Type: String
+<li>bundle-type</li>Filter by [package type].
+Valid values: GENERAL_BUNDLE (GENERAL BUNDLE); STORAGE_BUNDLE (STORAGE BUNDLE); ENTERPRISE_BUNDLE (ENTERPRISE BUNDLE); EXCLUSIVE_BUNDLE (dedicated BUNDLE); BEFAST_BUNDLE (SPEED BUNDLE); STARTER_BUNDLE (STARTER BUNDLE); CAREFREE_BUNDLE (CAREFREE BUNDLE); RAZOR_SPEED_BUNDLE (RAZOR SPEED BUNDLE).
+Type: String.
 Required: No
-<li>bundle-state</li>Filter by the **bundle status**.
-Values: `ONLINE`, `OFFLINE`
-Type: String
+<li>bundle-state</li>Filter by [package status].
+Valid values: ONLINE, OFFLINE.
+Type: String.
 Required: No
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. the parameter does not support specifying both `BundleIds` and `Filters`.
         :rtype: list of Filter
         """
         return self._Filters
@@ -3446,7 +3458,8 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Zones(self):
-        r"""AZ list, which contains all AZs by default.
+        r"""AZ list. default to all availability zones.
+<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.
         :rtype: list of str
         """
         return self._Zones
@@ -3488,7 +3501,7 @@ class DescribeBundlesResponse(AbstractModel):
         :type BundleSet: list of Bundle
         :param _TotalCount: Total number of eligible packages, which is used for pagination.
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._BundleSet = None
@@ -3519,7 +3532,7 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3698,11 +3711,11 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Cloud disk type. Valid values: "CLOUD_PREMIUM".
+        :param _DiskType: CLOUD disk type. valid values: CLOUD_PREMIUM: high-performance CLOUD block storage, CLOUD_SSD: SSD CLOUD disk.
         :type DiskType: str
-        :param _DiskSize: Cloud disk size.
+        :param _DiskSize: CBS disk capacity, unit: GB.
         :type DiskSize: int
-        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :param _DiskBackupQuota: Specify the cloud disk backup point quota. by default, no backup point quota is set if not specified. currently only support setting no quota or a cloud disk backup point quota within [0 - 500].
         :type DiskBackupQuota: int
         """
         self._DiskType = None
@@ -3711,7 +3724,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Cloud disk type. Valid values: "CLOUD_PREMIUM".
+        r"""CLOUD disk type. valid values: CLOUD_PREMIUM: high-performance CLOUD block storage, CLOUD_SSD: SSD CLOUD disk.
         :rtype: str
         """
         return self._DiskType
@@ -3722,7 +3735,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Cloud disk size.
+        r"""CBS disk capacity, unit: GB.
         :rtype: int
         """
         return self._DiskSize
@@ -3733,7 +3746,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        r"""Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        r"""Specify the cloud disk backup point quota. by default, no backup point quota is set if not specified. currently only support setting no quota or a cloud disk backup point quota within [0 - 500].
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -3764,11 +3777,11 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Currency: Currency: CNY, USD.
+        :param _Currency: Currency: USD.
         :type Currency: str
         :param _DiscountDetail: Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).
         :type DiscountDetail: list of DiscountDetail
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Currency = None
@@ -3777,7 +3790,7 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def Currency(self):
-        r"""Currency: CNY, USD.
+        r"""Currency: USD.
         :rtype: str
         """
         return self._Currency
@@ -3799,7 +3812,7 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6868,17 +6881,15 @@ class DetailPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PriceName: Values: 
-<li>"DiskSpace": Cloud disk space</li>
-<li>"DiskBackupQuota": Cloud disk backups</li>
+        :param _PriceName: <p>Name of a billable item, current parameter.</p><li>"DiskSpace" represents the CBS space charge item.</li><li>"DiskBackupQuota" represents the data disk backup point quota charge item.</li><li>"Instance" represents the Instance charge item.</li><li>"SystemDiskBackupQuota" represents the system disk backup point quota charge item.</li>.
         :type PriceName: str
-        :param _OriginUnitPrice: Official unit price of the billable item
+        :param _OriginUnitPrice: <P>Unit price per billing item dimension.</p><p>unit: usd</p>.
         :type OriginUnitPrice: float
-        :param _OriginalPrice: Official total price of the billable item
+        :param _OriginalPrice: <P>Total price of billing item dimension.</p><p>unit: usd</p>.
         :type OriginalPrice: float
-        :param _Discount: Discount of the billable item
+        :param _Discount: <P>Dimensional discount for billing items.</p>.
         :type Discount: float
-        :param _DiscountPrice: Discounted total price of the billable item
+        :param _DiscountPrice: <P>Discounted total price by billing item dimension.</p><p>unit: usd</p>.
         :type DiscountPrice: float
         """
         self._PriceName = None
@@ -6889,9 +6900,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def PriceName(self):
-        r"""Values: 
-<li>"DiskSpace": Cloud disk space</li>
-<li>"DiskBackupQuota": Cloud disk backups</li>
+        r"""<p>Name of a billable item, current parameter.</p><li>"DiskSpace" represents the CBS space charge item.</li><li>"DiskBackupQuota" represents the data disk backup point quota charge item.</li><li>"Instance" represents the Instance charge item.</li><li>"SystemDiskBackupQuota" represents the system disk backup point quota charge item.</li>.
         :rtype: str
         """
         return self._PriceName
@@ -6902,7 +6911,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginUnitPrice(self):
-        r"""Official unit price of the billable item
+        r"""<P>Unit price per billing item dimension.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginUnitPrice
@@ -6913,7 +6922,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""Official total price of the billable item
+        r"""<P>Total price of billing item dimension.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalPrice
@@ -6924,7 +6933,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def Discount(self):
-        r"""Discount of the billable item
+        r"""<P>Dimensional discount for billing items.</p>.
         :rtype: float
         """
         return self._Discount
@@ -6935,7 +6944,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""Discounted total price of the billable item
+        r"""<P>Discounted total price by billing item dimension.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._DiscountPrice
@@ -7047,17 +7056,17 @@ class DiscountDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeSpan: Billing duration.
+        :param _TimeSpan: <P>Billing duration.</p>.
         :type TimeSpan: int
-        :param _TimeUnit: Billing unit.
+        :param _TimeUnit: <P>Time unit.<br>value is:</p><ul><li>m - month</li><li>d - day</li></ul>.
         :type TimeUnit: str
-        :param _TotalCost: Total price.
+        :param _TotalCost: <P>Total price.</p><p>unit: usd</p>.
         :type TotalCost: float
-        :param _RealTotalCost: Discounted total price.
+        :param _RealTotalCost: <P>Discounted total price.</p><p>unit: usd</p>.
         :type RealTotalCost: float
-        :param _Discount: Discount.
-        :type Discount: int
-        :param _PolicyDetail: Discount details.
+        :param _Discount: <p>Discount.</p>.
+        :type Discount: float
+        :param _PolicyDetail: <P>Specific discount details.</p>.
         :type PolicyDetail: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
         """
         self._TimeSpan = None
@@ -7069,7 +7078,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""Billing duration.
+        r"""<P>Billing duration.</p>.
         :rtype: int
         """
         return self._TimeSpan
@@ -7080,7 +7089,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""Billing unit.
+        r"""<P>Time unit.<br>value is:</p><ul><li>m - month</li><li>d - day</li></ul>.
         :rtype: str
         """
         return self._TimeUnit
@@ -7091,7 +7100,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TotalCost(self):
-        r"""Total price.
+        r"""<P>Total price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._TotalCost
@@ -7102,7 +7111,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""Discounted total price.
+        r"""<P>Discounted total price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._RealTotalCost
@@ -7113,8 +7122,8 @@ class DiscountDetail(AbstractModel):
 
     @property
     def Discount(self):
-        r"""Discount.
-        :rtype: int
+        r"""<p>Discount.</p>.
+        :rtype: float
         """
         return self._Discount
 
@@ -7124,7 +7133,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def PolicyDetail(self):
-        r"""Discount details.
+        r"""<P>Specific discount details.</p>.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
         """
         return self._PolicyDetail
@@ -9427,15 +9436,13 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         r"""
         :param _Price: Price information. It defaults to the price information of the first instance in the list.
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
-        :param _DataDiskPriceSet: List of data disk price information.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DataDiskPriceSet: Data disk price information list.
         :type DataDiskPriceSet: list of DataDiskPrice
-        :param _InstancePriceDetailSet: Price list of the instances to be renewed.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _InstancePriceDetailSet: Price list for instances to be renewed.
         :type InstancePriceDetailSet: list of InstancePriceDetail
         :param _TotalPrice: Total price
         :type TotalPrice: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Price = None
@@ -9457,8 +9464,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DataDiskPriceSet(self):
-        r"""List of data disk price information.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Data disk price information list.
         :rtype: list of DataDiskPrice
         """
         return self._DataDiskPriceSet
@@ -9469,8 +9475,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstancePriceDetailSet(self):
-        r"""Price list of the instances to be renewed.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Price list for instances to be renewed.
         :rtype: list of InstancePriceDetail
         """
         return self._InstancePriceDetailSet
@@ -9492,7 +9497,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10004,9 +10009,11 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        :param _Period: Duration of instance purchase. measurement unit: month.
+-Valid values when creating an instance: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+-When renewing an instance, valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :type Period: int
-        :param _RenewFlag: Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.
+        :param _RenewFlag: AUTO-Renewal flag. valid values:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY AND AUTO-RENEW on expiration</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY expiration without AUTO-RENEW. users need to manually RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: no AUTO-renewal AND no notification</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will automatically RENEW on a monthly basis after expiration when the account balance is sufficient.
         :type RenewFlag: str
         """
         self._Period = None
@@ -10014,7 +10021,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        r"""Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        r"""Duration of instance purchase. measurement unit: month.
+-Valid values when creating an instance: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+-When renewing an instance, valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :rtype: int
         """
         return self._Period
@@ -10025,7 +10034,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.
+        r"""AUTO-Renewal flag. valid values:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY AND AUTO-RENEW on expiration</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY expiration without AUTO-RENEW. users need to manually RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: no AUTO-renewal AND no notification</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will automatically RENEW on a monthly basis after expiration when the account balance is sufficient.
         :rtype: str
         """
         return self._RenewFlag
@@ -10107,33 +10116,35 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class InstancePrice(AbstractModel):
-    r"""Price information of Lighthouse instances
+    r"""About Lighthouse Instance price.
 
     """
 
     def __init__(self):
         r"""
-        :param _OriginalBundlePrice: Original package unit price.
+        :param _OriginalBundlePrice: <P>Unit price of the package.</p><p>unit: usd</p>.
         :type OriginalBundlePrice: float
-        :param _OriginalPrice: Original price.
+        :param _OriginalPrice: <P>Original price.</p><p>unit: usd</p>.
         :type OriginalPrice: float
-        :param _Discount: Discount.
-        :type Discount: int
-        :param _DiscountPrice: Discounted price.
+        :param _Discount: <p>Discount.</p>.
+        :type Discount: float
+        :param _DiscountPrice: <P>Discounted price.</p><p>unit: usd</p>.
         :type DiscountPrice: float
-        :param _Currency: Currency unit. Valid values: `CNY` and `USD`.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Currency: <p>Price currency unit. valid values: USD.</p>.
         :type Currency: str
+        :param _DetailPrices: <P>Billing item detail.</p>.
+        :type DetailPrices: list of DetailPrice
         """
         self._OriginalBundlePrice = None
         self._OriginalPrice = None
         self._Discount = None
         self._DiscountPrice = None
         self._Currency = None
+        self._DetailPrices = None
 
     @property
     def OriginalBundlePrice(self):
-        r"""Original package unit price.
+        r"""<P>Unit price of the package.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalBundlePrice
@@ -10144,7 +10155,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPrice(self):
-        r"""Original price.
+        r"""<P>Original price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalPrice
@@ -10155,8 +10166,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Discount(self):
-        r"""Discount.
-        :rtype: int
+        r"""<p>Discount.</p>.
+        :rtype: float
         """
         return self._Discount
 
@@ -10166,7 +10177,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPrice(self):
-        r"""Discounted price.
+        r"""<P>Discounted price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._DiscountPrice
@@ -10177,8 +10188,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Currency(self):
-        r"""Currency unit. Valid values: `CNY` and `USD`.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Price currency unit. valid values: USD.</p>.
         :rtype: str
         """
         return self._Currency
@@ -10187,6 +10197,17 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def Currency(self, Currency):
         self._Currency = Currency
 
+    @property
+    def DetailPrices(self):
+        r"""<P>Billing item detail.</p>.
+        :rtype: list of DetailPrice
+        """
+        return self._DetailPrices
+
+    @DetailPrices.setter
+    def DetailPrices(self, DetailPrices):
+        self._DetailPrices = DetailPrices
+
 
     def _deserialize(self, params):
         self._OriginalBundlePrice = params.get("OriginalBundlePrice")
@@ -10194,6 +10215,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._Discount = params.get("Discount")
         self._DiscountPrice = params.get("DiscountPrice")
         self._Currency = params.get("Currency")
+        if params.get("DetailPrices") is not None:
+            self._DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self._DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10212,13 +10239,10 @@ class InstancePriceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: Instance ID.
-Note: This field may return `null`, indicating that no valid value was found.
         :type InstanceId: str
-        :param _InstancePrice: Price query information.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _InstancePrice: Price inquiry information.
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
-        :param _DiscountDetail: Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DiscountDetail: Discount gradient details. each gradient includes duration, discount percentage, total price, discount price, and discount details (user discount, official website discount, final discount).
         :type DiscountDetail: list of DiscountDetail
         """
         self._InstanceId = None
@@ -10228,7 +10252,6 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @property
     def InstanceId(self):
         r"""Instance ID.
-Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
         return self._InstanceId
@@ -10239,8 +10262,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstancePrice(self):
-        r"""Price query information.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Price inquiry information.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
         """
         return self._InstancePrice
@@ -10251,8 +10273,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountDetail(self):
-        r"""Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Discount gradient details. each gradient includes duration, discount percentage, total price, discount price, and discount details (user discount, official website discount, final discount).
         :rtype: list of DiscountDetail
         """
         return self._DiscountDetail
@@ -11930,11 +11951,11 @@ class PolicyDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _UserDiscount: User discount.
-        :type UserDiscount: int
+        :type UserDiscount: float
         :param _CommonDiscount: Public discount.
-        :type CommonDiscount: int
+        :type CommonDiscount: float
         :param _FinalDiscount: Final discount.
-        :type FinalDiscount: int
+        :type FinalDiscount: float
         :param _ActivityDiscount: Activity discount. The value `null` indicates no discount.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ActivityDiscount: float
@@ -11952,7 +11973,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @property
     def UserDiscount(self):
         r"""User discount.
-        :rtype: int
+        :rtype: float
         """
         return self._UserDiscount
 
@@ -11963,7 +11984,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @property
     def CommonDiscount(self):
         r"""Public discount.
-        :rtype: int
+        :rtype: float
         """
         return self._CommonDiscount
 
@@ -11974,7 +11995,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @property
     def FinalDiscount(self):
         r"""Final discount.
-        :rtype: int
+        :rtype: float
         """
         return self._FinalDiscount
 
@@ -14032,11 +14053,9 @@ class TotalPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: Total original price
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _OriginalPrice: <P>Original total price.</p><p>unit: usd</p>.
         :type OriginalPrice: float
-        :param _DiscountPrice: Total discounted price
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DiscountPrice: <P>Total price after discount.</p><p>unit: usd</p>.
         :type DiscountPrice: float
         """
         self._OriginalPrice = None
@@ -14044,8 +14063,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPrice(self):
-        r"""Total original price
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<P>Original total price.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._OriginalPrice
@@ -14056,8 +14074,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPrice(self):
-        r"""Total discounted price
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<P>Total price after discount.</p><p>unit: usd</p>.
         :rtype: float
         """
         return self._DiscountPrice

@@ -31,13 +31,11 @@ class AutomationAgentInfo(AbstractModel):
         :type Version: str
         :param _LastHeartbeatTime: Last heartbeat time
         :type LastHeartbeatTime: str
-        :param _AgentStatus: Agent status. Valid values:
-<li> `Online`
-<li> `Offline`
+        :param _AgentStatus: Agent status. valid values:.
+Online: Online, Offline: Offline.
+
         :type AgentStatus: str
-        :param _Environment: Agent runtime environment. Valid values:
-<li> `Linux`: Linux instance
-<li> `Windows`: Windows instance
+        :param _Environment: Agent execution environment. valid values: Linux: Linux instance. Windows: Windows instance.
         :type Environment: str
         :param _SupportFeatures: Features supported by the TAT agent.
         :type SupportFeatures: list of str
@@ -84,9 +82,9 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""Agent status. Valid values:
-<li> `Online`
-<li> `Offline`
+        r"""Agent status. valid values:.
+Online: Online, Offline: Offline.
+
         :rtype: str
         """
         return self._AgentStatus
@@ -97,9 +95,7 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def Environment(self):
-        r"""Agent runtime environment. Valid values:
-<li> `Linux`: Linux instance
-<li> `Windows`: Windows instance
+        r"""Agent execution environment. valid values: Linux: Linux instance. Windows: Windows instance.
         :rtype: str
         """
         return self._Environment
@@ -144,11 +140,16 @@ class CancelInvocationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvocationId: Execution activity ID
+        :param _InvocationId: Execution activity ID.
+
+Call the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.
         :type InvocationId: str
-        :param _InstanceIds: Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:
-<li> `CVM`
-<li> `LIGHTHOUSE`
+        :param _InstanceIds: Instance ID list. upper limit: 100.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+- TAT Register instance.
         :type InstanceIds: list of str
         """
         self._InvocationId = None
@@ -156,7 +157,9 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InvocationId(self):
-        r"""Execution activity ID
+        r"""Execution activity ID.
+
+Call the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvocationId
@@ -167,9 +170,12 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:
-<li> `CVM`
-<li> `LIGHTHOUSE`
+        r"""Instance ID list. upper limit: 100.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+- TAT Register instance.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -227,39 +233,43 @@ class Command(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: Command ID.
+        :param _CommandId: <p>Command ID.</p>.
         :type CommandId: str
-        :param _CommandName: Command name.
+        :param _CommandName: <P>Command name.</p>.
         :type CommandName: str
-        :param _Description: Command description.
+        :param _Description: <P>Command description.</p>.
         :type Description: str
-        :param _Content: Base64-encoded command.
+        :param _Content: <p>The Base64-encoded command content.</p>.
         :type Content: str
-        :param _CommandType: Command type.
+        :param _CommandType: <p>Command type. value is one of SHELL, POWERSHELL, BAT.</p>.
         :type CommandType: str
-        :param _WorkingDirectory: Command execution path.
+        :param _WorkingDirectory: <P>Command execution path.</p>.
         :type WorkingDirectory: str
-        :param _Timeout: Command timeout period.
+        :param _Timeout: <p>Command timeout time.</p><p>unit: seconds.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.
         :type Timeout: int
-        :param _CreatedTime: Command creation time.
+        :param _CreatedTime: <p>Command creation time. the format is YYYY-MM-DDThh:MM:ssZ.</p>.
         :type CreatedTime: str
-        :param _UpdatedTime: Command update time.
+        :param _UpdatedTime: <p>Command last update time. format: YYYY-MM-DDThh:MM:ssZ.</p>.
         :type UpdatedTime: str
-        :param _EnableParameter: Whether to enable the custom parameter feature.
+        :param _EnableParameter: <P>Whether to enable the custom parameter feature.</p>.
         :type EnableParameter: bool
-        :param _DefaultParameters: Default custom parameter value.
+        :param _DefaultParameters: <P>Default value of custom parameter.</p>.
         :type DefaultParameters: str
-        :param _FormattedDescription: Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.
+        :param _DefaultParameterConfs: <P>Default value of custom parameters.</p>.
+        :type DefaultParameterConfs: list of DefaultParameterConf
+        :param _Scenes: <P>Command association scenarios</p>.
+        :type Scenes: list of str
+        :param _FormattedDescription: <P>Structured description of the command. public commands have values, and user commands are empty strings.</p>.
         :type FormattedDescription: str
-        :param _CreatedBy: Command creator. `TAT` indicates a public command and `USER` indicates a personal command.
+        :param _CreatedBy: <p>Command creator.</p><p>enumeration value:</p><ul><li>TAT: public command</li><li>USER: personal creation command</li></ul>.
         :type CreatedBy: str
-        :param _Tags: The list of tags bound to the command.
+        :param _Tags: <P>Tag list associated with the command.</p>.
         :type Tags: list of Tag
-        :param _Username: The user who executes the command on the instance.
+        :param _Username: <P>Username to run command on the instance.</p>.
         :type Username: str
-        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs.
+        :param _OutputCOSBucketUrl: <P>The cos bucket address for log upload.</p>.
         :type OutputCOSBucketUrl: str
-        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved.
+        :param _OutputCOSKeyPrefix: <P>Directory of logs in the cos bucket.</p>.
         :type OutputCOSKeyPrefix: str
         """
         self._CommandId = None
@@ -273,6 +283,8 @@ class Command(AbstractModel):
         self._UpdatedTime = None
         self._EnableParameter = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
+        self._Scenes = None
         self._FormattedDescription = None
         self._CreatedBy = None
         self._Tags = None
@@ -282,7 +294,7 @@ class Command(AbstractModel):
 
     @property
     def CommandId(self):
-        r"""Command ID.
+        r"""<p>Command ID.</p>.
         :rtype: str
         """
         return self._CommandId
@@ -293,7 +305,7 @@ class Command(AbstractModel):
 
     @property
     def CommandName(self):
-        r"""Command name.
+        r"""<P>Command name.</p>.
         :rtype: str
         """
         return self._CommandName
@@ -304,7 +316,7 @@ class Command(AbstractModel):
 
     @property
     def Description(self):
-        r"""Command description.
+        r"""<P>Command description.</p>.
         :rtype: str
         """
         return self._Description
@@ -315,7 +327,7 @@ class Command(AbstractModel):
 
     @property
     def Content(self):
-        r"""Base64-encoded command.
+        r"""<p>The Base64-encoded command content.</p>.
         :rtype: str
         """
         return self._Content
@@ -326,7 +338,7 @@ class Command(AbstractModel):
 
     @property
     def CommandType(self):
-        r"""Command type.
+        r"""<p>Command type. value is one of SHELL, POWERSHELL, BAT.</p>.
         :rtype: str
         """
         return self._CommandType
@@ -337,7 +349,7 @@ class Command(AbstractModel):
 
     @property
     def WorkingDirectory(self):
-        r"""Command execution path.
+        r"""<P>Command execution path.</p>.
         :rtype: str
         """
         return self._WorkingDirectory
@@ -348,7 +360,7 @@ class Command(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""Command timeout period.
+        r"""<p>Command timeout time.</p><p>unit: seconds.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.
         :rtype: int
         """
         return self._Timeout
@@ -359,7 +371,7 @@ class Command(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""Command creation time.
+        r"""<p>Command creation time. the format is YYYY-MM-DDThh:MM:ssZ.</p>.
         :rtype: str
         """
         return self._CreatedTime
@@ -370,7 +382,7 @@ class Command(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""Command update time.
+        r"""<p>Command last update time. format: YYYY-MM-DDThh:MM:ssZ.</p>.
         :rtype: str
         """
         return self._UpdatedTime
@@ -381,7 +393,7 @@ class Command(AbstractModel):
 
     @property
     def EnableParameter(self):
-        r"""Whether to enable the custom parameter feature.
+        r"""<P>Whether to enable the custom parameter feature.</p>.
         :rtype: bool
         """
         return self._EnableParameter
@@ -392,7 +404,7 @@ class Command(AbstractModel):
 
     @property
     def DefaultParameters(self):
-        r"""Default custom parameter value.
+        r"""<P>Default value of custom parameter.</p>.
         :rtype: str
         """
         return self._DefaultParameters
@@ -402,8 +414,30 @@ class Command(AbstractModel):
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        r"""<P>Default value of custom parameters.</p>.
+        :rtype: list of DefaultParameterConf
+        """
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
+    def Scenes(self):
+        r"""<P>Command association scenarios</p>.
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
     def FormattedDescription(self):
-        r"""Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.
+        r"""<P>Structured description of the command. public commands have values, and user commands are empty strings.</p>.
         :rtype: str
         """
         return self._FormattedDescription
@@ -414,7 +448,7 @@ class Command(AbstractModel):
 
     @property
     def CreatedBy(self):
-        r"""Command creator. `TAT` indicates a public command and `USER` indicates a personal command.
+        r"""<p>Command creator.</p><p>enumeration value:</p><ul><li>TAT: public command</li><li>USER: personal creation command</li></ul>.
         :rtype: str
         """
         return self._CreatedBy
@@ -425,7 +459,7 @@ class Command(AbstractModel):
 
     @property
     def Tags(self):
-        r"""The list of tags bound to the command.
+        r"""<P>Tag list associated with the command.</p>.
         :rtype: list of Tag
         """
         return self._Tags
@@ -436,7 +470,7 @@ class Command(AbstractModel):
 
     @property
     def Username(self):
-        r"""The user who executes the command on the instance.
+        r"""<P>Username to run command on the instance.</p>.
         :rtype: str
         """
         return self._Username
@@ -447,7 +481,7 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
-        r"""The COS bucket URL for uploading logs.
+        r"""<P>The cos bucket address for log upload.</p>.
         :rtype: str
         """
         return self._OutputCOSBucketUrl
@@ -458,7 +492,7 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
-        r"""The COS bucket directory where the logs are saved.
+        r"""<P>Directory of logs in the cos bucket.</p>.
         :rtype: str
         """
         return self._OutputCOSKeyPrefix
@@ -480,6 +514,13 @@ class Command(AbstractModel):
         self._UpdatedTime = params.get("UpdatedTime")
         self._EnableParameter = params.get("EnableParameter")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
+        self._Scenes = params.get("Scenes")
         self._FormattedDescription = params.get("FormattedDescription")
         self._CreatedBy = params.get("CreatedBy")
         if params.get("Tags") is not None:
@@ -510,9 +551,9 @@ class CommandDocument(AbstractModel):
         r"""
         :param _Content: Base64-encoded command.
         :type Content: str
-        :param _CommandType: Command type.
+        :param _CommandType: Command type. value is one of SHELL, POWERSHELL, BAT.
         :type CommandType: str
-        :param _Timeout: Timeout period.
+        :param _Timeout: Timeout period. unit: seconds.
         :type Timeout: int
         :param _WorkingDirectory: Execution path.
         :type WorkingDirectory: str
@@ -544,7 +585,7 @@ class CommandDocument(AbstractModel):
 
     @property
     def CommandType(self):
-        r"""Command type.
+        r"""Command type. value is one of SHELL, POWERSHELL, BAT.
         :rtype: str
         """
         return self._CommandType
@@ -555,7 +596,7 @@ class CommandDocument(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""Timeout period.
+        r"""Timeout period. unit: seconds.
         :rtype: int
         """
         return self._Timeout
@@ -640,7 +681,7 @@ class CreateCommandRequest(AbstractModel):
         :type Content: str
         :param _Description: Command description. The maximum length is 120 characters.
         :type Description: str
-        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :param _CommandType: Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.
         :type CommandType: str
         :param _WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
         :type WorkingDirectory: str
@@ -650,12 +691,20 @@ class CreateCommandRequest(AbstractModel):
 This cannot be modified once created.
 Default value: `false`.
         :type EnableParameter: bool
-        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided in the `InvokeCommand` API, the default value is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :param _DefaultParameters: Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+If no parameter value is provided when invoking the command, the default value here will be used to replace it.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+Allow settings only when the EnableParameter parameter is true.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :type DefaultParameters: str
+        :param _DefaultParameterConfs: Custom parameter array.
+If no parameter value is provided when invoking the command, the default value here will be used to replace it.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+Allow settings only when the EnableParameter parameter is true.
+Custom parameters can be up to 20.
+        :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Tags: Tags bound to the command. At most 10 tags are allowed.
         :type Tags: list of Tag
         :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
@@ -677,6 +726,7 @@ The principle of least privilege is the best practice for permission management.
         self._Timeout = None
         self._EnableParameter = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Tags = None
         self._Username = None
         self._OutputCOSBucketUrl = None
@@ -717,7 +767,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
-        r"""Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        r"""Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.
         :rtype: str
         """
         return self._CommandType
@@ -763,11 +813,13 @@ Default value: `false`.
 
     @property
     def DefaultParameters(self):
-        r"""The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided in the `InvokeCommand` API, the default value is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        r"""Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+If no parameter value is provided when invoking the command, the default value here will be used to replace it.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+Allow settings only when the EnableParameter parameter is true.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :rtype: str
         """
         return self._DefaultParameters
@@ -775,6 +827,21 @@ The name of the custom parameter cannot exceed 64 characters and can contain [a-
     @DefaultParameters.setter
     def DefaultParameters(self, DefaultParameters):
         self._DefaultParameters = DefaultParameters
+
+    @property
+    def DefaultParameterConfs(self):
+        r"""Custom parameter array.
+If no parameter value is provided when invoking the command, the default value here will be used to replace it.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+Allow settings only when the EnableParameter parameter is true.
+Custom parameters can be up to 20.
+        :rtype: list of DefaultParameterConf
+        """
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
 
     @property
     def Tags(self):
@@ -834,6 +901,12 @@ The principle of least privilege is the best practice for permission management.
         self._Timeout = params.get("Timeout")
         self._EnableParameter = params.get("EnableParameter")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -903,20 +976,36 @@ class CreateInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Invoker name.
+        :param _Name: Executor name. length not exceeding 120 characters.
         :type Name: str
-        :param _Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :param _Type: Executor type.
+
+Selectable values (currently only support one):.
+
+-`SCHEDULE`: period type executor.
         :type Type: str
         :param _CommandId: Remote command ID.
+
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
-        :param _InstanceIds: ID of the instance bound to the trigger. Up to 100 IDs are allowed.
+        :param _InstanceIds: Trigger associated instance ID. list cap 100.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
         :type InstanceIds: list of str
-        :param _Username: The user who executes the command.
+        :param _Username: Command execution user. length not exceeding 256 characters.
         :type Username: str
-        :param _Parameters: Custom parameters of the command.
+        :param _Parameters: Command custom parameter. field type is JSON encode string.
+
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
         :type Parameters: str
-        :param _ScheduleSettings: Settings required for a recurring invoker.
+        :param _ScheduleSettings: Recurring invoker settings.
+
+When the executor type is `SCHEDULE`, specify this parameter.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        :param _Tags: Tag associated with the command. list length not exceeding 10.
+        :type Tags: list of Tag
         """
         self._Name = None
         self._Type = None
@@ -925,10 +1014,11 @@ class CreateInvokerRequest(AbstractModel):
         self._Username = None
         self._Parameters = None
         self._ScheduleSettings = None
+        self._Tags = None
 
     @property
     def Name(self):
-        r"""Invoker name.
+        r"""Executor name. length not exceeding 120 characters.
         :rtype: str
         """
         return self._Name
@@ -939,7 +1029,11 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        r"""Executor type.
+
+Selectable values (currently only support one):.
+
+-`SCHEDULE`: period type executor.
         :rtype: str
         """
         return self._Type
@@ -951,6 +1045,8 @@ class CreateInvokerRequest(AbstractModel):
     @property
     def CommandId(self):
         r"""Remote command ID.
+
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -961,7 +1057,11 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""ID of the instance bound to the trigger. Up to 100 IDs are allowed.
+        r"""Trigger associated instance ID. list cap 100.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -972,7 +1072,7 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""The user who executes the command.
+        r"""Command execution user. length not exceeding 256 characters.
         :rtype: str
         """
         return self._Username
@@ -983,7 +1083,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""Custom parameters of the command.
+        r"""Command custom parameter. field type is JSON encode string.
+
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Parameters
@@ -994,7 +1096,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
-        r"""Settings required for a recurring invoker.
+        r"""Recurring invoker settings.
+
+When the executor type is `SCHEDULE`, specify this parameter.
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -1002,6 +1106,17 @@ class CreateInvokerRequest(AbstractModel):
     @ScheduleSettings.setter
     def ScheduleSettings(self, ScheduleSettings):
         self._ScheduleSettings = ScheduleSettings
+
+    @property
+    def Tags(self):
+        r"""Tag associated with the command. list length not exceeding 10.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -1014,6 +1129,12 @@ class CreateInvokerRequest(AbstractModel):
         if params.get("ScheduleSettings") is not None:
             self._ScheduleSettings = ScheduleSettings()
             self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1067,6 +1188,240 @@ class CreateInvokerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRegisterCodeRequest(AbstractModel):
+    r"""CreateRegisterCode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: Describes the registration code. maximum length is 128 characters.
+        :type Description: str
+        :param _InstanceNamePrefix: Prefix of the registered instance name. maximum length is 32 characters.
+        :type InstanceNamePrefix: str
+        :param _RegisterLimit: Number of instances allowed by the registration code. default value is 10, minimum value is 1, maximum value is 10000.
+        :type RegisterLimit: int
+        :param _EffectiveTime: The validity time of the registration code is measured in hours. default value is 4.
+
+-If the input value is less than or equal to 99999, the time is deemed valid in hours.
+-If the input value is more than 99999, it is set to permanently valid.
+        :type EffectiveTime: int
+        :param _IpAddressRange: Restrict the registration code to register only from the public outbound ip described by IpAddressRange.
+
+Empty by default, meaning no restrictions.
+
+The value should be in standard IPv4 or CIDRv4 format, such as 192.168.1.1 or 192.168.0.0/16.
+        :type IpAddressRange: str
+        """
+        self._Description = None
+        self._InstanceNamePrefix = None
+        self._RegisterLimit = None
+        self._EffectiveTime = None
+        self._IpAddressRange = None
+
+    @property
+    def Description(self):
+        r"""Describes the registration code. maximum length is 128 characters.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InstanceNamePrefix(self):
+        r"""Prefix of the registered instance name. maximum length is 32 characters.
+        :rtype: str
+        """
+        return self._InstanceNamePrefix
+
+    @InstanceNamePrefix.setter
+    def InstanceNamePrefix(self, InstanceNamePrefix):
+        self._InstanceNamePrefix = InstanceNamePrefix
+
+    @property
+    def RegisterLimit(self):
+        r"""Number of instances allowed by the registration code. default value is 10, minimum value is 1, maximum value is 10000.
+        :rtype: int
+        """
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def EffectiveTime(self):
+        r"""The validity time of the registration code is measured in hours. default value is 4.
+
+-If the input value is less than or equal to 99999, the time is deemed valid in hours.
+-If the input value is more than 99999, it is set to permanently valid.
+        :rtype: int
+        """
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def IpAddressRange(self):
+        r"""Restrict the registration code to register only from the public outbound ip described by IpAddressRange.
+
+Empty by default, meaning no restrictions.
+
+The value should be in standard IPv4 or CIDRv4 format, such as 192.168.1.1 or 192.168.0.0/16.
+        :rtype: str
+        """
+        return self._IpAddressRange
+
+    @IpAddressRange.setter
+    def IpAddressRange(self, IpAddressRange):
+        self._IpAddressRange = IpAddressRange
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._InstanceNamePrefix = params.get("InstanceNamePrefix")
+        self._RegisterLimit = params.get("RegisterLimit")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._IpAddressRange = params.get("IpAddressRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRegisterCodeResponse(AbstractModel):
+    r"""CreateRegisterCode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeId: Registration code ID.
+        :type RegisterCodeId: str
+        :param _RegisterCodeValue: Registration code value.
+        :type RegisterCodeValue: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RegisterCodeId = None
+        self._RegisterCodeValue = None
+        self._RequestId = None
+
+    @property
+    def RegisterCodeId(self):
+        r"""Registration code ID.
+        :rtype: str
+        """
+        return self._RegisterCodeId
+
+    @RegisterCodeId.setter
+    def RegisterCodeId(self, RegisterCodeId):
+        self._RegisterCodeId = RegisterCodeId
+
+    @property
+    def RegisterCodeValue(self):
+        r"""Registration code value.
+        :rtype: str
+        """
+        return self._RegisterCodeValue
+
+    @RegisterCodeValue.setter
+    def RegisterCodeValue(self, RegisterCodeValue):
+        self._RegisterCodeValue = RegisterCodeValue
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeId = params.get("RegisterCodeId")
+        self._RegisterCodeValue = params.get("RegisterCodeValue")
+        self._RequestId = params.get("RequestId")
+
+
+class DefaultParameterConf(AbstractModel):
+    r"""Custom parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParameterName: Parameter name.
+        :type ParameterName: str
+        :param _ParameterValue: Default parameter value.
+        :type ParameterValue: str
+        :param _ParameterDescription: Parameter description.
+        :type ParameterDescription: str
+        """
+        self._ParameterName = None
+        self._ParameterValue = None
+        self._ParameterDescription = None
+
+    @property
+    def ParameterName(self):
+        r"""Parameter name.
+        :rtype: str
+        """
+        return self._ParameterName
+
+    @ParameterName.setter
+    def ParameterName(self, ParameterName):
+        self._ParameterName = ParameterName
+
+    @property
+    def ParameterValue(self):
+        r"""Default parameter value.
+        :rtype: str
+        """
+        return self._ParameterValue
+
+    @ParameterValue.setter
+    def ParameterValue(self, ParameterValue):
+        self._ParameterValue = ParameterValue
+
+    @property
+    def ParameterDescription(self):
+        r"""Parameter description.
+        :rtype: str
+        """
+        return self._ParameterDescription
+
+    @ParameterDescription.setter
+    def ParameterDescription(self, ParameterDescription):
+        self._ParameterDescription = ParameterDescription
+
+
+    def _deserialize(self, params):
+        self._ParameterName = params.get("ParameterName")
+        self._ParameterValue = params.get("ParameterValue")
+        self._ParameterDescription = params.get("ParameterDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteCommandRequest(AbstractModel):
     r"""DeleteCommand request structure.
 
@@ -1074,14 +1429,14 @@ class DeleteCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: ID of the command to be deleted.
+        :param _CommandId: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
         """
         self._CommandId = None
 
     @property
     def CommandId(self):
-        r"""ID of the command to be deleted.
+        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -1131,6 +1486,70 @@ class DeleteCommandResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCommandsRequest(AbstractModel):
+    r"""DeleteCommands request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommandIds: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        :type CommandIds: list of str
+        """
+        self._CommandIds = None
+
+    @property
+    def CommandIds(self):
+        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        :rtype: list of str
+        """
+        return self._CommandIds
+
+    @CommandIds.setter
+    def CommandIds(self, CommandIds):
+        self._CommandIds = CommandIds
+
+
+    def _deserialize(self, params):
+        self._CommandIds = params.get("CommandIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCommandsResponse(AbstractModel):
+    r"""DeleteCommands response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInvokerRequest(AbstractModel):
     r"""DeleteInvoker request structure.
 
@@ -1138,14 +1557,18 @@ class DeleteInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerId: ID of the invoker to be deleted.
+        :param _InvokerId: Pending deletion executor ID.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
 
     @property
     def InvokerId(self):
-        r"""ID of the invoker to be deleted.
+        r"""Pending deletion executor ID.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -1195,6 +1618,142 @@ class DeleteInvokerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRegisterCodesRequest(AbstractModel):
+    r"""DeleteRegisterCodes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeIds: Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.
+
+Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+        :type RegisterCodeIds: list of str
+        """
+        self._RegisterCodeIds = None
+
+    @property
+    def RegisterCodeIds(self):
+        r"""Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.
+
+Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+        :rtype: list of str
+        """
+        return self._RegisterCodeIds
+
+    @RegisterCodeIds.setter
+    def RegisterCodeIds(self, RegisterCodeIds):
+        self._RegisterCodeIds = RegisterCodeIds
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeIds = params.get("RegisterCodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRegisterCodesResponse(AbstractModel):
+    r"""DeleteRegisterCodes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRegisterInstanceRequest(AbstractModel):
+    r"""DeleteRegisterInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Managed instance ID.
+
+Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Managed instance ID.
+
+Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRegisterInstanceResponse(AbstractModel):
+    r"""DeleteRegisterInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAutomationAgentStatusRequest(AbstractModel):
     r"""DescribeAutomationAgentStatus request structure.
 
@@ -1202,9 +1761,19 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of instance IDs for the query.
+        :param _InstanceIds: List of instance ids to be queried.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
         :type InstanceIds: list of str
-        :param _Filters: Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.
+        :param _Filters: -agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. 
+-environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
+-instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -1218,7 +1787,13 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instance IDs for the query.
+        r"""List of instance ids to be queried.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1229,7 +1804,11 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.
+        r"""-agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. 
+-environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
+-instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -1353,16 +1932,18 @@ class DescribeCommandsRequest(AbstractModel):
         r"""
         :param _CommandIds: List of command IDs. Up to 100 IDs are allowed for each request. `CommandIds` and `Filters` cannot be specified at the same time.
         :type CommandIds: list of str
-        :param _Filters: Filter conditions.
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
-<li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.
-<li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.
-<li> `created-by` - String - Required: No - (Filter condition) Filter by the creator. Valid values: `TAT` (public commands) or `USER` (custom commands).
-<li> `tag-key` - String - Required: No - (Filter condition) Filter by the tag key.</li>
-<li> `tag-value` - String - Required: No - (Filter condition) Filter by the tag value.</li>
-<li> `tag:tag-key` - String - Required: No - (Filter) Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 4.</li>
+        :param _Filters: Filter criteria
 
-Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.
+- command-id - String - required: no - (filter condition) filter by the command id.
+- command-name - String - required: no - (filter condition) filter by the command name.
+-command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.
+-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.
+-created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.
+- tag-key - String - required: no - (filter condition) filter by the tag key.
+- tag-value - String - required: no - (filter condition) filter by the tag value.
+- tag:tag-key - String - required: no - (filter condition) filter by the tag-key - value pair. replace tag-key with a specific tag key. for usage, see example 4.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `CommandIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -1387,16 +1968,18 @@ Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Fil
 
     @property
     def Filters(self):
-        r"""Filter conditions.
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
-<li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.
-<li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.
-<li> `created-by` - String - Required: No - (Filter condition) Filter by the creator. Valid values: `TAT` (public commands) or `USER` (custom commands).
-<li> `tag-key` - String - Required: No - (Filter condition) Filter by the tag key.</li>
-<li> `tag-value` - String - Required: No - (Filter condition) Filter by the tag value.</li>
-<li> `tag:tag-key` - String - Required: No - (Filter) Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 4.</li>
+        r"""Filter criteria
 
-Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.
+- command-id - String - required: no - (filter condition) filter by the command id.
+- command-name - String - required: no - (filter condition) filter by the command name.
+-command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.
+-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.
+-created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.
+- tag-key - String - required: no - (filter condition) filter by the tag key.
+- tag-value - String - required: no - (filter condition) filter by the tag value.
+- tag:tag-key - String - required: no - (filter condition) filter by the tag-key - value pair. replace tag-key with a specific tag key. for usage, see example 4.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `CommandIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -1520,13 +2103,25 @@ class DescribeInvocationTasksRequest(AbstractModel):
         r"""
         :param _InvocationTaskIds: List of execution task IDs. Up to 100 IDs are allowed for each request. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
         :type InvocationTaskIds: list of str
-        :param _Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        :param _Filters: Filter conditions.<br>.
+
+-invocation-task-id - String - required: no - (filter condition) filter by executing task id.
+- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.
+-instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.
+-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param _HideOutput: Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>
+        :param _HideOutput: Whether to hide the command output result. valid values:.
+
+-true: hide output.
+- false: do not hide.
+ 
+The default value is true.
         :type HideOutput: bool
         """
         self._InvocationTaskIds = None
@@ -1548,7 +2143,14 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        r"""Filter conditions.<br>.
+
+-invocation-task-id - String - required: no - (filter condition) filter by executing task id.
+- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.
+-instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.
+-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -1581,7 +2183,12 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def HideOutput(self):
-        r"""Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>
+        r"""Whether to hide the command output result. valid values:.
+
+-true: hide output.
+- false: do not hide.
+ 
+The default value is true.
         :rtype: bool
         """
         return self._HideOutput
@@ -1684,11 +2291,13 @@ class DescribeInvocationsRequest(AbstractModel):
         r"""
         :param _InvocationIds: List of execution activity IDs. Up to 100 IDs are allowed for each request. `InvocationIds` and `Filters` cannot be specified at the same time.
         :type InvocationIds: list of str
-        :param _Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> 
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. 
-<li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).
-<li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. 
-<br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.
+        :param _Filters: Filter conditions.<br>.
+
+<li> invocation-id - String - required: no - (filter condition) filter by execution activity id.</li>.
+<li>command-id - String - required: no - (filter condition) filter by command id.</li>. 
+<li> command-created-by - String - required: no - (filter criteria) filter by executed command type. valid values: TAT or USER. TAT represents public command, USER represents USER created command.</li>.
+<li> instance-kind - String - required: no - (filtering conditions) filter by running instance type. valid values: CVM or LIGHTHOUSE. CVM represents cloud virtual machine, LIGHTHOUSE represents tencent cloud LIGHTHOUSE.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -1713,11 +2322,13 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> 
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. 
-<li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).
-<li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. 
-<br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.
+        r"""Filter conditions.<br>.
+
+<li> invocation-id - String - required: no - (filter condition) filter by execution activity id.</li>.
+<li>command-id - String - required: no - (filter condition) filter by command id.</li>. 
+<li> command-created-by - String - required: no - (filter criteria) filter by executed command type. valid values: TAT or USER. TAT represents public command, USER represents USER created command.</li>.
+<li> instance-kind - String - required: no - (filtering conditions) filter by running instance type. valid values: CVM or LIGHTHOUSE. CVM represents cloud virtual machine, LIGHTHOUSE represents tencent cloud LIGHTHOUSE.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -1839,7 +2450,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerIds: List of invoker IDs. Up to 100 IDs are allowed.
+        :param _InvokerIds: Executor ID list. the list has a cap of 100.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerIds: list of str
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -1852,7 +2465,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
-        r"""List of invoker IDs. Up to 100 IDs are allowed.
+        r"""Executor ID list. the list has a cap of 100.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: list of str
         """
         return self._InvokerIds
@@ -1968,13 +2583,20 @@ class DescribeInvokersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerIds: List of invoker IDs.
-        :type InvokerIds: list of str
-        :param _Filters: Filter conditions:
+        :param _InvokerIds: Executor ID list.
 
-<li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
-<li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InvokerIds` and `Filters`.
+
+        :type InvokerIds: list of str
+        :param _Filters: Filter criteria:.
+
+- invoker-id - String - required: no - (filter condition) filter by executor id.
+-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+- invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -1988,7 +2610,12 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
-        r"""List of invoker IDs.
+        r"""Executor ID list.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InvokerIds` and `Filters`.
+
         :rtype: list of str
         """
         return self._InvokerIds
@@ -1999,11 +2626,13 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions:
+        r"""Filter criteria:.
 
-<li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.
-<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
-<li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.
+- invoker-id - String - required: no - (filter condition) filter by executor id.
+-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+- invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2118,6 +2747,100 @@ class DescribeInvokersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeQuotasRequest(AbstractModel):
+    r"""DescribeQuotas request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceNames: Resource name
+
+Value is:.
+
+- COMMAND: COMMAND.
+-REGISTER_CODE: managed instance registration code.
+        :type ResourceNames: list of str
+        """
+        self._ResourceNames = None
+
+    @property
+    def ResourceNames(self):
+        r"""Resource name
+
+Value is:.
+
+- COMMAND: COMMAND.
+-REGISTER_CODE: managed instance registration code.
+        :rtype: list of str
+        """
+        return self._ResourceNames
+
+    @ResourceNames.setter
+    def ResourceNames(self, ResourceNames):
+        self._ResourceNames = ResourceNames
+
+
+    def _deserialize(self, params):
+        self._ResourceNames = params.get("ResourceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuotasResponse(AbstractModel):
+    r"""DescribeQuotas response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GeneralResourceQuotaSet: Resource quota list.
+        :type GeneralResourceQuotaSet: list of GeneralResourceQuotaSet
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GeneralResourceQuotaSet = None
+        self._RequestId = None
+
+    @property
+    def GeneralResourceQuotaSet(self):
+        r"""Resource quota list.
+        :rtype: list of GeneralResourceQuotaSet
+        """
+        return self._GeneralResourceQuotaSet
+
+    @GeneralResourceQuotaSet.setter
+    def GeneralResourceQuotaSet(self, GeneralResourceQuotaSet):
+        self._GeneralResourceQuotaSet = GeneralResourceQuotaSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GeneralResourceQuotaSet") is not None:
+            self._GeneralResourceQuotaSet = []
+            for item in params.get("GeneralResourceQuotaSet"):
+                obj = GeneralResourceQuotaSet()
+                obj._deserialize(item)
+                self._GeneralResourceQuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     r"""DescribeRegions request structure.
 
@@ -2187,6 +2910,591 @@ class DescribeRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRegisterCodesRequest(AbstractModel):
+    r"""DescribeRegisterCodes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeIds: Registration code ID.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `RegisterCodeIds` and `Filters`.
+        :type RegisterCodeIds: list of str
+        :param _Offset: Offset. default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned results, defaults to 20, maximum value is 100.
+        :type Limit: int
+        """
+        self._RegisterCodeIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RegisterCodeIds(self):
+        r"""Registration code ID.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `RegisterCodeIds` and `Filters`.
+        :rtype: list of str
+        """
+        return self._RegisterCodeIds
+
+    @RegisterCodeIds.setter
+    def RegisterCodeIds(self, RegisterCodeIds):
+        self._RegisterCodeIds = RegisterCodeIds
+
+    @property
+    def Offset(self):
+        r"""Offset. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned results, defaults to 20, maximum value is 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeIds = params.get("RegisterCodeIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRegisterCodesResponse(AbstractModel):
+    r"""DescribeRegisterCodes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of queried registration codes.
+        :type TotalCount: int
+        :param _RegisterCodeSet: Registration code information list.
+        :type RegisterCodeSet: list of RegisterCodeInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RegisterCodeSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of queried registration codes.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegisterCodeSet(self):
+        r"""Registration code information list.
+        :rtype: list of RegisterCodeInfo
+        """
+        return self._RegisterCodeSet
+
+    @RegisterCodeSet.setter
+    def RegisterCodeSet(self, RegisterCodeSet):
+        self._RegisterCodeSet = RegisterCodeSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RegisterCodeSet") is not None:
+            self._RegisterCodeSet = []
+            for item in params.get("RegisterCodeSet"):
+                obj = RegisterCodeInfo()
+                obj._deserialize(item)
+                self._RegisterCodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegisterInstancesRequest(AbstractModel):
+    r"""DescribeRegisterInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: Managed instance id.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
+
+        :type InstanceIds: list of str
+        :param _Filters: Filter list. the maximum number of `Filters` is 10 per request, and the maximum number of `Filter.Values` is 5. parameters must not be specified simultaneously for `InstanceIds` and `Filters`.
+
+
+- instance-name
+
+Filter by [managed instance name].
+Type: String.
+Required: No
+
+- instance-id
+
+Filter by [managed instance ID].
+Type: String.
+Required: No
+
+- register-status
+
+Filter by [managed instance status]. valid values: Online | Offline.
+Type: String.
+Required: No
+
+- local-ip
+
+Filter by [managed instance nic IP].
+Type: String.
+Required: No
+
+- register-code-id
+
+Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Type: String.
+Required: No
+
+- sys-name
+
+Filter by [operating system type]. valid values: Linux | Windows.
+Type: String.
+Required: No
+
+- tag-key
+
+Filter by [tag key].
+Type: String.
+Required: No
+
+- tag-value
+
+Filter by [tag value].
+Type: String.
+Required: No
+
+- tag:tag-key
+
+Filter by [tag key-value pair]. replace tag-key with a specific Tag key.
+Type: String.
+Required: No
+
+For example, the Filter is {"Name": "tag:key1", "Values": ["v1", "v2"] }, which queries all resources belonging to tag key1:v1 or key1:v2.
+
+
+        :type Filters: list of Filter
+        :param _Offset: Offset. default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned results, defaults to 20, maximum value is 100.
+        :type Limit: int
+        """
+        self._InstanceIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceIds(self):
+        r"""Managed instance id.
+
+The maximum per request is 100.
+
+Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
+
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Filters(self):
+        r"""Filter list. the maximum number of `Filters` is 10 per request, and the maximum number of `Filter.Values` is 5. parameters must not be specified simultaneously for `InstanceIds` and `Filters`.
+
+
+- instance-name
+
+Filter by [managed instance name].
+Type: String.
+Required: No
+
+- instance-id
+
+Filter by [managed instance ID].
+Type: String.
+Required: No
+
+- register-status
+
+Filter by [managed instance status]. valid values: Online | Offline.
+Type: String.
+Required: No
+
+- local-ip
+
+Filter by [managed instance nic IP].
+Type: String.
+Required: No
+
+- register-code-id
+
+Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Type: String.
+Required: No
+
+- sys-name
+
+Filter by [operating system type]. valid values: Linux | Windows.
+Type: String.
+Required: No
+
+- tag-key
+
+Filter by [tag key].
+Type: String.
+Required: No
+
+- tag-value
+
+Filter by [tag value].
+Type: String.
+Required: No
+
+- tag:tag-key
+
+Filter by [tag key-value pair]. replace tag-key with a specific Tag key.
+Type: String.
+Required: No
+
+For example, the Filter is {"Name": "tag:key1", "Values": ["v1", "v2"] }, which queries all resources belonging to tag key1:v1 or key1:v2.
+
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""Offset. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned results, defaults to 20, maximum value is 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRegisterInstancesResponse(AbstractModel):
+    r"""DescribeRegisterInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of registration codes registered by the instance.
+        :type TotalCount: int
+        :param _RegisterInstanceSet: List of managed instance information.
+        :type RegisterInstanceSet: list of RegisterInstanceInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RegisterInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""The total number of registration codes registered by the instance.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegisterInstanceSet(self):
+        r"""List of managed instance information.
+        :rtype: list of RegisterInstanceInfo
+        """
+        return self._RegisterInstanceSet
+
+    @RegisterInstanceSet.setter
+    def RegisterInstanceSet(self, RegisterInstanceSet):
+        self._RegisterInstanceSet = RegisterInstanceSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RegisterInstanceSet") is not None:
+            self._RegisterInstanceSet = []
+            for item in params.get("RegisterInstanceSet"):
+                obj = RegisterInstanceInfo()
+                obj._deserialize(item)
+                self._RegisterInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScenesRequest(AbstractModel):
+    r"""DescribeScenes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneIds: Scene ID array.
+
+The maximum per request is 100.
+
+Parameters must not specify both `SceneIds` and `Filters` simultaneously.
+
+        :type SceneIds: list of str
+        :param _Filters: Filter criteria
+
+- scene-id - String - required: no - (filter condition) filter by the scene id.
+-scene-name - String - required: no - (filtering conditions) filter by scenario name.
+-created-by - String - required: no - (filter criteria) filter by scene creator, currently only support TAT, representing public scenarios.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `SceneIds` and `Filters` parameters cannot be specified at the same time.
+        :type Filters: list of Filter
+        :param _Limit: Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        """
+        self._SceneIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SceneIds(self):
+        r"""Scene ID array.
+
+The maximum per request is 100.
+
+Parameters must not specify both `SceneIds` and `Filters` simultaneously.
+
+        :rtype: list of str
+        """
+        return self._SceneIds
+
+    @SceneIds.setter
+    def SceneIds(self, SceneIds):
+        self._SceneIds = SceneIds
+
+    @property
+    def Filters(self):
+        r"""Filter criteria
+
+- scene-id - String - required: no - (filter condition) filter by the scene id.
+-scene-name - String - required: no - (filtering conditions) filter by scenario name.
+-created-by - String - required: no - (filter criteria) filter by scene creator, currently only support TAT, representing public scenarios.
+
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `SceneIds` and `Filters` parameters cannot be specified at the same time.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SceneIds = params.get("SceneIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScenesResponse(AbstractModel):
+    r"""DescribeScenes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible scenarios.
+        :type TotalCount: int
+        :param _SceneSet: List of scenario details.
+        :type SceneSet: list of Scene
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SceneSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible scenarios.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SceneSet(self):
+        r"""List of scenario details.
+        :rtype: list of Scene
+        """
+        return self._SceneSet
+
+    @SceneSet.setter
+    def SceneSet(self, SceneSet):
+        self._SceneSet = SceneSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SceneSet") is not None:
+            self._SceneSet = []
+            for item in params.get("SceneSet"):
+                obj = Scene()
+                obj._deserialize(item)
+                self._SceneSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DisableInvokerRequest(AbstractModel):
     r"""DisableInvoker request structure.
 
@@ -2194,14 +3502,18 @@ class DisableInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerId: ID of the invoker to be disabled.
+        :param _InvokerId: ID of the executor to terminate.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
 
     @property
     def InvokerId(self):
-        r"""ID of the invoker to be disabled.
+        r"""ID of the executor to terminate.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -2251,6 +3563,74 @@ class DisableInvokerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableRegisterCodesRequest(AbstractModel):
+    r"""DisableRegisterCodes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeIds: Registration code ID.
+
+Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+        :type RegisterCodeIds: list of str
+        """
+        self._RegisterCodeIds = None
+
+    @property
+    def RegisterCodeIds(self):
+        r"""Registration code ID.
+
+Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+        :rtype: list of str
+        """
+        return self._RegisterCodeIds
+
+    @RegisterCodeIds.setter
+    def RegisterCodeIds(self, RegisterCodeIds):
+        self._RegisterCodeIds = RegisterCodeIds
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeIds = params.get("RegisterCodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableRegisterCodesResponse(AbstractModel):
+    r"""DisableRegisterCodes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EnableInvokerRequest(AbstractModel):
     r"""EnableInvoker request structure.
 
@@ -2258,14 +3638,18 @@ class EnableInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerId: ID of the invoker to be enabled.
+        :param _InvokerId: Executor ID to be enabled.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
 
     @property
     def InvokerId(self):
-        r"""ID of the invoker to be enabled.
+        r"""Executor ID to be enabled.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -2316,17 +3700,18 @@ class EnableInvokerResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""> Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.
-    > * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.
-    > * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` is the logical `OR`.
+    r"""Describes the key-value pair filter, which is used for conditional filtering queries. for example, filter by ID, name, and status.
+    - if there are multiple `Filter`s, the logical relationship between them is `AND`.
+    - if there are multiple Values in the same Filter, the relationship between Values under the same Filter is logical OR.
     >
-    > Take the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API as an example. You can use the following filters to query the instances whose availability zone (`zone`) is Guangzhou 1 ***and*** billing method (`instance-charge-type`) is prepaid ***or*** pay-as-you-go:
+    Take the `Filters` of the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` "print working directory" and the `command-type` "POWERSHELL" or "BAT", it can be implemented as follows:.
     ```
-    Filters.0.Name=zone
-    &Filters.0.Values.0=ap-guangzhou-1
-    &Filters.1.Name=instance-charge-type
-    &Filters.1.Values.0=PREPAID
-    &Filters.1.Values.1=POSTPAID_BY_HOUR
+    Filters.0.Name=command-name
+    &Filters.0.Values.0=Print working directory.
+
+    &Filters.1.Name=command-type
+    &Filters.1.Values.0=POWERSHELL
+    &Filters.1.Values.1=BAT
     ```
 
     """
@@ -2377,6 +3762,82 @@ class Filter(AbstractModel):
         
 
 
+class GeneralResourceQuotaSet(AbstractModel):
+    r"""User quota information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceName: Resource name
+
+Value is:.
+
+- COMMAND: COMMAND.
+-REGISTER_CODE: managed instance registration code.
+        :type ResourceName: str
+        :param _ResourceQuotaUsed: Used credit limit.
+        :type ResourceQuotaUsed: int
+        :param _ResourceQuotaTotal: Total quota.
+        :type ResourceQuotaTotal: int
+        """
+        self._ResourceName = None
+        self._ResourceQuotaUsed = None
+        self._ResourceQuotaTotal = None
+
+    @property
+    def ResourceName(self):
+        r"""Resource name
+
+Value is:.
+
+- COMMAND: COMMAND.
+-REGISTER_CODE: managed instance registration code.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceQuotaUsed(self):
+        r"""Used credit limit.
+        :rtype: int
+        """
+        return self._ResourceQuotaUsed
+
+    @ResourceQuotaUsed.setter
+    def ResourceQuotaUsed(self, ResourceQuotaUsed):
+        self._ResourceQuotaUsed = ResourceQuotaUsed
+
+    @property
+    def ResourceQuotaTotal(self):
+        r"""Total quota.
+        :rtype: int
+        """
+        return self._ResourceQuotaTotal
+
+    @ResourceQuotaTotal.setter
+    def ResourceQuotaTotal(self, ResourceQuotaTotal):
+        self._ResourceQuotaTotal = ResourceQuotaTotal
+
+
+    def _deserialize(self, params):
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceQuotaUsed = params.get("ResourceQuotaUsed")
+        self._ResourceQuotaTotal = params.get("ResourceQuotaTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Invocation(AbstractModel):
     r"""Execution activity details.
 
@@ -2388,25 +3849,32 @@ class Invocation(AbstractModel):
         :type InvocationId: str
         :param _CommandId: Command ID.
         :type CommandId: str
-        :param _InvocationStatus: Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed
-<li> TIMEOUT: Command timed out
-<li> PARTIAL_FAILED: Partial failure
+        :param _CommandName: Name of the executed command.
+        :type CommandName: str
+        :param _InvocationStatus: Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+- RUNNING: command RUNNING.
+-Canceling.
+-SUCCESS: command success.
+-TIMEOUT: command timeout.
+- FAILED: command FAILED.
+-CANCELLED: all commands canceled.
+-PARTIAL_FAILED: the command partially failed.
+-PARTIAL_CANCELLED: the command is partially canceled.
         :type InvocationStatus: str
         :param _InvocationTaskBasicInfoSet: Execution task information list.
         :type InvocationTaskBasicInfoSet: list of InvocationTaskBasicInfo
         :param _Description: Execution activity description.
         :type Description: str
-        :param _StartTime: Start time of the execution activity.
+        :param _StartTime: Execute the activity start time. the format is YYYY-MM-DDThh:MM:ssZ.
         :type StartTime: str
-        :param _EndTime: End time of the execution activity.
+        :param _EndTime: Execute activity end time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
-        :param _CreatedTime: Time when the execution activity is created.
+        :param _CreatedTime: Execution activity createtime. format: YYYY-MM-DDThh:MM:ssZ.
         :type CreatedTime: str
-        :param _UpdatedTime: Time when the execution activity is updated.
+        :param _UpdatedTime: Update time of the execution activity. the format is YYYY-MM-DDThh:MM:ssZ.
         :type UpdatedTime: str
         :param _Parameters: Values of custom parameters.
         :type Parameters: str
@@ -2417,6 +3885,9 @@ class Invocation(AbstractModel):
         :param _Username: The user who executes the command on the instance.
         :type Username: str
         :param _InvocationSource: Invocation source.
+
+-USER: originate from user invocation.
+-INVOKER: originate from scheduled execution.
         :type InvocationSource: str
         :param _CommandContent: Base64-encoded command
         :type CommandContent: str
@@ -2433,6 +3904,7 @@ class Invocation(AbstractModel):
         """
         self._InvocationId = None
         self._CommandId = None
+        self._CommandName = None
         self._InvocationStatus = None
         self._InvocationTaskBasicInfoSet = None
         self._Description = None
@@ -2475,14 +3947,29 @@ class Invocation(AbstractModel):
         self._CommandId = CommandId
 
     @property
+    def CommandName(self):
+        r"""Name of the executed command.
+        :rtype: str
+        """
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
+    @property
     def InvocationStatus(self):
-        r"""Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed
-<li> TIMEOUT: Command timed out
-<li> PARTIAL_FAILED: Partial failure
+        r"""Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+- RUNNING: command RUNNING.
+-Canceling.
+-SUCCESS: command success.
+-TIMEOUT: command timeout.
+- FAILED: command FAILED.
+-CANCELLED: all commands canceled.
+-PARTIAL_FAILED: the command partially failed.
+-PARTIAL_CANCELLED: the command is partially canceled.
         :rtype: str
         """
         return self._InvocationStatus
@@ -2515,7 +4002,7 @@ class Invocation(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time of the execution activity.
+        r"""Execute the activity start time. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._StartTime
@@ -2526,7 +4013,8 @@ class Invocation(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time of the execution activity.
+        r"""Execute activity end time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndTime
@@ -2537,7 +4025,7 @@ class Invocation(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""Time when the execution activity is created.
+        r"""Execution activity createtime. format: YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._CreatedTime
@@ -2548,7 +4036,7 @@ class Invocation(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""Time when the execution activity is updated.
+        r"""Update time of the execution activity. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._UpdatedTime
@@ -2604,6 +4092,9 @@ class Invocation(AbstractModel):
     @property
     def InvocationSource(self):
         r"""Invocation source.
+
+-USER: originate from user invocation.
+-INVOKER: originate from scheduled execution.
         :rtype: str
         """
         return self._InvocationSource
@@ -2682,6 +4173,7 @@ class Invocation(AbstractModel):
     def _deserialize(self, params):
         self._InvocationId = params.get("InvocationId")
         self._CommandId = params.get("CommandId")
+        self._CommandName = params.get("CommandName")
         self._InvocationStatus = params.get("InvocationStatus")
         if params.get("InvocationTaskBasicInfoSet") is not None:
             self._InvocationTaskBasicInfoSet = []
@@ -2728,39 +4220,47 @@ class InvocationTask(AbstractModel):
         :type InvocationTaskId: str
         :param _CommandId: Command ID.
         :type CommandId: str
-        :param _TaskStatus: Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> DELIVERING: Delivering
-<li> DELIVER_DELAYED: Delivery delayed 
-<li> DELIVER_FAILED: Delivery failed
-<li> START_FAILED: Failed to start the command
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
-<li> TIMEOUT: Command timed out
-<li> TASK_TIMEOUT: Task timed out
-<li> CANCELLING: Canceling
-<li> CANCELLED: Canceled (canceled before execution)
-<li> TERMINATED: Terminated (canceled during execution)
+        :param _TaskStatus: Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+-DELIVERING: distributing.
+-DELIVER_DELAYED: delivery delay.
+-DELIVER_FAILED: delivery fail.
+-START_FAILED: command start failed.
+- RUNNING: command RUNNING.
+-SUCCESS: command success.
+-FAILED: command execution failed, exit code not 0.
+-TIMEOUT: command timeout.
+-TASK_TIMEOUT: client no response.
+-Canceling.
+- CANCELLED: canceled (command canceled before startup).
+-TERMINATED: suspended (canceled during command execution).
         :type TaskStatus: str
         :param _InstanceId: Instance ID.
         :type InstanceId: str
         :param _TaskResult: Execution result.
         :type TaskResult: :class:`tencentcloud.tat.v20201028.models.TaskResult`
-        :param _StartTime: Start time of the execution task.
+        :param _StartTime: Task start time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param _EndTime: End time of the execution task.
+        :param _EndTime: Task end time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
-        :param _CreatedTime: Creation time.
+        :param _CreatedTime: Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
         :type CreatedTime: str
-        :param _UpdatedTime: Update time.
+        :param _UpdatedTime: Update time. the format is YYYY-MM-DDThh:MM:ssZ.
         :type UpdatedTime: str
         :param _CommandDocument: Command details of the execution task.
         :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
         :param _ErrorInfo: Error message displayed when the execution task fails.
         :type ErrorInfo: str
         :param _InvocationSource: Invocation source.
+
+-USER: originate from user invocation.
+-INVOKER: originate from scheduled execution.
         :type InvocationSource: str
+        :param _CommandName: Name of the executed command.
+        :type CommandName: str
         """
         self._InvocationId = None
         self._InvocationTaskId = None
@@ -2775,6 +4275,7 @@ class InvocationTask(AbstractModel):
         self._CommandDocument = None
         self._ErrorInfo = None
         self._InvocationSource = None
+        self._CommandName = None
 
     @property
     def InvocationId(self):
@@ -2811,20 +4312,21 @@ class InvocationTask(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> DELIVERING: Delivering
-<li> DELIVER_DELAYED: Delivery delayed 
-<li> DELIVER_FAILED: Delivery failed
-<li> START_FAILED: Failed to start the command
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
-<li> TIMEOUT: Command timed out
-<li> TASK_TIMEOUT: Task timed out
-<li> CANCELLING: Canceling
-<li> CANCELLED: Canceled (canceled before execution)
-<li> TERMINATED: Terminated (canceled during execution)
+        r"""Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+-DELIVERING: distributing.
+-DELIVER_DELAYED: delivery delay.
+-DELIVER_FAILED: delivery fail.
+-START_FAILED: command start failed.
+- RUNNING: command RUNNING.
+-SUCCESS: command success.
+-FAILED: command execution failed, exit code not 0.
+-TIMEOUT: command timeout.
+-TASK_TIMEOUT: client no response.
+-Canceling.
+- CANCELLED: canceled (command canceled before startup).
+-TERMINATED: suspended (canceled during command execution).
         :rtype: str
         """
         return self._TaskStatus
@@ -2857,7 +4359,8 @@ class InvocationTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time of the execution task.
+        r"""Task start time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._StartTime
@@ -2868,7 +4371,8 @@ class InvocationTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time of the execution task.
+        r"""Task end time. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndTime
@@ -2879,7 +4383,7 @@ class InvocationTask(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""Creation time.
+        r"""Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._CreatedTime
@@ -2890,7 +4394,7 @@ class InvocationTask(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""Update time.
+        r"""Update time. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._UpdatedTime
@@ -2924,6 +4428,9 @@ class InvocationTask(AbstractModel):
     @property
     def InvocationSource(self):
         r"""Invocation source.
+
+-USER: originate from user invocation.
+-INVOKER: originate from scheduled execution.
         :rtype: str
         """
         return self._InvocationSource
@@ -2931,6 +4438,17 @@ class InvocationTask(AbstractModel):
     @InvocationSource.setter
     def InvocationSource(self, InvocationSource):
         self._InvocationSource = InvocationSource
+
+    @property
+    def CommandName(self):
+        r"""Name of the executed command.
+        :rtype: str
+        """
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
 
 
     def _deserialize(self, params):
@@ -2951,6 +4469,7 @@ class InvocationTask(AbstractModel):
             self._CommandDocument._deserialize(params.get("CommandDocument"))
         self._ErrorInfo = params.get("ErrorInfo")
         self._InvocationSource = params.get("InvocationSource")
+        self._CommandName = params.get("CommandName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2970,20 +4489,21 @@ class InvocationTaskBasicInfo(AbstractModel):
         r"""
         :param _InvocationTaskId: Execution task ID.
         :type InvocationTaskId: str
-        :param _TaskStatus: Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> DELIVERING: Delivering
-<li> DELIVER_DELAYED: Delivery delayed 
-<li> DELIVER_FAILED: Delivery failed
-<li> START_FAILED: Failed to start the command
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
-<li> TIMEOUT: Command timed out
-<li> TASK_TIMEOUT: Task timed out
-<li> CANCELLING: Canceling
-<li> CANCELLED: Canceled (canceled before execution)
-<li> TERMINATED: Terminated (canceled during execution)
+        :param _TaskStatus: Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+-DELIVERING: distributing.
+-DELIVER_DELAYED: delivery delay.
+-DELIVER_FAILED: delivery fail.
+-START_FAILED: command start failed.
+- RUNNING: command RUNNING.
+-SUCCESS: command success.
+-FAILED: command execution failed, exit code not 0.
+-TIMEOUT: command timeout.
+-TASK_TIMEOUT: client no response.
+-Canceling.
+- CANCELLED: canceled (command canceled before startup).
+-TERMINATED: suspended (canceled during command execution).
         :type TaskStatus: str
         :param _InstanceId: Instance ID.
         :type InstanceId: str
@@ -3005,20 +4525,21 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""Execution task status. Valid values:
-<li> PENDING: Pending 
-<li> DELIVERING: Delivering
-<li> DELIVER_DELAYED: Delivery delayed 
-<li> DELIVER_FAILED: Delivery failed
-<li> START_FAILED: Failed to start the command
-<li> RUNNING: Running
-<li> SUCCESS: Success
-<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
-<li> TIMEOUT: Command timed out
-<li> TASK_TIMEOUT: Task timed out
-<li> CANCELLING: Canceling
-<li> CANCELLED: Canceled (canceled before execution)
-<li> TERMINATED: Terminated (canceled during execution)
+        r"""Execution task status. valid values:.
+
+-PENDING: waiting for distribution.
+-DELIVERING: distributing.
+-DELIVER_DELAYED: delivery delay.
+-DELIVER_FAILED: delivery fail.
+-START_FAILED: command start failed.
+- RUNNING: command RUNNING.
+-SUCCESS: command success.
+-FAILED: command execution failed, exit code not 0.
+-TIMEOUT: command timeout.
+-TASK_TIMEOUT: client no response.
+-Canceling.
+- CANCELLED: canceled (command canceled before startup).
+-TERMINATED: suspended (canceled during command execution).
         :rtype: str
         """
         return self._TaskStatus
@@ -3060,15 +4581,21 @@ class InvokeCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: ID of the command to be triggered.
+        :param _CommandId: Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
-        :param _InstanceIds: IDs of instances about to execute commands. At most 100 IDs are allowed.
+        :param _InstanceIds: Instance ID list for the command to be executed, with a cap of 200.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+-TAT register instance.
         :type InstanceIds: list of str
-        :param _Parameters: Custom parameters of the command. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided, the DefaultParameters of the command is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :param _Parameters: Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+If the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :type Parameters: str
         :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
 The principle of the least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. If this is not specified, the Username of the command is used by default.
@@ -3096,7 +4623,7 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def CommandId(self):
-        r"""ID of the command to be triggered.
+        r"""Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -3107,7 +4634,12 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def InstanceIds(self):
-        r"""IDs of instances about to execute commands. At most 100 IDs are allowed.
+        r"""Instance ID list for the command to be executed, with a cap of 200.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+-TAT register instance.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3118,11 +4650,12 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def Parameters(self):
-        r"""Custom parameters of the command. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided, the DefaultParameters of the command is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        r"""Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+If the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :rtype: str
         """
         return self._Parameters
@@ -3264,7 +4797,7 @@ class Invoker(AbstractModel):
         :type InvokerId: str
         :param _Name: Invoker name.
         :type Name: str
-        :param _Type: Invoker type.
+        :param _Type: Executor type. currently only support SCHEDULE.
         :type Type: str
         :param _CommandId: Command ID.
         :type CommandId: str
@@ -3276,12 +4809,11 @@ class Invoker(AbstractModel):
         :type InstanceIds: list of str
         :param _Enable: Whether to enable the invoker.
         :type Enable: bool
-        :param _ScheduleSettings: Execution schedule of the invoker. This field is returned for recurring invokers.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _ScheduleSettings: Executor periodic schedule. recurring invoker will return this field.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
-        :param _CreatedTime: Creation time.
+        :param _CreatedTime: Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
         :type CreatedTime: str
-        :param _UpdatedTime: Modification time.
+        :param _UpdatedTime: Last modified. the format is YYYY-MM-DDThh:MM:ssZ.
         :type UpdatedTime: str
         """
         self._InvokerId = None
@@ -3320,7 +4852,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
-        r"""Invoker type.
+        r"""Executor type. currently only support SCHEDULE.
         :rtype: str
         """
         return self._Type
@@ -3386,8 +4918,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScheduleSettings(self):
-        r"""Execution schedule of the invoker. This field is returned for recurring invokers.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Executor periodic schedule. recurring invoker will return this field.
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -3398,7 +4929,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
-        r"""Creation time.
+        r"""Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._CreatedTime
@@ -3409,7 +4940,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdatedTime(self):
-        r"""Modification time.
+        r"""Last modified. the format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._UpdatedTime
@@ -3452,13 +4983,23 @@ class InvokerRecord(AbstractModel):
         r"""
         :param _InvokerId: Invoker ID.
         :type InvokerId: str
-        :param _InvokeTime: Execution time.
+        :param _InvokeTime: Execution time. format: YYYY-MM-DDThh:MM:ssZ.
         :type InvokeTime: str
         :param _Reason: Execution reason.
         :type Reason: str
         :param _InvocationId: Command execution ID.
         :type InvocationId: str
         :param _Result: Trigger result.
+
+-PENDING: waiting for distribution.
+- RUNNING: command RUNNING.
+-Canceling.
+-SUCCESS: command success.
+-TIMEOUT: command timeout.
+- FAILED: command FAILED.
+-CANCELLED: all commands canceled.
+-PARTIAL_FAILED: the command partially failed.
+-PARTIAL_CANCELLED: the command is partially canceled.
         :type Result: str
         """
         self._InvokerId = None
@@ -3480,7 +5021,7 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvokeTime(self):
-        r"""Execution time.
+        r"""Execution time. format: YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._InvokeTime
@@ -3514,6 +5055,16 @@ class InvokerRecord(AbstractModel):
     @property
     def Result(self):
         r"""Trigger result.
+
+-PENDING: waiting for distribution.
+- RUNNING: command RUNNING.
+-Canceling.
+-SUCCESS: command success.
+-TIMEOUT: command timeout.
+- FAILED: command FAILED.
+-CANCELLED: all commands canceled.
+-PARTIAL_FAILED: the command partially failed.
+-PARTIAL_CANCELLED: the command is partially canceled.
         :rtype: str
         """
         return self._Result
@@ -3546,36 +5097,29 @@ class ModifyCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: Command ID.
+        :param _CommandId: <p>Command ID. call the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
         :type CommandId: str
-        :param _CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :param _CommandName: <p>Command name. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 60 bytes.</p>.
         :type CommandName: str
-        :param _Description: Command description. The maximum length is 120 characters.
+        :param _Description: <P>Command description. no more than 120 characters.</p>.
         :type Description: str
-        :param _Content: Base64-encoded command. The maximum length is 64 KB.
+        :param _Content: <p>The Base64-encoded command content, length cannot exceed 64KB.</p>.
         :type Content: str
-        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported.
+        :param _CommandType: <p>Command type. currently supports SHELL, POWERSHELL, BAT.</p>.
         :type CommandType: str
-        :param _WorkingDirectory: Command execution path.
+        :param _WorkingDirectory: <P>Command execution path.</p>.
         :type WorkingDirectory: str
-        :param _Timeout: Command timeout period. Value range: [1, 86400].
+        :param _Timeout: <p>Command timeout time.</p><p>value range: [1, 86400].</p><p>unit: seconds.</p><p>default value: 60.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.
         :type Timeout: int
-        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-All parameters are overwritten. All default values are required for modification.
-Modification is only allowed when `EnableParameter` is `true`.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :param _DefaultParameters: <p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
         :type DefaultParameters: str
-        :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
-The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.
+        :param _DefaultParameterConfs: <p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
+        :type DefaultParameterConfs: list of DefaultParameterConf
+        :param _Username: <p>The username to run commands in a CVM or Lighthouse instance.<br>using minimum permission to execute commands is the best practice for permission management. we recommend running cloud assistant commands as a regular user identity.</p>.
         :type Username: str
-        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :param _OutputCOSBucketUrl: <p>Specifies the cos bucket address for the uploaded log, which must start with https, such as https://BucketName-123454321.cos.ap-beijing.myqcloud.com.</p>.
         :type OutputCOSBucketUrl: str
-        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
-1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
-2. Use a slash (/) to create a subdirectory.
-3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
+        :param _OutputCOSKeyPrefix: <P>Specify the directory for logs in the cos bucket. the directory naming has the following rules:</p><ol><li>use a combination of numbers, chinese and english, and visible characters, with a maximum length of 60.</li><li>use / to split the path and quickly create subdirectories.</li><li>consecutive / are not allowed; cannot start with /; cannot use .. as the folder name.</li></ol>.
         :type OutputCOSKeyPrefix: str
         """
         self._CommandId = None
@@ -3586,13 +5130,14 @@ The principle of least privilege is the best practice for permission management.
         self._WorkingDirectory = None
         self._Timeout = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Username = None
         self._OutputCOSBucketUrl = None
         self._OutputCOSKeyPrefix = None
 
     @property
     def CommandId(self):
-        r"""Command ID.
+        r"""<p>Command ID. call the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
         :rtype: str
         """
         return self._CommandId
@@ -3603,7 +5148,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandName(self):
-        r"""Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        r"""<p>Command name. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 60 bytes.</p>.
         :rtype: str
         """
         return self._CommandName
@@ -3614,7 +5159,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Description(self):
-        r"""Command description. The maximum length is 120 characters.
+        r"""<P>Command description. no more than 120 characters.</p>.
         :rtype: str
         """
         return self._Description
@@ -3625,7 +5170,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Content(self):
-        r"""Base64-encoded command. The maximum length is 64 KB.
+        r"""<p>The Base64-encoded command content, length cannot exceed 64KB.</p>.
         :rtype: str
         """
         return self._Content
@@ -3636,7 +5181,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
-        r"""Command type. `SHELL` and `POWERSHELL` are supported.
+        r"""<p>Command type. currently supports SHELL, POWERSHELL, BAT.</p>.
         :rtype: str
         """
         return self._CommandType
@@ -3647,7 +5192,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def WorkingDirectory(self):
-        r"""Command execution path.
+        r"""<P>Command execution path.</p>.
         :rtype: str
         """
         return self._WorkingDirectory
@@ -3658,7 +5203,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Timeout(self):
-        r"""Command timeout period. Value range: [1, 86400].
+        r"""<p>Command timeout time.</p><p>value range: [1, 86400].</p><p>unit: seconds.</p><p>default value: 60.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.
         :rtype: int
         """
         return self._Timeout
@@ -3669,12 +5214,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def DefaultParameters(self):
-        r"""The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-All parameters are overwritten. All default values are required for modification.
-Modification is only allowed when `EnableParameter` is `true`.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        r"""<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
         :rtype: str
         """
         return self._DefaultParameters
@@ -3684,9 +5224,19 @@ The name of the custom parameter cannot exceed 64 characters and can contain [a-
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        r"""<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
+        :rtype: list of DefaultParameterConf
+        """
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
     def Username(self):
-        r"""The username used to execute the command on the CVM or Lighthouse instance.
-The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.
+        r"""<p>The username to run commands in a CVM or Lighthouse instance.<br>using minimum permission to execute commands is the best practice for permission management. we recommend running cloud assistant commands as a regular user identity.</p>.
         :rtype: str
         """
         return self._Username
@@ -3697,7 +5247,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSBucketUrl(self):
-        r"""The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        r"""<p>Specifies the cos bucket address for the uploaded log, which must start with https, such as https://BucketName-123454321.cos.ap-beijing.myqcloud.com.</p>.
         :rtype: str
         """
         return self._OutputCOSBucketUrl
@@ -3708,10 +5258,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSKeyPrefix(self):
-        r"""The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
-1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
-2. Use a slash (/) to create a subdirectory.
-3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
+        r"""<P>Specify the directory for logs in the cos bucket. the directory naming has the following rules:</p><ol><li>use a combination of numbers, chinese and english, and visible characters, with a maximum length of 60.</li><li>use / to split the path and quickly create subdirectories.</li><li>consecutive / are not allowed; cannot start with /; cannot use .. as the folder name.</li></ol>.
         :rtype: str
         """
         return self._OutputCOSKeyPrefix
@@ -3730,6 +5277,12 @@ The principle of least privilege is the best practice for permission management.
         self._WorkingDirectory = params.get("WorkingDirectory")
         self._Timeout = params.get("Timeout")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         self._Username = params.get("Username")
         self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
         self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
@@ -3778,21 +5331,37 @@ class ModifyInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerId: ID of the invoker to be modified.
+        :param _InvokerId: Executor ID to be modified.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
-        :param _Name: Name of the invoker to be modified.
+        :param _Name: Executor name to be modified. length not exceeding 120 characters.
         :type Name: str
-        :param _Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :param _Type: Executor type to be modified.
+
+Selectable values (currently only support one):.
+
+-`SCHEDULE`: period type executor.
         :type Type: str
-        :param _CommandId: ID of the command to be modified.
+        :param _CommandId: Command ID to be modified.
+
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
-        :param _Username: The username to be modified.
+        :param _Username: Username to be modified. length not exceeding 256 characters.
         :type Username: str
-        :param _Parameters: Custom parameters to be modified.
+        :param _Parameters: Custom parameters to be modified. field type is JSON encode string.
+
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
         :type Parameters: str
-        :param _InstanceIds: List of instance IDs to be modified. Up to 100 IDs are allowed.
+        :param _InstanceIds: List of instance ids to be modified. list length limit 100.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
         :type InstanceIds: list of str
-        :param _ScheduleSettings: Scheduled invoker settings to be modified.
+        :param _ScheduleSettings: Recurring invoker settings to be modified.
+
+Change the executor type to `SCHEDULE` and specify this parameter.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         self._InvokerId = None
@@ -3806,7 +5375,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
-        r"""ID of the invoker to be modified.
+        r"""Executor ID to be modified.
+
+Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -3817,7 +5388,7 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Name of the invoker to be modified.
+        r"""Executor name to be modified. length not exceeding 120 characters.
         :rtype: str
         """
         return self._Name
@@ -3828,7 +5399,11 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        r"""Executor type to be modified.
+
+Selectable values (currently only support one):.
+
+-`SCHEDULE`: period type executor.
         :rtype: str
         """
         return self._Type
@@ -3839,7 +5414,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def CommandId(self):
-        r"""ID of the command to be modified.
+        r"""Command ID to be modified.
+
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -3850,7 +5427,7 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""The username to be modified.
+        r"""Username to be modified. length not exceeding 256 characters.
         :rtype: str
         """
         return self._Username
@@ -3861,7 +5438,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""Custom parameters to be modified.
+        r"""Custom parameters to be modified. field type is JSON encode string.
+
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Parameters
@@ -3872,7 +5451,11 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instance IDs to be modified. Up to 100 IDs are allowed.
+        r"""List of instance ids to be modified. list length limit 100.
+
+You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
+
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3883,7 +5466,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
-        r"""Scheduled invoker settings to be modified.
+        r"""Recurring invoker settings to be modified.
+
+Change the executor type to `SCHEDULE` and specify this parameter.
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -3942,6 +5527,89 @@ class ModifyInvokerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRegisterInstanceRequest(AbstractModel):
+    r"""ModifyRegisterInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Managed instance ID.
+
+Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+        :type InstanceId: str
+        :param _InstanceName: Instance name. valid length is 1–60 characters.
+        :type InstanceName: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        r"""Managed instance ID.
+
+Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""Instance name. valid length is 1–60 characters.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRegisterInstanceResponse(AbstractModel):
+    r"""ModifyRegisterInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PreviewReplacedCommandContentRequest(AbstractModel):
     r"""PreviewReplacedCommandContent request structure.
 
@@ -3949,14 +5617,18 @@ class PreviewReplacedCommandContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Parameters: Custom parameters for the preview. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and "value" is its specified value. Both "key" and "value" are strings.
-At most 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].
-This parameter can be left empty if DefaultParameters is set for the previewed CommandId.
+        :param _Parameters: The preview uses custom parameters. field type is json encoded string, for example: {"varA": "222"}.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+If DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.
+
+key specifies the custom parameter name, and value specifies the parameter. both kv are string-type.
+Custom parameters are limited to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
+If the previewed CommandId has DefaultParameters set, this parameter can be empty.
         :type Parameters: str
-        :param _CommandId: The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.
-`CommandId` or `Content` must be specified.
+        :param _CommandId: Perform the replace preview command.
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+CommandId and Content, you must provide one and can only provide one.
         :type CommandId: str
         :param _Content: Base64-encoded command to be previewed. The maximum length is 64 KB.
 CommandId or Content must be specified.
@@ -3968,11 +5640,14 @@ CommandId or Content must be specified.
 
     @property
     def Parameters(self):
-        r"""Custom parameters for the preview. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and "value" is its specified value. Both "key" and "value" are strings.
-At most 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].
-This parameter can be left empty if DefaultParameters is set for the previewed CommandId.
+        r"""The preview uses custom parameters. field type is json encoded string, for example: {"varA": "222"}.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+If DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.
+
+key specifies the custom parameter name, and value specifies the parameter. both kv are string-type.
+Custom parameters are limited to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
+If the previewed CommandId has DefaultParameters set, this parameter can be empty.
         :rtype: str
         """
         return self._Parameters
@@ -3983,8 +5658,9 @@ This parameter can be left empty if DefaultParameters is set for the previewed C
 
     @property
     def CommandId(self):
-        r"""The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.
-`CommandId` or `Content` must be specified.
+        r"""Perform the replace preview command.
+Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+CommandId and Content, you must provide one and can only provide one.
         :rtype: str
         """
         return self._CommandId
@@ -4074,7 +5750,7 @@ class RegionInfo(AbstractModel):
         :type Region: str
         :param _RegionName: Region description, such as `Guangzhou`
         :type RegionName: str
-        :param _RegionState: Region status. `AVAILABLE` indicates the region is available.
+        :param _RegionState: Region availability status. AVAILABLE indicates the region is AVAILABLE. UNAVAILABLE indicates the region is UNAVAILABLE.
         :type RegionState: str
         """
         self._Region = None
@@ -4105,7 +5781,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
-        r"""Region status. `AVAILABLE` indicates the region is available.
+        r"""Region availability status. AVAILABLE indicates the region is AVAILABLE. UNAVAILABLE indicates the region is UNAVAILABLE.
         :rtype: str
         """
         return self._RegionState
@@ -4129,6 +5805,397 @@ class RegionInfo(AbstractModel):
         
 
 
+class RegisterCodeInfo(AbstractModel):
+    r"""Register code info.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeId: Registration code ID.
+        :type RegisterCodeId: str
+        :param _Description: Describes the registration code.
+        :type Description: str
+        :param _InstanceNamePrefix: Prefix of the registered instance name.
+        :type InstanceNamePrefix: str
+        :param _RegisterLimit: The number of instances the registration code allows.
+        :type RegisterLimit: int
+        :param _ExpiredTime: The expiry date of the registration code is in ISO8601 standard representation and uses UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpiredTime: str
+        :param _IpAddressRange: The registration code limits tat_agent to register only from the public outbound ip described by IpAddressRange.
+        :type IpAddressRange: str
+        :param _Enabled: Is the registration code available.
+        :type Enabled: bool
+        :param _RegisteredCount: The number of registered registration codes.
+        :type RegisteredCount: int
+        :param _CreatedTime: Registration code creation time, represented as ISO8601 standard and using UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        :param _UpdatedTime: Last update time of the registration code, as ISO8601 standard representation and using UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedTime: str
+        """
+        self._RegisterCodeId = None
+        self._Description = None
+        self._InstanceNamePrefix = None
+        self._RegisterLimit = None
+        self._ExpiredTime = None
+        self._IpAddressRange = None
+        self._Enabled = None
+        self._RegisteredCount = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+
+    @property
+    def RegisterCodeId(self):
+        r"""Registration code ID.
+        :rtype: str
+        """
+        return self._RegisterCodeId
+
+    @RegisterCodeId.setter
+    def RegisterCodeId(self, RegisterCodeId):
+        self._RegisterCodeId = RegisterCodeId
+
+    @property
+    def Description(self):
+        r"""Describes the registration code.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InstanceNamePrefix(self):
+        r"""Prefix of the registered instance name.
+        :rtype: str
+        """
+        return self._InstanceNamePrefix
+
+    @InstanceNamePrefix.setter
+    def InstanceNamePrefix(self, InstanceNamePrefix):
+        self._InstanceNamePrefix = InstanceNamePrefix
+
+    @property
+    def RegisterLimit(self):
+        r"""The number of instances the registration code allows.
+        :rtype: int
+        """
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def ExpiredTime(self):
+        r"""The expiry date of the registration code is in ISO8601 standard representation and uses UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def IpAddressRange(self):
+        r"""The registration code limits tat_agent to register only from the public outbound ip described by IpAddressRange.
+        :rtype: str
+        """
+        return self._IpAddressRange
+
+    @IpAddressRange.setter
+    def IpAddressRange(self, IpAddressRange):
+        self._IpAddressRange = IpAddressRange
+
+    @property
+    def Enabled(self):
+        r"""Is the registration code available.
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RegisteredCount(self):
+        r"""The number of registered registration codes.
+        :rtype: int
+        """
+        return self._RegisteredCount
+
+    @RegisteredCount.setter
+    def RegisteredCount(self, RegisteredCount):
+        self._RegisteredCount = RegisteredCount
+
+    @property
+    def CreatedTime(self):
+        r"""Registration code creation time, represented as ISO8601 standard and using UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""Last update time of the registration code, as ISO8601 standard representation and using UTC time. 
+The format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeId = params.get("RegisterCodeId")
+        self._Description = params.get("Description")
+        self._InstanceNamePrefix = params.get("InstanceNamePrefix")
+        self._RegisterLimit = params.get("RegisterLimit")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._IpAddressRange = params.get("IpAddressRange")
+        self._Enabled = params.get("Enabled")
+        self._RegisteredCount = params.get("RegisteredCount")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterInstanceInfo(AbstractModel):
+    r"""Register instance info.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterCodeId: Registration code ID.
+        :type RegisterCodeId: str
+        :param _InstanceId: Managed instance ID.
+        :type InstanceId: str
+        :param _InstanceName: Managed instance name.
+        :type InstanceName: str
+        :param _MachineId: Machine ID.
+        :type MachineId: str
+        :param _SystemName: System name. valid values: Linux | Windows.
+        :type SystemName: str
+        :param _HostName: Host name.
+        :type HostName: str
+        :param _LocalIp: Private network IP
+        :type LocalIp: str
+        :param _PublicKey: Public key.
+        :type PublicKey: str
+        :param _Status: Hosting status.
+Return Online means the instance is managed, return Offline means the instance is unhosted.
+        :type Status: str
+        :param _CreatedTime: Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :type CreatedTime: str
+        :param _UpdatedTime: Last update time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :type UpdatedTime: str
+        :param _Tags: Tag.
+        :type Tags: list of Tag
+        """
+        self._RegisterCodeId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._MachineId = None
+        self._SystemName = None
+        self._HostName = None
+        self._LocalIp = None
+        self._PublicKey = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._Tags = None
+
+    @property
+    def RegisterCodeId(self):
+        r"""Registration code ID.
+        :rtype: str
+        """
+        return self._RegisterCodeId
+
+    @RegisterCodeId.setter
+    def RegisterCodeId(self, RegisterCodeId):
+        self._RegisterCodeId = RegisterCodeId
+
+    @property
+    def InstanceId(self):
+        r"""Managed instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""Managed instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def MachineId(self):
+        r"""Machine ID.
+        :rtype: str
+        """
+        return self._MachineId
+
+    @MachineId.setter
+    def MachineId(self, MachineId):
+        self._MachineId = MachineId
+
+    @property
+    def SystemName(self):
+        r"""System name. valid values: Linux | Windows.
+        :rtype: str
+        """
+        return self._SystemName
+
+    @SystemName.setter
+    def SystemName(self, SystemName):
+        self._SystemName = SystemName
+
+    @property
+    def HostName(self):
+        r"""Host name.
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def LocalIp(self):
+        r"""Private network IP
+        :rtype: str
+        """
+        return self._LocalIp
+
+    @LocalIp.setter
+    def LocalIp(self, LocalIp):
+        self._LocalIp = LocalIp
+
+    @property
+    def PublicKey(self):
+        r"""Public key.
+        :rtype: str
+        """
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def Status(self):
+        r"""Hosting status.
+Return Online means the instance is managed, return Offline means the instance is unhosted.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""Last update time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._RegisterCodeId = params.get("RegisterCodeId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._MachineId = params.get("MachineId")
+        self._SystemName = params.get("SystemName")
+        self._HostName = params.get("HostName")
+        self._LocalIp = params.get("LocalIp")
+        self._PublicKey = params.get("PublicKey")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunCommandRequest(AbstractModel):
     r"""RunCommand request structure.
 
@@ -4138,40 +6205,54 @@ class RunCommandRequest(AbstractModel):
         r"""
         :param _Content: Base64-encoded command. The maximum length is 64 KB.
         :type Content: str
-        :param _InstanceIds: IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:
-<li> `CVM`
-<li> `LIGHTHOUSE`
+        :param _InstanceIds: Instance ID list for the command to be executed, with a cap of 200.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+-TAT register instance.
         :type InstanceIds: list of str
         :param _CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
         :type CommandName: str
         :param _Description: Command description. The maximum length is 120 characters.
         :type Description: str
-        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :param _CommandType: Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.
         :type CommandType: str
         :param _WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
         :type WorkingDirectory: str
         :param _Timeout: Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
         :type Timeout: int
-        :param _SaveCommand: Whether to save the command. Valid values:
-<li> `True`: Save
-<li> `False`: Do not save
-The default value is `False`.
+        :param _SaveCommand: Whether to save the command. value range:.
+<li>true: save</li>.
+<li>false: not saved.</li>.
+The default value is false.
         :type SaveCommand: bool
         :param _EnableParameter: Whether to enable the custom parameter feature.
-This cannot be modified once created.
-Default value: `false`.
+Once created, this value does not offer modification.
+Valid values:.
+<li>true: enable</li>.
+<li>false: disabled.</li>.
+The default value is false.
         :type EnableParameter: bool
-        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If Parameters is not provided, the default values specified here are used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :param _DefaultParameters: Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+If Parameters is not provided, the default value here will be used to replace.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :type DefaultParameters: str
-        :param _Parameters: Custom parameters of `Command`. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided, the `DefaultParameters` is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :param _DefaultParameterConfs: Custom parameter array. if Parameters is not provided, the default value here will be used to replace. up to 20 custom Parameters are allowed.
+If Parameters is not provided, the default value here will be used to replace.
+This parameter can be set only when the EnableParameter of the command is true.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+        :type DefaultParameterConfs: list of DefaultParameterConf
+        :param _Parameters: Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true.
+If the parameter value is not provided, DefaultParameters or DefaultParameterConfs will be used.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :type Parameters: str
         :param _Tags: The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.
         :type Tags: list of Tag
@@ -4196,6 +6277,7 @@ The principle of least privilege is the best practice for permission management.
         self._SaveCommand = None
         self._EnableParameter = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Parameters = None
         self._Tags = None
         self._Username = None
@@ -4215,9 +6297,12 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def InstanceIds(self):
-        r"""IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:
-<li> `CVM`
-<li> `LIGHTHOUSE`
+        r"""Instance ID list for the command to be executed, with a cap of 200.
+
+Instance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.
+- CVM
+- Lighthouse
+-TAT register instance.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -4250,7 +6335,7 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
-        r"""Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        r"""Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.
         :rtype: str
         """
         return self._CommandType
@@ -4283,10 +6368,10 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def SaveCommand(self):
-        r"""Whether to save the command. Valid values:
-<li> `True`: Save
-<li> `False`: Do not save
-The default value is `False`.
+        r"""Whether to save the command. value range:.
+<li>true: save</li>.
+<li>false: not saved.</li>.
+The default value is false.
         :rtype: bool
         """
         return self._SaveCommand
@@ -4298,8 +6383,11 @@ The default value is `False`.
     @property
     def EnableParameter(self):
         r"""Whether to enable the custom parameter feature.
-This cannot be modified once created.
-Default value: `false`.
+Once created, this value does not offer modification.
+Valid values:.
+<li>true: enable</li>.
+<li>false: disabled.</li>.
+The default value is false.
         :rtype: bool
         """
         return self._EnableParameter
@@ -4310,11 +6398,13 @@ Default value: `false`.
 
     @property
     def DefaultParameters(self):
-        r"""The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If Parameters is not provided, the default values specified here are used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        r"""Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+If Parameters is not provided, the default value here will be used to replace.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :rtype: str
         """
         return self._DefaultParameters
@@ -4324,12 +6414,27 @@ The name of the custom parameter cannot exceed 64 characters and can contain [a-
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        r"""Custom parameter array. if Parameters is not provided, the default value here will be used to replace. up to 20 custom Parameters are allowed.
+If Parameters is not provided, the default value here will be used to replace.
+This parameter can be set only when the EnableParameter of the command is true.
+Parameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.
+        :rtype: list of DefaultParameterConf
+        """
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
     def Parameters(self):
-        r"""Custom parameters of `Command`. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If no parameter value is provided, the `DefaultParameters` is used.
-Up to 20 custom parameters are supported.
-The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        r"""Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
+The key is the custom parameter name, and the value is the default. both kv are string-type.
+This parameter can be set only when the EnableParameter of the command is true.
+If the parameter value is not provided, DefaultParameters or DefaultParameterConfs will be used.
+Custom parameters can be up to 20.
+The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
         :rtype: str
         """
         return self._Parameters
@@ -4398,6 +6503,12 @@ The principle of least privilege is the best practice for permission management.
         self._SaveCommand = params.get("SaveCommand")
         self._EnableParameter = params.get("EnableParameter")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         self._Parameters = params.get("Parameters")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -4476,6 +6587,106 @@ class RunCommandResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Scene(AbstractModel):
+    r"""Scenario details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: Scene ID.
+        :type SceneId: str
+        :param _SceneName: Scenario name.
+        :type SceneName: str
+        :param _CreatedBy: Scene creator.
+
+- TAT: public scenario.
+        :type CreatedBy: str
+        :param _CreatedTime: Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :type CreatedTime: str
+        :param _UpdatedTime: Update time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :type UpdatedTime: str
+        """
+        self._SceneId = None
+        self._SceneName = None
+        self._CreatedBy = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+
+    @property
+    def SceneId(self):
+        r"""Scene ID.
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def SceneName(self):
+        r"""Scenario name.
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def CreatedBy(self):
+        r"""Scene creator.
+
+- TAT: public scenario.
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreatedTime(self):
+        r"""Creation time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""Update time. the format is YYYY-MM-DDThh:MM:ssZ.
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._SceneName = params.get("SceneName")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScheduleSettings(AbstractModel):
     r"""Settings of a scheduled invoker
 
@@ -4483,13 +6694,16 @@ class ScheduleSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Policy: Execution policy:
-<br><li>`ONCE`: Execute once
-<br><li>`RECURRENCE`: Execute repeatedly
+        :param _Policy: Execution policy.
+
+-ONCE: one-time execution.
+-RECURRENCE: execute periodically.
         :type Policy: str
         :param _Recurrence: Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.
         :type Recurrence: str
-        :param _InvokeTime: The next execution time of the invoker. This field is required if `Policy` is `ONCE`.
+        :param _InvokeTime: Next execution time of the executor. this field requires specifying when Policy is ONCE.
+
+The time format is YYYY-MM-DDThh:MM:ssZ.
         :type InvokeTime: str
         """
         self._Policy = None
@@ -4498,9 +6712,10 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def Policy(self):
-        r"""Execution policy:
-<br><li>`ONCE`: Execute once
-<br><li>`RECURRENCE`: Execute repeatedly
+        r"""Execution policy.
+
+-ONCE: one-time execution.
+-RECURRENCE: execute periodically.
         :rtype: str
         """
         return self._Policy
@@ -4522,7 +6737,9 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def InvokeTime(self):
-        r"""The next execution time of the invoker. This field is required if `Policy` is `ONCE`.
+        r"""Next execution time of the executor. this field requires specifying when Policy is ONCE.
+
+The time format is YYYY-MM-DDThh:MM:ssZ.
         :rtype: str
         """
         return self._InvokeTime
@@ -4608,9 +6825,11 @@ class TaskResult(AbstractModel):
         :type ExitCode: int
         :param _Output: Base64-encoded command output. The maximum length is 24 KB.
         :type Output: str
-        :param _ExecStartTime: Time when the execution is started.
+        :param _ExecStartTime: Command execution start time. the format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecStartTime: str
-        :param _ExecEndTime: Time when the execution is ended.
+        :param _ExecEndTime: Execution end time of the command. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecEndTime: str
         :param _Dropped: Dropped bytes of the command output.
         :type Dropped: int
@@ -4651,7 +6870,8 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecStartTime(self):
-        r"""Time when the execution is started.
+        r"""Command execution start time. the format is YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExecStartTime
@@ -4662,7 +6882,8 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecEndTime(self):
-        r"""Time when the execution is ended.
+        r"""Execution end time of the command. format: YYYY-MM-DDThh:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExecEndTime

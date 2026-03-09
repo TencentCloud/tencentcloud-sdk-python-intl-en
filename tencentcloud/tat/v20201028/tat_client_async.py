@@ -31,10 +31,10 @@ class TatClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CancelInvocationResponse:
         """
-        This API is used to cancel the command executed on one or more CVM instances.
+        Cancel the executed command on one or multiple instances.
 
-        * If the command has not been delivered to the TAT agent, the task status is `PENDING`, `DELIVERING`, or `DELIVER_DELAYED`, and will be `CANCELLED` after the command is canceled.
-        * If the command has been delivered to the TAT agent, the task status is `RUNNING`, and will be `TERMINATED` after the command is canceled.
+        * If the command is not delivered to the agent and the task status is in PENDING, DELIVERING, or DELIVER_DELAYED, the state of a task is CANCELLED after cancellation.
+        * If the command is sent to the agent and the task status is RUNNING, the task status is TERMINATED after cancellation.
         """
         
         kwargs = {}
@@ -82,6 +82,24 @@ class TatClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRegisterCode(
+            self,
+            request: models.CreateRegisterCodeRequest,
+            opts: Dict = None,
+    ) -> models.CreateRegisterCodeResponse:
+        """
+        This API is used to create a registration code.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRegisterCode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRegisterCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCommand(
             self,
             request: models.DeleteCommandRequest,
@@ -101,6 +119,24 @@ class TatClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCommands(
+            self,
+            request: models.DeleteCommandsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCommandsResponse:
+        """
+        This API is used to execute batch deletion commands.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCommands"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCommandsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteInvoker(
             self,
             request: models.DeleteInvokerRequest,
@@ -114,6 +150,42 @@ class TatClient(AbstractClient):
         kwargs["action"] = "DeleteInvoker"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteInvokerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRegisterCodes(
+            self,
+            request: models.DeleteRegisterCodesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRegisterCodesResponse:
+        """
+        This API is used to delete registration codes in batches.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRegisterCodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRegisterCodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRegisterInstance(
+            self,
+            request: models.DeleteRegisterInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRegisterInstanceResponse:
+        """
+        This API is used to delete managed instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRegisterInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRegisterInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -227,6 +299,24 @@ class TatClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeQuotas(
+            self,
+            request: models.DescribeQuotasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQuotasResponse:
+        """
+        This API is used to obtain quota information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQuotas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQuotasResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRegions(
             self,
             request: models.DescribeRegionsRequest,
@@ -246,6 +336,60 @@ class TatClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRegisterCodes(
+            self,
+            request: models.DescribeRegisterCodesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRegisterCodesResponse:
+        """
+        This API is used to query registration code info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRegisterCodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRegisterCodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRegisterInstances(
+            self,
+            request: models.DescribeRegisterInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRegisterInstancesResponse:
+        """
+        This API is used to query managed instance information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRegisterInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRegisterInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScenes(
+            self,
+            request: models.DescribeScenesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScenesResponse:
+        """
+        This API is used to query scenario details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScenes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScenesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisableInvoker(
             self,
             request: models.DisableInvokerRequest,
@@ -259,6 +403,24 @@ class TatClient(AbstractClient):
         kwargs["action"] = "DisableInvoker"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DisableInvokerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisableRegisterCodes(
+            self,
+            request: models.DisableRegisterCodesRequest,
+            opts: Dict = None,
+    ) -> models.DisableRegisterCodesResponse:
+        """
+        This API is used to bulk disable registration codes.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableRegisterCodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableRegisterCodesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -337,6 +499,24 @@ class TatClient(AbstractClient):
         kwargs["action"] = "ModifyInvoker"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInvokerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRegisterInstance(
+            self,
+            request: models.ModifyRegisterInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRegisterInstanceResponse:
+        """
+        This API is used to modify managed instance information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRegisterInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRegisterInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

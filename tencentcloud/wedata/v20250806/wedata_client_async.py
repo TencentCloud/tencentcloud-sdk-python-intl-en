@@ -25,6 +25,78 @@ class WedataClient(AbstractClient):
     _endpoint = 'wedata.intl.tencentcloudapi.com'
     _service = 'wedata'
 
+    async def AddCalcEnginesToProject(
+            self,
+            request: models.AddCalcEnginesToProjectRequest,
+            opts: Dict = None,
+    ) -> models.AddCalcEnginesToProjectResponse:
+        """
+        Associate a project cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddCalcEnginesToProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddCalcEnginesToProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssociateResourceGroupToProject(
+            self,
+            request: models.AssociateResourceGroupToProjectRequest,
+            opts: Dict = None,
+    ) -> models.AssociateResourceGroupToProjectResponse:
+        """
+        This API is used to bind the designated execution resource group to the project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateResourceGroupToProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateResourceGroupToProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AuthorizeDataSource(
+            self,
+            request: models.AuthorizeDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.AuthorizeDataSourceResponse:
+        """
+        Authorize a data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AuthorizeDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AuthorizeDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AuthorizePrivileges(
+            self,
+            request: models.AuthorizePrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.AuthorizePrivilegesResponse:
+        """
+        Authorization in Catalog mode.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AuthorizePrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AuthorizePrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCodeFile(
             self,
             request: models.CreateCodeFileRequest,
@@ -61,6 +133,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCodePermissions(
+            self,
+            request: models.CreateCodePermissionsRequest,
+            opts: Dict = None,
+    ) -> models.CreateCodePermissionsResponse:
+        """
+        Configure CodeStudio entity permission.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCodePermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCodePermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataBackfillPlan(
             self,
             request: models.CreateDataBackfillPlanRequest,
@@ -79,6 +169,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataSource(
+            self,
+            request: models.CreateDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataSourceResponse:
+        """
+        This API is used to create a data source in the designated project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateOpsAlarmRule(
             self,
             request: models.CreateOpsAlarmRuleRequest,
@@ -92,6 +200,42 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "CreateOpsAlarmRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateOpsAlarmRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateProject(
+            self,
+            request: models.CreateProjectRequest,
+            opts: Dict = None,
+    ) -> models.CreateProjectResponse:
+        """
+        Create a project with cluster information upon creation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateProjectMember(
+            self,
+            request: models.CreateProjectMemberRequest,
+            opts: Dict = None,
+    ) -> models.CreateProjectMemberResponse:
+        """
+        Add project user role.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProjectMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProjectMemberResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -128,6 +272,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "CreateResourceFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateResourceFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateResourceGroup(
+            self,
+            request: models.CreateResourceGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateResourceGroupResponse:
+        """
+        This API is used to purchase resources.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateResourceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateResourceGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -187,6 +349,60 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTaskFolder(
+            self,
+            request: models.CreateTaskFolderRequest,
+            opts: Dict = None,
+    ) -> models.CreateTaskFolderResponse:
+        """
+        Create a folder.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTaskFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTaskFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTriggerTask(
+            self,
+            request: models.CreateTriggerTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateTriggerTaskResponse:
+        """
+        This API is used to create a task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTriggerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTriggerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTriggerWorkflow(
+            self,
+            request: models.CreateTriggerWorkflowRequest,
+            opts: Dict = None,
+    ) -> models.CreateTriggerWorkflowResponse:
+        """
+        create workflow.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTriggerWorkflow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTriggerWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateWorkflow(
             self,
             request: models.CreateWorkflowRequest,
@@ -218,6 +434,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "CreateWorkflowFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateWorkflowFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWorkflowPermissions(
+            self,
+            request: models.CreateWorkflowPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.CreateWorkflowPermissionsResponse:
+        """
+        This API is used to configure data development permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWorkflowPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWorkflowPermissionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -259,6 +493,78 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCodePermissions(
+            self,
+            request: models.DeleteCodePermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCodePermissionsResponse:
+        """
+        Delete CodeStudio entity permission.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCodePermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCodePermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDataBackfillPlanAsync(
+            self,
+            request: models.DeleteDataBackfillPlanAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataBackfillPlanAsyncResponse:
+        """
+        Delete a replenishment plan.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataBackfillPlanAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataBackfillPlanAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDataSource(
+            self,
+            request: models.DeleteDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataSourceResponse:
+        """
+        This API is used to delete a data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLineage(
+            self,
+            request: models.DeleteLineageRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLineageResponse:
+        """
+        RegisterLineage
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLineage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLineageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteOpsAlarmRule(
             self,
             request: models.DeleteOpsAlarmRuleRequest,
@@ -272,6 +578,42 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "DeleteOpsAlarmRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteOpsAlarmRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProject(
+            self,
+            request: models.DeleteProjectRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProjectResponse:
+        """
+        This API is used to delete a project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProjectMember(
+            self,
+            request: models.DeleteProjectMemberRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProjectMemberResponse:
+        """
+        This API is used to delete project users.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProjectMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProjectMemberResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -308,6 +650,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "DeleteResourceFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteResourceFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteResourceGroup(
+            self,
+            request: models.DeleteResourceGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteResourceGroupResponse:
+        """
+        This API is used to destroy resources.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteResourceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteResourceGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -367,6 +727,60 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteTaskFolder(
+            self,
+            request: models.DeleteTaskFolderRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTaskFolderResponse:
+        """
+        Delete a data development task folder.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTaskFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTaskFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTriggerTask(
+            self,
+            request: models.DeleteTriggerTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTriggerTaskResponse:
+        """
+        Delete a workflow scheduling task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTriggerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTriggerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTriggerWorkflow(
+            self,
+            request: models.DeleteTriggerWorkflowRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTriggerWorkflowResponse:
+        """
+        Deletes a workflow
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTriggerWorkflow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTriggerWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWorkflow(
             self,
             request: models.DeleteWorkflowRequest,
@@ -403,6 +817,96 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteWorkflowPermissions(
+            self,
+            request: models.DeleteWorkflowPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWorkflowPermissionsResponse:
+        """
+        This API is used to delete workflow folder permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWorkflowPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWorkflowPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataSourceAuthority(
+            self,
+            request: models.DescribeDataSourceAuthorityRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataSourceAuthorityResponse:
+        """
+        View Data Source Permission.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataSourceAuthority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataSourceAuthorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisableProject(
+            self,
+            request: models.DisableProjectRequest,
+            opts: Dict = None,
+    ) -> models.DisableProjectResponse:
+        """
+        Disable a project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DissociateResourceGroupFromProject(
+            self,
+            request: models.DissociateResourceGroupFromProjectRequest,
+            opts: Dict = None,
+    ) -> models.DissociateResourceGroupFromProjectResponse:
+        """
+        This API is used to unbind the designated execution resource group from the project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DissociateResourceGroupFromProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DissociateResourceGroupFromProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableProject(
+            self,
+            request: models.EnableProjectRequest,
+            opts: Dict = None,
+    ) -> models.EnableProjectResponse:
+        """
+        Enable a project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetAlarmMessage(
             self,
             request: models.GetAlarmMessageRequest,
@@ -434,6 +938,114 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "GetCodeFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetCodeFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetCodeFolder(
+            self,
+            request: models.GetCodeFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetCodeFolderResponse:
+        """
+        Retrieve sql folder details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetCodeFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetCodeFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDataBackfillPlan(
+            self,
+            request: models.GetDataBackfillPlanRequest,
+            opts: Dict = None,
+    ) -> models.GetDataBackfillPlanResponse:
+        """
+        Retrieve supplementary plan details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDataBackfillPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDataBackfillPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDataSource(
+            self,
+            request: models.GetDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.GetDataSourceResponse:
+        """
+        This API is used to view detailed information of the specified data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDataSourceRelatedTasks(
+            self,
+            request: models.GetDataSourceRelatedTasksRequest,
+            opts: Dict = None,
+    ) -> models.GetDataSourceRelatedTasksResponse:
+        """
+        Query the associated task details of a data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDataSourceRelatedTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDataSourceRelatedTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMyCodeMaxPermission(
+            self,
+            request: models.GetMyCodeMaxPermissionRequest,
+            opts: Dict = None,
+    ) -> models.GetMyCodeMaxPermissionResponse:
+        """
+        View the current user's maximum permission scope for the CodeStudio entity.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMyCodeMaxPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMyCodeMaxPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMyWorkflowMaxPermission(
+            self,
+            request: models.GetMyWorkflowMaxPermissionRequest,
+            opts: Dict = None,
+    ) -> models.GetMyWorkflowMaxPermissionResponse:
+        """
+        Check the current user's maximum permission scope for the workflow folder recursively.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMyWorkflowMaxPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMyWorkflowMaxPermissionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -511,6 +1123,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetOpsTriggerWorkflow(
+            self,
+            request: models.GetOpsTriggerWorkflowRequest,
+            opts: Dict = None,
+    ) -> models.GetOpsTriggerWorkflowResponse:
+        """
+        Query workflow task details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetOpsTriggerWorkflow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetOpsTriggerWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetOpsWorkflow(
             self,
             request: models.GetOpsWorkflowRequest,
@@ -524,6 +1154,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "GetOpsWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetOpsWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetProject(
+            self,
+            request: models.GetProjectRequest,
+            opts: Dict = None,
+    ) -> models.GetProjectResponse:
+        """
+        This API is used to get project information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetProjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -547,6 +1195,60 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetResourceFolder(
+            self,
+            request: models.GetResourceFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetResourceFolderResponse:
+        """
+        Query a resource file folder details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetResourceFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetResourceFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetResourceGroupMetrics(
+            self,
+            request: models.GetResourceGroupMetricsRequest,
+            opts: Dict = None,
+    ) -> models.GetResourceGroupMetricsResponse:
+        """
+        This API is used to view specified execution resource group monitoring metrics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetResourceGroupMetrics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetResourceGroupMetricsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetSQLFolder(
+            self,
+            request: models.GetSQLFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetSQLFolderResponse:
+        """
+        Retrieve sql folder details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetSQLFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetSQLFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetSQLScript(
             self,
             request: models.GetSQLScriptRequest,
@@ -560,6 +1262,42 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "GetSQLScript"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetSQLScriptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTable(
+            self,
+            request: models.GetTableRequest,
+            opts: Dict = None,
+    ) -> models.GetTableResponse:
+        """
+        Query table details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTableColumns(
+            self,
+            request: models.GetTableColumnsRequest,
+            opts: Dict = None,
+    ) -> models.GetTableColumnsResponse:
+        """
+        This API is used to obtain the list of all fields in a table.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTableColumns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTableColumnsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -596,6 +1334,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "GetTaskCode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTaskCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTaskFolder(
+            self,
+            request: models.GetTaskFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetTaskFolderResponse:
+        """
+        Query Task Folder Details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTaskFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTaskFolderResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -655,6 +1411,114 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetTriggerTask(
+            self,
+            request: models.GetTriggerTaskRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerTaskResponse:
+        """
+        This API is used to retrieve task details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTriggerTaskCode(
+            self,
+            request: models.GetTriggerTaskCodeRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerTaskCodeResponse:
+        """
+        Retrieve workflow scheduling task code.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerTaskCode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerTaskCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTriggerTaskRun(
+            self,
+            request: models.GetTriggerTaskRunRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerTaskRunResponse:
+        """
+        Query task execution details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerTaskRun"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerTaskRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTriggerTaskVersion(
+            self,
+            request: models.GetTriggerTaskVersionRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerTaskVersionResponse:
+        """
+        Get task version list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerTaskVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerTaskVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTriggerWorkflow(
+            self,
+            request: models.GetTriggerWorkflowRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerWorkflowResponse:
+        """
+        Retrieve workflow information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerWorkflow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTriggerWorkflowRun(
+            self,
+            request: models.GetTriggerWorkflowRunRequest,
+            opts: Dict = None,
+    ) -> models.GetTriggerWorkflowRunResponse:
+        """
+        Query workflow task details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTriggerWorkflowRun"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTriggerWorkflowRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetWorkflow(
             self,
             request: models.GetWorkflowRequest,
@@ -668,6 +1532,42 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "GetWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetWorkflowFolder(
+            self,
+            request: models.GetWorkflowFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetWorkflowFolderResponse:
+        """
+        Query folder details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetWorkflowFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetWorkflowFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantMemberProjectRole(
+            self,
+            request: models.GrantMemberProjectRoleRequest,
+            opts: Dict = None,
+    ) -> models.GrantMemberProjectRoleResponse:
+        """
+        Modify project user roles.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantMemberProjectRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantMemberProjectRoleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -691,6 +1591,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def KillTriggerWorkflowRuns(
+            self,
+            request: models.KillTriggerWorkflowRunsRequest,
+            opts: Dict = None,
+    ) -> models.KillTriggerWorkflowRunsResponse:
+        """
+        Terminate running.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "KillTriggerWorkflowRuns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.KillTriggerWorkflowRunsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListAlarmMessages(
             self,
             request: models.ListAlarmMessagesRequest,
@@ -704,6 +1622,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListAlarmMessages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListAlarmMessagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListCatalog(
+            self,
+            request: models.ListCatalogRequest,
+            opts: Dict = None,
+    ) -> models.ListCatalogResponse:
+        """
+        Retrieve asset catalog info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListCatalog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListCatalogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -727,6 +1663,42 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListCodePermissions(
+            self,
+            request: models.ListCodePermissionsRequest,
+            opts: Dict = None,
+    ) -> models.ListCodePermissionsResponse:
+        """
+        View CodeStudio entity permission.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListCodePermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListCodePermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListColumnLineage(
+            self,
+            request: models.ListColumnLineageRequest,
+            opts: Dict = None,
+    ) -> models.ListColumnLineageResponse:
+        """
+        This API is used to obtain table field lineage information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListColumnLineage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListColumnLineageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListDataBackfillInstances(
             self,
             request: models.ListDataBackfillInstancesRequest,
@@ -740,6 +1712,42 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListDataBackfillInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListDataBackfillInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListDataSources(
+            self,
+            request: models.ListDataSourcesRequest,
+            opts: Dict = None,
+    ) -> models.ListDataSourcesResponse:
+        """
+        This API is used to query the data source list in the designated project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListDataSources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListDataSourcesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListDatabase(
+            self,
+            request: models.ListDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.ListDatabaseResponse:
+        """
+        This API is used to obtain asset database info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListDatabaseResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -799,6 +1807,42 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListDownstreamTriggerTasks(
+            self,
+            request: models.ListDownstreamTriggerTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListDownstreamTriggerTasksResponse:
+        """
+        This API is used to retrieve direct downstream task details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListDownstreamTriggerTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListDownstreamTriggerTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListLineage(
+            self,
+            request: models.ListLineageRequest,
+            opts: Dict = None,
+    ) -> models.ListLineageResponse:
+        """
+        This API is used to obtain asset lineage information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListLineage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListLineageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListOpsAlarmRules(
             self,
             request: models.ListOpsAlarmRulesRequest,
@@ -835,6 +1879,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListOpsTriggerWorkflows(
+            self,
+            request: models.ListOpsTriggerWorkflowsRequest,
+            opts: Dict = None,
+    ) -> models.ListOpsTriggerWorkflowsResponse:
+        """
+        This API is used to query the list of workflows.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListOpsTriggerWorkflows"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListOpsTriggerWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListOpsWorkflows(
             self,
             request: models.ListOpsWorkflowsRequest,
@@ -848,6 +1910,114 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListOpsWorkflows"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListOpsWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListPermissions(
+            self,
+            request: models.ListPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.ListPermissionsResponse:
+        """
+        Retrieve authorizable permission details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListProcessLineage(
+            self,
+            request: models.ListProcessLineageRequest,
+            opts: Dict = None,
+    ) -> models.ListProcessLineageResponse:
+        """
+        This API is used to obtain asset lineage information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListProcessLineage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListProcessLineageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListProjectMembers(
+            self,
+            request: models.ListProjectMembersRequest,
+            opts: Dict = None,
+    ) -> models.ListProjectMembersResponse:
+        """
+        This API is used to obtain the user under the project with pagination return.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListProjectMembers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListProjectMembersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListProjectRoles(
+            self,
+            request: models.ListProjectRolesRequest,
+            opts: Dict = None,
+    ) -> models.ListProjectRolesResponse:
+        """
+        Get role list info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListProjectRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListProjectRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListProjects(
+            self,
+            request: models.ListProjectsRequest,
+            opts: Dict = None,
+    ) -> models.ListProjectsResponse:
+        """
+        The project list in the tenant's global scope is irrelevant to the user's viewing range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListProjects"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListProjectsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListQualityRuleTemplates(
+            self,
+            request: models.ListQualityRuleTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.ListQualityRuleTemplatesResponse:
+        """
+        [Filter criteria] {template Name, query usage with Keyword fuzzy matching} {template type, 1. system template 2. custom template} {quality detection dimensions (QualityDims), 1. accuracy 2. uniqueness 3. integrity 4. consistency 5. timeliness 6. validity} [Sorting field] {citation sorting type, sort ASC or DESC based on the number of references}.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListQualityRuleTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListQualityRuleTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -889,6 +2059,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListResourceGroups(
+            self,
+            request: models.ListResourceGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ListResourceGroupsResponse:
+        """
+        This API is used to query the execution resource group list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListResourceGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListResourceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListSQLFolderContents(
             self,
             request: models.ListSQLFolderContentsRequest,
@@ -920,6 +2108,60 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListSQLScriptRuns"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListSQLScriptRunsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListSchema(
+            self,
+            request: models.ListSchemaRequest,
+            opts: Dict = None,
+    ) -> models.ListSchemaResponse:
+        """
+        This API is used to obtain the asset database Schema information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListSchema"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListSchemaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTable(
+            self,
+            request: models.ListTableRequest,
+            opts: Dict = None,
+    ) -> models.ListTableResponse:
+        """
+        This API is used to obtain table information of assets.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTaskFolders(
+            self,
+            request: models.ListTaskFoldersRequest,
+            opts: Dict = None,
+    ) -> models.ListTaskFoldersResponse:
+        """
+        Query Task Folder List.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTaskFolders"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTaskFoldersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -997,6 +2239,96 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListTenantRoles(
+            self,
+            request: models.ListTenantRolesRequest,
+            opts: Dict = None,
+    ) -> models.ListTenantRolesResponse:
+        """
+        Get the role list of all root accounts.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTenantRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTenantRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTriggerTaskVersions(
+            self,
+            request: models.ListTriggerTaskVersionsRequest,
+            opts: Dict = None,
+    ) -> models.ListTriggerTaskVersionsResponse:
+        """
+        Task save version list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTriggerTaskVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTriggerTaskVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTriggerTasks(
+            self,
+            request: models.ListTriggerTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListTriggerTasksResponse:
+        """
+        Query job pagination information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTriggerTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTriggerTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTriggerWorkflowRuns(
+            self,
+            request: models.ListTriggerWorkflowRunsRequest,
+            opts: Dict = None,
+    ) -> models.ListTriggerWorkflowRunsResponse:
+        """
+        Query workflow operation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTriggerWorkflowRuns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTriggerWorkflowRunsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTriggerWorkflows(
+            self,
+            request: models.ListTriggerWorkflowsRequest,
+            opts: Dict = None,
+    ) -> models.ListTriggerWorkflowsResponse:
+        """
+        This API is used to query the list of workflows.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTriggerWorkflows"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTriggerWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListUpstreamOpsTasks(
             self,
             request: models.ListUpstreamOpsTasksRequest,
@@ -1051,6 +2383,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListUpstreamTriggerTasks(
+            self,
+            request: models.ListUpstreamTriggerTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListUpstreamTriggerTasksResponse:
+        """
+        This API is used to retrieve direct upstream tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListUpstreamTriggerTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListUpstreamTriggerTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListWorkflowFolders(
             self,
             request: models.ListWorkflowFoldersRequest,
@@ -1064,6 +2414,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "ListWorkflowFolders"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListWorkflowFoldersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListWorkflowPermissions(
+            self,
+            request: models.ListWorkflowPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.ListWorkflowPermissionsResponse:
+        """
+        Query workflow authorization permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListWorkflowPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListWorkflowPermissionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1105,6 +2473,42 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RegisterLineage(
+            self,
+            request: models.RegisterLineageRequest,
+            opts: Dict = None,
+    ) -> models.RegisterLineageResponse:
+        """
+        RegisterLineage
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RegisterLineage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RegisterLineageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveMemberProjectRole(
+            self,
+            request: models.RemoveMemberProjectRoleRequest,
+            opts: Dict = None,
+    ) -> models.RemoveMemberProjectRoleResponse:
+        """
+        Delete project user roles.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveMemberProjectRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveMemberProjectRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RerunTaskInstancesAsync(
             self,
             request: models.RerunTaskInstancesAsyncRequest,
@@ -1118,6 +2522,60 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "RerunTaskInstancesAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RerunTaskInstancesAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RerunTriggerWorkflowRunAsync(
+            self,
+            request: models.RerunTriggerWorkflowRunAsyncRequest,
+            opts: Dict = None,
+    ) -> models.RerunTriggerWorkflowRunAsyncResponse:
+        """
+        Rerun an operation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RerunTriggerWorkflowRunAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RerunTriggerWorkflowRunAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RevokeDataSourceAuthorization(
+            self,
+            request: models.RevokeDataSourceAuthorizationRequest,
+            opts: Dict = None,
+    ) -> models.RevokeDataSourceAuthorizationResponse:
+        """
+        Revoke data source permission.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RevokeDataSourceAuthorization"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RevokeDataSourceAuthorizationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RevokePrivileges(
+            self,
+            request: models.RevokePrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.RevokePrivilegesResponse:
+        """
+        Authorization Revoked in Catalog mode.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RevokePrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RevokePrivilegesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1154,6 +2612,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "SetSuccessTaskInstancesAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetSuccessTaskInstancesAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartOpsTasks(
+            self,
+            request: models.StartOpsTasksRequest,
+            opts: Dict = None,
+    ) -> models.StartOpsTasksResponse:
+        """
+        Start tasks asynchronously in batch.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartOpsTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartOpsTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1213,6 +2689,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitTriggerTask(
+            self,
+            request: models.SubmitTriggerTaskRequest,
+            opts: Dict = None,
+    ) -> models.SubmitTriggerTaskResponse:
+        """
+        Submit a workflow scheduling task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitTriggerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitTriggerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateCodeFile(
             self,
             request: models.UpdateCodeFileRequest,
@@ -1244,6 +2738,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "UpdateCodeFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateCodeFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateDataSource(
+            self,
+            request: models.UpdateDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateDataSourceResponse:
+        """
+        This API is used to update a data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateDataSourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1285,6 +2797,42 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateOpsTriggerTasksOwner(
+            self,
+            request: models.UpdateOpsTriggerTasksOwnerRequest,
+            opts: Dict = None,
+    ) -> models.UpdateOpsTriggerTasksOwnerResponse:
+        """
+        Query task execution details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateOpsTriggerTasksOwner"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateOpsTriggerTasksOwnerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateProject(
+            self,
+            request: models.UpdateProjectRequest,
+            opts: Dict = None,
+    ) -> models.UpdateProjectResponse:
+        """
+        This API is used to modify project basic information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateResourceFile(
             self,
             request: models.UpdateResourceFileRequest,
@@ -1309,13 +2857,31 @@ class WedataClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateResourceFolderResponse:
         """
-        This API is used to update a resource folder.
+        Update resource folder.
         """
         
         kwargs = {}
         kwargs["action"] = "UpdateResourceFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateResourceFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateResourceGroup(
+            self,
+            request: models.UpdateResourceGroupRequest,
+            opts: Dict = None,
+    ) -> models.UpdateResourceGroupResponse:
+        """
+        This API is used to modify configurations or renew resources.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateResourceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateResourceGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1375,6 +2941,114 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateTaskFolder(
+            self,
+            request: models.UpdateTaskFolderRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTaskFolderResponse:
+        """
+        Update a task folder.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTaskFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTaskFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTaskPartially(
+            self,
+            request: models.UpdateTaskPartiallyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTaskPartiallyResponse:
+        """
+        This API is used to update a task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTaskPartially"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTaskPartiallyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTriggerTask(
+            self,
+            request: models.UpdateTriggerTaskRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTriggerTaskResponse:
+        """
+        This API is used to update a task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTriggerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTriggerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTriggerTaskPartially(
+            self,
+            request: models.UpdateTriggerTaskPartiallyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTriggerTaskPartiallyResponse:
+        """
+        This API is used to update a task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTriggerTaskPartially"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTriggerTaskPartiallyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTriggerWorkflow(
+            self,
+            request: models.UpdateTriggerWorkflowRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTriggerWorkflowResponse:
+        """
+        This API is used to update workflow, including basic information and workflow parameters.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTriggerWorkflow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTriggerWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTriggerWorkflowPartially(
+            self,
+            request: models.UpdateTriggerWorkflowPartiallyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTriggerWorkflowPartiallyResponse:
+        """
+        Update workflow (including basic info and workflow parameters).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTriggerWorkflowPartially"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTriggerWorkflowPartiallyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateWorkflow(
             self,
             request: models.UpdateWorkflowRequest,
@@ -1399,7 +3073,7 @@ class WedataClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateWorkflowFolderResponse:
         """
-        This API is used to update a workflow folder
+        Refresh workflow folder.
         """
         
         kwargs = {}

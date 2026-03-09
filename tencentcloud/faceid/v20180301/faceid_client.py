@@ -26,30 +26,6 @@ class FaceidClient(AbstractClient):
     _service = 'faceid'
 
 
-    def ApplyCardVerification(self, request):
-        r"""The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:
-        <table> <thead> <tr> <td>Nationality</td> <td style="width:200px">CardType</td> <td style="width:200px">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Taiwan</td> <td>ID Card</td> <td>Yes</td> </tr>  <tr> <td>Bangladesh</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>Driving License</td> <td>Yes</td> </tr> </tbody> </table>
-
-        :param request: Request instance for ApplyCardVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyCardVerificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyCardVerification", params, headers=headers)
-            response = json.loads(body)
-            model = models.ApplyCardVerificationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ApplyLivenessToken(self, request):
         r"""This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
@@ -110,29 +86,6 @@ class FaceidClient(AbstractClient):
             body = self.call("ApplyWebVerificationBizTokenIntl", params, headers=headers)
             response = json.loads(body)
             model = models.ApplyWebVerificationBizTokenIntlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ApplyWebVerificationToken(self, request):
-        r"""This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
-
-        :param request: Request instance for ApplyWebVerificationToken.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationTokenRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationTokenResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyWebVerificationToken", params, headers=headers)
-            response = json.loads(body)
-            model = models.ApplyWebVerificationTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -260,29 +213,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetCardVerificationResult(self, request):
-        r"""The interface supports obtaining the certificate authentication result based on the token.
-
-        :param request: Request instance for GetCardVerificationResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetCardVerificationResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetCardVerificationResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetCardVerificationResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetCardVerificationResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetFaceIdResultIntl(self, request):
         r"""This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for 72 hours (72*3600s) after generation and can be called multiple times.
 
@@ -375,29 +305,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetWebVerificationResult(self, request):
-        r"""This API is used to get the verification result with the corresponding token (BizToken) after the web-based verification is completed. The BizToken is valid for three days (3*24*3,600s) after issuance and can be called multiple times.
-
-        :param request: Request instance for GetWebVerificationResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetWebVerificationResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetWebVerificationResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetWebVerificationResultIntl(self, request):
         r"""This API is used to get the verification result with the corresponding BizToken after the web-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
 
@@ -436,29 +343,6 @@ class FaceidClient(AbstractClient):
             body = self.call("LivenessCompare", params, headers=headers)
             response = json.loads(body)
             model = models.LivenessCompareResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def VideoLivenessCompare(self, request):
-        r"""This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
-
-        :param request: Request instance for VideoLivenessCompare.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VideoLivenessCompare", params, headers=headers)
-            response = json.loads(body)
-            model = models.VideoLivenessCompareResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

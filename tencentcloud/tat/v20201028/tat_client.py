@@ -27,10 +27,10 @@ class TatClient(AbstractClient):
 
 
     def CancelInvocation(self, request):
-        r"""This API is used to cancel the command executed on one or more CVM instances.
+        r"""Cancel the executed command on one or multiple instances.
 
-        * If the command has not been delivered to the TAT agent, the task status is `PENDING`, `DELIVERING`, or `DELIVER_DELAYED`, and will be `CANCELLED` after the command is canceled.
-        * If the command has been delivered to the TAT agent, the task status is `RUNNING`, and will be `TERMINATED` after the command is canceled.
+        * If the command is not delivered to the agent and the task status is in PENDING, DELIVERING, or DELIVER_DELAYED, the state of a task is CANCELLED after cancellation.
+        * If the command is sent to the agent and the task status is RUNNING, the task status is TERMINATED after cancellation.
 
         :param request: Request instance for CancelInvocation.
         :type request: :class:`tencentcloud.tat.v20201028.models.CancelInvocationRequest`
@@ -98,6 +98,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRegisterCode(self, request):
+        r"""This API is used to create a registration code.
+
+        :param request: Request instance for CreateRegisterCode.
+        :type request: :class:`tencentcloud.tat.v20201028.models.CreateRegisterCodeRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.CreateRegisterCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRegisterCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRegisterCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCommand(self, request):
         r"""This API is used to delete a command.
         Commands bound to an invoker cannot be deleted.
@@ -122,6 +145,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCommands(self, request):
+        r"""This API is used to execute batch deletion commands.
+
+        :param request: Request instance for DeleteCommands.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteCommandsRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteCommandsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCommands", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCommandsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInvoker(self, request):
         r"""This API is used to delete an invoker.
 
@@ -136,6 +182,52 @@ class TatClient(AbstractClient):
             body = self.call("DeleteInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRegisterCodes(self, request):
+        r"""This API is used to delete registration codes in batches.
+
+        :param request: Request instance for DeleteRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRegisterCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRegisterInstance(self, request):
+        r"""This API is used to delete managed instances.
+
+        :param request: Request instance for DeleteRegisterInstance.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterInstanceRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRegisterInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRegisterInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -283,6 +375,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeQuotas(self, request):
+        r"""This API is used to obtain quota information.
+
+        :param request: Request instance for DescribeQuotas.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeQuotasRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuotas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQuotasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRegions(self, request):
         r"""This API is used to query the list of regions that supports TAT.
         If the `RegionState` is `AVAILABLE`, it means that TAT is available in the region. If no value is returned, TAT is not available in the region.
@@ -307,6 +422,75 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRegisterCodes(self, request):
+        r"""This API is used to query registration code info.
+
+        :param request: Request instance for DescribeRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegisterCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRegisterInstances(self, request):
+        r"""This API is used to query managed instance information.
+
+        :param request: Request instance for DescribeRegisterInstances.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterInstancesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegisterInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegisterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScenes(self, request):
+        r"""This API is used to query scenario details.
+
+        :param request: Request instance for DescribeScenes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeScenesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScenes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScenesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableInvoker(self, request):
         r"""This API is used to disable an invoker.
 
@@ -321,6 +505,29 @@ class TatClient(AbstractClient):
             body = self.call("DisableInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.DisableInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisableRegisterCodes(self, request):
+        r"""This API is used to bulk disable registration codes.
+
+        :param request: Request instance for DisableRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DisableRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DisableRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableRegisterCodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -419,6 +626,29 @@ class TatClient(AbstractClient):
             body = self.call("ModifyInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRegisterInstance(self, request):
+        r"""This API is used to modify managed instance information.
+
+        :param request: Request instance for ModifyRegisterInstance.
+        :type request: :class:`tencentcloud.tat.v20201028.models.ModifyRegisterInstanceRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ModifyRegisterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRegisterInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRegisterInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

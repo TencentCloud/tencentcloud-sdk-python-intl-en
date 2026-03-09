@@ -25,25 +25,6 @@ class FaceidClient(AbstractClient):
     _endpoint = 'faceid.intl.tencentcloudapi.com'
     _service = 'faceid'
 
-    async def ApplyCardVerification(
-            self,
-            request: models.ApplyCardVerificationRequest,
-            opts: Dict = None,
-    ) -> models.ApplyCardVerificationResponse:
-        """
-        The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:
-        <table> <thead> <tr> <td>Nationality</td> <td style="width:200px">CardType</td> <td style="width:200px">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Taiwan</td> <td>ID Card</td> <td>Yes</td> </tr>  <tr> <td>Bangladesh</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>Driving License</td> <td>Yes</td> </tr> </tbody> </table>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ApplyCardVerification"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ApplyCardVerificationResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ApplyLivenessToken(
             self,
             request: models.ApplyLivenessTokenRequest,
@@ -93,24 +74,6 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "ApplyWebVerificationBizTokenIntl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ApplyWebVerificationBizTokenIntlResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ApplyWebVerificationToken(
-            self,
-            request: models.ApplyWebVerificationTokenRequest,
-            opts: Dict = None,
-    ) -> models.ApplyWebVerificationTokenResponse:
-        """
-        This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ApplyWebVerificationToken"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ApplyWebVerificationTokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -209,24 +172,6 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetCardVerificationResult(
-            self,
-            request: models.GetCardVerificationResultRequest,
-            opts: Dict = None,
-    ) -> models.GetCardVerificationResultResponse:
-        """
-        The interface supports obtaining the certificate authentication result based on the token.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetCardVerificationResult"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetCardVerificationResultResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetFaceIdResultIntl(
             self,
             request: models.GetFaceIdResultIntlRequest,
@@ -299,24 +244,6 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetWebVerificationResult(
-            self,
-            request: models.GetWebVerificationResultRequest,
-            opts: Dict = None,
-    ) -> models.GetWebVerificationResultResponse:
-        """
-        This API is used to get the verification result with the corresponding token (BizToken) after the web-based verification is completed. The BizToken is valid for three days (3*24*3,600s) after issuance and can be called multiple times.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetWebVerificationResult"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetWebVerificationResultResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetWebVerificationResultIntl(
             self,
             request: models.GetWebVerificationResultIntlRequest,
@@ -349,24 +276,6 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "LivenessCompare"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.LivenessCompareResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def VideoLivenessCompare(
-            self,
-            request: models.VideoLivenessCompareRequest,
-            opts: Dict = None,
-    ) -> models.VideoLivenessCompareResponse:
-        """
-        This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "VideoLivenessCompare"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.VideoLivenessCompareResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
