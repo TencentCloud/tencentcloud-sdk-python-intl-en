@@ -7412,6 +7412,72 @@ class ForwardLoadBalancerIdentification(AbstractModel):
         
 
 
+class HostNameIndexSettings(AbstractModel):
+    r"""Specifies the serial number of the instance hostname related settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>Whether to enable serial number creation for instance hostname. not enabled by default. valid values:</p><p>TRUE: enable serial number creation for instance hostname. FALSE: disable serial number creation for instance hostname.</p>.
+        :type Enabled: bool
+        :param _BeginIndex: <p>Initial serial number. value range depends on the IndexLength parameter: - when IndexLength is 0, value range is [0, 99999999]. - when IndexLength is [1, 8], value range is [0, 10^IndexLength-1], and the maximum value is the maximum digit of the specified length. default value of initial serial number is as follows: - first-time enabling incremental serial number: default value is 0 (display digits depend on IndexLength, for example if IndexLength is 4, display value is 0000). - non-first-time enabling incremental serial number: continuation of previous incremental serial number, for example if last usage incremented to serial number 069, new default value is 070. note: modification of initial serial number may lead to duplication within the scaling group.</p>.
+        :type BeginIndex: int
+        :param _IndexLength: <P>Incremental serial number length, defaults to 0, means no specified length. value range: 0-8, maximum is integer 8. - length set to 3, display form: 000, 001, 002 ... 010, 011 ... 100 ... 999, maximum is 999. - length set to 0, display form: 0, 1, 2 ... 10, 11 ... 100 ... 1000 ... 10000 ... 99999999, maximum is 99999999. note: continuous incremental serial number exceeding the limit can cause scale-out failure. do not set too small incremental serial number length.</p>.
+        :type IndexLength: int
+        """
+        self._Enabled = None
+        self._BeginIndex = None
+        self._IndexLength = None
+
+    @property
+    def Enabled(self):
+        r"""<p>Whether to enable serial number creation for instance hostname. not enabled by default. valid values:</p><p>TRUE: enable serial number creation for instance hostname. FALSE: disable serial number creation for instance hostname.</p>.
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def BeginIndex(self):
+        r"""<p>Initial serial number. value range depends on the IndexLength parameter: - when IndexLength is 0, value range is [0, 99999999]. - when IndexLength is [1, 8], value range is [0, 10^IndexLength-1], and the maximum value is the maximum digit of the specified length. default value of initial serial number is as follows: - first-time enabling incremental serial number: default value is 0 (display digits depend on IndexLength, for example if IndexLength is 4, display value is 0000). - non-first-time enabling incremental serial number: continuation of previous incremental serial number, for example if last usage incremented to serial number 069, new default value is 070. note: modification of initial serial number may lead to duplication within the scaling group.</p>.
+        :rtype: int
+        """
+        return self._BeginIndex
+
+    @BeginIndex.setter
+    def BeginIndex(self, BeginIndex):
+        self._BeginIndex = BeginIndex
+
+    @property
+    def IndexLength(self):
+        r"""<P>Incremental serial number length, defaults to 0, means no specified length. value range: 0-8, maximum is integer 8. - length set to 3, display form: 000, 001, 002 ... 010, 011 ... 100 ... 999, maximum is 999. - length set to 0, display form: 0, 1, 2 ... 10, 11 ... 100 ... 1000 ... 10000 ... 99999999, maximum is 99999999. note: continuous incremental serial number exceeding the limit can cause scale-out failure. do not set too small incremental serial number length.</p>.
+        :rtype: int
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._BeginIndex = params.get("BeginIndex")
+        self._IndexLength = params.get("IndexLength")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostNameSettings(AbstractModel):
     r"""CVM HostName settings
 
@@ -7419,10 +7485,10 @@ class HostNameSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostName: CVM HostName.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>
-<li>Windows instances are not supported.</li>
-<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 40]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
+        :param _HostName: Specifies the cvm hostname.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>. 
+<Li>Windows instances are not supported.</li>. 
+<li>Instances of other types (such as Linux): specifies the character length should be within the range of [2, 42]. multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-). using only digits is not allowed.</li>. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostName: str
         :param _HostNameStyle: The style of the CVM HostName. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
@@ -7430,24 +7496,33 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li> UNIQUE: HostName filled in the input parameters acts as a prefix for the HostName. AS and CVM will expand this prefix to ensure that HostName of the instance in the scaling group is unique.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostNameStyle: str
-        :param _HostNameSuffix: HostName suffix for CVM.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostNameSuffix, and cannot be used consecutively.</li>
-<li>Windows instances are not supported.</li>
-<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 37], and the combined length with HostName should not exceed 39. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
-Assume the suffix name is suffix and the original HostName is test.0, then the final HostName is test.0.suffix.
+        :param _HostNameSuffix: Specifies the hostname suffix for cvm.
+<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li>
+<Li>Windows instances are not supported.</li>
+<li>Instances of other types (such as Linux): The character length should be within the range of [1, 39], and the combined length with HostName cannot exceed 41. Multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostNameSuffix: str
+        :param _HostNameDelimiter: Specifies the delimiter for the CVM host name. The default delimiter is a dot (.). Valid values: 
+- dot (.)
+-  hyphen (-)
+- empty string.
+Delimiter used for concatenating host name, index, and suffix. Assuming host name is testGpu4090, index is 0007, and suffix is server.
+-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.
+-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.
+-Delimiter is an empty string, finally concatenated as testGpu4090007server.
+        :type HostNameDelimiter: str
         """
         self._HostName = None
         self._HostNameStyle = None
         self._HostNameSuffix = None
+        self._HostNameDelimiter = None
 
     @property
     def HostName(self):
-        r"""CVM HostName.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>
-<li>Windows instances are not supported.</li>
-<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 40]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
+        r"""Specifies the cvm hostname.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>. 
+<Li>Windows instances are not supported.</li>. 
+<li>Instances of other types (such as Linux): specifies the character length should be within the range of [2, 42]. multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-). using only digits is not allowed.</li>. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7473,11 +7548,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameSuffix(self):
-        r"""HostName suffix for CVM.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostNameSuffix, and cannot be used consecutively.</li>
-<li>Windows instances are not supported.</li>
-<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 37], and the combined length with HostName should not exceed 39. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
-Assume the suffix name is suffix and the original HostName is test.0, then the final HostName is test.0.suffix.
+        r"""Specifies the hostname suffix for cvm.
+<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li>
+<Li>Windows instances are not supported.</li>
+<li>Instances of other types (such as Linux): The character length should be within the range of [1, 39], and the combined length with HostName cannot exceed 41. Multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7487,11 +7561,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HostNameSuffix(self, HostNameSuffix):
         self._HostNameSuffix = HostNameSuffix
 
+    @property
+    def HostNameDelimiter(self):
+        r"""Specifies the delimiter for the CVM host name. The default delimiter is a dot (.). Valid values: 
+- dot (.)
+-  hyphen (-)
+- empty string.
+Delimiter used for concatenating host name, index, and suffix. Assuming host name is testGpu4090, index is 0007, and suffix is server.
+-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.
+-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.
+-Delimiter is an empty string, finally concatenated as testGpu4090007server.
+        :rtype: str
+        """
+        return self._HostNameDelimiter
+
+    @HostNameDelimiter.setter
+    def HostNameDelimiter(self, HostNameDelimiter):
+        self._HostNameDelimiter = HostNameDelimiter
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
         self._HostNameStyle = params.get("HostNameStyle")
         self._HostNameSuffix = params.get("HostNameSuffix")
+        self._HostNameDelimiter = params.get("HostNameDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7987,23 +8080,13 @@ class InstanceNameIndexSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether to enable instance name index. Default value: false. Value range:.
-
-**true**: indicates that instance name index is enabled.
-**false**: indicates that instance name index is disabled.
+        :param _Enabled: <p>Whether to enable instance creation sequencing, disabled by default. valid values:</p><p><strong>TRUE</strong>: indicates that instance creation sequencing is enabled; <strong>FALSE</strong>: indicates that instance creation sequencing is disabled</p>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Enabled: bool
-        :param _BeginIndex: Begin index number. Value range: [0, 99999999].
-
-Indicates that the scale out activity will be failed when the index out of range. 
-If not specified, carries forward historical index number or 0.
-Lowering the index sequence number may lead to instance name duplication within the group.
+        :param _BeginIndex: <p>Initial serial number. the value range is related to the IndexLength parameter: - when IndexLength is 0, the value range is [0, 99999999]. - when IndexLength is [1, 8], the value range is [0, 10^IndexLength-1], and the maximum value is the maximum number with the specified digits. the default value of the initial serial number is as follows: - first-time enabling of incremental serial number: the default value is 0 (the display length is related to IndexLength, for example, if IndexLength is 4, the display value is 0000). - non-first-time enabling of incremental serial number: the previous incremental serial number is postponed, for example, if the last usage incremented to serial number 069, the new default initial serial number is 070. note: modifying the initial serial number may lead to duplication within the scaling group.</p>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BeginIndex: int
-        :param _IndexLength: Instance name index number digits, defaults to 0, means no specified digit count. Value range: 0-8, maximum is integer 8. when using values 1-8, the system checks whether the index number exceeds the maximum digit for this digit count.
-
-If set to 3, index number is in the format: 000, 001, 002 ... 010, 011 ... 100 ... 999. The maximum is 999. 
-Assuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10000 ... 99999999. Max number is 99999999.
+        :param _IndexLength: <P>Incremental serial number length, defaults to 0, means no specified length. value range: 0-8, maximum is integer 8. - length set to 3, display form: 000, 001, 002 ... 010, 011 ... 100 ... 999, maximum is 999. - length set to 0, display form: 0, 1, 2 ... 10, 11 ... 100 ... 1000 ... 10000 ... 99999999, maximum is 99999999. note: continuous incremental serial number exceeding the limit can cause scale-out failure. do not set too small incremental serial number length.</p>.
         :type IndexLength: int
         """
         self._Enabled = None
@@ -8012,10 +8095,7 @@ Assuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10
 
     @property
     def Enabled(self):
-        r"""Whether to enable instance name index. Default value: false. Value range:.
-
-**true**: indicates that instance name index is enabled.
-**false**: indicates that instance name index is disabled.
+        r"""<p>Whether to enable instance creation sequencing, disabled by default. valid values:</p><p><strong>TRUE</strong>: indicates that instance creation sequencing is enabled; <strong>FALSE</strong>: indicates that instance creation sequencing is disabled</p>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -8027,11 +8107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginIndex(self):
-        r"""Begin index number. Value range: [0, 99999999].
-
-Indicates that the scale out activity will be failed when the index out of range. 
-If not specified, carries forward historical index number or 0.
-Lowering the index sequence number may lead to instance name duplication within the group.
+        r"""<p>Initial serial number. the value range is related to the IndexLength parameter: - when IndexLength is 0, the value range is [0, 99999999]. - when IndexLength is [1, 8], the value range is [0, 10^IndexLength-1], and the maximum value is the maximum number with the specified digits. the default value of the initial serial number is as follows: - first-time enabling of incremental serial number: the default value is 0 (the display length is related to IndexLength, for example, if IndexLength is 4, the display value is 0000). - non-first-time enabling of incremental serial number: the previous incremental serial number is postponed, for example, if the last usage incremented to serial number 069, the new default initial serial number is 070. note: modifying the initial serial number may lead to duplication within the scaling group.</p>.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8043,10 +8119,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexLength(self):
-        r"""Instance name index number digits, defaults to 0, means no specified digit count. Value range: 0-8, maximum is integer 8. when using values 1-8, the system checks whether the index number exceeds the maximum digit for this digit count.
-
-If set to 3, index number is in the format: 000, 001, 002 ... 010, 011 ... 100 ... 999. The maximum is 999. 
-Assuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10000 ... 99999999. Max number is 99999999.
+        r"""<P>Incremental serial number length, defaults to 0, means no specified length. value range: 0-8, maximum is integer 8. - length set to 3, display form: 000, 001, 002 ... 010, 011 ... 100 ... 999, maximum is 999. - length set to 0, display form: 0, 1, 2 ... 10, 11 ... 100 ... 1000 ... 10000 ... 99999999, maximum is 99999999. note: continuous incremental serial number exceeding the limit can cause scale-out failure. do not set too small incremental serial number length.</p>.
         :rtype: int
         """
         return self._IndexLength
@@ -8085,15 +8158,23 @@ class InstanceNameSettings(AbstractModel):
 
 `UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.
         :type InstanceNameStyle: str
-        :param _InstanceNameSuffix: CVM instance name suffix. The length of the character is within the range of [1, 105], and the combined length with InstanceName should not exceed 107.
-
-Assume the suffix name is suffix and the original instance name is test.0, then the final instance name is test.0.suffix.
+        :param _InstanceNameSuffix: CVM instance name suffix. The suffix for a CVM instance name must be 1 to 105 characters in length. Additionally, the combined character count of the base instance name and the suffix must not exceed 107 characters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceNameSuffix: str
+        :param _InstanceNameDelimiter: Specifies the delimiter for the CVM instance name. The default delimiter is a dot (.). Valid values: 
+- dot (.)
+-  hyphen (-)
+- empty string.
+Delimiter used for concatenating instance name, index, and suffix. Assuming instance name is testGpu4090, index is 0007, and suffix is server.
+-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.
+-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.
+-Delimiter is an empty string, finally concatenated as testGpu4090007server.
+        :type InstanceNameDelimiter: str
         """
         self._InstanceName = None
         self._InstanceNameStyle = None
         self._InstanceNameSuffix = None
+        self._InstanceNameDelimiter = None
 
     @property
     def InstanceName(self):
@@ -8123,9 +8204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceNameSuffix(self):
-        r"""CVM instance name suffix. The length of the character is within the range of [1, 105], and the combined length with InstanceName should not exceed 107.
-
-Assume the suffix name is suffix and the original instance name is test.0, then the final instance name is test.0.suffix.
+        r"""CVM instance name suffix. The suffix for a CVM instance name must be 1 to 105 characters in length. Additionally, the combined character count of the base instance name and the suffix must not exceed 107 characters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8135,11 +8214,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceNameSuffix(self, InstanceNameSuffix):
         self._InstanceNameSuffix = InstanceNameSuffix
 
+    @property
+    def InstanceNameDelimiter(self):
+        r"""Specifies the delimiter for the CVM instance name. The default delimiter is a dot (.). Valid values: 
+- dot (.)
+-  hyphen (-)
+- empty string.
+Delimiter used for concatenating instance name, index, and suffix. Assuming instance name is testGpu4090, index is 0007, and suffix is server.
+-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.
+-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.
+-Delimiter is an empty string, finally concatenated as testGpu4090007server.
+        :rtype: str
+        """
+        return self._InstanceNameDelimiter
+
+    @InstanceNameDelimiter.setter
+    def InstanceNameDelimiter(self, InstanceNameDelimiter):
+        self._InstanceNameDelimiter = InstanceNameDelimiter
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
         self._InstanceNameStyle = params.get("InstanceNameStyle")
         self._InstanceNameSuffix = params.get("InstanceNameSuffix")
+        self._InstanceNameDelimiter = params.get("InstanceNameDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8220,18 +8318,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Describes the line type. For details, refer to [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). default value: `BGP`.
+        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
 
-<Li>BGP: general bgp line.</li>
-For a user who has enabled the static single-line IP allowlist, valid values include:
- <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
-Note: Only certain regions support static single-line IP addresses.
+<Li>BGP: general bgp line.</li>.
+For a user who has enabled the static single-line IP allowlist, valid values include:.
+
+<Li>CMCC: china mobile.</li>.
+<Li>CTCC: china telecom.</li>.
+<Li>CUCC: china unicom</li>.
+Note: The static single-line IP is only supported in some regions.
 
         :type InternetServiceProvider: str
-        :param _IPv4AddressType: Type of public IP address.
+        :param _IPv4AddressType: Specifies the public IP type.
 
-<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). </li> 
-Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.tencentcloud.com/workorder).
+<Li>WanIP: specifies the public ip address.</li>.
+<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>. 
+If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
+
+High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
         :type IPv4AddressType: str
         :param _AntiDDoSPackageId: Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
         :type AntiDDoSPackageId: str
@@ -8303,12 +8408,15 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
-        r"""Describes the line type. For details, refer to [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). default value: `BGP`.
+        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
 
-<Li>BGP: general bgp line.</li>
-For a user who has enabled the static single-line IP allowlist, valid values include:
- <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
-Note: Only certain regions support static single-line IP addresses.
+<Li>BGP: general bgp line.</li>.
+For a user who has enabled the static single-line IP allowlist, valid values include:.
+
+<Li>CMCC: china mobile.</li>.
+<Li>CTCC: china telecom.</li>.
+<Li>CUCC: china unicom</li>.
+Note: The static single-line IP is only supported in some regions.
 
         :rtype: str
         """
@@ -8320,10 +8428,14 @@ Note: Only certain regions support static single-line IP addresses.
 
     @property
     def IPv4AddressType(self):
-        r"""Type of public IP address.
+        r"""Specifies the public IP type.
 
-<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). </li> 
-Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.tencentcloud.com/workorder).
+<Li>WanIP: specifies the public ip address.</li>.
+<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>. 
+If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
+
+High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
         :rtype: str
         """
         return self._IPv4AddressType
@@ -9807,80 +9919,56 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
-<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
-<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
+        :param _AutoScalingGroupId: <p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.comom/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
         :type AutoScalingGroupId: str
-        :param _AutoScalingGroupName: Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
+        :param _AutoScalingGroupName: <p>The scaling group name must be unique in your account. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 55 bytes.</p>.
         :type AutoScalingGroupName: str
-        :param _DefaultCooldown: Default cooldown period in seconds. value ranges from 0 to 3600. default value: 300.
+        :param _DefaultCooldown: <P>Default cooldown in seconds, value ranges from 0 to 3600, default value is 300.</p>.
         :type DefaultCooldown: int
-        :param _DesiredCapacity: Expected number of instances, value ranges from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
+        :param _DesiredCapacity: <P>Expected number of instances. value range [0,2000]. to meet the maximum value equal to or greater than the expected value, and the expected value equal to or greater than the minimum value.</p>.
         :type DesiredCapacity: int
-        :param _LaunchConfigurationId: Launch configuration ID. obtain available launch configuration ids in the following ways:.
-<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
-<li>Specifies the launch configuration ID obtained by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.</li>.
+        :param _LaunchConfigurationId: <p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.comom/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
         :type LaunchConfigurationId: str
-        :param _MaxSize: Maximum number of instances, value range from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
+        :param _MaxSize: <P>Maximum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :type MaxSize: int
-        :param _MinSize: Minimum number of instances. value range [0,2000]. to meet maximum value equal to or greater than expected value, expected value equal to or greater than minimum value.
+        :param _MinSize: <P>Minimum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :type MinSize: int
-        :param _ProjectId: Project ID. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `ProjectId` field in the return value. default value is 0, indicates usage of the default project.
+        :param _ProjectId: <p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
         :type ProjectId: int
-        :param _SubnetIds: subnet ID list. you can obtain a valid vpc subnet ID by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet). you can also call the API [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) and retrieve the valid vpc subnet ID from the SubnetId field in the API response.
+        :param _SubnetIds: <p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
         :type SubnetIds: list of str
-        :param _TerminationPolicies: Termination policy, whose maximum length is currently 1. Valid values include OLDEST_INSTANCE and NEWEST_INSTANCE.
-<li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
-<li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>
+        :param _TerminationPolicies: <p>Termination policy, whose maximum length is currently 1. valid values: OLDEST_INSTANCE and NEWEST_INSTANCE.</p><li> OLDEST_INSTANCE terminates the OLDEST INSTANCE in the scaling group first.</li><li> NEWEST_INSTANCE terminates the NEWEST INSTANCE in the scaling group first.</li>.
         :type TerminationPolicies: list of str
-        :param _VpcId: vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc) or obtained from the VpcId field in the api response by calling the DescribeVpc api (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1).
+        :param _VpcId: <p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
         :type VpcId: str
-        :param _Zones: List of availability zones
+        :param _Zones: <P>AZ list</p>.
         :type Zones: list of str
-        :param _RetryPolicy: Retry policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. A partially successful scaling activity is considered a failed activity.
-<li>IMMEDIATE_RETRY: Immediately retry, and quickly retry in a short period. There will be no retry anymore after a certain number of consecutive failures (5).</li>
-<li>INCREMENTAL_INTERVALS: Retry with incremental intervals. As the number of consecutive failures increases, the retry intervals gradually become longer, ranging from seconds to one day.</li>
-<li>NO_RETRY: There will be no retry until another user call or alarm information is received.</li>
+        :param _RetryPolicy: <p>RETRY policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. a partially successful scaling operation is considered a failed activity.</p><li>IMMEDIATE_RETRY: RETRY immediately, attempting retries in rapid succession over a short period, and cease further retries after a certain number of consecutive failures (5 times).</li><li>INCREMENTAL_INTERVALS: INCREMENTAL interval RETRY, with the RETRY interval gradually increasing as the number of consecutive failures rises, ranging from seconds to 1 day.</li><li>NO_RETRY: NO RETRY until a user call or Alarm information is received again.</li>.
         :type RetryPolicy: str
-        :param _ZonesCheckPolicy: AZ verification policy, whose valid values include ALL and ANY, with the default value being ANY. This policy comes into effect when actual changes are made to resource-related fields in the scaling group (such as launch configuration, AZ, or subnet).
-<li>ALL: Verification passes if all AZs or subnets are available; otherwise, a verification error will be reported.<li>
-<li>ANY: Verification passes if any AZ or subnet is available; otherwise, a verification error will be reported.</li>
-
-Common reasons for unavailable AZs or subnets include the CVM InstanceType in the AZ being sold out, the CBS cloud disk in the AZ being sold out, insufficient quota in the AZ, and insufficient IP addresses in the subnet.
-If there is no AZ or subnet in Zones/SubnetIds, a verification error will be reported regardless of the values of ZonesCheckPolicy.
+        :param _ZonesCheckPolicy: <p>Availability Zone validation policy. valid values include ALL and ANY. default value: ANY. it is effective when scaling group actual change resource-related fields (launch configuration, az, subnet) are modified.</p><li> ALL: verification passes if ALL azs (Zone) or subnets (SubnetId) are available. otherwise, a verification error will be reported.</li><li> ANY: verification passes if ANY AZ (Zone) or subnet (SubnetId) is available. otherwise, a verification error will be reported.</li><p>common causes for unavailable azs or subnets include CVM instancetype sold out in the az, CBS cloud disk sold out in the az, insufficient quota in the az, or insufficient IP addresses in the subnet.</p><p>if Zones/SubnetIds contain nonexistent azs or subnets, a verification error will be reported regardless of the values of ZonesCheckPolicy.</p>.
         :type ZonesCheckPolicy: str
-        :param _ServiceSettings: Service settings such as unhealthy instance replacement.
+        :param _ServiceSettings: <P>Service settings, including cloud monitoring and unhealthy instance replacement.</p>.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        :param _Ipv6AddressCount: <p>The instance has a configuration for the number of IPv6 addresses. valid values include 0 and 1. the default value is 0, which means the instance does not allocate an IPv6 address. you need to use a VPC that supports IPv6 and enable IPv6 CIDR in the subnet.</p>
         :type Ipv6AddressCount: int
-        :param _MultiZoneSubnetPolicy: Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
-<li>PRIORITY: Instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
-<li>EQUALITY: The instances added through scale-out will be distributed across multiple AZs/subnets to ensure a relatively balanced number of instances in each AZ/subnet after scaling out.</li>
-
-Points to consider regarding this policy:
-<li>When the scaling group is based on a classic network, this policy applies to the multi-AZ; when the scaling group is based on a VPC network, this policy applies to the multi-subnet, in this case, the AZs are no longer considered. For example, if there are four subnets labeled A, B, C, and D, where A, B, and C are in AZ 1 and D is in AZ 2, the subnets A, B, C, and D are considered for sorting without regard to AZs 1 and 2.</li>
-<li>This policy applies to the multi-AZ/multi-subnet and not to the InstanceTypes parameter of the launch configuration, which is selected according to the priority policy.</li>
-<li>When instances are created according to the PRIORITY policy, ensure the policy for multiple models first, followed by the policy for the multi-AZ/subnet. For example, with models A and B and subnets 1, 2, and 3, attempts will be made in the order of A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 will be attempted (instead of B1).</li>
+        :param _MultiZoneSubnetPolicy: <p>The multi-az/subnet policy, with values including PRIORITY and EQUALITY, defaults to PRIORITY.</p><li> PRIORITY: attempt to create instances taking the order of the az/subnet list as the PRIORITY. if instances can be successfully created in the az/subnet with the highest PRIORITY, they will always be created there.</li> <li> EQUALITY: instances added through scale-out will be distributed across multiple azs/subnets to ensure A relatively balanced number of instances in each az/subnet after expansion.</li> <p>points to consider:</p><li> when the scaling group is based on A classic network, this policy applies to multi-az. when the scaling group is based on A VPC network, this policy applies to multi-subnet, no longer considering AZ factors. for example, with four subnets labeled A, B, c, and D, where A, B, and c are in availability zone 1 and D is in availability zone 2, consider subnets A, B, c, and D for sorting, without considering availability zones 1 and 2.</li> <li> this policy applies to multi-az/subnet but is not applicable to the instancetypes parameter of the launch configuration. selection of multiple models is according to PRIORITY policy.</li> <li> when creating instances according to the PRIORITY policy, ensure the policy for multiple models first, then the policy for multi-az/subnet. for example, with multiple models A and B, and multiple subnets 1, 2, and 3, attempts will be made in the order A1, A2, A3, B1, B2, B3. if A1 is sold out, A2 will be attempted (not B1).</li>.
         :type MultiZoneSubnetPolicy: str
-        :param _HealthCheckType: Scaling group instance health check type, whose valid values include:
-<li>CVM: Determines whether an instance is unhealthy based on its network status. An unhealthy network status is indicated by an event where instances become unreachable via PING. Detailed criteria of judgment can be found in [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1).</li>
-<li>CLB: Determines whether an instance is unhealthy based on the health check status of CLB. For principles behind CLB health checks, see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).</li>
+        :param _HealthCheckType: <p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.comom/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.comom/document/product/214/6097?from_cn_redirect=1).</li>.
         :type HealthCheckType: str
-        :param _LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
+        :param _LoadBalancerHealthCheckGracePeriod: <p>Specifies the CLB health check grace period in seconds.</p><p>value range: [0, 7200].</p><p>default value: 0.</p>
         :type LoadBalancerHealthCheckGracePeriod: int
-        :param _InstanceAllocationPolicy: Instance assignment policy, whose valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.
-<li>LAUNCH_CONFIGURATION: Represent the traditional mode of assigning instances according to the launch configuration.</li>
-<li>SPOT_MIXED: Represent the spot mixed mode. Currently, this mode is supported only when the launch configuration is set to the pay-as-you-go billing mode. In the mixed mode, the scaling group will scale out pay-as-you-go models or spot models based on the predefined settings. When the mixed mode is used, the billing type of the associated launch configuration cannot be modified.</li>
+        :param _InstanceAllocationPolicy: <p>Instance allocation policy. valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.</p><li> LAUNCH_CONFIGURATION represents the traditional startup CONFIGURATION mode.</li><li> SPOT_MIXED represents the SPOT hybrid mode. currently only support hybrid mode when the LAUNCH CONFIGURATION uses pay-as-you-go billing mode. in hybrid mode, the scaling group will scale out based on the SPOT model. the billing type of the associated LAUNCH CONFIGURATION cannot be modified when using hybrid mode.</li>.
         :type InstanceAllocationPolicy: str
-        :param _SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
-This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
+        :param _SpotMixedAllocationPolicy: <p>Allocation policy of instances for each billing type in SPOT hybrid mode.<br>available only when InstanceAllocationPolicy is set to SPOT_MIXED.</p>.
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
-        :param _CapacityRebalance: Capacity rebalancing feature, which is applicable only to spot instances within the scaling group. Valid values:
-<li>TRUE: Enable this feature. When spot instances in the scaling group are about to be automatically recycled by the spot instance service, AS proactively initiates the termination process of the spot instances. If there is a configured scale-in hook, it will be triggered before termination. After the termination process starts, AS asynchronously initiates the scale-out to reach the expected number of instances.</li>
-<li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
+        :param _CapacityRebalance: <p>The capacity rebalancing feature is only applicable to spot instances within the scaling group. valid values:</p><li> TRUE: enable this feature. when spot instances within the scaling group are about to be automatically recycled by the spot instance service, AS initiates the termination process of spot instances. if a scale-in hook is configured, trigger before termination. after the termination process starts, AS asynchronously initiates scale-out to reach the expected number of instances.</li> <li> FALSE: disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>.
         :type CapacityRebalance: bool
-        :param _InstanceNameIndexSettings: Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :param _InstanceNameIndexSettings: <P>Instance name sequencing settings. once enabled, append incremental numeric sequence to the names of instances automatically created within the scaling group.</p>.
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: <P>Instance hostname sequencing settings. once enabled, append incremental numeric sequence to the hostname of instances automatically created within the scaling group.</p>.
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: <p>The concurrent scaling up functionality for matching expected numbers cannot be set when InstanceAllocationPolicy is in spot hybrid mode or when ScalingMode is in the scaling-prioritized startup mode. currently only two matching expected number scale-out activities are supported to run concurrently. other types of activities such as specified quantity scale-out or scale-in cannot be specified. set to FALSE indicates disabled.</p>.
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -9905,12 +9993,12 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupId(self):
-        r"""Scaling group ID. obtain available scaling group ids in the following ways:.
-<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
-<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
+        r"""<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.comom/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -9921,7 +10009,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def AutoScalingGroupName(self):
-        r"""Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
+        r"""<p>The scaling group name must be unique in your account. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 55 bytes.</p>.
         :rtype: str
         """
         return self._AutoScalingGroupName
@@ -9932,7 +10020,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DefaultCooldown(self):
-        r"""Default cooldown period in seconds. value ranges from 0 to 3600. default value: 300.
+        r"""<P>Default cooldown in seconds, value ranges from 0 to 3600, default value is 300.</p>.
         :rtype: int
         """
         return self._DefaultCooldown
@@ -9943,7 +10031,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DesiredCapacity(self):
-        r"""Expected number of instances, value ranges from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
+        r"""<P>Expected number of instances. value range [0,2000]. to meet the maximum value equal to or greater than the expected value, and the expected value equal to or greater than the minimum value.</p>.
         :rtype: int
         """
         return self._DesiredCapacity
@@ -9954,9 +10042,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def LaunchConfigurationId(self):
-        r"""Launch configuration ID. obtain available launch configuration ids in the following ways:.
-<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
-<li>Specifies the launch configuration ID obtained by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.</li>.
+        r"""<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.comom/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -9967,7 +10053,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MaxSize(self):
-        r"""Maximum number of instances, value range from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
+        r"""<P>Maximum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :rtype: int
         """
         return self._MaxSize
@@ -9978,7 +10064,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MinSize(self):
-        r"""Minimum number of instances. value range [0,2000]. to meet maximum value equal to or greater than expected value, expected value equal to or greater than minimum value.
+        r"""<P>Minimum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :rtype: int
         """
         return self._MinSize
@@ -9989,7 +10075,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ProjectId(self):
-        r"""Project ID. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `ProjectId` field in the return value. default value is 0, indicates usage of the default project.
+        r"""<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
         :rtype: int
         """
         return self._ProjectId
@@ -10000,7 +10086,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def SubnetIds(self):
-        r"""subnet ID list. you can obtain a valid vpc subnet ID by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet). you can also call the API [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) and retrieve the valid vpc subnet ID from the SubnetId field in the API response.
+        r"""<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
         :rtype: list of str
         """
         return self._SubnetIds
@@ -10011,9 +10097,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def TerminationPolicies(self):
-        r"""Termination policy, whose maximum length is currently 1. Valid values include OLDEST_INSTANCE and NEWEST_INSTANCE.
-<li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
-<li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>
+        r"""<p>Termination policy, whose maximum length is currently 1. valid values: OLDEST_INSTANCE and NEWEST_INSTANCE.</p><li> OLDEST_INSTANCE terminates the OLDEST INSTANCE in the scaling group first.</li><li> NEWEST_INSTANCE terminates the NEWEST INSTANCE in the scaling group first.</li>.
         :rtype: list of str
         """
         return self._TerminationPolicies
@@ -10024,7 +10108,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def VpcId(self):
-        r"""vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc) or obtained from the VpcId field in the api response by calling the DescribeVpc api (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1).
+        r"""<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -10035,7 +10119,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def Zones(self):
-        r"""List of availability zones
+        r"""<P>AZ list</p>.
         :rtype: list of str
         """
         return self._Zones
@@ -10046,10 +10130,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def RetryPolicy(self):
-        r"""Retry policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. A partially successful scaling activity is considered a failed activity.
-<li>IMMEDIATE_RETRY: Immediately retry, and quickly retry in a short period. There will be no retry anymore after a certain number of consecutive failures (5).</li>
-<li>INCREMENTAL_INTERVALS: Retry with incremental intervals. As the number of consecutive failures increases, the retry intervals gradually become longer, ranging from seconds to one day.</li>
-<li>NO_RETRY: There will be no retry until another user call or alarm information is received.</li>
+        r"""<p>RETRY policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. a partially successful scaling operation is considered a failed activity.</p><li>IMMEDIATE_RETRY: RETRY immediately, attempting retries in rapid succession over a short period, and cease further retries after a certain number of consecutive failures (5 times).</li><li>INCREMENTAL_INTERVALS: INCREMENTAL interval RETRY, with the RETRY interval gradually increasing as the number of consecutive failures rises, ranging from seconds to 1 day.</li><li>NO_RETRY: NO RETRY until a user call or Alarm information is received again.</li>.
         :rtype: str
         """
         return self._RetryPolicy
@@ -10060,12 +10141,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ZonesCheckPolicy(self):
-        r"""AZ verification policy, whose valid values include ALL and ANY, with the default value being ANY. This policy comes into effect when actual changes are made to resource-related fields in the scaling group (such as launch configuration, AZ, or subnet).
-<li>ALL: Verification passes if all AZs or subnets are available; otherwise, a verification error will be reported.<li>
-<li>ANY: Verification passes if any AZ or subnet is available; otherwise, a verification error will be reported.</li>
-
-Common reasons for unavailable AZs or subnets include the CVM InstanceType in the AZ being sold out, the CBS cloud disk in the AZ being sold out, insufficient quota in the AZ, and insufficient IP addresses in the subnet.
-If there is no AZ or subnet in Zones/SubnetIds, a verification error will be reported regardless of the values of ZonesCheckPolicy.
+        r"""<p>Availability Zone validation policy. valid values include ALL and ANY. default value: ANY. it is effective when scaling group actual change resource-related fields (launch configuration, az, subnet) are modified.</p><li> ALL: verification passes if ALL azs (Zone) or subnets (SubnetId) are available. otherwise, a verification error will be reported.</li><li> ANY: verification passes if ANY AZ (Zone) or subnet (SubnetId) is available. otherwise, a verification error will be reported.</li><p>common causes for unavailable azs or subnets include CVM instancetype sold out in the az, CBS cloud disk sold out in the az, insufficient quota in the az, or insufficient IP addresses in the subnet.</p><p>if Zones/SubnetIds contain nonexistent azs or subnets, a verification error will be reported regardless of the values of ZonesCheckPolicy.</p>.
         :rtype: str
         """
         return self._ZonesCheckPolicy
@@ -10076,7 +10152,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def ServiceSettings(self):
-        r"""Service settings such as unhealthy instance replacement.
+        r"""<P>Service settings, including cloud monitoring and unhealthy instance replacement.</p>.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         """
         return self._ServiceSettings
@@ -10087,7 +10163,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def Ipv6AddressCount(self):
-        r"""The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        r"""<p>The instance has a configuration for the number of IPv6 addresses. valid values include 0 and 1. the default value is 0, which means the instance does not allocate an IPv6 address. you need to use a VPC that supports IPv6 and enable IPv6 CIDR in the subnet.</p>
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -10098,14 +10174,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def MultiZoneSubnetPolicy(self):
-        r"""Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
-<li>PRIORITY: Instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
-<li>EQUALITY: The instances added through scale-out will be distributed across multiple AZs/subnets to ensure a relatively balanced number of instances in each AZ/subnet after scaling out.</li>
-
-Points to consider regarding this policy:
-<li>When the scaling group is based on a classic network, this policy applies to the multi-AZ; when the scaling group is based on a VPC network, this policy applies to the multi-subnet, in this case, the AZs are no longer considered. For example, if there are four subnets labeled A, B, C, and D, where A, B, and C are in AZ 1 and D is in AZ 2, the subnets A, B, C, and D are considered for sorting without regard to AZs 1 and 2.</li>
-<li>This policy applies to the multi-AZ/multi-subnet and not to the InstanceTypes parameter of the launch configuration, which is selected according to the priority policy.</li>
-<li>When instances are created according to the PRIORITY policy, ensure the policy for multiple models first, followed by the policy for the multi-AZ/subnet. For example, with models A and B and subnets 1, 2, and 3, attempts will be made in the order of A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 will be attempted (instead of B1).</li>
+        r"""<p>The multi-az/subnet policy, with values including PRIORITY and EQUALITY, defaults to PRIORITY.</p><li> PRIORITY: attempt to create instances taking the order of the az/subnet list as the PRIORITY. if instances can be successfully created in the az/subnet with the highest PRIORITY, they will always be created there.</li> <li> EQUALITY: instances added through scale-out will be distributed across multiple azs/subnets to ensure A relatively balanced number of instances in each az/subnet after expansion.</li> <p>points to consider:</p><li> when the scaling group is based on A classic network, this policy applies to multi-az. when the scaling group is based on A VPC network, this policy applies to multi-subnet, no longer considering AZ factors. for example, with four subnets labeled A, B, c, and D, where A, B, and c are in availability zone 1 and D is in availability zone 2, consider subnets A, B, c, and D for sorting, without considering availability zones 1 and 2.</li> <li> this policy applies to multi-az/subnet but is not applicable to the instancetypes parameter of the launch configuration. selection of multiple models is according to PRIORITY policy.</li> <li> when creating instances according to the PRIORITY policy, ensure the policy for multiple models first, then the policy for multi-az/subnet. for example, with multiple models A and B, and multiple subnets 1, 2, and 3, attempts will be made in the order A1, A2, A3, B1, B2, B3. if A1 is sold out, A2 will be attempted (not B1).</li>.
         :rtype: str
         """
         return self._MultiZoneSubnetPolicy
@@ -10116,9 +10185,7 @@ Points to consider regarding this policy:
 
     @property
     def HealthCheckType(self):
-        r"""Scaling group instance health check type, whose valid values include:
-<li>CVM: Determines whether an instance is unhealthy based on its network status. An unhealthy network status is indicated by an event where instances become unreachable via PING. Detailed criteria of judgment can be found in [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1).</li>
-<li>CLB: Determines whether an instance is unhealthy based on the health check status of CLB. For principles behind CLB health checks, see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).</li>
+        r"""<p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.comom/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.comom/document/product/214/6097?from_cn_redirect=1).</li>.
         :rtype: str
         """
         return self._HealthCheckType
@@ -10129,7 +10196,7 @@ Points to consider regarding this policy:
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
-        r"""Grace period of the CLB health check
+        r"""<p>Specifies the CLB health check grace period in seconds.</p><p>value range: [0, 7200].</p><p>default value: 0.</p>
         :rtype: int
         """
         return self._LoadBalancerHealthCheckGracePeriod
@@ -10140,9 +10207,7 @@ Points to consider regarding this policy:
 
     @property
     def InstanceAllocationPolicy(self):
-        r"""Instance assignment policy, whose valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.
-<li>LAUNCH_CONFIGURATION: Represent the traditional mode of assigning instances according to the launch configuration.</li>
-<li>SPOT_MIXED: Represent the spot mixed mode. Currently, this mode is supported only when the launch configuration is set to the pay-as-you-go billing mode. In the mixed mode, the scaling group will scale out pay-as-you-go models or spot models based on the predefined settings. When the mixed mode is used, the billing type of the associated launch configuration cannot be modified.</li>
+        r"""<p>Instance allocation policy. valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.</p><li> LAUNCH_CONFIGURATION represents the traditional startup CONFIGURATION mode.</li><li> SPOT_MIXED represents the SPOT hybrid mode. currently only support hybrid mode when the LAUNCH CONFIGURATION uses pay-as-you-go billing mode. in hybrid mode, the scaling group will scale out based on the SPOT model. the billing type of the associated LAUNCH CONFIGURATION cannot be modified when using hybrid mode.</li>.
         :rtype: str
         """
         return self._InstanceAllocationPolicy
@@ -10153,8 +10218,7 @@ Points to consider regarding this policy:
 
     @property
     def SpotMixedAllocationPolicy(self):
-        r"""Specifies how to assign pay-as-you-go instances and spot instances.
-This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
+        r"""<p>Allocation policy of instances for each billing type in SPOT hybrid mode.<br>available only when InstanceAllocationPolicy is set to SPOT_MIXED.</p>.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
         """
         return self._SpotMixedAllocationPolicy
@@ -10165,9 +10229,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def CapacityRebalance(self):
-        r"""Capacity rebalancing feature, which is applicable only to spot instances within the scaling group. Valid values:
-<li>TRUE: Enable this feature. When spot instances in the scaling group are about to be automatically recycled by the spot instance service, AS proactively initiates the termination process of the spot instances. If there is a configured scale-in hook, it will be triggered before termination. After the termination process starts, AS asynchronously initiates the scale-out to reach the expected number of instances.</li>
-<li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
+        r"""<p>The capacity rebalancing feature is only applicable to spot instances within the scaling group. valid values:</p><li> TRUE: enable this feature. when spot instances within the scaling group are about to be automatically recycled by the spot instance service, AS initiates the termination process of spot instances. if a scale-in hook is configured, trigger before termination. after the termination process starts, AS asynchronously initiates scale-out to reach the expected number of instances.</li> <li> FALSE: disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>.
         :rtype: bool
         """
         return self._CapacityRebalance
@@ -10178,7 +10240,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def InstanceNameIndexSettings(self):
-        r"""Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        r"""<P>Instance name sequencing settings. once enabled, append incremental numeric sequence to the names of instances automatically created within the scaling group.</p>.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         return self._InstanceNameIndexSettings
@@ -10186,6 +10248,28 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
     @InstanceNameIndexSettings.setter
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
+    @property
+    def HostNameIndexSettings(self):
+        r"""<P>Instance hostname sequencing settings. once enabled, append incremental numeric sequence to the hostname of instances automatically created within the scaling group.</p>.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""<p>The concurrent scaling up functionality for matching expected numbers cannot be set when InstanceAllocationPolicy is in spot hybrid mode or when ScalingMode is in the scaling-prioritized startup mode. currently only two matching expected number scale-out activities are supported to run concurrently. other types of activities such as specified quantity scale-out or scale-in cannot be specified. set to FALSE indicates disabled.</p>.
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
 
 
     def _deserialize(self, params):
@@ -10218,6 +10302,10 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10420,19 +10508,21 @@ This field can be modified only when the current billing mode is spot instance.
 Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
 The default data disk should be the same as the system disk.
         :type DataDisks: list of DataDisk
-        :param _HostNameSettings: CVM hostname settings.
-This field is not supported for Windows instances.
-This field requires passing the `HostName` field. Other fields that are not passed in will use their default values.
+        :param _HostNameSettings: Specifies the related settings for the cloud virtual machine HostName (HostName).
+windows instances do not support setting hostname.
+When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
+Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: Settings of CVM instance names. 
-If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
-This field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.
+        :param _InstanceNameSettings: Specifies the related settings of the cloud virtual machine (cvm) instance name. 
+If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
+Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
+Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _EnhancedService: Specifies whether to enable additional services, such as security services and monitoring service.
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param _CamRoleName: Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :type CamRoleName: str
-        :param _HpcClusterId: High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+        :param _HpcClusterId: High-Performance computing cluster ID. See [Tencent Cloud HPC Documentation](https://www.tencentcloud.com/zh/document/product/1236) for more details.
 Note: this field is empty by default.
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
@@ -10654,9 +10744,10 @@ The default data disk should be the same as the system disk.
 
     @property
     def HostNameSettings(self):
-        r"""CVM hostname settings.
-This field is not supported for Windows instances.
-This field requires passing the `HostName` field. Other fields that are not passed in will use their default values.
+        r"""Specifies the related settings for the cloud virtual machine HostName (HostName).
+windows instances do not support setting hostname.
+When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
+Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -10667,9 +10758,10 @@ This field requires passing the `HostName` field. Other fields that are not pass
 
     @property
     def InstanceNameSettings(self):
-        r"""Settings of CVM instance names. 
-If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
-This field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.
+        r"""Specifies the related settings of the cloud virtual machine (cvm) instance name. 
+If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
+Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
+Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -10702,7 +10794,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
 
     @property
     def HpcClusterId(self):
-        r"""High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+        r"""High-Performance computing cluster ID. See [Tencent Cloud HPC Documentation](https://www.tencentcloud.com/zh/document/product/1236) for more details.
 Note: this field is empty by default.
         :rtype: str
         """
