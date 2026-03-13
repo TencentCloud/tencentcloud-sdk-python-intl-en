@@ -56,6 +56,9 @@ INTERNALERROR_CREATEFSFAILED = 'InternalError.CreateFsFailed'
 # Failed to get the payment status of the user.
 INTERNALERROR_GETACCOUNTSTATUSFAILED = 'InternalError.GetAccountStatusFailed'
 
+# Timed out.
+INTERNALERROR_TIMEOUT = 'InternalError.Timeout'
+
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -92,8 +95,14 @@ INVALIDPARAMETER_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameter.SnapshotPol
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# Auto-scaling policy does not exist.
+# Auto scale-out policy does not exist.
 INVALIDPARAMETERVALUE_AUTOPOLICYNOTFOUND = 'InvalidParameterValue.AutoPolicyNotFound'
+
+# Parameter value error: bind the settlement rules before binding the archive rule.
+INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = 'InvalidParameterValue.BindInfrequentaccessFirst'
+
+# Invalid file system path.
+INVALIDPARAMETERVALUE_CFSPATH = 'InvalidParameterValue.CfsPath'
 
 # The length of the string used to ensure the idempotency of the request exceeds the upper limit of 64 bytes.
 INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = 'InvalidParameterValue.ClientTokenLimitExceeded'
@@ -107,13 +116,16 @@ INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = 'InvalidParameterValue.Duplic
 # Duplicate tag key.
 INVALIDPARAMETERVALUE_DUPLICATEDTAGKEY = 'InvalidParameterValue.DuplicatedTagKey'
 
+# ExternalStorage lifecycle mode supports only data flow.
+INVALIDPARAMETERVALUE_EXTERNALSTORAGESUPPORTDATAFLOWONLY = 'InvalidParameterValue.ExternalStorageSupportDataflowOnly'
+
 # The length of the custom file system name exceeds the limit (64 bytes).
 INVALIDPARAMETERVALUE_FSNAMELIMITEXCEEDED = 'InvalidParameterValue.FsNameLimitExceeded'
 
 # The file system quota exceeds the upper limit.
 INVALIDPARAMETERVALUE_FSSIZELIMITEXCEEDED = 'InvalidParameterValue.FsSizeLimitExceeded'
 
-# Invalid AliveDays value error
+# Invalid AliveDays valueerror.
 INVALIDPARAMETERVALUE_INVALIDALIVEDAYS = 'InvalidParameterValue.InvalidAliveDays'
 
 # Incorrect rule IP.
@@ -125,7 +137,22 @@ INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = 'InvalidParameterValue.InvalidA
 # The string used to ensure the idempotency of the request is incorrect.
 INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = 'InvalidParameterValue.InvalidClientToken'
 
-# The cross-region replication parameter for snapshots is not supported in this region.
+# Parameter value error: data flow ID invalid.
+INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = 'InvalidParameterValue.InvalidDataFlowId'
+
+# Invalid data flow name.
+INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = 'InvalidParameterValue.InvalidDataFlowName'
+
+# Parameter value error: invalid data flow source information. check the key and path.
+INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = 'InvalidParameterValue.InvalidDataFlowSourceInfo'
+
+# Parameter value error: data flow source storage type invalid.
+INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = 'InvalidParameterValue.InvalidDataFlowSourceStorageType'
+
+# Parameter value error: data flow target path invalid.
+INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = 'InvalidParameterValue.InvalidDataFlowTargetPath'
+
+# Snapshot cross-region replication parameter is not supported in this region.
 INVALIDPARAMETERVALUE_INVALIDDESTINATIONREGIONS = 'InvalidParameterValue.InvalidDestinationRegions'
 
 # Invalid encryption parameter.
@@ -143,6 +170,15 @@ INVALIDPARAMETERVALUE_INVALIDFSSIZELIMIT = 'InvalidParameterValue.InvalidFsSizeL
 # Invalid file system status.
 INVALIDPARAMETERVALUE_INVALIDFSSTATUS = 'InvalidParameterValue.InvalidFsStatus'
 
+# Parameter value error: lifecycle task type invalid.
+INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = 'InvalidParameterValue.InvalidLifecycleDataTaskType'
+
+# Invalid lifecycle task id.
+INVALIDPARAMETERVALUE_INVALIDLIFECYCLETASKID = 'InvalidParameterValue.InvalidLifecycleTaskId'
+
+# Invalid MetaType value.
+INVALIDPARAMETERVALUE_INVALIDMETATYPE = 'InvalidParameterValue.InvalidMetaType'
+
 # Incorrect mount target IP.
 INVALIDPARAMETERVALUE_INVALIDMOUNTTARGETIP = 'InvalidParameterValue.InvalidMountTargetIp'
 
@@ -152,7 +188,7 @@ INVALIDPARAMETERVALUE_INVALIDNETINTERFACE = 'InvalidParameterValue.InvalidNetInt
 # Invalid value of `DayOfMonth`.
 INVALIDPARAMETERVALUE_INVALIDPARAMDAYOFMONTH = 'InvalidParameterValue.InvalidParamDayOfMonth'
 
-# Invalid parameter: DayOfWeek
+# Invalid parameter, DayOfWeek.
 INVALIDPARAMETERVALUE_INVALIDPARAMDAYOFWEEK = 'InvalidParameterValue.InvalidParamDayOfWeek'
 
 # Invalid value of `IntervalDays`.
@@ -166,6 +202,9 @@ INVALIDPARAMETERVALUE_INVALIDPGROUPID = 'InvalidParameterValue.InvalidPgroupId'
 
 # Invalid permission group name.
 INVALIDPARAMETERVALUE_INVALIDPGROUPNAME = 'InvalidParameterValue.InvalidPgroupName'
+
+# The directory path contains an invalid character.
+INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = 'InvalidParameterValue.InvalidPolicyFsPath'
 
 # Incorrect priority settings.
 INVALIDPARAMETERVALUE_INVALIDPRIORITY = 'InvalidParameterValue.InvalidPriority'
@@ -185,13 +224,13 @@ INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = 'InvalidParameterValue.InvalidRwPerm
 # Invalid target capacity.
 INVALIDPARAMETERVALUE_INVALIDSCALEUPTARGETCAPACITY = 'InvalidParameterValue.InvalidScaleupTargetCapacity'
 
-# Invalid snapshot policy status
+# Invalid snapshot policy status.
 INVALIDPARAMETERVALUE_INVALIDSNAPPOLICYSTATUS = 'InvalidParameterValue.InvalidSnapPolicyStatus'
 
-# Invalid snapshot name
+# Invalid snapshot name.
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTNAME = 'InvalidParameterValue.InvalidSnapshotName'
 
-# Invalid snapshot policy name
+# Invalid snapshot policy name.
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTPOLICYNAME = 'InvalidParameterValue.InvalidSnapshotPolicyName'
 
 # The snapshot is invalid.
@@ -254,7 +293,7 @@ INVALIDPARAMETERVALUE_MISSINGPGROUPNAME = 'InvalidParameterValue.MissingPgroupNa
 # Snapshot policy parameters missing.
 INVALIDPARAMETERVALUE_MISSINGPOLICYPARAM = 'InvalidParameterValue.MissingPolicyParam'
 
-# Missing parameter(s): Snapshot Name or aliveDays
+# Missing required parameter Snapshot Name or aliveDays.
 INVALIDPARAMETERVALUE_MISSINGSNAPNAMEORALIVEDAY = 'InvalidParameterValue.MissingSnapNameOrAliveDay'
 
 # No storage pack is bound to.
@@ -262,6 +301,9 @@ INVALIDPARAMETERVALUE_MISSINGSTORAGERESOURCEPKG = 'InvalidParameterValue.Missing
 
 # `SUBNETID` and `UNSUBNETID` cannot both be empty.
 INVALIDPARAMETERVALUE_MISSINGSUBNETIDORUNSUBNETID = 'InvalidParameterValue.MissingSubnetidOrUnsubnetid'
+
+# Parameter error. at least one of taskid or region is required.
+INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = 'InvalidParameterValue.MissingTaskIdOrRegion'
 
 # A VPC parameter is missing.
 INVALIDPARAMETERVALUE_MISSINGVPCPARAMETER = 'InvalidParameterValue.MissingVpcParameter'
@@ -275,20 +317,29 @@ INVALIDPARAMETERVALUE_MISSINGZONEID = 'InvalidParameterValue.MissingZoneId'
 # Either `Zone` or `Zone_id` must be selected.
 INVALIDPARAMETERVALUE_MISSINGZONEORZONEID = 'InvalidParameterValue.MissingZoneOrZoneId'
 
+# The file system directory has configured data flow. configure another rule.
+INVALIDPARAMETERVALUE_PATHUSEDINDATAFLOW = 'InvalidParameterValue.PathUsedInDataflow'
+
 # The length of the permission group description exceeds the limit (255 bytes).
 INVALIDPARAMETERVALUE_PGROUPDESCINFOLIMITEXCEEDED = 'InvalidParameterValue.PgroupDescinfoLimitExceeded'
 
 # The length of the permission group name exceeds the limit (64 bytes).
 INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = 'InvalidParameterValue.PgroupNameLimitExceeded'
 
+# Lifecycle rule type error.
+INVALIDPARAMETERVALUE_POLICYRULESTORAGETYPEINVALID = 'InvalidParameterValue.PolicyRuleStorageTypeInvalid'
+
 # The permission group rule and permission group do not match.
 INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = 'InvalidParameterValue.RuleNotMatchPgroup'
 
-# Snapshot name exceeds the limit. The name length must not exceed 64 characters.
+# Snapshot name exceeds limit. name length not exceeding 64 characters.
 INVALIDPARAMETERVALUE_SNAPSHOTNAMELIMITEXCEEDED = 'InvalidParameterValue.SnapshotNameLimitExceeded'
 
 # Snapshot policy name exceeds the 64-character limit.
 INVALIDPARAMETERVALUE_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameterValue.SnapshotPolicyNameLimitExceeded'
+
+# Lifecycle rule storage type error.
+INVALIDPARAMETERVALUE_STORAGETYPEINVALID = 'InvalidParameterValue.StorageTypeInvalid'
 
 # Invalid parameter value: the number of tag keys exceeds the upper limit (6).
 INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = 'InvalidParameterValue.TagKeyFilterLimitExceeded'
@@ -305,8 +356,11 @@ INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = 'InvalidParameterValue.TagValueLim
 # Services are unavailable in this AZ.
 INVALIDPARAMETERVALUE_UNAVAILABLEREGION = 'InvalidParameterValue.UnavailableRegion'
 
-# Services are unavailable in this region.
+# This region or availability zone is unable to provide services.
 INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
+
+# The number of lifecycle data tasks exceeds the limit.
+INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = 'InvalidParameterValue.WaitingTaskLimitExceeded'
 
 # `ZoneId` and `Region` do not match.
 INVALIDPARAMETERVALUE_ZONEIDREGIONNOTMATCH = 'InvalidParameterValue.ZoneIdRegionNotMatch'
@@ -320,11 +374,23 @@ OPERATIONDENIED = 'OperationDenied'
 # The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
 
+# Insufficient resources: the number of data flows exceeds the limit.
+RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = 'ResourceInsufficient.DataFlowLimitExceeded'
+
 # The number of file systems has reached the upper limit.
 RESOURCEINSUFFICIENT_FILESYSTEMLIMITEXCEEDED = 'ResourceInsufficient.FileSystemLimitExceeded'
 
 # The number of permission groups has reached the upper limit.
 RESOURCEINSUFFICIENT_PGROUPNUMBERLIMITEXCEEDED = 'ResourceInsufficient.PgroupNumberLimitExceeded'
+
+# The number of file systems bound to the policy exceeds the limit.
+RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = 'ResourceInsufficient.PolicyFsLimitExceeded'
+
+# The number of policy binding paths exceeds the limit.
+RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = 'ResourceInsufficient.PolicyFsPathLimitExceeded'
+
+# The user's lifecycle policy count has reached the maximum limit.
+RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = 'ResourceInsufficient.PolicyLimitExceeded'
 
 # Resources in the region have been sold out.
 RESOURCEINSUFFICIENT_REGIONSOLDOUT = 'ResourceInsufficient.RegionSoldOut'
@@ -335,7 +401,7 @@ RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = 'ResourceInsufficient.RuleLimitExceeded
 # Snapshots are not supported because the file system is too large.
 RESOURCEINSUFFICIENT_SNAPSHOTSIZELIMITEXCEEDED = 'ResourceInsufficient.SnapshotSizeLimitExceeded'
 
-# There is no IP available in this subnet.
+# Insufficient number of ips under this subnet.
 RESOURCEINSUFFICIENT_SUBNETIPALLOCCUPIED = 'ResourceInsufficient.SubnetIpAllOccupied'
 
 # The quantity of the resource tags reached the upper limit.
@@ -379,6 +445,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # This AZ does not support the basic network.
 UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = 'UnsupportedOperation.BasicNetInterfaceNotSupported'
+
+# The data flow cannot be deleted. the data management task associated with the data flow is in progress. please wait for execution completion or terminate execution.
+UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = 'UnsupportedOperation.InvalidLifecycleDataTaskStatus'
 
 # The appid is not on the allowlist of the KMS (the KMS allowlist is currently enabled).
 UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = 'UnsupportedOperation.MissingKmsAccessPermission'

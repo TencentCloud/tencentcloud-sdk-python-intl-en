@@ -25,6 +25,24 @@ class CfsClient(AbstractClient):
     _endpoint = 'cfs.intl.tencentcloudapi.com'
     _service = 'cfs'
 
+    async def ApplyPathLifecyclePolicy(
+            self,
+            request: models.ApplyPathLifecyclePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ApplyPathLifecyclePolicyResponse:
+        """
+        Configure the directory list associated with the lifecycle policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ApplyPathLifecyclePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ApplyPathLifecyclePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindAutoSnapshotPolicy(
             self,
             request: models.BindAutoSnapshotPolicyRequest,
@@ -133,6 +151,78 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataFlow(
+            self,
+            request: models.CreateDataFlowRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataFlowResponse:
+        """
+        This API is used to create a data flow.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataFlow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLifecycleDataTask(
+            self,
+            request: models.CreateLifecycleDataTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLifecycleDataTaskResponse:
+        """
+        Support proactive settlement/preheat API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLifecycleDataTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLifecycleDataTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLifecyclePolicy(
+            self,
+            request: models.CreateLifecyclePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateLifecyclePolicyResponse:
+        """
+        This API is used to create a file storage lifecycle policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLifecyclePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLifecyclePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLifecyclePolicyDownloadTask(
+            self,
+            request: models.CreateLifecyclePolicyDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLifecyclePolicyDownloadTaskResponse:
+        """
+        Download the file list in a lifecycle task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLifecyclePolicyDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLifecyclePolicyDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMigrationTask(
             self,
             request: models.CreateMigrationTaskRequest,
@@ -140,7 +230,6 @@ class CfsClient(AbstractClient):
     ) -> models.CreateMigrationTaskResponse:
         """
         This API is used to create a migration task.
-        To use this API, submit a ticket for us to add you to the allowlist.
         """
         
         kwargs = {}
@@ -194,7 +283,7 @@ class CfsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCfsPGroupResponse:
         """
-        This API is used to delete a permission group.
+        This API is used to delete a permission group. Only permission groups not bound to a file system can be deleted by this API.
         """
         
         kwargs = {}
@@ -242,38 +331,55 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDataFlow(
+            self,
+            request: models.DeleteDataFlowRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataFlowResponse:
+        """
+        Delete a data flow.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataFlow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLifecyclePolicy(
+            self,
+            request: models.DeleteLifecyclePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLifecyclePolicyResponse:
+        """
+        Delete a lifecycle management policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLifecyclePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLifecyclePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteMigrationTask(
             self,
             request: models.DeleteMigrationTaskRequest,
             opts: Dict = None,
     ) -> models.DeleteMigrationTaskResponse:
         """
-        This API is used to delete a migration task.
-        To use this API, submit a ticket for us to add you to the allowlist.
+        This API is used to delete migration tasks. Deletion is not supported for tasks in the status of Waiting, creating, running, canceling, or terminating.
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteMigrationTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMigrationTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteMountTarget(
-            self,
-            request: models.DeleteMountTargetRequest,
-            opts: Dict = None,
-    ) -> models.DeleteMountTargetResponse:
-        """
-        This API is used to delete a mount target.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteMountTarget"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteMountTargetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -321,8 +427,7 @@ class CfsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBucketListResponse:
         """
-        This API is used to get the list of data source buckets.
-        To use this API, submit a ticket for us to add you to the allowlist.
+        To obtain the list of data source buckets.
         """
         
         kwargs = {}
@@ -460,6 +565,60 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataFlow(
+            self,
+            request: models.DescribeDataFlowRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataFlowResponse:
+        """
+        This API is used to query data flow information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataFlow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLifecycleDataTask(
+            self,
+            request: models.DescribeLifecycleDataTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLifecycleDataTaskResponse:
+        """
+        This API is used to query the lifecycle task. It only supports querying task data within 3 months.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLifecycleDataTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLifecycleDataTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLifecyclePolicies(
+            self,
+            request: models.DescribeLifecyclePoliciesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLifecyclePoliciesResponse:
+        """
+        Query lifecycle management policies.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLifecyclePolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLifecyclePoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMigrationTasks(
             self,
             request: models.DescribeMigrationTasksRequest,
@@ -515,13 +674,49 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DoDirectoryOperation(
+            self,
+            request: models.DoDirectoryOperationRequest,
+            opts: Dict = None,
+    ) -> models.DoDirectoryOperationResponse:
+        """
+        File system directory operation API. Currently, only the Turbo series file system supports calling this API to perform directory operations. The Universal Series file system (including the enhanced version) does not support calling.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DoDirectoryOperation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DoDirectoryOperationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDataFlow(
+            self,
+            request: models.ModifyDataFlowRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDataFlowResponse:
+        """
+        Modify data flow parameters.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDataFlow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDataFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyFileSystemAutoScaleUpRule(
             self,
             request: models.ModifyFileSystemAutoScaleUpRuleRequest,
             opts: Dict = None,
     ) -> models.ModifyFileSystemAutoScaleUpRuleResponse:
         """
-        This API is used to modify the scaling policy of a file system.
+        This API is used to set the file system scaling policy. It supports only the turbo file system.
         """
         
         kwargs = {}
@@ -533,13 +728,31 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLifecyclePolicy(
+            self,
+            request: models.ModifyLifecyclePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLifecyclePolicyResponse:
+        """
+        Update a file storage lifecycle policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLifecyclePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLifecyclePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ScaleUpFileSystem(
             self,
             request: models.ScaleUpFileSystemRequest,
             opts: Dict = None,
     ) -> models.ScaleUpFileSystemResponse:
         """
-        This API is used to scale up a Turbo file system.
+        This API is used to expand the turbo file system. It only supports expansion and does not support scale-down. The scaling increment for the turbo standard type is 10240 GIB, and for the turbo performance type, it is 5120 GIB.
         """
         
         kwargs = {}
@@ -569,14 +782,31 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StopLifecycleDataTask(
+            self,
+            request: models.StopLifecycleDataTaskRequest,
+            opts: Dict = None,
+    ) -> models.StopLifecycleDataTaskResponse:
+        """
+        This API is used to terminate a lifecycle task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopLifecycleDataTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopLifecycleDataTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopMigrationTask(
             self,
             request: models.StopMigrationTaskRequest,
             opts: Dict = None,
     ) -> models.StopMigrationTaskResponse:
         """
-        This API is used to stop a migration task.
-        To use this API, submit a ticket for us to add you to the allowlist.
+        This API is used to terminate a migration task, including tasks in the Waiting or Running status.
         """
         
         kwargs = {}
