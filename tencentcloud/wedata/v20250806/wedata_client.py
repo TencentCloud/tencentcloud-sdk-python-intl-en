@@ -509,6 +509,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTriggerWorkflowRun(self, request):
+        r"""Run workflow under workflow scheduling model.
+
+        :param request: Request instance for CreateTriggerWorkflowRun.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTriggerWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTriggerWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkflow(self, request):
         r"""This API is used to create workflow.
 

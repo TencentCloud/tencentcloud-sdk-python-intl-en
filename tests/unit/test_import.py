@@ -619,6 +619,11 @@ def test_import_tdmq_v20200217():
     from tencentcloud.tdmq.v20200217 import models
 
 
+def test_import_tdmysql_v20211122():
+    from tencentcloud.tdmysql.v20211122 import tdmysql_client
+    from tencentcloud.tdmysql.v20211122 import models
+
+
 def test_import_tem_v20201221():
     from tencentcloud.tem.v20201221 import tem_client
     from tencentcloud.tem.v20201221 import models
