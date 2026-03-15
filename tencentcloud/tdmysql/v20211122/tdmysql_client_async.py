@@ -79,26 +79,6 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeBillingEnable(
-            self,
-            request: models.DescribeBillingEnableRequest,
-            opts: Dict = None,
-    ) -> models.DescribeBillingEnableResponse:
-        """
-        No place to call.
-
-        This API is used to query whether billing is enabled.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeBillingEnable"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeBillingEnableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDBParameters(
             self,
             request: models.DescribeDBParametersRequest,
@@ -189,26 +169,6 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeDatabaseTable(
-            self,
-            request: models.DescribeDatabaseTableRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDatabaseTableResponse:
-        """
-        Redundant API, no API calls.
-
-        This API is used to query table information of a cloud database instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDatabaseTable"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDatabaseTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeFlow(
             self,
             request: models.DescribeFlowRequest,
@@ -276,26 +236,6 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyAutoRenewFlag"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAutoRenewFlagResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyBinlogStatus(
-            self,
-            request: models.ModifyBinlogStatusRequest,
-            opts: Dict = None,
-    ) -> models.ModifyBinlogStatusResponse:
-        """
-        This API is used to entirely overwrite the API feature of ModifyInstanceCdc.
-
-        Modify the binlog status.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyBinlogStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyBinlogStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

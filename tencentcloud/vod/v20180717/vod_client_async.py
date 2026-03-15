@@ -201,6 +201,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcApiToken(
+            self,
+            request: models.CreateAigcApiTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcApiTokenResponse:
+        """
+        This API is used to create a Token for invoking AIGC API. After creation, there is a delay in data sync. It becomes queryable or deletable after about 30 seconds.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcApiToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcImageTask(
             self,
             request: models.CreateAigcImageTaskRequest,
@@ -800,6 +818,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAigcApiToken(
+            self,
+            request: models.DeleteAigcApiTokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAigcApiTokenResponse:
+        """
+        Delete an AIGC API Token.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAigcApiToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAnimatedGraphicsTemplate(
             self,
             request: models.DeleteAnimatedGraphicsTemplateRequest,
@@ -1271,6 +1307,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcApiTokens(
+            self,
+            request: models.DescribeAigcApiTokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcApiTokensResponse:
+        """
+        Query the AIGC API Token list. There is a delay in data sync after creation or deletion. The latest data is queryable after about 30 seconds.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcApiTokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcApiTokensResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

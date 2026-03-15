@@ -95,31 +95,6 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeBillingEnable(self, request):
-        r"""No place to call.
-
-        This API is used to query whether billing is enabled.
-
-        :param request: Request instance for DescribeBillingEnable.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeBillingEnableRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeBillingEnableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBillingEnable", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBillingEnableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBParameters(self, request):
         r"""This API is used to obtain the current parameter settings of the instance.
 
@@ -235,31 +210,6 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDatabaseTable(self, request):
-        r"""Redundant API, no API calls.
-
-        This API is used to query table information of a cloud database instance.
-
-        :param request: Request instance for DescribeDatabaseTable.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDatabaseTableRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDatabaseTableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDatabaseTable", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDatabaseTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeFlow(self, request):
         r"""This API is used to query the process status of an asynchronous task.
 
@@ -343,31 +293,6 @@ class TdmysqlClient(AbstractClient):
             body = self.call("ModifyAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoRenewFlagResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyBinlogStatus(self, request):
-        r"""This API is used to entirely overwrite the API feature of ModifyInstanceCdc.
-
-        Modify the binlog status.
-
-        :param request: Request instance for ModifyBinlogStatus.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyBinlogStatusRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyBinlogStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyBinlogStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyBinlogStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

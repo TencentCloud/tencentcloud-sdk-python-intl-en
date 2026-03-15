@@ -2001,15 +2001,19 @@ class CompareResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorCode: The final verification result code.
-0: Success.
-1001: Failed to call the liveness detection engine.
+0: Succeeded.
+1001: Failed to call the liveness engine.
+1002: Suspected spoofed recording.
 1004: Face detection failed.
-2004: The uploaded face image is too large or too small.
-2012: The face is not fully exposed.
-2013: No face is detected.
-2014: The resolution of the uploaded image is too low . Please upload a new one.
+1005: Liveness detection failed.
+1201: Lighting is too dark or overexposed.
+2004: The image passed in is too large or too small.
+2012: Multiple faces detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
 2015: Face comparison failed.
-2016: The similarity did not reach the passing standard.
+2016: The similarity did not reach the standard passing threshold.
+2017: Facial occlusion detected.
         :type ErrorCode: str
         :param _ErrorMsg: The description of the final verification result.
         :type ErrorMsg: str
@@ -2022,7 +2026,11 @@ class CompareResult(AbstractModel):
         :param _LiveErrorCode: The liveness detection result code.
 0: Success.
 1001: Failed to call the liveness detection engine.
+1002: Suspected spoofed recording.
 1004: Face detection failed.
+1005: Liveness detection failed.
+1201: Lighting is too dark or overexposed.
+
         :type LiveErrorCode: str
         :param _LiveErrorMsg: The description of the liveness detection result.
         :type LiveErrorMsg: str
@@ -2033,12 +2041,13 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type ProfileImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param _CompareErrorCode: The face comparison result code.
 0: Success.
-2004: The uploaded face image is too large or too small.
-2012: The face is not fully exposed.
-2013: No face is detected.
-2014: The resolution of the uploaded image is too low . Please upload a new one.
+2004: The image passed in is too large or too small.
+2012: Multiple faces detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
 2015: Face comparison failed.
-2016: The similarity did not reach the passing standard.
+2016: The similarity did not reach the standard passing threshold.
+2017: Facial occlusion detected.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CompareErrorCode: str
         :param _CompareErrorMsg: The description of the face comparison result.
@@ -2090,15 +2099,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ErrorCode(self):
         r"""The final verification result code.
-0: Success.
-1001: Failed to call the liveness detection engine.
+0: Succeeded.
+1001: Failed to call the liveness engine.
+1002: Suspected spoofed recording.
 1004: Face detection failed.
-2004: The uploaded face image is too large or too small.
-2012: The face is not fully exposed.
-2013: No face is detected.
-2014: The resolution of the uploaded image is too low . Please upload a new one.
+1005: Liveness detection failed.
+1201: Lighting is too dark or overexposed.
+2004: The image passed in is too large or too small.
+2012: Multiple faces detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
 2015: Face comparison failed.
-2016: The similarity did not reach the passing standard.
+2016: The similarity did not reach the standard passing threshold.
+2017: Facial occlusion detected.
         :rtype: str
         """
         return self._ErrorCode
@@ -2156,7 +2169,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""The liveness detection result code.
 0: Success.
 1001: Failed to call the liveness detection engine.
+1002: Suspected spoofed recording.
 1004: Face detection failed.
+1005: Liveness detection failed.
+1201: Lighting is too dark or overexposed.
+
         :rtype: str
         """
         return self._LiveErrorCode
@@ -2203,12 +2220,13 @@ Note: This field may return null, indicating that no valid value can be obtained
     def CompareErrorCode(self):
         r"""The face comparison result code.
 0: Success.
-2004: The uploaded face image is too large or too small.
-2012: The face is not fully exposed.
-2013: No face is detected.
-2014: The resolution of the uploaded image is too low . Please upload a new one.
+2004: The image passed in is too large or too small.
+2012: Multiple faces detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
 2015: Face comparison failed.
-2016: The similarity did not reach the passing standard.
+2016: The similarity did not reach the standard passing threshold.
+2017: Facial occlusion detected.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """

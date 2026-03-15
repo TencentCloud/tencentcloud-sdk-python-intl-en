@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ArchiveLogInterval(AbstractModel):
-    r"""Recoverable time interval.
+    r"""Recoverable time interval
 
     """
 
@@ -114,25 +114,25 @@ class BackupPolicyModelInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupEndTime: <P>Backup end time.</p>.
+        :param _BackupEndTime: <P>Backup end time.</p>
         :type BackupEndTime: str
-        :param _BackupMethod: <P>Backup method: physical physical backup, snapshot snapshot backup</p>.
+        :param _BackupMethod: <P>Backup method: physical physical backup, snapshot snapshot backup</p>
         :type BackupMethod: str
-        :param _BackupStartTime: <P>Backup start time</p>.
+        :param _BackupStartTime: <P>Backup start time</p>
         :type BackupStartTime: str
-        :param _EnableFull: <P>Whether full backup is enabled</p>.
+        :param _EnableFull: <P>Whether full backup is enabled</p>
         :type EnableFull: int
-        :param _EnableLog: <P>Whether to enable log backup</p>.
+        :param _EnableLog: <P>Whether to enable log backup</p>
         :type EnableLog: int
-        :param _FullRetentionPeriod: <P>Full backup retention time can currently only be set to 7 days.</p>.
+        :param _FullRetentionPeriod: <P>Full backup retention time can currently only be set to 7 days.</p>
         :type FullRetentionPeriod: int
-        :param _InstanceId: <p>Instance ID.</p>.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _LogRetentionPeriod: <P>Log retention days. currently, can only set retention to 7 days.</p>.
+        :param _LogRetentionPeriod: <P>Log retention days. currently, can only set retention to 7 days.</p>
         :type LogRetentionPeriod: int
-        :param _PeriodTime: <P>Days of the week to perform backup.</p>.
+        :param _PeriodTime: <P>Days of the week to perform backup.</p>
         :type PeriodTime: str
-        :param _StorageType: <p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>.
+        :param _StorageType: <p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>
         :type StorageType: str
         """
         self._BackupEndTime = None
@@ -148,7 +148,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def BackupEndTime(self):
-        r"""<P>Backup end time.</p>.
+        r"""<P>Backup end time.</p>
         :rtype: str
         """
         return self._BackupEndTime
@@ -159,7 +159,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""<P>Backup method: physical physical backup, snapshot snapshot backup</p>.
+        r"""<P>Backup method: physical physical backup, snapshot snapshot backup</p>
         :rtype: str
         """
         return self._BackupMethod
@@ -170,7 +170,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def BackupStartTime(self):
-        r"""<P>Backup start time</p>.
+        r"""<P>Backup start time</p>
         :rtype: str
         """
         return self._BackupStartTime
@@ -181,7 +181,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def EnableFull(self):
-        r"""<P>Whether full backup is enabled</p>.
+        r"""<P>Whether full backup is enabled</p>
         :rtype: int
         """
         return self._EnableFull
@@ -192,7 +192,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def EnableLog(self):
-        r"""<P>Whether to enable log backup</p>.
+        r"""<P>Whether to enable log backup</p>
         :rtype: int
         """
         return self._EnableLog
@@ -203,7 +203,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def FullRetentionPeriod(self):
-        r"""<P>Full backup retention time can currently only be set to 7 days.</p>.
+        r"""<P>Full backup retention time can currently only be set to 7 days.</p>
         :rtype: int
         """
         return self._FullRetentionPeriod
@@ -214,7 +214,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>Instance ID.</p>.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -225,7 +225,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def LogRetentionPeriod(self):
-        r"""<P>Log retention days. currently, can only set retention to 7 days.</p>.
+        r"""<P>Log retention days. currently, can only set retention to 7 days.</p>
         :rtype: int
         """
         return self._LogRetentionPeriod
@@ -236,7 +236,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def PeriodTime(self):
-        r"""<P>Days of the week to perform backup.</p>.
+        r"""<P>Days of the week to perform backup.</p>
         :rtype: str
         """
         return self._PeriodTime
@@ -247,7 +247,7 @@ class BackupPolicyModelInput(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""<p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>.
+        r"""<p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>
         :rtype: str
         """
         return self._StorageType
@@ -1140,40 +1140,6 @@ class DeleteDBSBackupSetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeBillingEnableRequest(AbstractModel):
-    r"""DescribeBillingEnable request structure.
-
-    """
-
-
-class DescribeBillingEnableResponse(AbstractModel):
-    r"""DescribeBillingEnable response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDBParametersRequest(AbstractModel):
     r"""DescribeDBParameters request structure.
 
@@ -1944,169 +1910,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DescribeDatabaseTableRequest(AbstractModel):
-    r"""DescribeDatabaseTable request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID, for example: tdsql3-ow7t8lmc.
-        :type InstanceId: str
-        :param _DbName: Database name, obtained via the DescribeDatabases api.
-        :type DbName: str
-        :param _Table: Table name, obtained through the DescribeDatabaseObjects api.
-        :type Table: str
-        """
-        self._InstanceId = None
-        self._DbName = None
-        self._Table = None
-
-    @property
-    def InstanceId(self):
-        r"""Instance ID, for example: tdsql3-ow7t8lmc.
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def DbName(self):
-        r"""Database name, obtained via the DescribeDatabases api.
-        :rtype: str
-        """
-        return self._DbName
-
-    @DbName.setter
-    def DbName(self, DbName):
-        self._DbName = DbName
-
-    @property
-    def Table(self):
-        r"""Table name, obtained through the DescribeDatabaseObjects api.
-        :rtype: str
-        """
-        return self._Table
-
-    @Table.setter
-    def Table(self, Table):
-        self._Table = Table
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._DbName = params.get("DbName")
-        self._Table = params.get("Table")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDatabaseTableResponse(AbstractModel):
-    r"""DescribeDatabaseTable response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance name.
-        :type InstanceId: str
-        :param _DbName: Database name.
-        :type DbName: str
-        :param _Table: Table name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Table: str
-        :param _Cols: Column information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Cols: list of TableColumn
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._InstanceId = None
-        self._DbName = None
-        self._Table = None
-        self._Cols = None
-        self._RequestId = None
-
-    @property
-    def InstanceId(self):
-        r"""Instance name.
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def DbName(self):
-        r"""Database name.
-        :rtype: str
-        """
-        return self._DbName
-
-    @DbName.setter
-    def DbName(self, DbName):
-        self._DbName = DbName
-
-    @property
-    def Table(self):
-        r"""Table name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Table
-
-    @Table.setter
-    def Table(self, Table):
-        self._Table = Table
-
-    @property
-    def Cols(self):
-        r"""Column information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: list of TableColumn
-        """
-        return self._Cols
-
-    @Cols.setter
-    def Cols(self, Cols):
-        self._Cols = Cols
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._DbName = params.get("DbName")
-        self._Table = params.get("Table")
-        if params.get("Cols") is not None:
-            self._Cols = []
-            for item in params.get("Cols"):
-                obj = TableColumn()
-                obj._deserialize(item)
-                self._Cols.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeFlowRequest(AbstractModel):
     r"""DescribeFlow request structure.
 
@@ -2336,9 +2139,9 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance list that needs to be modified.
+        :param _InstanceIds: <P>Instance list that needs to be modified</p>.
         :type InstanceIds: list of str
-        :param _AutoRenewFlag: 1 indicates enable automatic renewal, 0 indicates disable automatic renewal.
+        :param _AutoRenewFlag: <P>1 enables automatic renewal, 0 disables automatic renewal.</p>.
         :type AutoRenewFlag: int
         """
         self._InstanceIds = None
@@ -2346,7 +2149,7 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Instance list that needs to be modified.
+        r"""<P>Instance list that needs to be modified</p>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2357,7 +2160,7 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""1 indicates enable automatic renewal, 0 indicates disable automatic renewal.
+        r"""<P>1 enables automatic renewal, 0 disables automatic renewal.</p>.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2405,100 +2208,6 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyBinlogStatusRequest(AbstractModel):
-    r"""ModifyBinlogStatus request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID.
-        :type InstanceId: str
-        :param _Status: 1 on 0 off.
-        :type Status: int
-        """
-        self._InstanceId = None
-        self._Status = None
-
-    @property
-    def InstanceId(self):
-        r"""Instance ID.
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Status(self):
-        r"""1 on 0 off.
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyBinlogStatusResponse(AbstractModel):
-    r"""ModifyBinlogStatus response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FlowId: Process id of the flow.
-        :type FlowId: int
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._FlowId = None
-        self._RequestId = None
-
-    @property
-    def FlowId(self):
-        r"""Process id of the flow.
-        :rtype: int
-        """
-        return self._FlowId
-
-    @FlowId.setter
-    def FlowId(self, FlowId):
-        self._FlowId = FlowId
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3439,57 +3148,6 @@ class SecurityGroupBound(AbstractModel):
         self._Action = params.get("Action")
         self._PortRange = params.get("PortRange")
         self._IpProtocol = params.get("IpProtocol")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TableColumn(AbstractModel):
-    r"""Database column information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Col: Column name.
-        :type Col: str
-        :param _Type: Column type
-        :type Type: str
-        """
-        self._Col = None
-        self._Type = None
-
-    @property
-    def Col(self):
-        r"""Column name.
-        :rtype: str
-        """
-        return self._Col
-
-    @Col.setter
-    def Col(self, Col):
-        self._Col = Col
-
-    @property
-    def Type(self):
-        r"""Column type
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._Col = params.get("Col")
-        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
