@@ -27,19 +27,19 @@ class ActionSummaryOverviewItem(AbstractModel):
         r"""
         :param _ActionType: Transaction type code
         :type ActionType: str
-        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
         :param _RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
         :param _RealTotalCost: Total amount after discount
         :type RealTotalCost: str
-        :param _CashPayAmount: Cash credit: The amount paid from the user’s cash account
+        :param _CashPayAmount: Cash credit: The amount paid from the user's cash account
         :type CashPayAmount: str
-        :param _IncentivePayAmount: Free credit: The amount paid with the user’s free credit
+        :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :type TransferPayAmount: str
         :param _BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
@@ -70,7 +70,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -103,7 +103,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user's cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -114,7 +114,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user's free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -136,7 +136,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -9855,15 +9855,15 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
         :param _NeedRecordNum: Indicates whether the total number of records is required, used for pagination.
 Valid values: `1` (required), `0` (not required).
         :type NeedRecordNum: int
-        :param _PayMode: Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).
+        :param _PayMode: Billing mode, which can be `prePay` (yearly/monthly subscription) or `postPay` (pay-as-you-go).
         :type PayMode: str
         :param _ResourceId: ID of the instance to be queried.
         :type ResourceId: str
         :param _ActionType: Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
-Monthly subscription purchase
-Monthly subscription renewal
-Monthly subscription upgrade/downgrade
-Monthly subscription refund 
+Yearly/monthly subscription purchase
+Yearly/monthly subscription renewal
+Yearly/monthly subscription upgrade/downgrade
+Yearly/monthly subscription refund 
 Pay-as-you-go deduction 
 Offline project deduction 
 Offline product deduction 
@@ -9879,13 +9879,13 @@ Offer deduction
 Offer compensation 
 Pay-as-you-go resource migration in 
 Pay-as-you-go resource migration out 
-Monthly subscription resource migration in 
-Monthly subscription resource migration out 
+Yearly/monthly subscription resource migration in 
+Yearly/monthly subscription resource migration out 
 Prepaid 
 Hourly 
 RI refund 
 Pay-as-you-go reversal 
-Monthly subscription to pay-as-you-go 
+Yearly/monthly subscription to pay-as-you-go 
 Minimum spend deduction 
 Hourly savings plan fee
         :type ActionType: str
@@ -9995,7 +9995,7 @@ Valid values: `1` (required), `0` (not required).
 
     @property
     def PayMode(self):
-        r"""Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).
+        r"""Billing mode, which can be `prePay` (yearly/monthly subscription) or `postPay` (pay-as-you-go).
         :rtype: str
         """
         return self._PayMode
@@ -10018,10 +10018,10 @@ Valid values: `1` (required), `0` (not required).
     @property
     def ActionType(self):
         r"""Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
-Monthly subscription purchase
-Monthly subscription renewal
-Monthly subscription upgrade/downgrade
-Monthly subscription refund 
+Yearly/monthly subscription purchase
+Yearly/monthly subscription renewal
+Yearly/monthly subscription upgrade/downgrade
+Yearly/monthly subscription refund 
 Pay-as-you-go deduction 
 Offline project deduction 
 Offline product deduction 
@@ -10037,13 +10037,13 @@ Offer deduction
 Offer compensation 
 Pay-as-you-go resource migration in 
 Pay-as-you-go resource migration out 
-Monthly subscription resource migration in 
-Monthly subscription resource migration out 
+Yearly/monthly subscription resource migration in 
+Yearly/monthly subscription resource migration out 
 Prepaid 
 Hourly 
 RI refund 
 Pay-as-you-go reversal 
-Monthly subscription to pay-as-you-go 
+Yearly/monthly subscription to pay-as-you-go 
 Minimum spend deduction 
 Hourly savings plan fee
         :rtype: str
@@ -10237,12 +10237,12 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
         :type ResourceId: str
         :param _ActionType: Hourly settlement
 Daily settlement
-Monthly settlement
+Yearly/monthly subscription
 Spot
 New monthly subscription
-Monthly subscription renewal
-Monthly subscription specification adjustment
-Monthly subscription refund
+Yearly/monthly subscription renewal
+Yearly/monthly subscription specification adjustment
+Yearly/monthly subscription refund
 Adjustment - deduction
 Adjustment - refund
 Hourly RI fee
@@ -10412,12 +10412,12 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
     def ActionType(self):
         r"""Hourly settlement
 Daily settlement
-Monthly settlement
+Yearly/monthly subscription
 Spot
 New monthly subscription
-Monthly subscription renewal
-Monthly subscription specification adjustment
-Monthly subscription refund
+Yearly/monthly subscription renewal
+Yearly/monthly subscription specification adjustment
+Yearly/monthly subscription refund
 Adjustment - deduction
 Adjustment - refund
 Hourly RI fee
@@ -10742,10 +10742,10 @@ class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
 Valid values: `1` (required), `0` (not required).
         :type NeedRecordNum: int
         :param _ActionType: Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
-Monthly subscription purchase
-Monthly subscription renewal
-Monthly subscription upgrade/downgrade
-Monthly subscription refund 
+Yearly/monthly subscription purchase
+Yearly/monthly subscription renewal
+Yearly/monthly subscription upgrade/downgrade
+Yearly/monthly subscription refund 
 Pay-as-you-go deduction 
 Offline project deduction 
 Offline product deduction 
@@ -10761,13 +10761,13 @@ Offer deduction
 Offer compensation 
 Pay-as-you-go resource migration in 
 Pay-as-you-go resource migration out 
-Monthly subscription resource migration in 
-Monthly subscription resource migration out 
+Yearly/monthly subscription resource migration in 
+Yearly/monthly subscription resource migration out 
 Prepaid 
 Hourly 
 RI refund 
 Pay-as-you-go reversal 
-Monthly subscription to pay-as-you-go 
+Yearly/monthly subscription to pay-as-you-go 
 Minimum spend deduction 
 Hourly savings plan fee
         :type ActionType: str
@@ -10831,6 +10831,8 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def PeriodType(self):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         r"""Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
         :rtype: str
         """
@@ -10838,6 +10840,8 @@ This parameter can be used for querying bills after January 2021.
 
     @PeriodType.setter
     def PeriodType(self, PeriodType):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         self._PeriodType = PeriodType
 
     @property
@@ -10855,10 +10859,10 @@ Valid values: `1` (required), `0` (not required).
     @property
     def ActionType(self):
         r"""Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
-Monthly subscription purchase
-Monthly subscription renewal
-Monthly subscription upgrade/downgrade
-Monthly subscription refund 
+Yearly/monthly subscription purchase
+Yearly/monthly subscription renewal
+Yearly/monthly subscription upgrade/downgrade
+Yearly/monthly subscription refund 
 Pay-as-you-go deduction 
 Offline project deduction 
 Offline product deduction 
@@ -10874,13 +10878,13 @@ Offer deduction
 Offer compensation 
 Pay-as-you-go resource migration in 
 Pay-as-you-go resource migration out 
-Monthly subscription resource migration in 
-Monthly subscription resource migration out 
+Yearly/monthly subscription resource migration in 
+Yearly/monthly subscription resource migration out 
 Prepaid 
 Hourly 
 RI refund 
 Pay-as-you-go reversal 
-Monthly subscription to pay-as-you-go 
+Yearly/monthly subscription to pay-as-you-go 
 Minimum spend deduction 
 Hourly savings plan fee
         :rtype: str
@@ -11056,12 +11060,12 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type NeedRecordNum: int
         :param _ActionType: Hourly settlement
 Daily settlement
-Monthly settlement
+Yearly/monthly subscription
 Spot
 New monthly subscription
-Monthly subscription renewal
-Monthly subscription specification adjustment
-Monthly subscription refund
+Yearly/monthly subscription renewal
+Yearly/monthly subscription specification adjustment
+Yearly/monthly subscription refund
 Adjustment - deduction
 Adjustment - refund
 Hourly RI fee
@@ -11162,12 +11166,12 @@ This parameter can be used for querying bills after January 2021.
     def ActionType(self):
         r"""Hourly settlement
 Daily settlement
-Monthly settlement
+Yearly/monthly subscription
 Spot
 New monthly subscription
-Monthly subscription renewal
-Monthly subscription specification adjustment
-Monthly subscription refund
+Yearly/monthly subscription renewal
+Yearly/monthly subscription specification adjustment
+Yearly/monthly subscription refund
 Adjustment - deduction
 Adjustment - refund
 Hourly RI fee
@@ -12228,10 +12232,16 @@ class DescribeBillSummaryRequest(AbstractModel):
         :type GroupType: str
         :param _TagKey: Tag key, which is used when `GroupType` is `tag`.
         :type TagKey: list of str
+        :param _OperateUin: 
+        :type OperateUin: str
+        :param _PayerUin: 
+        :type PayerUin: str
         """
         self._Month = None
         self._GroupType = None
         self._TagKey = None
+        self._OperateUin = None
+        self._PayerUin = None
 
     @property
     def Month(self):
@@ -12266,11 +12276,35 @@ class DescribeBillSummaryRequest(AbstractModel):
     def TagKey(self, TagKey):
         self._TagKey = TagKey
 
+    @property
+    def OperateUin(self):
+        r"""
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def PayerUin(self):
+        r"""
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
 
     def _deserialize(self, params):
         self._Month = params.get("Month")
         self._GroupType = params.get("GroupType")
         self._TagKey = params.get("TagKey")
+        self._OperateUin = params.get("OperateUin")
+        self._PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
