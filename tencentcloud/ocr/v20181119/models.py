@@ -3358,35 +3358,34 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: Base64-encoded value of image.
-The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        :param _ImageBase64: The Base64 value of an image/PDF. the image must be no more than 10M after encoding, with a resolution of 600*800 or higher recommended. supported formats include PNG, JPG, JPEG, BMP, and PDF. either ImageUrl or ImageBase64 must be provided. if both are provided, only ImageUrl will be used.
         :type ImageBase64: str
         :param _ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
-        :param _IsWords: Whether to return the character information. Default value: `false`
-        :type IsWords: bool
-        :param _EnableDetectSplit: Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.
+        :param _EnableDetectSplit: Whether to enable original image slicing detection. once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character area is small" (for example: exam paper). default: disabled. note: only supported when ConfigID is configured as OCR.
         :type EnableDetectSplit: bool
         :param _IsPdf: Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
         :type IsPdf: bool
         :param _PdfPageNumber: Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`
         :type PdfPageNumber: int
+        :param _EnableDetectText: Text detection switch, default is true. set to false to directly perform single-line text recognition, suitable for image scenarios containing only forward single-line text.
+        :type EnableDetectText: bool
+        :param _ConfigID: Configuration ID supports: OCR - general scenario MulOCR - multilingual scenario. default value is OCR.
+        :type ConfigID: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
-        self._IsWords = None
         self._EnableDetectSplit = None
         self._IsPdf = None
         self._PdfPageNumber = None
+        self._EnableDetectText = None
+        self._ConfigID = None
 
     @property
     def ImageBase64(self):
-        r"""Base64-encoded value of image.
-The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        r"""The Base64 value of an image/PDF. the image must be no more than 10M after encoding, with a resolution of 600*800 or higher recommended. supported formats include PNG, JPG, JPEG, BMP, and PDF. either ImageUrl or ImageBase64 must be provided. if both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._ImageBase64
@@ -3409,19 +3408,8 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
         self._ImageUrl = ImageUrl
 
     @property
-    def IsWords(self):
-        r"""Whether to return the character information. Default value: `false`
-        :rtype: bool
-        """
-        return self._IsWords
-
-    @IsWords.setter
-    def IsWords(self, IsWords):
-        self._IsWords = IsWords
-
-    @property
     def EnableDetectSplit(self):
-        r"""Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.
+        r"""Whether to enable original image slicing detection. once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character area is small" (for example: exam paper). default: disabled. note: only supported when ConfigID is configured as OCR.
         :rtype: bool
         """
         return self._EnableDetectSplit
@@ -3452,14 +3440,37 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
     def PdfPageNumber(self, PdfPageNumber):
         self._PdfPageNumber = PdfPageNumber
 
+    @property
+    def EnableDetectText(self):
+        r"""Text detection switch, default is true. set to false to directly perform single-line text recognition, suitable for image scenarios containing only forward single-line text.
+        :rtype: bool
+        """
+        return self._EnableDetectText
+
+    @EnableDetectText.setter
+    def EnableDetectText(self, EnableDetectText):
+        self._EnableDetectText = EnableDetectText
+
+    @property
+    def ConfigID(self):
+        r"""Configuration ID supports: OCR - general scenario MulOCR - multilingual scenario. default value is OCR.
+        :rtype: str
+        """
+        return self._ConfigID
+
+    @ConfigID.setter
+    def ConfigID(self, ConfigID):
+        self._ConfigID = ConfigID
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
-        self._IsWords = params.get("IsWords")
         self._EnableDetectSplit = params.get("EnableDetectSplit")
         self._IsPdf = params.get("IsPdf")
         self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableDetectText = params.get("EnableDetectText")
+        self._ConfigID = params.get("ConfigID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3481,11 +3492,14 @@ class GeneralAccurateOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param _Angel: Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :type Angel: float
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _Angle: Image rotation angle (angle system). the text's horizontal direction is 0°. clockwise is positive, counterclockwise is negative. click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">how to correct tilt text</a>.
+        :type Angle: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TextDetections = None
         self._Angel = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -3501,6 +3515,8 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         r"""Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :rtype: float
         """
@@ -3508,11 +3524,24 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @Angel.setter
     def Angel(self, Angel):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         self._Angel = Angel
 
     @property
+    def Angle(self):
+        r"""Image rotation angle (angle system). the text's horizontal direction is 0°. clockwise is positive, counterclockwise is negative. click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">how to correct tilt text</a>.
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3530,6 +3559,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
         self._Angel = params.get("Angel")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 
