@@ -4089,8 +4089,7 @@ class CdbSellConfig(AbstractModel):
         :type Info: str
         :param _Status: Status. The value `0` indicates that this specification is available.
         :type Status: int
-        :param _DeviceType: Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance), `BASIC_V2` (basic v2 instance).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeviceType: Instance type, possible value ranges from UNIVERSAL (universal type), EXCLUSIVE (exclusive), BASIC (basic), to BASIC_V2 (basic v2).
         :type DeviceType: str
         :param _EngineType: Engine type description. Valid values: `Innodb`, `RocksDB`.
         :type EngineType: str
@@ -4199,8 +4198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceType(self):
-        r"""Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance), `BASIC_V2` (basic v2 instance).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type, possible value ranges from UNIVERSAL (universal type), EXCLUSIVE (exclusive), BASIC (basic), to BASIC_V2 (basic v2).
         :rtype: str
         """
         return self._DeviceType
@@ -4261,7 +4259,13 @@ class CdbSellType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeName: Name of the purchasable instance. Valid values: `Z3` (High-availability instance. `DeviceType`:`UNIVERSAL`, `EXCLUSIVE`; `CVM` (basic instance. `DeviceType`: `BASIC`); `TKE` (basic v2 instance. `DeviceType`: `BASIC_V2`).
+        :param _TypeName: Purchasable instance name.
+Z3: High-availability, corresponds to the specified specification DeviceType, including UNIVERSAL and EXCLUSIVE.
+CVM: It is a basic edition type, and the DeviceType in the corresponding specifications is BASIC (Offline).
+TKE: It is the basic version v2 type, and the DeviceType in the corresponding specifications is BASIC_V2.
+CLOUD_NATIVE_CLUSTER: Represents the standard type of cloud disk edition.
+CLOUD_NATIVE_CLUSTER_EXCLUSIVE: Indicates the enhanced cloud disk edition.
+ECONOMICAL: Means economical.
         :type TypeName: str
         :param _EngineVersion: Engine version number
         :type EngineVersion: list of str
@@ -4274,7 +4278,13 @@ class CdbSellType(AbstractModel):
 
     @property
     def TypeName(self):
-        r"""Name of the purchasable instance. Valid values: `Z3` (High-availability instance. `DeviceType`:`UNIVERSAL`, `EXCLUSIVE`; `CVM` (basic instance. `DeviceType`: `BASIC`); `TKE` (basic v2 instance. `DeviceType`: `BASIC_V2`).
+        r"""Purchasable instance name.
+Z3: High-availability, corresponds to the specified specification DeviceType, including UNIVERSAL and EXCLUSIVE.
+CVM: It is a basic edition type, and the DeviceType in the corresponding specifications is BASIC (Offline).
+TKE: It is the basic version v2 type, and the DeviceType in the corresponding specifications is BASIC_V2.
+CLOUD_NATIVE_CLUSTER: Represents the standard type of cloud disk edition.
+CLOUD_NATIVE_CLUSTER_EXCLUSIVE: Indicates the enhanced cloud disk edition.
+ECONOMICAL: Means economical.
         :rtype: str
         """
         return self._TypeName
@@ -4404,7 +4414,7 @@ class CdbZoneSellConf(AbstractModel):
         :type IsDefaultZone: bool
         :param _IsBm: Whether it is a BM zone
         :type IsBm: bool
-        :param _PayType: Supported billing method. Valid values: `0` (monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)
+        :param _PayType: Supported billing method. Valid values: `0` (yearly/monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)
         :type PayType: list of str
         :param _ProtectMode: Data replication type. Valid values: `0` (async), `1` (semi-sync), `2` (strong sync)
         :type ProtectMode: list of str
@@ -4432,6 +4442,10 @@ class CdbZoneSellConf(AbstractModel):
         :type IsSupportIpv6: bool
         :param _EngineType: Supported engine types for purchasable database
         :type EngineType: list of str
+        :param _CloudNativeClusterStatus: Sales status of the cloud disk edition instance in the current availability zone. Possible returned values: 1-launched; 3-not available for sale; 4-not displayed.
+        :type CloudNativeClusterStatus: int
+        :param _DiskTypeConf: Cloud disk edition or single-node basic edition supported disk type.
+        :type DiskTypeConf: list of DiskTypeConfigItem
         """
         self._Status = None
         self._ZoneName = None
@@ -4455,6 +4469,8 @@ class CdbZoneSellConf(AbstractModel):
         self._ZoneId = None
         self._IsSupportIpv6 = None
         self._EngineType = None
+        self._CloudNativeClusterStatus = None
+        self._DiskTypeConf = None
 
     @property
     def Status(self):
@@ -4546,7 +4562,7 @@ class CdbZoneSellConf(AbstractModel):
 
     @property
     def PayType(self):
-        r"""Supported billing method. Valid values: `0` (monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)
+        r"""Supported billing method. Valid values: `0` (yearly/monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)
         :rtype: list of str
         """
         return self._PayType
@@ -4698,6 +4714,28 @@ class CdbZoneSellConf(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def CloudNativeClusterStatus(self):
+        r"""Sales status of the cloud disk edition instance in the current availability zone. Possible returned values: 1-launched; 3-not available for sale; 4-not displayed.
+        :rtype: int
+        """
+        return self._CloudNativeClusterStatus
+
+    @CloudNativeClusterStatus.setter
+    def CloudNativeClusterStatus(self, CloudNativeClusterStatus):
+        self._CloudNativeClusterStatus = CloudNativeClusterStatus
+
+    @property
+    def DiskTypeConf(self):
+        r"""Cloud disk edition or single-node basic edition supported disk type.
+        :rtype: list of DiskTypeConfigItem
+        """
+        return self._DiskTypeConf
+
+    @DiskTypeConf.setter
+    def DiskTypeConf(self, DiskTypeConf):
+        self._DiskTypeConf = DiskTypeConf
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -4731,6 +4769,13 @@ class CdbZoneSellConf(AbstractModel):
         self._ZoneId = params.get("ZoneId")
         self._IsSupportIpv6 = params.get("IsSupportIpv6")
         self._EngineType = params.get("EngineType")
+        self._CloudNativeClusterStatus = params.get("CloudNativeClusterStatus")
+        if params.get("DiskTypeConf") is not None:
+            self._DiskTypeConf = []
+            for item in params.get("DiskTypeConf"):
+                obj = DiskTypeConfigItem()
+                obj._deserialize(item)
+                self._DiskTypeConf.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5284,6 +5329,68 @@ class ClusterInfo(AbstractModel):
         self._NodeId = params.get("NodeId")
         self._Role = params.get("Role")
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterTopology(AbstractModel):
+    r"""Topology configuration of nodes for cloud disk edition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReadWriteNode: RW node topology.
+Description: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).
+        :type ReadWriteNode: :class:`tencentcloud.cdb.v20170320.models.ReadWriteNode`
+        :param _ReadOnlyNodes: RO node topology.
+Description: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).
+        :type ReadOnlyNodes: list of ReadonlyNode
+        """
+        self._ReadWriteNode = None
+        self._ReadOnlyNodes = None
+
+    @property
+    def ReadWriteNode(self):
+        r"""RW node topology.
+Description: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ReadWriteNode`
+        """
+        return self._ReadWriteNode
+
+    @ReadWriteNode.setter
+    def ReadWriteNode(self, ReadWriteNode):
+        self._ReadWriteNode = ReadWriteNode
+
+    @property
+    def ReadOnlyNodes(self):
+        r"""RO node topology.
+Description: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).
+        :rtype: list of ReadonlyNode
+        """
+        return self._ReadOnlyNodes
+
+    @ReadOnlyNodes.setter
+    def ReadOnlyNodes(self, ReadOnlyNodes):
+        self._ReadOnlyNodes = ReadOnlyNodes
+
+
+    def _deserialize(self, params):
+        if params.get("ReadWriteNode") is not None:
+            self._ReadWriteNode = ReadWriteNode()
+            self._ReadWriteNode._deserialize(params.get("ReadWriteNode"))
+        if params.get("ReadOnlyNodes") is not None:
+            self._ReadOnlyNodes = []
+            for item in params.get("ReadOnlyNodes"):
+                obj = ReadonlyNode()
+                obj._deserialize(item)
+                self._ReadOnlyNodes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8042,21 +8149,27 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Period: int
         :param _GoodsNum: Number of instances. Value range: 1-100. Default value: `1`.
         :type GoodsNum: int
-        :param _Zone: AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        :param _Zone: For AZ information, please use the [Obtain the Purchasable Specifications of Cloud Databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to obtain the availability zones that can be created.
+Description: If you create a single-node, two-node, or three-node instance, this parameter is required. Specify an availability zone. If you do not specify an availability zone, the system will automatically select one (possibly not the availability zone you want to deploy in). If you create a cloud disk edition instance, leave this parameter empty. Configure the availability zone for the read-write node and read-only node with parameter ClusterTopology.
         :type Zone: str
-        :param _UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.
+        :param _UniqVpcId: VPC ID. Please use [Querying VPC list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1).
+Description: If a cloud disk edition instance is created, this item is required and must be a VPC type. If this item is left blank, the system will select the default VPC.
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
+        :param _UniqSubnetId: Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1).
+Description: If this item is left empty, the system will select the default subnet in the Default VPC.
         :type UniqSubnetId: str
         :param _ProjectId: Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.
         :type ProjectId: int
-        :param _Port: Custom port. Value range: 1024-65535.
+        :param _Port: Custom port. Port range: 1024-65535.
+Description: If this item is left blank, it defaults to 3306.
         :type Port: int
-        :param _InstanceRole: Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).
+        :param _InstanceRole: Instance type. Supported values include: master - indicates the primary instance, dr - indicates the disaster recovery instance, ro - indicates the read-only instance.
+Description: Select instance type. The master type is selected by default if left empty.
         :type InstanceRole: str
-        :param _MasterInstanceId: Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.
+        :param _MasterInstanceId: Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API to query the cloud database instance ID.
         :type MasterInstanceId: str
-        :param _EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.
+        :param _EngineVersion: MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to get the version of the instance created.
+Description: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left empty, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.
         :type EngineVersion: str
         :param _Password: The root account password, which can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols `_+-&=!@#$%^*()`. This parameter applies to source instances but not to read-only or disaster recovery instances.
         :type Password: str
@@ -8064,13 +8177,15 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.
         :type DeployMode: int
-        :param _SlaveZone: Information of replica AZ 1, which is the `Zone` value by default.
+        :param _SlaveZone: AZ information of standby database 1.
+Description: For two-node and three-node instances, specify this parameter. If not specified, it defaults to the value of Zone. For cloud disk edition instances, this parameter is optional. Configure the availability zone for read-write nodes and read-only nodes with parameter ClusterTopology. Single-node instances are single availability zone and no need to specify this parameter.
         :type SlaveZone: str
-        :param _ParamList: List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.
+        :param _ParamList: Parameter list. The parameter format is ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can query the configurable parameters by default by referring to [Querying the Default Configurable Parameter List](https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1).
+Description: table name case sensitivity can be enabled or disabled with parameter lower_case_table_names. A parameter value of 0 means enabling, and 1 means disabling. If not set, the default value is 0. For MySQL 8.0 edition instances, you need to set the lower_case_table_names parameter when creating an instance to turn on or off table name case sensitivity. Once created, the parameter cannot be modified, meaning table name case sensitivity cannot be changed after creation. Other database versions support modifying the lower_case_table_names parameter after the instance is created. For the function invocation method to set table name case sensitivity when creating an instance, please see example 3 in this document.
         :type ParamList: list of ParamInfo
         :param _BackupZone: Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
         :type BackupZone: str
-        :param _AutoRenewFlag: Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).
+        :param _AutoRenewFlag: Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.
         :type AutoRenewFlag: int
         :param _MasterRegion: Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
         :type MasterRegion: str
@@ -8086,9 +8201,11 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployGroupId: str
         :param _ClientToken: A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
-        :param _DeviceType: Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        :param _DeviceType: Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for cloud disk edition, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced for cloud disk edition. Default to general-purpose instance if not specified.
+Description: If a cloud disk edition instance is created, this parameter is required.
         :type DeviceType: str
-        :param _ParamTemplateId: Parameter template ID
+        :param _ParamTemplateId: Parameter template id.
+Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, inputting the parameter template ID is invalid, and you need to set ParamTemplateType.
         :type ParamTemplateId: int
         :param _AlarmPolicyList: Array of alarm policy IDs, which can be obtained through the `OriginId` field in the return value of the `DescribeAlarmPolicy` API of TCOP.
         :type AlarmPolicyList: list of int
@@ -8100,16 +8217,28 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param _CageId: Financial cage ID.
         :type CageId: str
-        :param _ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :param _ParamTemplateType: Default parameter template type. Supported values include: "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template.
+Remark: If you need to use the TencentDB for MySQL default parameter template, set up ParamTemplateType.
         :type ParamTemplateType: str
         :param _AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
         :type AlarmPolicyIdList: list of str
-        :param _DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :param _DryRun: Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check failed, return the corresponding error code; if the check passed, return RequestId. false: Send a normal request and create the instance directly after passing the check.
+Defaults to false.
         :type DryRun: bool
         :param _EngineType: Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
         :type EngineType: str
         :param _Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
         :type Vips: list of str
+        :param _DataProtectVolume: Data protection space size of the cloud disk edition instance in GB. Setting range is 1 - 10.
+        :type DataProtectVolume: int
+        :param _ClusterTopology: Cloud disk edition node topology configuration.
+Description: If a cloud disk edition instance is purchased, this parameter is required. Set the RW and RO node topology for the cloud disk edition instance. The RO node scope is 1-5. Set at least 1 RO node.
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DiskType: Disk Type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instance. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD refers to enhanced SSD cloud disk, and CLOUD_PREMIUM indicates high-performance cloud block storage.
+Description: The supported regions for the hard disk type of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For the specific support situation, refer to [Regions and Availability Zones](https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1).
+        :type DiskType: str
+        :param _DestroyProtect: Turn on or off instance destruction protection. on - enabled, off - disabled.
+        :type DestroyProtect: str
         """
         self._Memory = None
         self._Volume = None
@@ -8149,6 +8278,10 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._DataProtectVolume = None
+        self._ClusterTopology = None
+        self._DiskType = None
+        self._DestroyProtect = None
 
     @property
     def Memory(self):
@@ -8196,7 +8329,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        r"""For AZ information, please use the [Obtain the Purchasable Specifications of Cloud Databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to obtain the availability zones that can be created.
+Description: If you create a single-node, two-node, or three-node instance, this parameter is required. Specify an availability zone. If you do not specify an availability zone, the system will automatically select one (possibly not the availability zone you want to deploy in). If you create a cloud disk edition instance, leave this parameter empty. Configure the availability zone for the read-write node and read-only node with parameter ClusterTopology.
         :rtype: str
         """
         return self._Zone
@@ -8207,7 +8341,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.
+        r"""VPC ID. Please use [Querying VPC list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1).
+Description: If a cloud disk edition instance is created, this item is required and must be a VPC type. If this item is left blank, the system will select the default VPC.
         :rtype: str
         """
         return self._UniqVpcId
@@ -8218,7 +8353,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
+        r"""Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1).
+Description: If this item is left empty, the system will select the default subnet in the Default VPC.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -8240,7 +8376,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""Custom port. Value range: 1024-65535.
+        r"""Custom port. Port range: 1024-65535.
+Description: If this item is left blank, it defaults to 3306.
         :rtype: int
         """
         return self._Port
@@ -8251,7 +8388,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).
+        r"""Instance type. Supported values include: master - indicates the primary instance, dr - indicates the disaster recovery instance, ro - indicates the read-only instance.
+Description: Select instance type. The master type is selected by default if left empty.
         :rtype: str
         """
         return self._InstanceRole
@@ -8262,7 +8400,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        r"""Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.
+        r"""Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API to query the cloud database instance ID.
         :rtype: str
         """
         return self._MasterInstanceId
@@ -8273,7 +8411,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.
+        r"""MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to get the version of the instance created.
+Description: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left empty, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.
         :rtype: str
         """
         return self._EngineVersion
@@ -8317,7 +8456,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""Information of replica AZ 1, which is the `Zone` value by default.
+        r"""AZ information of standby database 1.
+Description: For two-node and three-node instances, specify this parameter. If not specified, it defaults to the value of Zone. For cloud disk edition instances, this parameter is optional. Configure the availability zone for read-write nodes and read-only nodes with parameter ClusterTopology. Single-node instances are single availability zone and no need to specify this parameter.
         :rtype: str
         """
         return self._SlaveZone
@@ -8328,7 +8468,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.
+        r"""Parameter list. The parameter format is ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can query the configurable parameters by default by referring to [Querying the Default Configurable Parameter List](https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1).
+Description: table name case sensitivity can be enabled or disabled with parameter lower_case_table_names. A parameter value of 0 means enabling, and 1 means disabling. If not set, the default value is 0. For MySQL 8.0 edition instances, you need to set the lower_case_table_names parameter when creating an instance to turn on or off table name case sensitivity. Once created, the parameter cannot be modified, meaning table name case sensitivity cannot be changed after creation. Other database versions support modifying the lower_case_table_names parameter after the instance is created. For the function invocation method to set table name case sensitivity when creating an instance, please see example 3 in this document.
         :rtype: list of ParamInfo
         """
         return self._ParamList
@@ -8350,7 +8491,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).
+        r"""Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -8438,7 +8579,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        r"""Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for cloud disk edition, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced for cloud disk edition. Default to general-purpose instance if not specified.
+Description: If a cloud disk edition instance is created, this parameter is required.
         :rtype: str
         """
         return self._DeviceType
@@ -8449,7 +8591,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID
+        r"""Parameter template id.
+Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, inputting the parameter template ID is invalid, and you need to set ParamTemplateType.
         :rtype: int
         """
         return self._ParamTemplateId
@@ -8515,7 +8658,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ParamTemplateType(self):
-        r"""Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        r"""Default parameter template type. Supported values include: "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template.
+Remark: If you need to use the TencentDB for MySQL default parameter template, set up ParamTemplateType.
         :rtype: str
         """
         return self._ParamTemplateType
@@ -8537,7 +8681,8 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        r"""Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check failed, return the corresponding error code; if the check passed, return RequestId. false: Send a normal request and create the instance directly after passing the check.
+Defaults to false.
         :rtype: bool
         """
         return self._DryRun
@@ -8567,6 +8712,52 @@ class CreateDBInstanceRequest(AbstractModel):
     @Vips.setter
     def Vips(self, Vips):
         self._Vips = Vips
+
+    @property
+    def DataProtectVolume(self):
+        r"""Data protection space size of the cloud disk edition instance in GB. Setting range is 1 - 10.
+        :rtype: int
+        """
+        return self._DataProtectVolume
+
+    @DataProtectVolume.setter
+    def DataProtectVolume(self, DataProtectVolume):
+        self._DataProtectVolume = DataProtectVolume
+
+    @property
+    def ClusterTopology(self):
+        r"""Cloud disk edition node topology configuration.
+Description: If a cloud disk edition instance is purchased, this parameter is required. Set the RW and RO node topology for the cloud disk edition instance. The RO node scope is 1-5. Set at least 1 RO node.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def DiskType(self):
+        r"""Disk Type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instance. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD refers to enhanced SSD cloud disk, and CLOUD_PREMIUM indicates high-performance cloud block storage.
+Description: The supported regions for the hard disk type of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For the specific support situation, refer to [Regions and Availability Zones](https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DestroyProtect(self):
+        r"""Turn on or off instance destruction protection. on - enabled, off - disabled.
+        :rtype: str
+        """
+        return self._DestroyProtect
+
+    @DestroyProtect.setter
+    def DestroyProtect(self, DestroyProtect):
+        self._DestroyProtect = DestroyProtect
 
 
     def _deserialize(self, params):
@@ -8620,6 +8811,12 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        self._DataProtectVolume = params.get("DataProtectVolume")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DiskType = params.get("DiskType")
+        self._DestroyProtect = params.get("DestroyProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15296,17 +15493,17 @@ class DescribeDBPriceRequest(AbstractModel):
         :type Zone: str
         :param _GoodsNum: Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.
         :type GoodsNum: int
-        :param _Memory: Instance memory size in MB. This parameter is required when `InstanceId` is empty.
+        :param _Memory: Instance memory size, unit: MB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable instance memory size range.
         :type Memory: int
-        :param _Volume: Instance disk size in GB. This parameter is required when `InstanceId` is empty.
+        :param _Volume: Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable disk size range.
         :type Volume: int
         :param _InstanceRole: Instance type. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance). Default value: `master`. This parameter is required when `InstanceId` is empty.
         :type InstanceRole: str
-        :param _PayType: Billing mode. Valid values: `PRE_PAID` (monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
+        :param _PayType: Billing mode. Valid values: `PRE_PAID` (yearly/monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
         :type PayType: str
         :param _ProtectMode: Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.
         :type ProtectMode: int
-        :param _DeviceType: Instance isolation types Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.  Default value: `UNIVERSAL`.
+        :param _DeviceType: Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - single-node instance of cloud disk edition, "CLOUD_NATIVE_CLUSTER" - cluster version standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - cluster version enhanced. Default to general-purpose instance if not specified.
         :type DeviceType: str
         :param _InstanceNodes: The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.
         :type InstanceNodes: int
@@ -15316,7 +15513,7 @@ class DescribeDBPriceRequest(AbstractModel):
         :type InstanceId: str
         :param _Ladder: Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1
         :type Ladder: int
-        :param _DiskType: 
+        :param _DiskType: Disk Type. Specify this parameter when querying the price of a cluster edition or single-node instance of cloud disk edition. Supported values include "CLOUD_SSD" - SSD cloud disk, "CLOUD_HSSD" - enhanced SSD cloud disk. Default is SSD cloud disk.
         :type DiskType: str
         """
         self._Period = None
@@ -15369,7 +15566,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size in MB. This parameter is required when `InstanceId` is empty.
+        r"""Instance memory size, unit: MB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable instance memory size range.
         :rtype: int
         """
         return self._Memory
@@ -15380,7 +15577,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size in GB. This parameter is required when `InstanceId` is empty.
+        r"""Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable disk size range.
         :rtype: int
         """
         return self._Volume
@@ -15402,7 +15599,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""Billing mode. Valid values: `PRE_PAID` (monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
+        r"""Billing mode. Valid values: `PRE_PAID` (yearly/monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
         :rtype: str
         """
         return self._PayType
@@ -15424,7 +15621,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance isolation types Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.  Default value: `UNIVERSAL`.
+        r"""Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - single-node instance of cloud disk edition, "CLOUD_NATIVE_CLUSTER" - cluster version standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - cluster version enhanced. Default to general-purpose instance if not specified.
         :rtype: str
         """
         return self._DeviceType
@@ -15479,7 +15676,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""
+        r"""Disk Type. Specify this parameter when querying the price of a cluster edition or single-node instance of cloud disk edition. Supported values include "CLOUD_SSD" - SSD cloud disk, "CLOUD_HSSD" - enhanced SSD cloud disk. Default is SSD cloud disk.
         :rtype: str
         """
         return self._DiskType
@@ -20186,6 +20383,57 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DiskTypeConfigItem(AbstractModel):
+    r"""Disk sale type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceType: Type of instance corresponding to the disk. Only support single node (cloud disk) and cloud disk edition.
+        :type DeviceType: str
+        :param _DiskType: List of disk types to choose.
+        :type DiskType: list of str
+        """
+        self._DeviceType = None
+        self._DiskType = None
+
+    @property
+    def DeviceType(self):
+        r"""Type of instance corresponding to the disk. Only support single node (cloud disk) and cloud disk edition.
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def DiskType(self):
+        r"""List of disk types to choose.
+        :rtype: list of str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+
+    def _deserialize(self, params):
+        self._DeviceType = params.get("DeviceType")
+        self._DiskType = params.get("DiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DrInfo(AbstractModel):
@@ -28320,6 +28568,123 @@ class ProxyNodeCustom(AbstractModel):
         
 
 
+class ReadWriteNode(AbstractModel):
+    r"""Configuration of the cloud disk edition RW node.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone where the RW node is located.
+        :type Zone: str
+        :param _NodeId: When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.
+        :type NodeId: str
+        """
+        self._Zone = None
+        self._NodeId = None
+
+    @property
+    def Zone(self):
+        r"""Availability zone where the RW node is located.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeId(self):
+        r"""When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadonlyNode(AbstractModel):
+    r"""RO node configuration for cloud disk edition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsRandomZone: Whether distributed in a random availability Zone. Import YES means random availability Zone. Otherwise used specified availability Zone.
+        :type IsRandomZone: str
+        :param _Zone: Specify the availability zone for node distribution.
+        :type Zone: str
+        :param _NodeId: When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.
+        :type NodeId: str
+        """
+        self._IsRandomZone = None
+        self._Zone = None
+        self._NodeId = None
+
+    @property
+    def IsRandomZone(self):
+        r"""Whether distributed in a random availability Zone. Import YES means random availability Zone. Otherwise used specified availability Zone.
+        :rtype: str
+        """
+        return self._IsRandomZone
+
+    @IsRandomZone.setter
+    def IsRandomZone(self, IsRandomZone):
+        self._IsRandomZone = IsRandomZone
+
+    @property
+    def Zone(self):
+        r"""Specify the availability zone for node distribution.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeId(self):
+        r"""When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._IsRandomZone = params.get("IsRandomZone")
+        self._Zone = params.get("Zone")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseIsolatedDBInstancesRequest(AbstractModel):
     r"""ReleaseIsolatedDBInstances request structure.
 
@@ -28671,12 +29036,15 @@ class RenewDBInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param _TimeSpan: Renewal period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
         :type TimeSpan: int
-        :param _ModifyPayType: To renew a pay-as-you-go instance to a monthly subscribed one, you need to set this parameter to `PREPAID`.
+        :param _ModifyPayType: To renew a pay-as-you-go instance to a yearly/monthly subscribed one, you need to set this parameter to `PREPAID`.
         :type ModifyPayType: str
+        :param _AutoRenew: Auto-renewal flag. 0 means no auto-renewal, 1 means auto-renewal.
+        :type AutoRenew: int
         """
         self._InstanceId = None
         self._TimeSpan = None
         self._ModifyPayType = None
+        self._AutoRenew = None
 
     @property
     def InstanceId(self):
@@ -28702,7 +29070,7 @@ class RenewDBInstanceRequest(AbstractModel):
 
     @property
     def ModifyPayType(self):
-        r"""To renew a pay-as-you-go instance to a monthly subscribed one, you need to set this parameter to `PREPAID`.
+        r"""To renew a pay-as-you-go instance to a yearly/monthly subscribed one, you need to set this parameter to `PREPAID`.
         :rtype: str
         """
         return self._ModifyPayType
@@ -28711,11 +29079,23 @@ class RenewDBInstanceRequest(AbstractModel):
     def ModifyPayType(self, ModifyPayType):
         self._ModifyPayType = ModifyPayType
 
+    @property
+    def AutoRenew(self):
+        r"""Auto-renewal flag. 0 means no auto-renewal, 1 means auto-renewal.
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._TimeSpan = params.get("TimeSpan")
         self._ModifyPayType = params.get("ModifyPayType")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28919,38 +29299,37 @@ class RoGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupMode: Read-only group mode. Valid values: `alone` (the system assigns a read-only group automatically), `allinone` (a new read-only group will be created), `join` (an existing read-only group will be used).
+        :param _RoGroupMode: <p>Read-only group mode. Available values are: alone-automatic allocation by the system; allinone-create a read-only group; join-use an existing read-only group.</p>
         :type RoGroupMode: str
-        :param _RoGroupId: Read-only group ID.
-Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.
+        :param _RoGroupId: <p>Read-only group ID.<br>Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.</p>
         :type RoGroupId: str
-        :param _RoGroupName: Read-only group name.
+        :param _RoGroupName: <p>Read-only group name.</p>
         :type RoGroupName: str
-        :param _RoOfflineDelay: Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)
+        :param _RoOfflineDelay: <p>Whether to enable the feature to isolate an instance that exceeds the latency threshold. After enabling this feature, if the delay between a read-only instance and the primary instance exceeds the delay threshold, the read-only instance will be isolated. Available values: 1-enable; 0-disable.</p>
         :type RoOfflineDelay: int
-        :param _RoMaxDelayTime: Delay threshold, in seconds. Value range: 1–10000. The value is an integer.
+        :param _RoMaxDelayTime: <p>Delay threshold, in seconds. Value range: 1–10000. The value is an integer.</p>
         :type RoMaxDelayTime: int
-        :param _MinRoInGroup: Minimum number of instances to be retained. If the number of the purchased read-only instances is smaller than the set value, they will not be removed.
+        :param _MinRoInGroup: <p>Minimum number of instances to retain. If the number of read-only instances purchased is less than the set number, removal will not occur.</p>
         :type MinRoInGroup: int
-        :param _WeightMode: Read/write weight distribution mode. Valid values: `system` (weights are assigned by the system automatically), `custom` (weights are customized)
+        :param _WeightMode: <p>Read-write weight allocation mode. Available values: system-automatic allocation by the system; custom-customization.</p>
         :type WeightMode: str
-        :param _Weight: This field has been disused. To view the weight of a read-only instance, check the `Weight` value in the `RoInstances` field.
+        :param _Weight: <p>This field is deprecated and meaningless. To view the weight of a read-only instance, check the Weight value in the RoInstances field.</p>
         :type Weight: int
-        :param _RoInstances: Details of read-only instances in read-only group
+        :param _RoInstances: <p>Details of read-only instances in the read-only group.</p>
         :type RoInstances: list of RoInstanceInfo
-        :param _Vip: Private IP of read-only group.
+        :param _Vip: <p>Private IP address of the read-only group.</p>
         :type Vip: str
-        :param _Vport: Private network port number of read-only group.
+        :param _Vport: <p>Private network port number of the read-only group.</p>
         :type Vport: int
-        :param _UniqVpcId: Virtual Private Cloud (VPC) ID.
+        :param _UniqVpcId: <p>VPC ID.</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: Subnet ID.
+        :param _UniqSubnetId: <p>Subnet ID.</p>
         :type UniqSubnetId: str
-        :param _RoGroupRegion: Region of the read-only group.
+        :param _RoGroupRegion: <p>Region of the read-only group.</p>
         :type RoGroupRegion: str
-        :param _RoGroupZone: AZ of the read-only group.
+        :param _RoGroupZone: <p>AZ of the read-only group.</p>
         :type RoGroupZone: str
-        :param _DelayReplicationTime: Replication delay time, in seconds. Value range: 1–259200. The value is an integer.
+        :param _DelayReplicationTime: <p>Replication delay time, in seconds. Value range: 1–259200. The value is an integer.</p>
         :type DelayReplicationTime: int
         """
         self._RoGroupMode = None
@@ -28972,7 +29351,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoGroupMode(self):
-        r"""Read-only group mode. Valid values: `alone` (the system assigns a read-only group automatically), `allinone` (a new read-only group will be created), `join` (an existing read-only group will be used).
+        r"""<p>Read-only group mode. Available values are: alone-automatic allocation by the system; allinone-create a read-only group; join-use an existing read-only group.</p>
         :rtype: str
         """
         return self._RoGroupMode
@@ -28983,8 +29362,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoGroupId(self):
-        r"""Read-only group ID.
-Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.
+        r"""<p>Read-only group ID.<br>Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.</p>
         :rtype: str
         """
         return self._RoGroupId
@@ -28995,7 +29373,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoGroupName(self):
-        r"""Read-only group name.
+        r"""<p>Read-only group name.</p>
         :rtype: str
         """
         return self._RoGroupName
@@ -29006,7 +29384,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoOfflineDelay(self):
-        r"""Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)
+        r"""<p>Whether to enable the feature to isolate an instance that exceeds the latency threshold. After enabling this feature, if the delay between a read-only instance and the primary instance exceeds the delay threshold, the read-only instance will be isolated. Available values: 1-enable; 0-disable.</p>
         :rtype: int
         """
         return self._RoOfflineDelay
@@ -29017,7 +29395,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoMaxDelayTime(self):
-        r"""Delay threshold, in seconds. Value range: 1–10000. The value is an integer.
+        r"""<p>Delay threshold, in seconds. Value range: 1–10000. The value is an integer.</p>
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -29028,7 +29406,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def MinRoInGroup(self):
-        r"""Minimum number of instances to be retained. If the number of the purchased read-only instances is smaller than the set value, they will not be removed.
+        r"""<p>Minimum number of instances to retain. If the number of read-only instances purchased is less than the set number, removal will not occur.</p>
         :rtype: int
         """
         return self._MinRoInGroup
@@ -29039,7 +29417,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def WeightMode(self):
-        r"""Read/write weight distribution mode. Valid values: `system` (weights are assigned by the system automatically), `custom` (weights are customized)
+        r"""<p>Read-write weight allocation mode. Available values: system-automatic allocation by the system; custom-customization.</p>
         :rtype: str
         """
         return self._WeightMode
@@ -29050,7 +29428,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def Weight(self):
-        r"""This field has been disused. To view the weight of a read-only instance, check the `Weight` value in the `RoInstances` field.
+        r"""<p>This field is deprecated and meaningless. To view the weight of a read-only instance, check the Weight value in the RoInstances field.</p>
         :rtype: int
         """
         return self._Weight
@@ -29061,7 +29439,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoInstances(self):
-        r"""Details of read-only instances in read-only group
+        r"""<p>Details of read-only instances in the read-only group.</p>
         :rtype: list of RoInstanceInfo
         """
         return self._RoInstances
@@ -29072,7 +29450,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def Vip(self):
-        r"""Private IP of read-only group.
+        r"""<p>Private IP address of the read-only group.</p>
         :rtype: str
         """
         return self._Vip
@@ -29083,7 +29461,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def Vport(self):
-        r"""Private network port number of read-only group.
+        r"""<p>Private network port number of the read-only group.</p>
         :rtype: int
         """
         return self._Vport
@@ -29094,7 +29472,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def UniqVpcId(self):
-        r"""Virtual Private Cloud (VPC) ID.
+        r"""<p>VPC ID.</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -29105,7 +29483,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def UniqSubnetId(self):
-        r"""Subnet ID.
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -29116,7 +29494,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoGroupRegion(self):
-        r"""Region of the read-only group.
+        r"""<p>Region of the read-only group.</p>
         :rtype: str
         """
         return self._RoGroupRegion
@@ -29127,7 +29505,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def RoGroupZone(self):
-        r"""AZ of the read-only group.
+        r"""<p>AZ of the read-only group.</p>
         :rtype: str
         """
         return self._RoGroupZone
@@ -29138,7 +29516,7 @@ Note: If the data structure is used during instance purchase, this item is requi
 
     @property
     def DelayReplicationTime(self):
-        r"""Replication delay time, in seconds. Value range: 1–259200. The value is an integer.
+        r"""<p>Replication delay time, in seconds. Value range: 1–259200. The value is an integer.</p>
         :rtype: int
         """
         return self._DelayReplicationTime
@@ -29308,7 +29686,7 @@ class RoInstanceInfo(AbstractModel):
         :type Weight: int
         :param _Region: RO instance region name, such as ap-shanghai
         :type Region: str
-        :param _Zone: Name of RO AZ, such as ap-shanghai-2
+        :param _Zone: Canonical name of the RO Availability Zone, for example ap-shanghai-2
         :type Zone: str
         :param _InstanceId: RO instance ID in the format of cdbro-c1nl9rpv
         :type InstanceId: str
@@ -29429,7 +29807,7 @@ class RoInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Name of RO AZ, such as ap-shanghai-2
+        r"""Canonical name of the RO Availability Zone, for example ap-shanghai-2
         :rtype: str
         """
         return self._Zone

@@ -151,6 +151,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddShareUnitNode(
+            self,
+            request: models.AddShareUnitNodeRequest,
+            opts: Dict = None,
+    ) -> models.AddShareUnitNodeResponse:
+        """
+        Add a shared unit department.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddShareUnitNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddShareUnitNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddShareUnitResources(
             self,
             request: models.AddShareUnitResourcesRequest,
@@ -187,6 +205,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AttachPolicy(
+            self,
+            request: models.AttachPolicyRequest,
+            opts: Dict = None,
+    ) -> models.AttachPolicyResponse:
+        """
+        Bind a policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AttachPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AttachPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindOrganizationMemberAuthAccount(
             self,
             request: models.BindOrganizationMemberAuthAccountRequest,
@@ -205,6 +241,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindOrganizationPolicySubAccount(
+            self,
+            request: models.BindOrganizationPolicySubAccountRequest,
+            opts: Dict = None,
+    ) -> models.BindOrganizationPolicySubAccountResponse:
+        """
+        This API is used to bind member access authorization policies to the sub-accounts of the organization administrator.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindOrganizationPolicySubAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindOrganizationPolicySubAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelOrganizationMemberAuthAccount(
             self,
             request: models.CancelOrganizationMemberAuthAccountRequest,
@@ -218,6 +272,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "CancelOrganizationMemberAuthAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CancelOrganizationMemberAuthAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CancelOrganizationPolicySubAccount(
+            self,
+            request: models.CancelOrganizationPolicySubAccountRequest,
+            opts: Dict = None,
+    ) -> models.CancelOrganizationPolicySubAccountResponse:
+        """
+        This API is used to unbind member access authorization policies from the sub-accounts of the organization administrator.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelOrganizationPolicySubAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelOrganizationPolicySubAccountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -380,6 +452,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "CreateOrganizationMembersPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateOrganizationMembersPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePolicy(
+            self,
+            request: models.CreatePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreatePolicyResponse:
+        """
+        This API is used to create a special type of policy that can be attached to the enterprise organization Root node, enterprise department nodes, or enterprise member accounts.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -619,6 +709,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeletePolicy(
+            self,
+            request: models.DeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeletePolicyResponse:
+        """
+        Deleting a Policy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRoleAssignment(
             self,
             request: models.DeleteRoleAssignmentRequest,
@@ -709,6 +817,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteShareUnitNode(
+            self,
+            request: models.DeleteShareUnitNodeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteShareUnitNodeResponse:
+        """
+        Delete a shared unit department.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteShareUnitNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteShareUnitNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteShareUnitResources(
             self,
             request: models.DeleteShareUnitResourcesRequest,
@@ -758,6 +884,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "DeleteUserSyncProvisioning"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUserSyncProvisioningResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEffectivePolicy(
+            self,
+            request: models.DescribeEffectivePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEffectivePolicyResponse:
+        """
+        This API is used to query the valid policy associated with the target.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEffectivePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEffectivePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -889,6 +1033,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOrganizationMembersAuthPolicy(
+            self,
+            request: models.DescribeOrganizationMembersAuthPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOrganizationMembersAuthPolicyResponse:
+        """
+        This API is used to query the list of organization member access policies.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOrganizationMembersAuthPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOrganizationMembersAuthPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeOrganizationNodes(
             self,
             request: models.DescribeOrganizationNodesRequest,
@@ -902,6 +1064,60 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "DescribeOrganizationNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeOrganizationNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePolicy(
+            self,
+            request: models.DescribePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribePolicyResponse:
+        """
+        This API is used to query policy details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePolicyConfig(
+            self,
+            request: models.DescribePolicyConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribePolicyConfigResponse:
+        """
+        This API is used to query enterprise organization policy configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePolicyConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePolicyConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceToShareMember(
+            self,
+            request: models.DescribeResourceToShareMemberRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceToShareMemberResponse:
+        """
+        This API is used to obtain the list of resources shared with me.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceToShareMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceToShareMemberResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -943,6 +1159,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeShareUnitNodes(
+            self,
+            request: models.DescribeShareUnitNodesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeShareUnitNodesResponse:
+        """
+        This API is used to obtain a list of shared unit departments.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeShareUnitNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeShareUnitNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeShareUnitResources(
             self,
             request: models.DescribeShareUnitResourcesRequest,
@@ -979,6 +1213,42 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DetachPolicy(
+            self,
+            request: models.DetachPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DetachPolicyResponse:
+        """
+        Unbind a policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetachPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetachPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisablePolicyType(
+            self,
+            request: models.DisablePolicyTypeRequest,
+            opts: Dict = None,
+    ) -> models.DisablePolicyTypeResponse:
+        """
+        This API is used to disable a policy type.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisablePolicyType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisablePolicyTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DismantleRoleConfiguration(
             self,
             request: models.DismantleRoleConfigurationRequest,
@@ -992,6 +1262,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "DismantleRoleConfiguration"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DismantleRoleConfigurationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnablePolicyType(
+            self,
+            request: models.EnablePolicyTypeRequest,
+            opts: Dict = None,
+    ) -> models.EnablePolicyTypeResponse:
+        """
+        This API is used to enable a policy type.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePolicyType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePolicyTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1267,6 +1555,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListNonCompliantResource(
+            self,
+            request: models.ListNonCompliantResourceRequest,
+            opts: Dict = None,
+    ) -> models.ListNonCompliantResourceResponse:
+        """
+        This API is used to obtain the list of non-compliant resources detected by member tags.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListNonCompliantResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListNonCompliantResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListOrgServiceAssignMember(
             self,
             request: models.ListOrgServiceAssignMemberRequest,
@@ -1339,6 +1645,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListPoliciesForTarget(
+            self,
+            request: models.ListPoliciesForTargetRequest,
+            opts: Dict = None,
+    ) -> models.ListPoliciesForTargetResponse:
+        """
+        This API is used to query the list of policies associated with a target.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPoliciesForTarget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPoliciesForTargetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListRoleAssignments(
             self,
             request: models.ListRoleAssignmentsRequest,
@@ -1406,6 +1730,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "ListSCIMCredentials"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListSCIMCredentialsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTargetsForPolicy(
+            self,
+            request: models.ListTargetsForPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ListTargetsForPolicyResponse:
+        """
+        This API is used to query the list of targets associated with a specified policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTargetsForPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTargetsForPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1735,6 +2077,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateOrganizationMembersPolicy(
+            self,
+            request: models.UpdateOrganizationMembersPolicyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateOrganizationMembersPolicyResponse:
+        """
+        This API is used to modify an organization's member access policies.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateOrganizationMembersPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateOrganizationMembersPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateOrganizationNode(
             self,
             request: models.UpdateOrganizationNodeRequest,
@@ -1748,6 +2108,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "UpdateOrganizationNode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateOrganizationNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdatePolicy(
+            self,
+            request: models.UpdatePolicyRequest,
+            opts: Dict = None,
+    ) -> models.UpdatePolicyResponse:
+        """
+        Edit policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdatePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdatePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -187,6 +187,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddShareUnitNode(self, request):
+        r"""Add a shared unit department.
+
+        :param request: Request instance for AddShareUnitNode.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitNodeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddShareUnitNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddShareUnitNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddShareUnitNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddShareUnitResources(self, request):
         r"""This API is used to add resources to a shared unit.
 
@@ -233,6 +256,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachPolicy(self, request):
+        r"""Bind a policy.
+
+        :param request: Request instance for AttachPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AttachPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AttachPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindOrganizationMemberAuthAccount(self, request):
         r"""This API is used to bind an organization member to a sub-account of the organization admin.
 
@@ -256,6 +302,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindOrganizationPolicySubAccount(self, request):
+        r"""This API is used to bind member access authorization policies to the sub-accounts of the organization administrator.
+
+        :param request: Request instance for BindOrganizationPolicySubAccount.
+        :type request: :class:`tencentcloud.organization.v20210331.models.BindOrganizationPolicySubAccountRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.BindOrganizationPolicySubAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindOrganizationPolicySubAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindOrganizationPolicySubAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelOrganizationMemberAuthAccount(self, request):
         r"""This API is used to unbind an organization member from a sub-account of the organization admin.
 
@@ -270,6 +339,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("CancelOrganizationMemberAuthAccount", params, headers=headers)
             response = json.loads(body)
             model = models.CancelOrganizationMemberAuthAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CancelOrganizationPolicySubAccount(self, request):
+        r"""This API is used to unbind member access authorization policies from the sub-accounts of the organization administrator.
+
+        :param request: Request instance for CancelOrganizationPolicySubAccount.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationPolicySubAccountRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationPolicySubAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelOrganizationPolicySubAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelOrganizationPolicySubAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -477,6 +569,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("CreateOrganizationMembersPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.CreateOrganizationMembersPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePolicy(self, request):
+        r"""This API is used to create a special type of policy that can be attached to the enterprise organization Root node, enterprise department nodes, or enterprise member accounts.
+
+        :param request: Request instance for CreatePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreatePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreatePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +900,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeletePolicy(self, request):
+        r"""Deleting a Policy
+
+        :param request: Request instance for DeletePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeletePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeletePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRoleAssignment(self, request):
         r"""This API is used to remove authorizations on member accounts.
 
@@ -900,6 +1038,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteShareUnitNode(self, request):
+        r"""Delete a shared unit department.
+
+        :param request: Request instance for DeleteShareUnitNode.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitNodeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteShareUnitNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteShareUnitNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteShareUnitResources(self, request):
         r"""This API is used to delete shared unit resources.
 
@@ -960,6 +1121,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteUserSyncProvisioning", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUserSyncProvisioningResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEffectivePolicy(self, request):
+        r"""This API is used to query the valid policy associated with the target.
+
+        :param request: Request instance for DescribeEffectivePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeEffectivePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeEffectivePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEffectivePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEffectivePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1130,6 +1314,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrganizationMembersAuthPolicy(self, request):
+        r"""This API is used to query the list of organization member access policies.
+
+        :param request: Request instance for DescribeOrganizationMembersAuthPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMembersAuthPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMembersAuthPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationMembersAuthPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationMembersAuthPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationNodes(self, request):
         r"""This API is used to get the list of organization nodes.
 
@@ -1144,6 +1351,75 @@ class OrganizationClient(AbstractClient):
             body = self.call("DescribeOrganizationNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOrganizationNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePolicy(self, request):
+        r"""This API is used to query policy details.
+
+        :param request: Request instance for DescribePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePolicyConfig(self, request):
+        r"""This API is used to query enterprise organization policy configurations.
+
+        :param request: Request instance for DescribePolicyConfig.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribePolicyConfigRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribePolicyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceToShareMember(self, request):
+        r"""This API is used to obtain the list of resources shared with me.
+
+        :param request: Request instance for DescribeResourceToShareMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeResourceToShareMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeResourceToShareMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceToShareMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceToShareMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1199,6 +1475,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeShareUnitNodes(self, request):
+        r"""This API is used to obtain a list of shared unit departments.
+
+        :param request: Request instance for DescribeShareUnitNodes.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitNodesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShareUnitNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShareUnitNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeShareUnitResources(self, request):
         r"""This API is used to obtain the resource list of a shared unit.
 
@@ -1245,6 +1544,52 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetachPolicy(self, request):
+        r"""Unbind a policy.
+
+        :param request: Request instance for DetachPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DetachPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DetachPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisablePolicyType(self, request):
+        r"""This API is used to disable a policy type.
+
+        :param request: Request instance for DisablePolicyType.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DisablePolicyTypeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DisablePolicyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisablePolicyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisablePolicyTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DismantleRoleConfiguration(self, request):
         r"""This API is used to undeploy permission configurations on member accounts.
 
@@ -1259,6 +1604,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DismantleRoleConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.DismantleRoleConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnablePolicyType(self, request):
+        r"""This API is used to enable a policy type.
+
+        :param request: Request instance for EnablePolicyType.
+        :type request: :class:`tencentcloud.organization.v20210331.models.EnablePolicyTypeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.EnablePolicyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnablePolicyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnablePolicyTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1613,6 +1981,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListNonCompliantResource(self, request):
+        r"""This API is used to obtain the list of non-compliant resources detected by member tags.
+
+        :param request: Request instance for ListNonCompliantResource.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListNonCompliantResourceRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListNonCompliantResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListNonCompliantResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListNonCompliantResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListOrgServiceAssignMember(self, request):
         r"""This API is used to obtain the list of delegated admins of the organization service.
 
@@ -1705,6 +2096,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListPoliciesForTarget(self, request):
+        r"""This API is used to query the list of policies associated with a target.
+
+        :param request: Request instance for ListPoliciesForTarget.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListPoliciesForTargetRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListPoliciesForTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPoliciesForTarget", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPoliciesForTargetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListRoleAssignments(self, request):
         r"""This API is used to query the authorization list.
 
@@ -1788,6 +2202,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListSCIMCredentials", params, headers=headers)
             response = json.loads(body)
             model = models.ListSCIMCredentialsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTargetsForPolicy(self, request):
+        r"""This API is used to query the list of targets associated with a specified policy.
+
+        :param request: Request instance for ListTargetsForPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListTargetsForPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListTargetsForPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTargetsForPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTargetsForPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2211,6 +2648,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateOrganizationMembersPolicy(self, request):
+        r"""This API is used to modify an organization's member access policies.
+
+        :param request: Request instance for UpdateOrganizationMembersPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMembersPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMembersPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOrganizationMembersPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOrganizationMembersPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateOrganizationNode(self, request):
         r"""This API is used to update an organization node.
 
@@ -2225,6 +2685,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("UpdateOrganizationNode", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOrganizationNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePolicy(self, request):
+        r"""Edit policy.
+
+        :param request: Request instance for UpdatePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdatePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdatePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

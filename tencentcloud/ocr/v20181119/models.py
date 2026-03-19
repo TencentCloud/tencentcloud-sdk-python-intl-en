@@ -3358,21 +3358,21 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: The Base64 value of an image/PDF. the image must be no more than 10M after encoding, with a resolution of 600*800 or higher recommended. supported formats include PNG, JPG, JPEG, BMP, and PDF. either ImageUrl or ImageBase64 must be provided. if both are provided, only ImageUrl will be used.
+        :param _ImageBase64: <p>The Base64 value of the image/PDF. The image size after Base64 encoding must be no more than 10M, with a resolution of 600*800 or higher recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.</p>
         :type ImageBase64: str
-        :param _ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
-The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
+        :param _ImageUrl: URL address of image. 
+The image cannot exceed 10 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
-        :param _EnableDetectSplit: Whether to enable original image slicing detection. once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character area is small" (for example: exam paper). default: disabled. note: only supported when ConfigID is configured as OCR.
+        :param _EnableDetectSplit: <p>Whether to enable original image slicing detection. Once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character occupies a small proportion" (for example: exam paper). Default: disabled. Note: Only supported when ConfigID is configured as OCR.</p>
         :type EnableDetectSplit: bool
-        :param _IsPdf: Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
+        :param _IsPdf: <p>Whether PDF recognition is enabled. The default value is false. Once enabled, it can simultaneously support image and PDF recognition.</p>
         :type IsPdf: bool
-        :param _PdfPageNumber: Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`
+        :param _PdfPageNumber: <p>The corresponding page number of the PDF page to be recognized. Only single page recognition is supported. Valid at that time when the upload file is a PDF and the IsPdf parameter value is true. The default value is 1.</p>
         :type PdfPageNumber: int
-        :param _EnableDetectText: Text detection switch, default is true. set to false to directly perform single-line text recognition, suitable for image scenarios containing only forward single-line text.
+        :param _EnableDetectText: <p>Text Detection Switch, true by default. Set to false to directly perform single-line recognition, suitable for image scenarios containing only forward single-line text.</p>
         :type EnableDetectText: bool
-        :param _ConfigID: Configuration ID supports: OCR - general scenario MulOCR - multilingual scenario. default value is OCR.
+        :param _ConfigID: <p>Configuration ID support: OCR -- common scenarios MulOCR -- multilingual scenario. Default value: OCR.</p>
         :type ConfigID: str
         """
         self._ImageBase64 = None
@@ -3385,7 +3385,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ImageBase64(self):
-        r"""The Base64 value of an image/PDF. the image must be no more than 10M after encoding, with a resolution of 600*800 or higher recommended. supported formats include PNG, JPG, JPEG, BMP, and PDF. either ImageUrl or ImageBase64 must be provided. if both are provided, only ImageUrl will be used.
+        r"""<p>The Base64 value of the image/PDF. The image size after Base64 encoding must be no more than 10M, with a resolution of 600*800 or higher recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -3396,8 +3396,8 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ImageUrl(self):
-        r"""URL address of image. (This field is not supported outside Chinese mainland)
-The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
+        r"""URL address of image. 
+The image cannot exceed 10 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :rtype: str
         """
@@ -3409,7 +3409,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def EnableDetectSplit(self):
-        r"""Whether to enable original image slicing detection. once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character area is small" (for example: exam paper). default: disabled. note: only supported when ConfigID is configured as OCR.
+        r"""<p>Whether to enable original image slicing detection. Once enabled, it improves recognition accuracy in scenarios where "the overall image area is large but the single character occupies a small proportion" (for example: exam paper). Default: disabled. Note: Only supported when ConfigID is configured as OCR.</p>
         :rtype: bool
         """
         return self._EnableDetectSplit
@@ -3420,7 +3420,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def IsPdf(self):
-        r"""Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
+        r"""<p>Whether PDF recognition is enabled. The default value is false. Once enabled, it can simultaneously support image and PDF recognition.</p>
         :rtype: bool
         """
         return self._IsPdf
@@ -3431,7 +3431,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def PdfPageNumber(self):
-        r"""Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`
+        r"""<p>The corresponding page number of the PDF page to be recognized. Only single page recognition is supported. Valid at that time when the upload file is a PDF and the IsPdf parameter value is true. The default value is 1.</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -3442,7 +3442,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def EnableDetectText(self):
-        r"""Text detection switch, default is true. set to false to directly perform single-line text recognition, suitable for image scenarios containing only forward single-line text.
+        r"""<p>Text Detection Switch, true by default. Set to false to directly perform single-line recognition, suitable for image scenarios containing only forward single-line text.</p>
         :rtype: bool
         """
         return self._EnableDetectText
@@ -3453,7 +3453,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ConfigID(self):
-        r"""Configuration ID supports: OCR - general scenario MulOCR - multilingual scenario. default value is OCR.
+        r"""<p>Configuration ID support: OCR -- common scenarios MulOCR -- multilingual scenario. Default value: OCR.</p>
         :rtype: str
         """
         return self._ConfigID
@@ -3488,11 +3488,11 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TextDetections: Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        :param _TextDetections: <p>Detected text information, including row content, confidence degree, text line coordinate, and rotation corrected coordinate. For specific content, please click the left-side link.</p>
         :type TextDetections: list of TextDetection
-        :param _Angel: Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
+        :param _Angel: Image rotation angle in degrees. Zero degrees: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :type Angel: float
-        :param _Angle: Image rotation angle (angle system). the text's horizontal direction is 0°. clockwise is positive, counterclockwise is negative. click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">how to correct tilt text</a>.
+        :param _Angle: <p>Image rotation angle (angle system), the text's horizontal direction is Zero degrees; clockwise is positive, counterclockwise is negative. Click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">How to correct tilt text</a></p>
         :type Angle: float
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3504,7 +3504,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        r"""Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        r"""<p>Detected text information, including row content, confidence degree, text line coordinate, and rotation corrected coordinate. For specific content, please click the left-side link.</p>
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -3517,7 +3517,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
     def Angel(self):
         warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
 
-        r"""Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
+        r"""Image rotation angle in degrees. Zero degrees: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :rtype: float
         """
         return self._Angel
@@ -3530,7 +3530,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""Image rotation angle (angle system). the text's horizontal direction is 0°. clockwise is positive, counterclockwise is negative. click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">how to correct tilt text</a>.
+        r"""<p>Image rotation angle (angle system), the text's horizontal direction is Zero degrees; clockwise is positive, counterclockwise is negative. Click to view <a href="https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1">How to correct tilt text</a></p>
         :rtype: float
         """
         return self._Angle

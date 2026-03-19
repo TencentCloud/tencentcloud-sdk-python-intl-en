@@ -49,6 +49,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ClearEmbedToken(self, request):
+        r"""Clean strong authentication tokens. Only enterprise admins can call this API.
+
+        :param request: Request instance for ClearEmbedToken.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ClearEmbedTokenRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ClearEmbedTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClearEmbedToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClearEmbedTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatasource(self, request):
         r"""This API is used to create a data source.
 

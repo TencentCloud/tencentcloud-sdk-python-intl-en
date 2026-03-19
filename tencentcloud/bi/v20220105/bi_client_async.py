@@ -43,6 +43,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ClearEmbedToken(
+            self,
+            request: models.ClearEmbedTokenRequest,
+            opts: Dict = None,
+    ) -> models.ClearEmbedTokenResponse:
+        """
+        Clean strong authentication tokens. Only enterprise admins can call this API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ClearEmbedToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ClearEmbedTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDatasource(
             self,
             request: models.CreateDatasourceRequest,
