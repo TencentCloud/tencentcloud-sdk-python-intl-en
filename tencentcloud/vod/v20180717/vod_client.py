@@ -1681,6 +1681,32 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcUsageData(self, request):
+        r"""This API is used to return statistical information of AIGC within a specified time range.
+        1. AIGC stats from the last 365 days can be queried.
+           2. The query time span should not exceed 90 days.
+        3. If the query time span exceeds 1 day, return data with day-level granularity. Otherwise, return data with 5-minute granularity.
+
+        :param request: Request instance for DescribeAigcUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcUsageData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllClass(self, request):
         r"""* This API is used to get the information of all categories.
 

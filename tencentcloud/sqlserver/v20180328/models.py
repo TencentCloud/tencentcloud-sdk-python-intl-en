@@ -3651,7 +3651,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type ReadOnlyGroupMaxDelayTime: int
         :param _ReadOnlyGroupMinInGroup: Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :type ReadOnlyGroupMinInGroup: int
-        :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).
         :type InstanceChargeType: str
         :param _GoodsNum: Number of read-only instances to be purchased this time. Default value: `2`.
         :type GoodsNum: int
@@ -3847,7 +3847,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        r"""Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType

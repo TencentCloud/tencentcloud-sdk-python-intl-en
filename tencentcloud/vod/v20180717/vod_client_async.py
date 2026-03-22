@@ -1330,6 +1330,27 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcUsageData(
+            self,
+            request: models.DescribeAigcUsageDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcUsageDataResponse:
+        """
+        This API is used to return statistical information of AIGC within a specified time range.
+        1. AIGC stats from the last 365 days can be queried.
+           2. The query time span should not exceed 90 days.
+        3. If the query time span exceeds 1 day, return data with day-level granularity. Otherwise, return data with 5-minute granularity.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcUsageData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllClass(
             self,
             request: models.DescribeAllClassRequest,

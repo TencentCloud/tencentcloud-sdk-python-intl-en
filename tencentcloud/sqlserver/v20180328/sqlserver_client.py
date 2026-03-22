@@ -2097,7 +2097,7 @@ class SqlserverClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        r"""This API is used to query the upgrade prices of a monthly subscribed instance.
+        r"""This API is used to query the upgrade prices of a yearly/monthly subscribed instance.
         .
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
