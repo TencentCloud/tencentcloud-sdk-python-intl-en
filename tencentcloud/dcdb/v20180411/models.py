@@ -1354,6 +1354,10 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         :type AutoRenewFlag: int
         :param _SecurityGroupIds: Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.
         :type SecurityGroupIds: list of str
+        :param _DcnSyncMode: 
+        :type DcnSyncMode: int
+        :param _CpuType: 
+        :type CpuType: str
         """
         self._Zones = None
         self._Period = None
@@ -1377,6 +1381,8 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         self._DcnInstanceId = None
         self._AutoRenewFlag = None
         self._SecurityGroupIds = None
+        self._DcnSyncMode = None
+        self._CpuType = None
 
     @property
     def Zones(self):
@@ -1624,6 +1630,28 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DcnSyncMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
+    @property
+    def CpuType(self):
+        r"""
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Zones = params.get("Zones")
@@ -1658,6 +1686,8 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         self._DcnInstanceId = params.get("DcnInstanceId")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DcnSyncMode = params.get("DcnSyncMode")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2322,6 +2352,10 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type RollbackTime: str
         :param _SecurityGroupIds: Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)
         :type SecurityGroupIds: list of str
+        :param _DcnSyncMode: 
+        :type DcnSyncMode: int
+        :param _CpuType: 
+        :type CpuType: str
         """
         self._ShardMemory = None
         self._ShardStorage = None
@@ -2344,6 +2378,8 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         self._RollbackInstanceId = None
         self._RollbackTime = None
         self._SecurityGroupIds = None
+        self._DcnSyncMode = None
+        self._CpuType = None
 
     @property
     def ShardMemory(self):
@@ -2580,6 +2616,28 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DcnSyncMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
+    @property
+    def CpuType(self):
+        r"""
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._ShardMemory = params.get("ShardMemory")
@@ -2613,6 +2671,8 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         self._RollbackInstanceId = params.get("RollbackInstanceId")
         self._RollbackTime = params.get("RollbackTime")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DcnSyncMode = params.get("DcnSyncMode")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6715,7 +6775,7 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         :type AutoRenewFlag: int
         :param _ExclusterId: Dedicated cluster ID
         :type ExclusterId: str
-        :param _PayMode: Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).
+        :param _PayMode: Billing mode. Valid values: `prepaid` (yearly/monthly subscription), `postpaid` (pay-as-you-go).
         :type PayMode: str
         :param _CreateTime: Creation time of the instance in the format of 2006-01-02 15:04:05
         :type CreateTime: str
@@ -6802,6 +6862,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ReservedNetResources: list of ReservedNetResource
         :param _IsPhysicalReplicationSupported: Whether physical replication is supported.
         :type IsPhysicalReplicationSupported: bool
+        :param _IsDcnStrongSyncSupported: 
+        :type IsDcnStrongSyncSupported: int
+        :param _IsDcnSwitchSupported: 
+        :type IsDcnSwitchSupported: int
+        :param _CpuType: 
+        :type CpuType: str
+        :param _ProtectedProperty: 
+        :type ProtectedProperty: int
+        :param _FlowId: 
+        :type FlowId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -6857,6 +6927,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RsAccessStrategy = None
         self._ReservedNetResources = None
         self._IsPhysicalReplicationSupported = None
+        self._IsDcnStrongSyncSupported = None
+        self._IsDcnSwitchSupported = None
+        self._CpuType = None
+        self._ProtectedProperty = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
@@ -7048,7 +7123,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).
+        r"""Billing mode. Valid values: `prepaid` (yearly/monthly subscription), `postpaid` (pay-as-you-go).
         :rtype: str
         """
         return self._PayMode
@@ -7449,6 +7524,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsPhysicalReplicationSupported = IsPhysicalReplicationSupported
 
     @property
+    def IsDcnStrongSyncSupported(self):
+        r"""
+        :rtype: int
+        """
+        return self._IsDcnStrongSyncSupported
+
+    @IsDcnStrongSyncSupported.setter
+    def IsDcnStrongSyncSupported(self, IsDcnStrongSyncSupported):
+        self._IsDcnStrongSyncSupported = IsDcnStrongSyncSupported
+
+    @property
+    def IsDcnSwitchSupported(self):
+        r"""
+        :rtype: int
+        """
+        return self._IsDcnSwitchSupported
+
+    @IsDcnSwitchSupported.setter
+    def IsDcnSwitchSupported(self, IsDcnSwitchSupported):
+        self._IsDcnSwitchSupported = IsDcnSwitchSupported
+
+    @property
+    def CpuType(self):
+        r"""
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def ProtectedProperty(self):
+        r"""
+        :rtype: int
+        """
+        return self._ProtectedProperty
+
+    @ProtectedProperty.setter
+    def ProtectedProperty(self, ProtectedProperty):
+        self._ProtectedProperty = ProtectedProperty
+
+    @property
+    def FlowId(self):
+        r"""
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -7528,6 +7658,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._ReservedNetResources.append(obj)
         self._IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
+        self._IsDcnStrongSyncSupported = params.get("IsDcnStrongSyncSupported")
+        self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
+        self._CpuType = params.get("CpuType")
+        self._ProtectedProperty = params.get("ProtectedProperty")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8038,12 +8173,14 @@ class DescribeDCDBPriceRequest(AbstractModel):
         :type ShardStorage: int
         :param _ShardCount: The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.
         :type ShardCount: int
-        :param _Paymode: Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).
+        :param _Paymode: Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (yearly/monthly subscription).
         :type Paymode: str
         :param _AmountUnit: Price unit. Valid values:   
 `* pent` (cent), 
 `* microPent` (microcent).
         :type AmountUnit: str
+        :param _CpuType: 
+        :type CpuType: str
         """
         self._Zone = None
         self._Count = None
@@ -8054,6 +8191,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self._ShardCount = None
         self._Paymode = None
         self._AmountUnit = None
+        self._CpuType = None
 
     @property
     def Zone(self):
@@ -8137,7 +8275,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
 
     @property
     def Paymode(self):
-        r"""Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).
+        r"""Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (yearly/monthly subscription).
         :rtype: str
         """
         return self._Paymode
@@ -8159,6 +8297,17 @@ class DescribeDCDBPriceRequest(AbstractModel):
     def AmountUnit(self, AmountUnit):
         self._AmountUnit = AmountUnit
 
+    @property
+    def CpuType(self):
+        r"""
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -8170,6 +8319,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self._ShardCount = params.get("ShardCount")
         self._Paymode = params.get("Paymode")
         self._AmountUnit = params.get("AmountUnit")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

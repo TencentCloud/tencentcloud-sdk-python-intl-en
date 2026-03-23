@@ -16821,7 +16821,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
         r"""
         :param _DealName: Order Number
         :type DealName: str
-        :param _LicenseType: Optional parameters. 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription
+        :param _LicenseType: Optional parameters. 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription
         :type LicenseType: int
         :param _QuuidList: Machine list
         :type QuuidList: list of str
@@ -16846,7 +16846,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""Optional parameters. 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription
+        r"""Optional parameters. 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription
         :rtype: int
         """
         return self._LicenseType
@@ -17088,7 +17088,7 @@ class CreateLicenseOrderRequest(AbstractModel):
         r"""
         :param _Tags: Tag array. Leaving it blank indicates no tags need to be bound.
         :type Tags: list of Tags
-        :param _LicenseType: Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2 - Ultimate Edition-monthly subscriptionThe default is 0.
+        :param _LicenseType: Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2 - Ultimate Edition-yearly/monthly subscription default is 0.
         :type LicenseType: int
         :param _LicenseNum: Authorization quantity: the number of units that need to be purchased
 The default is 1.
@@ -17103,7 +17103,7 @@ The default is 0.
 This parameter is only valid for monthly subscription.
         :type TimeSpan: int
         :param _AutoRenewFlag: Whether to auto-renew. The default is not to auto-renew.
-This parameter is only valid for monthly subscription.
+This parameter is only valid for yearly/monthly subscription.
         :type AutoRenewFlag: bool
         :param _AutoProtectOpenConfig: This field is deprecated.
         :type AutoProtectOpenConfig: str
@@ -17133,7 +17133,7 @@ This parameter is only valid for monthly subscription.
 
     @property
     def LicenseType(self):
-        r"""Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2 - Ultimate Edition-monthly subscriptionThe default is 0.
+        r"""Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2 - Ultimate Edition-yearly/monthly subscription default is 0.
         :rtype: int
         """
         return self._LicenseType
@@ -17193,7 +17193,7 @@ This parameter is only valid for monthly subscription.
     @property
     def AutoRenewFlag(self):
         r"""Whether to auto-renew. The default is not to auto-renew.
-This parameter is only valid for monthly subscription.
+This parameter is only valid for yearly/monthly subscription.
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -39533,11 +39533,11 @@ class DescribeLicenseListRequest(AbstractModel):
         :param _Filters: Take the intersection when filtering with multiple conditions.
 <li> LicenseStatus authorization status information: 0 - not used; 1 - partially used; 2 - used up; 3 - unavailable; 4 - available</li>
 <li> BuyTime: time of purchase</li>
-<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>
+<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>
 <li>DeadlineStatus expiration status: NotExpired -not expired; expire - expired (including terminated); nearexpiry - about to expire</li>
 <li>ResourceId resource ID</li>
 <li>Keywords IP filtering</li>
-<li>PayMode payment mode. 0: pay-as-you-go; 1: monthly subscription</li>
+<li>PayMode payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription</li>
 <li>OrderStatus order status. 1: normal; 2: isolated; 3: terminated</li>
 <li>DealNames sub-order number, with a maximum length of 10, exceeding this will result in a failure.</li>
         :type Filters: list of Filters
@@ -39547,22 +39547,28 @@ class DescribeLicenseListRequest(AbstractModel):
         :type Offset: int
         :param _Tags: Tag filtering; filter by the platform's tag capabilities. In this case, you should pass in the tag key and tag value as an object.
         :type Tags: list of Tags
+        :param _Order: 
+        :type Order: str
+        :param _By: 
+        :type By: str
         """
         self._Filters = None
         self._Limit = None
         self._Offset = None
         self._Tags = None
+        self._Order = None
+        self._By = None
 
     @property
     def Filters(self):
         r"""Take the intersection when filtering with multiple conditions.
 <li> LicenseStatus authorization status information: 0 - not used; 1 - partially used; 2 - used up; 3 - unavailable; 4 - available</li>
 <li> BuyTime: time of purchase</li>
-<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>
+<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>
 <li>DeadlineStatus expiration status: NotExpired -not expired; expire - expired (including terminated); nearexpiry - about to expire</li>
 <li>ResourceId resource ID</li>
 <li>Keywords IP filtering</li>
-<li>PayMode payment mode. 0: pay-as-you-go; 1: monthly subscription</li>
+<li>PayMode payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription</li>
 <li>OrderStatus order status. 1: normal; 2: isolated; 3: terminated</li>
 <li>DealNames sub-order number, with a maximum length of 10, exceeding this will result in a failure.</li>
         :rtype: list of Filters
@@ -39606,6 +39612,28 @@ class DescribeLicenseListRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Order(self):
+        r"""
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -39622,6 +39650,8 @@ class DescribeLicenseListRequest(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42882,7 +42912,7 @@ CVM: Cloud Virtual Machine
 BM: BM
 ECM: Edge Computing Machine
 LH: Lighthouse
-Other: Hybrid Cloud Zone
+Other: Hybrid Cloud Zone
         :type MachineType: str
         :param _MachineRegion: Machine region. For example, ap-guangzhou and ap-shanghai.
         :type MachineRegion: str
@@ -42892,7 +42922,7 @@ Other: Hybrid Cloud Zone
         :type Offset: int
         :param _Filters: Filtering criteria
 <li>Keywords - String - required: no - keywords for querying </li>
-<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in monthly subscription mode)</li>
+<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in yearly/monthly subscription mode)</li>
 <li>TagId - String - required: no - tag ID </li>
         :type Filters: list of Filter
         :param _ProjectIds: ID list of businesses to which machines belong
@@ -42912,7 +42942,7 @@ CVM: Cloud Virtual Machine
 BM: BM
 ECM: Edge Computing Machine
 LH: Lighthouse
-Other: Hybrid Cloud Zone
+Other: Hybrid Cloud Zone
         :rtype: str
         """
         return self._MachineType
@@ -42958,7 +42988,7 @@ Other: Hybrid Cloud Zone
     def Filters(self):
         r"""Filtering criteria
 <li>Keywords - String - required: no - keywords for querying </li>
-<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in monthly subscription mode)</li>
+<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in yearly/monthly subscription mode)</li>
 <li>TagId - String - required: no - tag ID </li>
         :rtype: list of Filter
         """
@@ -57836,7 +57866,7 @@ class DestroyOrderRequest(AbstractModel):
         r"""
         :param _ResourceId: Resource ID
         :type ResourceId: str
-        :param _LicenseType: Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.
+        :param _LicenseType: Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.
         :type LicenseType: int
         """
         self._ResourceId = None
@@ -57855,7 +57885,7 @@ class DestroyOrderRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.
+        r"""Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.
         :rtype: int
         """
         return self._LicenseType
@@ -63801,7 +63831,7 @@ class ExportLicenseDetailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: Take the intersection when filtering with multiple conditions: LicenseStatus, DeadlineStatus, ResourceId, and Keywords
-<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>
+<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>
 <li>ResourceId resource ID</li>
         :type Filters: list of Filters
         :param _IsHistory: Whether to export all authorization details
@@ -63819,7 +63849,7 @@ class ExportLicenseDetailRequest(AbstractModel):
     @property
     def Filters(self):
         r"""Take the intersection when filtering with multiple conditions: LicenseStatus, DeadlineStatus, ResourceId, and Keywords
-<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>
+<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>
 <li>ResourceId resource ID</li>
         :rtype: list of Filters
         """
@@ -71038,7 +71068,7 @@ class LicenseDetail(AbstractModel):
         r"""
         :param _LicenseId: Authorization ID
         :type LicenseId: int
-        :param _LicenseType: Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.
+        :param _LicenseType: Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.
         :type LicenseType: int
         :param _LicenseStatus: Authorization status. 0: not in use; 1: partially in use; 2: used up; 3: unavailable.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -71102,7 +71132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseType(self):
-        r"""Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.
+        r"""Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.
         :rtype: int
         """
         return self._LicenseType
@@ -72077,6 +72107,10 @@ class Machine(AbstractModel):
 <li>SHUTDOWN: Shut down</li>
 <li>UNINSTALLED: Unprotected</li>
         :type MachineStatus: str
+        :param _AgentStatus: 
+        :type AgentStatus: str
+        :param _InstanceStatus: 
+        :type InstanceStatus: str
         :param _Uuid: Yunjing client UUID. If the client is offline for a long time, an empty string is returned.
         :type Uuid: str
         :param _Quuid: CVM or BM Machine Unique UUID.
@@ -72093,7 +72127,7 @@ class Machine(AbstractModel):
         :type MachineWanIp: str
         :param _PayMode: Host status
 <li>POSTPAY: postpaid, indicating pay-as-you-go mode  </li>
-<li>PREPAY: prepaid, indicating monthly subscription mode</li>
+<li>PREPAY: prepaid, indicating yearly/monthly subscription mode</li>
         :type PayMode: str
         :param _MalwareNum: Number of Trojans
         :type MalwareNum: int
@@ -72146,10 +72180,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Remark: Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
+        :param _AgentVersion: 
+        :type AgentVersion: str
         """
         self._MachineName = None
         self._MachineOs = None
         self._MachineStatus = None
+        self._AgentStatus = None
+        self._InstanceStatus = None
         self._Uuid = None
         self._Quuid = None
         self._VulNum = None
@@ -72178,6 +72216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MachineExtraInfo = None
         self._InstanceId = None
         self._Remark = None
+        self._AgentVersion = None
 
     @property
     def MachineName(self):
@@ -72215,6 +72254,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @MachineStatus.setter
     def MachineStatus(self, MachineStatus):
         self._MachineStatus = MachineStatus
+
+    @property
+    def AgentStatus(self):
+        r"""
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def InstanceStatus(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
 
     @property
     def Uuid(self):
@@ -72288,7 +72349,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PayMode(self):
         r"""Host status
 <li>POSTPAY: postpaid, indicating pay-as-you-go mode  </li>
-<li>PREPAY: prepaid, indicating monthly subscription mode</li>
+<li>PREPAY: prepaid, indicating yearly/monthly subscription mode</li>
         :rtype: str
         """
         return self._PayMode
@@ -72537,11 +72598,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def AgentVersion(self):
+        r"""
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
         self._MachineOs = params.get("MachineOs")
         self._MachineStatus = params.get("MachineStatus")
+        self._AgentStatus = params.get("AgentStatus")
+        self._InstanceStatus = params.get("InstanceStatus")
         self._Uuid = params.get("Uuid")
         self._Quuid = params.get("Quuid")
         self._VulNum = params.get("VulNum")
@@ -72584,6 +72658,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._InstanceId = params.get("InstanceId")
         self._Remark = params.get("Remark")
+        self._AgentVersion = params.get("AgentVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

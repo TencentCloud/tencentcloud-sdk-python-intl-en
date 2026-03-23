@@ -189,7 +189,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDCDBInstance(self, request):
-        r"""This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.
+        r"""This API is used to create a yearly/monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.
 
         :param request: Request instance for CreateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDCDBInstanceRequest`
@@ -858,7 +858,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyDCDBInstance(self, request):
-        r"""This API is used to terminate an isolated monthly subscribed TDSQL instance.
+        r"""This API is used to terminate an isolated yearly/monthly subscribed TDSQL instance.
 
         :param request: Request instance for DestroyDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
@@ -974,7 +974,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateDCDBInstance(self, request):
-        r"""This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
+        r"""This API is used to isolate a yearly/monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
 
         :param request: Request instance for IsolateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDCDBInstanceRequest`

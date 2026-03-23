@@ -166,7 +166,7 @@ class MariadbClient(AbstractClient):
 
 
     def CreateDBInstance(self, request):
-        r"""This API is used to create a monthly subscribed TencentDB for MariaDB instance by passing in information such as instance specifications, database version number, validity period, and quantity.
+        r"""This API is used to create a yearly/monthly subscribed TencentDB for MariaDB instance by passing in information such as instance specifications, database version number, validity period, and quantity.
 
         :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateDBInstanceRequest`
@@ -720,7 +720,7 @@ class MariadbClient(AbstractClient):
 
 
     def DestroyDBInstance(self, request):
-        r"""This API is used to terminate an isolated monthly subscribed instance.
+        r"""This API is used to terminate an isolated yearly/monthly subscribed instance.
 
         :param request: Request instance for DestroyDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.DestroyDBInstanceRequest`
@@ -813,7 +813,7 @@ class MariadbClient(AbstractClient):
 
 
     def IsolateDBInstance(self, request):
-        r"""This API is used to isolate a monthly subscribed TencentDB for MariaDB instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
+        r"""This API is used to isolate a yearly/monthly subscribed TencentDB for MariaDB instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
 
         :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceRequest`
