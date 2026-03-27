@@ -859,6 +859,31 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRenewInstances(self, request):
+        r"""Notes:
+        1. This API supports querying annual and monthly subscription instances integrated into the renewal management page, including running and isolated instances (some products unsupported).
+        2. When using this API, a sub-user should have the QcloudFinanceRenewManageFullAccess permission policy.
+
+        :param request: Request instance for DescribeRenewInstances.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeRenewInstancesRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeRenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRenewInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRenewInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTagList(self, request):
         r"""This API is used to get cost allocation tags.
 
@@ -1059,6 +1084,32 @@ class BillingClient(AbstractClient):
             body = self.call("RenewInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetRenewal(self, request):
+        r"""Notes:
+        1. This API supports setting auto-renewal mode and period for annual and monthly subscription instances.
+        2. Obtain the product code and region code through an instance query API.
+        3. When using this API, a sub-user must possess the QcloudFinanceRenewManageFullAccess permission policy.
+
+        :param request: Request instance for SetRenewal.
+        :type request: :class:`tencentcloud.billing.v20180709.models.SetRenewalRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.SetRenewalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetRenewal", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetRenewalResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

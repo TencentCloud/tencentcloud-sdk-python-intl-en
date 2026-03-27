@@ -2932,7 +2932,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
         r"""
         :param _Status: Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -2969,7 +2969,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -13575,7 +13575,7 @@ Cannot be set to 0.
 
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
@@ -13648,7 +13648,7 @@ Cannot be set to 0.
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
@@ -13737,7 +13737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13801,7 +13801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -14599,9 +14599,9 @@ class BlindWatermarkTemplate(AbstractModel):
         :type TextContent: str
         :param _Comment: Description information of the digital watermark template.
         :type Comment: str
-        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _Strength: Digital watermark strength. 
 default: default, balance between hd video quality and resilience. 
@@ -14675,7 +14675,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def CreateTime(self):
-        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -14686,7 +14686,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -26060,7 +26060,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type Status: str
         :param _ErrCode: Error code when the task fails.
         :type ErrCode: int
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Task exception message.
         :type Message: str
@@ -26127,7 +26127,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -28837,7 +28837,7 @@ class DescribeUsageDataRequest(AbstractModel):
         r"""
         :param _StartTime: Start date. use ISO date format.
         :type StartTime: str
-        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type EndTime: str
         :param _Types: Type of MPS tasks to query. The transcoding tasks are queried by default.<li>Transcode: transcoding.</li><li>Enhance: enhancement.</li><li>AIAnalysis: intelligent analysis.</li><li>AIRecognition: intelligent identification.</li><li>AIReview: content moderation.</li><li>Snapshot: screenshot.</li><li>AnimatedGraphics: animated graphics.</li><li>AiQualityControl: quality inspection.</li><li>Evaluation: video evaluation.</li><li>ImageProcess: image processing.</li>
 <li>AddBlindWatermark: adding basic copyright digital watermarks.</li><li>AddNagraWatermark: adding NAGRA digital watermarks.</li><li>ExtractBlindWatermark: extracting basic copyright digital watermarks.</li><li>AIGC: AIGC</li>
@@ -28879,7 +28879,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._EndTime
@@ -29486,7 +29486,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
 
 class DiagnoseResult(AbstractModel):
-    r"""
+    r"""Diagnosis result item.
 
     """
 
@@ -29546,11 +29546,11 @@ HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DIS
 TimecodeTrackExist: TMCD track in MP4.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _Timestamp: 
+        :param _Timestamp: The PTS timestamp for the exception start.
         :type Timestamp: float
-        :param _Description: 
+        :param _Description: Diagnosed abnormal description.
         :type Description: str
-        :param _DateTime: 
+        :param _DateTime: Abnormality detection time in Beijing time, using ISO date format.
         :type DateTime: str
         :param _SeverityLevel: Diagnosed exception level. Valid values:
 Fatal: affecting subsequent playback and parsing.
@@ -29642,7 +29642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        r"""
+        r"""The PTS timestamp for the exception start.
         :rtype: float
         """
         return self._Timestamp
@@ -29653,7 +29653,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        r"""
+        r"""Diagnosed abnormal description.
         :rtype: str
         """
         return self._Description
@@ -29664,7 +29664,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateTime(self):
-        r"""
+        r"""Abnormality detection time in Beijing time, using ISO date format.
         :rtype: str
         """
         return self._DateTime
@@ -32974,7 +32974,7 @@ class ImageProcessTaskResult(AbstractModel):
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: str
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Error message.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -33006,7 +33006,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -35065,7 +35065,7 @@ class LiveSmartSubtitlesTaskInput(AbstractModel):
 
 
 class LiveStreamAiAnalysisResultInfo(AbstractModel):
-    r"""
+    r"""Live streaming analysis results
 
     """
 
@@ -35114,7 +35114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LiveStreamAiAnalysisResultItem(AbstractModel):
-    r"""
+    r"""Live streaming AI analysis results
 
     """
 
@@ -35125,7 +35125,8 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 <li>Highlight: highlight.</li>
 <li>Description: summary.</li>
         :type Type: str
-        :param _SegmentResultSet: 
+        :param _SegmentResultSet: Segmentation results are valid when Type is
+SegmentRecognition.
         :type SegmentResultSet: list of SegmentRecognitionItem
         :param _HighlightResultSet: Highlight result. This field is valid when Type is set to Highlight.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -35154,7 +35155,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentResultSet(self):
-        r"""
+        r"""Segmentation results are valid when Type is
+SegmentRecognition.
         :rtype: list of SegmentRecognitionItem
         """
         return self._SegmentResultSet
@@ -35224,7 +35226,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
         :param _QualityControlResults: Content quality inspection result list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlResults: list of QualityControlResult
-        :param _DiagnoseResults: 
+        :param _DiagnoseResults: Format diagnostic results list.
         :type DiagnoseResults: list of DiagnoseResult
         :param _QualityControlResultSet: Content quality inspection result list.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -35258,7 +35260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DiagnoseResults(self):
         warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""Format diagnostic results list.
         :rtype: list of DiagnoseResult
         """
         return self._DiagnoseResults
@@ -35407,7 +35409,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
         :param _ObjectRecognitionResultSet: Object recognition result, which is valid when Type is ObjectRecognition.
         :type ObjectRecognitionResultSet: list of LiveStreamObjectRecognitionResult
-        :param _TagRecognitionResultSet: 
+        :param _TagRecognitionResultSet: Tagging results are valid when Type is TagRecognition.
         :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
         """
         self._Type = None
@@ -35524,7 +35526,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def TagRecognitionResultSet(self):
-        r"""
+        r"""Tagging results are valid when Type is TagRecognition.
         :rtype: list of LiveStreamTagRecognitionResult
         """
         return self._TagRecognitionResultSet
@@ -36379,11 +36381,11 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type EndPtsTime: float
         :param _Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
-        :param _StartTime: 
+        :param _StartTime: Recognition start UTC time.
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: Recognition end UTC time.
         :type EndTime: str
-        :param _SteadyState: 
+        :param _SteadyState: Steady state marker.
         :type SteadyState: bool
         :param _UserId: User ID in the result of recognition via WebSocket and TRTC.Note: This field may return null, indicating that no valid value can be obtained.
         :type UserId: str
@@ -36443,7 +36445,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Recognition start UTC time.
         :rtype: str
         """
         return self._StartTime
@@ -36454,7 +36456,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""Recognition end UTC time.
         :rtype: str
         """
         return self._EndTime
@@ -36465,7 +36467,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
-        r"""
+        r"""Steady state marker.
         :rtype: bool
         """
         return self._SteadyState
@@ -37241,19 +37243,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LiveStreamTagRecognitionResult(AbstractModel):
-    r"""
+    r"""Live streaming AI tagging recognition results
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 
+        :param _Id: Tagging events.
         :type Id: str
-        :param _StartPtsTime: 
+        :param _StartPtsTime: Start PTS time of the recognition segment, unit: seconds.
         :type StartPtsTime: float
-        :param _EndPtsTime: 
+        :param _EndPtsTime: Termination PTS time of the recognition segment, unit: seconds.
         :type EndPtsTime: float
-        :param _Confidence: 
+        :param _Confidence: Recognition segment confidence. Range: 0-100.
         :type Confidence: float
         """
         self._Id = None
@@ -37263,7 +37265,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""Tagging events.
         :rtype: str
         """
         return self._Id
@@ -37274,7 +37276,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
-        r"""
+        r"""Start PTS time of the recognition segment, unit: seconds.
         :rtype: float
         """
         return self._StartPtsTime
@@ -37285,7 +37287,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
-        r"""
+        r"""Termination PTS time of the recognition segment, unit: seconds.
         :rtype: float
         """
         return self._EndPtsTime
@@ -37296,7 +37298,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Recognition segment confidence. Range: 0-100.
         :rtype: float
         """
         return self._Confidence
@@ -37330,7 +37332,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         r"""
         :param _NotifyType: Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
@@ -37359,7 +37361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NotifyType(self):
         r"""Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
@@ -37472,11 +37474,11 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _Trans: The translation.
         :type Trans: str
-        :param _StartTime: 
+        :param _StartTime: Translation start UTC time.
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: Translation end UTC time.
         :type EndTime: str
-        :param _SteadyState: 
+        :param _SteadyState: Steady state marker.
         :type SteadyState: bool
         :param _UserId: User ID in the result of real-time translation via WebSocket and TRTC.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -37549,7 +37551,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTime(self):
-        r"""
+        r"""Translation start UTC time.
         :rtype: str
         """
         return self._StartTime
@@ -37560,7 +37562,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
-        r"""
+        r"""Translation end UTC time.
         :rtype: str
         """
         return self._EndTime
@@ -37571,7 +37573,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SteadyState(self):
-        r"""
+        r"""Steady state marker.
         :rtype: bool
         """
         return self._SteadyState
@@ -38079,7 +38081,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
         r"""
         :param _Tag: Frame-specific tag name.
         :type Tag: str
-        :param _CategorySet: 
+        :param _CategorySet: Classification list of frame-level tags, where CategorySet.N represents the (N+1)th level classification.
+
+For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scene" and CategorySet.1 is "architecture", indicating the frame-level tag is "tower" with Level 1 classification as "scene" and Level 2 classification as "architecture".
         :type CategorySet: list of str
         :param _Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
         :type Confidence: float
@@ -38101,7 +38105,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def CategorySet(self):
-        r"""
+        r"""Classification list of frame-level tags, where CategorySet.N represents the (N+1)th level classification.
+
+For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scene" and CategorySet.1 is "architecture", indicating the frame-level tag is "tower" with Level 1 classification as "scene" and Level 2 classification as "architecture".
         :rtype: list of str
         """
         return self._CategorySet
@@ -41408,7 +41414,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _HdrType: HDR type
 Note: This field may return `null`, indicating that no valid value was found.
         :type HdrType: str
-        :param _Codecs: 
+        :param _Codecs: Video Codecs.
         :type Codecs: str
         :param _FpsNumerator: Numerator of the frame rate.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -41540,7 +41546,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Codecs(self):
-        r"""
+        r"""Video Codecs.
         :rtype: str
         """
         return self._Codecs
@@ -48454,7 +48460,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.comom/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.comom/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
+        :param _Url: <p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
         :type Url: str
         :param _TaskNotifyConfig: <p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -48497,7 +48503,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.comom/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.comom/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
+        r"""<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
         :rtype: str
         """
         return self._Url
@@ -52904,7 +52910,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -52933,7 +52939,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54107,17 +54113,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class SegmentRecognitionItem(AbstractModel):
-    r"""
+    r"""Smart segmentation clips.
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: 
+        :param _Confidence: Confidence.
         :type Confidence: float
-        :param _StartTimeOffset: 
+        :param _StartTimeOffset: Segment start time offset.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 
+        :param _EndTimeOffset: Segment end time offset.
         :type EndTimeOffset: float
         :param _SegmentUrl: Specifies the split segment URL.
         :type SegmentUrl: str
@@ -54150,7 +54156,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Confidence.
         :rtype: float
         """
         return self._Confidence
@@ -54161,7 +54167,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""
+        r"""Segment start time offset.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -54172,7 +54178,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""
+        r"""Segment end time offset.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -55024,7 +55030,7 @@ class SmartEraseTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -55063,7 +55069,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -55195,9 +55201,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ErasePrivacyConfig: Privacy protection configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
-        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _AliasName: Alias of the preset smart erasing template.
         :type AliasName: str
@@ -55312,7 +55318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -55323,7 +55329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -55969,7 +55975,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
         :type ErrCode: int
@@ -56005,7 +56011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -57141,7 +57147,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -57209,7 +57215,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def OutputObjectPath(self):
         r"""Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -62410,9 +62416,9 @@ class TranslateConfigureInfo(AbstractModel):
 <li>ON: Enables an intelligent full speech recognition task;</li>
 <li>OFF: Disables an intelligent full speech recognition task.</li>
         :type Switch: str
-        :param _SourceLanguage: 
+        :param _SourceLanguage: Video source language.
         :type SourceLanguage: str
-        :param _DestinationLanguage: 
+        :param _DestinationLanguage: Translated target language.
         :type DestinationLanguage: str
         :param _SubtitleFormat: Generated subtitle file format. Leaving it as an empty string means no subtitle file will be generated. Valid value:
 <li>vtt: Generate a WebVTT subtitle file.</li>
@@ -62440,7 +62446,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceLanguage(self):
-        r"""
+        r"""Video source language.
         :rtype: str
         """
         return self._SourceLanguage
@@ -62451,7 +62457,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationLanguage(self):
-        r"""
+        r"""Translated target language.
         :rtype: str
         """
         return self._DestinationLanguage

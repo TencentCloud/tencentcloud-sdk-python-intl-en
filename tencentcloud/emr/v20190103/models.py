@@ -642,7 +642,7 @@ class ApplicationStatics(AbstractModel):
         :type ApplicationType: str
         :param _SumMemorySeconds: `SumMemorySeconds` meaning
         :type SumMemorySeconds: int
-        :param _SumVCoreSeconds: 
+        :param _SumVCoreSeconds: Total VCore Seconds
         :type SumVCoreSeconds: int
         :param _SumHDFSBytesWritten: SumHDFSBytesWritten (with unit)
         :type SumHDFSBytesWritten: str
@@ -706,7 +706,7 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def SumVCoreSeconds(self):
-        r"""
+        r"""Total VCore Seconds
         :rtype: int
         """
         return self._SumVCoreSeconds
@@ -4627,7 +4627,7 @@ Hadoop-Hbase
         :type SceneName: str
         :param _ExternalService: Shared component information
         :type ExternalService: list of ExternalService
-        :param _VersionID: 
+        :param _VersionID: If the value is 0, MultiZone, MultiDeployStrategy, and MultiZoneSettings are disabled. If the value is 1, ResourceSpec is deprecated and MultiZoneSettings is used instead.
         :type VersionID: int
         :param _MultiZone: `true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.
         :type MultiZone: bool
@@ -5035,7 +5035,7 @@ Hadoop-Hbase
 
     @property
     def VersionID(self):
-        r"""
+        r"""If the value is 0, MultiZone, MultiDeployStrategy, and MultiZoneSettings are disabled. If the value is 1, ResourceSpec is deprecated and MultiZoneSettings is used instead.
         :rtype: int
         """
         return self._VersionID
@@ -5251,7 +5251,7 @@ class CreateSLInstanceRequest(AbstractModel):
         :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
         :param _ClientToken: The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.
         :type ClientToken: str
-        :param _DeploymentMode: 
+        :param _DeploymentMode: Deployment Mode
         :type DeploymentMode: str
         """
         self._InstanceName = None
@@ -5366,7 +5366,7 @@ class CreateSLInstanceRequest(AbstractModel):
 
     @property
     def DeploymentMode(self):
-        r"""
+        r"""Deployment Mode
         :rtype: str
         """
         return self._DeploymentMode
@@ -8741,7 +8741,7 @@ class DescribeInsightListRequest(AbstractModel):
         :type Page: int
         :param _Type: Query type. Types such as Hive,Spark,DLC_Spark,Spark_SQL,SCHEDULE,MapReduce,Trino are supported. All are queried by default.
         :type Type: str
-        :param _MustHasContext: 
+        :param _MustHasContext: Whether it includes specific parameter suggestions and other information
         :type MustHasContext: bool
         """
         self._InstanceId = None
@@ -8820,7 +8820,7 @@ class DescribeInsightListRequest(AbstractModel):
 
     @property
     def MustHasContext(self):
-        r"""
+        r"""Whether it includes specific parameter suggestions and other information
         :rtype: bool
         """
         return self._MustHasContext
@@ -15780,7 +15780,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         :type SceneName: str
         :param _ExternalService: Shared component information
         :type ExternalService: list of ExternalService
-        :param _VersionID: 
+        :param _VersionID: The current default value is 0. After cross-AZ feature support is enabled, it becomes 1.
         :type VersionID: int
         :param _MultiZoneSettings: AZ specs
         :type MultiZoneSettings: list of MultiZoneSetting
@@ -15979,7 +15979,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def VersionID(self):
-        r"""
+        r"""The current default value is 0. After cross-AZ feature support is enabled, it becomes 1.
         :rtype: int
         """
         return self._VersionID
@@ -30519,7 +30519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type FailedReason: str
         :param _TimeConsuming: Step duration.
         :type TimeConsuming: str
-        :param _Id: 
+        :param _Id: id, for frontend
         :type Id: int
         """
         self._Stage = None
@@ -30710,7 +30710,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        r"""
+        r"""id, for frontend
         :rtype: int
         """
         return self._Id
@@ -33171,9 +33171,9 @@ class UserInfoForUserManager(AbstractModel):
         :type UserName: str
         :param _UserGroup: The group to which the user belongs
         :type UserGroup: str
-        :param _PassWord: 
+        :param _PassWord: Password
         :type PassWord: str
-        :param _ReMark: 
+        :param _ReMark: Remarks
         :type ReMark: str
         :param _Groups: User subgroup.
         :type Groups: list of str
@@ -33208,7 +33208,7 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def PassWord(self):
-        r"""
+        r"""Password
         :rtype: str
         """
         return self._PassWord
@@ -33219,7 +33219,7 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def ReMark(self):
-        r"""
+        r"""Remarks
         :rtype: str
         """
         return self._ReMark

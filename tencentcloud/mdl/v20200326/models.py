@@ -8722,7 +8722,7 @@ class InputTrack(AbstractModel):
 
 
 class InputTracks(AbstractModel):
-    r"""
+    r"""Audio track configuration list.
 
     """
 
@@ -8763,7 +8763,7 @@ class InputTracks(AbstractModel):
 
 
 class LSqueezeSetting(AbstractModel):
-    r"""
+    r"""Compression recovery configuration
 
     """
 
@@ -9576,7 +9576,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
         :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
         :param _TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
         :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
-        :param _AbWatermarkSettings: 
+        :param _AbWatermarkSettings: AB watermark configuration.
         :type AbWatermarkSettings: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         self._Id = None
@@ -9631,7 +9631,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def AbWatermarkSettings(self):
-        r"""
+        r"""AB watermark configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         return self._AbWatermarkSettings
@@ -9692,7 +9692,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
 
 class MotionGraphicsActivateSetting(AbstractModel):
-    r"""
+    r"""Motion Graphic Activate Setting
 
     """
 
@@ -9743,7 +9743,7 @@ class MotionGraphicsActivateSetting(AbstractModel):
 
 
 class MotionGraphicsSetting(AbstractModel):
-    r"""
+    r"""Motion Graphic Setting
 
     """
 
@@ -13209,7 +13209,7 @@ class TaskNotifyConfig(AbstractModel):
 
 
 class ThumbnailSettings(AbstractModel):
-    r"""
+    r"""Thumbnail configuration
 
     """
 

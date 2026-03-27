@@ -1675,15 +1675,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnonymousInfo(AbstractModel):
-    r"""
+    r"""Authentication-free information
 
     """
 
     def __init__(self):
         r"""
-        :param _Operations: 
+        :param _Operations: Operation list supports trackLog (JS/HTTP log upload) and realtimeProducer (kafka protocol log upload).
         :type Operations: list of str
-        :param _Conditions: 
+        :param _Conditions: Condition list
         :type Conditions: list of ConditionInfo
         """
         self._Operations = None
@@ -1691,7 +1691,7 @@ class AnonymousInfo(AbstractModel):
 
     @property
     def Operations(self):
-        r"""
+        r"""Operation list supports trackLog (JS/HTTP log upload) and realtimeProducer (kafka protocol log upload).
         :rtype: list of str
         """
         return self._Operations
@@ -1702,7 +1702,7 @@ class AnonymousInfo(AbstractModel):
 
     @property
     def Conditions(self):
-        r"""
+        r"""Condition list
         :rtype: list of ConditionInfo
         """
         return self._Conditions
@@ -2397,17 +2397,17 @@ class CompressInfo(AbstractModel):
 
 
 class ConditionInfo(AbstractModel):
-    r"""
+    r"""Authentication-free condition information
 
     """
 
     def __init__(self):
         r"""
-        :param _Attributes: 
+        :param _Attributes: Condition attribute, currently supports only VpcID
         :type Attributes: str
-        :param _Rule: 
+        :param _Rule: Condition rule, 1: equal to, 2: not equal to
         :type Rule: int
-        :param _ConditionValue: 
+        :param _ConditionValue: Value of the corresponding condition attribute
         :type ConditionValue: str
         """
         self._Attributes = None
@@ -2416,7 +2416,7 @@ class ConditionInfo(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""
+        r"""Condition attribute, currently supports only VpcID
         :rtype: str
         """
         return self._Attributes
@@ -2427,7 +2427,7 @@ class ConditionInfo(AbstractModel):
 
     @property
     def Rule(self):
-        r"""
+        r"""Condition rule, 1: equal to, 2: not equal to
         :rtype: int
         """
         return self._Rule
@@ -2438,7 +2438,7 @@ class ConditionInfo(AbstractModel):
 
     @property
     def ConditionValue(self):
-        r"""
+        r"""Value of the corresponding condition attribute
         :rtype: str
         """
         return self._ConditionValue
@@ -21436,20 +21436,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopicExtendInfo(AbstractModel):
-    r"""
+    r"""Log topic extended information
 
     """
 
     def __init__(self):
         r"""
-        :param _AnonymousAccess: 
+        :param _AnonymousAccess: Log topic authentication-free configuration information
         :type AnonymousAccess: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
         """
         self._AnonymousAccess = None
 
     @property
     def AnonymousAccess(self):
-        r"""
+        r"""Log topic authentication-free configuration information
         :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
         """
         return self._AnonymousAccess
@@ -21525,7 +21525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type BizType: int
         :param _IsWebTracking: Free authentication switch. false: disabled; true: enabled.After enabling, anonymous access to the log topic will be supported for specified operations. For details, please refer to Log Topic (https://intl.cloud.tencent.com/document/product/614/41035?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :type IsWebTracking: bool
-        :param _Extends: 
+        :param _Extends: Log topic extended information
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._LogsetId = None
@@ -21757,7 +21757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extends(self):
-        r"""
+        r"""Log topic extended information
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends

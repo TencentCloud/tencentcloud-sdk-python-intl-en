@@ -80,7 +80,7 @@ class TrtcClient(AbstractClient):
     def CreateCloudRecording(self, request):
         r"""API description:.
         Start on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.
-        Before official online operation, pay attention to the recording best practices (https://www.tencentcloud.comom/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.
+        Before official online operation, pay attention to the recording best practices (https://www.tencentcloud.com/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.
 
         This API is used to achieve the following goals:.
         Specify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.

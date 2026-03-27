@@ -678,6 +678,26 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRenewInstances(
+            self,
+            request: models.DescribeRenewInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRenewInstancesResponse:
+        """
+        Notes:
+        1. This API supports querying annual and monthly subscription instances integrated into the renewal management page, including running and isolated instances (some products unsupported).
+        2. When using this API, a sub-user should have the QcloudFinanceRenewManageFullAccess permission policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRenewInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRenewInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTagList(
             self,
             request: models.DescribeTagListRequest,
@@ -837,6 +857,27 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "RenewInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RenewInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetRenewal(
+            self,
+            request: models.SetRenewalRequest,
+            opts: Dict = None,
+    ) -> models.SetRenewalResponse:
+        """
+        Notes:
+        1. This API supports setting auto-renewal mode and period for annual and monthly subscription instances.
+        2. Obtain the product code and region code through an instance query API.
+        3. When using this API, a sub-user must possess the QcloudFinanceRenewManageFullAccess permission policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetRenewal"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetRenewalResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

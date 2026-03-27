@@ -1815,7 +1815,7 @@ class AssetBaseInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 
+        :param _VpcId: vpc-id
         :type VpcId: str
         :param _VpcName: vpc-name
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -1934,7 +1934,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VpcId(self):
-        r"""
+        r"""vpc-id
         :rtype: str
         """
         return self._VpcId
@@ -5736,7 +5736,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _PrivateIp: Private IP
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type PrivateIp: str
-        :param _VpcId: 
+        :param _VpcId: vpc id
         :type VpcId: str
         :param _VpcName: VPC name
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -6015,7 +6015,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VpcId(self):
-        r"""
+        r"""vpc id
         :rtype: str
         """
         return self._VpcId
@@ -7263,17 +7263,18 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
 
 class CloudCountDesc(AbstractModel):
-    r"""
+    r"""Multi-cloud account statistics
 
     """
 
     def __init__(self):
         r"""
-        :param _CloudType: 
+        :param _CloudType: 0 represents Tencent Cloud
+1 represents AWS
         :type CloudType: int
-        :param _CloudCount: 
+        :param _CloudCount: Account quantity
         :type CloudCount: int
-        :param _CloudDesc: 
+        :param _CloudDesc: The cloud account type description
         :type CloudDesc: str
         """
         self._CloudType = None
@@ -7282,7 +7283,8 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""
+        r"""0 represents Tencent Cloud
+1 represents AWS
         :rtype: int
         """
         return self._CloudType
@@ -7293,7 +7295,7 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudCount(self):
-        r"""
+        r"""Account quantity
         :rtype: int
         """
         return self._CloudCount
@@ -7304,7 +7306,7 @@ class CloudCountDesc(AbstractModel):
 
     @property
     def CloudDesc(self):
-        r"""
+        r"""The cloud account type description
         :rtype: str
         """
         return self._CloudDesc
@@ -8802,7 +8804,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _Region: Region
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _VpcId: 
+        :param _VpcId: vpc information
         :type VpcId: str
         :param _AssetName: Asset name
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -8912,7 +8914,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VpcId(self):
-        r"""
+        r"""vpc information
         :rtype: str
         """
         return self._VpcId
@@ -21312,7 +21314,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _PublicIpType: Public IP type
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type PublicIpType: int
-        :param _VpcId: 
+        :param _VpcId: vpc
         :type VpcId: str
         :param _VpcName: VPC name
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -21527,7 +21529,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VpcId(self):
-        r"""
+        r"""vpc
         :rtype: str
         """
         return self._VpcId
@@ -22780,65 +22782,65 @@ class NICAsset(AbstractModel):
 
 
 class OrganizationInfo(AbstractModel):
-    r"""
+    r"""Group account details
 
     """
 
     def __init__(self):
         r"""
-        :param _NickName: 
+        :param _NickName: Member account name
         :type NickName: str
-        :param _NodeName: 
+        :param _NodeName: Department node name, department of account
         :type NodeName: str
-        :param _Role: 
+        :param _Role: Member/Admin/DelegatedAdmin/EntityAdmin; Member/Admin/DelegatedAdmin/EntityAdmin
         :type Role: str
-        :param _MemberId: 
+        :param _MemberId: Member account id
         :type MemberId: str
-        :param _JoinType: 
+        :param _JoinType: account joining method,create/invite
         :type JoinType: str
-        :param _GroupName: 
+        :param _GroupName: Group name
         :type GroupName: str
-        :param _AdminName: 
+        :param _AdminName: Admin account name
         :type AdminName: str
-        :param _AdminUin: 
+        :param _AdminUin: Admin Uin
         :type AdminUin: str
-        :param _CreateTime: 
+        :param _CreateTime: Creation Time
         :type CreateTime: str
-        :param _NodeCount: 
+        :param _NodeCount: Number of departments
         :type NodeCount: int
-        :param _MemberCount: 
+        :param _MemberCount: Number of members
         :type MemberCount: int
-        :param _SubAccountCount: 
+        :param _SubAccountCount: Sub-account count
         :type SubAccountCount: int
-        :param _AbnormalSubUserCount: 
+        :param _AbnormalSubUserCount: Abnormal sub-account quantity
         :type AbnormalSubUserCount: int
-        :param _GroupPermission: 
+        :param _GroupPermission: Organization Relationship Policy Permissions
         :type GroupPermission: list of str
-        :param _MemberPermission: 
+        :param _MemberPermission: Membership Policy Permissions
         :type MemberPermission: list of str
-        :param _GroupPayMode: 
+        :param _GroupPayMode: Organization Billing Mode; 0/Self-paid, 1/Proxy-paid
         :type GroupPayMode: int
-        :param _MemberPayMode: 
+        :param _MemberPayMode: Personal Billing Mode; 0/Self-paid, 1/Proxy-paid
         :type MemberPayMode: int
-        :param _CFWProtect: 
+        :param _CFWProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type CFWProtect: str
-        :param _WAFProtect: 
+        :param _WAFProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type WAFProtect: str
-        :param _CWPProtect: 
+        :param _CWPProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type CWPProtect: str
-        :param _Departments: 
+        :param _Departments: Array of all departments
         :type Departments: list of str
-        :param _MemberCreateTime: 
+        :param _MemberCreateTime: Member Creation Time
         :type MemberCreateTime: str
         :param _CSIPProtect: Advanced/Enterprise/Ultimate 
         :type CSIPProtect: str
-        :param _QuotaConsumer: 
+        :param _QuotaConsumer: 1 indicates the quota consumer
         :type QuotaConsumer: int
-        :param _EnableAdminCount: 
+        :param _EnableAdminCount: Number of enabled Admin/Delegated Admin accounts
         :type EnableAdminCount: int
-        :param _CloudCountDesc: 
+        :param _CloudCountDesc: Multi-cloud account statistics in array format. Refer to the CloudCountDesc description for details.
         :type CloudCountDesc: list of CloudCountDesc
-        :param _AdminCount: 
+        :param _AdminCount: Total Number of Admin/Delegated Admin Accounts
         :type AdminCount: int
         """
         self._NickName = None
@@ -22871,7 +22873,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""
+        r"""Member account name
         :rtype: str
         """
         return self._NickName
@@ -22882,7 +22884,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""
+        r"""Department node name, department of account
         :rtype: str
         """
         return self._NodeName
@@ -22893,7 +22895,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def Role(self):
-        r"""
+        r"""Member/Admin/DelegatedAdmin/EntityAdmin; Member/Admin/DelegatedAdmin/EntityAdmin
         :rtype: str
         """
         return self._Role
@@ -22904,7 +22906,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""
+        r"""Member account id
         :rtype: str
         """
         return self._MemberId
@@ -22915,7 +22917,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def JoinType(self):
-        r"""
+        r"""account joining method,create/invite
         :rtype: str
         """
         return self._JoinType
@@ -22926,7 +22928,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -22937,7 +22939,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        r"""
+        r"""Admin account name
         :rtype: str
         """
         return self._AdminName
@@ -22948,7 +22950,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminUin(self):
-        r"""
+        r"""Admin Uin
         :rtype: str
         """
         return self._AdminUin
@@ -22959,7 +22961,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""Creation Time
         :rtype: str
         """
         return self._CreateTime
@@ -22970,7 +22972,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""
+        r"""Number of departments
         :rtype: int
         """
         return self._NodeCount
@@ -22981,7 +22983,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberCount(self):
-        r"""
+        r"""Number of members
         :rtype: int
         """
         return self._MemberCount
@@ -22992,7 +22994,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def SubAccountCount(self):
-        r"""
+        r"""Sub-account count
         :rtype: int
         """
         return self._SubAccountCount
@@ -23003,7 +23005,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AbnormalSubUserCount(self):
-        r"""
+        r"""Abnormal sub-account quantity
         :rtype: int
         """
         return self._AbnormalSubUserCount
@@ -23014,7 +23016,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupPermission(self):
-        r"""
+        r"""Organization Relationship Policy Permissions
         :rtype: list of str
         """
         return self._GroupPermission
@@ -23025,7 +23027,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberPermission(self):
-        r"""
+        r"""Membership Policy Permissions
         :rtype: list of str
         """
         return self._MemberPermission
@@ -23036,7 +23038,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def GroupPayMode(self):
-        r"""
+        r"""Organization Billing Mode; 0/Self-paid, 1/Proxy-paid
         :rtype: int
         """
         return self._GroupPayMode
@@ -23047,7 +23049,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberPayMode(self):
-        r"""
+        r"""Personal Billing Mode; 0/Self-paid, 1/Proxy-paid
         :rtype: int
         """
         return self._MemberPayMode
@@ -23058,7 +23060,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CFWProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._CFWProtect
@@ -23069,7 +23071,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def WAFProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._WAFProtect
@@ -23080,7 +23082,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CWPProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._CWPProtect
@@ -23091,7 +23093,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def Departments(self):
-        r"""
+        r"""Array of all departments
         :rtype: list of str
         """
         return self._Departments
@@ -23102,7 +23104,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def MemberCreateTime(self):
-        r"""
+        r"""Member Creation Time
         :rtype: str
         """
         return self._MemberCreateTime
@@ -23124,7 +23126,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def QuotaConsumer(self):
-        r"""
+        r"""1 indicates the quota consumer
         :rtype: int
         """
         return self._QuotaConsumer
@@ -23135,7 +23137,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def EnableAdminCount(self):
-        r"""
+        r"""Number of enabled Admin/Delegated Admin accounts
         :rtype: int
         """
         return self._EnableAdminCount
@@ -23146,7 +23148,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def CloudCountDesc(self):
-        r"""
+        r"""Multi-cloud account statistics in array format. Refer to the CloudCountDesc description for details.
         :rtype: list of CloudCountDesc
         """
         return self._CloudCountDesc
@@ -23157,7 +23159,7 @@ class OrganizationInfo(AbstractModel):
 
     @property
     def AdminCount(self):
-        r"""
+        r"""Total Number of Admin/Delegated Admin Accounts
         :rtype: int
         """
         return self._AdminCount
@@ -23211,59 +23213,64 @@ class OrganizationInfo(AbstractModel):
 
 
 class OrganizationUserInfo(AbstractModel):
-    r"""
+    r"""Group Account Member Details
 
     """
 
     def __init__(self):
         r"""
-        :param _Uin: 
+        :param _Uin: Member account Uin
         :type Uin: str
-        :param _NickName: 
+        :param _NickName: Member account name
         :type NickName: str
-        :param _NodeName: 
+        :param _NodeName: Department node name, department of account
         :type NodeName: str
-        :param _AssetCount: 
+        :param _AssetCount: Asset Quantity
         :type AssetCount: int
-        :param _RiskCount: 
+        :param _RiskCount: Risk Quantity
         :type RiskCount: int
-        :param _AttackCount: 
+        :param _AttackCount: Attack Quantity
         :type AttackCount: int
-        :param _Role: 
+        :param _Role: Member/Admin/;Member or Administrator
         :type Role: str
-        :param _MemberId: 
+        :param _MemberId: Member account id
         :type MemberId: str
-        :param _AppId: 
+        :param _AppId: Member account Appid
         :type AppId: str
-        :param _JoinType: 
+        :param _JoinType: account joining method,create/invite
         :type JoinType: str
-        :param _CFWProtect: 
+        :param _CFWProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type CFWProtect: str
-        :param _WAFProtect: 
+        :param _WAFProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type WAFProtect: str
-        :param _CWPProtect: 
+        :param _CWPProtect: If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :type CWPProtect: str
-        :param _Enable: 
+        :param _Enable: 1 enable, 0 not enabled
         :type Enable: int
-        :param _CSIPProtect: 
+        :param _CSIPProtect: "Free"      
+   //Free edition
+   "Advanced"   //Advanced edition "Enterprise" //Enterprise edition "Ultimate"  
+   //Ultimate edition
         :type CSIPProtect: str
-        :param _QuotaConsumer: 
+        :param _QuotaConsumer: 1 indicates the quota consumer
         :type QuotaConsumer: int
-        :param _CloudType: 
+        :param _CloudType: Account type: 0 for Tencent Cloud account, 1 for AWS account
         :type CloudType: int
-        :param _SyncFrequency: 
+        :param _SyncFrequency: 0 indicates the default value; 1 indicates 10 minutes; 2 indicates 1 hour; 3 indicates 24 hours
         :type SyncFrequency: int
-        :param _IsExpired: 
+        :param _IsExpired: Whether the multi-cloud account has expired
         :type IsExpired: bool
-        :param _PermissionList: 
+        :param _PermissionList: Multi-cloud account permissions list
         :type PermissionList: list of str
         :param _AuthType: 1
         :type AuthType: int
-        :param _TcMemberType: 
+        :param _TcMemberType: 0 Tencent Cloud group account
+1 Tencent Cloud access account
+2 non-Tencent Cloud
         :type TcMemberType: int
-        :param _SubUserCount: 
+        :param _SubUserCount: Sub-account count
         :type SubUserCount: int
-        :param _JoinTypeInfo: 
+        :param _JoinTypeInfo: Joining method details
         :type JoinTypeInfo: str
         """
         self._Uin = None
@@ -23293,7 +23300,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""
+        r"""Member account Uin
         :rtype: str
         """
         return self._Uin
@@ -23304,7 +23311,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""
+        r"""Member account name
         :rtype: str
         """
         return self._NickName
@@ -23315,7 +23322,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""
+        r"""Department node name, department of account
         :rtype: str
         """
         return self._NodeName
@@ -23326,7 +23333,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""
+        r"""Asset Quantity
         :rtype: int
         """
         return self._AssetCount
@@ -23337,7 +23344,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def RiskCount(self):
-        r"""
+        r"""Risk Quantity
         :rtype: int
         """
         return self._RiskCount
@@ -23348,7 +23355,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AttackCount(self):
-        r"""
+        r"""Attack Quantity
         :rtype: int
         """
         return self._AttackCount
@@ -23359,7 +23366,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Role(self):
-        r"""
+        r"""Member/Admin/;Member or Administrator
         :rtype: str
         """
         return self._Role
@@ -23370,7 +23377,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""
+        r"""Member account id
         :rtype: str
         """
         return self._MemberId
@@ -23381,7 +23388,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""
+        r"""Member account Appid
         :rtype: str
         """
         return self._AppId
@@ -23392,7 +23399,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinType(self):
-        r"""
+        r"""account joining method,create/invite
         :rtype: str
         """
         return self._JoinType
@@ -23403,7 +23410,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CFWProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._CFWProtect
@@ -23414,7 +23421,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def WAFProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._WAFProtect
@@ -23425,7 +23432,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CWPProtect(self):
-        r"""
+        r"""If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.
         :rtype: str
         """
         return self._CWPProtect
@@ -23436,7 +23443,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Enable(self):
-        r"""
+        r"""1 enable, 0 not enabled
         :rtype: int
         """
         return self._Enable
@@ -23447,7 +23454,10 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CSIPProtect(self):
-        r"""
+        r""""Free"      
+   //Free edition
+   "Advanced"   //Advanced edition "Enterprise" //Enterprise edition "Ultimate"  
+   //Ultimate edition
         :rtype: str
         """
         return self._CSIPProtect
@@ -23458,7 +23468,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def QuotaConsumer(self):
-        r"""
+        r"""1 indicates the quota consumer
         :rtype: int
         """
         return self._QuotaConsumer
@@ -23469,7 +23479,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""
+        r"""Account type: 0 for Tencent Cloud account, 1 for AWS account
         :rtype: int
         """
         return self._CloudType
@@ -23480,7 +23490,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SyncFrequency(self):
-        r"""
+        r"""0 indicates the default value; 1 indicates 10 minutes; 2 indicates 1 hour; 3 indicates 24 hours
         :rtype: int
         """
         return self._SyncFrequency
@@ -23491,7 +23501,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def IsExpired(self):
-        r"""
+        r"""Whether the multi-cloud account has expired
         :rtype: bool
         """
         return self._IsExpired
@@ -23502,7 +23512,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def PermissionList(self):
-        r"""
+        r"""Multi-cloud account permissions list
         :rtype: list of str
         """
         return self._PermissionList
@@ -23524,7 +23534,9 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def TcMemberType(self):
-        r"""
+        r"""0 Tencent Cloud group account
+1 Tencent Cloud access account
+2 non-Tencent Cloud
         :rtype: int
         """
         return self._TcMemberType
@@ -23535,7 +23547,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SubUserCount(self):
-        r"""
+        r"""Sub-account count
         :rtype: int
         """
         return self._SubUserCount
@@ -23546,7 +23558,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinTypeInfo(self):
-        r"""
+        r"""Joining method details
         :rtype: str
         """
         return self._JoinTypeInfo
@@ -24862,7 +24874,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CWPBlProcess: CWPP baseline check task progress
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CWPBlProcess: int
-        :param _ErrorCode: 
+        :param _ErrorCode: Exception status codes
         :type ErrorCode: int
         :param _ErrorInfo: Exception information
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -25241,7 +25253,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
-        r"""
+        r"""Exception status codes
         :rtype: int
         """
         return self._ErrorCode
@@ -26554,47 +26566,47 @@ class StopRiskCenterTaskResponse(AbstractModel):
 
 
 class SubUserInfo(AbstractModel):
-    r"""
+    r"""Sub-account details
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: 
+        :param _ID: Primary key ID, which has no business meaning and serves solely as a unique identifier
         :type ID: int
-        :param _AppID: 
+        :param _AppID: sub-account Appid
         :type AppID: str
-        :param _Uin: 
+        :param _Uin: sub-account UIn
         :type Uin: str
-        :param _NickName: 
+        :param _NickName: Sub-account name
         :type NickName: str
-        :param _OwnerAppID: 
+        :param _OwnerAppID: master account Appid
         :type OwnerAppID: str
-        :param _OwnerUin: 
+        :param _OwnerUin: master account Uin
         :type OwnerUin: str
-        :param _OwnerNickName: 
+        :param _OwnerNickName: master account name
         :type OwnerNickName: str
-        :param _OwnerMemberID: 
+        :param _OwnerMemberID: master account's memberId information
         :type OwnerMemberID: str
-        :param _CloudType: 
+        :param _CloudType: Account type: 0 for Tencent Cloud account, 1 for AWS account
         :type CloudType: int
-        :param _ServiceCount: 
+        :param _ServiceCount: Accessible services count
         :type ServiceCount: int
-        :param _InterfaceCount: 
+        :param _InterfaceCount: Accessible API count
         :type InterfaceCount: int
-        :param _AssetCount: 
+        :param _AssetCount: Accessible resources count
         :type AssetCount: int
-        :param _LogCount: 
+        :param _LogCount: Access/Behavior Logs Count
         :type LogCount: int
-        :param _ConfigRiskCount: 
+        :param _ConfigRiskCount: Permissions configuration risk
         :type ConfigRiskCount: int
-        :param _ActionRiskCount: 
+        :param _ActionRiskCount: Dangerous behavior alarm
         :type ActionRiskCount: int
-        :param _IsAccessCloudAudit: 
+        :param _IsAccessCloudAudit: whether to enable CloudAudit logs
         :type IsAccessCloudAudit: bool
-        :param _IsAccessCheck: 
+        :param _IsAccessCheck: whether risk configuration security assessment
         :type IsAccessCheck: bool
-        :param _IsAccessUeba: 
+        :param _IsAccessUeba: whether to configure user behavior management policies
         :type IsAccessUeba: bool
         """
         self._ID = None
@@ -26618,7 +26630,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ID(self):
-        r"""
+        r"""Primary key ID, which has no business meaning and serves solely as a unique identifier
         :rtype: int
         """
         return self._ID
@@ -26629,7 +26641,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AppID(self):
-        r"""
+        r"""sub-account Appid
         :rtype: str
         """
         return self._AppID
@@ -26640,7 +26652,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""
+        r"""sub-account UIn
         :rtype: str
         """
         return self._Uin
@@ -26651,7 +26663,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""
+        r"""Sub-account name
         :rtype: str
         """
         return self._NickName
@@ -26662,7 +26674,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerAppID(self):
-        r"""
+        r"""master account Appid
         :rtype: str
         """
         return self._OwnerAppID
@@ -26673,7 +26685,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""
+        r"""master account Uin
         :rtype: str
         """
         return self._OwnerUin
@@ -26684,7 +26696,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerNickName(self):
-        r"""
+        r"""master account name
         :rtype: str
         """
         return self._OwnerNickName
@@ -26695,7 +26707,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerMemberID(self):
-        r"""
+        r"""master account's memberId information
         :rtype: str
         """
         return self._OwnerMemberID
@@ -26706,7 +26718,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""
+        r"""Account type: 0 for Tencent Cloud account, 1 for AWS account
         :rtype: int
         """
         return self._CloudType
@@ -26717,7 +26729,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ServiceCount(self):
-        r"""
+        r"""Accessible services count
         :rtype: int
         """
         return self._ServiceCount
@@ -26728,7 +26740,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def InterfaceCount(self):
-        r"""
+        r"""Accessible API count
         :rtype: int
         """
         return self._InterfaceCount
@@ -26739,7 +26751,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""
+        r"""Accessible resources count
         :rtype: int
         """
         return self._AssetCount
@@ -26750,7 +26762,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def LogCount(self):
-        r"""
+        r"""Access/Behavior Logs Count
         :rtype: int
         """
         return self._LogCount
@@ -26761,7 +26773,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ConfigRiskCount(self):
-        r"""
+        r"""Permissions configuration risk
         :rtype: int
         """
         return self._ConfigRiskCount
@@ -26772,7 +26784,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ActionRiskCount(self):
-        r"""
+        r"""Dangerous behavior alarm
         :rtype: int
         """
         return self._ActionRiskCount
@@ -26783,7 +26795,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCloudAudit(self):
-        r"""
+        r"""whether to enable CloudAudit logs
         :rtype: bool
         """
         return self._IsAccessCloudAudit
@@ -26794,7 +26806,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCheck(self):
-        r"""
+        r"""whether risk configuration security assessment
         :rtype: bool
         """
         return self._IsAccessCheck
@@ -26805,7 +26817,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessUeba(self):
-        r"""
+        r"""whether to configure user behavior management policies
         :rtype: bool
         """
         return self._IsAccessUeba

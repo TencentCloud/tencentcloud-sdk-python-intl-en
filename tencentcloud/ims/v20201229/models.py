@@ -184,7 +184,7 @@ class ImageModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.ims.v20201229.models.User`
         :param _Device: This field indicates the information of the device that corresponds to the object to be detected. It can be passed in to identify the device involved in the violation.
         :type Device: :class:`tencentcloud.ims.v20201229.models.Device`
-        :param _Type: 
+        :param _Type: This field indicates the input image auditing type, with values including: IMAGE (Content Security) and IMAGE_AIGC (AI-generated content recognition). The default value is IMAGE.
         :type Type: str
         """
         self._BizType = None
@@ -287,7 +287,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""This field indicates the input image auditing type, with values including: IMAGE (Content Security) and IMAGE_AIGC (AI-generated content recognition). The default value is IMAGE.
         :rtype: str
         """
         return self._Type

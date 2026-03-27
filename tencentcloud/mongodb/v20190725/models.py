@@ -174,7 +174,7 @@ class AssignProjectResponse(AbstractModel):
 
 
 class Auth(AbstractModel):
-    r"""
+    r"""User permissions
 
     """
 

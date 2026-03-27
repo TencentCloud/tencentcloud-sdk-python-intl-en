@@ -1138,15 +1138,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CatalogPermission(AbstractModel):
-    r"""
+    r"""catalog Level Permission
 
     """
 
     def __init__(self):
         r"""
-        :param _CatalogName: 
+        :param _CatalogName: catalog Name
         :type CatalogName: str
-        :param _Permissions: 
+        :param _Permissions: catalog permission
         :type Permissions: list of str
         """
         self._CatalogName = None
@@ -1154,7 +1154,7 @@ class CatalogPermission(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""
+        r"""catalog Name
         :rtype: str
         """
         return self._CatalogName
@@ -1165,7 +1165,7 @@ class CatalogPermission(AbstractModel):
 
     @property
     def Permissions(self):
-        r"""
+        r"""catalog permission
         :rtype: list of str
         """
         return self._Permissions
@@ -7537,15 +7537,15 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Cluster ID
         :type InstanceId: str
-        :param _Offset: 
+        :param _Offset: Pagination parameter, offset, starting from 0
         :type Offset: int
-        :param _Limit: 
+        :param _Limit: Pagination parameter, page size, default 10
         :type Limit: int
-        :param _StartTime: 
+        :param _StartTime: Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: End Time
         :type EndTime: str
         """
         self._InstanceId = None
@@ -7556,7 +7556,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -7567,7 +7567,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""
+        r"""Pagination parameter, offset, starting from 0
         :rtype: int
         """
         return self._Offset
@@ -7578,7 +7578,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""
+        r"""Pagination parameter, page size, default 10
         :rtype: int
         """
         return self._Limit
@@ -7589,7 +7589,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Start Time
         :rtype: str
         """
         return self._StartTime
@@ -7600,7 +7600,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""End Time
         :rtype: str
         """
         return self._EndTime

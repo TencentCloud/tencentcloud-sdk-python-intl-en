@@ -2775,7 +2775,7 @@ class CcGeoIpPolicyNew(AbstractModel):
         :type InstanceId: str
         :param _Ip: IP address
         :type Ip: str
-        :param _Domain: 
+        :param _Domain: domain name
         :type Domain: str
         :param _Protocol: Protocol. Valid values: `HTTP` and `HTTPS`.
         :type Protocol: str
@@ -2836,7 +2836,7 @@ class CcGeoIpPolicyNew(AbstractModel):
 
     @property
     def Domain(self):
-        r"""
+        r"""domain name
         :rtype: str
         """
         return self._Domain
@@ -5045,7 +5045,7 @@ class DDoSSpeedLimitConfig(AbstractModel):
         :type SpeedValues: list of SpeedValue
         :param _DstPortScopes: This field is replaced with a new field DstPortList.
         :type DstPortScopes: list of PortSegment
-        :param _Id: 
+        :param _Id: Configuration ID is generated after the configuration is successfully added. When adding a new restriction configuration, this field does not need to be filled in; when modifying or deleting a rate limiting configuration, the Configuration ID needs to be filled in.
         :type Id: str
         :param _ProtocolList: IP protocol number. Valid values:
 `ALL`: all protocols
@@ -5104,7 +5104,7 @@ Note: For custom protocol ranges, only protocol number is supported. Multiple ra
 
     @property
     def Id(self):
-        r"""
+        r"""Configuration ID is generated after the configuration is successfully added. When adding a new restriction configuration, this field does not need to be filled in; when modifying or deleting a rate limiting configuration, the Configuration ID needs to be filled in.
         :rtype: str
         """
         return self._Id
@@ -6137,11 +6137,11 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
         r"""
         :param _IpList: List of IP resources
         :type IpList: list of str
-        :param _IdList: 
+        :param _IdList: Pass id for domain-bound resources
         :type IdList: list of str
-        :param _FilterRegion: 
+        :param _FilterRegion: region name
         :type FilterRegion: int
-        :param _CnameWafIdList: 
+        :param _CnameWafIdList: CNAME WAF resource
         :type CnameWafIdList: list of str
         """
         self._IpList = None
@@ -6162,7 +6162,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def IdList(self):
-        r"""
+        r"""Pass id for domain-bound resources
         :rtype: list of str
         """
         return self._IdList
@@ -6173,7 +6173,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def FilterRegion(self):
-        r"""
+        r"""region name
         :rtype: int
         """
         return self._FilterRegion
@@ -6184,7 +6184,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def CnameWafIdList(self):
-        r"""
+        r"""CNAME WAF resource
         :rtype: list of str
         """
         return self._CnameWafIdList
@@ -12145,7 +12145,7 @@ class IPLineInfo(AbstractModel):
 `abroad`: IP outside the Chinese mainland
 ]
         :type Type: str
-        :param _Eip: 
+        :param _Eip: line IP
         :type Eip: str
         :param _Cname: CNAME of the instance
         :type Cname: str
@@ -12176,7 +12176,7 @@ class IPLineInfo(AbstractModel):
 
     @property
     def Eip(self):
-        r"""
+        r"""line IP
         :rtype: str
         """
         return self._Eip
@@ -12403,23 +12403,23 @@ class InstanceRelation(AbstractModel):
 
 
 class IpBlockData(AbstractModel):
-    r"""
+    r"""IP blocking records
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: Status (Blocked: Blocked; UnBlocking: Unblocking; UnBlockFailed: Unblock failed)
         :type Status: str
-        :param _Ip: 
+        :param _Ip: Resource IP
         :type Ip: str
-        :param _BlockTime: 
+        :param _BlockTime: Blocking Time
         :type BlockTime: str
-        :param _UnBlockTime: 
+        :param _UnBlockTime: Unblock Time (Estimated Unblock Time)
         :type UnBlockTime: str
-        :param _ActionType: 
+        :param _ActionType: Unblock type (user: self-service unblocking; auto: automatic unblocking; update: upgrade unblocking; bind: Anti-DDoS Pro binding unblocking)
         :type ActionType: str
-        :param _ProtectFlag: 
+        :param _ProtectFlag: Anti-DDoS flag, 0: non-Anti-DDoS, 1: Anti-DDoS
         :type ProtectFlag: int
         """
         self._Status = None
@@ -12431,7 +12431,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Status (Blocked: Blocked; UnBlocking: Unblocking; UnBlockFailed: Unblock failed)
         :rtype: str
         """
         return self._Status
@@ -12442,7 +12442,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""
+        r"""Resource IP
         :rtype: str
         """
         return self._Ip
@@ -12453,7 +12453,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def BlockTime(self):
-        r"""
+        r"""Blocking Time
         :rtype: str
         """
         return self._BlockTime
@@ -12464,7 +12464,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def UnBlockTime(self):
-        r"""
+        r"""Unblock Time (Estimated Unblock Time)
         :rtype: str
         """
         return self._UnBlockTime
@@ -12475,7 +12475,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""
+        r"""Unblock type (user: self-service unblocking; auto: automatic unblocking; update: upgrade unblocking; bind: Anti-DDoS Pro binding unblocking)
         :rtype: str
         """
         return self._ActionType
@@ -12486,7 +12486,7 @@ class IpBlockData(AbstractModel):
 
     @property
     def ProtectFlag(self):
-        r"""
+        r"""Anti-DDoS flag, 0: non-Anti-DDoS, 1: Anti-DDoS
         :rtype: int
         """
         return self._ProtectFlag

@@ -27,7 +27,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         r"""
         :param _ActionType: Transaction type code
         :type ActionType: str
-        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
         :param _RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
@@ -70,7 +70,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be yearly/monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -10239,7 +10239,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 Daily settlement
 Yearly/monthly subscription
 Spot
-New monthly subscription
+New yearly/monthly subscription
 Yearly/monthly subscription renewal
 Yearly/monthly subscription specification adjustment
 Yearly/monthly subscription refund
@@ -10414,7 +10414,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 Daily settlement
 Yearly/monthly subscription
 Spot
-New monthly subscription
+New yearly/monthly subscription
 Yearly/monthly subscription renewal
 Yearly/monthly subscription specification adjustment
 Yearly/monthly subscription refund
@@ -11062,7 +11062,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 Daily settlement
 Yearly/monthly subscription
 Spot
-New monthly subscription
+New yearly/monthly subscription
 Yearly/monthly subscription renewal
 Yearly/monthly subscription specification adjustment
 Yearly/monthly subscription refund
@@ -11168,7 +11168,7 @@ This parameter can be used for querying bills after January 2021.
 Daily settlement
 Yearly/monthly subscription
 Spot
-New monthly subscription
+New yearly/monthly subscription
 Yearly/monthly subscription renewal
 Yearly/monthly subscription specification adjustment
 Yearly/monthly subscription refund
@@ -14281,6 +14281,207 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRenewInstancesRequest(AbstractModel):
+    r"""DescribeRenewInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: Maximum number of instances per page. Value range: 1-100.
+        :type MaxResults: int
+        :param _NextToken: Token for querying the next page of returned results. NextToken is not needed when calling the API for the first time.
+        :type NextToken: str
+        :param _Reverse: Get the sorting order of the instance. The enumerated values are as follows:
+false = Ascending (default)
+true=Descending
+        :type Reverse: bool
+        :param _RenewFlagList: Renewal flag. Multiple values separated by commas. Enumeration value as follows:
+NOTIFY_AND_MANUAL_RENEW: manual renewal.
+NOTIFY_AND_AUTO_RENEW: automatic renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+        :type RenewFlagList: list of str
+        :param _InstanceIdList: Instance ID. Multiple IDs separated by commas, with a maximum of 100.
+        :type InstanceIdList: list of str
+        :param _ExpireTimeStart: Expiry time start, format yyyy-MM-dd HH:mm:ss.
+        :type ExpireTimeStart: str
+        :param _ExpireTimeEnd: Expiry time in the format of yyyy-MM-dd HH:mm:ss.
+        :type ExpireTimeEnd: str
+        """
+        self._MaxResults = None
+        self._NextToken = None
+        self._Reverse = None
+        self._RenewFlagList = None
+        self._InstanceIdList = None
+        self._ExpireTimeStart = None
+        self._ExpireTimeEnd = None
+
+    @property
+    def MaxResults(self):
+        r"""Maximum number of instances per page. Value range: 1-100.
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""Token for querying the next page of returned results. NextToken is not needed when calling the API for the first time.
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def Reverse(self):
+        r"""Get the sorting order of the instance. The enumerated values are as follows:
+false = Ascending (default)
+true=Descending
+        :rtype: bool
+        """
+        return self._Reverse
+
+    @Reverse.setter
+    def Reverse(self, Reverse):
+        self._Reverse = Reverse
+
+    @property
+    def RenewFlagList(self):
+        r"""Renewal flag. Multiple values separated by commas. Enumeration value as follows:
+NOTIFY_AND_MANUAL_RENEW: manual renewal.
+NOTIFY_AND_AUTO_RENEW: automatic renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+        :rtype: list of str
+        """
+        return self._RenewFlagList
+
+    @RenewFlagList.setter
+    def RenewFlagList(self, RenewFlagList):
+        self._RenewFlagList = RenewFlagList
+
+    @property
+    def InstanceIdList(self):
+        r"""Instance ID. Multiple IDs separated by commas, with a maximum of 100.
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def ExpireTimeStart(self):
+        r"""Expiry time start, format yyyy-MM-dd HH:mm:ss.
+        :rtype: str
+        """
+        return self._ExpireTimeStart
+
+    @ExpireTimeStart.setter
+    def ExpireTimeStart(self, ExpireTimeStart):
+        self._ExpireTimeStart = ExpireTimeStart
+
+    @property
+    def ExpireTimeEnd(self):
+        r"""Expiry time in the format of yyyy-MM-dd HH:mm:ss.
+        :rtype: str
+        """
+        return self._ExpireTimeEnd
+
+    @ExpireTimeEnd.setter
+    def ExpireTimeEnd(self, ExpireTimeEnd):
+        self._ExpireTimeEnd = ExpireTimeEnd
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        self._Reverse = params.get("Reverse")
+        self._RenewFlagList = params.get("RenewFlagList")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._ExpireTimeStart = params.get("ExpireTimeStart")
+        self._ExpireTimeEnd = params.get("ExpireTimeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRenewInstancesResponse(AbstractModel):
+    r"""DescribeRenewInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: Instance summary list.
+        :type InstanceList: list of RenewInstance
+        :param _NextToken: Token for querying the next page of returned results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NextToken: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceList = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        r"""Instance summary list.
+        :rtype: list of RenewInstance
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def NextToken(self):
+        r"""Token for querying the next page of returned results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = RenewInstance()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTagListRequest(AbstractModel):
     r"""DescribeTagList request structure.
 
@@ -15913,6 +16114,78 @@ class ModifyGatherRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OperateRsp(AbstractModel):
+    r"""Operate related resources return detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: Operation failure code at the instance dimension
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Code: int
+        :param _Message: Failure reason for operating related resources
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _InstanceId: Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        """
+        self._Code = None
+        self._Message = None
+        self._InstanceId = None
+
+    @property
+    def Code(self):
+        r"""Operation failure code at the instance dimension
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""Failure reason for operating related resources
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PayDealsRequest(AbstractModel):
     r"""PayDeals request structure.
 
@@ -16807,6 +17080,235 @@ Note: This field may return null, indicating that no valid value was found.
         
 
 
+class RenewInstance(AbstractModel):
+    r"""Resource instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _ProductCode: Product code
+        :type ProductCode: str
+        :param _SubProductCode: Subproduct code
+        :type SubProductCode: str
+        :param _RegionCode: Region encoding
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionCode: str
+        :param _Status: Instance status:
+NORMAL
+ISOLATED Isolated
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _RenewFlag: Renewal flag:
+NOTIFY_AND_MANUAL_RENEW: manual renewal
+NOTIFY_AND_AUTO_RENEW: auto-renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenewFlag: str
+        :param _ExpireTime: Instance expiration time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param _InstanceName: Instance alias: The name set by the user for the instance in the console, which is empty by default if not set.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param _ProductName: Product name: Cloud products purchased by users, such as Cloud Virtual Machine (CVM)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
+        :param _ProjectName: Project name: Instance Ownership of the project. User can autonomously assign project to the instance on the console. Default project if not allocated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param _RenewPeriod: Automatic renewal cycle length
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenewPeriod: int
+        :param _RenewPeriodUnit: Automatic renewal cycle unit: y year, m month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenewPeriodUnit: str
+        """
+        self._InstanceId = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._RegionCode = None
+        self._Status = None
+        self._RenewFlag = None
+        self._ExpireTime = None
+        self._InstanceName = None
+        self._ProductName = None
+        self._ProjectName = None
+        self._RenewPeriod = None
+        self._RenewPeriodUnit = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProductCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def RegionCode(self):
+        r"""Region encoding
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def Status(self):
+        r"""Instance status:
+NORMAL
+ISOLATED Isolated
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RenewFlag(self):
+        r"""Renewal flag:
+NOTIFY_AND_MANUAL_RENEW: manual renewal
+NOTIFY_AND_AUTO_RENEW: auto-renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ExpireTime(self):
+        r"""Instance expiration time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def InstanceName(self):
+        r"""Instance alias: The name set by the user for the instance in the console, which is empty by default if not set.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProductName(self):
+        r"""Product name: Cloud products purchased by users, such as Cloud Virtual Machine (CVM)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProjectName(self):
+        r"""Project name: Instance Ownership of the project. User can autonomously assign project to the instance on the console. Default project if not allocated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RenewPeriod(self):
+        r"""Automatic renewal cycle length
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RenewPeriod
+
+    @RenewPeriod.setter
+    def RenewPeriod(self, RenewPeriod):
+        self._RenewPeriod = RenewPeriod
+
+    @property
+    def RenewPeriodUnit(self):
+        r"""Automatic renewal cycle unit: y year, m month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RenewPeriodUnit
+
+    @RenewPeriodUnit.setter
+    def RenewPeriodUnit(self, RenewPeriodUnit):
+        self._RenewPeriodUnit = RenewPeriodUnit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._Status = params.get("Status")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ExpireTime = params.get("ExpireTime")
+        self._InstanceName = params.get("InstanceName")
+        self._ProductName = params.get("ProductName")
+        self._ProjectName = params.get("ProjectName")
+        self._RenewPeriod = params.get("RenewPeriod")
+        self._RenewPeriodUnit = params.get("RenewPeriodUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RenewInstanceRequest(AbstractModel):
     r"""RenewInstance request structure.
 
@@ -16979,6 +17481,181 @@ class RenewInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OrderIdList = params.get("OrderIdList")
+        self._RequestId = params.get("RequestId")
+
+
+class SetRenewalRequest(AbstractModel):
+    r"""SetRenewal request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: Product code.
+        :type ProductCode: str
+        :param _RegionCode: Region code.
+        :type RegionCode: str
+        :param _InstanceId: Instance ID. Only one can be specified.
+        :type InstanceId: str
+        :param _RenewFlag: Renewal flag. Enumeration values are as follows:
+NOTIFY_AND_MANUAL_RENEW: manual renewal.
+NOTIFY_AND_AUTO_RENEW: automatic renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+        :type RenewFlag: str
+        :param _RenewPeriod: Automatic renewal cycle length. If left empty, the default value set by product is used.
+If it is month, support: 1-11
+If it is year, support: 1-5.
+Supported range mainly depends on the product side.
+        :type RenewPeriod: str
+        :param _RenewPeriodUnit: Automatic renewal cycle unit. If left empty, the default value set by the product is used.
+Year y, month m
+Supported range mainly depends on the product side.
+        :type RenewPeriodUnit: str
+        """
+        self._ProductCode = None
+        self._RegionCode = None
+        self._InstanceId = None
+        self._RenewFlag = None
+        self._RenewPeriod = None
+        self._RenewPeriodUnit = None
+
+    @property
+    def ProductCode(self):
+        r"""Product code.
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def RegionCode(self):
+        r"""Region code.
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. Only one can be specified.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RenewFlag(self):
+        r"""Renewal flag. Enumeration values are as follows:
+NOTIFY_AND_MANUAL_RENEW: manual renewal.
+NOTIFY_AND_AUTO_RENEW: automatic renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def RenewPeriod(self):
+        r"""Automatic renewal cycle length. If left empty, the default value set by product is used.
+If it is month, support: 1-11
+If it is year, support: 1-5.
+Supported range mainly depends on the product side.
+        :rtype: str
+        """
+        return self._RenewPeriod
+
+    @RenewPeriod.setter
+    def RenewPeriod(self, RenewPeriod):
+        self._RenewPeriod = RenewPeriod
+
+    @property
+    def RenewPeriodUnit(self):
+        r"""Automatic renewal cycle unit. If left empty, the default value set by the product is used.
+Year y, month m
+Supported range mainly depends on the product side.
+        :rtype: str
+        """
+        return self._RenewPeriodUnit
+
+    @RenewPeriodUnit.setter
+    def RenewPeriodUnit(self, RenewPeriodUnit):
+        self._RenewPeriodUnit = RenewPeriodUnit
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._RegionCode = params.get("RegionCode")
+        self._InstanceId = params.get("InstanceId")
+        self._RenewFlag = params.get("RenewFlag")
+        self._RenewPeriod = params.get("RenewPeriod")
+        self._RenewPeriodUnit = params.get("RenewPeriodUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetRenewalResponse(AbstractModel):
+    r"""SetRenewal response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: Instance list when the operation fails.
+        :type InstanceList: list of OperateRsp
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceList = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        r"""Instance list when the operation fails.
+        :rtype: list of OperateRsp
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = OperateRsp()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17421,7 +18098,7 @@ class UsageDetails(AbstractModel):
         :param _ProductName: The name of the product.
 Note: This field may return `null`, indicating that no valid value was found.
         :type ProductName: str
-        :param _SubProductName: 
+        :param _SubProductName: Product Details
         :type SubProductName: str
         """
         self._ProductName = None
@@ -17441,7 +18118,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubProductName(self):
-        r"""
+        r"""Product Details
         :rtype: str
         """
         return self._SubProductName

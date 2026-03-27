@@ -247,20 +247,20 @@ class CreateInput(AbstractModel):
 
 
 class CreateInputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Created input HLS pull stream configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The origin server address for the HLS origin server. There can be only one.
         :type SourceAddresses: list of HLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The origin server address for the HLS origin server. There can be only one.
         :rtype: list of HLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -288,20 +288,20 @@ class CreateInputHLSPullSettings(AbstractModel):
 
 
 class CreateInputRTMPPullSettings(AbstractModel):
-    r"""
+    r"""Created input RTMP pull stream configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The origin server address for the RTMP origin server. There can be only one.
         :type SourceAddresses: list of RTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The origin server address for the RTMP origin server. There can be only one.
         :rtype: list of RTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -380,20 +380,20 @@ class CreateInputRTPSettings(AbstractModel):
 
 
 class CreateInputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Created input RTSP pull stream configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The origin server address for the RTSP origin server. There can be only one.
         :type SourceAddresses: list of RTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The origin server address for the RTSP origin server. There can be only one.
         :rtype: list of RTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -1826,20 +1826,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeHLSPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query the input HLS configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The Url of the HLS origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""The Url of the HLS origin server.
         :rtype: str
         """
         return self._Url
@@ -1894,13 +1894,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _FailOver: Input failover
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOver: str
-        :param _RTMPPullSettings: 
+        :param _RTMPPullSettings: Input RTMP_PULL configuration.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: Input RTSP_PULL configuration.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: Input HLS_PULL configuration.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
-        :param _ResilientStream: 
+        :param _ResilientStream: Delayed broadcast smooth stream delivery configuration.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         :param _SecurityGroupIds: The bound security group ID.
         :type SecurityGroupIds: list of str
@@ -2049,7 +2049,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTMPPullSettings(self):
-        r"""
+        r"""Input RTMP_PULL configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -2060,7 +2060,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""
+        r"""Input RTSP_PULL configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2071,7 +2071,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""
+        r"""Input HLS_PULL configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2082,7 +2082,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ResilientStream(self):
-        r"""
+        r"""Delayed broadcast smooth stream delivery configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -2150,20 +2150,20 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeInputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Query the input HLS configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The address information of the HLS origin server.
         :type SourceAddresses: list of DescribeHLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The address information of the HLS origin server.
         :rtype: list of DescribeHLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -2191,20 +2191,20 @@ class DescribeInputHLSPullSettings(AbstractModel):
 
 
 class DescribeInputRTMPPullSettings(AbstractModel):
-    r"""
+    r"""Query the input RTMP configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The address information of the RTMP origin server.
         :type SourceAddresses: list of DescribeRTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The address information of the RTMP origin server.
         :rtype: list of DescribeRTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2338,20 +2338,20 @@ class DescribeInputRTPSettings(AbstractModel):
 
 
 class DescribeInputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Query the input RTSP configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: The address information of the RTSP origin server.
         :type SourceAddresses: list of DescribeRTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""The address information of the RTSP origin server.
         :rtype: list of DescribeRTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2582,11 +2582,11 @@ Note: This field may return `null`, indicating that no valid value was found.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
 Note: This field may return `null`, indicating that no valid value was found.
         :type AllowIpList: list of str
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: Output RTSP pull stream configuration.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: Output HLS pull stream configuration.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
-        :param _MaxConcurrent: 
+        :param _MaxConcurrent: Maximum pull stream concurrency, maximum 4, default 4.
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
@@ -2750,7 +2750,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""
+        r"""Output RTSP pull stream configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2761,7 +2761,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""
+        r"""Output HLS pull stream configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2772,7 +2772,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MaxConcurrent(self):
-        r"""
+        r"""Maximum pull stream concurrency, maximum 4, default 4.
         :rtype: int
         """
         return self._MaxConcurrent
@@ -2838,20 +2838,20 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeOutputHLSPullServerUrl(AbstractModel):
-    r"""
+    r"""Query output HLS pull stream URL information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The Url of the HLS pull stream address.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""The Url of the HLS pull stream address.
         :rtype: str
         """
         return self._Url
@@ -2874,20 +2874,20 @@ class DescribeOutputHLSPullServerUrl(AbstractModel):
 
 
 class DescribeOutputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Query the output HLS pull stream configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: 
+        :param _ServerUrls: HLS pull stream address list.
         :type ServerUrls: list of DescribeOutputHLSPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""
+        r"""HLS pull stream address list.
         :rtype: list of DescribeOutputHLSPullServerUrl
         """
         return self._ServerUrls
@@ -3163,20 +3163,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOutputRTSPPullServerUrl(AbstractModel):
-    r"""
+    r"""Query output RTSP pull stream URL information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: RTSP pull stream address Url.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""RTSP pull stream address Url.
         :rtype: str
         """
         return self._Url
@@ -3199,20 +3199,20 @@ class DescribeOutputRTSPPullServerUrl(AbstractModel):
 
 
 class DescribeOutputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Query output RTSP pull stream configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: 
+        :param _ServerUrls: RTSP pull stream address list.
         :type ServerUrls: list of DescribeOutputRTSPPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""
+        r"""RTSP pull stream address list.
         :rtype: list of DescribeOutputRTSPPullServerUrl
         """
         return self._ServerUrls
@@ -3441,15 +3441,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeRTMPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query the input RTMP configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: 
+        :param _TcUrl: The TcUrl address of the RTMP origin server.
         :type TcUrl: str
-        :param _StreamKey: 
+        :param _StreamKey: The StreamKey of the RTMP origin server.
+
+The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -3457,7 +3459,7 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""
+        r"""The TcUrl address of the RTMP origin server.
         :rtype: str
         """
         return self._TcUrl
@@ -3468,7 +3470,9 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""
+        r"""The StreamKey of the RTMP origin server.
+
+The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
         :rtype: str
         """
         return self._StreamKey
@@ -3492,20 +3496,20 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
 
 class DescribeRTSPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query the input RTSP configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The Url address of the RTSP origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""The Url address of the RTSP origin server.
         :rtype: str
         """
         return self._Url
@@ -6133,20 +6137,20 @@ class FlowVideo(AbstractModel):
 
 
 class HLSPullSourceAddress(AbstractModel):
-    r"""
+    r"""Created input HLS pull stream origin server configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The Url of the HLS origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""The Url of the HLS origin server.
         :rtype: str
         """
         return self._Url
@@ -7059,15 +7063,15 @@ class RTMPAddressDestination(AbstractModel):
 
 
 class RTMPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Created input RTMP pull stream origin server configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: 
+        :param _TcUrl: The TcUrl address of the RTMP origin server.
         :type TcUrl: str
-        :param _StreamKey: 
+        :param _StreamKey: The StreamKey of the RTMP origin server.
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -7075,7 +7079,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""
+        r"""The TcUrl address of the RTMP origin server.
         :rtype: str
         """
         return self._TcUrl
@@ -7086,7 +7090,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""
+        r"""The StreamKey of the RTMP origin server.
         :rtype: str
         """
         return self._StreamKey
@@ -7161,20 +7165,20 @@ class RTPAddressDestination(AbstractModel):
 
 
 class RTSPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Created input RTSP pull stream origin server configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The Url address of the RTSP origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""The Url address of the RTSP origin server.
         :rtype: str
         """
         return self._Url
@@ -7233,15 +7237,15 @@ class RegionInfo(AbstractModel):
 
 
 class ResilientStreamConf(AbstractModel):
-    r"""
+    r"""Delayed broadcast smooth stream delivery configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enable: 
+        :param _Enable: Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.
         :type Enable: bool
-        :param _BufferTime: 
+        :param _BufferTime: Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.
         :type BufferTime: int
         """
         self._Enable = None
@@ -7249,7 +7253,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def Enable(self):
-        r"""
+        r"""Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.
         :rtype: bool
         """
         return self._Enable
@@ -7260,7 +7264,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def BufferTime(self):
-        r"""
+        r"""Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.
         :rtype: int
         """
         return self._BufferTime

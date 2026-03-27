@@ -930,17 +930,17 @@ class Addr(AbstractModel):
 
 
 class AuditInstanceFilters(AbstractModel):
-    r"""
+    r"""Query filter conditions for audit instances
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: Filter condition values. Supports InstanceId-Instance ID, InstanceName-Instance Name, ProjectId-Project ID, TagKey-Tag Key, Tag-Tag (separated by a vertical bar, e.g.: Tagkey|Tagvalue).
         :type Name: str
-        :param _ExactMatch: 
+        :param _ExactMatch: true indicates exact match; false indicates fuzzy match.
         :type ExactMatch: bool
-        :param _Values: 
+        :param _Values: Filter value
         :type Values: list of str
         """
         self._Name = None
@@ -949,7 +949,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Filter condition values. Supports InstanceId-Instance ID, InstanceName-Instance Name, ProjectId-Project ID, TagKey-Tag Key, Tag-Tag (separated by a vertical bar, e.g.: Tagkey|Tagvalue).
         :rtype: str
         """
         return self._Name
@@ -960,7 +960,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""
+        r"""true indicates exact match; false indicates fuzzy match.
         :rtype: bool
         """
         return self._ExactMatch
@@ -971,7 +971,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def Values(self):
-        r"""
+        r"""Filter value
         :rtype: list of str
         """
         return self._Values
@@ -996,7 +996,7 @@ class AuditInstanceFilters(AbstractModel):
 
 
 class AuditInstanceInfo(AbstractModel):
-    r"""
+    r"""Audit instance details
 
     """
 
@@ -2069,63 +2069,63 @@ class BinlogItem(AbstractModel):
 
 
 class BizTaskInfo(AbstractModel):
-    r"""
+    r"""Task information
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: 
+        :param _ID: Task id
         :type ID: int
-        :param _AppId: 
+        :param _AppId: User appid
         :type AppId: int
-        :param _ClusterId: 
+        :param _ClusterId: cluster id
         :type ClusterId: str
         :param _Region: Region
         :type Region: str
-        :param _CreateTime: 
+        :param _CreateTime: Task Creation Time
         :type CreateTime: str
         :param _DelayTime: Specifies the delayed execution time.
         :type DelayTime: str
         :param _ErrMsg: Task failure information.
         :type ErrMsg: str
-        :param _FlowId: 
+        :param _FlowId: asynchronous task flow id
         :type FlowId: int
-        :param _Input: 
+        :param _Input: task input information
         :type Input: str
-        :param _InstanceGrpId: 
+        :param _InstanceGrpId: instance group id
         :type InstanceGrpId: str
-        :param _InstanceGroupId: 
+        :param _InstanceGroupId: instance group id
         :type InstanceGroupId: str
-        :param _InstanceId: 
+        :param _InstanceId: Instance id
         :type InstanceId: str
-        :param _ObjectId: 
+        :param _ObjectId: Task Operation Target id
         :type ObjectId: str
-        :param _ObjectType: 
+        :param _ObjectType: Task Operation Target Type
         :type ObjectType: str
-        :param _Operator: 
+        :param _Operator: Operator uin
         :type Operator: str
-        :param _Output: 
+        :param _Output: task output information
         :type Output: str
-        :param _Status: 
+        :param _Status: Task Status
         :type Status: str
-        :param _TaskType: 
+        :param _TaskType: task type
         :type TaskType: str
-        :param _TriggerTaskId: 
+        :param _TriggerTaskId: Parent Task ID that Triggered This Task
         :type TriggerTaskId: int
-        :param _UpdateTime: 
+        :param _UpdateTime: Update Time
         :type UpdateTime: str
-        :param _StartTime: 
+        :param _StartTime: Task Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: Task End Time
         :type EndTime: str
-        :param _ClusterName: 
+        :param _ClusterName: Cluster Name
         :type ClusterName: str
-        :param _InstanceName: 
+        :param _InstanceName: Instance Name
         :type InstanceName: str
-        :param _Process: 
+        :param _Process: Task Progress
         :type Process: int
-        :param _ModifyParamsData: 
+        :param _ModifyParamsData: Parameter Modification Task Information
         :type ModifyParamsData: list of ModifyParamsData
         :param _CreateClustersData: Create cluster task information.
         :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
@@ -2133,15 +2133,15 @@ class BizTaskInfo(AbstractModel):
         :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         :param _ModifyInstanceData: Instance configuration change task information.
         :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
-        :param _ManualBackupData: 
+        :param _ManualBackupData: Manual Backup Task Information
         :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         :param _ModifyDbVersionData: Modify kernel version task information.
         :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         :param _ClusterSlaveData: Cluster availability zone information.
         :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
-        :param _SwitchClusterLogBin: 
+        :param _SwitchClusterLogBin: Cluster Log Conversion
         :type SwitchClusterLogBin: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
-        :param _ModifyInstanceParamsData: 
+        :param _ModifyInstanceParamsData: Instance Parameter Modification
         :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         :param _TaskMaintainInfo: Maintenance time.
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
@@ -2191,7 +2191,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ID(self):
-        r"""
+        r"""Task id
         :rtype: int
         """
         return self._ID
@@ -2202,7 +2202,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""
+        r"""User appid
         :rtype: int
         """
         return self._AppId
@@ -2213,7 +2213,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""
+        r"""cluster id
         :rtype: str
         """
         return self._ClusterId
@@ -2235,7 +2235,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""Task Creation Time
         :rtype: str
         """
         return self._CreateTime
@@ -2268,7 +2268,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""
+        r"""asynchronous task flow id
         :rtype: int
         """
         return self._FlowId
@@ -2279,7 +2279,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""task input information
         :rtype: str
         """
         return self._Input
@@ -2292,7 +2292,7 @@ class BizTaskInfo(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""instance group id
         :rtype: str
         """
         return self._InstanceGrpId
@@ -2305,7 +2305,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""
+        r"""instance group id
         :rtype: str
         """
         return self._InstanceGroupId
@@ -2316,7 +2316,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance id
         :rtype: str
         """
         return self._InstanceId
@@ -2327,7 +2327,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""
+        r"""Task Operation Target id
         :rtype: str
         """
         return self._ObjectId
@@ -2338,7 +2338,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""
+        r"""Task Operation Target Type
         :rtype: str
         """
         return self._ObjectType
@@ -2349,7 +2349,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Operator(self):
-        r"""
+        r"""Operator uin
         :rtype: str
         """
         return self._Operator
@@ -2360,7 +2360,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""task output information
         :rtype: str
         """
         return self._Output
@@ -2371,7 +2371,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Task Status
         :rtype: str
         """
         return self._Status
@@ -2382,7 +2382,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""
+        r"""task type
         :rtype: str
         """
         return self._TaskType
@@ -2393,7 +2393,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TriggerTaskId(self):
-        r"""
+        r"""Parent Task ID that Triggered This Task
         :rtype: int
         """
         return self._TriggerTaskId
@@ -2404,7 +2404,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""
+        r"""Update Time
         :rtype: str
         """
         return self._UpdateTime
@@ -2415,7 +2415,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Task Start Time
         :rtype: str
         """
         return self._StartTime
@@ -2426,7 +2426,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""Task End Time
         :rtype: str
         """
         return self._EndTime
@@ -2437,7 +2437,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""
+        r"""Cluster Name
         :rtype: str
         """
         return self._ClusterName
@@ -2448,7 +2448,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""
+        r"""Instance Name
         :rtype: str
         """
         return self._InstanceName
@@ -2459,7 +2459,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Process(self):
-        r"""
+        r"""Task Progress
         :rtype: int
         """
         return self._Process
@@ -2472,7 +2472,7 @@ class BizTaskInfo(AbstractModel):
     def ModifyParamsData(self):
         warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""Parameter Modification Task Information
         :rtype: list of ModifyParamsData
         """
         return self._ModifyParamsData
@@ -2518,7 +2518,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ManualBackupData(self):
-        r"""
+        r"""Manual Backup Task Information
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         """
         return self._ManualBackupData
@@ -2551,7 +2551,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def SwitchClusterLogBin(self):
-        r"""
+        r"""Cluster Log Conversion
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
         """
         return self._SwitchClusterLogBin
@@ -2562,7 +2562,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceParamsData(self):
-        r"""
+        r"""Instance Parameter Modification
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         """
         return self._ModifyInstanceParamsData
@@ -2685,13 +2685,13 @@ class BizTaskInfo(AbstractModel):
 
 
 class BizTaskModifyInstanceParam(AbstractModel):
-    r"""
+    r"""Instance Parameter Modification Task Details
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID
         :type InstanceId: str
         :param _ModifyInstanceParamList: Details of instance parameter modification task.
         :type ModifyInstanceParamList: list of ModifyParamItem
@@ -2701,7 +2701,7 @@ class BizTaskModifyInstanceParam(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -2741,13 +2741,13 @@ class BizTaskModifyInstanceParam(AbstractModel):
 
 
 class BizTaskModifyParamsData(AbstractModel):
-    r"""
+    r"""Parameter Modification Task Data
 
     """
 
     def __init__(self):
         r"""
-        :param _ClusterId: 
+        :param _ClusterId: Cluster ID
         :type ClusterId: str
         :param _ClusterParamList: Cluster parameter modification data.
         :type ClusterParamList: list of ModifyParamItem
@@ -2760,7 +2760,7 @@ class BizTaskModifyParamsData(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -2817,25 +2817,31 @@ class BizTaskModifyParamsData(AbstractModel):
 
 
 class CLSInfo(AbstractModel):
-    r"""
+    r"""CLS Log Delivery Configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _TopicOperation: 
+        :param _TopicOperation: Log topic operation: optional create, reuse.
+create: create a new log topic using TopicName.
+reuse: use an existing log topic by specifying TopicId.
+Combining the use of an existing log topic and creating a new log set is not allowed.
         :type TopicOperation: str
-        :param _GroupOperation: 
+        :param _GroupOperation: Log set operation: optional create, reuse.
+create: create a new log set using GroupName.
+reuse: use an existing log set by specifying GroupId.
+Combining the use of an existing log topic and creating a new log set is not allowed.
         :type GroupOperation: str
-        :param _Region: 
+        :param _Region: Log Delivery Region
         :type Region: str
-        :param _TopicId: 
+        :param _TopicId: log topic id
         :type TopicId: str
-        :param _TopicName: 
+        :param _TopicName: log topic name
         :type TopicName: str
-        :param _GroupId: 
+        :param _GroupId: log set id
         :type GroupId: str
-        :param _GroupName: 
+        :param _GroupName: log set name
         :type GroupName: str
         """
         self._TopicOperation = None
@@ -2848,7 +2854,10 @@ class CLSInfo(AbstractModel):
 
     @property
     def TopicOperation(self):
-        r"""
+        r"""Log topic operation: optional create, reuse.
+create: create a new log topic using TopicName.
+reuse: use an existing log topic by specifying TopicId.
+Combining the use of an existing log topic and creating a new log set is not allowed.
         :rtype: str
         """
         return self._TopicOperation
@@ -2859,7 +2868,10 @@ class CLSInfo(AbstractModel):
 
     @property
     def GroupOperation(self):
-        r"""
+        r"""Log set operation: optional create, reuse.
+create: create a new log set using GroupName.
+reuse: use an existing log set by specifying GroupId.
+Combining the use of an existing log topic and creating a new log set is not allowed.
         :rtype: str
         """
         return self._GroupOperation
@@ -2870,7 +2882,7 @@ class CLSInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Log Delivery Region
         :rtype: str
         """
         return self._Region
@@ -2881,7 +2893,7 @@ class CLSInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""
+        r"""log topic id
         :rtype: str
         """
         return self._TopicId
@@ -2892,7 +2904,7 @@ class CLSInfo(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""
+        r"""log topic name
         :rtype: str
         """
         return self._TopicName
@@ -2903,7 +2915,7 @@ class CLSInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""
+        r"""log set id
         :rtype: str
         """
         return self._GroupId
@@ -2914,7 +2926,7 @@ class CLSInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""
+        r"""log set name
         :rtype: str
         """
         return self._GroupName
@@ -3874,7 +3886,7 @@ class ClusterReadOnlyValue(AbstractModel):
 
 
 class ClusterSlaveData(AbstractModel):
-    r"""
+    r"""Cluster AZ Information
 
     """
 
@@ -3882,11 +3894,11 @@ class ClusterSlaveData(AbstractModel):
         r"""
         :param _OldMasterZone: Old primary availability zone.
         :type OldMasterZone: str
-        :param _OldSlaveZone: 
+        :param _OldSlaveZone: Standby AZ
         :type OldSlaveZone: list of str
         :param _NewMasterZone: New primary availability zone.
         :type NewMasterZone: str
-        :param _NewSlaveZone: 
+        :param _NewSlaveZone: New Standby AZ
         :type NewSlaveZone: list of str
         :param _NewSlaveZoneAttr: New from availability zone attribute.
         :type NewSlaveZoneAttr: list of SlaveZoneAttrItem
@@ -3913,7 +3925,7 @@ class ClusterSlaveData(AbstractModel):
 
     @property
     def OldSlaveZone(self):
-        r"""
+        r"""Standby AZ
         :rtype: list of str
         """
         return self._OldSlaveZone
@@ -3935,7 +3947,7 @@ class ClusterSlaveData(AbstractModel):
 
     @property
     def NewSlaveZone(self):
-        r"""
+        r"""New Standby AZ
         :rtype: list of str
         """
         return self._NewSlaveZone
@@ -4755,17 +4767,17 @@ class CreateClusterDatabaseResponse(AbstractModel):
 
 
 class CreateClustersData(AbstractModel):
-    r"""
+    r"""Cluster Creation Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: 
+        :param _Cpu: Instance CPU
         :type Cpu: int
-        :param _Memory: 
+        :param _Memory: Instance Memory
         :type Memory: int
-        :param _StorageLimit: 
+        :param _StorageLimit: Cluster storage limit
         :type StorageLimit: int
         """
         self._Cpu = None
@@ -4774,7 +4786,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""
+        r"""Instance CPU
         :rtype: int
         """
         return self._Cpu
@@ -4785,7 +4797,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""
+        r"""Instance Memory
         :rtype: int
         """
         return self._Memory
@@ -4796,7 +4808,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""
+        r"""Cluster storage limit
         :rtype: int
         """
         return self._StorageLimit
@@ -11672,7 +11684,7 @@ class DeleteClusterDatabaseRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _DbNames: 
+        :param _DbNames: Database Name
         :type DbNames: list of str
         """
         self._ClusterId = None
@@ -11691,7 +11703,7 @@ class DeleteClusterDatabaseRequest(AbstractModel):
 
     @property
     def DbNames(self):
-        r"""
+        r"""Database Name
         :rtype: list of str
         """
         return self._DbNames
@@ -13164,13 +13176,13 @@ class DescribeBackupListRequest(AbstractModel):
         :type BackupType: str
         :param _BackupMethod: Back mode. Valid values: `auto` (automatic backup), `manual` (manual backup)
         :type BackupMethod: str
-        :param _SnapShotType: 
+        :param _SnapShotType: Snapshot type. Optional values: full, full backup; increment, incremental backup
         :type SnapShotType: str
         :param _StartTime: Backup start time
         :type StartTime: str
         :param _EndTime: Backup end time
         :type EndTime: str
-        :param _FileNames: 
+        :param _FileNames: Backup file name, fuzzy search
         :type FileNames: list of str
         :param _BackupNames: Backup alias, which supports fuzzy query.
         :type BackupNames: list of str
@@ -13271,7 +13283,7 @@ class DescribeBackupListRequest(AbstractModel):
 
     @property
     def SnapShotType(self):
-        r"""
+        r"""Snapshot type. Optional values: full, full backup; increment, incremental backup
         :rtype: str
         """
         return self._SnapShotType
@@ -13304,7 +13316,7 @@ class DescribeBackupListRequest(AbstractModel):
 
     @property
     def FileNames(self):
-        r"""
+        r"""Backup file name, fuzzy search
         :rtype: list of str
         """
         return self._FileNames
@@ -15712,7 +15724,7 @@ class DescribeInstanceErrorLogsRequest(AbstractModel):
         :type OrderByType: str
         :param _LogLevels: Log level, which supports combo search by multiple levels. Valid values: `error`, `warning`, `note`.
         :type LogLevels: list of str
-        :param _KeyWords: 
+        :param _KeyWords: Keywords, supports fuzzy search
         :type KeyWords: list of str
         """
         self._InstanceId = None
@@ -15815,7 +15827,7 @@ class DescribeInstanceErrorLogsRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        r"""
+        r"""Keywords, supports fuzzy search
         :rtype: list of str
         """
         return self._KeyWords
@@ -19741,7 +19753,7 @@ class ErrorLogItemExport(AbstractModel):
 
 
 class ExchangeInstanceInfo(AbstractModel):
-    r"""
+    r"""Exchange Instance Information
 
     """
 
@@ -19796,7 +19808,7 @@ class ExchangeInstanceInfo(AbstractModel):
 
 
 class ExchangeRoGroupInfo(AbstractModel):
-    r"""
+    r"""Swap RO group information
 
     """
 
@@ -19869,7 +19881,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
         :type Offset: int
         :param _LogLevels: Log level
         :type LogLevels: list of str
-        :param _KeyWords: 
+        :param _KeyWords: Keywords
         :type KeyWords: list of str
         :param _FileType: The template type. Valid values: `csv`, `original`.
         :type FileType: str
@@ -19957,7 +19969,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        r"""
+        r"""Keywords
         :rtype: list of str
         """
         return self._KeyWords
@@ -20811,7 +20823,9 @@ class InquirePriceCreateRequest(AbstractModel):
         :type InstancePayMode: str
         :param _StoragePayMode: Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.
         :type StoragePayMode: str
-        :param _DeviceType: device type:common, exclusive
+        :param _DeviceType: Instance device type. Supported values are as follows:
+- common: indicates the general type
+- exclusive: indicates the exclusive type.
         :type DeviceType: str
         :param _Cpu: Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
         :type Cpu: int
@@ -20884,7 +20898,9 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""device type:common, exclusive
+        r"""Instance device type. Supported values are as follows:
+- common: indicates the general type
+- exclusive: indicates the exclusive type.
         :rtype: str
         """
         return self._DeviceType
@@ -21541,7 +21557,7 @@ class InquirePriceRenewResponse(AbstractModel):
 
 
 class InstanceAbility(AbstractModel):
-    r"""
+    r"""Allowed Operations List for Instances
 
     """
 
@@ -21698,15 +21714,15 @@ class InstanceAuditRule(AbstractModel):
 
 
 class InstanceAuditStatus(AbstractModel):
-    r"""
+    r"""Audit instance details
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _AuditStatus: 
+        :param _AuditStatus: Audit status. ON- Audit is enabled; OFF- Audit is disabled.
         :type AuditStatus: str
         :param _LogExpireDay: Specifies the log retention period.
         :type LogExpireDay: int
@@ -21753,7 +21769,7 @@ class InstanceAuditStatus(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -21764,7 +21780,7 @@ class InstanceAuditStatus(AbstractModel):
 
     @property
     def AuditStatus(self):
-        r"""
+        r"""Audit status. ON- Audit is enabled; OFF- Audit is disabled.
         :rtype: str
         """
         return self._AuditStatus
@@ -21951,7 +21967,7 @@ class InstanceAuditStatus(AbstractModel):
 
 
 class InstanceCLSDeliveryInfo(AbstractModel):
-    r"""
+    r"""Instance Log Delivery Information
 
     """
 
@@ -23171,7 +23187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LogicBackupConfigInfo(AbstractModel):
-    r"""
+    r"""Logical Backup Configuration Information
 
     """
 
@@ -23187,7 +23203,7 @@ class LogicBackupConfigInfo(AbstractModel):
         :type LogicReserveDuration: int
         :param _LogicCrossRegionsEnable: Whether cross-regional logical backup is enabled.
         :type LogicCrossRegionsEnable: str
-        :param _LogicCrossRegions: 
+        :param _LogicCrossRegions: Logical Backup Cross-Region
         :type LogicCrossRegions: list of str
         """
         self._LogicBackupEnable = None
@@ -23254,7 +23270,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicCrossRegions(self):
-        r"""
+        r"""Logical Backup Cross-Region
         :rtype: list of str
         """
         return self._LogicCrossRegions
@@ -23282,17 +23298,17 @@ class LogicBackupConfigInfo(AbstractModel):
 
 
 class ManualBackupData(AbstractModel):
-    r"""
+    r"""Manual Backup Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _BackupType: 
+        :param _BackupType: Backup type. snapshot-snapshot backup
         :type BackupType: str
-        :param _BackupMethod: 
+        :param _BackupMethod: Backup method. auto-automatic backup, manual-manual
         :type BackupMethod: str
-        :param _SnapshotTime: 
+        :param _SnapshotTime: Backup Time
         :type SnapshotTime: str
         :param _CrossRegionBackupInfos: Detailed information of cross-region backup items.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -23305,7 +23321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupType(self):
-        r"""
+        r"""Backup type. snapshot-snapshot backup
         :rtype: str
         """
         return self._BackupType
@@ -23316,7 +23332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupMethod(self):
-        r"""
+        r"""Backup method. auto-automatic backup, manual-manual
         :rtype: str
         """
         return self._BackupMethod
@@ -23327,7 +23343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotTime(self):
-        r"""
+        r"""Backup Time
         :rtype: str
         """
         return self._SnapshotTime
@@ -23376,14 +23392,14 @@ class ModifiableInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsModifiable: 
+        :param _IsModifiable: Whether the parameter is modifiable. 1: Yes 0: No
         :type IsModifiable: int
         """
         self._IsModifiable = None
 
     @property
     def IsModifiable(self):
-        r"""
+        r"""Whether the parameter is modifiable. 1: Yes 0: No
         :rtype: int
         """
         return self._IsModifiable
@@ -24023,9 +24039,9 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupFreq: list of str
         :param _BackupType: Currently, this parameter does not support modification and is not required.
         :type BackupType: str
-        :param _LogicBackupConfig: 
+        :param _LogicBackupConfig: Logical Backup Configuration
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
-        :param _DeleteAutoLogicBackup: 
+        :param _DeleteAutoLogicBackup: Whether to delete the automatic logical backup
         :type DeleteAutoLogicBackup: bool
         """
         self._ClusterId = None
@@ -24105,7 +24121,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def LogicBackupConfig(self):
-        r"""
+        r"""Logical Backup Configuration
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -24116,7 +24132,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def DeleteAutoLogicBackup(self):
-        r"""
+        r"""Whether to delete the automatic logical backup
         :rtype: bool
         """
         return self._DeleteAutoLogicBackup
@@ -25327,7 +25343,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type NewSlaveZone: str
         :param _BinlogSyncWay: Specifies the binlog synchronization mode. the default value is async. valid values are sync, semisync, and async.
         :type BinlogSyncWay: str
-        :param _SemiSyncTimeout: 
+        :param _SemiSyncTimeout: Semi-sync timeout period in ms. To ensure business stability, the semi-synchronous replication includes a degradation mechanism. If the primary AZ cluster exceeds this timeout while waiting for transaction confirmation from the secondary AZ cluster, the replication mode will fall back to asynchronous replication. Minimum setting: 1000 ms; maximum support: 4294967295 ms; default: 10000 ms.
         :type SemiSyncTimeout: int
         """
         self._ClusterId = None
@@ -25382,7 +25398,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SemiSyncTimeout(self):
-        r"""
+        r"""Semi-sync timeout period in ms. To ensure business stability, the semi-synchronous replication includes a degradation mechanism. If the primary AZ cluster exceeds this timeout while waiting for transaction confirmation from the secondary AZ cluster, the replication mode will fall back to asynchronous replication. Minimum setting: 1000 ms; maximum support: 4294967295 ms; default: 10000 ms.
         :rtype: int
         """
         return self._SemiSyncTimeout
@@ -25546,17 +25562,17 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class ModifyDbVersionData(AbstractModel):
-    r"""
+    r"""Database Kernel Version Modification Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _OldVersion: 
+        :param _OldVersion: pre-modification version
         :type OldVersion: str
-        :param _NewVersion: 
+        :param _NewVersion: Post-modification Version
         :type NewVersion: str
-        :param _UpgradeType: 
+        :param _UpgradeType: Upgrade Method
         :type UpgradeType: str
         """
         self._OldVersion = None
@@ -25565,7 +25581,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def OldVersion(self):
-        r"""
+        r"""pre-modification version
         :rtype: str
         """
         return self._OldVersion
@@ -25576,7 +25592,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def NewVersion(self):
-        r"""
+        r"""Post-modification Version
         :rtype: str
         """
         return self._NewVersion
@@ -25587,7 +25603,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""
+        r"""Upgrade Method
         :rtype: str
         """
         return self._UpgradeType
@@ -25612,29 +25628,29 @@ class ModifyDbVersionData(AbstractModel):
 
 
 class ModifyInstanceData(AbstractModel):
-    r"""
+    r"""Instance Resizing Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: 
+        :param _Cpu: CPU After Resizing
         :type Cpu: int
-        :param _Memory: 
+        :param _Memory: Memory After Resizing
         :type Memory: int
-        :param _StorageLimit: 
+        :param _StorageLimit: Storage Limit After Resizing
         :type StorageLimit: int
-        :param _OldCpu: 
+        :param _OldCpu: CPU Before Resizing
         :type OldCpu: int
-        :param _OldMemory: 
+        :param _OldMemory: Memory Before Resizing
         :type OldMemory: int
-        :param _OldStorageLimit: 
+        :param _OldStorageLimit: Storage Limit Before Resizing
         :type OldStorageLimit: int
         :param _OldDeviceType: Instance machine type before scaling.
         :type OldDeviceType: str
         :param _DeviceType: Instance machine type after scaling.
         :type DeviceType: str
-        :param _UpgradeType: 
+        :param _UpgradeType: Upgrade Method. Switchover is performed after upgrade completion or during maintenance windows
         :type UpgradeType: str
         :param _LibraNodeCount: Specifies the quantity of libra nodes.
         :type LibraNodeCount: int
@@ -25655,7 +25671,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""
+        r"""CPU After Resizing
         :rtype: int
         """
         return self._Cpu
@@ -25666,7 +25682,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""
+        r"""Memory After Resizing
         :rtype: int
         """
         return self._Memory
@@ -25677,7 +25693,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""
+        r"""Storage Limit After Resizing
         :rtype: int
         """
         return self._StorageLimit
@@ -25688,7 +25704,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldCpu(self):
-        r"""
+        r"""CPU Before Resizing
         :rtype: int
         """
         return self._OldCpu
@@ -25699,7 +25715,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldMemory(self):
-        r"""
+        r"""Memory Before Resizing
         :rtype: int
         """
         return self._OldMemory
@@ -25710,7 +25726,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldStorageLimit(self):
-        r"""
+        r"""Storage Limit Before Resizing
         :rtype: int
         """
         return self._OldStorageLimit
@@ -25743,7 +25759,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""
+        r"""Upgrade Method. Switchover is performed after upgrade completion or during maintenance windows
         :rtype: str
         """
         return self._UpgradeType
@@ -26424,17 +26440,17 @@ class ModifyParamTemplateResponse(AbstractModel):
 
 
 class ModifyParamsData(AbstractModel):
-    r"""
+    r"""Parameter Modification Information
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: Parameter Name
         :type Name: str
-        :param _OldValue: 
+        :param _OldValue: Parameter Value Before Modification
         :type OldValue: str
-        :param _CurValue: 
+        :param _CurValue: Parameter Value After Modification
         :type CurValue: str
         """
         self._Name = None
@@ -26443,7 +26459,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Parameter Name
         :rtype: str
         """
         return self._Name
@@ -26454,7 +26470,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def OldValue(self):
-        r"""
+        r"""Parameter Value Before Modification
         :rtype: str
         """
         return self._OldValue
@@ -26465,7 +26481,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def CurValue(self):
-        r"""
+        r"""Parameter Value After Modification
         :rtype: str
         """
         return self._CurValue
@@ -30267,7 +30283,7 @@ class ParamItemDetail(AbstractModel):
 
 
 class ParamItemInfo(AbstractModel):
-    r"""
+    r"""Parameter Change Information
 
     """
 
@@ -31696,7 +31712,7 @@ class ProxyNodeInfo(AbstractModel):
         :type Region: str
         :param _Zone: AZ
         :type Zone: str
-        :param _OssProxyNodeName: 
+        :param _OssProxyNodeName: Database Proxy Node Name
         :type OssProxyNodeName: str
         """
         self._ProxyNodeId = None
@@ -31823,7 +31839,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def OssProxyNodeName(self):
-        r"""
+        r"""Database Proxy Node Name
         :rtype: str
         """
         return self._OssProxyNodeName
@@ -33356,25 +33372,25 @@ class RollBackClusterResponse(AbstractModel):
 
 
 class RollbackData(AbstractModel):
-    r"""
+    r"""Rollback Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: 
+        :param _Cpu: Instance CPU
         :type Cpu: int
-        :param _Memory: 
+        :param _Memory: Instance Memory
         :type Memory: int
-        :param _StorageLimit: 
+        :param _StorageLimit: Cluster storage limit
         :type StorageLimit: int
-        :param _OriginalClusterId: 
+        :param _OriginalClusterId: Original Cluster id
         :type OriginalClusterId: str
-        :param _OriginalClusterName: 
+        :param _OriginalClusterName: Original Cluster Name
         :type OriginalClusterName: str
-        :param _RollbackStrategy: 
+        :param _RollbackStrategy: Rollback Method
         :type RollbackStrategy: str
-        :param _SnapshotTime: 
+        :param _SnapshotTime: Snapshot Time
         :type SnapshotTime: str
         :param _MinCpu: Minimum CPU when rolling back to a serverlessls cluster.
         :type MinCpu: int
@@ -33382,9 +33398,9 @@ class RollbackData(AbstractModel):
         :type MaxCpu: int
         :param _SnapShotId: Snapshot ID.
         :type SnapShotId: int
-        :param _RollbackDatabases: 
+        :param _RollbackDatabases: Rollback Database
         :type RollbackDatabases: list of RollbackDatabase
-        :param _RollbackTables: 
+        :param _RollbackTables: Rollback Data Table
         :type RollbackTables: list of RollbackTable
         :param _BackupFileName: Specifies the backup file name.
         :type BackupFileName: str
@@ -33408,7 +33424,7 @@ class RollbackData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""
+        r"""Instance CPU
         :rtype: int
         """
         return self._Cpu
@@ -33419,7 +33435,7 @@ class RollbackData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""
+        r"""Instance Memory
         :rtype: int
         """
         return self._Memory
@@ -33430,7 +33446,7 @@ class RollbackData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""
+        r"""Cluster storage limit
         :rtype: int
         """
         return self._StorageLimit
@@ -33441,7 +33457,7 @@ class RollbackData(AbstractModel):
 
     @property
     def OriginalClusterId(self):
-        r"""
+        r"""Original Cluster id
         :rtype: str
         """
         return self._OriginalClusterId
@@ -33452,7 +33468,7 @@ class RollbackData(AbstractModel):
 
     @property
     def OriginalClusterName(self):
-        r"""
+        r"""Original Cluster Name
         :rtype: str
         """
         return self._OriginalClusterName
@@ -33463,7 +33479,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackStrategy(self):
-        r"""
+        r"""Rollback Method
         :rtype: str
         """
         return self._RollbackStrategy
@@ -33474,7 +33490,7 @@ class RollbackData(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        r"""
+        r"""Snapshot Time
         :rtype: str
         """
         return self._SnapshotTime
@@ -33518,7 +33534,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackDatabases(self):
-        r"""
+        r"""Rollback Database
         :rtype: list of RollbackDatabase
         """
         return self._RollbackDatabases
@@ -33529,7 +33545,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackTables(self):
-        r"""
+        r"""Rollback Data Table
         :rtype: list of RollbackTable
         """
         return self._RollbackTables
@@ -33599,15 +33615,15 @@ class RollbackData(AbstractModel):
 
 
 class RollbackDatabase(AbstractModel):
-    r"""
+    r"""Rollback Database Information
 
     """
 
     def __init__(self):
         r"""
-        :param _OldDatabase: 
+        :param _OldDatabase: Old Database Name
         :type OldDatabase: str
-        :param _NewDatabase: 
+        :param _NewDatabase: New Database Name
         :type NewDatabase: str
         """
         self._OldDatabase = None
@@ -33615,7 +33631,7 @@ class RollbackDatabase(AbstractModel):
 
     @property
     def OldDatabase(self):
-        r"""
+        r"""Old Database Name
         :rtype: str
         """
         return self._OldDatabase
@@ -33626,7 +33642,7 @@ class RollbackDatabase(AbstractModel):
 
     @property
     def NewDatabase(self):
-        r"""
+        r"""New Database Name
         :rtype: str
         """
         return self._NewDatabase
@@ -33650,7 +33666,7 @@ class RollbackDatabase(AbstractModel):
 
 
 class RollbackInstanceInfo(AbstractModel):
-    r"""
+    r"""Rollback Instance Information
 
     """
 
@@ -33851,7 +33867,7 @@ class RollbackInstanceInfo(AbstractModel):
 
 
 class RollbackProcessInfo(AbstractModel):
-    r"""
+    r"""Rollback Progress Details
 
     """
 
@@ -33861,9 +33877,9 @@ class RollbackProcessInfo(AbstractModel):
         :type IsVipSwitchable: bool
         :param _VipSwitchableTime: The exchangeable time of vip.
         :type VipSwitchableTime: str
-        :param _ExchangeInstanceInfoList: 
+        :param _ExchangeInstanceInfoList: Exchange Instance List
         :type ExchangeInstanceInfoList: list of ExchangeInstanceInfo
-        :param _ExchangeRoGroupInfoList: 
+        :param _ExchangeRoGroupInfoList: Swap RO Group List
         :type ExchangeRoGroupInfoList: list of ExchangeRoGroupInfo
         :param _CurrentStep: Current step.
         :type CurrentStep: str
@@ -33904,7 +33920,7 @@ class RollbackProcessInfo(AbstractModel):
 
     @property
     def ExchangeInstanceInfoList(self):
-        r"""
+        r"""Exchange Instance List
         :rtype: list of ExchangeInstanceInfo
         """
         return self._ExchangeInstanceInfoList
@@ -33915,7 +33931,7 @@ class RollbackProcessInfo(AbstractModel):
 
     @property
     def ExchangeRoGroupInfoList(self):
-        r"""
+        r"""Swap RO Group List
         :rtype: list of ExchangeRoGroupInfo
         """
         return self._ExchangeRoGroupInfoList
@@ -33987,7 +34003,7 @@ class RollbackProcessInfo(AbstractModel):
 
 
 class RollbackRoGroupInfo(AbstractModel):
-    r"""
+    r"""Rollback RO Group Information
 
     """
 
@@ -34083,15 +34099,15 @@ class RollbackRoGroupInfo(AbstractModel):
 
 
 class RollbackTable(AbstractModel):
-    r"""
+    r"""Rollback Database and Tables
 
     """
 
     def __init__(self):
         r"""
-        :param _Database: 
+        :param _Database: Database Name
         :type Database: str
-        :param _Tables: 
+        :param _Tables: Database Table
         :type Tables: list of RollbackTableInfo
         """
         self._Database = None
@@ -34099,7 +34115,7 @@ class RollbackTable(AbstractModel):
 
     @property
     def Database(self):
-        r"""
+        r"""Database Name
         :rtype: str
         """
         return self._Database
@@ -34110,7 +34126,7 @@ class RollbackTable(AbstractModel):
 
     @property
     def Tables(self):
-        r"""
+        r"""Database Table
         :rtype: list of RollbackTableInfo
         """
         return self._Tables
@@ -34139,7 +34155,7 @@ class RollbackTable(AbstractModel):
 
 
 class RollbackTableInfo(AbstractModel):
-    r"""
+    r"""Rollback Table Information
 
     """
 
@@ -34876,7 +34892,7 @@ class RuleFilters(AbstractModel):
 
 
 class RuleTemplateInfo(AbstractModel):
-    r"""
+    r"""Rule Template Content
 
     """
 
@@ -36093,7 +36109,7 @@ class SetRenewFlagResponse(AbstractModel):
 
 
 class SlaveZoneAttrItem(AbstractModel):
-    r"""
+    r"""AZ Attribute Item
 
     """
 
@@ -36159,7 +36175,7 @@ class SlaveZoneAttrItem(AbstractModel):
 
 
 class SlaveZoneStockInfo(AbstractModel):
-    r"""
+    r"""Secondary AZ Inventory Information
 
     """
 
@@ -36778,7 +36794,7 @@ class StopCLSDeliveryResponse(AbstractModel):
 
 
 class SwitchClusterLogBin(AbstractModel):
-    r"""
+    r"""Toggle Cluster log bin Switch
 
     """
 
@@ -37612,18 +37628,24 @@ class TradePrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalPrice: Resource total price under prepaid mode, excluding discounts. unit: cent.
+        :param _TotalPrice: Resource total price under prepaid mode, excluding discounts. unit: microCent. 1 US dollar equals 1e8 microCents.
         :type TotalPrice: int
         :param _Discount: Total discount. `100` means no discount.
         :type Discount: float
-        :param _TotalPriceDiscount: Discounted total price under prepaid mode, unit: fen. for example, the user enjoys a Discount = TotalPrice × Discount.
+        :param _TotalPriceDiscount: Discounted total price under prepaid mode, unit: cent. 1 US dollar equals 1e8 microCents. for example, the user enjoys a Discount = TotalPrice * Discount.
         :type TotalPriceDiscount: int
-        :param _UnitPrice: Unit resource price in postpaid mode, excluding discounts. unit: cent.
+        :param _UnitPrice: Unit resource price in postpaid mode, excluding discounts. unit: cent. 1 US dollar equals 1e2 cents
         :type UnitPrice: int
-        :param _UnitPriceDiscount: Unit resource price in postpaid mode after Discount, unit: fen. for example, the user enjoys a Discount = unitprice × Discount.
+        :param _UnitPriceDiscount: Unit resource price in postpaid mode after Discount, unit: cent. 1 US dollar equals 1e2 cents. for example, the user enjoys a Discount = unitprice * Discount.
         :type UnitPriceDiscount: int
         :param _ChargeUnit: Price unit
         :type ChargeUnit: str
+        :param _UnitPriceHighPrecision: Excludes discounted rates under high precision.
+        :type UnitPriceHighPrecision: str
+        :param _UnitPriceDiscountHighPrecision: Discounted price under high precision.
+        :type UnitPriceDiscountHighPrecision: str
+        :param _AmountUnit: Currency unit.
+        :type AmountUnit: str
         """
         self._TotalPrice = None
         self._Discount = None
@@ -37631,10 +37653,13 @@ class TradePrice(AbstractModel):
         self._UnitPrice = None
         self._UnitPriceDiscount = None
         self._ChargeUnit = None
+        self._UnitPriceHighPrecision = None
+        self._UnitPriceDiscountHighPrecision = None
+        self._AmountUnit = None
 
     @property
     def TotalPrice(self):
-        r"""Resource total price under prepaid mode, excluding discounts. unit: cent.
+        r"""Resource total price under prepaid mode, excluding discounts. unit: microCent. 1 US dollar equals 1e8 microCents.
         :rtype: int
         """
         return self._TotalPrice
@@ -37656,7 +37681,7 @@ class TradePrice(AbstractModel):
 
     @property
     def TotalPriceDiscount(self):
-        r"""Discounted total price under prepaid mode, unit: fen. for example, the user enjoys a Discount = TotalPrice × Discount.
+        r"""Discounted total price under prepaid mode, unit: cent. 1 US dollar equals 1e8 microCents. for example, the user enjoys a Discount = TotalPrice * Discount.
         :rtype: int
         """
         return self._TotalPriceDiscount
@@ -37667,7 +37692,7 @@ class TradePrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        r"""Unit resource price in postpaid mode, excluding discounts. unit: cent.
+        r"""Unit resource price in postpaid mode, excluding discounts. unit: cent. 1 US dollar equals 1e2 cents
         :rtype: int
         """
         return self._UnitPrice
@@ -37678,7 +37703,7 @@ class TradePrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
-        r"""Unit resource price in postpaid mode after Discount, unit: fen. for example, the user enjoys a Discount = unitprice × Discount.
+        r"""Unit resource price in postpaid mode after Discount, unit: cent. 1 US dollar equals 1e2 cents. for example, the user enjoys a Discount = unitprice * Discount.
         :rtype: int
         """
         return self._UnitPriceDiscount
@@ -37698,6 +37723,39 @@ class TradePrice(AbstractModel):
     def ChargeUnit(self, ChargeUnit):
         self._ChargeUnit = ChargeUnit
 
+    @property
+    def UnitPriceHighPrecision(self):
+        r"""Excludes discounted rates under high precision.
+        :rtype: str
+        """
+        return self._UnitPriceHighPrecision
+
+    @UnitPriceHighPrecision.setter
+    def UnitPriceHighPrecision(self, UnitPriceHighPrecision):
+        self._UnitPriceHighPrecision = UnitPriceHighPrecision
+
+    @property
+    def UnitPriceDiscountHighPrecision(self):
+        r"""Discounted price under high precision.
+        :rtype: str
+        """
+        return self._UnitPriceDiscountHighPrecision
+
+    @UnitPriceDiscountHighPrecision.setter
+    def UnitPriceDiscountHighPrecision(self, UnitPriceDiscountHighPrecision):
+        self._UnitPriceDiscountHighPrecision = UnitPriceDiscountHighPrecision
+
+    @property
+    def AmountUnit(self):
+        r"""Currency unit.
+        :rtype: str
+        """
+        return self._AmountUnit
+
+    @AmountUnit.setter
+    def AmountUnit(self, AmountUnit):
+        self._AmountUnit = AmountUnit
+
 
     def _deserialize(self, params):
         self._TotalPrice = params.get("TotalPrice")
@@ -37706,6 +37764,9 @@ class TradePrice(AbstractModel):
         self._UnitPrice = params.get("UnitPrice")
         self._UnitPriceDiscount = params.get("UnitPriceDiscount")
         self._ChargeUnit = params.get("ChargeUnit")
+        self._UnitPriceHighPrecision = params.get("UnitPriceHighPrecision")
+        self._UnitPriceDiscountHighPrecision = params.get("UnitPriceDiscountHighPrecision")
+        self._AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

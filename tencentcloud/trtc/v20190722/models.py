@@ -865,7 +865,7 @@ class CloudStorage(AbstractModel):
         :param _Vendor: The cloud storage provider.
 `0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -902,7 +902,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -1326,7 +1326,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         r"""
         :param _SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :type RoomId: str
@@ -1376,7 +1376,7 @@ Note: the room id type defaults to integer. if the room id type is a string, spe
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :rtype: str
@@ -5376,15 +5376,19 @@ class DismissRoomResponse(AbstractModel):
 
 
 class EmulateMobileParams(AbstractModel):
-    r"""
+    r"""Render mobile mode parameters. Do not set this parameter when not rendering the mobile mode.
 
     """
 
     def __init__(self):
         r"""
-        :param _MobileDeviceType: 
+        :param _MobileDeviceType: Mobile device types,
+0: Phone
+1: Tablet
         :type MobileDeviceType: int
-        :param _ScreenOrientation: 
+        :param _ScreenOrientation: Screen orientation,
+0: Portrait,
+1: Landscape
         :type ScreenOrientation: int
         """
         self._MobileDeviceType = None
@@ -5392,7 +5396,9 @@ class EmulateMobileParams(AbstractModel):
 
     @property
     def MobileDeviceType(self):
-        r"""
+        r"""Mobile device types,
+0: Phone
+1: Tablet
         :rtype: int
         """
         return self._MobileDeviceType
@@ -5403,7 +5409,9 @@ class EmulateMobileParams(AbstractModel):
 
     @property
     def ScreenOrientation(self):
-        r"""
+        r"""Screen orientation,
+0: Portrait,
+1: Landscape
         :rtype: int
         """
         return self._ScreenOrientation
@@ -5758,7 +5766,7 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
 
 
 class McuCloudVod(AbstractModel):
-    r"""
+    r"""Mcu relay recording; video on demand (VOD) related parameters.
 
     """
 
@@ -6756,7 +6764,7 @@ class McuSeiParams(AbstractModel):
 
 
 class McuStorageParams(AbstractModel):
-    r"""
+    r"""Mcu relay recording; third-party storage parameters.
 
     """
 
@@ -8895,7 +8903,7 @@ class RecordParams(AbstractModel):
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         :param _OutputFormat: Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :type OutputFormat: int
         :param _AvMerge: In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.
         :type AvMerge: int
@@ -8980,7 +8988,7 @@ When this option is enabled, it is recommended to use the "Subscription Allowlis
     def OutputFormat(self):
         r"""Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :rtype: int
         """
         return self._OutputFormat
@@ -10925,7 +10933,7 @@ class StartStreamIngestRequest(AbstractModel):
         :param _SourceUrl: 	
 Source URL. Example value: https://a.b/test.mp4
         :type SourceUrl: list of str
-        :param _SeekSecond: 
+        :param _SeekSecond: Specify that the video plays from a specific second timestamp.
         :type SeekSecond: int
         :param _AutoPush: Enable auto relay to cdn, please make sure that this feature has been enabled in the console.
         :type AutoPush: bool
@@ -11077,7 +11085,7 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def SeekSecond(self):
-        r"""
+        r"""Specify that the video plays from a specific second timestamp.
         :rtype: int
         """
         return self._SeekSecond
@@ -12167,20 +12175,20 @@ class TRTCDataResult(AbstractModel):
 
 
 class TTSConfig(AbstractModel):
-    r"""
+    r"""TTS-related configurations
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceId: 
+        :param _VoiceId: Voice ID
         :type VoiceId: str
         """
         self._VoiceId = None
 
     @property
     def VoiceId(self):
-        r"""
+        r"""Voice ID
         :rtype: str
         """
         return self._VoiceId
@@ -13779,7 +13787,7 @@ class WaterMark(AbstractModel):
 
 
 class WaterMarkChar(AbstractModel):
-    r"""
+    r"""Custom text watermark data structure
 
     """
 
@@ -14016,7 +14024,7 @@ class WaterMarkImage(AbstractModel):
 
 
 class WaterMarkTimestamp(AbstractModel):
-    r"""
+    r"""Timestamp watermark data structure
 
     """
 
@@ -14067,19 +14075,22 @@ class WaterMarkTimestamp(AbstractModel):
 
 
 class WebRecordVideoParams(AbstractModel):
-    r"""
+    r"""Page recording control parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _Width: 
+        :param _Width: Recording screen width, defaults to 1280, value range [0, 1920]
         :type Width: int
-        :param _Height: 
+        :param _Height: Recording screen height, defaults to 720, value range [0, 1080]
         :type Height: int
-        :param _Format: 
+        :param _Format: Specify the output format, optional hls, mp4. When storing to VOD, this parameter is invalid; please use the MediaType setting within TencentVod (https://cloud.tencent.com/document/api/647/44055#TencentVod).
+ 
         :type Format: str
-        :param _MaxMediaFileDuration: 
+        :param _MaxMediaFileDuration: If the file format is aac or mp4, the system will automatically split the video file when it exceeds the length limit. Unit: minutes. Default: 1440 min (24h), value range: 1-1440. [Single file size is limited to a maximum of 2G. Files will be automatically split if either condition is met: file size >2G or recording duration > 24h]
+This parameter does not take effect for Hls format recordings.
+Sample value: 1440
         :type MaxMediaFileDuration: int
         """
         self._Width = None
@@ -14089,7 +14100,7 @@ class WebRecordVideoParams(AbstractModel):
 
     @property
     def Width(self):
-        r"""
+        r"""Recording screen width, defaults to 1280, value range [0, 1920]
         :rtype: int
         """
         return self._Width
@@ -14100,7 +14111,7 @@ class WebRecordVideoParams(AbstractModel):
 
     @property
     def Height(self):
-        r"""
+        r"""Recording screen height, defaults to 720, value range [0, 1080]
         :rtype: int
         """
         return self._Height
@@ -14111,7 +14122,8 @@ class WebRecordVideoParams(AbstractModel):
 
     @property
     def Format(self):
-        r"""
+        r"""Specify the output format, optional hls, mp4. When storing to VOD, this parameter is invalid; please use the MediaType setting within TencentVod (https://cloud.tencent.com/document/api/647/44055#TencentVod).
+ 
         :rtype: str
         """
         return self._Format
@@ -14122,7 +14134,9 @@ class WebRecordVideoParams(AbstractModel):
 
     @property
     def MaxMediaFileDuration(self):
-        r"""
+        r"""If the file format is aac or mp4, the system will automatically split the video file when it exceeds the length limit. Unit: minutes. Default: 1440 min (24h), value range: 1-1440. [Single file size is limited to a maximum of 2G. Files will be automatically split if either condition is met: file size >2G or recording duration > 24h]
+This parameter does not take effect for Hls format recordings.
+Sample value: 1440
         :rtype: int
         """
         return self._MaxMediaFileDuration

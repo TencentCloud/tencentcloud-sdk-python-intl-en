@@ -3405,7 +3405,7 @@ class CreateCSRRequest(AbstractModel):
         :type KeyPassword: str
         :param _Remark: The remarks.
         :type Remark: str
-        :param _Tags: 
+        :param _Tags: Tag List
         :type Tags: list of Tags
         """
         self._Domain = None
@@ -3556,7 +3556,7 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""
+        r"""Tag List
         :rtype: list of Tags
         """
         return self._Tags

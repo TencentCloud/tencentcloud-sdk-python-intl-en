@@ -15295,7 +15295,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FixTag: Fixing prompt tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FixTag: list of str
-        :param _VulCategory: 
+        :param _VulCategory: Vulnerability categories: 1 web cms vulnerabilities, 2 application vulnerabilities, 4 linux software vulnerabilities, 5 windows system vulnerabilities
         :type VulCategory: int
         """
         self._VulId = None
@@ -15354,7 +15354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulCategory(self):
-        r"""
+        r"""Vulnerability categories: 1 web cms vulnerabilities, 2 application vulnerabilities, 4 linux software vulnerabilities, 5 windows system vulnerabilities
         :rtype: int
         """
         return self._VulCategory
@@ -17583,7 +17583,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         :type Md5List: list of str
         :param _EventId: Trojan event ID
         :type EventId: int
-        :param _IsHandleHistoryEvents: 
+        :param _IsHandleHistoryEvents: Perform allowlisting operations on pending historical items; 0 indicates no action, 1 indicates processing
         :type IsHandleHistoryEvents: int
         """
         self._Mode = None
@@ -17698,7 +17698,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def IsHandleHistoryEvents(self):
-        r"""
+        r"""Perform allowlisting operations on pending historical items; 0 indicates no action, 1 indicates processing
         :rtype: int
         """
         return self._IsHandleHistoryEvents
@@ -18586,7 +18586,7 @@ class CreateVulFixTaskQuuids(AbstractModel):
         :type VulId: int
         :param _Quuids: Hosts that need to fix vulnerabilities. All hosts need to have the vulnerability with the ID of VulId and be in a pending fix status.
         :type Quuids: list of str
-        :param _FixMethod: 
+        :param _FixMethod: Repair method: 0 component update or patch installation, 1 disable service
         :type FixMethod: int
         """
         self._VulId = None
@@ -18617,7 +18617,7 @@ class CreateVulFixTaskQuuids(AbstractModel):
 
     @property
     def FixMethod(self):
-        r"""
+        r"""Repair method: 0 component update or patch installation, 1 disable service
         :rtype: int
         """
         return self._FixMethod
@@ -58633,7 +58633,7 @@ class EmergencyResponseInfo(AbstractModel):
         :type TaskId: str
         :param _HostNum: Number of hosts
         :type HostNum: int
-        :param _Status: 
+        :param _Status: Service status: 0 not started, · in progress, 2 completed
         :type Status: int
         :param _StartTime: Service start time
         :type StartTime: str
@@ -58673,7 +58673,7 @@ class EmergencyResponseInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Service status: 0 not started, · in progress, 2 completed
         :rtype: int
         """
         return self._Status
@@ -79392,7 +79392,7 @@ class ModifyWarningHostConfigRequest(AbstractModel):
         :type Quuids: list of str
         :param _ItemLabelIds: List of Project or Tag IDs, empty for custom hosts
         :type ItemLabelIds: list of str
-        :param _ExcludedQuuids: 
+        :param _ExcludedQuuids: Machines to be excluded
         :type ExcludedQuuids: list of str
         """
         self._Type = None
@@ -79459,7 +79459,7 @@ class ModifyWarningHostConfigRequest(AbstractModel):
 
     @property
     def ExcludedQuuids(self):
-        r"""
+        r"""Machines to be excluded
         :rtype: list of str
         """
         return self._ExcludedQuuids
@@ -79608,7 +79608,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         :type IsDisabled: int
         :param _Quuids: Host list
         :type Quuids: list of str
-        :param _ExcludedQuuids: 
+        :param _ExcludedQuuids: Machines to be excluded
         :type ExcludedQuuids: list of str
         """
         self._Id = None
@@ -79723,7 +79723,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
 
     @property
     def ExcludedQuuids(self):
-        r"""
+        r"""Machines to be excluded
         :rtype: list of str
         """
         return self._ExcludedQuuids
@@ -88101,7 +88101,7 @@ class ScanVulRequest(AbstractModel):
         :type TimeoutPeriod: int
         :param _VulIds: IDs of vulnerabilities to be scanned
         :type VulIds: list of int non-negative
-        :param _ScanMethod: 
+        :param _ScanMethod: 0 version comparison, 2 version comparison + poc
         :type ScanMethod: int
         """
         self._VulLevels = None
@@ -88192,7 +88192,7 @@ class ScanVulRequest(AbstractModel):
 
     @property
     def ScanMethod(self):
-        r"""
+        r"""0 version comparison, 2 version comparison + poc
         :rtype: int
         """
         return self._ScanMethod
@@ -88291,7 +88291,7 @@ class ScanVulSettingRequest(AbstractModel):
         :type EnableScan: int
         :param _Uuids: If empty, scan hosts with all Professional, Premium, and General Discount editions by default; if not empty, only scan the selected hosts.
         :type Uuids: list of str
-        :param _ScanMethod: 
+        :param _ScanMethod: 0 version comparison, 2 version comparison + poc
         :type ScanMethod: int
         """
         self._TimerInterval = None
@@ -88406,7 +88406,7 @@ class ScanVulSettingRequest(AbstractModel):
 
     @property
     def ScanMethod(self):
-        r"""
+        r"""0 version comparison, 2 version comparison + poc
         :rtype: int
         """
         return self._ScanMethod
@@ -96177,7 +96177,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FixSuccessCnt: Number of hosts with successful vulnerability fixing
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FixSuccessCnt: int
-        :param _FixMethod: 
+        :param _FixMethod: Repair method: 0 component update or patch installation, 1 disable service
         :type FixMethod: int
         """
         self._VulId = None
@@ -96261,7 +96261,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FixMethod(self):
-        r"""
+        r"""Repair method: 0 component update or patch installation, 1 disable service
         :rtype: int
         """
         return self._FixMethod

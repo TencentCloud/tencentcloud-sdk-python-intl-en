@@ -5905,7 +5905,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         :type Fpga: int
         :param _Remark: Descriptive information of the instance.
         :type Remark: str
-        :param _GpuCount: 
+        :param _GpuCount: The number of physical GPU cards mapped to the instance model, unit: card. For vGPU configurations, the value is less than 1; for passthrough configurations, the value is greater than or equal to 1. vGPU utilizes slicing virtualization technology to partition physical GPU cards, allowing a single GPU card to be allocated to multiple instances after virtualization. Passthrough configurations directly mount GPU devices to instances.
         :type GpuCount: float
         :param _Frequency: CPU clock rate of the instance
         :type Frequency: str
@@ -6157,7 +6157,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def GpuCount(self):
-        r"""
+        r"""The number of physical GPU cards mapped to the instance model, unit: card. For vGPU configurations, the value is less than 1; for passthrough configurations, the value is greater than or equal to 1. vGPU utilizes slicing virtualization technology to partition physical GPU cards, allowing a single GPU card to be allocated to multiple instances after virtualization. Passthrough configurations directly mount GPU devices to instances.
         :rtype: float
         """
         return self._GpuCount

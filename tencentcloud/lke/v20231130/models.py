@@ -19,21 +19,21 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICallConfig(AbstractModel):
-    r"""
+    r"""Smart Conversation
 
     """
 
     def __init__(self):
         r"""
-        :param _EnableVoiceInteract: 
+        :param _EnableVoiceInteract: Enable voice interaction feature
         :type EnableVoiceInteract: bool
-        :param _EnableVoiceCall: 
+        :param _EnableVoiceCall: Enable voice call
         :type EnableVoiceCall: bool
-        :param _EnableDigitalHuman: 
+        :param _EnableDigitalHuman: Enable digital human
         :type EnableDigitalHuman: bool
-        :param _Voice: 
+        :param _Voice: Timbre Configuration
         :type Voice: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
-        :param _DigitalHuman: 
+        :param _DigitalHuman: Digital Human Configuration
         :type DigitalHuman: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         self._EnableVoiceInteract = None
@@ -44,7 +44,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceInteract(self):
-        r"""
+        r"""Enable voice interaction feature
         :rtype: bool
         """
         return self._EnableVoiceInteract
@@ -55,7 +55,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceCall(self):
-        r"""
+        r"""Enable voice call
         :rtype: bool
         """
         return self._EnableVoiceCall
@@ -66,7 +66,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableDigitalHuman(self):
-        r"""
+        r"""Enable digital human
         :rtype: bool
         """
         return self._EnableDigitalHuman
@@ -77,7 +77,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def Voice(self):
-        r"""
+        r"""Timbre Configuration
         :rtype: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
         """
         return self._Voice
@@ -88,7 +88,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def DigitalHuman(self):
-        r"""
+        r"""Digital Human Configuration
         :rtype: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         return self._DigitalHuman
@@ -119,15 +119,15 @@ class AICallConfig(AbstractModel):
 
 
 class AgentDebugInfo(AbstractModel):
-    r"""
+    r"""Agent Debugging Information
 
     """
 
     def __init__(self):
         r"""
-        :param _Input: 
+        :param _Input: Input Information for Tools and Large Models, json
         :type Input: str
-        :param _Output: 
+        :param _Output: Output Information for Tools and Large Models, json
         :type Output: str
         """
         self._Input = None
@@ -135,7 +135,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Input Information for Tools and Large Models, json
         :rtype: str
         """
         return self._Input
@@ -146,7 +146,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output Information for Tools and Large Models, json
         :rtype: str
         """
         return self._Output
@@ -8375,9 +8375,9 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: Application ID list.
         :type AppBizIds: list of str
-        :param _AppType: 
+        :param _AppType: Application type. Optional values: knowledge_qa(knowledge QA)/plugin_parsing_qa(plugin)/shared_knowledge(knowledge base)/evaluate_test(evaluation). If not filled, query all types.
         :type AppType: str
-        :param _SubScenes: 
+        :param _SubScenes: Filter Sub-scenarios
         :type SubScenes: list of str
         """
         self._UinAccount = None
@@ -8457,7 +8457,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""
+        r"""Application type. Optional values: knowledge_qa(knowledge QA)/plugin_parsing_qa(plugin)/shared_knowledge(knowledge base)/evaluate_test(evaluation). If not filled, query all types.
         :rtype: str
         """
         return self._AppType
@@ -8468,7 +8468,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        r"""
+        r"""Filter Sub-scenarios
         :rtype: list of str
         """
         return self._SubScenes
@@ -8610,9 +8610,9 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: Filter sub-scenario (used in document parsing scenario).
         :type SubScenes: list of str
-        :param _AppType: 
+        :param _AppType: Application type (knowledge_qa application management, shared_knowlege shared knowledge base)
         :type AppType: str
-        :param _SpaceId: 
+        :param _SpaceId: Space ID, used to limit the query scope. When not filled, data from all spaces are queried.
         :type SpaceId: str
         """
         self._UinAccount = None
@@ -8728,7 +8728,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""
+        r"""Application type (knowledge_qa application management, shared_knowlege shared knowledge base)
         :rtype: str
         """
         return self._AppType
@@ -8739,7 +8739,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""
+        r"""Space ID, used to limit the query scope. When not filled, data from all spaces are queried.
         :rtype: str
         """
         return self._SpaceId
@@ -9094,17 +9094,17 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
 
 class DigitalHumanConfig(AbstractModel):
-    r"""
+    r"""Digital Human Configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _AssetKey: 
+        :param _AssetKey: Digital Human Asset key
         :type AssetKey: str
-        :param _Name: 
+        :param _Name: Digital Human Name
         :type Name: str
-        :param _Avatar: 
+        :param _Avatar: Image
         :type Avatar: str
         """
         self._AssetKey = None
@@ -9113,7 +9113,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def AssetKey(self):
-        r"""
+        r"""Digital Human Asset key
         :rtype: str
         """
         return self._AssetKey
@@ -9124,7 +9124,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Digital Human Name
         :rtype: str
         """
         return self._Name
@@ -9135,7 +9135,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Avatar(self):
-        r"""
+        r"""Image
         :rtype: str
         """
         return self._Avatar
@@ -9160,15 +9160,15 @@ class DigitalHumanConfig(AbstractModel):
 
 
 class DocFilterFlag(AbstractModel):
-    r"""
+    r"""Document list filter flag
 
     """
 
     def __init__(self):
         r"""
-        :param _Flag: 
+        :param _Flag: Flag
         :type Flag: str
-        :param _Value: 
+        :param _Value: ID Value
         :type Value: bool
         """
         self._Flag = None
@@ -9176,7 +9176,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Flag(self):
-        r"""
+        r"""Flag
         :rtype: str
         """
         return self._Flag
@@ -9187,7 +9187,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""ID Value
         :rtype: bool
         """
         return self._Value
@@ -9382,15 +9382,15 @@ class DocSegment(AbstractModel):
 
 
 class DuplicateFileHandle(AbstractModel):
-    r"""
+    r"""Duplicate document handling method
 
     """
 
     def __init__(self):
         r"""
-        :param _CheckType: 
+        :param _CheckType: Duplicate document identification method, 1: By document content, i.e., using the cos_hash field to determine whether duplicates exist
         :type CheckType: int
-        :param _HandleType: 
+        :param _HandleType: Duplicate document handling method, 1: Return an error, 2: Skip and return the business ID of the duplicate document
         :type HandleType: int
         """
         self._CheckType = None
@@ -9398,7 +9398,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""
+        r"""Duplicate document identification method, 1: By document content, i.e., using the cos_hash field to determine whether duplicates exist
         :rtype: int
         """
         return self._CheckType
@@ -9409,7 +9409,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def HandleType(self):
-        r"""
+        r"""Duplicate document handling method, 1: Return an error, 2: Skip and return the business ID of the duplicate document
         :rtype: int
         """
         return self._HandleType
@@ -9796,20 +9796,20 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    r"""
+    r"""Extended Information
 
     """
 
     def __init__(self):
         r"""
-        :param _EChartsInfo: 
+        :param _EChartsInfo: ECharts Information
         :type EChartsInfo: list of str
         """
         self._EChartsInfo = None
 
     @property
     def EChartsInfo(self):
-        r"""
+        r"""ECharts Information
         :rtype: list of str
         """
         return self._EChartsInfo
@@ -12182,15 +12182,15 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
 
 
 class IntentAchievement(AbstractModel):
-    r"""
+    r"""Intent Implementation Approach
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: Intent Implementation Approach, qa: Q&A response, doc: document-based response, workflow: workflow-based response, llm: LLM response
         :type Name: str
-        :param _Desc: 
+        :param _Desc: Intent Implementation Approach Description
         :type Desc: str
         """
         self._Name = None
@@ -12198,7 +12198,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Intent Implementation Approach, qa: Q&A response, doc: document-based response, workflow: workflow-based response, llm: LLM response
         :rtype: str
         """
         return self._Name
@@ -12209,7 +12209,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Desc(self):
-        r"""
+        r"""Intent Implementation Approach Description
         :rtype: str
         """
         return self._Desc
@@ -22645,13 +22645,107 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
         :type Opt: int
         :param _CateBizId: Category ID.
         :type CateBizId: str
-        :param _IsDownload: 
+        :param _IsDownload: Whether it can be downloaded. This value is meaningful only when IsRefer is true and ReferUrlType is 0.
         :type IsDownload: bool
-        :param _DuplicateFileHandles: 
+        :param _DuplicateFileHandles: Duplicate document handling method, processed by sequentially matching the first condition that is met
         :type DuplicateFileHandles: list of DuplicateFileHandle
-        :param _SplitRule: 
+        :param _SplitRule: Custom Segmentation Rules
+
+The request parameter is a **JSON Object**. For specific format, refer to the interface sample value. It contains the following main fields:
+
+| Field Name          | Type     | Description                                  |
+|--------------------|----------|---------------------------------------------|
+| `xlsx_splitter`    | Object   | **Excel (xlsx) file segmentation policy configuration**, valid only when processing Excel files |
+| `common_splitter`  | Object   | **General file (e.g., txt, pdf) segmentation policy configuration**, segmented by page or tag |
+| `table_style`      | String   | Output format of table content, e.g., HTML or Markdown |
+
+---
+
+## `xlsx_splitter` (Excel Segmentation Policy)
+
+Used to configure **segmentation methods for spreadsheet files**.
+**Type: Object**
+
+```json
+"xlsx_splitter": {
+  "header_interval": [1, 2],
+  "content_start": 10,
+  "split_row": 2
+}
+```
+
+### Field Description:
+
+| Field Name         | Type          | Description                                                                
+   |
+|--------------------|---------------|-----------------------------------------------------------------------------|
+| `header_interval` | Array\<Number\> | Row range of headers, formatted as `[start_row, end_row]`, **row numbers start from 1**. E.g., `[1, 2]` indicates rows 1-2 are headers. |
+| `content_start`   | Number        | **Starting row number of table content (1-based)**.                        
+   |
+| `split_row`       | Number        | **Number of rows per segment**.                                            
+   |
+
+---
+## `common_splitter` (General File Segmentation Policy)
+
+Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DOCX)**, supporting two strategies: **by-page segmentation** or **by-tag segmentation**.
+
+**Type: Object**
+
+```json
+"common_splitter": {
+  "splitter": "page",
+  "page_splitter": {
+    "chunk_length": 1000,
+    "chunk_overlap_length": 100
+  }
+}
+```
+
+### Field Description:
+
+| Field Name                     | Type          | Description                                                                
+   |
+|--------------------------------|---------------|-----------------------------------------------------------------------------|
+| `splitter`                     | String        | Segmentation strategy type. Valid values: `"page"` (by-page) or `"tag"` (by-tag). |
+| `page_splitter`                | Object        | **By-page segmentation configuration**.                                     |
+| `page_splitter.chunk_length`   | Number        | **Maximum chunk length**.                                                  
+   |
+| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
+   |
+| `tag_splitter`                 | Object        | **Custom segmentation configuration**.                                      |
+| `tag_splitter.tag`             | Array\<String\> | **Segmentation tags**.                                                     
+   |
+| `tag_splitter.chunk_length`    | Number        | **Maximum chunk length**.                                                  
+   |
+| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
+   |
+
+🔹 **Additional Notes:**
+
+- Valid values for `splitter`:
+    - `"page"`: Only use by-page segmentation logic. Only `page_splitter` fields are relevant.
+    - `"tag"`: Only use by-tag segmentation logic (e.g., using delimiters like semicolons or line breaks). Only `tag_splitter` fields are relevant.
+---
+
+## `table_style` (Table Output Style)
+
+Specifies **the format in which tabular content (e.g., tables extracted from Excel or CSV) is returned**, facilitating frontend display or subsequent processing.
+
+**Type: String**
+
+```json
+"table_style": "md"
+```
+
+### Field Description:
+
+| Field Name     | Type   | Description                                                                
+   |
+|----------------|--------|-----------------------------------------------------------------------------|
+| `table_style`  | String | Output format of table content. Valid values:<br>• `"html"`: Returns as HTML tables, suitable for web display.<br>• `"md"`: Returns in Markdown table syntax, suitable for documentation or Markdown rendering environments. |
         :type SplitRule: str
-        :param _UpdatePeriodInfo: 
+        :param _UpdatePeriodInfo: Document update frequency, default value is 0 (no updates)
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         self._BotBizId = None
@@ -22866,7 +22960,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsDownload(self):
-        r"""
+        r"""Whether it can be downloaded. This value is meaningful only when IsRefer is true and ReferUrlType is 0.
         :rtype: bool
         """
         return self._IsDownload
@@ -22877,7 +22971,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def DuplicateFileHandles(self):
-        r"""
+        r"""Duplicate document handling method, processed by sequentially matching the first condition that is met
         :rtype: list of DuplicateFileHandle
         """
         return self._DuplicateFileHandles
@@ -22888,7 +22982,101 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def SplitRule(self):
-        r"""
+        r"""Custom Segmentation Rules
+
+The request parameter is a **JSON Object**. For specific format, refer to the interface sample value. It contains the following main fields:
+
+| Field Name          | Type     | Description                                  |
+|--------------------|----------|---------------------------------------------|
+| `xlsx_splitter`    | Object   | **Excel (xlsx) file segmentation policy configuration**, valid only when processing Excel files |
+| `common_splitter`  | Object   | **General file (e.g., txt, pdf) segmentation policy configuration**, segmented by page or tag |
+| `table_style`      | String   | Output format of table content, e.g., HTML or Markdown |
+
+---
+
+## `xlsx_splitter` (Excel Segmentation Policy)
+
+Used to configure **segmentation methods for spreadsheet files**.
+**Type: Object**
+
+```json
+"xlsx_splitter": {
+  "header_interval": [1, 2],
+  "content_start": 10,
+  "split_row": 2
+}
+```
+
+### Field Description:
+
+| Field Name         | Type          | Description                                                                
+   |
+|--------------------|---------------|-----------------------------------------------------------------------------|
+| `header_interval` | Array\<Number\> | Row range of headers, formatted as `[start_row, end_row]`, **row numbers start from 1**. E.g., `[1, 2]` indicates rows 1-2 are headers. |
+| `content_start`   | Number        | **Starting row number of table content (1-based)**.                        
+   |
+| `split_row`       | Number        | **Number of rows per segment**.                                            
+   |
+
+---
+## `common_splitter` (General File Segmentation Policy)
+
+Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DOCX)**, supporting two strategies: **by-page segmentation** or **by-tag segmentation**.
+
+**Type: Object**
+
+```json
+"common_splitter": {
+  "splitter": "page",
+  "page_splitter": {
+    "chunk_length": 1000,
+    "chunk_overlap_length": 100
+  }
+}
+```
+
+### Field Description:
+
+| Field Name                     | Type          | Description                                                                
+   |
+|--------------------------------|---------------|-----------------------------------------------------------------------------|
+| `splitter`                     | String        | Segmentation strategy type. Valid values: `"page"` (by-page) or `"tag"` (by-tag). |
+| `page_splitter`                | Object        | **By-page segmentation configuration**.                                     |
+| `page_splitter.chunk_length`   | Number        | **Maximum chunk length**.                                                  
+   |
+| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
+   |
+| `tag_splitter`                 | Object        | **Custom segmentation configuration**.                                      |
+| `tag_splitter.tag`             | Array\<String\> | **Segmentation tags**.                                                     
+   |
+| `tag_splitter.chunk_length`    | Number        | **Maximum chunk length**.                                                  
+   |
+| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
+   |
+
+🔹 **Additional Notes:**
+
+- Valid values for `splitter`:
+    - `"page"`: Only use by-page segmentation logic. Only `page_splitter` fields are relevant.
+    - `"tag"`: Only use by-tag segmentation logic (e.g., using delimiters like semicolons or line breaks). Only `tag_splitter` fields are relevant.
+---
+
+## `table_style` (Table Output Style)
+
+Specifies **the format in which tabular content (e.g., tables extracted from Excel or CSV) is returned**, facilitating frontend display or subsequent processing.
+
+**Type: String**
+
+```json
+"table_style": "md"
+```
+
+### Field Description:
+
+| Field Name     | Type   | Description                                                                
+   |
+|----------------|--------|-----------------------------------------------------------------------------|
+| `table_style`  | String | Output format of table content. Valid values:<br>• `"html"`: Returns as HTML tables, suitable for web display.<br>• `"md"`: Returns in Markdown table syntax, suitable for documentation or Markdown rendering environments. |
         :rtype: str
         """
         return self._SplitRule
@@ -22899,7 +23087,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def UpdatePeriodInfo(self):
-        r"""
+        r"""Document update frequency, default value is 0 (no updates)
         :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         return self._UpdatePeriodInfo
@@ -24267,20 +24455,20 @@ class UnsatisfiedReply(AbstractModel):
 
 
 class UpdatePeriodInfo(AbstractModel):
-    r"""
+    r"""Update Policy
 
     """
 
     def __init__(self):
         r"""
-        :param _UpdatePeriodH: 
+        :param _UpdatePeriodH: Document update frequency type: 0: No update, -H: Hourly granularity. Currently only supports 24 (1 day), 72 (3 days), 168 (7 days). Only valid for source=2 Tencent document type.
         :type UpdatePeriodH: int
         """
         self._UpdatePeriodH = None
 
     @property
     def UpdatePeriodH(self):
-        r"""
+        r"""Document update frequency type: 0: No update, -H: Hourly granularity. Currently only supports 24 (1 day), 72 (3 days), 168 (7 days). Only valid for source=2 Tencent document type.
         :rtype: int
         """
         return self._UpdatePeriodH
@@ -24757,17 +24945,17 @@ class VerifyQAResponse(AbstractModel):
 
 
 class VoiceConfig(AbstractModel):
-    r"""
+    r"""Timbre Parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceType: 
+        :param _VoiceType: Public Cloud Timbre ID
         :type VoiceType: int
-        :param _TimbreKey: 
+        :param _TimbreKey: Timbre Key
         :type TimbreKey: str
-        :param _VoiceName: 
+        :param _VoiceName: Timbre Name
         :type VoiceName: str
         """
         self._VoiceType = None
@@ -24776,7 +24964,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""
+        r"""Public Cloud Timbre ID
         :rtype: int
         """
         return self._VoiceType
@@ -24787,7 +24975,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def TimbreKey(self):
-        r"""
+        r"""Timbre Key
         :rtype: str
         """
         return self._TimbreKey
@@ -24798,7 +24986,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceName(self):
-        r"""
+        r"""Timbre Name
         :rtype: str
         """
         return self._VoiceName
@@ -24954,23 +25142,23 @@ class WorkFlowSummary(AbstractModel):
 
 
 class WorkflowInfo(AbstractModel):
-    r"""
+    r"""Workflow Information
 
     """
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 
+        :param _WorkflowId: Workflow ID
         :type WorkflowId: str
-        :param _WorkflowName: 
+        :param _WorkflowName: Workflow Name
         :type WorkflowName: str
-        :param _WorkflowRunId: 
+        :param _WorkflowRunId: Workflow Run ID
         :type WorkflowRunId: str
-        :param _OptionCards: 
+        :param _OptionCards: Tab
         :type OptionCards: list of str
-        :param _Outputs: 
+        :param _Outputs: Multi-bubble output results
         :type Outputs: list of str
-        :param _WorkflowReleaseTime: 
+        :param _WorkflowReleaseTime: Workflow Publish Time, unix timestamp
         :type WorkflowReleaseTime: str
         """
         self._WorkflowId = None
@@ -24982,7 +25170,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""
+        r"""Workflow ID
         :rtype: str
         """
         return self._WorkflowId
@@ -24993,7 +25181,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""
+        r"""Workflow Name
         :rtype: str
         """
         return self._WorkflowName
@@ -25004,7 +25192,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""
+        r"""Workflow Run ID
         :rtype: str
         """
         return self._WorkflowRunId
@@ -25015,7 +25203,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""
+        r"""Tab
         :rtype: list of str
         """
         return self._OptionCards
@@ -25026,7 +25214,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""
+        r"""Multi-bubble output results
         :rtype: list of str
         """
         return self._Outputs
@@ -25037,7 +25225,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        r"""
+        r"""Workflow Publish Time, unix timestamp
         :rtype: str
         """
         return self._WorkflowReleaseTime

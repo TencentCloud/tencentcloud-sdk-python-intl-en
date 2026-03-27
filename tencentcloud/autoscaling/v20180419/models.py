@@ -8318,7 +8318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
+        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
 
 <Li>BGP: general bgp line.</li>.
 For a user who has enabled the static single-line IP allowlist, valid values include:.
@@ -8333,7 +8333,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
-<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>. 
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. 
 If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
 
 High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
@@ -8408,7 +8408,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
-        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
+        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
 
 <Li>BGP: general bgp line.</li>.
 For a user who has enabled the static single-line IP allowlist, valid values include:.
@@ -8432,7 +8432,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
-<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>. 
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. 
 If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
 
 High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
@@ -9919,7 +9919,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: <p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.comom/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
+        :param _AutoScalingGroupId: <p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
         :type AutoScalingGroupId: str
         :param _AutoScalingGroupName: <p>The scaling group name must be unique in your account. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 55 bytes.</p>.
         :type AutoScalingGroupName: str
@@ -9927,19 +9927,19 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type DefaultCooldown: int
         :param _DesiredCapacity: <P>Expected number of instances. value range [0,2000]. to meet the maximum value equal to or greater than the expected value, and the expected value equal to or greater than the minimum value.</p>.
         :type DesiredCapacity: int
-        :param _LaunchConfigurationId: <p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.comom/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
+        :param _LaunchConfigurationId: <p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
         :type LaunchConfigurationId: str
         :param _MaxSize: <P>Maximum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :type MaxSize: int
         :param _MinSize: <P>Minimum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :type MinSize: int
-        :param _ProjectId: <p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
+        :param _ProjectId: <p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
         :type ProjectId: int
-        :param _SubnetIds: <p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
+        :param _SubnetIds: <p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
         :type SubnetIds: list of str
         :param _TerminationPolicies: <p>Termination policy, whose maximum length is currently 1. valid values: OLDEST_INSTANCE and NEWEST_INSTANCE.</p><li> OLDEST_INSTANCE terminates the OLDEST INSTANCE in the scaling group first.</li><li> NEWEST_INSTANCE terminates the NEWEST INSTANCE in the scaling group first.</li>.
         :type TerminationPolicies: list of str
-        :param _VpcId: <p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
+        :param _VpcId: <p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
         :type VpcId: str
         :param _Zones: <P>AZ list</p>.
         :type Zones: list of str
@@ -9953,7 +9953,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: <p>The multi-az/subnet policy, with values including PRIORITY and EQUALITY, defaults to PRIORITY.</p><li> PRIORITY: attempt to create instances taking the order of the az/subnet list as the PRIORITY. if instances can be successfully created in the az/subnet with the highest PRIORITY, they will always be created there.</li> <li> EQUALITY: instances added through scale-out will be distributed across multiple azs/subnets to ensure A relatively balanced number of instances in each az/subnet after expansion.</li> <p>points to consider:</p><li> when the scaling group is based on A classic network, this policy applies to multi-az. when the scaling group is based on A VPC network, this policy applies to multi-subnet, no longer considering AZ factors. for example, with four subnets labeled A, B, c, and D, where A, B, and c are in availability zone 1 and D is in availability zone 2, consider subnets A, B, c, and D for sorting, without considering availability zones 1 and 2.</li> <li> this policy applies to multi-az/subnet but is not applicable to the instancetypes parameter of the launch configuration. selection of multiple models is according to PRIORITY policy.</li> <li> when creating instances according to the PRIORITY policy, ensure the policy for multiple models first, then the policy for multi-az/subnet. for example, with multiple models A and B, and multiple subnets 1, 2, and 3, attempts will be made in the order A1, A2, A3, B1, B2, B3. if A1 is sold out, A2 will be attempted (not B1).</li>.
         :type MultiZoneSubnetPolicy: str
-        :param _HealthCheckType: <p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.comom/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.comom/document/product/214/6097?from_cn_redirect=1).</li>.
+        :param _HealthCheckType: <p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.com/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.com/document/product/214/6097?from_cn_redirect=1).</li>.
         :type HealthCheckType: str
         :param _LoadBalancerHealthCheckGracePeriod: <p>Specifies the CLB health check grace period in seconds.</p><p>value range: [0, 7200].</p><p>default value: 0.</p>
         :type LoadBalancerHealthCheckGracePeriod: int
@@ -9998,7 +9998,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        r"""<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.comom/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
+        r"""<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li><li>obtain scaling group ids by calling the <a href="https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -10042,7 +10042,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
-        r"""<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.comom/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
+        r"""<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a>.</li><li>obtain the launch configuration ID by calling the <a href="https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -10075,7 +10075,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
+        r"""<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href="https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.
         :rtype: int
         """
         return self._ProjectId
@@ -10086,7 +10086,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
+        r"""<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href="https://console.cloud.tencent.com/vpc/subnet">console</a> for querying. you can also call the API <a href="https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.
         :rtype: list of str
         """
         return self._SubnetIds
@@ -10108,7 +10108,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
+        r"""<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href="https://console.cloud.tencent.com/vpc/vpc">console</a>; you can also call the <a href="https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1">DescribeVpc</a> api and get the VpcId field from the api response.</p>.
         :rtype: str
         """
         return self._VpcId
@@ -10185,7 +10185,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def HealthCheckType(self):
-        r"""<p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.comom/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.comom/document/product/214/6097?from_cn_redirect=1).</li>.
+        r"""<p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.com/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.com/document/product/214/6097?from_cn_redirect=1).</li>.
         :rtype: str
         """
         return self._HealthCheckType

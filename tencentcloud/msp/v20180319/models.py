@@ -175,7 +175,7 @@ class DstInfo(AbstractModel):
         r"""
         :param _Region: Migration destination region
         :type Region: str
-        :param _Ip: 
+        :param _Ip: Migration destination Ip
         :type Ip: str
         :param _Port: Migration destination port
         :type Port: str
@@ -200,7 +200,7 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
-        r"""
+        r"""Migration destination Ip
         :rtype: str
         """
         return self._Ip
@@ -956,7 +956,7 @@ class SrcInfo(AbstractModel):
         r"""
         :param _Region: Migration source region
         :type Region: str
-        :param _Ip: 
+        :param _Ip: Migration source Ip
         :type Ip: str
         :param _Port: Migration source port
         :type Port: str
@@ -981,7 +981,7 @@ class SrcInfo(AbstractModel):
 
     @property
     def Ip(self):
-        r"""
+        r"""Migration source Ip
         :rtype: str
         """
         return self._Ip

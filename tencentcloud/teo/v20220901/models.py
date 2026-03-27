@@ -3093,7 +3093,7 @@ class AscriptionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Subdomain: 
+        :param _Subdomain: Host record.
         :type Subdomain: str
         :param _RecordType: The record type.
         :type RecordType: str
@@ -3106,7 +3106,7 @@ class AscriptionInfo(AbstractModel):
 
     @property
     def Subdomain(self):
-        r"""
+        r"""Host record.
         :rtype: str
         """
         return self._Subdomain
@@ -4555,7 +4555,7 @@ class BotUserRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: 
+        :param _RuleName: Rule name can only consist of English letters, numbers, and underscores, and cannot start with an underscore.
         :type RuleName: str
         :param _Action: The action. Values:
 <li>`drop`: Block the request</li>
@@ -4619,7 +4619,7 @@ Default: `source_to_eo`.
 
     @property
     def RuleName(self):
-        r"""
+        r"""Rule name can only consist of English letters, numbers, and underscores, and cannot start with an underscore.
         :rtype: str
         """
         return self._RuleName
@@ -43897,20 +43897,26 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class OriginPullProtocolParameters(AbstractModel):
-    r"""
+    r"""Origin HTTPS configuration parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _Protocol: 
+        :param _Protocol: Origin protocol configuration, with values:
+<li>http: Use HTTP protocol for origin pull;</li>
+<li>https: Use HTTPS protocol for origin pull;</li>
+<li>follow: Protocol following.</li>
         :type Protocol: str
         """
         self._Protocol = None
 
     @property
     def Protocol(self):
-        r"""
+        r"""Origin protocol configuration, with values:
+<li>http: Use HTTP protocol for origin pull;</li>
+<li>https: Use HTTPS protocol for origin pull;</li>
+<li>follow: Protocol following.</li>
         :rtype: str
         """
         return self._Protocol
@@ -45225,7 +45231,7 @@ class Quota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Batch: 
+        :param _Batch: Single batch submission quota limit.
         :type Batch: int
         :param _Daily: Daily submission quota limit.
         :type Daily: int
@@ -45246,7 +45252,7 @@ class Quota(AbstractModel):
 
     @property
     def Batch(self):
-        r"""
+        r"""Single batch submission quota limit.
         :rtype: int
         """
         return self._Batch
@@ -48097,7 +48103,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         :param _ForceRedirectHTTPSParameters: Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
-        :param _OriginPullProtocolParameters: 
+        :param _OriginPullProtocolParameters: Origin HTTPS configuration parameters. When Name is set to OriginPullProtocol, this parameter is required.
         :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         :param _CompressionParameters: Intelligent compression configuration. this parameter is required when name is set to compression.
 Note: this field may return null, which indicates a failure to obtain a valid value.
@@ -48436,7 +48442,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OriginPullProtocolParameters(self):
-        r"""
+        r"""Origin HTTPS configuration parameters. When Name is set to OriginPullProtocol, this parameter is required.
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         """
         return self._OriginPullProtocolParameters

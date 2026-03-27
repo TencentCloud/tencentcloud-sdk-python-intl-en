@@ -882,15 +882,15 @@ class ApiEnvironmentStrategy(AbstractModel):
 
 
 class ApiEnvironmentStrategyStatus(AbstractModel):
-    r"""
+    r"""API Binding Policy List
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: 
+        :param _TotalCount: The quantity of rate limiting policies bound to APIs.
         :type TotalCount: int
-        :param _ApiEnvironmentStrategySet: 
+        :param _ApiEnvironmentStrategySet: API Binding Rate Limiting Policy List.
         :type ApiEnvironmentStrategySet: list of ApiEnvironmentStrategy
         """
         self._TotalCount = None
@@ -898,7 +898,7 @@ class ApiEnvironmentStrategyStatus(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""
+        r"""The quantity of rate limiting policies bound to APIs.
         :rtype: int
         """
         return self._TotalCount
@@ -909,7 +909,7 @@ class ApiEnvironmentStrategyStatus(AbstractModel):
 
     @property
     def ApiEnvironmentStrategySet(self):
-        r"""
+        r"""API Binding Rate Limiting Policy List.
         :rtype: list of ApiEnvironmentStrategy
         """
         return self._ApiEnvironmentStrategySet
@@ -4837,7 +4837,7 @@ class CreateApiKeyRequest(AbstractModel):
         :type AccessKeyId: str
         :param _AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10-50 letters, digits, and underscores.
         :type AccessKeySecret: str
-        :param _Tags: 
+        :param _Tags: Tag
         :type Tags: list of Tag
         """
         self._SecretName = None
@@ -4892,7 +4892,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""
+        r"""Tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -15377,15 +15377,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IPStrategiesStatus(AbstractModel):
-    r"""
+    r"""Policy List
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: 
+        :param _TotalCount: Number of policies.
         :type TotalCount: int
-        :param _StrategySet: 
+        :param _StrategySet: Policy List.
         :type StrategySet: list of IPStrategy
         """
         self._TotalCount = None
@@ -15393,7 +15393,7 @@ class IPStrategiesStatus(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""
+        r"""Number of policies.
         :rtype: int
         """
         return self._TotalCount
@@ -15404,7 +15404,7 @@ class IPStrategiesStatus(AbstractModel):
 
     @property
     def StrategySet(self):
-        r"""
+        r"""Policy List.
         :rtype: list of IPStrategy
         """
         return self._StrategySet

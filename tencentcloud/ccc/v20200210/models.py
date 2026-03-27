@@ -29,9 +29,12 @@ class AIAgentInfo(AbstractModel):
         :type AIAgentId: int
         :param _AIAgentName: Intelligent agent name.
         :type AIAgentName: str
+        :param _VariableNames: List of intelligent agent variable names.
+        :type VariableNames: list of str
         """
         self._AIAgentId = None
         self._AIAgentName = None
+        self._VariableNames = None
 
     @property
     def AIAgentId(self):
@@ -55,10 +58,22 @@ class AIAgentInfo(AbstractModel):
     def AIAgentName(self, AIAgentName):
         self._AIAgentName = AIAgentName
 
+    @property
+    def VariableNames(self):
+        r"""List of intelligent agent variable names.
+        :rtype: list of str
+        """
+        return self._VariableNames
+
+    @VariableNames.setter
+    def VariableNames(self, VariableNames):
+        self._VariableNames = VariableNames
+
 
     def _deserialize(self, params):
         self._AIAgentId = params.get("AIAgentId")
         self._AIAgentName = params.get("AIAgentName")
+        self._VariableNames = params.get("VariableNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1159,14 +1174,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _IvrId: IvrId used by the task.
         :type IvrId: int
         :param _State: Task status:.
-0 initial: task creation, call not started.
-1 running.
-2 completed: all calls in the task are completed.
-3 ending: the task has expired, but there are still some calls not ended.
-4 ended: task terminated due to expiration.
+0 initial: task created, call not started.
+1: running.
+2 completed: all calls in the task are done.
+3 ending: the task expires, but some calls are not ended.
+4 stopped: the task expired and ended.
+5 paused: recoverable to continue execution.
         :type State: int
         :param _TaskId: <Task id>.
         :type TaskId: int
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :type MaxRingTimeoutSecond: int
         """
         self._Name = None
         self._CalleeCount = None
@@ -1176,6 +1194,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._IvrId = None
         self._State = None
         self._TaskId = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def Name(self):
@@ -1248,11 +1267,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def State(self):
         r"""Task status:.
-0 initial: task creation, call not started.
-1 running.
-2 completed: all calls in the task are completed.
-3 ending: the task has expired, but there are still some calls not ended.
-4 ended: task terminated due to expiration.
+0 initial: task created, call not started.
+1: running.
+2 completed: all calls in the task are done.
+3 ending: the task expires, but some calls are not ended.
+4 stopped: the task expired and ended.
+5 paused: recoverable to continue execution.
         :rtype: int
         """
         return self._State
@@ -1272,6 +1292,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1282,6 +1313,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._IvrId = params.get("IvrId")
         self._State = params.get("State")
         self._TaskId = params.get("TaskId")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1508,15 +1540,15 @@ class BindStaffSkillGroupListRequest(AbstractModel):
         :type SdkAppId: int
         :param _StaffEmail: Agent email.
         :type StaffEmail: str
-        :param _SkillGroupList: Bound skill group list.
-        :type SkillGroupList: list of int
         :param _StaffSkillGroupList: Bound skill group list (required).
         :type StaffSkillGroupList: list of StaffSkillGroupList
+        :param _SkillGroupList: Bound skill group list.
+        :type SkillGroupList: list of int
         """
         self._SdkAppId = None
         self._StaffEmail = None
-        self._SkillGroupList = None
         self._StaffSkillGroupList = None
+        self._SkillGroupList = None
 
     @property
     def SdkAppId(self):
@@ -1541,6 +1573,17 @@ class BindStaffSkillGroupListRequest(AbstractModel):
         self._StaffEmail = StaffEmail
 
     @property
+    def StaffSkillGroupList(self):
+        r"""Bound skill group list (required).
+        :rtype: list of StaffSkillGroupList
+        """
+        return self._StaffSkillGroupList
+
+    @StaffSkillGroupList.setter
+    def StaffSkillGroupList(self, StaffSkillGroupList):
+        self._StaffSkillGroupList = StaffSkillGroupList
+
+    @property
     def SkillGroupList(self):
         warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
 
@@ -1555,28 +1598,17 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
         self._SkillGroupList = SkillGroupList
 
-    @property
-    def StaffSkillGroupList(self):
-        r"""Bound skill group list (required).
-        :rtype: list of StaffSkillGroupList
-        """
-        return self._StaffSkillGroupList
-
-    @StaffSkillGroupList.setter
-    def StaffSkillGroupList(self, StaffSkillGroupList):
-        self._StaffSkillGroupList = StaffSkillGroupList
-
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._StaffEmail = params.get("StaffEmail")
-        self._SkillGroupList = params.get("SkillGroupList")
         if params.get("StaffSkillGroupList") is not None:
             self._StaffSkillGroupList = []
             for item in params.get("StaffSkillGroupList"):
                 obj = StaffSkillGroupList()
                 obj._deserialize(item)
                 self._StaffSkillGroupList.append(obj)
+        self._SkillGroupList = params.get("SkillGroupList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2221,6 +2253,8 @@ dify-inputs-xxx specifies the inputs variable for dify.
 2. the dify-inputs-user specifies the user value for dify.
 3. dify-inputs-conversation_id is the conversation_id value of dify.
         :type Variables: list of Variable
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports current parameter.
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._AIAgentId = None
@@ -2228,6 +2262,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
         self._Callers = None
         self._PromptVariables = None
         self._Variables = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -2303,6 +2338,17 @@ dify-inputs-xxx specifies the inputs variable for dify.
     def Variables(self, Variables):
         self._Variables = Variables
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports current parameter.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2321,6 +2367,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
                 obj = Variable()
                 obj._deserialize(item)
                 self._Variables.append(obj)
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2442,7 +2489,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.
 5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.
   - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.
-  - If user do not have any questions, call function end_call to hang up.
+  - If user do not have any questions, call function call_end to hang up.
         :type SystemPrompt: str
         :param _Model: Model name, such as
 
@@ -2545,56 +2592,56 @@ Currently, the supported languages are as follows. The English name of the langu
         :type NotifyMessage: str
         :param _NotifyMaxCount: Maximum number of times to trigger ai prompt sound, unlimited by default.
         :type NotifyMaxCount: int
-        :param _CustomTTSConfig: <p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>.
+        :param _CustomTTSConfig: <p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>
 <ul>
 <li>Tencent TTS<br>
-For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>.
+For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
 "TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
-  "AppId": "your application ID", // String required.
-  "SecretId": "your key ID", // String required.
-  "SecretKey": "your Key", // String required.
-  "VoiceType": 101001, // Integer  required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
-  "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
-  "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
-  "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
-"FastVoiceType": "xxxx"   //  optional parameter. parameters for quick voice clone. 
-  }
+"AppId": "your application ID", // String required.
+"SecretId": "your key ID", // String required.
+"SecretKey": "your Key", // String required.
+"VoiceType": 101001, // Integer required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
+ "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
+ "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
+ "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
+"FastVoiceType": "xxxx"   // optional parameter. parameters for quick voice clone. 
+ }
 </code></pre>
  </div><ul>
 <li>Minimax TTS<br>
-For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>.
+For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "minimax",  // String TTS type. 
-        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
-        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
-        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
-        &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
-        &quot;Speed&quot;: 1.2
+"Model": "speech-01-turbo",
+"APIUrl": "https://api.minimax.chat/v1/t2a_v2",
+"APIKey": "eyxxxx",
+"GroupId": "181000000000000",
+"VoiceType":"female-tianmei",
+"Speed": 1.2
 }
 </code></pre>
 </div><ul>
-<li>Volcano TTS</li>.
+<li>Volcano TTS</li>
 </ul>
-<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>.
+<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>
 Text to speech timbre list - voice technology - volcano engine.
-Large model TTS timbre list - voice technology - volcano engine</p>.
+Large model TTS timbre list - voice technology - volcano engine</p>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "volcengine",  // required: String TTS type.
 "AppId": "xxxxxxxx",   // required: String AppId assigned by volcano engine.
 "Token": "TY9d4sQXHxxxxxxx", // required: String type, access Token for volcano engine.
-"Speed": 1.0,            // optional parameter. speaking rate, defaults to 1.0.
-"Volume": 1.0,            // optional parameter, Volume, defaults to 1.0.
+"Speed": 1.0,  // optional parameter. speaking rate, defaults to 1.0.
+"Volume": 1.0,  // optional parameter, Volume, defaults to 1.0.
 "Cluster": "volcano_tts", // optional parameter, business Cluster, is selected by default.
 "VoiceType": "zh_male_aojiaobazong_moon_bigtts" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.
 }
 </code></pre>
 </div><ul>
 <li>Azure TTS<br>
-For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>.
+For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "azure", // required: String TTS type.
@@ -2602,13 +2649,13 @@ For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services
 "Region": "chinanorth3",  // required: String the Region to subscribe to.
 "VoiceName": "zh-CN-XiaoxiaoNeural", // required: String specifies the required VoiceName.
 "Language": "zh-CN", // required: String specifies the synthesis Language.  
-"Rate": 1 // optional: float, speech speed. value range: 0.5–2. default is 1.
+"Rate": 1 // optional: float, speech speed. value range: 0.5-2. default is 1.
 }
 </code></pre>
 </div><ul>
-<li>Custom TTS</li>.
+<li>Custom TTS</li>
 </ul>
-<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">tencent documentation</a></p>.
+<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw " target="_blank">tencent documentation</a></p>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "custom", // String required.
 "APIKey": "APIKey", // String required. be used to authenticate.
@@ -2619,6 +2666,7 @@ For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services
 }
 </code></pre>
 </div>
+
         :type CustomTTSConfig: str
         :param _PromptVariables: Prompt word variable.
         :type PromptVariables: list of Variable
@@ -2656,6 +2704,12 @@ Our side fully acknowledges and understands that according to the laws and regul
         :type MaxCallDurationMs: int
         :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. **only own number supports current parameter.**.
         :type MaxRingTimeoutSecond: int
+        :param _AmbientSoundType: Ambient sound scenario. if so, leave it blank.
+Coffee_shops: chat in the coffee shop communication environment with background.
+busy_office: customer service center.
+        :type AmbientSoundType: str
+        :param _AmbientSoundVolume: Ambient sound volume. if AmbientSoundType is empty, this field is left blank. value ranges from [0,2]. the lower the value, the softer the ambient sound; the higher the value, the louder the ambient sound. if not set, use the default value 1.
+        :type AmbientSoundVolume: float
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2695,6 +2749,8 @@ Our side fully acknowledges and understands that according to the laws and regul
         self._LLMExtraBody = None
         self._MaxCallDurationMs = None
         self._MaxRingTimeoutSecond = None
+        self._AmbientSoundType = None
+        self._AmbientSoundVolume = None
 
     @property
     def SdkAppId(self):
@@ -2804,7 +2860,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.
 5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.
   - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.
-  - If user do not have any questions, call function end_call to hang up.
+  - If user do not have any questions, call function call_end to hang up.
         :rtype: str
         """
         return self._SystemPrompt
@@ -3069,56 +3125,56 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def CustomTTSConfig(self):
-        r"""<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>.
+        r"""<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>
 <ul>
 <li>Tencent TTS<br>
-For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>.
+For configuration, see <a href="https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
 "TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
-  "AppId": "your application ID", // String required.
-  "SecretId": "your key ID", // String required.
-  "SecretKey": "your Key", // String required.
-  "VoiceType": 101001, // Integer  required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
-  "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
-  "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
-  "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
-"FastVoiceType": "xxxx"   //  optional parameter. parameters for quick voice clone. 
-  }
+"AppId": "your application ID", // String required.
+"SecretId": "your key ID", // String required.
+"SecretKey": "your Key", // String required.
+"VoiceType": 101001, // Integer required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.
+ "Speed": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.
+ "Volume": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.
+ "PrimaryLanguage": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.
+"FastVoiceType": "xxxx"   // optional parameter. parameters for quick voice clone. 
+ }
 </code></pre>
  </div><ul>
 <li>Minimax TTS<br>
-For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>.
+For configuration, refer to the <a href="https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit documentation link</a>.</li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "minimax",  // String TTS type. 
-        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
-        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
-        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
-        &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
-        &quot;Speed&quot;: 1.2
+"Model": "speech-01-turbo",
+"APIUrl": "https://api.minimax.chat/v1/t2a_v2",
+"APIKey": "eyxxxx",
+"GroupId": "181000000000000",
+"VoiceType":"female-tianmei",
+"Speed": 1.2
 }
 </code></pre>
 </div><ul>
-<li>Volcano TTS</li>.
+<li>Volcano TTS</li>
 </ul>
-<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>.
+<p>Configure the timbre type. see <a href="https://www.volcengine.com/docs/6561/162929" target="_blank">volcano TTS documentation link</a><br>
 Text to speech timbre list - voice technology - volcano engine.
-Large model TTS timbre list - voice technology - volcano engine</p>.
+Large model TTS timbre list - voice technology - volcano engine</p>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "volcengine",  // required: String TTS type.
 "AppId": "xxxxxxxx",   // required: String AppId assigned by volcano engine.
 "Token": "TY9d4sQXHxxxxxxx", // required: String type, access Token for volcano engine.
-"Speed": 1.0,            // optional parameter. speaking rate, defaults to 1.0.
-"Volume": 1.0,            // optional parameter, Volume, defaults to 1.0.
+"Speed": 1.0,  // optional parameter. speaking rate, defaults to 1.0.
+"Volume": 1.0,  // optional parameter, Volume, defaults to 1.0.
 "Cluster": "volcano_tts", // optional parameter, business Cluster, is selected by default.
 "VoiceType": "zh_male_aojiaobazong_moon_bigtts" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.
 }
 </code></pre>
 </div><ul>
 <li>Azure TTS<br>
-For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>.
+For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "azure", // required: String TTS type.
@@ -3126,13 +3182,13 @@ For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services
 "Region": "chinanorth3",  // required: String the Region to subscribe to.
 "VoiceName": "zh-CN-XiaoxiaoNeural", // required: String specifies the required VoiceName.
 "Language": "zh-CN", // required: String specifies the synthesis Language.  
-"Rate": 1 // optional: float, speech speed. value range: 0.5–2. default is 1.
+"Rate": 1 // optional: float, speech speed. value range: 0.5-2. default is 1.
 }
 </code></pre>
 </div><ul>
-<li>Custom TTS</li>.
+<li>Custom TTS</li>
 </ul>
-<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">tencent documentation</a></p>.
+<p>For the specific protocol specification, refer to <a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw " target="_blank">tencent documentation</a></p>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
 "TTSType": "custom", // String required.
 "APIKey": "APIKey", // String required. be used to authenticate.
@@ -3143,6 +3199,7 @@ For configuration, refer to the <a href="https://docs.azure.cn/zh-cn/ai-services
 }
 </code></pre>
 </div>
+
         :rtype: str
         """
         return self._CustomTTSConfig
@@ -3317,6 +3374,30 @@ Our side fully acknowledges and understands that according to the laws and regul
     def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
         self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
 
+    @property
+    def AmbientSoundType(self):
+        r"""Ambient sound scenario. if so, leave it blank.
+Coffee_shops: chat in the coffee shop communication environment with background.
+busy_office: customer service center.
+        :rtype: str
+        """
+        return self._AmbientSoundType
+
+    @AmbientSoundType.setter
+    def AmbientSoundType(self, AmbientSoundType):
+        self._AmbientSoundType = AmbientSoundType
+
+    @property
+    def AmbientSoundVolume(self):
+        r"""Ambient sound volume. if AmbientSoundType is empty, this field is left blank. value ranges from [0,2]. the lower the value, the softer the ambient sound; the higher the value, the louder the ambient sound. if not set, use the default value 1.
+        :rtype: float
+        """
+        return self._AmbientSoundVolume
+
+    @AmbientSoundVolume.setter
+    def AmbientSoundVolume(self, AmbientSoundVolume):
+        self._AmbientSoundVolume = AmbientSoundVolume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3379,6 +3460,8 @@ Our side fully acknowledges and understands that according to the laws and regul
         self._LLMExtraBody = params.get("LLMExtraBody")
         self._MaxCallDurationMs = params.get("MaxCallDurationMs")
         self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
+        self._AmbientSoundType = params.get("AmbientSoundType")
+        self._AmbientSoundVolume = params.get("AmbientSoundVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3777,6 +3860,10 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type AvailableTime: list of TimeRange
         :param _AIAgentId: Intelligent agent ID. if not filled, IvrId needs to be filled.
         :type AIAgentId: int
+        :param _RetryInterval: Retry interval for task failure. value range: 600-86400 seconds.
+        :type RetryInterval: int
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -3793,6 +3880,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._TimeZone = None
         self._AvailableTime = None
         self._AIAgentId = None
+        self._RetryInterval = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -3959,6 +4048,28 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def AIAgentId(self, AIAgentId):
         self._AIAgentId = AIAgentId
 
+    @property
+    def RetryInterval(self):
+        r"""Retry interval for task failure. value range: 600-86400 seconds.
+        :rtype: int
+        """
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3991,6 +4102,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AvailableTime.append(obj)
         self._AIAgentId = params.get("AIAgentId")
+        self._RetryInterval = params.get("RetryInterval")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4179,7 +4292,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         r"""
         :param _SdkAppId: Application id.
         :type SdkAppId: int
-        :param _UserId: Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
+        :param _UserId: Agent email, underwrite the mobile number has been bound. https://www.tencentcloud.comom/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         :type UserId: str
         :param _Callee: Called number must be preceded by 0086.
         :type Callee: str
@@ -4216,7 +4329,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
+        r"""Agent email, underwrite the mobile number has been bound. https://www.tencentcloud.comom/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         :rtype: str
         """
         return self._UserId
@@ -4501,6 +4614,8 @@ class CreateIVRSessionRequest(AbstractModel):
         :type Variables: list of Variable
         :param _UUI: User data.
         :type UUI: str
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :type MaxRingTimeoutSecond: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -4508,6 +4623,7 @@ class CreateIVRSessionRequest(AbstractModel):
         self._Callers = None
         self._Variables = None
         self._UUI = None
+        self._MaxRingTimeoutSecond = None
 
     @property
     def SdkAppId(self):
@@ -4575,6 +4691,17 @@ class CreateIVRSessionRequest(AbstractModel):
     def UUI(self, UUI):
         self._UUI = UUI
 
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4588,6 +4715,7 @@ class CreateIVRSessionRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Variables.append(obj)
         self._UUI = params.get("UUI")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5418,15 +5546,15 @@ class CreateUserSigRequest(AbstractModel):
         :type SdkAppId: int
         :param _Uid: User ID, must be consistent with the Uid value in the ClientData field.
         :type Uid: str
-        :param _ExpiredTime: Valid period, in seconds, no more than 1 hr.
-        :type ExpiredTime: int
         :param _ClientData: Signature data of the user. required field. standard JSON format.
         :type ClientData: str
+        :param _ExpiredTime: Valid period, in seconds, no more than 1 hr.
+        :type ExpiredTime: int
         """
         self._SdkAppId = None
         self._Uid = None
-        self._ExpiredTime = None
         self._ClientData = None
+        self._ExpiredTime = None
 
     @property
     def SdkAppId(self):
@@ -5451,17 +5579,6 @@ class CreateUserSigRequest(AbstractModel):
         self._Uid = Uid
 
     @property
-    def ExpiredTime(self):
-        r"""Valid period, in seconds, no more than 1 hr.
-        :rtype: int
-        """
-        return self._ExpiredTime
-
-    @ExpiredTime.setter
-    def ExpiredTime(self, ExpiredTime):
-        self._ExpiredTime = ExpiredTime
-
-    @property
     def ClientData(self):
         r"""Signature data of the user. required field. standard JSON format.
         :rtype: str
@@ -5472,12 +5589,23 @@ class CreateUserSigRequest(AbstractModel):
     def ClientData(self, ClientData):
         self._ClientData = ClientData
 
+    @property
+    def ExpiredTime(self):
+        r"""Valid period, in seconds, no more than 1 hr.
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Uid = params.get("Uid")
-        self._ExpiredTime = params.get("ExpiredTime")
         self._ClientData = params.get("ClientData")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6701,8 +6829,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Callees: list of AutoCalloutTaskCalleeInfo
         :param _IvrId: IvrId used by the task.
         :type IvrId: int
-        :param _State: Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - terminated.
+        :param _State: Task status 0 initial 1 running 2 completed 3 ending 4 terminated 5 suspended.
         :type State: int
+        :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :type MaxRingTimeoutSecond: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -6714,6 +6844,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Callees = None
         self._IvrId = None
         self._State = None
+        self._MaxRingTimeoutSecond = None
         self._RequestId = None
 
     @property
@@ -6796,7 +6927,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
-        r"""Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - terminated.
+        r"""Task status 0 initial 1 running 2 completed 3 ending 4 terminated 5 suspended.
         :rtype: int
         """
         return self._State
@@ -6804,6 +6935,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @State.setter
     def State(self, State):
         self._State = State
+
+    @property
+    def MaxRingTimeoutSecond(self):
+        r"""Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
+        :rtype: int
+        """
+        return self._MaxRingTimeoutSecond
+
+    @MaxRingTimeoutSecond.setter
+    def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
+        self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
 
     @property
     def RequestId(self):
@@ -6831,6 +6973,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self._Callees.append(obj)
         self._IvrId = params.get("IvrId")
         self._State = params.get("State")
+        self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
         self._RequestId = params.get("RequestId")
 
 
@@ -8896,13 +9039,13 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: <p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.
         :type SdkAppId: int
-        :param _SessionId: Specifies the session id of the call.
+        :param _SessionId: <P>Call session id</p>.
         :type SessionId: str
-        :param _StartTimestamp: Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
+        :param _StartTimestamp: <p>Start timestamp, Unix second-level timestamp, supports up to the last 180 days.</p>.
         :type StartTimestamp: int
-        :param _EndTimestamp: End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.
+        :param _EndTimestamp: <p>End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.</p>.
         :type EndTimestamp: int
         """
         self._SdkAppId = None
@@ -8912,7 +9055,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""<p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.
         :rtype: int
         """
         return self._SdkAppId
@@ -8923,7 +9066,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""Specifies the session id of the call.
+        r"""<P>Call session id</p>.
         :rtype: str
         """
         return self._SessionId
@@ -8934,7 +9077,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        r"""Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
+        r"""<p>Start timestamp, Unix second-level timestamp, supports up to the last 180 days.</p>.
         :rtype: int
         """
         return self._StartTimestamp
@@ -8945,7 +9088,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        r"""End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.
+        r"""<p>End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.</p>.
         :rtype: int
         """
         return self._EndTimestamp
@@ -8977,52 +9120,56 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Caller: Calling number.
+        :param _Caller: <P>Calling number</p>.
         :type Caller: str
-        :param _Callee: Called number.
+        :param _Callee: <P>Called number</p>.
         :type Callee: str
-        :param _CallType: Call type. valid values: 1 (outgoing call), 2 (incoming call), 3 (audio dial-in), 5 (predictive outbound call), 6 (internal call).
+        :param _CallType: <P>Call type 1 outgoing call 2 incoming call 3 audio dial-in 5 predictive outbound call 6 extension call</p>.
         :type CallType: int
-        :param _StartTimeStamp: Start timestamp. Unix second-level timestamp.
+        :param _StartTimeStamp: <p>Start timestamp, Unix second-level timestamp</p>.
         :type StartTimeStamp: int
-        :param _RingTimestamp: Ring timestamp. UNIX second-level timestamp.
+        :param _RingTimestamp: <p>Ring timestamp, UNIX second-level timestamp</p>.
         :type RingTimestamp: int
-        :param _AcceptTimestamp: Answer timestamp. UNIX second-level timestamp.
+        :param _AcceptTimestamp: <p>Answer timestamp, UNIX second-level timestamp</p>.
         :type AcceptTimestamp: int
-        :param _EndedTimestamp: End timestamp, UNIX second-level timestamp.
+        :param _EndedTimestamp: <p>End timestamp, UNIX second-level timestamp</p>.
         :type EndedTimestamp: int
-        :param _QueuedTimestamp: Queue entry time. Unix second-level timestamp.
+        :param _QueuedTimestamp: <p>Queue entry time, Unix second-level timestamp</p>.
         :type QueuedTimestamp: int
-        :param _StaffUserId: Agent account.
+        :param _StaffUserId: <P>Agent account</p>.
         :type StaffUserId: str
-        :param _EndStatus: Refers to the EndStatus field in the DescribeTelCdr api.
+        :param _EndStatus: <p>Refer to the EndStatus field in the DescribeTelCdr api.</p>.
         :type EndStatus: int
-        :param _QueuedSkillGroupId: Queue skill group ID.
+        :param _QueuedSkillGroupId: <p>Queue skill group ID</p>.
         :type QueuedSkillGroupId: int
-        :param _QueuedSkillGroupName: Queue skill group name.
+        :param _QueuedSkillGroupName: <P>Queue skill group name</p>.
         :type QueuedSkillGroupName: str
-        :param _RecordURL: Recording url with authentication and valid period. obtain and pull within a short time frame. do not persist this link.
+        :param _RecordURL: <P>The recording link comes with authentication and a valid period. after obtaining it, please retrieve the content within 24 hours. do not persist this link. if the link has expired, call this api again to get a new link.</p>.
         :type RecordURL: str
-        :param _CustomRecordURL: Specifies the COS link for recording transfer to a third party.
+        :param _CustomRecordURL: <p>Recording transfer to external COS link</p>.
         :type CustomRecordURL: str
-        :param _AsrURL: Recording text information link with authentication and valid period. retrieve it within a short time frame. do not persist this link.
+        :param _AsrURL: <P>Text information link of the voice recording, with authentication and valid period. please retrieve it within 24 hr after obtaining. do not persist this link. if the link has expired, call this api again to get a new link.</p>.
         :type AsrURL: str
-        :param _VoicemailRecordURL: Voicemail recording url.
+        :param _VoicemailRecordURL: <P>Voicemail recording link</p>.
         :type VoicemailRecordURL: list of str
-        :param _VoicemailAsrURL: Voicemail recording text information url. purchase the offline speech recognition package through the console and enable the offline speech recognition switch.
+        :param _VoicemailAsrURL: <P>Voicemail voice recording text information link. you need to purchase an offline speech recognition package through the console and enable the offline speech recognition switch.</p>.
         :type VoicemailAsrURL: list of str
-        :param _IVRKeyPressed: IVR key information.
+        :param _IVRKeyPressed: <P>IVR key information</p>.
         :type IVRKeyPressed: list of IVRKeyPressedElement
-        :param _PostIVRKeyPressed: Satisfaction rate keystroke information.
+        :param _PostIVRKeyPressed: <P>Key information of satisfaction rate</p>.
         :type PostIVRKeyPressed: list of IVRKeyPressedElement
-        :param _HungUpSide: Hang-Up side. valid values: seat, user, system.
+        :param _HungUpSide: <P>Hang-Up side seat agent user system</p>.
         :type HungUpSide: str
-        :param _UUI: Customer custom data (User-to-User Interface).
+        :param _UUI: <p>Customer custom data (User-to-User Interface)</p>.
         :type UUI: str
-        :param _Events: List of events during a call.
+        :param _Events: <P>Event list for calls in progress</p>.
         :type Events: list of SessionEvent
-        :param _ServeParticipants: List of service participants.
+        :param _ServeParticipants: <P>Service participant list</p>.
         :type ServeParticipants: list of ServeParticipant
+        :param _SysHangupReason: <P>Status code for reason of system hang-up after connect.</p><p><a href="https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1">details</a></p>.
+        :type SysHangupReason: int
+        :param _SysHangupReasonString: <P>Reason for system hang up after connect.</p><p><a href="https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1">details</a></p>.
+        :type SysHangupReasonString: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -9049,11 +9196,13 @@ class DescribeSessionDetailResponse(AbstractModel):
         self._UUI = None
         self._Events = None
         self._ServeParticipants = None
+        self._SysHangupReason = None
+        self._SysHangupReasonString = None
         self._RequestId = None
 
     @property
     def Caller(self):
-        r"""Calling number.
+        r"""<P>Calling number</p>.
         :rtype: str
         """
         return self._Caller
@@ -9064,7 +9213,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Callee(self):
-        r"""Called number.
+        r"""<P>Called number</p>.
         :rtype: str
         """
         return self._Callee
@@ -9075,7 +9224,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CallType(self):
-        r"""Call type. valid values: 1 (outgoing call), 2 (incoming call), 3 (audio dial-in), 5 (predictive outbound call), 6 (internal call).
+        r"""<P>Call type 1 outgoing call 2 incoming call 3 audio dial-in 5 predictive outbound call 6 extension call</p>.
         :rtype: int
         """
         return self._CallType
@@ -9086,7 +9235,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        r"""Start timestamp. Unix second-level timestamp.
+        r"""<p>Start timestamp, Unix second-level timestamp</p>.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -9097,7 +9246,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        r"""Ring timestamp. UNIX second-level timestamp.
+        r"""<p>Ring timestamp, UNIX second-level timestamp</p>.
         :rtype: int
         """
         return self._RingTimestamp
@@ -9108,7 +9257,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        r"""Answer timestamp. UNIX second-level timestamp.
+        r"""<p>Answer timestamp, UNIX second-level timestamp</p>.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -9119,7 +9268,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndedTimestamp(self):
-        r"""End timestamp, UNIX second-level timestamp.
+        r"""<p>End timestamp, UNIX second-level timestamp</p>.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -9130,7 +9279,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedTimestamp(self):
-        r"""Queue entry time. Unix second-level timestamp.
+        r"""<p>Queue entry time, Unix second-level timestamp</p>.
         :rtype: int
         """
         return self._QueuedTimestamp
@@ -9141,7 +9290,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StaffUserId(self):
-        r"""Agent account.
+        r"""<P>Agent account</p>.
         :rtype: str
         """
         return self._StaffUserId
@@ -9152,7 +9301,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndStatus(self):
-        r"""Refers to the EndStatus field in the DescribeTelCdr api.
+        r"""<p>Refer to the EndStatus field in the DescribeTelCdr api.</p>.
         :rtype: int
         """
         return self._EndStatus
@@ -9163,7 +9312,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupId(self):
-        r"""Queue skill group ID.
+        r"""<p>Queue skill group ID</p>.
         :rtype: int
         """
         return self._QueuedSkillGroupId
@@ -9174,7 +9323,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupName(self):
-        r"""Queue skill group name.
+        r"""<P>Queue skill group name</p>.
         :rtype: str
         """
         return self._QueuedSkillGroupName
@@ -9185,7 +9334,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RecordURL(self):
-        r"""Recording url with authentication and valid period. obtain and pull within a short time frame. do not persist this link.
+        r"""<P>The recording link comes with authentication and a valid period. after obtaining it, please retrieve the content within 24 hours. do not persist this link. if the link has expired, call this api again to get a new link.</p>.
         :rtype: str
         """
         return self._RecordURL
@@ -9196,7 +9345,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CustomRecordURL(self):
-        r"""Specifies the COS link for recording transfer to a third party.
+        r"""<p>Recording transfer to external COS link</p>.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -9207,7 +9356,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AsrURL(self):
-        r"""Recording text information link with authentication and valid period. retrieve it within a short time frame. do not persist this link.
+        r"""<P>Text information link of the voice recording, with authentication and valid period. please retrieve it within 24 hr after obtaining. do not persist this link. if the link has expired, call this api again to get a new link.</p>.
         :rtype: str
         """
         return self._AsrURL
@@ -9218,7 +9367,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailRecordURL(self):
-        r"""Voicemail recording url.
+        r"""<P>Voicemail recording link</p>.
         :rtype: list of str
         """
         return self._VoicemailRecordURL
@@ -9229,7 +9378,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailAsrURL(self):
-        r"""Voicemail recording text information url. purchase the offline speech recognition package through the console and enable the offline speech recognition switch.
+        r"""<P>Voicemail voice recording text information link. you need to purchase an offline speech recognition package through the console and enable the offline speech recognition switch.</p>.
         :rtype: list of str
         """
         return self._VoicemailAsrURL
@@ -9240,7 +9389,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def IVRKeyPressed(self):
-        r"""IVR key information.
+        r"""<P>IVR key information</p>.
         :rtype: list of IVRKeyPressedElement
         """
         return self._IVRKeyPressed
@@ -9251,7 +9400,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def PostIVRKeyPressed(self):
-        r"""Satisfaction rate keystroke information.
+        r"""<P>Key information of satisfaction rate</p>.
         :rtype: list of IVRKeyPressedElement
         """
         return self._PostIVRKeyPressed
@@ -9262,7 +9411,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def HungUpSide(self):
-        r"""Hang-Up side. valid values: seat, user, system.
+        r"""<P>Hang-Up side seat agent user system</p>.
         :rtype: str
         """
         return self._HungUpSide
@@ -9273,7 +9422,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def UUI(self):
-        r"""Customer custom data (User-to-User Interface).
+        r"""<p>Customer custom data (User-to-User Interface)</p>.
         :rtype: str
         """
         return self._UUI
@@ -9284,7 +9433,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Events(self):
-        r"""List of events during a call.
+        r"""<P>Event list for calls in progress</p>.
         :rtype: list of SessionEvent
         """
         return self._Events
@@ -9295,7 +9444,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def ServeParticipants(self):
-        r"""List of service participants.
+        r"""<P>Service participant list</p>.
         :rtype: list of ServeParticipant
         """
         return self._ServeParticipants
@@ -9303,6 +9452,28 @@ class DescribeSessionDetailResponse(AbstractModel):
     @ServeParticipants.setter
     def ServeParticipants(self, ServeParticipants):
         self._ServeParticipants = ServeParticipants
+
+    @property
+    def SysHangupReason(self):
+        r"""<P>Status code for reason of system hang-up after connect.</p><p><a href="https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1">details</a></p>.
+        :rtype: int
+        """
+        return self._SysHangupReason
+
+    @SysHangupReason.setter
+    def SysHangupReason(self, SysHangupReason):
+        self._SysHangupReason = SysHangupReason
+
+    @property
+    def SysHangupReasonString(self):
+        r"""<P>Reason for system hang up after connect.</p><p><a href="https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1">details</a></p>.
+        :rtype: str
+        """
+        return self._SysHangupReasonString
+
+    @SysHangupReasonString.setter
+    def SysHangupReasonString(self, SysHangupReasonString):
+        self._SysHangupReasonString = SysHangupReasonString
 
     @property
     def RequestId(self):
@@ -9360,6 +9531,8 @@ class DescribeSessionDetailResponse(AbstractModel):
                 obj = ServeParticipant()
                 obj._deserialize(item)
                 self._ServeParticipants.append(obj)
+        self._SysHangupReason = params.get("SysHangupReason")
+        self._SysHangupReasonString = params.get("SysHangupReasonString")
         self._RequestId = params.get("RequestId")
 
 
@@ -9544,17 +9717,17 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: <p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.
         :type SdkAppId: int
-        :param _PageSize: Page size, upper limit 9,999.
+        :param _PageSize: <P>Pagination size. upper limit: 9999.</p>.
         :type PageSize: int
-        :param _PageNumber: Page number starting from 0.
+        :param _PageNumber: <P>Page number, starting from 0.</p>.
         :type PageNumber: int
-        :param _StaffMail: Agent account used when querying a single agent.
+        :param _StaffMail: <P>Agent account, used when query single agent.</p>.
         :type StaffMail: str
-        :param _ModifiedTime: Use when querying for agents with a modification time greater or equal to modifiedtime.
+        :param _ModifiedTime: <p>Use when querying for agents with modified time equal to or greater than ModifiedTime</p>.
         :type ModifiedTime: int
-        :param _SkillGroupId: Skill group id.
+        :param _SkillGroupId: <p>Skill group ID</p>.
         :type SkillGroupId: int
         """
         self._SdkAppId = None
@@ -9566,7 +9739,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""<p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.
         :rtype: int
         """
         return self._SdkAppId
@@ -9577,7 +9750,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Page size, upper limit 9,999.
+        r"""<P>Pagination size. upper limit: 9999.</p>.
         :rtype: int
         """
         return self._PageSize
@@ -9588,7 +9761,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""Page number starting from 0.
+        r"""<P>Page number, starting from 0.</p>.
         :rtype: int
         """
         return self._PageNumber
@@ -9599,7 +9772,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def StaffMail(self):
-        r"""Agent account used when querying a single agent.
+        r"""<P>Agent account, used when query single agent.</p>.
         :rtype: str
         """
         return self._StaffMail
@@ -9610,7 +9783,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        r"""Use when querying for agents with a modification time greater or equal to modifiedtime.
+        r"""<p>Use when querying for agents with modified time equal to or greater than ModifiedTime</p>.
         :rtype: int
         """
         return self._ModifiedTime
@@ -9621,7 +9794,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        r"""Skill group id.
+        r"""<p>Skill group ID</p>.
         :rtype: int
         """
         return self._SkillGroupId
@@ -9655,9 +9828,9 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of agent users.
+        :param _TotalCount: <P>Total number of agent users</p>.
         :type TotalCount: int
-        :param _StaffList: Agent user information list.
+        :param _StaffList: <P>Agent user information list</p>.
         :type StaffList: list of StaffInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9668,7 +9841,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of agent users.
+        r"""<P>Total number of agent users</p>.
         :rtype: int
         """
         return self._TotalCount
@@ -9679,7 +9852,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def StaffList(self):
-        r"""Agent user information list.
+        r"""<P>Agent user information list</p>.
         :rtype: list of StaffInfo
         """
         return self._StaffList
@@ -10006,11 +10179,11 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        :param _StartTimeStamp: <p>Start timestamp, Unix timestamp (query dimension only supports day, for example, to query may 1, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp; to query may 1 and may 2, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)</p>.
         :type StartTimeStamp: int
-        :param _EndTimeStamp: End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        :param _EndTimeStamp: <p>End timestamp, Unix timestamp. the maximum query time range is 90 days (query dimension only supports day, for example, to query may 1, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp; to query may 1 and may 2, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp).</p>.
         :type EndTimeStamp: int
-        :param _SdkAppIdList: Application id list, when having multiple ids, the returned value is the sum of all the ids.
+        :param _SdkAppIdList: <p>Application ID list. for multiple ids, the return value is the sum of multiple ids.</p>.
         :type SdkAppIdList: list of int
         """
         self._StartTimeStamp = None
@@ -10019,7 +10192,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        r"""Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        r"""<p>Start timestamp, Unix timestamp (query dimension only supports day, for example, to query may 1, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp; to query may 1 and may 2, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)</p>.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -10030,7 +10203,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        r"""End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        r"""<p>End timestamp, Unix timestamp. the maximum query time range is 90 days (query dimension only supports day, for example, to query may 1, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp; to query may 1 and may 2, you should pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp).</p>.
         :rtype: int
         """
         return self._EndTimeStamp
@@ -10041,7 +10214,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def SdkAppIdList(self):
-        r"""Application id list, when having multiple ids, the returned value is the sum of all the ids.
+        r"""<p>Application ID list. for multiple ids, the return value is the sum of multiple ids.</p>.
         :rtype: list of int
         """
         return self._SdkAppIdList
@@ -10072,19 +10245,19 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TelCallOutCount: Number of minutes consumed by outbound package.
+        :param _TelCallOutCount: <P>Minutes consumed by outbound package</p>.
         :type TelCallOutCount: int
-        :param _TelCallInCount: Number of minutes consumed by inbound package.
+        :param _TelCallInCount: <P>Minutes consumed by inbound package</p>.
         :type TelCallInCount: int
-        :param _SeatUsedCount: Number of agent usage statistics.
+        :param _SeatUsedCount: <P>Number of agent usage statistics</p>.
         :type SeatUsedCount: int
-        :param _VoipCallInCount: Number of minutes consumed by audio package.
+        :param _VoipCallInCount: <P>Minutes consumed by audio package</p>.
         :type VoipCallInCount: int
-        :param _VOIPCallInCount: Number of minutes consumed by audio package.
+        :param _VOIPCallInCount: <P>Minutes consumed by audio package</p>.
         :type VOIPCallInCount: int
-        :param _AsrOfflineCount: Number of minutes consumed by offline speech-to-text package.
+        :param _AsrOfflineCount: <P>Minutes consumed by offline speech-to-text package</p>.
         :type AsrOfflineCount: int
-        :param _AsrRealtimeCount: Number of minutes consumed by real-time speech-to-text package.
+        :param _AsrRealtimeCount: <P>Minutes consumed by real-time speech-to-text package</p>.
         :type AsrRealtimeCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10100,7 +10273,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallOutCount(self):
-        r"""Number of minutes consumed by outbound package.
+        r"""<P>Minutes consumed by outbound package</p>.
         :rtype: int
         """
         return self._TelCallOutCount
@@ -10111,7 +10284,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallInCount(self):
-        r"""Number of minutes consumed by inbound package.
+        r"""<P>Minutes consumed by inbound package</p>.
         :rtype: int
         """
         return self._TelCallInCount
@@ -10122,7 +10295,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def SeatUsedCount(self):
-        r"""Number of agent usage statistics.
+        r"""<P>Number of agent usage statistics</p>.
         :rtype: int
         """
         return self._SeatUsedCount
@@ -10135,7 +10308,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
     def VoipCallInCount(self):
         warnings.warn("parameter `VoipCallInCount` is deprecated", DeprecationWarning) 
 
-        r"""Number of minutes consumed by audio package.
+        r"""<P>Minutes consumed by audio package</p>.
         :rtype: int
         """
         return self._VoipCallInCount
@@ -10148,7 +10321,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def VOIPCallInCount(self):
-        r"""Number of minutes consumed by audio package.
+        r"""<P>Minutes consumed by audio package</p>.
         :rtype: int
         """
         return self._VOIPCallInCount
@@ -10159,7 +10332,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrOfflineCount(self):
-        r"""Number of minutes consumed by offline speech-to-text package.
+        r"""<P>Minutes consumed by offline speech-to-text package</p>.
         :rtype: int
         """
         return self._AsrOfflineCount
@@ -10170,7 +10343,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrRealtimeCount(self):
-        r"""Number of minutes consumed by real-time speech-to-text package.
+        r"""<P>Minutes consumed by real-time speech-to-text package</p>.
         :rtype: int
         """
         return self._AsrRealtimeCount
@@ -12938,6 +13111,87 @@ class PackageBuyInfo(AbstractModel):
         
 
 
+class PauseAutoCalloutTaskRequest(AbstractModel):
+    r"""PauseAutoCalloutTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: int
+        :param _SdkAppId: Application ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+
+        :type SdkAppId: int
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        r"""Application ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseAutoCalloutTaskResponse(AbstractModel):
+    r"""PauseAutoCalloutTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PausePredictiveDialingCampaignRequest(AbstractModel):
     r"""PausePredictiveDialingCampaign request structure.
 
@@ -13128,6 +13382,115 @@ class PhoneNumBuyInfo(AbstractModel):
         
 
 
+class PlaySoundCallRequest(AbstractModel):
+    r"""PlaySoundCall request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SessionId: Session ID.
+        :type SessionId: str
+        :param _FileId: Audio file ID. please refer to the management console - telephone customer service - audio file management.
+        :type FileId: int
+        :param _PlayTimes: Number of playbacks. default 1.
+        :type PlayTimes: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._FileId = None
+        self._PlayTimes = None
+
+    @property
+    def SdkAppId(self):
+        r"""App ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        r"""Session ID.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def FileId(self):
+        r"""Audio file ID. please refer to the management console - telephone customer service - audio file management.
+        :rtype: int
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def PlayTimes(self):
+        r"""Number of playbacks. default 1.
+        :rtype: int
+        """
+        return self._PlayTimes
+
+    @PlayTimes.setter
+    def PlayTimes(self, PlayTimes):
+        self._PlayTimes = PlayTimes
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._FileId = params.get("FileId")
+        self._PlayTimes = params.get("PlayTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaySoundCallResponse(AbstractModel):
+    r"""PlaySoundCall response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResetExtensionPasswordRequest(AbstractModel):
     r"""ResetExtensionPassword request structure.
 
@@ -13275,6 +13638,85 @@ class RestoreMemberOnlineRequest(AbstractModel):
 
 class RestoreMemberOnlineResponse(AbstractModel):
     r"""RestoreMemberOnline response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeAutoCalloutTaskRequest(AbstractModel):
+    r"""ResumeAutoCalloutTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: int
+        :param _SdkAppId: App ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        r"""App ID (required). you can view it at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeAutoCalloutTaskResponse(AbstractModel):
+    r"""ResumeAutoCalloutTask response structure.
 
     """
 
@@ -13694,7 +14136,11 @@ class ServeParticipant(AbstractModel):
         :type TransferToType: str
         :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
-        :param _EndStatusString: Ending status.
+        :param _EndStatusString: End status.
+
+For chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).
+
+For english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :type EndStatusString: str
         :param _RecordURL: Recording url.
         :type RecordURL: str
@@ -13860,7 +14306,11 @@ class ServeParticipant(AbstractModel):
 
     @property
     def EndStatusString(self):
-        r"""Ending status.
+        r"""End status.
+
+For chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).
+
+For english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :rtype: str
         """
         return self._EndStatusString
@@ -15636,79 +16086,81 @@ class TelCdrInfo(AbstractModel):
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
         :param _EndStatus: EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario**	EndStatus	EndStatusString	Status description.
+**Scenario**  **EndStatus**  **EndStatusString**  **status description**.
 
-Incoming & outgoing calls. 1. ok. normal call.
+Call in & out    1        ok                        **normal call**.
 
-IVR period user give up.
+Inbound call    102    ivrGiveUp    **user give up during IVR period**.
 
-**User give up while in queue**.
+Inbound call 103 waitingGiveUp **user give up in queue**.
 
-Inbound call 104 ringingGiveUp. specifies the user gives up during ringing.
+Inbound call 104 ringingGiveUp **user gives up during ring**.
 
-Inbound call 105. specifies no agent online.
+Inbound call	105	noSeatOnline	**no agent online**.
 
-Inbound call notWorkTime **off hours**.   
+Inbound call              106	       notWorkTime	       **off hours**.   
 
-IVR ends automatically (no manual intervention).
+Inbound call    107    ivrEnd    **IVR ends automatically (no manual intervention)**.
 
-Inbound call. 100. blocklist (system side).
+Inbound calls    100    blocklist (system side).
 
-restrictedCallee. specifies the global outbound call risk number interception (system side).
+Outgoing call              108        restrictedCallee        **global outbound call risk number blocklist (system side)**.
 
-Outbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.
+Outgoing call     109        tooManyRequest    **outbound call frequency control block (system side)**.
 
-Outbound call 110 restrictedArea **block outgoing calls by region (system side)**.
+Outbound call  110  restrictedArea  **outgoing call region block (system side)**.
 
-restrictedTime. specifies the outbound call interception period on the system side.
+Outgoing call 111 restrictedTime **outbound call interception (system side)**.
                          
-202 notAnswer **callee unanswered**.
+Outgoing call             202            notAnswer	 **callee unanswered**.
 
-Outbound call 203 userReject **callee reject hangup**.
+Outgoing call            203	    userReject	**callee reject hangup**.
 
-Power off. **callee powered off**.
+Outgoing call    204    powerOff    **callee shutdown**.
 
-205            numberNotExist	**callee nonexistent number**.
+Outgoing call           205            numberNotExist	**called nonexistent number**.
 
-Busy. specifies the callee is busy.
+Outbound call    206    busy    **callee busy**.
 
-Outbound call 207 outOfCredit **callee in arrears**.
+Outbound call    207    outOfCredit    **callee in arrears**.
 
-208 operatorError indicates operator channel exception.
+208    operatorError    **operator channel exception**.
 
-Outgoing call caller cancellation.
+Outgoing call          209           callerCancel          **call cancellation by the caller**.
 
-Outgoing call	        210	           notInService	**callee out of service area**.
+Outgoing call 210 notInService **callee out of service area**.
 
-Phone call in/out 211 clientError **client error**.
+Phone call in & out 211 clientError **agent client error**.
 
-Outgoing call 212 carrierBlocked **carrier blocklist**.
+Outgoing call    212     carrierBlocked      **isp blocked**.
 
-Note: call reminder.
+Outgoing call 213 callReminder **note: call reminder**.
 
-Outbound call 215 numberInvalid **called number is invalid**.
+Outbound call 215 numberInvalid **called number invalid**.
 
-Outbound call 216 callRestricted. note: call restricted.
+Outgoing call 216 callRestricted **note: call restricted**.
 
-Callee restricted by blocklist.
+Outgoing call 217 calleeRestricted **callee blocklist restricted**.
 
-Outbound call 218 areaRestricted. **callee area restricted**.
+Outbound call 218 areaRestricted **callee area restricted**.
 
-Prompt call forwarding.
+Outbound call    219     promptCallForwarding      **note call transfer**.
 
-Caller cancellation during ringing.
+Outbound call 220 callerCancelWhileRing **caller cancellation while ringing**.
 
-Caller cancel without ring.
+Outgoing call 221 callerCancelWithoutRing **called number anomaly without ring**.
 
-Audio dial-in 501 call conflict **VoIP user call termination**.
+Outgoing call  222  voiceMailReached  **voice mail hangup**.
 
-VoIP user client timeout.
+Audio inbound 501 callConflict **VoIP user call conflict termination**.
 
-Audio dial-in 503 VoIP user client error.
+Audio dial-in 502 clientTimeout **VoIP user client timeout**.
 
-Chinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).
+Audio inbound 503 voipClientError **VoIP client error**.
 
-English version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
+For chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).
+
+For english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :type EndStatus: int
         :param _SkillGroup: Skill group name.
         :type SkillGroup: str
@@ -15772,6 +16224,14 @@ No record (offline asr generation is not enabled or no package is available).
         :type VoicemailRecordURL: list of str
         :param _VoicemailAsrURL: Text information address of asr audio message during a call.
         :type VoicemailAsrURL: list of str
+        :param _AIAgentId: If it is a call related to intelligent agent, this is the intelligent agent ID.
+        :type AIAgentId: int
+        :param _AIAgentName: If it is a call related to intelligent agent, this is the intelligent agent name.
+        :type AIAgentName: str
+        :param _SysHangupReason: Reasons for system hang-up after connection, enumeration class.
+        :type SysHangupReason: int
+        :param _SysHangupReasonString: Reason for hang-up after connect, text description.
+        :type SysHangupReasonString: str
         """
         self._Caller = None
         self._Callee = None
@@ -15811,6 +16271,10 @@ No record (offline asr generation is not enabled or no package is available).
         self._QueuedSkillGroupName = None
         self._VoicemailRecordURL = None
         self._VoicemailAsrURL = None
+        self._AIAgentId = None
+        self._AIAgentName = None
+        self._SysHangupReason = None
+        self._SysHangupReasonString = None
 
     @property
     def Caller(self):
@@ -15915,79 +16379,81 @@ No record (offline asr generation is not enabled or no package is available).
     def EndStatus(self):
         r"""EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario**	EndStatus	EndStatusString	Status description.
+**Scenario**  **EndStatus**  **EndStatusString**  **status description**.
 
-Incoming & outgoing calls. 1. ok. normal call.
+Call in & out    1        ok                        **normal call**.
 
-IVR period user give up.
+Inbound call    102    ivrGiveUp    **user give up during IVR period**.
 
-**User give up while in queue**.
+Inbound call 103 waitingGiveUp **user give up in queue**.
 
-Inbound call 104 ringingGiveUp. specifies the user gives up during ringing.
+Inbound call 104 ringingGiveUp **user gives up during ring**.
 
-Inbound call 105. specifies no agent online.
+Inbound call	105	noSeatOnline	**no agent online**.
 
-Inbound call notWorkTime **off hours**.   
+Inbound call              106	       notWorkTime	       **off hours**.   
 
-IVR ends automatically (no manual intervention).
+Inbound call    107    ivrEnd    **IVR ends automatically (no manual intervention)**.
 
-Inbound call. 100. blocklist (system side).
+Inbound calls    100    blocklist (system side).
 
-restrictedCallee. specifies the global outbound call risk number interception (system side).
+Outgoing call              108        restrictedCallee        **global outbound call risk number blocklist (system side)**.
 
-Outbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.
+Outgoing call     109        tooManyRequest    **outbound call frequency control block (system side)**.
 
-Outbound call 110 restrictedArea **block outgoing calls by region (system side)**.
+Outbound call  110  restrictedArea  **outgoing call region block (system side)**.
 
-restrictedTime. specifies the outbound call interception period on the system side.
+Outgoing call 111 restrictedTime **outbound call interception (system side)**.
                          
-202 notAnswer **callee unanswered**.
+Outgoing call             202            notAnswer	 **callee unanswered**.
 
-Outbound call 203 userReject **callee reject hangup**.
+Outgoing call            203	    userReject	**callee reject hangup**.
 
-Power off. **callee powered off**.
+Outgoing call    204    powerOff    **callee shutdown**.
 
-205            numberNotExist	**callee nonexistent number**.
+Outgoing call           205            numberNotExist	**called nonexistent number**.
 
-Busy. specifies the callee is busy.
+Outbound call    206    busy    **callee busy**.
 
-Outbound call 207 outOfCredit **callee in arrears**.
+Outbound call    207    outOfCredit    **callee in arrears**.
 
-208 operatorError indicates operator channel exception.
+208    operatorError    **operator channel exception**.
 
-Outgoing call caller cancellation.
+Outgoing call          209           callerCancel          **call cancellation by the caller**.
 
-Outgoing call	        210	           notInService	**callee out of service area**.
+Outgoing call 210 notInService **callee out of service area**.
 
-Phone call in/out 211 clientError **client error**.
+Phone call in & out 211 clientError **agent client error**.
 
-Outgoing call 212 carrierBlocked **carrier blocklist**.
+Outgoing call    212     carrierBlocked      **isp blocked**.
 
-Note: call reminder.
+Outgoing call 213 callReminder **note: call reminder**.
 
-Outbound call 215 numberInvalid **called number is invalid**.
+Outbound call 215 numberInvalid **called number invalid**.
 
-Outbound call 216 callRestricted. note: call restricted.
+Outgoing call 216 callRestricted **note: call restricted**.
 
-Callee restricted by blocklist.
+Outgoing call 217 calleeRestricted **callee blocklist restricted**.
 
-Outbound call 218 areaRestricted. **callee area restricted**.
+Outbound call 218 areaRestricted **callee area restricted**.
 
-Prompt call forwarding.
+Outbound call    219     promptCallForwarding      **note call transfer**.
 
-Caller cancellation during ringing.
+Outbound call 220 callerCancelWhileRing **caller cancellation while ringing**.
 
-Caller cancel without ring.
+Outgoing call 221 callerCancelWithoutRing **called number anomaly without ring**.
 
-Audio dial-in 501 call conflict **VoIP user call termination**.
+Outgoing call  222  voiceMailReached  **voice mail hangup**.
 
-VoIP user client timeout.
+Audio inbound 501 callConflict **VoIP user call conflict termination**.
 
-Audio dial-in 503 VoIP user client error.
+Audio dial-in 502 clientTimeout **VoIP user client timeout**.
 
-Chinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).
+Audio inbound 503 voipClientError **VoIP client error**.
 
-English version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).
+For chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).
+
+For english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).
         :rtype: int
         """
         return self._EndStatus
@@ -16314,6 +16780,50 @@ No record (offline asr generation is not enabled or no package is available).
     def VoicemailAsrURL(self, VoicemailAsrURL):
         self._VoicemailAsrURL = VoicemailAsrURL
 
+    @property
+    def AIAgentId(self):
+        r"""If it is a call related to intelligent agent, this is the intelligent agent ID.
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
+    @property
+    def AIAgentName(self):
+        r"""If it is a call related to intelligent agent, this is the intelligent agent name.
+        :rtype: str
+        """
+        return self._AIAgentName
+
+    @AIAgentName.setter
+    def AIAgentName(self, AIAgentName):
+        self._AIAgentName = AIAgentName
+
+    @property
+    def SysHangupReason(self):
+        r"""Reasons for system hang-up after connection, enumeration class.
+        :rtype: int
+        """
+        return self._SysHangupReason
+
+    @SysHangupReason.setter
+    def SysHangupReason(self, SysHangupReason):
+        self._SysHangupReason = SysHangupReason
+
+    @property
+    def SysHangupReasonString(self):
+        r"""Reason for hang-up after connect, text description.
+        :rtype: str
+        """
+        return self._SysHangupReasonString
+
+    @SysHangupReasonString.setter
+    def SysHangupReasonString(self, SysHangupReasonString):
+        self._SysHangupReasonString = SysHangupReasonString
+
 
     def _deserialize(self, params):
         self._Caller = params.get("Caller")
@@ -16371,6 +16881,10 @@ No record (offline asr generation is not enabled or no package is available).
         self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")
         self._VoicemailRecordURL = params.get("VoicemailRecordURL")
         self._VoicemailAsrURL = params.get("VoicemailAsrURL")
+        self._AIAgentId = params.get("AIAgentId")
+        self._AIAgentName = params.get("AIAgentName")
+        self._SysHangupReason = params.get("SysHangupReason")
+        self._SysHangupReasonString = params.get("SysHangupReasonString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

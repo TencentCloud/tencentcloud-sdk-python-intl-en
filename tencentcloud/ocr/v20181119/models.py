@@ -7918,29 +7918,29 @@ class MainlandPermitOCRResponse(AbstractModel):
 
 
 class MedicalInvoice(AbstractModel):
-    r"""
+    r"""Medical bill information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Title: 
+        :param _Title: Invoice name.
         :type Title: str
-        :param _Code: 
+        :param _Code: Invoice code.
         :type Code: str
-        :param _Number: 
+        :param _Number: Invoice number.
         :type Number: str
-        :param _Total: 
+        :param _Total: Total amount (in figures).
         :type Total: str
-        :param _TotalCn: 
+        :param _TotalCn: Total Amount (in words).
         :type TotalCn: str
-        :param _Date: 
+        :param _Date: Invoice date.
         :type Date: str
-        :param _CheckCode: 
+        :param _CheckCode: Verification code
         :type CheckCode: str
-        :param _Place: 
+        :param _Place: Place of Issue.
         :type Place: str
-        :param _Reviewer: 
+        :param _Reviewer: Reviewer.
         :type Reviewer: str
         """
         self._Title = None
@@ -7955,7 +7955,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Title(self):
-        r"""
+        r"""Invoice name.
         :rtype: str
         """
         return self._Title
@@ -7966,7 +7966,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Code(self):
-        r"""
+        r"""Invoice code.
         :rtype: str
         """
         return self._Code
@@ -7977,7 +7977,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Number(self):
-        r"""
+        r"""Invoice number.
         :rtype: str
         """
         return self._Number
@@ -7988,7 +7988,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Total(self):
-        r"""
+        r"""Total amount (in figures).
         :rtype: str
         """
         return self._Total
@@ -7999,7 +7999,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        r"""
+        r"""Total Amount (in words).
         :rtype: str
         """
         return self._TotalCn
@@ -8010,7 +8010,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Date(self):
-        r"""
+        r"""Invoice date.
         :rtype: str
         """
         return self._Date
@@ -8021,7 +8021,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def CheckCode(self):
-        r"""
+        r"""Verification code
         :rtype: str
         """
         return self._CheckCode
@@ -8032,7 +8032,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Place(self):
-        r"""
+        r"""Place of Issue.
         :rtype: str
         """
         return self._Place
@@ -8043,7 +8043,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Reviewer(self):
-        r"""
+        r"""Reviewer.
         :rtype: str
         """
         return self._Reviewer
@@ -9420,39 +9420,45 @@ class OtherInvoiceList(AbstractModel):
 
 
 class PassportRecognizeInfos(AbstractModel):
-    r"""
+    r"""Information Section Content.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Document Type (Passport Information Page Recognition Result).
         :type Type: str
-        :param _IssuingCountry: 
+        :param _IssuingCountry: Issuing Country (Passport Information Page Recognition Result).
         :type IssuingCountry: str
-        :param _PassportID: 
+        :param _PassportID: Passport Number (Passport Information Page Recognition Result).
         :type PassportID: str
-        :param _Surname: 
+        :param _Surname: Surname (Passport Information Page Recognition Result).
         :type Surname: str
-        :param _GivenName: 
+        :param _GivenName: Given Name (Passport Information Page Recognition Result).
         :type GivenName: str
-        :param _Name: 
+        :param _Name: Full Name (Passport Information Page Recognition Result).
         :type Name: str
-        :param _Nationality: 
+        :param _Nationality: Nationality Information (Passport Information Page Recognition Result).
         :type Nationality: str
-        :param _DateOfBirth: 
+        :param _DateOfBirth: Date of Birth (Passport Information Page Recognition Result).
         :type DateOfBirth: str
-        :param _Sex: 
+        :param _Sex: Gender (Passport Information Page Recognition Result).
         :type Sex: str
-        :param _DateOfIssuance: 
+        :param _DateOfIssuance: Date of Issue (Passport Information Page Recognition Result).
         :type DateOfIssuance: str
-        :param _DateOfExpiration: 
+        :param _DateOfExpiration: Expiry Date (Passport Information Page Recognition Result).
         :type DateOfExpiration: str
-        :param _Signature: 
+        :param _Signature: Cardholder Signature (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :type Signature: str
-        :param _IssuePlace: 
+        :param _IssuePlace: Place of Issue (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :type IssuePlace: str
-        :param _IssuingAuthority: 
+        :param _IssuingAuthority: Issuing Authority (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :type IssuingAuthority: str
         """
         self._Type = None
@@ -9472,7 +9478,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Document Type (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._Type
@@ -9483,7 +9489,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        r"""
+        r"""Issuing Country (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._IssuingCountry
@@ -9494,7 +9500,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def PassportID(self):
-        r"""
+        r"""Passport Number (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._PassportID
@@ -9505,7 +9511,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Surname(self):
-        r"""
+        r"""Surname (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._Surname
@@ -9516,7 +9522,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def GivenName(self):
-        r"""
+        r"""Given Name (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._GivenName
@@ -9527,7 +9533,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Full Name (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._Name
@@ -9538,7 +9544,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Nationality(self):
-        r"""
+        r"""Nationality Information (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._Nationality
@@ -9549,7 +9555,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        r"""
+        r"""Date of Birth (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._DateOfBirth
@@ -9560,7 +9566,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Sex(self):
-        r"""
+        r"""Gender (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._Sex
@@ -9571,7 +9577,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfIssuance(self):
-        r"""
+        r"""Date of Issue (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._DateOfIssuance
@@ -9582,7 +9588,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        r"""
+        r"""Expiry Date (Passport Information Page Recognition Result).
         :rtype: str
         """
         return self._DateOfExpiration
@@ -9593,7 +9599,9 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Signature(self):
-        r"""
+        r"""Cardholder Signature (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :rtype: str
         """
         return self._Signature
@@ -9604,7 +9612,9 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuePlace(self):
-        r"""
+        r"""Place of Issue (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :rtype: str
         """
         return self._IssuePlace
@@ -9615,7 +9625,9 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingAuthority(self):
-        r"""
+        r"""Issuing Authority (Passport Information Page Recognition Result)
+
+This field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.
         :rtype: str
         """
         return self._IssuingAuthority
@@ -17216,9 +17228,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TrainTicket: Train ticket
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TrainTicket: :class:`tencentcloud.ocr.v20181119.models.TrainTicket`
-        :param _MedicalOutpatientInvoice: 
+        :param _MedicalOutpatientInvoice: Medical Outpatient Fee Invoice (Electronic).
         :type MedicalOutpatientInvoice: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
-        :param _MedicalHospitalizedInvoice: 
+        :param _MedicalHospitalizedInvoice: Inpatient Medical Fee Invoice (Electronic).
         :type MedicalHospitalizedInvoice: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         self._VatSpecialInvoice = None
@@ -17512,7 +17524,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MedicalOutpatientInvoice(self):
-        r"""
+        r"""Medical Outpatient Fee Invoice (Electronic).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         return self._MedicalOutpatientInvoice
@@ -17523,7 +17535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MedicalHospitalizedInvoice(self):
-        r"""
+        r"""Inpatient Medical Fee Invoice (Electronic).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         return self._MedicalHospitalizedInvoice
@@ -20849,11 +20861,11 @@ class VatInvoiceInfo(AbstractModel):
         :type CodeConfirm: str
         :param _Receiptor: Payee
         :type Receiptor: str
-        :param _ElectronicFullMark: 
+        :param _ElectronicFullMark: Whether fully electronic and paper tickets exist (0: No, 1: Yes).
         :type ElectronicFullMark: int
-        :param _ElectronicFullNumber: 
+        :param _ElectronicFullNumber: Fully Electronic Number
         :type ElectronicFullNumber: str
-        :param _FormName: 
+        :param _FormName: Co-branded Invoice.
         :type FormName: str
         """
         self._CheckCode = None
@@ -21330,7 +21342,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullMark(self):
-        r"""
+        r"""Whether fully electronic and paper tickets exist (0: No, 1: Yes).
         :rtype: int
         """
         return self._ElectronicFullMark
@@ -21341,7 +21353,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullNumber(self):
-        r"""
+        r"""Fully Electronic Number
         :rtype: str
         """
         return self._ElectronicFullNumber
@@ -21352,7 +21364,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def FormName(self):
-        r"""
+        r"""Co-branded Invoice.
         :rtype: str
         """
         return self._FormName

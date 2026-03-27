@@ -165,9 +165,9 @@ class CccClient(AbstractClient):
 
 
     def CreateAIAgentCall(self, request):
-        r"""This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.
+        r"""Used to create one-time Intelligent Agent outbound calls. You can create a voice Intelligent Agent in the management console - Intelligent Agent Management and perform dialogue process configuration (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). This API is used to initiate a single outbound call task with a configured Intelligent Agent. To create batch Intelligent Agent outbound call tasks, refer to the documentation for creating automatic outbound call tasks (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1).
 
-        Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/70681).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAIAgentCall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAIAgentCallRequest`
@@ -261,7 +261,9 @@ class CccClient(AbstractClient):
 
 
     def CreateAutoCalloutTask(self, request):
-        r"""This API is used to create the automatic outbound call task.
+        r"""This API is used to create bulk automatic outbound calls. The system will automatically initiate outbound calls to the designated called number list based on task configuration. This API can call the configured Intelligent Agent to perform batch outbound call tasks. You can create a voice Intelligent Agent in the management console-Intelligent Agent Management and configure the dialogue process (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). To create a single Intelligent Agent outbound call task, refer to the documentation (https://www.tencentcloud.comom/document/product/679/115681?from_cn_redirect=1).
+
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
@@ -587,7 +589,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAIAgentInfoList(self, request):
-        r"""This API is used to get the list of Intelligent Agents.
+        r"""This API is used to query the information list of configured Intelligent Agents under a specified instance (SdkAppId) by paging, including basic information such as Intelligent Agent ID and name.
 
         :param request: Request instance for DescribeAIAgentInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAIAgentInfoListRequest`
@@ -633,7 +635,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAICallExtractResult(self, request):
-        r"""Obtain AI call content extraction result
+        r"""This API is used to query specified session's post-call Tag results by Session ID after the Intelligent Agent call session ends. Related post-call Tags need to be configured in advance in the management console. For details, please refer to post-call Tags (https://www.tencentcloud.comom/document/product/679/119800?from_cn_redirect=1).
 
         :param request: Request instance for DescribeAICallExtractResult.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultRequest`
@@ -656,7 +658,11 @@ class CccClient(AbstractClient):
 
 
     def DescribeAILatency(self, request):
-        r"""This API is used to obtain AI latency information.
+        r"""Call this API to query the processing latency detail and stats of specified Session by Session ID within a specific time period. The latency info includes:.
+        -End-to-end (ETE) delay: Statistics of the overall duration from user voice input to AI returning a complete response.
+        -ASR latency: statistics of the processing time consumption required for voice input to be recognized as text.
+        -LLM latency: Statistics of inference latency for AI model to generate text content.
+        -Text To Speech (TTS) latency: Statistics of text conversion to speech audio synthesis duration.
 
         :param request: Request instance for DescribeAILatency.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyRequest`
@@ -702,7 +708,8 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTask(self, request):
-        r"""This API is used to query automatic outbound call task details.
+        r"""This API is used to query detailed information of an automatic outbound call task by TaskId, including basic configuration, start and end time, name list, execution status, and call status.
+        This API is usually used together with Create Bulk Automatic Outbound Call Task (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1) to check whether the task configuration takes effect, the current task status, and real-time progress during execution once created.
 
         :param request: Request instance for DescribeAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
@@ -1001,7 +1008,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSessionDetail(self, request):
-        r"""This API is used to query call detail.
+        r"""This API is used to query call details for a single call by session id and timestamp after call ends, including caller and contact information, voice recording.
 
         :param request: Request instance for DescribeSessionDetail.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`
@@ -1368,6 +1375,30 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PauseAutoCalloutTask(self, request):
+        r"""This API is used to suspend an ongoing automatic outbound call task by TaskId. After calling this API, the task will be temporarily interrupted and no longer initiate new outbound call requests; initiated calls are not affected.
+        A paused task can continue execution via the [Restore Suspended Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/125356?from_cn_redirect=1) API. If needed, refer to [Stop Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/69192?from_cn_redirect=1) to permanently terminate the task.
+
+        :param request: Request instance for PauseAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.PauseAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.PauseAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseAutoCalloutTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseAutoCalloutTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PausePredictiveDialingCampaign(self, request):
         r"""This API is used to pause the predictive outbound call task.
 
@@ -1382,6 +1413,29 @@ class CccClient(AbstractClient):
             body = self.call("PausePredictiveDialingCampaign", params, headers=headers)
             response = json.loads(body)
             model = models.PausePredictiveDialingCampaignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PlaySoundCall(self, request):
+        r"""This API is used to perform playback for a session in a call with an agent.
+
+        :param request: Request instance for PlaySoundCall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.PlaySoundCallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.PlaySoundCallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PlaySoundCall", params, headers=headers)
+            response = json.loads(body)
+            model = models.PlaySoundCallResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1428,6 +1482,29 @@ class CccClient(AbstractClient):
             body = self.call("RestoreMemberOnline", params, headers=headers)
             response = json.loads(body)
             model = models.RestoreMemberOnlineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeAutoCalloutTask(self, request):
+        r"""This API is used to restore a paused automatic outbound call task by TaskId. This API is suitable for scenarios where you need to continue execution of the remaining outbound call plan after calling Suspend Automatic Outbound Call Task. After a successful call, the task will resume from the paused state and re-initiate incomplete outbound requests.
+
+        :param request: Request instance for ResumeAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ResumeAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ResumeAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeAutoCalloutTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeAutoCalloutTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

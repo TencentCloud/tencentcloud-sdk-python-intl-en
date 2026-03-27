@@ -377,21 +377,21 @@ class RiskDetails(AbstractModel):
 
 
 class SentimentAnalysis(AbstractModel):
-    r"""
+    r"""Sentiment analysis result
 
     """
 
     def __init__(self):
         r"""
-        :param _Label: 
+        :param _Label: Sentiment Tag
         :type Label: str
-        :param _Score: 
+        :param _Score: Tag score, ranging from 0 to 100
         :type Score: int
-        :param _Detail: 
+        :param _Detail: Sentiment analysis details
         :type Detail: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
-        :param _Code: 
+        :param _Code: Response code; "OK" for success, "InternalError" for failure
         :type Code: str
-        :param _Message: 
+        :param _Message: Exception information
         :type Message: str
         """
         self._Label = None
@@ -402,7 +402,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Label(self):
-        r"""
+        r"""Sentiment Tag
         :rtype: str
         """
         return self._Label
@@ -413,7 +413,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Score(self):
-        r"""
+        r"""Tag score, ranging from 0 to 100
         :rtype: int
         """
         return self._Score
@@ -424,7 +424,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Detail(self):
-        r"""
+        r"""Sentiment analysis details
         :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
         """
         return self._Detail
@@ -435,7 +435,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Code(self):
-        r"""
+        r"""Response code; "OK" for success, "InternalError" for failure
         :rtype: str
         """
         return self._Code
@@ -446,7 +446,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Message(self):
-        r"""
+        r"""Exception information
         :rtype: str
         """
         return self._Message
@@ -475,15 +475,15 @@ class SentimentAnalysis(AbstractModel):
 
 
 class SentimentDetail(AbstractModel):
-    r"""
+    r"""Sentiment analysis details
 
     """
 
     def __init__(self):
         r"""
-        :param _Positive: 
+        :param _Positive: Positive score, ranging from 0 to 100
         :type Positive: int
-        :param _Negative: 
+        :param _Negative: Negative score, ranging from 0 to 100
         :type Negative: int
         """
         self._Positive = None
@@ -491,7 +491,7 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Positive(self):
-        r"""
+        r"""Positive score, ranging from 0 to 100
         :rtype: int
         """
         return self._Positive
@@ -502,7 +502,7 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Negative(self):
-        r"""
+        r"""Negative score, ranging from 0 to 100
         :rtype: int
         """
         return self._Negative

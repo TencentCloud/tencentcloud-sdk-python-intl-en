@@ -410,9 +410,9 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         :type ConnectionPool: bool
         :param _ProxyAllocation: Assignment of read/write weights If `system` is passed in for `WeightMode`, only the default weight assigned by the system will take effect.
         :type ProxyAllocation: list of ProxyAllocation
-        :param _AutoLoadBalance: 
+        :param _AutoLoadBalance: Whether to enable adaptive load balancing. Disabled by default.
         :type AutoLoadBalance: bool
-        :param _AccessMode: 
+        :param _AccessMode: Access Mode: nearby - nearby access, balance - balanced allocation. Default is nearby access.
         :type AccessMode: str
         """
         self._ProxyGroupId = None
@@ -564,7 +564,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""
+        r"""Whether to enable adaptive load balancing. Disabled by default.
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -575,7 +575,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""
+        r"""Access Mode: nearby - nearby access, balance - balanced allocation. Default is nearby access.
         :rtype: str
         """
         return self._AccessMode
@@ -1536,13 +1536,13 @@ class AuditLog(AbstractModel):
         :type AffectRows: int
         :param _ErrCode: The error code
         :type ErrCode: int
-        :param _SqlType: 
+        :param _SqlType: SQL Type.
         :type SqlType: str
         :param _PolicyName: Audit policy name, which will be unavailable soon.
         :type PolicyName: str
-        :param _DBName: 
+        :param _DBName: Database Name.
         :type DBName: str
-        :param _Sql: 
+        :param _Sql: SQL Statement.
         :type Sql: str
         :param _Host: Client address
         :type Host: str
@@ -1622,7 +1622,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def SqlType(self):
-        r"""
+        r"""SQL Type.
         :rtype: str
         """
         return self._SqlType
@@ -1644,7 +1644,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def DBName(self):
-        r"""
+        r"""Database Name.
         :rtype: str
         """
         return self._DBName
@@ -1655,7 +1655,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def Sql(self):
-        r"""
+        r"""SQL Statement.
         :rtype: str
         """
         return self._Sql
@@ -2032,15 +2032,15 @@ class AuditLogFilter(AbstractModel):
         :type Host: list of str
         :param _User: Username
         :type User: list of str
-        :param _DBName: 
+        :param _DBName: Database Name.
         :type DBName: list of str
         :param _TableName: Table name
         :type TableName: list of str
         :param _PolicyName: Audit policy name
         :type PolicyName: list of str
-        :param _Sql: 
+        :param _Sql: SQL statement. Supports fuzzy matching.
         :type Sql: str
-        :param _SqlType: 
+        :param _SqlType: SQL Type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
         :type SqlType: str
         :param _ExecTime: Execution time in ms, which is used to filter the audit log with execution time greater than this value.
         :type ExecTime: int
@@ -2114,7 +2114,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def DBName(self):
-        r"""
+        r"""Database Name.
         :rtype: list of str
         """
         return self._DBName
@@ -2147,7 +2147,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def Sql(self):
-        r"""
+        r"""SQL statement. Supports fuzzy matching.
         :rtype: str
         """
         return self._Sql
@@ -2158,7 +2158,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def SqlType(self):
-        r"""
+        r"""SQL Type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
         :rtype: str
         """
         return self._SqlType
@@ -4964,14 +4964,14 @@ class CloseAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -5804,7 +5804,7 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _StartTime: Start time. We recommend that the interval between start and end time does not exceed 7 days.
         :type StartTime: str
@@ -5832,7 +5832,7 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -6448,9 +6448,9 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param _ConnectionPoolType: Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).
         :type ConnectionPoolType: str
-        :param _AutoLoadBalance: 
+        :param _AutoLoadBalance: Whether to enable adaptive load balancing. Disabled by default.
         :type AutoLoadBalance: bool
-        :param _AccessMode: 
+        :param _AccessMode: Access Mode. nearBy - nearby access, balance - balanced allocation. Default value: nearBy.
         :type AccessMode: str
         """
         self._ProxyGroupId = None
@@ -6674,7 +6674,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""
+        r"""Whether to enable adaptive load balancing. Disabled by default.
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -6685,7 +6685,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""
+        r"""Access Mode. nearBy - nearby access, balance - balanced allocation. Default value: nearBy.
         :rtype: str
         """
         return self._AccessMode
@@ -8894,7 +8894,7 @@ class CreateDatabaseRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of `cdb-c1nl9rpv`,  which is the same as the one displayed in the TencentDB console.
         :type InstanceId: str
-        :param _DBName: 
+        :param _DBName: Database Name, up to 64 characters in length.
         :type DBName: str
         :param _CharacterSetName: Character set. Valid values:  `utf8`, `gbk`, `latin1`, `utf8mb4`.
         :type CharacterSetName: str
@@ -8916,7 +8916,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DBName(self):
-        r"""
+        r"""Database Name, up to 64 characters in length.
         :rtype: str
         """
         return self._DBName
@@ -9756,9 +9756,9 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.
+        :param _FileName: Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.com/document/api/236/45454?from_cn_redirect=1) API.
         :type FileName: str
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._FileName = None
@@ -9766,7 +9766,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.
+        r"""Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.com/document/api/236/45454?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._FileName
@@ -9777,7 +9777,7 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -9914,14 +9914,14 @@ class DeleteAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
         :type RuleTemplateIds: list of str
         """
         self._RuleTemplateIds = None
 
     @property
     def RuleTemplateIds(self):
-        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -11468,7 +11468,7 @@ class DescribeAuditRuleTemplateModifyHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :type RuleTemplateIds: list of str
         :param _StartTime: Start time of the query range.
         :type StartTime: str
@@ -11490,7 +11490,7 @@ class DescribeAuditRuleTemplateModifyHistoryRequest(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -23561,7 +23561,7 @@ class ModifyAuditConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _LogExpireDay: Audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
         :type LogExpireDay: int
@@ -23577,7 +23577,7 @@ class ModifyAuditConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -23670,7 +23670,7 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :param _RuleTemplateIds: Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :type RuleTemplateIds: list of str
         :param _RuleFilters: Modified audit rule.
         :type RuleFilters: list of RuleFilters
@@ -23692,7 +23692,7 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        r"""Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -23814,7 +23814,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _LogExpireDay: Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.
         :type LogExpireDay: int
@@ -23824,7 +23824,7 @@ class ModifyAuditServiceRequest(AbstractModel):
         :type AuditAll: bool
         :param _AuditRuleFilters: Deprecated.
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        :param _RuleTemplateIds: Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :type RuleTemplateIds: list of str
         """
         self._InstanceId = None
@@ -23836,7 +23836,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -23895,7 +23895,7 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.
+        r"""Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._RuleTemplateIds

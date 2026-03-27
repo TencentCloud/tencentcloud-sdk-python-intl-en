@@ -1463,23 +1463,25 @@ class BusinessIntelligenceFile(AbstractModel):
 
 
 class CheckItem(AbstractModel):
-    r"""
+    r"""Instance Resizing Inspection Items
 
     """
 
     def __init__(self):
         r"""
-        :param _CheckName: 
+        :param _CheckName: Check item names: CK_CPU - Post-Resizing CPU Risk Check; CK_MASTER_STORAGE - During read-only replica resizing, verify that read-only replica storage space is not less than that of the primary instance; CK_MEMORY - Post-Resizing Memory Risk Check; CK_STORAGE - Post-Resizing Storage Space Risk Check; CK_UPGRATE - Resizing Migration Requirement Check;
         :type CheckName: str
-        :param _CurrentValue: 
+        :param _CurrentValue: Check item return values: CK_CPU - Maximum CPU utilization (%) in the last 7 days; CK_MASTER_STORAGE - Disk space of the primary instance (GB); CK_MEMORY - Maximum memory usage (GB) in the last 7 days;
+
+CK_STORAGE - Maximum disk usage (GB) in the last 7 days; CK_UPGRATE - Whether the current resizing check requires migration: MIGRATE indicates migration resizing is required, LOCAL indicates local resizing;
         :type CurrentValue: str
-        :param _Passed: 
+        :param _Passed: Check item pass status: 0 - Not passed, resizing not allowed; 1 - Passed, resizing allowed
         :type Passed: int
-        :param _IsAffect: 
+        :param _IsAffect: Whether this resizing item affects the instance: 0 - No impact; 1 - Impact exists
         :type IsAffect: int
-        :param _Msg: 
+        :param _Msg: Required description when impact exists or the check is not passed
         :type Msg: str
-        :param _MsgCode: 
+        :param _MsgCode: Describe the corresponding code
         :type MsgCode: int
         """
         self._CheckName = None
@@ -1491,7 +1493,7 @@ class CheckItem(AbstractModel):
 
     @property
     def CheckName(self):
-        r"""
+        r"""Check item names: CK_CPU - Post-Resizing CPU Risk Check; CK_MASTER_STORAGE - During read-only replica resizing, verify that read-only replica storage space is not less than that of the primary instance; CK_MEMORY - Post-Resizing Memory Risk Check; CK_STORAGE - Post-Resizing Storage Space Risk Check; CK_UPGRATE - Resizing Migration Requirement Check;
         :rtype: str
         """
         return self._CheckName
@@ -1502,7 +1504,9 @@ class CheckItem(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""
+        r"""Check item return values: CK_CPU - Maximum CPU utilization (%) in the last 7 days; CK_MASTER_STORAGE - Disk space of the primary instance (GB); CK_MEMORY - Maximum memory usage (GB) in the last 7 days;
+
+CK_STORAGE - Maximum disk usage (GB) in the last 7 days; CK_UPGRATE - Whether the current resizing check requires migration: MIGRATE indicates migration resizing is required, LOCAL indicates local resizing;
         :rtype: str
         """
         return self._CurrentValue
@@ -1513,7 +1517,7 @@ class CheckItem(AbstractModel):
 
     @property
     def Passed(self):
-        r"""
+        r"""Check item pass status: 0 - Not passed, resizing not allowed; 1 - Passed, resizing allowed
         :rtype: int
         """
         return self._Passed
@@ -1524,7 +1528,7 @@ class CheckItem(AbstractModel):
 
     @property
     def IsAffect(self):
-        r"""
+        r"""Whether this resizing item affects the instance: 0 - No impact; 1 - Impact exists
         :rtype: int
         """
         return self._IsAffect
@@ -1535,7 +1539,7 @@ class CheckItem(AbstractModel):
 
     @property
     def Msg(self):
-        r"""
+        r"""Required description when impact exists or the check is not passed
         :rtype: str
         """
         return self._Msg
@@ -1546,7 +1550,7 @@ class CheckItem(AbstractModel):
 
     @property
     def MsgCode(self):
-        r"""
+        r"""Describe the corresponding code
         :rtype: int
         """
         return self._MsgCode
@@ -3089,7 +3093,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _FileURL: 
+        :param _FileURL: COS_URL
         :type FileURL: str
         :param _FileType: File type. Valid values: `FLAT` (flat file as data source), `SSIS` (.ispac SSIS package file)
         :type FileType: str
@@ -3114,7 +3118,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileURL(self):
-        r"""
+        r"""COS_URL
         :rtype: str
         """
         return self._FileURL
@@ -5558,39 +5562,39 @@ class CrossRegionStatus(AbstractModel):
 
 
 class CrossSummaryDetailRes(AbstractModel):
-    r"""
+    r"""Cross-Region Backup Real-Time Statistics List Items
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: Instance Status
         :type Status: int
-        :param _Region: 
+        :param _Region: Instance Region
         :type Region: str
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _Name: 
+        :param _Name: Instance Name
         :type Name: str
-        :param _CrossBackupEnabled: 
+        :param _CrossBackupEnabled: Cross-Region Backup Status: enable - Enabled, disable - Disabled
         :type CrossBackupEnabled: str
-        :param _CrossRegions: 
+        :param _CrossRegions: Cross-Region Backup Target Region
         :type CrossRegions: list of str
-        :param _LastBackupStartTime: 
+        :param _LastBackupStartTime: Latest Backup Start Time
         :type LastBackupStartTime: str
-        :param _CrossBackupSaveDays: 
+        :param _CrossBackupSaveDays: Cross-Region Backup Retention Days
         :type CrossBackupSaveDays: int
-        :param _DataBackupSpace: 
+        :param _DataBackupSpace: Cross-Region Data Backup Total Space
         :type DataBackupSpace: int
-        :param _DataBackupCount: 
+        :param _DataBackupCount: Cross-Region Data Backup Total File Count
         :type DataBackupCount: int
-        :param _LogBackupSpace: 
+        :param _LogBackupSpace: Cross-Region Log Backup Total Space
         :type LogBackupSpace: int
-        :param _LogBackupCount: 
+        :param _LogBackupCount: Cross-Region Log Backup Total File Count
         :type LogBackupCount: int
-        :param _ActualUsedSpace: 
+        :param _ActualUsedSpace: Cross-Region Backup Total Space
         :type ActualUsedSpace: int
-        :param _ActualUsedCount: 
+        :param _ActualUsedCount: Cross-Region Backup Total Count
         :type ActualUsedCount: int
         """
         self._Status = None
@@ -5610,7 +5614,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Instance Status
         :rtype: int
         """
         return self._Status
@@ -5621,7 +5625,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Instance Region
         :rtype: str
         """
         return self._Region
@@ -5632,7 +5636,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5643,7 +5647,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Instance Name
         :rtype: str
         """
         return self._Name
@@ -5654,7 +5658,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossBackupEnabled(self):
-        r"""
+        r"""Cross-Region Backup Status: enable - Enabled, disable - Disabled
         :rtype: str
         """
         return self._CrossBackupEnabled
@@ -5665,7 +5669,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossRegions(self):
-        r"""
+        r"""Cross-Region Backup Target Region
         :rtype: list of str
         """
         return self._CrossRegions
@@ -5676,7 +5680,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LastBackupStartTime(self):
-        r"""
+        r"""Latest Backup Start Time
         :rtype: str
         """
         return self._LastBackupStartTime
@@ -5687,7 +5691,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossBackupSaveDays(self):
-        r"""
+        r"""Cross-Region Backup Retention Days
         :rtype: int
         """
         return self._CrossBackupSaveDays
@@ -5698,7 +5702,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        r"""
+        r"""Cross-Region Data Backup Total Space
         :rtype: int
         """
         return self._DataBackupSpace
@@ -5709,7 +5713,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupCount(self):
-        r"""
+        r"""Cross-Region Data Backup Total File Count
         :rtype: int
         """
         return self._DataBackupCount
@@ -5720,7 +5724,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        r"""
+        r"""Cross-Region Log Backup Total Space
         :rtype: int
         """
         return self._LogBackupSpace
@@ -5731,7 +5735,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        r"""
+        r"""Cross-Region Log Backup Total File Count
         :rtype: int
         """
         return self._LogBackupCount
@@ -5742,7 +5746,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        r"""
+        r"""Cross-Region Backup Total Space
         :rtype: int
         """
         return self._ActualUsedSpace
@@ -5753,7 +5757,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedCount(self):
-        r"""
+        r"""Cross-Region Backup Total Count
         :rtype: int
         """
         return self._ActualUsedCount
@@ -6200,7 +6204,7 @@ class DBInstance(AbstractModel):
         :type Architecture: str
         :param _Style: Type flag. EXCLUSIVE: exclusive; SHARED: shared.
         :type Style: str
-        :param _MultiSlaveZones: 
+        :param _MultiSlaveZones: Multi-Node Instance Secondary AZ Information
         :type MultiSlaveZones: list of SlaveZones
         """
         self._InstanceId = None
@@ -6856,7 +6860,7 @@ class DBInstance(AbstractModel):
 
     @property
     def MultiSlaveZones(self):
-        r"""
+        r"""Multi-Node Instance Secondary AZ Information
         :rtype: list of SlaveZones
         """
         return self._MultiSlaveZones
@@ -7155,7 +7159,7 @@ class DBTDEEncrypt(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBName: 
+        :param _DBName: Database Name
         :type DBName: str
         :param _Encryption: TDE status. Valid values: `enable` (enabled), `disable` (disabled).
         :type Encryption: str
@@ -7165,7 +7169,7 @@ class DBTDEEncrypt(AbstractModel):
 
     @property
     def DBName(self):
-        r"""
+        r"""Database Name
         :rtype: str
         """
         return self._DBName
@@ -7200,15 +7204,15 @@ class DBTDEEncrypt(AbstractModel):
 
 
 class DataBasePrivilegeModifyInfo(AbstractModel):
-    r"""
+    r"""Database Account Permission Modification Information
 
     """
 
     def __init__(self):
         r"""
-        :param _DataBaseName: 
+        :param _DataBaseName: Database Name
         :type DataBaseName: str
-        :param _AccountPrivileges: 
+        :param _AccountPrivileges: Database Permission Modification Information
         :type AccountPrivileges: list of AccountPrivilege
         """
         self._DataBaseName = None
@@ -7216,7 +7220,7 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
     @property
     def DataBaseName(self):
-        r"""
+        r"""Database Name
         :rtype: str
         """
         return self._DataBaseName
@@ -7227,7 +7231,7 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
     @property
     def AccountPrivileges(self):
-        r"""
+        r"""Database Permission Modification Information
         :rtype: list of AccountPrivilege
         """
         return self._AccountPrivileges
@@ -7256,15 +7260,15 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
 
 class DatabaseTuple(AbstractModel):
-    r"""
+    r"""This data structure represents two databases that have a publish-subscribe relationship.
 
     """
 
     def __init__(self):
         r"""
-        :param _PublishDatabase: 
+        :param _PublishDatabase: Publish Database Name
         :type PublishDatabase: str
-        :param _SubscribeDatabase: 
+        :param _SubscribeDatabase: Subscription Database Name
         :type SubscribeDatabase: str
         """
         self._PublishDatabase = None
@@ -7272,7 +7276,7 @@ class DatabaseTuple(AbstractModel):
 
     @property
     def PublishDatabase(self):
-        r"""
+        r"""Publish Database Name
         :rtype: str
         """
         return self._PublishDatabase
@@ -7283,7 +7287,7 @@ class DatabaseTuple(AbstractModel):
 
     @property
     def SubscribeDatabase(self):
-        r"""
+        r"""Subscription Database Name
         :rtype: str
         """
         return self._SubscribeDatabase
@@ -7307,19 +7311,19 @@ class DatabaseTuple(AbstractModel):
 
 
 class DatabaseTupleStatus(AbstractModel):
-    r"""
+    r"""This data structure represents two databases with a publish-subscribe relationship, along with the status information of that relationship between them.
 
     """
 
     def __init__(self):
         r"""
-        :param _PublishDatabase: 
+        :param _PublishDatabase: Publish Database Name
         :type PublishDatabase: str
-        :param _SubscribeDatabase: 
+        :param _SubscribeDatabase: Subscription Database Name
         :type SubscribeDatabase: str
-        :param _LastSyncTime: 
+        :param _LastSyncTime: Latest Synchronization Time
         :type LastSyncTime: str
-        :param _Status: 
+        :param _Status: Publish/Subscribe Status Between Databases: running, success, fail, unknow
         :type Status: str
         """
         self._PublishDatabase = None
@@ -7329,7 +7333,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def PublishDatabase(self):
-        r"""
+        r"""Publish Database Name
         :rtype: str
         """
         return self._PublishDatabase
@@ -7340,7 +7344,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def SubscribeDatabase(self):
-        r"""
+        r"""Subscription Database Name
         :rtype: str
         """
         return self._SubscribeDatabase
@@ -7351,7 +7355,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def LastSyncTime(self):
-        r"""
+        r"""Latest Synchronization Time
         :rtype: str
         """
         return self._LastSyncTime
@@ -7362,7 +7366,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Publish/Subscribe Status Between Databases: running, success, fail, unknow
         :rtype: str
         """
         return self._Status
@@ -17507,9 +17511,9 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _TargetInstanceId: 
+        :param _TargetInstanceId: Target instance ID for restoration; if left blank, defaults to restoring to the original instance.
         :type TargetInstanceId: str
         """
         self._InstanceId = None
@@ -17517,7 +17521,7 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17528,7 +17532,7 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        r"""
+        r"""Target instance ID for restoration; if left blank, defaults to restoring to the original instance.
         :rtype: str
         """
         return self._TargetInstanceId
@@ -19688,27 +19692,27 @@ class InstanceDBDetail(AbstractModel):
 
 
 class InstanceTask(AbstractModel):
-    r"""
+    r"""Instance Asynchronous Task
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 
+        :param _Id: Unique id
         :type Id: int
-        :param _Type: 
+        :param _Type: Job Type
         :type Type: int
-        :param _Status: 
+        :param _Status: Job Status
         :type Status: int
-        :param _Progress: 
+        :param _Progress: Progress Percentage 0~100
         :type Progress: int
-        :param _StartTime: 
+        :param _StartTime: Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: End Time
         :type EndTime: str
-        :param _ErrorCode: 
+        :param _ErrorCode: Error Code
         :type ErrorCode: int
-        :param _Message: 
+        :param _Message: Error Message Description
         :type Message: str
         """
         self._Id = None
@@ -19722,7 +19726,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""Unique id
         :rtype: int
         """
         return self._Id
@@ -19733,7 +19737,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Job Type
         :rtype: int
         """
         return self._Type
@@ -19744,7 +19748,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Job Status
         :rtype: int
         """
         return self._Status
@@ -19755,7 +19759,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Progress Percentage 0~100
         :rtype: int
         """
         return self._Progress
@@ -19766,7 +19770,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Start Time
         :rtype: str
         """
         return self._StartTime
@@ -19777,7 +19781,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""End Time
         :rtype: str
         """
         return self._EndTime
@@ -19788,7 +19792,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""
+        r"""Error Code
         :rtype: int
         """
         return self._ErrorCode
@@ -19799,7 +19803,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""
+        r"""Error Message Description
         :rtype: str
         """
         return self._Message
@@ -23183,17 +23187,17 @@ class ModifyDReadableResponse(AbstractModel):
 
 
 class ModifyDataBaseTuple(AbstractModel):
-    r"""
+    r"""Database Subscription Publication Relationship Collection to be Modified
 
     """
 
     def __init__(self):
         r"""
-        :param _DatabaseTuple: 
+        :param _DatabaseTuple: Subscription Relationship to be Modified
         :type DatabaseTuple: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
-        :param _NewDatabaseTuple: 
+        :param _NewDatabaseTuple: Modified subscription relationship. Takes effect when DeleteDataBasesTuple is false
         :type NewDatabaseTuple: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
-        :param _DeleteDataBasesTuple: 
+        :param _DeleteDataBasesTuple: Whether to delete the subscription relationship. When this option is true, NewDatabaseTuple is invalid
         :type DeleteDataBasesTuple: bool
         """
         self._DatabaseTuple = None
@@ -23202,7 +23206,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def DatabaseTuple(self):
-        r"""
+        r"""Subscription Relationship to be Modified
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
         """
         return self._DatabaseTuple
@@ -23213,7 +23217,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def NewDatabaseTuple(self):
-        r"""
+        r"""Modified subscription relationship. Takes effect when DeleteDataBasesTuple is false
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
         """
         return self._NewDatabaseTuple
@@ -23224,7 +23228,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def DeleteDataBasesTuple(self):
-        r"""
+        r"""Whether to delete the subscription relationship. When this option is true, NewDatabaseTuple is invalid
         :rtype: bool
         """
         return self._DeleteDataBasesTuple
@@ -25368,19 +25372,19 @@ class ParameterDetail(AbstractModel):
 
 
 class Price(AbstractModel):
-    r"""
+    r"""Reference price. This price covers CPU and memory specifications, excluding disk usage. The actual price is subject to the quotation API.
 
     """
 
     def __init__(self):
         r"""
-        :param _PrepaidPrice: 
+        :param _PrepaidPrice: Reference price for yearly/monthly subscription, unit-cent
         :type PrepaidPrice: int
-        :param _PrepaidPriceUnit: 
+        :param _PrepaidPriceUnit: Price unit for yearly/monthly subscription, M-month
         :type PrepaidPriceUnit: str
-        :param _PostpaidPrice: 
+        :param _PostpaidPrice: Pay-as-you-go price, unit-cent
         :type PostpaidPrice: int
-        :param _PostpaidPriceUnit: 
+        :param _PostpaidPriceUnit: Pay-as-you-go price unit, H-hour
         :type PostpaidPriceUnit: str
         """
         self._PrepaidPrice = None
@@ -25390,7 +25394,7 @@ class Price(AbstractModel):
 
     @property
     def PrepaidPrice(self):
-        r"""
+        r"""Reference price for yearly/monthly subscription, unit-cent
         :rtype: int
         """
         return self._PrepaidPrice
@@ -25401,7 +25405,7 @@ class Price(AbstractModel):
 
     @property
     def PrepaidPriceUnit(self):
-        r"""
+        r"""Price unit for yearly/monthly subscription, M-month
         :rtype: str
         """
         return self._PrepaidPriceUnit
@@ -25412,7 +25416,7 @@ class Price(AbstractModel):
 
     @property
     def PostpaidPrice(self):
-        r"""
+        r"""Pay-as-you-go price, unit-cent
         :rtype: int
         """
         return self._PostpaidPrice
@@ -25423,7 +25427,7 @@ class Price(AbstractModel):
 
     @property
     def PostpaidPriceUnit(self):
-        r"""
+        r"""Pay-as-you-go price unit, H-hour
         :rtype: str
         """
         return self._PostpaidPriceUnit
@@ -25449,29 +25453,29 @@ class Price(AbstractModel):
 
 
 class PublishSubscribe(AbstractModel):
-    r"""
+    r"""Pub/Sub Object
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 
+        :param _Id: Pub/Sub ID
         :type Id: int
-        :param _Name: 
+        :param _Name: Pub/Sub Name
         :type Name: str
-        :param _PublishInstanceId: 
+        :param _PublishInstanceId: Published Instance ID
         :type PublishInstanceId: str
-        :param _PublishInstanceName: 
+        :param _PublishInstanceName: Published Instance Name
         :type PublishInstanceName: str
-        :param _PublishInstanceIp: 
+        :param _PublishInstanceIp: Published Instance IP
         :type PublishInstanceIp: str
-        :param _SubscribeInstanceId: 
+        :param _SubscribeInstanceId: Subscription Instance ID
         :type SubscribeInstanceId: str
-        :param _SubscribeInstanceName: 
+        :param _SubscribeInstanceName: Subscription Instance Name
         :type SubscribeInstanceName: str
-        :param _SubscribeInstanceIp: 
+        :param _SubscribeInstanceIp: Subscription Instance IP
         :type SubscribeInstanceIp: str
-        :param _DatabaseTupleSet: 
+        :param _DatabaseTupleSet: Publication-Subscription Relationship Collection of Database
         :type DatabaseTupleSet: list of DatabaseTupleStatus
         """
         self._Id = None
@@ -25486,7 +25490,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""Pub/Sub ID
         :rtype: int
         """
         return self._Id
@@ -25497,7 +25501,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Pub/Sub Name
         :rtype: str
         """
         return self._Name
@@ -25508,7 +25512,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceId(self):
-        r"""
+        r"""Published Instance ID
         :rtype: str
         """
         return self._PublishInstanceId
@@ -25519,7 +25523,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceName(self):
-        r"""
+        r"""Published Instance Name
         :rtype: str
         """
         return self._PublishInstanceName
@@ -25530,7 +25534,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceIp(self):
-        r"""
+        r"""Published Instance IP
         :rtype: str
         """
         return self._PublishInstanceIp
@@ -25541,7 +25545,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceId(self):
-        r"""
+        r"""Subscription Instance ID
         :rtype: str
         """
         return self._SubscribeInstanceId
@@ -25552,7 +25556,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceName(self):
-        r"""
+        r"""Subscription Instance Name
         :rtype: str
         """
         return self._SubscribeInstanceName
@@ -25563,7 +25567,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceIp(self):
-        r"""
+        r"""Subscription Instance IP
         :rtype: str
         """
         return self._SubscribeInstanceIp
@@ -25574,7 +25578,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def DatabaseTupleSet(self):
-        r"""
+        r"""Publication-Subscription Relationship Collection of Database
         :rtype: list of DatabaseTupleStatus
         """
         return self._DatabaseTupleSet
@@ -25724,39 +25728,39 @@ class QueryMigrationCheckProcessResponse(AbstractModel):
 
 
 class ReadOnlyGroup(AbstractModel):
-    r"""
+    r"""Read-Only Group Object
 
     """
 
     def __init__(self):
         r"""
-        :param _ReadOnlyGroupId: 
+        :param _ReadOnlyGroupId: Read-Only Group ID
         :type ReadOnlyGroupId: str
-        :param _ReadOnlyGroupName: 
+        :param _ReadOnlyGroupName: Read-Only Group Name
         :type ReadOnlyGroupName: str
-        :param _RegionId: 
+        :param _RegionId: Region ID of the Read-Only Group, same as the Primary Instance
         :type RegionId: str
-        :param _ZoneId: 
+        :param _ZoneId: Read-Only Group's AZ ID, same as the Primary Instance
         :type ZoneId: str
-        :param _IsOfflineDelay: 
+        :param _IsOfflineDelay: Whether to enable the timeout culling feature; 0 - disabled, 1 - enabled
         :type IsOfflineDelay: int
-        :param _ReadOnlyMaxDelayTime: 
+        :param _ReadOnlyMaxDelayTime: Timeout threshold used after enabling the timeout culling feature
         :type ReadOnlyMaxDelayTime: int
-        :param _MinReadOnlyInGroup: 
+        :param _MinReadOnlyInGroup: Minimum number of read-only replicas retained in the read-only group after enabling the timeout culling feature
         :type MinReadOnlyInGroup: int
-        :param _Vip: 
+        :param _Vip: Read-Only Group vip
         :type Vip: str
-        :param _Vport: 
+        :param _Vport: Read-Only Group vport
         :type Vport: int
-        :param _VpcId: 
+        :param _VpcId: Read-Only Group VPC ID
         :type VpcId: str
-        :param _SubnetId: 
+        :param _SubnetId: Read-Only Group VPC Subnet ID
         :type SubnetId: str
-        :param _Status: 
+        :param _Status: Read-Only Group Status: 1-Running, 5-Creating
         :type Status: int
-        :param _MasterInstanceId: 
+        :param _MasterInstanceId: Primary instance ID, in the form of mssql-sgeshe3th
         :type MasterInstanceId: str
-        :param _ReadOnlyInstanceSet: 
+        :param _ReadOnlyInstanceSet: Read-Only Instance Replica Set
         :type ReadOnlyInstanceSet: list of ReadOnlyInstance
         :param _DnsPodDomain: RO group's public network address domain name
         :type DnsPodDomain: str
@@ -25782,7 +25786,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        r"""
+        r"""Read-Only Group ID
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -25793,7 +25797,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        r"""
+        r"""Read-Only Group Name
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -25804,7 +25808,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""
+        r"""Region ID of the Read-Only Group, same as the Primary Instance
         :rtype: str
         """
         return self._RegionId
@@ -25815,7 +25819,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""
+        r"""Read-Only Group's AZ ID, same as the Primary Instance
         :rtype: str
         """
         return self._ZoneId
@@ -25826,7 +25830,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        r"""
+        r"""Whether to enable the timeout culling feature; 0 - disabled, 1 - enabled
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -25837,7 +25841,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        r"""
+        r"""Timeout threshold used after enabling the timeout culling feature
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -25848,7 +25852,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        r"""
+        r"""Minimum number of read-only replicas retained in the read-only group after enabling the timeout culling feature
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -25859,7 +25863,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Vip(self):
-        r"""
+        r"""Read-Only Group vip
         :rtype: str
         """
         return self._Vip
@@ -25870,7 +25874,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Vport(self):
-        r"""
+        r"""Read-Only Group vport
         :rtype: int
         """
         return self._Vport
@@ -25881,7 +25885,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""
+        r"""Read-Only Group VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -25892,7 +25896,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""
+        r"""Read-Only Group VPC Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -25903,7 +25907,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Read-Only Group Status: 1-Running, 5-Creating
         :rtype: int
         """
         return self._Status
@@ -25914,7 +25918,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        r"""
+        r"""Primary instance ID, in the form of mssql-sgeshe3th
         :rtype: str
         """
         return self._MasterInstanceId
@@ -25925,7 +25929,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyInstanceSet(self):
-        r"""
+        r"""Read-Only Instance Replica Set
         :rtype: list of ReadOnlyInstance
         """
         return self._ReadOnlyInstanceSet
@@ -25990,59 +25994,87 @@ class ReadOnlyGroup(AbstractModel):
 
 
 class ReadOnlyInstance(AbstractModel):
-    r"""
+    r"""Read-Only Replica Instance
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Read-Only Replica ID, in the format of: mssqlro-3l3fgqn7
         :type InstanceId: str
-        :param _Name: 
+        :param _Name: Read-Only Replica Name
         :type Name: str
-        :param _Uid: 
+        :param _Uid: Read-Only Replica Unique UID
         :type Uid: str
-        :param _ProjectId: 
+        :param _ProjectId: Read-Only Replica Project ID
         :type ProjectId: int
-        :param _Status: 
+        :param _Status: Read-Only Replica Status: 1: Creating, 2: Running, 3: Delayed Removal, 4: Isolated, 5: Recycling, 6: Recycled, 7: Task Executing, 8: Offline, 9: Instance Scaling, 10: Instance Migrating, 12: Restarting
         :type Status: int
-        :param _CreateTime: 
+        :param _CreateTime: Read-Only Replica Creation Time
         :type CreateTime: str
-        :param _UpdateTime: 
+        :param _UpdateTime: Read-Only Replica Update Time
         :type UpdateTime: str
-        :param _Memory: 
+        :param _Memory: Read-Only Replica Memory Size (Unit: GB)
         :type Memory: int
-        :param _Storage: 
+        :param _Storage: Read-Only Replica Storage Space Size (Unit: GB)
         :type Storage: int
-        :param _Cpu: 
+        :param _Cpu: Read-Only Replica cpu Core Count
         :type Cpu: int
-        :param _Version: 
+        :param _Version: Read-Only Replica Codenames
         :type Version: str
-        :param _Type: 
+        :param _Type: Host Machine Code
         :type Type: str
-        :param _Model: 
+        :param _Model: Read-Only Replica Mode, 2-Standalone
         :type Model: int
-        :param _PayMode: 
+        :param _PayMode: Read-Only Replica Billing Mode, 1-yearly/monthly subscription, 0-pay-as-you-go
         :type PayMode: int
-        :param _Weight: 
+        :param _Weight: Read-Only Replica Weight
         :type Weight: int
-        :param _DelayTime: 
+        :param _DelayTime: Read-Only Replica Latency Time (Unit: seconds)
         :type DelayTime: str
-        :param _SynStatus: 
+        :param _SynStatus: Synchronization status between the read-only replica and the primary instance.
+
+Init: Initializing
+
+DeployReadOnlyInPorgress: Deploying replica in progress
+
+DeployReadOnlySuccess: Replica deployment succeeded
+
+DeployReadOnlyFail: Replica deployment failed
+
+DeployMasterDBInPorgress: Adding replica database to primary node in progress
+
+DeployMasterDBSuccess: Successfully added replica database to primary node
+
+DeployMasterDBFail: Failed to add replica database to primary node
+
+DeployReadOnlyDBInPorgress: Replica restoration and database joining started
+
+DeployReadOnlyDBSuccess: Replica restoration and database joining succeeded
+
+DeployReadOnlyDBFail: Replica restoration and database joining failed
+
+SyncDelay: Synchronization delayed
+
+SyncFail: Synchronization failed
+
+SyncExcluded: Removed from read-only group
+
+SyncNormal: Normal
         :type SynStatus: str
-        :param _DatabaseDifference: 
+        :param _DatabaseDifference: Databases not synchronized between the read-only replica and the primary instance
         :type DatabaseDifference: str
-        :param _AccountDifference: 
+        :param _AccountDifference: Accounts not synchronized between the read-only replica and the primary instance
         :type AccountDifference: str
-        :param _StartTime: 
+        :param _StartTime: Read-Only Replica Billing Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: Read-Only Replica Billing End Time
         :type EndTime: str
-        :param _IsolateTime: 
+        :param _IsolateTime: Read-Only Replica Isolation Time
         :type IsolateTime: str
-        :param _RegionId: 
+        :param _RegionId: Read-Only Replica Region Location
         :type RegionId: str
-        :param _ZoneId: 
+        :param _ZoneId: Read-Only Replica AZ Location
         :type ZoneId: str
         """
         self._InstanceId = None
@@ -26072,7 +26104,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Read-Only Replica ID, in the format of: mssqlro-3l3fgqn7
         :rtype: str
         """
         return self._InstanceId
@@ -26083,7 +26115,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Read-Only Replica Name
         :rtype: str
         """
         return self._Name
@@ -26094,7 +26126,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Uid(self):
-        r"""
+        r"""Read-Only Replica Unique UID
         :rtype: str
         """
         return self._Uid
@@ -26105,7 +26137,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""
+        r"""Read-Only Replica Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -26116,7 +26148,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Read-Only Replica Status: 1: Creating, 2: Running, 3: Delayed Removal, 4: Isolated, 5: Recycling, 6: Recycled, 7: Task Executing, 8: Offline, 9: Instance Scaling, 10: Instance Migrating, 12: Restarting
         :rtype: int
         """
         return self._Status
@@ -26127,7 +26159,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""Read-Only Replica Creation Time
         :rtype: str
         """
         return self._CreateTime
@@ -26138,7 +26170,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""
+        r"""Read-Only Replica Update Time
         :rtype: str
         """
         return self._UpdateTime
@@ -26149,7 +26181,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Memory(self):
-        r"""
+        r"""Read-Only Replica Memory Size (Unit: GB)
         :rtype: int
         """
         return self._Memory
@@ -26160,7 +26192,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Storage(self):
-        r"""
+        r"""Read-Only Replica Storage Space Size (Unit: GB)
         :rtype: int
         """
         return self._Storage
@@ -26171,7 +26203,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""
+        r"""Read-Only Replica cpu Core Count
         :rtype: int
         """
         return self._Cpu
@@ -26182,7 +26214,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Version(self):
-        r"""
+        r"""Read-Only Replica Codenames
         :rtype: str
         """
         return self._Version
@@ -26193,7 +26225,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Host Machine Code
         :rtype: str
         """
         return self._Type
@@ -26204,7 +26236,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Model(self):
-        r"""
+        r"""Read-Only Replica Mode, 2-Standalone
         :rtype: int
         """
         return self._Model
@@ -26215,7 +26247,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""
+        r"""Read-Only Replica Billing Mode, 1-yearly/monthly subscription, 0-pay-as-you-go
         :rtype: int
         """
         return self._PayMode
@@ -26226,7 +26258,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Weight(self):
-        r"""
+        r"""Read-Only Replica Weight
         :rtype: int
         """
         return self._Weight
@@ -26237,7 +26269,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""
+        r"""Read-Only Replica Latency Time (Unit: seconds)
         :rtype: str
         """
         return self._DelayTime
@@ -26248,7 +26280,35 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def SynStatus(self):
-        r"""
+        r"""Synchronization status between the read-only replica and the primary instance.
+
+Init: Initializing
+
+DeployReadOnlyInPorgress: Deploying replica in progress
+
+DeployReadOnlySuccess: Replica deployment succeeded
+
+DeployReadOnlyFail: Replica deployment failed
+
+DeployMasterDBInPorgress: Adding replica database to primary node in progress
+
+DeployMasterDBSuccess: Successfully added replica database to primary node
+
+DeployMasterDBFail: Failed to add replica database to primary node
+
+DeployReadOnlyDBInPorgress: Replica restoration and database joining started
+
+DeployReadOnlyDBSuccess: Replica restoration and database joining succeeded
+
+DeployReadOnlyDBFail: Replica restoration and database joining failed
+
+SyncDelay: Synchronization delayed
+
+SyncFail: Synchronization failed
+
+SyncExcluded: Removed from read-only group
+
+SyncNormal: Normal
         :rtype: str
         """
         return self._SynStatus
@@ -26259,7 +26319,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def DatabaseDifference(self):
-        r"""
+        r"""Databases not synchronized between the read-only replica and the primary instance
         :rtype: str
         """
         return self._DatabaseDifference
@@ -26270,7 +26330,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def AccountDifference(self):
-        r"""
+        r"""Accounts not synchronized between the read-only replica and the primary instance
         :rtype: str
         """
         return self._AccountDifference
@@ -26281,7 +26341,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Read-Only Replica Billing Start Time
         :rtype: str
         """
         return self._StartTime
@@ -26292,7 +26352,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""Read-Only Replica Billing End Time
         :rtype: str
         """
         return self._EndTime
@@ -26303,7 +26363,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""
+        r"""Read-Only Replica Isolation Time
         :rtype: str
         """
         return self._IsolateTime
@@ -26314,7 +26374,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""
+        r"""Read-Only Replica Region Location
         :rtype: str
         """
         return self._RegionId
@@ -26325,7 +26385,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""
+        r"""Read-Only Replica AZ Location
         :rtype: str
         """
         return self._ZoneId
@@ -26371,15 +26431,15 @@ class ReadOnlyInstance(AbstractModel):
 
 
 class ReadOnlyInstanceWeightPair(AbstractModel):
-    r"""
+    r"""Read-Only Instance to Weight Mapping
 
     """
 
     def __init__(self):
         r"""
-        :param _ReadOnlyInstanceId: 
+        :param _ReadOnlyInstanceId: Read-Only Instance ID, in the format of: mssqlro-3l3fgqn7
         :type ReadOnlyInstanceId: str
-        :param _ReadOnlyWeight: 
+        :param _ReadOnlyWeight: Read-Only Instance Weight, in the range of 0-100
         :type ReadOnlyWeight: int
         """
         self._ReadOnlyInstanceId = None
@@ -26387,7 +26447,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
 
     @property
     def ReadOnlyInstanceId(self):
-        r"""
+        r"""Read-Only Instance ID, in the format of: mssqlro-3l3fgqn7
         :rtype: str
         """
         return self._ReadOnlyInstanceId
@@ -26398,7 +26458,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
 
     @property
     def ReadOnlyWeight(self):
-        r"""
+        r"""Read-Only Instance Weight, in the range of 0-100
         :rtype: int
         """
         return self._ReadOnlyWeight
@@ -27305,35 +27365,47 @@ class RestoreInstanceResponse(AbstractModel):
 
 
 class RestoreTask(AbstractModel):
-    r"""
+    r"""Rollback Task Record
 
     """
 
     def __init__(self):
         r"""
-        :param _TargetInstanceId: 
+        :param _TargetInstanceId: Target Instance ID
         :type TargetInstanceId: str
-        :param _TargetInstanceName: 
+        :param _TargetInstanceName: Target Instance Name
         :type TargetInstanceName: str
-        :param _TargetInstanceStatus: 
+        :param _TargetInstanceStatus: Target Instance Status. Valid values:
+1: Creating
+2: Running
+3: Restricted Running (primary/secondary switching)
+4: Isolated
+5: Recycling
+6: Recycled
+7: Task Executing (instance backup, rollback, etc.)
+8: Offline
+9: Instance Scaling
+10: Instance Migrating
+11: Read-Only
+12: Restarting
         :type TargetInstanceStatus: int
-        :param _TargetRegion: 
+        :param _TargetRegion: Target Instance Region
         :type TargetRegion: str
-        :param _RestoreId: 
+        :param _RestoreId: Rollback Record ID
         :type RestoreId: int
-        :param _TargetType: 
+        :param _TargetType: Restoration target instance type: 0 - current instance, 1 - existing instance, 2 - new instance
         :type TargetType: int
-        :param _RestoreType: 
+        :param _RestoreType: Rollback method: 0 - by point-in-time, 1 - by backup set
         :type RestoreType: int
-        :param _RestoreTime: 
+        :param _RestoreTime: Rollback Target Time
         :type RestoreTime: str
-        :param _StartTime: 
+        :param _StartTime: Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: End Time
         :type EndTime: str
-        :param _Status: 
+        :param _Status: Rollback status: 0 - Initialization, 1 - Running, 2 - Success, 3 - Failure
         :type Status: int
-        :param _FlowId: 
+        :param _FlowId: Rollback Asynchronous Task ID
         :type FlowId: int
         """
         self._TargetInstanceId = None
@@ -27351,7 +27423,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        r"""
+        r"""Target Instance ID
         :rtype: str
         """
         return self._TargetInstanceId
@@ -27362,7 +27434,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceName(self):
-        r"""
+        r"""Target Instance Name
         :rtype: str
         """
         return self._TargetInstanceName
@@ -27373,7 +27445,19 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceStatus(self):
-        r"""
+        r"""Target Instance Status. Valid values:
+1: Creating
+2: Running
+3: Restricted Running (primary/secondary switching)
+4: Isolated
+5: Recycling
+6: Recycled
+7: Task Executing (instance backup, rollback, etc.)
+8: Offline
+9: Instance Scaling
+10: Instance Migrating
+11: Read-Only
+12: Restarting
         :rtype: int
         """
         return self._TargetInstanceStatus
@@ -27384,7 +27468,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetRegion(self):
-        r"""
+        r"""Target Instance Region
         :rtype: str
         """
         return self._TargetRegion
@@ -27395,7 +27479,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreId(self):
-        r"""
+        r"""Rollback Record ID
         :rtype: int
         """
         return self._RestoreId
@@ -27406,7 +27490,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""
+        r"""Restoration target instance type: 0 - current instance, 1 - existing instance, 2 - new instance
         :rtype: int
         """
         return self._TargetType
@@ -27417,7 +27501,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreType(self):
-        r"""
+        r"""Rollback method: 0 - by point-in-time, 1 - by backup set
         :rtype: int
         """
         return self._RestoreType
@@ -27428,7 +27512,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreTime(self):
-        r"""
+        r"""Rollback Target Time
         :rtype: str
         """
         return self._RestoreTime
@@ -27439,7 +27523,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Start Time
         :rtype: str
         """
         return self._StartTime
@@ -27450,7 +27534,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""End Time
         :rtype: str
         """
         return self._EndTime
@@ -27461,7 +27545,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Rollback status: 0 - Initialization, 1 - Running, 2 - Success, 3 - Failure
         :rtype: int
         """
         return self._Status
@@ -27472,7 +27556,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""
+        r"""Rollback Asynchronous Task ID
         :rtype: int
         """
         return self._FlowId
@@ -27744,17 +27828,23 @@ class RunMigrationResponse(AbstractModel):
 
 
 class SSLConfig(AbstractModel):
-    r"""
+    r"""SSL Encryption Configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Encryption: 
+        :param _Encryption: SSL Encryption Status
+enable - Enabled
+disable - Disabled
+enable_doing - Enabling
+disable_doing - Disabling
+renew_doing - Updating
+wait_doing - Waiting to be executed during maintenance window
         :type Encryption: str
-        :param _SSLValidityPeriod: 
+        :param _SSLValidityPeriod: SSL Certificates Validity Period, Time Format YYYY-MM-DD HH:MM:SS
         :type SSLValidityPeriod: str
-        :param _SSLValidity: 
+        :param _SSLValidity: SSL Certificates Validity: 0 - Invalid, 1 - Valid
         :type SSLValidity: int
         """
         self._Encryption = None
@@ -27763,7 +27853,13 @@ class SSLConfig(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""
+        r"""SSL Encryption Status
+enable - Enabled
+disable - Disabled
+enable_doing - Enabling
+disable_doing - Disabling
+renew_doing - Updating
+wait_doing - Waiting to be executed during maintenance window
         :rtype: str
         """
         return self._Encryption
@@ -27774,7 +27870,7 @@ class SSLConfig(AbstractModel):
 
     @property
     def SSLValidityPeriod(self):
-        r"""
+        r"""SSL Certificates Validity Period, Time Format YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._SSLValidityPeriod
@@ -27785,7 +27881,7 @@ class SSLConfig(AbstractModel):
 
     @property
     def SSLValidity(self):
-        r"""
+        r"""SSL Certificates Validity: 0 - Invalid, 1 - Valid
         :rtype: int
         """
         return self._SSLValidity
@@ -27810,25 +27906,25 @@ class SSLConfig(AbstractModel):
 
 
 class SecurityGroup(AbstractModel):
-    r"""
+    r"""Security Group
 
     """
 
     def __init__(self):
         r"""
-        :param _ProjectId: 
+        :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _CreateTime: 
+        :param _CreateTime: Creation Time, Time format: yyyy-mm-dd hh:mm:ss
         :type CreateTime: str
-        :param _InboundSet: 
+        :param _InboundSet: Inbound Rules
         :type InboundSet: list of SecurityGroupPolicy
-        :param _OutboundSet: 
+        :param _OutboundSet: Outbound Rules
         :type OutboundSet: list of SecurityGroupPolicy
-        :param _SecurityGroupId: 
+        :param _SecurityGroupId: Security Group ID
         :type SecurityGroupId: str
-        :param _SecurityGroupName: 
+        :param _SecurityGroupName: Security Group Name
         :type SecurityGroupName: str
-        :param _SecurityGroupRemark: 
+        :param _SecurityGroupRemark: Security Group Remarks
         :type SecurityGroupRemark: str
         """
         self._ProjectId = None
@@ -27841,7 +27937,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -27852,7 +27948,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""Creation Time, Time format: yyyy-mm-dd hh:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -27863,7 +27959,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def InboundSet(self):
-        r"""
+        r"""Inbound Rules
         :rtype: list of SecurityGroupPolicy
         """
         return self._InboundSet
@@ -27874,7 +27970,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def OutboundSet(self):
-        r"""
+        r"""Outbound Rules
         :rtype: list of SecurityGroupPolicy
         """
         return self._OutboundSet
@@ -27885,7 +27981,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""
+        r"""Security Group ID
         :rtype: str
         """
         return self._SecurityGroupId
@@ -27896,7 +27992,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        r"""
+        r"""Security Group Name
         :rtype: str
         """
         return self._SecurityGroupName
@@ -27907,7 +28003,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
-        r"""
+        r"""Security Group Remarks
         :rtype: str
         """
         return self._SecurityGroupRemark
@@ -27946,21 +28042,21 @@ class SecurityGroup(AbstractModel):
 
 
 class SecurityGroupPolicy(AbstractModel):
-    r"""
+    r"""Security Group Policy
 
     """
 
     def __init__(self):
         r"""
-        :param _Action: 
+        :param _Action: Policy, ACCEPT or DROP
         :type Action: str
-        :param _CidrIp: 
+        :param _CidrIp: Destination IP or IP range, for example 172.16.0.0/12
         :type CidrIp: str
-        :param _PortRange: 
+        :param _PortRange: port or port range
         :type PortRange: str
-        :param _IpProtocol: 
+        :param _IpProtocol: Network protocol supports UDP, TCP, etc.
         :type IpProtocol: str
-        :param _Dir: 
+        :param _Dir: Rule direction, OUTPUT - Outbound Rules, INPUT - Inbound Rules
         :type Dir: str
         """
         self._Action = None
@@ -27971,7 +28067,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Action(self):
-        r"""
+        r"""Policy, ACCEPT or DROP
         :rtype: str
         """
         return self._Action
@@ -27982,7 +28078,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def CidrIp(self):
-        r"""
+        r"""Destination IP or IP range, for example 172.16.0.0/12
         :rtype: str
         """
         return self._CidrIp
@@ -27993,7 +28089,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def PortRange(self):
-        r"""
+        r"""port or port range
         :rtype: str
         """
         return self._PortRange
@@ -28004,7 +28100,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def IpProtocol(self):
-        r"""
+        r"""Network protocol supports UDP, TCP, etc.
         :rtype: str
         """
         return self._IpProtocol
@@ -28015,7 +28111,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Dir(self):
-        r"""
+        r"""Rule direction, OUTPUT - Outbound Rules, INPUT - Inbound Rules
         :rtype: str
         """
         return self._Dir
@@ -28642,33 +28738,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SpecSellStatus(AbstractModel):
-    r"""
+    r"""Offering Configuration Status
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 
+        :param _Id: Sellable Specification Unique ID
         :type Id: str
-        :param _SpecId: 
+        :param _SpecId: Instance Type ID
         :type SpecId: int
-        :param _PayModeStatus: 
+        :param _PayModeStatus: Supported payment modes for this specification: POST - only supports pay-as-you-go, PRE - only supports yearly/monthly subscription, ALL - supports all.
         :type PayModeStatus: str
-        :param _InstanceType: 
+        :param _InstanceType: Product type. Types of instances for purchase: HA - Local Disk High Availability (including dual-node high availability, alwaysOn cluster), RO - Local Disk Read-Only Replica, SI - Cloud Disk Edition Single Node, BI - Business Intelligence Service, cvmHA - Cloud Disk Edition High Availability, cvmRO - Cloud Disk Edition Read-Only Replica, MultiHA - Multi-node, cvmMultiHA - Cloud Disk Multi-node.
         :type InstanceType: str
-        :param _MultiZonesStatus: 
+        :param _MultiZonesStatus: Whether this specification supports cross-AZ deployment: MultiZones - only supports cross-AZ, SameZones - only supports same-AZ, ALL - supports all.
         :type MultiZonesStatus: str
-        :param _Architecture: 
+        :param _Architecture: Architecture Type, SINGLE - single node, DOUBLE - dual node, TRIPLE - three-node, MULTI - multi-node
+Example value: SINGLE
         :type Architecture: str
-        :param _Style: 
+        :param _Style: Type identifier, EXCLUSIVE - Dedicated, SHARED - Shared
         :type Style: str
-        :param _Version: 
+        :param _Version: Database Version Information
         :type Version: str
-        :param _ZoneStatusSet: 
+        :param _ZoneStatusSet: Sellable Status Set Per AZ
         :type ZoneStatusSet: list of ZoneStatus
-        :param _Price: 
+        :param _Price: Reference price for specifications. The actual price is subject to the quotation API.
         :type Price: :class:`tencentcloud.sqlserver.v20180328.models.Price`
-        :param _Status: 
+        :param _Status: Specification Sale Status: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.
         :type Status: int
         """
         self._Id = None
@@ -28685,7 +28782,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""Sellable Specification Unique ID
         :rtype: str
         """
         return self._Id
@@ -28696,7 +28793,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def SpecId(self):
-        r"""
+        r"""Instance Type ID
         :rtype: int
         """
         return self._SpecId
@@ -28707,7 +28804,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def PayModeStatus(self):
-        r"""
+        r"""Supported payment modes for this specification: POST - only supports pay-as-you-go, PRE - only supports yearly/monthly subscription, ALL - supports all.
         :rtype: str
         """
         return self._PayModeStatus
@@ -28718,7 +28815,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""
+        r"""Product type. Types of instances for purchase: HA - Local Disk High Availability (including dual-node high availability, alwaysOn cluster), RO - Local Disk Read-Only Replica, SI - Cloud Disk Edition Single Node, BI - Business Intelligence Service, cvmHA - Cloud Disk Edition High Availability, cvmRO - Cloud Disk Edition Read-Only Replica, MultiHA - Multi-node, cvmMultiHA - Cloud Disk Multi-node.
         :rtype: str
         """
         return self._InstanceType
@@ -28729,7 +28826,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def MultiZonesStatus(self):
-        r"""
+        r"""Whether this specification supports cross-AZ deployment: MultiZones - only supports cross-AZ, SameZones - only supports same-AZ, ALL - supports all.
         :rtype: str
         """
         return self._MultiZonesStatus
@@ -28740,7 +28837,8 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Architecture(self):
-        r"""
+        r"""Architecture Type, SINGLE - single node, DOUBLE - dual node, TRIPLE - three-node, MULTI - multi-node
+Example value: SINGLE
         :rtype: str
         """
         return self._Architecture
@@ -28751,7 +28849,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Style(self):
-        r"""
+        r"""Type identifier, EXCLUSIVE - Dedicated, SHARED - Shared
         :rtype: str
         """
         return self._Style
@@ -28762,7 +28860,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Version(self):
-        r"""
+        r"""Database Version Information
         :rtype: str
         """
         return self._Version
@@ -28773,7 +28871,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def ZoneStatusSet(self):
-        r"""
+        r"""Sellable Status Set Per AZ
         :rtype: list of ZoneStatus
         """
         return self._ZoneStatusSet
@@ -28784,7 +28882,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Price(self):
-        r"""
+        r"""Reference price for specifications. The actual price is subject to the quotation API.
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.Price`
         """
         return self._Price
@@ -28795,7 +28893,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Specification Sale Status: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.
         :rtype: int
         """
         return self._Status
@@ -29122,17 +29220,17 @@ class StartInstanceXEventResponse(AbstractModel):
 
 
 class StepDetail(AbstractModel):
-    r"""
+    r"""Progress Steps Details
 
     """
 
     def __init__(self):
         r"""
-        :param _Msg: 
+        :param _Msg: Detailed Steps Return Information
         :type Msg: str
-        :param _Status: 
+        :param _Status: Current Step Status, 0 Success, -2 Not Started
         :type Status: int
-        :param _Name: 
+        :param _Name: Step Name
         :type Name: str
         """
         self._Msg = None
@@ -29141,7 +29239,7 @@ class StepDetail(AbstractModel):
 
     @property
     def Msg(self):
-        r"""
+        r"""Detailed Steps Return Information
         :rtype: str
         """
         return self._Msg
@@ -29152,7 +29250,7 @@ class StepDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Current Step Status, 0 Success, -2 Not Started
         :rtype: int
         """
         return self._Status
@@ -29163,7 +29261,7 @@ class StepDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Step Name
         :rtype: str
         """
         return self._Name
@@ -29188,39 +29286,49 @@ class StepDetail(AbstractModel):
 
 
 class SummaryDetailRes(AbstractModel):
-    r"""
+    r"""Backup Overview Real-Time Statistics
 
     """
 
     def __init__(self):
         r"""
-        :param _RegionId: 
+        :param _RegionId: Region Identifier
         :type RegionId: int
-        :param _Status: 
+        :param _Status: Instance Status. Valid values:
+1: Creating
+2: Running
+3: Restricted Running (primary/secondary switching)
+4: Isolated
+5: Recycling
+6: Recycled
+7: Task Executing (performing instance backup, rollback, etc.)
+8: Offline
+9: Instance Scaling
+10: Instance Migrating
         :type Status: int
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _Name: 
+        :param _Name: Instance Name
         :type Name: str
-        :param _ActualUsedSpace: 
+        :param _ActualUsedSpace: Backup Space
         :type ActualUsedSpace: int
-        :param _DataBackupSpace: 
+        :param _DataBackupSpace: Data Backup Space
         :type DataBackupSpace: int
-        :param _DataBackupCount: 
+        :param _DataBackupCount: Data Backup Total File Count
         :type DataBackupCount: int
-        :param _LogBackupSpace: 
+        :param _LogBackupSpace: Log Backup Space
         :type LogBackupSpace: int
-        :param _LogBackupCount: 
+        :param _LogBackupCount: Log Backup Total File Count
         :type LogBackupCount: int
-        :param _AutoBackupSpace: 
+        :param _AutoBackupSpace: Automatic Backup Space
         :type AutoBackupSpace: int
-        :param _AutoBackupCount: 
+        :param _AutoBackupCount: Automatic Backup Total File Count
         :type AutoBackupCount: int
-        :param _ManualBackupSpace: 
+        :param _ManualBackupSpace: Manual Backup Space
         :type ManualBackupSpace: int
-        :param _ManualBackupCount: 
+        :param _ManualBackupCount: Manual Backup Total File Count
         :type ManualBackupCount: int
-        :param _Region: 
+        :param _Region: Instance Region Code
         :type Region: str
         """
         self._RegionId = None
@@ -29240,7 +29348,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""
+        r"""Region Identifier
         :rtype: int
         """
         return self._RegionId
@@ -29251,7 +29359,17 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Instance Status. Valid values:
+1: Creating
+2: Running
+3: Restricted Running (primary/secondary switching)
+4: Isolated
+5: Recycling
+6: Recycled
+7: Task Executing (performing instance backup, rollback, etc.)
+8: Offline
+9: Instance Scaling
+10: Instance Migrating
         :rtype: int
         """
         return self._Status
@@ -29262,7 +29380,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -29273,7 +29391,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Instance Name
         :rtype: str
         """
         return self._Name
@@ -29284,7 +29402,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        r"""
+        r"""Backup Space
         :rtype: int
         """
         return self._ActualUsedSpace
@@ -29295,7 +29413,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        r"""
+        r"""Data Backup Space
         :rtype: int
         """
         return self._DataBackupSpace
@@ -29306,7 +29424,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupCount(self):
-        r"""
+        r"""Data Backup Total File Count
         :rtype: int
         """
         return self._DataBackupCount
@@ -29317,7 +29435,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        r"""
+        r"""Log Backup Space
         :rtype: int
         """
         return self._LogBackupSpace
@@ -29328,7 +29446,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        r"""
+        r"""Log Backup Total File Count
         :rtype: int
         """
         return self._LogBackupCount
@@ -29339,7 +29457,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def AutoBackupSpace(self):
-        r"""
+        r"""Automatic Backup Space
         :rtype: int
         """
         return self._AutoBackupSpace
@@ -29350,7 +29468,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def AutoBackupCount(self):
-        r"""
+        r"""Automatic Backup Total File Count
         :rtype: int
         """
         return self._AutoBackupCount
@@ -29361,7 +29479,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ManualBackupSpace(self):
-        r"""
+        r"""Manual Backup Space
         :rtype: int
         """
         return self._ManualBackupSpace
@@ -29372,7 +29490,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ManualBackupCount(self):
-        r"""
+        r"""Manual Backup Total File Count
         :rtype: int
         """
         return self._ManualBackupCount
@@ -29383,7 +29501,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Instance Region Code
         :rtype: str
         """
         return self._Region
@@ -29513,21 +29631,21 @@ class SwitchCloudInstanceHAResponse(AbstractModel):
 
 
 class SwitchLog(AbstractModel):
-    r"""
+    r"""Primary/Secondary Switchover Log
 
     """
 
     def __init__(self):
         r"""
-        :param _EventId: 
+        :param _EventId: Switchover Event ID
         :type EventId: str
-        :param _SwitchType: 
+        :param _SwitchType: Switchover Mode 0-System Automatic Switchover, 1-Manual Switchover
         :type SwitchType: int
-        :param _StartTime: 
+        :param _StartTime: Switchover Start Time
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: Switchover End Time
         :type EndTime: str
-        :param _Reason: 
+        :param _Reason: Machine failure causes automatic switchover.
         :type Reason: str
         """
         self._EventId = None
@@ -29538,7 +29656,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def EventId(self):
-        r"""
+        r"""Switchover Event ID
         :rtype: str
         """
         return self._EventId
@@ -29549,7 +29667,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def SwitchType(self):
-        r"""
+        r"""Switchover Mode 0-System Automatic Switchover, 1-Manual Switchover
         :rtype: int
         """
         return self._SwitchType
@@ -29560,7 +29678,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Switchover Start Time
         :rtype: str
         """
         return self._StartTime
@@ -29571,7 +29689,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""Switchover End Time
         :rtype: str
         """
         return self._EndTime
@@ -29582,7 +29700,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def Reason(self):
-        r"""
+        r"""Machine failure causes automatic switchover.
         :rtype: str
         """
         return self._Reason
@@ -30069,17 +30187,17 @@ class ZoneInfo(AbstractModel):
 
 
 class ZoneStatus(AbstractModel):
-    r"""
+    r"""Specification Sellable Status in a Specific Region's AZ
 
     """
 
     def __init__(self):
         r"""
-        :param _Zone: 
+        :param _Zone: Specification AZ
         :type Zone: str
-        :param _Region: 
+        :param _Region: Specification Region
         :type Region: str
-        :param _Status: 
+        :param _Status: Specification Sale Status in the AZ: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.
         :type Status: int
         """
         self._Zone = None
@@ -30088,7 +30206,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Zone(self):
-        r"""
+        r"""Specification AZ
         :rtype: str
         """
         return self._Zone
@@ -30099,7 +30217,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Specification Region
         :rtype: str
         """
         return self._Region
@@ -30110,7 +30228,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Specification Sale Status in the AZ: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.
         :rtype: int
         """
         return self._Status

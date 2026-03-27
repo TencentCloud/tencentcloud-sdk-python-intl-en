@@ -17913,9 +17913,9 @@ class DisableTeamDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 
+        :param _DomainId: Domain Name ID
         :type DomainId: int
-        :param _PlatformId: 
+        :param _PlatformId: Platform ID
         :type PlatformId: str
         """
         self._DomainId = None
@@ -17923,7 +17923,7 @@ class DisableTeamDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""
+        r"""Domain Name ID
         :rtype: int
         """
         return self._DomainId
@@ -17934,7 +17934,7 @@ class DisableTeamDomainRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""
+        r"""Platform ID
         :rtype: str
         """
         return self._PlatformId

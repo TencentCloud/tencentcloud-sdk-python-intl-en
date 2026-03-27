@@ -24090,7 +24090,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Periods: Metric monitoring granularity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Periods: list of int
-        :param _IsLatenessMetric: 
+        :param _IsLatenessMetric: Whether delay metrics
         :type IsLatenessMetric: int
         """
         self._Namespace = None
@@ -24259,7 +24259,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsLatenessMetric(self):
-        r"""
+        r"""Whether delay metrics
         :rtype: int
         """
         return self._IsLatenessMetric

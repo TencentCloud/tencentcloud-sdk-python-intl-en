@@ -9887,9 +9887,9 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
         r"""
         :param _EngineType: Types of engines: SQL, SparkBatch, StandardSpark, and StandardPresto
         :type EngineType: str
-        :param _Sort: 
+        :param _Sort: Sort field: InsertTime (Insertion time, default), UpdateTime (Update time)
         :type Sort: str
-        :param _Asc: 
+        :param _Asc: Sort order: false (descending, default), true (ascending)
         :type Asc: bool
         """
         self._EngineType = None
@@ -9909,7 +9909,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""
+        r"""Sort field: InsertTime (Insertion time, default), UpdateTime (Update time)
         :rtype: str
         """
         return self._Sort
@@ -9920,7 +9920,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     @property
     def Asc(self):
-        r"""
+        r"""Sort order: false (descending, default), true (ascending)
         :rtype: bool
         """
         return self._Asc
@@ -12973,9 +12973,9 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
         r"""
         :param _DataEngineConfigCommand: Operation commands of engine configuration. UpdateSparkSQLLakefsPath updates the path of managed tables, and UpdateSparkSQLResultPath updates the path of result buckets.
         :type DataEngineConfigCommand: str
-        :param _UseLakeFs: 
+        :param _UseLakeFs: Whether to use managed storage as result storage
         :type UseLakeFs: bool
-        :param _CustomResultPath: 
+        :param _CustomResultPath: User-defined Result Storage Path
         :type CustomResultPath: str
         """
         self._DataEngineConfigCommand = None
@@ -12995,7 +12995,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
     @property
     def UseLakeFs(self):
-        r"""
+        r"""Whether to use managed storage as result storage
         :rtype: bool
         """
         return self._UseLakeFs
@@ -13006,7 +13006,7 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
 
     @property
     def CustomResultPath(self):
-        r"""
+        r"""User-defined Result Storage Path
         :rtype: str
         """
         return self._CustomResultPath

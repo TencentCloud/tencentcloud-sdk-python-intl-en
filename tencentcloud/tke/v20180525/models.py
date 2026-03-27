@@ -6716,7 +6716,7 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _K8SVersion: 
+        :param _K8SVersion: k8s version number
         :type K8SVersion: str
         :param _VpcId: VPC ID
         :type VpcId: str
@@ -6765,7 +6765,7 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
 
     @property
     def K8SVersion(self):
-        r"""
+        r"""k8s version number
         :rtype: str
         """
         return self._K8SVersion
@@ -16822,7 +16822,7 @@ class EdgeCluster(AbstractModel):
         :type PodCIDR: str
         :param _ServiceCIDR: Cluster service CIDR block
         :type ServiceCIDR: str
-        :param _K8SVersion: 
+        :param _K8SVersion: k8s version number
         :type K8SVersion: str
         :param _Status: Cluster status
         :type Status: str
@@ -16929,7 +16929,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def K8SVersion(self):
-        r"""
+        r"""k8s version number
         :rtype: str
         """
         return self._K8SVersion
@@ -22401,7 +22401,7 @@ class NodePool(AbstractModel):
         :type Annotations: list of AnnotationValue
         :param _NodeCountSummary: Node list
         :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
-        :param _AutoscalingGroupStatus: 
+        :param _AutoscalingGroupStatus: Status information
         :type AutoscalingGroupStatus: str
         :param _MaxNodesNum: Maximum number of nodes
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -22598,7 +22598,7 @@ Note: This field may return "null", indicating that no valid value can be obtain
 
     @property
     def AutoscalingGroupStatus(self):
-        r"""
+        r"""Status information
         :rtype: str
         """
         return self._AutoscalingGroupStatus

@@ -572,7 +572,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class CdnDomainInfo(AbstractModel):
-    r"""
+    r"""Channel-associated domain information list.
 
     """
 
@@ -936,7 +936,7 @@ class ConfigAliasesInfo(AbstractModel):
 
 
 class CosInputInfo(AbstractModel):
-    r"""
+    r"""cos input information
 
     """
 
@@ -6330,7 +6330,7 @@ class DescribeStreamPackageVodRemuxTasksResponse(AbstractModel):
 
 
 class DomainRecordInfo(AbstractModel):
-    r"""
+    r"""Channel-associated domain record information.
 
     """
 
@@ -9970,7 +9970,7 @@ class ProgramScheduleInfo(AbstractModel):
 
 
 class SSAIChannelInfo(AbstractModel):
-    r"""
+    r"""Ad insertion channel configuration information.
 
     """
 

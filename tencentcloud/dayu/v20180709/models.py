@@ -21287,7 +21287,7 @@ class SchedulingDomain(AbstractModel):
         :type Method: str
         :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param _TTL: 
+        :param _TTL: ttl
         :type TTL: int
         :param _Status: Status
         :type Status: int
@@ -21396,7 +21396,7 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def TTL(self):
-        r"""
+        r"""ttl
         :rtype: int
         """
         return self._TTL

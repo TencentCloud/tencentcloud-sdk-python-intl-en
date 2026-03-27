@@ -4056,7 +4056,10 @@ Note: This field may return "null", indicating that no valid value can be obtain
         :param _OsImage: OS name
 Note: This field may return "null", indicating that no valid value can be obtained.
         :type OsImage: str
-        :param _InstanceId: 
+        :param _InstanceId: **Instance ID corresponding to the native node**
+
+- ins-q47ofw6 indicates that this instance is a CVM instance
+- eks-f8mvyaep indicates that this instance is a CXM instance
         :type InstanceId: str
         """
         self._MachineName = None
@@ -4336,7 +4339,10 @@ Note: This field may return "null", indicating that no valid value can be obtain
 
     @property
     def InstanceId(self):
-        r"""
+        r"""**Instance ID corresponding to the native node**
+
+- ins-q47ofw6 indicates that this instance is a CVM instance
+- eks-f8mvyaep indicates that this instance is a CXM instance
         :rtype: str
         """
         return self._InstanceId

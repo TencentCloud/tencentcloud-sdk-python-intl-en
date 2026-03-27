@@ -142,7 +142,7 @@ class CancelInvocationRequest(AbstractModel):
         r"""
         :param _InvocationId: Execution activity ID.
 
-Call the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api to query execution.
         :type InvocationId: str
         :param _InstanceIds: Instance ID list. upper limit: 100.
 
@@ -159,7 +159,7 @@ Instance ID can be obtained through the query instance interface of correspondin
     def InvocationId(self):
         r"""Execution activity ID.
 
-Call the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvocationId
@@ -986,19 +986,19 @@ Selectable values (currently only support one):.
         :type Type: str
         :param _CommandId: Remote command ID.
 
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
         :param _InstanceIds: Trigger associated instance ID. list cap 100.
 
 You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
 
-The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.
         :type InstanceIds: list of str
         :param _Username: Command execution user. length not exceeding 256 characters.
         :type Username: str
         :param _Parameters: Command custom parameter. field type is JSON encode string.
 
-This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
         :type Parameters: str
         :param _ScheduleSettings: Recurring invoker settings.
 
@@ -1046,7 +1046,7 @@ Selectable values (currently only support one):.
     def CommandId(self):
         r"""Remote command ID.
 
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -1061,7 +1061,7 @@ Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/526
 
 You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
 
-The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1085,7 +1085,7 @@ The instance needs to have the TAT client installed, and the client must be in O
     def Parameters(self):
         r"""Command custom parameter. field type is JSON encode string.
 
-This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Parameters
@@ -1429,14 +1429,14 @@ class DeleteCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        :param _CommandId: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
         """
         self._CommandId = None
 
     @property
     def CommandId(self):
-        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -1493,14 +1493,14 @@ class DeleteCommandsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandIds: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        :param _CommandIds: Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandIds: list of str
         """
         self._CommandIds = None
 
     @property
     def CommandIds(self):
-        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        r"""Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: list of str
         """
         return self._CommandIds
@@ -1559,7 +1559,7 @@ class DeleteInvokerRequest(AbstractModel):
         r"""
         :param _InvokerId: Pending deletion executor ID.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
@@ -1568,7 +1568,7 @@ Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/617
     def InvokerId(self):
         r"""Pending deletion executor ID.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -1627,7 +1627,7 @@ class DeleteRegisterCodesRequest(AbstractModel):
         r"""
         :param _RegisterCodeIds: Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.
 
-Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
         :type RegisterCodeIds: list of str
         """
         self._RegisterCodeIds = None
@@ -1636,7 +1636,7 @@ Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/134
     def RegisterCodeIds(self):
         r"""Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.
 
-Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
         :rtype: list of str
         """
         return self._RegisterCodeIds
@@ -1695,7 +1695,7 @@ class DeleteRegisterInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: Managed instance ID.
 
-Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+Call the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -1704,7 +1704,7 @@ Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api
     def InstanceId(self):
         r"""Managed instance ID.
 
-Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+Call the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
         :rtype: str
         """
         return self._InstanceId
@@ -1937,7 +1937,7 @@ class DescribeCommandsRequest(AbstractModel):
 - command-id - String - required: no - (filter condition) filter by the command id.
 - command-name - String - required: no - (filter condition) filter by the command name.
 -command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.
--scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.
+-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.com/document/api/1340/109968?from_cn_redirect=1) api.
 -created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.
 - tag-key - String - required: no - (filter condition) filter by the tag key.
 - tag-value - String - required: no - (filter condition) filter by the tag value.
@@ -1973,7 +1973,7 @@ The maximum number of `Filters` per request is 10, and that of `Filter.Values` i
 - command-id - String - required: no - (filter condition) filter by the command id.
 - command-name - String - required: no - (filter condition) filter by the command name.
 -command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.
--scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.
+-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.com/document/api/1340/109968?from_cn_redirect=1) api.
 -created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.
 - tag-key - String - required: no - (filter condition) filter by the tag key.
 - tag-value - String - required: no - (filter condition) filter by the tag value.
@@ -2106,9 +2106,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
         :param _Filters: Filter conditions.<br>.
 
 -invocation-task-id - String - required: no - (filter condition) filter by executing task id.
-- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.
+- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api.
 -instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.
--command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).
+-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1).
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
@@ -2146,9 +2146,9 @@ The default value is true.
         r"""Filter conditions.<br>.
 
 -invocation-task-id - String - required: no - (filter condition) filter by executing task id.
-- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.
+- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api.
 -instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.
--command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).
+-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1).
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
@@ -2452,7 +2452,7 @@ class DescribeInvokerRecordsRequest(AbstractModel):
         r"""
         :param _InvokerIds: Executor ID list. the list has a cap of 100.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerIds: list of str
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -2467,7 +2467,7 @@ Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/617
     def InvokerIds(self):
         r"""Executor ID list. the list has a cap of 100.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: list of str
         """
         return self._InvokerIds
@@ -2593,7 +2593,7 @@ Parameters must not be specified simultaneously `InvokerIds` and `Filters`.
         :param _Filters: Filter criteria:.
 
 - invoker-id - String - required: no - (filter condition) filter by executor id.
--command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 - invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.
@@ -2629,7 +2629,7 @@ Parameters must not be specified simultaneously `InvokerIds` and `Filters`.
         r"""Filter criteria:.
 
 - invoker-id - String - required: no - (filter condition) filter by executor id.
--command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 - invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.
@@ -3090,7 +3090,7 @@ Required: No
 
 - register-code-id
 
-Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
 Type: String.
 Required: No
 
@@ -3179,7 +3179,7 @@ Required: No
 
 - register-code-id
 
-Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Filter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
 Type: String.
 Required: No
 
@@ -3346,7 +3346,7 @@ Parameters must not specify both `SceneIds` and `Filters` simultaneously.
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `SceneIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
-        :param _Limit: Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.com/document/API/213/15688?from_cn_redirect=1).
         :type Limit: int
         :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
@@ -3391,7 +3391,7 @@ The maximum number of `Filters` per request is 10, and that of `Filter.Values` i
 
     @property
     def Limit(self):
-        r"""Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).
+        r"""Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.com/document/API/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -3504,7 +3504,7 @@ class DisableInvokerRequest(AbstractModel):
         r"""
         :param _InvokerId: ID of the executor to terminate.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
@@ -3513,7 +3513,7 @@ Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/617
     def InvokerId(self):
         r"""ID of the executor to terminate.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -3572,7 +3572,7 @@ class DisableRegisterCodesRequest(AbstractModel):
         r"""
         :param _RegisterCodeIds: Registration code ID.
 
-Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
         :type RegisterCodeIds: list of str
         """
         self._RegisterCodeIds = None
@@ -3581,7 +3581,7 @@ Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/134
     def RegisterCodeIds(self):
         r"""Registration code ID.
 
-Call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
+Call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.
         :rtype: list of str
         """
         return self._RegisterCodeIds
@@ -3640,7 +3640,7 @@ class EnableInvokerRequest(AbstractModel):
         r"""
         :param _InvokerId: Executor ID to be enabled.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         """
         self._InvokerId = None
@@ -3649,7 +3649,7 @@ Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/617
     def InvokerId(self):
         r"""Executor ID to be enabled.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -3704,7 +3704,7 @@ class Filter(AbstractModel):
     - if there are multiple `Filter`s, the logical relationship between them is `AND`.
     - if there are multiple Values in the same Filter, the relationship between Values under the same Filter is logical OR.
     >
-    Take the `Filters` of the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` "print working directory" and the `command-type` "POWERSHELL" or "BAT", it can be implemented as follows:.
+    Take the `Filters` of the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` "print working directory" and the `command-type` "POWERSHELL" or "BAT", it can be implemented as follows:.
     ```
     Filters.0.Name=command-name
     &Filters.0.Values.0=Print working directory.
@@ -4581,7 +4581,7 @@ class InvokeCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        :param _CommandId: Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
         :param _InstanceIds: Instance ID list for the command to be executed, with a cap of 200.
 
@@ -4592,7 +4592,7 @@ Instance ID can be obtained through the query instance interface of correspondin
         :type InstanceIds: list of str
         :param _Parameters: Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
 The key is the custom parameter name, and the value is the default. both kv are string-type.
-This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 If the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.
 Custom parameters can be up to 20.
 The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
@@ -4623,7 +4623,7 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def CommandId(self):
-        r"""Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+        r"""Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -4652,7 +4652,7 @@ Instance ID can be obtained through the query instance interface of correspondin
     def Parameters(self):
         r"""Custom parameter of Command. field type is json encoded string. for example: {"varA": "222"}.
 The key is the custom parameter name, and the value is the default. both kv are string-type.
-This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 If the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.
 Custom parameters can be up to 20.
 The custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].
@@ -5097,7 +5097,7 @@ class ModifyCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: <p>Command ID. call the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
+        :param _CommandId: <p>Command ID. call the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
         :type CommandId: str
         :param _CommandName: <p>Command name. name only supports chinese, english, digits, underscore, separator "-", and decimal point. the maximum length cannot exceed 60 bytes.</p>.
         :type CommandName: str
@@ -5111,9 +5111,9 @@ class ModifyCommandRequest(AbstractModel):
         :type WorkingDirectory: str
         :param _Timeout: <p>Command timeout time.</p><p>value range: [1, 86400].</p><p>unit: seconds.</p><p>default value: 60.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.
         :type Timeout: int
-        :param _DefaultParameters: <p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
+        :param _DefaultParameters: <p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
         :type DefaultParameters: str
-        :param _DefaultParameterConfs: <p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
+        :param _DefaultParameterConfs: <p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
         :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Username: <p>The username to run commands in a CVM or Lighthouse instance.<br>using minimum permission to execute commands is the best practice for permission management. we recommend running cloud assistant commands as a regular user identity.</p>.
         :type Username: str
@@ -5137,7 +5137,7 @@ class ModifyCommandRequest(AbstractModel):
 
     @property
     def CommandId(self):
-        r"""<p>Command ID. call the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
+        r"""<p>Command ID. call the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands</a> api to query command details.</p>.
         :rtype: str
         """
         return self._CommandId
@@ -5214,7 +5214,7 @@ class ModifyCommandRequest(AbstractModel):
 
     @property
     def DefaultParameters(self):
-        r"""<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
+        r"""<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {"varA": "222"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.
         :rtype: str
         """
         return self._DefaultParameters
@@ -5225,7 +5225,7 @@ class ModifyCommandRequest(AbstractModel):
 
     @property
     def DefaultParameterConfs(self):
-        r"""<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
+        r"""<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href="https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.
         :rtype: list of DefaultParameterConf
         """
         return self._DefaultParameterConfs
@@ -5333,7 +5333,7 @@ class ModifyInvokerRequest(AbstractModel):
         r"""
         :param _InvokerId: Executor ID to be modified.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :type InvokerId: str
         :param _Name: Executor name to be modified. length not exceeding 120 characters.
         :type Name: str
@@ -5345,19 +5345,19 @@ Selectable values (currently only support one):.
         :type Type: str
         :param _CommandId: Command ID to be modified.
 
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :type CommandId: str
         :param _Username: Username to be modified. length not exceeding 256 characters.
         :type Username: str
         :param _Parameters: Custom parameters to be modified. field type is JSON encode string.
 
-This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
         :type Parameters: str
         :param _InstanceIds: List of instance ids to be modified. list length limit 100.
 
 You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
 
-The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.
         :type InstanceIds: list of str
         :param _ScheduleSettings: Recurring invoker settings to be modified.
 
@@ -5377,7 +5377,7 @@ Change the executor type to `SCHEDULE` and specify this parameter.
     def InvokerId(self):
         r"""Executor ID to be modified.
 
-Call the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.
+Call the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.
         :rtype: str
         """
         return self._InvokerId
@@ -5416,7 +5416,7 @@ Selectable values (currently only support one):.
     def CommandId(self):
         r"""Command ID to be modified.
 
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
         :rtype: str
         """
         return self._CommandId
@@ -5440,7 +5440,7 @@ Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/526
     def Parameters(self):
         r"""Custom parameters to be modified. field type is JSON encode string.
 
-This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Parameters
@@ -5455,7 +5455,7 @@ This parameter can be set only when EnableParameter of the command specified by 
 
 You can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.
 
-The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.
+The instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5536,7 +5536,7 @@ class ModifyRegisterInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: Managed instance ID.
 
-Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+Call the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
         :type InstanceId: str
         :param _InstanceName: Instance name. valid length is 1–60 characters.
         :type InstanceName: str
@@ -5548,7 +5548,7 @@ Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api
     def InstanceId(self):
         r"""Managed instance ID.
 
-Call the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
+Call the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.
         :rtype: str
         """
         return self._InstanceId
@@ -5618,7 +5618,7 @@ class PreviewReplacedCommandContentRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Parameters: The preview uses custom parameters. field type is json encoded string, for example: {"varA": "222"}.
-This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 If DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.
 
 key specifies the custom parameter name, and value specifies the parameter. both kv are string-type.
@@ -5627,7 +5627,7 @@ The custom parameter name must meet the following standard: the number of charac
 If the previewed CommandId has DefaultParameters set, this parameter can be empty.
         :type Parameters: str
         :param _CommandId: Perform the replace preview command.
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
 CommandId and Content, you must provide one and can only provide one.
         :type CommandId: str
         :param _Content: Base64-encoded command to be previewed. The maximum length is 64 KB.
@@ -5641,7 +5641,7 @@ CommandId or Content must be specified.
     @property
     def Parameters(self):
         r"""The preview uses custom parameters. field type is json encoded string, for example: {"varA": "222"}.
-This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.
+This parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.
 If DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.
 
 key specifies the custom parameter name, and value specifies the parameter. both kv are string-type.
@@ -5659,7 +5659,7 @@ If the previewed CommandId has DefaultParameters set, this parameter can be empt
     @property
     def CommandId(self):
         r"""Perform the replace preview command.
-Call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.
+Call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.
 CommandId and Content, you must provide one and can only provide one.
         :rtype: str
         """

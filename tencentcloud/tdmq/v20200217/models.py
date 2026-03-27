@@ -18876,13 +18876,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ExchangeQuota(AbstractModel):
-    r"""
+    r"""exchange usage quota information
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxExchange: 
+        :param _MaxExchange: Maximum number of creatable exchanges
         :type MaxExchange: int
         :param _UsedExchange: Number of created exchanges.
         :type UsedExchange: int
@@ -18892,7 +18892,7 @@ class ExchangeQuota(AbstractModel):
 
     @property
     def MaxExchange(self):
-        r"""
+        r"""Maximum number of creatable exchanges
         :rtype: int
         """
         return self._MaxExchange
@@ -22984,19 +22984,19 @@ class ProducerLog(AbstractModel):
 
 
 class PrometheusEndpointInfo(AbstractModel):
-    r"""
+    r"""rabbitmq Prometheus Information
 
     """
 
     def __init__(self):
         r"""
-        :param _PrometheusEndpointStatus: 
+        :param _PrometheusEndpointStatus: Status of the Prometheus switch
         :type PrometheusEndpointStatus: str
-        :param _VpcPrometheusEndpoint: 
+        :param _VpcPrometheusEndpoint: prometheus Information
         :type VpcPrometheusEndpoint: list of str
-        :param _NodePrometheusAddress: 
+        :param _NodePrometheusAddress: Node Information
         :type NodePrometheusAddress: list of str
-        :param _VpcEndpointInfo: 
+        :param _VpcEndpointInfo: vpc information
         :type VpcEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         self._PrometheusEndpointStatus = None
@@ -23006,7 +23006,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def PrometheusEndpointStatus(self):
-        r"""
+        r"""Status of the Prometheus switch
         :rtype: str
         """
         return self._PrometheusEndpointStatus
@@ -23017,7 +23017,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def VpcPrometheusEndpoint(self):
-        r"""
+        r"""prometheus Information
         :rtype: list of str
         """
         return self._VpcPrometheusEndpoint
@@ -23028,7 +23028,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def NodePrometheusAddress(self):
-        r"""
+        r"""Node Information
         :rtype: list of str
         """
         return self._NodePrometheusAddress
@@ -23039,7 +23039,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def VpcEndpointInfo(self):
-        r"""
+        r"""vpc information
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         return self._VpcEndpointInfo
@@ -24458,13 +24458,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class QueueQuota(AbstractModel):
-    r"""
+    r"""queue usage quota information
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxQueue: 
+        :param _MaxQueue: Maximum number of creatable queues
         :type MaxQueue: int
         :param _UsedQueue: Number of created Queues.
         :type UsedQueue: int
@@ -24474,7 +24474,7 @@ class QueueQuota(AbstractModel):
 
     @property
     def MaxQueue(self):
-        r"""
+        r"""Maximum number of creatable queues
         :rtype: int
         """
         return self._MaxQueue
@@ -24695,27 +24695,27 @@ class RabbitMQBindingListInfo(AbstractModel):
 
 
 class RabbitMQClusterAccessInfo(AbstractModel):
-    r"""
+    r"""RabbitMQ Cluster Access Information
 
     """
 
     def __init__(self):
         r"""
-        :param _PublicAccessEndpoint: 
+        :param _PublicAccessEndpoint: Cluster Public Network Access Address
         :type PublicAccessEndpoint: str
-        :param _WebConsoleEndpoint: 
+        :param _WebConsoleEndpoint: Cluster Console Access Address
         :type WebConsoleEndpoint: str
-        :param _WebConsoleUsername: 
+        :param _WebConsoleUsername: Cluster Console Login Username
         :type WebConsoleUsername: str
-        :param _WebConsolePassword: 
+        :param _WebConsolePassword: Cluster Console Login Password
         :type WebConsolePassword: str
-        :param _PublicAccessEndpointStatus: 
+        :param _PublicAccessEndpointStatus: Deprecated
         :type PublicAccessEndpointStatus: bool
-        :param _PublicControlConsoleSwitchStatus: 
+        :param _PublicControlConsoleSwitchStatus: Deprecated
         :type PublicControlConsoleSwitchStatus: bool
-        :param _VpcControlConsoleSwitchStatus: 
+        :param _VpcControlConsoleSwitchStatus: Deprecated
         :type VpcControlConsoleSwitchStatus: bool
-        :param _VpcWebConsoleEndpoint: 
+        :param _VpcWebConsoleEndpoint: Vpc management console access address, example value: http://1.1.1.1:15672
         :type VpcWebConsoleEndpoint: str
         :param _PublicWebConsoleSwitchStatus: Status of the public network access point in the console. Valid values: OFF, ON, CREATING, and DELETING.
         :type PublicWebConsoleSwitchStatus: str
@@ -24754,7 +24754,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicAccessEndpoint(self):
-        r"""
+        r"""Cluster Public Network Access Address
         :rtype: str
         """
         return self._PublicAccessEndpoint
@@ -24765,7 +24765,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleEndpoint(self):
-        r"""
+        r"""Cluster Console Access Address
         :rtype: str
         """
         return self._WebConsoleEndpoint
@@ -24776,7 +24776,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleUsername(self):
-        r"""
+        r"""Cluster Console Login Username
         :rtype: str
         """
         return self._WebConsoleUsername
@@ -24787,7 +24787,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsolePassword(self):
-        r"""
+        r"""Cluster Console Login Password
         :rtype: str
         """
         return self._WebConsolePassword
@@ -24798,7 +24798,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicAccessEndpointStatus(self):
-        r"""
+        r"""Deprecated
         :rtype: bool
         """
         return self._PublicAccessEndpointStatus
@@ -24809,7 +24809,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicControlConsoleSwitchStatus(self):
-        r"""
+        r"""Deprecated
         :rtype: bool
         """
         return self._PublicControlConsoleSwitchStatus
@@ -24820,7 +24820,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcControlConsoleSwitchStatus(self):
-        r"""
+        r"""Deprecated
         :rtype: bool
         """
         return self._VpcControlConsoleSwitchStatus
@@ -24831,7 +24831,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcWebConsoleEndpoint(self):
-        r"""
+        r"""Vpc management console access address, example value: http://1.1.1.1:15672
         :rtype: str
         """
         return self._VpcWebConsoleEndpoint
@@ -24970,35 +24970,35 @@ class RabbitMQClusterInfo(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _ClusterName: 
+        :param _ClusterName: Cluster Name
         :type ClusterName: str
-        :param _Region: 
+        :param _Region: Region Information
         :type Region: str
         :param _CreateTime: Creation time in milliseconds. unix timestamp.
         :type CreateTime: int
         :param _Remark: Cluster description information
         :type Remark: str
-        :param _Vpcs: 
+        :param _Vpcs: VPC and network information
         :type Vpcs: list of VpcEndpointInfo
         :param _ZoneIds: AZ information
         :type ZoneIds: list of int
-        :param _VirtualHostNumber: 
+        :param _VirtualHostNumber: Virtual Host Quantity
         :type VirtualHostNumber: int
-        :param _QueueNumber: 
+        :param _QueueNumber: Number of Queues
         :type QueueNumber: int
-        :param _MessagePublishRate: 
+        :param _MessagePublishRate: Number of messages produced per second Unit: messages/second
         :type MessagePublishRate: float
-        :param _MessageStackNumber: 
+        :param _MessageStackNumber: Number of backlogged messages Unit: messages
         :type MessageStackNumber: int
         :param _ExpireTime: Specifies the instance expiration time in milliseconds as a unix timestamp. the value is 0 for pay-as-you-go resources.
         :type ExpireTime: int
-        :param _ChannelNumber: 
+        :param _ChannelNumber: Channel Count
         :type ChannelNumber: int
-        :param _ConnectionNumber: 
+        :param _ConnectionNumber: Connection Count
         :type ConnectionNumber: int
-        :param _ConsumerNumber: 
+        :param _ConsumerNumber: Consumer Count
         :type ConsumerNumber: int
-        :param _ExchangeNumber: 
+        :param _ExchangeNumber: Exchange Count
         :type ExchangeNumber: int
         :param _ExceptionInformation: Cluster exception information.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -25068,7 +25068,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        r"""
+        r"""Cluster Name
         :rtype: str
         """
         return self._ClusterName
@@ -25079,7 +25079,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""
+        r"""Region Information
         :rtype: str
         """
         return self._Region
@@ -25112,7 +25112,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vpcs(self):
-        r"""
+        r"""VPC and network information
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -25134,7 +25134,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualHostNumber(self):
-        r"""
+        r"""Virtual Host Quantity
         :rtype: int
         """
         return self._VirtualHostNumber
@@ -25145,7 +25145,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueNumber(self):
-        r"""
+        r"""Number of Queues
         :rtype: int
         """
         return self._QueueNumber
@@ -25156,7 +25156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessagePublishRate(self):
-        r"""
+        r"""Number of messages produced per second Unit: messages/second
         :rtype: float
         """
         return self._MessagePublishRate
@@ -25167,7 +25167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessageStackNumber(self):
-        r"""
+        r"""Number of backlogged messages Unit: messages
         :rtype: int
         """
         return self._MessageStackNumber
@@ -25189,7 +25189,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelNumber(self):
-        r"""
+        r"""Channel Count
         :rtype: int
         """
         return self._ChannelNumber
@@ -25200,7 +25200,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectionNumber(self):
-        r"""
+        r"""Connection Count
         :rtype: int
         """
         return self._ConnectionNumber
@@ -25211,7 +25211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConsumerNumber(self):
-        r"""
+        r"""Consumer Count
         :rtype: int
         """
         return self._ConsumerNumber
@@ -25222,7 +25222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExchangeNumber(self):
-        r"""
+        r"""Exchange Count
         :rtype: int
         """
         return self._ExchangeNumber
@@ -25415,23 +25415,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RabbitMQClusterSpecInfo(AbstractModel):
-    r"""
+    r"""RabbitMQ Cluster Specifications Information
 
     """
 
     def __init__(self):
         r"""
-        :param _SpecName: 
+        :param _SpecName: Cluster Specification Name
         :type SpecName: str
-        :param _NodeCount: 
+        :param _NodeCount: Number of Nodes
         :type NodeCount: int
-        :param _MaxTps: 
+        :param _MaxTps: Peak tps
         :type MaxTps: int
-        :param _MaxBandWidth: 
+        :param _MaxBandWidth: Peak bandwidth Unit: mbps
         :type MaxBandWidth: int
-        :param _MaxStorage: 
+        :param _MaxStorage: Storage capacity Unit: GB
         :type MaxStorage: int
-        :param _PublicNetworkTps: 
+        :param _PublicNetworkTps: public network bandwidth tps. Unit: Mbps
         :type PublicNetworkTps: int
         """
         self._SpecName = None
@@ -25443,7 +25443,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""
+        r"""Cluster Specification Name
         :rtype: str
         """
         return self._SpecName
@@ -25454,7 +25454,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""
+        r"""Number of Nodes
         :rtype: int
         """
         return self._NodeCount
@@ -25465,7 +25465,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""
+        r"""Peak tps
         :rtype: int
         """
         return self._MaxTps
@@ -25476,7 +25476,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""
+        r"""Peak bandwidth Unit: mbps
         :rtype: int
         """
         return self._MaxBandWidth
@@ -25487,7 +25487,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxStorage(self):
-        r"""
+        r"""Storage capacity Unit: GB
         :rtype: int
         """
         return self._MaxStorage
@@ -25498,7 +25498,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def PublicNetworkTps(self):
-        r"""
+        r"""public network bandwidth tps. Unit: Mbps
         :rtype: int
         """
         return self._PublicNetworkTps
@@ -25526,7 +25526,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
 
 class RabbitMQClusterWhiteListInfo(AbstractModel):
-    r"""
+    r"""RabbitMQ Cluster Allowlist Information
 
     """
 
@@ -25538,9 +25538,9 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
         :type PublicControlConsoleWhiteList: str
         :param _PublicDataStreamWhiteList: Public network data flow allowlist.
         :type PublicDataStreamWhiteList: str
-        :param _PublicControlConsoleWhiteListStatus: 
+        :param _PublicControlConsoleWhiteListStatus: Public Network Management Console Allowlist Status
         :type PublicControlConsoleWhiteListStatus: str
-        :param _PublicDataStreamWhiteListStatus: 
+        :param _PublicDataStreamWhiteListStatus: Public Network Data Flow Allowlist Status
         :type PublicDataStreamWhiteListStatus: str
         """
         self._WhiteList = None
@@ -25584,7 +25584,7 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
 
     @property
     def PublicControlConsoleWhiteListStatus(self):
-        r"""
+        r"""Public Network Management Console Allowlist Status
         :rtype: str
         """
         return self._PublicControlConsoleWhiteListStatus
@@ -25595,7 +25595,7 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
 
     @property
     def PublicDataStreamWhiteListStatus(self):
-        r"""
+        r"""Public Network Data Flow Allowlist Status
         :rtype: str
         """
         return self._PublicDataStreamWhiteListStatus
@@ -29719,7 +29719,7 @@ class RocketMQInstanceConfig(AbstractModel):
         :type NodeDistribution: list of InstanceNodeDistribution
         :param _TopicDistribution: Topic distribution
         :type TopicDistribution: list of RocketMQTopicDistribution
-        :param _MaxQueuesPerTopic: 
+        :param _MaxQueuesPerTopic: Maximum number of queues per topic
         :type MaxQueuesPerTopic: int
         :param _MaxRetention: Maximum configurable message retention time, in hours	
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -29881,7 +29881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxQueuesPerTopic(self):
-        r"""
+        r"""Maximum number of queues per topic
         :rtype: int
         """
         return self._MaxQueuesPerTopic
@@ -33846,13 +33846,13 @@ class UnbindCmqDeadLetterResponse(AbstractModel):
 
 
 class VirtualHostQuota(AbstractModel):
-    r"""
+    r"""vhost usage quota information
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxVirtualHost: 
+        :param _MaxVirtualHost: Maximum number of vhosts allowed to be created
         :type MaxVirtualHost: int
         :param _UsedVirtualHost: Number of created vhosts.
         :type UsedVirtualHost: int
@@ -33871,7 +33871,7 @@ class VirtualHostQuota(AbstractModel):
 
     @property
     def MaxVirtualHost(self):
-        r"""
+        r"""Maximum number of vhosts allowed to be created
         :rtype: int
         """
         return self._MaxVirtualHost
@@ -34106,17 +34106,17 @@ class VpcConfig(AbstractModel):
 
 
 class VpcEndpointInfo(AbstractModel):
-    r"""
+    r"""VPC Access Point Information
 
     """
 
     def __init__(self):
         r"""
-        :param _VpcId: 
+        :param _VpcId: vpc id
         :type VpcId: str
-        :param _SubnetId: 
+        :param _SubnetId: subnet id
         :type SubnetId: str
-        :param _VpcEndpoint: 
+        :param _VpcEndpoint: vpc Access Point Information
         :type VpcEndpoint: str
         :param _VpcDataStreamEndpointStatus: Access point status. valid values: OFF, ON, CREATING, DELETING.
         :type VpcDataStreamEndpointStatus: str
@@ -34131,7 +34131,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""
+        r"""vpc id
         :rtype: str
         """
         return self._VpcId
@@ -34142,7 +34142,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""
+        r"""subnet id
         :rtype: str
         """
         return self._SubnetId
@@ -34153,7 +34153,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcEndpoint(self):
-        r"""
+        r"""vpc Access Point Information
         :rtype: str
         """
         return self._VpcEndpoint

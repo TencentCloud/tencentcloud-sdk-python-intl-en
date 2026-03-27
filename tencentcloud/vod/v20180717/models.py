@@ -10539,7 +10539,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicating other categories.</li>.
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _Resolution: Image generation resolution. available values are 720P, 1080P, 2K, 4K, 1024x1024, 2048x2048, 2304x1728, 2496x1664, 2560x1440, 3024x1296, 4096x4096, 4694x3520, 4992x3328, 5404x3040, 6198x2656.
         :type Resolution: str
@@ -10599,7 +10599,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -10937,7 +10937,7 @@ class AigcImageTaskInput(AbstractModel):
         :type NegativePrompt: str
         :param _EnhancePrompt: Whether to optimize Prompt content automatically. when Enabled, it will optimize the passed in Prompt automatically to enhance generation quality. valid values: <li>Enabled: turn on;</li> <li>Disabled: turn off;</li>
         :type EnhancePrompt: str
-        :param _GenerationMode: 
+        :param _GenerationMode: Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>
         :type GenerationMode: str
         :param _OutputConfig: Output media file configuration for the task.
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
@@ -11019,7 +11019,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def GenerationMode(self):
-        r"""
+        r"""Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>
         :rtype: str
         """
         return self._GenerationMode
@@ -11160,7 +11160,7 @@ Description:.
 
 
 class AigcImageTaskOutput(AbstractModel):
-    r"""
+    r"""AIGC image generation task output.
 
     """
 
@@ -11215,7 +11215,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicating other categories.</li>.
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _FileType: File Type.
         :type FileType: str
@@ -11272,7 +11272,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -11418,7 +11418,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicate other categories.</li>.
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _Duration: Video duration, unit: seconds. <li>when ModelName is Kling, optional values: 5, 10, defaults to 5;</li> <li>when ModelName is Hailuo, optional values: 6, 10, defaults to 6;</li> <li>when ModelName is Vidu, specify 1-10;</li> <li>when ModelName is GV, optional values: 8, defaults to 8;</li> <li>when ModelName is OS, optional values: 4, 8, 12, defaults to 8;</li>
         :type Duration: float
@@ -11504,7 +11504,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -11832,7 +11832,7 @@ class AigcVideoTaskInput(AbstractModel):
         :type NegativePrompt: str
         :param _EnhancePrompt: Whether to optimize Prompt content automatically. when Enabled, the passed-in Prompt will be optimized automatically to enhance generation quality. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>.
         :type EnhancePrompt: str
-        :param _GenerationMode: 
+        :param _GenerationMode: Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>
         :type GenerationMode: str
         :param _OutputConfig: Specifies the output media file configuration for the video task.
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoOutputConfig`
@@ -11926,7 +11926,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def GenerationMode(self):
-        r"""
+        r"""Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>
         :rtype: str
         """
         return self._GenerationMode
@@ -12161,7 +12161,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicate other categories.</li>.
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _FileType: File Type.
         :type FileType: str
@@ -12218,7 +12218,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -24281,9 +24281,9 @@ class CreateReviewTemplateRequest(AbstractModel):
         :type Labels: list of str
         :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: str
-        :param _Name: 
+        :param _Name: Audit template name, length limit: 64 characters.
         :type Name: str
-        :param _Comment: 
+        :param _Comment: Audit template description, length limit: 256 characters.
         :type Comment: str
         """
         self._Labels = None
@@ -24315,7 +24315,7 @@ class CreateReviewTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Audit template name, length limit: 64 characters.
         :rtype: str
         """
         return self._Name
@@ -24326,7 +24326,7 @@ class CreateReviewTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""
+        r"""Audit template description, length limit: 256 characters.
         :rtype: str
         """
         return self._Comment
@@ -25373,7 +25373,7 @@ class CreateSubAppIdRequest(AbstractModel):
         :type Name: str
         :param _Description: Subapplication overview. Length limit: 300 characters.
         :type Description: str
-        :param _Type: 
+        :param _Type: Application type. Available values: <li>AllInOne: All-in-one;</li><li>Professional: Professional.</li>Default value: AllInOne.
         :type Type: str
         """
         self._Name = None
@@ -25404,7 +25404,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Application type. Available values: <li>AllInOne: All-in-one;</li><li>Professional: Professional.</li>Default value: AllInOne.
         :rtype: str
         """
         return self._Type
@@ -37225,7 +37225,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param _QUICConfig: The QUIC configuration for the domain.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
-        :param _IPFilterPolicy: 
+        :param _IPFilterPolicy: IP access limit configuration information.
         :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         :param _Type: Domain type. Valid values:
 <li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>
@@ -37341,7 +37341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IPFilterPolicy(self):
-        r"""
+        r"""IP access limit configuration information.
         :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         return self._IPFilterPolicy
@@ -39507,7 +39507,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _ComplexAdaptiveDynamicStreamingCompleteEvent: Complex adaptive bitrate streaming processing completion event, valid when the event type is ComplexAdaptiveDynamicStreamingComplete.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ComplexAdaptiveDynamicStreamingCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
-        :param _ProcessMediaByMPSCompleteEvent: 
+        :param _ProcessMediaByMPSCompleteEvent: MPS video processing task information, valid only when EventType is ProcessMediaByMPSComplete.
         :type ProcessMediaByMPSCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         :param _AigcImageCompleteEvent: AIGC image task completion event, valid when the event type is AigcImageTaskComplete.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -39888,7 +39888,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessMediaByMPSCompleteEvent(self):
-        r"""
+        r"""MPS video processing task information, valid only when EventType is ProcessMediaByMPSComplete.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         """
         return self._ProcessMediaByMPSCompleteEvent
@@ -43286,17 +43286,21 @@ class HwPrivateAccess(AbstractModel):
 
 
 class IPFilterPolicy(AbstractModel):
-    r"""
+    r"""IP access restriction rules, currently supports configuring IP blocklist and allowlist.
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: IP access restriction status. Optional values:
+<li>Enabled: enable;</li>
+<li>Disabled: disable.</li>
         :type Status: str
-        :param _FilterType: 
+        :param _FilterType: IP access restriction type:
+<li>Black: blocklist-based verification. Only IP requests from the IPList will be blocked.</li>
+<li>White: allowlist-based verification. Only IP requests from the IPList will be allowed.</li>When Status is set to Enabled, FilterType must be assigned.
         :type FilterType: str
-        :param _IPList: 
+        :param _IPList: IP list, supporting IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or CIDR notation /N (IPV4: 1 ≤ N ≤ 32; IPV6: 1 ≤ N ≤ 128). A maximum of 200 IPs or CIDR blocks can be added. When Status is set to Enabled, IPList must be assigned.
         :type IPList: list of str
         """
         self._Status = None
@@ -43305,7 +43309,9 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""IP access restriction status. Optional values:
+<li>Enabled: enable;</li>
+<li>Disabled: disable.</li>
         :rtype: str
         """
         return self._Status
@@ -43316,7 +43322,9 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def FilterType(self):
-        r"""
+        r"""IP access restriction type:
+<li>Black: blocklist-based verification. Only IP requests from the IPList will be blocked.</li>
+<li>White: allowlist-based verification. Only IP requests from the IPList will be allowed.</li>When Status is set to Enabled, FilterType must be assigned.
         :rtype: str
         """
         return self._FilterType
@@ -43327,7 +43335,7 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def IPList(self):
-        r"""
+        r"""IP list, supporting IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or CIDR notation /N (IPV4: 1 ≤ N ≤ 32; IPV6: 1 ≤ N ≤ 128). A maximum of 200 IPs or CIDR blocks can be added. When Status is set to Enabled, IPList must be assigned.
         :rtype: list of str
         """
         return self._IPList
@@ -44359,7 +44367,13 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
 <li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
-        :param _Transparency: 
+        :param _Transparency: Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent</li>
+
+Default value: 0.
         :type Transparency: int
         """
         self._ImageContent = None
@@ -44423,7 +44437,13 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 
     @property
     def Transparency(self):
-        r"""
+        r"""Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent</li>
+
+Default value: 0.
         :rtype: int
         """
         return self._Transparency
@@ -44471,7 +44491,11 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
 <li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
-        :param _Transparency: 
+        :param _Transparency: Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent.</li>
         :type Transparency: int
         """
         self._ImageContent = None
@@ -44533,7 +44557,11 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Transparency(self):
-        r"""
+        r"""Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent.</li>
         :rtype: int
         """
         return self._Transparency
@@ -44582,7 +44610,11 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
 <li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
-        :param _Transparency: 
+        :param _Transparency: Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent.</li>
         :type Transparency: int
         """
         self._ImageUrl = None
@@ -44645,7 +44677,11 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def Transparency(self):
-        r"""
+        r"""Image transparency, value range: [0, 100]
+
+<li>0: Completely opaque</li>
+
+<li>100: Completely transparent.</li>
         :rtype: int
         """
         return self._Transparency
@@ -44785,19 +44821,19 @@ class ImportMediaKnowledgeResponse(AbstractModel):
 
 
 class ImportMediaKnowledgeTask(AbstractModel):
-    r"""
+    r"""Media import knowledge base task
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: Task ID.
         :type TaskId: str
-        :param _Status: 
+        :param _Status: Task Status. Valid values: <li>PROCESSING: Processing;</li><li>FINISH: Completed.</li>
         :type Status: str
-        :param _ErrCode: 
+        :param _ErrCode: Error code; 0 indicates success, other values indicate failure
         :type ErrCode: int
-        :param _Message: 
+        :param _Message: Error message.
         :type Message: str
         """
         self._TaskId = None
@@ -44807,7 +44843,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""Task ID.
         :rtype: str
         """
         return self._TaskId
@@ -44818,7 +44854,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Task Status. Valid values: <li>PROCESSING: Processing;</li><li>FINISH: Completed.</li>
         :rtype: str
         """
         return self._Status
@@ -44829,7 +44865,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""
+        r"""Error code; 0 indicates success, other values indicate failure
         :rtype: int
         """
         return self._ErrCode
@@ -44840,7 +44876,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""
+        r"""Error message.
         :rtype: str
         """
         return self._Message
@@ -47606,15 +47642,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaCastEvent(AbstractModel):
-    r"""
+    r"""Media relay event notification message.
 
     """
 
     def __init__(self):
         r"""
-        :param _CastId: 
+        :param _CastId: Media relay ID.
         :type CastId: str
-        :param _Status: 
+        :param _Status: Relay status. Valid values:
+<li>Working: Running;</li>
+<li>Scheduled: To be started after the scheduled time arrives;</li>
+<li>Stopped: Relay stopped;</li>
+<li>Idle: Idle.</li>
         :type Status: str
         """
         self._CastId = None
@@ -47622,7 +47662,7 @@ class MediaCastEvent(AbstractModel):
 
     @property
     def CastId(self):
-        r"""
+        r"""Media relay ID.
         :rtype: str
         """
         return self._CastId
@@ -47633,7 +47673,11 @@ class MediaCastEvent(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Relay status. Valid values:
+<li>Working: Running;</li>
+<li>Scheduled: To be started after the scheduled time arrives;</li>
+<li>Stopped: Relay stopped;</li>
+<li>Idle: Idle.</li>
         :rtype: str
         """
         return self._Status
@@ -49307,7 +49351,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaMiniProgramReviewElem(AbstractModel):
-    r"""
+    r"""Mini Program Audio-Video Review Summary Metadata
 
     """
 
@@ -49393,7 +49437,7 @@ class MediaMiniProgramReviewElem(AbstractModel):
 
 
 class MediaMiniProgramReviewInfo(AbstractModel):
-    r"""
+    r"""Mini Program Audio-Video Review Information
 
     """
 
@@ -49434,7 +49478,7 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
 
 class MediaMiniProgramReviewInfoItem(AbstractModel):
-    r"""
+    r"""Mini Program Audio-Video Review Information Unit
 
     """
 
@@ -52237,7 +52281,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Trace: Digital watermark</li>
 <li>None: Regular watermark</li>
         :type DigitalWatermarkType: str
-        :param _CopyRightWatermarkText: 
+        :param _CopyRightWatermarkText: Copyright information.
         :type CopyRightWatermarkText: str
         """
         self._Url = None
@@ -52401,7 +52445,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CopyRightWatermarkText(self):
-        r"""
+        r"""Copyright information.
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -56219,13 +56263,13 @@ class ModifyReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Audit template unique ID.
         :type Definition: int
         :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
-        :param _Name: 
+        :param _Name: Audit template name, length limit: 64 characters.
         :type Name: str
-        :param _Comment: 
+        :param _Comment: Audit template description, length limit: 256 characters.
         :type Comment: str
         :param _Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>
         :type Labels: list of str
@@ -56238,7 +56282,7 @@ class ModifyReviewTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""Audit template unique ID.
         :rtype: int
         """
         return self._Definition
@@ -56260,7 +56304,7 @@ class ModifyReviewTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Audit template name, length limit: 64 characters.
         :rtype: str
         """
         return self._Name
@@ -56271,7 +56315,7 @@ class ModifyReviewTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""
+        r"""Audit template description, length limit: 256 characters.
         :rtype: str
         """
         return self._Comment
@@ -59543,7 +59587,7 @@ class ParseStreamingManifestResponse(AbstractModel):
 
 
 class PersistenceCompleteTask(AbstractModel):
-    r"""
+    r"""Finalized editing task information.
 
     """
 
@@ -72266,7 +72310,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicate other categories.</li>
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _AspectRatio: Specify the aspect ratio of the generated image. input format is W:H.
 
@@ -72316,7 +72360,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -72724,7 +72768,7 @@ Default value: Temporary.
         :param _ClassId: Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.
 <Li>Default value: 0, indicating other categories.</li>.
         :type ClassId: int
-        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _FileType: File Type.
         :type FileType: str
@@ -72781,7 +72825,7 @@ Default value: Temporary.
 
     @property
     def ExpireTime(self):
-        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).
+        r"""The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -74200,11 +74244,11 @@ This parameter is valid only if `IsPersistence` is `1`.
         :type SourceContext: str
         :param _SessionContext: The session context, which is used to pass through user request information. If the `Procedure` parameter is specified, the [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters and is valid only if `IsPersistence` is `1`.
         :type SessionContext: str
-        :param _Precision: 
+        :param _Precision: This field is deprecated.
         :type Precision: str
-        :param _OutputMediaType: 
+        :param _OutputMediaType: Output video type. Valid values are: <li>hls: outputs hls files.</li> Default value: hls.
         :type OutputMediaType: str
-        :param _ExtInfo: 
+        :param _ExtInfo: Reserved field, used for special purposes. Example value: ""
         :type ExtInfo: str
         """
         self._Url = None
@@ -74335,7 +74379,7 @@ This parameter is valid only if `IsPersistence` is `1`.
 
     @property
     def Precision(self):
-        r"""
+        r"""This field is deprecated.
         :rtype: str
         """
         return self._Precision
@@ -74346,7 +74390,7 @@ This parameter is valid only if `IsPersistence` is `1`.
 
     @property
     def OutputMediaType(self):
-        r"""
+        r"""Output video type. Valid values are: <li>hls: outputs hls files.</li> Default value: hls.
         :rtype: str
         """
         return self._OutputMediaType
@@ -74357,7 +74401,7 @@ This parameter is valid only if `IsPersistence` is `1`.
 
     @property
     def ExtInfo(self):
-        r"""
+        r"""Reserved field, used for special purposes. Example value: ""
         :rtype: str
         """
         return self._ExtInfo
@@ -77008,7 +77052,7 @@ class TaskOutputMediaInfo(AbstractModel):
         r"""
         :param _FileId: Media file ID.
         :type FileId: str
-        :param _MediaBasicInfo: 
+        :param _MediaBasicInfo: Basic information of the media files generated after transcoding and pulling.
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         """
         self._FileId = None
@@ -77027,7 +77071,7 @@ class TaskOutputMediaInfo(AbstractModel):
 
     @property
     def MediaBasicInfo(self):
-        r"""
+        r"""Basic information of the media files generated after transcoding and pulling.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         """
         return self._MediaBasicInfo

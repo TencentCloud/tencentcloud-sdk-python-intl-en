@@ -71,9 +71,9 @@ hi: Hindi
         :type ProjectId: int
         :param _UntranslatedText: The parameter used to mark the text content that needs to remain untranslated, such as special symbols and names of people and places. You can set only one word for this parameter in each request. Only nouns (like names of people and places) are supported, and verbs or phrases may cause poor translation outcomes.
         :type UntranslatedText: str
-        :param _TermRepoIDList: 
+        :param _TermRepoIDList: Term base list to be used; obtain by creating your own term base via the [Term Base Operation Guide](https://cloud.tencent.com/document/product/551/107926).
         :type TermRepoIDList: list of str
-        :param _SentRepoIDList: 
+        :param _SentRepoIDList: The list of example sentence libraries to be used; obtain by creating your own example sentence library via the [Example Sentence Library Operation Guide](https://cloud.tencent.com/document/product/551/107927).
         :type SentRepoIDList: list of str
         """
         self._SourceText = None
@@ -177,7 +177,7 @@ hi: Hindi
 
     @property
     def TermRepoIDList(self):
-        r"""
+        r"""Term base list to be used; obtain by creating your own term base via the [Term Base Operation Guide](https://cloud.tencent.com/document/product/551/107926).
         :rtype: list of str
         """
         return self._TermRepoIDList
@@ -188,7 +188,7 @@ hi: Hindi
 
     @property
     def SentRepoIDList(self):
-        r"""
+        r"""The list of example sentence libraries to be used; obtain by creating your own example sentence library via the [Example Sentence Library Operation Guide](https://cloud.tencent.com/document/product/551/107927).
         :rtype: list of str
         """
         return self._SentRepoIDList

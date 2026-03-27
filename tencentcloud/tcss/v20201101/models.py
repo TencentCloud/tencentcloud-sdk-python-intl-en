@@ -9784,11 +9784,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type PodCpu: int
         :param _PodMem: Memory specification of the Pod
         :type PodMem: int
-        :param _ClusterName: 
+        :param _ClusterName: Cluster Name
         :type ClusterName: str
-        :param _ClusterID: 
+        :param _ClusterID: Cluster ID
         :type ClusterID: str
-        :param _PodUid: 
+        :param _PodUid: pod uid
         :type PodUid: str
         """
         self._ContainerID = None
@@ -10129,7 +10129,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        r"""
+        r"""Cluster Name
         :rtype: str
         """
         return self._ClusterName
@@ -10140,7 +10140,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterID(self):
-        r"""
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterID
@@ -10151,7 +10151,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodUid(self):
-        r"""
+        r"""pod uid
         :rtype: str
         """
         return self._PodUid
@@ -14172,9 +14172,9 @@ class CreateRefreshTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterIDs: 
+        :param _ClusterIDs: Specify the cluster list. If empty, it indicates synchronization of all clusters.
         :type ClusterIDs: list of str
-        :param _IsSyncListOnly: 
+        :param _IsSyncListOnly: Whether to synchronize only the list
         :type IsSyncListOnly: bool
         """
         self._ClusterIDs = None
@@ -14182,7 +14182,7 @@ class CreateRefreshTaskRequest(AbstractModel):
 
     @property
     def ClusterIDs(self):
-        r"""
+        r"""Specify the cluster list. If empty, it indicates synchronization of all clusters.
         :rtype: list of str
         """
         return self._ClusterIDs
@@ -14193,7 +14193,7 @@ class CreateRefreshTaskRequest(AbstractModel):
 
     @property
     def IsSyncListOnly(self):
-        r"""
+        r"""Whether to synchronize only the list
         :rtype: bool
         """
         return self._IsSyncListOnly
@@ -25441,14 +25441,14 @@ class DescribeAssetImageRegistrySummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 
+        :param _Filters: Filter Field
         :type Filters: list of AssetFilters
         """
         self._Filters = None
 
     @property
     def Filters(self):
-        r"""
+        r"""Filter Field
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -47834,7 +47834,7 @@ class DescribeVulRegistryImageListRequest(AbstractModel):
         :type PocID: str
         :param _Limit: The number of results returned. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param _Offset: 
+        :param _Offset: Offset, defaults to 0.
         :type Offset: int
         :param _Filters: Filter condition
 `OnlyAffectedNewestImage`: (bool) Whether the latest image is affected.
@@ -47882,7 +47882,7 @@ class DescribeVulRegistryImageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""
+        r"""Offset, defaults to 0.
         :rtype: int
         """
         return self._Offset
@@ -51003,9 +51003,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of TagInfo
         :param _ClusterID: Cluster ID
         :type ClusterID: str
-        :param _ClusterName: 
+        :param _ClusterName: Cluster Name
         :type ClusterName: str
-        :param _ClusterAccessedStatus: 
+        :param _ClusterAccessedStatus: Cluster Access Status
         :type ClusterAccessedStatus: str
         """
         self._HostID = None
@@ -51231,7 +51231,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ClusterName(self):
-        r"""
+        r"""Cluster Name
         :rtype: str
         """
         return self._ClusterName
@@ -51242,7 +51242,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ClusterAccessedStatus(self):
-        r"""
+        r"""Cluster Access Status
         :rtype: str
         """
         return self._ClusterAccessedStatus
@@ -52542,45 +52542,45 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ImageRepoRegistryInfo(AbstractModel):
-    r"""
+    r"""Container Security Image Repository List
 
     """
 
     def __init__(self):
         r"""
-        :param _RegistryId: 
+        :param _RegistryId: Repository id
         :type RegistryId: int
-        :param _Name: 
+        :param _Name: Repository Name
         :type Name: str
-        :param _RegistryType: 
+        :param _RegistryType: Repository Type, list: harbor, tcr
         :type RegistryType: str
-        :param _Url: 
+        :param _Url: Repository url
         :type Url: str
-        :param _NetType: 
+        :param _NetType: Network Type, list: public
         :type NetType: str
-        :param _RegistryRegion: 
+        :param _RegistryRegion: Region, list: default
         :type RegistryRegion: str
-        :param _RegistryVersion: 
+        :param _RegistryVersion: Repository Version
         :type RegistryVersion: str
-        :param _ConnectMsg: 
+        :param _ConnectMsg: Repository connection error message (to be deprecated, use ConnDetectException instead)
         :type ConnectMsg: str
-        :param _ConnDetectType: 
+        :param _ConnDetectType: Connectivity Detection Method
         :type ConnDetectType: str
-        :param _ConnDetectHostCount: 
+        :param _ConnDetectHostCount: Connectivity Detection Host Count
         :type ConnDetectHostCount: int
-        :param _ConnDetectDetail: 
+        :param _ConnDetectDetail: Connectivity Detection Details
         :type ConnDetectDetail: list of RegistryConnDetectResult
-        :param _InstanceID: 
+        :param _InstanceID: instance_id in tcr
         :type InstanceID: str
-        :param _LatestSyncTime: 
+        :param _LatestSyncTime: Latest Successful Synchronization Time
         :type LatestSyncTime: str
-        :param _SyncStatus: 
+        :param _SyncStatus: Synchronization Status
         :type SyncStatus: str
-        :param _SyncFailReason: 
+        :param _SyncFailReason: Synchronization Failure Reason
         :type SyncFailReason: str
-        :param _SyncSolution: 
+        :param _SyncSolution: Synchronization Failure Solution
         :type SyncSolution: str
-        :param _SyncMessage: 
+        :param _SyncMessage: Synchronization Failure Message
         :type SyncMessage: str
         """
         self._RegistryId = None
@@ -52603,7 +52603,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""
+        r"""Repository id
         :rtype: int
         """
         return self._RegistryId
@@ -52614,7 +52614,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Repository Name
         :rtype: str
         """
         return self._Name
@@ -52625,7 +52625,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""
+        r"""Repository Type, list: harbor, tcr
         :rtype: str
         """
         return self._RegistryType
@@ -52636,7 +52636,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""Repository url
         :rtype: str
         """
         return self._Url
@@ -52647,7 +52647,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def NetType(self):
-        r"""
+        r"""Network Type, list: public
         :rtype: str
         """
         return self._NetType
@@ -52658,7 +52658,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def RegistryRegion(self):
-        r"""
+        r"""Region, list: default
         :rtype: str
         """
         return self._RegistryRegion
@@ -52669,7 +52669,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def RegistryVersion(self):
-        r"""
+        r"""Repository Version
         :rtype: str
         """
         return self._RegistryVersion
@@ -52680,7 +52680,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def ConnectMsg(self):
-        r"""
+        r"""Repository connection error message (to be deprecated, use ConnDetectException instead)
         :rtype: str
         """
         return self._ConnectMsg
@@ -52691,7 +52691,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def ConnDetectType(self):
-        r"""
+        r"""Connectivity Detection Method
         :rtype: str
         """
         return self._ConnDetectType
@@ -52702,7 +52702,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def ConnDetectHostCount(self):
-        r"""
+        r"""Connectivity Detection Host Count
         :rtype: int
         """
         return self._ConnDetectHostCount
@@ -52713,7 +52713,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def ConnDetectDetail(self):
-        r"""
+        r"""Connectivity Detection Details
         :rtype: list of RegistryConnDetectResult
         """
         return self._ConnDetectDetail
@@ -52724,7 +52724,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""
+        r"""instance_id in tcr
         :rtype: str
         """
         return self._InstanceID
@@ -52735,7 +52735,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def LatestSyncTime(self):
-        r"""
+        r"""Latest Successful Synchronization Time
         :rtype: str
         """
         return self._LatestSyncTime
@@ -52746,7 +52746,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""
+        r"""Synchronization Status
         :rtype: str
         """
         return self._SyncStatus
@@ -52757,7 +52757,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def SyncFailReason(self):
-        r"""
+        r"""Synchronization Failure Reason
         :rtype: str
         """
         return self._SyncFailReason
@@ -52768,7 +52768,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def SyncSolution(self):
-        r"""
+        r"""Synchronization Failure Solution
         :rtype: str
         """
         return self._SyncSolution
@@ -52779,7 +52779,7 @@ class ImageRepoRegistryInfo(AbstractModel):
 
     @property
     def SyncMessage(self):
-        r"""
+        r"""Synchronization Failure Message
         :rtype: str
         """
         return self._SyncMessage
@@ -61876,23 +61876,23 @@ class RegionInfo(AbstractModel):
 
 
 class RegistryConnDetectResult(AbstractModel):
-    r"""
+    r"""Image Repository Connectivity Detection Result
 
     """
 
     def __init__(self):
         r"""
-        :param _Quuid: 
+        :param _Quuid: Host quuid or backend for Connectivity Detection
         :type Quuid: str
-        :param _Uuid: 
+        :param _Uuid: Host uuid or backend for Connectivity Detection
         :type Uuid: str
-        :param _ConnDetectStatus: 
+        :param _ConnDetectStatus: Detection Result Status
         :type ConnDetectStatus: str
-        :param _ConnDetectMessage: 
+        :param _ConnDetectMessage: Detection Result Information
         :type ConnDetectMessage: str
-        :param _Solution: 
+        :param _Solution: Failure Resolution
         :type Solution: str
-        :param _FailReason: 
+        :param _FailReason: Failure Cause
         :type FailReason: str
         """
         self._Quuid = None
@@ -61904,7 +61904,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""
+        r"""Host quuid or backend for Connectivity Detection
         :rtype: str
         """
         return self._Quuid
@@ -61915,7 +61915,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""
+        r"""Host uuid or backend for Connectivity Detection
         :rtype: str
         """
         return self._Uuid
@@ -61926,7 +61926,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def ConnDetectStatus(self):
-        r"""
+        r"""Detection Result Status
         :rtype: str
         """
         return self._ConnDetectStatus
@@ -61937,7 +61937,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def ConnDetectMessage(self):
-        r"""
+        r"""Detection Result Information
         :rtype: str
         """
         return self._ConnDetectMessage
@@ -61948,7 +61948,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def Solution(self):
-        r"""
+        r"""Failure Resolution
         :rtype: str
         """
         return self._Solution
@@ -61959,7 +61959,7 @@ class RegistryConnDetectResult(AbstractModel):
 
     @property
     def FailReason(self):
-        r"""
+        r"""Failure Cause
         :rtype: str
         """
         return self._FailReason
@@ -64008,9 +64008,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type NodeUniqueID: str
         :param _HostID: uuid
         :type HostID: str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param _WorkloadType: 
+        :param _WorkloadType: WorkloadType
         :type WorkloadType: str
         """
         self._EventId = None
@@ -64400,7 +64400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -64411,7 +64411,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WorkloadType(self):
-        r"""
+        r"""WorkloadType
         :rtype: str
         """
         return self._WorkloadType
@@ -66832,9 +66832,9 @@ class SyncAssetImageRegistryAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 
+        :param _All: Whether to synchronize all image repositories
         :type All: bool
-        :param _RegistryIds: 
+        :param _RegistryIds: Partial image repositories requiring synchronization
         :type RegistryIds: list of int non-negative
         """
         self._All = None
@@ -66842,7 +66842,7 @@ class SyncAssetImageRegistryAssetRequest(AbstractModel):
 
     @property
     def All(self):
-        r"""
+        r"""Whether to synchronize all image repositories
         :rtype: bool
         """
         return self._All
@@ -66853,7 +66853,7 @@ class SyncAssetImageRegistryAssetRequest(AbstractModel):
 
     @property
     def RegistryIds(self):
-        r"""
+        r"""Partial image repositories requiring synchronization
         :rtype: list of int non-negative
         """
         return self._RegistryIds
@@ -67646,15 +67646,15 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type Id: list of int non-negative
         :param _Latest: Whether to scan for the latest version
         :type Latest: bool
-        :param _ContainerRunning: 
+        :param _ContainerRunning: Whether running containers exist
         :type ContainerRunning: bool
-        :param _ScanEndTime: 
+        :param _ScanEndTime: Scan End Time
         :type ScanEndTime: str
-        :param _ScanScope: 
+        :param _ScanScope: Scan Scope: 0 All Images, 1 Custom Images, 2 Recommended Scan Images
         :type ScanScope: int
-        :param _RegistryType: 
+        :param _RegistryType: Repository Type tcr,ccr,harbor
         :type RegistryType: list of str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: list of str
         """
         self._ScanPeriod = None
@@ -67765,7 +67765,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""
+        r"""Whether running containers exist
         :rtype: bool
         """
         return self._ContainerRunning
@@ -67776,7 +67776,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanEndTime(self):
-        r"""
+        r"""Scan End Time
         :rtype: str
         """
         return self._ScanEndTime
@@ -67787,7 +67787,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""
+        r"""Scan Scope: 0 All Images, 1 Custom Images, 2 Recommended Scan Images
         :rtype: int
         """
         return self._ScanScope
@@ -67798,7 +67798,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""
+        r"""Repository Type tcr,ccr,harbor
         :rtype: list of str
         """
         return self._RegistryType
@@ -67809,7 +67809,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: list of str
         """
         return self._Namespace
@@ -70566,9 +70566,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type ClusterID: str
         :param _ClusterName: Cluster name
         :type ClusterName: str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param _WorkloadType: 
+        :param _WorkloadType: Workload
         :type WorkloadType: str
         """
         self._CVEID = None
@@ -71138,7 +71138,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -71149,7 +71149,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WorkloadType(self):
-        r"""
+        r"""Workload
         :rtype: str
         """
         return self._WorkloadType

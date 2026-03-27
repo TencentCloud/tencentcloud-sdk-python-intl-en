@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Address(AbstractModel):
-    r"""
+    r"""Overseas Document Address
 
     """
 
@@ -2815,7 +2815,7 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
 
 class EditDetail(AbstractModel):
-    r"""
+    r"""EKYC ID Document OCR Result Modification Details
 
     """
 
@@ -2881,7 +2881,7 @@ class EditDetail(AbstractModel):
 
 
 class Encryption(AbstractModel):
-    r"""
+    r"""Sensitive Data Encryption
 
     """
 
@@ -2977,20 +2977,20 @@ class Encryption(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    r"""
+    r"""Additional Details
 
     """
 
     def __init__(self):
         r"""
-        :param _RetrievalLivenessExtraInfo: 
+        :param _RetrievalLivenessExtraInfo: Details of matched templates, only returns the template information with the highest similarity
         :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
         """
         self._RetrievalLivenessExtraInfo = None
 
     @property
     def RetrievalLivenessExtraInfo(self):
-        r"""
+        r"""Details of matched templates, only returns the template information with the highest similarity
         :rtype: list of RetrievalLivenessExtraInfo
         """
         return self._RetrievalLivenessExtraInfo
@@ -9163,17 +9163,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RetrievalLivenessExtraInfo(AbstractModel):
-    r"""
+    r"""Template search details
 
     """
 
     def __init__(self):
         r"""
-        :param _HitGroup: 
+        :param _HitGroup: Matched template types, where Common - public library; Auto - automatic clustering library; Owner - self-built template library.
         :type HitGroup: str
-        :param _SimilarityScore: 
+        :param _SimilarityScore: Matched Similarity
         :type SimilarityScore: float
-        :param _HitTemplate: 
+        :param _HitTemplate: Matched Template id
         :type HitTemplate: str
         """
         self._HitGroup = None
@@ -9182,7 +9182,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitGroup(self):
-        r"""
+        r"""Matched template types, where Common - public library; Auto - automatic clustering library; Owner - self-built template library.
         :rtype: str
         """
         return self._HitGroup
@@ -9193,7 +9193,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def SimilarityScore(self):
-        r"""
+        r"""Matched Similarity
         :rtype: float
         """
         return self._SimilarityScore
@@ -9204,7 +9204,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitTemplate(self):
-        r"""
+        r"""Matched Template id
         :rtype: str
         """
         return self._HitTemplate

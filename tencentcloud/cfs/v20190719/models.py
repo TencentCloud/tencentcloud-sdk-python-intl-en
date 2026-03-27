@@ -3735,10 +3735,10 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.
+        :param _SnapshotId: Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.
         :type SnapshotId: str
         :param _SnapshotIds: Snapshot ID of the file system snapshot that needs to be deleted. specify either the snapshot ID or the ID list, at least one is required.
-Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.
+Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.
         :type SnapshotIds: list of str
         """
         self._SnapshotId = None
@@ -3746,7 +3746,7 @@ Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots
 
     @property
     def SnapshotId(self):
-        r"""Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.
+        r"""Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._SnapshotId
@@ -3758,7 +3758,7 @@ Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots
     @property
     def SnapshotIds(self):
         r"""Snapshot ID of the file system snapshot that needs to be deleted. specify either the snapshot ID or the ID list, at least one is required.
-Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.
+Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._SnapshotIds
@@ -6397,7 +6397,7 @@ class FileSystemClient(AbstractModel):
         :type ClientIp: str
         :param _VpcId: File system VPCID
         :type VpcId: str
-        :param _Zone: Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.comom/document/api/582/38144?from_cn_redirect=1).
+        :param _Zone: Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).
         :type Zone: str
         :param _ZoneName: AZ name
         :type ZoneName: str
@@ -6446,7 +6446,7 @@ class FileSystemClient(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.comom/document/api/582/38144?from_cn_redirect=1).
+        r"""Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).
         :rtype: str
         """
         return self._Zone

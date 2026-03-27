@@ -3368,7 +3368,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DatabaseNetEnv: str
-        :param _ConnectType: 
+        :param _ConnectType: TDSQL connection method: proxy - access each set node via TDSQL proxy hosts. Note that this connection method is only available in self-developed cloud environments. Only proxy host information needs to be provided in Info. set - directly connect to set nodes. If selecting direct set connection, both proxy host information and all set node information must be correctly filled in Info. Mandatory when source is TDSQL MySQL type.
         :type ConnectType: str
         """
         self._Region = None
@@ -3479,7 +3479,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectType(self):
-        r"""
+        r"""TDSQL connection method: proxy - access each set node via TDSQL proxy hosts. Note that this connection method is only available in self-developed cloud environments. Only proxy host information needs to be provided in Info. set - directly connect to set nodes. If selecting direct set connection, both proxy host information and all set node information must be correctly filled in Info. Mandatory when source is TDSQL MySQL type.
         :rtype: str
         """
         return self._ConnectType
@@ -9116,11 +9116,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CcnOwnerUin: The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CcnOwnerUin: str
-        :param _ChildInstanceId: 
+        :param _ChildInstanceId: The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
         :type ChildInstanceId: str
-        :param _ChildInstanceType: 
+        :param _ChildInstanceType: When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
         :type ChildInstanceType: str
-        :param _SetId: 
+        :param _SetId: Shard id of tdsql. Mandatory when node type is set.
         :type SetId: str
         """
         self._Region = None
@@ -9477,7 +9477,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceId(self):
-        r"""
+        r"""The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9488,7 +9488,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceType(self):
-        r"""
+        r"""When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
         :rtype: str
         """
         return self._ChildInstanceType
@@ -9499,7 +9499,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
-        r"""
+        r"""Shard id of tdsql. Mandatory when node type is set.
         :rtype: str
         """
         return self._SetId
@@ -9589,9 +9589,9 @@ class EndpointItem(AbstractModel):
         :type CcnOwnerUin: str
         :param _ExtraAttr: Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
-        :param _ChildInstanceId: 
+        :param _ChildInstanceId: The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
         :type ChildInstanceId: str
-        :param _ChildInstanceType: 
+        :param _ChildInstanceType: When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
         :type ChildInstanceType: str
         """
         self._DatabaseRegion = None
@@ -9791,7 +9791,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceId(self):
-        r"""
+        r"""The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9802,7 +9802,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceType(self):
-        r"""
+        r"""When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
         :rtype: str
         """
         return self._ChildInstanceType
@@ -11199,7 +11199,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 ["DstWriteMode": `normal`. 	Target database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) 	"IsDstReadOnly": `true`. 	Whether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) 	"ClientOutputBufferHardLimit": 512. 	Hard limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferSoftLimit": 512. 	Soft limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferPersistTime": 60. Soft limit duration of the replica buffer zone in seconds. 	"ReplBacklogSize": 512, 	Limit of the circular buffer zone capacity in MB. 	"ReplTimeout":120,		Replication timeout period in seconds]
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
-        :param _MigrateWay: 
+        :param _MigrateWay: PostgreSQL migration types: logical (logical migration), physical (physical migration)
         :type MigrateWay: str
         """
         self._DatabaseTable = None
@@ -11298,7 +11298,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateWay(self):
-        r"""
+        r"""PostgreSQL migration types: logical (logical migration), physical (physical migration)
         :rtype: str
         """
         return self._MigrateWay
@@ -13296,9 +13296,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoRetryTimeRangeMinutes: Settings of the automatic retry time range
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRetryTimeRangeMinutes: int
-        :param _FilterBeginCommit: 
+        :param _FilterBeginCommit: Whether to filter out begin and commit messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
         :type FilterBeginCommit: bool
-        :param _FilterCheckpoint: 
+        :param _FilterCheckpoint: Whether to filter out checkpoint messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
         :type FilterCheckpoint: bool
         """
         self._InitType = None
@@ -13436,7 +13436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterBeginCommit(self):
-        r"""
+        r"""Whether to filter out begin and commit messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
         :rtype: bool
         """
         return self._FilterBeginCommit
@@ -13447,7 +13447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCheckpoint(self):
-        r"""
+        r"""Whether to filter out checkpoint messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
         :rtype: bool
         """
         return self._FilterCheckpoint

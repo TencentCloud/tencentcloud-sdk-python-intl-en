@@ -23,6 +23,9 @@ FAILEDOPERATION_AICONCURRENTNOPACKAGE = 'FailedOperation.AIConcurrentNoPackage'
 # AI concurrent overfrequency.
 FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = 'FailedOperation.AIConcurrentOverFrequency'
 
+# AI package expired. please renew or repurchase.
+FAILEDOPERATION_AILICENSEHASEXPIRED = 'FailedOperation.AILicenseHasExpired'
+
 # Outbound call failure.
 FAILEDOPERATION_CALLOUTFAILED = 'FailedOperation.CallOutFailed'
 
@@ -140,6 +143,9 @@ INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = 'InvalidParameterValue.ErrorApplyStatus
 # The intelligent agent of the use experience account does not support this operation.
 INVALIDPARAMETERVALUE_EXPERIENCEACCOUNT = 'InvalidParameterValue.ExperienceAccount'
 
+# File does not exist.
+INVALIDPARAMETERVALUE_FILENOTEXIST = 'InvalidParameterValue.FileNotExist'
+
 # The SDKAppID does not exist.
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
 
@@ -166,6 +172,9 @@ LIMITEXCEEDED = 'LimitExceeded'
 
 # Your call package is used up.
 LIMITEXCEEDED_BASEPACKAGEEXPIRED = 'LimitExceeded.BasePackageExpired'
+
+# Insufficient license.
+LIMITEXCEEDED_INSUFFICIENTLICENSE = 'LimitExceeded.InsufficientLicense'
 
 # Exceeded quantity limit.
 LIMITEXCEEDED_OUTOFCOUNTLIMIT = 'LimitExceeded.OutOfCountLimit'

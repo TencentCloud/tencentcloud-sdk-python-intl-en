@@ -5458,7 +5458,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         :type DiskType: str
         :param _DiskSize: Specifies the disk capacity in GiB. for the cloud disk size range, please refer to the product type of cloud block storage (https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1).
         :type DiskSize: int
-        :param _ProjectId: cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1). default to the default project.
+        :param _ProjectId: cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1). default to the default project.
         :type ProjectId: int
         :param _DiskCount: Specifies the number of cloud block storage (cbs) disks to purchase. defaults to 1 if left blank.
         :type DiskCount: int
@@ -5515,7 +5515,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1). default to the default project.
+        r"""cloud disk project ID. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1). default to the default project.
         :rtype: int
         """
         return self._ProjectId

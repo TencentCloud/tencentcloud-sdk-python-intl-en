@@ -3903,7 +3903,7 @@ class CreateDnsRecordRequest(AbstractModel):
         :type Content: str
         :param _Mode: Proxy mode. Valid values: `dns_only`, `cdn_only`, and `secure_cdn`.
         :type Mode: str
-        :param _Ttl: 
+        :param _Ttl: Time to Live Value
         :type Ttl: int
         :param _Priority: Priority
         :type Priority: int
@@ -3973,7 +3973,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        r"""
+        r"""Time to Live Value
         :rtype: int
         """
         return self._Ttl
@@ -20907,7 +20907,7 @@ class ModifyDnsRecordRequest(AbstractModel):
         :type Name: str
         :param _Content: Record content
         :type Content: str
-        :param _Ttl: 
+        :param _Ttl: Time to Live Value
         :type Ttl: int
         :param _Priority: Priority
         :type Priority: int
@@ -20980,7 +20980,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        r"""
+        r"""Time to Live Value
         :rtype: int
         """
         return self._Ttl
@@ -23382,7 +23382,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 It is valid only when `Private=true`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type PrivateParameter: list of OriginRecordPrivateParameter
-        :param _Proto: 
+        :param _Proto: When the origin site configuration type Type=proto, it indicates the client request protocol, values: http/https
         :type Proto: str
         """
         self._Record = None
@@ -23480,7 +23480,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Proto(self):
-        r"""
+        r"""When the origin site configuration type Type=proto, it indicates the client request protocol, values: http/https
         :rtype: str
         """
         return self._Proto
@@ -24557,7 +24557,11 @@ class Resource(AbstractModel):
         :type AutoRenewFlag: int
         :param _PlanId: ID of the plan
         :type PlanId: str
-        :param _Area: 
+        :param _Area: Region, with values:
+
+<li>mainland: Chinese mainland;</li>
+
+<li>overseas: Overseas.</li>
         :type Area: str
         """
         self._Id = None
@@ -24676,7 +24680,11 @@ class Resource(AbstractModel):
 
     @property
     def Area(self):
-        r"""
+        r"""Region, with values:
+
+<li>mainland: Chinese mainland;</li>
+
+<li>overseas: Overseas.</li>
         :rtype: str
         """
         return self._Area
@@ -27254,7 +27262,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type CreatedOn: str
         :param _ModifiedOn: Site modification date
         :type ModifiedOn: str
-        :param _Area: 
+        :param _Area: Site access region, with values:
+
+<li> global: Global;</li>
+
+<li> mainland: Chinese mainland;</li>
+
+<li> overseas: Overseas regions.</li>
         :type Area: str
         """
         self._Id = None
@@ -27431,7 +27445,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Area(self):
-        r"""
+        r"""Site access region, with values:
+
+<li> global: Global;</li>
+
+<li> mainland: Chinese mainland;</li>
+
+<li> overseas: Overseas regions.</li>
         :rtype: str
         """
         return self._Area

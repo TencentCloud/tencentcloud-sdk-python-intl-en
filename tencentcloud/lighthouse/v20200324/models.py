@@ -3362,7 +3362,7 @@ class DescribeBundlesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleIds: List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).
+        :param _BundleIds: List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.com/document/product/1207/47575?from_cn_redirect=1).
         :type BundleIds: list of str
         :param _Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
@@ -3387,7 +3387,7 @@ Required: No
 The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. the parameter does not support specifying both `BundleIds` and `Filters`.
         :type Filters: list of Filter
         :param _Zones: AZ list. default to all availability zones.
-<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.
+<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.com/document/product/1207/57513?from_cn_redirect=1)</li>.
         :type Zones: list of str
         """
         self._BundleIds = None
@@ -3398,7 +3398,7 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
 
     @property
     def BundleIds(self):
-        r"""List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).
+        r"""List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.com/document/product/1207/47575?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._BundleIds
@@ -3459,7 +3459,7 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
     @property
     def Zones(self):
         r"""AZ list. default to all availability zones.
-<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.
+<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.com/document/product/1207/57513?from_cn_redirect=1)</li>.
         :rtype: list of str
         """
         return self._Zones
@@ -10794,7 +10794,7 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 <li>Digits: 0-9</li>
 <li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
         :type Password: str
-        :param _KeyIds: 
+        :param _KeyIds: Key ID list. You can specify up to 5 keys simultaneously. After associating keys, you can access the instance using the corresponding private key. Keys and passwords cannot be specified simultaneously. Additionally, the WINDOWS operating system does not support key specification. The key ID list can be obtained via the [DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540) API.
         :type KeyIds: list of str
         """
         self._AutoGeneratePassword = None
@@ -10831,7 +10831,7 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 
     @property
     def KeyIds(self):
-        r"""
+        r"""Key ID list. You can specify up to 5 keys simultaneously. After associating keys, you can access the instance using the corresponding private key. Keys and passwords cannot be specified simultaneously. Additionally, the WINDOWS operating system does not support key specification. The key ID list can be obtained via the [DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540) API.
         :rtype: list of str
         """
         return self._KeyIds

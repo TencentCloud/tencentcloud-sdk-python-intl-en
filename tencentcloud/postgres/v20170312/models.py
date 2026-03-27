@@ -2390,7 +2390,7 @@ For more information on creating `KeyId`, see [Enabling TDE](https://www.tencent
         :param _KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.
 For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).
         :type KMSRegion: str
-        :param _KMSClusterId: 
+        :param _KMSClusterId: <p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>
         :type KMSClusterId: str
         :param _DBEngine: Database engine, which supports:
 <li>`postgresql`: TencentDB for PostgreSQL</li>
@@ -2772,7 +2772,7 @@ For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tence
 
     @property
     def KMSClusterId(self):
-        r"""
+        r"""<p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>
         :rtype: str
         """
         return self._KMSClusterId
@@ -3155,7 +3155,7 @@ Default value: `0`.
         :type Name: str
         :param _DBVersion: (Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.
         :type DBVersion: str
-        :param _DedicatedClusterId: 
+        :param _DedicatedClusterId: <p>Dedicated Cluster ID</p>
         :type DedicatedClusterId: str
         """
         self._Zone = None
@@ -3422,7 +3422,7 @@ Default value: `0`.
 
     @property
     def DedicatedClusterId(self):
-        r"""
+        r"""<p>Dedicated Cluster ID</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -11686,7 +11686,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 `primary` (dual-server high-availability, one-primary-one-standby)
 `readonly` (read-only instance)
         :type InstanceType: str
-        :param _DBEngine: 
+        :param _DBEngine: <p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>
         :type DBEngine: str
         """
         self._Zone = None
@@ -11791,7 +11791,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        r"""
+        r"""<p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>
         :rtype: str
         """
         return self._DBEngine

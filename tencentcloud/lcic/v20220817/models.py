@@ -2471,7 +2471,7 @@ class CreateSupervisorResponse(AbstractModel):
 
 
 class CustomMsgContent(AbstractModel):
-    r"""
+    r"""Custom Message
 
     """
 
@@ -9358,27 +9358,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EnableDirectControl: Whether the students' consent is required to control their cameras/microphones.
 Note: This field may return null, indicating that no valid value was found.
         :type EnableDirectControl: int
-        :param _InteractionMode: 
+        :param _InteractionMode: Enable Focus Mode. 0: View all participants (default) 1: View only teacher and TA
         :type InteractionMode: int
-        :param _VideoOrientation: 
+        :param _VideoOrientation: Landscape/Portrait. 0: Landscape broadcast (default); 1: Portrait broadcast. Currently supported only for video-only type on mobile devices.
         :type VideoOrientation: int
-        :param _IsGradingRequiredPostClass: 
+        :param _IsGradingRequiredPostClass: Enable post-class evaluation. 0: Disable (default) 1: Enable
         :type IsGradingRequiredPostClass: int
         :param _RoomType: Room Type: 0 Small Classroom(default); 1 Lecture Hall(public class)
         :type RoomType: int
-        :param _EndDelayTime: 
+        :param _EndDelayTime: Overtime duration: Unit in minutes. 0: No limitation (default); -1: Overtime prohibited; Values >0: Overtime duration in minutes, maximum 120 minutes
         :type EndDelayTime: int
-        :param _LiveType: 
+        :param _LiveType: Live Streaming Type: 0: Regular (default) 1: Simulated Live
         :type LiveType: int
-        :param _RecordLiveUrl: 
+        :param _RecordLiveUrl: Simulated Live Playback Link
         :type RecordLiveUrl: str
-        :param _EnableAutoStart: 
+        :param _EnableAutoStart: Whether to auto-start class: 0: Do not auto-start (default) 1: Auto-start. Effective when live_type=1
         :type EnableAutoStart: int
-        :param _RecordBackground: 
+        :param _RecordBackground: Background image for recording files, supports png, jpg, jpeg, bmp formats. Alpha channel is currently not supported.
         :type RecordBackground: str
-        :param _RecordScene: 
+        :param _RecordScene: Recording custom scenes. This parameter is valid only when recordlayout=9. The data content consists of user-defined scene parameters in json key-value pair format, where the value is of string type.
         :type RecordScene: str
-        :param _RecordLang: 
+        :param _RecordLang: Recording custom language. This parameter is valid only when recordlayout=9.
         :type RecordLang: str
         """
         self._Name = None
@@ -9566,7 +9566,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InteractionMode(self):
-        r"""
+        r"""Enable Focus Mode. 0: View all participants (default) 1: View only teacher and TA
         :rtype: int
         """
         return self._InteractionMode
@@ -9577,7 +9577,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def VideoOrientation(self):
-        r"""
+        r"""Landscape/Portrait. 0: Landscape broadcast (default); 1: Portrait broadcast. Currently supported only for video-only type on mobile devices.
         :rtype: int
         """
         return self._VideoOrientation
@@ -9588,7 +9588,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsGradingRequiredPostClass(self):
-        r"""
+        r"""Enable post-class evaluation. 0: Disable (default) 1: Enable
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -9610,7 +9610,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EndDelayTime(self):
-        r"""
+        r"""Overtime duration: Unit in minutes. 0: No limitation (default); -1: Overtime prohibited; Values >0: Overtime duration in minutes, maximum 120 minutes
         :rtype: int
         """
         return self._EndDelayTime
@@ -9621,7 +9621,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LiveType(self):
-        r"""
+        r"""Live Streaming Type: 0: Regular (default) 1: Simulated Live
         :rtype: int
         """
         return self._LiveType
@@ -9632,7 +9632,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RecordLiveUrl(self):
-        r"""
+        r"""Simulated Live Playback Link
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -9643,7 +9643,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EnableAutoStart(self):
-        r"""
+        r"""Whether to auto-start class: 0: Do not auto-start (default) 1: Auto-start. Effective when live_type=1
         :rtype: int
         """
         return self._EnableAutoStart
@@ -9654,7 +9654,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RecordBackground(self):
-        r"""
+        r"""Background image for recording files, supports png, jpg, jpeg, bmp formats. Alpha channel is currently not supported.
         :rtype: str
         """
         return self._RecordBackground
@@ -9665,7 +9665,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RecordScene(self):
-        r"""
+        r"""Recording custom scenes. This parameter is valid only when recordlayout=9. The data content consists of user-defined scene parameters in json key-value pair format, where the value is of string type.
         :rtype: str
         """
         return self._RecordScene
@@ -9676,7 +9676,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RecordLang(self):
-        r"""
+        r"""Recording custom language. This parameter is valid only when recordlayout=9.
         :rtype: str
         """
         return self._RecordLang

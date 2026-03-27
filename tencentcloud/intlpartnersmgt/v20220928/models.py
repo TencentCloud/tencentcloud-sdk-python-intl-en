@@ -1272,9 +1272,9 @@ class CountryCodeItem(AbstractModel):
         :type EnName: str
         :param _Name: Country/region name in Chinese
         :type Name: str
-        :param _IOS2: 
+        :param _IOS2: ISO2 standard country/region code
         :type IOS2: str
-        :param _IOS3: 
+        :param _IOS3: ISO3 standard country/region code
         :type IOS3: str
         :param _Code: International dialing code
         :type Code: str
@@ -1309,7 +1309,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS2(self):
-        r"""
+        r"""ISO2 standard country/region code
         :rtype: str
         """
         return self._IOS2
@@ -1320,7 +1320,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS3(self):
-        r"""
+        r"""ISO3 standard country/region code
         :rtype: str
         """
         return self._IOS3

@@ -1825,7 +1825,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         :type RollbackInstanceId: str
         :param _RollbackTime: Rollback time
         :type RollbackTime: str
-        :param _DcnSyncMode: 
+        :param _DcnSyncMode: DCN synchronization mode: 0: asynchronous, 1: strong synchronization
         :type DcnSyncMode: int
         """
         self._GoodsNum = None
@@ -2180,7 +2180,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
 
     @property
     def DcnSyncMode(self):
-        r"""
+        r"""DCN synchronization mode: 0: asynchronous, 1: strong synchronization
         :rtype: int
         """
         return self._DcnSyncMode

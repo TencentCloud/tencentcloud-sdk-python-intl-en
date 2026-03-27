@@ -27,7 +27,7 @@ class AddLabelRequest(AbstractModel):
         r"""
         :param _LabelId: The label ID.
         :type LabelId: int
-        :param _Did: 
+        :param _Did: tdid
         :type Did: str
         """
         self._LabelId = None
@@ -46,7 +46,7 @@ class AddLabelRequest(AbstractModel):
 
     @property
     def Did(self):
-        r"""
+        r"""tdid
         :rtype: str
         """
         return self._Did
@@ -2148,7 +2148,7 @@ class CreateTDidRequest(AbstractModel):
         :type GroupId: int
         :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param _Relegation:  
+        :param _Relegation: Deployment mechanism: 1 for enabled, 0 for disabled
         :type Relegation: int
         """
         self._GroupId = None
@@ -2179,7 +2179,7 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def Relegation(self):
-        r""" 
+        r"""Deployment mechanism: 1 for enabled, 0 for disabled
         :rtype: int
         """
         return self._Relegation

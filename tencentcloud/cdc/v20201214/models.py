@@ -1330,19 +1330,19 @@ Note: The returned value of this field may be null, indicating that no valid val
         :param _OrderType: Order type 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :type OrderType: str
-        :param _CheckStatus: 
+        :param _CheckStatus: Acceptance Status
         :type CheckStatus: str
-        :param _DeliverExpectTime: 
+        :param _DeliverExpectTime: Expected Delivery Time
         :type DeliverExpectTime: str
-        :param _DeliverFinishTime: 
+        :param _DeliverFinishTime: Actual Delivery Completion Time
         :type DeliverFinishTime: str
-        :param _CheckExpectTime: 
+        :param _CheckExpectTime: Expected Acceptance Time
         :type CheckExpectTime: str
-        :param _CheckFinishTime: 
+        :param _CheckFinishTime: Actual Acceptance Completion Time
         :type CheckFinishTime: str
-        :param _OrderSLA: 
+        :param _OrderSLA: Order SLA
         :type OrderSLA: str
-        :param _OrderPayPlan: 
+        :param _OrderPayPlan: Order Payment Plan
         :type OrderPayPlan: str
         """
         self._DedicatedClusterId = None
@@ -1604,7 +1604,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckStatus(self):
-        r"""
+        r"""Acceptance Status
         :rtype: str
         """
         return self._CheckStatus
@@ -1615,7 +1615,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverExpectTime(self):
-        r"""
+        r"""Expected Delivery Time
         :rtype: str
         """
         return self._DeliverExpectTime
@@ -1626,7 +1626,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverFinishTime(self):
-        r"""
+        r"""Actual Delivery Completion Time
         :rtype: str
         """
         return self._DeliverFinishTime
@@ -1637,7 +1637,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckExpectTime(self):
-        r"""
+        r"""Expected Acceptance Time
         :rtype: str
         """
         return self._CheckExpectTime
@@ -1648,7 +1648,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckFinishTime(self):
-        r"""
+        r"""Actual Acceptance Completion Time
         :rtype: str
         """
         return self._CheckFinishTime
@@ -1659,7 +1659,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderSLA(self):
-        r"""
+        r"""Order SLA
         :rtype: str
         """
         return self._OrderSLA
@@ -1670,7 +1670,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderPayPlan(self):
-        r"""
+        r"""Order Payment Plan
         :rtype: str
         """
         return self._OrderPayPlan
@@ -2846,7 +2846,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
         :type Status: str
         :param _ActionType: The order type is the filter condition: CREATE EXTEND
         :type ActionType: str
-        :param _OrderTypes: 
+        :param _OrderTypes: Order Type List
         :type OrderTypes: list of str
         """
         self._DedicatedClusterIds = None
@@ -2925,7 +2925,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def OrderTypes(self):
-        r"""
+        r"""Order Type List
         :rtype: list of str
         """
         return self._OrderTypes
@@ -4013,21 +4013,21 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class HostDetailInfo(AbstractModel):
-    r"""
+    r"""Host Machine Resource Overview Details
 
     """
 
     def __init__(self):
         r"""
-        :param _HostTypeFamily: 
+        :param _HostTypeFamily: Type Family
         :type HostTypeFamily: str
-        :param _CpuTotal: 
+        :param _CpuTotal: Total CPU
         :type CpuTotal: float
-        :param _CpuAvailable: 
+        :param _CpuAvailable: Available CPU
         :type CpuAvailable: float
-        :param _MemTotal: 
+        :param _MemTotal: Total Memory
         :type MemTotal: float
-        :param _MemAvailable: 
+        :param _MemAvailable: Available Memory
         :type MemAvailable: float
         """
         self._HostTypeFamily = None
@@ -4038,7 +4038,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def HostTypeFamily(self):
-        r"""
+        r"""Type Family
         :rtype: str
         """
         return self._HostTypeFamily
@@ -4049,7 +4049,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuTotal(self):
-        r"""
+        r"""Total CPU
         :rtype: float
         """
         return self._CpuTotal
@@ -4060,7 +4060,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuAvailable(self):
-        r"""
+        r"""Available CPU
         :rtype: float
         """
         return self._CpuAvailable
@@ -4071,7 +4071,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemTotal(self):
-        r"""
+        r"""Total Memory
         :rtype: float
         """
         return self._MemTotal
@@ -4082,7 +4082,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemAvailable(self):
-        r"""
+        r"""Available Memory
         :rtype: float
         """
         return self._MemAvailable

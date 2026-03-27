@@ -1137,7 +1137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Country: Country.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Country: str
-        :param _Comment: 
+        :param _Comment: Remarks
         :type Comment: str
         """
         self._Domain = None
@@ -1339,7 +1339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
-        r"""
+        r"""Remarks
         :rtype: str
         """
         return self._Comment
@@ -14338,61 +14338,103 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class VpcRuleItem(AbstractModel):
-    r"""
+    r"""VPC Private Network Rules
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceContent: 
+        :param _SourceContent: Access source example:
+
+net: IP/CIDR (192.168.0.2)
         :type SourceContent: str
-        :param _SourceType: 
+        :param _SourceType: Access source type, which can be: net
         :type SourceType: str
-        :param _DestContent: 
+        :param _DestContent: Access destination example:
+
+net: IP/CIDR (192.168.0.2)
+
+domain: domain name rules, for example *.qq.com
         :type DestContent: str
-        :param _DestType: 
+        :param _DestType: Access destination type, which can be: net, domain, dnsparse
         :type DestType: str
-        :param _Protocol: 
+        :param _Protocol: Protocol, optional values:
+
+TCP
+
+UDP
+
+ICMP
+
+ANY
+
+HTTP
+
+HTTPS
+
+HTTP/HTTPS
+
+SMTP
+
+SMTPS
+
+SMTP/SMTPS
+
+FTP
+
+DNS
+
+TLS/SSL
         :type Protocol: str
-        :param _RuleAction: 
+        :param _RuleAction: How traffic set in the access control policy passes through CFW. Values:
+
+accept: allow
+
+drop: deny
+
+log: observe
         :type RuleAction: str
-        :param _Port: 
+        :param _Port: Access control policy ports. Values:
+
+-1/-1: all ports
+
+80: port 80
         :type Port: str
-        :param _Description: 
+        :param _Description: Description
         :type Description: str
-        :param _OrderIndex: 
+        :param _OrderIndex: Rule order, where -1 indicates the lowest and 1 indicates the highest.
         :type OrderIndex: int
-        :param _Enable: 
+        :param _Enable: Rule status, where true indicates enabled and false indicates disabled.
         :type Enable: str
-        :param _EdgeId: 
+        :param _EdgeId: The scope of effect for the rule, specifying whether it applies between a specific pair of VPCs or across all VPCs.
         :type EdgeId: str
-        :param _Uuid: 
+        :param _Uuid: The unique id corresponding to the rule. This field is ignored when adding a rule; when modifying the rule, the Uuid needs to be filled in. This parameter will be returned in query results.
         :type Uuid: int
-        :param _DetectedTimes: 
+        :param _DetectedTimes: The hit count of the rule. This parameter does not need to be passed during CRUD operations and is mainly used for returning query result data.
         :type DetectedTimes: int
-        :param _EdgeName: 
+        :param _EdgeName: Description of the firewall between the pair of VPCs corresponding to EdgeId
         :type EdgeName: str
-        :param _InternalUuid: 
+        :param _InternalUuid: Internal-use uuid, generally not used
         :type InternalUuid: int
-        :param _Deleted: 
+        :param _Deleted: Rule deletion status: 1 indicates deleted; 0 indicates not deleted
         :type Deleted: int
-        :param _FwGroupId: 
+        :param _FwGroupId: The firewall instance ID where the rule takes effect
         :type FwGroupId: str
-        :param _FwGroupName: 
+        :param _FwGroupName: Firewall name
         :type FwGroupName: str
-        :param _BetaList: 
+        :param _BetaList: beta task details
         :type BetaList: list of BetaInfoByACL
-        :param _ParamTemplateId: 
+        :param _ParamTemplateId: Port Protocol Group ID
         :type ParamTemplateId: str
-        :param _ParamTemplateName: 
+        :param _ParamTemplateName: Port Protocol Group Name
         :type ParamTemplateName: str
-        :param _TargetName: 
+        :param _TargetName: Access destination name
         :type TargetName: str
-        :param _SourceName: 
+        :param _SourceName: Access source name
         :type SourceName: str
-        :param _IpVersion: 
+        :param _IpVersion: Ip version, 0: IPv4, 1: IPv6, default is IPv4
         :type IpVersion: int
-        :param _Invalid: 
+        :param _Invalid: Whether the rule is invalid, where 0 indicates a valid rule and 1 indicates an invalid rule, used in output parameters.
         :type Invalid: int
         """
         self._SourceContent = None
@@ -14423,7 +14465,9 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""
+        r"""Access source example:
+
+net: IP/CIDR (192.168.0.2)
         :rtype: str
         """
         return self._SourceContent
@@ -14434,7 +14478,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""
+        r"""Access source type, which can be: net
         :rtype: str
         """
         return self._SourceType
@@ -14445,7 +14489,11 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestContent(self):
-        r"""
+        r"""Access destination example:
+
+net: IP/CIDR (192.168.0.2)
+
+domain: domain name rules, for example *.qq.com
         :rtype: str
         """
         return self._DestContent
@@ -14456,7 +14504,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestType(self):
-        r"""
+        r"""Access destination type, which can be: net, domain, dnsparse
         :rtype: str
         """
         return self._DestType
@@ -14467,7 +14515,33 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""
+        r"""Protocol, optional values:
+
+TCP
+
+UDP
+
+ICMP
+
+ANY
+
+HTTP
+
+HTTPS
+
+HTTP/HTTPS
+
+SMTP
+
+SMTPS
+
+SMTP/SMTPS
+
+FTP
+
+DNS
+
+TLS/SSL
         :rtype: str
         """
         return self._Protocol
@@ -14478,7 +14552,13 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""
+        r"""How traffic set in the access control policy passes through CFW. Values:
+
+accept: allow
+
+drop: deny
+
+log: observe
         :rtype: str
         """
         return self._RuleAction
@@ -14489,7 +14569,11 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""
+        r"""Access control policy ports. Values:
+
+-1/-1: all ports
+
+80: port 80
         :rtype: str
         """
         return self._Port
@@ -14500,7 +14584,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -14511,7 +14595,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""
+        r"""Rule order, where -1 indicates the lowest and 1 indicates the highest.
         :rtype: int
         """
         return self._OrderIndex
@@ -14522,7 +14606,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        r"""
+        r"""Rule status, where true indicates enabled and false indicates disabled.
         :rtype: str
         """
         return self._Enable
@@ -14533,7 +14617,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeId(self):
-        r"""
+        r"""The scope of effect for the rule, specifying whether it applies between a specific pair of VPCs or across all VPCs.
         :rtype: str
         """
         return self._EdgeId
@@ -14544,7 +14628,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""
+        r"""The unique id corresponding to the rule. This field is ignored when adding a rule; when modifying the rule, the Uuid needs to be filled in. This parameter will be returned in query results.
         :rtype: int
         """
         return self._Uuid
@@ -14555,7 +14639,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DetectedTimes(self):
-        r"""
+        r"""The hit count of the rule. This parameter does not need to be passed during CRUD operations and is mainly used for returning query result data.
         :rtype: int
         """
         return self._DetectedTimes
@@ -14566,7 +14650,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeName(self):
-        r"""
+        r"""Description of the firewall between the pair of VPCs corresponding to EdgeId
         :rtype: str
         """
         return self._EdgeName
@@ -14577,7 +14661,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def InternalUuid(self):
-        r"""
+        r"""Internal-use uuid, generally not used
         :rtype: int
         """
         return self._InternalUuid
@@ -14588,7 +14672,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Deleted(self):
-        r"""
+        r"""Rule deletion status: 1 indicates deleted; 0 indicates not deleted
         :rtype: int
         """
         return self._Deleted
@@ -14599,7 +14683,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""
+        r"""The firewall instance ID where the rule takes effect
         :rtype: str
         """
         return self._FwGroupId
@@ -14610,7 +14694,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupName(self):
-        r"""
+        r"""Firewall name
         :rtype: str
         """
         return self._FwGroupName
@@ -14621,7 +14705,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def BetaList(self):
-        r"""
+        r"""beta task details
         :rtype: list of BetaInfoByACL
         """
         return self._BetaList
@@ -14632,7 +14716,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""
+        r"""Port Protocol Group ID
         :rtype: str
         """
         return self._ParamTemplateId
@@ -14643,7 +14727,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateName(self):
-        r"""
+        r"""Port Protocol Group Name
         :rtype: str
         """
         return self._ParamTemplateName
@@ -14654,7 +14738,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def TargetName(self):
-        r"""
+        r"""Access destination name
         :rtype: str
         """
         return self._TargetName
@@ -14665,7 +14749,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""
+        r"""Access source name
         :rtype: str
         """
         return self._SourceName
@@ -14676,7 +14760,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""
+        r"""Ip version, 0: IPv4, 1: IPv6, default is IPv4
         :rtype: int
         """
         return self._IpVersion
@@ -14687,7 +14771,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Invalid(self):
-        r"""
+        r"""Whether the rule is invalid, where 0 indicates a valid rule and 1 indicates an invalid rule, used in output parameters.
         :rtype: int
         """
         return self._Invalid

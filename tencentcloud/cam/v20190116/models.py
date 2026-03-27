@@ -9977,9 +9977,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param _UserType: User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)
         :type UserType: int
-        :param _LastLoginIp: 
+        :param _LastLoginIp: Recent Login IP
         :type LastLoginIp: str
-        :param _LastLoginTime: 
+        :param _LastLoginTime: Recent login time; if the returned value is empty, it means the console has never been logged in to.
         :type LastLoginTime: str
         """
         self._Uin = None
@@ -10060,7 +10060,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastLoginIp(self):
-        r"""
+        r"""Recent Login IP
         :rtype: str
         """
         return self._LastLoginIp
@@ -10071,7 +10071,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastLoginTime(self):
-        r"""
+        r"""Recent login time; if the returned value is empty, it means the console has never been logged in to.
         :rtype: str
         """
         return self._LastLoginTime

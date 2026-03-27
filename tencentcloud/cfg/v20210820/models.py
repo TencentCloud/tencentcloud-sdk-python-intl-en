@@ -1736,9 +1736,9 @@ class DescribeTaskListRequest(AbstractModel):
         :type ApplicationName: list of str
         :param _TaskStatusList: Task status for filtering, supporting multiple states (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :type TaskStatusList: list of int non-negative
-        :param _ArchId: 
+        :param _ArchId: Architecture ID
         :type ArchId: str
-        :param _ArchName: 
+        :param _ArchName: Architecture Name
         :type ArchName: str
         """
         self._Limit = None
@@ -1914,7 +1914,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchId(self):
-        r"""
+        r"""Architecture ID
         :rtype: str
         """
         return self._ArchId
@@ -1925,7 +1925,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchName(self):
-        r"""
+        r"""Architecture Name
         :rtype: str
         """
         return self._ArchName

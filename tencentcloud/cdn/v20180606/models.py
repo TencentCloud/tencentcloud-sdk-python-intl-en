@@ -6826,7 +6826,7 @@ Default value: `bandwidth`
         :type Metric: str
         :param _Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
-        :param _TimeZone: 
+        :param _TimeZone: Specify the time zone for query time, default UTC+08:00
         :type TimeZone: str
         """
         self._StartTime = None
@@ -6960,7 +6960,7 @@ Default value: `bandwidth`
 
     @property
     def TimeZone(self):
-        r"""
+        r"""Specify the time zone for query time, default UTC+08:00
         :rtype: str
         """
         return self._TimeZone
@@ -8280,7 +8280,7 @@ If this parameter is left empty, edge server information will be returned by def
         :type Area: str
         :param _Segment: Whether to return a value as an IP range
         :type Segment: bool
-        :param _ShowIpv6: 
+        :param _ShowIpv6: whether to query node IPV6 information.
         :type ShowIpv6: bool
         :param _AbbreviationIpv6: Whether to abbreviate the IPv6 address.
         :type AbbreviationIpv6: bool
@@ -8344,7 +8344,7 @@ If this parameter is left empty, edge server information will be returned by def
 
     @property
     def ShowIpv6(self):
-        r"""
+        r"""whether to query node IPV6 information.
         :rtype: bool
         """
         return self._ShowIpv6
@@ -22695,7 +22695,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Metric: Metric type. `flux`: Traffic; `bandwidth`: Bandwidth.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Metric: str
-        :param _Cycle: 
+        :param _Cycle: Detection Cycle, Unit: Minutes, 60 or 1440
         :type Cycle: int
         :param _Switch: Whether to enable cumulative usage limit. Values:
 `on`: Enable
@@ -22801,7 +22801,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cycle(self):
-        r"""
+        r"""Detection Cycle, Unit: Minutes, 60 or 1440
         :rtype: int
         """
         return self._Cycle

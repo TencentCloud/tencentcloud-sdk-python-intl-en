@@ -6568,7 +6568,7 @@ class RoomUsageDataItem(AbstractModel):
         :param _Value: Usage values.
 - The unit of sp_tiw_board and sp_tiw_ric is minutes.
         :type Value: float
-        :param _RoomID: 
+        :param _RoomID: Interactive whiteboard room ID
         :type RoomID: int
         """
         self._Time = None
@@ -6626,7 +6626,7 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def RoomID(self):
-        r"""
+        r"""Interactive whiteboard room ID
         :rtype: int
         """
         return self._RoomID
@@ -7572,9 +7572,19 @@ MIX_STREAM - Stream mixing feature
         :type AudioFileNeeded: bool
         :param _RecordControl: A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.
         :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
-        :param _RecordMode: 
+        :param _RecordMode: Recording mode
+
+
+
+REALTIME_MODE - Real-time recording mode (default)
+
+VIDEO_GENERATION_MODE - Video generation mode (internal testing, requires email application to activate)
         :type RecordMode: str
-        :param _ChatGroupId: 
+        :param _ChatGroupId: Chat group ID. This field is only applicable to `video generation mode`.
+
+
+
+In `video generation mode`, non-whiteboard signaling messages in the whiteboard group are recorded by default. If `ChatGroupId` is specified, chat messages from the designated group ID will be recorded.
         :type ChatGroupId: str
         :param _AutoStopTimeout: Recording timeout. Unit: seconds. Valid range: [300,86400]. Default value: 300.
 
@@ -7728,7 +7738,13 @@ MIX_STREAM - Stream mixing feature
 
     @property
     def RecordMode(self):
-        r"""
+        r"""Recording mode
+
+
+
+REALTIME_MODE - Real-time recording mode (default)
+
+VIDEO_GENERATION_MODE - Video generation mode (internal testing, requires email application to activate)
         :rtype: str
         """
         return self._RecordMode
@@ -7739,7 +7755,11 @@ MIX_STREAM - Stream mixing feature
 
     @property
     def ChatGroupId(self):
-        r"""
+        r"""Chat group ID. This field is only applicable to `video generation mode`.
+
+
+
+In `video generation mode`, non-whiteboard signaling messages in the whiteboard group are recorded by default. If `ChatGroupId` is specified, chat messages from the designated group ID will be recorded.
         :rtype: str
         """
         return self._ChatGroupId

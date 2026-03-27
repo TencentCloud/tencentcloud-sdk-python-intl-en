@@ -76,9 +76,9 @@ class CheckRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Event: 
+        :param _Event: Event Information
         :type Event: str
-        :param _EventPattern: 
+        :param _EventPattern: EventPattern Information
         :type EventPattern: str
         """
         self._Event = None
@@ -86,7 +86,7 @@ class CheckRuleRequest(AbstractModel):
 
     @property
     def Event(self):
-        r"""
+        r"""Event Information
         :rtype: str
         """
         return self._Event
@@ -97,7 +97,7 @@ class CheckRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
-        r"""
+        r"""EventPattern Information
         :rtype: str
         """
         return self._EventPattern
