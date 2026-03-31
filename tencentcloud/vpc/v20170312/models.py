@@ -11127,18 +11127,22 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC instance ID
+        :param _VpcId: VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).
         :type VpcId: str
-        :param _SubnetId: Subnet instance ID
+        :param _SubnetId: Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
         :type SubnetId: str
-        :param _EndPointName: Endpoint name
+        :param _EndPointName: Endpoint name. limited to 60 characters.
         :type EndPointName: str
-        :param _EndPointServiceId: Endpoint service ID
+        :param _EndPointServiceId: Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.
         :type EndPointServiceId: str
         :param _EndPointVip: Endpoint VIP. You can apply for a specified IP.
         :type EndPointVip: str
-        :param _SecurityGroupId: Security group ID
+        :param _SecurityGroupId: Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
         :type SecurityGroupId: str
+        :param _Tags: List of tags to be bound, for example, [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
+        :param _IpAddressType: Protocol type. supports Ipv4 and Ipv6. default is Ipv4.
+        :type IpAddressType: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -11146,10 +11150,12 @@ class CreateVpcEndPointRequest(AbstractModel):
         self._EndPointServiceId = None
         self._EndPointVip = None
         self._SecurityGroupId = None
+        self._Tags = None
+        self._IpAddressType = None
 
     @property
     def VpcId(self):
-        r"""VPC instance ID
+        r"""VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId
@@ -11160,7 +11166,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet instance ID
+        r"""Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._SubnetId
@@ -11171,7 +11177,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointName(self):
-        r"""Endpoint name
+        r"""Endpoint name. limited to 60 characters.
         :rtype: str
         """
         return self._EndPointName
@@ -11182,7 +11188,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        r"""Endpoint service ID
+        r"""Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._EndPointServiceId
@@ -11204,7 +11210,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""Security group ID
+        r"""Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroupId
@@ -11212,6 +11218,28 @@ class CreateVpcEndPointRequest(AbstractModel):
     @SecurityGroupId.setter
     def SecurityGroupId(self, SecurityGroupId):
         self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def Tags(self):
+        r"""List of tags to be bound, for example, [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def IpAddressType(self):
+        r"""Protocol type. supports Ipv4 and Ipv6. default is Ipv4.
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
 
 
     def _deserialize(self, params):
@@ -11221,6 +11249,13 @@ class CreateVpcEndPointRequest(AbstractModel):
         self._EndPointServiceId = params.get("EndPointServiceId")
         self._EndPointVip = params.get("EndPointVip")
         self._SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29351,7 +29386,7 @@ class EndPoint(AbstractModel):
         r"""
         :param _EndPointId: Endpoint ID
         :type EndPointId: str
-        :param _VpcId: VPC ID
+        :param _VpcId: The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
         :type VpcId: str
         :param _SubnetId: Subnet ID
         :type SubnetId: str
@@ -29369,13 +29404,16 @@ class EndPoint(AbstractModel):
         :type EndPointVip: str
         :param _State: Endpoint status. Valid values: `ACTIVE` (available), `PENDING` (to be accepted), `ACCEPTING` (being accepted), `REJECTED` (rejected), and `FAILED` (failed).
         :type State: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time. format: YYYY-MM-DD HH:MM:SS.
         :type CreateTime: str
         :param _GroupSet: ID list of security group instances bound with endpoints
         :type GroupSet: list of str
-        :param _ServiceName: Endpoint service name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ServiceName: Endpoint service name.
         :type ServiceName: str
+        :param _CdcId: CDC cluster unique ID.
+        :type CdcId: str
+        :param _TagSet: Tag key-value pair.		
+        :type TagSet: list of Tag
         """
         self._EndPointId = None
         self._VpcId = None
@@ -29390,6 +29428,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._CreateTime = None
         self._GroupSet = None
         self._ServiceName = None
+        self._CdcId = None
+        self._TagSet = None
 
     @property
     def EndPointId(self):
@@ -29404,7 +29444,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId
@@ -29503,7 +29543,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time. format: YYYY-MM-DD HH:MM:SS.
         :rtype: str
         """
         return self._CreateTime
@@ -29525,8 +29565,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceName(self):
-        r"""Endpoint service name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Endpoint service name.
         :rtype: str
         """
         return self._ServiceName
@@ -29534,6 +29573,28 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @ServiceName.setter
     def ServiceName(self, ServiceName):
         self._ServiceName = ServiceName
+
+    @property
+    def CdcId(self):
+        r"""CDC cluster unique ID.
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def TagSet(self):
+        r"""Tag key-value pair.		
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
 
 
     def _deserialize(self, params):
@@ -29550,6 +29611,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._CreateTime = params.get("CreateTime")
         self._GroupSet = params.get("GroupSet")
         self._ServiceName = params.get("ServiceName")
+        self._CdcId = params.get("CdcId")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

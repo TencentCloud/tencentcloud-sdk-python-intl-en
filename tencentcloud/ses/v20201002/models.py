@@ -373,32 +373,29 @@ class BatchSendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: Sender'S email address. please fill in the sender's email address, such as noreply@mail.qcloud.com. if you need to fill in the sender's description, please follow.
-Sender &lt;email address&gt; via fill in, such as:.
-Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
+        :param _FromEmailAddress: <p>Sender's email address. Please fill in the sender's email address, for example: noreply@mail.qcloud.com. If you need to fill in the sender description, please enter it via<br>sender &lt;email address&gt;, for example:<br>Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;</p>
         :type FromEmailAddress: str
-        :param _ReceiverId: Recipient list ID.
+        :param _ReceiverId: <p>Recipient list ID</p>
         :type ReceiverId: int
-        :param _Subject: Email subject.
+        :param _Subject: <p>Email Subject</p>
         :type Subject: str
-        :param _TaskType: Task type 1: send now 2: scheduled sending 3: cycle (frequency) sending.
+        :param _TaskType: <p>Task type 1: Send now 2: Scheduled sending 3: Cycle (frequency) sending</p>
         :type TaskType: int
-        :param _ReplyToAddresses: The "reply" email address of the mail. can be filled with an email address you can receive mail from, can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
+        :param _ReplyToAddresses: <p>The "reply" email address of the mail. Can be filled with an email address you can receive mail, can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>
         :type ReplyToAddresses: str
-        :param _Template: When using a template to send, fill in the related parameters of the template.
-<Dx-Alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
+        :param _Template: <p>Template-related parameters to fill in when sending with a template</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Note</div>        <div class="rno-document-tip-desc"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: Abandoned<Dx-Alert infotype="notice" title="description">only customers who historically applied for special configuration require the use of it. if you have not applied for special configuration, this field does not exist.</dx-alert>.
+        :param _Simple: <p>Abandoned<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Description</div>        <div class="rno-document-tip-desc"><p>Only customers who historically applied for special configuration need to use this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote></p>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: Send attachment when required. fill in related parameters (not supported).
+        :param _Attachments: <p>When you need to send an attachment, fill in the related parameters (not supported).</p>
         :type Attachments: list of Attachment
-        :param _CycleParam: Required parameter for sending tasks periodically.
+        :param _CycleParam: <p>Required parameter for sending tasks periodically</p>
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
-        :param _TimedParam: Required parameter for scheduled task assignment.
+        :param _TimedParam: <p>Required parameter of scheduled task assignment</p>
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param _Unsubscribe: Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
+        :param _Unsubscribe: Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai. 11: indonesian.
         :type Unsubscribe: str
-        :param _ADLocation: Whether to add an ad flag. valid values: 0 (do not add), 1 (add to the previous subject), 2 (add to the following subject).
+        :param _ADLocation: <p>Whether to add an ad flag 0: do not add 1: add to the previous subject 2: add to the following subject</p>
         :type ADLocation: int
         """
         self._FromEmailAddress = None
@@ -416,9 +413,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def FromEmailAddress(self):
-        r"""Sender'S email address. please fill in the sender's email address, such as noreply@mail.qcloud.com. if you need to fill in the sender's description, please follow.
-Sender &lt;email address&gt; via fill in, such as:.
-Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
+        r"""<p>Sender's email address. Please fill in the sender's email address, for example: noreply@mail.qcloud.com. If you need to fill in the sender description, please enter it via<br>sender &lt;email address&gt;, for example:<br>Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;</p>
         :rtype: str
         """
         return self._FromEmailAddress
@@ -429,7 +424,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def ReceiverId(self):
-        r"""Recipient list ID.
+        r"""<p>Recipient list ID</p>
         :rtype: int
         """
         return self._ReceiverId
@@ -440,7 +435,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def Subject(self):
-        r"""Email subject.
+        r"""<p>Email Subject</p>
         :rtype: str
         """
         return self._Subject
@@ -451,7 +446,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def TaskType(self):
-        r"""Task type 1: send now 2: scheduled sending 3: cycle (frequency) sending.
+        r"""<p>Task type 1: Send now 2: Scheduled sending 3: Cycle (frequency) sending</p>
         :rtype: int
         """
         return self._TaskType
@@ -462,7 +457,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def ReplyToAddresses(self):
-        r"""The "reply" email address of the mail. can be filled with an email address you can receive mail from, can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
+        r"""<p>The "reply" email address of the mail. Can be filled with an email address you can receive mail, can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -473,8 +468,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def Template(self):
-        r"""When using a template to send, fill in the related parameters of the template.
-<Dx-Alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
+        r"""<p>Template-related parameters to fill in when sending with a template</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Note</div>        <div class="rno-document-tip-desc"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -485,7 +479,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def Simple(self):
-        r"""Abandoned<Dx-Alert infotype="notice" title="description">only customers who historically applied for special configuration require the use of it. if you have not applied for special configuration, this field does not exist.</dx-alert>.
+        r"""<p>Abandoned<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Description</div>        <div class="rno-document-tip-desc"><p>Only customers who historically applied for special configuration need to use this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote></p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -496,7 +490,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def Attachments(self):
-        r"""Send attachment when required. fill in related parameters (not supported).
+        r"""<p>When you need to send an attachment, fill in the related parameters (not supported).</p>
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -507,7 +501,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def CycleParam(self):
-        r"""Required parameter for sending tasks periodically.
+        r"""<p>Required parameter for sending tasks periodically</p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
         return self._CycleParam
@@ -518,7 +512,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def TimedParam(self):
-        r"""Required parameter for scheduled task assignment.
+        r"""<p>Required parameter of scheduled task assignment</p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
         return self._TimedParam
@@ -529,7 +523,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def Unsubscribe(self):
-        r"""Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
+        r"""Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai. 11: indonesian.
         :rtype: str
         """
         return self._Unsubscribe
@@ -540,7 +534,7 @@ Tencent cloud team &lt;noreply@mail.qcloud.com&gt;.
 
     @property
     def ADLocation(self):
-        r"""Whether to add an ad flag. valid values: 0 (do not add), 1 (add to the previous subject), 2 (add to the following subject).
+        r"""<p>Whether to add an ad flag 0: do not add 1: add to the previous subject 2: add to the following subject</p>
         :rtype: int
         """
         return self._ADLocation
@@ -593,7 +587,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Send task ID.
+        :param _TaskId: <p>Send task ID</p>
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -603,7 +597,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Send task ID.
+        r"""<p>Send task ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -4921,36 +4915,33 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).
+        :param _FromEmailAddress: <p>Sender's email address. If no alias is used, enter the sender's email address directly, for example: noreply@mail.qcloud.com. To use a sender alias, follow this format (note that a space must be used between the alias and the email address): alias+space+&lt;email address&gt;. The alias cannot contain a colon (:).</p>
         :type FromEmailAddress: str
-        :param _Subject: Email subject.
+        :param _Subject: <p>Email Subject</p>
         :type Subject: str
-        :param _Destination: Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.
-Specifies that at least one of the Destination, Cc, or Bcc parameters must exist.
+        :param _Destination: <p>Recipient email address, supports up to 50 recipients in mass sending. Note: The email content displays all recipient addresses. For non-mass sending, call the API multiple times to send.<br>At least one of the three parameters Destination/Cc/Bcc must exist.</p>
         :type Destination: list of str
-        :param _ReplyToAddresses: The "reply" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
+        :param _ReplyToAddresses: <p>The "reply" email address of the mail. Can be filled with a mailbox address where you can receive emails, which can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>
         :type ReplyToAddresses: str
-        :param _Cc: Cc recipient email address, supports up to 20 carbon copies.
+        :param _Cc: <p>Email address of CC recipients, supports up to 20 carbon copies.</p>
         :type Cc: list of str
-        :param _Bcc: Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.
+        :param _Bcc: <p>Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.</p>
         :type Bcc: list of str
-        :param _Template: Use template for sending and fill in related parameters.
-<dx-alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
+        :param _Template: <p>Fill in the template parameters when sending with a template.</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Note</div>        <div class="rno-document-tip-desc"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: This parameter has been deprecated.
-<dx-alert infotype="notice" title="description"> only customers who have applied for special configuration in the past need to use this. if you have not applied for special configuration, this field does not exist.</dx-alert>.
+        :param _Simple: <p>Abandoned</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Description</div>        <div class="rno-document-tip-desc"><p>Only customers who historically applied for special configuration require the use of this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: When sending an attachment, fill in the related parameters. the tencent cloud API request supports a maximum of 8M request packet. the attachment content transits Base64 and is expected to expand by 1.5 times. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
+        :param _Attachments: <p>To send an attachment, fill in the relevant parameters. The Tencent Cloud API request supports a maximum of 8M request packet. The attachment content is expected to expand by 1.5 times after Base64 encoding. The total size of all attachments should not exceed 4M. The API will return an error if the overall request exceeds 8M.</p>
         :type Attachments: list of Attachment
-        :param _Unsubscribe: Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
+        :param _Unsubscribe: Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai 11: indonesian.
         :type Unsubscribe: str
-        :param _TriggerType: Mail trigger type. 0: non-trigger class, default type, select this type for marketing emails and non-instant emails. 1: trigger class, instant delivery emails such as captcha-intl. if the mail exceeds a certain size, the system will automatically select the non-trigger class channel.
+        :param _TriggerType: <p>Mail trigger type 0: Non-trigger class, default type, select this type for marketing email, non-instant mail. 1: Trigger class, instant delivery mail such as verification code. If the mail exceeds a certain size, the system will automatically select a non-trigger type channel.</p>
         :type TriggerType: int
-        :param _SmtpMessageId: Message-Id field in the smtp header.
+        :param _SmtpMessageId: <p>Message-Id field in the smtp header</p>
         :type SmtpMessageId: str
-        :param _SmtpHeaders: Other fields that can be set in the smtp header.
+        :param _SmtpHeaders: <p>Other fields that can be set in the smtp header</p>
         :type SmtpHeaders: str
-        :param _HeaderFrom: from field in the smtp header. the domain name should be consistent with FromEmailAddress.
+        :param _HeaderFrom: <p>The from field in the smtp header. The domain name should be consistent with the FromEmailAddress.</p>
         :type HeaderFrom: str
         """
         self._FromEmailAddress = None
@@ -4970,7 +4961,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def FromEmailAddress(self):
-        r"""Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).
+        r"""<p>Sender's email address. If no alias is used, enter the sender's email address directly, for example: noreply@mail.qcloud.com. To use a sender alias, follow this format (note that a space must be used between the alias and the email address): alias+space+&lt;email address&gt;. The alias cannot contain a colon (:).</p>
         :rtype: str
         """
         return self._FromEmailAddress
@@ -4981,7 +4972,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Subject(self):
-        r"""Email subject.
+        r"""<p>Email Subject</p>
         :rtype: str
         """
         return self._Subject
@@ -4992,8 +4983,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Destination(self):
-        r"""Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.
-Specifies that at least one of the Destination, Cc, or Bcc parameters must exist.
+        r"""<p>Recipient email address, supports up to 50 recipients in mass sending. Note: The email content displays all recipient addresses. For non-mass sending, call the API multiple times to send.<br>At least one of the three parameters Destination/Cc/Bcc must exist.</p>
         :rtype: list of str
         """
         return self._Destination
@@ -5004,7 +4994,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def ReplyToAddresses(self):
-        r"""The "reply" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.
+        r"""<p>The "reply" email address of the mail. Can be filled with a mailbox address where you can receive emails, which can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -5015,7 +5005,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Cc(self):
-        r"""Cc recipient email address, supports up to 20 carbon copies.
+        r"""<p>Email address of CC recipients, supports up to 20 carbon copies.</p>
         :rtype: list of str
         """
         return self._Cc
@@ -5026,7 +5016,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Bcc(self):
-        r"""Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.
+        r"""<p>Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.</p>
         :rtype: list of str
         """
         return self._Bcc
@@ -5037,8 +5027,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Template(self):
-        r"""Use template for sending and fill in related parameters.
-<dx-alert infotype="notice" title="note">this field must be specified if you have not applied for special configuration.</dx-alert>.
+        r"""<p>Fill in the template parameters when sending with a template.</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Note</div>        <div class="rno-document-tip-desc"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -5049,8 +5038,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Simple(self):
-        r"""This parameter has been deprecated.
-<dx-alert infotype="notice" title="description"> only customers who have applied for special configuration in the past need to use this. if you have not applied for special configuration, this field does not exist.</dx-alert>.
+        r"""<p>Abandoned</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">Description</div>        <div class="rno-document-tip-desc"><p>Only customers who historically applied for special configuration require the use of this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -5061,7 +5049,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Attachments(self):
-        r"""When sending an attachment, fill in the related parameters. the tencent cloud API request supports a maximum of 8M request packet. the attachment content transits Base64 and is expected to expand by 1.5 times. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.
+        r"""<p>To send an attachment, fill in the relevant parameters. The Tencent Cloud API request supports a maximum of 8M request packet. The attachment content is expected to expand by 1.5 times after Base64 encoding. The total size of all attachments should not exceed 4M. The API will return an error if the overall request exceeds 8M.</p>
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -5072,7 +5060,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def Unsubscribe(self):
-        r"""Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
+        r"""Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai 11: indonesian.
         :rtype: str
         """
         return self._Unsubscribe
@@ -5083,7 +5071,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def TriggerType(self):
-        r"""Mail trigger type. 0: non-trigger class, default type, select this type for marketing emails and non-instant emails. 1: trigger class, instant delivery emails such as captcha-intl. if the mail exceeds a certain size, the system will automatically select the non-trigger class channel.
+        r"""<p>Mail trigger type 0: Non-trigger class, default type, select this type for marketing email, non-instant mail. 1: Trigger class, instant delivery mail such as verification code. If the mail exceeds a certain size, the system will automatically select a non-trigger type channel.</p>
         :rtype: int
         """
         return self._TriggerType
@@ -5094,7 +5082,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def SmtpMessageId(self):
-        r"""Message-Id field in the smtp header.
+        r"""<p>Message-Id field in the smtp header</p>
         :rtype: str
         """
         return self._SmtpMessageId
@@ -5105,7 +5093,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def SmtpHeaders(self):
-        r"""Other fields that can be set in the smtp header.
+        r"""<p>Other fields that can be set in the smtp header</p>
         :rtype: str
         """
         return self._SmtpHeaders
@@ -5116,7 +5104,7 @@ Specifies that at least one of the Destination, Cc, or Bcc parameters must exist
 
     @property
     def HeaderFrom(self):
-        r"""from field in the smtp header. the domain name should be consistent with FromEmailAddress.
+        r"""<p>The from field in the smtp header. The domain name should be consistent with the FromEmailAddress.</p>
         :rtype: str
         """
         return self._HeaderFrom
@@ -5167,7 +5155,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MessageId: Uniquely generated message identifier for receive message.
+        :param _MessageId: <p>Uniquely generated message identifier for receiving messages.</p>
         :type MessageId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5177,7 +5165,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""Uniquely generated message identifier for receive message.
+        r"""<p>Uniquely generated message identifier for receiving messages.</p>
         :rtype: str
         """
         return self._MessageId

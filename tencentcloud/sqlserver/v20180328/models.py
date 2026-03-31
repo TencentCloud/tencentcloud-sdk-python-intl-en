@@ -3217,17 +3217,17 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         r"""
         :param _Zone: Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :type Zone: str
-        :param _Memory: Instance memory size in GB
+        :param _Memory: Instance memory size in GB.
         :type Memory: int
-        :param _Storage: Instance disk size in GB
+        :param _Storage: Instance disk size in GB.
         :type Storage: int
-        :param _Cpu: Number of CPU cores
+        :param _Cpu: Number of CPU cores.
         :type Cpu: int
         :param _MachineType: The host type of the purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :type MachineType: str
-        :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).
         :type InstanceChargeType: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID.
         :type ProjectId: int
         :param _GoodsNum: Number of instances purchased this time. Default value: `1`.  Maximum value: `10`.
         :type GoodsNum: int
@@ -3239,11 +3239,11 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         :type Period: int
         :param _AutoVoucher: Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :type AutoVoucher: int
-        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
+        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order).
         :type VoucherIds: list of str
         :param _DBVersion: SQL Server version. Valid values:  `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard).  Default value: `2008R2`.  The available version varies by region, and you can pull the version information through the `DescribeProductConfig` API.
         :type DBVersion: str
-        :param _AutoRenewFlag: Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
+        :param _AutoRenewFlag: Auto-renewal flag, which takes effect only when purchasing a yearly/monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
         :type AutoRenewFlag: int
         :param _SecurityGroupList: Security group list, which contains security group IDs in the format of `sg-xxx`.
         :type SecurityGroupList: list of str
@@ -3251,16 +3251,22 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         :type Weekly: list of int
         :param _StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :type StartTime: str
-        :param _Span: Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour
+        :param _Span: Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour.
         :type Span: int
         :param _MultiZones: Whether to deploy across AZs. Default value: `false`.
         :type MultiZones: bool
-        :param _ResourceTags: Tags associated with the instances to be created
+        :param _ResourceTags: Tags associated with the instances to be created.
         :type ResourceTags: list of ResourceTag
         :param _Collation: Collation of system character sets. Default value:  `Chinese_PRC_CI_AS`.
         :type Collation: str
         :param _TimeZone: System time zone. Default value:  `China Standard Time`.
         :type TimeZone: str
+        :param _MultiNodes: Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
+        :type MultiNodes: bool
+        :param _DrZones: The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        :type DrZones: list of str
+        :param _DiskEncryptFlag: Disk encryption identifier, 0-unencrypted, 1-encrypted.
+        :type DiskEncryptFlag: int
         """
         self._Zone = None
         self._Memory = None
@@ -3285,6 +3291,9 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._MultiNodes = None
+        self._DrZones = None
+        self._DiskEncryptFlag = None
 
     @property
     def Zone(self):
@@ -3299,7 +3308,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size in GB
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -3310,7 +3319,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""Instance disk size in GB
+        r"""Instance disk size in GB.
         :rtype: int
         """
         return self._Storage
@@ -3321,7 +3330,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
+        r"""Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -3343,7 +3352,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        r"""Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3354,7 +3363,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -3420,7 +3429,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""Array of voucher IDs (currently, only one voucher can be used per order)
+        r"""Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3442,7 +3451,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
+        r"""Auto-renewal flag, which takes effect only when purchasing a yearly/monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3486,7 +3495,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour.
         :rtype: int
         """
         return self._Span
@@ -3508,7 +3517,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""Tags associated with the instances to be created
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3538,6 +3547,39 @@ class CreateCloudDBInstancesRequest(AbstractModel):
     @TimeZone.setter
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
+
+    @property
+    def MultiNodes(self):
+        r"""Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
+        :rtype: bool
+        """
+        return self._MultiNodes
+
+    @MultiNodes.setter
+    def MultiNodes(self, MultiNodes):
+        self._MultiNodes = MultiNodes
+
+    @property
+    def DrZones(self):
+        r"""The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
+    @property
+    def DiskEncryptFlag(self):
+        r"""Disk encryption identifier, 0-unencrypted, 1-encrypted.
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
 
 
     def _deserialize(self, params):
@@ -3569,6 +3611,9 @@ class CreateCloudDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._MultiNodes = params.get("MultiNodes")
+        self._DrZones = params.get("DrZones")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3586,7 +3631,7 @@ class CreateCloudDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: Order name
+        :param _DealName: Order name.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3596,7 +3641,7 @@ class CreateCloudDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""Order name
+        r"""Order name.
         :rtype: str
         """
         return self._DealName
