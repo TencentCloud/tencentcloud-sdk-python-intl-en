@@ -1223,7 +1223,7 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBInstanceChargeTypeResponse:
         """
-        This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.
+        This API is used to switch the instance billing mode from pay-as-you-go to yearly/monthly subscription.
         """
         
         kwargs = {}

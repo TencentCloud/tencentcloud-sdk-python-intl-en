@@ -1061,11 +1061,11 @@ class CloneDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: ID of the original instance to be cloned.
+        :param _DBInstanceId: The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
-        :param _Storage: Instance storage capacity in GB.
+        :param _Storage: Instance disk capacity size. set step size to 10. unit: GB.
         :type Storage: int
         :param _Period: Purchase duration, in months.
 
@@ -1073,10 +1073,11 @@ class CloneDBInstanceRequest(AbstractModel):
 - Pay-as-you-go: Only supports `1`.
 
         :type Period: int
-        :param _AutoRenewFlag: Renewal Flag:
+        :param _AutoRenewFlag: Specifies the auto-renewal flag. this parameter is valid only when the billing mode is prepaid.
+Valid values:.
 
-- `0`: manual renewal
-`1`: auto-renewal
+- `0`: specifies manual renewal.
+-`1`: specifies auto-renewal.
 
 Default value: 0
         :type AutoRenewFlag: int
@@ -1084,24 +1085,24 @@ Default value: 0
         :type VpcId: str
         :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :type SubnetId: str
-        :param _Name: Name of the newly purchased instance, which can contain up to 60 letters, digits, or symbols (-_). If this parameter is not specified, "Unnamed" will be displayed by default.
+        :param _Name: Specifies the instance name for new purchase, only supports chinese/english/digits/"_"/"-" with length less than 60. displays "source instance name-Copy" by default if no instance name is specified.
         :type Name: str
         :param _InstanceChargeType: Instance billing type, which currently supports:
 
-- PREPAID: Prepaid, i.e., monthly subscription
+- PREPAID: Prepaid, i.e., yearly/monthly subscription
 - POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption
 
 Default value: PREPAID
         :type InstanceChargeType: str
-        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
+        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
 
         :type SecurityGroupIds: list of str
-        :param _ProjectId: Project ID.
+        :param _ProjectId: Project ID. default value is 0, which means it belongs to the default project.
         :type ProjectId: int
         :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
         :type TagList: list of Tag
-        :param _DBNodeSet: Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :param _DBNodeSet: Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.
+AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
         :type DBNodeSet: list of DBNode
         :param _AutoVoucher: Whether to automatically use coupons:
 
@@ -1114,9 +1115,9 @@ Default value: 0
         :type VoucherIds: str
         :param _ActivityId: Campaign ID.
         :type ActivityId: int
-        :param _BackupSetId: Basic backup set ID.
+        :param _BackupSetId: Basic backup set ID. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.
         :type BackupSetId: str
-        :param _RecoveryTargetTime: Restoration point in time.
+        :param _RecoveryTargetTime: Specifies the recovery time point. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.
         :type RecoveryTargetTime: str
         :param _SyncMode: Primary-standby sync mode, which supports:
 <li>Semi-sync: Semi-sync</li>
@@ -1124,6 +1125,8 @@ Default value: 0
 Default value for the primary instance: Semi-sync
 Default value for the read-only instance: Async
         :type SyncMode: str
+        :param _DeletionProtection: Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        :type DeletionProtection: bool
         """
         self._DBInstanceId = None
         self._SpecCode = None
@@ -1144,10 +1147,11 @@ Default value for the read-only instance: Async
         self._BackupSetId = None
         self._RecoveryTargetTime = None
         self._SyncMode = None
+        self._DeletionProtection = None
 
     @property
     def DBInstanceId(self):
-        r"""ID of the original instance to be cloned.
+        r"""The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -1169,7 +1173,7 @@ Default value for the read-only instance: Async
 
     @property
     def Storage(self):
-        r"""Instance storage capacity in GB.
+        r"""Instance disk capacity size. set step size to 10. unit: GB.
         :rtype: int
         """
         return self._Storage
@@ -1195,10 +1199,11 @@ Default value for the read-only instance: Async
 
     @property
     def AutoRenewFlag(self):
-        r"""Renewal Flag:
+        r"""Specifies the auto-renewal flag. this parameter is valid only when the billing mode is prepaid.
+Valid values:.
 
-- `0`: manual renewal
-`1`: auto-renewal
+- `0`: specifies manual renewal.
+-`1`: specifies auto-renewal.
 
 Default value: 0
         :rtype: int
@@ -1233,7 +1238,7 @@ Default value: 0
 
     @property
     def Name(self):
-        r"""Name of the newly purchased instance, which can contain up to 60 letters, digits, or symbols (-_). If this parameter is not specified, "Unnamed" will be displayed by default.
+        r"""Specifies the instance name for new purchase, only supports chinese/english/digits/"_"/"-" with length less than 60. displays "source instance name-Copy" by default if no instance name is specified.
         :rtype: str
         """
         return self._Name
@@ -1246,7 +1251,7 @@ Default value: 0
     def InstanceChargeType(self):
         r"""Instance billing type, which currently supports:
 
-- PREPAID: Prepaid, i.e., monthly subscription
+- PREPAID: Prepaid, i.e., yearly/monthly subscription
 - POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption
 
 Default value: PREPAID
@@ -1260,7 +1265,7 @@ Default value: PREPAID
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
+        r"""Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
 
         :rtype: list of str
         """
@@ -1272,7 +1277,7 @@ Default value: PREPAID
 
     @property
     def ProjectId(self):
-        r"""Project ID.
+        r"""Project ID. default value is 0, which means it belongs to the default project.
         :rtype: int
         """
         return self._ProjectId
@@ -1294,8 +1299,8 @@ Default value: PREPAID
 
     @property
     def DBNodeSet(self):
-        r"""Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        r"""Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.
+AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
         :rtype: list of DBNode
         """
         return self._DBNodeSet
@@ -1344,7 +1349,7 @@ Default value: 0
 
     @property
     def BackupSetId(self):
-        r"""Basic backup set ID.
+        r"""Basic backup set ID. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.
         :rtype: str
         """
         return self._BackupSetId
@@ -1355,7 +1360,7 @@ Default value: 0
 
     @property
     def RecoveryTargetTime(self):
-        r"""Restoration point in time.
+        r"""Specifies the recovery time point. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -1378,6 +1383,17 @@ Default value for the read-only instance: Async
     @SyncMode.setter
     def SyncMode(self, SyncMode):
         self._SyncMode = SyncMode
+
+    @property
+    def DeletionProtection(self):
+        r"""Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
 
 
     def _deserialize(self, params):
@@ -1410,6 +1426,7 @@ Default value for the read-only instance: Async
         self._BackupSetId = params.get("BackupSetId")
         self._RecoveryTargetTime = params.get("RecoveryTargetTime")
         self._SyncMode = params.get("SyncMode")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1427,14 +1444,11 @@ class CloneDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: Order ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DealName: Order number.
         :type DealName: str
-        :param _BillId: Bill ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _BillId: Order transaction number.
         :type BillId: str
-        :param _DBInstanceId: ID of the cloned instance, which will be returned only when the instance is pay-as-you-go.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBInstanceId: Specifies the instance ID of the cloned instance. only support postpaid return this value.
         :type DBInstanceId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1446,8 +1460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
-        r"""Order ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Order number.
         :rtype: str
         """
         return self._DealName
@@ -1458,8 +1471,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BillId(self):
-        r"""Bill ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Order transaction number.
         :rtype: str
         """
         return self._BillId
@@ -1470,8 +1482,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DBInstanceId(self):
-        r"""ID of the cloned instance, which will be returned only when the instance is pay-as-you-go.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the instance ID of the cloned instance. only support postpaid return this value.
         :rtype: str
         """
         return self._DBInstanceId
@@ -2304,119 +2315,72 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Primary AZ of the instance in the format of `ap-guangzhou-3`. To support multiple AZs, add information of the primary and standby AZs in the `DBNodeSet.N` field.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :param _Zone: <p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
         :type Zone: str
-        :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        :param _SpecCode: <p>Purchasable specification code. Obtain this parameter by calling the `SpecCode` field in the return value of <a href="https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1">DescribeClasses</a>.</p>
         :type SpecCode: str
-        :param _Storage: Instance storage capacity in GB
+        :param _Storage: <p>Instance disk capacity size, unit: GB. The step length for parameter settings is 10.</p>
         :type Storage: int
-        :param _InstanceCount: The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
+        :param _InstanceCount: <p>Number of instances to purchase, value ranges from 1 to 10. Single transaction supports a maximum quantity of 10. If exceeding this quantity, multiple calls can be performed to purchase.</p>
         :type InstanceCount: int
-        :param _Period: Purchase duration, in months.
-<li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>
-<li>Pay-as-you-go: Only supports `1`.</li>
+        :param _Period: <p>Purchase duration, unit: month.</p><li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li><li>Postpaid: Supports only `1`.</li>
         :type Period: int
-        :param _Charset: Instance character set, which currently supports only:
-<li>UTF8</li>
-<li>LATIN1</li>
+        :param _Charset: <p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>
         :type Charset: str
-        :param _AdminName: Username of the instance root account, with the following specifications:
-<li>The username must consist of 1-16 characters, which can be letters, digits, or underscores.</li>
-<li>It cannot be postgres.</li>
-<li>It cannot start with digits or 'pg_'.</li>
-<li>All rules are case-insensitive.</li>
+        :param _AdminName: <p>Username of the instance root account. Specific specifications are as follows:</p><li>The username must consist of 1-16 characters, which can only be letters, digits, or underscores.</li><li>Cannot be postgres.</li><li>Cannot begin with digits or pg_.</li><li>All rules are case-insensitive.</li>
         :type AdminName: str
-        :param _AdminPassword: Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with "/".
-It must include the following four types of characters:
-<li>Lowercase letters: [a ~ z]</li>
-<li>Uppercase letters: [A ~ Z]</li>
-<li>Digits: 0-9</li>
-<li>Special symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
+        :param _AdminPassword: <p>Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with "/".<br>Must contain the following four character types:</p><li>Lowercase letter: [a-z]</li><li>Uppercase letter: [a-z]</li><li>Number: 0-9</li><li>Special character: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
         :type AdminPassword: str
-        :param _DBMajorVersion: The major version number of PostgreSQL (this parameter is currently required), and the version information can be obtained from [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1). Currently major versions `10`, `11`, `12`, `13`, `14`, and `15` are supported. For details, see [Kernel Version Overview](https://intl.cloud.tencent.com/document/product/409/67018).
-When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.
+        :param _DBMajorVersion: <p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href="https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>
         :type DBMajorVersion: str
-        :param _DBVersion: PostgreSQL community major version + minor version number.
-It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.
+        :param _DBVersion: <p>PostgreSQL community major version + minor version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.</p>
         :type DBVersion: str
-        :param _DBKernelVersion: PostgreSQL kernel version number.
-It's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.
+        :param _DBKernelVersion: <p>PostgreSQL kernel version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.</p>
         :type DBKernelVersion: str
-        :param _InstanceChargeType: Instance billing type, which currently supports:
-<li>PREPAID: Prepaid, i.e., monthly subscription</li>
-<li>POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption</li>
-Default value: PREPAID
+        :param _InstanceChargeType: <p>Instance billing type. Currently supports:</p><li>PREPAID: Prepayment, i.e., yearly/monthly subscription</li><li>POSTPAID_BY_HOUR: Postpaid, i.e., pay-as-you-go</li>Default value: PREPAID
         :type InstanceChargeType: str
-        :param _VpcId: VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>
         :type VpcId: str
-        :param _SubnetId: VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :param _SubnetId: <p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is currently required). Effective VPC subnet IDs can be queried by logging in to the console or by calling the API <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> and acquiring the unSubnetId field in the API return.</p>
         :type SubnetId: str
-        :param _DBNodeSet: Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :param _DBNodeSet: <p>Instance node deployment information. When multi-availability zone deployment is supported, it requires specifying the AZ information for each node.<br>AZ information can be obtained from the Zone field in the returned value by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :type DBNodeSet: list of DBNode
-        :param _AutoRenewFlag: Renewal Flag:
-<li>`0`: manual renewal</li>
-<li>`1`: auto-renewal</li>
-Default value: 0
+        :param _AutoRenewFlag: <p>Auto-renewal flag:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0
         :type AutoRenewFlag: int
-        :param _AutoVoucher: Whether to automatically use coupons:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        :param _AutoVoucher: <p>Whether to automatically use a voucher:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :type AutoVoucher: int
-        :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :param _VoucherIds: <p>Voucher ID list. Currently only support specifying one voucher.</p>
         :type VoucherIds: list of str
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID. The default value is 0, which means it belongs to the default project.</p>
         :type ProjectId: int
-        :param _ActivityId: Campaign ID
+        :param _ActivityId: <p>Activity ID.</p>
         :type ActivityId: int
-        :param _Name: Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, "Unnamed" will be displayed by default.
-
+        :param _Name: <p>Instance name only supports Chinese/English/number/"_"/"-" with length less than 60. If no instance name is specified, "unnamed" is displayed by default.</p>
         :type Name: str
-        :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
+        :param _TagList: <p>Tag information that should be bound to the instance is empty by default. You can get it by calling <a href="https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1">DescribeTags</a> and checking the Tags field in the return value.</p>
         :type TagList: list of Tag
-        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
-
+        :param _SecurityGroupIds: <p>Security group to which an instance belongs. Obtain this parameter by calling the sgId field in the returned value of <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a>. If not specified, the default security group is bound.</p>
         :type SecurityGroupIds: list of str
-        :param _NeedSupportTDE: Whether data transparent encryption is required:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0See [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).
+        :param _NeedSupportTDE: <p>Whether data transparent encryption is required:</p><li>0: No</li><li>1: Yes</li>Default value: 0. See [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).
         :type NeedSupportTDE: int
-        :param _KMSKeyId: KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.
-For more information on creating `KeyId`, see [Enabling TDE](https://www.tencentcloud.com/document/product/409/47762).
+        :param _KMSKeyId: <p>The KeyId of the custom key. If you select custom key encryption, you need to input the KeyId of the custom key. KeyId is the unique identifier of CMK.<br>For related reference on KeyId creation and retrieval, see <a href="https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1">Enable Transparent Data Encryption</a></p>
         :type KMSKeyId: str
-        :param _KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.
-For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).
+        :param _KMSRegion: <p>For regions using the KMS service, KMSRegion is empty by default and the local region KMS is used. If the local region is not supported, select another KMS supported region.<br>For details about KMSRegion, see <a href="https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1">enable transparent data encryption</a></p>
         :type KMSRegion: str
-        :param _KMSClusterId: <p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>
+        :param _KMSClusterId: <p>Designate the service cluster for KMS. If KMSClusterId is empty, use the KMS of the Default Cluster. To select the specified KMS cluster, require the input of KMSClusterId. For details about KMSClusterId, see enable transparent data encryption.</p>
         :type KMSClusterId: str
-        :param _DBEngine: Database engine, which supports:
-<li>`postgresql`: TencentDB for PostgreSQL</li>
-<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>
-Default value: `postgresql`
+        :param _DBEngine: <p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql
         :type DBEngine: str
-        :param _DBEngineConfig: Configuration information for the database engine, and the configuration format is as follows:
-{"$key1":"$value1", "$key2":"$value2"}
-Supported engines include:
-mssql_compatible engine:
-<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>
-<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:
-"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", and "vi_VN".</li>
-<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as", "sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", and "vietnamese_ci_as".</li>
+        :param _DBEngineConfig: <p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".</li>
         :type DBEngineConfig: str
-        :param _SyncMode: Primary-standby sync mode, which supports:
-<li>Semi-sync: Semi-sync</li>
-<li>Async: Asynchronous</li>
-Default value for the primary instance: Semi-sync
-Default value for the read-only instance: Async
+        :param _SyncMode: <p>Primary-standby sync mode, supports: </p><li>Semi-sync: semi-synchronous</li><li>Async: asynchronous</li>Default value for the primary instance: Semi-syncDefault value for the read-only instance: Async
         :type SyncMode: str
-        :param _NeedSupportIpv6: Whether support to IPv6 is required:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        :param _NeedSupportIpv6: <p>Whether required to support Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :type NeedSupportIpv6: int
+        :param _DeletionProtection: <p>Whether to enable deletion protection for the instance: true-enable deletion protection; false-disable deletion protection.</p>
+        :type DeletionProtection: bool
+        :param _StorageType: <p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._SpecCode = None
@@ -2449,11 +2413,12 @@ Default value: 0
         self._DBEngineConfig = None
         self._SyncMode = None
         self._NeedSupportIpv6 = None
+        self._DeletionProtection = None
+        self._StorageType = None
 
     @property
     def Zone(self):
-        r"""Primary AZ of the instance in the format of `ap-guangzhou-3`. To support multiple AZs, add information of the primary and standby AZs in the `DBNodeSet.N` field.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        r"""<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
         :rtype: str
         """
         return self._Zone
@@ -2464,7 +2429,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def SpecCode(self):
-        r"""Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        r"""<p>Purchasable specification code. Obtain this parameter by calling the `SpecCode` field in the return value of <a href="https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1">DescribeClasses</a>.</p>
         :rtype: str
         """
         return self._SpecCode
@@ -2475,7 +2440,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Storage(self):
-        r"""Instance storage capacity in GB
+        r"""<p>Instance disk capacity size, unit: GB. The step length for parameter settings is 10.</p>
         :rtype: int
         """
         return self._Storage
@@ -2486,7 +2451,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def InstanceCount(self):
-        r"""The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
+        r"""<p>Number of instances to purchase, value ranges from 1 to 10. Single transaction supports a maximum quantity of 10. If exceeding this quantity, multiple calls can be performed to purchase.</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -2497,9 +2462,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Period(self):
-        r"""Purchase duration, in months.
-<li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>
-<li>Pay-as-you-go: Only supports `1`.</li>
+        r"""<p>Purchase duration, unit: month.</p><li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li><li>Postpaid: Supports only `1`.</li>
         :rtype: int
         """
         return self._Period
@@ -2510,9 +2473,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Charset(self):
-        r"""Instance character set, which currently supports only:
-<li>UTF8</li>
-<li>LATIN1</li>
+        r"""<p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>
         :rtype: str
         """
         return self._Charset
@@ -2523,11 +2484,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def AdminName(self):
-        r"""Username of the instance root account, with the following specifications:
-<li>The username must consist of 1-16 characters, which can be letters, digits, or underscores.</li>
-<li>It cannot be postgres.</li>
-<li>It cannot start with digits or 'pg_'.</li>
-<li>All rules are case-insensitive.</li>
+        r"""<p>Username of the instance root account. Specific specifications are as follows:</p><li>The username must consist of 1-16 characters, which can only be letters, digits, or underscores.</li><li>Cannot be postgres.</li><li>Cannot begin with digits or pg_.</li><li>All rules are case-insensitive.</li>
         :rtype: str
         """
         return self._AdminName
@@ -2538,12 +2495,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def AdminPassword(self):
-        r"""Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with "/".
-It must include the following four types of characters:
-<li>Lowercase letters: [a ~ z]</li>
-<li>Uppercase letters: [A ~ Z]</li>
-<li>Digits: 0-9</li>
-<li>Special symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
+        r"""<p>Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with "/".<br>Must contain the following four character types:</p><li>Lowercase letter: [a-z]</li><li>Uppercase letter: [a-z]</li><li>Number: 0-9</li><li>Special character: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
         :rtype: str
         """
         return self._AdminPassword
@@ -2554,8 +2506,7 @@ It must include the following four types of characters:
 
     @property
     def DBMajorVersion(self):
-        r"""The major version number of PostgreSQL (this parameter is currently required), and the version information can be obtained from [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1). Currently major versions `10`, `11`, `12`, `13`, `14`, and `15` are supported. For details, see [Kernel Version Overview](https://intl.cloud.tencent.com/document/product/409/67018).
-When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.
+        r"""<p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href="https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>
         :rtype: str
         """
         return self._DBMajorVersion
@@ -2566,8 +2517,7 @@ When this parameter is entered, an instance running the latest kernel version of
 
     @property
     def DBVersion(self):
-        r"""PostgreSQL community major version + minor version number.
-It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.
+        r"""<p>PostgreSQL community major version + minor version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.</p>
         :rtype: str
         """
         return self._DBVersion
@@ -2578,8 +2528,7 @@ It's generally not recommended to pass in this parameter. If needed, only the la
 
     @property
     def DBKernelVersion(self):
-        r"""PostgreSQL kernel version number.
-It's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.
+        r"""<p>PostgreSQL kernel version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.</p>
         :rtype: str
         """
         return self._DBKernelVersion
@@ -2590,10 +2539,7 @@ It's generally not recommended to pass in this parameter. If needed, only the la
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing type, which currently supports:
-<li>PREPAID: Prepaid, i.e., monthly subscription</li>
-<li>POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption</li>
-Default value: PREPAID
+        r"""<p>Instance billing type. Currently supports:</p><li>PREPAID: Prepayment, i.e., yearly/monthly subscription</li><li>POSTPAID_BY_HOUR: Postpaid, i.e., pay-as-you-go</li>Default value: PREPAID
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2604,7 +2550,7 @@ Default value: PREPAID
 
     @property
     def VpcId(self):
-        r"""VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>
         :rtype: str
         """
         return self._VpcId
@@ -2615,7 +2561,7 @@ Default value: PREPAID
 
     @property
     def SubnetId(self):
-        r"""VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        r"""<p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is currently required). Effective VPC subnet IDs can be queried by logging in to the console or by calling the API <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> and acquiring the unSubnetId field in the API return.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -2626,8 +2572,7 @@ Default value: PREPAID
 
     @property
     def DBNodeSet(self):
-        r"""Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        r"""<p>Instance node deployment information. When multi-availability zone deployment is supported, it requires specifying the AZ information for each node.<br>AZ information can be obtained from the Zone field in the returned value by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :rtype: list of DBNode
         """
         return self._DBNodeSet
@@ -2638,10 +2583,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def AutoRenewFlag(self):
-        r"""Renewal Flag:
-<li>`0`: manual renewal</li>
-<li>`1`: auto-renewal</li>
-Default value: 0
+        r"""<p>Auto-renewal flag:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2652,10 +2594,7 @@ Default value: 0
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically use coupons:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        r"""<p>Whether to automatically use a voucher:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -2666,7 +2605,7 @@ Default value: 0
 
     @property
     def VoucherIds(self):
-        r"""Voucher ID list. Currently, you can specify only one voucher.
+        r"""<p>Voucher ID list. Currently only support specifying one voucher.</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -2677,7 +2616,7 @@ Default value: 0
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID. The default value is 0, which means it belongs to the default project.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2688,7 +2627,7 @@ Default value: 0
 
     @property
     def ActivityId(self):
-        r"""Campaign ID
+        r"""<p>Activity ID.</p>
         :rtype: int
         """
         return self._ActivityId
@@ -2699,8 +2638,7 @@ Default value: 0
 
     @property
     def Name(self):
-        r"""Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, "Unnamed" will be displayed by default.
-
+        r"""<p>Instance name only supports Chinese/English/number/"_"/"-" with length less than 60. If no instance name is specified, "unnamed" is displayed by default.</p>
         :rtype: str
         """
         return self._Name
@@ -2711,7 +2649,7 @@ Default value: 0
 
     @property
     def TagList(self):
-        r"""The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
+        r"""<p>Tag information that should be bound to the instance is empty by default. You can get it by calling <a href="https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1">DescribeTags</a> and checking the Tags field in the return value.</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -2722,8 +2660,7 @@ Default value: 0
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
-
+        r"""<p>Security group to which an instance belongs. Obtain this parameter by calling the sgId field in the returned value of <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a>. If not specified, the default security group is bound.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2734,10 +2671,7 @@ Default value: 0
 
     @property
     def NeedSupportTDE(self):
-        r"""Whether data transparent encryption is required:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0See [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).
+        r"""<p>Whether data transparent encryption is required:</p><li>0: No</li><li>1: Yes</li>Default value: 0. See [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).
         :rtype: int
         """
         return self._NeedSupportTDE
@@ -2748,8 +2682,7 @@ Default value: 0See [Overview of Data Transparent Encryption](https://intl.cloud
 
     @property
     def KMSKeyId(self):
-        r"""KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.
-For more information on creating `KeyId`, see [Enabling TDE](https://www.tencentcloud.com/document/product/409/47762).
+        r"""<p>The KeyId of the custom key. If you select custom key encryption, you need to input the KeyId of the custom key. KeyId is the unique identifier of CMK.<br>For related reference on KeyId creation and retrieval, see <a href="https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1">Enable Transparent Data Encryption</a></p>
         :rtype: str
         """
         return self._KMSKeyId
@@ -2760,8 +2693,7 @@ For more information on creating `KeyId`, see [Enabling TDE](https://www.tencent
 
     @property
     def KMSRegion(self):
-        r"""The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.
-For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).
+        r"""<p>For regions using the KMS service, KMSRegion is empty by default and the local region KMS is used. If the local region is not supported, select another KMS supported region.<br>For details about KMSRegion, see <a href="https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1">enable transparent data encryption</a></p>
         :rtype: str
         """
         return self._KMSRegion
@@ -2772,7 +2704,7 @@ For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tence
 
     @property
     def KMSClusterId(self):
-        r"""<p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>
+        r"""<p>Designate the service cluster for KMS. If KMSClusterId is empty, use the KMS of the Default Cluster. To select the specified KMS cluster, require the input of KMSClusterId. For details about KMSClusterId, see enable transparent data encryption.</p>
         :rtype: str
         """
         return self._KMSClusterId
@@ -2783,10 +2715,7 @@ For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tence
 
     @property
     def DBEngine(self):
-        r"""Database engine, which supports:
-<li>`postgresql`: TencentDB for PostgreSQL</li>
-<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>
-Default value: `postgresql`
+        r"""<p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql
         :rtype: str
         """
         return self._DBEngine
@@ -2797,14 +2726,7 @@ Default value: `postgresql`
 
     @property
     def DBEngineConfig(self):
-        r"""Configuration information for the database engine, and the configuration format is as follows:
-{"$key1":"$value1", "$key2":"$value2"}
-Supported engines include:
-mssql_compatible engine:
-<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>
-<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:
-"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", and "vi_VN".</li>
-<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as", "sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", and "vietnamese_ci_as".</li>
+        r"""<p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".</li>
         :rtype: str
         """
         return self._DBEngineConfig
@@ -2815,11 +2737,7 @@ mssql_compatible engine:
 
     @property
     def SyncMode(self):
-        r"""Primary-standby sync mode, which supports:
-<li>Semi-sync: Semi-sync</li>
-<li>Async: Asynchronous</li>
-Default value for the primary instance: Semi-sync
-Default value for the read-only instance: Async
+        r"""<p>Primary-standby sync mode, supports: </p><li>Semi-sync: semi-synchronous</li><li>Async: asynchronous</li>Default value for the primary instance: Semi-syncDefault value for the read-only instance: Async
         :rtype: str
         """
         return self._SyncMode
@@ -2830,10 +2748,7 @@ Default value for the read-only instance: Async
 
     @property
     def NeedSupportIpv6(self):
-        r"""Whether support to IPv6 is required:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        r"""<p>Whether required to support Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :rtype: int
         """
         return self._NeedSupportIpv6
@@ -2841,6 +2756,28 @@ Default value: 0
     @NeedSupportIpv6.setter
     def NeedSupportIpv6(self, NeedSupportIpv6):
         self._NeedSupportIpv6 = NeedSupportIpv6
+
+    @property
+    def DeletionProtection(self):
+        r"""<p>Whether to enable deletion protection for the instance: true-enable deletion protection; false-disable deletion protection.</p>
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def StorageType(self):
+        r"""<p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
 
 
     def _deserialize(self, params):
@@ -2885,6 +2822,8 @@ Default value: 0
         self._DBEngineConfig = params.get("DBEngineConfig")
         self._SyncMode = params.get("SyncMode")
         self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2902,11 +2841,11 @@ class CreateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealNames: Order number list. Each instance corresponds to an order number.
+        :param _DealNames: <p>Order number list. Each instance corresponds to an order number.</p>
         :type DealNames: list of str
-        :param _BillId: Bill ID of frozen fees
+        :param _BillId: <p>Frozen transaction ID.</p>
         :type BillId: str
-        :param _DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
+        :param _DBInstanceIdSet: <p>ID set of successfully created instances. Return value is available only in pay scenarios.</p>
         :type DBInstanceIdSet: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2918,7 +2857,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""Order number list. Each instance corresponds to an order number.
+        r"""<p>Order number list. Each instance corresponds to an order number.</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -2929,7 +2868,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def BillId(self):
-        r"""Bill ID of frozen fees
+        r"""<p>Frozen transaction ID.</p>
         :rtype: str
         """
         return self._BillId
@@ -2940,7 +2879,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        r"""ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
+        r"""<p>ID set of successfully created instances. Return value is available only in pay scenarios.</p>
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -3102,40 +3041,40 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :param _Zone: Primary AZ of an instance, such as "ap-guangzhou-3".
 The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
         :type Zone: str
-        :param _MasterDBInstanceId: ID of the primary instance to which the read-only instance belongs
+        :param _MasterDBInstanceId: Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :type MasterDBInstanceId: str
         :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
-        :param _Storage: Instance storage capacity in GB
+        :param _Storage: Instance disk capacity size in GB. specifies the step length for parameter settings as 10.
         :type Storage: int
-        :param _InstanceCount: The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
+        :param _InstanceCount: Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.
         :type InstanceCount: int
-        :param _Period: Validity period in months, valid values:
-<li>Monthly subscription: `1`, `2`, `3`, 4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        :param _Period: Purchase duration, in months.
+<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<li>Pay-as-you-go: Only supports `1`.</li>
         :type Period: int
-        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        :param _VpcId: VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
         :type VpcId: str
-        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :param _SubnetId: VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :type SubnetId: str
-        :param _InstanceChargeType: Instance billing mode. Valid values: 
-<li>`PREPAID`: Monthly subscription
-<li>`POSTPAID_BY_HOUR`: Pay-as-you-go
-Default value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.
+        :param _InstanceChargeType: Instance billing type, which currently supports:.
+<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
+Default value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.
         :type InstanceChargeType: str
-        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        :param _AutoVoucher: Specifies whether to automatically use a voucher.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :type AutoVoucher: int
         :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
         :type VoucherIds: list of str
-        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
-<li>`0`: Manual renewal.
-<li>`1`: Automatic renewal.
-Default value: `0`.
+        :param _AutoRenewFlag: Specifies the auto-renewal flag.
+<Li>`0`: manual renewal.</li>.
+<Li>`1`: auto-renewal</li>.
+Default value: 0
         :type AutoRenewFlag: int
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID. default value is 0, means it belongs to the default project.
         :type ProjectId: int
         :param _ActivityId: Special offer ID
         :type ActivityId: int
@@ -3146,17 +3085,19 @@ Default value: `0`.
         :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
 
         :type SecurityGroupIds: list of str
-        :param _NeedSupportIpv6: Whether IPv6 is supported.
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        :param _NeedSupportIpv6: Specifies whether to support Ipv6.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :type NeedSupportIpv6: int
-        :param _Name: Instance name (which will be supported in the future)
+        :param _Name: Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.
         :type Name: str
-        :param _DBVersion: (Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.
+        :param _DBVersion: Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.
         :type DBVersion: str
-        :param _DedicatedClusterId: <p>Dedicated Cluster ID</p>
+        :param _DedicatedClusterId: CDC ID.
         :type DedicatedClusterId: str
+        :param _DeletionProtection: Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        :type DeletionProtection: bool
         """
         self._Zone = None
         self._MasterDBInstanceId = None
@@ -3179,6 +3120,7 @@ Default value: `0`.
         self._Name = None
         self._DBVersion = None
         self._DedicatedClusterId = None
+        self._DeletionProtection = None
 
     @property
     def Zone(self):
@@ -3194,7 +3136,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def MasterDBInstanceId(self):
-        r"""ID of the primary instance to which the read-only instance belongs
+        r"""Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -3216,7 +3158,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Storage(self):
-        r"""Instance storage capacity in GB
+        r"""Instance disk capacity size in GB. specifies the step length for parameter settings as 10.
         :rtype: int
         """
         return self._Storage
@@ -3227,7 +3169,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def InstanceCount(self):
-        r"""The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
+        r"""Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.
         :rtype: int
         """
         return self._InstanceCount
@@ -3238,9 +3180,9 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Period(self):
-        r"""Validity period in months, valid values:
-<li>Monthly subscription: `1`, `2`, `3`, 4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        r"""Purchase duration, in months.
+<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<li>Pay-as-you-go: Only supports `1`.</li>
         :rtype: int
         """
         return self._Period
@@ -3251,7 +3193,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def VpcId(self):
-        r"""VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        r"""VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._VpcId
@@ -3262,7 +3204,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def SubnetId(self):
-        r"""VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        r"""VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._SubnetId
@@ -3273,10 +3215,10 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing mode. Valid values: 
-<li>`PREPAID`: Monthly subscription
-<li>`POSTPAID_BY_HOUR`: Pay-as-you-go
-Default value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.
+        r"""Instance billing type, which currently supports:.
+<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
+Default value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3287,10 +3229,10 @@ Default value: `PREPAID`. If the primary instance is pay-as-you-go, so is the re
 
     @property
     def AutoVoucher(self):
-        r"""Whether to use vouchers automatically. Valid values:
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        r"""Specifies whether to automatically use a voucher.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -3312,10 +3254,10 @@ Default value: `0`.
 
     @property
     def AutoRenewFlag(self):
-        r"""Auto-renewal flag. Valid values:
-<li>`0`: Manual renewal.
-<li>`1`: Automatic renewal.
-Default value: `0`.
+        r"""Specifies the auto-renewal flag.
+<Li>`0`: manual renewal.</li>.
+<Li>`1`: auto-renewal</li>.
+Default value: 0
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3326,7 +3268,7 @@ Default value: `0`.
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""Project ID. default value is 0, means it belongs to the default project.
         :rtype: int
         """
         return self._ProjectId
@@ -3382,10 +3324,10 @@ Default value: `0`.
 
     @property
     def NeedSupportIpv6(self):
-        r"""Whether IPv6 is supported.
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        r"""Specifies whether to support Ipv6.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :rtype: int
         """
         return self._NeedSupportIpv6
@@ -3396,7 +3338,7 @@ Default value: `0`.
 
     @property
     def Name(self):
-        r"""Instance name (which will be supported in the future)
+        r"""Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.
         :rtype: str
         """
         return self._Name
@@ -3409,7 +3351,7 @@ Default value: `0`.
     def DBVersion(self):
         warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
 
-        r"""(Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.
+        r"""Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.
         :rtype: str
         """
         return self._DBVersion
@@ -3422,7 +3364,7 @@ Default value: `0`.
 
     @property
     def DedicatedClusterId(self):
-        r"""<p>Dedicated Cluster ID</p>
+        r"""CDC ID.
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3430,6 +3372,17 @@ Default value: `0`.
     @DedicatedClusterId.setter
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def DeletionProtection(self):
+        r"""Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
 
 
     def _deserialize(self, params):
@@ -3456,6 +3409,7 @@ Default value: `0`.
         self._Name = params.get("Name")
         self._DBVersion = params.get("DBVersion")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3479,12 +3433,15 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         :type BillId: str
         :param _DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
         :type DBInstanceIdSet: list of str
+        :param _BillingParameters: BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.
+        :type BillingParameters: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DealNames = None
         self._BillId = None
         self._DBInstanceIdSet = None
+        self._BillingParameters = None
         self._RequestId = None
 
     @property
@@ -3521,6 +3478,17 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self._DBInstanceIdSet = DBInstanceIdSet
 
     @property
+    def BillingParameters(self):
+        r"""BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.
+        :rtype: str
+        """
+        return self._BillingParameters
+
+    @BillingParameters.setter
+    def BillingParameters(self, BillingParameters):
+        self._BillingParameters = BillingParameters
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -3536,6 +3504,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self._DealNames = params.get("DealNames")
         self._BillId = params.get("BillId")
         self._DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self._BillingParameters = params.get("BillingParameters")
         self._RequestId = params.get("RequestId")
 
 
@@ -4325,123 +4294,92 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: Instance region such as ap-guangzhou, which corresponds to the`Region` field in `RegionSet`.
+        :param _Region: <p>Region of the instance, for example: ap-guangzhou, corresponds to the region field in RegionSet.</p>
         :type Region: str
-        :param _Zone: Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`.
+        :param _Zone: <p>Availability zone to which the instance belongs, for example: ap-guangzhou-3, corresponds to the Zone field in ZoneSet.</p>
         :type Zone: str
-        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API.
+        :param _VpcId: <p>VPC ID, such as vpc-e6w23k31. A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1">DescribeVpcs</a> and acquiring the unVpcId field in API return.</p>
         :type VpcId: str
-        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets ](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :param _SubnetId: <p>VPC subnet ID, such as subnet-51lcif9y. An effective VPC subnet ID can be obtained by logging in to the console to query. You can also call API <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> and get it from the unSubnetId field in API return.</p>
         :type SubnetId: str
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: <p>Instance ID.</p>
         :type DBInstanceId: str
-        :param _DBInstanceName: Instance name
+        :param _DBInstanceName: <p>Instance name.</p>
         :type DBInstanceName: str
-        :param _DBInstanceStatus: Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), and `primary-switching` (primary-secondary switching)
+        :param _DBInstanceStatus: <p>Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), `primary-switching` (primary-secondary switching), `offlining` (offline), `deployment changing` (modify AZ), `cloning` (recovering data), `parameter modifying` (parameter modification in progress), `log-switching` (log status change), `restoring` (recovering), and `expanding` (scaling out)</p>
         :type DBInstanceStatus: str
-        :param _DBInstanceMemory: Assigned instance memory size in GB
+        :param _DBInstanceMemory: <p>Memory size allocated to the instance, measurement unit: GB</p>
         :type DBInstanceMemory: int
-        :param _DBInstanceStorage: Assigned instance storage capacity in GB
+        :param _DBInstanceStorage: <p>Storage space size allocated to the instance, measurement unit: GB</p>
         :type DBInstanceStorage: int
-        :param _DBInstanceCpu: Number of assigned CPUs
+        :param _DBInstanceCpu: <p>Number of CPUs allocated to the instance, unit: piece</p>
         :type DBInstanceCpu: int
-        :param _DBInstanceClass: Purchasable specification ID
+        :param _DBInstanceClass: <p>Purchasable specification ID.</p>
         :type DBInstanceClass: str
-        :param _DBMajorVersion: The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBMajorVersion: <p>PostgreSQL major version number. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15.</p>
         :type DBMajorVersion: str
-        :param _DBVersion: Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+        :param _DBVersion: <p>PostgreSQL community major version + minor version number, such as 12.4. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>.</p>
         :type DBVersion: str
-        :param _DBKernelVersion: PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBKernelVersion: <p>PostgreSQL Kernel Version, for example v12.7_r1.8. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>.</p>
         :type DBKernelVersion: str
-        :param _DBInstanceType: Instance type, which includes:
-<li>primary: primary instance </li>
-<li>readonly: read-only instance</li>
-<li>guard: disaster recovery instance</li>
-<li>temp: temporary instance</li>
+        :param _DBInstanceType: <p>Instance types:</p><li>primary: Primary instance</li><li>readonly: Read-only instance</li><li>guard: Disaster recovery instance</li><li>temp: Temporary instance</li>
         :type DBInstanceType: str
-        :param _DBInstanceVersion: Instance version. Valid value: `standard` (dual-server high-availability; one-primary-one-standby).
+        :param _DBInstanceVersion: <p>Instance version currently only supports standard (dual-server high-availability edition, one master and one slave).</p>
         :type DBInstanceVersion: str
-        :param _DBCharset: Instance character set, which currently supports only:
-<li>UTF8</li>
-<li>LATIN1</li>
+        :param _DBCharset: <p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>
         :type DBCharset: str
-        :param _CreateTime: Instance creation time
+        :param _CreateTime: <p>Instance creation time.</p>
         :type CreateTime: str
-        :param _UpdateTime: Last updated time of the instance attribute
+        :param _UpdateTime: <p>The time when the instance executed the last update.</p>
         :type UpdateTime: str
-        :param _ExpireTime: Instance expiration time
+        :param _ExpireTime: <p>Instance expiration time.</p>
         :type ExpireTime: str
-        :param _IsolatedTime: Instance isolation time
+        :param _IsolatedTime: <p>Instance isolation time.</p>
         :type IsolatedTime: str
-        :param _PayType: Billing mode:
-<li>prepaid: monthly subscription, prepaid</li>
-<li>postpaid: pay-as-you-go, postpaid</li>
+        :param _PayType: <p>Billing mode:</p><li>prepaid: Yearly/monthly subscription, prepayment</li><li>postpaid: Pay-as-you-go, postpaid</li>
         :type PayType: str
-        :param _AutoRenew: Auto-renewal or not:
-<li>`0`: manual renewal</li>
-<li>`1`: auto-renewal</li>
-Default value: 0
+        :param _AutoRenew: <p>Auto-renewal or not:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0
         :type AutoRenew: int
-        :param _DBInstanceNetInfo: Instance network connection information
+        :param _DBInstanceNetInfo: <p>Instance network connection information.</p>
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        :param _Type: Machine type
+        :param _Type: <p>Machine type.</p>
         :type Type: str
-        :param _AppId: User `AppId`
+        :param _AppId: <p>User's app id.</p>
         :type AppId: int
-        :param _Uid: Instance `Uid`
+        :param _Uid: <p>Uid of the instance.</p>
         :type Uid: int
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID.</p>
         :type ProjectId: int
-        :param _TagList: The information of tags associated with instances
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TagList: <p>Tag information associated with the instance.</p>
         :type TagList: list of Tag
-        :param _MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MasterDBInstanceId: <p>Primary instance information. Returned only when the instance is a read-only instance.</p>
         :type MasterDBInstanceId: str
-        :param _ReadOnlyInstanceNum: Number of read-only instances
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReadOnlyInstanceNum: <p>Number of read-only instances.</p>
         :type ReadOnlyInstanceNum: int
-        :param _StatusInReadonlyGroup: The status of a read-only instance in a read-only group
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StatusInReadonlyGroup: <p>State of the read-only instance in the read-only group.</p>
         :type StatusInReadonlyGroup: str
-        :param _OfflineTime: Offline time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OfflineTime: <p>Offline time.</p>
         :type OfflineTime: str
-        :param _DBNodeSet: Instance node information
+        :param _DBNodeSet: <p>Instance node information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DBNodeSet: list of DBNode
-        :param _IsSupportTDE: Whether the instance supports TDE data encryption:
-<li>0: not supported</li>
-<li>1: supported</li>
-Default value: 0For TDE data encryption, see [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsSupportTDE: <p>Whether the instance supports TDE data encryption:</p><li>0: Not supported</li><li>1: Supported</li>Default value: 0. For TDE data encryption, see [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).
         :type IsSupportTDE: int
-        :param _DBEngine: Database engine, which supports:
-<li>`postgresql`: TencentDB for PostgreSQL</li>
-<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>
-Default value: `postgresql`
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBEngine: <p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql
         :type DBEngine: str
-        :param _DBEngineConfig: Configuration information for the database engine, and the configuration format is as follows:
-{"$key1":"$value1", "$key2":"$value2"}
-Supported engines include:
-mssql_compatible engine:
-<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>
-<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:
-"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", and "vi_VN".</li>
-<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as", "sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", and "vietnamese_ci_as".</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBEngineConfig: <p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".</li>
         :type DBEngineConfig: str
-        :param _NetworkAccessList: Network access list of the instance (this field has been deprecated)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _NetworkAccessList: <p>Instance network information list (deprecated)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
-        :param _SupportIpv6: Whether the instance supports IPv6:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        :param _SupportIpv6: <p>Whether the instance supports Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :type SupportIpv6: int
+        :param _ExpandedCpu: <p>Number of cpu cores that have been elastically scaled out for the instance</p>
+        :type ExpandedCpu: int
+        :param _DeletionProtection: <p>Whether to enable deletion protection for the instance, values as follows:</p><ul><li>true: enable deletion protection</li><li>false: disable deletion protection</li></ul>
+        :type DeletionProtection: bool
+        :param _DBInstanceStorageType: <p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>
+        :type DBInstanceStorageType: str
         """
         self._Region = None
         self._Zone = None
@@ -4482,10 +4420,13 @@ Default value: 0
         self._DBEngineConfig = None
         self._NetworkAccessList = None
         self._SupportIpv6 = None
+        self._ExpandedCpu = None
+        self._DeletionProtection = None
+        self._DBInstanceStorageType = None
 
     @property
     def Region(self):
-        r"""Instance region such as ap-guangzhou, which corresponds to the`Region` field in `RegionSet`.
+        r"""<p>Region of the instance, for example: ap-guangzhou, corresponds to the region field in RegionSet.</p>
         :rtype: str
         """
         return self._Region
@@ -4496,7 +4437,7 @@ Default value: 0
 
     @property
     def Zone(self):
-        r"""Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`.
+        r"""<p>Availability zone to which the instance belongs, for example: ap-guangzhou-3, corresponds to the Zone field in ZoneSet.</p>
         :rtype: str
         """
         return self._Zone
@@ -4507,7 +4448,7 @@ Default value: 0
 
     @property
     def VpcId(self):
-        r"""VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API.
+        r"""<p>VPC ID, such as vpc-e6w23k31. A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1">DescribeVpcs</a> and acquiring the unVpcId field in API return.</p>
         :rtype: str
         """
         return self._VpcId
@@ -4518,7 +4459,7 @@ Default value: 0
 
     @property
     def SubnetId(self):
-        r"""VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets ](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        r"""<p>VPC subnet ID, such as subnet-51lcif9y. An effective VPC subnet ID can be obtained by logging in to the console to query. You can also call API <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> and get it from the unSubnetId field in API return.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4529,7 +4470,7 @@ Default value: 0
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -4540,7 +4481,7 @@ Default value: 0
 
     @property
     def DBInstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name.</p>
         :rtype: str
         """
         return self._DBInstanceName
@@ -4551,7 +4492,7 @@ Default value: 0
 
     @property
     def DBInstanceStatus(self):
-        r"""Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), and `primary-switching` (primary-secondary switching)
+        r"""<p>Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), `primary-switching` (primary-secondary switching), `offlining` (offline), `deployment changing` (modify AZ), `cloning` (recovering data), `parameter modifying` (parameter modification in progress), `log-switching` (log status change), `restoring` (recovering), and `expanding` (scaling out)</p>
         :rtype: str
         """
         return self._DBInstanceStatus
@@ -4562,7 +4503,7 @@ Default value: 0
 
     @property
     def DBInstanceMemory(self):
-        r"""Assigned instance memory size in GB
+        r"""<p>Memory size allocated to the instance, measurement unit: GB</p>
         :rtype: int
         """
         return self._DBInstanceMemory
@@ -4573,7 +4514,7 @@ Default value: 0
 
     @property
     def DBInstanceStorage(self):
-        r"""Assigned instance storage capacity in GB
+        r"""<p>Storage space size allocated to the instance, measurement unit: GB</p>
         :rtype: int
         """
         return self._DBInstanceStorage
@@ -4584,7 +4525,7 @@ Default value: 0
 
     @property
     def DBInstanceCpu(self):
-        r"""Number of assigned CPUs
+        r"""<p>Number of CPUs allocated to the instance, unit: piece</p>
         :rtype: int
         """
         return self._DBInstanceCpu
@@ -4595,7 +4536,7 @@ Default value: 0
 
     @property
     def DBInstanceClass(self):
-        r"""Purchasable specification ID
+        r"""<p>Purchasable specification ID.</p>
         :rtype: str
         """
         return self._DBInstanceClass
@@ -4606,8 +4547,7 @@ Default value: 0
 
     @property
     def DBMajorVersion(self):
-        r"""The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>PostgreSQL major version number. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15.</p>
         :rtype: str
         """
         return self._DBMajorVersion
@@ -4618,7 +4558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBVersion(self):
-        r"""Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+        r"""<p>PostgreSQL community major version + minor version number, such as 12.4. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>.</p>
         :rtype: str
         """
         return self._DBVersion
@@ -4629,8 +4569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBKernelVersion(self):
-        r"""PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>PostgreSQL Kernel Version, for example v12.7_r1.8. Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>.</p>
         :rtype: str
         """
         return self._DBKernelVersion
@@ -4641,11 +4580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBInstanceType(self):
-        r"""Instance type, which includes:
-<li>primary: primary instance </li>
-<li>readonly: read-only instance</li>
-<li>guard: disaster recovery instance</li>
-<li>temp: temporary instance</li>
+        r"""<p>Instance types:</p><li>primary: Primary instance</li><li>readonly: Read-only instance</li><li>guard: Disaster recovery instance</li><li>temp: Temporary instance</li>
         :rtype: str
         """
         return self._DBInstanceType
@@ -4656,7 +4591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBInstanceVersion(self):
-        r"""Instance version. Valid value: `standard` (dual-server high-availability; one-primary-one-standby).
+        r"""<p>Instance version currently only supports standard (dual-server high-availability edition, one master and one slave).</p>
         :rtype: str
         """
         return self._DBInstanceVersion
@@ -4667,9 +4602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBCharset(self):
-        r"""Instance character set, which currently supports only:
-<li>UTF8</li>
-<li>LATIN1</li>
+        r"""<p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>
         :rtype: str
         """
         return self._DBCharset
@@ -4680,7 +4613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Instance creation time
+        r"""<p>Instance creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4691,7 +4624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last updated time of the instance attribute
+        r"""<p>The time when the instance executed the last update.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -4702,7 +4635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        r"""Instance expiration time
+        r"""<p>Instance expiration time.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -4713,7 +4646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolatedTime(self):
-        r"""Instance isolation time
+        r"""<p>Instance isolation time.</p>
         :rtype: str
         """
         return self._IsolatedTime
@@ -4724,9 +4657,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
-        r"""Billing mode:
-<li>prepaid: monthly subscription, prepaid</li>
-<li>postpaid: pay-as-you-go, postpaid</li>
+        r"""<p>Billing mode:</p><li>prepaid: Yearly/monthly subscription, prepayment</li><li>postpaid: Pay-as-you-go, postpaid</li>
         :rtype: str
         """
         return self._PayType
@@ -4737,10 +4668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenew(self):
-        r"""Auto-renewal or not:
-<li>`0`: manual renewal</li>
-<li>`1`: auto-renewal</li>
-Default value: 0
+        r"""<p>Auto-renewal or not:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0
         :rtype: int
         """
         return self._AutoRenew
@@ -4751,7 +4679,7 @@ Default value: 0
 
     @property
     def DBInstanceNetInfo(self):
-        r"""Instance network connection information
+        r"""<p>Instance network connection information.</p>
         :rtype: list of DBInstanceNetInfo
         """
         return self._DBInstanceNetInfo
@@ -4762,7 +4690,7 @@ Default value: 0
 
     @property
     def Type(self):
-        r"""Machine type
+        r"""<p>Machine type.</p>
         :rtype: str
         """
         return self._Type
@@ -4773,7 +4701,7 @@ Default value: 0
 
     @property
     def AppId(self):
-        r"""User `AppId`
+        r"""<p>User's app id.</p>
         :rtype: int
         """
         return self._AppId
@@ -4784,7 +4712,7 @@ Default value: 0
 
     @property
     def Uid(self):
-        r"""Instance `Uid`
+        r"""<p>Uid of the instance.</p>
         :rtype: int
         """
         return self._Uid
@@ -4795,7 +4723,7 @@ Default value: 0
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -4806,8 +4734,7 @@ Default value: 0
 
     @property
     def TagList(self):
-        r"""The information of tags associated with instances
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Tag information associated with the instance.</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -4818,8 +4745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterDBInstanceId(self):
-        r"""Primary instance information, which is returned only when the instance is read-only.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Primary instance information. Returned only when the instance is a read-only instance.</p>
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -4830,8 +4756,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadOnlyInstanceNum(self):
-        r"""Number of read-only instances
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Number of read-only instances.</p>
         :rtype: int
         """
         return self._ReadOnlyInstanceNum
@@ -4842,8 +4767,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusInReadonlyGroup(self):
-        r"""The status of a read-only instance in a read-only group
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>State of the read-only instance in the read-only group.</p>
         :rtype: str
         """
         return self._StatusInReadonlyGroup
@@ -4854,8 +4778,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
-        r"""Offline time
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Offline time.</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -4866,7 +4789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBNodeSet(self):
-        r"""Instance node information
+        r"""<p>Instance node information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DBNode
         """
@@ -4878,11 +4801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsSupportTDE(self):
-        r"""Whether the instance supports TDE data encryption:
-<li>0: not supported</li>
-<li>1: supported</li>
-Default value: 0For TDE data encryption, see [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether the instance supports TDE data encryption:</p><li>0: Not supported</li><li>1: Supported</li>Default value: 0. For TDE data encryption, see [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).
         :rtype: int
         """
         return self._IsSupportTDE
@@ -4893,11 +4812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBEngine(self):
-        r"""Database engine, which supports:
-<li>`postgresql`: TencentDB for PostgreSQL</li>
-<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>
-Default value: `postgresql`
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql
         :rtype: str
         """
         return self._DBEngine
@@ -4908,15 +4823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBEngineConfig(self):
-        r"""Configuration information for the database engine, and the configuration format is as follows:
-{"$key1":"$value1", "$key2":"$value2"}
-Supported engines include:
-mssql_compatible engine:
-<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>
-<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:
-"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", and "vi_VN".</li>
-<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as", "sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", and "vietnamese_ci_as".</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".</li>
         :rtype: str
         """
         return self._DBEngineConfig
@@ -4927,8 +4834,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetworkAccessList(self):
-        r"""Network access list of the instance (this field has been deprecated)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Instance network information list (deprecated)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of NetworkAccess
         """
         return self._NetworkAccessList
@@ -4939,10 +4846,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SupportIpv6(self):
-        r"""Whether the instance supports IPv6:
-<li>`0`: no</li>
-<li>`1`: yes</li>
-Default value: 0
+        r"""<p>Whether the instance supports Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0
         :rtype: int
         """
         return self._SupportIpv6
@@ -4950,6 +4854,39 @@ Default value: 0
     @SupportIpv6.setter
     def SupportIpv6(self, SupportIpv6):
         self._SupportIpv6 = SupportIpv6
+
+    @property
+    def ExpandedCpu(self):
+        r"""<p>Number of cpu cores that have been elastically scaled out for the instance</p>
+        :rtype: int
+        """
+        return self._ExpandedCpu
+
+    @ExpandedCpu.setter
+    def ExpandedCpu(self, ExpandedCpu):
+        self._ExpandedCpu = ExpandedCpu
+
+    @property
+    def DeletionProtection(self):
+        r"""<p>Whether to enable deletion protection for the instance, values as follows:</p><ul><li>true: enable deletion protection</li><li>false: disable deletion protection</li></ul>
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def DBInstanceStorageType(self):
+        r"""<p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>
+        :rtype: str
+        """
+        return self._DBInstanceStorageType
+
+    @DBInstanceStorageType.setter
+    def DBInstanceStorageType(self, DBInstanceStorageType):
+        self._DBInstanceStorageType = DBInstanceStorageType
 
 
     def _deserialize(self, params):
@@ -5012,6 +4949,9 @@ Default value: 0
                 obj._deserialize(item)
                 self._NetworkAccessList.append(obj)
         self._SupportIpv6 = params.get("SupportIpv6")
+        self._ExpandedCpu = params.get("ExpandedCpu")
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._DBInstanceStorageType = params.get("DBInstanceStorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5039,14 +4979,11 @@ class DBInstanceNetInfo(AbstractModel):
         :type NetType: str
         :param _Status: Network connection status. Valid values: `initing` (never enabled before), `opened` (enabled), `closed` (disabled), `opening` (enabling), `closing` (disabling)
         :type Status: str
-        :param _VpcId: VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _VpcId: VPC ID. specifies the ID of the virtual private cloud.
         :type VpcId: str
-        :param _SubnetId: Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SubnetId: Subnet ID.
         :type SubnetId: str
-        :param _ProtocolType: Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProtocolType: Specifies the protocol type to connect to the database. currently supported: postgresql, mssql (mssql compatible syntax).
         :type ProtocolType: str
         """
         self._Address = None
@@ -5115,8 +5052,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        r"""VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""VPC ID. specifies the ID of the virtual private cloud.
         :rtype: str
         """
         return self._VpcId
@@ -5127,8 +5063,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Subnet ID.
         :rtype: str
         """
         return self._SubnetId
@@ -5139,8 +5074,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProtocolType(self):
-        r"""Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the protocol type to connect to the database. currently supported: postgresql, mssql (mssql compatible syntax).
         :rtype: str
         """
         return self._ProtocolType
@@ -5170,7 +5104,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DBNode(AbstractModel):
-    r"""Instance node information including node type and AZ.
+    r"""Describes the instance node information, including the node type, availability zone where the node is located, and dedicated cluster where the node resides.
 
     """
 
@@ -5182,9 +5116,12 @@ class DBNode(AbstractModel):
         :type Role: str
         :param _Zone: AZ where the node resides, such as ap-guangzhou-1.
         :type Zone: str
+        :param _DedicatedClusterId: CDC ID.
+        :type DedicatedClusterId: str
         """
         self._Role = None
         self._Zone = None
+        self._DedicatedClusterId = None
 
     @property
     def Role(self):
@@ -5210,10 +5147,22 @@ class DBNode(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def DedicatedClusterId(self):
+        r"""CDC ID.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Zone = params.get("Zone")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7598,14 +7547,14 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -10883,15 +10832,15 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: Instance ID list. Currently, you can't remove multiple instances from isolation in batches. Only one instance ID can be passed in here.
+        :param _DBInstanceIdSet: Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
         :type DBInstanceIdSet: list of str
-        :param _Period: Validity period in months
-<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        :param _Period: Purchase duration, in months.
+<Li>Prepaid: Yearly/monthly subscription, supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<Li>Postpaid: Pay-as-you-go, this parameter does not take effect.</li>.
         :type Period: int
-        :param _AutoVoucher: Whether to use vouchers. Valid values:
-<li>`true`: Yes.
-u200c<li>`false`: No.
+        :param _AutoVoucher: Whether to use vouchers.
+<li>true: use.</li>.
+<li>false: non-use.</li>.
 Default value: `false`.
         :type AutoVoucher: bool
         :param _VoucherIds: Voucher ID list
@@ -10904,7 +10853,7 @@ Default value: `false`.
 
     @property
     def DBInstanceIdSet(self):
-        r"""Instance ID list. Currently, you can't remove multiple instances from isolation in batches. Only one instance ID can be passed in here.
+        r"""Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -10915,9 +10864,9 @@ Default value: `false`.
 
     @property
     def Period(self):
-        r"""Validity period in months
-<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        r"""Purchase duration, in months.
+<Li>Prepaid: Yearly/monthly subscription, supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<Li>Postpaid: Pay-as-you-go, this parameter does not take effect.</li>.
         :rtype: int
         """
         return self._Period
@@ -10928,9 +10877,9 @@ Default value: `false`.
 
     @property
     def AutoVoucher(self):
-        r"""Whether to use vouchers. Valid values:
-<li>`true`: Yes.
-u200c<li>`false`: No.
+        r"""Whether to use vouchers.
+<li>true: use.</li>.
+<li>false: non-use.</li>.
 Default value: `false`.
         :rtype: bool
         """
@@ -12880,26 +12829,26 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of `postgres-6fego161`
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
-        :param _InstanceChargeType: Instance billing mode. Valid values:
-<li>`PREPAID`: Monthly subscription.
-<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.
-Default value: `PREPAID`.
+        :param _InstanceChargeType: Instance billing type, which currently supports:.
+<Li>PREPAID: prepaid, i.e., yearly/monthly subscription</li>.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
+Default value: PREPAID
         :type InstanceChargeType: str
-        :param _Period: Validity period in months
-<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        :param _Period: Purchase duration, in months.
+<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<li>Pay-as-you-go: Only supports `1`.</li>
         :type Period: int
-        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
-<li>`0`: Manual renewal.
-<li>`1`: Automatic renewal.
-Default value: `0`.
+        :param _AutoRenewFlag: Specifies the auto-renewal flag.
+<Li>`0`: manual renewal.</li>.
+<Li>`1`: auto-renewal</li>.
+Default value: 0
         :type AutoRenewFlag: int
-        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        :param _AutoVoucher: Specifies whether to automatically use a voucher.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :type AutoVoucher: int
         """
         self._DBInstanceId = None
@@ -12910,7 +12859,7 @@ Default value: `0`.
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID in the format of `postgres-6fego161`
+        r"""Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -12921,10 +12870,10 @@ Default value: `0`.
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing mode. Valid values:
-<li>`PREPAID`: Monthly subscription.
-<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.
-Default value: `PREPAID`.
+        r"""Instance billing type, which currently supports:.
+<Li>PREPAID: prepaid, i.e., yearly/monthly subscription</li>.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
+Default value: PREPAID
         :rtype: str
         """
         return self._InstanceChargeType
@@ -12935,9 +12884,9 @@ Default value: `PREPAID`.
 
     @property
     def Period(self):
-        r"""Validity period in months
-<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
-<li>Pay-as-you-go: `1`.
+        r"""Purchase duration, in months.
+<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
+<li>Pay-as-you-go: Only supports `1`.</li>
         :rtype: int
         """
         return self._Period
@@ -12948,10 +12897,10 @@ Default value: `PREPAID`.
 
     @property
     def AutoRenewFlag(self):
-        r"""Auto-renewal flag. Valid values:
-<li>`0`: Manual renewal.
-<li>`1`: Automatic renewal.
-Default value: `0`.
+        r"""Specifies the auto-renewal flag.
+<Li>`0`: manual renewal.</li>.
+<Li>`1`: auto-renewal</li>.
+Default value: 0
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -12962,10 +12911,10 @@ Default value: `0`.
 
     @property
     def AutoVoucher(self):
-        r"""Whether to use vouchers automatically. Valid values:
-<li>`0`: No.
-<li>`1`: Yes.
-Default value: `0`.
+        r"""Specifies whether to automatically use a voucher.
+<Li>0: no.</li>.
+<Li>`1`: yes.</li>.
+Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -14431,29 +14380,21 @@ class NetworkAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: Network resource ID, instance ID, or RO group ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ResourceId: Network resource id, instance id, or RO group id.
         :type ResourceId: str
-        :param _ResourceType: Resource type. Valid values: `1` (instance), `2` (RO group)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ResourceType: Resource type. valid values: 1 (instance), 2 (RO group).
         :type ResourceType: int
-        :param _VpcId: VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _VpcId: VPC ID. specifies the ID of the virtual private cloud.
         :type VpcId: str
-        :param _Vip: IPv4 address
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Vip: IPv4 Address
         :type Vip: str
-        :param _Vip6: IPv6 address
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Vip6: IPv6 Address
         :type Vip6: str
-        :param _Vport: Access port
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Vport: Specifies the access port.
         :type Vport: int
-        :param _SubnetId: Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SubnetId: Subnet ID.
         :type SubnetId: str
-        :param _VpcStatus: Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _VpcStatus: Network status. valid values: 1-applying, 2-active, 3-deleting, 4-deleted.
         :type VpcStatus: int
         """
         self._ResourceId = None
@@ -14467,8 +14408,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
-        r"""Network resource ID, instance ID, or RO group ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Network resource id, instance id, or RO group id.
         :rtype: str
         """
         return self._ResourceId
@@ -14479,8 +14419,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceType(self):
-        r"""Resource type. Valid values: `1` (instance), `2` (RO group)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Resource type. valid values: 1 (instance), 2 (RO group).
         :rtype: int
         """
         return self._ResourceType
@@ -14491,8 +14430,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
-        r"""VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""VPC ID. specifies the ID of the virtual private cloud.
         :rtype: str
         """
         return self._VpcId
@@ -14503,8 +14441,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vip(self):
-        r"""IPv4 address
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""IPv4 Address
         :rtype: str
         """
         return self._Vip
@@ -14515,8 +14452,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vip6(self):
-        r"""IPv6 address
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""IPv6 Address
         :rtype: str
         """
         return self._Vip6
@@ -14527,8 +14463,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vport(self):
-        r"""Access port
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the access port.
         :rtype: int
         """
         return self._Vport
@@ -14539,8 +14474,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Subnet ID.
         :rtype: str
         """
         return self._SubnetId
@@ -14551,8 +14485,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcStatus(self):
-        r"""Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Network status. valid values: 1-applying, 2-active, 3-deleting, 4-deleted.
         :rtype: int
         """
         return self._VpcStatus

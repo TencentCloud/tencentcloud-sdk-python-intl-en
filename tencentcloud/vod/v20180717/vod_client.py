@@ -583,6 +583,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLLMComprehendTemplate(self, request):
+        r"""Create a large model comprehend template
+
+        :param request: Request instance for CreateLLMComprehendTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateLLMComprehendTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateLLMComprehendTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLLMComprehendTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLLMComprehendTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         r"""This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.
 
@@ -1252,6 +1275,31 @@ class VodClient(AbstractClient):
             body = self.call("DeleteJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLLMComprehendTemplate(self, request):
+        r"""This API is used to delete a user-customized  large model comprehend template.
+
+        Note: Templates with an ID below 10000 are system-preset templates and cannot be deleted.
+
+        :param request: Request instance for DeleteLLMComprehendTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteLLMComprehendTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteLLMComprehendTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMComprehendTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMComprehendTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2161,6 +2209,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMComprehendTemplates(self, request):
+        r"""This API is used to obtain the template detail list based on the Template Unique Identifier of the large model comprehend template. The returned results include all eligible customized large model parsing templates.
+
+        :param request: Request instance for DescribeLLMComprehendTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeLLMComprehendTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeLLMComprehendTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMComprehendTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMComprehendTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3393,6 +3464,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMComprehendTemplate(self, request):
+        r"""Modify the parsing template of a large model
+
+        :param request: Request instance for ModifyLLMComprehendTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyLLMComprehendTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyLLMComprehendTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMComprehendTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMComprehendTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

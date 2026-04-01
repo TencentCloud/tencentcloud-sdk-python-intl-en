@@ -1549,7 +1549,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceChargeType(self, request):
-        r"""This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.
+        r"""This API is used to switch the instance billing mode from pay-as-you-go to yearly/monthly subscription.
 
         :param request: Request instance for ModifyDBInstanceChargeType.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceChargeTypeRequest`

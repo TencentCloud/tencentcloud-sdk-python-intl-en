@@ -467,6 +467,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLLMComprehendTemplate(
+            self,
+            request: models.CreateLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateLLMComprehendTemplateResponse:
+        """
+        Create a large model comprehend template
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLLMComprehendTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePersonSample(
             self,
             request: models.CreatePersonSampleRequest,
@@ -995,6 +1013,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DeleteJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLLMComprehendTemplate(
+            self,
+            request: models.DeleteLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMComprehendTemplateResponse:
+        """
+        This API is used to delete a user-customized  large model comprehend template.
+
+        Note: Templates with an ID below 10000 are system-preset templates and cannot be deleted.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMComprehendTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1714,6 +1752,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeJustInTimeTranscodeTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeJustInTimeTranscodeTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMComprehendTemplates(
+            self,
+            request: models.DescribeLLMComprehendTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMComprehendTemplatesResponse:
+        """
+        This API is used to obtain the template detail list based on the Template Unique Identifier of the large model comprehend template. The returned results include all eligible customized large model parsing templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMComprehendTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMComprehendTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2696,6 +2752,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMComprehendTemplate(
+            self,
+            request: models.ModifyLLMComprehendTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMComprehendTemplateResponse:
+        """
+        Modify the parsing template of a large model
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMComprehendTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMComprehendTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

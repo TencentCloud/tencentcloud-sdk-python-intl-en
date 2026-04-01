@@ -23373,6 +23373,181 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLLMComprehendTemplateRequest(AbstractModel):
+    r"""CreateLLMComprehendTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: <p>Resolution level. Available values are:</p><ul><li>Audio: Audio-level comprehension</li><li>Video: Video-level comprehension</li></ul>
+        :type Level: str
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _Name: <p>Large model comprehend template name. The length cannot exceed 64 characters.</p>
+        :type Name: str
+        :param _Comment: <p>Large model comprehend template description information. The length cannot exceed 256 characters.</p>
+        :type Comment: str
+        :param _Summary: <p>Segment summary parsing configuration</p>
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        :param _Asr: <p>Text transcription parsing configuration</p>
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        :param _FaceRecognition: <p>Face identification configuration</p>
+        :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        """
+        self._Level = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._Summary = None
+        self._Asr = None
+        self._FaceRecognition = None
+
+    @property
+    def Level(self):
+        r"""<p>Resolution level. Available values are:</p><ul><li>Audio: Audio-level comprehension</li><li>Video: Video-level comprehension</li></ul>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""<p>Large model comprehend template name. The length cannot exceed 64 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>Large model comprehend template description information. The length cannot exceed 256 characters.</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Summary(self):
+        r"""<p>Segment summary parsing configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""<p>Text transcription parsing configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+    @property
+    def FaceRecognition(self):
+        r"""<p>Face identification configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        """
+        return self._FaceRecognition
+
+    @FaceRecognition.setter
+    def FaceRecognition(self, FaceRecognition):
+        self._FaceRecognition = FaceRecognition
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsr()
+            self._Asr._deserialize(params.get("Asr"))
+        if params.get("FaceRecognition") is not None:
+            self._FaceRecognition = LLMComprehendFaceRecognition()
+            self._FaceRecognition._deserialize(params.get("FaceRecognition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLLMComprehendTemplateResponse(AbstractModel):
+    r"""CreateLLMComprehendTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Unique identifier of the Large Model Understanding Template</p>
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""<p>Unique identifier of the Large Model Understanding Template</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     r"""CreatePersonSample request structure.
 
@@ -27572,6 +27747,85 @@ class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
     r"""DeleteJustInTimeTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLLMComprehendTemplateRequest(AbstractModel):
+    r"""DeleteLLMComprehendTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the Large Model Comprehend Template
+        :type Definition: int
+        :param _SubAppId: <b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the Large Model Comprehend Template
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLLMComprehendTemplateResponse(AbstractModel):
+    r"""DeleteLLMComprehendTemplate response structure.
 
     """
 
@@ -32546,6 +32800,150 @@ class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
                 obj = JustInTimeTranscodeTemplate()
                 obj._deserialize(item)
                 self._JustInTimeTranscodeTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMComprehendTemplatesRequest(AbstractModel):
+    r"""DescribeLLMComprehendTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b>
+        :type SubAppId: int
+        :param _Definitions: Filter condition for the unique identifier of the large model comprehend template. The maximum array length is 100.
+        :type Definitions: list of int
+        :param _Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        r"""<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        r"""Filter condition for the unique identifier of the large model comprehend template. The maximum array length is 100.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMComprehendTemplatesResponse(AbstractModel):
+    r"""DescribeLLMComprehendTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet the filtering conditions.
+        :type TotalCount: int
+        :param _LLMComprehendTemplateSet: List of large model comprehend template details.
+        :type LLMComprehendTemplateSet: list of LLMComprehendTemplateItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LLMComprehendTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records that meet the filtering conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LLMComprehendTemplateSet(self):
+        r"""List of large model comprehend template details.
+        :rtype: list of LLMComprehendTemplateItem
+        """
+        return self._LLMComprehendTemplateSet
+
+    @LLMComprehendTemplateSet.setter
+    def LLMComprehendTemplateSet(self, LLMComprehendTemplateSet):
+        self._LLMComprehendTemplateSet = LLMComprehendTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LLMComprehendTemplateSet") is not None:
+            self._LLMComprehendTemplateSet = []
+            for item in params.get("LLMComprehendTemplateSet"):
+                obj = LLMComprehendTemplateItem()
+                obj._deserialize(item)
+                self._LLMComprehendTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -44718,6 +45116,8 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         :type SubAppId: int
         :param _FileId: media file ID, the globally unique identifier of the file in vod, is assigned by the vod backend after successful upload. can be obtained from the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.tencentcloud.com//vod/media).
         :type FileId: str
+        :param _Definition: Unique identifier of the Large Model Comprehend Template
+        :type Definition: int
         :param _ImportTasks: Specifies the task type for importing the knowledge base. valid values:.
 - AiAnalysis.DescriptionTask
 - SmartSubtitle.AsrFullTextTask
@@ -44725,6 +45125,7 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         """
         self._SubAppId = None
         self._FileId = None
+        self._Definition = None
         self._ImportTasks = None
 
     @property
@@ -44750,7 +45151,20 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Definition(self):
+        r"""Unique identifier of the Large Model Comprehend Template
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
     def ImportTasks(self):
+        warnings.warn("parameter `ImportTasks` is deprecated", DeprecationWarning) 
+
         r"""Specifies the task type for importing the knowledge base. valid values:.
 - AiAnalysis.DescriptionTask
 - SmartSubtitle.AsrFullTextTask
@@ -44760,12 +45174,15 @@ class ImportMediaKnowledgeRequest(AbstractModel):
 
     @ImportTasks.setter
     def ImportTasks(self, ImportTasks):
+        warnings.warn("parameter `ImportTasks` is deprecated", DeprecationWarning) 
+
         self._ImportTasks = ImportTasks
 
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
         self._ImportTasks = params.get("ImportTasks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -45447,6 +45864,537 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("WatermarkConfigure") is not None:
             self._WatermarkConfigure = WatermarkConfigureData()
             self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendAsr(AbstractModel):
+    r"""Large model parse text transcribe parse configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Text transcription task switch. Available values:
+-ON: Enable the transcription task.
+-OFF: Disable text transcription task.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""Text transcription task switch. Available values:
+-ON: Enable the transcription task.
+-OFF: Disable text transcription task.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendAsrForUpdate(AbstractModel):
+    r"""Large model parse text transcribe parse configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Text transcription task switch. Available values:
+-ON: Enable the transcription task.
+-OFF: Disable text transcription task.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""Text transcription task switch. Available values:
+-ON: Enable the transcription task.
+-OFF: Disable text transcription task.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendFaceRecognition(AbstractModel):
+    r"""Large model parses face identification configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>
+        :type Switch: str
+        :param _Score: <p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p><p>Default value: 95.</p>
+        :type Score: float
+        :param _DefaultLibraryLabelSet: <p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>
+        :type DefaultLibraryLabelSet: list of str
+        :param _UserDefineLibraryLabelSet: <p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>
+        :type UserDefineLibraryLabelSet: list of str
+        :param _FaceLibrary: <p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>
+        :type FaceLibrary: str
+        """
+        self._Switch = None
+        self._Score = None
+        self._DefaultLibraryLabelSet = None
+        self._UserDefineLibraryLabelSet = None
+        self._FaceLibrary = None
+
+    @property
+    def Switch(self):
+        r"""<p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        r"""<p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p><p>Default value: 95.</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def DefaultLibraryLabelSet(self):
+        r"""<p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>
+        :rtype: list of str
+        """
+        return self._DefaultLibraryLabelSet
+
+    @DefaultLibraryLabelSet.setter
+    def DefaultLibraryLabelSet(self, DefaultLibraryLabelSet):
+        self._DefaultLibraryLabelSet = DefaultLibraryLabelSet
+
+    @property
+    def UserDefineLibraryLabelSet(self):
+        r"""<p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>
+        :rtype: list of str
+        """
+        return self._UserDefineLibraryLabelSet
+
+    @UserDefineLibraryLabelSet.setter
+    def UserDefineLibraryLabelSet(self, UserDefineLibraryLabelSet):
+        self._UserDefineLibraryLabelSet = UserDefineLibraryLabelSet
+
+    @property
+    def FaceLibrary(self):
+        r"""<p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>
+        :rtype: str
+        """
+        return self._FaceLibrary
+
+    @FaceLibrary.setter
+    def FaceLibrary(self, FaceLibrary):
+        self._FaceLibrary = FaceLibrary
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        self._DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self._UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self._FaceLibrary = params.get("FaceLibrary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
+    r"""Large model parses face identification configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>
+        :type Switch: str
+        :param _Score: <p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p>
+        :type Score: float
+        :param _DefaultLibraryLabelSet: <p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>
+        :type DefaultLibraryLabelSet: list of str
+        :param _UserDefineLibraryLabelSet: <p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>
+        :type UserDefineLibraryLabelSet: list of str
+        :param _FaceLibrary: <p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>
+        :type FaceLibrary: str
+        """
+        self._Switch = None
+        self._Score = None
+        self._DefaultLibraryLabelSet = None
+        self._UserDefineLibraryLabelSet = None
+        self._FaceLibrary = None
+
+    @property
+    def Switch(self):
+        r"""<p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        r"""<p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def DefaultLibraryLabelSet(self):
+        r"""<p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>
+        :rtype: list of str
+        """
+        return self._DefaultLibraryLabelSet
+
+    @DefaultLibraryLabelSet.setter
+    def DefaultLibraryLabelSet(self, DefaultLibraryLabelSet):
+        self._DefaultLibraryLabelSet = DefaultLibraryLabelSet
+
+    @property
+    def UserDefineLibraryLabelSet(self):
+        r"""<p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>
+        :rtype: list of str
+        """
+        return self._UserDefineLibraryLabelSet
+
+    @UserDefineLibraryLabelSet.setter
+    def UserDefineLibraryLabelSet(self, UserDefineLibraryLabelSet):
+        self._UserDefineLibraryLabelSet = UserDefineLibraryLabelSet
+
+    @property
+    def FaceLibrary(self):
+        r"""<p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>
+        :rtype: str
+        """
+        return self._FaceLibrary
+
+    @FaceLibrary.setter
+    def FaceLibrary(self, FaceLibrary):
+        self._FaceLibrary = FaceLibrary
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        self._DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self._UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self._FaceLibrary = params.get("FaceLibrary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendSummary(AbstractModel):
+    r"""Large model parsing segment summary parse configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Segment summary task switch, available values:
+-ON: Enable segment summary task.
+-OFF: Disable segment summary.
+        :type Switch: str
+        :param _ExtendedParameter: Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).
+        :type ExtendedParameter: str
+        """
+        self._Switch = None
+        self._ExtendedParameter = None
+
+    @property
+    def Switch(self):
+        r"""Segment summary task switch, available values:
+-ON: Enable segment summary task.
+-OFF: Disable segment summary.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ExtendedParameter(self):
+        r"""Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendSummaryForUpdate(AbstractModel):
+    r"""Large model parsing segment summary parse configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Segment summary task switch, available values:
+-ON: Enable segment summary task.
+-OFF: Disable segment summary.
+        :type Switch: str
+        :param _ExtendedParameter: Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).
+        :type ExtendedParameter: str
+        """
+        self._Switch = None
+        self._ExtendedParameter = None
+
+    @property
+    def Switch(self):
+        r"""Segment summary task switch, available values:
+-ON: Enable segment summary task.
+-OFF: Disable segment summary.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ExtendedParameter(self):
+        r"""Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendTemplateItem(AbstractModel):
+    r"""Large model parses template detail.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the image asynchronous processing template.
+        :type Definition: int
+        :param _Name: Image async processing template name.
+        :type Name: str
+        :param _Comment: Description information of the image asynchronous processing template.
+        :type Comment: str
+        :param _Level: Parsing level. Optional values:
+-Audio: Audio-level parsing
+-Video: Video-level parsing
+        :type Level: str
+        :param _Summary: Segment summary parsing configuration
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        :param _Asr: Text transcription parsing configuration
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        :param _CreateTime: Template creation time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type CreateTime: str
+        :param _UpdateTime: Template last modified time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Level = None
+        self._Summary = None
+        self._Asr = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the image asynchronous processing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Image async processing template name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the image asynchronous processing template.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Level(self):
+        r"""Parsing level. Optional values:
+-Audio: Audio-level parsing
+-Video: Video-level parsing
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Summary(self):
+        r"""Segment summary parsing configuration
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""Text transcription parsing configuration
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+    @property
+    def CreateTime(self):
+        r"""Template creation time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Template last modified time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Level = params.get("Level")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsr()
+            self._Asr._deserialize(params.get("Asr"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55030,6 +55978,181 @@ class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
     r"""ModifyJustInTimeTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMComprehendTemplateRequest(AbstractModel):
+    r"""ModifyLLMComprehendTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Unique identifier of the Large Model Understanding Template</p>
+        :type Definition: int
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _Name: <p>Large model parsing template name. The length cannot exceed 64 characters.</p>
+        :type Name: str
+        :param _Comment: <p>Large model parses template description information. The length cannot exceed 256 characters.</p>
+        :type Comment: str
+        :param _Model: <p>Parse model. Optional values:</p><ul><li>Basic: Base Model</li><li>Pro: Optimization Model</li></ul>
+        :type Model: str
+        :param _Summary: <p>Segment summary parsing configuration</p>
+        :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
+        :param _Asr: <p>Text transcription parsing configuration</p>
+        :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
+        :param _FaceRecognition: <p>Face identification configuration</p>
+        :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognitionForUpdate`
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._Model = None
+        self._Summary = None
+        self._Asr = None
+        self._FaceRecognition = None
+
+    @property
+    def Definition(self):
+        r"""<p>Unique identifier of the Large Model Understanding Template</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""<p>Large model parsing template name. The length cannot exceed 64 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>Large model parses template description information. The length cannot exceed 256 characters.</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Model(self):
+        r"""<p>Parse model. Optional values:</p><ul><li>Basic: Base Model</li><li>Pro: Optimization Model</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Summary(self):
+        r"""<p>Segment summary parsing configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Asr(self):
+        r"""<p>Text transcription parsing configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
+        """
+        return self._Asr
+
+    @Asr.setter
+    def Asr(self, Asr):
+        self._Asr = Asr
+
+    @property
+    def FaceRecognition(self):
+        r"""<p>Face identification configuration</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognitionForUpdate`
+        """
+        return self._FaceRecognition
+
+    @FaceRecognition.setter
+    def FaceRecognition(self, FaceRecognition):
+        self._FaceRecognition = FaceRecognition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Model = params.get("Model")
+        if params.get("Summary") is not None:
+            self._Summary = LLMComprehendSummaryForUpdate()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Asr") is not None:
+            self._Asr = LLMComprehendAsrForUpdate()
+            self._Asr._deserialize(params.get("Asr"))
+        if params.get("FaceRecognition") is not None:
+            self._FaceRecognition = LLMComprehendFaceRecognitionForUpdate()
+            self._FaceRecognition._deserialize(params.get("FaceRecognition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMComprehendTemplateResponse(AbstractModel):
+    r"""ModifyLLMComprehendTemplate response structure.
 
     """
 
@@ -72985,19 +74108,19 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. for customers who activate on-demand services after december 25, 2023, this field must be filled with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _Text: Specifies the search content.
+        :param _Text: <p>Search content</p>
         :type Text: str
-        :param _Limit: Specifies the number of returned records. the default value is 20.
+        :param _Limit: <p>Number of returned records. The default value is 20.</p><p>Value ranges from 1 to 100.</p>
         :type Limit: int
-        :param _Categories: File type. matches any element in the collection: <li>Video: Video file</li> <li>Audio: Audio file</li> <li>Image: Image file</li>.
+        :param _Categories: <p>File type. Match any element in the collection: <li>Video: video file</li> <li>Audio: audio file</li> <li>Image: image file</li></p>
         :type Categories: list of str
-        :param _Tags: Tag set, match any element in the collection. <li>single Tag length limit: 32 characters.</li> <li>array length limit: 16.</li>
+        :param _Tags: <p>Tag set, match any element in the collection.</p><p>Input parameter limit: single tag length limited to 32 characters. Array length limit: 16.</p>
         :type Tags: list of str
-        :param _TaskTypes: Specifies the task type for the search. valid values:. 
-- AiAnalysis.DescriptionTask 
-- SmartSubtitle.AsrFullTextTask
+        :param _Persons: <p>Figure collection, matching video clips where all imported figures appear.</p><p>Input limit: Array length limit: 16.</p>
+        :type Persons: list of str
+        :param _TaskTypes: <p>Task type to search. Optional values: </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :type TaskTypes: list of str
         """
         self._SubAppId = None
@@ -73005,11 +74128,12 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Limit = None
         self._Categories = None
         self._Tags = None
+        self._Persons = None
         self._TaskTypes = None
 
     @property
     def SubAppId(self):
-        r"""<b>VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. for customers who activate on-demand services after december 25, 2023, this field must be filled with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -73020,7 +74144,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""Specifies the search content.
+        r"""<p>Search content</p>
         :rtype: str
         """
         return self._Text
@@ -73031,7 +74155,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Specifies the number of returned records. the default value is 20.
+        r"""<p>Number of returned records. The default value is 20.</p><p>Value ranges from 1 to 100.</p>
         :rtype: int
         """
         return self._Limit
@@ -73042,7 +74166,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Categories(self):
-        r"""File type. matches any element in the collection: <li>Video: Video file</li> <li>Audio: Audio file</li> <li>Image: Image file</li>.
+        r"""<p>File type. Match any element in the collection: <li>Video: video file</li> <li>Audio: audio file</li> <li>Image: image file</li></p>
         :rtype: list of str
         """
         return self._Categories
@@ -73053,7 +74177,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag set, match any element in the collection. <li>single Tag length limit: 32 characters.</li> <li>array length limit: 16.</li>
+        r"""<p>Tag set, match any element in the collection.</p><p>Input parameter limit: single tag length limited to 32 characters. Array length limit: 16.</p>
         :rtype: list of str
         """
         return self._Tags
@@ -73063,10 +74187,19 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Tags = Tags
 
     @property
+    def Persons(self):
+        r"""<p>Figure collection, matching video clips where all imported figures appear.</p><p>Input limit: Array length limit: 16.</p>
+        :rtype: list of str
+        """
+        return self._Persons
+
+    @Persons.setter
+    def Persons(self, Persons):
+        self._Persons = Persons
+
+    @property
     def TaskTypes(self):
-        r"""Specifies the task type for the search. valid values:. 
-- AiAnalysis.DescriptionTask 
-- SmartSubtitle.AsrFullTextTask
+        r"""<p>Task type to search. Optional values: </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :rtype: list of str
         """
         return self._TaskTypes
@@ -73082,6 +74215,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Categories = params.get("Categories")
         self._Tags = params.get("Tags")
+        self._Persons = params.get("Persons")
         self._TaskTypes = params.get("TaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -73100,7 +74234,7 @@ class SearchMediaBySemanticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchResults: Media list.
+        :param _SearchResults: <p>Media list.</p>
         :type SearchResults: list of SemanticsSearchResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -73110,7 +74244,7 @@ class SearchMediaBySemanticsResponse(AbstractModel):
 
     @property
     def SearchResults(self):
-        r"""Media list.
+        r"""<p>Media list.</p>
         :rtype: list of SemanticsSearchResult
         """
         return self._SearchResults
@@ -73896,7 +75030,7 @@ class SemanticsSearchResult(AbstractModel):
         :type Score: float
         :param _StartTimeOffset: Specifies the start time of the video clip, in seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: Specifies the end time of the video clip, in seconds.
+        :param _EndTimeOffset: Segment end time of the video, in seconds.
         :type EndTimeOffset: float
         """
         self._FileId = None
@@ -73939,7 +75073,7 @@ class SemanticsSearchResult(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""Specifies the end time of the video clip, in seconds.
+        r"""Segment end time of the video, in seconds.
         :rtype: float
         """
         return self._EndTimeOffset
