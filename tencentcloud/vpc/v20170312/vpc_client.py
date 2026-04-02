@@ -6521,7 +6521,7 @@ class VpcClient(AbstractClient):
 
 
     def RenewVpnGateway(self, request):
-        r"""This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.
+        r"""This API (RenewVpnGateway) is used to renew prepaid (yearly/monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.
 
         :param request: Request instance for RenewVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayRequest`

@@ -402,6 +402,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataBridgeUrlV2(self, request):
+        r"""This API is used to obtain DescribeDataBridgeUrl information.
+
+        :param request: Request instance for DescribeDataBridgeUrlV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataBridgeUrlV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataBridgeUrlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataBridgeUrlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataBridgeUrlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataCustomUrl(self, request):
         r"""This API is used to get the DescribeDataCustomUrl information.
 
@@ -425,6 +448,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataCustomUrlV2(self, request):
+        r"""This API is used to obtain DescribeDataCustomUrl information.
+
+        :param request: Request instance for DescribeDataCustomUrlV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataCustomUrlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataCustomUrlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataEventUrl(self, request):
         r"""This API is used to get the DescribeDataEventUrl information.
 
@@ -439,6 +485,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataEventUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataEventUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEventUrlV2(self, request):
+        r"""This API is used to obtain DescribeDataEventUrl information.
+
+        :param request: Request instance for DescribeDataEventUrlV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEventUrlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEventUrlV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -517,6 +586,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataFetchUrlV2(self, request):
+        r"""This API is used to obtain DescribeDataFetchUrl information.
+
+        :param request: Request instance for DescribeDataFetchUrlV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataFetchUrlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataFetchUrlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataLogUrlInfo(self, request):
         r"""This API is used to get the loginfo information.
 
@@ -563,6 +655,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataLogUrlStatisticsV2(self, request):
+        r"""This API is used to obtain LogUrlStatistics information.
+
+        :param request: Request instance for DescribeDataLogUrlStatisticsV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlStatisticsV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlStatisticsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataLogUrlStatisticsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataLogUrlStatisticsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataPerformancePage(self, request):
         r"""This API is used to get the PerformancePage information.
 
@@ -577,6 +692,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataPerformancePage", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataPerformancePageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataPerformancePageV2(self, request):
+        r"""This API is used to obtain PerformancePage information.
+
+        :param request: Request instance for DescribeDataPerformancePageV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformancePageV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformancePageV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataPerformancePageV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataPerformancePageV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -655,6 +793,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataPvUrlStatisticsV2(self, request):
+        r"""This API is used to obtain DescribeDataPvUrlStatistics information.
+
+        :param request: Request instance for DescribeDataPvUrlStatisticsV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataPvUrlStatisticsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataPvUrlStatisticsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataReportCount(self, request):
         r"""This API is used to get the number of reported data entries for a project.
 
@@ -669,6 +830,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataReportCount", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataReportCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataReportCountV2(self, request):
+        r"""This API is used to obtain the project reporting volume.
+
+        :param request: Request instance for DescribeDataReportCountV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataReportCountV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataReportCountV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -701,6 +885,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataSetUrlStatisticsV2(self, request):
+        r"""This API is used to obtain DescribeDataSetUrlStatistics information.
+
+        :param request: Request instance for DescribeDataSetUrlStatisticsV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataSetUrlStatisticsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataSetUrlStatisticsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataStaticProject(self, request):
         r"""This API is used to get the DescribeDataStaticProject information.
 
@@ -715,6 +922,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataStaticProject", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataStaticProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataStaticProjectV2(self, request):
+        r"""This API is used to obtain DescribeDataStaticProject information.
+
+        :param request: Request instance for DescribeDataStaticProjectV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataStaticProjectV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataStaticProjectV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -747,6 +977,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataStaticResourceV2(self, request):
+        r"""This API is used to obtain DescribeDataStaticResource information.
+
+        :param request: Request instance for DescribeDataStaticResourceV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataStaticResourceV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataStaticResourceV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataStaticUrl(self, request):
         r"""This API is used to get the DescribeDataStaticUrl information.
 
@@ -761,6 +1014,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataStaticUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataStaticUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataStaticUrlV2(self, request):
+        r"""This API is used to obtain DescribeDataStaticUrl information.
+
+        :param request: Request instance for DescribeDataStaticUrlV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataStaticUrlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataStaticUrlV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +1061,30 @@ class RumClient(AbstractClient):
             body = self.call("DescribeDataWebVitalsPage", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataWebVitalsPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataWebVitalsPageV2(self, request):
+        r"""This API is used to obtain DescribeDataWebVitalsPage information, which is the core user activity information.
+        Web Vitals for page loading performance are key performance metrics.
+
+        :param request: Request instance for DescribeDataWebVitalsPageV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataWebVitalsPageV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataWebVitalsPageV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataWebVitalsPageV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataWebVitalsPageV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1180,6 +1480,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeScores", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeScoresResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScoresV2(self, request):
+        r"""This API is used to obtain the home page score list.
+
+        :param request: Request instance for DescribeScoresV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeScoresV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeScoresV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScoresV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScoresV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

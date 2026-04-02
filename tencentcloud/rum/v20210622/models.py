@@ -1774,6 +1774,580 @@ class DeleteWhitelistResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataBridgeUrlV2Request(AbstractModel):
+    r"""DescribeDataBridgeUrlV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Project ID.
+        :type ID: int
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _Type: pagepv: performance view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :type Type: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _Area: Region.
+        :type Area: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _Device: Model.
+        :type Device: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _IsAbroad: Global or not.
+        :type IsAbroad: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _From: Source page.
+        :type From: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Env: Environment variable.
+        :type Env: str
+        :param _Name: URL name.
+        :type Name: str
+        :param _Status: HTTP status code.
+        :type Status: str
+        :param _Ret: retcode
+        :type Ret: str
+        :param _NetStatus: Network status.
+        :type NetStatus: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._ID = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Level = None
+        self._Isp = None
+        self._Area = None
+        self._NetType = None
+        self._Platform = None
+        self._Device = None
+        self._VersionNum = None
+        self._ExtFirst = None
+        self._ExtSecond = None
+        self._ExtThird = None
+        self._IsAbroad = None
+        self._Browser = None
+        self._Os = None
+        self._Engine = None
+        self._Brand = None
+        self._From = None
+        self._CostType = None
+        self._Env = None
+        self._Name = None
+        self._Status = None
+        self._Ret = None
+        self._NetStatus = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""pagepv: performance view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def IsAbroad(self):
+        r"""Global or not.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Env(self):
+        r"""Environment variable.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Name(self):
+        r"""URL name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""HTTP status code.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ret(self):
+        r"""retcode
+        :rtype: str
+        """
+        return self._Ret
+
+    @Ret.setter
+    def Ret(self, Ret):
+        self._Ret = Ret
+
+    @property
+    def NetStatus(self):
+        r"""Network status.
+        :rtype: str
+        """
+        return self._NetStatus
+
+    @NetStatus.setter
+    def NetStatus(self, NetStatus):
+        self._NetStatus = NetStatus
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Level = params.get("Level")
+        self._Isp = params.get("Isp")
+        self._Area = params.get("Area")
+        self._NetType = params.get("NetType")
+        self._Platform = params.get("Platform")
+        self._Device = params.get("Device")
+        self._VersionNum = params.get("VersionNum")
+        self._ExtFirst = params.get("ExtFirst")
+        self._ExtSecond = params.get("ExtSecond")
+        self._ExtThird = params.get("ExtThird")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Browser = params.get("Browser")
+        self._Os = params.get("Os")
+        self._Engine = params.get("Engine")
+        self._Brand = params.get("Brand")
+        self._From = params.get("From")
+        self._CostType = params.get("CostType")
+        self._Env = params.get("Env")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Ret = params.get("Ret")
+        self._NetStatus = params.get("NetStatus")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataBridgeUrlV2Response(AbstractModel):
+    r"""DescribeDataBridgeUrlV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataCustomUrlRequest(AbstractModel):
     r"""DescribeDataCustomUrl request structure.
 
@@ -2183,6 +2757,535 @@ class DescribeDataCustomUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataCustomUrlV2Request(AbstractModel):
+    r"""DescribeDataCustomUrlV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: top: top resource view. allcount: performance view. day: 14-day data. condition: condition list. pagepv: performance view. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Url: Value of the custom speed test key.
+        :type Url: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Url = None
+        self._Env = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""top: top resource view. allcount: performance view. day: 14-day data. condition: condition list. pagepv: performance view. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Url(self):
+        r"""Value of the custom speed test key.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Url = params.get("Url")
+        self._Env = params.get("Env")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataCustomUrlV2Response(AbstractModel):
+    r"""DescribeDataCustomUrlV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataEventUrlRequest(AbstractModel):
     r"""DescribeDataEventUrl request structure.
 
@@ -2563,6 +3666,520 @@ class DescribeDataEventUrlResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataEventUrlV2Request(AbstractModel):
+    r"""DescribeDataEventUrlV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: allcount: performance view. day: 14-day data. condition: condition list. ckuv: obtaining UV trend. ckpv: obtaining PV trend. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _Name: Filter condition.
+        :type Name: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._Name = None
+        self._Env = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount: performance view. day: 14-day data. condition: condition list. ckuv: obtaining UV trend. ckpv: obtaining PV trend. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Name(self):
+        r"""Filter condition.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._Name = params.get("Name")
+        self._Env = params.get("Env")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEventUrlV2Response(AbstractModel):
+    r"""DescribeDataEventUrlV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3879,6 +5496,580 @@ class DescribeDataFetchUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataFetchUrlV2Request(AbstractModel):
+    r"""DescribeDataFetchUrlV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: allcount: performance view. pagepv: PV view. day: 14-day data. count40x: 40X view. count50x: 50X view. count5xand4x: 40∑50 view. top: top resource view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Url: Source.
+        :type Url: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _Status: HTTP response code.
+        :type Status: str
+        :param _Ret: retcode
+        :type Ret: str
+        :param _NetStatus: Network status.
+        :type NetStatus: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Url = None
+        self._Env = None
+        self._Status = None
+        self._Ret = None
+        self._NetStatus = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount: performance view. pagepv: PV view. day: 14-day data. count40x: 40X view. count50x: 50X view. count5xand4x: 40∑50 view. top: top resource view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Url(self):
+        r"""Source.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Status(self):
+        r"""HTTP response code.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ret(self):
+        r"""retcode
+        :rtype: str
+        """
+        return self._Ret
+
+    @Ret.setter
+    def Ret(self, Ret):
+        self._Ret = Ret
+
+    @property
+    def NetStatus(self):
+        r"""Network status.
+        :rtype: str
+        """
+        return self._NetStatus
+
+    @NetStatus.setter
+    def NetStatus(self, NetStatus):
+        self._NetStatus = NetStatus
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Url = params.get("Url")
+        self._Env = params.get("Env")
+        self._Status = params.get("Status")
+        self._Ret = params.get("Ret")
+        self._NetStatus = params.get("NetStatus")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataFetchUrlV2Response(AbstractModel):
+    r"""DescribeDataFetchUrlV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataLogUrlInfoRequest(AbstractModel):
     r"""DescribeDataLogUrlInfo request structure.
 
@@ -4367,6 +6558,520 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataLogUrlStatisticsV2Request(AbstractModel):
+    r"""DescribeDataLogUrlStatisticsV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: analysis: exception analysis. compare: exception list comparison. allcount: performance view. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _Env: Environment differentiation.
+        :type Env: str
+        :param _ErrorMsg: JavaScript exception message.
+        :type ErrorMsg: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._Env = None
+        self._ErrorMsg = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""analysis: exception analysis. compare: exception list comparison. allcount: performance view. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Env(self):
+        r"""Environment differentiation.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ErrorMsg(self):
+        r"""JavaScript exception message.
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._Env = params.get("Env")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataLogUrlStatisticsV2Response(AbstractModel):
+    r"""DescribeDataLogUrlStatisticsV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataPerformancePageRequest(AbstractModel):
     r"""DescribeDataPerformancePage request structure.
 
@@ -4762,6 +7467,550 @@ class DescribeDataPerformancePageResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataPerformancePageV2Request(AbstractModel):
+    r"""DescribeDataPerformancePageV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Project ID.
+        :type ID: int
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _Type: pagepv: PV view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :type Type: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _Area: Region.
+        :type Area: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _Device: Model.
+        :type Device: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _From: Source page.
+        :type From: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Env: Environment variable.
+        :type Env: str
+        :param _NetStatus: Network status.
+        :type NetStatus: str
+        :param _WebVitals: Indicates whether to return webvitals data.
+        :type WebVitals: bool
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._ID = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Level = None
+        self._Isp = None
+        self._Area = None
+        self._NetType = None
+        self._Platform = None
+        self._Device = None
+        self._VersionNum = None
+        self._ExtFirst = None
+        self._ExtSecond = None
+        self._ExtThird = None
+        self._IsAbroad = None
+        self._Browser = None
+        self._Os = None
+        self._Engine = None
+        self._Brand = None
+        self._From = None
+        self._CostType = None
+        self._Env = None
+        self._NetStatus = None
+        self._WebVitals = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""pagepv: PV view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Env(self):
+        r"""Environment variable.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def NetStatus(self):
+        r"""Network status.
+        :rtype: str
+        """
+        return self._NetStatus
+
+    @NetStatus.setter
+    def NetStatus(self, NetStatus):
+        self._NetStatus = NetStatus
+
+    @property
+    def WebVitals(self):
+        r"""Indicates whether to return webvitals data.
+        :rtype: bool
+        """
+        return self._WebVitals
+
+    @WebVitals.setter
+    def WebVitals(self, WebVitals):
+        self._WebVitals = WebVitals
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Level = params.get("Level")
+        self._Isp = params.get("Isp")
+        self._Area = params.get("Area")
+        self._NetType = params.get("NetType")
+        self._Platform = params.get("Platform")
+        self._Device = params.get("Device")
+        self._VersionNum = params.get("VersionNum")
+        self._ExtFirst = params.get("ExtFirst")
+        self._ExtSecond = params.get("ExtSecond")
+        self._ExtThird = params.get("ExtThird")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Browser = params.get("Browser")
+        self._Os = params.get("Os")
+        self._Engine = params.get("Engine")
+        self._Brand = params.get("Brand")
+        self._From = params.get("From")
+        self._CostType = params.get("CostType")
+        self._Env = params.get("Env")
+        self._NetStatus = params.get("NetStatus")
+        self._WebVitals = params.get("WebVitals")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataPerformancePageV2Response(AbstractModel):
+    r"""DescribeDataPerformancePageV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5966,6 +9215,539 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
+    r"""DescribeDataPvUrlStatisticsV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: allcount: performance view. day: 14-day data. vp: performance. ckuv: UV. ckpv: PV. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _GroupByType: Parameter value enumeration for group by. 1: 1 minute. 2: 5 minutes. 3: 30 minutes. 4: 1 hour.
+ 5:1d
+        :type GroupByType: int
+        :param _IsNewData: 1: Queries Zhiyan.
+0: Uses the old logic, which is removed. Do not use this value.
+        :type IsNewData: int
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._Env = None
+        self._GroupByType = None
+        self._IsNewData = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount: performance view. day: 14-day data. vp: performance. ckuv: UV. ckpv: PV. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def GroupByType(self):
+        r"""Parameter value enumeration for group by. 1: 1 minute. 2: 5 minutes. 3: 30 minutes. 4: 1 hour.
+ 5:1d
+        :rtype: int
+        """
+        return self._GroupByType
+
+    @GroupByType.setter
+    def GroupByType(self, GroupByType):
+        self._GroupByType = GroupByType
+
+    @property
+    def IsNewData(self):
+        r"""1: Queries Zhiyan.
+0: Uses the old logic, which is removed. Do not use this value.
+        :rtype: int
+        """
+        return self._IsNewData
+
+    @IsNewData.setter
+    def IsNewData(self, IsNewData):
+        self._IsNewData = IsNewData
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._Env = params.get("Env")
+        self._GroupByType = params.get("GroupByType")
+        self._IsNewData = params.get("IsNewData")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataPvUrlStatisticsV2Response(AbstractModel):
+    r"""DescribeDataPvUrlStatisticsV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataReportCountRequest(AbstractModel):
     r"""DescribeDataReportCount request structure.
 
@@ -6091,6 +9873,145 @@ class DescribeDataReportCountResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataReportCountV2Request(AbstractModel):
+    r"""DescribeDataReportCountV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ReportType: Reporting type (custom, event, log, miniProgramData, performance, pv, speed, and webvitals).
+        :type ReportType: str
+        :param _InstanceID: Instance ID.
+        :type InstanceID: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ID = None
+        self._ReportType = None
+        self._InstanceID = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ReportType(self):
+        r"""Reporting type (custom, event, log, miniProgramData, performance, pv, speed, and webvitals).
+        :rtype: str
+        """
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
+    @property
+    def InstanceID(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ReportType = params.get("ReportType")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataReportCountV2Response(AbstractModel):
+    r"""DescribeDataReportCountV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6608,6 +10529,535 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataSetUrlStatisticsV2Request(AbstractModel):
+    r"""DescribeDataSetUrlStatisticsV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: allcount: performance view. data: mini program. component: related to mini program. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation.
+        :type CostType: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _PackageType: Obtaining package.
+        :type PackageType: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Env = None
+        self._PackageType = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount: performance view. data: mini program. component: related to mini program. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def PackageType(self):
+        r"""Obtaining package.
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Env = params.get("Env")
+        self._PackageType = params.get("PackageType")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSetUrlStatisticsV2Response(AbstractModel):
+    r"""DescribeDataSetUrlStatisticsV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataStaticProjectRequest(AbstractModel):
     r"""DescribeDataStaticProject request structure.
 
@@ -7003,6 +11453,535 @@ class DescribeDataStaticProjectResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataStaticProjectV2Request(AbstractModel):
+    r"""DescribeDataStaticProjectV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: allcount: performance view. day: 14-day data. condition: condition list. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level (1 indicates allowlist log. 2 indicates general log. 4 indicates error log. 8 indicates Promise error. 16 indicates AJAX request exception. 32 indicates JavaScript loading exception. 64 indicates image loading exception. 128 indicates CSS loading exception. 256 indicates console.error. 512 indicates audio or video resource exception. 1024 indicates retcode exception. 2048 indicates Aegis report. 4096 indicates PV log. 8192 indicates custom event. 16384 indicates mini program page does not exist. 32768 indicates WebSocket error. 65536 indicates JavaScript bridge error).
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation.
+        :type CostType: str
+        :param _Url: Source.
+        :type Url: list of str
+        :param _Env: Environment.
+        :type Env: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Url = None
+        self._Env = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""allcount: performance view. day: 14-day data. condition: condition list. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level (1 indicates allowlist log. 2 indicates general log. 4 indicates error log. 8 indicates Promise error. 16 indicates AJAX request exception. 32 indicates JavaScript loading exception. 64 indicates image loading exception. 128 indicates CSS loading exception. 256 indicates console.error. 512 indicates audio or video resource exception. 1024 indicates retcode exception. 2048 indicates Aegis report. 4096 indicates PV log. 8192 indicates custom event. 16384 indicates mini program page does not exist. 32768 indicates WebSocket error. 65536 indicates JavaScript bridge error).
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Url(self):
+        r"""Source.
+        :rtype: list of str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Url = params.get("Url")
+        self._Env = params.get("Env")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataStaticProjectV2Response(AbstractModel):
+    r"""DescribeDataStaticProjectV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7426,6 +12405,535 @@ class DescribeDataStaticResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataStaticResourceV2Request(AbstractModel):
+    r"""DescribeDataStaticResourceV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: top: top resource view. count40x: 40X view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Url: Source.
+        :type Url: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Url = None
+        self._Env = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""top: top resource view. count40x: 40X view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Url(self):
+        r"""Source.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Url = params.get("Url")
+        self._Env = params.get("Env")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataStaticResourceV2Response(AbstractModel):
+    r"""DescribeDataStaticResourceV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataStaticUrlRequest(AbstractModel):
     r"""DescribeDataStaticUrl request structure.
 
@@ -7835,6 +13343,535 @@ class DescribeDataStaticUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataStaticUrlV2Request(AbstractModel):
+    r"""DescribeDataStaticUrlV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Type: pagepv: performance view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :type Type: str
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation method.
+        :type CostType: str
+        :param _Url: Source.
+        :type Url: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _ExtFourth: Custom parameter 4.
+        :type ExtFourth: str
+        :param _ExtFifth: Custom parameter 5.
+        :type ExtFifth: str
+        :param _ExtSixth: Custom parameter 6.
+        :type ExtSixth: str
+        :param _ExtSeventh: Custom parameter 7.
+        :type ExtSeventh: str
+        :param _ExtEighth: Custom parameter 8.
+        :type ExtEighth: str
+        :param _ExtNinth: Custom parameter 9.
+        :type ExtNinth: str
+        :param _ExtTenth: Custom parameter 10.
+        :type ExtTenth: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._Type = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Url = None
+        self._Env = None
+        self._ExtFourth = None
+        self._ExtFifth = None
+        self._ExtSixth = None
+        self._ExtSeventh = None
+        self._ExtEighth = None
+        self._ExtNinth = None
+        self._ExtTenth = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Type(self):
+        r"""pagepv: performance view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation method.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Url(self):
+        r"""Source.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def ExtFourth(self):
+        r"""Custom parameter 4.
+        :rtype: str
+        """
+        return self._ExtFourth
+
+    @ExtFourth.setter
+    def ExtFourth(self, ExtFourth):
+        self._ExtFourth = ExtFourth
+
+    @property
+    def ExtFifth(self):
+        r"""Custom parameter 5.
+        :rtype: str
+        """
+        return self._ExtFifth
+
+    @ExtFifth.setter
+    def ExtFifth(self, ExtFifth):
+        self._ExtFifth = ExtFifth
+
+    @property
+    def ExtSixth(self):
+        r"""Custom parameter 6.
+        :rtype: str
+        """
+        return self._ExtSixth
+
+    @ExtSixth.setter
+    def ExtSixth(self, ExtSixth):
+        self._ExtSixth = ExtSixth
+
+    @property
+    def ExtSeventh(self):
+        r"""Custom parameter 7.
+        :rtype: str
+        """
+        return self._ExtSeventh
+
+    @ExtSeventh.setter
+    def ExtSeventh(self, ExtSeventh):
+        self._ExtSeventh = ExtSeventh
+
+    @property
+    def ExtEighth(self):
+        r"""Custom parameter 8.
+        :rtype: str
+        """
+        return self._ExtEighth
+
+    @ExtEighth.setter
+    def ExtEighth(self, ExtEighth):
+        self._ExtEighth = ExtEighth
+
+    @property
+    def ExtNinth(self):
+        r"""Custom parameter 9.
+        :rtype: str
+        """
+        return self._ExtNinth
+
+    @ExtNinth.setter
+    def ExtNinth(self, ExtNinth):
+        self._ExtNinth = ExtNinth
+
+    @property
+    def ExtTenth(self):
+        r"""Custom parameter 10.
+        :rtype: str
+        """
+        return self._ExtTenth
+
+    @ExtTenth.setter
+    def ExtTenth(self, ExtTenth):
+        self._ExtTenth = ExtTenth
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Type = params.get("Type")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Url = params.get("Url")
+        self._Env = params.get("Env")
+        self._ExtFourth = params.get("ExtFourth")
+        self._ExtFifth = params.get("ExtFifth")
+        self._ExtSixth = params.get("ExtSixth")
+        self._ExtSeventh = params.get("ExtSeventh")
+        self._ExtEighth = params.get("ExtEighth")
+        self._ExtNinth = params.get("ExtNinth")
+        self._ExtTenth = params.get("ExtTenth")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataStaticUrlV2Response(AbstractModel):
+    r"""DescribeDataStaticUrlV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataWebVitalsPageRequest(AbstractModel):
     r"""DescribeDataWebVitalsPage request structure.
 
@@ -8215,6 +14252,415 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
     @property
     def RequestId(self):
         r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataWebVitalsPageV2Request(AbstractModel):
+    r"""DescribeDataWebVitalsPageV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _ID: Project ID.
+        :type ID: int
+        :param _ExtSecond: Custom parameter 2.
+        :type ExtSecond: str
+        :param _Engine: Browser engine.
+        :type Engine: str
+        :param _Isp: Internet service provider.
+        :type Isp: str
+        :param _From: Source page.
+        :type From: str
+        :param _Level: Log level.
+        :type Level: str
+        :param _Type: No type.
+        :type Type: str
+        :param _Brand: Brand.
+        :type Brand: str
+        :param _Area: Region.
+        :type Area: str
+        :param _VersionNum: Version.
+        :type VersionNum: str
+        :param _Platform: Platform.
+        :type Platform: str
+        :param _ExtThird: Custom parameter 3.
+        :type ExtThird: str
+        :param _ExtFirst: Custom parameter 1.
+        :type ExtFirst: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _Device: Model.
+        :type Device: str
+        :param _IsAbroad: Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :type IsAbroad: str
+        :param _Os: Operating system.
+        :type Os: str
+        :param _Browser: Browser.
+        :type Browser: str
+        :param _CostType: Duration calculation.
+        :type CostType: str
+        :param _Env: Environment.
+        :type Env: str
+        :param _Granularity: Time period.
+        :type Granularity: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ID = None
+        self._ExtSecond = None
+        self._Engine = None
+        self._Isp = None
+        self._From = None
+        self._Level = None
+        self._Type = None
+        self._Brand = None
+        self._Area = None
+        self._VersionNum = None
+        self._Platform = None
+        self._ExtThird = None
+        self._ExtFirst = None
+        self._NetType = None
+        self._Device = None
+        self._IsAbroad = None
+        self._Os = None
+        self._Browser = None
+        self._CostType = None
+        self._Env = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ExtSecond(self):
+        r"""Custom parameter 2.
+        :rtype: str
+        """
+        return self._ExtSecond
+
+    @ExtSecond.setter
+    def ExtSecond(self, ExtSecond):
+        self._ExtSecond = ExtSecond
+
+    @property
+    def Engine(self):
+        r"""Browser engine.
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def Isp(self):
+        r"""Internet service provider.
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def From(self):
+        r"""Source page.
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Level(self):
+        r"""Log level.
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Type(self):
+        r"""No type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Brand(self):
+        r"""Brand.
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Area(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def VersionNum(self):
+        r"""Version.
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def Platform(self):
+        r"""Platform.
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ExtThird(self):
+        r"""Custom parameter 3.
+        :rtype: str
+        """
+        return self._ExtThird
+
+    @ExtThird.setter
+    def ExtThird(self, ExtThird):
+        self._ExtThird = ExtThird
+
+    @property
+    def ExtFirst(self):
+        r"""Custom parameter 1.
+        :rtype: str
+        """
+        return self._ExtFirst
+
+    @ExtFirst.setter
+    def ExtFirst(self, ExtFirst):
+        self._ExtFirst = ExtFirst
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Device(self):
+        r"""Model.
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def IsAbroad(self):
+        r"""Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.
+        :rtype: str
+        """
+        return self._IsAbroad
+
+    @IsAbroad.setter
+    def IsAbroad(self, IsAbroad):
+        self._IsAbroad = IsAbroad
+
+    @property
+    def Os(self):
+        r"""Operating system.
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""Browser.
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def CostType(self):
+        r"""Duration calculation.
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Granularity(self):
+        r"""Time period.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._ExtSecond = params.get("ExtSecond")
+        self._Engine = params.get("Engine")
+        self._Isp = params.get("Isp")
+        self._From = params.get("From")
+        self._Level = params.get("Level")
+        self._Type = params.get("Type")
+        self._Brand = params.get("Brand")
+        self._Area = params.get("Area")
+        self._VersionNum = params.get("VersionNum")
+        self._Platform = params.get("Platform")
+        self._ExtThird = params.get("ExtThird")
+        self._ExtFirst = params.get("ExtFirst")
+        self._NetType = params.get("NetType")
+        self._Device = params.get("Device")
+        self._IsAbroad = params.get("IsAbroad")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._CostType = params.get("CostType")
+        self._Env = params.get("Env")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataWebVitalsPageV2Response(AbstractModel):
+    r"""DescribeDataWebVitalsPageV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Return value.
+        :type Result: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Return value.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10419,6 +16865,150 @@ class DescribeScoresResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeScoresV2Request(AbstractModel):
+    r"""DescribeScoresV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _IDList: Project ID list.
+        :type IDList: list of int
+        :param _Type: Query granularity. Valid values: hour or day.
+        :type Type: str
+        :param _Env: Environment.
+        :type Env: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._IDList = None
+        self._Type = None
+        self._Env = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def IDList(self):
+        r"""Project ID list.
+        :rtype: list of int
+        """
+        return self._IDList
+
+    @IDList.setter
+    def IDList(self, IDList):
+        self._IDList = IDList
+
+    @property
+    def Type(self):
+        r"""Query granularity. Valid values: hour or day.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Env(self):
+        r"""Environment.
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._IDList = params.get("IDList")
+        self._Type = params.get("Type")
+        self._Env = params.get("Env")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScoresV2Response(AbstractModel):
+    r"""DescribeScoresV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScoreSet: Project score array.
+        :type ScoreSet: list of ScoreInfoV2
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ScoreSet = None
+        self._RequestId = None
+
+    @property
+    def ScoreSet(self):
+        r"""Project score array.
+        :rtype: list of ScoreInfoV2
+        """
+        return self._ScoreSet
+
+    @ScoreSet.setter
+    def ScoreSet(self, ScoreSet):
+        self._ScoreSet = ScoreSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ScoreSet") is not None:
+            self._ScoreSet = []
+            for item in params.get("ScoreSet"):
+                obj = ScoreInfoV2()
+                obj._deserialize(item)
+                self._ScoreSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTawAreasRequest(AbstractModel):
     r"""DescribeTawAreas request structure.
 
@@ -12588,6 +19178,372 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RecordNum = params.get("RecordNum")
         self._PageDuration = params.get("PageDuration")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScoreInfoV2(AbstractModel):
+    r"""Project score entity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectID: Project ID.
+        :type ProjectID: int
+        :param _Score: Total project score.
+        :type Score: float
+        :param _ApiPerformanceScore: API performance score.
+        :type ApiPerformanceScore: float
+        :param _ApiAvailableScore: API availability score.
+        :type ApiAvailableScore: float
+        :param _ApiNum: Total API calls.
+        :type ApiNum: int
+        :param _ApiFail: API failures.
+        :type ApiFail: int
+        :param _ApiDuration: Average API duration.
+        :type ApiDuration: float
+        :param _PagePerformanceScore: Page performance score.
+        :type PagePerformanceScore: float
+        :param _PagePv: Page views.
+        :type PagePv: int
+        :param _PageUv: Unique visitors.
+        :type PageUv: int
+        :param _PageError: Page errors.
+        :type PageError: int
+        :param _PageDuration: First meaningful paint.
+        :type PageDuration: float
+        :param _PageLCP: Average largest contentful paint (LCP).
+        :type PageLCP: float
+        :param _PageFID: Average first input delay (FID).
+        :type PageFID: float
+        :param _PageCLS: Average cumulative layout shift (CLS).
+        :type PageCLS: float
+        :param _PageFCP: Average first contentful paint (FCP).
+        :type PageFCP: float
+        :param _PageINP: Average interaction to next paint (INP).
+        :type PageINP: float
+        :param _JsErrorScore: JavaScript error score.
+        :type JsErrorScore: float
+        :param _StaticAvailableScore: Static resource availability score.
+        :type StaticAvailableScore: float
+        :param _StaticPerformanceScore: Static resource performance score.
+        :type StaticPerformanceScore: float
+        :param _StaticNum: Total static resource requests.
+        :type StaticNum: int
+        :param _StaticFail: Static resource loading failures.
+        :type StaticFail: int
+        :param _StaticDuration: Static resource loading time.
+        :type StaticDuration: float
+        """
+        self._ProjectID = None
+        self._Score = None
+        self._ApiPerformanceScore = None
+        self._ApiAvailableScore = None
+        self._ApiNum = None
+        self._ApiFail = None
+        self._ApiDuration = None
+        self._PagePerformanceScore = None
+        self._PagePv = None
+        self._PageUv = None
+        self._PageError = None
+        self._PageDuration = None
+        self._PageLCP = None
+        self._PageFID = None
+        self._PageCLS = None
+        self._PageFCP = None
+        self._PageINP = None
+        self._JsErrorScore = None
+        self._StaticAvailableScore = None
+        self._StaticPerformanceScore = None
+        self._StaticNum = None
+        self._StaticFail = None
+        self._StaticDuration = None
+
+    @property
+    def ProjectID(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def Score(self):
+        r"""Total project score.
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def ApiPerformanceScore(self):
+        r"""API performance score.
+        :rtype: float
+        """
+        return self._ApiPerformanceScore
+
+    @ApiPerformanceScore.setter
+    def ApiPerformanceScore(self, ApiPerformanceScore):
+        self._ApiPerformanceScore = ApiPerformanceScore
+
+    @property
+    def ApiAvailableScore(self):
+        r"""API availability score.
+        :rtype: float
+        """
+        return self._ApiAvailableScore
+
+    @ApiAvailableScore.setter
+    def ApiAvailableScore(self, ApiAvailableScore):
+        self._ApiAvailableScore = ApiAvailableScore
+
+    @property
+    def ApiNum(self):
+        r"""Total API calls.
+        :rtype: int
+        """
+        return self._ApiNum
+
+    @ApiNum.setter
+    def ApiNum(self, ApiNum):
+        self._ApiNum = ApiNum
+
+    @property
+    def ApiFail(self):
+        r"""API failures.
+        :rtype: int
+        """
+        return self._ApiFail
+
+    @ApiFail.setter
+    def ApiFail(self, ApiFail):
+        self._ApiFail = ApiFail
+
+    @property
+    def ApiDuration(self):
+        r"""Average API duration.
+        :rtype: float
+        """
+        return self._ApiDuration
+
+    @ApiDuration.setter
+    def ApiDuration(self, ApiDuration):
+        self._ApiDuration = ApiDuration
+
+    @property
+    def PagePerformanceScore(self):
+        r"""Page performance score.
+        :rtype: float
+        """
+        return self._PagePerformanceScore
+
+    @PagePerformanceScore.setter
+    def PagePerformanceScore(self, PagePerformanceScore):
+        self._PagePerformanceScore = PagePerformanceScore
+
+    @property
+    def PagePv(self):
+        r"""Page views.
+        :rtype: int
+        """
+        return self._PagePv
+
+    @PagePv.setter
+    def PagePv(self, PagePv):
+        self._PagePv = PagePv
+
+    @property
+    def PageUv(self):
+        r"""Unique visitors.
+        :rtype: int
+        """
+        return self._PageUv
+
+    @PageUv.setter
+    def PageUv(self, PageUv):
+        self._PageUv = PageUv
+
+    @property
+    def PageError(self):
+        r"""Page errors.
+        :rtype: int
+        """
+        return self._PageError
+
+    @PageError.setter
+    def PageError(self, PageError):
+        self._PageError = PageError
+
+    @property
+    def PageDuration(self):
+        r"""First meaningful paint.
+        :rtype: float
+        """
+        return self._PageDuration
+
+    @PageDuration.setter
+    def PageDuration(self, PageDuration):
+        self._PageDuration = PageDuration
+
+    @property
+    def PageLCP(self):
+        r"""Average largest contentful paint (LCP).
+        :rtype: float
+        """
+        return self._PageLCP
+
+    @PageLCP.setter
+    def PageLCP(self, PageLCP):
+        self._PageLCP = PageLCP
+
+    @property
+    def PageFID(self):
+        r"""Average first input delay (FID).
+        :rtype: float
+        """
+        return self._PageFID
+
+    @PageFID.setter
+    def PageFID(self, PageFID):
+        self._PageFID = PageFID
+
+    @property
+    def PageCLS(self):
+        r"""Average cumulative layout shift (CLS).
+        :rtype: float
+        """
+        return self._PageCLS
+
+    @PageCLS.setter
+    def PageCLS(self, PageCLS):
+        self._PageCLS = PageCLS
+
+    @property
+    def PageFCP(self):
+        r"""Average first contentful paint (FCP).
+        :rtype: float
+        """
+        return self._PageFCP
+
+    @PageFCP.setter
+    def PageFCP(self, PageFCP):
+        self._PageFCP = PageFCP
+
+    @property
+    def PageINP(self):
+        r"""Average interaction to next paint (INP).
+        :rtype: float
+        """
+        return self._PageINP
+
+    @PageINP.setter
+    def PageINP(self, PageINP):
+        self._PageINP = PageINP
+
+    @property
+    def JsErrorScore(self):
+        r"""JavaScript error score.
+        :rtype: float
+        """
+        return self._JsErrorScore
+
+    @JsErrorScore.setter
+    def JsErrorScore(self, JsErrorScore):
+        self._JsErrorScore = JsErrorScore
+
+    @property
+    def StaticAvailableScore(self):
+        r"""Static resource availability score.
+        :rtype: float
+        """
+        return self._StaticAvailableScore
+
+    @StaticAvailableScore.setter
+    def StaticAvailableScore(self, StaticAvailableScore):
+        self._StaticAvailableScore = StaticAvailableScore
+
+    @property
+    def StaticPerformanceScore(self):
+        r"""Static resource performance score.
+        :rtype: float
+        """
+        return self._StaticPerformanceScore
+
+    @StaticPerformanceScore.setter
+    def StaticPerformanceScore(self, StaticPerformanceScore):
+        self._StaticPerformanceScore = StaticPerformanceScore
+
+    @property
+    def StaticNum(self):
+        r"""Total static resource requests.
+        :rtype: int
+        """
+        return self._StaticNum
+
+    @StaticNum.setter
+    def StaticNum(self, StaticNum):
+        self._StaticNum = StaticNum
+
+    @property
+    def StaticFail(self):
+        r"""Static resource loading failures.
+        :rtype: int
+        """
+        return self._StaticFail
+
+    @StaticFail.setter
+    def StaticFail(self, StaticFail):
+        self._StaticFail = StaticFail
+
+    @property
+    def StaticDuration(self):
+        r"""Static resource loading time.
+        :rtype: float
+        """
+        return self._StaticDuration
+
+    @StaticDuration.setter
+    def StaticDuration(self, StaticDuration):
+        self._StaticDuration = StaticDuration
+
+
+    def _deserialize(self, params):
+        self._ProjectID = params.get("ProjectID")
+        self._Score = params.get("Score")
+        self._ApiPerformanceScore = params.get("ApiPerformanceScore")
+        self._ApiAvailableScore = params.get("ApiAvailableScore")
+        self._ApiNum = params.get("ApiNum")
+        self._ApiFail = params.get("ApiFail")
+        self._ApiDuration = params.get("ApiDuration")
+        self._PagePerformanceScore = params.get("PagePerformanceScore")
+        self._PagePv = params.get("PagePv")
+        self._PageUv = params.get("PageUv")
+        self._PageError = params.get("PageError")
+        self._PageDuration = params.get("PageDuration")
+        self._PageLCP = params.get("PageLCP")
+        self._PageFID = params.get("PageFID")
+        self._PageCLS = params.get("PageCLS")
+        self._PageFCP = params.get("PageFCP")
+        self._PageINP = params.get("PageINP")
+        self._JsErrorScore = params.get("JsErrorScore")
+        self._StaticAvailableScore = params.get("StaticAvailableScore")
+        self._StaticPerformanceScore = params.get("StaticPerformanceScore")
+        self._StaticNum = params.get("StaticNum")
+        self._StaticFail = params.get("StaticFail")
+        self._StaticDuration = params.get("StaticDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

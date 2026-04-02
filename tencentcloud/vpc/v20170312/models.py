@@ -12087,9 +12087,9 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type VpnGatewayName: str
         :param _InternetMaxBandwidthOut: The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps
         :type InternetMaxBandwidthOut: int
-        :param _InstanceChargeType: The VPN gateway billing mode. PREPAID: prepaid means monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.
+        :param _InstanceChargeType: The VPN gateway billing mode. PREPAID: prepaid means yearly/monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: Parameter settings for prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
+        :param _InstanceChargePrepaid: Parameter settings for prepaid billing mode, also known as yearly/monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param _Zone: The availability zone, such as `ap-guangzhou-2`.
         :type Zone: str
@@ -12101,6 +12101,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type CdcId: str
         :param _MaxConnection: Maximum number of connected clients allowed for the SSL VPN gateway. Valid values: [5, 10, 20, 50, 100]. This parameter is only required for SSL VPN gateways.
         :type MaxConnection: int
+        :param _BgpAsn: 
+        :type BgpAsn: int
         """
         self._VpcId = None
         self._VpnGatewayName = None
@@ -12112,6 +12114,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self._Tags = None
         self._CdcId = None
         self._MaxConnection = None
+        self._BgpAsn = None
 
     @property
     def VpcId(self):
@@ -12148,7 +12151,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""The VPN gateway billing mode. PREPAID: prepaid means monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.
+        r"""The VPN gateway billing mode. PREPAID: prepaid means yearly/monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -12159,7 +12162,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Parameter settings for prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
+        r"""Parameter settings for prepaid billing mode, also known as yearly/monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -12223,6 +12226,17 @@ class CreateVpnGatewayRequest(AbstractModel):
     def MaxConnection(self, MaxConnection):
         self._MaxConnection = MaxConnection
 
+    @property
+    def BgpAsn(self):
+        r"""
+        :rtype: int
+        """
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -12242,6 +12256,7 @@ class CreateVpnGatewayRequest(AbstractModel):
                 self._Tags.append(obj)
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32020,7 +32035,7 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
 
 class InstanceChargePrepaid(AbstractModel):
-    r"""Prepaid (monthly subscription) billing object.
+    r"""Prepaid (yearly/monthly subscription) billing object.
 
     """
 
@@ -38156,12 +38171,18 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
         :type VpnGatewayId: str
         :param _VpnGatewayName: The VPN gateway name. The maximum length is 60 bytes.
         :type VpnGatewayName: str
-        :param _InstanceChargeType: VPN gateway billing mode. Currently, only the conversion of prepaid (monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.
+        :param _InstanceChargeType: VPN gateway billing mode. Currently, only the conversion of prepaid (yearly/monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.
         :type InstanceChargeType: str
+        :param _BgpAsn: 
+        :type BgpAsn: int
+        :param _MaxConnection: 
+        :type MaxConnection: int
         """
         self._VpnGatewayId = None
         self._VpnGatewayName = None
         self._InstanceChargeType = None
+        self._BgpAsn = None
+        self._MaxConnection = None
 
     @property
     def VpnGatewayId(self):
@@ -38187,7 +38208,7 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""VPN gateway billing mode. Currently, only the conversion of prepaid (monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.
+        r"""VPN gateway billing mode. Currently, only the conversion of prepaid (yearly/monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -38196,11 +38217,35 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
 
+    @property
+    def BgpAsn(self):
+        r"""
+        :rtype: int
+        """
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
+    @property
+    def MaxConnection(self):
+        r"""
+        :rtype: int
+        """
+        return self._MaxConnection
+
+    @MaxConnection.setter
+    def MaxConnection(self, MaxConnection):
+        self._MaxConnection = MaxConnection
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
         self._VpnGatewayName = params.get("VpnGatewayName")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._BgpAsn = params.get("BgpAsn")
+        self._MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49926,7 +49971,7 @@ class VpnGateway(AbstractModel):
         :type ExpiredTime: str
         :param _IsAddressBlocked: Whether the public IP is blocked.
         :type IsAddressBlocked: bool
-        :param _NewPurchasePlan: Change of billing method. PREPAID_TO_POSTPAID: Monthly subscription prepaid to postpaid by hour.
+        :param _NewPurchasePlan: Change of billing method. PREPAID_TO_POSTPAID: Yearly/monthly subscription prepaid to postpaid by hour.
         :type NewPurchasePlan: str
         :param _RestrictState: Gateway billing status. PROTECTIVELY_ISOLATED: Instance is isolated; NORMAL: Normal.
         :type RestrictState: str
@@ -49942,6 +49987,8 @@ class VpnGateway(AbstractModel):
         :type CdcId: str
         :param _MaxConnection: Maximum number of connected clients allowed for the SSL VPN gateway.
         :type MaxConnection: int
+        :param _BgpAsn: 
+        :type BgpAsn: int
         """
         self._VpnGatewayId = None
         self._VpcId = None
@@ -49963,6 +50010,7 @@ class VpnGateway(AbstractModel):
         self._NetworkInstanceId = None
         self._CdcId = None
         self._MaxConnection = None
+        self._BgpAsn = None
 
     @property
     def VpnGatewayId(self):
@@ -50098,7 +50146,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def NewPurchasePlan(self):
-        r"""Change of billing method. PREPAID_TO_POSTPAID: Monthly subscription prepaid to postpaid by hour.
+        r"""Change of billing method. PREPAID_TO_POSTPAID: Yearly/monthly subscription prepaid to postpaid by hour.
         :rtype: str
         """
         return self._NewPurchasePlan
@@ -50184,6 +50232,17 @@ class VpnGateway(AbstractModel):
     def MaxConnection(self, MaxConnection):
         self._MaxConnection = MaxConnection
 
+    @property
+    def BgpAsn(self):
+        r"""
+        :rtype: int
+        """
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -50211,6 +50270,7 @@ class VpnGateway(AbstractModel):
         self._NetworkInstanceId = params.get("NetworkInstanceId")
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
