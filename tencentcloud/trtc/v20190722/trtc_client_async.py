@@ -118,6 +118,25 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudTranscription(
+            self,
+            request: models.CreateCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudTranscriptionResponse:
+        """
+        API description:
+        Enable the cloud transcription feature.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudModeration(
             self,
             request: models.DeleteCloudModerationRequest,
@@ -167,6 +186,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DeleteCloudSliceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudSliceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudTranscription(
+            self,
+            request: models.DeleteCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudTranscriptionResponse:
+        """
+        This API is used to terminate the transcription task after successful activation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudTranscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -279,6 +316,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DescribeCloudSliceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudSliceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudTranscription(
+            self,
+            request: models.DescribeCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudTranscriptionResponse:
+        """
+        This API is used to query the transcription status after starting a transcription task. It is effective only when the transcription task is in process. Querying after termination will return an error.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudTranscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

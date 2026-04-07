@@ -277,6 +277,24 @@ class CvmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteInstancesDisasterRecoverGroups(
+            self,
+            request: models.DeleteInstancesDisasterRecoverGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInstancesDisasterRecoverGroupsResponse:
+        """
+        This API is used to batch remove CVM instances from specified placement groups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInstancesDisasterRecoverGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInstancesDisasterRecoverGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteKeyPairs(
             self,
             request: models.DeleteKeyPairsRequest,

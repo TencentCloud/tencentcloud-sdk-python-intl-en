@@ -35,6 +35,9 @@ FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
 # The cloud slicing method is not supported.
 FAILEDOPERATION_CSUNSUPPORTMETHOD = 'FailedOperation.CSUnsupportMethod'
 
+# The cloud transcription method does not support this.
+FAILEDOPERATION_CTUNSUPPORTMETHOD = 'FailedOperation.CTUnsupportMethod'
+
 # Need to unlock the required ability
 FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 
@@ -79,6 +82,9 @@ INTERNALERROR_CRINTERNALERROR = 'InternalError.CRInternalError'
 
 # Internal service error of cloud slicing occurs.
 INTERNALERROR_CSINTERNALERROR = 'InternalError.CSInternalError'
+
+# Internal errors.
+INTERNALERROR_CTINTERNALERROR = 'InternalError.CTInternalError'
 
 # An error occurred while querying the database.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
@@ -188,11 +194,17 @@ INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# Missing required parameter: Lang (ASR model).
+MISSINGPARAMETER_ASRLANG = 'MissingParameter.ASRLang'
+
 # `AccessKey` parameter missing.
 MISSINGPARAMETER_ACCESSKEY = 'MissingParameter.AccessKey'
 
 # `AppId` missing.
 MISSINGPARAMETER_APPID = 'MissingParameter.AppId'
+
+# Missing required parameter: AsrParam.
+MISSINGPARAMETER_ASRPARAM = 'MissingParameter.AsrParam'
 
 # `Bucket` parameter missing.
 MISSINGPARAMETER_BUCKET = 'MissingParameter.Bucket'
@@ -248,8 +260,11 @@ MISSINGPARAMETER_STORAGEPARAMS = 'MissingParameter.StorageParams'
 # `StreamType` parameter missing.
 MISSINGPARAMETER_STREAMTYPE = 'MissingParameter.StreamType'
 
-# `TaskId` parameter missing.
+# `TaskId` parameter is missing.
 MISSINGPARAMETER_TASKID = 'MissingParameter.TaskId'
+
+# The TranscriptionParam parameter is required.
+MISSINGPARAMETER_TRANSCRIPTIONPARAM = 'MissingParameter.TranscriptionParam'
 
 # Missing `UserId` parameter.
 MISSINGPARAMETER_USERID = 'MissingParameter.UserId'

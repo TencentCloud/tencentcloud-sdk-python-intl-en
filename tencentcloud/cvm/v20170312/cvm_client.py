@@ -343,6 +343,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteInstancesDisasterRecoverGroups(self, request):
+        r"""This API is used to batch remove CVM instances from specified placement groups.
+
+        :param request: Request instance for DeleteInstancesDisasterRecoverGroups.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteInstancesDisasterRecoverGroupsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteInstancesDisasterRecoverGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstancesDisasterRecoverGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstancesDisasterRecoverGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteKeyPairs(self, request):
         r"""This API is used to delete the key pairs hosted in Tencent Cloud.
 

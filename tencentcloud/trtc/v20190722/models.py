@@ -364,6 +364,178 @@ class AgentParams(AbstractModel):
         
 
 
+class AsrParam(AbstractModel):
+    r"""Parameters used in speech recognition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lang: The model type used for the transcription service. Example: `"zh"`.
+
+Supported languages for speech-to-text:
+
+- `"zh"`: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
+- `"zh-TW"`: Chinese (Traditional)
+- `"vi"`: Vietnamese
+- `"ja"`: Japanese
+- `"ko"`: Korean
+- `"id"`: Indonesian
+- `"th"`: Thai
+- `"pt"`: Portuguese
+- `"tr"`: Turkish
+- `"ar"`: Arabic
+- `"es"`: Spanish
+- `"hi"`: Hindi
+- `"fr"`: French
+- `"ms"`: Malay
+- `"fil"`: Filipino
+- `"de"`: German
+- `"it"`: Italian
+- `"ru"`: Russian
+- `"sv"`: Swedish
+- `"da"`: Danish
+- `"no"`: Norwegian
+
+> **Note:** If the language you need is not listed, please contact our support team.
+        :type Lang: str
+        :param _VadSilenceTime: The time for speech recognition vad ranges (ms) from 240 to 2000, with a default of 1000. A smaller value enables faster sentence segmentation in speech recognition.Example value: 1000.
+        :type VadSilenceTime: int
+        :param _HotWordList: Temporary hotword list: This parameter is used for improving recognition accuracy.
+
+- Hotword limit: "hotword|weight". Each hotword contains no more than 30 characters (10 Chinese characters max). Weight ranges from 1 to 11 or 100, for example: "Tencent Cloud|5" or "ASR|11".
+- Restrictions for the temporary term list: multiple terms separated by commas, supports up to 128 terms, for example: "Tencent Cloud|10,speech recognition|5,ASR|11".
+
+> Note:
+- When the hotword weight is set to 11, the current hotword will be upgraded to a super term. It is advisable to only set important and must-effective hotwords to 11. Setting too many hotwords with weight 11 will affect overall accuracy.
+- When a hotword weight is set to 100, the hotword enhancement feature forces an exact match replacement: any recognized word that is a homophone of the configured hotword will be replaced with the hotword in the transcription output. 
+- For example, if the hotword Lyft|100 is configured, the word lift, which is phonetically identical, will always be transcribed as Lyft. 
+- Use this feature with caution. Only assign a weight of 100 to hotwords that are business-critical and must always appear verbatim in the output. Overuse of weight 100 hotwords may degrade overall transcription accuracy.
+- Hot words cannot contain spaces, for example: ASR Tencent Cloud
+- Example value: voice assistant|10
+        :type HotWordList: str
+        :param _AlternativeLanguage: Fuzzy language detection is an advanced function, which is billed at the Advanced tier rate by default. Only Advanced tier languages are supported, excluding zh-dialect and zh-yue. Note: A maximum of 4 languages can be specified.
+
+        :type AlternativeLanguage: list of str
+        :param _VadLevel: vad far-field voice suppression capacity (does not impact asr recognition accuracy), range [0, 3], default is 0. Recommended setting is 2 for better far-field voice suppression.
+        :type VadLevel: int
+        """
+        self._Lang = None
+        self._VadSilenceTime = None
+        self._HotWordList = None
+        self._AlternativeLanguage = None
+        self._VadLevel = None
+
+    @property
+    def Lang(self):
+        r"""The model type used for the transcription service. Example: `"zh"`.
+
+Supported languages for speech-to-text:
+
+- `"zh"`: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
+- `"zh-TW"`: Chinese (Traditional)
+- `"vi"`: Vietnamese
+- `"ja"`: Japanese
+- `"ko"`: Korean
+- `"id"`: Indonesian
+- `"th"`: Thai
+- `"pt"`: Portuguese
+- `"tr"`: Turkish
+- `"ar"`: Arabic
+- `"es"`: Spanish
+- `"hi"`: Hindi
+- `"fr"`: French
+- `"ms"`: Malay
+- `"fil"`: Filipino
+- `"de"`: German
+- `"it"`: Italian
+- `"ru"`: Russian
+- `"sv"`: Swedish
+- `"da"`: Danish
+- `"no"`: Norwegian
+
+> **Note:** If the language you need is not listed, please contact our support team.
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def VadSilenceTime(self):
+        r"""The time for speech recognition vad ranges (ms) from 240 to 2000, with a default of 1000. A smaller value enables faster sentence segmentation in speech recognition.Example value: 1000.
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+    @property
+    def HotWordList(self):
+        r"""Temporary hotword list: This parameter is used for improving recognition accuracy.
+
+- Hotword limit: "hotword|weight". Each hotword contains no more than 30 characters (10 Chinese characters max). Weight ranges from 1 to 11 or 100, for example: "Tencent Cloud|5" or "ASR|11".
+- Restrictions for the temporary term list: multiple terms separated by commas, supports up to 128 terms, for example: "Tencent Cloud|10,speech recognition|5,ASR|11".
+
+> Note:
+- When the hotword weight is set to 11, the current hotword will be upgraded to a super term. It is advisable to only set important and must-effective hotwords to 11. Setting too many hotwords with weight 11 will affect overall accuracy.
+- When a hotword weight is set to 100, the hotword enhancement feature forces an exact match replacement: any recognized word that is a homophone of the configured hotword will be replaced with the hotword in the transcription output. 
+- For example, if the hotword Lyft|100 is configured, the word lift, which is phonetically identical, will always be transcribed as Lyft. 
+- Use this feature with caution. Only assign a weight of 100 to hotwords that are business-critical and must always appear verbatim in the output. Overuse of weight 100 hotwords may degrade overall transcription accuracy.
+- Hot words cannot contain spaces, for example: ASR Tencent Cloud
+- Example value: voice assistant|10
+        :rtype: str
+        """
+        return self._HotWordList
+
+    @HotWordList.setter
+    def HotWordList(self, HotWordList):
+        self._HotWordList = HotWordList
+
+    @property
+    def AlternativeLanguage(self):
+        r"""Fuzzy language detection is an advanced function, which is billed at the Advanced tier rate by default. Only Advanced tier languages are supported, excluding zh-dialect and zh-yue. Note: A maximum of 4 languages can be specified.
+
+        :rtype: list of str
+        """
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+    @property
+    def VadLevel(self):
+        r"""vad far-field voice suppression capacity (does not impact asr recognition accuracy), range [0, 3], default is 0. Recommended setting is 2 for better far-field voice suppression.
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
+
+    def _deserialize(self, params):
+        self._Lang = params.get("Lang")
+        self._VadSilenceTime = params.get("VadSilenceTime")
+        self._HotWordList = params.get("HotWordList")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._VadLevel = params.get("VadLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioEncode(AbstractModel):
     r"""The audio encoding parameters.
 
@@ -1765,6 +1937,166 @@ class CreateCloudSliceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudTranscriptionRequest(AbstractModel):
+    r"""CreateCloudTranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.
+        :type SdkAppId: int
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.
+        :type RoomId: str
+        :param _RoomIdType: Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.
+        :type RoomIdType: int
+        :param _TranscriptionParam: Parameters for transcribe service to join TRTC room.
+        :type TranscriptionParam: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
+        :param _AsrParam: Parameters used by the ASR transcribe service.
+        :type AsrParam: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
+        :param _TranslationParam: Translation parameters used for transcription.
+        :type TranslationParam: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._TranscriptionParam = None
+        self._AsrParam = None
+        self._TranslationParam = None
+
+    @property
+    def SdkAppId(self):
+        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        r"""Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def TranscriptionParam(self):
+        r"""Parameters for transcribe service to join TRTC room.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
+        """
+        return self._TranscriptionParam
+
+    @TranscriptionParam.setter
+    def TranscriptionParam(self, TranscriptionParam):
+        self._TranscriptionParam = TranscriptionParam
+
+    @property
+    def AsrParam(self):
+        r"""Parameters used by the ASR transcribe service.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
+        """
+        return self._AsrParam
+
+    @AsrParam.setter
+    def AsrParam(self, AsrParam):
+        self._AsrParam = AsrParam
+
+    @property
+    def TranslationParam(self):
+        r"""Translation parameters used for transcription.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        """
+        return self._TranslationParam
+
+    @TranslationParam.setter
+    def TranslationParam(self, TranslationParam):
+        self._TranslationParam = TranslationParam
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("TranscriptionParam") is not None:
+            self._TranscriptionParam = TranscriptionParam()
+            self._TranscriptionParam._deserialize(params.get("TranscriptionParam"))
+        if params.get("AsrParam") is not None:
+            self._AsrParam = AsrParam()
+            self._AsrParam._deserialize(params.get("AsrParam"))
+        if params.get("TranslationParam") is not None:
+            self._TranslationParam = TranslationParam()
+            self._TranslationParam._deserialize(params.get("TranslationParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudTranscriptionResponse(AbstractModel):
+    r"""CreateCloudTranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudModerationRequest(AbstractModel):
     r"""DeleteCloudModeration request structure.
 
@@ -2022,6 +2354,100 @@ class DeleteCloudSliceTaskResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudTranscriptionRequest(AbstractModel):
+    r"""DeleteCloudTranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.
+        :type SdkAppId: int
+        :param _TaskId: The unique Id of the task will be returned upon success.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""The unique Id of the task will be returned upon success.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudTranscriptionResponse(AbstractModel):
+    r"""DeleteCloudTranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID of the service allocation for transcribing. The task ID is the unique identifier for a transcription lifecycle process and loses its meaning once the transcription is complete.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID of the service allocation for transcribing. The task ID is the unique identifier for a transcription lifecycle process and loses its meaning once the transcription is complete.
         :rtype: str
         """
         return self._TaskId
@@ -2990,6 +3416,138 @@ class DescribeCloudSliceTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudTranscriptionRequest(AbstractModel):
+    r"""DescribeCloudTranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.
+        :type SdkAppId: int
+        :param _TaskId: The unique Id of the transcription task will be returned upon successful startup.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""The unique Id of the transcription task will be returned upon successful startup.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudTranscriptionResponse(AbstractModel):
+    r"""DescribeCloudTranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Time of starting the transcription task.
+        :type StartTime: int
+        :param _Status: Transcription task status. 
+
+- Idle: Indicates the current transcription task is idle. 
+- InProgress: Indicates the current transcription task is in progress. 
+- Exited: Indicates the current transcription task is in the process of exiting.
+        :type Status: str
+        :param _TaskId: Unique Id of the transcribe task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        r"""Time of starting the transcription task.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""Transcription task status. 
+
+- Idle: Indicates the current transcription task is idle. 
+- InProgress: Indicates the current transcription task is in progress. 
+- Exited: Indicates the current transcription task is in the process of exiting.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        r"""Unique Id of the transcribe task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12472,6 +13030,143 @@ class TimeValue(AbstractModel):
         
 
 
+class TranscriptionParam(AbstractModel):
+    r"""Parameters for the transcription service to join TRTC room.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the transcription service in the TRTC room. Note that this userId cannot duplicate those already used by other TRTC or transcription services etc. You may use the room ID as part of the user identification.
+        :type UserId: str
+        :param _UserSig: User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        :type UserSig: str
+        :param _SubscribeList: Allowlist of user IDs whose audio will be transcribed.
+Specifies which anchor audio streams to transcribe when the service starts. If left empty or omitted, audio from all anchors will be transcribed. If one or more values are provided, only audio from the specified anchors will be transcribed.
+
+> Note: If a user ID appears in both the `SubscribeList` and `UnSubscribeList`, the `UnSubscribeList` takes precedence.
+        :type SubscribeList: list of TranscriptionUserInfoParams
+        :param _UnSubscribeList: Blocklist of user IDs whose audio will be excluded from transcription. 
+Leave empty or omit to disable the blocklist. Provide specific values to exclude the specified anchors' audio from transcription.
+
+        :type UnSubscribeList: list of TranscriptionUserInfoParams
+        :param _MaxIdleTime: Maximum idle duration before the transcription task is automatically stopped, in seconds.
+If all anchors being transcribed continuously leave the TRTC room or switch to the audience role for longer than this value, the transcription task stops automatically.
+- Default: 30
+- Range: 5 - 86400 (24 hours)
+        :type MaxIdleTime: int
+        :param _SendCustomMode: Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.
+        :type SendCustomMode: int
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._SubscribeList = None
+        self._UnSubscribeList = None
+        self._MaxIdleTime = None
+        self._SendCustomMode = None
+
+    @property
+    def UserId(self):
+        r"""[UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the transcription service in the TRTC room. Note that this userId cannot duplicate those already used by other TRTC or transcription services etc. You may use the room ID as part of the user identification.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        r"""User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SubscribeList(self):
+        r"""Allowlist of user IDs whose audio will be transcribed.
+Specifies which anchor audio streams to transcribe when the service starts. If left empty or omitted, audio from all anchors will be transcribed. If one or more values are provided, only audio from the specified anchors will be transcribed.
+
+> Note: If a user ID appears in both the `SubscribeList` and `UnSubscribeList`, the `UnSubscribeList` takes precedence.
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._SubscribeList
+
+    @SubscribeList.setter
+    def SubscribeList(self, SubscribeList):
+        self._SubscribeList = SubscribeList
+
+    @property
+    def UnSubscribeList(self):
+        r"""Blocklist of user IDs whose audio will be excluded from transcription. 
+Leave empty or omit to disable the blocklist. Provide specific values to exclude the specified anchors' audio from transcription.
+
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._UnSubscribeList
+
+    @UnSubscribeList.setter
+    def UnSubscribeList(self, UnSubscribeList):
+        self._UnSubscribeList = UnSubscribeList
+
+    @property
+    def MaxIdleTime(self):
+        r"""Maximum idle duration before the transcription task is automatically stopped, in seconds.
+If all anchors being transcribed continuously leave the TRTC room or switch to the audience role for longer than this value, the transcription task stops automatically.
+- Default: 30
+- Range: 5 - 86400 (24 hours)
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SendCustomMode(self):
+        r"""Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.
+        :rtype: int
+        """
+        return self._SendCustomMode
+
+    @SendCustomMode.setter
+    def SendCustomMode(self, SendCustomMode):
+        self._SendCustomMode = SendCustomMode
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("SubscribeList") is not None:
+            self._SubscribeList = []
+            for item in params.get("SubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._SubscribeList.append(obj)
+        if params.get("UnSubscribeList") is not None:
+            self._UnSubscribeList = []
+            for item in params.get("UnSubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._UnSubscribeList.append(obj)
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SendCustomMode = params.get("SendCustomMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranscriptionParams(AbstractModel):
     r"""AI Transcription Params
 
@@ -12568,6 +13263,42 @@ class TranscriptionParams(AbstractModel):
         
 
 
+class TranscriptionUserInfoParams(AbstractModel):
+    r"""Transcribe user information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: User ID.
+        :type UserId: str
+        """
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        r"""User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranslationConfig(AbstractModel):
     r"""Translation config
 
@@ -12646,6 +13377,78 @@ class TranslationConfig(AbstractModel):
                 obj = Terminology()
                 obj._deserialize(item)
                 self._Terminology.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationParam(AbstractModel):
+    r"""Translation parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLang: Target language for translation. Example: `["en", "ja"]`.
+
+Supported target languages:
+
+- `"zh"`: Chinese
+- `"en"`: English
+- `"vi"`: Vietnamese
+- `"ja"`: Japanese
+- `"ko"`: Korean
+- `"id"`: Indonesian
+- `"th"`: Thai
+- `"pt"`: Portuguese
+- `"ar"`: Arabic
+- `"es"`: Spanish
+- `"fr"`: French
+- `"ms"`: Malay
+- `"de"`: German
+- `"it"`: Italian
+- `"ru"`: Russian
+        :type TargetLang: list of str
+        """
+        self._TargetLang = None
+
+    @property
+    def TargetLang(self):
+        r"""Target language for translation. Example: `["en", "ja"]`.
+
+Supported target languages:
+
+- `"zh"`: Chinese
+- `"en"`: English
+- `"vi"`: Vietnamese
+- `"ja"`: Japanese
+- `"ko"`: Korean
+- `"id"`: Indonesian
+- `"th"`: Thai
+- `"pt"`: Portuguese
+- `"ar"`: Arabic
+- `"es"`: Spanish
+- `"fr"`: French
+- `"ms"`: Malay
+- `"de"`: German
+- `"it"`: Italian
+- `"ru"`: Russian
+        :rtype: list of str
+        """
+        return self._TargetLang
+
+    @TargetLang.setter
+    def TargetLang(self, TargetLang):
+        self._TargetLang = TargetLang
+
+
+    def _deserialize(self, params):
+        self._TargetLang = params.get("TargetLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

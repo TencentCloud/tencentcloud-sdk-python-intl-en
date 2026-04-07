@@ -139,6 +139,30 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudTranscription(self, request):
+        r"""API description:
+        Enable the cloud transcription feature.
+
+        :param request: Request instance for CreateCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudTranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudModeration(self, request):
         r"""This API is used to stop submission for moderation after the cloud moderation task is successfully started.
 
@@ -199,6 +223,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudTranscription(self, request):
+        r"""This API is used to terminate the transcription task after successful activation.
+
+        :param request: Request instance for DeleteCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudTranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -341,6 +388,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudTranscription(self, request):
+        r"""This API is used to query the transcription status after starting a transcription task. It is effective only when the transcription task is in process. Querying after termination will return an error.
+
+        :param request: Request instance for DescribeCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudTranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
