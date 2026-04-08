@@ -2932,7 +2932,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
         r"""
         :param _Status: Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -2969,7 +2969,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -3111,22 +3111,22 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: Path of a file after removal.
+        :param _Path: <p>Path of a file after removal.</p>
         :type Path: str
-        :param _OutputStorage: Storage location of a file after removal.
+        :param _OutputStorage: <p>Storage location of a file after removal.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OriginSubtitlePath: Path of a subtitle file extracted from a video.
+        :param _OriginSubtitlePath: <p>Path of subtitle file extracted from video.</p>
         :type OriginSubtitlePath: str
-        :param _TranslateSubtitlePath: Path of a subtitle translation file extracted from a video.
+        :param _TranslateSubtitlePath: <p>Path of a subtitle translation file extracted from a video.</p>
         :type TranslateSubtitlePath: str
-        :param _SubtitlePos: Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SubtitlePos: <p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
-        :param _VoiceClonedVideo: Specifies the file url of the video after voice cloning.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _VoiceClonedVideo: <p>File URL of the video after voice type cloning</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceClonedVideo: str
-        :param _VoiceClonedMarkFile: Specifies the file address of the voice type clone annotation.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _VoiceClonedMarkFile: <p>File address of the voice type clone annotation</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceClonedMarkFile: str
         """
         self._Path = None
@@ -3139,7 +3139,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Path(self):
-        r"""Path of a file after removal.
+        r"""<p>Path of a file after removal.</p>
         :rtype: str
         """
         return self._Path
@@ -3150,7 +3150,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OutputStorage(self):
-        r"""Storage location of a file after removal.
+        r"""<p>Storage location of a file after removal.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -3161,7 +3161,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OriginSubtitlePath(self):
-        r"""Path of a subtitle file extracted from a video.
+        r"""<p>Path of subtitle file extracted from video.</p>
         :rtype: str
         """
         return self._OriginSubtitlePath
@@ -3172,7 +3172,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TranslateSubtitlePath(self):
-        r"""Path of a subtitle translation file extracted from a video.
+        r"""<p>Path of a subtitle translation file extracted from a video.</p>
         :rtype: str
         """
         return self._TranslateSubtitlePath
@@ -3183,8 +3183,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitlePos(self):
-        r"""Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
         """
         return self._SubtitlePos
@@ -3195,8 +3195,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VoiceClonedVideo(self):
-        r"""Specifies the file url of the video after voice cloning.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>File URL of the video after voice type cloning</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoiceClonedVideo
@@ -3207,8 +3207,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VoiceClonedMarkFile(self):
-        r"""Specifies the file address of the voice type clone annotation.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>File address of the voice type clone annotation</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoiceClonedMarkFile
@@ -3562,14 +3562,13 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoPath: Specifies the video path for translation.
+        :param _VideoPath: <p>Dubbed video path.</p>
         :type VideoPath: str
-        :param _SpeakerPath: Specifies the file path of the tag.
-
+        :param _SpeakerPath: <p>Tag file path</p>
         :type SpeakerPath: str
-        :param _VoiceId: Voice type ID.
+        :param _VoiceId: <p>Voice type id</p>
         :type VoiceId: str
-        :param _OutputStorage: Specifies the storage location of the transcoded video.
+        :param _OutputStorage: <p>Storage location of the dubbed video.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
@@ -3579,7 +3578,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def VideoPath(self):
-        r"""Specifies the video path for translation.
+        r"""<p>Dubbed video path.</p>
         :rtype: str
         """
         return self._VideoPath
@@ -3590,8 +3589,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def SpeakerPath(self):
-        r"""Specifies the file path of the tag.
-
+        r"""<p>Tag file path</p>
         :rtype: str
         """
         return self._SpeakerPath
@@ -3602,7 +3600,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""Voice type ID.
+        r"""<p>Voice type id</p>
         :rtype: str
         """
         return self._VoiceId
@@ -3613,7 +3611,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""Specifies the storage location of the transcoded video.
+        r"""<p>Storage location of the dubbed video.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -13575,7 +13573,7 @@ Cannot be set to 0.
 
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
@@ -13648,7 +13646,7 @@ Cannot be set to 0.
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
@@ -13737,7 +13735,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13801,7 +13799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -14599,9 +14597,9 @@ class BlindWatermarkTemplate(AbstractModel):
         :type TextContent: str
         :param _Comment: Description information of the digital watermark template.
         :type Comment: str
-        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _Strength: Digital watermark strength. 
 default: default, balance between hd video quality and resilience. 
@@ -14675,7 +14673,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def CreateTime(self):
-        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -14686,7 +14684,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -18203,26 +18201,25 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: Model name.
-Supported models:Hunyuan,
-GEM,
-Qwen.
+        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>GEM.<br>Qwen.</p>
         :type ModelName: str
-        :param _ModelVersion: Specific version number of the model. By default, the system uses the supported stable version of the model.1. GEM: [2.5 and 3.0].
+        :param _ModelVersion: <p>Specify the model version number. By default, the system uses the supported stable version of the model.</p><ol><li>GEM: [2.5 and 3.0].</li></ol>
         :type ModelVersion: str
-        :param _Prompt: Description of the generated image. (Note: A maximum of 1000 characters is supported.) This parameter is required when no reference image is specified.
+        :param _Prompt: <p>Description of the generated image. (Note: Supports up to 1000 characters.) This parameter is required when no reference image is passed in.</p>
         :type Prompt: str
-        :param _NegativePrompt: Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.
+        :param _NegativePrompt: <p>Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
+        :param _EnhancePrompt: <p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :type EnhancePrompt: bool
-        :param _ImageInfos: Reference resource images. By default, one image can be specified.Model that supports multiple images:1. GEM supports up to 3 resource images.Note:1. The recommended image size is less than 7 MB. Different models have different limits.2. Supported image format: JPEG, PNG, and WebP.
+        :param _ImageInfos: <p>Used for inputting image information as a resource for reference. Default support for inputting an image.</p><p>Models supporting multi-image input:</p><ol><li>GEM, supporting up to 3 images as resource input.</li></ol><p>Note:</p><ol><li>Recommended image less than 7M. Limits vary by model.</li><li>Format support: jpeg, png, webp.</li></ol>
         :type ImageInfos: list of AigcImageInfo
-        :param _ExtraParameters: Additional parameters required for the model.
+        :param _ExtraParameters: <p>Additional parameters required for the model.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
-        :param _StoreCosParam: COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        :param _AdditionalParameters: <p>Used to input some special scene parameters required by the model, serialized into a string in Json format. Example: {"size":"2048x2048"}</p>
+        :type AdditionalParameters: str
+        :param _StoreCosParam: <p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _Operator: API operator name.
+        :param _Operator: <p>API operator name.</p>
         :type Operator: str
         """
         self._ModelName = None
@@ -18232,15 +18229,13 @@ Qwen.
         self._EnhancePrompt = None
         self._ImageInfos = None
         self._ExtraParameters = None
+        self._AdditionalParameters = None
         self._StoreCosParam = None
         self._Operator = None
 
     @property
     def ModelName(self):
-        r"""Model name.
-Supported models:Hunyuan,
-GEM,
-Qwen.
+        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>GEM.<br>Qwen.</p>
         :rtype: str
         """
         return self._ModelName
@@ -18251,7 +18246,7 @@ Qwen.
 
     @property
     def ModelVersion(self):
-        r"""Specific version number of the model. By default, the system uses the supported stable version of the model.1. GEM: [2.5 and 3.0].
+        r"""<p>Specify the model version number. By default, the system uses the supported stable version of the model.</p><ol><li>GEM: [2.5 and 3.0].</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -18262,7 +18257,7 @@ Qwen.
 
     @property
     def Prompt(self):
-        r"""Description of the generated image. (Note: A maximum of 1000 characters is supported.) This parameter is required when no reference image is specified.
+        r"""<p>Description of the generated image. (Note: Supports up to 1000 characters.) This parameter is required when no reference image is passed in.</p>
         :rtype: str
         """
         return self._Prompt
@@ -18273,7 +18268,7 @@ Qwen.
 
     @property
     def NegativePrompt(self):
-        r"""Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.
+        r"""<p>Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -18284,7 +18279,7 @@ Qwen.
 
     @property
     def EnhancePrompt(self):
-        r"""The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.
+        r"""<p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -18295,7 +18290,7 @@ Qwen.
 
     @property
     def ImageInfos(self):
-        r"""Reference resource images. By default, one image can be specified.Model that supports multiple images:1. GEM supports up to 3 resource images.Note:1. The recommended image size is less than 7 MB. Different models have different limits.2. Supported image format: JPEG, PNG, and WebP.
+        r"""<p>Used for inputting image information as a resource for reference. Default support for inputting an image.</p><p>Models supporting multi-image input:</p><ol><li>GEM, supporting up to 3 images as resource input.</li></ol><p>Note:</p><ol><li>Recommended image less than 7M. Limits vary by model.</li><li>Format support: jpeg, png, webp.</li></ol>
         :rtype: list of AigcImageInfo
         """
         return self._ImageInfos
@@ -18306,7 +18301,7 @@ Qwen.
 
     @property
     def ExtraParameters(self):
-        r"""Additional parameters required for the model.
+        r"""<p>Additional parameters required for the model.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
         """
         return self._ExtraParameters
@@ -18316,8 +18311,19 @@ Qwen.
         self._ExtraParameters = ExtraParameters
 
     @property
+    def AdditionalParameters(self):
+        r"""<p>Used to input some special scene parameters required by the model, serialized into a string in Json format. Example: {"size":"2048x2048"}</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
     def StoreCosParam(self):
-        r"""COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        r"""<p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -18328,7 +18334,7 @@ Qwen.
 
     @property
     def Operator(self):
-        r"""API operator name.
+        r"""<p>API operator name.</p>
         :rtype: str
         """
         return self._Operator
@@ -18353,6 +18359,7 @@ Qwen.
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcImageExtraParam()
             self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
         if params.get("StoreCosParam") is not None:
             self._StoreCosParam = AigcStoreCosParam()
             self._StoreCosParam._deserialize(params.get("StoreCosParam"))
@@ -18374,7 +18381,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Returned task ID.
+        :param _TaskId: <p>Returned task ID.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18384,7 +18391,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Returned task ID.
+        r"""<p>Returned task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -20659,20 +20666,17 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Length limit for the smart erasing template name: 64 characters.
+        :param _Name: <p>Length limit for the smart erasing template name: 64 characters.</p>
         :type Name: str
-        :param _EraseType: Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _Comment: Length limit for the description information of the smart erasing template: 256 characters.
+        :param _Comment: <p>Length limit for the description information of the smart erasing template: 256 characters.</p>
         :type Comment: str
-        :param _EraseSubtitleConfig: Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         self._Name = None
@@ -20684,7 +20688,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Length limit for the smart erasing template name: 64 characters.
+        r"""<p>Length limit for the smart erasing template name: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -20695,10 +20699,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -20709,7 +20710,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""Length limit for the description information of the smart erasing template: 256 characters.
+        r"""<p>Length limit for the description information of the smart erasing template: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -20720,7 +20721,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.
+        r"""<p>Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -20731,7 +20732,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.
+        r"""<p>Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -20742,7 +20743,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.
+        r"""<p>Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -20782,7 +20783,7 @@ class CreateSmartEraseTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique identifier of the smart erasing template.
+        :param _Definition: <p>Unique identifier of the intelligent erasure template</p>
         :type Definition: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -20792,7 +20793,7 @@ class CreateSmartEraseTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Unique identifier of the smart erasing template.
+        r"""<p>Unique identifier of the intelligent erasure template</p>
         :rtype: int
         """
         return self._Definition
@@ -20825,221 +20826,28 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Smart subtitle template name.
-Length limit: 64 characters.
+        :param _Name: <p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :type Name: str
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmal Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleType: Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :param _SubtitleType: <p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :type SubtitleType: int
-        :param _Comment: Smart subtitle template description.
-Length limit: 256 characters.
+        :param _Comment: <p>Intelligent caption template description information<br>Length limit: 256 characters.</p>
         :type Comment: str
-        :param _SubtitleFormat: Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        :param _SubtitleFormat: <p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Leave blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure subtitle translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, do not leave blank or not pass when translating 2 or more languages.</li><li>For pure subtitle translation method, do not leave blank or not pass.</li><li>For OCR tasks, it is allowed to leave blank or not pass when suppression is enabled.</li></ul>
         :type SubtitleFormat: str
-        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+        :param _AsrHotWordsConfigure: <p>ASR hot word lexicon parameter</p>
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _TranslateSwitch: Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        :param _TranslateSwitch: <p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        :param _TranslateDstLanguage: <p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :type TranslateDstLanguage: str
-        :param _ProcessType: Subtitle processing type.
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.
+        :param _SelectingSubtitleAreasConfig: <p>Area configurations for the subtitle OCR extraction box</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
+        :type SubtitleEmbedId: int
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -21051,11 +20859,11 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def Name(self):
-        r"""Smart subtitle template name.
-Length limit: 64 characters.
+        r"""<p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -21066,173 +20874,7 @@ Length limit: 64 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmal Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
+        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -21243,11 +20885,7 @@ ASR recognition and pure subtitle translation currently support the following la
 
     @property
     def SubtitleType(self):
-        r"""Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        r"""<p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -21258,8 +20896,7 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def Comment(self):
-        r"""Smart subtitle template description.
-Length limit: 256 characters.
+        r"""<p>Intelligent caption template description information<br>Length limit: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -21270,21 +20907,7 @@ Length limit: 256 characters.
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        r"""<p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Leave blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure subtitle translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, do not leave blank or not pass when translating 2 or more languages.</li><li>For pure subtitle translation method, do not leave blank or not pass.</li><li>For OCR tasks, it is allowed to leave blank or not pass when suppression is enabled.</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -21295,7 +20918,7 @@ Length limit: 256 characters.
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR hotword lexicon parameter.
+        r"""<p>ASR hot word lexicon parameter</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -21306,10 +20929,7 @@ Length limit: 256 characters.
 
     @property
     def TranslateSwitch(self):
-        r"""Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        r"""<p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :rtype: str
         """
         return self._TranslateSwitch
@@ -21320,9 +20940,7 @@ Length limit: 256 characters.
 
     @property
     def TranslateDstLanguage(self):
-        r"""Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        r"""<p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -21333,11 +20951,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type.
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        r"""<p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :rtype: int
         """
         return self._ProcessType
@@ -21348,7 +20962,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""Area configurations for the subtitle OCR extraction box.
+        r"""<p>Area configurations for the subtitle OCR extraction box</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -21356,6 +20970,17 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -21373,6 +20998,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21390,7 +21016,7 @@ class CreateSmartSubtitleTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique identifier of the smart subtitle template.
+        :param _Definition: <p>Unique identifier of the smart subtitle template.</p>
         :type Definition: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21400,7 +21026,7 @@ class CreateSmartSubtitleTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Unique identifier of the smart subtitle template.
+        r"""<p>Unique identifier of the smart subtitle template.</p>
         :rtype: int
         """
         return self._Definition
@@ -21586,6 +21212,117 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
     @property
     def Definition(self):
         r"""Unique ID of a time point screencapturing template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSubtitleEmbedTemplateRequest(AbstractModel):
+    r"""CreateSubtitleEmbedTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Subtitle suppression template name<br>Length limit: 64 characters.</p>
+        :type Name: str
+        :param _Comment: <p>Subtitle suppression template description information<br>Length limit: 256 characters.</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>Subtitle suppression configuration</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Name(self):
+        r"""<p>Subtitle suppression template name<br>Length limit: 64 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>Subtitle suppression template description information<br>Length limit: 256 characters.</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>Subtitle suppression configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubtitleEmbedTemplateResponse(AbstractModel):
+    r"""CreateSubtitleEmbedTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Unique identifier of the subtitle suppression template.</p>
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""<p>Unique identifier of the subtitle suppression template.</p>
         :rtype: int
         """
         return self._Definition
@@ -23485,6 +23222,70 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
 class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
     r"""DeleteSnapshotByTimeOffsetTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSubtitleEmbedTemplateRequest(AbstractModel):
+    r"""DeleteSubtitleEmbedTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Unique identifier of the subtitle suppression template.</p>
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""<p>Unique identifier of the subtitle suppression template.</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSubtitleEmbedTemplateResponse(AbstractModel):
+    r"""DeleteSubtitleEmbedTemplate response structure.
 
     """
 
@@ -26060,7 +25861,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type Status: str
         :param _ErrCode: Error code when the task fails.
         :type ErrCode: int
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Task exception message.
         :type Message: str
@@ -26127,7 +25928,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -27944,6 +27745,165 @@ class DescribeStreamLinkSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSubtitleEmbedTemplatesRequest(AbstractModel):
+    r"""DescribeSubtitleEmbedTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: <p>Unique identifiers of intelligent caption templates for filtering. The array can contain up to 100 unique identifiers.</p>
+        :type Definitions: list of int
+        :param _Offset: <p>Paging offset. Default value: 0.</p>
+        :type Offset: int
+        :param _Limit: <p>Number of returned entries. Default value: 10. Maximum value: 100.</p>
+        :type Limit: int
+        :param _Type: <p>Filtering condition for the template type. Leave it blank to return all. Valid values:</p><ul><li>Preset: system preset template;</li><li>Custom: user-defined template.</li></ul>
+        :type Type: str
+        :param _Name: <p>Condition for filtering subtitle suppression templates by ID. Length limit: 64 characters.</p>
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        r"""<p>Unique identifiers of intelligent caption templates for filtering. The array can contain up to 100 unique identifiers.</p>
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""<p>Paging offset. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Number of returned entries. Default value: 10. Maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        r"""<p>Filtering condition for the template type. Leave it blank to return all. Valid values:</p><ul><li>Preset: system preset template;</li><li>Custom: user-defined template.</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>Condition for filtering subtitle suppression templates by ID. Length limit: 64 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubtitleEmbedTemplatesResponse(AbstractModel):
+    r"""DescribeSubtitleEmbedTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of records that meet filter conditions.</p>
+        :type TotalCount: int
+        :param _SubtitleEmbedTemplateSet: <p>List of subtitle suppression template details.</p>
+        :type SubtitleEmbedTemplateSet: list of SubtitleEmbedTemplateItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SubtitleEmbedTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of records that meet filter conditions.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SubtitleEmbedTemplateSet(self):
+        r"""<p>List of subtitle suppression template details.</p>
+        :rtype: list of SubtitleEmbedTemplateItem
+        """
+        return self._SubtitleEmbedTemplateSet
+
+    @SubtitleEmbedTemplateSet.setter
+    def SubtitleEmbedTemplateSet(self, SubtitleEmbedTemplateSet):
+        self._SubtitleEmbedTemplateSet = SubtitleEmbedTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SubtitleEmbedTemplateSet") is not None:
+            self._SubtitleEmbedTemplateSet = []
+            for item in params.get("SubtitleEmbedTemplateSet"):
+                obj = SubtitleEmbedTemplateItem()
+                obj._deserialize(item)
+                self._SubtitleEmbedTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     r"""DescribeTaskDetail request structure.
 
@@ -28837,7 +28797,7 @@ class DescribeUsageDataRequest(AbstractModel):
         r"""
         :param _StartTime: Start date. use ISO date format.
         :type StartTime: str
-        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _EndTime: End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type EndTime: str
         :param _Types: Type of MPS tasks to query. The transcoding tasks are queried by default.<li>Transcode: transcoding.</li><li>Enhance: enhancement.</li><li>AIAnalysis: intelligent analysis.</li><li>AIRecognition: intelligent identification.</li><li>AIReview: content moderation.</li><li>Snapshot: screenshot.</li><li>AnimatedGraphics: animated graphics.</li><li>AiQualityControl: quality inspection.</li><li>Evaluation: video evaluation.</li><li>ImageProcess: image processing.</li>
 <li>AddBlindWatermark: adding basic copyright digital watermarks.</li><li>AddNagraWatermark: adding NAGRA digital watermarks.</li><li>ExtractBlindWatermark: extracting basic copyright digital watermarks.</li><li>AIGC: AIGC</li>
@@ -28879,7 +28839,7 @@ class DescribeUsageDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :rtype: str
         """
         return self._EndTime
@@ -29486,7 +29446,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
 
 class DiagnoseResult(AbstractModel):
-    r"""Diagnosis result item.
+    r"""
 
     """
 
@@ -29546,11 +29506,11 @@ HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DIS
 TimecodeTrackExist: TMCD track in MP4.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _Timestamp: The PTS timestamp for the exception start.
+        :param _Timestamp: 
         :type Timestamp: float
-        :param _Description: Diagnosed abnormal description.
+        :param _Description: 
         :type Description: str
-        :param _DateTime: Abnormality detection time in Beijing time, using ISO date format.
+        :param _DateTime: 
         :type DateTime: str
         :param _SeverityLevel: Diagnosed exception level. Valid values:
 Fatal: affecting subsequent playback and parsing.
@@ -29642,7 +29602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        r"""The PTS timestamp for the exception start.
+        r"""
         :rtype: float
         """
         return self._Timestamp
@@ -29653,7 +29613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        r"""Diagnosed abnormal description.
+        r"""
         :rtype: str
         """
         return self._Description
@@ -29664,7 +29624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateTime(self):
-        r"""Abnormality detection time in Beijing time, using ISO date format.
+        r"""
         :rtype: str
         """
         return self._DateTime
@@ -32974,7 +32934,7 @@ class ImageProcessTaskResult(AbstractModel):
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: str
-        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrMsg: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
         :param _Message: Error message.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -33006,7 +32966,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrMsg(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrMsg
@@ -35065,7 +35025,7 @@ class LiveSmartSubtitlesTaskInput(AbstractModel):
 
 
 class LiveStreamAiAnalysisResultInfo(AbstractModel):
-    r"""Live streaming analysis results
+    r"""
 
     """
 
@@ -35114,7 +35074,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LiveStreamAiAnalysisResultItem(AbstractModel):
-    r"""Live streaming AI analysis results
+    r"""
 
     """
 
@@ -35125,8 +35085,7 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 <li>Highlight: highlight.</li>
 <li>Description: summary.</li>
         :type Type: str
-        :param _SegmentResultSet: Segmentation results are valid when Type is
-SegmentRecognition.
+        :param _SegmentResultSet: 
         :type SegmentResultSet: list of SegmentRecognitionItem
         :param _HighlightResultSet: Highlight result. This field is valid when Type is set to Highlight.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -35155,8 +35114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentResultSet(self):
-        r"""Segmentation results are valid when Type is
-SegmentRecognition.
+        r"""
         :rtype: list of SegmentRecognitionItem
         """
         return self._SegmentResultSet
@@ -35226,7 +35184,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
         :param _QualityControlResults: Content quality inspection result list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlResults: list of QualityControlResult
-        :param _DiagnoseResults: Format diagnostic results list.
+        :param _DiagnoseResults: 
         :type DiagnoseResults: list of DiagnoseResult
         :param _QualityControlResultSet: Content quality inspection result list.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -35260,7 +35218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DiagnoseResults(self):
         warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
 
-        r"""Format diagnostic results list.
+        r"""
         :rtype: list of DiagnoseResult
         """
         return self._DiagnoseResults
@@ -35409,7 +35367,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
         :param _ObjectRecognitionResultSet: Object recognition result, which is valid when Type is ObjectRecognition.
         :type ObjectRecognitionResultSet: list of LiveStreamObjectRecognitionResult
-        :param _TagRecognitionResultSet: Tagging results are valid when Type is TagRecognition.
+        :param _TagRecognitionResultSet: 
         :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
         """
         self._Type = None
@@ -35526,7 +35484,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def TagRecognitionResultSet(self):
-        r"""Tagging results are valid when Type is TagRecognition.
+        r"""
         :rtype: list of LiveStreamTagRecognitionResult
         """
         return self._TagRecognitionResultSet
@@ -36381,11 +36339,11 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type EndPtsTime: float
         :param _Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
-        :param _StartTime: Recognition start UTC time.
+        :param _StartTime: 
         :type StartTime: str
-        :param _EndTime: Recognition end UTC time.
+        :param _EndTime: 
         :type EndTime: str
-        :param _SteadyState: Steady state marker.
+        :param _SteadyState: 
         :type SteadyState: bool
         :param _UserId: User ID in the result of recognition via WebSocket and TRTC.Note: This field may return null, indicating that no valid value can be obtained.
         :type UserId: str
@@ -36445,7 +36403,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Recognition start UTC time.
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -36456,7 +36414,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Recognition end UTC time.
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -36467,7 +36425,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
-        r"""Steady state marker.
+        r"""
         :rtype: bool
         """
         return self._SteadyState
@@ -37243,19 +37201,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LiveStreamTagRecognitionResult(AbstractModel):
-    r"""Live streaming AI tagging recognition results
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Tagging events.
+        :param _Id: 
         :type Id: str
-        :param _StartPtsTime: Start PTS time of the recognition segment, unit: seconds.
+        :param _StartPtsTime: 
         :type StartPtsTime: float
-        :param _EndPtsTime: Termination PTS time of the recognition segment, unit: seconds.
+        :param _EndPtsTime: 
         :type EndPtsTime: float
-        :param _Confidence: Recognition segment confidence. Range: 0-100.
+        :param _Confidence: 
         :type Confidence: float
         """
         self._Id = None
@@ -37265,7 +37223,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
-        r"""Tagging events.
+        r"""
         :rtype: str
         """
         return self._Id
@@ -37276,7 +37234,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
-        r"""Start PTS time of the recognition segment, unit: seconds.
+        r"""
         :rtype: float
         """
         return self._StartPtsTime
@@ -37287,7 +37245,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
-        r"""Termination PTS time of the recognition segment, unit: seconds.
+        r"""
         :rtype: float
         """
         return self._EndPtsTime
@@ -37298,7 +37256,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Recognition segment confidence. Range: 0-100.
+        r"""
         :rtype: float
         """
         return self._Confidence
@@ -37332,7 +37290,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         r"""
         :param _NotifyType: Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
@@ -37361,7 +37319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NotifyType(self):
         r"""Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
@@ -37474,11 +37432,11 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _Trans: The translation.
         :type Trans: str
-        :param _StartTime: Translation start UTC time.
+        :param _StartTime: 
         :type StartTime: str
-        :param _EndTime: Translation end UTC time.
+        :param _EndTime: 
         :type EndTime: str
-        :param _SteadyState: Steady state marker.
+        :param _SteadyState: 
         :type SteadyState: bool
         :param _UserId: User ID in the result of real-time translation via WebSocket and TRTC.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -37551,7 +37509,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTime(self):
-        r"""Translation start UTC time.
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -37562,7 +37520,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
-        r"""Translation end UTC time.
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -37573,7 +37531,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SteadyState(self):
-        r"""Steady state marker.
+        r"""
         :rtype: bool
         """
         return self._SteadyState
@@ -38081,9 +38039,7 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
         r"""
         :param _Tag: Frame-specific tag name.
         :type Tag: str
-        :param _CategorySet: Classification list of frame-level tags, where CategorySet.N represents the (N+1)th level classification.
-
-For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scene" and CategorySet.1 is "architecture", indicating the frame-level tag is "tower" with Level 1 classification as "scene" and Level 2 classification as "architecture".
+        :param _CategorySet: 
         :type CategorySet: list of str
         :param _Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
         :type Confidence: float
@@ -38105,9 +38061,7 @@ For example, when the Tag is "tower", CategorySet contains two elements: Categor
 
     @property
     def CategorySet(self):
-        r"""Classification list of frame-level tags, where CategorySet.N represents the (N+1)th level classification.
-
-For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scene" and CategorySet.1 is "architecture", indicating the frame-level tag is "tower" with Level 1 classification as "scene" and Level 2 classification as "architecture".
+        r"""
         :rtype: list of str
         """
         return self._CategorySet
@@ -41414,7 +41368,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _HdrType: HDR type
 Note: This field may return `null`, indicating that no valid value was found.
         :type HdrType: str
-        :param _Codecs: Video Codecs.
+        :param _Codecs: 
         :type Codecs: str
         :param _FpsNumerator: Numerator of the frame rate.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -41546,7 +41500,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Codecs(self):
-        r"""Video Codecs.
+        r"""
         :rtype: str
         """
         return self._Codecs
@@ -44091,22 +44045,19 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique identifier of the smart erasing template.
+        :param _Definition: <p>Unique identifier of the intelligent erasure template</p>
         :type Definition: int
-        :param _Name: Length limit for the smart erasing template name: 64 characters.
+        :param _Name: <p>Length limit for the smart erasing template name: 64 characters.</p>
         :type Name: str
-        :param _Comment: Length limit for the description information of the smart erasing template: 256 characters.
+        :param _Comment: <p>Length limit for the description information of the smart erasing template: 256 characters.</p>
         :type Comment: str
-        :param _EraseType: Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         self._Definition = None
@@ -44119,7 +44070,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Unique identifier of the smart erasing template.
+        r"""<p>Unique identifier of the intelligent erasure template</p>
         :rtype: int
         """
         return self._Definition
@@ -44130,7 +44081,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Length limit for the smart erasing template name: 64 characters.
+        r"""<p>Length limit for the smart erasing template name: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -44141,7 +44092,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""Length limit for the description information of the smart erasing template: 256 characters.
+        r"""<p>Length limit for the description information of the smart erasing template: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -44152,10 +44103,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -44166,7 +44114,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.
+        r"""<p>Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -44177,7 +44125,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.
+        r"""<p>Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -44188,7 +44136,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.
+        r"""<p>Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -44257,225 +44205,30 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique identifier of the smart subtitle template.
+        :param _Definition: <p>Unique identifier of the smart subtitle template.</p>
         :type Definition: int
-        :param _TranslateSwitch: Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        :param _TranslateSwitch: <p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :type TranslateSwitch: str
-        :param _Name: Smart subtitle template name.
-Length limit: 64 characters.
+        :param _Name: <p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :type Name: str
-        :param _Comment: Smart subtitle template description.
-Length limit: 256 characters.
+        :param _Comment: <p>Intelligent caption template description information<br>Length limit: 256 characters.</p>
         :type Comment: str
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmal Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
-
-
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        :param _SubtitleFormat: <p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Leave blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure subtitle translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, do not leave blank or not pass when translating 2 or more languages.</li><li>For pure subtitle translation method, do not leave blank or not pass.</li><li>For OCR tasks, it is allowed to leave blank or not pass when suppression is enabled.</li></ul>
         :type SubtitleFormat: str
-        :param _SubtitleType: Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :param _SubtitleType: <p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :type SubtitleType: int
-        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+        :param _AsrHotWordsConfigure: <p>ASR hot word lexicon parameter</p>
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _TranslateDstLanguage: Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        :param _TranslateDstLanguage: <p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :type TranslateDstLanguage: str
-        :param _ProcessType: Subtitle processing type:
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: If the field is unspecified, ASR is used by default.
+        :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: ASR is selected by default if the field is unspecified.</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.
+        :param _SelectingSubtitleAreasConfig: <p>Area configurations for the subtitle OCR extraction box</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
+        :type SubtitleEmbedId: int
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -44488,10 +44241,11 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def Definition(self):
-        r"""Unique identifier of the smart subtitle template.
+        r"""<p>Unique identifier of the smart subtitle template.</p>
         :rtype: int
         """
         return self._Definition
@@ -44502,10 +44256,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def TranslateSwitch(self):
-        r"""Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        r"""<p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :rtype: str
         """
         return self._TranslateSwitch
@@ -44516,8 +44267,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def Name(self):
-        r"""Smart subtitle template name.
-Length limit: 64 characters.
+        r"""<p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -44528,8 +44278,7 @@ Length limit: 64 characters.
 
     @property
     def Comment(self):
-        r"""Smart subtitle template description.
-Length limit: 256 characters.
+        r"""<p>Intelligent caption template description information<br>Length limit: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -44540,175 +44289,7 @@ Length limit: 256 characters.
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmal Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
-
-
+        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -44719,21 +44300,7 @@ ASR recognition and pure subtitle translation currently support the following la
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        r"""<p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Leave blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure subtitle translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, do not leave blank or not pass when translating 2 or more languages.</li><li>For pure subtitle translation method, do not leave blank or not pass.</li><li>For OCR tasks, it is allowed to leave blank or not pass when suppression is enabled.</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -44744,11 +44311,7 @@ ASR recognition and pure subtitle translation currently support the following la
 
     @property
     def SubtitleType(self):
-        r"""Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        r"""<p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -44759,7 +44322,7 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR hotword lexicon parameter.
+        r"""<p>ASR hot word lexicon parameter</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -44770,9 +44333,7 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def TranslateDstLanguage(self):
-        r"""Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        r"""<p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -44783,11 +44344,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type:
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: If the field is unspecified, ASR is used by default.
+        r"""<p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: ASR is selected by default if the field is unspecified.</p>
         :rtype: int
         """
         return self._ProcessType
@@ -44798,7 +44355,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""Area configurations for the subtitle OCR extraction box.
+        r"""<p>Area configurations for the subtitle OCR extraction box</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -44806,6 +44363,17 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -44824,6 +44392,7 @@ This parameter takes effect when the value of TranslateSwitch is ON. Valid trans
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45021,6 +44590,117 @@ Default value: black.
 
 class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
     r"""ModifySnapshotByTimeOffsetTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySubtitleEmbedTemplateRequest(AbstractModel):
+    r"""ModifySubtitleEmbedTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Unique identifier of the subtitle suppression template</p>
+        :type Definition: int
+        :param _Name: <p>Subtitle suppression name<br>Length limit: 64 characters.</p>
+        :type Name: str
+        :param _Comment: <p>Subtitle suppression template description information<br>Length limit: 256 characters.</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>Subtitle suppression configuration</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Definition(self):
+        r"""<p>Unique identifier of the subtitle suppression template</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""<p>Subtitle suppression name<br>Length limit: 64 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>Subtitle suppression template description information<br>Length limit: 256 characters.</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>Subtitle suppression configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubtitleEmbedTemplateResponse(AbstractModel):
+    r"""ModifySubtitleEmbedTemplate response structure.
 
     """
 
@@ -46043,32 +45723,26 @@ class OverrideEraseParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EraseType: Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: Subtitle erasing configuration.
-This field is required when the value of EraseType is subtitle.
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: Watermark erasing configuration.
-This field is required when the value of EraseType is watermark.
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: Privacy protection configuration.
-This field is required when the value of EraseType is privacy.
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
+        :param _SubtitleEmbedId: <p>id of the subtitle removal suppression template.</p>
+        :type SubtitleEmbedId: int
         """
         self._EraseType = None
         self._EraseSubtitleConfig = None
         self._EraseWatermarkConfig = None
         self._ErasePrivacyConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def EraseType(self):
-        r"""Erasing type.
--subtitle: subtitle removal.
--watermark: watermark removal.
--privacy: privacy protection.
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -46079,8 +45753,7 @@ This field is required when the value of EraseType is privacy.
 
     @property
     def EraseSubtitleConfig(self):
-        r"""Subtitle erasing configuration.
-This field is required when the value of EraseType is subtitle.
+        r"""<p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -46091,8 +45764,7 @@ This field is required when the value of EraseType is subtitle.
 
     @property
     def EraseWatermarkConfig(self):
-        r"""Watermark erasing configuration.
-This field is required when the value of EraseType is watermark.
+        r"""<p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -46103,8 +45775,7 @@ This field is required when the value of EraseType is watermark.
 
     @property
     def ErasePrivacyConfig(self):
-        r"""Privacy protection configuration.
-This field is required when the value of EraseType is privacy.
+        r"""<p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -46112,6 +45783,17 @@ This field is required when the value of EraseType is privacy.
     @ErasePrivacyConfig.setter
     def ErasePrivacyConfig(self, ErasePrivacyConfig):
         self._ErasePrivacyConfig = ErasePrivacyConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>id of the subtitle removal suppression template.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -46125,6 +45807,7 @@ This field is required when the value of EraseType is privacy.
         if params.get("ErasePrivacyConfig") is not None:
             self._ErasePrivacyConfig = UpdateSmartErasePrivacyConfig()
             self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48460,7 +48143,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
+        :param _Url: <p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
         :type Url: str
         :param _TaskNotifyConfig: <p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -48503,7 +48186,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
+        r"""<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
         :rtype: str
         """
         return self._Url
@@ -50594,35 +50277,35 @@ class RawSmartEraseParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EraseType: Specifies the removal type.
--subtitle removal.
--Remove watermark.
--privacy protection.
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: Subtitle erasure configuration.
-When EraseType is subtitle, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: Specifies the watermark removal configuration.
-When EraseType is watermark, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: Privacy protection configuration.
-When EraseType is privacy, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        :param _SubtitleEmbedId: <p>id of the subtitle removal suppression template.</p>
+        :type SubtitleEmbedId: int
+        :param _UseOriginalPos: <p>Suppression configuration, enabled by default, moves subtitles back to the original subtitle position.</p>
+        :type UseOriginalPos: int
+        :param _UseOriginalSize: <p>Suppression configuration, enabled by default. When enabled, use the original subtitle font size.</p>
+        :type UseOriginalSize: int
         """
         self._EraseType = None
         self._EraseSubtitleConfig = None
         self._EraseWatermarkConfig = None
         self._ErasePrivacyConfig = None
+        self._SubtitleEmbedId = None
+        self._UseOriginalPos = None
+        self._UseOriginalSize = None
 
     @property
     def EraseType(self):
-        r"""Specifies the removal type.
--subtitle removal.
--Remove watermark.
--privacy protection.
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -50633,9 +50316,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EraseSubtitleConfig(self):
-        r"""Subtitle erasure configuration.
-When EraseType is subtitle, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -50646,9 +50328,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EraseWatermarkConfig(self):
-        r"""Specifies the watermark removal configuration.
-When EraseType is watermark, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -50659,9 +50340,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErasePrivacyConfig(self):
-        r"""Privacy protection configuration.
-When EraseType is privacy, this field is required.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -50669,6 +50349,39 @@ Note: This field may return null, indicating that no valid value can be obtained
     @ErasePrivacyConfig.setter
     def ErasePrivacyConfig(self, ErasePrivacyConfig):
         self._ErasePrivacyConfig = ErasePrivacyConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>id of the subtitle removal suppression template.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def UseOriginalPos(self):
+        r"""<p>Suppression configuration, enabled by default, moves subtitles back to the original subtitle position.</p>
+        :rtype: int
+        """
+        return self._UseOriginalPos
+
+    @UseOriginalPos.setter
+    def UseOriginalPos(self, UseOriginalPos):
+        self._UseOriginalPos = UseOriginalPos
+
+    @property
+    def UseOriginalSize(self):
+        r"""<p>Suppression configuration, enabled by default. When enabled, use the original subtitle font size.</p>
+        :rtype: int
+        """
+        return self._UseOriginalSize
+
+    @UseOriginalSize.setter
+    def UseOriginalSize(self, UseOriginalSize):
+        self._UseOriginalSize = UseOriginalSize
 
 
     def _deserialize(self, params):
@@ -50682,6 +50395,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("ErasePrivacyConfig") is not None:
             self._ErasePrivacyConfig = SmartErasePrivacyConfig()
             self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._UseOriginalPos = params.get("UseOriginalPos")
+        self._UseOriginalSize = params.get("UseOriginalSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50699,222 +50415,31 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubtitleType: Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :param _SubtitleType: <p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :type SubtitleType: int
-        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
-
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        :param _SubtitleFormat: <p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure caption translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, passing blank or unspecified is not allowed when translating at least 2 languages.</li><li>For pure caption translation and OCR recognition translation methods, passing blank or unspecified is not allowed.</li><li>For OCR type tasks, passing blank or unspecified is allowed when suppression is enabled.</li></ul>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
-        :param _TranslateSwitch: Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        :param _TranslateSwitch: <p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        :param _TranslateDstLanguage: <p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
-        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AsrHotWordsConfigure: <p>ASR hot word lexicon parameter</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _ExtInfo: Custom parameter.
+        :param _ExtInfo: <p>Custom parameter</p>
         :type ExtInfo: str
-        :param _ProcessType: Subtitle processing type:
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SelectingSubtitleAreasConfig: <p>Area configurations for the subtitle OCR extraction box</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR).</p>
+        :type SubtitleEmbedId: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -50925,14 +50450,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ExtInfo = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def SubtitleType(self):
-        r"""Smart subtitle language type.
-0: source language
-1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        r"""<p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -50943,174 +50465,7 @@ The value can only be 0 when TranslateSwitch is set to OFF. The value can only b
 
     @property
     def VideoSrcLanguage(self):
-        r"""Source language of the video with smart subtitles.
-OCR recognition only supports the following languages:
-`zh_en`: Chinese and English.
-`multi`: others.
-ASR recognition and pure subtitle translation currently support the following languages:
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
-`zh`: Simplified Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`vi`: Vietnamese.
-`ms`: Malay.
-`id`: Indonesian.
-`fil`: Filipino.
-`th`: Thai.
-`pt`: Portuguese.
-`tr`: Turkish.
-`ar`: Arabic.
-`es`: Spanish.
-`hi`: Hindi.
-`fr`: French.
-`de`: German.
-`it`: Italian.
-`zh_dialect`: Chinese dialect.
-`zh_en`: Chinese and English.
-`yue`: Cantonese.
-`ru`: Russian.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`af-ZA`: Afrikaans (South Africa).
-`sq-AL`: Albanian (Albania).
-`am-ET`: Amharic (Ethiopia).
-`ar-DZ`: Arabic (Algeria).
-`ar-BH`: Arabic (Bahrain).
-`ar-EG`: Arabic (Egypt).
-`ar-IQ`: Arabic (Iraq).
-`ar-IL`: Arabic (Israel).
-`ar-JO`: Arabic (Jordan).
-`ar-KW`: Arabic (Kuwait).
-`ar-LB`: Arabic (Lebanon).
-`ar-MR`: Arabic (Mauritania).
-`ar-MA`: Arabic (Morocco).
-`ar-OM`: Arabic (Oman).
-`ar-QA`: Arabic (Qatar).
-`ar-SA`: Arabic (Saudi Arabia).
-`ar-PS`: Arabic (State of Palestine).
-`ar-SY`: Arabic (Syria).
-`ar-TN`: Arabic (Tunisia).
-`ar-AE`: Arabic (United Arab Emirates).
-`ar-YE`: Arabic (Yemen).
-`hy-AM`: Armenian (Armenia).
-`az-AZ`: Azerbaijani (Azerbaijan).
-`eu-ES`: Basque (Spain).
-`bn-BD`: Bengali (Bangladesh).
-`bn-IN`: Bengali (India).
-`bs-BA`: Bosnian (Bosnia and Herzegovina).
-`bg-BG`: Bulgarian (Bulgaria).
-`my-MM`: Burmese (Myanmar).
-`ca-ES`: Catalan (Spain).
-`hr-HR`: Croatian (Croatia).
-`cs-CZ`: Czech (Czech Republic).
-`da-DK`: Danish (Denmark).
-`nl-BE`: Dutch (Belgium).
-`nl-NL`: Dutch (Holland).
-`en-AU`: English (Australia).
-`en-CA`: English (Canada).
-`en-GH`: English (Ghana).
-`en-HK`: English (Hong Kong (China)).
-`en-IN`: English (India).
-`en-IE`: English (Ireland).
-`en-KE`: English (Kenya).
-`en-NZ`: English (New Zealand).
-`en-NG`: English (Nigeria).
-`en-PK`: English (Pakistan).
-`en-PH`: English (Philippines).
-`en-SG`: English (Singapore).
-`en-ZA`: English (South Africa).
-`en-TZ`: English (Tanzania).
-`en-GB`: English (UK).
-`en-US`: English (US).
-`et-EE`: Estonian (Estonia).
-`fil-PH`: Filipino (Philippines).
-`fi-FI`: Finnish (Finland).
-`fr-BE`: French (Belgium).
-`fr-CA`: French (Canada).
-`fr-FR`: French (France).
-`fr-CH`: French (Switzerland).
-`gl-ES`: Galician (Spain).
-`ka-GE`: Georgian (Georgia).
-`el-GR`: Greek (Greece).
-`gu-IN`: Gujarati (India).
-`iw-IL`: Hebrew (Israel).
-`hi-IN`: Hindi (India).
-`hu-HU`: Hungarian (Hungary).
-`is-IS`: Icelandic (Iceland).
-`id-ID`: Indonesian (Indonesia).
-`it-IT`: Italian (Italy).
-`it-CH`: Italian (Switzerland).
-`ja-JP`: Japanese (Japan).
-`jv-ID`: Javanese (Indonesia).
-`kn-IN`: Kannada (India).
-`kk-KZ`: Kazakh (Kazakhstan).
-`km-KH`: Khmer (Cambodia).
-`rw-RW`: Kinyarwanda (Rwanda).
-`ko-KR`: Korean (South Korea).
-`lo-LA`: Lao (Laos).
-`lv-LV`: Latvian (Latvia).
-`lt-LT`: Lithuanian (Lithuania).
-`mk-MK`: Macedonian (North Macedonia).
-`ms-MY`: Malay (Malaysia).
-`ml-IN`: Malayalam (India).
-`mr-IN`: Marathi (India).
-`mn-MN`: Mongolian (Mongolia).
-`ne-NP`: Nepali (Nepal).
-`no-NO`: Bokmål Norwegian (Norway).
-`fa-IR`: Persian (Iran).
-`pl-PL`: Polish (Poland).
-`pt-BR`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`ro-RO`: Romanian (Romania).
-`ru-RU`: Russian (Russia).
-`sr-RS`: Serbian (Serbia).
-`si-LK`: Sinhalese (Sri Lanka).
-`sk-SK`: Slovak (Slovakia).
-`sl-SI`: Slovenian (Slovenia).
-`st-ZA`: Sesotho (South Africa).
-`es-AR`: Spanish (Argentina).
-`es-BO`: Spanish (Bolivia).
-`es-CL`: Spanish (Chile).
-`es-CO`: Spanish (Colombia).
-`es-CR`: Spanish (Costa Rica).
-`es-DO`: Spanish (Dominican Republic).
-`es-EC`: Spanish (Ecuador).
-`es-SV`: Spanish (El Salvador).
-`es-GT`: Spanish (Guatemala).
-`es-HN`: Spanish (Honduras).
-`es-MX`: Spanish (Mexico).
-`es-NI`: Spanish (Nicaragua).
-`es-PA`: Spanish (Panama).
-`es-PY`: Spanish (Paraguay).
-`es-PE`: Spanish (Peru).
-`es-PR`: Spanish (Puerto Rico).
-`es-ES`: Spanish (Spain).
-`es-US`: Spanish (US).
-`es-UY`: Spanish (Uruguay).
-`es-VE`: Spanish (Venezuela).
-`su-ID`: Sundanese (Indonesia).
-`sw-KE`: Swahili (Kenya).
-`sw-TZ`: Swahili (Tanzania).
-`sv-SE`: Swedish (Sweden).
-`ta-IN`: Tamil (India).
-`ta-MY`: Tamil (Malaysia).
-`ta-SG`: Tamil (Singapore).
-`ta-LK`: Tamil (Sri Lanka).
-`te-IN`: Telugu (India).
-`th-TH`: Thai (Thailand).
-`ts-ZA`: Tsonga (South Africa).
-`tr-TR`: Turkish (Turkey).
-`uk-UA`: Ukrainian (Ukraine).
-`ur-IN`: Urdu (India).
-`ur-PK`: Urdu (Pakistan).
-`uz-UZ`: Uzbek (Uzbekistan).
-`ve-ZA`: Venda (South Africa).
-`vi-VN`: Vietnamese (Vietnam).
-`xh-ZA`: Xhosa (South Africa).
-`zu-ZA`: Zulu (South Africa).
-
+        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -51121,21 +50476,7 @@ ASR recognition and pure subtitle translation currently support the following la
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format:
-- Under the ASR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-     - Unspecified or left blank: no subtitle file generated.
-- Under the pure subtitle translation processing type:
-    - original: consistent with the source file.
-    - vtt: WebVTT format subtitle.
-    - srt: SRT format subtitle.
-- Under the OCR recognition and translation processing type:
-     - vtt: WebVTT format subtitle.
-     - srt: SRT format subtitle.
-**Note**:
-- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.
-- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.
+        r"""<p>Intelligent subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure caption translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, passing blank or unspecified is not allowed when translating at least 2 languages.</li><li>For pure caption translation and OCR recognition translation methods, passing blank or unspecified is not allowed.</li><li>For OCR type tasks, passing blank or unspecified is allowed when suppression is enabled.</li></ul>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -51147,10 +50488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranslateSwitch(self):
-        r"""Subtitle translation switch.
-`ON`: translation enabled.
-`OFF`: translation disabled.
-**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.
+        r"""<p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -51162,9 +50500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranslateDstLanguage(self):
-        r"""Target language for subtitle translation.
-This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.
-`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        r"""<p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -51176,8 +50512,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR hotword lexicon parameter.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>ASR hot word lexicon parameter</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -51188,7 +50524,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ExtInfo(self):
-        r"""Custom parameter.
+        r"""<p>Custom parameter</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -51199,11 +50535,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type:
-- 0: ASR recognition subtitle.
-- 1: pure subtitle translation.
-- 2: OCR recognition subtitle.
-**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.
+        r"""<p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :rtype: int
         """
         return self._ProcessType
@@ -51214,7 +50546,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Area configurations for the subtitle OCR extraction box</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -51222,6 +50555,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR).</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -51238,6 +50582,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52910,7 +52255,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -52939,7 +52284,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54113,17 +53458,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class SegmentRecognitionItem(AbstractModel):
-    r"""Smart segmentation clips.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Confidence.
+        :param _Confidence: 
         :type Confidence: float
-        :param _StartTimeOffset: Segment start time offset.
+        :param _StartTimeOffset: 
         :type StartTimeOffset: float
-        :param _EndTimeOffset: Segment end time offset.
+        :param _EndTimeOffset: 
         :type EndTimeOffset: float
         :param _SegmentUrl: Specifies the split segment URL.
         :type SegmentUrl: str
@@ -54156,7 +53501,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Confidence.
+        r"""
         :rtype: float
         """
         return self._Confidence
@@ -54167,7 +53512,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""Segment start time offset.
+        r"""
         :rtype: float
         """
         return self._StartTimeOffset
@@ -54178,7 +53523,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""Segment end time offset.
+        r"""
         :rtype: float
         """
         return self._EndTimeOffset
@@ -54646,70 +53991,30 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubtitleEraseMethod: Specifies the subtitle erasure method.
-**Automatic erasing:** automatically identifies subtitle text content in videos through AI models and performs seamless erasure to generate new videos. frame interference and unique subtitle styles may cause certain missed or incorrect erasures, which can be handled through specified area erasure.
-When using automatic erasure, if AutoAreas is not specified, the default region (lower middle of the frame) will be erased automatically. if AutoAreas is specified, it will change to erase the designated area.
-**Specified area erasing:** if your subtitle position is fixed, directly specify the erasure area to decrease the chance of removal omission to the maximum extent.
-When your choice is specified area erasure, please import at least one designated region in CustomAreas.
--Automated removal.
-- specifies the custom specified area erasure.
-
+        :param _SubtitleEraseMethod: <p>Subtitle erasure method.<br><strong>Automatic erasing:</strong> Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.<br>When using automatic erasing, if you do not specify AutoAreas, the default region (lower middle part of the frame) will be erased automatically. If AutoAreas is specified, the designated region will be erased instead.<br><strong>Specified area erasure:</strong> If your subtitle position is fixed, it is recommended to directly specify the erasure area to minimize missed erasures.<br>When choosing specified area erasure, please input at least one designated region in CustomAreas.</p><ul><li>auto: Automatic erasing</li><li>custom: Specified area erasure</li></ul>
         :type SubtitleEraseMethod: str
-        :param _SubtitleModel: Subtitle erasure model.
-**Standard version (recommend):** if your subtitle style is standard, normally recommend choose this version for better effectiveness with seamless detail.
-**Regional version:** if your subtitles have special styles such as italics, shadows, or motion effects, we recommend choosing the regional version for larger removal area, though the detail effect is not as good as the standard version.
--Specifies the standard model.
--area. specifies the regional model.
+        :param _SubtitleModel: <p>Subtitle erasure model.<br><strong>Standard version (recommended):</strong> If your subtitles have a standard style, it is usually recommended to select this version for better effectiveness in seamless detail removal.<br><strong>Area edition:</strong> If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.</p><ul><li>standard Standard model</li><li>area Regional model</li></ul>
         :type SubtitleModel: str
-        :param _OcrSwitch: Whether OCR subtitle extraction is enabled. default value: OFF.
-Supports enabling OCR subtitle extraction only when SubtitleEraseMethod is set to auto. when enabled, it identifies the longest and most stable text area within the region as the subtitle area, then performs text extraction and removal.
--ON: enable.
--OFF. specifies the disabled state.
+        :param _OcrSwitch: <p>Whether OCR subtitle extraction is enabled. The default value is OFF.<br>OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.</p><ul><li>ON Enable</li><li>OFF Disable</li></ul>
         :type OcrSwitch: str
-        :param _SubtitleLang: Subtitle language, for OCR guidance, default value zh_en. this parameter is valid only when OcrSwitch is ON.
--Chinese and english.
--multi other.
-Other supported languages:.
-Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnamese, malay, russian, italian, dutch, swedish, finnish, danish, norwegian, hungarian, thai, hindi, arabic, indian-bengali, indian-gujarati, indian-kannada, indian-malayalam, indian-tamil, indian-telugu, slovenian, polish, catalan, bosnian, czech, estonian, croatian, punjabi, marathi, azerbaijani, indonesian, luxembourgish, lithuanian, latvian, maltese, slovak, turkish, kazakh, greek, irish, belarusian, khmer, tagalog, pashto, persian, tajik.
-
-
+        :param _SubtitleLang: <p>Subtitle language, used to guide OCR recognition, default value is zh_en. This parameter is valid only when OcrSwitch is "ON".</p><ul><li>zh_en Chinese and English</li><li>multi other<br>The following languages are supported for recognition:<br>Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali, Gujarati, Kannada, Malayalam, Tamil, Telugu, Slovenian, Polish, Catalan, Bosnia, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijan, Indonesian, Luxembourg, Lithuanian, Latvian, Malta, Slovak, Turkish, Kazakh, Greek, Irish, Belarus, Khmer, Tagalog, Pashto, Persian, Tajikistan</li></ul>
         :type SubtitleLang: str
-        :param _SubtitleFormat: Specifies the subtitle file format. default value: vtt. this parameter is valid only when OcrSwitch is set to ON.
--srt format.
--vtt: WebVTT format.
+        :param _SubtitleFormat: <p>Subtitle file format. Default value is vtt. This parameter is valid only when OcrSwitch takes value "ON".</p><ul><li>srt srt format</li><li>vtt WebVTT format</li><li>When SubtitleEmbedId is filled, it can take value empty string, which means no subtitle file is output.</li></ul>
         :type SubtitleFormat: str
-        :param _TransSwitch: Specifies whether to enable subtitle translation. default value: OFF. this parameter is valid only when OcrSwitch is set to ON.
--ON: enable.
--OFF. specifies the disabled state.
+        :param _TransSwitch: <p>Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to "ON".</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
         :type TransSwitch: str
-        :param _TransDstLang: Subtitle target language. default value: en. this parameter is valid only when TransSwitch is set to ON.
-Supported languages:.
-Simplified chinese.
-Specifies the language. valid values: en (english).
-Ja: japanese.
-Ko: korean.
-Fr: french.
-es: spanish.
-It: italian.
-de: german.
-tr: turkish.
-Ru: russian.
-pt: portuguese.
-Vi: vietnamese.
-id: indonesian.
-ms: malay.
-Th: thai.
-Ar: arabic.
-hi: Hindi
+        :param _TransDstLang: <p>The target language for subtitle translation defaults to en. This parameter is valid only when TransSwitch is set to "ON".<br>The following languages are currently supported:<br>zh: Simplified Chinese<br>en: English<br>ja: Japanese<br>ko: Korean<br>fr: French<br>es: Spanish<br>it: Italian<br>de: German<br>tr: Turkish<br>ru: Russian<br>pt: Portuguese<br>vi: Vietnamese<br>id: Indonesian<br>ms: Malay<br>th: Thai<br>ar: Arabic<br>hi: Hindi</p>
         :type TransDstLang: str
-        :param _AutoAreas: Specifies automatic removal of a custom region.
-Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
-Note that this parameter will not take effect when the removal method is custom. for template modification, input [] to clean up the region. the template region information remains unchanged if not imported.
+        :param _AutoAreas: <p>Automatically erase custom regions.<br>For selected regions, use the AI model to automatically detect and erase existing targets.<br>Note: When the erase method is set to custom, this parameter will not take effect. To modify the template, input [] for region cleanup. If not provided, the template region information remains unchanged.</p>
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: Specifies erasure of a custom region.
-Detects and directly performs removal within a specified time range for the selected region.
-Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
+        :param _CustomAreas: <p>Designate the removal of custom regions.<br>For specified regions, directly perform erasure without detection and recognition within a selected time range.<br>Note: When modifying the template, import [] to clear regions. The template region information remains unchanged if not imported.</p>
         :type CustomAreas: list of EraseTimeArea
+        :param _SubtitleEmbedId: <p>Subtitle suppression template id. Only allowed to fill in when OCR translation is enabled.</p>
+        :type SubtitleEmbedId: int
+        :param _UseOriginalPos: <p>Suppression configuration, enabled by default, compresses subtitles back to their original position. It can be filled only when OCR translation is turned on. A value of 0 indicates disabled suppression.</p>
+        :type UseOriginalPos: int
+        :param _UseOriginalSize: <p>Suppression configuration, enabled by default. After being turned on, the original subtitle font size is used. It can only be filled when OCR translation is enabled. Setting it to 0 means non-use of the original font size.</p>
+        :type UseOriginalSize: int
         """
         self._SubtitleEraseMethod = None
         self._SubtitleModel = None
@@ -54720,17 +54025,13 @@ Note: when modifying the template, pass [] to clear the region. the template reg
         self._TransDstLang = None
         self._AutoAreas = None
         self._CustomAreas = None
+        self._SubtitleEmbedId = None
+        self._UseOriginalPos = None
+        self._UseOriginalSize = None
 
     @property
     def SubtitleEraseMethod(self):
-        r"""Specifies the subtitle erasure method.
-**Automatic erasing:** automatically identifies subtitle text content in videos through AI models and performs seamless erasure to generate new videos. frame interference and unique subtitle styles may cause certain missed or incorrect erasures, which can be handled through specified area erasure.
-When using automatic erasure, if AutoAreas is not specified, the default region (lower middle of the frame) will be erased automatically. if AutoAreas is specified, it will change to erase the designated area.
-**Specified area erasing:** if your subtitle position is fixed, directly specify the erasure area to decrease the chance of removal omission to the maximum extent.
-When your choice is specified area erasure, please import at least one designated region in CustomAreas.
--Automated removal.
-- specifies the custom specified area erasure.
-
+        r"""<p>Subtitle erasure method.<br><strong>Automatic erasing:</strong> Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.<br>When using automatic erasing, if you do not specify AutoAreas, the default region (lower middle part of the frame) will be erased automatically. If AutoAreas is specified, the designated region will be erased instead.<br><strong>Specified area erasure:</strong> If your subtitle position is fixed, it is recommended to directly specify the erasure area to minimize missed erasures.<br>When choosing specified area erasure, please input at least one designated region in CustomAreas.</p><ul><li>auto: Automatic erasing</li><li>custom: Specified area erasure</li></ul>
         :rtype: str
         """
         return self._SubtitleEraseMethod
@@ -54741,11 +54042,7 @@ When your choice is specified area erasure, please import at least one designate
 
     @property
     def SubtitleModel(self):
-        r"""Subtitle erasure model.
-**Standard version (recommend):** if your subtitle style is standard, normally recommend choose this version for better effectiveness with seamless detail.
-**Regional version:** if your subtitles have special styles such as italics, shadows, or motion effects, we recommend choosing the regional version for larger removal area, though the detail effect is not as good as the standard version.
--Specifies the standard model.
--area. specifies the regional model.
+        r"""<p>Subtitle erasure model.<br><strong>Standard version (recommended):</strong> If your subtitles have a standard style, it is usually recommended to select this version for better effectiveness in seamless detail removal.<br><strong>Area edition:</strong> If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.</p><ul><li>standard Standard model</li><li>area Regional model</li></ul>
         :rtype: str
         """
         return self._SubtitleModel
@@ -54756,10 +54053,7 @@ When your choice is specified area erasure, please import at least one designate
 
     @property
     def OcrSwitch(self):
-        r"""Whether OCR subtitle extraction is enabled. default value: OFF.
-Supports enabling OCR subtitle extraction only when SubtitleEraseMethod is set to auto. when enabled, it identifies the longest and most stable text area within the region as the subtitle area, then performs text extraction and removal.
--ON: enable.
--OFF. specifies the disabled state.
+        r"""<p>Whether OCR subtitle extraction is enabled. The default value is OFF.<br>OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.</p><ul><li>ON Enable</li><li>OFF Disable</li></ul>
         :rtype: str
         """
         return self._OcrSwitch
@@ -54770,13 +54064,7 @@ Supports enabling OCR subtitle extraction only when SubtitleEraseMethod is set t
 
     @property
     def SubtitleLang(self):
-        r"""Subtitle language, for OCR guidance, default value zh_en. this parameter is valid only when OcrSwitch is ON.
--Chinese and english.
--multi other.
-Other supported languages:.
-Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnamese, malay, russian, italian, dutch, swedish, finnish, danish, norwegian, hungarian, thai, hindi, arabic, indian-bengali, indian-gujarati, indian-kannada, indian-malayalam, indian-tamil, indian-telugu, slovenian, polish, catalan, bosnian, czech, estonian, croatian, punjabi, marathi, azerbaijani, indonesian, luxembourgish, lithuanian, latvian, maltese, slovak, turkish, kazakh, greek, irish, belarusian, khmer, tagalog, pashto, persian, tajik.
-
-
+        r"""<p>Subtitle language, used to guide OCR recognition, default value is zh_en. This parameter is valid only when OcrSwitch is "ON".</p><ul><li>zh_en Chinese and English</li><li>multi other<br>The following languages are supported for recognition:<br>Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali, Gujarati, Kannada, Malayalam, Tamil, Telugu, Slovenian, Polish, Catalan, Bosnia, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijan, Indonesian, Luxembourg, Lithuanian, Latvian, Malta, Slovak, Turkish, Kazakh, Greek, Irish, Belarus, Khmer, Tagalog, Pashto, Persian, Tajikistan</li></ul>
         :rtype: str
         """
         return self._SubtitleLang
@@ -54787,9 +54075,7 @@ Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnam
 
     @property
     def SubtitleFormat(self):
-        r"""Specifies the subtitle file format. default value: vtt. this parameter is valid only when OcrSwitch is set to ON.
--srt format.
--vtt: WebVTT format.
+        r"""<p>Subtitle file format. Default value is vtt. This parameter is valid only when OcrSwitch takes value "ON".</p><ul><li>srt srt format</li><li>vtt WebVTT format</li><li>When SubtitleEmbedId is filled, it can take value empty string, which means no subtitle file is output.</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -54800,9 +54086,7 @@ Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnam
 
     @property
     def TransSwitch(self):
-        r"""Specifies whether to enable subtitle translation. default value: OFF. this parameter is valid only when OcrSwitch is set to ON.
--ON: enable.
--OFF. specifies the disabled state.
+        r"""<p>Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to "ON".</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
         :rtype: str
         """
         return self._TransSwitch
@@ -54813,25 +54097,7 @@ Chinese, english, japanese, korean, spanish, french, german, portuguese, vietnam
 
     @property
     def TransDstLang(self):
-        r"""Subtitle target language. default value: en. this parameter is valid only when TransSwitch is set to ON.
-Supported languages:.
-Simplified chinese.
-Specifies the language. valid values: en (english).
-Ja: japanese.
-Ko: korean.
-Fr: french.
-es: spanish.
-It: italian.
-de: german.
-tr: turkish.
-Ru: russian.
-pt: portuguese.
-Vi: vietnamese.
-id: indonesian.
-ms: malay.
-Th: thai.
-Ar: arabic.
-hi: Hindi
+        r"""<p>The target language for subtitle translation defaults to en. This parameter is valid only when TransSwitch is set to "ON".<br>The following languages are currently supported:<br>zh: Simplified Chinese<br>en: English<br>ja: Japanese<br>ko: Korean<br>fr: French<br>es: Spanish<br>it: Italian<br>de: German<br>tr: Turkish<br>ru: Russian<br>pt: Portuguese<br>vi: Vietnamese<br>id: Indonesian<br>ms: Malay<br>th: Thai<br>ar: Arabic<br>hi: Hindi</p>
         :rtype: str
         """
         return self._TransDstLang
@@ -54842,9 +54108,7 @@ hi: Hindi
 
     @property
     def AutoAreas(self):
-        r"""Specifies automatic removal of a custom region.
-Specifies the use of an AI model to automatically detect and erase existing targets in the specified region.
-Note that this parameter will not take effect when the removal method is custom. for template modification, input [] to clean up the region. the template region information remains unchanged if not imported.
+        r"""<p>Automatically erase custom regions.<br>For selected regions, use the AI model to automatically detect and erase existing targets.<br>Note: When the erase method is set to custom, this parameter will not take effect. To modify the template, input [] for region cleanup. If not provided, the template region information remains unchanged.</p>
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -54855,9 +54119,7 @@ Note that this parameter will not take effect when the removal method is custom.
 
     @property
     def CustomAreas(self):
-        r"""Specifies erasure of a custom region.
-Detects and directly performs removal within a specified time range for the selected region.
-Note: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.
+        r"""<p>Designate the removal of custom regions.<br>For specified regions, directly perform erasure without detection and recognition within a selected time range.<br>Note: When modifying the template, import [] to clear regions. The template region information remains unchanged if not imported.</p>
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -54865,6 +54127,39 @@ Note: when modifying the template, pass [] to clear the region. the template reg
     @CustomAreas.setter
     def CustomAreas(self, CustomAreas):
         self._CustomAreas = CustomAreas
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>Subtitle suppression template id. Only allowed to fill in when OCR translation is enabled.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def UseOriginalPos(self):
+        r"""<p>Suppression configuration, enabled by default, compresses subtitles back to their original position. It can be filled only when OCR translation is turned on. A value of 0 indicates disabled suppression.</p>
+        :rtype: int
+        """
+        return self._UseOriginalPos
+
+    @UseOriginalPos.setter
+    def UseOriginalPos(self, UseOriginalPos):
+        self._UseOriginalPos = UseOriginalPos
+
+    @property
+    def UseOriginalSize(self):
+        r"""<p>Suppression configuration, enabled by default. After being turned on, the original subtitle font size is used. It can only be filled when OCR translation is enabled. Setting it to 0 means non-use of the original font size.</p>
+        :rtype: int
+        """
+        return self._UseOriginalSize
+
+    @UseOriginalSize.setter
+    def UseOriginalSize(self, UseOriginalSize):
+        self._UseOriginalSize = UseOriginalSize
 
 
     def _deserialize(self, params):
@@ -54887,6 +54182,9 @@ Note: when modifying the template, pass [] to clear the region. the template reg
                 obj = EraseTimeArea()
                 obj._deserialize(item)
                 self._CustomAreas.append(obj)
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._UseOriginalPos = params.get("UseOriginalPos")
+        self._UseOriginalSize = params.get("UseOriginalSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55030,7 +54328,7 @@ class SmartEraseTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -55069,7 +54367,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -55201,9 +54499,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ErasePrivacyConfig: Privacy protection configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
-        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _AliasName: Alias of the preset smart erasing template.
         :type AliasName: str
@@ -55318,7 +54616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -55329,7 +54627,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -55644,25 +54942,28 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: List of segments for full speech recognition.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SegmentSet: <p>List of segments for full speech recognition.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
-        :param _Path: Subtitle file path.
+        :param _Path: <p>Subtitle file path</p>
         :type Path: str
-        :param _SubtitlePath: Subtitle file path.
+        :param _SubtitlePath: <p>Subtitle file URL.</p>
         :type SubtitlePath: str
-        :param _OutputStorage: Subtitle file storage location.
+        :param _SubtitleInfo: <p>Subtitle recognition result info.</p>
+        :type SubtitleInfo: :class:`tencentcloud.mps.v20190612.models.SubtitleResult`
+        :param _OutputStorage: <p>Storage location of the subtitle file.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._Path = None
         self._SubtitlePath = None
+        self._SubtitleInfo = None
         self._OutputStorage = None
 
     @property
     def SegmentSet(self):
-        r"""List of segments for full speech recognition.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>List of segments for full speech recognition.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SmartSubtitleTaskAsrFullTextSegmentItem
         """
         return self._SegmentSet
@@ -55673,7 +54974,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Path(self):
-        r"""Subtitle file path.
+        r"""<p>Subtitle file path</p>
         :rtype: str
         """
         return self._Path
@@ -55684,7 +54985,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitlePath(self):
-        r"""Subtitle file path.
+        r"""<p>Subtitle file URL.</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -55694,8 +54995,19 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._SubtitlePath = SubtitlePath
 
     @property
+    def SubtitleInfo(self):
+        r"""<p>Subtitle recognition result info.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleResult`
+        """
+        return self._SubtitleInfo
+
+    @SubtitleInfo.setter
+    def SubtitleInfo(self, SubtitleInfo):
+        self._SubtitleInfo = SubtitleInfo
+
+    @property
     def OutputStorage(self):
-        r"""Subtitle file storage location.
+        r"""<p>Storage location of the subtitle file.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -55714,6 +55026,9 @@ Note: This field may return null, indicating that no valid value can be obtained
                 self._SegmentSet.append(obj)
         self._Path = params.get("Path")
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("SubtitleInfo") is not None:
+            self._SubtitleInfo = SubtitleResult()
+            self._SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -55975,7 +55290,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
         :type ErrCode: int
@@ -56011,7 +55326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -56164,13 +55479,13 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecognizeSubtitleResult: Subtitle recognition result.
+        :param _RecognizeSubtitleResult: <p>Subtitle recognition result</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecognizeSubtitleResult: list of SubtitleResult
-        :param _TransSubtitleResult: Subtitle translation result.
+        :param _TransSubtitleResult: <p>Translated subtitles</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransSubtitleResult: list of SubtitleResult
-        :param _OutputStorage: Storage location of the subtitle file.
+        :param _OutputStorage: <p>Storage location of the subtitle file</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -56180,7 +55495,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecognizeSubtitleResult(self):
-        r"""Subtitle recognition result.
+        r"""<p>Subtitle recognition result</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubtitleResult
         """
@@ -56192,7 +55507,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransSubtitleResult(self):
-        r"""Subtitle translation result.
+        r"""<p>Translated subtitles</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubtitleResult
         """
@@ -56204,7 +55519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Storage location of the subtitle file.
+        r"""<p>Storage location of the subtitle file</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -56384,16 +55699,16 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: List of segments for translation.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SegmentSet: <p>List of segments for translation.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
-        :param _SubtitlePath: Subtitle file path.
+        :param _SubtitlePath: <p>Subtitle file URL.</p>
         :type SubtitlePath: str
-        :param _OutputStorage: Subtitle file storage location.
+        :param _OutputStorage: <p>Smart subtitling result storage information.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Path: Subtitle file URL.
+        :param _Path: <p>Subtitle file path</p>
         :type Path: str
-        :param _SubtitleResults: Returned translation result during multilingual translation.	
+        :param _SubtitleResults: <p>Returned translation result during multilingual translation.</p>
         :type SubtitleResults: list of SubtitleTransResultItem
         """
         self._SegmentSet = None
@@ -56404,8 +55719,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSet(self):
-        r"""List of segments for translation.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>List of segments for translation.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SmartSubtitleTaskTransTextSegmentItem
         """
         return self._SegmentSet
@@ -56416,7 +55731,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitlePath(self):
-        r"""Subtitle file path.
+        r"""<p>Subtitle file URL.</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -56427,7 +55742,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OutputStorage(self):
-        r"""Subtitle file storage location.
+        r"""<p>Smart subtitling result storage information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -56438,7 +55753,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Path(self):
-        r"""Subtitle file URL.
+        r"""<p>Subtitle file path</p>
         :rtype: str
         """
         return self._Path
@@ -56449,7 +55764,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleResults(self):
-        r"""Returned translation result during multilingual translation.	
+        r"""<p>Returned translation result during multilingual translation.</p>
         :rtype: list of SubtitleTransResultItem
         """
         return self._SubtitleResults
@@ -56494,20 +55809,21 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :param _Confidence: <p>Confidence of a recognized segment. Value range: 0-100.</p>
         :type Confidence: float
-        :param _StartTimeOffset: Start time offset of a recognized segment, in seconds.
+        :param _StartTimeOffset: <p>Start time offset of a recognized segment, in seconds.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of a recognized segment, in seconds.
+        :param _EndTimeOffset: <p>End time offset of a recognized segment, in seconds.</p>
         :type EndTimeOffset: float
-        :param _Text: Recognized text.
+        :param _Text: <p>Recognized text.</p>
         :type Text: str
-        :param _Trans: Translated text.
+        :param _Trans: <p>Translated text.</p>
         :type Trans: str
-        :param _Wordlist: Word timestamp information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Wordlist: <p>Word timestamp information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Wordlist: list of WordResult
+        :param _SpeakerId: <p>Speaker ID (if speaker recognition is enabled)</p>
+        :type SpeakerId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -56515,10 +55831,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Text = None
         self._Trans = None
         self._Wordlist = None
+        self._SpeakerId = None
 
     @property
     def Confidence(self):
-        r"""Confidence of a recognized segment. Value range: 0-100.
+        r"""<p>Confidence of a recognized segment. Value range: 0-100.</p>
         :rtype: float
         """
         return self._Confidence
@@ -56529,7 +55846,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTimeOffset(self):
-        r"""Start time offset of a recognized segment, in seconds.
+        r"""<p>Start time offset of a recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -56540,7 +55857,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of a recognized segment, in seconds.
+        r"""<p>End time offset of a recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -56551,7 +55868,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Text(self):
-        r"""Recognized text.
+        r"""<p>Recognized text.</p>
         :rtype: str
         """
         return self._Text
@@ -56562,7 +55879,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Trans(self):
-        r"""Translated text.
+        r"""<p>Translated text.</p>
         :rtype: str
         """
         return self._Trans
@@ -56573,9 +55890,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Wordlist(self):
-        r"""Word timestamp information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Word timestamp information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -56583,6 +55899,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @Wordlist.setter
     def Wordlist(self, Wordlist):
         self._Wordlist = Wordlist
+
+    @property
+    def SpeakerId(self):
+        r"""<p>Speaker ID (if speaker recognition is enabled)</p>
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
 
 
     def _deserialize(self, params):
@@ -56597,6 +55924,7 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        self._SpeakerId = params.get("SpeakerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57147,7 +56475,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -57215,7 +56543,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def OutputObjectPath(self):
         r"""Output path of the generated subtitle file, which can be a relative or absolute path.
-To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
 
 Relative path example:
  - File name_{variable name}.{format}.
@@ -57821,6 +57149,895 @@ preset1: use different keys for each substream
         
 
 
+class SubtitleBoardConfig(AbstractModel):
+    r"""Subtitle suppression module background settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleBoardConfigSwitch: Subtitle suppression module background configuration switch, 0 for off, 1 for on, default 0
+        :type SubtitleBoardConfigSwitch: int
+        :param _BoardX: Subtitle background base plate x-axis coordinate position; Supports pixel and percentage format:
+
+- Pixel: Npx. Value range of N: [-4096,4096].
+-Percentage: N%, N range: [-100,100]. For example, 10% means the X-coordinate of the subtitle background base plate is 10% of the source video width.
+
+Default value: 0px.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle base plate is at the bottom of the central axis, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :type BoardX: int
+        :param _BoardXUnit: BoardX unit, 0 pixel, 1 percentage, default is 0, pixel
+        :type BoardXUnit: int
+        :param _BoardY: Subtitle background base plate y-axis coordinate position; Supports pixel and percentage format:
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, where N ranges from [0,100]. For example, 10% means the y-coordinate of the subtitle background base plate equals 10% of the video height.
+
+If this parameter is not specified, the subtitle background is disabled.
+Note: The origin point of the coordinate axis is located at the bottom of the central axis of the source video, and the benchmark of the subtitle background base plate is at the bottom of its central axis. See the following diagram.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :type BoardY: int
+        :param _BoardYUnit: BoardY unit, 0 pixel, 1 percentage, default is 0, pixel
+        :type BoardYUnit: int
+        :param _BoardWidth: Background width. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If the base plate is enabled and this parameter is not specified, the default width is 90% of the source video width.
+
+        :type BoardWidth: int
+        :param _BoardWidthUnit: Background width measurement unit. 0: pixel, 1: percentage. Default is 0 (pixel).
+
+        :type BoardWidthUnit: int
+        :param _BoardHeight: Background height. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If the base plate is enabled and this parameter is not specified, the default height is 15% of the source video height.
+
+        :type BoardHeight: int
+        :param _BoardHeightUnit: Base plate height unit, 0 pixel, 1 percentage, defaults to 0, pixel
+
+        :type BoardHeightUnit: int
+        :param _BoardColor: Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
+        :type BoardColor: str
+        :param _BoardAlpha: Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
+        :type BoardAlpha: float
+        """
+        self._SubtitleBoardConfigSwitch = None
+        self._BoardX = None
+        self._BoardXUnit = None
+        self._BoardY = None
+        self._BoardYUnit = None
+        self._BoardWidth = None
+        self._BoardWidthUnit = None
+        self._BoardHeight = None
+        self._BoardHeightUnit = None
+        self._BoardColor = None
+        self._BoardAlpha = None
+
+    @property
+    def SubtitleBoardConfigSwitch(self):
+        r"""Subtitle suppression module background configuration switch, 0 for off, 1 for on, default 0
+        :rtype: int
+        """
+        return self._SubtitleBoardConfigSwitch
+
+    @SubtitleBoardConfigSwitch.setter
+    def SubtitleBoardConfigSwitch(self, SubtitleBoardConfigSwitch):
+        self._SubtitleBoardConfigSwitch = SubtitleBoardConfigSwitch
+
+    @property
+    def BoardX(self):
+        r"""Subtitle background base plate x-axis coordinate position; Supports pixel and percentage format:
+
+- Pixel: Npx. Value range of N: [-4096,4096].
+-Percentage: N%, N range: [-100,100]. For example, 10% means the X-coordinate of the subtitle background base plate is 10% of the source video width.
+
+Default value: 0px.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle base plate is at the bottom of the central axis, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :rtype: int
+        """
+        return self._BoardX
+
+    @BoardX.setter
+    def BoardX(self, BoardX):
+        self._BoardX = BoardX
+
+    @property
+    def BoardXUnit(self):
+        r"""BoardX unit, 0 pixel, 1 percentage, default is 0, pixel
+        :rtype: int
+        """
+        return self._BoardXUnit
+
+    @BoardXUnit.setter
+    def BoardXUnit(self, BoardXUnit):
+        self._BoardXUnit = BoardXUnit
+
+    @property
+    def BoardY(self):
+        r"""Subtitle background base plate y-axis coordinate position; Supports pixel and percentage format:
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, where N ranges from [0,100]. For example, 10% means the y-coordinate of the subtitle background base plate equals 10% of the video height.
+
+If this parameter is not specified, the subtitle background is disabled.
+Note: The origin point of the coordinate axis is located at the bottom of the central axis of the source video, and the benchmark of the subtitle background base plate is at the bottom of its central axis. See the following diagram.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :rtype: int
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardYUnit(self):
+        r"""BoardY unit, 0 pixel, 1 percentage, default is 0, pixel
+        :rtype: int
+        """
+        return self._BoardYUnit
+
+    @BoardYUnit.setter
+    def BoardYUnit(self, BoardYUnit):
+        self._BoardYUnit = BoardYUnit
+
+    @property
+    def BoardWidth(self):
+        r"""Background width. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If the base plate is enabled and this parameter is not specified, the default width is 90% of the source video width.
+
+        :rtype: int
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardWidthUnit(self):
+        r"""Background width measurement unit. 0: pixel, 1: percentage. Default is 0 (pixel).
+
+        :rtype: int
+        """
+        return self._BoardWidthUnit
+
+    @BoardWidthUnit.setter
+    def BoardWidthUnit(self, BoardWidthUnit):
+        self._BoardWidthUnit = BoardWidthUnit
+
+    @property
+    def BoardHeight(self):
+        r"""Background height. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If the base plate is enabled and this parameter is not specified, the default height is 15% of the source video height.
+
+        :rtype: int
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardHeightUnit(self):
+        r"""Base plate height unit, 0 pixel, 1 percentage, defaults to 0, pixel
+
+        :rtype: int
+        """
+        return self._BoardHeightUnit
+
+    @BoardHeightUnit.setter
+    def BoardHeightUnit(self, BoardHeightUnit):
+        self._BoardHeightUnit = BoardHeightUnit
+
+    @property
+    def BoardColor(self):
+        r"""Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        r"""Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleBoardConfigSwitch = params.get("SubtitleBoardConfigSwitch")
+        self._BoardX = params.get("BoardX")
+        self._BoardXUnit = params.get("BoardXUnit")
+        self._BoardY = params.get("BoardY")
+        self._BoardYUnit = params.get("BoardYUnit")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardWidthUnit = params.get("BoardWidthUnit")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardHeightUnit = params.get("BoardHeightUnit")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleEmbedConfig(AbstractModel):
+    r"""Subtitle suppression module settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FontType: <p>Font type, supports:</p><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li>Default: hei.ttf Heiti.<br>Note:<li>KaiTi is recommended for use with kai.ttf</li><li>FontPath takes precedence when filled</li>
+        :type FontType: str
+        :param _FontPath: <p>Custom font file url address, either this or CosInputInfo</p>
+        :type FontPath: str
+        :param _CosInputInfo: <p>Custom font file cos bucket address</p>
+        :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        :param _FontSize: <p>Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:</p><ul><li>Pixel: Npx, where N ranges from (0,4096].</li><li>Percentage: N%, where N ranges from (0,100]. For example, 10% means the subtitle font size equals 10% of the source video height.</li></ul><p>If left blank and the subtitle file has no settings, the default is 5% of the source video height.</p>
+        :type FontSize: int
+        :param _FontSizeUnit: <p>FontSize unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :type FontSizeUnit: int
+        :param _FontColor: <p>Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).</p>
+        :type FontColor: str
+        :param _FontAlpha: <p>Text opacity, value ranges from 0 to 1.</p><li>0: completely transparent</li><li>1: completely opaque</li>Default value: 1.
+        :type FontAlpha: float
+        :param _PosX: <p>The X-coordinate position of subtitles. Specifying this parameter will ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [-4096, 4096].</li><li>Percentage: N%, where N ranges from [-100, 100]; for example, 10% means the X-coordinate of the subtitle equals 10% of the source video width.</li></ul><p>Default value: 0px.<br>Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below:<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosX: int
+        :param _PosXUnit: <p>PosX unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :type PosXUnit: int
+        :param _PosY: <p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10% * source video height.</li></ul><p>Default value: source video height * 4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosY: int
+        :param _PosYUnit: <p>PosY measurement unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :type PosYUnit: int
+        :param _SubtitleBoardConfig: <p>Background configuration</p>
+        :type SubtitleBoardConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleBoardConfig`
+        :param _SubtitleLayoutConfig: <p>Column configuration</p>
+        :type SubtitleLayoutConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleLayoutConfig`
+        :param _SubtitleOutlineConfig: <p>Text stroke configuration</p>
+        :type SubtitleOutlineConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleOutlineConfig`
+        :param _SubtitleShadowConfig: <p>Text shadow configuration</p>
+        :type SubtitleShadowConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleShadowConfig`
+        :param _SampleWidth: <p>Width of the source video dimensions, in pixels</p>
+        :type SampleWidth: int
+        :param _SampleHeight: <p>Height of the source video dimensions, in unit pixel</p>
+        :type SampleHeight: int
+        """
+        self._FontType = None
+        self._FontPath = None
+        self._CosInputInfo = None
+        self._FontSize = None
+        self._FontSizeUnit = None
+        self._FontColor = None
+        self._FontAlpha = None
+        self._PosX = None
+        self._PosXUnit = None
+        self._PosY = None
+        self._PosYUnit = None
+        self._SubtitleBoardConfig = None
+        self._SubtitleLayoutConfig = None
+        self._SubtitleOutlineConfig = None
+        self._SubtitleShadowConfig = None
+        self._SampleWidth = None
+        self._SampleHeight = None
+
+    @property
+    def FontType(self):
+        r"""<p>Font type, supports:</p><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li>Default: hei.ttf Heiti.<br>Note:<li>KaiTi is recommended for use with kai.ttf</li><li>FontPath takes precedence when filled</li>
+        :rtype: str
+        """
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontPath(self):
+        r"""<p>Custom font file url address, either this or CosInputInfo</p>
+        :rtype: str
+        """
+        return self._FontPath
+
+    @FontPath.setter
+    def FontPath(self, FontPath):
+        self._FontPath = FontPath
+
+    @property
+    def CosInputInfo(self):
+        r"""<p>Custom font file cos bucket address</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        """
+        return self._CosInputInfo
+
+    @CosInputInfo.setter
+    def CosInputInfo(self, CosInputInfo):
+        self._CosInputInfo = CosInputInfo
+
+    @property
+    def FontSize(self):
+        r"""<p>Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:</p><ul><li>Pixel: Npx, where N ranges from (0,4096].</li><li>Percentage: N%, where N ranges from (0,100]. For example, 10% means the subtitle font size equals 10% of the source video height.</li></ul><p>If left blank and the subtitle file has no settings, the default is 5% of the source video height.</p>
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontSizeUnit(self):
+        r"""<p>FontSize unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :rtype: int
+        """
+        return self._FontSizeUnit
+
+    @FontSizeUnit.setter
+    def FontSizeUnit(self, FontSizeUnit):
+        self._FontSizeUnit = FontSizeUnit
+
+    @property
+    def FontColor(self):
+        r"""<p>Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).</p>
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlpha(self):
+        r"""<p>Text opacity, value ranges from 0 to 1.</p><li>0: completely transparent</li><li>1: completely opaque</li>Default value: 1.
+        :rtype: float
+        """
+        return self._FontAlpha
+
+    @FontAlpha.setter
+    def FontAlpha(self, FontAlpha):
+        self._FontAlpha = FontAlpha
+
+    @property
+    def PosX(self):
+        r"""<p>The X-coordinate position of subtitles. Specifying this parameter will ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [-4096, 4096].</li><li>Percentage: N%, where N ranges from [-100, 100]; for example, 10% means the X-coordinate of the subtitle equals 10% of the source video width.</li></ul><p>Default value: 0px.<br>Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below:<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosX
+
+    @PosX.setter
+    def PosX(self, PosX):
+        self._PosX = PosX
+
+    @property
+    def PosXUnit(self):
+        r"""<p>PosX unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :rtype: int
+        """
+        return self._PosXUnit
+
+    @PosXUnit.setter
+    def PosXUnit(self, PosXUnit):
+        self._PosXUnit = PosXUnit
+
+    @property
+    def PosY(self):
+        r"""<p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10% * source video height.</li></ul><p>Default value: source video height * 4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosY
+
+    @PosY.setter
+    def PosY(self, PosY):
+        self._PosY = PosY
+
+    @property
+    def PosYUnit(self):
+        r"""<p>PosY measurement unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :rtype: int
+        """
+        return self._PosYUnit
+
+    @PosYUnit.setter
+    def PosYUnit(self, PosYUnit):
+        self._PosYUnit = PosYUnit
+
+    @property
+    def SubtitleBoardConfig(self):
+        r"""<p>Background configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleBoardConfig`
+        """
+        return self._SubtitleBoardConfig
+
+    @SubtitleBoardConfig.setter
+    def SubtitleBoardConfig(self, SubtitleBoardConfig):
+        self._SubtitleBoardConfig = SubtitleBoardConfig
+
+    @property
+    def SubtitleLayoutConfig(self):
+        r"""<p>Column configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleLayoutConfig`
+        """
+        return self._SubtitleLayoutConfig
+
+    @SubtitleLayoutConfig.setter
+    def SubtitleLayoutConfig(self, SubtitleLayoutConfig):
+        self._SubtitleLayoutConfig = SubtitleLayoutConfig
+
+    @property
+    def SubtitleOutlineConfig(self):
+        r"""<p>Text stroke configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleOutlineConfig`
+        """
+        return self._SubtitleOutlineConfig
+
+    @SubtitleOutlineConfig.setter
+    def SubtitleOutlineConfig(self, SubtitleOutlineConfig):
+        self._SubtitleOutlineConfig = SubtitleOutlineConfig
+
+    @property
+    def SubtitleShadowConfig(self):
+        r"""<p>Text shadow configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleShadowConfig`
+        """
+        return self._SubtitleShadowConfig
+
+    @SubtitleShadowConfig.setter
+    def SubtitleShadowConfig(self, SubtitleShadowConfig):
+        self._SubtitleShadowConfig = SubtitleShadowConfig
+
+    @property
+    def SampleWidth(self):
+        r"""<p>Width of the source video dimensions, in pixels</p>
+        :rtype: int
+        """
+        return self._SampleWidth
+
+    @SampleWidth.setter
+    def SampleWidth(self, SampleWidth):
+        self._SampleWidth = SampleWidth
+
+    @property
+    def SampleHeight(self):
+        r"""<p>Height of the source video dimensions, in unit pixel</p>
+        :rtype: int
+        """
+        return self._SampleHeight
+
+    @SampleHeight.setter
+    def SampleHeight(self, SampleHeight):
+        self._SampleHeight = SampleHeight
+
+
+    def _deserialize(self, params):
+        self._FontType = params.get("FontType")
+        self._FontPath = params.get("FontPath")
+        if params.get("CosInputInfo") is not None:
+            self._CosInputInfo = CosInputInfo()
+            self._CosInputInfo._deserialize(params.get("CosInputInfo"))
+        self._FontSize = params.get("FontSize")
+        self._FontSizeUnit = params.get("FontSizeUnit")
+        self._FontColor = params.get("FontColor")
+        self._FontAlpha = params.get("FontAlpha")
+        self._PosX = params.get("PosX")
+        self._PosXUnit = params.get("PosXUnit")
+        self._PosY = params.get("PosY")
+        self._PosYUnit = params.get("PosYUnit")
+        if params.get("SubtitleBoardConfig") is not None:
+            self._SubtitleBoardConfig = SubtitleBoardConfig()
+            self._SubtitleBoardConfig._deserialize(params.get("SubtitleBoardConfig"))
+        if params.get("SubtitleLayoutConfig") is not None:
+            self._SubtitleLayoutConfig = SubtitleLayoutConfig()
+            self._SubtitleLayoutConfig._deserialize(params.get("SubtitleLayoutConfig"))
+        if params.get("SubtitleOutlineConfig") is not None:
+            self._SubtitleOutlineConfig = SubtitleOutlineConfig()
+            self._SubtitleOutlineConfig._deserialize(params.get("SubtitleOutlineConfig"))
+        if params.get("SubtitleShadowConfig") is not None:
+            self._SubtitleShadowConfig = SubtitleShadowConfig()
+            self._SubtitleShadowConfig._deserialize(params.get("SubtitleShadowConfig"))
+        self._SampleWidth = params.get("SampleWidth")
+        self._SampleHeight = params.get("SampleHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleEmbedTemplateItem(AbstractModel):
+    r"""Subtitle suppression template details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the subtitle suppression template
+        :type Definition: int
+        :param _Name: Subtitle suppression template name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Comment: Subtitle suppression template description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Comment: str
+        :param _Type: Template type. Valid values:
+* Preset: system preset template
+* Custom: user-defined template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _DeleteTag: Deletion mark. 0 Not deleted. 1 Deleted.
+        :type DeleteTag: int
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
+        :param _SubtitleEmbedConfig: Subtitle suppression module settings
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        :param _AliasName: Subtitle suppression template English name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AliasName: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._DeleteTag = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubtitleEmbedConfig = None
+        self._AliasName = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the subtitle suppression template
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""Subtitle suppression template name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Subtitle suppression template description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""Template type. Valid values:
+* Preset: system preset template
+* Custom: user-defined template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DeleteTag(self):
+        r"""Deletion mark. 0 Not deleted. 1 Deleted.
+        :rtype: int
+        """
+        return self._DeleteTag
+
+    @DeleteTag.setter
+    def DeleteTag(self, DeleteTag):
+        self._DeleteTag = DeleteTag
+
+    @property
+    def CreateTime(self):
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""Subtitle suppression module settings
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+    @property
+    def AliasName(self):
+        r"""Subtitle suppression template English name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._DeleteTag = params.get("DeleteTag")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleLayoutConfig(AbstractModel):
+    r"""Subtitle suppression module column configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleLayoutConfigSwitch: Subtitle arrangement configuration switch, 0 for off, 1 for on, default 0
+        :type SubtitleLayoutConfigSwitch: int
+        :param _LineSpacing: Line spacing. The value should be a positive integer.
+-Value range for pixels: [0, 1000].
+- Value range for percentages: [0, 100]. If this is not specified, the default value is 0.
+
+        :type LineSpacing: int
+        :param _LineSpacingUnit: LineSpacing unit, 0 pixel, 1 percentage, defaults to 0, pixel
+
+        :type LineSpacingUnit: int
+        :param _Alignment: Alignment mode. Valid values: top: The top position of the subtitle is fixed, while the bottom position changes according to the line count. bottom: The bottom position of the subtitle is fixed, while the top position changes according to the line count. If this is not specified, bottom alignment is used by default.
+
+        :type Alignment: str
+        """
+        self._SubtitleLayoutConfigSwitch = None
+        self._LineSpacing = None
+        self._LineSpacingUnit = None
+        self._Alignment = None
+
+    @property
+    def SubtitleLayoutConfigSwitch(self):
+        r"""Subtitle arrangement configuration switch, 0 for off, 1 for on, default 0
+        :rtype: int
+        """
+        return self._SubtitleLayoutConfigSwitch
+
+    @SubtitleLayoutConfigSwitch.setter
+    def SubtitleLayoutConfigSwitch(self, SubtitleLayoutConfigSwitch):
+        self._SubtitleLayoutConfigSwitch = SubtitleLayoutConfigSwitch
+
+    @property
+    def LineSpacing(self):
+        r"""Line spacing. The value should be a positive integer.
+-Value range for pixels: [0, 1000].
+- Value range for percentages: [0, 100]. If this is not specified, the default value is 0.
+
+        :rtype: int
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def LineSpacingUnit(self):
+        r"""LineSpacing unit, 0 pixel, 1 percentage, defaults to 0, pixel
+
+        :rtype: int
+        """
+        return self._LineSpacingUnit
+
+    @LineSpacingUnit.setter
+    def LineSpacingUnit(self, LineSpacingUnit):
+        self._LineSpacingUnit = LineSpacingUnit
+
+    @property
+    def Alignment(self):
+        r"""Alignment mode. Valid values: top: The top position of the subtitle is fixed, while the bottom position changes according to the line count. bottom: The bottom position of the subtitle is fixed, while the top position changes according to the line count. If this is not specified, bottom alignment is used by default.
+
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
+
+    def _deserialize(self, params):
+        self._SubtitleLayoutConfigSwitch = params.get("SubtitleLayoutConfigSwitch")
+        self._LineSpacing = params.get("LineSpacing")
+        self._LineSpacingUnit = params.get("LineSpacingUnit")
+        self._Alignment = params.get("Alignment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleOutlineConfig(AbstractModel):
+    r"""Subtitle suppression module text stroke configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleOutlineConfigSwitch: <p>Text stroke configuration switch, 0 for off, 1 for on, default 0</p>
+        :type SubtitleOutlineConfigSwitch: int
+        :param _OutlineWidth: <p>Stroke width, default unit pixel, underlying default value is 0.3% of the source video height</p>
+        :type OutlineWidth: float
+        :param _OutlineWidthUnit: <p>Stroke width unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :type OutlineWidthUnit: int
+        :param _OutlineColor: <p>Border color. 6-digit base 16 RGB. Black by default if left blank.</p>
+        :type OutlineColor: str
+        :param _OutlineAlpha: <p>Stroke transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque.</p>
+        :type OutlineAlpha: float
+        """
+        self._SubtitleOutlineConfigSwitch = None
+        self._OutlineWidth = None
+        self._OutlineWidthUnit = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+
+    @property
+    def SubtitleOutlineConfigSwitch(self):
+        r"""<p>Text stroke configuration switch, 0 for off, 1 for on, default 0</p>
+        :rtype: int
+        """
+        return self._SubtitleOutlineConfigSwitch
+
+    @SubtitleOutlineConfigSwitch.setter
+    def SubtitleOutlineConfigSwitch(self, SubtitleOutlineConfigSwitch):
+        self._SubtitleOutlineConfigSwitch = SubtitleOutlineConfigSwitch
+
+    @property
+    def OutlineWidth(self):
+        r"""<p>Stroke width, default unit pixel, underlying default value is 0.3% of the source video height</p>
+        :rtype: float
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineWidthUnit(self):
+        r"""<p>Stroke width unit, 0 pixel, 1 percentage, defaults to 0, pixel</p>
+        :rtype: int
+        """
+        return self._OutlineWidthUnit
+
+    @OutlineWidthUnit.setter
+    def OutlineWidthUnit(self, OutlineWidthUnit):
+        self._OutlineWidthUnit = OutlineWidthUnit
+
+    @property
+    def OutlineColor(self):
+        r"""<p>Border color. 6-digit base 16 RGB. Black by default if left blank.</p>
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        r"""<p>Stroke transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque.</p>
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleOutlineConfigSwitch = params.get("SubtitleOutlineConfigSwitch")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineWidthUnit = params.get("OutlineWidthUnit")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubtitlePosition(AbstractModel):
     r"""Subtitle position information.
 
@@ -57864,20 +58081,23 @@ class SubtitleResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Language: Language of the subtitle file.
+        :param _Language: <p>Language of the subtitle file</p>
         :type Language: str
-        :param _Status: Whether the processing is successful.
+        :param _Status: <p>Whether the processing is successful.</p>
         :type Status: str
-        :param _Path: Subtitle file URL.
+        :param _Path: <p>Subtitle file path</p>
         :type Path: str
+        :param _SubtitleEmbedPath: <p>Subtitle suppression video path.</p>
+        :type SubtitleEmbedPath: str
         """
         self._Language = None
         self._Status = None
         self._Path = None
+        self._SubtitleEmbedPath = None
 
     @property
     def Language(self):
-        r"""Language of the subtitle file.
+        r"""<p>Language of the subtitle file</p>
         :rtype: str
         """
         return self._Language
@@ -57888,7 +58108,7 @@ class SubtitleResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Whether the processing is successful.
+        r"""<p>Whether the processing is successful.</p>
         :rtype: str
         """
         return self._Status
@@ -57899,7 +58119,7 @@ class SubtitleResult(AbstractModel):
 
     @property
     def Path(self):
-        r"""Subtitle file URL.
+        r"""<p>Subtitle file path</p>
         :rtype: str
         """
         return self._Path
@@ -57908,11 +58128,127 @@ class SubtitleResult(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def SubtitleEmbedPath(self):
+        r"""<p>Subtitle suppression video path.</p>
+        :rtype: str
+        """
+        return self._SubtitleEmbedPath
+
+    @SubtitleEmbedPath.setter
+    def SubtitleEmbedPath(self, SubtitleEmbedPath):
+        self._SubtitleEmbedPath = SubtitleEmbedPath
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._Status = params.get("Status")
         self._Path = params.get("Path")
+        self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleShadowConfig(AbstractModel):
+    r"""Subtitle suppression module text shadow configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleShadowConfigSwitch: Text shadow configuration switch, 0 for off, 1 for on, default 0
+        :type SubtitleShadowConfigSwitch: int
+        :param _ShadowWidth: Shadow width, default unit pixel, underlying default value 0, no shading
+
+        :type ShadowWidth: float
+        :param _ShadowWidthUnit: Shadow width unit. 0 for pixel, 1 for percentage. Default is 0 (pixel).
+
+        :type ShadowWidthUnit: int
+        :param _ShadowColor: Shadow color. 6-digit base 16 RGB. Black by default if left blank (has set shadow in the current situation).
+
+        :type ShadowColor: str
+        :param _ShadowAlpha: Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque (with shadow configured).
+
+        :type ShadowAlpha: float
+        """
+        self._SubtitleShadowConfigSwitch = None
+        self._ShadowWidth = None
+        self._ShadowWidthUnit = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+
+    @property
+    def SubtitleShadowConfigSwitch(self):
+        r"""Text shadow configuration switch, 0 for off, 1 for on, default 0
+        :rtype: int
+        """
+        return self._SubtitleShadowConfigSwitch
+
+    @SubtitleShadowConfigSwitch.setter
+    def SubtitleShadowConfigSwitch(self, SubtitleShadowConfigSwitch):
+        self._SubtitleShadowConfigSwitch = SubtitleShadowConfigSwitch
+
+    @property
+    def ShadowWidth(self):
+        r"""Shadow width, default unit pixel, underlying default value 0, no shading
+
+        :rtype: float
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowWidthUnit(self):
+        r"""Shadow width unit. 0 for pixel, 1 for percentage. Default is 0 (pixel).
+
+        :rtype: int
+        """
+        return self._ShadowWidthUnit
+
+    @ShadowWidthUnit.setter
+    def ShadowWidthUnit(self, ShadowWidthUnit):
+        self._ShadowWidthUnit = ShadowWidthUnit
+
+    @property
+    def ShadowColor(self):
+        r"""Shadow color. 6-digit base 16 RGB. Black by default if left blank (has set shadow in the current situation).
+
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        r"""Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque (with shadow configured).
+
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleShadowConfigSwitch = params.get("SubtitleShadowConfigSwitch")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowWidthUnit = params.get("ShadowWidthUnit")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57947,23 +58283,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
         :type FontFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontType: Font type. Valid values:
-<li>hei.ttf: SimHei.</li>
+<li>hei.ttf: SimHei</li>
 <li>song.ttf: SimSun.</li>
-<li>kai.ttf (recommend) or simkai.ttf: SimKai.</li>
+<li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
 <li>msyh.ttf: Microsoft YaHei.</li>
 <li>msyhbd.ttf: Microsoft YaHei Bold.</li>
 <li>hkjgt.ttf: DynaFont King Gothic.</li>
 <li>dhttx.ttf: DianHei Extra Light.</li>
 <li>xqgdzt.ttf: XiQue GuZiDian.</li>
-<li>qpcyt.ttf: QiaoPin ChaoYuan.</li>
+<li>qpcyt.ttf: Smart Splice Super Round Body</li>
 <li>arial.ttf: English only.</li>
-<li>dinalternate.ttf: DIN Alternate Bold.</li>
-<li>helveticalt.ttf: Helvetica.</li>
-<li>helveticains.ttf: Helvetica Inserat.</li>
-<li>trajanpro.ttf: TrajanPro-Bold.</li>
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
 <li>korean.ttf: Korean.</li>
 <li>japanese.ttf: Japanese.</li>
 <li>thai.ttf: Thai.</li>
+<li>roboto.ttf:Roboto</li>
+<li>notosans.ttf:NotoSans</li>
+<li>notosansthai.ttf: Thai NotoSansThai</li>
+<li>sarabun.ttf: Thai Sarabun</li>
+<li>kanit.ttf: Thai Kanit</li>
+<li>charmonman.ttf: Thai Charmonman.</li>
+<li>notonaskharabic.ttf: Arabic NotoNaskhArabic.</li>
+<li>notosansdevanagari.ttf: NotoSansDevanagari for India.</li>
+<li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li>
+<li>notosanskr.ttf: Korean NotoSansKR.</li>
+<li>gothica1.ttf: Korean GothicA1.</li>
+<li>nanummyeongjo.ttf: Korean NanumMyeongjo.</li>
+<li>notosansjp.ttf: Japanese NotoSansJP.</li>
+<li>notoserifjp.ttf: Japanese NotoSerifJP.</li>
+<li>shipporimincho.ttf: Japanese ShipporiMincho.</li>
 Default value: hei.ttf.
 <br>Note:
 <li>kai.ttf is recommended for SimKai.</li>
@@ -58166,23 +58517,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def FontType(self):
         r"""Font type. Valid values:
-<li>hei.ttf: SimHei.</li>
+<li>hei.ttf: SimHei</li>
 <li>song.ttf: SimSun.</li>
-<li>kai.ttf (recommend) or simkai.ttf: SimKai.</li>
+<li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
 <li>msyh.ttf: Microsoft YaHei.</li>
 <li>msyhbd.ttf: Microsoft YaHei Bold.</li>
 <li>hkjgt.ttf: DynaFont King Gothic.</li>
 <li>dhttx.ttf: DianHei Extra Light.</li>
 <li>xqgdzt.ttf: XiQue GuZiDian.</li>
-<li>qpcyt.ttf: QiaoPin ChaoYuan.</li>
+<li>qpcyt.ttf: Smart Splice Super Round Body</li>
 <li>arial.ttf: English only.</li>
-<li>dinalternate.ttf: DIN Alternate Bold.</li>
-<li>helveticalt.ttf: Helvetica.</li>
-<li>helveticains.ttf: Helvetica Inserat.</li>
-<li>trajanpro.ttf: TrajanPro-Bold.</li>
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
 <li>korean.ttf: Korean.</li>
 <li>japanese.ttf: Japanese.</li>
 <li>thai.ttf: Thai.</li>
+<li>roboto.ttf:Roboto</li>
+<li>notosans.ttf:NotoSans</li>
+<li>notosansthai.ttf: Thai NotoSansThai</li>
+<li>sarabun.ttf: Thai Sarabun</li>
+<li>kanit.ttf: Thai Kanit</li>
+<li>charmonman.ttf: Thai Charmonman.</li>
+<li>notonaskharabic.ttf: Arabic NotoNaskhArabic.</li>
+<li>notosansdevanagari.ttf: NotoSansDevanagari for India.</li>
+<li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li>
+<li>notosanskr.ttf: Korean NotoSansKR.</li>
+<li>gothica1.ttf: Korean GothicA1.</li>
+<li>nanummyeongjo.ttf: Korean NanumMyeongjo.</li>
+<li>notosansjp.ttf: Japanese NotoSansJP.</li>
+<li>notoserifjp.ttf: Japanese NotoSerifJP.</li>
+<li>shipporimincho.ttf: Japanese ShipporiMincho.</li>
 Default value: hei.ttf.
 <br>Note:
 <li>kai.ttf is recommended for SimKai.</li>
@@ -58556,27 +58922,26 @@ class SubtitleTransResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Translation marker.
-- Success
-- Error
+        :param _Status: <p>Translation flag:</p><ul><li>Success</li><li>Error</li></ul>
         :type Status: str
-        :param _TransSrc: Source language (such as "en").
+        :param _TransSrc: <p>Source language (such as "en")</p>
         :type TransSrc: str
-        :param _TransDst: Target language (such as "zh").
+        :param _TransDst: <p>Target language (such as "zh")</p>
         :type TransDst: str
-        :param _Path: Subtitle file URL.
+        :param _Path: <p>Subtitle file URL</p>
         :type Path: str
+        :param _SubtitleEmbedPath: <p>Subtitle translation suppression video path.</p>
+        :type SubtitleEmbedPath: str
         """
         self._Status = None
         self._TransSrc = None
         self._TransDst = None
         self._Path = None
+        self._SubtitleEmbedPath = None
 
     @property
     def Status(self):
-        r"""Translation marker.
-- Success
-- Error
+        r"""<p>Translation flag:</p><ul><li>Success</li><li>Error</li></ul>
         :rtype: str
         """
         return self._Status
@@ -58587,7 +58952,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def TransSrc(self):
-        r"""Source language (such as "en").
+        r"""<p>Source language (such as "en")</p>
         :rtype: str
         """
         return self._TransSrc
@@ -58598,7 +58963,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def TransDst(self):
-        r"""Target language (such as "zh").
+        r"""<p>Target language (such as "zh")</p>
         :rtype: str
         """
         return self._TransDst
@@ -58609,7 +58974,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def Path(self):
-        r"""Subtitle file URL.
+        r"""<p>Subtitle file URL</p>
         :rtype: str
         """
         return self._Path
@@ -58618,12 +58983,24 @@ class SubtitleTransResultItem(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def SubtitleEmbedPath(self):
+        r"""<p>Subtitle translation suppression video path.</p>
+        :rtype: str
+        """
+        return self._SubtitleEmbedPath
+
+    @SubtitleEmbedPath.setter
+    def SubtitleEmbedPath(self, SubtitleEmbedPath):
+        self._SubtitleEmbedPath = SubtitleEmbedPath
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._TransSrc = params.get("TransSrc")
         self._TransDst = params.get("TransDst")
         self._Path = params.get("Path")
+        self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58886,6 +59263,42 @@ Default value: 0px.
         
 
 
+class SyncDubbingOutputOption(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncDubbingRequest(AbstractModel):
     r"""SyncDubbing request structure.
 
@@ -58943,9 +59356,13 @@ sl: Slovenian.
         :type VoiceId: str
         :param _AudioData: Base64-encoded audio for cloning.
         :type AudioData: str
+        :param _AudioUrl: 
+        :type AudioUrl: str
         :param _AudioLang: Cloning audio language. The default language is Chinese.
 Supported languages are the same as those for TextLang.
         :type AudioLang: str
+        :param _Output: 
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         :param _ExtParam: Extended parameters in the format of a JSON string.
         :type ExtParam: str
         """
@@ -58953,7 +59370,9 @@ Supported languages are the same as those for TextLang.
         self._TextLang = None
         self._VoiceId = None
         self._AudioData = None
+        self._AudioUrl = None
         self._AudioLang = None
+        self._Output = None
         self._ExtParam = None
 
     @property
@@ -59043,6 +59462,17 @@ sl: Slovenian.
         self._AudioData = AudioData
 
     @property
+    def AudioUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def AudioLang(self):
         r"""Cloning audio language. The default language is Chinese.
 Supported languages are the same as those for TextLang.
@@ -59053,6 +59483,17 @@ Supported languages are the same as those for TextLang.
     @AudioLang.setter
     def AudioLang(self, AudioLang):
         self._AudioLang = AudioLang
+
+    @property
+    def Output(self):
+        r"""
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
 
     @property
     def ExtParam(self):
@@ -59071,7 +59512,11 @@ Supported languages are the same as those for TextLang.
         self._TextLang = params.get("TextLang")
         self._VoiceId = params.get("VoiceId")
         self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
         self._AudioLang = params.get("AudioLang")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -59097,16 +59542,22 @@ class SyncDubbingResponse(AbstractModel):
         :param _AudioData: Synthetic audio in Base64 encoding and WAV format.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioData: str
+        :param _AudioUrl: 
+        :type AudioUrl: str
         :param _VoiceId: Cloned voice type ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceId: str
+        :param _ExtInfo: 
+        :type ExtInfo: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ErrorCode = None
         self._Msg = None
         self._AudioData = None
+        self._AudioUrl = None
         self._VoiceId = None
+        self._ExtInfo = None
         self._RequestId = None
 
     @property
@@ -59144,6 +59595,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AudioData = AudioData
 
     @property
+    def AudioUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def VoiceId(self):
         r"""Cloned voice type ID.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -59154,6 +59616,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @VoiceId.setter
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
+
+    @property
+    def ExtInfo(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
 
     @property
     def RequestId(self):
@@ -59171,7 +59644,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ErrorCode = params.get("ErrorCode")
         self._Msg = params.get("Msg")
         self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
         self._VoiceId = params.get("VoiceId")
+        self._ExtInfo = params.get("ExtInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -62416,9 +62891,9 @@ class TranslateConfigureInfo(AbstractModel):
 <li>ON: Enables an intelligent full speech recognition task;</li>
 <li>OFF: Disables an intelligent full speech recognition task.</li>
         :type Switch: str
-        :param _SourceLanguage: Video source language.
+        :param _SourceLanguage: 
         :type SourceLanguage: str
-        :param _DestinationLanguage: Translated target language.
+        :param _DestinationLanguage: 
         :type DestinationLanguage: str
         :param _SubtitleFormat: Generated subtitle file format. Leaving it as an empty string means no subtitle file will be generated. Valid value:
 <li>vtt: Generate a WebVTT subtitle file.</li>
@@ -62446,7 +62921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceLanguage(self):
-        r"""Video source language.
+        r"""
         :rtype: str
         """
         return self._SourceLanguage
@@ -62457,7 +62932,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationLanguage(self):
-        r"""Translated target language.
+        r"""
         :rtype: str
         """
         return self._DestinationLanguage

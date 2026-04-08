@@ -402,6 +402,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSubtitleEmbedTemplate(
+            self,
+            request: models.CreateSubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateSubtitleEmbedTemplateResponse:
+        """
+        This API is used to create a custom subtitle suppression template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSubtitleEmbedTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTranscodeTemplate(
             self,
             request: models.CreateTranscodeTemplateRequest,
@@ -788,6 +806,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DeleteSnapshotByTimeOffsetTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteSnapshotByTimeOffsetTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSubtitleEmbedTemplate(
+            self,
+            request: models.DeleteSubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSubtitleEmbedTemplateResponse:
+        """
+        Delete a user-customized Subtitle Suppression Template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSubtitleEmbedTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1292,6 +1328,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeStreamLinkSecurityGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeStreamLinkSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSubtitleEmbedTemplates(
+            self,
+            request: models.DescribeSubtitleEmbedTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSubtitleEmbedTemplatesResponse:
+        """
+        This API is used to retrieve the subtitle suppression template details list based on template unique identifier. The returned results include all eligible user-customized subtitle suppression templates and system preset subtitle suppression templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSubtitleEmbedTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSubtitleEmbedTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1886,6 +1940,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ModifySnapshotByTimeOffsetTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySnapshotByTimeOffsetTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySubtitleEmbedTemplate(
+            self,
+            request: models.ModifySubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifySubtitleEmbedTemplateResponse:
+        """
+        This API is used to modify a user-customized subtitle suppression template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySubtitleEmbedTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

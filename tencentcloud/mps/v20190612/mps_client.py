@@ -503,6 +503,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSubtitleEmbedTemplate(self, request):
+        r"""This API is used to create a custom subtitle suppression template.
+
+        :param request: Request instance for CreateSubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubtitleEmbedTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTranscodeTemplate(self, request):
         r"""This API is used to create a custom transcoding template. Up to 1,000 templates can be created.
 
@@ -990,6 +1013,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSubtitleEmbedTemplate(self, request):
+        r"""Delete a user-customized Subtitle Suppression Template.
+
+        :param request: Request instance for DeleteSubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSubtitleEmbedTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1634,6 +1680,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeStreamLinkSecurityGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubtitleEmbedTemplates(self, request):
+        r"""This API is used to retrieve the subtitle suppression template details list based on template unique identifier. The returned results include all eligible user-customized subtitle suppression templates and system preset subtitle suppression templates.
+
+        :param request: Request instance for DescribeSubtitleEmbedTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSubtitleEmbedTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSubtitleEmbedTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubtitleEmbedTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubtitleEmbedTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2388,6 +2457,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySnapshotByTimeOffsetTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySubtitleEmbedTemplate(self, request):
+        r"""This API is used to modify a user-customized subtitle suppression template.
+
+        :param request: Request instance for ModifySubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySubtitleEmbedTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
