@@ -1645,6 +1645,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListPolicies(
+            self,
+            request: models.ListPoliciesRequest,
+            opts: Dict = None,
+    ) -> models.ListPoliciesResponse:
+        """
+        This API is used to query and view the policy list data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListPoliciesForTarget(
             self,
             request: models.ListPoliciesForTargetRequest,

@@ -1958,6 +1958,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceChargeType(self, request):
+        r"""This API is used to change the billing type of an instance.
+
+        :param request: Request instance for ModifyInstanceChargeType.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceChargeTypeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceChargeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceEvent(self, request):
         r"""This API is used to modify the operations event execution schedule of an instance.
 

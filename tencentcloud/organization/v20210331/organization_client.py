@@ -2096,6 +2096,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListPolicies(self, request):
+        r"""This API is used to query and view the policy list data.
+
+        :param request: Request instance for ListPolicies.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListPoliciesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListPoliciesForTarget(self, request):
         r"""This API is used to query the list of policies associated with a target.
 

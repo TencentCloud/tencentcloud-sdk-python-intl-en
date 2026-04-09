@@ -14648,40 +14648,54 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: The number of records per page. The default is 20, and the maximum is 1,000.
+        :param _Limit: <p>How many data entries per page, 20 is selected by default, maximum not exceeding 1000</p>
         :type Limit: int
-        :param _Offset: The page number the records start from. The default is 1.
+        :param _Offset: <p>Page number, starts from 1 by default</p>
         :type Offset: int
-        :param _Status: The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.
+        :param _Status: <p>Voucher status: pending use: unUsed, Used: used, delivered: delivered, discarded: cancel, expired: overdue</p>
         :type Status: str
-        :param _VoucherId: The voucher ID.
+        :param _VoucherId: <p>Voucher id</p>
         :type VoucherId: str
-        :param _CodeId: The voucher order ID.
+        :param _CodeId: <p>Voucher order id</p>
         :type CodeId: str
-        :param _ProductCode: The product code.
+        :param _ProductCode: <p>product code</p>
         :type ProductCode: str
-        :param _ActivityId: The campaign ID.
+        :param _ActivityId: <p>Activity id</p>
         :type ActivityId: str
-        :param _VoucherName: The voucher name.
+        :param _VoucherName: <p>Voucher name</p>
         :type VoucherName: str
-        :param _TimeFrom: The start date of the voucher issuance, such as `2021-01-01`.
+        :param _TimeFrom: <p>Start time of delivery. Example: 2021-01-01</p>
         :type TimeFrom: str
-        :param _TimeTo: The end date of the voucher issuance, such as `2021-01-01`.
+        :param _TimeTo: <p>Delivery end time. Example: 2021-01-01</p>
         :type TimeTo: str
-        :param _SortField: The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
+        :param _SortField: <p>Specified sorting field: BeginTime start time, EndTime expiry time, CreateTime creation time</p>
         :type SortField: str
-        :param _SortOrder: Whether to sort the records in ascending or descending order. Valid values: desc, asc.
+        :param _SortOrder: <p>Specify ascending/descending order: desc, asc</p>
         :type SortOrder: str
-        :param _PayMode: The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.
+        :param _PayMode: <p>Payment mode, postPay (postpaid)/prePay (prepaid)/riPay (reserved instance)/"" or "*" means all modes. If payMode is "" or "*", productCode and subProductCode must be empty.</p>
         :type PayMode: str
-        :param _PayScene: If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        :param _PayScene: <p>Payment scenario PayMode=postPay: spotpay - spot instance, "settle account" - standard post-paid. PayMode=prePay: purchase - monthly subscription new purchase, renew - annual and monthly renewal (auto renewal), modify - monthly subscription configuration change. PayMode=riPay: oneOffFee - prepayment of reserved instance, hourlyFee - hourly charge for reserved instance, * - support all payment scenarios.</p>
         :type PayScene: str
-        :param _Operator: The operator. The default is the UIN of the current user.
+        :param _Operator: <p>Operator is used by default as user uin</p>
         :type Operator: str
-        :param _VoucherMainType: The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.
+        :param _VoucherMainType: <p>The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.</p>
         :type VoucherMainType: str
-        :param _VoucherSubType: Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.
+        :param _VoucherSubType: <p>Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.</p>
         :type VoucherSubType: str
+        :param _StartTimeFrom: <p>Voucher validity start time</p>
+        :type StartTimeFrom: str
+        :param _StartTimeTo: <p>Voucher validity time end time</p>
+        :type StartTimeTo: str
+        :param _EndTimeFrom: <p>Voucher expiration time start time</p>
+        :type EndTimeFrom: str
+        :param _EndTimeTo: <p>Voucher expiration time end time</p>
+        :type EndTimeTo: str
+        :param _CreateTimeFrom: <p>Voucher issuance start time</p>
+        :type CreateTimeFrom: str
+        :param _CreateTimeTo: <p>Voucher issuance time end time</p>
+        :type CreateTimeTo: str
+        :param _Lang: <p>Language parameter</p><p>Default value: zh</p><p>Expect the product name to return in Chinese or other languages. Currently only support Chinese and English. Return in Chinese when "zh" is entered or left blank; return in English in other cases.</p>
+        :type Lang: str
         """
         self._Limit = None
         self._Offset = None
@@ -14700,10 +14714,17 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._Operator = None
         self._VoucherMainType = None
         self._VoucherSubType = None
+        self._StartTimeFrom = None
+        self._StartTimeTo = None
+        self._EndTimeFrom = None
+        self._EndTimeTo = None
+        self._CreateTimeFrom = None
+        self._CreateTimeTo = None
+        self._Lang = None
 
     @property
     def Limit(self):
-        r"""The number of records per page. The default is 20, and the maximum is 1,000.
+        r"""<p>How many data entries per page, 20 is selected by default, maximum not exceeding 1000</p>
         :rtype: int
         """
         return self._Limit
@@ -14714,7 +14735,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""The page number the records start from. The default is 1.
+        r"""<p>Page number, starts from 1 by default</p>
         :rtype: int
         """
         return self._Offset
@@ -14725,7 +14746,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.
+        r"""<p>Voucher status: pending use: unUsed, Used: used, delivered: delivered, discarded: cancel, expired: overdue</p>
         :rtype: str
         """
         return self._Status
@@ -14736,7 +14757,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        r"""The voucher ID.
+        r"""<p>Voucher id</p>
         :rtype: str
         """
         return self._VoucherId
@@ -14747,7 +14768,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CodeId(self):
-        r"""The voucher order ID.
+        r"""<p>Voucher order id</p>
         :rtype: str
         """
         return self._CodeId
@@ -14758,7 +14779,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""The product code.
+        r"""<p>product code</p>
         :rtype: str
         """
         return self._ProductCode
@@ -14769,7 +14790,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        r"""The campaign ID.
+        r"""<p>Activity id</p>
         :rtype: str
         """
         return self._ActivityId
@@ -14780,7 +14801,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherName(self):
-        r"""The voucher name.
+        r"""<p>Voucher name</p>
         :rtype: str
         """
         return self._VoucherName
@@ -14791,7 +14812,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        r"""The start date of the voucher issuance, such as `2021-01-01`.
+        r"""<p>Start time of delivery. Example: 2021-01-01</p>
         :rtype: str
         """
         return self._TimeFrom
@@ -14802,7 +14823,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        r"""The end date of the voucher issuance, such as `2021-01-01`.
+        r"""<p>Delivery end time. Example: 2021-01-01</p>
         :rtype: str
         """
         return self._TimeTo
@@ -14813,7 +14834,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortField(self):
-        r"""The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
+        r"""<p>Specified sorting field: BeginTime start time, EndTime expiry time, CreateTime creation time</p>
         :rtype: str
         """
         return self._SortField
@@ -14824,7 +14845,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        r"""Whether to sort the records in ascending or descending order. Valid values: desc, asc.
+        r"""<p>Specify ascending/descending order: desc, asc</p>
         :rtype: str
         """
         return self._SortOrder
@@ -14835,7 +14856,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.
+        r"""<p>Payment mode, postPay (postpaid)/prePay (prepaid)/riPay (reserved instance)/"" or "*" means all modes. If payMode is "" or "*", productCode and subProductCode must be empty.</p>
         :rtype: str
         """
         return self._PayMode
@@ -14846,7 +14867,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayScene(self):
-        r"""If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        r"""<p>Payment scenario PayMode=postPay: spotpay - spot instance, "settle account" - standard post-paid. PayMode=prePay: purchase - monthly subscription new purchase, renew - annual and monthly renewal (auto renewal), modify - monthly subscription configuration change. PayMode=riPay: oneOffFee - prepayment of reserved instance, hourlyFee - hourly charge for reserved instance, * - support all payment scenarios.</p>
         :rtype: str
         """
         return self._PayScene
@@ -14857,7 +14878,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""The operator. The default is the UIN of the current user.
+        r"""<p>Operator is used by default as user uin</p>
         :rtype: str
         """
         return self._Operator
@@ -14868,7 +14889,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherMainType(self):
-        r"""The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.
+        r"""<p>The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.</p>
         :rtype: str
         """
         return self._VoucherMainType
@@ -14879,7 +14900,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherSubType(self):
-        r"""Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.
+        r"""<p>Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.</p>
         :rtype: str
         """
         return self._VoucherSubType
@@ -14887,6 +14908,83 @@ class DescribeVoucherInfoRequest(AbstractModel):
     @VoucherSubType.setter
     def VoucherSubType(self, VoucherSubType):
         self._VoucherSubType = VoucherSubType
+
+    @property
+    def StartTimeFrom(self):
+        r"""<p>Voucher validity start time</p>
+        :rtype: str
+        """
+        return self._StartTimeFrom
+
+    @StartTimeFrom.setter
+    def StartTimeFrom(self, StartTimeFrom):
+        self._StartTimeFrom = StartTimeFrom
+
+    @property
+    def StartTimeTo(self):
+        r"""<p>Voucher validity time end time</p>
+        :rtype: str
+        """
+        return self._StartTimeTo
+
+    @StartTimeTo.setter
+    def StartTimeTo(self, StartTimeTo):
+        self._StartTimeTo = StartTimeTo
+
+    @property
+    def EndTimeFrom(self):
+        r"""<p>Voucher expiration time start time</p>
+        :rtype: str
+        """
+        return self._EndTimeFrom
+
+    @EndTimeFrom.setter
+    def EndTimeFrom(self, EndTimeFrom):
+        self._EndTimeFrom = EndTimeFrom
+
+    @property
+    def EndTimeTo(self):
+        r"""<p>Voucher expiration time end time</p>
+        :rtype: str
+        """
+        return self._EndTimeTo
+
+    @EndTimeTo.setter
+    def EndTimeTo(self, EndTimeTo):
+        self._EndTimeTo = EndTimeTo
+
+    @property
+    def CreateTimeFrom(self):
+        r"""<p>Voucher issuance start time</p>
+        :rtype: str
+        """
+        return self._CreateTimeFrom
+
+    @CreateTimeFrom.setter
+    def CreateTimeFrom(self, CreateTimeFrom):
+        self._CreateTimeFrom = CreateTimeFrom
+
+    @property
+    def CreateTimeTo(self):
+        r"""<p>Voucher issuance time end time</p>
+        :rtype: str
+        """
+        return self._CreateTimeTo
+
+    @CreateTimeTo.setter
+    def CreateTimeTo(self, CreateTimeTo):
+        self._CreateTimeTo = CreateTimeTo
+
+    @property
+    def Lang(self):
+        r"""<p>Language parameter</p><p>Default value: zh</p><p>Expect the product name to return in Chinese or other languages. Currently only support Chinese and English. Return in Chinese when "zh" is entered or left blank; return in English in other cases.</p>
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
 
 
     def _deserialize(self, params):
@@ -14907,6 +15005,13 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._Operator = params.get("Operator")
         self._VoucherMainType = params.get("VoucherMainType")
         self._VoucherSubType = params.get("VoucherSubType")
+        self._StartTimeFrom = params.get("StartTimeFrom")
+        self._StartTimeTo = params.get("StartTimeTo")
+        self._EndTimeFrom = params.get("EndTimeFrom")
+        self._EndTimeTo = params.get("EndTimeTo")
+        self._CreateTimeFrom = params.get("CreateTimeFrom")
+        self._CreateTimeTo = params.get("CreateTimeTo")
+        self._Lang = params.get("Lang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14924,24 +15029,26 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: The total number of vouchers.
+        :param _TotalCount: <p>Total count</p>
         :type TotalCount: int
-        :param _TotalBalance: The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :param _TotalBalance: <p>Total balance (differential)</p>
         :type TotalBalance: int
-        :param _VoucherInfos: The voucher information.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _VoucherInfos: <p>Voucher information related to</p>
         :type VoucherInfos: list of VoucherInfos
+        :param _Unit: <p>Unit of the amount field in the API response</p><p>Default value: micro</p><p>Currency unit: micro (microcent)<br>Voucher issuance and use are processed with 8-digit high-precision, so the currency unit defaults to micro (microcent). If CNY or USD is needed, convert using the following formula:<br>CNY: 1 micro = 0.00000001  yuan<br>USD: 1 micro = 0.00000001  USD</p>
+        :type Unit: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
         self._TotalBalance = None
         self._VoucherInfos = None
+        self._Unit = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""The total number of vouchers.
+        r"""<p>Total count</p>
         :rtype: int
         """
         return self._TotalCount
@@ -14952,7 +15059,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalBalance(self):
-        r"""The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""<p>Total balance (differential)</p>
         :rtype: int
         """
         return self._TotalBalance
@@ -14963,8 +15070,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VoucherInfos(self):
-        r"""The voucher information.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Voucher information related to</p>
         :rtype: list of VoucherInfos
         """
         return self._VoucherInfos
@@ -14972,6 +15078,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     @VoucherInfos.setter
     def VoucherInfos(self, VoucherInfos):
         self._VoucherInfos = VoucherInfos
+
+    @property
+    def Unit(self):
+        r"""<p>Unit of the amount field in the API response</p><p>Default value: micro</p><p>Currency unit: micro (microcent)<br>Voucher issuance and use are processed with 8-digit high-precision, so the currency unit defaults to micro (microcent). If CNY or USD is needed, convert using the following formula:<br>CNY: 1 micro = 0.00000001  yuan<br>USD: 1 micro = 0.00000001  USD</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
 
     @property
     def RequestId(self):
@@ -14994,6 +15111,7 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = VoucherInfos()
                 obj._deserialize(item)
                 self._VoucherInfos.append(obj)
+        self._Unit = params.get("Unit")
         self._RequestId = params.get("RequestId")
 
 
@@ -18239,12 +18357,14 @@ class VoucherInfos(AbstractModel):
         :type BeginTime: str
         :param _EndTime: The end time of the validity period.
         :type EndTime: str
-        :param _ApplicableProducts: The products that are applicable.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ApplicableProducts: Product information applies to
         :type ApplicableProducts: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
-        :param _ExcludedProducts: The products that are not applicable.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ExcludedProducts: Product information not applicable
         :type ExcludedProducts: list of ExcludedProducts
+        :param _PolicyRemark: Instructions/Batch Remarks
+        :type PolicyRemark: str
+        :param _CreateTime: Coupon issuance time
+        :type CreateTime: str
         """
         self._OwnerUin = None
         self._Status = None
@@ -18257,6 +18377,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._EndTime = None
         self._ApplicableProducts = None
         self._ExcludedProducts = None
+        self._PolicyRemark = None
+        self._CreateTime = None
 
     @property
     def OwnerUin(self):
@@ -18359,8 +18481,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ApplicableProducts(self):
-        r"""The products that are applicable.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Product information applies to
         :rtype: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         """
         return self._ApplicableProducts
@@ -18371,8 +18492,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ExcludedProducts(self):
-        r"""The products that are not applicable.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Product information not applicable
         :rtype: list of ExcludedProducts
         """
         return self._ExcludedProducts
@@ -18380,6 +18500,28 @@ Note: This field may return `null`, indicating that no valid value was found.
     @ExcludedProducts.setter
     def ExcludedProducts(self, ExcludedProducts):
         self._ExcludedProducts = ExcludedProducts
+
+    @property
+    def PolicyRemark(self):
+        r"""Instructions/Batch Remarks
+        :rtype: str
+        """
+        return self._PolicyRemark
+
+    @PolicyRemark.setter
+    def PolicyRemark(self, PolicyRemark):
+        self._PolicyRemark = PolicyRemark
+
+    @property
+    def CreateTime(self):
+        r"""Coupon issuance time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
@@ -18401,6 +18543,8 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = ExcludedProducts()
                 obj._deserialize(item)
                 self._ExcludedProducts.append(obj)
+        self._PolicyRemark = params.get("PolicyRemark")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

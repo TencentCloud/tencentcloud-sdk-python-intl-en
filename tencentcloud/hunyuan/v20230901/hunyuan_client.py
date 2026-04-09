@@ -96,6 +96,29 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConvert3DFormatJob(self, request):
+        r"""According to Convert3DFormatJob, querying the specific results of the model format conversion typically requires the unique JobID corresponding to that task.
+
+        :param request: Request instance for DescribeConvert3DFormatJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.DescribeConvert3DFormatJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.DescribeConvert3DFormatJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConvert3DFormatJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConvert3DFormatJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHunyuanTo3DUVJob(self, request):
         r"""Query component splitting tasks.
 
@@ -228,6 +251,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("Submit3DSmartTopologyJob", params, headers=headers)
             response = json.loads(body)
             model = models.Submit3DSmartTopologyJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitConvert3DFormatJob(self, request):
+        r"""After inputting the 3D model file, the system will automatically convert it to the required format. The maximum supported file size is 200MB.
+
+        :param request: Request instance for SubmitConvert3DFormatJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitConvert3DFormatJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitConvert3DFormatJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitConvert3DFormatJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitConvert3DFormatJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

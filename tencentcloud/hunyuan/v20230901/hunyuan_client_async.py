@@ -85,6 +85,24 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConvert3DFormatJob(
+            self,
+            request: models.DescribeConvert3DFormatJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConvert3DFormatJobResponse:
+        """
+        According to Convert3DFormatJob, querying the specific results of the model format conversion typically requires the unique JobID corresponding to that task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConvert3DFormatJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConvert3DFormatJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHunyuanTo3DUVJob(
             self,
             request: models.DescribeHunyuanTo3DUVJobRequest,
@@ -191,6 +209,24 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "Submit3DSmartTopologyJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.Submit3DSmartTopologyJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitConvert3DFormatJob(
+            self,
+            request: models.SubmitConvert3DFormatJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitConvert3DFormatJobResponse:
+        """
+        After inputting the 3D model file, the system will automatically convert it to the required format. The maximum supported file size is 200MB.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitConvert3DFormatJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitConvert3DFormatJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
