@@ -420,6 +420,25 @@ class IntlpartnersmgtClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCustomerVoucherUsageDetails(
+            self,
+            request: models.DescribeCustomerVoucherUsageDetailsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomerVoucherUsageDetailsResponse:
+        """
+        Description: The current API is used to query the usage details of reseller's customer vouchers by Reseller, Second-level Reseller or Distributor.
+        Reseller, Second-level Reseller or Distributor can call this API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomerVoucherUsageDetails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomerVoucherUsageDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRebateDownloadUrl(
             self,
             request: models.DescribeRebateDownloadUrlRequest,

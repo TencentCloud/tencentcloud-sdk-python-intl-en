@@ -521,6 +521,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerVoucherUsageDetails(self, request):
+        r"""Description: The current API is used to query the usage details of reseller's customer vouchers by Reseller, Second-level Reseller or Distributor.
+        Reseller, Second-level Reseller or Distributor can call this API.
+
+        :param request: Request instance for DescribeCustomerVoucherUsageDetails.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerVoucherUsageDetailsRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerVoucherUsageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerVoucherUsageDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerVoucherUsageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRebateDownloadUrl(self, request):
         r"""This API is used to download the commission bill file by resellers/agents. The file URL is returned.
         Resellers/Agents can call this API.
