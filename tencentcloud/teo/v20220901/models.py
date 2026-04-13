@@ -395,64 +395,66 @@ class AccelerationDomain(AbstractModel):
         :type ZoneId: str
         :param _DomainName: Accelerated domain name
         :type DomainName: str
-        :param _DomainStatus: Status of the accelerated domain name. Values:
-<li>`online`: Activated</li>
-<li>`process`: Being deployed</li>
-<li>`offline`: Disabled</li>
-<li>`forbidden`: Blocked</li>
-<li>`init`: Pending activation</li>
+        :param _DomainStatus: Accelerated domain name status. valid values:.
+<li>online: in effect;</li>.
+<li>process: deployment in progress.</li>.
+<li>offline: disabled;</li>.
+<li>`forbidden`: banned.</li>.
+<li>init: not applied, site to be activated.</li>.
         :type DomainStatus: str
+        :param _Cname: The CNAME address.
+        :type Cname: str
+        :param _IPv6Status: IPv6 status. valid values:.
+<li>follow: specifies whether to adhere to the site IPv6 configuration.</li>.
+<li>on: enabled status.</li>.
+<li>off: disabled.</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type IPv6Status: str
+        :param _IdentificationStatus: Acceleration domain ownership verification status. valid values:. 
+<li>pending: to be verified.</li>.
+<li>finished: verified.</li>.	
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type IdentificationStatus: str
+        :param _OwnershipVerification: Acceleration domain name needs to perform ownership verification to continue providing services. this object carries the required information for the corresponding verification method.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _OriginDetail: Details of the origin.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _OriginProtocol: Origin-pull protocol configuration. Values:
-<li>`FOLLOW`: Follow the protocol of origin</li>
-<li>`HTTP`: Send requests to the origin over HTTP</li>
-<li>`HTTPS`: Send requests to the origin over HTTPS</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _OriginProtocol: Origin-Pull protocol. valid values:.
+<Li>FOLLOW: follow protocol.</li>.
+<Li>HTTP: specifies the http protocol for origin-pull.</li>.
+<Li>HTTPS: specifies the https protocol for origin-pull.</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type OriginProtocol: str
-        :param _HttpOriginPort: The port used for HTTP origin-pull requests
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _HttpOriginPort: Specifies the HTTP origin port.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type HttpOriginPort: int
-        :param _HttpsOriginPort: The port used for HTTPS origin-pull requests
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _HttpsOriginPort: Specifies the HTTPS origin port.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type HttpsOriginPort: int
-        :param _IPv6Status: IPv6 status. Values:
-<li>`follow`: Follow the IPv6 configuration of the site</li>
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :type IPv6Status: str
-        :param _Cname: The CNAME address.
-        :type Cname: str
-        :param _IdentificationStatus: Ownership verification status. Values: <li>`pending`: Pending verification</li> <li>`finished`: Verified</li>	
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IdentificationStatus: str
+        :param _Certificate: Accelerates domain name certificate information.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         :param _CreatedOn: Creation time of the accelerated domain name.
         :type CreatedOn: str
         :param _ModifiedOn: Modification time of the accelerated domain name.
         :type ModifiedOn: str
-        :param _OwnershipVerification: Information required to verify the ownership of a domain name.
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
-        :param _Certificate: Domain name certificate information
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
         self._ZoneId = None
         self._DomainName = None
         self._DomainStatus = None
+        self._Cname = None
+        self._IPv6Status = None
+        self._IdentificationStatus = None
+        self._OwnershipVerification = None
         self._OriginDetail = None
         self._OriginProtocol = None
         self._HttpOriginPort = None
         self._HttpsOriginPort = None
-        self._IPv6Status = None
-        self._Cname = None
-        self._IdentificationStatus = None
+        self._Certificate = None
         self._CreatedOn = None
         self._ModifiedOn = None
-        self._OwnershipVerification = None
-        self._Certificate = None
 
     @property
     def ZoneId(self):
@@ -478,12 +480,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def DomainStatus(self):
-        r"""Status of the accelerated domain name. Values:
-<li>`online`: Activated</li>
-<li>`process`: Being deployed</li>
-<li>`offline`: Disabled</li>
-<li>`forbidden`: Blocked</li>
-<li>`init`: Pending activation</li>
+        r"""Accelerated domain name status. valid values:.
+<li>online: in effect;</li>.
+<li>process: deployment in progress.</li>.
+<li>offline: disabled;</li>.
+<li>`forbidden`: banned.</li>.
+<li>init: not applied, site to be activated.</li>.
         :rtype: str
         """
         return self._DomainStatus
@@ -491,6 +493,58 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @DomainStatus.setter
     def DomainStatus(self, DomainStatus):
         self._DomainStatus = DomainStatus
+
+    @property
+    def Cname(self):
+        r"""The CNAME address.
+        :rtype: str
+        """
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def IPv6Status(self):
+        r"""IPv6 status. valid values:.
+<li>follow: specifies whether to adhere to the site IPv6 configuration.</li>.
+<li>on: enabled status.</li>.
+<li>off: disabled.</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
+    @property
+    def IdentificationStatus(self):
+        r"""Acceleration domain ownership verification status. valid values:. 
+<li>pending: to be verified.</li>.
+<li>finished: verified.</li>.	
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._IdentificationStatus
+
+    @IdentificationStatus.setter
+    def IdentificationStatus(self, IdentificationStatus):
+        self._IdentificationStatus = IdentificationStatus
+
+    @property
+    def OwnershipVerification(self):
+        r"""Acceleration domain name needs to perform ownership verification to continue providing services. this object carries the required information for the corresponding verification method.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def OriginDetail(self):
@@ -506,11 +560,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginProtocol(self):
-        r"""Origin-pull protocol configuration. Values:
-<li>`FOLLOW`: Follow the protocol of origin</li>
-<li>`HTTP`: Send requests to the origin over HTTP</li>
-<li>`HTTPS`: Send requests to the origin over HTTPS</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Origin-Pull protocol. valid values:.
+<Li>FOLLOW: follow protocol.</li>.
+<Li>HTTP: specifies the http protocol for origin-pull.</li>.
+<Li>HTTPS: specifies the https protocol for origin-pull.</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._OriginProtocol
@@ -521,8 +575,8 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def HttpOriginPort(self):
-        r"""The port used for HTTP origin-pull requests
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Specifies the HTTP origin port.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: int
         """
         return self._HttpOriginPort
@@ -533,8 +587,8 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def HttpsOriginPort(self):
-        r"""The port used for HTTPS origin-pull requests
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Specifies the HTTPS origin port.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: int
         """
         return self._HttpsOriginPort
@@ -544,42 +598,16 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._HttpsOriginPort = HttpsOriginPort
 
     @property
-    def IPv6Status(self):
-        r"""IPv6 status. Values:
-<li>`follow`: Follow the IPv6 configuration of the site</li>
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :rtype: str
+    def Certificate(self):
+        r"""Accelerates domain name certificate information.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
-        return self._IPv6Status
+        return self._Certificate
 
-    @IPv6Status.setter
-    def IPv6Status(self, IPv6Status):
-        self._IPv6Status = IPv6Status
-
-    @property
-    def Cname(self):
-        r"""The CNAME address.
-        :rtype: str
-        """
-        return self._Cname
-
-    @Cname.setter
-    def Cname(self, Cname):
-        self._Cname = Cname
-
-    @property
-    def IdentificationStatus(self):
-        r"""Ownership verification status. Values: <li>`pending`: Pending verification</li> <li>`finished`: Verified</li>	
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IdentificationStatus
-
-    @IdentificationStatus.setter
-    def IdentificationStatus(self, IdentificationStatus):
-        self._IdentificationStatus = IdentificationStatus
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
 
     @property
     def CreatedOn(self):
@@ -603,52 +631,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ModifiedOn(self, ModifiedOn):
         self._ModifiedOn = ModifiedOn
 
-    @property
-    def OwnershipVerification(self):
-        r"""Information required to verify the ownership of a domain name.
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
-        """
-        return self._OwnershipVerification
-
-    @OwnershipVerification.setter
-    def OwnershipVerification(self, OwnershipVerification):
-        self._OwnershipVerification = OwnershipVerification
-
-    @property
-    def Certificate(self):
-        r"""Domain name certificate information
-Note: This field may return·null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
-        """
-        return self._Certificate
-
-    @Certificate.setter
-    def Certificate(self, Certificate):
-        self._Certificate = Certificate
-
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._DomainName = params.get("DomainName")
         self._DomainStatus = params.get("DomainStatus")
+        self._Cname = params.get("Cname")
+        self._IPv6Status = params.get("IPv6Status")
+        self._IdentificationStatus = params.get("IdentificationStatus")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         if params.get("OriginDetail") is not None:
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
         self._OriginProtocol = params.get("OriginProtocol")
         self._HttpOriginPort = params.get("HttpOriginPort")
         self._HttpsOriginPort = params.get("HttpsOriginPort")
-        self._IPv6Status = params.get("IPv6Status")
-        self._Cname = params.get("Cname")
-        self._IdentificationStatus = params.get("IdentificationStatus")
-        self._CreatedOn = params.get("CreatedOn")
-        self._ModifiedOn = params.get("ModifiedOn")
-        if params.get("OwnershipVerification") is not None:
-            self._OwnershipVerification = OwnershipVerification()
-            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         if params.get("Certificate") is not None:
             self._Certificate = AccelerationDomainCertificate()
             self._Certificate._deserialize(params.get("Certificate"))
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -666,14 +670,14 @@ class AccelerationDomainCertificate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: Certificate configuration mode. Values: <li>`disable`: Do not configure the certificate;</li><li>`eofreecert`: Use a free certificate provided by EdgeOne; </li><li>`sslcert`: Configure an SSL certificate.</li>
+        :param _Mode: The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
         :type Mode: str
         :param _List: List of server certificates. The relevant certificates are deployed on the entrance side of the EO.
 Note: This field may return null, which indicates a failure to obtain a valid value.
         :type List: list of CertificateInfo
         :param _ClientCertInfo: In the edge mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for EO node authentication of the client certificate.
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
-        :param _UpstreamCertInfo: The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+        :param _UpstreamCertInfo: Specifies whether to enable or disable origin-pull mutual authentication and origin certificate verification. the certificate for origin-pull mutual authentication is carried during EO node origin-pull, and the origin server can choose to validate this certificate to ensure the request originates from a trusted EO node. when origin certificate verification is enabled, the certificate configuration is used for the EO node to verify whether the origin certificate is trustworthy.
         :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._Mode = None
@@ -683,7 +687,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Mode(self):
-        r"""Certificate configuration mode. Values: <li>`disable`: Do not configure the certificate;</li><li>`eofreecert`: Use a free certificate provided by EdgeOne; </li><li>`sslcert`: Configure an SSL certificate.</li>
+        r"""The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
         :rtype: str
         """
         return self._Mode
@@ -717,7 +721,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def UpstreamCertInfo(self):
-        r"""The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+        r"""Specifies whether to enable or disable origin-pull mutual authentication and origin certificate verification. the certificate for origin-pull mutual authentication is carried during EO node origin-pull, and the origin server can choose to validate this certificate to ensure the request originates from a trusted EO node. when origin certificate verification is enabled, the certificate configuration is used for the EO node to verify whether the origin certificate is trustworthy.
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         return self._UpstreamCertInfo
@@ -3028,11 +3032,11 @@ class ApplyFreeCertificateRequest(AbstractModel):
         :type ZoneId: str
         :param _Domain: Specifies the target domain name for free certificate application.
         :type Domain: str
-        :param _VerificationMethod: Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). valid values:.
+        :param _VerificationMethod: Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
 <li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
 <li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
 
-Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
         :type VerificationMethod: str
         """
         self._ZoneId = None
@@ -3063,11 +3067,11 @@ Note: after triggering this api, you need to complete the verification content c
 
     @property
     def VerificationMethod(self):
-        r"""Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). valid values:.
+        r"""Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
 <li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
 <li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
 
-Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
         :rtype: str
         """
         return self._VerificationMethod
@@ -3160,7 +3164,7 @@ class AscriptionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Subdomain: Host record.
+        :param _Subdomain: 
         :type Subdomain: str
         :param _RecordType: The record type.
         :type RecordType: str
@@ -3173,7 +3177,7 @@ class AscriptionInfo(AbstractModel):
 
     @property
     def Subdomain(self):
-        r"""Host record.
+        r"""
         :rtype: str
         """
         return self._Subdomain
@@ -3823,8 +3827,8 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
         :param _Entities: List of domain names to bind to/unbind from a policy template
         :type Entities: list of str
         :param _Operate: Bind or unbind operation option. valid values:.
-<Li>`Bind`: bind the domain name to the policy template.</li>.
-<li>unbind-keep-policy: unbind a domain name from the policy template while retaining the current policy.</li>.
+<Li>bind: bind the domain name to the policy template.</li>
+<li>unbind-keep-policy: unbind a domain name from the policy template while retaining the current policy.</li>
 <li>unbind-use-default: unbind a domain name from the policy template and use the default blank policy.</li> note: the unbinding operation currently only supports unbinding a single domain name. that is, when the Operate parameter value is unbind-keep-policy or unbind-use-default, the Entities parameter list only supports filling in one domain name.
         :type Operate: str
         :param _TemplateId: Specifies the ID of the policy template or the site global policy to be bound or unbound.
@@ -3867,8 +3871,8 @@ Note: After unbinding, the domain name will use an independent policy and rule q
     @property
     def Operate(self):
         r"""Bind or unbind operation option. valid values:.
-<Li>`Bind`: bind the domain name to the policy template.</li>.
-<li>unbind-keep-policy: unbind a domain name from the policy template while retaining the current policy.</li>.
+<Li>bind: bind the domain name to the policy template.</li>
+<li>unbind-keep-policy: unbind a domain name from the policy template while retaining the current policy.</li>
 <li>unbind-use-default: unbind a domain name from the policy template and use the default blank policy.</li> note: the unbinding operation currently only supports unbinding a single domain name. that is, when the Operate parameter value is unbind-keep-policy or unbind-use-default, the Entities parameter list only supports filling in one domain name.
         :rtype: str
         """
@@ -5934,6 +5938,65 @@ class CLSTopic(AbstractModel):
         
 
 
+class CNAMEDetail(AbstractModel):
+    r"""CNAME access type site parameter description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsFake: Whether it is a fake site, with values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :type IsFake: int
+        :param _OwnershipVerification: Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        self._IsFake = None
+        self._OwnershipVerification = None
+
+    @property
+    def IsFake(self):
+        r"""Whether it is a fake site, with values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :rtype: int
+        """
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def OwnershipVerification(self):
+        r"""Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
+
+    def _deserialize(self, params):
+        self._IsFake = params.get("IsFake")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Cache(AbstractModel):
     r"""Cache time settings
 
@@ -7333,7 +7396,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Domain: Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1).
+        :param _Domain: Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
         :type Domain: str
         """
         self._ZoneId = None
@@ -7352,7 +7415,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1).
+        r"""Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
         :rtype: str
         """
         return self._Domain
@@ -7731,9 +7794,10 @@ class ClientAttester(AbstractModel):
 <li>PRESET: system PRESET rule. only AttesterDuration can be modified.</li>.
 <Li>CUSTOM: user-defined rules.</li>.
         :type Type: str
-        :param _AttesterSource: Authentication method. valid values:.
-<Li>TC-RCE: uses the full-stack risk control engine for authentication.</li>.
-<Li>TC-CAPTCHA-Intl: specifies authentication using captcha-intl.</li>.
+        :param _AttesterSource: Authentication method. Valid values:
+<li>TC-RCE: Authentication with RCE risk identification;</li>
+<li>TC-CAPTCHA: Authentication using Tianyu verification code;</li>
+<li>TC-EO-CAPTCHA: Use EdgeOne CAPTCHA for authentication.</li>
         :type AttesterSource: str
         :param _AttesterDuration: Validity time of the authentication. defaults to 60s. supported measurement units:.
 <Li>S: specifies seconds. value range: 60–43200.</li>.
@@ -7746,6 +7810,9 @@ class ClientAttester(AbstractModel):
         :param _TCCaptchaOption: Specifies the configuration message for TC-CAPTCHA certification.
 <li>Specifies the required field when the AttesterSource parameter value is TC-CAPTCHA.</li>.
         :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        :param _TCEOCaptchaOption: Configuration message of TC-EO-CAPTCHA authentication.
+<li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
+        :type TCEOCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         self._Id = None
         self._Name = None
@@ -7754,6 +7821,7 @@ class ClientAttester(AbstractModel):
         self._AttesterDuration = None
         self._TCRCEOption = None
         self._TCCaptchaOption = None
+        self._TCEOCaptchaOption = None
 
     @property
     def Id(self):
@@ -7792,9 +7860,10 @@ class ClientAttester(AbstractModel):
 
     @property
     def AttesterSource(self):
-        r"""Authentication method. valid values:.
-<Li>TC-RCE: uses the full-stack risk control engine for authentication.</li>.
-<Li>TC-CAPTCHA-Intl: specifies authentication using captcha-intl.</li>.
+        r"""Authentication method. Valid values:
+<li>TC-RCE: Authentication with RCE risk identification;</li>
+<li>TC-CAPTCHA: Authentication using Tianyu verification code;</li>
+<li>TC-EO-CAPTCHA: Use EdgeOne CAPTCHA for authentication.</li>
         :rtype: str
         """
         return self._AttesterSource
@@ -7841,6 +7910,18 @@ class ClientAttester(AbstractModel):
     def TCCaptchaOption(self, TCCaptchaOption):
         self._TCCaptchaOption = TCCaptchaOption
 
+    @property
+    def TCEOCaptchaOption(self):
+        r"""Configuration message of TC-EO-CAPTCHA authentication.
+<li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
+        """
+        return self._TCEOCaptchaOption
+
+    @TCEOCaptchaOption.setter
+    def TCEOCaptchaOption(self, TCEOCaptchaOption):
+        self._TCEOCaptchaOption = TCEOCaptchaOption
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7854,6 +7935,9 @@ class ClientAttester(AbstractModel):
         if params.get("TCCaptchaOption") is not None:
             self._TCCaptchaOption = TCCaptchaOption()
             self._TCCaptchaOption._deserialize(params.get("TCCaptchaOption"))
+        if params.get("TCEOCaptchaOption") is not None:
+            self._TCEOCaptchaOption = TCEOCaptchaOption()
+            self._TCEOCaptchaOption._deserialize(params.get("TCEOCaptchaOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8403,6 +8487,127 @@ class CodeAction(AbstractModel):
         
 
 
+class ComponentReference(AbstractModel):
+    r"""Instance information referenced by the component, used to show the binding relationship between the component and resources such as edge functions. When an edge function needs to access a component (for example KV namespace), a reference relationship is created. This struct can be used to view the instance detail of the referenced resource and its associated site information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceType: Refer to the instance type. Valid values:
+<li>edge-function: Edge function.</li>
+        :type ReferenceType: str
+        :param _ReferenceId: Referenced instance ID. According to the value of ReferenceType, return the corresponding instance ID.
+<li>When ReferenceType is edge-function: Return the edge function ID in the format of ef-2vc5oe9mzqhm.</li>
+
+        :type ReferenceId: str
+        :param _ReferenceName: Referenced instance name. According to the value of ReferenceType, return the corresponding instance name.
+<li>When ReferenceType is edge-function: Returns the edge function name.</li>
+
+        :type ReferenceName: str
+        :param _ZoneId: Site ID. Site identifier of the instance ownership that refers to the namespace.
+        :type ZoneId: str
+        :param _ZoneName: Site name. Refer to the site name of the instance ownership in namespace.
+        :type ZoneName: str
+        :param _AliasZoneName: Refer to the site alias of the namespace instance. If the site alias is not set, return an empty string.
+        :type AliasZoneName: str
+        """
+        self._ReferenceType = None
+        self._ReferenceId = None
+        self._ReferenceName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._AliasZoneName = None
+
+    @property
+    def ReferenceType(self):
+        r"""Refer to the instance type. Valid values:
+<li>edge-function: Edge function.</li>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def ReferenceId(self):
+        r"""Referenced instance ID. According to the value of ReferenceType, return the corresponding instance ID.
+<li>When ReferenceType is edge-function: Return the edge function ID in the format of ef-2vc5oe9mzqhm.</li>
+
+        :rtype: str
+        """
+        return self._ReferenceId
+
+    @ReferenceId.setter
+    def ReferenceId(self, ReferenceId):
+        self._ReferenceId = ReferenceId
+
+    @property
+    def ReferenceName(self):
+        r"""Referenced instance name. According to the value of ReferenceType, return the corresponding instance name.
+<li>When ReferenceType is edge-function: Returns the edge function name.</li>
+
+        :rtype: str
+        """
+        return self._ReferenceName
+
+    @ReferenceName.setter
+    def ReferenceName(self, ReferenceName):
+        self._ReferenceName = ReferenceName
+
+    @property
+    def ZoneId(self):
+        r"""Site ID. Site identifier of the instance ownership that refers to the namespace.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Site name. Refer to the site name of the instance ownership in namespace.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def AliasZoneName(self):
+        r"""Refer to the site alias of the namespace instance. If the site alias is not set, return an empty string.
+        :rtype: str
+        """
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
+
+
+    def _deserialize(self, params):
+        self._ReferenceType = params.get("ReferenceType")
+        self._ReferenceId = params.get("ReferenceId")
+        self._ReferenceName = params.get("ReferenceName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._AliasZoneName = params.get("AliasZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Compression(AbstractModel):
     r"""Smart compression configuration.
 
@@ -8659,6 +8864,57 @@ class ConfigGroupVersionInfo(AbstractModel):
         
 
 
+class ConfigGroupWorkModeInfo(AbstractModel):
+    r"""Version management configuration group working mode information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupType: Configuration group type. Options are as follows:<li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group.</li><li>web_security: web protection configuration group.</li>
+        :type ConfigGroupType: str
+        :param _WorkMode: Working mode. options are as follows: <li>immediate_effect: immediate effect mode;</li><li>version_control: version management mode.</li>.
+        :type WorkMode: str
+        """
+        self._ConfigGroupType = None
+        self._WorkMode = None
+
+    @property
+    def ConfigGroupType(self):
+        r"""Configuration group type. Options are as follows:<li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group.</li><li>web_security: web protection configuration group.</li>
+        :rtype: str
+        """
+        return self._ConfigGroupType
+
+    @ConfigGroupType.setter
+    def ConfigGroupType(self, ConfigGroupType):
+        self._ConfigGroupType = ConfigGroupType
+
+    @property
+    def WorkMode(self):
+        r"""Working mode. options are as follows: <li>immediate_effect: immediate effect mode;</li><li>version_control: version management mode.</li>.
+        :rtype: str
+        """
+        return self._WorkMode
+
+    @WorkMode.setter
+    def WorkMode(self, WorkMode):
+        self._WorkMode = WorkMode
+
+
+    def _deserialize(self, params):
+        self._ConfigGroupType = params.get("ConfigGroupType")
+        self._WorkMode = params.get("WorkMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfirmMultiPathGatewayOriginACLRequest(AbstractModel):
     r"""ConfirmMultiPathGatewayOriginACL request structure.
 
@@ -8815,6 +9071,48 @@ class ConfirmOriginACLUpdateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ContentCompressionParameters(AbstractModel):
+    r"""Content compression configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Specifies the content compression configuration switch. valid values:.
+<li>`on`: Enable;</li>
+<li>off: Disable.</li>
+Specifies whether to simultaneously support brotli and gzip compression algorithms when Switch is on.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""Specifies the content compression configuration switch. valid values:.
+<li>`on`: Enable;</li>
+<li>off: Disable.</li>
+Specifies whether to simultaneously support brotli and gzip compression algorithms when Switch is on.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ContentIdentifier(AbstractModel):
@@ -10476,6 +10774,100 @@ class CreateDnsRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEdgeKVNamespaceRequest(AbstractModel):
+    r"""CreateEdgeKVNamespace request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name. Input content with the following restrictions: support input of 1-50 characters, allowed characters are a-z, A-Z, 0-9, -, and - cannot be registered alone or used continuously, cannot be placed at the beginning or the end. Under the same site, ensure the name is unique.
+        :type Namespace: str
+        :param _Remark: Namespace description. Used to describe the purpose or business meaning of a namespace. Supports a maximum of 256 characters.
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name. Input content with the following restrictions: support input of 1-50 characters, allowed characters are a-z, A-Z, 0-9, -, and - cannot be registered alone or used continuously, cannot be placed at the beginning or the end. Under the same site, ensure the name is unique.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""Namespace description. Used to describe the purpose or business meaning of a namespace. Supports a maximum of 256 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeKVNamespaceResponse(AbstractModel):
+    r"""CreateEdgeKVNamespace response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFunctionRequest(AbstractModel):
     r"""CreateFunction request structure.
 
@@ -10611,14 +11003,27 @@ class CreateFunctionRuleRequest(AbstractModel):
         :type ZoneId: str
         :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between different conditions of the same trigger rule.
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met.
+        :param _TriggerType: Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+Specifies the default value as direct when left blank.
+        :type TriggerType: str
+        :param _FunctionId: Specifies the function ID to be executed. this parameter is valid only when TriggerType is direct or left empty.
         :type FunctionId: str
+        :param _RegionMappingSelections: Function selection configuration based on client IP country/region. this parameter is valid only when TriggerType is region and RegionMappingSelections is required. RegionMappingSelections must include at least one configuration with Regions set to Default.
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: Weighted function selection configuration. this parameter is valid only when TriggerType is weight and WeightedSelections is required. the sum of all weights in WeightedSelections need to be 100.
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Remark: Rule description, which can contain up to 60 characters.
         :type Remark: str
         """
         self._ZoneId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Remark = None
 
     @property
@@ -10644,8 +11049,23 @@ class CreateFunctionRuleRequest(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+Specifies the default value as direct when left blank.
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""Function ID, specifying a function executed when a trigger rule condition is met.
+        r"""Specifies the function ID to be executed. this parameter is valid only when TriggerType is direct or left empty.
         :rtype: str
         """
         return self._FunctionId
@@ -10653,6 +11073,28 @@ class CreateFunctionRuleRequest(AbstractModel):
     @FunctionId.setter
     def FunctionId(self, FunctionId):
         self._FunctionId = FunctionId
+
+    @property
+    def RegionMappingSelections(self):
+        r"""Function selection configuration based on client IP country/region. this parameter is valid only when TriggerType is region and RegionMappingSelections is required. RegionMappingSelections must include at least one configuration with Regions set to Default.
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""Weighted function selection configuration. this parameter is valid only when TriggerType is weight and WeightedSelections is required. the sum of all weights in WeightedSelections need to be 100.
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Remark(self):
@@ -10674,7 +11116,20 @@ class CreateFunctionRuleRequest(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10931,23 +11386,20 @@ class CreateL4ProxyRequest(AbstractModel):
 <li>overseas: global availability zone (excluding the Chinese mainland);</li>
 <li>global: global availability zone.</li>
         :type Area: str
-        :param _Ipv6: Whether to enable IPv6 access. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        :param _Ipv6: Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
-
         :type Ipv6: str
-        :param _StaticIp: Whether to enable static IP. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        :param _StaticIp: Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
         :type StaticIp: str
-        :param _AccelerateMainland: Whether to enable network optimization for the Chinese mainland. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        :param _AccelerateMainland: Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
         :type AccelerateMainland: str
-        :param _DDosProtectionConfig: Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
+        :param _DDosProtectionConfig: Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.comom/document/product/1552/95994?from_cn_redirect=1).
+This field is deprecated, please use DDosProtectionId field specification for associated protection configuration.
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         self._ZoneId = None
@@ -10997,11 +11449,9 @@ class CreateL4ProxyRequest(AbstractModel):
 
     @property
     def Ipv6(self):
-        r"""Whether to enable IPv6 access. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        r"""Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
-
         :rtype: str
         """
         return self._Ipv6
@@ -11012,10 +11462,9 @@ class CreateL4ProxyRequest(AbstractModel):
 
     @property
     def StaticIp(self):
-        r"""Whether to enable static IP. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        r"""Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
         :rtype: str
         """
         return self._StaticIp
@@ -11026,10 +11475,9 @@ class CreateL4ProxyRequest(AbstractModel):
 
     @property
     def AccelerateMainland(self):
-        r"""Whether to enable network optimization for the Chinese mainland. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
-<li>on: Enable;</li>
+        r"""Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+<li>`on`: Enable;</li>
 <li>off: Disable.</li>
-
         :rtype: str
         """
         return self._AccelerateMainland
@@ -11040,13 +11488,18 @@ class CreateL4ProxyRequest(AbstractModel):
 
     @property
     def DDosProtectionConfig(self):
-        r"""Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
+        r"""Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.comom/document/product/1552/95994?from_cn_redirect=1).
+This field is deprecated, please use DDosProtectionId field specification for associated protection configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         return self._DDosProtectionConfig
 
     @DDosProtectionConfig.setter
     def DDosProtectionConfig(self, DDosProtectionConfig):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         self._DDosProtectionConfig = DDosProtectionConfig
 
 
@@ -11926,21 +12379,21 @@ class CreateOriginGroupRequest(AbstractModel):
         r"""
         :param _ZoneId: Site ID
         :type ZoneId: str
+        :param _Records: (Required) Origins in the origin group.
+        :type Records: list of OriginRecord
         :param _Name: Origin group name. It can contain 1 to 200 characters ([a-z], [A-Z], [0-9] and [_-]).
         :type Name: str
         :param _Type: (Required) Origin group type. Values:
 <li>`GENERAL`: General origin groups. It supports IPs and domain names. It can be referenced by DNS, Rule Engine, Layer 4 Proxy and General LoadBalancer. </li>
 <li>`HTTP`: HTTP-specific origin groups. It supports IPs/domain names and object storage buckets. It can be referenced by acceleration domain names, rule engines and HTTP LoadBalancer. It cannot be referenced by L4 proxies. </li>
         :type Type: str
-        :param _Records: (Required) Origins in the origin group.
-        :type Records: list of OriginRecord
         :param _HostHeader: Host header used for origin-pull. It only works when `Type=HTTP`. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration.
         :type HostHeader: str
         """
         self._ZoneId = None
+        self._Records = None
         self._Name = None
         self._Type = None
-        self._Records = None
         self._HostHeader = None
 
     @property
@@ -11953,6 +12406,17 @@ class CreateOriginGroupRequest(AbstractModel):
     @ZoneId.setter
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
+
+    @property
+    def Records(self):
+        r"""(Required) Origins in the origin group.
+        :rtype: list of OriginRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def Name(self):
@@ -11979,17 +12443,6 @@ class CreateOriginGroupRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def Records(self):
-        r"""(Required) Origins in the origin group.
-        :rtype: list of OriginRecord
-        """
-        return self._Records
-
-    @Records.setter
-    def Records(self, Records):
-        self._Records = Records
-
-    @property
     def HostHeader(self):
         r"""Host header used for origin-pull. It only works when `Type=HTTP`. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration.
         :rtype: str
@@ -12003,14 +12456,14 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._Name = params.get("Name")
-        self._Type = params.get("Type")
         if params.get("Records") is not None:
             self._Records = []
             for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
         self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12343,29 +12796,38 @@ class CreatePrefetchTaskRequest(AbstractModel):
 
 If you wish to quickly submit Targets urls under different sites, you can fill in * as the value. but the premise is that the account calling this API must have the permission to all site resources under the root account.
         :type ZoneId: str
-        :param _Targets: List of resources to be preheated. Each element format is similar to the following:
-http://www.example.com/example.txt. The parameter value is currently required.
-Note: The number of tasks that can be submitted is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
+        :param _Targets: List of resources to be preheated. required. each element format is as follows:.
+http://www.example.com/example.txt.
+Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.comom/document/product/1552/77380?from_cn_redirect=1).
         :type Targets: list of str
+        :param _Mode: Preheat mode. valid values:.
+<Li>Default: default mode, which preheats to the middle layer.</li>.
+<Li>Edge: specifies edge preheating mode, which preheats to both edge and middle layer.</li> if left empty, the default value is default.
+Notes:.
+Preheating to the edge generates edge layer traffic, which is included in billing traffic.
+2. specifies the default allocation of edge preheating as a separate preheating amount of 1000 per day, which does not consume the standard preheating amount.
+Description:.
+This parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        :type Mode: str
         :param _EncodeUrl: Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.
         :type EncodeUrl: bool
-        :param _Headers: HTTP header information
+        :param _Headers: Specifies whether to carry HTTP header information for preheating. leave it empty otherwise.
         :type Headers: list of Header
         :param _PrefetchMediaSegments: Media fragment preheating control. valid values:.
 <Li>On: enables shard preheating, preheats the description file, and performs recursive resolution of the description file shards for preheating.</li>.
-<Li>Off: only preheat the submitted description file.</li>default value: off if left empty.
-
+<Li>Off: only preheats the submitted description file.</li>default value: off if left empty.
 Notes:.
-1. the supported description file is M3U8, and the corresponding shard is TS.
-Describes the requirement that the description file can process normal requests and specify the sharding path as per industry standards.
-Recursive resolution depth is no more than 3.
-Parsed shards normally accumulate daily pre-warming amount. when usage exceeds the quota limit, silent processing is triggered and preheating is no longer executed.
-
-This parameter specifies the allowlist feature. if necessary, contact tencent cloud engineers.
+Supported description file is M3U8; corresponding shard is TS.
+Specifies the description file must support normal requests and describe sharding paths as per industry standards.
+Specifies the recursive resolution depth is no more than 3.
+Parsed shards normally accumulate daily pre-warming amount. when usage exceeds the limit, silent processing is triggered and preheating is no longer executed.
+Description:.
+This parameter is the allowlist feature. if needed, contact tencent cloud engineers.
         :type PrefetchMediaSegments: str
         """
         self._ZoneId = None
         self._Targets = None
+        self._Mode = None
         self._EncodeUrl = None
         self._Headers = None
         self._PrefetchMediaSegments = None
@@ -12385,9 +12847,9 @@ If you wish to quickly submit Targets urls under different sites, you can fill i
 
     @property
     def Targets(self):
-        r"""List of resources to be preheated. Each element format is similar to the following:
-http://www.example.com/example.txt. The parameter value is currently required.
-Note: The number of tasks that can be submitted is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
+        r"""List of resources to be preheated. required. each element format is as follows:.
+http://www.example.com/example.txt.
+Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.comom/document/product/1552/77380?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._Targets
@@ -12395,6 +12857,24 @@ Note: The number of tasks that can be submitted is limited by the quota of a bil
     @Targets.setter
     def Targets(self, Targets):
         self._Targets = Targets
+
+    @property
+    def Mode(self):
+        r"""Preheat mode. valid values:.
+<Li>Default: default mode, which preheats to the middle layer.</li>.
+<Li>Edge: specifies edge preheating mode, which preheats to both edge and middle layer.</li> if left empty, the default value is default.
+Notes:.
+Preheating to the edge generates edge layer traffic, which is included in billing traffic.
+2. specifies the default allocation of edge preheating as a separate preheating amount of 1000 per day, which does not consume the standard preheating amount.
+Description:.
+This parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
     @property
     def EncodeUrl(self):
@@ -12413,7 +12893,7 @@ Note: The number of tasks that can be submitted is limited by the quota of a bil
 
     @property
     def Headers(self):
-        r"""HTTP header information
+        r"""Specifies whether to carry HTTP header information for preheating. leave it empty otherwise.
         :rtype: list of Header
         """
         return self._Headers
@@ -12426,15 +12906,14 @@ Note: The number of tasks that can be submitted is limited by the quota of a bil
     def PrefetchMediaSegments(self):
         r"""Media fragment preheating control. valid values:.
 <Li>On: enables shard preheating, preheats the description file, and performs recursive resolution of the description file shards for preheating.</li>.
-<Li>Off: only preheat the submitted description file.</li>default value: off if left empty.
-
+<Li>Off: only preheats the submitted description file.</li>default value: off if left empty.
 Notes:.
-1. the supported description file is M3U8, and the corresponding shard is TS.
-Describes the requirement that the description file can process normal requests and specify the sharding path as per industry standards.
-Recursive resolution depth is no more than 3.
-Parsed shards normally accumulate daily pre-warming amount. when usage exceeds the quota limit, silent processing is triggered and preheating is no longer executed.
-
-This parameter specifies the allowlist feature. if necessary, contact tencent cloud engineers.
+Supported description file is M3U8; corresponding shard is TS.
+Specifies the description file must support normal requests and describe sharding paths as per industry standards.
+Specifies the recursive resolution depth is no more than 3.
+Parsed shards normally accumulate daily pre-warming amount. when usage exceeds the limit, silent processing is triggered and preheating is no longer executed.
+Description:.
+This parameter is the allowlist feature. if needed, contact tencent cloud engineers.
         :rtype: str
         """
         return self._PrefetchMediaSegments
@@ -12447,6 +12926,7 @@ This parameter specifies the allowlist feature. if necessary, contact tencent cl
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._Targets = params.get("Targets")
+        self._Mode = params.get("Mode")
         self._EncodeUrl = params.get("EncodeUrl")
         if params.get("Headers") is not None:
             self._Headers = []
@@ -12541,12 +13021,12 @@ class CreatePurgeTaskRequest(AbstractModel):
 .
 If you want to quickly submit targets urls under different sites, you can set it to *, but the account calling this api must have permission for all site resources under the main account.
         :type ZoneId: str
-        :param _Type: Type of cache purging. Values:
-<li>`purge_url`: Purge by the URL</li>
-<li>`purge_prefix`: Purge by the directory</li>
-<li>`purge_host`: Purge by the hostname</li>
-<li>`purge_all`: Purge all caches</li>
-<li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
+        :param _Type: Node cache clearing type, valid values:
+<li>purge_url: URL refresh;</li>
+<li>purge_prefix: Directory refresh.</li>
+<li>purge_host: Hostname refresh;</li>
+<li>purge_all: Purge all caches under the site (ZoneId input as * is not supported when this value is taken);</li>
+<li>purge_cache_tag: cache-tag refresh.</li>For details on purge types, see [Purge Cache](https://www.tencentcloud.com/document/product/1552/70759?from_cn_redirect=1).
         :type Type: str
         :param _Method: Node cache clearing method is valid for directory refresh, Hostname refresh, and refresh all cache types. valid values: <li> invalidate: refresh only resources that have been updated under the directory;</li> <li> delete: refresh node resources regardless of whether resources under the directory are updated.</li> default value: invalidate.
         :type Method: str
@@ -12580,12 +13060,12 @@ If you want to quickly submit targets urls under different sites, you can set it
 
     @property
     def Type(self):
-        r"""Type of cache purging. Values:
-<li>`purge_url`: Purge by the URL</li>
-<li>`purge_prefix`: Purge by the directory</li>
-<li>`purge_host`: Purge by the hostname</li>
-<li>`purge_all`: Purge all caches</li>
-<li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
+        r"""Node cache clearing type, valid values:
+<li>purge_url: URL refresh;</li>
+<li>purge_prefix: Directory refresh.</li>
+<li>purge_host: Hostname refresh;</li>
+<li>purge_all: Purge all caches under the site (ZoneId input as * is not supported when this value is taken);</li>
+<li>purge_cache_tag: cache-tag refresh.</li>For details on purge types, see [Purge Cache](https://www.tencentcloud.com/document/product/1552/70759?from_cn_redirect=1).
         :rtype: str
         """
         return self._Type
@@ -12739,33 +13219,34 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type ZoneId: str
         :param _TaskName: Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
         :type TaskName: str
-        :param _TaskType: Type of a real-time log delivery task. Valid values:
-<li>cls: push to Tencent Cloud CLS;</li>
-<li>custom_endpoint: push to a custom HTTP(S) endpoint;</li>
-<li>s3: push to an AWS S3-compatible bucket.</li>
+        :param _TaskType: Type of a real-time log shipping task. valid values:.
+<li>cls: push to tencent cloud cls.</li>.
+<li>custom_endpoint: push to a custom HTTP(S) address.</li>.
+<li>s3: push to an AWS s3-compatible bucket address.</li>.
+<li>log_analysis: pushes to EdgeOne log analytics. this task type only supports the "site acceleration log" data delivery type.</li>.
         :type TaskType: str
-        :param _EntityList: List of entities associated with the real-time log delivery task. Valid value examples:
-<li>L7 domain name: domain.example.com</li>
-<li>L4 proxy instance: sid-2s69eb5wcms7</li>
-<li>Edge Function instance: test-zone-2mxigizoh9l9-1257626257</li>
+        :param _EntityList: Entity list corresponding to the real-time log delivery task. example values:.
+<Li>Specifies the layer-7 domain name: domain.example.com.</li>.
+<Li>Specifies the l4 proxy instance: sid-2s69eb5wcms7.</li>.
+<Li>Edge function instance: test-zone-2mxigizoh9l9-1257626257.</li>.
         :type EntityList: list of str
-        :param _LogType: Dataset type. Valid values:
-<li>domain: site acceleration logs;</li>
-<li>application: L4 proxy logs;</li>
-<li>function: Edge Function execution log;</li>
-<li>web-rateLiming: rate limiting and CC attack protection logs;</li>
-<li>web-attack: managed rule logs;</li>
-<li>web-rule: custom rule logs;</li>
+        :param _LogType: Data delivery type. valid values:.
+<li>domain: specifies the site acceleration logs.</li>.
+<li>application: four-layer proxy logs.</li>.
+<Li>Function: specifies the edge function logs.</li>.
+<li>web-rateLiming: specifies the rate limit and CC attack defense logs.</li>.
+<li>web-attack: managed rule logs;</li>.
+<li>web-rule: custom rule logs;</li>.
 <li>web-bot: Bot management logs.</li>
         :type LogType: str
         :param _Area: Data area. Valid values:
 <li>mainland: within the Chinese mainland;</li>
 <li>overseas: global (excluding the Chinese mainland).</li>
         :type Area: str
-        :param _Fields: Pre-defined log fields to be delivered. Refer to:
-<li>[Site acceleration log (L7 access log)](https://www.tencentcloud.com/document/product/1145/61300)</li>
-<li>[L4 proxy log](https://www.tencentcloud.com/document/product/1145/61301)</li>
-<li>[Edge Function execution log](https://www.tencentcloud.com/document/product/1145/67840)</li>
+        :param _Fields: Predefined fields for delivery. valid values:.
+<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.comom/document/product/1552/105791?from_cn_redirect=1)</li>.
+<Li><A href="https://www.tencentcloud.comom/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
+<Li>Specifies the edge function logs (https://www.tencentcloud.comom/document/product/1552/115585?from_cn_redirect=1).</li>.
         :type Fields: list of str
         :param _CustomFields: The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (`LogType`=`domain`) support custom fields.
         :type CustomFields: list of CustomField
@@ -12773,9 +13254,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not specified, the sampling ratio is 100%.
         :type Sample: int
-        :param _LogFormat: Output format for log delivery. If this field is not specified, the default format is used, which works as follows:
-<li>When `TaskType` is `custom_endpoint`, the default format is an array of JSON objects, with each JSON object representing a log entry;</li>
-<li>When `TaskType` is `s3`, the default format is JSON Lines;</li>Specifically, when `TaskType` is `cls`, the only allowed value for `LogFormat.FormatType` is `json`, and other parameters in `LogFormat` will be ignored. It is recommended not to input `LogFormat`.
+        :param _LogFormat: Output format for log delivery. if this field is not specified, the default format is used, which works as follows:.
+<li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>.
+<li>When TaskType is 's3', the default format is JSON Lines;</li>specifically, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'JSON', and other parameters in LogFormat will be ignored. it is recommended not to transfer LogFormat.
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CLS: Configuration information of CLS. This parameter is required when `TaskType` is `cls`.
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
@@ -12823,10 +13304,11 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""Type of a real-time log delivery task. Valid values:
-<li>cls: push to Tencent Cloud CLS;</li>
-<li>custom_endpoint: push to a custom HTTP(S) endpoint;</li>
-<li>s3: push to an AWS S3-compatible bucket.</li>
+        r"""Type of a real-time log shipping task. valid values:.
+<li>cls: push to tencent cloud cls.</li>.
+<li>custom_endpoint: push to a custom HTTP(S) address.</li>.
+<li>s3: push to an AWS s3-compatible bucket address.</li>.
+<li>log_analysis: pushes to EdgeOne log analytics. this task type only supports the "site acceleration log" data delivery type.</li>.
         :rtype: str
         """
         return self._TaskType
@@ -12837,10 +13319,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        r"""List of entities associated with the real-time log delivery task. Valid value examples:
-<li>L7 domain name: domain.example.com</li>
-<li>L4 proxy instance: sid-2s69eb5wcms7</li>
-<li>Edge Function instance: test-zone-2mxigizoh9l9-1257626257</li>
+        r"""Entity list corresponding to the real-time log delivery task. example values:.
+<Li>Specifies the layer-7 domain name: domain.example.com.</li>.
+<Li>Specifies the l4 proxy instance: sid-2s69eb5wcms7.</li>.
+<Li>Edge function instance: test-zone-2mxigizoh9l9-1257626257.</li>.
         :rtype: list of str
         """
         return self._EntityList
@@ -12851,13 +13333,13 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Dataset type. Valid values:
-<li>domain: site acceleration logs;</li>
-<li>application: L4 proxy logs;</li>
-<li>function: Edge Function execution log;</li>
-<li>web-rateLiming: rate limiting and CC attack protection logs;</li>
-<li>web-attack: managed rule logs;</li>
-<li>web-rule: custom rule logs;</li>
+        r"""Data delivery type. valid values:.
+<li>domain: specifies the site acceleration logs.</li>.
+<li>application: four-layer proxy logs.</li>.
+<Li>Function: specifies the edge function logs.</li>.
+<li>web-rateLiming: specifies the rate limit and CC attack defense logs.</li>.
+<li>web-attack: managed rule logs;</li>.
+<li>web-rule: custom rule logs;</li>.
 <li>web-bot: Bot management logs.</li>
         :rtype: str
         """
@@ -12882,10 +13364,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        r"""Pre-defined log fields to be delivered. Refer to:
-<li>[Site acceleration log (L7 access log)](https://www.tencentcloud.com/document/product/1145/61300)</li>
-<li>[L4 proxy log](https://www.tencentcloud.com/document/product/1145/61301)</li>
-<li>[Edge Function execution log](https://www.tencentcloud.com/document/product/1145/67840)</li>
+        r"""Predefined fields for delivery. valid values:.
+<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.comom/document/product/1552/105791?from_cn_redirect=1)</li>.
+<Li><A href="https://www.tencentcloud.comom/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
+<Li>Specifies the edge function logs (https://www.tencentcloud.comom/document/product/1552/115585?from_cn_redirect=1).</li>.
         :rtype: list of str
         """
         return self._Fields
@@ -12929,9 +13411,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        r"""Output format for log delivery. If this field is not specified, the default format is used, which works as follows:
-<li>When `TaskType` is `custom_endpoint`, the default format is an array of JSON objects, with each JSON object representing a log entry;</li>
-<li>When `TaskType` is `s3`, the default format is JSON Lines;</li>Specifically, when `TaskType` is `cls`, the only allowed value for `LogFormat.FormatType` is `json`, and other parameters in `LogFormat` will be ignored. It is recommended not to input `LogFormat`.
+        r"""Output format for log delivery. if this field is not specified, the default format is used, which works as follows:.
+<li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>.
+<li>When TaskType is 's3', the default format is JSON Lines;</li>specifically, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'JSON', and other parameters in LogFormat will be ignored. it is recommended not to transfer LogFormat.
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -13935,11 +14417,12 @@ class CreateZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Site access type. If this parameter is not input, the default value `partial` is used. Valid values of this parameter are as follows:
-<li>partial: CNAME access;</li>
-<li>full: NS access;</li>
-<li>noDomainAccess: access with no domain name.</li>
-<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>
+        :param _Type: Site access type. if this parameter is not input, the default value `partial` is used. valid values of this parameter are as follows:.
+<li>partial: CNAME access;</li>.
+<li>full: NS access;</li>.
+<li>noDomainAccess: access with no domain name.</li>.
+<li>dnsPodAccess: DNSPod hosted access. to use this access mode, your domain name should have been hosted on DNSPod.</li>.
+<li>ai: edge reasoning integration.</li>.
         :type Type: str
         :param _ZoneName: Site name. For sites connected via CNAME/NS, pass in the secondary domain name (example.com). Leave it blank if the site is connected without a domain name. 
         :type ZoneName: str
@@ -13975,11 +14458,12 @@ Note: if this parameter is not specified, a site in "init" status will be create
 
     @property
     def Type(self):
-        r"""Site access type. If this parameter is not input, the default value `partial` is used. Valid values of this parameter are as follows:
-<li>partial: CNAME access;</li>
-<li>full: NS access;</li>
-<li>noDomainAccess: access with no domain name.</li>
-<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>
+        r"""Site access type. if this parameter is not input, the default value `partial` is used. valid values of this parameter are as follows:.
+<li>partial: CNAME access;</li>.
+<li>full: NS access;</li>.
+<li>noDomainAccess: access with no domain name.</li>.
+<li>dnsPodAccess: DNSPod hosted access. to use this access mode, your domain name should have been hosted on DNSPod.</li>.
+<li>ai: edge reasoning integration.</li>.
         :rtype: str
         """
         return self._Type
@@ -14605,7 +15089,7 @@ class CustomField(AbstractModel):
 
 
 class CustomRule(AbstractModel):
-    r"""Custom rule configuration.
+    r"""Custom rule under Web protection feature.
 
     """
 
@@ -14613,17 +15097,17 @@ class CustomRule(AbstractModel):
         r"""
         :param _Name: The custom rule name.
         :type Name: str
-        :param _Condition: The specifics of the custom rule, must comply with the expression grammar, please refer to product documentation for details.
+        :param _Condition: The specific content of custom rules must comply with expression grammar. For detailed specifications, please refer to the product document (https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1).
         :type Condition: str
-        :param _Action: Action for custom rules. The Name parameter of SecurityAction supports: <li>`Deny`: block;</li> <li>`Monitor`: observe;</li> <li>`ReturnCustomPage`: block with customized page;</li> <li>`Redirect`: Redirect to URL;</li> <li>`BlockIP`: IP blocking;</li> <li>`JSChallenge`: JavaScript challenge;</li> <li>`ManagedChallenge`: managed challenge;</li> <li>`Allow`: Allow.</li>.
+        :param _Action: The handling action of custom rules. The value range of SecurityAction.Name is as follows:<ul><li>Deny: blocking;</li><li>Monitor: observation;</li><li>ReturnCustomPage: use specified page to block;</li><li>Redirect: redirect to URL;</li><li>BlockIP: IP blocking;</li><li>JSChallenge: JavaScript challenge;</li><li>ManagedChallenge: managed challenge;</li><li>Allow: allowing.</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Enabled: The custom rule status. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :param _Enabled: Whether the custom rule is enabled. Valid values: <ul><li>on: enable</li><li>off: disable</li></ul>
         :type Enabled: str
-        :param _Id: Custom rule ID. <br>Different rule configuration operations are supported by rule ID : <br> - Add a new rule: ID is empty or the ID parameter is not specified; <br> - Modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - Delete an existing rule: existing rules not included in the Rules parameter will be deleted.
+        :param _Id: ID of the custom rule. Different rule configuration operations are supported by rule ID:<ul><li>Add a new rule: The ID is empty or the ID parameter is not specified.</li><li>Modify an existing rule: Specify the rule ID that needs to be updated or modified.</li><li>Delete an existing rule: Existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul>
         :type Id: str
-        :param _RuleType: Type of custom rule. Values: <li>`BasicAccessRule`: basic access control;</li> <li>`PreciseMatchRule`: exact custom rule, default;</li> <li>`ManagedAccessRule`: expert customized rule, output parameter only.</li>The default value is PreciseMatchRule.
+        :param _RuleType: Type of custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, only supported in output parameters.</li></ul>Description: When RuleType is not specified, it defaults to `PreciseMatchRule`.
         :type RuleType: str
-        :param _Priority: Customize the priority of custom rule. Range: 0-100, the default value is 0, this parameter only supports PreciseMatchRule.
+        :param _Priority: Priority of custom rules, ranging from 0 to 100, defaults to 0, and only supports exact matching rules (`PreciseMatchRule`).
         :type Priority: int
         """
         self._Name = None
@@ -14647,7 +15131,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""The specifics of the custom rule, must comply with the expression grammar, please refer to product documentation for details.
+        r"""The specific content of custom rules must comply with expression grammar. For detailed specifications, please refer to the product document (https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1).
         :rtype: str
         """
         return self._Condition
@@ -14658,7 +15142,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""Action for custom rules. The Name parameter of SecurityAction supports: <li>`Deny`: block;</li> <li>`Monitor`: observe;</li> <li>`ReturnCustomPage`: block with customized page;</li> <li>`Redirect`: Redirect to URL;</li> <li>`BlockIP`: IP blocking;</li> <li>`JSChallenge`: JavaScript challenge;</li> <li>`ManagedChallenge`: managed challenge;</li> <li>`Allow`: Allow.</li>.
+        r"""The handling action of custom rules. The value range of SecurityAction.Name is as follows:<ul><li>Deny: blocking;</li><li>Monitor: observation;</li><li>ReturnCustomPage: use specified page to block;</li><li>Redirect: redirect to URL;</li><li>BlockIP: IP blocking;</li><li>JSChallenge: JavaScript challenge;</li><li>ManagedChallenge: managed challenge;</li><li>Allow: allowing.</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -14669,7 +15153,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""The custom rule status. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        r"""Whether the custom rule is enabled. Valid values: <ul><li>on: enable</li><li>off: disable</li></ul>
         :rtype: str
         """
         return self._Enabled
@@ -14680,7 +15164,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""Custom rule ID. <br>Different rule configuration operations are supported by rule ID : <br> - Add a new rule: ID is empty or the ID parameter is not specified; <br> - Modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - Delete an existing rule: existing rules not included in the Rules parameter will be deleted.
+        r"""ID of the custom rule. Different rule configuration operations are supported by rule ID:<ul><li>Add a new rule: The ID is empty or the ID parameter is not specified.</li><li>Modify an existing rule: Specify the rule ID that needs to be updated or modified.</li><li>Delete an existing rule: Existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul>
         :rtype: str
         """
         return self._Id
@@ -14691,7 +15175,7 @@ class CustomRule(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""Type of custom rule. Values: <li>`BasicAccessRule`: basic access control;</li> <li>`PreciseMatchRule`: exact custom rule, default;</li> <li>`ManagedAccessRule`: expert customized rule, output parameter only.</li>The default value is PreciseMatchRule.
+        r"""Type of custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, only supported in output parameters.</li></ul>Description: When RuleType is not specified, it defaults to `PreciseMatchRule`.
         :rtype: str
         """
         return self._RuleType
@@ -14702,7 +15186,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Customize the priority of custom rule. Range: 0-100, the default value is 0, this parameter only supports PreciseMatchRule.
+        r"""Priority of custom rules, ranging from 0 to 100, defaults to 0, and only supports exact matching rules (`PreciseMatchRule`).
         :rtype: int
         """
         return self._Priority
@@ -15363,6 +15847,105 @@ class DDosProtectionConfig(AbstractModel):
         self._LevelMainland = params.get("LevelMainland")
         self._MaxBandwidthMainland = params.get("MaxBandwidthMainland")
         self._LevelOverseas = params.get("LevelOverseas")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DNSPodDetail(AbstractModel):
+    r"""DNSPod managed type site parameter description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsFake: Whether it is a fake site, with values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :type IsFake: int
+        """
+        self._IsFake = None
+
+    @property
+    def IsFake(self):
+        r"""Whether it is a fake site, with values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :rtype: int
+        """
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+
+    def _deserialize(self, params):
+        self._IsFake = params.get("IsFake")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DefaultDenySecurityActionParameters(AbstractModel):
+    r"""Default interception action configuration. When security rules are hit and trigger intercept handling actions, if SecurityAction only specifies Name as Deny and DenyActionParameters is not specified, match by feature module dimension and use the default parameter configuration defined here:
+    <li>Default disposition action configuration for managed rules in ManagedRules.</li>
+    <li>OtherModules Security protection rules (custom rule, rate limit, and Bot management function) except managed rules have default block disposition action configuration.</li>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ManagedRules: The managed rule uses the default disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use a custom page.</li><li>ResponseCode: Status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
+        :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        :param _OtherModules: Security protection rules other than managed rules (custom rule, rate limit, and Bot management function) default to disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use custom page.</li> <li>ResponseCode: Status code of custom pages.</li> <li>ErrorPageId: PageId of custom pages.</li>
+        :type OtherModules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        self._ManagedRules = None
+        self._OtherModules = None
+
+    @property
+    def ManagedRules(self):
+        r"""The managed rule uses the default disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use a custom page.</li><li>ResponseCode: Status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        return self._ManagedRules
+
+    @ManagedRules.setter
+    def ManagedRules(self, ManagedRules):
+        self._ManagedRules = ManagedRules
+
+    @property
+    def OtherModules(self):
+        r"""Security protection rules other than managed rules (custom rule, rate limit, and Bot management function) default to disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use custom page.</li> <li>ResponseCode: Status code of custom pages.</li> <li>ErrorPageId: PageId of custom pages.</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        return self._OtherModules
+
+    @OtherModules.setter
+    def OtherModules(self, OtherModules):
+        self._OtherModules = OtherModules
+
+
+    def _deserialize(self, params):
+        if params.get("ManagedRules") is not None:
+            self._ManagedRules = DenyActionParameters()
+            self._ManagedRules._deserialize(params.get("ManagedRules"))
+        if params.get("OtherModules") is not None:
+            self._OtherModules = DenyActionParameters()
+            self._OtherModules._deserialize(params.get("OtherModules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16106,6 +16689,85 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
 class DeleteDnsRecordsResponse(AbstractModel):
     r"""DeleteDnsRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEdgeKVNamespaceRequest(AbstractModel):
+    r"""DeleteEdgeKVNamespace request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name to delete.
+        :type Namespace: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name to delete.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEdgeKVNamespaceResponse(AbstractModel):
+    r"""DeleteEdgeKVNamespace response structure.
 
     """
 
@@ -19648,7 +20310,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>
 <li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -19711,7 +20373,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -19857,7 +20519,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
         :type EndTime: str
         :param _PolicyIds: List of DDoS policy IDs. All policies are selected if this field is not specified.
         :type PolicyIds: list of int
-        :param _ZoneIds: Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
         :type Limit: int
@@ -19925,7 +20587,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20113,7 +20775,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>
 <li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>
         :type MetricName: str
-        :param _ZoneIds: Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: The list of DDoS policy IDs to be specified. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -20188,7 +20850,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). A maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20920,6 +21582,205 @@ class DescribeDnsRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEdgeKVNamespacesRequest(AbstractModel):
+    r"""DescribeEdgeKVNamespaces request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Offset: The offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: The limit of paginated query. Default value: 20. Maximum value: 1,000.
+        :type Limit: int
+        :param _SortBy: Sorting basis. Valid values:
+<li>created-on: creation time;</li>
+<li>updated-on: Update time.</li>
+Default value is created-on.
+        :type SortBy: str
+        :param _SortOrder: List sort method. Valid values:
+<li>asc: ascending order;</li>
+<li>desc: descending order.</li>
+Default value is desc.
+
+        :type SortOrder: str
+        :param _Filters: Filter criteria. The maximum of Filters.Values is 20. If this parameter is left empty, return all KV namespaces under the site ID. Detailed filter criteria:
+<li>Namespace: Filter by KV namespace name. Fuzzy query is supported.</li>
+<li>remark: Filter by namespace description. Fuzzy query is supported.</li>
+
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        r"""The offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""The limit of paginated query. Default value: 20. Maximum value: 1,000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        r"""Sorting basis. Valid values:
+<li>created-on: creation time;</li>
+<li>updated-on: Update time.</li>
+Default value is created-on.
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""List sort method. Valid values:
+<li>asc: ascending order;</li>
+<li>desc: descending order.</li>
+Default value is desc.
+
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Filters(self):
+        r"""Filter criteria. The maximum of Filters.Values is 20. If this parameter is left empty, return all KV namespaces under the site ID. Detailed filter criteria:
+<li>Namespace: Filter by KV namespace name. Fuzzy query is supported.</li>
+<li>remark: Filter by namespace description. Fuzzy query is supported.</li>
+
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeKVNamespacesResponse(AbstractModel):
+    r"""DescribeEdgeKVNamespaces response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible namespaces.
+        :type TotalCount: int
+        :param _KVNamespaces: KV namespace information list. If no matching criteria, return an empty array.
+        :type KVNamespaces: list of KVNamespace
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._KVNamespaces = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible namespaces.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def KVNamespaces(self):
+        r"""KV namespace information list. If no matching criteria, return an empty array.
+        :rtype: list of KVNamespace
+        """
+        return self._KVNamespaces
+
+    @KVNamespaces.setter
+    def KVNamespaces(self, KVNamespaces):
+        self._KVNamespaces = KVNamespaces
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("KVNamespaces") is not None:
+            self._KVNamespaces = []
+            for item in params.get("KVNamespaces"):
+                obj = KVNamespace()
+                obj._deserialize(item)
+                self._KVNamespaces.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     r"""DescribeEnvironments request structure.
 
@@ -21016,6 +21877,176 @@ class DescribeEnvironmentsResponse(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self._EnvInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionComponentBindingsRequest(AbstractModel):
+    r"""DescribeFunctionComponentBindings request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Offset: The offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: The limit of paginated query. Default value: 20. Maximum value: 1,000.
+        :type Limit: int
+        :param _Filters: Filter conditions. The maximum number of Filters.Values is 20. Detailed filter criteria:
+<li>Name: Filter by the bound variable name. Fuzzy query is supported.</li>
+<li>type: Filter by binding type. Fuzzy queries are not supported.</li>
+
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""Function ID.
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Offset(self):
+        r"""The offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""The limit of paginated query. Default value: 20. Maximum value: 1,000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Filter conditions. The maximum number of Filters.Values is 20. Detailed filter criteria:
+<li>Name: Filter by the bound variable name. Fuzzy query is supported.</li>
+<li>type: Filter by binding type. Fuzzy queries are not supported.</li>
+
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionComponentBindingsResponse(AbstractModel):
+    r"""DescribeFunctionComponentBindings response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible functions bound.
+        :type TotalCount: int
+        :param _FunctionComponentBindings: Function component bound list.
+        :type FunctionComponentBindings: list of FunctionComponentBinding
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FunctionComponentBindings = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible functions bound.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FunctionComponentBindings(self):
+        r"""Function component bound list.
+        :rtype: list of FunctionComponentBinding
+        """
+        return self._FunctionComponentBindings
+
+    @FunctionComponentBindings.setter
+    def FunctionComponentBindings(self, FunctionComponentBindings):
+        self._FunctionComponentBindings = FunctionComponentBindings
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("FunctionComponentBindings") is not None:
+            self._FunctionComponentBindings = []
+            for item in params.get("FunctionComponentBindings"):
+                obj = FunctionComponentBinding()
+                obj._deserialize(item)
+                self._FunctionComponentBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21772,7 +22803,7 @@ class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
         r"""
         :param _ZoneId: Specifies the site ID.
         :type ZoneId: str
-        :param _Filters: The maximum number of Filters is 20. the upper limit for Filters.Values is 20. if this parameter is left empty, it returns the authorized just-in-time transcoding templates in the current ZoneId by default. detailed filter criteria: <li>template-name: filter by template name in batch. example: mytemplate;</li> <li>template-type: filter by template type in batch. example: preset or custom.</li> <li>template-id: filter by template id in batch. example: C1LZ7982VgTpYhJ7M.</li> empty by default.
+        :param _Filters: Filter criteria. the maximum number of Filters is 20, and the maximum number of Filters.Values is 20. if this parameter is left empty, it returns the authorized just-in-time transcoding templates in the current ZoneId by default. detailed filter criteria are as follows: <li>template-name: filter by template name in batch. example: mytemplate;</li><li>template-type: filter by template type in batch. example: preset or custom.</li><li>template-id: filter by template id in batch. example: C1LZ7982VgTpYhJ7M.</li>empty by default.
         :type Filters: list of Filter
         :param _SortBy: Sorting field. valid values: <li>createTime: template creation time.</li> default value: createTime.
         :type SortBy: str
@@ -21803,7 +22834,7 @@ class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""The maximum number of Filters is 20. the upper limit for Filters.Values is 20. if this parameter is left empty, it returns the authorized just-in-time transcoding templates in the current ZoneId by default. detailed filter criteria: <li>template-name: filter by template name in batch. example: mytemplate;</li> <li>template-type: filter by template type in batch. example: preset or custom.</li> <li>template-id: filter by template id in batch. example: C1LZ7982VgTpYhJ7M.</li> empty by default.
+        r"""Filter criteria. the maximum number of Filters is 20, and the maximum number of Filters.Values is 20. if this parameter is left empty, it returns the authorized just-in-time transcoding templates in the current ZoneId by default. detailed filter criteria are as follows: <li>template-name: filter by template name in batch. example: mytemplate;</li><li>template-type: filter by template type in batch. example: preset or custom.</li><li>template-id: filter by template id in batch. example: C1LZ7982VgTpYhJ7M.</li>empty by default.
         :rtype: list of Filter
         """
         return self._Filters
@@ -22356,7 +23387,7 @@ class DescribeL7AccRulesResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of rules.
         :type TotalCount: int
-        :param _Rules: Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1#.e4.bc.98.e5.85.88.e7.ba.a7).
+        :param _Rules: Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://www.tencentcloud.com/document/product/1145/46151#.E4.BC.98.E5.85.88.E7.BA.A7).
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type Rules: list of RuleEngineItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -22379,7 +23410,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Rules(self):
-        r"""Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1#.e4.bc.98.e5.85.88.e7.ba.a7).
+        r"""Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://www.tencentcloud.com/document/product/1145/46151#.E4.BC.98.E5.85.88.E7.BA.A7).
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :rtype: list of RuleEngineItem
         """
@@ -24201,6 +25232,159 @@ class DescribePlansResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrefetchOriginLimitRequest(AbstractModel):
+    r"""DescribePrefetchOriginLimit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Specifies the site ID.
+        :type ZoneId: str
+        :param _Offset: Offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Specifies the paginated query limit. default value: 20. upper limit: 100.
+        :type Limit: int
+        :param _Filters: Filter condition. specifies the maximum number of Filters.Values is 20. detailed filter criteria:.
+<Li>Domain-Name: specifies domain filtering. the domain-name format is like www.qq.com. fuzzy queries are not supported.</li>.
+<li>area: specifies the acceleration region to filter by limit. fuzzy queries are not supported. valid values:<br> Overseas: global availability zone (excludes chinese mainland);<br> MainlandChina: chinese mainland availability zone.</li>.
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""Specifies the site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        r"""Offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Specifies the paginated query limit. default value: 20. upper limit: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Filter condition. specifies the maximum number of Filters.Values is 20. detailed filter criteria:.
+<Li>Domain-Name: specifies domain filtering. the domain-name format is like www.qq.com. fuzzy queries are not supported.</li>.
+<li>area: specifies the acceleration region to filter by limit. fuzzy queries are not supported. valid values:<br> Overseas: global availability zone (excludes chinese mainland);<br> MainlandChina: chinese mainland availability zone.</li>.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrefetchOriginLimitResponse(AbstractModel):
+    r"""DescribePrefetchOriginLimit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Specifies the total count of origin-pull speed limit restrictions.
+        :type TotalCount: int
+        :param _Limits: Describes the List of origin-pull speed limit details.
+        :type Limits: list of PrefetchOriginLimit
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Limits = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Specifies the total count of origin-pull speed limit restrictions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Limits(self):
+        r"""Describes the List of origin-pull speed limit details.
+        :rtype: list of PrefetchOriginLimit
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Limits") is not None:
+            self._Limits = []
+            for item in params.get("Limits"):
+                obj = PrefetchOriginLimit()
+                obj._deserialize(item)
+                self._Limits.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrefetchTasksRequest(AbstractModel):
     r"""DescribePrefetchTasks request structure.
 
@@ -24208,7 +25392,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID.The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980)
+        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
@@ -24218,7 +25402,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number limit of paginated query. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows: <li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li><li>target: Filter by target resource information in the format like http://www.qq.com/1.txt. Multiple values and fuzzy queries are not supported.</li><li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li><li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>processing: processing<br>success: successful<br>failed: failed<br>timeout: timed out<br>invalid: invalid, that is, the response status code of the origin server is not 2xx. Please check the origin server service.<br>canceled: Canceled
+        :param _Filters: Filter criteria. the maximum number of Filters.Values is 20. the detailed filter criteria are as follows: <li>job-id: filter by task id in the format like 1379afjk91u32h. multiple Values and fuzzy queries are not supported.</li><li>target: filter by target resource information in the format like http://www.qq.com/1.txt. multiple Values and fuzzy queries are not supported.</li><li>domains: filter by domain name in the format like www.qq.com. fuzzy queries are not supported.</li><li>statuses: filter by task status. fuzzy queries are not supported. options:<br>  processing: processing<br>  success: successful<br>  failed: failed<br>  timeout: timed out<br>  canceled: canceled<br>  invalid: invalid, that is, the origin server response status code is not 2xx. please check the origin server service.</li>.
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -24230,7 +25414,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Site ID.The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980)
+        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :rtype: str
         """
         return self._ZoneId
@@ -24285,7 +25469,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows: <li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li><li>target: Filter by target resource information in the format like http://www.qq.com/1.txt. Multiple values and fuzzy queries are not supported.</li><li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li><li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>processing: processing<br>success: successful<br>failed: failed<br>timeout: timed out<br>invalid: invalid, that is, the response status code of the origin server is not 2xx. Please check the origin server service.<br>canceled: Canceled
+        r"""Filter criteria. the maximum number of Filters.Values is 20. the detailed filter criteria are as follows: <li>job-id: filter by task id in the format like 1379afjk91u32h. multiple Values and fuzzy queries are not supported.</li><li>target: filter by target resource information in the format like http://www.qq.com/1.txt. multiple Values and fuzzy queries are not supported.</li><li>domains: filter by domain name in the format like www.qq.com. fuzzy queries are not supported.</li><li>statuses: filter by task status. fuzzy queries are not supported. options:<br>  processing: processing<br>  success: successful<br>  failed: failed<br>  timeout: timed out<br>  canceled: canceled<br>  invalid: invalid, that is, the origin server response status code is not 2xx. please check the origin server service.</li>.
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -24387,7 +25571,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980)
+        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
@@ -24397,12 +25581,12 @@ class DescribePurgeTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number limit of paginated query. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:
-<li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li>
-<li>target: Filter by target resource information in the format like http://www.qq.com/1.txt or tag1. Multiple values are not supported yet. Fuzzy queries are supported.</li>
-<li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li>
-<li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>processing: processing<br>success: successful<br>failed: failed<br>timeout: timed out<br>canceled: Canceled</li>
-<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>purge_url: URL<br>purge_prefix: prefix<br>purge_all: all cached content<br>purge_host: Hostname<br>purge_cache_tag: CacheTag</li>
+        :param _Filters: Filter criteria. The maximum value of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>job-id: specifies the task id for filtering. the task id is in the format like 1379afjk91u32h. multiple values and fuzzy queries are not supported.</li>.
+<Li>Target: specifies the target resource information for filtering in formats like http://www.qq.com/1.txt or tag1. multiple values are not supported yet. fuzzy query is supported.</li>.
+<li>domains: specifies the domain name for filtering in the format like www.qq.com. fuzzy queries are not supported.</li>.
+<li>statuses: specifies the task status for filtering. fuzzy queries are not supported. valid values:<br>   processing: processing<br>   success: successful<br>   failed: failed<br>   timeout: timed out<br>   canceled: canceled</li>.
+<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>?? purge_url: URL<br>?? purge_prefix: prefix<br>?? purge_all: all cached content<br>?? purge_host: Hostname<br>?? purge_cache_tag: CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -24414,7 +25598,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Site ID. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980)
+        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :rtype: str
         """
         return self._ZoneId
@@ -24469,12 +25653,12 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:
-<li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li>
-<li>target: Filter by target resource information in the format like http://www.qq.com/1.txt or tag1. Multiple values are not supported yet. Fuzzy queries are supported.</li>
-<li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li>
-<li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>processing: processing<br>success: successful<br>failed: failed<br>timeout: timed out<br>canceled: Canceled</li>
-<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>purge_url: URL<br>purge_prefix: prefix<br>purge_all: all cached content<br>purge_host: Hostname<br>purge_cache_tag: CacheTag</li>
+        r"""Filter criteria. The maximum value of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>job-id: specifies the task id for filtering. the task id is in the format like 1379afjk91u32h. multiple values and fuzzy queries are not supported.</li>.
+<Li>Target: specifies the target resource information for filtering in formats like http://www.qq.com/1.txt or tag1. multiple values are not supported yet. fuzzy query is supported.</li>.
+<li>domains: specifies the domain name for filtering in the format like www.qq.com. fuzzy queries are not supported.</li>.
+<li>statuses: specifies the task status for filtering. fuzzy queries are not supported. valid values:<br>   processing: processing<br>   success: successful<br>   failed: failed<br>   timeout: timed out<br>   canceled: canceled</li>.
+<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>?? purge_url: URL<br>?? purge_prefix: prefix<br>?? purge_all: all cached content<br>?? purge_host: Hostname<br>?? purge_cache_tag: CacheTag</li>
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -24582,11 +25766,11 @@ class DescribeRealtimeLogDeliveryTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: The limit of paginated query. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filter conditions. The maximum value for Filters.Values is 20. If this field is not filled in, all the real-time log delivery task information under the current zone-id will be returned. Detailed filter conditions are as follows:
-<li>task-id: Filter by real-time log delivery task ID. Fuzzy search is not supported.</li>
-<li>task-name: Filter by real-time log delivery task name. Fuzzy search is supported, but only one real-time log delivery task name can be filled in for fuzzy search.</li>
-<li>entity-list: Filter by entity corresponding to the real-time log delivery task. Fuzzy search is not supported. Example values: domain.example.com or sid-2s69eb5wcms7.</li>
-<li>task-type: Filter by real-time log delivery task type. Fuzzy search is not supported. Optional values:<br>cls: Push to Tencent Cloud CLS;<br>custom_endpoint: Push to a user-defined HTTP(S) address;<br>s3: Push to an AWS S3-compatible bucket address.</li>
+        :param _Filters: Filter criteria. the maximum number of Filters.Values is 20. if this parameter is left empty, all real-time log delivery task information under the current zone-id will be returned. the detailed filter criteria are as follows:.
+<li>task-id: filters by real-time log delivery task id. fuzzy queries are not supported.</li>.
+<Li>Task-Name: filters by real-time log delivery task name. supports fuzzy query. when fuzzy search is used, only one real-time log delivery task name can be filled in.</li>.
+<li>entity-list: filters by the entity corresponding to the real-time log delivery task. fuzzy queries are not supported. example value: domain.example.com or sid-2s69eb5wcms7.</li>.
+<li>task-type: specifies the filter by real-time log delivery task type. fuzzy queries are not supported. valid values:<br> cls: push to tencent cloud cls;<br> custom_endpoint: push to a custom HTTP(S) address;<br> S3: push to an AWS S3-compatible bucket address;<br> log_analysis: push to EdgeOne log analytics.</li>.
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -24629,11 +25813,11 @@ class DescribeRealtimeLogDeliveryTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions. The maximum value for Filters.Values is 20. If this field is not filled in, all the real-time log delivery task information under the current zone-id will be returned. Detailed filter conditions are as follows:
-<li>task-id: Filter by real-time log delivery task ID. Fuzzy search is not supported.</li>
-<li>task-name: Filter by real-time log delivery task name. Fuzzy search is supported, but only one real-time log delivery task name can be filled in for fuzzy search.</li>
-<li>entity-list: Filter by entity corresponding to the real-time log delivery task. Fuzzy search is not supported. Example values: domain.example.com or sid-2s69eb5wcms7.</li>
-<li>task-type: Filter by real-time log delivery task type. Fuzzy search is not supported. Optional values:<br>cls: Push to Tencent Cloud CLS;<br>custom_endpoint: Push to a user-defined HTTP(S) address;<br>s3: Push to an AWS S3-compatible bucket address.</li>
+        r"""Filter criteria. the maximum number of Filters.Values is 20. if this parameter is left empty, all real-time log delivery task information under the current zone-id will be returned. the detailed filter criteria are as follows:.
+<li>task-id: filters by real-time log delivery task id. fuzzy queries are not supported.</li>.
+<Li>Task-Name: filters by real-time log delivery task name. supports fuzzy query. when fuzzy search is used, only one real-time log delivery task name can be filled in.</li>.
+<li>entity-list: filters by the entity corresponding to the real-time log delivery task. fuzzy queries are not supported. example value: domain.example.com or sid-2s69eb5wcms7.</li>.
+<li>task-type: specifies the filter by real-time log delivery task type. fuzzy queries are not supported. valid values:<br> cls: push to tencent cloud cls;<br> custom_endpoint: push to a custom HTTP(S) address;<br> S3: push to an AWS S3-compatible bucket address;<br> log_analysis: push to EdgeOne log analytics.</li>.
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -26025,6 +27209,218 @@ In the binding list, the same domain name may appear repeatedly in the `EntitySt
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSharedCNAMERequest(AbstractModel):
+    r"""DescribeSharedCNAME request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Shared CNAME associated site ID.
+        :type ZoneId: str
+        :param _Filters: Filter criteria. The maximum value of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>shared-cname<br>   Filter by [<strong>shared CNAME</strong>].<br>   Type: String<br>   Required: No</li>
+<li>type<br>   Filter by [<strong>shared CNAME type</strong>].<br>   type: String<br>   Required: No</li>
+<li>Description<br>   Filter by [<strong>description</strong>].<br>   Type: String<br>   Required: No</li>
+        :type Filters: list of AdvancedFilter
+        :param _Direction: List sort method. Valid values:
+<li>asc: ascending order;</li>
+<li>desc: Sort in descending order.</li>The default value is `asc`.
+        :type Direction: str
+        :param _Match: Match mode. Valid values:
+<li>all: Returns the shared CNAME that matches all query conditions.</li>
+<li>any: Returns the shared CNAME that matches any query condition.</li> Default value is all.
+        :type Match: str
+        :param _Order: Sorting basis. Valid values:
+<li>create-time: Creation time;</li>
+<li>shared-cname: Shared CNAME.</li> Default sorting order is based on the shared-cname attribute.
+        :type Order: str
+        :param _Offset: Offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number limit of paginated query. Default value: 20. Upper limit: 200.
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Direction = None
+        self._Match = None
+        self._Order = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""Shared CNAME associated site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""Filter criteria. The maximum value of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>shared-cname<br>   Filter by [<strong>shared CNAME</strong>].<br>   Type: String<br>   Required: No</li>
+<li>type<br>   Filter by [<strong>shared CNAME type</strong>].<br>   type: String<br>   Required: No</li>
+<li>Description<br>   Filter by [<strong>description</strong>].<br>   Type: String<br>   Required: No</li>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Direction(self):
+        r"""List sort method. Valid values:
+<li>asc: ascending order;</li>
+<li>desc: Sort in descending order.</li>The default value is `asc`.
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Match(self):
+        r"""Match mode. Valid values:
+<li>all: Returns the shared CNAME that matches all query conditions.</li>
+<li>any: Returns the shared CNAME that matches any query condition.</li> Default value is all.
+        :rtype: str
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
+    @property
+    def Order(self):
+        r"""Sorting basis. Valid values:
+<li>create-time: Creation time;</li>
+<li>shared-cname: Shared CNAME.</li> Default sorting order is based on the shared-cname attribute.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Offset(self):
+        r"""Offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number limit of paginated query. Default value: 20. Upper limit: 200.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Direction = params.get("Direction")
+        self._Match = params.get("Match")
+        self._Order = params.get("Order")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedCNAMEResponse(AbstractModel):
+    r"""DescribeSharedCNAME response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of shared CNAMEs that meet filtering criteria.
+        :type TotalCount: int
+        :param _SharedCNAMEInfo: Shared CNAME table detail.
+        :type SharedCNAMEInfo: list of SharedCNAMEInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SharedCNAMEInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of shared CNAMEs that meet filtering criteria.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SharedCNAMEInfo(self):
+        r"""Shared CNAME table detail.
+        :rtype: list of SharedCNAMEInfo
+        """
+        return self._SharedCNAMEInfo
+
+    @SharedCNAMEInfo.setter
+    def SharedCNAMEInfo(self, SharedCNAMEInfo):
+        self._SharedCNAMEInfo = SharedCNAMEInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SharedCNAMEInfo") is not None:
+            self._SharedCNAMEInfo = []
+            for item in params.get("SharedCNAMEInfo"):
+                obj = SharedCNAMEInfo()
+                obj._deserialize(item)
+                self._SharedCNAMEInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     r"""DescribeTimingL4Data request structure.
 
@@ -26036,28 +27432,30 @@ class DescribeTimingL4DataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time. the query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _MetricNames: Metric list. Valid values:
-<Li>l4Flow_connections: number of concurrent connections;</li>
-<Li>l4Flow_flux: total traffic;</li>
-<Li>l4Flow_inFlux: inbound traffic;</li>
-<Li>l4Flow_outFlux: outbound traffic.</li>
-<Li>l4Flow_inBandwidth: inbound peak bandwidth.</li>
-<Li>l4Flow_outBandwidth: outbound peak bandwidth.</li>
+        :param _MetricNames: Query metrics. valid values:.
+<ul><li>**l4Flow_flux**: specifies the total access traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_inFlux**: specifies access inbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_outFlux**: access outbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_inBandwidth**: specifies the inbound bandwidth peak of the visit. measurement unit: bps. metric value type: Integer.</li>.
+<li>**l4Flow_outBandwidth**: specifies the outbound bandwidth peak. measurement unit: bps. metric value type: Integer.</li>.
+<li>**l4Flow_connections**: specifies the number of concurrent connections, measurement unit: unit, metric value type: Integer.</li>.
+<li>**l4Flow_newConnectionsRate**: the rate of new connections, measurement unit: per second, metric value type: Float, rounded to two decimal places.</li></ul>**note**:<ul><li>metrics of <code>Integer</code> type will return corresponding time series Data from <code>Data.N.TypeValue</code>;</li>.
+<li>Metrics with <code>Float</code> value type will return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.</li></ul>.
         :type MetricNames: list of str
-        :param _ZoneIds: Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        :param _ZoneIds: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+Import up to 100 site ids. to query all site data under the tencent cloud root account, use `*` as a replacement. querying account-level data requires permission for all site resources of this api.
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.
         :type ProxyIds: list of str
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
-
+        :param _Interval: Time granularity of the query. valid values:.
+<ul><li>**min**: 1 minute;</li>.
+<Li>**5min**: 5 minutes;</li>.
+<Li>**Hour**: 1 hour;</li>.
+<Li>**Day**: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
-        :param _Filters: Filter criteria. The detailed key values of filter criteria are as follows:
-<li>ruleId: filter by forwarding rule ID.</li>
-<li>proxyId: filter by L4 proxy instance ID.</li>
+        :param _Filters: Filter criteria. the detailed Key values of filter criteria are as follows:.
+<ul><li>**ruleId**: filter by forwarding rule ID.</li>.
+<li>**proxyId**: filters by l4 proxy instance ID.</li></ul>.
         :type Filters: list of QueryCondition
         :param _Area: Data ownership region. This parameter is deprecated. Please filter data by client region in Filters.country.
         :type Area: str
@@ -26095,13 +27493,15 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        r"""Metric list. Valid values:
-<Li>l4Flow_connections: number of concurrent connections;</li>
-<Li>l4Flow_flux: total traffic;</li>
-<Li>l4Flow_inFlux: inbound traffic;</li>
-<Li>l4Flow_outFlux: outbound traffic.</li>
-<Li>l4Flow_inBandwidth: inbound peak bandwidth.</li>
-<Li>l4Flow_outBandwidth: outbound peak bandwidth.</li>
+        r"""Query metrics. valid values:.
+<ul><li>**l4Flow_flux**: specifies the total access traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_inFlux**: specifies access inbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_outFlux**: access outbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
+<li>**l4Flow_inBandwidth**: specifies the inbound bandwidth peak of the visit. measurement unit: bps. metric value type: Integer.</li>.
+<li>**l4Flow_outBandwidth**: specifies the outbound bandwidth peak. measurement unit: bps. metric value type: Integer.</li>.
+<li>**l4Flow_connections**: specifies the number of concurrent connections, measurement unit: unit, metric value type: Integer.</li>.
+<li>**l4Flow_newConnectionsRate**: the rate of new connections, measurement unit: per second, metric value type: Float, rounded to two decimal places.</li></ul>**note**:<ul><li>metrics of <code>Integer</code> type will return corresponding time series Data from <code>Data.N.TypeValue</code>;</li>.
+<li>Metrics with <code>Float</code> value type will return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.</li></ul>.
         :rtype: list of str
         """
         return self._MetricNames
@@ -26112,7 +27512,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query data for all sites under the tencent cloud root account. to query account-level data, you must have resource permissions for all sites in this api.
+        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+Import up to 100 site ids. to query all site data under the tencent cloud root account, use `*` as a replacement. querying account-level data requires permission for all site resources of this api.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -26134,12 +27535,11 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
-
+        r"""Time granularity of the query. valid values:.
+<ul><li>**min**: 1 minute;</li>.
+<Li>**5min**: 5 minutes;</li>.
+<Li>**Hour**: 1 hour;</li>.
+<Li>**Day**: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -26150,9 +27550,9 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter criteria. The detailed key values of filter criteria are as follows:
-<li>ruleId: filter by forwarding rule ID.</li>
-<li>proxyId: filter by L4 proxy instance ID.</li>
+        r"""Filter criteria. the detailed Key values of filter criteria are as follows:.
+<ul><li>**ruleId**: filter by forwarding rule ID.</li>.
+<li>**proxyId**: filters by l4 proxy instance ID.</li></ul>.
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -26163,6 +27563,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Area(self):
+        warnings.warn("parameter `Area` is deprecated", DeprecationWarning) 
+
         r"""Data ownership region. This parameter is deprecated. Please filter data by client region in Filters.country.
         :rtype: str
         """
@@ -26170,6 +27572,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @Area.setter
     def Area(self, Area):
+        warnings.warn("parameter `Area` is deprecated", DeprecationWarning) 
+
         self._Area = Area
 
 
@@ -26206,8 +27610,9 @@ class DescribeTimingL4DataResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of query results.
         :type TotalCount: int
-        :param _Data: The list of L4 traffic data recorded over time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: <p>Layer 4 time series traffic Data list.<br>for different queried metrics, time series Data is returned from different parameters based on the value type.<br>currently, there are the following two value types:</p><ul><li><strong>Integer</strong>: metrics with <code>Integer</code> value type return corresponding time series Data from <code>Data.N.TypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_flux</code>: total access traffic;</li><li><code>l4Flow_inFlux</code>: access inbound traffic;</li><li><code>l4Flow_outFlux</code>: access outbound traffic;</li><li><code>l4Flow_inBandwidth</code>: inbound bandwidth peak;</li><li><code>l4Flow_outBandwidth</code>: outbound bandwidth peak;</li><li><code>l4Flow_connections</code>: number of concurrent connections.</li></ul></li><li><strong>Float</strong>: metrics with <code>Float</code> value type return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_newConnectionsRate</code>: rate of new connections.</li></ul></li>.
+</ul><p>This API does not support dimension query for now. it aggregates and returns Data by root account by default, which means <code>Data.N.TypeKey = AppId</code>. AppId is the unique id of the tencent cloud root account, and N always equals 1.</p>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Data: list of TimingDataRecord
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -26229,8 +27634,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""The list of L4 traffic data recorded over time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Layer 4 time series traffic Data list.<br>for different queried metrics, time series Data is returned from different parameters based on the value type.<br>currently, there are the following two value types:</p><ul><li><strong>Integer</strong>: metrics with <code>Integer</code> value type return corresponding time series Data from <code>Data.N.TypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_flux</code>: total access traffic;</li><li><code>l4Flow_inFlux</code>: access inbound traffic;</li><li><code>l4Flow_outFlux</code>: access outbound traffic;</li><li><code>l4Flow_inBandwidth</code>: inbound bandwidth peak;</li><li><code>l4Flow_outBandwidth</code>: outbound bandwidth peak;</li><li><code>l4Flow_connections</code>: number of concurrent connections.</li></ul></li><li><strong>Float</strong>: metrics with <code>Float</code> value type return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_newConnectionsRate</code>: rate of new connections.</li></ul></li>.
+</ul><p>This API does not support dimension query for now. it aggregates and returns Data by root account by default, which means <code>Data.N.TypeKey = AppId</code>. AppId is the unique id of the tencent cloud root account, and N always equals 1.</p>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: list of TimingDataRecord
         """
         return self._Data
@@ -26707,33 +28113,64 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneIds: Site ID set. This parameter is required. A maximum of 100 zone-ids can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. Querying account-level data requires permissions for all site resources in this API.
+        :type ZoneIds: list of str
+        :param _MetricNames: Metric list. valid values:
+<ul><li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server direction. measurement unit: Byte.</li>
+<li>l7Flow_outBandwidth_hy: request bandwidth from EdgeOne node to origin server direction, measurement unit: bps;</li>.
+<li>l7Flow_request_hy: number of requests in the EdgeOne node to origin server direction. unit: count.</li>.
+<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node direction, measurement unit: Byte.</li>.
+<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. measurement unit: bps.</li></ul>.
+        :type MetricNames: list of str
         :param _StartTime: Start time.
         :type StartTime: str
         :param _EndTime: End time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _MetricNames: Metric list. Valid values:.
-<li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server. Unit: byte.</li>
-<li>l7Flow_outBandwidth_hy: specifies the request bandwidth from EdgeOne node to origin server. Unit: bps.</li>
-<li>l7Flow_request_hy: specifies the request count from EdgeOne node to origin server. Unit: times.</li>
-<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node. Unit: byte.</li>
-<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. Unit: bps.</li>
-
-        :type MetricNames: list of str
-        :param _ZoneIds: Site ID set. This parameter is required. A maximum of 100 zone-ids can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. Querying account-level data requires permissions for all site resources in this interface.
-        :type ZoneIds: list of str
-        :param _Interval: Time granularity of the query. Valid values:
-<Li>min: 1 minute.</li><Li>5min: 5 minutes;</li><Li>hour: 1 hour;</li><li>day: 1 day.</li>If this parameter is not input, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
+        :param _Interval: Time granularity of the query. valid values:.
+<Ul><Li>Min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is within 2 hours, within 2 days, within 7 days, and exceeding 7 days.
         :type Interval: str
-        :param _Filters: Filter conditions. Details:
-<li>domain: specifies the domain name in client requests. When the domain is onboarded via a wildcard, the recorded value is the wildcard domain itself, not the specific subdomain.</li>
+        :param _Filters: Filter criteria. detailed filter criteria:.
+<ul><li><strong>domain</strong>: the requested domain name from the client. if accessing EdgeOne via wildcard domain, the data records the wildcard domain name rather than the specific domain.</li><li><strong>originStatusCode</strong>: origin status code. this filter item is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.<br>the corresponding Value options are as follows:<ul><li><code>1xx</code>: status codes of the 1xx kind.</li><li><code>2xx</code>: status codes of the 2xx kind.</li><li><code>3xx</code>: status codes of the 3xx kind.</li><li><code>4xx</code>: status codes of the 4xx kind.</li><li><code>5xx</code>: status codes of the 5xx kind.</li><li>integer within range <code>[0, 600)</code> (excluding 600).</li></ul></li></ul>.
+**Note**: when <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
         :type Filters: list of QueryCondition
+        :param _DimensionName: <p>Query dimension name. valid values:</p><ul><li><strong>domain</strong>: the domain name requested by the client. if EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.<br>when using the domain dimension, the <code>Filters</code> must include the <code>domain</code> filter item, specifying a list of no more than 100 domain names to query.</li><li><strong>origin-status-code</strong>: origin status code, such as 200, 404.<br>this dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: origin status code category, such as 2xx, 4xx.<br>this dimension is supported only when <code>MetricNames =["l7Flow_request_hy"]</code>.</li></ul><p>if the <code>DimensionName</code> input parameter is empty, the data is aggregated by the <code>AppId</code> dimension by default, returning only one set of data.</p><p>if the <code>DimensionName</code> input parameter is not empty, the corresponding time series data is returned grouped by the specified query dimension. for example:</p><ul>when <code>DimensionName = origin-status-code</code>:<ul><li>the <code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li>the <code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul>.
+<strong>Note</strong>: when specifying DimensionName during queries, concurrent calls are forbidden. if exceeded the query frequency limit, it will return an error <code><strong>InvalidParameter.ActionInProgress</strong></code>.
+        :type DimensionName: str
         """
+        self._ZoneIds = None
+        self._MetricNames = None
         self._StartTime = None
         self._EndTime = None
-        self._MetricNames = None
-        self._ZoneIds = None
         self._Interval = None
         self._Filters = None
+        self._DimensionName = None
+
+    @property
+    def ZoneIds(self):
+        r"""Site ID set. This parameter is required. A maximum of 100 zone-ids can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. Querying account-level data requires permissions for all site resources in this API.
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def MetricNames(self):
+        r"""Metric list. valid values:
+<ul><li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server direction. measurement unit: Byte.</li>
+<li>l7Flow_outBandwidth_hy: request bandwidth from EdgeOne node to origin server direction, measurement unit: bps;</li>.
+<li>l7Flow_request_hy: number of requests in the EdgeOne node to origin server direction. unit: count.</li>.
+<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node direction, measurement unit: Byte.</li>.
+<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. measurement unit: bps.</li></ul>.
+        :rtype: list of str
+        """
+        return self._MetricNames
+
+    @MetricNames.setter
+    def MetricNames(self, MetricNames):
+        self._MetricNames = MetricNames
 
     @property
     def StartTime(self):
@@ -26758,37 +28195,9 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
         self._EndTime = EndTime
 
     @property
-    def MetricNames(self):
-        r"""Metric list. Valid values:.
-<li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server. Unit: byte.</li>
-<li>l7Flow_outBandwidth_hy: specifies the request bandwidth from EdgeOne node to origin server. Unit: bps.</li>
-<li>l7Flow_request_hy: specifies the request count from EdgeOne node to origin server. Unit: times.</li>
-<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node. Unit: byte.</li>
-<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. Unit: bps.</li>
-
-        :rtype: list of str
-        """
-        return self._MetricNames
-
-    @MetricNames.setter
-    def MetricNames(self, MetricNames):
-        self._MetricNames = MetricNames
-
-    @property
-    def ZoneIds(self):
-        r"""Site ID set. This parameter is required. A maximum of 100 zone-ids can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. Querying account-level data requires permissions for all site resources in this interface.
-        :rtype: list of str
-        """
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
     def Interval(self):
-        r"""Time granularity of the query. Valid values:
-<Li>min: 1 minute.</li><Li>5min: 5 minutes;</li><Li>hour: 1 hour;</li><li>day: 1 day.</li>If this parameter is not input, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
+        r"""Time granularity of the query. valid values:.
+<Ul><Li>Min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is within 2 hours, within 2 days, within 7 days, and exceeding 7 days.
         :rtype: str
         """
         return self._Interval
@@ -26799,8 +28208,9 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter conditions. Details:
-<li>domain: specifies the domain name in client requests. When the domain is onboarded via a wildcard, the recorded value is the wildcard domain itself, not the specific subdomain.</li>
+        r"""Filter criteria. detailed filter criteria:.
+<ul><li><strong>domain</strong>: the requested domain name from the client. if accessing EdgeOne via wildcard domain, the data records the wildcard domain name rather than the specific domain.</li><li><strong>originStatusCode</strong>: origin status code. this filter item is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.<br>the corresponding Value options are as follows:<ul><li><code>1xx</code>: status codes of the 1xx kind.</li><li><code>2xx</code>: status codes of the 2xx kind.</li><li><code>3xx</code>: status codes of the 3xx kind.</li><li><code>4xx</code>: status codes of the 4xx kind.</li><li><code>5xx</code>: status codes of the 5xx kind.</li><li>integer within range <code>[0, 600)</code> (excluding 600).</li></ul></li></ul>.
+**Note**: when <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -26809,12 +28219,24 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def DimensionName(self):
+        r"""<p>Query dimension name. valid values:</p><ul><li><strong>domain</strong>: the domain name requested by the client. if EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.<br>when using the domain dimension, the <code>Filters</code> must include the <code>domain</code> filter item, specifying a list of no more than 100 domain names to query.</li><li><strong>origin-status-code</strong>: origin status code, such as 200, 404.<br>this dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: origin status code category, such as 2xx, 4xx.<br>this dimension is supported only when <code>MetricNames =["l7Flow_request_hy"]</code>.</li></ul><p>if the <code>DimensionName</code> input parameter is empty, the data is aggregated by the <code>AppId</code> dimension by default, returning only one set of data.</p><p>if the <code>DimensionName</code> input parameter is not empty, the corresponding time series data is returned grouped by the specified query dimension. for example:</p><ul>when <code>DimensionName = origin-status-code</code>:<ul><li>the <code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li>the <code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul>.
+<strong>Note</strong>: when specifying DimensionName during queries, concurrent calls are forbidden. if exceeded the query frequency limit, it will return an error <code><strong>InvalidParameter.ActionInProgress</strong></code>.
+        :rtype: str
+        """
+        return self._DimensionName
+
+    @DimensionName.setter
+    def DimensionName(self, DimensionName):
+        self._DimensionName = DimensionName
+
 
     def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        self._MetricNames = params.get("MetricNames")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
-        self._MetricNames = params.get("MetricNames")
-        self._ZoneIds = params.get("ZoneIds")
         self._Interval = params.get("Interval")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -26822,6 +28244,7 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._DimensionName = params.get("DimensionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26906,33 +28329,33 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _MetricName: Queried metric. Valid values:
-<li> l7Flow_outFlux_country: specifies the l7 EdgeOne response traffic metric counted by the country/region dimension.</li>
-<li> l7Flow_outFlux_province: specifies the l7 EdgeOne response traffic metric counted by the dimension of provinces in chinese mainland.</li>
-<li> l7Flow_outFlux_statusCode: specifies the l7 EdgeOne response traffic metric by status code dimension.</li>
-<li> l7Flow_outFlux_domain: specifies the l7 EdgeOne response traffic metric counted by domain name dimension.</li>
-<li>l7Flow_outFlux_url: specifies the l7 EdgeOne response traffic metric counted by url Path dimension.</li>
-<li> l7Flow_outFlux_resourceType: specifies the l7 EdgeOne response traffic metric counted by resource type dimension.</li>
-<li> l7Flow_outFlux_sip: specifies the l7 EdgeOne response traffic metric counted by the client IP dimension.</li>
-<li>l7Flow_outFlux_referers: specifies the l7 EdgeOne response traffic statistics by Referer dimension.</li>
-<li> l7Flow_outFlux_ua_device: specifies the l7 EdgeOne response traffic metric counted by device type dimension.</li>
-<li> l7Flow_outFlux_ua_browser: specifies the l7 EdgeOne response traffic metric by browser type dimension.</li>
-<li> l7Flow_outFlux_ua_os: specifies the l7 EdgeOne response traffic metric counted by the operating system type dimension.</li>
-<li> l7Flow_outFlux_ua: specifies the l7 EdgeOne response traffic metric by User-Agent dimension statistics.</li>
-<li> l7Flow_request_country: specifies the l7 access request count metric by country/region dimension.</li>
-<li> l7Flow_request_province: specifies the l7 access request count metric by province in the chinese mainland.</li>
-<li> l7Flow_request_statusCode: specifies the l7 access request count metric by status code dimension.</li>
-<li> l7Flow_request_domain: specifies the l7 access request count metric counted by the domain name dimension.</li>
-<li> l7Flow_request_url: specifies the l7 access request count metric counted by url Path dimension. </li>
-<li> l7Flow_request_resourceType: specifies the l7 access request count metric counted by the resource type dimension.</li>
-<li> l7Flow_request_sip: specifies the l7 access request count metric counted by the client IP dimension.</li>
-<li>l7Flow_request_referers: specifies l7 access request count metrics by referer dimension.</li>
-<li> l7Flow_request_ua_device: specifies the l7 access request count metric by device type dimension.</li>
-<li> l7Flow_request_ua_browser: specifies the l7 access request count metric by browser type dimension.</li>
-<li> l7Flow_request_ua_os: specifies the l7 access request count metric counted by the operating system type dimension.</li>
-<li> l7Flow_request_ua: l7 access request count metric counted by the User-Agent dimension.</li>
+        :param _MetricName: Queried metric. valid values:.
+<li> l7Flow_outFlux_country: specifies the l7 EdgeOne response traffic metric by country/region dimension.</li>.
+<li> l7Flow_outFlux_province: specifies the l7 EdgeOne response traffic metric counted by the dimension of provinces in chinese mainland.</li>.
+<li> l7Flow_outFlux_statusCode: specifies the l7 EdgeOne response traffic metric by status code dimension.</li>.
+<li> l7Flow_outFlux_domain: specifies the l7 EdgeOne response traffic metric counted by the domain name dimension.</li>.
+<li> l7Flow_outFlux_url: specifies the l7 EdgeOne response traffic metric counted by url Path dimension. </li>.
+<li> l7Flow_outFlux_resourceType: specifies the l7 EdgeOne response traffic metric counted by resource type dimension.</li>.
+<li> l7Flow_outFlux_sip: specifies the l7 EdgeOne response traffic metric counted by the client IP dimension.</li>.
+<li> l7Flow_outFlux_referers: specifies the l7 EdgeOne response traffic metrics statistics by Referer dimension.</li>.
+<li> l7Flow_outFlux_ua_device: specifies the l7 EdgeOne response traffic metric counted by the device type dimension.</li>.
+<li> l7Flow_outFlux_ua_browser: specifies the l7 EdgeOne response traffic metric by browser type dimension.</li>.
+<li> l7Flow_outFlux_ua_os: specifies the l7 EdgeOne response traffic metric counted by the operating system type dimension.</li>.
+<li> l7Flow_outFlux_ua: specifies the l7 EdgeOne response traffic metric by User-Agent dimension statistics.</li>.
+<li> l7Flow_request_country: specifies the l7 access request count metric by country/region dimension.</li>.
+<li> l7Flow_request_province: specifies the l7 access request count metric by the dimension of provinces in the chinese mainland.</li>.
+<li> l7Flow_request_statusCode: specifies the l7 access request count metric by status code dimension.</li>.
+<li> l7Flow_request_domain: specifies the l7 access request count metric counted by the domain name dimension.</li>.
+<li> l7Flow_request_url: specifies the request count metrics of l7 access counted by url Path dimension. </li>.
+<li> l7Flow_request_resourceType: specifies the l7 access request count metric counted by the resource type dimension.</li>.
+<li> l7Flow_request_sip: specifies the l7 access request count metric counted by the client IP dimension.</li>.
+<li> l7Flow_request_referers: specifies the request count metrics for l7 access statistics by Referer dimension.</li>.
+<li> l7Flow_request_ua_device: specifies the l7 access request count metric by device type dimension.</li>.
+<li> l7Flow_request_ua_browser: specifies the l7 access request count metric by browser type dimension.</li>.
+<li> l7Flow_request_ua_os: specifies the l7 access request count metric counted by the operating system type dimension.</li>.
+<li> l7Flow_request_ua: specifies the l7 access request count metric counted by the User-Agent dimension.</li>.
         :type MetricName: str
-        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _Limit: Indicates the top N data to be queried. The maximum value is 1000. If this parameter is not input, the default value is 10, indicating querying the top 10 data.
         :type Limit: int
@@ -26977,31 +28400,31 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def MetricName(self):
-        r"""Queried metric. Valid values:
-<li> l7Flow_outFlux_country: specifies the l7 EdgeOne response traffic metric counted by the country/region dimension.</li>
-<li> l7Flow_outFlux_province: specifies the l7 EdgeOne response traffic metric counted by the dimension of provinces in chinese mainland.</li>
-<li> l7Flow_outFlux_statusCode: specifies the l7 EdgeOne response traffic metric by status code dimension.</li>
-<li> l7Flow_outFlux_domain: specifies the l7 EdgeOne response traffic metric counted by domain name dimension.</li>
-<li>l7Flow_outFlux_url: specifies the l7 EdgeOne response traffic metric counted by url Path dimension.</li>
-<li> l7Flow_outFlux_resourceType: specifies the l7 EdgeOne response traffic metric counted by resource type dimension.</li>
-<li> l7Flow_outFlux_sip: specifies the l7 EdgeOne response traffic metric counted by the client IP dimension.</li>
-<li>l7Flow_outFlux_referers: specifies the l7 EdgeOne response traffic statistics by Referer dimension.</li>
-<li> l7Flow_outFlux_ua_device: specifies the l7 EdgeOne response traffic metric counted by device type dimension.</li>
-<li> l7Flow_outFlux_ua_browser: specifies the l7 EdgeOne response traffic metric by browser type dimension.</li>
-<li> l7Flow_outFlux_ua_os: specifies the l7 EdgeOne response traffic metric counted by the operating system type dimension.</li>
-<li> l7Flow_outFlux_ua: specifies the l7 EdgeOne response traffic metric by User-Agent dimension statistics.</li>
-<li> l7Flow_request_country: specifies the l7 access request count metric by country/region dimension.</li>
-<li> l7Flow_request_province: specifies the l7 access request count metric by province in the chinese mainland.</li>
-<li> l7Flow_request_statusCode: specifies the l7 access request count metric by status code dimension.</li>
-<li> l7Flow_request_domain: specifies the l7 access request count metric counted by the domain name dimension.</li>
-<li> l7Flow_request_url: specifies the l7 access request count metric counted by url Path dimension. </li>
-<li> l7Flow_request_resourceType: specifies the l7 access request count metric counted by the resource type dimension.</li>
-<li> l7Flow_request_sip: specifies the l7 access request count metric counted by the client IP dimension.</li>
-<li>l7Flow_request_referers: specifies l7 access request count metrics by referer dimension.</li>
-<li> l7Flow_request_ua_device: specifies the l7 access request count metric by device type dimension.</li>
-<li> l7Flow_request_ua_browser: specifies the l7 access request count metric by browser type dimension.</li>
-<li> l7Flow_request_ua_os: specifies the l7 access request count metric counted by the operating system type dimension.</li>
-<li> l7Flow_request_ua: l7 access request count metric counted by the User-Agent dimension.</li>
+        r"""Queried metric. valid values:.
+<li> l7Flow_outFlux_country: specifies the l7 EdgeOne response traffic metric by country/region dimension.</li>.
+<li> l7Flow_outFlux_province: specifies the l7 EdgeOne response traffic metric counted by the dimension of provinces in chinese mainland.</li>.
+<li> l7Flow_outFlux_statusCode: specifies the l7 EdgeOne response traffic metric by status code dimension.</li>.
+<li> l7Flow_outFlux_domain: specifies the l7 EdgeOne response traffic metric counted by the domain name dimension.</li>.
+<li> l7Flow_outFlux_url: specifies the l7 EdgeOne response traffic metric counted by url Path dimension. </li>.
+<li> l7Flow_outFlux_resourceType: specifies the l7 EdgeOne response traffic metric counted by resource type dimension.</li>.
+<li> l7Flow_outFlux_sip: specifies the l7 EdgeOne response traffic metric counted by the client IP dimension.</li>.
+<li> l7Flow_outFlux_referers: specifies the l7 EdgeOne response traffic metrics statistics by Referer dimension.</li>.
+<li> l7Flow_outFlux_ua_device: specifies the l7 EdgeOne response traffic metric counted by the device type dimension.</li>.
+<li> l7Flow_outFlux_ua_browser: specifies the l7 EdgeOne response traffic metric by browser type dimension.</li>.
+<li> l7Flow_outFlux_ua_os: specifies the l7 EdgeOne response traffic metric counted by the operating system type dimension.</li>.
+<li> l7Flow_outFlux_ua: specifies the l7 EdgeOne response traffic metric by User-Agent dimension statistics.</li>.
+<li> l7Flow_request_country: specifies the l7 access request count metric by country/region dimension.</li>.
+<li> l7Flow_request_province: specifies the l7 access request count metric by the dimension of provinces in the chinese mainland.</li>.
+<li> l7Flow_request_statusCode: specifies the l7 access request count metric by status code dimension.</li>.
+<li> l7Flow_request_domain: specifies the l7 access request count metric counted by the domain name dimension.</li>.
+<li> l7Flow_request_url: specifies the request count metrics of l7 access counted by url Path dimension. </li>.
+<li> l7Flow_request_resourceType: specifies the l7 access request count metric counted by the resource type dimension.</li>.
+<li> l7Flow_request_sip: specifies the l7 access request count metric counted by the client IP dimension.</li>.
+<li> l7Flow_request_referers: specifies the request count metrics for l7 access statistics by Referer dimension.</li>.
+<li> l7Flow_request_ua_device: specifies the l7 access request count metric by device type dimension.</li>.
+<li> l7Flow_request_ua_browser: specifies the l7 access request count metric by browser type dimension.</li>.
+<li> l7Flow_request_ua_os: specifies the l7 access request count metric counted by the operating system type dimension.</li>.
+<li> l7Flow_request_ua: specifies the l7 access request count metric counted by the User-Agent dimension.</li>.
         :rtype: str
         """
         return self._MetricName
@@ -27012,7 +28435,7 @@ If needed, limit the site or content identifier by importing the corresponding v
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1145/59980). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -27846,8 +29269,7 @@ class DescribeZonesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param _Filters: Filter criteria. the maximum value of Filters.Values is 20. if this parameter is left empty, all site information authorized under the current appid will be returned. detailed filter criteria are as follows:.
-<li>zone-name: filter by site name;</li> <li>zone-id: filter by site id. the site id is in the format of zone-2noz78a8ev6k;</li> <li>status: filter by site status;</li> <li>tag-key: filter by tag key;</li> <li>tag-value: filter by tag value;</li> <li>alias-zone-name: filter by identical site identifier.</li> when performing a fuzzy query, the fields that support filtering are named zone-name or alias-zone-name.
+        :param _Filters: Filter criteria. the maximum number of Filters.Values is 20. if this parameter is left empty, it returns all authorized site information under the current appid. the detailed filter criteria are as follows: <li>zone-name: filter by site name.</li><li>zone-type: filter by website type. options:<br>??full: NS access type;<br>??partial: CNAME-based;<br>??partialComposite: no domain access;<br>??dnsPodAccess: DNSPod managed access;<br>??pages: pages access type;<br>??ai: edge reasoning access type.</li><li>zone-id: filter by site id in the format like zone-2noz78a8ev6k.</li><li>status: filter by site status. options:<br>??active: NS switchover completed;<br>??pending: NS to be switched;<br>??deleted: has been deleted.</li><li>tag-key: filter according to the tag key.</li><li>tag-value: filter by tag value.</li><li>alias-zone-name: filter by identical site identifier.</li>fuzzy query supports filtering fields named zone-name or alias-zone-name.
         :type Filters: list of AdvancedFilter
         :param _Order: Sort the returned results according to this field. Values include:
 <li>`type`: Connection mode</li>
@@ -27892,8 +29314,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter criteria. the maximum value of Filters.Values is 20. if this parameter is left empty, all site information authorized under the current appid will be returned. detailed filter criteria are as follows:.
-<li>zone-name: filter by site name;</li> <li>zone-id: filter by site id. the site id is in the format of zone-2noz78a8ev6k;</li> <li>status: filter by site status;</li> <li>tag-key: filter by tag key;</li> <li>tag-value: filter by tag value;</li> <li>alias-zone-name: filter by identical site identifier.</li> when performing a fuzzy query, the fields that support filtering are named zone-name or alias-zone-name.
+        r"""Filter criteria. the maximum number of Filters.Values is 20. if this parameter is left empty, it returns all authorized site information under the current appid. the detailed filter criteria are as follows: <li>zone-name: filter by site name.</li><li>zone-type: filter by website type. options:<br>??full: NS access type;<br>??partial: CNAME-based;<br>??partialComposite: no domain access;<br>??dnsPodAccess: DNSPod managed access;<br>??pages: pages access type;<br>??ai: edge reasoning access type.</li><li>zone-id: filter by site id in the format like zone-2noz78a8ev6k.</li><li>status: filter by site status. options:<br>??active: NS switchover completed;<br>??pending: NS to be switched;<br>??deleted: has been deleted.</li><li>tag-key: filter according to the tag key.</li><li>tag-value: filter by tag value.</li><li>alias-zone-name: filter by identical site identifier.</li>fuzzy query supports filtering fields named zone-name or alias-zone-name.
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -27963,7 +29384,7 @@ class DescribeZonesResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible sites.
         :type TotalCount: int
-        :param _Zones: Details of sites.
+        :param _Zones: Describes the list details of sites.
         :type Zones: list of Zone
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -27985,7 +29406,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def Zones(self):
-        r"""Details of sites.
+        r"""Describes the list details of sites.
         :rtype: list of Zone
         """
         return self._Zones
@@ -28725,7 +30146,7 @@ class DeviceProfile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientType: Client device type. valid values: <li>iOS;</li> <li>Android;</li> <li>WebView.</li>.
+        :param _ClientType: Client device type. Valid values: <li>iOS;</li> <li>Android;</li> <li>WebView;</li> <li>WeChatMiniProgram.</li>
         :type ClientType: str
         :param _HighRiskMinScore: The minimum value to determine a request as high-risk ranges from 1–99. the larger the value, the higher the request risk, and the closer it resembles a request initiated by a Bot client. the default value is 50, corresponding to high-risk for values 51–100.
         :type HighRiskMinScore: int
@@ -28744,7 +30165,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def ClientType(self):
-        r"""Client device type. valid values: <li>iOS;</li> <li>Android;</li> <li>WebView.</li>.
+        r"""Client device type. Valid values: <li>iOS;</li> <li>Android;</li> <li>WebView;</li> <li>WeChatMiniProgram.</li>
         :rtype: str
         """
         return self._ClientType
@@ -29320,7 +30741,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: ZoneId set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).
+        :param _ZoneIds: The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy instance IDs.
         :type ProxyIds: list of str
@@ -29360,7 +30781,7 @@ class DownloadL4LogsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""ZoneId set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).
+        r"""The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ZoneIds
@@ -29494,7 +30915,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: ZoneId set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).
+        :param _ZoneIds: Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneIds: list of str
         :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
@@ -29534,7 +30955,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""ZoneId set. The parameter will change from optional to mandatory after May 30, 2024.Refer to [Cloud API Change Notification](https://www.tencentcloud.com/document/product/1145/59980).
+        r"""Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ZoneIds
@@ -29833,6 +31254,511 @@ class DropPageDetail(AbstractModel):
         
 
 
+class EdgeKVDeleteRequest(AbstractModel):
+    r"""EdgeKVDelete request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name.
+        :type Namespace: str
+        :param _Keys: Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To delete a single key, import an array with one element.
+        :type Keys: list of str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Keys = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Keys(self):
+        r"""Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To delete a single key, import an array with one element.
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVDeleteResponse(AbstractModel):
+    r"""EdgeKVDelete response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVGetRequest(AbstractModel):
+    r"""EdgeKVGet request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name. You can obtain the list of namespaces under the site through the DescribeEdgeKVNamespaces API.
+        :type Namespace: str
+        :param _Keys: Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To query a single key, input an array with one element.
+        :type Keys: list of str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Keys = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name. You can obtain the list of namespaces under the site through the DescribeEdgeKVNamespaces API.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Keys(self):
+        r"""Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To query a single key, input an array with one element.
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVGetResponse(AbstractModel):
+    r"""EdgeKVGet response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Key-value pair data list. Return results sequentially in the order of input Keys. If a key does not exist, the corresponding Value Field returns empty string.
+        :type Data: list of KeyValuePair
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Key-value pair data list. Return results sequentially in the order of input Keys. If a key does not exist, the corresponding Value Field returns empty string.
+        :rtype: list of KeyValuePair
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = KeyValuePair()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVListRequest(AbstractModel):
+    r"""EdgeKVList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name.
+        :type Namespace: str
+        :param _Prefix: Prefix filtering for key names. Only return key names that begin with the specified prefix, with a length of 1-512 characters. Not specified means return all key names; does not allow input of empty string.
+        :type Prefix: str
+        :param _Cursor: Cursor position. Indicates the starting position of the current query for traversing large amounts of data. Do not fill in during the initial query, start traversal from the beginning. Fill in the Cursor value returned last time during follow-up queries to proceed with traversal from that position.
+
+        :type Cursor: str
+        :param _Limit: Number of key names returned. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Prefix = None
+        self._Cursor = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Prefix(self):
+        r"""Prefix filtering for key names. Only return key names that begin with the specified prefix, with a length of 1-512 characters. Not specified means return all key names; does not allow input of empty string.
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Cursor(self):
+        r"""Cursor position. Indicates the starting position of the current query for traversing large amounts of data. Do not fill in during the initial query, start traversal from the beginning. Fill in the Cursor value returned last time during follow-up queries to proceed with traversal from that position.
+
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Limit(self):
+        r"""Number of key names returned. Default value: 20. Maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Prefix = params.get("Prefix")
+        self._Cursor = params.get("Cursor")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVListResponse(AbstractModel):
+    r"""EdgeKVList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keys: Key name list.
+        :type Keys: list of str
+        :param _Cursor: Cursor position. Indicates current traversal position to obtain next batch data. Fill in this value for the Cursor parameter in the next request to proceed with backward traversal. If it is an empty string, it means all data has been traversed.
+
+        :type Cursor: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Keys = None
+        self._Cursor = None
+        self._RequestId = None
+
+    @property
+    def Keys(self):
+        r"""Key name list.
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def Cursor(self):
+        r"""Cursor position. Indicates current traversal position to obtain next batch data. Fill in this value for the Cursor parameter in the next request to proceed with backward traversal. If it is an empty string, it means all data has been traversed.
+
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Keys = params.get("Keys")
+        self._Cursor = params.get("Cursor")
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVPutRequest(AbstractModel):
+    r"""EdgeKVPut request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name.
+        :type Namespace: str
+        :param _Key: Key name. The length is 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.
+        :type Key: str
+        :param _Value: Key-value. Cannot be empty and supports up to 1 MB. Supports storing string data.
+        :type Value: str
+        :param _Expiration: Expiration time, absolute time. It means the seconds elapsed since midnight (UTC/GMT) on January 1, 1970, and cannot be earlier than the current time. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.
+        :type Expiration: int
+        :param _ExpirationTTL: Expiration time, relative time, in seconds. Indicates the data will expire after the specified seconds, must be greater than 0. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.
+        :type ExpirationTTL: int
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Key = None
+        self._Value = None
+        self._Expiration = None
+        self._ExpirationTTL = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Key(self):
+        r"""Key name. The length is 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Key-value. Cannot be empty and supports up to 1 MB. Supports storing string data.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Expiration(self):
+        r"""Expiration time, absolute time. It means the seconds elapsed since midnight (UTC/GMT) on January 1, 1970, and cannot be earlier than the current time. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.
+        :rtype: int
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+    @property
+    def ExpirationTTL(self):
+        r"""Expiration time, relative time, in seconds. Indicates the data will expire after the specified seconds, must be greater than 0. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.
+        :rtype: int
+        """
+        return self._ExpirationTTL
+
+    @ExpirationTTL.setter
+    def ExpirationTTL(self, ExpirationTTL):
+        self._ExpirationTTL = ExpirationTTL
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Expiration = params.get("Expiration")
+        self._ExpirationTTL = params.get("ExpirationTTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVPutResponse(AbstractModel):
+    r"""EdgeKVPut response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EnableOriginACLRequest(AbstractModel):
     r"""EnableOriginACL request structure.
 
@@ -29842,24 +31768,34 @@ class EnableOriginACLRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _L7EnableMode: L7 acceleration domain name activation in origin protection mode.
-<li>`all`: enable layer-7 acceleration domain names for the site.</li>.
-<Li>Specific: enable for the site's designated layer-7 acceleration domain name.</li>when no parameter is defined, the default is specific.
+        :param _L7EnableMode: When first enabling origin protection for a site, configure the layer-7 acceleration domain name in specific IP range mode.
+<li>ALL: Target all layer-7 acceleration domain names under the current site. When the number of domains exceeds 200, please go through first in specific mode to enable 200 domain names, and enable the remaining resource via the ModifyOriginACL API.</li>
+<li>Specific: Enables layer-7 acceleration for the site's designated domain name.</li>Note: When no parameter is defined, the default is specific. For subsequent addition of layer-7 acceleration domain names or layer-4 proxy instances, configure them via the ModifyOriginACL API.
         :type L7EnableMode: str
         :param _L7Hosts: Enable the list of layer-7 acceleration domain names with origin protection. this parameter is valid only when L7EnableMode is set to specific. when L7EnableMode is set to all, retain this parameter as empty. only supports up to 200 layer-7 acceleration domain names in a single operation.
         :type L7Hosts: list of str
-        :param _L4EnableMode: Specifies the origin protection mode of the l4 proxy instance.
-<Li>ALL: enable for all l4 proxy instances under the site.</li>.
-<Li>Specific: enable for the designated layer 4 proxy instance of the site.</li>when no parameter is defined, the default is specific.
+        :param _L4EnableMode: When first enabling origin protection for a site, configure the Layer 4 Proxy Instance Configuration in specific IP range mode.
+<li>ALL: Enable all L4 proxy instances under the current site. When the instance count exceeds 100, please go through specific mode to enable 100 domain names first. Enable the remaining resources via the ModifyOriginACL API.</li>
+<li>specific: Enable for the designated L4 proxy instance under the site.</li>Note: When no parameter is defined, the default is specific. Configure subsequent addition of L7 acceleration domains/L4 proxy instances via the ModifyOriginACL API.
         :type L4EnableMode: str
         :param _L4ProxyIds: The list of L4 proxy instances with origin protection enabled. this parameter is valid only when L4EnableMode is set to specific. retain this parameter empty when L4EnableMode is set to all. only supports up to 100 layer-4 proxy instances per operation.
         :type L4ProxyIds: list of str
+        :param _OriginACLFamily: The origin protection back-to-origin ACL control domain. If left empty, the standard global control domain is used by default. Available control domain information can be obtained through the DescribeAvailableOriginACLFamily API query.
+Valid values are as follows:
+<li>gaz: Standard global availability zone control domain;</li>
+<li>mlc: Standard Chinese mainland availability zone control domain;</li>
+<li>emc: Standard global (exclude Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: Simplify global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplify the global (excluding Chinese mainland) availability zone control domain;</li>
+        :type OriginACLFamily: str
         """
         self._ZoneId = None
         self._L7EnableMode = None
         self._L7Hosts = None
         self._L4EnableMode = None
         self._L4ProxyIds = None
+        self._OriginACLFamily = None
 
     @property
     def ZoneId(self):
@@ -29874,9 +31810,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7EnableMode(self):
-        r"""L7 acceleration domain name activation in origin protection mode.
-<li>`all`: enable layer-7 acceleration domain names for the site.</li>.
-<Li>Specific: enable for the site's designated layer-7 acceleration domain name.</li>when no parameter is defined, the default is specific.
+        r"""When first enabling origin protection for a site, configure the layer-7 acceleration domain name in specific IP range mode.
+<li>ALL: Target all layer-7 acceleration domain names under the current site. When the number of domains exceeds 200, please go through first in specific mode to enable 200 domain names, and enable the remaining resource via the ModifyOriginACL API.</li>
+<li>Specific: Enables layer-7 acceleration for the site's designated domain name.</li>Note: When no parameter is defined, the default is specific. For subsequent addition of layer-7 acceleration domain names or layer-4 proxy instances, configure them via the ModifyOriginACL API.
         :rtype: str
         """
         return self._L7EnableMode
@@ -29898,9 +31834,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4EnableMode(self):
-        r"""Specifies the origin protection mode of the l4 proxy instance.
-<Li>ALL: enable for all l4 proxy instances under the site.</li>.
-<Li>Specific: enable for the designated layer 4 proxy instance of the site.</li>when no parameter is defined, the default is specific.
+        r"""When first enabling origin protection for a site, configure the Layer 4 Proxy Instance Configuration in specific IP range mode.
+<li>ALL: Enable all L4 proxy instances under the current site. When the instance count exceeds 100, please go through specific mode to enable 100 domain names first. Enable the remaining resources via the ModifyOriginACL API.</li>
+<li>specific: Enable for the designated L4 proxy instance under the site.</li>Note: When no parameter is defined, the default is specific. Configure subsequent addition of L7 acceleration domains/L4 proxy instances via the ModifyOriginACL API.
         :rtype: str
         """
         return self._L4EnableMode
@@ -29920,6 +31856,24 @@ class EnableOriginACLRequest(AbstractModel):
     def L4ProxyIds(self, L4ProxyIds):
         self._L4ProxyIds = L4ProxyIds
 
+    @property
+    def OriginACLFamily(self):
+        r"""The origin protection back-to-origin ACL control domain. If left empty, the standard global control domain is used by default. Available control domain information can be obtained through the DescribeAvailableOriginACLFamily API query.
+Valid values are as follows:
+<li>gaz: Standard global availability zone control domain;</li>
+<li>mlc: Standard Chinese mainland availability zone control domain;</li>
+<li>emc: Standard global (exclude Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: Simplify global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplify the global (excluding Chinese mainland) availability zone control domain;</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -29927,6 +31881,7 @@ class EnableOriginACLRequest(AbstractModel):
         self._L7Hosts = params.get("L7Hosts")
         self._L4EnableMode = params.get("L4EnableMode")
         self._L4ProxyIds = params.get("L4ProxyIds")
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30988,8 +32943,7 @@ class ExportZoneConfigRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Types: It indicates exporting the type list of configuration . If it is left blank, all types of configurations will be exported. Currently supported valid values:<li>L7AccelerationConfig: It indicates exporting the Layer-7 acceleration configuration, corresponding to the console's "Site Acceleration - Global Acceleration Configuration" and "Site Acceleration - Rule Engine".</li>
-Note: The types that will be supported for export in the future will increase with iterations. When exporting all types, pay attention to the export file size. It is recommended to specify the configuration types to be exported to control the request and response packet payload size.
+        :param _Types: Export the type list of configuration items. Leave it blank to export all types of configurations. Currently supported values include: <li>L7AccelerationConfig: means exporting the Layer-7 acceleration configuration, corresponding to the console "Site Acceleration - Global Acceleration Configuration" and "Site Acceleration - Rule Engine".</li><li>WebSecurity: refers to exporting the Web protection configuration.</li> Note: Types supported for future export will increase with iterations. When exporting all types, pay attention to export file size. It is recommended to specify the configuration types to be exported to control the request and response packet payload size.
         :type Types: list of str
         """
         self._ZoneId = None
@@ -31008,8 +32962,7 @@ Note: The types that will be supported for export in the future will increase wi
 
     @property
     def Types(self):
-        r"""It indicates exporting the type list of configuration . If it is left blank, all types of configurations will be exported. Currently supported valid values:<li>L7AccelerationConfig: It indicates exporting the Layer-7 acceleration configuration, corresponding to the console's "Site Acceleration - Global Acceleration Configuration" and "Site Acceleration - Rule Engine".</li>
-Note: The types that will be supported for export in the future will increase with iterations. When exporting all types, pay attention to the export file size. It is recommended to specify the configuration types to be exported to control the request and response packet payload size.
+        r"""Export the type list of configuration items. Leave it blank to export all types of configurations. Currently supported values include: <li>L7AccelerationConfig: means exporting the Layer-7 acceleration configuration, corresponding to the console "Site Acceleration - Global Acceleration Configuration" and "Site Acceleration - Rule Engine".</li><li>WebSecurity: refers to exporting the Web protection configuration.</li> Note: Types supported for future export will increase with iterations. When exporting all types, pay attention to export file size. It is recommended to specify the configuration types to be exported to control the request and response packet payload size.
         :rtype: list of str
         """
         return self._Types
@@ -31328,6 +33281,158 @@ class FirstPartConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._StatTime = params.get("StatTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FloatTimingDataItem(AbstractModel):
+    r"""Statistical curve data item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: Time point for returning data, in the format of Unix timestamp in seconds.
+        :type Timestamp: int
+        :param _Value: Specific values.
+        :type Value: float
+        """
+        self._Timestamp = None
+        self._Value = None
+
+    @property
+    def Timestamp(self):
+        r"""Time point for returning data, in the format of Unix timestamp in seconds.
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Value(self):
+        r"""Specific values.
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FloatTimingTypeValue(AbstractModel):
+    r"""Time series type details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sum: Data and.
+        :type Sum: float
+        :param _Max: Maximum value.
+        :type Max: float
+        :param _Avg: Average.
+        :type Avg: float
+        :param _MetricName: Metric name.
+        :type MetricName: str
+        :param _Detail: Details.
+        :type Detail: list of FloatTimingDataItem
+        """
+        self._Sum = None
+        self._Max = None
+        self._Avg = None
+        self._MetricName = None
+        self._Detail = None
+
+    @property
+    def Sum(self):
+        r"""Data and.
+        :rtype: float
+        """
+        return self._Sum
+
+    @Sum.setter
+    def Sum(self, Sum):
+        self._Sum = Sum
+
+    @property
+    def Max(self):
+        r"""Maximum value.
+        :rtype: float
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def Avg(self):
+        r"""Average.
+        :rtype: float
+        """
+        return self._Avg
+
+    @Avg.setter
+    def Avg(self, Avg):
+        self._Avg = Avg
+
+    @property
+    def MetricName(self):
+        r"""Metric name.
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Detail(self):
+        r"""Details.
+        :rtype: list of FloatTimingDataItem
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+
+    def _deserialize(self, params):
+        self._Sum = params.get("Sum")
+        self._Max = params.get("Max")
+        self._Avg = params.get("Avg")
+        self._MetricName = params.get("MetricName")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = FloatTimingDataItem()
+                obj._deserialize(item)
+                self._Detail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31805,6 +33910,88 @@ class Function(AbstractModel):
         
 
 
+class FunctionComponentBinding(AbstractModel):
+    r"""Edge function component binding configuration is used to create a relationship between edge functions and components (such as KV namespace). Through bind configuration, function code can access bound resources at runtime via the specified variable name.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Bound component type. Valid values:
+<li>kv_namespace: KV namespace.</li>
+
+        :type Type: str
+        :param _VariableName: Variable name for binding. Limited to 1-50 characters. Allowed characters are letters, digits, and underscores. Digits cannot be at the beginning. Access the bound component via this variable name in the edge function code. Based on the Type value, the usage is as follows:
+<li>When Type is kv_namespace: In code, you can access the KV namespace through the variable name, for example, when setting it to "MY_KV", you can perform read-write operations via MY_KV.get("key").</li>
+
+        :type VariableName: str
+        :param _KVNamespaceParameters: KV namespace configuration parameter. Used for designated binding namespace details. Required when Type is kv_namespace.
+
+
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type KVNamespaceParameters: :class:`tencentcloud.teo.v20220901.models.KVNamespaceParameters`
+        """
+        self._Type = None
+        self._VariableName = None
+        self._KVNamespaceParameters = None
+
+    @property
+    def Type(self):
+        r"""Bound component type. Valid values:
+<li>kv_namespace: KV namespace.</li>
+
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def VariableName(self):
+        r"""Variable name for binding. Limited to 1-50 characters. Allowed characters are letters, digits, and underscores. Digits cannot be at the beginning. Access the bound component via this variable name in the edge function code. Based on the Type value, the usage is as follows:
+<li>When Type is kv_namespace: In code, you can access the KV namespace through the variable name, for example, when setting it to "MY_KV", you can perform read-write operations via MY_KV.get("key").</li>
+
+        :rtype: str
+        """
+        return self._VariableName
+
+    @VariableName.setter
+    def VariableName(self, VariableName):
+        self._VariableName = VariableName
+
+    @property
+    def KVNamespaceParameters(self):
+        r"""KV namespace configuration parameter. Used for designated binding namespace details. Required when Type is kv_namespace.
+
+
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.KVNamespaceParameters`
+        """
+        return self._KVNamespaceParameters
+
+    @KVNamespaceParameters.setter
+    def KVNamespaceParameters(self, KVNamespaceParameters):
+        self._KVNamespaceParameters = KVNamespaceParameters
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._VariableName = params.get("VariableName")
+        if params.get("KVNamespaceParameters") is not None:
+            self._KVNamespaceParameters = KVNamespaceParameters()
+            self._KVNamespaceParameters._deserialize(params.get("KVNamespaceParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionEnvironmentVariable(AbstractModel):
     r"""Environment variables of an edge function
 
@@ -31875,6 +34062,57 @@ class FunctionEnvironmentVariable(AbstractModel):
         
 
 
+class FunctionRegionSelection(AbstractModel):
+    r"""Region policy configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Regions: List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.comom/document/product/1552/112542?from_cn_redirect=1).
+        :type Regions: list of str
+        """
+        self._FunctionId = None
+        self._Regions = None
+
+    @property
+    def FunctionId(self):
+        r"""Function ID.
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Regions(self):
+        r"""List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.comom/document/product/1552/112542?from_cn_redirect=1).
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionRule(AbstractModel):
     r"""Trigger rules for an edge function
 
@@ -31886,14 +34124,24 @@ class FunctionRule(AbstractModel):
         :type RuleId: str
         :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between items in the list.
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met.
+        :param _TriggerType: Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+
+        :type TriggerType: str
+        :param _FunctionId: Specifies the function ID to be executed. valid only when TriggerType is direct.
         :type FunctionId: str
-        :param _Remark: Rule description.
-        :type Remark: str
-        :param _FunctionName: Function name.
+        :param _FunctionName: Specifies the name of the function executed.
         :type FunctionName: str
+        :param _RegionMappingSelections: Function selection configuration based on client IP country/region.
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: Describes the function selection configuration based on weight.
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Priority: Priority of a trigger rule for a function. The larger the value, the higher the priority.
         :type Priority: int
+        :param _Remark: Rule description.
+        :type Remark: str
         :param _CreateTime: Creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
         :type CreateTime: str
         :param _UpdateTime: Update time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
@@ -31901,10 +34149,13 @@ class FunctionRule(AbstractModel):
         """
         self._RuleId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
-        self._Remark = None
         self._FunctionName = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Priority = None
+        self._Remark = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -31931,8 +34182,23 @@ class FunctionRule(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""Function ID, specifying a function executed when a trigger rule condition is met.
+        r"""Specifies the function ID to be executed. valid only when TriggerType is direct.
         :rtype: str
         """
         return self._FunctionId
@@ -31942,19 +34208,8 @@ class FunctionRule(AbstractModel):
         self._FunctionId = FunctionId
 
     @property
-    def Remark(self):
-        r"""Rule description.
-        :rtype: str
-        """
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def FunctionName(self):
-        r"""Function name.
+        r"""Specifies the name of the function executed.
         :rtype: str
         """
         return self._FunctionName
@@ -31962,6 +34217,28 @@ class FunctionRule(AbstractModel):
     @FunctionName.setter
     def FunctionName(self, FunctionName):
         self._FunctionName = FunctionName
+
+    @property
+    def RegionMappingSelections(self):
+        r"""Function selection configuration based on client IP country/region.
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""Describes the function selection configuration based on weight.
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Priority(self):
@@ -31973,6 +34250,17 @@ class FunctionRule(AbstractModel):
     @Priority.setter
     def Priority(self, Priority):
         self._Priority = Priority
+
+    @property
+    def Remark(self):
+        r"""Rule description.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def CreateTime(self):
@@ -32005,10 +34293,23 @@ class FunctionRule(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
-        self._Remark = params.get("Remark")
         self._FunctionName = params.get("FunctionName")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Priority = params.get("Priority")
+        self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -32052,6 +34353,61 @@ class FunctionRuleCondition(AbstractModel):
                 obj = RuleCondition()
                 obj._deserialize(item)
                 self._RuleConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionWeightedSelection(AbstractModel):
+    r"""Specifies the weight policy configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Weight: Specifies the selected weight. value ranges from 0 to 100. the sum of all weights needs to be 100.
+Specifies the calculation method for the select probability.
+weight/100. for example, setting two functions A and B, among them A has A weight of 30, then B must be 70, finally the probability of selecting A is 30%, and the probability of selecting B is 70%.
+        :type Weight: int
+        """
+        self._FunctionId = None
+        self._Weight = None
+
+    @property
+    def FunctionId(self):
+        r"""Function ID.
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Weight(self):
+        r"""Specifies the selected weight. value ranges from 0 to 100. the sum of all weights needs to be 100.
+Specifies the calculation method for the select probability.
+weight/100. for example, setting two functions A and B, among them A has A weight of 30, then B must be 70, finally the probability of selecting A is 30%, and the probability of selecting B is 70%.
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33709,6 +36065,118 @@ class IPReputationGroup(AbstractModel):
         
 
 
+class IPSSLConfig(AbstractModel):
+    r"""IP SSL information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssociatedDomain: Domain name associated with IP SSL. If the Status value is unbound, this field is empty.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type AssociatedDomain: str
+        :param _Status: Association status. Values as follows:
+<li>bound: The IP SSL configuration is bound</li>
+<li>Binding: IP SSL configuration binding in progress</li>
+<li>unbinding: IP SSL configuration is being unbound</li>
+<li>unbound: IP SSL configuration not bound to</li>
+        :type Status: str
+        """
+        self._AssociatedDomain = None
+        self._Status = None
+
+    @property
+    def AssociatedDomain(self):
+        r"""Domain name associated with IP SSL. If the Status value is unbound, this field is empty.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._AssociatedDomain
+
+    @AssociatedDomain.setter
+    def AssociatedDomain(self, AssociatedDomain):
+        self._AssociatedDomain = AssociatedDomain
+
+    @property
+    def Status(self):
+        r"""Association status. Values as follows:
+<li>bound: The IP SSL configuration is bound</li>
+<li>Binding: IP SSL configuration binding in progress</li>
+<li>unbinding: IP SSL configuration is being unbound</li>
+<li>unbound: IP SSL configuration not bound to</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._AssociatedDomain = params.get("AssociatedDomain")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPSSLSetting(AbstractModel):
+    r"""IP SSL configuration message
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operation: Operation type, values as follows: <li>bind: bind</li> <li>unbind: unbind</li>
+        :type Operation: str
+        :param _AssociatedDomain: Domain name of the IP SSL that should be bound.
+        :type AssociatedDomain: str
+        """
+        self._Operation = None
+        self._AssociatedDomain = None
+
+    @property
+    def Operation(self):
+        r"""Operation type, values as follows: <li>bind: bind</li> <li>unbind: unbind</li>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def AssociatedDomain(self):
+        r"""Domain name of the IP SSL that should be bound.
+        :rtype: str
+        """
+        return self._AssociatedDomain
+
+    @AssociatedDomain.setter
+    def AssociatedDomain(self, AssociatedDomain):
+        self._AssociatedDomain = AssociatedDomain
+
+
+    def _deserialize(self, params):
+        self._Operation = params.get("Operation")
+        self._AssociatedDomain = params.get("AssociatedDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPWhitelist(AbstractModel):
     r"""Intermediate IPs
 
@@ -34848,9 +37316,9 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
         :param _AudioTemplate: Audio stream configuration parameters. specifies this field is valid only when AudioStreamSwitch is on.
         :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
-        :param _CreateTime: Template creation time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _CreateTime: Template creation time. uses [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type CreateTime: str
-        :param _UpdateTime: Template last modified time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _UpdateTime: Template last modified time. uses [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type UpdateTime: str
         """
         self._TemplateId = None
@@ -34954,7 +37422,7 @@ class JustInTimeTranscodeTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Template creation time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Template creation time. uses [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :rtype: str
         """
         return self._CreateTime
@@ -34965,7 +37433,7 @@ class JustInTimeTranscodeTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Template last modified time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Template last modified time. uses [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :rtype: str
         """
         return self._UpdateTime
@@ -34990,6 +37458,254 @@ class JustInTimeTranscodeTemplate(AbstractModel):
             self._AudioTemplate._deserialize(params.get("AudioTemplate"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVNamespace(AbstractModel):
+    r"""KV namespace information, including namespace basic attribute, capacity utilization and reference relationship. KV namespace is a container for edge function to store key-value pair data. It supports read-write operation in edge function through binding method.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: Namespace name. Has uniqueness in the same site.
+        :type Namespace: str
+        :param _Remark: Namespace description. Remark information filled in upon creation, used for explaining the purpose or business meaning of the namespace. Supports a maximum of 256 characters.
+        :type Remark: str
+        :param _Capacity: Available capacity of KV storage space in bytes. It indicates the maximum capacity limit of storable data in namespace, defaulting to 1 GB.
+        :type Capacity: int
+        :param _CapacityUsed: KV storage space used capacity in bytes (Byte). It indicates the currently used storage space size of the namespace.
+        :type CapacityUsed: int
+        :param _References: List of referenced instances in the namespace. Shows which edge function instances reference the current namespace and the site information referenced. Returns an empty array if not referenced.
+        :type References: list of ComponentReference
+        :param _CreatedOn: The creation time of the namespace follows the ISO 8601 standard in the format YYYY-MM-DDThh:mm:ssZ (UTC time).
+        :type CreatedOn: str
+        :param _ModifiedOn: The last modification time of the namespace follows the ISO 8601 standard in the format YYYY-MM-DDThh:mm:ssZ (UTC time).
+        :type ModifiedOn: str
+        """
+        self._Namespace = None
+        self._Remark = None
+        self._Capacity = None
+        self._CapacityUsed = None
+        self._References = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+
+    @property
+    def Namespace(self):
+        r"""Namespace name. Has uniqueness in the same site.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""Namespace description. Remark information filled in upon creation, used for explaining the purpose or business meaning of the namespace. Supports a maximum of 256 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Capacity(self):
+        r"""Available capacity of KV storage space in bytes. It indicates the maximum capacity limit of storable data in namespace, defaulting to 1 GB.
+        :rtype: int
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def CapacityUsed(self):
+        r"""KV storage space used capacity in bytes (Byte). It indicates the currently used storage space size of the namespace.
+        :rtype: int
+        """
+        return self._CapacityUsed
+
+    @CapacityUsed.setter
+    def CapacityUsed(self, CapacityUsed):
+        self._CapacityUsed = CapacityUsed
+
+    @property
+    def References(self):
+        r"""List of referenced instances in the namespace. Shows which edge function instances reference the current namespace and the site information referenced. Returns an empty array if not referenced.
+        :rtype: list of ComponentReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def CreatedOn(self):
+        r"""The creation time of the namespace follows the ISO 8601 standard in the format YYYY-MM-DDThh:mm:ssZ (UTC time).
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        r"""The last modification time of the namespace follows the ISO 8601 standard in the format YYYY-MM-DDThh:mm:ssZ (UTC time).
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        self._Capacity = params.get("Capacity")
+        self._CapacityUsed = params.get("CapacityUsed")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = ComponentReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVNamespaceParameters(AbstractModel):
+    r"""Detailed configuration parameters required when binding a KV namespace to an edge function, used to specify the source of the bound namespace. With this configuration, the edge function can operate the KV namespace of the designated site.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: The site ID belonging to the KV namespace. Specifies the site where the KV namespace resides that should be bound, supporting cross-site binding.
+        :type ZoneId: str
+        :param _Namespace: KV namespace name. Specifies the specific namespace that should be bound. You can obtain the list of namespaces under the site through the DescribeKVNamespace API.
+        :type Namespace: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+
+    @property
+    def ZoneId(self):
+        r"""The site ID belonging to the KV namespace. Specifies the site where the KV namespace resides that should be bound, supporting cross-site binding.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""KV namespace name. Specifies the specific namespace that should be bound. You can obtain the list of namespaces under the site through the DescribeKVNamespace API.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValuePair(AbstractModel):
+    r"""KV key-value pair data, including key name, key-value, and expiration time information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key name. Each key name cannot be empty, with a length of 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.
+        :type Key: str
+        :param _Value: Key-value. Cannot be empty for input parameters and supports up to 1 MB. Returns an empty string if the key does not exist for output parameters.
+        :type Value: str
+        :param _Expiration: Expiration time, following ISO 8601 standard, format YYYY-MM-DDThh:mm:ssZ (UTC time). If it is an empty string in the output, it means the key-value pair will never expire.
+        :type Expiration: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Expiration = None
+
+    @property
+    def Key(self):
+        r"""Key name. Each key name cannot be empty, with a length of 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Key-value. Cannot be empty for input parameters and supports up to 1 MB. Returns an empty string if the key does not exist for output parameters.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Expiration(self):
+        r"""Expiration time, following ISO 8601 standard, format YYYY-MM-DDThh:mm:ssZ (UTC time). If it is an empty string in the output, it means the key-value pair will never expire.
+        :rtype: str
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Expiration = params.get("Expiration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35235,8 +37951,9 @@ class L4Proxy(AbstractModel):
         :type StaticIp: str
         :param _AccelerateMainland: Specifies whether to enable network optimization in the Chinese mainland.<li>on: Enable</li> <li>off: Disable</li>
         :type AccelerateMainland: str
-        :param _DDosProtectionConfig: Security protection configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DDosProtectionConfig: Security protection settings.
+This field is deprecated.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         :param _L4ProxyRuleCount: Number of forwarding rules under the Layer 4 proxy instance.
         :type L4ProxyRuleCount: int
@@ -35374,14 +38091,19 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DDosProtectionConfig(self):
-        r"""Security protection configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
+        r"""Security protection settings.
+This field is deprecated.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         return self._DDosProtectionConfig
 
     @DDosProtectionConfig.setter
     def DDosProtectionConfig(self, DDosProtectionConfig):
+        warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
+
         self._DDosProtectionConfig = DDosProtectionConfig
 
     @property
@@ -35975,6 +38697,8 @@ class LoadBalancer(AbstractModel):
         :type L4UsedList: list of str
         :param _L7UsedList: List of Layer-7 domain names bound to a LoadBalancer.
         :type L7UsedList: list of str
+        :param _References: Specifies the list of instances referenced by cloud load balancer.
+        :type References: list of OriginGroupReference
         """
         self._InstanceId = None
         self._Name = None
@@ -35986,6 +38710,7 @@ class LoadBalancer(AbstractModel):
         self._Status = None
         self._L4UsedList = None
         self._L7UsedList = None
+        self._References = None
 
     @property
     def InstanceId(self):
@@ -36105,6 +38830,17 @@ class LoadBalancer(AbstractModel):
     def L7UsedList(self, L7UsedList):
         self._L7UsedList = L7UsedList
 
+    @property
+    def References(self):
+        r"""Specifies the list of instances referenced by cloud load balancer.
+        :rtype: list of OriginGroupReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -36124,6 +38860,12 @@ class LoadBalancer(AbstractModel):
         self._Status = params.get("Status")
         self._L4UsedList = params.get("L4UsedList")
         self._L7UsedList = params.get("L7UsedList")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = OriginGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38635,6 +41377,224 @@ class ModifyDnsRecordsStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyEdgeKVNamespaceRequest(AbstractModel):
+    r"""ModifyEdgeKVNamespace request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Namespace: Namespace name.
+        :type Namespace: str
+        :param _Remark: Namespace description. Used to describe the purpose or business meaning of a namespace. Supports a maximum of 256 characters.
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""Namespace name.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""Namespace description. Used to describe the purpose or business meaning of a namespace. Supports a maximum of 256 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdgeKVNamespaceResponse(AbstractModel):
+    r"""ModifyEdgeKVNamespace response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionComponentBindingsRequest(AbstractModel):
+    r"""ModifyFunctionComponentBindings request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Operation: Operation type. Valid values:
+<li>bind: bind component;</li>
+<li>bind-override: Bind a component. If the binding already exists, it is a rebind action; otherwise, it is a bind action.</li>
+<li>unbind: Unbind a component;</li>
+<li>rebind: Reset the binding relationship. Clear all existing bindings and set to the passed in bound list. If an empty list is passed in, clear all bindings.</li>
+
+        :type Operation: str
+        :param _FunctionComponentBindings: Bound list of function components to operate. When Operation is rebind and an empty list is input, it means to clear ALL bindings.
+        :type FunctionComponentBindings: list of FunctionComponentBinding
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Operation = None
+        self._FunctionComponentBindings = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""Function ID.
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Operation(self):
+        r"""Operation type. Valid values:
+<li>bind: bind component;</li>
+<li>bind-override: Bind a component. If the binding already exists, it is a rebind action; otherwise, it is a bind action.</li>
+<li>unbind: Unbind a component;</li>
+<li>rebind: Reset the binding relationship. Clear all existing bindings and set to the passed in bound list. If an empty list is passed in, clear all bindings.</li>
+
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def FunctionComponentBindings(self):
+        r"""Bound list of function components to operate. When Operation is rebind and an empty list is input, it means to clear ALL bindings.
+        :rtype: list of FunctionComponentBinding
+        """
+        return self._FunctionComponentBindings
+
+    @FunctionComponentBindings.setter
+    def FunctionComponentBindings(self, FunctionComponentBindings):
+        self._FunctionComponentBindings = FunctionComponentBindings
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Operation = params.get("Operation")
+        if params.get("FunctionComponentBindings") is not None:
+            self._FunctionComponentBindings = []
+            for item in params.get("FunctionComponentBindings"):
+                obj = FunctionComponentBinding()
+                obj._deserialize(item)
+                self._FunctionComponentBindings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionComponentBindingsResponse(AbstractModel):
+    r"""ModifyFunctionComponentBindings response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyFunctionRequest(AbstractModel):
     r"""ModifyFunction request structure.
 
@@ -38832,19 +41792,32 @@ class ModifyFunctionRuleRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _RuleId: Rule ID.
+        :param _RuleId: Rule ID. you can first use the DescribeFunctionRules API to get the RuleId that needs to be modified, then input the modified rule content. the original rule content will be overwritten.
         :type RuleId: str
         :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between different conditions of the same trigger rule. If this parameter is not input, the original configuration is maintained.
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met. If this parameter is not input, the original configuration is maintained.
+        :param _TriggerType: Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+Specifies the default value as direct when left blank.
+        :type TriggerType: str
+        :param _FunctionId: Specifies the function ID to be executed. this parameter is valid only when TriggerType is direct or left empty.
         :type FunctionId: str
+        :param _RegionMappingSelections: Function selection configuration based on client IP country/region. this parameter is valid only when TriggerType is region and RegionMappingSelections is required. RegionMappingSelections must include at least one configuration with Regions set to Default.
+        :type RegionMappingSelections: list of FunctionRegionSelection
+        :param _WeightedSelections: Weighted function selection configuration. this parameter is valid only when TriggerType is weight and WeightedSelections is required. the sum of all weights in WeightedSelections need to be 100.
+        :type WeightedSelections: list of FunctionWeightedSelection
         :param _Remark: Rule description, which can contain up to 60 characters. If this parameter is not input, the original configuration is maintained.
         :type Remark: str
         """
         self._ZoneId = None
         self._RuleId = None
         self._FunctionRuleConditions = None
+        self._TriggerType = None
         self._FunctionId = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
         self._Remark = None
 
     @property
@@ -38860,7 +41833,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""Rule ID.
+        r"""Rule ID. you can first use the DescribeFunctionRules API to get the RuleId that needs to be modified, then input the modified rule content. the original rule content will be overwritten.
         :rtype: str
         """
         return self._RuleId
@@ -38881,8 +41854,23 @@ class ModifyFunctionRuleRequest(AbstractModel):
         self._FunctionRuleConditions = FunctionRuleConditions
 
     @property
+    def TriggerType(self):
+        r"""Function selection configuration type.
+<Li>Direct: specifies the execution function directly.</li>.
+<Li>Weight: selects the function based on weight ratio.</li>.
+<li> region: specifies the country/region selection function based on client IP.</li>.
+Specifies the default value as direct when left blank.
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
     def FunctionId(self):
-        r"""Function ID, specifying a function executed when a trigger rule condition is met. If this parameter is not input, the original configuration is maintained.
+        r"""Specifies the function ID to be executed. this parameter is valid only when TriggerType is direct or left empty.
         :rtype: str
         """
         return self._FunctionId
@@ -38890,6 +41878,28 @@ class ModifyFunctionRuleRequest(AbstractModel):
     @FunctionId.setter
     def FunctionId(self, FunctionId):
         self._FunctionId = FunctionId
+
+    @property
+    def RegionMappingSelections(self):
+        r"""Function selection configuration based on client IP country/region. this parameter is valid only when TriggerType is region and RegionMappingSelections is required. RegionMappingSelections must include at least one configuration with Regions set to Default.
+        :rtype: list of FunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""Weighted function selection configuration. this parameter is valid only when TriggerType is weight and WeightedSelections is required. the sum of all weights in WeightedSelections need to be 100.
+        :rtype: list of FunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
 
     @property
     def Remark(self):
@@ -38912,7 +41922,20 @@ class ModifyFunctionRuleRequest(AbstractModel):
                 obj = FunctionRuleCondition()
                 obj._deserialize(item)
                 self._FunctionRuleConditions.append(obj)
+        self._TriggerType = params.get("TriggerType")
         self._FunctionId = params.get("FunctionId")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = FunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = FunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -38963,15 +41986,15 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type ZoneId: str
         :param _Hosts: Domain names that you need to modify the certificate configuration
         :type Hosts: list of str
-        :param _Mode: Configures the server certificate mode. valid values:.
+        :param _Mode: Configures the mode of the server certificate. valid values:.
+Disables server-side certificate configuration.
+<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).</li>.
 
-- disable: without configuring server certificate.
-- eofreecert: specifies to apply for a free certificate through automatic validation and deploy it. for verification methods, see [free certificate application supported verification methods](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
-    - In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
-    - When a free certificate application fails, it can cause deployment failure. you can obtain the failure reason through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> .
-- eofreecert_manual: specifies the deployment of free certificates applied through DNS delegation verification or file verification. before deploying a free certificate, you need to trigger the [apply for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1)) api to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
-Note: when deploying a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> api.
-- sslcert: specifies the configuration of the managed service side certificate.
+-In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
+-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+eofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
+Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+sslcert: specifies the managed service side certificate configuration.
         :type Mode: str
         :param _ServerCertInfo: SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :type ServerCertInfo: list of ServerCertInfo
@@ -38982,7 +42005,7 @@ Default value: `none`.
         :type ApplyType: str
         :param _ClientCertInfo: In the mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for the client to authenticate the EO node. By default, it is disabled. If it is left blank, it indicates retaining the original configuration.
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
-        :param _UpstreamCertInfo: Specifies the certificate carried during EO node origin-pull for origin-pull mutual authentication handshake, off by default. leave blank to indicate retaining the original configuration. this configuration is currently in closed beta testing for the allowlist feature. if you need to use it, please contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).
+        :param _UpstreamCertInfo: Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
         :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._ZoneId = None
@@ -39017,15 +42040,15 @@ Default value: `none`.
 
     @property
     def Mode(self):
-        r"""Configures the server certificate mode. valid values:.
+        r"""Configures the mode of the server certificate. valid values:.
+Disables server-side certificate configuration.
+<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).</li>.
 
-- disable: without configuring server certificate.
-- eofreecert: specifies to apply for a free certificate through automatic validation and deploy it. for verification methods, see [free certificate application supported verification methods](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
-    - In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
-    - When a free certificate application fails, it can cause deployment failure. you can obtain the failure reason through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> .
-- eofreecert_manual: specifies the deployment of free certificates applied through DNS delegation verification or file verification. before deploying a free certificate, you need to trigger the [apply for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1)) api to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
-Note: when deploying a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> api.
-- sslcert: specifies the configuration of the managed service side certificate.
+-In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
+-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+eofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
+Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+sslcert: specifies the managed service side certificate configuration.
         :rtype: str
         """
         return self._Mode
@@ -39076,7 +42099,7 @@ Default value: `none`.
 
     @property
     def UpstreamCertInfo(self):
-        r"""Specifies the certificate carried during EO node origin-pull for origin-pull mutual authentication handshake, off by default. leave blank to indicate retaining the original configuration. this configuration is currently in closed beta testing for the allowlist feature. if you need to use it, please contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).
+        r"""Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         return self._UpstreamCertInfo
@@ -40448,9 +43471,19 @@ class ModifyOriginACLRequest(AbstractModel):
         :type ZoneId: str
         :param _OriginACLEntities: Specifies the instance that needs to configurate origin ACLs.
         :type OriginACLEntities: list of OriginACLEntity
+        :param _OriginACLFamily: The origin protection back-to-origin ACL control domain remains unchanged by default if left blank. The domain information can be obtained through the DescribeAvailableOriginACLFamily API query.
+Valid values are as follows:
+<li>gaz: Standard global availability zone control domain;</li>
+<li>mlc: Standard Chinese mainland availability zone control domain;</li>
+<li>emc: Standard global (exclude Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: Simplify global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplify the global (excluding Chinese mainland) availability zone control domain;</li>
+        :type OriginACLFamily: str
         """
         self._ZoneId = None
         self._OriginACLEntities = None
+        self._OriginACLFamily = None
 
     @property
     def ZoneId(self):
@@ -40474,6 +43507,24 @@ class ModifyOriginACLRequest(AbstractModel):
     def OriginACLEntities(self, OriginACLEntities):
         self._OriginACLEntities = OriginACLEntities
 
+    @property
+    def OriginACLFamily(self):
+        r"""The origin protection back-to-origin ACL control domain remains unchanged by default if left blank. The domain information can be obtained through the DescribeAvailableOriginACLFamily API query.
+Valid values are as follows:
+<li>gaz: Standard global availability zone control domain;</li>
+<li>mlc: Standard Chinese mainland availability zone control domain;</li>
+<li>emc: Standard global (exclude Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: Simplify global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplify the global (excluding Chinese mainland) availability zone control domain;</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -40483,6 +43534,7 @@ class ModifyOriginACLRequest(AbstractModel):
                 obj = OriginACLEntity()
                 obj._deserialize(item)
                 self._OriginACLEntities.append(obj)
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40884,6 +43936,144 @@ class ModifyPlanRequest(AbstractModel):
 
 class ModifyPlanResponse(AbstractModel):
     r"""ModifyPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPrefetchOriginLimitRequest(AbstractModel):
+    r"""ModifyPrefetchOriginLimit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _DomainName: Acceleration domain name.
+        :type DomainName: str
+        :param _Area: Specifies the acceleration region with origin-pull speed limit.
+During preheating, the acceleration region will be subject to the configured Bandwidth value limit. valid values:.
+<Li>Overseas: global availability zone (excluding the chinese mainland);</li>.
+<Li>MainlandChina: chinese mainland availability zone.</li>.
+        :type Area: str
+        :param _Bandwidth: Specifies the bandwidth limit for origin-pull.
+Specifies the upper limit of bandwidth returning to the origin server during preheating. value ranges from 100 to 100,000 Mbps.
+        :type Bandwidth: int
+        :param _Enabled: Specifies the control switch for origin-pull rate limiting.
+Used to enable/delete the origin-pull speed limit. valid values:.
+<li>on: enablement limit.</li>.
+<li>off: delete restriction.</li>.
+        :type Enabled: str
+        """
+        self._ZoneId = None
+        self._DomainName = None
+        self._Area = None
+        self._Bandwidth = None
+        self._Enabled = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DomainName(self):
+        r"""Acceleration domain name.
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Area(self):
+        r"""Specifies the acceleration region with origin-pull speed limit.
+During preheating, the acceleration region will be subject to the configured Bandwidth value limit. valid values:.
+<Li>Overseas: global availability zone (excluding the chinese mainland);</li>.
+<Li>MainlandChina: chinese mainland availability zone.</li>.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Bandwidth(self):
+        r"""Specifies the bandwidth limit for origin-pull.
+Specifies the upper limit of bandwidth returning to the origin server during preheating. value ranges from 100 to 100,000 Mbps.
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Enabled(self):
+        r"""Specifies the control switch for origin-pull rate limiting.
+Used to enable/delete the origin-pull speed limit. valid values:.
+<li>on: enablement limit.</li>.
+<li>off: delete restriction.</li>.
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._Area = params.get("Area")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrefetchOriginLimitResponse(AbstractModel):
+    r"""ModifyPrefetchOriginLimit response structure.
 
     """
 
@@ -41987,6 +45177,117 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySharedCNAMERequest(AbstractModel):
+    r"""ModifySharedCNAME request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Shared CNAME associated site ID.
+        :type ZoneId: str
+        :param _SharedCNAME: Shared CNAME.
+        :type SharedCNAME: str
+        :param _Description: Enter the adjusted description.
+        :type Description: str
+        :param _IPSSLSetting: Set the IP SSL message of the shared CNAME with IP SSL type.
+        :type IPSSLSetting: :class:`tencentcloud.teo.v20220901.models.IPSSLSetting`
+        """
+        self._ZoneId = None
+        self._SharedCNAME = None
+        self._Description = None
+        self._IPSSLSetting = None
+
+    @property
+    def ZoneId(self):
+        r"""Shared CNAME associated site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SharedCNAME(self):
+        r"""Shared CNAME.
+        :rtype: str
+        """
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def Description(self):
+        r"""Enter the adjusted description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IPSSLSetting(self):
+        r"""Set the IP SSL message of the shared CNAME with IP SSL type.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPSSLSetting`
+        """
+        return self._IPSSLSetting
+
+    @IPSSLSetting.setter
+    def IPSSLSetting(self, IPSSLSetting):
+        self._IPSSLSetting = IPSSLSetting
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._Description = params.get("Description")
+        if params.get("IPSSLSetting") is not None:
+            self._IPSSLSetting = IPSSLSetting()
+            self._IPSSLSetting._deserialize(params.get("IPSSLSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySharedCNAMEResponse(AbstractModel):
+    r"""ModifySharedCNAME response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyWebSecurityTemplateRequest(AbstractModel):
     r"""ModifyWebSecurityTemplate request structure.
 
@@ -42812,6 +46113,90 @@ class ModifyZoneStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyZoneWorkModeRequest(AbstractModel):
+    r"""ModifyZoneWorkMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :type WorkModeInfos: list of ConfigGroupWorkModeInfo
+        """
+        self._ZoneId = None
+        self._WorkModeInfos = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def WorkModeInfos(self):
+        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :rtype: list of ConfigGroupWorkModeInfo
+        """
+        return self._WorkModeInfos
+
+    @WorkModeInfos.setter
+    def WorkModeInfos(self, WorkModeInfos):
+        self._WorkModeInfos = WorkModeInfos
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("WorkModeInfos") is not None:
+            self._WorkModeInfos = []
+            for item in params.get("WorkModeInfos"):
+                obj = ConfigGroupWorkModeInfo()
+                obj._deserialize(item)
+                self._WorkModeInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyZoneWorkModeResponse(AbstractModel):
+    r"""ModifyZoneWorkMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiPathGateway(AbstractModel):
     r"""Multi-Channel security gateway details.
 
@@ -42841,6 +46226,8 @@ class MultiPathGateway(AbstractModel):
         :type RegionId: str
         :param _Lines: Line information. The line information will be returned when querying gateway information with DescribeMultiPathGateway ande not returned when querying the gateway list with DescribeMultiPathGateways.
         :type Lines: list of MultiPathGatewayLine
+        :param _NeedConfirm: Specifies whether the origin-pull IP list has changed and re-confirmation is required. valid values: <li>true: the origin-pull IP list has changed and confirmation is needed.</li><li>false: the origin-pull IP list remains unchanged and no confirmation is required.</li>.
+        :type NeedConfirm: str
         """
         self._GatewayId = None
         self._GatewayName = None
@@ -42850,6 +46237,7 @@ class MultiPathGateway(AbstractModel):
         self._GatewayIP = None
         self._RegionId = None
         self._Lines = None
+        self._NeedConfirm = None
 
     @property
     def GatewayId(self):
@@ -42945,6 +46333,17 @@ class MultiPathGateway(AbstractModel):
     def Lines(self, Lines):
         self._Lines = Lines
 
+    @property
+    def NeedConfirm(self):
+        r"""Specifies whether the origin-pull IP list has changed and re-confirmation is required. valid values: <li>true: the origin-pull IP list has changed and confirmation is needed.</li><li>false: the origin-pull IP list remains unchanged and no confirmation is required.</li>.
+        :rtype: str
+        """
+        return self._NeedConfirm
+
+    @NeedConfirm.setter
+    def NeedConfirm(self, NeedConfirm):
+        self._NeedConfirm = NeedConfirm
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -42960,6 +46359,7 @@ class MultiPathGateway(AbstractModel):
                 obj = MultiPathGatewayLine()
                 obj._deserialize(item)
                 self._Lines.append(obj)
+        self._NeedConfirm = params.get("NeedConfirm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43359,6 +46759,149 @@ Note: When using MutualTLS as an input parameter in ModifyHostsCertificate, you 
                 obj = CertificateInfo()
                 obj._deserialize(item)
                 self._CertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NSDetail(AbstractModel):
+    r"""NS access type site parameter description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CnameSpeedUp: Specifies whether CNAME acceleration is enabled. valid values:.
+<Li>Enabled: specifies whether the feature is enabled.</li>.
+<li>disabled: specifies that the feature is turned off.</li>.
+        :type CnameSpeedUp: str
+        :param _IsFake: Existence of a site with the same name. valid values:.
+<Li>0: no site with the same name exists.</li>.
+<Li>Specifies the name already exists.</li>.
+        :type IsFake: int
+        :param _OwnershipVerification: Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _OriginalNameServers: Lists the NS servers currently in use by the selected site detected by EdgeOne.
+        :type OriginalNameServers: list of str
+        :param _NameServers: Lists the NS servers allocated by tencent cloud EdgeOne. requires pointing the current site's NS servers to this address for the changes to take effect.
+        :type NameServers: list of str
+        :param _VanityNameServers: Specifies the user-customized NS server domain name information. if enabled, the NS needs to be pointed to this address in the registered vendor of the domains.
+        :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
+        :param _VanityNameServersIps: Describes the IP address information of the user-customized NS server.
+        :type VanityNameServersIps: list of VanityNameServersIps
+        """
+        self._CnameSpeedUp = None
+        self._IsFake = None
+        self._OwnershipVerification = None
+        self._OriginalNameServers = None
+        self._NameServers = None
+        self._VanityNameServers = None
+        self._VanityNameServersIps = None
+
+    @property
+    def CnameSpeedUp(self):
+        r"""Specifies whether CNAME acceleration is enabled. valid values:.
+<Li>Enabled: specifies whether the feature is enabled.</li>.
+<li>disabled: specifies that the feature is turned off.</li>.
+        :rtype: str
+        """
+        return self._CnameSpeedUp
+
+    @CnameSpeedUp.setter
+    def CnameSpeedUp(self, CnameSpeedUp):
+        self._CnameSpeedUp = CnameSpeedUp
+
+    @property
+    def IsFake(self):
+        r"""Existence of a site with the same name. valid values:.
+<Li>0: no site with the same name exists.</li>.
+<Li>Specifies the name already exists.</li>.
+        :rtype: int
+        """
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def OwnershipVerification(self):
+        r"""Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
+    @property
+    def OriginalNameServers(self):
+        r"""Lists the NS servers currently in use by the selected site detected by EdgeOne.
+        :rtype: list of str
+        """
+        return self._OriginalNameServers
+
+    @OriginalNameServers.setter
+    def OriginalNameServers(self, OriginalNameServers):
+        self._OriginalNameServers = OriginalNameServers
+
+    @property
+    def NameServers(self):
+        r"""Lists the NS servers allocated by tencent cloud EdgeOne. requires pointing the current site's NS servers to this address for the changes to take effect.
+        :rtype: list of str
+        """
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+    @property
+    def VanityNameServers(self):
+        r"""Specifies the user-customized NS server domain name information. if enabled, the NS needs to be pointed to this address in the registered vendor of the domains.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
+        """
+        return self._VanityNameServers
+
+    @VanityNameServers.setter
+    def VanityNameServers(self, VanityNameServers):
+        self._VanityNameServers = VanityNameServers
+
+    @property
+    def VanityNameServersIps(self):
+        r"""Describes the IP address information of the user-customized NS server.
+        :rtype: list of VanityNameServersIps
+        """
+        return self._VanityNameServersIps
+
+    @VanityNameServersIps.setter
+    def VanityNameServersIps(self, VanityNameServersIps):
+        self._VanityNameServersIps = VanityNameServersIps
+
+
+    def _deserialize(self, params):
+        self._CnameSpeedUp = params.get("CnameSpeedUp")
+        self._IsFake = params.get("IsFake")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        self._OriginalNameServers = params.get("OriginalNameServers")
+        self._NameServers = params.get("NameServers")
+        if params.get("VanityNameServers") is not None:
+            self._VanityNameServers = VanityNameServers()
+            self._VanityNameServers._deserialize(params.get("VanityNameServers"))
+        if params.get("VanityNameServersIps") is not None:
+            self._VanityNameServersIps = []
+            for item in params.get("VanityNameServersIps"):
+                obj = VanityNameServersIps()
+                obj._deserialize(item)
+                self._VanityNameServersIps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43994,7 +47537,7 @@ class OriginACLEntity(AbstractModel):
 
 
 class OriginACLInfo(AbstractModel):
-    r"""The binding relationship between L7 acceleration domains/L4 proxy instances and origin IP ranges, as well as origin IP range details.
+    r"""The binding relationship between L7 acceleration domains/layer-4 proxy instances and origin IP ranges contains both origin IP range details and a switchable origin IP range list.
 
     """
 
@@ -44015,12 +47558,15 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 - offline: disabled;
 - updating: configuration deployment in progress.
         :type Status: str
+        :param _OriginACLFamily: Origin protection back-to-origin ACL control domain.
+        :type OriginACLFamily: str
         """
         self._L7Hosts = None
         self._L4ProxyIds = None
         self._CurrentOriginACL = None
         self._NextOriginACL = None
         self._Status = None
+        self._OriginACLFamily = None
 
     @property
     def L7Hosts(self):
@@ -44082,6 +47628,17 @@ Note: This field may return null, which indicates a failure to obtain a valid va
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def OriginACLFamily(self):
+        r"""Origin protection back-to-origin ACL control domain.
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._L7Hosts = params.get("L7Hosts")
@@ -44093,6 +47650,174 @@ Note: This field may return null, which indicates a failure to obtain a valid va
             self._NextOriginACL = NextOriginACL()
             self._NextOriginACL._deserialize(params.get("NextOriginACL"))
         self._Status = params.get("Status")
+        self._OriginACLFamily = params.get("OriginACLFamily")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginAuthenticationParameters(AbstractModel):
+    r"""Specifies the authentication parameter for origin-pull.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestProperties: Specifies the authentication request attribute for origin pull.
+        :type RequestProperties: list of OriginAuthenticationRequestProperties
+        """
+        self._RequestProperties = None
+
+    @property
+    def RequestProperties(self):
+        r"""Specifies the authentication request attribute for origin pull.
+        :rtype: list of OriginAuthenticationRequestProperties
+        """
+        return self._RequestProperties
+
+    @RequestProperties.setter
+    def RequestProperties(self, RequestProperties):
+        self._RequestProperties = RequestProperties
+
+
+    def _deserialize(self, params):
+        if params.get("RequestProperties") is not None:
+            self._RequestProperties = []
+            for item in params.get("RequestProperties"):
+                obj = OriginAuthenticationRequestProperties()
+                obj._deserialize(item)
+                self._RequestProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginAuthenticationRequestProperties(AbstractModel):
+    r"""Specifies the authentication request attribute for origin pull.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Specifies the origin-pull authentication parameter type. valid values: <li>QueryString: indicates setting the origin-pull authentication parameter type to query string.</li><li>Header: indicates setting the origin-pull authentication parameter type to request Header.</li>.
+        :type Type: str
+        :param _Name: Specifies the parameter name for the origin-pull authentication type.
+        :type Name: str
+        :param _Value: Specifies the parameter value for the origin-pull authentication type.
+        :type Value: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""Specifies the origin-pull authentication parameter type. valid values: <li>QueryString: indicates setting the origin-pull authentication parameter type to query string.</li><li>Header: indicates setting the origin-pull authentication parameter type to request Header.</li>.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""Specifies the parameter name for the origin-pull authentication type.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""Specifies the parameter value for the origin-pull authentication type.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginCertificateVerify(AbstractModel):
+    r"""Specifies the mode of HTTPS origin certificate verification.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerificationMode: Origin certificate verification mode. valid values: <li>disable: disable origin certificate verification.</li> <li>custom_ca: use designated trusted ca certificate for verification.</li>.
+        :type VerificationMode: str
+        :param _CustomCACerts: Specifies the trusted CA certificate list. the origin certificate must be issued by this CA to pass verification. note: this parameter is required only when VerificationMode is custom_CA. input this parameter to specify the trusted CA certificate information.
+OriginCertificateVerify specifies CertId of the corresponding certificate as an input parameter in ModifyHostsCertificate. only need to go to the SSL certificate service list (https://console.cloud.tencent.com/SSL) to check CertId.	
+
+        :type CustomCACerts: list of CertificateInfo
+        """
+        self._VerificationMode = None
+        self._CustomCACerts = None
+
+    @property
+    def VerificationMode(self):
+        r"""Origin certificate verification mode. valid values: <li>disable: disable origin certificate verification.</li> <li>custom_ca: use designated trusted ca certificate for verification.</li>.
+        :rtype: str
+        """
+        return self._VerificationMode
+
+    @VerificationMode.setter
+    def VerificationMode(self, VerificationMode):
+        self._VerificationMode = VerificationMode
+
+    @property
+    def CustomCACerts(self):
+        r"""Specifies the trusted CA certificate list. the origin certificate must be issued by this CA to pass verification. note: this parameter is required only when VerificationMode is custom_CA. input this parameter to specify the trusted CA certificate information.
+OriginCertificateVerify specifies CertId of the corresponding certificate as an input parameter in ModifyHostsCertificate. only need to go to the SSL certificate service list (https://console.cloud.tencent.com/SSL) to check CertId.	
+
+        :rtype: list of CertificateInfo
+        """
+        return self._CustomCACerts
+
+    @CustomCACerts.setter
+    def CustomCACerts(self, CustomCACerts):
+        self._CustomCACerts = CustomCACerts
+
+
+    def _deserialize(self, params):
+        self._VerificationMode = params.get("VerificationMode")
+        if params.get("CustomCACerts") is not None:
+            self._CustomCACerts = []
+            for item in params.get("CustomCACerts"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CustomCACerts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44770,28 +48495,37 @@ class OriginGroupReference(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: Services referencing the origin group. Values:
-<li>`AccelerationDomain`: Acceleration domain name</li>
-<li>`RuleEngine`: Rules engine</li>
-<li>`Loadbalance`: Load balancer</li>
-<li>`ApplicationProxy`: L4 proxy</li>
+        :param _InstanceType: Reference service type. valid values:.
+<Li>Acceleration-Domain: specifies the acceleration domain name.</li>.
+<Li>Rule-Engine: specifies the rule engine.</li>.
+<Li>Load-Balancer: specifies the cloud load balancer.</li>.
+<li>application-proxy: layer 4 proxy.</li>.
         :type InstanceType: str
         :param _InstanceId: ID of the instances referencing the origin group
         :type InstanceId: str
-        :param _InstanceName: Name of the instance referencing the origin group
+        :param _InstanceName: Specifies the instance name of the reference type.
         :type InstanceName: str
+        :param _ZoneId: Referer ID.
+        :type ZoneId: str
+        :param _ZoneName: Refers to the site name.
+        :type ZoneName: str
+        :param _AliasZoneName: Refers to the site alias.
+        :type AliasZoneName: str
         """
         self._InstanceType = None
         self._InstanceId = None
         self._InstanceName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._AliasZoneName = None
 
     @property
     def InstanceType(self):
-        r"""Services referencing the origin group. Values:
-<li>`AccelerationDomain`: Acceleration domain name</li>
-<li>`RuleEngine`: Rules engine</li>
-<li>`Loadbalance`: Load balancer</li>
-<li>`ApplicationProxy`: L4 proxy</li>
+        r"""Reference service type. valid values:.
+<Li>Acceleration-Domain: specifies the acceleration domain name.</li>.
+<Li>Rule-Engine: specifies the rule engine.</li>.
+<Li>Load-Balancer: specifies the cloud load balancer.</li>.
+<li>application-proxy: layer 4 proxy.</li>.
         :rtype: str
         """
         return self._InstanceType
@@ -44813,7 +48547,7 @@ class OriginGroupReference(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Name of the instance referencing the origin group
+        r"""Specifies the instance name of the reference type.
         :rtype: str
         """
         return self._InstanceName
@@ -44822,11 +48556,47 @@ class OriginGroupReference(AbstractModel):
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
 
+    @property
+    def ZoneId(self):
+        r"""Referer ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Refers to the site name.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def AliasZoneName(self):
+        r"""Refers to the site alias.
+        :rtype: str
+        """
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._AliasZoneName = params.get("AliasZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45390,26 +49160,26 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class OriginPullProtocolParameters(AbstractModel):
-    r"""Origin HTTPS configuration parameters.
+    r"""HTTPS origin-pull configuration parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _Protocol: Origin protocol configuration, with values:
-<li>http: Use HTTP protocol for origin pull;</li>
-<li>https: Use HTTPS protocol for origin pull;</li>
-<li>follow: Protocol following.</li>
+        :param _Protocol: Origin protocol configuration. valid values:.
+<li>http: specifies to use http protocol for origin.</li>.
+<li>https: use the https protocol for origin-pull.</li>.
+<Li>Follow: follow protocol.</li>.
         :type Protocol: str
         """
         self._Protocol = None
 
     @property
     def Protocol(self):
-        r"""Origin protocol configuration, with values:
-<li>http: Use HTTP protocol for origin pull;</li>
-<li>https: Use HTTPS protocol for origin pull;</li>
-<li>follow: Protocol following.</li>
+        r"""Origin protocol configuration. valid values:.
+<li>http: specifies to use http protocol for origin.</li>.
+<li>https: use the https protocol for origin-pull.</li>.
+<Li>Follow: follow protocol.</li>.
         :rtype: str
         """
         return self._Protocol
@@ -45447,8 +49217,8 @@ class OriginRecord(AbstractModel):
         :type Type: str
         :param _RecordId: The origin record ID.
         :type RecordId: str
-        :param _Weight: Weight of an origin. Range: 0-100. If it is not specified, a random weight is assigned. If `0` is passed in, there is no traffic scheduled to this origin.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Weight: [Origin server weight]: a parameter used to control traffic allocation priority, value ranges from 0 to 100 (integer): <li>empty value: no weight is set, and the system schedules traffic based on the default policy;</li> <li>0 value: explicitly set the weight to 0, and traffic will not be assigned to this origin server. note: make sure at least one origin server has a weight value above 0;</li> <li>normal value: the larger the value, the more traffic is assigned;</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Weight: int
         :param _Private: Whether to enable private authentication. It is valid when `OriginType=COS/AWS_S3`. Values:
 <li>`true`: Yes.</li>
@@ -45503,8 +49273,8 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Weight(self):
-        r"""Weight of an origin. Range: 0-100. If it is not specified, a random weight is assigned. If `0` is passed in, there is no traffic scheduled to this origin.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""[Origin server weight]: a parameter used to control traffic allocation priority, value ranges from 0 to 100 (integer): <li>empty value: no weight is set, and the system schedules traffic based on the default policy;</li> <li>0 value: explicitly set the weight to 0, and traffic will not be assigned to this origin server. note: make sure at least one origin server has a weight value above 0;</li> <li>normal value: the larger the value, the more traffic is assigned;</li>.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: int
         """
         return self._Weight
@@ -46359,6 +50129,125 @@ class PostMaxSizeParameters(AbstractModel):
         
 
 
+class PrefetchOriginLimit(AbstractModel):
+    r"""Origin speed limit details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _DomainName: Acceleration domain name.
+        :type DomainName: str
+        :param _Area: Specifies the acceleration region with origin-pull speed limit.
+During preheating, the acceleration region will be subject to the configured Bandwidth value limit. valid values:.
+<Li>Overseas: global availability zone (excluding the chinese mainland);</li>.
+<Li>MainlandChina: chinese mainland availability zone.</li>.
+        :type Area: str
+        :param _Bandwidth: Specifies the bandwidth limit for origin-pull.
+Specifies the upper limit of bandwidth returning to the origin server during preheating. value ranges from 100 to 100,000 Mbps.
+        :type Bandwidth: int
+        :param _CreateTime: Describes the time when the origin-pull speed limit was created.
+        :type CreateTime: str
+        :param _UpdateTime: Describes the time when the origin-pull speed limit is updated.
+        :type UpdateTime: str
+        """
+        self._ZoneId = None
+        self._DomainName = None
+        self._Area = None
+        self._Bandwidth = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ZoneId(self):
+        r"""Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DomainName(self):
+        r"""Acceleration domain name.
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Area(self):
+        r"""Specifies the acceleration region with origin-pull speed limit.
+During preheating, the acceleration region will be subject to the configured Bandwidth value limit. valid values:.
+<Li>Overseas: global availability zone (excluding the chinese mainland);</li>.
+<Li>MainlandChina: chinese mainland availability zone.</li>.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Bandwidth(self):
+        r"""Specifies the bandwidth limit for origin-pull.
+Specifies the upper limit of bandwidth returning to the origin server during preheating. value ranges from 100 to 100,000 Mbps.
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def CreateTime(self):
+        r"""Describes the time when the origin-pull speed limit was created.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Describes the time when the origin-pull speed limit is updated.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._Area = params.get("Area")
+        self._Bandwidth = params.get("Bandwidth")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrepaidPlanParam(AbstractModel):
     r"""Prepaid Plan Billing Parameters
 
@@ -46724,7 +50613,7 @@ class Quota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Batch: Single batch submission quota limit.
+        :param _Batch: 
         :type Batch: int
         :param _Daily: Daily submission quota limit.
         :type Daily: int
@@ -46745,7 +50634,7 @@ class Quota(AbstractModel):
 
     @property
     def Batch(self):
-        r"""Single batch submission quota limit.
+        r"""
         :rtype: int
         """
         return self._Batch
@@ -47777,7 +51666,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :type TaskName: str
         :param _DeliveryStatus: Status of a real-time log shipping task. Valid values: <li>enabled: enabled;</li><li>disabled: disabled;</li><li>deleted: deleted abnormally. Check whether the destination log set/log topic of Tencent Cloud CLS has been deleted.</li>
         :type DeliveryStatus: str
-        :param _TaskType: Type of a real-time log shipping task. Valid values:<li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address.</li>
+        :param _TaskType: Type of a real-time log shipping task. valid values:<li>cls: push to tencent cloud cls;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>S3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analysis.</li>.
         :type TaskType: str
         :param _EntityList: List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples: <li>L7 domain name: domain.example.com;</li><li>L4 proxy instance: sid-2s69eb5wcms7.</li>	
         :type EntityList: list of str
@@ -47865,7 +51754,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def TaskType(self):
-        r"""Type of a real-time log shipping task. Valid values:<li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address.</li>
+        r"""Type of a real-time log shipping task. valid values:<li>cls: push to tencent cloud cls;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>S3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analysis.</li>.
         :rtype: str
         """
         return self._TaskType
@@ -48096,6 +51985,74 @@ class RedirectActionParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReferenceHolder(AbstractModel):
+    r"""Referenced instance information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _Type: Instance type. Values as follows:
+<li>acceleration-domain: Acceleration domain name;</li>
+        :type Type: str
+        :param _Instance: Referenced instance information.
+        :type Instance: str
+        """
+        self._ZoneId = None
+        self._Type = None
+        self._Instance = None
+
+    @property
+    def ZoneId(self):
+        r"""Site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Type(self):
+        r"""Instance type. Values as follows:
+<li>acceleration-domain: Acceleration domain name;</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Instance(self):
+        r"""Referenced instance information.
+        :rtype: str
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Type = params.get("Type")
+        self._Instance = params.get("Instance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48511,10 +52468,10 @@ class Resource(AbstractModel):
         :type AutoRenewFlag: int
         :param _PlanId: ID of the resource associated with the plan.
         :type PlanId: str
-        :param _Area: Applicable area. Values:
-<li>`mainland`: Chinese mainland</li>
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`global`: Global</li>
+        :param _Area: Region. valid values:.
+<Li>Mainland: within the chinese mainland;</li>.
+<li>overseas: outside the chinese mainland.</li>.
+<Li>Global: global.</li>.
         :type Area: str
         :param _Group: The resource type. Values:
 <li>`plan`: Plan resources</li>
@@ -48651,10 +52608,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Area(self):
-        r"""Applicable area. Values:
-<li>`mainland`: Chinese mainland</li>
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`global`: Global</li>
+        r"""Region. valid values:.
+<Li>Mainland: within the chinese mainland;</li>.
+<li>overseas: outside the chinese mainland.</li>.
+<Li>Global: global.</li>.
         :rtype: str
         """
         return self._Area
@@ -49510,43 +53467,45 @@ class RuleEngineAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Operation Name. the Name must correspond to the parameter structure, for example, if Name=Cache, CacheParameters is required.
+        :param _Name: Operation Name. the Name must correspond to the parameter structure, such as Name=Cache, then CacheParameters is required.
 <li>Cache: specifies the node Cache TTL.</li>.
 <Li>CacheKey: specifies the custom cache key.</li>.
-<Li>CachePrefresh: cache pre-refresh;</li>.
-<Li>AccessURLRedirect: url redirection;</li>.
+<Li>CachePrefresh: specifies cache pre-refresh.</li>.
+<Li>AccessURLRedirect: specifies access url redirection.</li>.
 <Li>UpstreamURLRewrite: specifies the origin-pull url rewrite.</li>.
 <li>QUIC:QUIC;</li>
 <li>WebSocket:WebSocket;</li>
 <li>Authentication: Token Authentication;</li>.
-<li>MaxAge: browser caching TTL;</li>.
+<li>MaxAge: specifies the browser cache TTL.</li>.
 <li>StatusCodeCache: specifies the status code cache TTL.</li>.
-<Li>OfflineCache: offline caching;</li>.
-<Li>SmartRouting: smart acceleration;</li>.
-<Li>RangeOriginPull: range-based origin pull;</li>.
-<Li>UpstreamHTTP2: http/2 origin pull;</li>.
-<Li>HostHeader: host header rewrite;</li>.
-<Li>`ForceRedirectHTTPS`: force https redirect configuration for access protocol.</li>.
-<li>OriginPullProtocol: HTTPS origin pull;</li>.
-<Li>Compression: intelligent compression configuration;</li>.
+<Li>OfflineCache: specifies the offline cache.</li>.
+<Li>SmartRouting: specifies smart acceleration.</li>.
+<Li>RangeOriginPull: specifies range-based origin pull.</li>.
+<Li>UpstreamHTTP2: specifies http/2 origin pull.</li>.
+<Li>HostHeader: specifies the host header rewrite.</li>.
+<Li>ForceRedirectHTTPS: specifies the forced https redirect configuration for access protocol.</li>.
+<li>OriginPullProtocol: specifies HTTPS origin pull.</li>.
+<Li>Compression: specifies the intelligent compression configuration.</li>.
 <li>HSTS:HSTS;</li>
-<Li>ClientIPHeader: configuration for storing client request ip in header information;</li>.
-<Li>OCSPStapling: ocsp stapling;</li>.
-<Li>HTTP2: http/2 integration;</li>.
-<li>PostMaxSize: maximum size of the file uploaded for streaming via a POST request;</li>.
-<Li>ClientIPCountry: region of the client ip during origin-pull;</li>.
+<Li>ClientIPHeader: specifies the header information configuration for storing client request ip.</li>.
+<Li>OCSPStapling: specifies ocsp stapling.</li>.
+<Li>HTTP2: specifies http/2 integration.</li>.
+<li>PostMaxSize: specifies the maximum limit for file streaming transmission in POST request upload.</li>.
+<Li>ClientIPCountry: specifies the regional information of the client ip carried during origin-pull.</li>.
 <Li>UpstreamFollowRedirect: specifies the parameter configuration for redirection during origin pull.</li>.
-<Li>UpstreamRequest: origin pull request parameter;</li>.
+<Li>UpstreamRequest: specifies the origin-pull request parameters.</li>.
 <li>TLSConfig: specifies SSL/TLS security.</li>.
-<Li>ModifyOrigin: modify origin server;</li>.
-<Li>HTTPUpstreamTimeout: specifies the layer 7 origin pull timeout configuration.</li>.
-<li>HttpResponse: HTTP response;</li>.
+<Li>ModifyOrigin: modifies the origin server.</li>.
+<Li>HTTPUpstreamTimeout: specifies the layer-7 origin-pull timeout configuration.</li>.
+<li>HttpResponse: HTTP response.</li>.
 <Li>ErrorPage: specifies the custom error page.</li>.
 <li>ModifyResponseHeader: modifies the HTTP node response header.</li>.
-<li>ModifyRequestHeader: modifies the HTTP node request header.</li>.
-<Li>ResponseSpeedLimit: download speed limit for a single connection;</li>.
-<Li>SetContentIdentifier: sets the content identifier;</li>.
-<Li>Vary: vary feature configuration.</li>.
+<li>ModifyRequestHeader: modifies the request header of an HTTP node.</li>.
+<Li>ResponseSpeedLimit: specifies the download speed limit for a single connection.</li>.
+<Li>SetContentIdentifier: specifies the content identifier.</li>.
+<Li>Vary: specifies the vary feature configuration.</li>.
+<Li>ContentCompression: specifies the content compression configuration.</li>.
+<Li>OriginAuthentication. specifies the origin authentication configuration.</li>.
         :type Name: str
         :param _CacheParameters: Node cache ttl configuration parameter. when name is cache, this parameter is required.
 Note: this field may return null, which indicates a failure to obtain a valid value.
@@ -49596,7 +53555,8 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         :param _ForceRedirectHTTPSParameters: Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
 Note: this field may return null, which indicates a failure to obtain a valid value.
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
-        :param _OriginPullProtocolParameters: Origin HTTPS configuration parameters. When Name is set to OriginPullProtocol, this parameter is required.
+        :param _OriginPullProtocolParameters: HTTPS configuration for origin-pull. this parameter is required when the Name value is OriginPullProtocol.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         :param _CompressionParameters: Intelligent compression configuration. this parameter is required when name is set to compression.
 Note: this field may return null, which indicates a failure to obtain a valid value.
@@ -49655,6 +53615,10 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
         :param _VaryParameters: Vary feature configuration parameter. when Name value is Vary, this parameter is required.
         :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
+        :param _ContentCompressionParameters: The content compression configuration parameter is required when Name value is ContentCompression. this parameter is an allowlist feature. if needed, contact tencent cloud engineers.
+        :type ContentCompressionParameters: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
+        :param _OriginAuthenticationParameters: The origin authentication configuration parameter. this parameter is required when the Name value is OriginAuthentication. this parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        :type OriginAuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
         """
         self._Name = None
         self._CacheParameters = None
@@ -49693,46 +53657,50 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         self._ResponseSpeedLimitParameters = None
         self._SetContentIdentifierParameters = None
         self._VaryParameters = None
+        self._ContentCompressionParameters = None
+        self._OriginAuthenticationParameters = None
 
     @property
     def Name(self):
-        r"""Operation Name. the Name must correspond to the parameter structure, for example, if Name=Cache, CacheParameters is required.
+        r"""Operation Name. the Name must correspond to the parameter structure, such as Name=Cache, then CacheParameters is required.
 <li>Cache: specifies the node Cache TTL.</li>.
 <Li>CacheKey: specifies the custom cache key.</li>.
-<Li>CachePrefresh: cache pre-refresh;</li>.
-<Li>AccessURLRedirect: url redirection;</li>.
+<Li>CachePrefresh: specifies cache pre-refresh.</li>.
+<Li>AccessURLRedirect: specifies access url redirection.</li>.
 <Li>UpstreamURLRewrite: specifies the origin-pull url rewrite.</li>.
 <li>QUIC:QUIC;</li>
 <li>WebSocket:WebSocket;</li>
 <li>Authentication: Token Authentication;</li>.
-<li>MaxAge: browser caching TTL;</li>.
+<li>MaxAge: specifies the browser cache TTL.</li>.
 <li>StatusCodeCache: specifies the status code cache TTL.</li>.
-<Li>OfflineCache: offline caching;</li>.
-<Li>SmartRouting: smart acceleration;</li>.
-<Li>RangeOriginPull: range-based origin pull;</li>.
-<Li>UpstreamHTTP2: http/2 origin pull;</li>.
-<Li>HostHeader: host header rewrite;</li>.
-<Li>`ForceRedirectHTTPS`: force https redirect configuration for access protocol.</li>.
-<li>OriginPullProtocol: HTTPS origin pull;</li>.
-<Li>Compression: intelligent compression configuration;</li>.
+<Li>OfflineCache: specifies the offline cache.</li>.
+<Li>SmartRouting: specifies smart acceleration.</li>.
+<Li>RangeOriginPull: specifies range-based origin pull.</li>.
+<Li>UpstreamHTTP2: specifies http/2 origin pull.</li>.
+<Li>HostHeader: specifies the host header rewrite.</li>.
+<Li>ForceRedirectHTTPS: specifies the forced https redirect configuration for access protocol.</li>.
+<li>OriginPullProtocol: specifies HTTPS origin pull.</li>.
+<Li>Compression: specifies the intelligent compression configuration.</li>.
 <li>HSTS:HSTS;</li>
-<Li>ClientIPHeader: configuration for storing client request ip in header information;</li>.
-<Li>OCSPStapling: ocsp stapling;</li>.
-<Li>HTTP2: http/2 integration;</li>.
-<li>PostMaxSize: maximum size of the file uploaded for streaming via a POST request;</li>.
-<Li>ClientIPCountry: region of the client ip during origin-pull;</li>.
+<Li>ClientIPHeader: specifies the header information configuration for storing client request ip.</li>.
+<Li>OCSPStapling: specifies ocsp stapling.</li>.
+<Li>HTTP2: specifies http/2 integration.</li>.
+<li>PostMaxSize: specifies the maximum limit for file streaming transmission in POST request upload.</li>.
+<Li>ClientIPCountry: specifies the regional information of the client ip carried during origin-pull.</li>.
 <Li>UpstreamFollowRedirect: specifies the parameter configuration for redirection during origin pull.</li>.
-<Li>UpstreamRequest: origin pull request parameter;</li>.
+<Li>UpstreamRequest: specifies the origin-pull request parameters.</li>.
 <li>TLSConfig: specifies SSL/TLS security.</li>.
-<Li>ModifyOrigin: modify origin server;</li>.
-<Li>HTTPUpstreamTimeout: specifies the layer 7 origin pull timeout configuration.</li>.
-<li>HttpResponse: HTTP response;</li>.
+<Li>ModifyOrigin: modifies the origin server.</li>.
+<Li>HTTPUpstreamTimeout: specifies the layer-7 origin-pull timeout configuration.</li>.
+<li>HttpResponse: HTTP response.</li>.
 <Li>ErrorPage: specifies the custom error page.</li>.
 <li>ModifyResponseHeader: modifies the HTTP node response header.</li>.
-<li>ModifyRequestHeader: modifies the HTTP node request header.</li>.
-<Li>ResponseSpeedLimit: download speed limit for a single connection;</li>.
-<Li>SetContentIdentifier: sets the content identifier;</li>.
-<Li>Vary: vary feature configuration.</li>.
+<li>ModifyRequestHeader: modifies the request header of an HTTP node.</li>.
+<Li>ResponseSpeedLimit: specifies the download speed limit for a single connection.</li>.
+<Li>SetContentIdentifier: specifies the content identifier.</li>.
+<Li>Vary: specifies the vary feature configuration.</li>.
+<Li>ContentCompression: specifies the content compression configuration.</li>.
+<Li>OriginAuthentication. specifies the origin authentication configuration.</li>.
         :rtype: str
         """
         return self._Name
@@ -49935,7 +53903,8 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OriginPullProtocolParameters(self):
-        r"""Origin HTTPS configuration parameters. When Name is set to OriginPullProtocol, this parameter is required.
+        r"""HTTPS configuration for origin-pull. this parameter is required when the Name value is OriginPullProtocol.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         """
         return self._OriginPullProtocolParameters
@@ -50172,6 +54141,28 @@ Note: This field may return null, which indicates a failure to obtain a valid va
     def VaryParameters(self, VaryParameters):
         self._VaryParameters = VaryParameters
 
+    @property
+    def ContentCompressionParameters(self):
+        r"""The content compression configuration parameter is required when Name value is ContentCompression. this parameter is an allowlist feature. if needed, contact tencent cloud engineers.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
+        """
+        return self._ContentCompressionParameters
+
+    @ContentCompressionParameters.setter
+    def ContentCompressionParameters(self, ContentCompressionParameters):
+        self._ContentCompressionParameters = ContentCompressionParameters
+
+    @property
+    def OriginAuthenticationParameters(self):
+        r"""The origin authentication configuration parameter. this parameter is required when the Name value is OriginAuthentication. this parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
+        """
+        return self._OriginAuthenticationParameters
+
+    @OriginAuthenticationParameters.setter
+    def OriginAuthenticationParameters(self, OriginAuthenticationParameters):
+        self._OriginAuthenticationParameters = OriginAuthenticationParameters
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -50283,6 +54274,12 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("VaryParameters") is not None:
             self._VaryParameters = VaryParameters()
             self._VaryParameters._deserialize(params.get("VaryParameters"))
+        if params.get("ContentCompressionParameters") is not None:
+            self._ContentCompressionParameters = ContentCompressionParameters()
+            self._ContentCompressionParameters._deserialize(params.get("ContentCompressionParameters"))
+        if params.get("OriginAuthenticationParameters") is not None:
+            self._OriginAuthenticationParameters = OriginAuthenticationParameters()
+            self._OriginAuthenticationParameters._deserialize(params.get("OriginAuthenticationParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51796,6 +55793,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
         :param _BotManagementLite: Basic Bot management configuration.
         :type BotManagementLite: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
+        :param _DefaultDenySecurityActionParameters: Default intercept action configuration.
+        :type DefaultDenySecurityActionParameters: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
         """
         self._CustomRules = None
         self._ManagedRules = None
@@ -51804,6 +55803,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ExceptionRules = None
         self._BotManagement = None
         self._BotManagementLite = None
+        self._DefaultDenySecurityActionParameters = None
 
     @property
     def CustomRules(self):
@@ -51884,6 +55884,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def BotManagementLite(self, BotManagementLite):
         self._BotManagementLite = BotManagementLite
 
+    @property
+    def DefaultDenySecurityActionParameters(self):
+        r"""Default intercept action configuration.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
+        """
+        return self._DefaultDenySecurityActionParameters
+
+    @DefaultDenySecurityActionParameters.setter
+    def DefaultDenySecurityActionParameters(self, DefaultDenySecurityActionParameters):
+        self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters
+
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
@@ -51907,6 +55918,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("BotManagementLite") is not None:
             self._BotManagementLite = BotManagementLite()
             self._BotManagementLite._deserialize(params.get("BotManagementLite"))
+        if params.get("DefaultDenySecurityActionParameters") is not None:
+            self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters()
+            self._DefaultDenySecurityActionParameters._deserialize(params.get("DefaultDenySecurityActionParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52399,6 +56413,128 @@ class SetContentIdentifierParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharedCNAMEInfo(AbstractModel):
+    r"""Shared CNAME detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Shared CNAME type: Value ranges from...to...
+<li>custom: User-created custom shared CNAME</li>
+<li>ip-ssl: Shared CNAME of IP SSL type</li>
+        :type Type: str
+        :param _SharedCNAME: Shared CNAME name.
+        :type SharedCNAME: str
+        :param _Description: Description.
+        :type Description: str
+        :param _IPSSLConfig: When type is ip-ssl, show the associated IP SSL configuration message of the shared CNAME.
+        :type IPSSLConfig: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
+        :param _BindDomainCount: Number of acceleration domain names bound to the shared CNAME.
+        :type BindDomainCount: int
+        :param _AccelerationDomains: List of acceleration domain names added to the shared CNAME. When the number of domains exceeds 100, only return the first 100 acceleration domain names.
+        :type AccelerationDomains: list of ReferenceHolder
+        """
+        self._Type = None
+        self._SharedCNAME = None
+        self._Description = None
+        self._IPSSLConfig = None
+        self._BindDomainCount = None
+        self._AccelerationDomains = None
+
+    @property
+    def Type(self):
+        r"""Shared CNAME type: Value ranges from...to...
+<li>custom: User-created custom shared CNAME</li>
+<li>ip-ssl: Shared CNAME of IP SSL type</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SharedCNAME(self):
+        r"""Shared CNAME name.
+        :rtype: str
+        """
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def Description(self):
+        r"""Description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IPSSLConfig(self):
+        r"""When type is ip-ssl, show the associated IP SSL configuration message of the shared CNAME.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
+        """
+        return self._IPSSLConfig
+
+    @IPSSLConfig.setter
+    def IPSSLConfig(self, IPSSLConfig):
+        self._IPSSLConfig = IPSSLConfig
+
+    @property
+    def BindDomainCount(self):
+        r"""Number of acceleration domain names bound to the shared CNAME.
+        :rtype: int
+        """
+        return self._BindDomainCount
+
+    @BindDomainCount.setter
+    def BindDomainCount(self, BindDomainCount):
+        self._BindDomainCount = BindDomainCount
+
+    @property
+    def AccelerationDomains(self):
+        r"""List of acceleration domain names added to the shared CNAME. When the number of domains exceeds 100, only return the first 100 acceleration domain names.
+        :rtype: list of ReferenceHolder
+        """
+        return self._AccelerationDomains
+
+    @AccelerationDomains.setter
+    def AccelerationDomains(self, AccelerationDomains):
+        self._AccelerationDomains = AccelerationDomains
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._Description = params.get("Description")
+        if params.get("IPSSLConfig") is not None:
+            self._IPSSLConfig = IPSSLConfig()
+            self._IPSSLConfig._deserialize(params.get("IPSSLConfig"))
+        self._BindDomainCount = params.get("BindDomainCount")
+        if params.get("AccelerationDomains") is not None:
+            self._AccelerationDomains = []
+            for item in params.get("AccelerationDomains"):
+                obj = ReferenceHolder()
+                obj._deserialize(item)
+                self._AccelerationDomains.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53517,6 +57653,42 @@ class TCCaptchaOption(AbstractModel):
         
 
 
+class TCEOCaptchaOption(AbstractModel):
+    r"""EdgeOne human-machine verification authenticates instance information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaMode: EdgeOne human-machine verification mode. Valid values:<li>Invisible: invisible verification;</li><li>Adaptive: self adaptive interactive verification.</li>
+        :type CaptchaMode: str
+        """
+        self._CaptchaMode = None
+
+    @property
+    def CaptchaMode(self):
+        r"""EdgeOne human-machine verification mode. Valid values:<li>Invisible: invisible verification;</li><li>Adaptive: self adaptive interactive verification.</li>
+        :rtype: str
+        """
+        return self._CaptchaMode
+
+    @CaptchaMode.setter
+    def CaptchaMode(self, CaptchaMode):
+        self._CaptchaMode = CaptchaMode
+
+
+    def _deserialize(self, params):
+        self._CaptchaMode = params.get("CaptchaMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TCRCEOption(AbstractModel):
     r"""RCE authentication option instance information.
 
@@ -53526,8 +57698,11 @@ class TCRCEOption(AbstractModel):
         r"""
         :param _Channel: Channel information.
         :type Channel: str
+        :param _Region: Enabled regions for RCE Channel. currently optional value ranges from: <li>ap-beijing: north china (beijing);</li><li>ap-jakarta: southeast asia pacific (jakarta);</li><li>ap-singapore: southeast asia pacific (singapore);</li><li>eu-frankfurt: Europe (frankfurt);</li><li>na-siliconvalley: west us (silicon valley).</li>.
+        :type Region: str
         """
         self._Channel = None
+        self._Region = None
 
     @property
     def Channel(self):
@@ -53540,9 +57715,21 @@ class TCRCEOption(AbstractModel):
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def Region(self):
+        r"""Enabled regions for RCE Channel. currently optional value ranges from: <li>ap-beijing: north china (beijing);</li><li>ap-jakarta: southeast asia pacific (jakarta);</li><li>ap-singapore: southeast asia pacific (singapore);</li><li>eu-frankfurt: Europe (frankfurt);</li><li>na-siliconvalley: west us (silicon valley).</li>.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._Channel = params.get("Channel")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54010,11 +58197,14 @@ class TimingDataRecord(AbstractModel):
         r"""
         :param _TypeKey: The query dimension value.
         :type TypeKey: str
-        :param _TypeValue: Detailed time series data
+        :param _TypeValue: Detailed time series data of the <code>Integer</code> type. query metrics with the <code>Integer</code> value type will return corresponding time series data through this field.<br> **note**: if the query metric does not specify the value type, this field will return data by default.
         :type TypeValue: list of TimingTypeValue
+        :param _FloatTypeValue: Detailed time series data of <code>Float</code> type. query metrics with <code>Float</code> value type will return corresponding time series data via this field.
+        :type FloatTypeValue: list of FloatTimingTypeValue
         """
         self._TypeKey = None
         self._TypeValue = None
+        self._FloatTypeValue = None
 
     @property
     def TypeKey(self):
@@ -54029,7 +58219,7 @@ class TimingDataRecord(AbstractModel):
 
     @property
     def TypeValue(self):
-        r"""Detailed time series data
+        r"""Detailed time series data of the <code>Integer</code> type. query metrics with the <code>Integer</code> value type will return corresponding time series data through this field.<br> **note**: if the query metric does not specify the value type, this field will return data by default.
         :rtype: list of TimingTypeValue
         """
         return self._TypeValue
@@ -54037,6 +58227,17 @@ class TimingDataRecord(AbstractModel):
     @TypeValue.setter
     def TypeValue(self, TypeValue):
         self._TypeValue = TypeValue
+
+    @property
+    def FloatTypeValue(self):
+        r"""Detailed time series data of <code>Float</code> type. query metrics with <code>Float</code> value type will return corresponding time series data via this field.
+        :rtype: list of FloatTimingTypeValue
+        """
+        return self._FloatTypeValue
+
+    @FloatTypeValue.setter
+    def FloatTypeValue(self, FloatTypeValue):
+        self._FloatTypeValue = FloatTypeValue
 
 
     def _deserialize(self, params):
@@ -54047,6 +58248,12 @@ class TimingDataRecord(AbstractModel):
                 obj = TimingTypeValue()
                 obj._deserialize(item)
                 self._TypeValue.append(obj)
+        if params.get("FloatTypeValue") is not None:
+            self._FloatTypeValue = []
+            for item in params.get("FloatTypeValue"):
+                obj = FloatTimingTypeValue()
+                obj._deserialize(item)
+                self._FloatTypeValue.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54556,7 +58763,7 @@ class UpgradePlanResponse(AbstractModel):
 
 
 class UpstreamCertInfo(AbstractModel):
-    r"""The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+    r"""Used to enable/disable origin-pull mutual authentication and origin certificate verification. the certificate for origin-pull mutual authentication is carried by EO during origin-pull, and the origin server can optionally validate this certificate to ensure the request originates from a trusted EO node. when enabled, the certificate configuration is used for EO nodes to verify whether the origin certificate is trustworthy.
 
     """
 
@@ -54564,8 +58771,11 @@ class UpstreamCertInfo(AbstractModel):
         r"""
         :param _UpstreamMutualTLS: In the origin-pull mutual authentication scenario, this field represents the certificate (including the public and private keys) carried during EO node origin-pull, which is deployed in the EO node for the origin server to authenticate the EO node. When used as an input parameter, it is left blank to indicate retaining the original configuration.
         :type UpstreamMutualTLS: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        :param _UpstreamCertificateVerify: In the origin certificate verification scenario, this field represents the CA certificate used by the EO node to verify the server-side certificate when returning to the origin. it is deployed in the EO node and used for the EO node to authenticate the server certificate. when used as an input parameter, leave blank to indicate retaining the original configuration.
+        :type UpstreamCertificateVerify: :class:`tencentcloud.teo.v20220901.models.OriginCertificateVerify`
         """
         self._UpstreamMutualTLS = None
+        self._UpstreamCertificateVerify = None
 
     @property
     def UpstreamMutualTLS(self):
@@ -54578,11 +58788,25 @@ class UpstreamCertInfo(AbstractModel):
     def UpstreamMutualTLS(self, UpstreamMutualTLS):
         self._UpstreamMutualTLS = UpstreamMutualTLS
 
+    @property
+    def UpstreamCertificateVerify(self):
+        r"""In the origin certificate verification scenario, this field represents the CA certificate used by the EO node to verify the server-side certificate when returning to the origin. it is deployed in the EO node and used for the EO node to authenticate the server certificate. when used as an input parameter, leave blank to indicate retaining the original configuration.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginCertificateVerify`
+        """
+        return self._UpstreamCertificateVerify
+
+    @UpstreamCertificateVerify.setter
+    def UpstreamCertificateVerify(self, UpstreamCertificateVerify):
+        self._UpstreamCertificateVerify = UpstreamCertificateVerify
+
 
     def _deserialize(self, params):
         if params.get("UpstreamMutualTLS") is not None:
             self._UpstreamMutualTLS = MutualTLS()
             self._UpstreamMutualTLS._deserialize(params.get("UpstreamMutualTLS"))
+        if params.get("UpstreamCertificateVerify") is not None:
+            self._UpstreamCertificateVerify = OriginCertificateVerify()
+            self._UpstreamCertificateVerify._deserialize(params.get("UpstreamCertificateVerify"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55784,7 +60008,7 @@ class WebSocketParameters(AbstractModel):
 
 
 class Zone(AbstractModel):
-    r"""Site information
+    r"""Site detail.
 
     """
 
@@ -55794,10 +60018,35 @@ class Zone(AbstractModel):
         :type ZoneId: str
         :param _ZoneName: The site name.
         :type ZoneName: str
-        :param _OriginalNameServers: List of name servers used by the site
-        :type OriginalNameServers: list of str
-        :param _NameServers: The list of name servers assigned by Tencent Cloud.
-        :type NameServers: list of str
+        :param _AliasZoneName: Identical site identifier. specifies a composite of numbers, english letters, ".", "-", and "_" with a character limit of 200.
+        :type AliasZoneName: str
+        :param _Area: Site acceleration region. valid values:.
+<Li>Global: global availability zone.</li>.
+<Li>Mainland: chinese mainland availability zone.</li>.
+<li>overseas: global availability zone (excluding the chinese mainland).</li>.
+        :type Area: str
+        :param _Type: Site access type. valid values:.
+<li>full: NS access type;</li>.
+<li>partial: CNAME access type;</li>.
+<li>noDomainAccess: domainless access type.</li>.
+<li>dnsPodAccess: DNSPod managed type. this type requires your domain name to be hosted on tencent cloud DNSPod.</li>.
+<li> pages: pages data type;</li>.
+<li>ai: edge reasoning access type.</li>.
+        :type Type: str
+        :param _Tags: Specifies the Tag associated with the site.
+        :type Tags: list of Tag
+        :param _Resources: The list of billable resources.
+        :type Resources: list of Resource
+        :param _NSDetail: NS site detail. returned only when Type = full.
+        :type NSDetail: :class:`tencentcloud.teo.v20220901.models.NSDetail`
+        :param _CNAMEDetail: CNAME site detail. returned only when Type = partial.
+        :type CNAMEDetail: :class:`tencentcloud.teo.v20220901.models.CNAMEDetail`
+        :param _DNSPodDetail: DNSPod managed Type site detail. returned only when Type = dnsPodAccess.
+        :type DNSPodDetail: :class:`tencentcloud.teo.v20220901.models.DNSPodDetail`
+        :param _CreatedOn: The creation time of the site.
+        :type CreatedOn: str
+        :param _ModifiedOn: The modification date of the site.
+        :type ModifiedOn: str
         :param _Status: The site status. Values:
 u200c<li>`active`: The name server is switched to EdgeOne.</li>
 u200c<li>`pending`: The name server is not switched.</li>
@@ -55805,78 +60054,69 @@ u200c<li>`moved`: The name server is changed to other service providers.</li>
 u200c<li>`deactivated`: The site is blocked.</li>
 <li>`initializing`: The site is not bound with any plan. </li>
         :type Status: str
-        :param _Type: Site access method. Valid values:
-<li>full: NS access;</li>
-<li>partial: CNAME access;</li>
-<li>noDomainAccess: access with no domain name.</li>
-        :type Type: str
-        :param _Paused: Whether the site is disabled.
-        :type Paused: bool
-        :param _CnameSpeedUp: Whether CNAME acceleration is enabled. Values:
-<li>`enabled`: Enabled</li>
-<li>`disabled`: Disabled</li>
-        :type CnameSpeedUp: str
         :param _CnameStatus: CNAME record access status. Values:
 <li>`finished`: The site is verified.</li>
 <li>`pending`: The site is being verified.</li>
         :type CnameStatus: str
-        :param _Tags: The list of resource tags.
-        :type Tags: list of Tag
-        :param _Resources: The list of billable resources.
-        :type Resources: list of Resource
-        :param _CreatedOn: The creation time of the site.
-        :type CreatedOn: str
-        :param _ModifiedOn: The modification date of the site.
-        :type ModifiedOn: str
-        :param _Area: The site access region. Values:
-<li>`global`: Global.</li>
-<li>`mainland`: Chinese mainland.</li>
-<li>`overseas`: Outside the Chinese mainland.</li>
-        :type Area: str
-        :param _VanityNameServers: The custom name server information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
-        :param _VanityNameServersIps: The custom name server IP information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type VanityNameServersIps: list of VanityNameServersIps
         :param _ActiveStatus: Status of the proxy. Values:
 <li>`active`: Enabled</li>
 <li>`inactive`: Not activated</li>
 <li>`paused`: Disabled</li>
         :type ActiveStatus: str
-        :param _AliasZoneName: Site alias. a composite of digits, numbers, english letters, -, and _, limited to 20 characters.
-        :type AliasZoneName: str
-        :param _IsFake: Whether it’s a fake site. Valid values: 
-<li>`0`: Non-fake site;</li>
-<li>`1`: Fake site.</li>
-        :type IsFake: int
         :param _LockStatus: Lock status. Values: <li>`enable`: Normal. Modification is allowed.</li><li>`disable`: Locked. Modification is not allowed.</li><li>`plan_migrate`: Adjusting the plan. Modification is not allowed.</li> 
         :type LockStatus: str
-        :param _OwnershipVerification: Ownership verification information
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Paused: Whether the site is disabled.
+        :type Paused: bool
+        :param _IsFake: Specifies whether it is a fake site (this field is a historic reserved field and is no longer maintained, refer to the website type for the corresponding field). valid values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :type IsFake: int
+        :param _CnameSpeedUp: Whether to enable CNAME acceleration (this field is a historic reserved field and is no longer maintained. refer to the website type for the corresponding field). valid values:.
+<Li>Enabled: specifies whether the feature is enabled.</li>.
+<li>disabled: specifies that the feature is turned off.</li>.
+        :type CnameSpeedUp: str
+        :param _OwnershipVerification: Ownership verification information. (this field is a historic reserved field and is no longer maintained. refer to the website type for the corresponding field.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _OriginalNameServers: Lists the currently used NS of the site. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field based on the website type.).
+        :type OriginalNameServers: list of str
+        :param _NameServers: Lists of NS assigned by tencent cloud. (this field is a historic reserved field and no longer maintained. refer to the website type for the corresponding field.).
+        :type NameServers: list of str
+        :param _VanityNameServers: Specifies user-customized NS information. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field according to the website type.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
+        :param _VanityNameServersIps: User-Customized NS IP information. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field according to the website type.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type VanityNameServersIps: list of VanityNameServersIps
+        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :type WorkModeInfos: list of ConfigGroupWorkModeInfo
         """
         self._ZoneId = None
         self._ZoneName = None
-        self._OriginalNameServers = None
-        self._NameServers = None
-        self._Status = None
+        self._AliasZoneName = None
+        self._Area = None
         self._Type = None
-        self._Paused = None
-        self._CnameSpeedUp = None
-        self._CnameStatus = None
         self._Tags = None
         self._Resources = None
+        self._NSDetail = None
+        self._CNAMEDetail = None
+        self._DNSPodDetail = None
         self._CreatedOn = None
         self._ModifiedOn = None
-        self._Area = None
+        self._Status = None
+        self._CnameStatus = None
+        self._ActiveStatus = None
+        self._LockStatus = None
+        self._Paused = None
+        self._IsFake = None
+        self._CnameSpeedUp = None
+        self._OwnershipVerification = None
+        self._OriginalNameServers = None
+        self._NameServers = None
         self._VanityNameServers = None
         self._VanityNameServersIps = None
-        self._ActiveStatus = None
-        self._AliasZoneName = None
-        self._IsFake = None
-        self._LockStatus = None
-        self._OwnershipVerification = None
+        self._WorkModeInfos = None
 
     @property
     def ZoneId(self):
@@ -55901,49 +60141,39 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._ZoneName = ZoneName
 
     @property
-    def OriginalNameServers(self):
-        r"""List of name servers used by the site
-        :rtype: list of str
-        """
-        return self._OriginalNameServers
-
-    @OriginalNameServers.setter
-    def OriginalNameServers(self, OriginalNameServers):
-        self._OriginalNameServers = OriginalNameServers
-
-    @property
-    def NameServers(self):
-        r"""The list of name servers assigned by Tencent Cloud.
-        :rtype: list of str
-        """
-        return self._NameServers
-
-    @NameServers.setter
-    def NameServers(self, NameServers):
-        self._NameServers = NameServers
-
-    @property
-    def Status(self):
-        r"""The site status. Values:
-u200c<li>`active`: The name server is switched to EdgeOne.</li>
-u200c<li>`pending`: The name server is not switched.</li>
-u200c<li>`moved`: The name server is changed to other service providers.</li>
-u200c<li>`deactivated`: The site is blocked.</li>
-<li>`initializing`: The site is not bound with any plan. </li>
+    def AliasZoneName(self):
+        r"""Identical site identifier. specifies a composite of numbers, english letters, ".", "-", and "_" with a character limit of 200.
         :rtype: str
         """
-        return self._Status
+        return self._AliasZoneName
 
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
+
+    @property
+    def Area(self):
+        r"""Site acceleration region. valid values:.
+<Li>Global: global availability zone.</li>.
+<Li>Mainland: chinese mainland availability zone.</li>.
+<li>overseas: global availability zone (excluding the chinese mainland).</li>.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
     @property
     def Type(self):
-        r"""Site access method. Valid values:
-<li>full: NS access;</li>
-<li>partial: CNAME access;</li>
-<li>noDomainAccess: access with no domain name.</li>
+        r"""Site access type. valid values:.
+<li>full: NS access type;</li>.
+<li>partial: CNAME access type;</li>.
+<li>noDomainAccess: domainless access type.</li>.
+<li>dnsPodAccess: DNSPod managed type. this type requires your domain name to be hosted on tencent cloud DNSPod.</li>.
+<li> pages: pages data type;</li>.
+<li>ai: edge reasoning access type.</li>.
         :rtype: str
         """
         return self._Type
@@ -55953,45 +60183,8 @@ u200c<li>`deactivated`: The site is blocked.</li>
         self._Type = Type
 
     @property
-    def Paused(self):
-        r"""Whether the site is disabled.
-        :rtype: bool
-        """
-        return self._Paused
-
-    @Paused.setter
-    def Paused(self, Paused):
-        self._Paused = Paused
-
-    @property
-    def CnameSpeedUp(self):
-        r"""Whether CNAME acceleration is enabled. Values:
-<li>`enabled`: Enabled</li>
-<li>`disabled`: Disabled</li>
-        :rtype: str
-        """
-        return self._CnameSpeedUp
-
-    @CnameSpeedUp.setter
-    def CnameSpeedUp(self, CnameSpeedUp):
-        self._CnameSpeedUp = CnameSpeedUp
-
-    @property
-    def CnameStatus(self):
-        r"""CNAME record access status. Values:
-<li>`finished`: The site is verified.</li>
-<li>`pending`: The site is being verified.</li>
-        :rtype: str
-        """
-        return self._CnameStatus
-
-    @CnameStatus.setter
-    def CnameStatus(self, CnameStatus):
-        self._CnameStatus = CnameStatus
-
-    @property
     def Tags(self):
-        r"""The list of resource tags.
+        r"""Specifies the Tag associated with the site.
         :rtype: list of Tag
         """
         return self._Tags
@@ -56010,6 +60203,39 @@ u200c<li>`deactivated`: The site is blocked.</li>
     @Resources.setter
     def Resources(self, Resources):
         self._Resources = Resources
+
+    @property
+    def NSDetail(self):
+        r"""NS site detail. returned only when Type = full.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NSDetail`
+        """
+        return self._NSDetail
+
+    @NSDetail.setter
+    def NSDetail(self, NSDetail):
+        self._NSDetail = NSDetail
+
+    @property
+    def CNAMEDetail(self):
+        r"""CNAME site detail. returned only when Type = partial.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CNAMEDetail`
+        """
+        return self._CNAMEDetail
+
+    @CNAMEDetail.setter
+    def CNAMEDetail(self, CNAMEDetail):
+        self._CNAMEDetail = CNAMEDetail
+
+    @property
+    def DNSPodDetail(self):
+        r"""DNSPod managed Type site detail. returned only when Type = dnsPodAccess.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DNSPodDetail`
+        """
+        return self._DNSPodDetail
+
+    @DNSPodDetail.setter
+    def DNSPodDetail(self, DNSPodDetail):
+        self._DNSPodDetail = DNSPodDetail
 
     @property
     def CreatedOn(self):
@@ -56034,42 +60260,33 @@ u200c<li>`deactivated`: The site is blocked.</li>
         self._ModifiedOn = ModifiedOn
 
     @property
-    def Area(self):
-        r"""The site access region. Values:
-<li>`global`: Global.</li>
-<li>`mainland`: Chinese mainland.</li>
-<li>`overseas`: Outside the Chinese mainland.</li>
+    def Status(self):
+        r"""The site status. Values:
+u200c<li>`active`: The name server is switched to EdgeOne.</li>
+u200c<li>`pending`: The name server is not switched.</li>
+u200c<li>`moved`: The name server is changed to other service providers.</li>
+u200c<li>`deactivated`: The site is blocked.</li>
+<li>`initializing`: The site is not bound with any plan. </li>
         :rtype: str
         """
-        return self._Area
+        return self._Status
 
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-    @property
-    def VanityNameServers(self):
-        r"""The custom name server information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
-        """
-        return self._VanityNameServers
-
-    @VanityNameServers.setter
-    def VanityNameServers(self, VanityNameServers):
-        self._VanityNameServers = VanityNameServers
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
-    def VanityNameServersIps(self):
-        r"""The custom name server IP information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: list of VanityNameServersIps
+    def CnameStatus(self):
+        r"""CNAME record access status. Values:
+<li>`finished`: The site is verified.</li>
+<li>`pending`: The site is being verified.</li>
+        :rtype: str
         """
-        return self._VanityNameServersIps
+        return self._CnameStatus
 
-    @VanityNameServersIps.setter
-    def VanityNameServersIps(self, VanityNameServersIps):
-        self._VanityNameServersIps = VanityNameServersIps
+    @CnameStatus.setter
+    def CnameStatus(self, CnameStatus):
+        self._CnameStatus = CnameStatus
 
     @property
     def ActiveStatus(self):
@@ -56086,30 +60303,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ActiveStatus = ActiveStatus
 
     @property
-    def AliasZoneName(self):
-        r"""Site alias. a composite of digits, numbers, english letters, -, and _, limited to 20 characters.
-        :rtype: str
-        """
-        return self._AliasZoneName
-
-    @AliasZoneName.setter
-    def AliasZoneName(self, AliasZoneName):
-        self._AliasZoneName = AliasZoneName
-
-    @property
-    def IsFake(self):
-        r"""Whether it’s a fake site. Valid values: 
-<li>`0`: Non-fake site;</li>
-<li>`1`: Fake site.</li>
-        :rtype: int
-        """
-        return self._IsFake
-
-    @IsFake.setter
-    def IsFake(self, IsFake):
-        self._IsFake = IsFake
-
-    @property
     def LockStatus(self):
         r"""Lock status. Values: <li>`enable`: Normal. Modification is allowed.</li><li>`disable`: Locked. Modification is not allowed.</li><li>`plan_migrate`: Adjusting the plan. Modification is not allowed.</li> 
         :rtype: str
@@ -56121,9 +60314,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LockStatus = LockStatus
 
     @property
+    def Paused(self):
+        r"""Whether the site is disabled.
+        :rtype: bool
+        """
+        return self._Paused
+
+    @Paused.setter
+    def Paused(self, Paused):
+        self._Paused = Paused
+
+    @property
+    def IsFake(self):
+        r"""Specifies whether it is a fake site (this field is a historic reserved field and is no longer maintained, refer to the website type for the corresponding field). valid values:.
+<Li>0: non-fake site.</li>.
+<Li>1: fake site.</li>.
+
+        :rtype: int
+        """
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def CnameSpeedUp(self):
+        r"""Whether to enable CNAME acceleration (this field is a historic reserved field and is no longer maintained. refer to the website type for the corresponding field). valid values:.
+<Li>Enabled: specifies whether the feature is enabled.</li>.
+<li>disabled: specifies that the feature is turned off.</li>.
+        :rtype: str
+        """
+        return self._CnameSpeedUp
+
+    @CnameSpeedUp.setter
+    def CnameSpeedUp(self, CnameSpeedUp):
+        self._CnameSpeedUp = CnameSpeedUp
+
+    @property
     def OwnershipVerification(self):
-        r"""Ownership verification information
-Note: This field may return·null, indicating that no valid values can be obtained.
+        r"""Ownership verification information. (this field is a historic reserved field and is no longer maintained. refer to the website type for the corresponding field.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         return self._OwnershipVerification
@@ -56132,17 +60363,70 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def OwnershipVerification(self, OwnershipVerification):
         self._OwnershipVerification = OwnershipVerification
 
+    @property
+    def OriginalNameServers(self):
+        r"""Lists the currently used NS of the site. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field based on the website type.).
+        :rtype: list of str
+        """
+        return self._OriginalNameServers
+
+    @OriginalNameServers.setter
+    def OriginalNameServers(self, OriginalNameServers):
+        self._OriginalNameServers = OriginalNameServers
+
+    @property
+    def NameServers(self):
+        r"""Lists of NS assigned by tencent cloud. (this field is a historic reserved field and no longer maintained. refer to the website type for the corresponding field.).
+        :rtype: list of str
+        """
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+    @property
+    def VanityNameServers(self):
+        r"""Specifies user-customized NS information. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field according to the website type.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
+        """
+        return self._VanityNameServers
+
+    @VanityNameServers.setter
+    def VanityNameServers(self, VanityNameServers):
+        self._VanityNameServers = VanityNameServers
+
+    @property
+    def VanityNameServersIps(self):
+        r"""User-Customized NS IP information. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field according to the website type.).
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of VanityNameServersIps
+        """
+        return self._VanityNameServersIps
+
+    @VanityNameServersIps.setter
+    def VanityNameServersIps(self, VanityNameServersIps):
+        self._VanityNameServersIps = VanityNameServersIps
+
+    @property
+    def WorkModeInfos(self):
+        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :rtype: list of ConfigGroupWorkModeInfo
+        """
+        return self._WorkModeInfos
+
+    @WorkModeInfos.setter
+    def WorkModeInfos(self, WorkModeInfos):
+        self._WorkModeInfos = WorkModeInfos
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._ZoneName = params.get("ZoneName")
-        self._OriginalNameServers = params.get("OriginalNameServers")
-        self._NameServers = params.get("NameServers")
-        self._Status = params.get("Status")
+        self._AliasZoneName = params.get("AliasZoneName")
+        self._Area = params.get("Area")
         self._Type = params.get("Type")
-        self._Paused = params.get("Paused")
-        self._CnameSpeedUp = params.get("CnameSpeedUp")
-        self._CnameStatus = params.get("CnameStatus")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -56155,9 +60439,29 @@ Note: This field may return·null, indicating that no valid values can be obtain
                 obj = Resource()
                 obj._deserialize(item)
                 self._Resources.append(obj)
+        if params.get("NSDetail") is not None:
+            self._NSDetail = NSDetail()
+            self._NSDetail._deserialize(params.get("NSDetail"))
+        if params.get("CNAMEDetail") is not None:
+            self._CNAMEDetail = CNAMEDetail()
+            self._CNAMEDetail._deserialize(params.get("CNAMEDetail"))
+        if params.get("DNSPodDetail") is not None:
+            self._DNSPodDetail = DNSPodDetail()
+            self._DNSPodDetail._deserialize(params.get("DNSPodDetail"))
         self._CreatedOn = params.get("CreatedOn")
         self._ModifiedOn = params.get("ModifiedOn")
-        self._Area = params.get("Area")
+        self._Status = params.get("Status")
+        self._CnameStatus = params.get("CnameStatus")
+        self._ActiveStatus = params.get("ActiveStatus")
+        self._LockStatus = params.get("LockStatus")
+        self._Paused = params.get("Paused")
+        self._IsFake = params.get("IsFake")
+        self._CnameSpeedUp = params.get("CnameSpeedUp")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        self._OriginalNameServers = params.get("OriginalNameServers")
+        self._NameServers = params.get("NameServers")
         if params.get("VanityNameServers") is not None:
             self._VanityNameServers = VanityNameServers()
             self._VanityNameServers._deserialize(params.get("VanityNameServers"))
@@ -56167,13 +60471,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self._VanityNameServersIps.append(obj)
-        self._ActiveStatus = params.get("ActiveStatus")
-        self._AliasZoneName = params.get("AliasZoneName")
-        self._IsFake = params.get("IsFake")
-        self._LockStatus = params.get("LockStatus")
-        if params.get("OwnershipVerification") is not None:
-            self._OwnershipVerification = OwnershipVerification()
-            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        if params.get("WorkModeInfos") is not None:
+            self._WorkModeInfos = []
+            for item in params.get("WorkModeInfos"):
+                obj = ConfigGroupWorkModeInfo()
+                obj._deserialize(item)
+                self._WorkModeInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

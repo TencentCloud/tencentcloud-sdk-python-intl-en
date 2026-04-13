@@ -74,10 +74,13 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # Authentication failed while creating a custom push task. Check whether the push address is correct.
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
+# Failed to create the preheating origin speed limit configuration. please retry later or submit a ticket.
+FAILEDOPERATION_CREATEPREFETCHORIGINLIMITFAILED = 'FailedOperation.CreatePrefetchOriginLimitFailed'
+
 # The edge client certificate has expired. It is not supported to issue expired certificates for the time being.
 FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.EdgeClientCertificateHasExpired'
 
-# Failed to call dnspod. please try again later. if the issue persists, please contact the intelligent customer service or submit a ticket.
+# Failed to call DNSPod. please try again later. if the issue persists, submit a ticket.
 FAILEDOPERATION_FAILEDTOCALLDNSPOD = 'FailedOperation.FailedToCallDNSPod'
 
 # Another task is being deployed. Please try again later.
@@ -94,6 +97,12 @@ FAILEDOPERATION_MISSINGCONFIGCHUNK = 'FailedOperation.MissingConfigChunk'
 
 # Operation failed.
 FAILEDOPERATION_MODIFYFAILED = 'FailedOperation.ModifyFailed'
+
+# Exceed the quantity limit, unable to create more, delete unnecessary configuration or submit a request to enhance configuration quantity.
+FAILEDOPERATION_PREFETCHORIGINLIMITCOUNTEXCEEDED = 'FailedOperation.PrefetchOriginLimitCountExceeded'
+
+# Corresponding preheating origin speed limit configuration not found. confirm whether there is configuration and retry.
+FAILEDOPERATION_PREFETCHORIGINLIMITNOTFOUND = 'FailedOperation.PrefetchOriginLimitNotFound'
 
 # The product will already be discontinued. operation denied.
 FAILEDOPERATION_PRODUCTDISCONTINUED = 'FailedOperation.ProductDiscontinued'
@@ -119,7 +128,7 @@ FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType
 # The client certificate for the origin-pull mutual authentication has expired. It is not supported to issue expired certificates.
 FAILEDOPERATION_UPSTREAMCLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamClientCertificateHasExpired'
 
-# 
+# The origin CA certificate has expired. it is currently not supported to issue expired certificates.
 FAILEDOPERATION_UPSTREAMVERIFYCUSTOMCACERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamVerifyCustomCACertificateHasExpired'
 
 # Internal error.
@@ -182,6 +191,12 @@ INVALIDPARAMETER_BADCONTENT = 'InvalidParameter.BadContent'
 # The function name does not meet specifications.
 INVALIDPARAMETER_BADFUNCTIONNAME = 'InvalidParameter.BadFunctionName'
 
+# Invalid namespace name.
+INVALIDPARAMETER_BADNAMESPACENAME = 'InvalidParameter.BadNamespaceName'
+
+# Bind variable does not exist.
+INVALIDPARAMETER_BINDINGNOTFOUND = 'InvalidParameter.BindingNotFound'
+
 # Invalid query string.
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff'
 
@@ -218,11 +233,17 @@ INVALIDPARAMETER_CONFLICTHOSTORIGIN = 'InvalidParameter.ConflictHostOrigin'
 # The function content exceeds the size limit.
 INVALIDPARAMETER_CONTENTEXCEEDSLIMIT = 'InvalidParameter.ContentExceedsLimit'
 
+# The domain name acceleration region does not support the preheating origin rate limiting regional configuration. please adjust and resubmit.
+INVALIDPARAMETER_DOMAINAREANOTSUPPORTPREFETCHORIGINLIMITAREA = 'InvalidParameter.DomainAreaNotSupportPrefetchOriginLimitArea'
+
 # The domain name does not exist or is not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
 # Traffic scheduling is already enabled for the current domain name.
 INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
+
+# The bind variable name already exists.
+INVALIDPARAMETER_DUPLICATEBINDINGNAME = 'InvalidParameter.DuplicateBindingName'
 
 # Duplicate rules.
 INVALIDPARAMETER_DUPLICATERULE = 'InvalidParameter.DuplicateRule'
@@ -316,6 +337,9 @@ INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParame
 
 # Empty condition.
 INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
+
+# The bind name already exists. If needed, please use bind-override.
+INVALIDPARAMETER_FUNCTIONBINDVARIABLENAMECONFLICT = 'InvalidParameter.FunctionBindVariableNameConflict'
 
 # The function name conflicts with that of another function under this account.
 INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
@@ -479,6 +503,9 @@ INVALIDPARAMETER_INVALIDMAXAGETIME = 'InvalidParameter.InvalidMaxAgeTime'
 # The query dimension is invalid.
 INVALIDPARAMETER_INVALIDMETRIC = 'InvalidParameter.InvalidMetric'
 
+# Invalid operation type.
+INVALIDPARAMETER_INVALIDOPERATION = 'InvalidParameter.InvalidOperation'
+
 # Invalid origin server.
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 
@@ -575,6 +602,12 @@ INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
 # Invalid origin domain.
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
+# Invalid sorting order field.
+INVALIDPARAMETER_INVALIDSORTBY = 'InvalidParameter.InvalidSortBy'
+
+# Invalid sorting order.
+INVALIDPARAMETER_INVALIDSORTORDER = 'InvalidParameter.InvalidSortOrder'
+
 # Invalid debug configuration for EdgeOne.
 INVALIDPARAMETER_INVALIDSTANDARDDEBUG = 'InvalidParameter.InvalidStandardDebug'
 
@@ -604,6 +637,9 @@ INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = 'InvalidParameter.InvalidWebSocketTim
 
 # Invalid cache key.
 INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = 'InvalidParameter.KeyRulesInvalidQueryStringValue'
+
+# The number of keys in the request exceeds the limit.
+INVALIDPARAMETER_KEYSTOOMANY = 'InvalidParameter.KeysTooMany'
 
 # Maximum parameter length exceeded.
 INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
@@ -637,6 +673,9 @@ INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMis
 
 # Smart routing is not supported.
 INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = 'InvalidParameter.MultiplyLayerNotSupportSmartRouting'
+
+# The namespace is currently in use and cannot be deleted.
+INVALIDPARAMETER_NAMESPACEINUSE = 'InvalidParameter.NamespaceInUse'
 
 # Unsupported preset variables exist.
 INVALIDPARAMETER_NOTSUPPORTTHISPRESET = 'InvalidParameter.NotSupportThisPreset'
@@ -683,6 +722,18 @@ INVALIDPARAMETER_PLANNOTFOUND = 'InvalidParameter.PlanNotFound'
 # Maximum upload size exceeded.
 INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitExceeded'
 
+# The preheating origin rate limiting region parameter is invalid. please adjust the region and resubmit.
+INVALIDPARAMETER_PREFETCHORIGINLIMITAREAINVALID = 'InvalidParameter.PrefetchOriginLimitAreaInvalid'
+
+# Preheated origin-pull speed limit bandwidth value is too large. adjust and resubmit.
+INVALIDPARAMETER_PREFETCHORIGINLIMITBANDWIDTHTOOLARGE = 'InvalidParameter.PrefetchOriginLimitBandwidthTooLarge'
+
+# Preheated origin-pull speed limit bandwidth value is too low. adjust and resubmit.
+INVALIDPARAMETER_PREFETCHORIGINLIMITBANDWIDTHTOOSMALL = 'InvalidParameter.PrefetchOriginLimitBandwidthTooSmall'
+
+# The preheating origin rate limiting control switch parameter is invalid. please adjust the region and resubmit.
+INVALIDPARAMETER_PREFETCHORIGINLIMITENABLEDINVALID = 'InvalidParameter.PrefetchOriginLimitEnabledInvalid'
+
 # The instance name already exists.
 INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
 
@@ -703,6 +754,9 @@ INVALIDPARAMETER_REALTIMELOGINVALIDTASKTYPE = 'InvalidParameter.RealtimeLogInval
 
 # The real-time log push task data exceeded the limit.
 INVALIDPARAMETER_REALTIMELOGNUMSEXCEEDLIMIT = 'InvalidParameter.RealtimeLogNumsExceedLimit'
+
+# Namespace remark information is too long.
+INVALIDPARAMETER_REMARKTOOLONG = 'InvalidParameter.RemarkTooLong'
 
 # Invalid response header.
 INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = 'InvalidParameter.ResponseHeaderCacheControlNotAllowDelete'
@@ -733,6 +787,9 @@ INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 
 # Configuration parameter error.
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
+
+# The domain name does not support enabling EdgeOne Shield and origin protection simultaneously.
+INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTORIGINWHITELIST = 'InvalidParameter.ShieldNotSupportHostOriginWhitelist'
 
 # Some bound origin server groups do not exist.
 INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = 'InvalidParameter.SomeOriginGroupNotExist'
@@ -767,11 +824,17 @@ INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 # Invalid origin-pull client certificate configuration.
 INVALIDPARAMETER_UPSTREAMCLIENTCERTCHECKERROR = 'InvalidParameter.UpstreamClientCertCheckError'
 
-# 
+# Invalid origin certificate verification configuration.
 INVALIDPARAMETER_UPSTREAMVERIFYCERTCHECKERROR = 'InvalidParameter.UpstreamVerifyCertCheckError'
 
-# 
+# Invalid origin certificate verification configuration. certificate content is empty.
 INVALIDPARAMETER_UPSTREAMVERIFYCUSTOMCACERTNOINFO = 'InvalidParameter.UpstreamVerifyCustomCACertNoInfo'
+
+# The site working mode remains unchanged.
+INVALIDPARAMETER_WORKMODEISSAME = 'InvalidParameter.WorkModeIsSame'
+
+# The site acceleration region does not support the preheating origin rate limiting regional configuration. please adjust and resubmit.
+INVALIDPARAMETER_ZONEAREANOTSUPPORTPREFETCHORIGINLIMITAREA = 'InvalidParameter.ZoneAreaNotSupportPrefetchOriginLimitArea'
 
 # The site is already bound.
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
@@ -800,7 +863,7 @@ INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = 'InvalidParameterValue.Ali
 # Alias domain names do not support the configuration of origin-pull mutual authentication for the time being.
 INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = 'InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS'
 
-# 
+# Alias domain names do not support the configuration of origin certificate verification for the time being.
 INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMVERIFY = 'InvalidParameterValue.AliasDomainNotSupportUpstreamVerify'
 
 # The client certificate in the edge mTLS configuration must be a CA certificate.
@@ -818,13 +881,13 @@ INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = 'InvalidParameter
 # Origin-pull mutual authentication configuration requires at least one certificate.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert'
 
-# 
+# The certificate type for origin certificate verification is incorrect. only CA certificates are supported.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCAMUSTCA = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCAMustCA'
 
-# 
+# Currently, only RSA or ECC algorithm certificates are supported for origin certificate verification. the SM2 algorithm certificates are not supported.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCAMUSTRSAORECC = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCAMustRSAorECC'
 
-# 
+# Origin certificate verification configuration requires at least one certificate.
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMVERIFYCUSTOMCANEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamVerifyCustomCANeedCert'
 
 # The client CA certificate in edge mTLS configuration allows a maximum of 20 certificates.
@@ -850,6 +913,9 @@ INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = 'InvalidParameterValue.ContentTypeNo
 
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
+
+# When specifying the DimensionName parameter, the Filters field must contain filter criteria corresponding to DimensionName.
+INVALIDPARAMETERVALUE_FILTERSMUSTINCLUDEDIMENSIONNAME = 'InvalidParameterValue.FiltersMustIncludeDimensionName'
 
 # Format mismatch.
 INVALIDPARAMETERVALUE_FORMATMISMATCH = 'InvalidParameterValue.FormatMismatch'
@@ -899,11 +965,14 @@ INVALIDPARAMETERVALUE_NOTINENUMERATION = 'InvalidParameterValue.NotInEnumeration
 # The value is not within the specified range.
 INVALIDPARAMETERVALUE_NOTWITHINRANGE = 'InvalidParameterValue.NotWithinRange'
 
-# 
+# OC switching does not support enabling origin certificate verification.
 INVALIDPARAMETERVALUE_OCDIRECTORIGINDOMAINNOTSUPPORTUPSTREAMVERIFY = 'InvalidParameterValue.OCDirectOriginDomainNotSupportUpstreamVerify'
 
 # The specified origin group does not exist.
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
+
+# Verification failed for ownership. please first complete site ownership verification.
+INVALIDPARAMETERVALUE_OWNERSHIPVERIFICATIONNOTPASSED = 'InvalidParameterValue.OwnershipVerificationNotPassed'
 
 # The page name already exists.
 INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlreadyExist'
@@ -938,7 +1007,7 @@ INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.Unrecognizabl
 # One client certificate is allowed at most in the origin-pull mutual authentication configuration.
 INVALIDPARAMETERVALUE_UPSTREAMCLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamClientCertInfoQuotaLimit'
 
-# 
+# Origin certificate verification configuration allows up to one CA certificate.
 INVALIDPARAMETERVALUE_UPSTREAMVERIFYCUSTOMCACERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamVerifyCustomCACertInfoQuotaLimit'
 
 # The zone name format is incorrect. Please input a correctly formed domain name.
@@ -977,6 +1046,9 @@ LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
 # The number of LoadBalancers exceeds the limit.
 LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = 'LimitExceeded.LoadBalancingCountLimitExceeded'
 
+# The number of KV namespaces in the site has reached the upper limit.
+LIMITEXCEEDED_NAMESPACELIMITEXCEEDED = 'LimitExceeded.NamespaceLimitExceeded'
+
 # Not supported by the plan.
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
 
@@ -994,6 +1066,9 @@ LIMITEXCEEDED_RULELIMITEXCEEDED = 'LimitExceeded.RuleLimitExceeded'
 
 # Limit exceeded
 LIMITEXCEEDED_SECURITY = 'LimitExceeded.Security'
+
+# The time series data items queried this time exceed the limit.
+LIMITEXCEEDED_TIMINGDATAITEMLIMITEXCEEDED = 'LimitExceeded.TimingDataItemLimitExceeded'
 
 # User instance quantity limitation.
 LIMITEXCEEDED_USERQUOTALIMITED = 'LimitExceeded.UserQuotaLimited'
@@ -1019,6 +1094,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 # An L7 DNS service referencing the origin group is being deployed. Please edit later.
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
 
+# This operation is not supported for alias domain names.
+OPERATIONDENIED_ALIASDOMAINNOTSUPPORT = 'OperationDenied.AliasDomainNotSupport'
+
 # Currently, only the keyless certificate mode allows the private key of the certificate to be empty.
 OPERATIONDENIED_CERTIFICATEPRIVATEKEYISEMPTY = 'OperationDenied.CertificatePrivateKeyIsEmpty'
 
@@ -1042,6 +1120,9 @@ OPERATIONDENIED_DOMAININSHARECNAMEGROUP = 'OperationDenied.DomainInShareCnameGro
 
 # Unable to use the domain name when it’s blocked.
 OPERATIONDENIED_DOMAINISBLOCKED = 'OperationDenied.DomainIsBlocked'
+
+# Domain name must be in associated site of shared CNAME IP SSL and must be in shared CNAME IP SSL
+OPERATIONDENIED_DOMAINMUSTINIPSSLSHAREDCNAMEZONEANDINSHAREDCNAME = 'OperationDenied.DomainMustInIPSSLSharedCNAMEZoneAndInSharedCNAME'
 
 # The domain name doesn't have an ICP filing number.
 OPERATIONDENIED_DOMAINNOICP = 'OperationDenied.DomainNoICP'
@@ -1076,8 +1157,11 @@ OPERATIONDENIED_HOSTSKEYLESSSERVERINCONSISTENCY = 'OperationDenied.HostsKeylessS
 # The origin-pull mutual authentication certificates for the domain name to be changed are inconsistent. Please confirm that the domain name certificates are consistent and try again.
 OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateInconsistency'
 
-# 
+# The origin certificate verification for the domain name to be changed is inconsistent. please confirm the domain name is configured the same and try again.
 OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEVERIFYINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateVerifyInconsistency'
+
+# The IP SSL is bound to other domains. No operations allowed.
+OPERATIONDENIED_IPSSLALREADYBOUNDANOTHERDOMAIN = 'OperationDenied.IPSSLAlreadyBoundAnotherDomain'
 
 # The security service must be enabled when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdvancedDefenseSecurityType'
@@ -1124,6 +1208,9 @@ OPERATIONDENIED_L4STATUSNOTINONLINE = 'OperationDenied.L4StatusNotInOnline'
 # The EdgeOne service cannot be disabled for the site: An accelerated domain name is being deployed.
 OPERATIONDENIED_L7HOSTINPROCESSSTATUS = 'OperationDenied.L7HostInProcessStatus'
 
+# The domain name associated with the last IP SSL operation is not yet launched. Please wait for launch completion after proceeding.
+OPERATIONDENIED_LASTIPSSLOPERATIONNOTCOMPLETE = 'OperationDenied.LastIPSSLOperationNotComplete'
+
 # The origin allowlist is already the latest version. no need to update.
 OPERATIONDENIED_LATESTVERSIONNOW = 'OperationDenied.LatestVersionNow'
 
@@ -1150,6 +1237,9 @@ OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDom
 
 # Currently, the keyless certificate feature is available only to users in the allowlist.
 OPERATIONDENIED_NOTINKEYLESSWHITELIST = 'OperationDenied.NotInKeylessWhiteList'
+
+# Not in the preheating origin speed limit allowlist. submit a ticket.
+OPERATIONDENIED_NOTINPREFETCHORIGINLIMITWHITELIST = 'OperationDenied.NotInPrefetchOriginLimitWhiteList'
 
 # The current origin-pull mutual authentication feature is only available to allowlist users.
 OPERATIONDENIED_NOTINUPSTREAMMTLSWHITELIST = 'OperationDenied.NotInUpstreamMTLSWhiteList'
@@ -1189,6 +1279,9 @@ OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = 'OperationDenied.PlanIncrease
 
 # The specified plan does not support changing the service area of the site.
 OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = 'OperationDenied.PlanNotSupportModifyZoneArea'
+
+# The enterprise package for site configuration does not support the version control feature.
+OPERATIONDENIED_PLANTYPEISWRONG = 'OperationDenied.PlanTypeIsWrong'
 
 # This site is using Anycast IP scheduling mode and does not support Cross-MLC-border acceleration. 
 OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = 'OperationDenied.PlatTypeIPAccelerateMainlandNotSupport'
@@ -1234,6 +1327,9 @@ OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGrayi
 
 # The operation is not allowed because the version management mode is applied.
 OPERATIONDENIED_VERSIONCONTROLLOCKED = 'OperationDenied.VersionControlLocked'
+
+# For sites in NS mode, please first switch NS before toggling version management.
+OPERATIONDENIED_VERSIONCONTROLNEEDNSSWITCHED = 'OperationDenied.VersionControlNeedNSSwitched'
 
 # The specified site working mode is not applicable to the version management mode.
 OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = 'OperationDenied.WorkModeNotInVersionControl'
@@ -1295,6 +1391,9 @@ RESOURCEINUSE_OTHERSHOST = 'ResourceInUse.OthersHost'
 # Resources occupied by other accounts via NS.
 RESOURCEINUSE_OTHERSNS = 'ResourceInUse.OthersNS'
 
+# The preheating origin speed limit configuration already exists and cannot be recreated. please check whether the corresponding configuration has been created.
+RESOURCEINUSE_PREFETCHORIGINLIMITALREADYEXISTS = 'ResourceInUse.PrefetchOriginLimitAlreadyExists'
+
 # Resources occupied by this account and others via CNAME.
 RESOURCEINUSE_SELFANDOTHERSCNAME = 'ResourceInUse.SelfAndOthersCname'
 
@@ -1319,6 +1418,9 @@ RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = 'ResourceNotFound.PostMaxSizeQuotaNo
 # The configuration group version does not exist. Please check and try again.
 RESOURCENOTFOUND_VERSIONNOTFOUND = 'ResourceNotFound.VersionNotFound'
 
+# Site not found.
+RESOURCENOTFOUND_ZONENOTFOUND = 'ResourceNotFound.ZoneNotFound'
+
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
@@ -1336,6 +1438,9 @@ RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # The domain name does not exist or not use a proxy.
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
+
+# KV namespace does not exist.
+RESOURCEUNAVAILABLE_NAMESPACENOTFOUND = 'ResourceUnavailable.NamespaceNotFound'
 
 # The rule does not exist or does not belong to the account.
 RESOURCEUNAVAILABLE_RULENOTFOUND = 'ResourceUnavailable.RuleNotFound'

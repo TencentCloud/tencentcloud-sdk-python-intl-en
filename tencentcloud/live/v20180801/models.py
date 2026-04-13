@@ -13165,6 +13165,279 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePushBandwidthAndFluxListRequest(AbstractModel):
+    r"""DescribePushBandwidthAndFluxList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Query start time point, accurate to minute granularity. The interface query supports two time formats:
+
+YYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.
+
+YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+
+Queries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.
+        :type StartTime: str
+        :param _EndTime: Query end time point, accurate to minute granularity. The interface query supports two time formats:
+
+YYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.
+
+YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+
+Queries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.
+        :type EndTime: str
+        :param _PushDomains: Domain name, you can fill in multiple. If left blank, it represents the overall data.
+        :type PushDomains: list of str
+        :param _MainlandOrOversea: Optional values: Mainland: Query data for Mainland China (domestic). Oversea: Query data for international/regions such as Hong Kong, Macao, Taiwan (overseas). If left blank, it defaults to querying global data (domestic + overseas).
+        :type MainlandOrOversea: str
+        :param _Granularity: Data granularity, supports the following granularities: 5: 5-minute granularity (span cannot exceed 1 day), 60: 1-hour granularity (span cannot exceed 1 month), 1440: daily granularity (span cannot exceed 1 month). Default value: 5.
+        :type Granularity: int
+        :param _RegionNames: Region, mapping table as follows: China Mainland: Mainland China, Asia Pacific I: Asia Pacific Region 1, Asia Pacific II: Asia Pacific Region 2, Asia Pacific III: Asia Pacific Region 3, Europe: Europe, North America: North America, South America: South America, Middle East: Middle East, Africa: Africa.
+        :type RegionNames: list of str
+        :param _CountryNames: Country, the mapping table is referenced as follows in the document: https://cloud.tencent.com/document/product/267/34019.
+        :type CountryNames: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._PushDomains = None
+        self._MainlandOrOversea = None
+        self._Granularity = None
+        self._RegionNames = None
+        self._CountryNames = None
+
+    @property
+    def StartTime(self):
+        r"""Query start time point, accurate to minute granularity. The interface query supports two time formats:
+
+YYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.
+
+YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+
+Queries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""Query end time point, accurate to minute granularity. The interface query supports two time formats:
+
+YYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.
+
+YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+
+Queries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PushDomains(self):
+        r"""Domain name, you can fill in multiple. If left blank, it represents the overall data.
+        :rtype: list of str
+        """
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
+
+    @property
+    def MainlandOrOversea(self):
+        r"""Optional values: Mainland: Query data for Mainland China (domestic). Oversea: Query data for international/regions such as Hong Kong, Macao, Taiwan (overseas). If left blank, it defaults to querying global data (domestic + overseas).
+        :rtype: str
+        """
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def Granularity(self):
+        r"""Data granularity, supports the following granularities: 5: 5-minute granularity (span cannot exceed 1 day), 60: 1-hour granularity (span cannot exceed 1 month), 1440: daily granularity (span cannot exceed 1 month). Default value: 5.
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def RegionNames(self):
+        r"""Region, mapping table as follows: China Mainland: Mainland China, Asia Pacific I: Asia Pacific Region 1, Asia Pacific II: Asia Pacific Region 2, Asia Pacific III: Asia Pacific Region 3, Europe: Europe, North America: North America, South America: South America, Middle East: Middle East, Africa: Africa.
+        :rtype: list of str
+        """
+        return self._RegionNames
+
+    @RegionNames.setter
+    def RegionNames(self, RegionNames):
+        self._RegionNames = RegionNames
+
+    @property
+    def CountryNames(self):
+        r"""Country, the mapping table is referenced as follows in the document: https://cloud.tencent.com/document/product/267/34019.
+        :rtype: list of str
+        """
+        return self._CountryNames
+
+    @CountryNames.setter
+    def CountryNames(self, CountryNames):
+        self._CountryNames = CountryNames
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PushDomains = params.get("PushDomains")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._Granularity = params.get("Granularity")
+        self._RegionNames = params.get("RegionNames")
+        self._CountryNames = params.get("CountryNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePushBandwidthAndFluxListResponse(AbstractModel):
+    r"""DescribePushBandwidthAndFluxList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PeakBandwidthTime: Peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I)
+        :type PeakBandwidthTime: str
+        :param _PeakBandwidth: Peak bandwidth, measured in Mbps.
+        :type PeakBandwidth: float
+        :param _P95PeakBandwidthTime: 95th percentile peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I).
+        :type P95PeakBandwidthTime: str
+        :param _P95PeakBandwidth: 95th percentile peak bandwidth, measured in Mbps.
+        :type P95PeakBandwidth: float
+        :param _SumFlux: Total traffic, measured in MB.
+        :type SumFlux: float
+        :param _DataInfoList: Detailed data information.
+        :type DataInfoList: list of BillDataInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PeakBandwidthTime = None
+        self._PeakBandwidth = None
+        self._P95PeakBandwidthTime = None
+        self._P95PeakBandwidth = None
+        self._SumFlux = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def PeakBandwidthTime(self):
+        r"""Peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I)
+        :rtype: str
+        """
+        return self._PeakBandwidthTime
+
+    @PeakBandwidthTime.setter
+    def PeakBandwidthTime(self, PeakBandwidthTime):
+        self._PeakBandwidthTime = PeakBandwidthTime
+
+    @property
+    def PeakBandwidth(self):
+        r"""Peak bandwidth, measured in Mbps.
+        :rtype: float
+        """
+        return self._PeakBandwidth
+
+    @PeakBandwidth.setter
+    def PeakBandwidth(self, PeakBandwidth):
+        self._PeakBandwidth = PeakBandwidth
+
+    @property
+    def P95PeakBandwidthTime(self):
+        r"""95th percentile peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I).
+        :rtype: str
+        """
+        return self._P95PeakBandwidthTime
+
+    @P95PeakBandwidthTime.setter
+    def P95PeakBandwidthTime(self, P95PeakBandwidthTime):
+        self._P95PeakBandwidthTime = P95PeakBandwidthTime
+
+    @property
+    def P95PeakBandwidth(self):
+        r"""95th percentile peak bandwidth, measured in Mbps.
+        :rtype: float
+        """
+        return self._P95PeakBandwidth
+
+    @P95PeakBandwidth.setter
+    def P95PeakBandwidth(self, P95PeakBandwidth):
+        self._P95PeakBandwidth = P95PeakBandwidth
+
+    @property
+    def SumFlux(self):
+        r"""Total traffic, measured in MB.
+        :rtype: float
+        """
+        return self._SumFlux
+
+    @SumFlux.setter
+    def SumFlux(self, SumFlux):
+        self._SumFlux = SumFlux
+
+    @property
+    def DataInfoList(self):
+        r"""Detailed data information.
+        :rtype: list of BillDataInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self._PeakBandwidth = params.get("PeakBandwidth")
+        self._P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self._P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self._SumFlux = params.get("SumFlux")
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRecordTaskRequest(AbstractModel):
     r"""DescribeRecordTask request structure.
 

@@ -2064,6 +2064,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePushBandwidthAndFluxList(self, request):
+        r"""Live Streaming Push Bandwidth and Traffic Data Query. The push billing will first compare the global push usage with the global playback usage. If the billing conditions are met, billing will be issued based on the usage in each region. For details, refer to the Billing Documentation.(https://cloud.tencent.com/document/product/267/34175)
+
+        :param request: Request instance for DescribePushBandwidthAndFluxList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePushBandwidthAndFluxListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePushBandwidthAndFluxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePushBandwidthAndFluxList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePushBandwidthAndFluxListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecordTask(self, request):
         r"""This API is used to retrieve a list of recording tasks that were started and ended within a specified time range.
         - Prerequisites:

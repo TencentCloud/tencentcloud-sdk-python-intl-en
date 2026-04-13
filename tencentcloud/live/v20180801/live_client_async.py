@@ -1638,6 +1638,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePushBandwidthAndFluxList(
+            self,
+            request: models.DescribePushBandwidthAndFluxListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePushBandwidthAndFluxListResponse:
+        """
+        Live Streaming Push Bandwidth and Traffic Data Query. The push billing will first compare the global push usage with the global playback usage. If the billing conditions are met, billing will be issued based on the usage in each region. For details, refer to the Billing Documentation.(https://cloud.tencent.com/document/product/267/34175)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePushBandwidthAndFluxList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePushBandwidthAndFluxListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRecordTask(
             self,
             request: models.DescribeRecordTaskRequest,

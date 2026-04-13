@@ -37,7 +37,7 @@ class TeoClient(AbstractClient):
         Step 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.
         Step 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.
 
-        The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
+        The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).
         description:.
         - Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.
         - If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.
@@ -133,7 +133,7 @@ class TeoClient(AbstractClient):
     ) -> models.CheckFreeCertificateVerificationResponse:
         """
         This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.
-        This API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
+        This API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
         """
         
         kwargs = {}
@@ -346,6 +346,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEdgeKVNamespace(
+            self,
+            request: models.CreateEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.CreateEdgeKVNamespaceResponse:
+        """
+        This API is used to create a KV namespace in the specified site.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEdgeKVNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFunction(
             self,
             request: models.CreateFunctionRequest,
@@ -370,7 +388,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateFunctionRuleResponse:
         """
-        This API is used to create a trigger rule for an edge function.
+        This API is used to create trigger rules for edge functions. It supports determining whether to execute the function via customized filter conditions. When execution is required, it provides multiple ways to select the target function, including directly specifying, selecting based on client region, and selecting based on weight.
         """
         
         kwargs = {}
@@ -390,7 +408,7 @@ class TeoClient(AbstractClient):
         """
         JIT transcoding already provides preset transcoding templates to meet most needs. If there are personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom transcoding templates allowed.
         This API is used to ensure the consistency of JIT transcoding effect, avoid video output exceptions caused by EO cache or M3U8 sharding template changes during the process, and templates cannot be modified after creation.
-        This API is used to learn about the detailed capacity of JIT transcoding. EdgeOne video instant processing function introduction (https://www.tencentcloud.com/document/product/1552/111927?from_cn_redirect=1).
+        This API is used to learn about the detailed capacity of JIT transcoding. EdgeOne video instant processing function introduction (https://www.tencentcloud.comom/document/product/1552/111927?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -627,15 +645,14 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRealtimeLogDeliveryTaskResponse:
         """
-        This API is used to create a real-time log delivery task.
-        The following restrictions apply:
+        This API is used to create a real-time log delivery task. The following limits apply.
+        -When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), L4 proxy logs, or edge function logs, an entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:.
+        -A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address;.
+        -A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible Cloud Object Storage;.
+        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.
+        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.
 
-        - When the log type (`LogType`) is site acceleration log (L7 access log) (`domain`), L4 proxy log (`application`), or Edge Function execution log (`function`), the same entity (L7 domain, L4 proxy instance, or Edge Function instance) can be added to only one of the following `TaskType` combinations within the same `LogType`-`Area` pair:
-            - One task delivering to Tencent Cloud CLS plus one task delivering to a custom HTTP(S) endpoint;
-            - One task delivering to Tencent Cloud CLS plus one task delivering to an AWS S3-compatible bucket.
-        - When the log type (`LogType`) is rate-limiting & CC attack protection log (`web-rateLiming`), managed rule log (`web-attack`), custom rule log (`web-rule`), or bot management log (`web-bot`), the same entity can be added to only one real-time log delivery task within the same `LogType`-`Area` pair.
-
-        Before creating a task, we recommend that you first call [DescribeRealtimeLogDeliveryTasks](https://intl.cloud.tencent.com/document/product/1552/104110?from_cn_redirect=1) to list existing tasks for the entity and verify whether it has already been added to another task.
+        This API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.comom/document/product/1552/104110?from_cn_redirect=1) API first.
         """
         
         kwargs = {}
@@ -933,6 +950,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteDnsRecords"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDnsRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEdgeKVNamespace(
+            self,
+            request: models.DeleteEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEdgeKVNamespaceResponse:
+        """
+        This API is used to delete specified KV namespace. Once deleted, all keys in namespace will be cleared and cannot be recovered. If the namespace is being referred by edge function, you need to unbind relationship before it can only be deleted.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEdgeKVNamespaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1623,6 +1658,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdgeKVNamespaces(
+            self,
+            request: models.DescribeEdgeKVNamespacesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdgeKVNamespacesResponse:
+        """
+        This API is used to query the KV namespace list of a specified site, supporting pagination, sorting and conditional filtering. It returns the basic info, capacity utilization and reference relationship of namespaces. If data not found, return an empty array.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdgeKVNamespaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdgeKVNamespacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvironments(
             self,
             request: models.DescribeEnvironmentsRequest,
@@ -1636,6 +1689,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeEnvironments"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEnvironmentsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFunctionComponentBindings(
+            self,
+            request: models.DescribeFunctionComponentBindingsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFunctionComponentBindingsResponse:
+        """
+        This API is used to query the component binding list of a specified edge function. It supports pagination and conditional filtering, and returns detailed information such as bound component types, variable names, and configuration parameters. Currently supported bound component types include KV namespace (kv_namespace).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFunctionComponentBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFunctionComponentBindingsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2075,6 +2146,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePrefetchOriginLimit(
+            self,
+            request: models.DescribePrefetchOriginLimitRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrefetchOriginLimitResponse:
+        """
+        This API is used to query the origin speed limit. This feature is in closed beta testing.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrefetchOriginLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrefetchOriginLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePrefetchTasks(
             self,
             request: models.DescribePrefetchTasksRequest,
@@ -2331,13 +2420,31 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSharedCNAME(
+            self,
+            request: models.DescribeSharedCNAMERequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedCNAMEResponse:
+        """
+        Query the shared CNAME list, support fuzzy search, paginate, and sort.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedCNAME"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedCNAMEResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTimingL4Data(
             self,
             request: models.DescribeTimingL4DataRequest,
             opts: Dict = None,
     ) -> models.DescribeTimingL4DataResponse:
         """
-        This API is used to query the list of L4 traffic data recorded over time.
+        <p>This API is used to query the time series Data list of Layer 4.</p>.
         """
         
         kwargs = {}
@@ -2394,7 +2501,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTimingL7OriginPullDataResponse:
         """
-        This API is used to query time series data for layer-7 domain services' origin-pull data.
+        This API is used to query time series data of origin-pull for L7 domains.
+        Group aggregation can be performed by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed guide and limits, see [How to Use API to Implement Grouping Aggregation in a Single Call](https://www.tencentcloud.com/document/product/1145/77047?lang=en&pg=).
         """
         
         kwargs = {}
@@ -2614,17 +2722,89 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EdgeKVDelete(
+            self,
+            request: models.EdgeKVDeleteRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVDeleteResponse:
+        """
+        This API is used to delete one or more key-value pair data in the specified namespace, with batch deletion supported. Data cannot be recovered after deletion.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVDelete"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVDeleteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVGet(
+            self,
+            request: models.EdgeKVGetRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVGetResponse:
+        """
+        This API is used to batch read key values from a specified namespace, supporting a single query of up to 20 keys.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVGet"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVGetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVList(
+            self,
+            request: models.EdgeKVListRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVListResponse:
+        """
+        This API is used to list all keys in the specified namespace with prefix filtering support. It implements cursor traversal through Cursor and returns the next cursor to proceed with querying. Suitable for traversal of all keys in the namespace.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVPut(
+            self,
+            request: models.EdgeKVPutRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVPutResponse:
+        """
+        This API is used to write key-value pair data to a specified namespace and supports setting expiration time. If the key already exists, it overwrites the original value. If Not Exist, it creates a new key-value pair.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVPut"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVPutResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableOriginACL(
             self,
             request: models.EnableOriginACLRequest,
             opts: Dict = None,
     ) -> models.EnableOriginACLResponse:
         """
-        This API is used to enable origin protection for a site for the first time. Enabled, EdgeOne will use specific origin IP ranges to backhaul traffic for L7 acceleration domains/L4 proxy instances. The maximum allowed number of L7 acceleration domains per submission is 200, and the maximum allowed number of L4 proxy instances is 100. Mixing L7 acceleration domains and L4 proxy instances in a single submission is supported, with a total maximum of 200 instances. To enable more than 200 resources, first enable the maximum quantity via specified resources, then enable the remaining resources via the ModifyOriginACL API. Subsequent addition of L7 acceleration domains/L4 proxy instances should be configured via the ModifyOriginACL API.
+        This API is used to enable origin protection for a site for the first time. Enabled, EdgeOne will use specific origin-pull IP ranges for L7 acceleration domains/L4 proxy instances. The maximum quantity of L7 acceleration domains supported in a single submission is 200, and the maximum quantity of L4 proxy instances is 100. It supports composite submission of L7 acceleration domains/L4 proxy instances, with a maximum total number of instances of 200. To enable exceeding 200 resources, you can first enable the maximum allowed number via specified resources, and enable the remaining resources via the ModifyOriginACL API. Subsequent addition of L7 acceleration domains/L4 proxy instances should be configured via the ModifyOriginACL API. When enabling simultaneously, allowlisted accounts support selecting other origin-pull IP range versions, such as simplified edition, to achieve origin-pull effect with fewer IP ranges.
 
-        Create and bind policy Query instance Reset instance access password.
-        -Call this API to deem as consent to the origin protection enablement special agreement (https://intl.cloud.tencent.com/document/product/1552/120141?from_cn_redirect=1);.
-        -The origin IP range may change irregularly. tencent cloud EdgeOne (EdgeOne) will trigger notifications via message Center, SMS, or email 14 days, 7 days, 3 days, and 1 day before the change. To ensure you receive the change notification for the origin IP range, please ensure you have selected EdgeOne product services in the [tencent cloud message Center console](https://console.cloud.tencent.com/message) and configured the correct message recipient. For the setting method, refer to [message Subscription Management](https://intl.cloud.tencent.com/document/product/567/43476?from_cn_redirect=1).
+        Note:
+        -Calling this API is deemed as agreement to the special agreement for origin protection enablement (https://www.tencentcloud.com/document/product/1552/120141?from_cn_redirect=1);
+        -The origin IP range may change irregularly. EdgeOne will trigger notifications via Message Center, SMS, or email 14 days, 7 days, 3 days, and 1 day before the change. To ensure you receive the origin IP range change notification, please ensure you have selected the edge security acceleration platform EO product services relevant message notification and configured the correct message recipients in the Tencent Cloud Message Center Console (https://console.cloud.tencent.com/message). For the setting method, refer to Message Subscription Management (https://www.tencentcloud.com/document/product/567/43476?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2642,7 +2822,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExportZoneConfigResponse:
         """
-        This API is used to export site configuration . The exported configuration is used for import via the API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+        This API is used to export site configuration based on desired configuration items. The exported configuration is used for import via the site configuration import API.
         """
         
         kwargs = {}
@@ -2966,6 +3146,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyEdgeKVNamespace(
+            self,
+            request: models.ModifyEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEdgeKVNamespaceResponse:
+        """
+        This API is used to modify the attribute information of a specified KV namespace. Currently supported is namespace description modification.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEdgeKVNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyFunction(
             self,
             request: models.ModifyFunctionRequest,
@@ -2984,13 +3182,31 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyFunctionComponentBindings(
+            self,
+            request: models.ModifyFunctionComponentBindingsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyFunctionComponentBindingsResponse:
+        """
+        This API is used to modify the binding relationship between edge functions and components, supporting four operation modes: bind, bind-override, unbind, and rebind. By specifying the operation type and component list, you can manage the component binding of functions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyFunctionComponentBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyFunctionComponentBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyFunctionRule(
             self,
             request: models.ModifyFunctionRuleRequest,
             opts: Dict = None,
     ) -> models.ModifyFunctionRuleResponse:
         """
-        This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description.
+        This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description. You can first use the DescribeFunctionRules API to get the RuleId of the rule that needs to be modified, then input the modified rule content. The original rule content will be overwritten.
         """
         
         kwargs = {}
@@ -3261,7 +3477,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyOriginACLResponse:
         """
-        This API is used to enable or disable specific origin ACLs for L7 acceleration domain names or L4 proxy instances. A single submission supports up to 200 L7 acceleration domain names or 100 L4 proxy instances. Hybrid submissions of L7 acceleration domain names and L4 proxy instances are supported, with a maximum total number of instances of 200. If changes are needed for exceeding 200 instances, submit them in batches via this API.
+        This API is used to enable or disable specific origin IP ranges for L7 acceleration domains or L4 proxy instances. The maximum quantity for single submission is 200 L7 acceleration domains or 100 L4 proxy instances, with mixed submissions supported up to a total of 200 instances. If changes are needed for submissions exceeding 200 instances, please submit in batches via this interface. Meanwhile, allowlisted customers can switch to other available origin protection IP range versions such as the simplified edition, which can reduce origin IP ranges.
         """
         
         kwargs = {}
@@ -3304,6 +3520,25 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyPlan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPrefetchOriginLimit(
+            self,
+            request: models.ModifyPrefetchOriginLimitRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPrefetchOriginLimitResponse:
+        """
+        This API is used to configure the origin speed limit. This feature is in beta test.
+        This API is used to create, modify and delete preheating origin speed limit restrictions. Each account supports up to 100 restrictions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPrefetchOriginLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPrefetchOriginLimitResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3454,6 +3689,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySharedCNAME(
+            self,
+            request: models.ModifySharedCNAMERequest,
+            opts: Dict = None,
+    ) -> models.ModifySharedCNAMEResponse:
+        """
+        This API is used to modify a shared CNAME. Currently only support modifying the description of a shared CNAME and setting the associated IP SSL domain name of a shared CNAME with IP SSL type. The shared CNAME itself cannot be modified after creation. This feature is in beta test.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySharedCNAME"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySharedCNAMEResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyWebSecurityTemplate(
             self,
             request: models.ModifyWebSecurityTemplateRequest,
@@ -3521,6 +3774,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZoneStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyZoneWorkMode(
+            self,
+            request: models.ModifyZoneWorkModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyZoneWorkModeResponse:
+        """
+        This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to version management (https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyZoneWorkMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyZoneWorkModeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

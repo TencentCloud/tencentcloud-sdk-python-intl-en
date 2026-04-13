@@ -251,6 +251,9 @@ INTERNALERROR_DFWERROR = 'InternalError.DfwError'
 # Failed to create the flow.
 INTERNALERROR_FLOWERROR = 'InternalError.FlowError'
 
+# Service exception. please retry later.
+INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
+
 # Failed to access database management service. Please contact customer service.
 INTERNALERROR_INSTANCEDATAERROR = 'InternalError.InstanceDataError'
 
@@ -368,6 +371,12 @@ INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = 'InvalidParameterValue.Inv
 # Incorrect database character set. Currently, only `UTF8` and `LATIN1` are supported.
 INVALIDPARAMETERVALUE_INVALIDCHARSET = 'InvalidParameterValue.InvalidCharset'
 
+# The database name is invalid. follow the naming rule: it must be made up of letters (a-z, a-z), digits (0-9), or underscores (_), start with a letter or underscore (_), and be no more than 63 characters. system reserved keywords cannot be used.
+INVALIDPARAMETERVALUE_INVALIDDATABASENAMEFORMATERROR = 'InvalidParameterValue.InvalidDatabaseNameFormatError'
+
+# Currently only support database objects with operation names composed of english, underscore, digits, and special symbols []. functions and stored procedures additionally support three special symbols (,).
+INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = 'InvalidParameterValue.InvalidDatabaseObjectName'
+
 # The number of purchased instances exceeds the limit.
 INVALIDPARAMETERVALUE_INVALIDINSTANCENUM = 'InvalidParameterValue.InvalidInstanceNum'
 
@@ -440,6 +449,9 @@ INVALIDPARAMETERVALUE_SPECNOTRECOGNIZEDERROR = 'InvalidParameterValue.SpecNotRec
 # An error occurred while parsing parameters.
 INVALIDPARAMETERVALUE_STRUCTPARSEFAILED = 'InvalidParameterValue.StructParseFailed'
 
+# The incoming region does not support this API feature.
+INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = 'InvalidParameterValue.UnsupportedRegionError'
+
 # Incorrect `PID` parameter.
 INVALIDPID = 'InvalidPid'
 
@@ -457,6 +469,9 @@ OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 
 # The target instance failed the status check.
 OPERATIONDENIED_DTSINSTANCESTATUSERROR = 'OperationDenied.DTSInstanceStatusError'
+
+# In-progress backups cannot be deleted.
+OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = 'OperationDenied.DeleteRunningBackupTaskErr'
 
 # You do not have the permission to operate this resource.
 OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = 'OperationDenied.InstanceAccessDeniedError'
@@ -478,6 +493,9 @@ OPERATIONDENIED_INSTANCETYPEDENIED = 'OperationDenied.InstanceTypeDenied'
 
 # Insufficient account balance.
 OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
+
+# The kernel version is too low, causing the instance to fail to create a tencentDBSuper account. if you want to use this feature, upgrade the kernel.
+OPERATIONDENIED_KERNELVERSIONERROR = 'OperationDenied.KernelVersionError'
 
 # Serverless is not supported in this availability zone.
 OPERATIONDENIED_NOTSUPPORTZONEERROR = 'OperationDenied.NotSupportZoneError'
@@ -505,6 +523,9 @@ OPERATIONDENIED_TRADEPERMISSIONERROR = 'OperationDenied.TradePermissionError'
 
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
+
+# User not in allowlist.
+OPERATIONDENIED_USERNOTINWHITELISTERROR = 'OperationDenied.UserNotInWhiteListError'
 
 # Serverless is not supported on this version of PostgreSQL.
 OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'
@@ -547,6 +568,9 @@ UNKNOWNERROR = 'UnknownError'
 
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# Service exception. please retry later.
+UNKNOWNPARAMETER_HTTPERROR = 'UnknownParameter.HttpError'
 
 # The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

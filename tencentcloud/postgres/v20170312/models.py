@@ -29,14 +29,23 @@ class AccountInfo(AbstractModel):
         :type DBInstanceId: str
         :param _UserName: Account
         :type UserName: str
-        :param _Remark: Account remarks
+        :param _Remark: Specifies the account remark.
         :type Remark: str
-        :param _Status: Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
+        :param _Status: Account status. valid values: 1-creating, 2-normal, 3-modifying, 4-resetting password, 5-locked, -1-deleting.
         :type Status: int
-        :param _CreateTime: Account creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateTime: Account last modified time
+        :param _UpdateTime: Last update time of the account.
         :type UpdateTime: str
+        :param _PasswordUpdateTime: Specifies the last modified time of the account.
+
+This field will only take effect after 2025-10-31. No matter whether the password is modified before, the value will be the default value: 0000-00-00 00:00:00
+Indicates that this field is updated only when the password is modified via the cloud API or the console.
+        :type PasswordUpdateTime: str
+        :param _UserType: Account type. valid values: normal, tencentDBSuper. normal references a general user, tencentDBSuper possesses the pg_tencentdb_superuser user role.
+        :type UserType: str
+        :param _OpenCam: Specifies whether CAM verification is enabled for the user account.
+        :type OpenCam: bool
         """
         self._DBInstanceId = None
         self._UserName = None
@@ -44,6 +53,9 @@ class AccountInfo(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._PasswordUpdateTime = None
+        self._UserType = None
+        self._OpenCam = None
 
     @property
     def DBInstanceId(self):
@@ -69,7 +81,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""Account remarks
+        r"""Specifies the account remark.
         :rtype: str
         """
         return self._Remark
@@ -80,7 +92,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
+        r"""Account status. valid values: 1-creating, 2-normal, 3-modifying, 4-resetting password, 5-locked, -1-deleting.
         :rtype: int
         """
         return self._Status
@@ -91,7 +103,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Account creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -102,7 +114,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Account last modified time
+        r"""Last update time of the account.
         :rtype: str
         """
         return self._UpdateTime
@@ -110,6 +122,42 @@ class AccountInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def PasswordUpdateTime(self):
+        r"""Specifies the last modified time of the account.
+
+This field will only take effect after 2025-10-31. No matter whether the password is modified before, the value will be the default value: 0000-00-00 00:00:00
+Indicates that this field is updated only when the password is modified via the cloud API or the console.
+        :rtype: str
+        """
+        return self._PasswordUpdateTime
+
+    @PasswordUpdateTime.setter
+    def PasswordUpdateTime(self, PasswordUpdateTime):
+        self._PasswordUpdateTime = PasswordUpdateTime
+
+    @property
+    def UserType(self):
+        r"""Account type. valid values: normal, tencentDBSuper. normal references a general user, tencentDBSuper possesses the pg_tencentdb_superuser user role.
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def OpenCam(self):
+        r"""Specifies whether CAM verification is enabled for the user account.
+        :rtype: bool
+        """
+        return self._OpenCam
+
+    @OpenCam.setter
+    def OpenCam(self, OpenCam):
+        self._OpenCam = OpenCam
 
 
     def _deserialize(self, params):
@@ -119,6 +167,9 @@ class AccountInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._PasswordUpdateTime = params.get("PasswordUpdateTime")
+        self._UserType = params.get("UserType")
+        self._OpenCam = params.get("OpenCam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -446,7 +497,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RestrictionType: Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).
+        :param _RestrictionType: Backup file download limit type. valid values: NONE (unlimited, allows download from both private and public networks), INTRANET (only allows private network download), CUSTOMIZE (custom limits for download by vpc or ip). when the parameter value is CUSTOMIZE, at least one item must be filled in for vpc or ip information.
         :type RestrictionType: str
         :param _VpcRestrictionEffect: Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).
         :type VpcRestrictionEffect: str
@@ -465,7 +516,7 @@ class BackupDownloadRestriction(AbstractModel):
 
     @property
     def RestrictionType(self):
-        r"""Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).
+        r"""Backup file download limit type. valid values: NONE (unlimited, allows download from both private and public networks), INTRANET (only allows private network download), CUSTOMIZE (custom limits for download by vpc or ip). when the parameter value is CUSTOMIZE, at least one item must be filled in for vpc or ip information.
         :rtype: str
         """
         return self._RestrictionType
@@ -785,11 +836,11 @@ class BaseBackup(AbstractModel):
         :type Id: str
         :param _Name: Backup file name.
         :type Name: str
-        :param _BackupMethod: Backup method, including physical and logical.
+        :param _BackupMethod: Specifies the backup method: physical - physical backup, logical - logical backup.
         :type BackupMethod: str
-        :param _BackupMode: Backup mode, including automatic and manual.
+        :param _BackupMode: Backup mode: automatic - automatic backup, manual - manual backup.
         :type BackupMode: str
-        :param _State: Backup task status
+        :param _State: Backup task status. valid values: init, running, finished, failed, canceled.
         :type State: str
         :param _Size: Backup set size in bytes
         :type Size: int
@@ -846,7 +897,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""Backup method, including physical and logical.
+        r"""Specifies the backup method: physical - physical backup, logical - logical backup.
         :rtype: str
         """
         return self._BackupMethod
@@ -857,7 +908,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def BackupMode(self):
-        r"""Backup mode, including automatic and manual.
+        r"""Backup mode: automatic - automatic backup, manual - manual backup.
         :rtype: str
         """
         return self._BackupMode
@@ -868,7 +919,7 @@ class BaseBackup(AbstractModel):
 
     @property
     def State(self):
-        r"""Backup task status
+        r"""Backup task status. valid values: init, running, finished, failed, canceled.
         :rtype: str
         """
         return self._State
@@ -1517,9 +1568,9 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of postgres-6r233v55
+        :param _DBInstanceId: Specifies the instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). such as postgres-6r233v55.
         :type DBInstanceId: str
-        :param _IsIpv6: Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        :param _IsIpv6: Specifies whether to close public network Ipv6. 1: yes. 0: no. default value: 0.
         :type IsIpv6: int
         """
         self._DBInstanceId = None
@@ -1527,7 +1578,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID in the format of postgres-6r233v55
+        r"""Specifies the instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). such as postgres-6r233v55.
         :rtype: str
         """
         return self._DBInstanceId
@@ -1538,7 +1589,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def IsIpv6(self):
-        r"""Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        r"""Specifies whether to close public network Ipv6. 1: yes. 0: no. default value: 0.
         :rtype: int
         """
         return self._IsIpv6
@@ -1568,17 +1619,20 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Async task flow ID
+        :param _FlowId: Process ID. FlowId is equivalent to TaskId.
         :type FlowId: int
+        :param _TaskId: Task ID.
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""Async task flow ID
+        r"""Process ID. FlowId is equivalent to TaskId.
         :rtype: int
         """
         return self._FlowId
@@ -1586,6 +1640,17 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -1601,6 +1666,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1683,6 +1749,334 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAccountRequest(AbstractModel):
+    r"""CreateAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _UserName: The name of the account created. Consists of letters (a-z, A-Z), numbers (0-9), underscores (_), starts with a letter or (_), up to 63 characters. Cannot use system reserved keywords, cannot be postgres, and cannot begin with pg_or tencentdb_
+        :type UserName: str
+        :param _Type: Account type. currently supported: normal, tencentDBSuper. normal references a general user, tencentDBSuper is an account that possesses the pg_tencentdb_superuser role.
+        :type Type: str
+        :param _Password: Specifies the corresponding password for the account. the password rules are as follows:.
+<Li>Specifies a length of 8 to 32 characters. a password of more than 12 characters is recommended.</li>.
+<Li>Cannot start with "/".</li>.
+<Li>Specifies the following four items must be included.</li>.
+
+Valid values: a to z (lowercase letters).           
+Uppercase letters: A - Z.
+Valid values: 0 - 9.
+Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
+
+        :type Password: str
+        :param _Remark: Account remark. only allow english letters, digits, underscore, hyphen, and chinese characters, limited to 60 characters.
+        :type Remark: str
+        :param _OpenCam: Specifies whether CAM verification is enabled for the account.
+        :type OpenCam: bool
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._Type = None
+        self._Password = None
+        self._Remark = None
+        self._OpenCam = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""The name of the account created. Consists of letters (a-z, A-Z), numbers (0-9), underscores (_), starts with a letter or (_), up to 63 characters. Cannot use system reserved keywords, cannot be postgres, and cannot begin with pg_or tencentdb_
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Type(self):
+        r"""Account type. currently supported: normal, tencentDBSuper. normal references a general user, tencentDBSuper is an account that possesses the pg_tencentdb_superuser role.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Password(self):
+        r"""Specifies the corresponding password for the account. the password rules are as follows:.
+<Li>Specifies a length of 8 to 32 characters. a password of more than 12 characters is recommended.</li>.
+<Li>Cannot start with "/".</li>.
+<Li>Specifies the following four items must be included.</li>.
+
+Valid values: a to z (lowercase letters).           
+Uppercase letters: A - Z.
+Valid values: 0 - 9.
+Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
+
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Remark(self):
+        r"""Account remark. only allow english letters, digits, underscore, hyphen, and chinese characters, limited to 60 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def OpenCam(self):
+        r"""Specifies whether CAM verification is enabled for the account.
+        :rtype: bool
+        """
+        return self._OpenCam
+
+    @OpenCam.setter
+    def OpenCam(self, OpenCam):
+        self._OpenCam = OpenCam
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        self._Type = params.get("Type")
+        self._Password = params.get("Password")
+        self._Remark = params.get("Remark")
+        self._OpenCam = params.get("OpenCam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountResponse(AbstractModel):
+    r"""CreateAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBackupPlanRequest(AbstractModel):
+    r"""CreateBackupPlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _PlanName: Specifies the name of the backup plan.
+        :type PlanName: str
+        :param _BackupPeriodType: Specifies the schedule type of the backup created. currently only support month.
+        :type BackupPeriodType: str
+        :param _BackupPeriod: Backup date. example: enable backup on the 2nd of every month.
+        :type BackupPeriod: list of str
+        :param _MinBackupStartTime: Specifies the backup start time. if not passed, it follows the default backup plan.
+        :type MinBackupStartTime: str
+        :param _MaxBackupStartTime: Backup end time. follows the default plan if not specified.
+        :type MaxBackupStartTime: str
+        :param _BaseBackupRetentionPeriod: Specifies the data backup retention duration in days. value range: [0,30000).
+BackupPeriodType defaults to 7 when set to week and 31 when set to month.
+        :type BaseBackupRetentionPeriod: int
+        """
+        self._DBInstanceId = None
+        self._PlanName = None
+        self._BackupPeriodType = None
+        self._BackupPeriod = None
+        self._MinBackupStartTime = None
+        self._MaxBackupStartTime = None
+        self._BaseBackupRetentionPeriod = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def PlanName(self):
+        r"""Specifies the name of the backup plan.
+        :rtype: str
+        """
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
+    @property
+    def BackupPeriodType(self):
+        r"""Specifies the schedule type of the backup created. currently only support month.
+        :rtype: str
+        """
+        return self._BackupPeriodType
+
+    @BackupPeriodType.setter
+    def BackupPeriodType(self, BackupPeriodType):
+        self._BackupPeriodType = BackupPeriodType
+
+    @property
+    def BackupPeriod(self):
+        r"""Backup date. example: enable backup on the 2nd of every month.
+        :rtype: list of str
+        """
+        return self._BackupPeriod
+
+    @BackupPeriod.setter
+    def BackupPeriod(self, BackupPeriod):
+        self._BackupPeriod = BackupPeriod
+
+    @property
+    def MinBackupStartTime(self):
+        r"""Specifies the backup start time. if not passed, it follows the default backup plan.
+        :rtype: str
+        """
+        return self._MinBackupStartTime
+
+    @MinBackupStartTime.setter
+    def MinBackupStartTime(self, MinBackupStartTime):
+        self._MinBackupStartTime = MinBackupStartTime
+
+    @property
+    def MaxBackupStartTime(self):
+        r"""Backup end time. follows the default plan if not specified.
+        :rtype: str
+        """
+        return self._MaxBackupStartTime
+
+    @MaxBackupStartTime.setter
+    def MaxBackupStartTime(self, MaxBackupStartTime):
+        self._MaxBackupStartTime = MaxBackupStartTime
+
+    @property
+    def BaseBackupRetentionPeriod(self):
+        r"""Specifies the data backup retention duration in days. value range: [0,30000).
+BackupPeriodType defaults to 7 when set to week and 31 when set to month.
+        :rtype: int
+        """
+        return self._BaseBackupRetentionPeriod
+
+    @BaseBackupRetentionPeriod.setter
+    def BaseBackupRetentionPeriod(self, BaseBackupRetentionPeriod):
+        self._BaseBackupRetentionPeriod = BaseBackupRetentionPeriod
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._PlanName = params.get("PlanName")
+        self._BackupPeriodType = params.get("BackupPeriodType")
+        self._BackupPeriod = params.get("BackupPeriod")
+        self._MinBackupStartTime = params.get("MinBackupStartTime")
+        self._MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self._BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupPlanResponse(AbstractModel):
+    r"""CreateBackupPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: Backup policy ID.
+        :type PlanId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PlanId = None
+        self._RequestId = None
+
+    @property
+    def PlanId(self):
+        r"""Backup policy ID.
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBaseBackupRequest(AbstractModel):
     r"""CreateBaseBackup request structure.
 
@@ -1690,14 +2084,14 @@ class CreateBaseBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -1769,7 +2163,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of postgres-6bwgamo3.
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773).
         :type DBInstanceId: str
         :param _VpcId: Unified VPC ID.
         :type VpcId: str
@@ -1777,7 +2171,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
         :type SubnetId: str
         :param _IsAssignVip: Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).
         :type IsAssignVip: bool
-        :param _Vip: Target VIP.
+        :param _Vip: Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.
         :type Vip: str
         """
         self._DBInstanceId = None
@@ -1788,7 +2182,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID in the format of postgres-6bwgamo3.
+        r"""Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773).
         :rtype: str
         """
         return self._DBInstanceId
@@ -1832,7 +2226,7 @@ class CreateDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""Target VIP.
+        r"""Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.
         :rtype: str
         """
         return self._Vip
@@ -1865,19 +2259,20 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Task ID.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _FlowId: Process ID. FlowId is equivalent to TaskId.
         :type FlowId: int
+        :param _TaskId: Task ID.
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""Task ID.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Process ID. FlowId is equivalent to TaskId.
         :rtype: int
         """
         return self._FlowId
@@ -1885,6 +2280,17 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -1900,6 +2306,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2305,6 +2712,151 @@ class CreateDBInstancesResponse(AbstractModel):
         self._DealNames = params.get("DealNames")
         self._BillId = params.get("BillId")
         self._DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDatabaseRequest(AbstractModel):
+    r"""CreateDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :type DBInstanceId: str
+        :param _DatabaseName: Specifies the user-created database name.
+Name specification: consists of letters (a-z, a-z), digits (0-9), and underscores (_), starting with a letter or underscore (_), up to 63 characters. system reserved keywords cannot be used, and 'postgres' is not allowed.
+        :type DatabaseName: str
+        :param _DatabaseOwner: Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :type DatabaseOwner: str
+        :param _Encoding: Specifies the character encoding of the database.
+Supported character sets include UTF8, LATIN1, LATIN2, WIN1250, WIN1251, WIN1252, KOI8R, EUC_JP, and EUC_KR.
+Default value: UTF8.
+        :type Encoding: str
+        :param _Collate: Specifies the database sorting rule.
+        :type Collate: str
+        :param _Ctype: Specifies the character category of the database.
+        :type Ctype: str
+        """
+        self._DBInstanceId = None
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+        self._Encoding = None
+        self._Collate = None
+        self._Ctype = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""Specifies the user-created database name.
+Name specification: consists of letters (a-z, a-z), digits (0-9), and underscores (_), starting with a letter or underscore (_), up to 63 characters. system reserved keywords cannot be used, and 'postgres' is not allowed.
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        r"""Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+    @property
+    def Encoding(self):
+        r"""Specifies the character encoding of the database.
+Supported character sets include UTF8, LATIN1, LATIN2, WIN1250, WIN1251, WIN1252, KOI8R, EUC_JP, and EUC_KR.
+Default value: UTF8.
+        :rtype: str
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Collate(self):
+        r"""Specifies the database sorting rule.
+        :rtype: str
+        """
+        return self._Collate
+
+    @Collate.setter
+    def Collate(self, Collate):
+        self._Collate = Collate
+
+    @property
+    def Ctype(self):
+        r"""Specifies the character category of the database.
+        :rtype: str
+        """
+        return self._Ctype
+
+    @Ctype.setter
+    def Ctype(self, Ctype):
+        self._Ctype = Ctype
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        self._Encoding = params.get("Encoding")
+        self._Collate = params.get("Collate")
+        self._Ctype = params.get("Ctype")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseResponse(AbstractModel):
+    r"""CreateDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3515,7 +4067,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReadOnlyGroupId: RO group ID in the format of pgro-4t9c6g7k.
+        :param _ReadOnlyGroupId: ROGroupId specifies the read-only group ID in the format of pgrogrp-4t9c6g7k. it can be obtained through the DescribeReadOnlyGroups api (https://www.tencentcloud.com/document/product/409/39725?lang=en).
         :type ReadOnlyGroupId: str
         :param _VpcId: Unified VPC ID.
         :type VpcId: str
@@ -3523,7 +4075,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
         :type SubnetId: str
         :param _IsAssignVip: Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).
         :type IsAssignVip: bool
-        :param _Vip: Target VIP.
+        :param _Vip: Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.
         :type Vip: str
         """
         self._ReadOnlyGroupId = None
@@ -3534,7 +4086,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        r"""RO group ID in the format of pgro-4t9c6g7k.
+        r"""ROGroupId specifies the read-only group ID in the format of pgrogrp-4t9c6g7k. it can be obtained through the DescribeReadOnlyGroups api (https://www.tencentcloud.com/document/product/409/39725?lang=en).
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3578,7 +4130,7 @@ class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""Target VIP.
+        r"""Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.
         :rtype: str
         """
         return self._Vip
@@ -3611,19 +4163,20 @@ class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Task ID.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _FlowId: Process ID. FlowId is equivalent to TaskId.
         :type FlowId: int
+        :param _TaskId: Task ID.
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""Task ID.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Process ID. FlowId is equivalent to TaskId.
         :rtype: int
         """
         return self._FlowId
@@ -3631,6 +4184,17 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -3646,6 +4210,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5173,6 +5738,644 @@ class DBNode(AbstractModel):
         
 
 
+class Database(AbstractModel):
+    r"""Describes the database detailed information, including owner and character encoding.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: Database name
+        :type DatabaseName: str
+        :param _DatabaseOwner: Specifies the database owner.
+        :type DatabaseOwner: str
+        :param _Encoding: Specifies the database character encoding.
+        :type Encoding: str
+        :param _Collate: Specifies the database sorting rule.
+        :type Collate: str
+        :param _Ctype: Specifies the character category of the database.
+        :type Ctype: str
+        :param _AllowConn: Specifies whether the database allows connections.
+        :type AllowConn: bool
+        :param _ConnLimit: Maximum number of connections for the database. -1 indicates unlimited.
+        :type ConnLimit: int
+        :param _Privileges: Specifies the database permission list.
+        :type Privileges: str
+        """
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+        self._Encoding = None
+        self._Collate = None
+        self._Ctype = None
+        self._AllowConn = None
+        self._ConnLimit = None
+        self._Privileges = None
+
+    @property
+    def DatabaseName(self):
+        r"""Database name
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        r"""Specifies the database owner.
+        :rtype: str
+        """
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+    @property
+    def Encoding(self):
+        r"""Specifies the database character encoding.
+        :rtype: str
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Collate(self):
+        r"""Specifies the database sorting rule.
+        :rtype: str
+        """
+        return self._Collate
+
+    @Collate.setter
+    def Collate(self, Collate):
+        self._Collate = Collate
+
+    @property
+    def Ctype(self):
+        r"""Specifies the character category of the database.
+        :rtype: str
+        """
+        return self._Ctype
+
+    @Ctype.setter
+    def Ctype(self, Ctype):
+        self._Ctype = Ctype
+
+    @property
+    def AllowConn(self):
+        r"""Specifies whether the database allows connections.
+        :rtype: bool
+        """
+        return self._AllowConn
+
+    @AllowConn.setter
+    def AllowConn(self, AllowConn):
+        self._AllowConn = AllowConn
+
+    @property
+    def ConnLimit(self):
+        r"""Maximum number of connections for the database. -1 indicates unlimited.
+        :rtype: int
+        """
+        return self._ConnLimit
+
+    @ConnLimit.setter
+    def ConnLimit(self, ConnLimit):
+        self._ConnLimit = ConnLimit
+
+    @property
+    def Privileges(self):
+        r"""Specifies the database permission list.
+        :rtype: str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        self._Encoding = params.get("Encoding")
+        self._Collate = params.get("Collate")
+        self._Ctype = params.get("Ctype")
+        self._AllowConn = params.get("AllowConn")
+        self._ConnLimit = params.get("ConnLimit")
+        self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseObject(AbstractModel):
+    r"""Describes the type of a certain object in the database, and the database, mode, and table of the object.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectType: Specifies the supported object types in the database: account, database, schema, sequence, procedure, type, function, table, view, matview, column.
+        :type ObjectType: str
+        :param _ObjectName: Specifies the database object name.
+        :type ObjectName: str
+        :param _DatabaseName: Describes the database object and the database name it belongs to. this parameter is required when the description object type is not database.
+        :type DatabaseName: str
+        :param _SchemaName: Specifies the schema name of the database object to describe. this parameter is required when the description object is not database or schema.
+        :type SchemaName: str
+        :param _TableName: Specifies the database object to describe and the table name it belongs to. this parameter is required when the object type is column.
+        :type TableName: str
+        """
+        self._ObjectType = None
+        self._ObjectName = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def ObjectType(self):
+        r"""Specifies the supported object types in the database: account, database, schema, sequence, procedure, type, function, table, view, matview, column.
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def ObjectName(self):
+        r"""Specifies the database object name.
+        :rtype: str
+        """
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def DatabaseName(self):
+        r"""Describes the database object and the database name it belongs to. this parameter is required when the description object type is not database.
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""Specifies the schema name of the database object to describe. this parameter is required when the description object is not database or schema.
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""Specifies the database object to describe and the table name it belongs to. this parameter is required when the object type is column.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._ObjectType = params.get("ObjectType")
+        self._ObjectName = params.get("ObjectName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabasePrivilege(AbstractModel):
+    r"""Specifies the permission list of the specified account for the database object.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Object: The database object. when ObjectType is database, DatabaseName/SchemaName/TableName can be empty. when ObjectType is schema, SchemaName/TableName can be empty. when ObjectType is column, TableName cannot be empty. other cases can be empty.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Object: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
+        :param _PrivilegeSet: Specifies the permission list of the specified account for the database object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrivilegeSet: list of str
+        """
+        self._Object = None
+        self._PrivilegeSet = None
+
+    @property
+    def Object(self):
+        r"""The database object. when ObjectType is database, DatabaseName/SchemaName/TableName can be empty. when ObjectType is schema, SchemaName/TableName can be empty. when ObjectType is column, TableName cannot be empty. other cases can be empty.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def PrivilegeSet(self):
+        r"""Specifies the permission list of the specified account for the database object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._PrivilegeSet
+
+    @PrivilegeSet.setter
+    def PrivilegeSet(self, PrivilegeSet):
+        self._PrivilegeSet = PrivilegeSet
+
+
+    def _deserialize(self, params):
+        if params.get("Object") is not None:
+            self._Object = DatabaseObject()
+            self._Object._deserialize(params.get("Object"))
+        self._PrivilegeSet = params.get("PrivilegeSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DedicatedCluster(AbstractModel):
+    r"""Exclusive cluster-related information, used for querying the user's exclusive cluster list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: CDC ID.
+        :type DedicatedClusterId: str
+        :param _Name: Dedicated cluster name.
+        :type Name: str
+        :param _Zone: Specifies the AZ of the exclusive cluster.
+        :type Zone: str
+        :param _StandbyDedicatedClusterSet: Disaster recovery cluster.
+        :type StandbyDedicatedClusterSet: list of str
+        :param _InstanceCount: Specifies the instance count.
+        :type InstanceCount: int
+        :param _CpuTotal: Total number of cpus.
+        :type CpuTotal: int
+        :param _CpuAvailable: Specifies the available amount of Cpu.
+        :type CpuAvailable: int
+        :param _MemTotal: Total memory capacity in GB.
+        :type MemTotal: int
+        :param _MemAvailable: Available memory in GB.
+        :type MemAvailable: int
+        :param _DiskTotal: Total disk capacity (unit: GB).
+        :type DiskTotal: int
+        :param _DiskAvailable: Disk availability (unit: GB).
+        :type DiskAvailable: int
+        """
+        self._DedicatedClusterId = None
+        self._Name = None
+        self._Zone = None
+        self._StandbyDedicatedClusterSet = None
+        self._InstanceCount = None
+        self._CpuTotal = None
+        self._CpuAvailable = None
+        self._MemTotal = None
+        self._MemAvailable = None
+        self._DiskTotal = None
+        self._DiskAvailable = None
+
+    @property
+    def DedicatedClusterId(self):
+        r"""CDC ID.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def Name(self):
+        r"""Dedicated cluster name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Zone(self):
+        r"""Specifies the AZ of the exclusive cluster.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def StandbyDedicatedClusterSet(self):
+        r"""Disaster recovery cluster.
+        :rtype: list of str
+        """
+        return self._StandbyDedicatedClusterSet
+
+    @StandbyDedicatedClusterSet.setter
+    def StandbyDedicatedClusterSet(self, StandbyDedicatedClusterSet):
+        self._StandbyDedicatedClusterSet = StandbyDedicatedClusterSet
+
+    @property
+    def InstanceCount(self):
+        r"""Specifies the instance count.
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def CpuTotal(self):
+        r"""Total number of cpus.
+        :rtype: int
+        """
+        return self._CpuTotal
+
+    @CpuTotal.setter
+    def CpuTotal(self, CpuTotal):
+        self._CpuTotal = CpuTotal
+
+    @property
+    def CpuAvailable(self):
+        r"""Specifies the available amount of Cpu.
+        :rtype: int
+        """
+        return self._CpuAvailable
+
+    @CpuAvailable.setter
+    def CpuAvailable(self, CpuAvailable):
+        self._CpuAvailable = CpuAvailable
+
+    @property
+    def MemTotal(self):
+        r"""Total memory capacity in GB.
+        :rtype: int
+        """
+        return self._MemTotal
+
+    @MemTotal.setter
+    def MemTotal(self, MemTotal):
+        self._MemTotal = MemTotal
+
+    @property
+    def MemAvailable(self):
+        r"""Available memory in GB.
+        :rtype: int
+        """
+        return self._MemAvailable
+
+    @MemAvailable.setter
+    def MemAvailable(self, MemAvailable):
+        self._MemAvailable = MemAvailable
+
+    @property
+    def DiskTotal(self):
+        r"""Total disk capacity (unit: GB).
+        :rtype: int
+        """
+        return self._DiskTotal
+
+    @DiskTotal.setter
+    def DiskTotal(self, DiskTotal):
+        self._DiskTotal = DiskTotal
+
+    @property
+    def DiskAvailable(self):
+        r"""Disk availability (unit: GB).
+        :rtype: int
+        """
+        return self._DiskAvailable
+
+    @DiskAvailable.setter
+    def DiskAvailable(self, DiskAvailable):
+        self._DiskAvailable = DiskAvailable
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._Name = params.get("Name")
+        self._Zone = params.get("Zone")
+        self._StandbyDedicatedClusterSet = params.get("StandbyDedicatedClusterSet")
+        self._InstanceCount = params.get("InstanceCount")
+        self._CpuTotal = params.get("CpuTotal")
+        self._CpuAvailable = params.get("CpuAvailable")
+        self._MemTotal = params.get("MemTotal")
+        self._MemAvailable = params.get("MemAvailable")
+        self._DiskTotal = params.get("DiskTotal")
+        self._DiskAvailable = params.get("DiskAvailable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountRequest(AbstractModel):
+    r"""DeleteAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :type DBInstanceId: str
+        :param _UserName: Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountResponse(AbstractModel):
+    r"""DeleteAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBackupPlanRequest(AbstractModel):
+    r"""DeleteBackupPlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _PlanId: Backup plan ID. obtain through the api [DescribeBackupPlans](https://www.tencentcloud.com/document/product/409/45151?lang=en).
+        :type PlanId: str
+        """
+        self._DBInstanceId = None
+        self._PlanId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def PlanId(self):
+        r"""Backup plan ID. obtain through the api [DescribeBackupPlans](https://www.tencentcloud.com/document/product/409/45151?lang=en).
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupPlanResponse(AbstractModel):
+    r"""DeleteBackupPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteBaseBackupRequest(AbstractModel):
     r"""DeleteBaseBackup request structure.
 
@@ -5180,9 +6383,9 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
-        :param _BaseBackupId: Data Backup ID.
+        :param _BaseBackupId: Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). automatic backup sets cannot be deleted within 7 days.
         :type BaseBackupId: str
         """
         self._DBInstanceId = None
@@ -5190,7 +6393,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -5201,7 +6404,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        r"""Data Backup ID.
+        r"""Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). automatic backup sets cannot be deleted within 7 days.
         :rtype: str
         """
         return self._BaseBackupId
@@ -5807,6 +7010,125 @@ class DeleteServerlessDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccountPrivilegesRequest(AbstractModel):
+    r"""DescribeAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _UserName: Describes the permissions owned by this account for a database object. the account name can be obtained through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109?lang=en) api.
+        :type UserName: str
+        :param _DatabaseObjectSet: Specifies the database object information to query.
+        :type DatabaseObjectSet: list of DatabaseObject
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._DatabaseObjectSet = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""Describes the permissions owned by this account for a database object. the account name can be obtained through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109?lang=en) api.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def DatabaseObjectSet(self):
+        r"""Specifies the database object information to query.
+        :rtype: list of DatabaseObject
+        """
+        return self._DatabaseObjectSet
+
+    @DatabaseObjectSet.setter
+    def DatabaseObjectSet(self, DatabaseObjectSet):
+        self._DatabaseObjectSet = DatabaseObjectSet
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("DatabaseObjectSet") is not None:
+            self._DatabaseObjectSet = []
+            for item in params.get("DatabaseObjectSet"):
+                obj = DatabaseObject()
+                obj._deserialize(item)
+                self._DatabaseObjectSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountPrivilegesResponse(AbstractModel):
+    r"""DescribeAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivilegeSet: Specifies that the user has CREATE, CONNECT, and TEMPORARY permissions on the database user_database.
+        :type PrivilegeSet: list of DatabasePrivilege
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PrivilegeSet = None
+        self._RequestId = None
+
+    @property
+    def PrivilegeSet(self):
+        r"""Specifies that the user has CREATE, CONNECT, and TEMPORARY permissions on the database user_database.
+        :rtype: list of DatabasePrivilege
+        """
+        return self._PrivilegeSet
+
+    @PrivilegeSet.setter
+    def PrivilegeSet(self, PrivilegeSet):
+        self._PrivilegeSet = PrivilegeSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PrivilegeSet") is not None:
+            self._PrivilegeSet = []
+            for item in params.get("PrivilegeSet"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self._PrivilegeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAccountsRequest(AbstractModel):
     r"""DescribeAccounts request structure.
 
@@ -5814,15 +7136,17 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of postgres-6fego161
+        :param _DBInstanceId: Instance ID, such as postgres-6fego161. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
-        :param _Limit: Number of entries returned per page. Default value: 10. Value range: 1–100.
+        :param _Limit: Pagination return. maximum return per page. default 20. value range 1-100.
         :type Limit: int
         :param _Offset: Data offset, which starts from 0.
         :type Offset: int
-        :param _OrderBy: Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)
+        :param _OrderBy: Return data is sorted by creation time or username. valid values: createTime, name, updateTime. createTime - sort by creation time; name - sort by username; updateTime - sort by update time.
+Default value: createTime.
         :type OrderBy: str
-        :param _OrderByType: Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)
+        :param _OrderByType: Specifies whether the returned results are in ascending or descending order. valid values: desc or asc. desc - descending order; asc - ascending order.
+Default value: desc.
         :type OrderByType: str
         """
         self._DBInstanceId = None
@@ -5833,7 +7157,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID in the format of postgres-6fego161
+        r"""Instance ID, such as postgres-6fego161. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -5844,7 +7168,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries returned per page. Default value: 10. Value range: 1–100.
+        r"""Pagination return. maximum return per page. default 20. value range 1-100.
         :rtype: int
         """
         return self._Limit
@@ -5866,7 +7190,8 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)
+        r"""Return data is sorted by creation time or username. valid values: createTime, name, updateTime. createTime - sort by creation time; name - sort by username; updateTime - sort by update time.
+Default value: createTime.
         :rtype: str
         """
         return self._OrderBy
@@ -5877,7 +7202,8 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)
+        r"""Specifies whether the returned results are in ascending or descending order. valid values: desc or asc. desc - descending order; asc - ascending order.
+Default value: desc.
         :rtype: str
         """
         return self._OrderByType
@@ -5912,7 +7238,7 @@ class DescribeAccountsResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of date entries returned for this API call.
         :type TotalCount: int
-        :param _Details: Detailed account list information.
+        :param _Details: Detailed account list information. when the CreateTime field is 0000-00-00 00:00:00, it means the corresponding account is created by direct connection database, not through the CreateAccount api.
         :type Details: list of AccountInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5934,7 +7260,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Details(self):
-        r"""Detailed account list information.
+        r"""Detailed account list information. when the CreateTime field is 0000-00-00 00:00:00, it means the corresponding account is created by direct connection database, not through the CreateAccount api.
         :rtype: list of AccountInfo
         """
         return self._Details
@@ -6184,13 +7510,13 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID.
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         :param _BackupType: Backup type. Valid values: `LogBackup`, `BaseBackup`.
         :type BackupType: str
         :param _BackupId: Unique backup ID.
         :type BackupId: str
-        :param _URLExpireTime: Validity period of a URL, which is 12 hours by default.
+        :param _URLExpireTime: Validity time of the connection. value range: [0,36]. default value: 12 hours.
         :type URLExpireTime: int
         :param _BackupDownloadRestriction: Backup download restriction
         :type BackupDownloadRestriction: :class:`tencentcloud.postgres.v20170312.models.BackupDownloadRestriction`
@@ -6203,7 +7529,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -6236,7 +7562,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def URLExpireTime(self):
-        r"""Validity period of a URL, which is 12 hours by default.
+        r"""Validity time of the connection. value range: [0,36]. default value: 12 hours.
         :rtype: int
         """
         return self._URLExpireTime
@@ -6752,15 +8078,20 @@ class DescribeBaseBackupsRequest(AbstractModel):
         :type MinFinishTime: str
         :param _MaxFinishTime: Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.
         :type MaxFinishTime: str
-        :param _Filters: Filter instances by using one or more filters. Valid values:  `db-instance-idFilter` (filter by instance ID in string),  `db-instance-name` (filter by instance name in string),  `db-instance-ip` (filter by instance VPC IP address in string),  `base-backup-id` (filter by backup set ID in string), 
+        :param _Filters: Query using one or more filter criteria. filter criteria currently supported include:.
+db-instance-id: filter by instance id (string type).
+db-instance-name: specifies the instance name to filter by, supports fuzzy matching (string type).
+db-instance-ip: specifies the instance VPC ip for filtering (string type).
+base-backup-id: filter by backup set id (in string format).
+db-instance-status: filter by instance status (in string format). valid values refer to the DBInstanceStatus field in the DBInstance structure (https://www.tencentcloud.com/document/product/409/16778#dbinstance).
         :type Filters: list of Filter
         :param _Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
         :type Limit: int
         :param _Offset: Data offset, which starts from 0.
         :type Offset: int
-        :param _OrderBy: Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.
+        :param _OrderBy: Specifies the sorting field, supports StartTime, FinishTime, and Size. default value: StartTime.
         :type OrderBy: str
-        :param _OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :param _OrderByType: Sorting method, including ascending: `asc` and descending: `desc`. the default value is `desc`.
         :type OrderByType: str
         """
         self._MinFinishTime = None
@@ -6795,7 +8126,12 @@ class DescribeBaseBackupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter instances by using one or more filters. Valid values:  `db-instance-idFilter` (filter by instance ID in string),  `db-instance-name` (filter by instance name in string),  `db-instance-ip` (filter by instance VPC IP address in string),  `base-backup-id` (filter by backup set ID in string), 
+        r"""Query using one or more filter criteria. filter criteria currently supported include:.
+db-instance-id: filter by instance id (string type).
+db-instance-name: specifies the instance name to filter by, supports fuzzy matching (string type).
+db-instance-ip: specifies the instance VPC ip for filtering (string type).
+base-backup-id: filter by backup set id (in string format).
+db-instance-status: filter by instance status (in string format). valid values refer to the DBInstanceStatus field in the DBInstance structure (https://www.tencentcloud.com/document/product/409/16778#dbinstance).
         :rtype: list of Filter
         """
         return self._Filters
@@ -6828,7 +8164,7 @@ class DescribeBaseBackupsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.
+        r"""Specifies the sorting field, supports StartTime, FinishTime, and Size. default value: StartTime.
         :rtype: str
         """
         return self._OrderBy
@@ -6839,7 +8175,7 @@ class DescribeBaseBackupsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        r"""Sorting method, including ascending: `asc` and descending: `desc`. the default value is `desc`.
         :rtype: str
         """
         return self._OrderByType
@@ -7060,9 +8396,9 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID.
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
-        :param _BackupSetId: Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.
+        :param _BackupSetId: Basic backup set ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). this parameter and RecoveryTargetTime must be selected. if set simultaneously with RecoveryTargetTime, this parameter takes precedence.
         :type BackupSetId: str
         :param _RecoveryTargetTime: Restoration time (UTC+8). Either this parameter or `BackupSetId` must be passed in.
         :type RecoveryTargetTime: str
@@ -7073,7 +8409,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -7084,7 +8420,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        r"""Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.
+        r"""Basic backup set ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). this parameter and RecoveryTargetTime must be selected. if set simultaneously with RecoveryTargetTime, this parameter takes precedence.
         :rtype: str
         """
         return self._BackupSetId
@@ -7358,7 +8694,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID	
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         :param _StartTime: u200cu200cu200cQuery start time in the format of 2018-01-01 00:00:00. The log is retained for seven days by default, so the start time must fall within the retention period.	
         :type StartTime: str
@@ -7383,7 +8719,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID	
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -7795,7 +9131,7 @@ class DescribeDBInstanceParametersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         :param _ParamName: Name of the parameter to be queried. If `ParamName` is left empty or not passed in, the list of all parameters will be returned.
         :type ParamName: str
@@ -7805,7 +9141,7 @@ class DescribeDBInstanceParametersRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -7902,6 +9238,115 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceSSLConfigRequest(AbstractModel):
+    r"""DescribeDBInstanceSSLConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceSSLConfigResponse(AbstractModel):
+    r"""DescribeDBInstanceSSLConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSLEnabled: true represents enabled. false represents not enabled.
+        :type SSLEnabled: bool
+        :param _CAUrl: Certificate download url for the cloud root certificate.
+        :type CAUrl: str
+        :param _ConnectAddress: Specifies the intranet or public network connection address in the server certificate.
+        :type ConnectAddress: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SSLEnabled = None
+        self._CAUrl = None
+        self._ConnectAddress = None
+        self._RequestId = None
+
+    @property
+    def SSLEnabled(self):
+        r"""true represents enabled. false represents not enabled.
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def CAUrl(self):
+        r"""Certificate download url for the cloud root certificate.
+        :rtype: str
+        """
+        return self._CAUrl
+
+    @CAUrl.setter
+    def CAUrl(self, CAUrl):
+        self._CAUrl = CAUrl
+
+    @property
+    def ConnectAddress(self):
+        r"""Specifies the intranet or public network connection address in the server certificate.
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._CAUrl = params.get("CAUrl")
+        self._ConnectAddress = params.get("ConnectAddress")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
     r"""DescribeDBInstanceSecurityGroups request structure.
 
@@ -7909,9 +9354,9 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). specify either DBInstanceId or ReadOnlyGroupId. if both are provided, ReadOnlyGroupId is ignored.
         :type DBInstanceId: str
-        :param _ReadOnlyGroupId: RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.
+        :param _ReadOnlyGroupId: ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en). valid values: DBInstanceId and ReadOnlyGroupId (at least one is required). if you need to query the associated security group of the read-only group, only ReadOnlyGroupId is required.
         :type ReadOnlyGroupId: str
         """
         self._DBInstanceId = None
@@ -7919,7 +9364,7 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). specify either DBInstanceId or ReadOnlyGroupId. if both are provided, ReadOnlyGroupId is ignored.
         :rtype: str
         """
         return self._DBInstanceId
@@ -7930,7 +9375,7 @@ class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        r"""RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.
+        r"""ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en). valid values: DBInstanceId and ReadOnlyGroupId (at least one is required). if you need to query the associated security group of the read-only group, only ReadOnlyGroupId is required.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -8593,6 +10038,192 @@ class DescribeDBXlogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseObjectsRequest(AbstractModel):
+    r"""DescribeDatabaseObjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :type DBInstanceId: str
+        :param _ObjectType: Specifies the object type for querying. supported objects: database, schema, sequence, procedure, type, function, table, view, matview, column.
+        :type ObjectType: str
+        :param _Limit: Number of items displayed at a time. default 20. value range 0-100.
+        :type Limit: int
+        :param _Offset: Data offset, starting from 0.		
+        :type Offset: int
+        :param _DatabaseName: Describes the database the query object belongs to. this parameter is required when the query object type is not database.
+        :type DatabaseName: str
+        :param _SchemaName: Specifies the mode belonging to the query object. this parameter is required when the query object type is not database or schema.
+        :type SchemaName: str
+        :param _TableName: Specifies the table belonging to the query object. this parameter is required when the query object type is column.
+        :type TableName: str
+        """
+        self._DBInstanceId = None
+        self._ObjectType = None
+        self._Limit = None
+        self._Offset = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ObjectType(self):
+        r"""Specifies the object type for querying. supported objects: database, schema, sequence, procedure, type, function, table, view, matview, column.
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def Limit(self):
+        r"""Number of items displayed at a time. default 20. value range 0-100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Data offset, starting from 0.		
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def DatabaseName(self):
+        r"""Describes the database the query object belongs to. this parameter is required when the query object type is not database.
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        r"""Specifies the mode belonging to the query object. this parameter is required when the query object type is not database or schema.
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""Specifies the table belonging to the query object. this parameter is required when the query object type is column.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ObjectType = params.get("ObjectType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectsResponse(AbstractModel):
+    r"""DescribeDatabaseObjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectSet: Query object list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectSet: list of str
+        :param _TotalCount: Specifies the total number of objects.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ObjectSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ObjectSet(self):
+        r"""Query object list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ObjectSet
+
+    @ObjectSet.setter
+    def ObjectSet(self, ObjectSet):
+        self._ObjectSet = ObjectSet
+
+    @property
+    def TotalCount(self):
+        r"""Specifies the total number of objects.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ObjectSet = params.get("ObjectSet")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDatabasesRequest(AbstractModel):
     r"""DescribeDatabases request structure.
 
@@ -8600,13 +10231,14 @@ class DescribeDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the API [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         :param _Filters: Query using one or more filter criteria. Filter criteria currently supported include: database-name: filter by database name (in string format). Fuzzy matching is used to search for databases that meet the criteria.
         :type Filters: list of Filter
         :param _Offset: Data offset, which starts from 0.
         :type Offset: int
-        :param _Limit: Number of items displayed at a time
+        :param _Limit: Number of items displayed at a time. the maximum value is recommended to be 100.
+Default value: 20.
         :type Limit: int
         """
         self._DBInstanceId = None
@@ -8616,7 +10248,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the API [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -8649,7 +10281,8 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of items displayed at a time
+        r"""Number of items displayed at a time. the maximum value is recommended to be 100.
+Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -8690,11 +10323,14 @@ class DescribeDatabasesResponse(AbstractModel):
         :type Items: list of str
         :param _TotalCount: Total number of databases
         :type TotalCount: int
+        :param _Databases: Specifies the database details list.
+        :type Databases: list of Database
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Items = None
         self._TotalCount = None
+        self._Databases = None
         self._RequestId = None
 
     @property
@@ -8720,6 +10356,17 @@ class DescribeDatabasesResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def Databases(self):
+        r"""Specifies the database details list.
+        :rtype: list of Database
+        """
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -8734,6 +10381,103 @@ class DescribeDatabasesResponse(AbstractModel):
     def _deserialize(self, params):
         self._Items = params.get("Items")
         self._TotalCount = params.get("TotalCount")
+        if params.get("Databases") is not None:
+            self._Databases = []
+            for item in params.get("Databases"):
+                obj = Database()
+                obj._deserialize(item)
+                self._Databases.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDedicatedClustersRequest(AbstractModel):
+    r"""DescribeDedicatedClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: Query using one or more filter criteria. filter criteria currently supported include:.
+dedicated-cluster-id: filters by dedicated cluster id. string type.
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""Query using one or more filter criteria. filter criteria currently supported include:.
+dedicated-cluster-id: filters by dedicated cluster id. string type.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDedicatedClustersResponse(AbstractModel):
+    r"""DescribeDedicatedClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterSet: Exclusive cluster information.
+        :type DedicatedClusterSet: list of DedicatedCluster
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DedicatedClusterSet = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterSet(self):
+        r"""Exclusive cluster information.
+        :rtype: list of DedicatedCluster
+        """
+        return self._DedicatedClusterSet
+
+    @DedicatedClusterSet.setter
+    def DedicatedClusterSet(self, DedicatedClusterSet):
+        self._DedicatedClusterSet = DedicatedClusterSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DedicatedClusterSet") is not None:
+            self._DedicatedClusterSet = []
+            for item in params.get("DedicatedClusterSet"):
+                obj = DedicatedCluster()
+                obj._deserialize(item)
+                self._DedicatedClusterSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8860,14 +10604,14 @@ class DescribeEncryptionKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -8896,8 +10640,7 @@ class DescribeEncryptionKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptionKeys: Instance key list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _EncryptionKeys: Specifies the key information list of the instance.
         :type EncryptionKeys: list of EncryptionKey
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8907,8 +10650,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def EncryptionKeys(self):
-        r"""Instance key list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the key information list of the instance.
         :rtype: list of EncryptionKey
         """
         return self._EncryptionKeys
@@ -9136,6 +10878,130 @@ class DescribeLogBackupsResponse(AbstractModel):
                 obj = LogBackup()
                 obj._deserialize(item)
                 self._LogBackupSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMaintainTimeWindowRequest(AbstractModel):
+    r"""DescribeMaintainTimeWindow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMaintainTimeWindowResponse(AbstractModel):
+    r"""DescribeMaintainTimeWindow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param _MaintainStartTime: Maintenance start time. time zone is UTC+8.
+        :type MaintainStartTime: str
+        :param _MaintainDuration: Maintenance duration. unit: hr.
+        :type MaintainDuration: int
+        :param _MaintainWeekDays: Specifies the maintenance period.
+        :type MaintainWeekDays: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DBInstanceId = None
+        self._MaintainStartTime = None
+        self._MaintainDuration = None
+        self._MaintainWeekDays = None
+        self._RequestId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def MaintainStartTime(self):
+        r"""Maintenance start time. time zone is UTC+8.
+        :rtype: str
+        """
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainDuration(self):
+        r"""Maintenance duration. unit: hr.
+        :rtype: int
+        """
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainWeekDays(self):
+        r"""Specifies the maintenance period.
+        :rtype: list of str
+        """
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
         self._RequestId = params.get("RequestId")
 
 
@@ -9597,14 +11463,14 @@ class DescribeParamsEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -10619,6 +12485,210 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTasksRequest(AbstractModel):
+    r"""DescribeTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Query by task ID. the FlowId and TaskId returned in other cloud apis are equivalent.
+        :type TaskId: int
+        :param _DBInstanceId: Query by database instance ID.
+        :type DBInstanceId: str
+        :param _MinStartTime: Earliest start time of the task, such as 2024-08-23 00:00:00. default shows data within the last 180 days.
+        :type MinStartTime: str
+        :param _MaxStartTime: Latest start time of the task, such as 2024-08-23 00:00:00, defaults to the current time.
+        :type MaxStartTime: str
+        :param _Limit: Number of results displayed per page. value range 1-100. default 20.
+        :type Limit: int
+        :param _Offset: Data offset, starting from 0.
+        :type Offset: int
+        :param _OrderBy: Sorting field, supports StartTime and EndTime. defaults to StartTime.
+        :type OrderBy: str
+        :param _OrderByType: Specifies the sorting method, including ascending: `asc` and descending: `desc`. defaults to `desc`.
+        :type OrderByType: str
+        """
+        self._TaskId = None
+        self._DBInstanceId = None
+        self._MinStartTime = None
+        self._MaxStartTime = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def TaskId(self):
+        r"""Query by task ID. the FlowId and TaskId returned in other cloud apis are equivalent.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DBInstanceId(self):
+        r"""Query by database instance ID.
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def MinStartTime(self):
+        r"""Earliest start time of the task, such as 2024-08-23 00:00:00. default shows data within the last 180 days.
+        :rtype: str
+        """
+        return self._MinStartTime
+
+    @MinStartTime.setter
+    def MinStartTime(self, MinStartTime):
+        self._MinStartTime = MinStartTime
+
+    @property
+    def MaxStartTime(self):
+        r"""Latest start time of the task, such as 2024-08-23 00:00:00, defaults to the current time.
+        :rtype: str
+        """
+        return self._MaxStartTime
+
+    @MaxStartTime.setter
+    def MaxStartTime(self, MaxStartTime):
+        self._MaxStartTime = MaxStartTime
+
+    @property
+    def Limit(self):
+        r"""Number of results displayed per page. value range 1-100. default 20.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Data offset, starting from 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field, supports StartTime and EndTime. defaults to StartTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Specifies the sorting method, including ascending: `asc` and descending: `desc`. defaults to `desc`.
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._MinStartTime = params.get("MinStartTime")
+        self._MaxStartTime = params.get("MaxStartTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksResponse(AbstractModel):
+    r"""DescribeTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of queried tasks.
+        :type TotalCount: int
+        :param _TaskSet: Task Information List
+        :type TaskSet: list of TaskSet
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of queried tasks.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskSet(self):
+        r"""Task Information List
+        :rtype: list of TaskSet
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = TaskSet()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     r"""DescribeZones request structure.
 
@@ -11002,24 +13072,20 @@ class EncryptionKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: Encrypted KeyId of KMS instance
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _KeyId: Specifies the KeyId for KMS instance encryption.
         :type KeyId: str
-        :param _KeyAlias: Encryption key alias of KMS instance 
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _KeyAlias: Alias name of the KMS instance encryption Key.
         :type KeyAlias: str
-        :param _DEKCipherTextBlob: Instance DEK ciphertext
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _DEKCipherTextBlob: Specifies the ciphertext of the instance encryption key DEK.
         :type DEKCipherTextBlob: str
-        :param _IsEnabled: Whether the key is enabled. Valid values: `1` (yes), `0` (no)
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IsEnabled: Whether the key is enabled. valid values: 1 (enabled), 0 (disabled).
         :type IsEnabled: int
-        :param _KeyRegion: Region where KMS key resides
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _KeyRegion: Specifies the region of the KMS key.
         :type KeyRegion: str
-        :param _CreateTime: DEK key creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _CreateTime: Creation time of the DEK key.
         :type CreateTime: str
+        :param _KMSClusterId: Specifies the Id of the KMS service cluster where the key resides. being empty indicates the key is in the default KMS cluster. a non-empty value indicates the key is in the specified KMS service cluster.
+        :type KMSClusterId: str
         """
         self._KeyId = None
         self._KeyAlias = None
@@ -11027,11 +13093,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._IsEnabled = None
         self._KeyRegion = None
         self._CreateTime = None
+        self._KMSClusterId = None
 
     @property
     def KeyId(self):
-        r"""Encrypted KeyId of KMS instance
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the KeyId for KMS instance encryption.
         :rtype: str
         """
         return self._KeyId
@@ -11042,8 +13108,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyAlias(self):
-        r"""Encryption key alias of KMS instance 
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Alias name of the KMS instance encryption Key.
         :rtype: str
         """
         return self._KeyAlias
@@ -11054,8 +13119,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DEKCipherTextBlob(self):
-        r"""Instance DEK ciphertext
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the ciphertext of the instance encryption key DEK.
         :rtype: str
         """
         return self._DEKCipherTextBlob
@@ -11066,8 +13130,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IsEnabled(self):
-        r"""Whether the key is enabled. Valid values: `1` (yes), `0` (no)
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Whether the key is enabled. valid values: 1 (enabled), 0 (disabled).
         :rtype: int
         """
         return self._IsEnabled
@@ -11078,8 +13141,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyRegion(self):
-        r"""Region where KMS key resides
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the region of the KMS key.
         :rtype: str
         """
         return self._KeyRegion
@@ -11090,8 +13152,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
-        r"""DEK key creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Creation time of the DEK key.
         :rtype: str
         """
         return self._CreateTime
@@ -11099,6 +13160,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def KMSClusterId(self):
+        r"""Specifies the Id of the KMS service cluster where the key resides. being empty indicates the key is in the default KMS cluster. a non-empty value indicates the key is in the specified KMS service cluster.
+        :rtype: str
+        """
+        return self._KMSClusterId
+
+    @KMSClusterId.setter
+    def KMSClusterId(self, KMSClusterId):
+        self._KMSClusterId = KMSClusterId
 
 
     def _deserialize(self, params):
@@ -11108,6 +13180,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._IsEnabled = params.get("IsEnabled")
         self._KeyRegion = params.get("KeyRegion")
         self._CreateTime = params.get("CreateTime")
+        self._KMSClusterId = params.get("KMSClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11206,29 +13279,21 @@ class EventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ParamName: Parameter name.
         :type ParamName: str
-        :param _OldValue: Original parameter value
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _OldValue: Original parameter value.
         :type OldValue: str
-        :param _NewValue: New parameter value in this modification event
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _NewValue: This modification specifies the expected parameter value.
         :type NewValue: str
-        :param _ModifyTime: Start time of parameter modification
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ModifyTime: Specifies the start time for backend parameter modification.
         :type ModifyTime: str
-        :param _EffectiveTime: Start time when the modified parameter takes effect
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EffectiveTime: Specifies the start of effective time for the backend parameter.
         :type EffectiveTime: str
-        :param _State: Modification status
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _State: Modification status. valid values: in progress, success, paused.
         :type State: str
-        :param _Operator: Operator (generally, the value is the UIN of a sub-user)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Operator: Operator (normal: user sub UIN).
         :type Operator: str
-        :param _EventLog: Event log
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EventLog: Time log.
         :type EventLog: str
         """
         self._ParamName = None
@@ -11242,8 +13307,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParamName(self):
-        r"""Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter name.
         :rtype: str
         """
         return self._ParamName
@@ -11254,8 +13318,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OldValue(self):
-        r"""Original parameter value
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Original parameter value.
         :rtype: str
         """
         return self._OldValue
@@ -11266,8 +13329,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NewValue(self):
-        r"""New parameter value in this modification event
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""This modification specifies the expected parameter value.
         :rtype: str
         """
         return self._NewValue
@@ -11278,8 +13340,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModifyTime(self):
-        r"""Start time of parameter modification
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the start time for backend parameter modification.
         :rtype: str
         """
         return self._ModifyTime
@@ -11290,8 +13351,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EffectiveTime(self):
-        r"""Start time when the modified parameter takes effect
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the start of effective time for the backend parameter.
         :rtype: str
         """
         return self._EffectiveTime
@@ -11302,8 +13362,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
-        r"""Modification status
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Modification status. valid values: in progress, success, paused.
         :rtype: str
         """
         return self._State
@@ -11314,8 +13373,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Operator(self):
-        r"""Operator (generally, the value is the UIN of a sub-user)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Operator (normal: user sub UIN).
         :rtype: str
         """
         return self._Operator
@@ -11326,8 +13384,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventLog(self):
-        r"""Event log
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Time log.
         :rtype: str
         """
         return self._EventLog
@@ -11363,14 +13420,11 @@ class EventItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ParamName: Parameter name.
         :type ParamName: str
-        :param _EventCount: The number of modification events
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EventCount: Number of modified events.
         :type EventCount: int
-        :param _EventDetail: Modification event details
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _EventDetail: Last modification time.
         :type EventDetail: list of EventInfo
         """
         self._ParamName = None
@@ -11379,8 +13433,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParamName(self):
-        r"""Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter name.
         :rtype: str
         """
         return self._ParamName
@@ -11391,8 +13444,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventCount(self):
-        r"""The number of modification events
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Number of modified events.
         :rtype: int
         """
         return self._EventCount
@@ -11403,8 +13455,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventDetail(self):
-        r"""Modification event details
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Last modification time.
         :rtype: list of EventInfo
         """
         return self._EventDetail
@@ -11617,26 +13668,26 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        :param _Zone: <p>Availability zone name. The value of this parameter can be obtained from the returned Zone field of the <a href="https://www.tencentcloud.com/document/product/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :type Zone: str
-        :param _SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.
+        :param _SpecCode: <p>Specification ID. The value of this parameter can be obtained from the returned SpecCode field of the <a href="https://www.tencentcloud.com/document/product/409/89019?from_cn_redirect=1">DescribeClasses</a> API.</p>
         :type SpecCode: str
-        :param _Storage: Storage capacity size in GB.
+        :param _Storage: <p>Storage capacity, in GB. The value for this parameter must be set in increments of 10.</p>
         :type Storage: int
-        :param _InstanceCount: Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.
+        :param _InstanceCount: <p>Instance quantity. The maximum allowed quantity is no more than 100. If you need to create more instances at a time, please contact customer service.</p>
         :type InstanceCount: int
-        :param _Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
+        :param _Period: <p>Purchased duration, in months. Only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.</p>
         :type Period: int
-        :param _Pid: [Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
+        :param _Pid: <p>[Deprecated and no longer effective] Billing ID. The value of this parameter can be obtained from the returned Pid field of the DescribeProductConfig API.</p>
         :type Pid: int
-        :param _InstanceChargeType: Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)
+        :param _InstanceChargeType: <p>Instance billing type. Valid values: PREPAID (prepaid, also known as yearly/monthly subscription) and POSTPAID (pay-as-you-go).<br>Default value: PREPAID.</p>
         :type InstanceChargeType: str
-        :param _InstanceType: Instance type. Default value: `primary`. Valid values:
-`primary` (dual-server high-availability, one-primary-one-standby)
-`readonly` (read-only instance)
+        :param _InstanceType: <p>Instance type. The default value is primary. Valid values:<br>primary (dual-server high availability (one primary and one standby)).<br>readonly (read-only instance).</p>
         :type InstanceType: str
-        :param _DBEngine: <p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>
+        :param _DBEngine: <p>Database engine. The default value is postgresql. Valid values:<br>postgresql (TencentDB for PostgreSQL).<br>mssql_compatible (MSSQL compatible - TencentDB for PostgreSQL).</p>
         :type DBEngine: str
+        :param _StorageType: <p>Instance storage type. Valid values: PHYSICAL_LOCAL_SSD: local SSD of physical machine. CLOUD_PREMIUM: Premium Disk. CLOUD_SSD: Cloud SSD. CLOUD_HSSD: Enhanced SSD.</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._SpecCode = None
@@ -11647,10 +13698,11 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self._InstanceChargeType = None
         self._InstanceType = None
         self._DBEngine = None
+        self._StorageType = None
 
     @property
     def Zone(self):
-        r"""AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        r"""<p>Availability zone name. The value of this parameter can be obtained from the returned Zone field of the <a href="https://www.tencentcloud.com/document/product/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :rtype: str
         """
         return self._Zone
@@ -11661,7 +13713,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def SpecCode(self):
-        r"""Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.
+        r"""<p>Specification ID. The value of this parameter can be obtained from the returned SpecCode field of the <a href="https://www.tencentcloud.com/document/product/409/89019?from_cn_redirect=1">DescribeClasses</a> API.</p>
         :rtype: str
         """
         return self._SpecCode
@@ -11672,7 +13724,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""Storage capacity size in GB.
+        r"""<p>Storage capacity, in GB. The value for this parameter must be set in increments of 10.</p>
         :rtype: int
         """
         return self._Storage
@@ -11683,7 +13735,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.
+        r"""<p>Instance quantity. The maximum allowed quantity is no more than 100. If you need to create more instances at a time, please contact customer service.</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -11694,7 +13746,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
+        r"""<p>Purchased duration, in months. Only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.</p>
         :rtype: int
         """
         return self._Period
@@ -11705,7 +13757,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Pid(self):
-        r"""[Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
+        r"""<p>[Deprecated and no longer effective] Billing ID. The value of this parameter can be obtained from the returned Pid field of the DescribeProductConfig API.</p>
         :rtype: int
         """
         return self._Pid
@@ -11716,7 +13768,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)
+        r"""<p>Instance billing type. Valid values: PREPAID (prepaid, also known as yearly/monthly subscription) and POSTPAID (pay-as-you-go).<br>Default value: PREPAID.</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -11727,9 +13779,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance type. Default value: `primary`. Valid values:
-`primary` (dual-server high-availability, one-primary-one-standby)
-`readonly` (read-only instance)
+        r"""<p>Instance type. The default value is primary. Valid values:<br>primary (dual-server high availability (one primary and one standby)).<br>readonly (read-only instance).</p>
         :rtype: str
         """
         return self._InstanceType
@@ -11740,7 +13790,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        r"""<p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>
+        r"""<p>Database engine. The default value is postgresql. Valid values:<br>postgresql (TencentDB for PostgreSQL).<br>mssql_compatible (MSSQL compatible - TencentDB for PostgreSQL).</p>
         :rtype: str
         """
         return self._DBEngine
@@ -11748,6 +13798,17 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     @DBEngine.setter
     def DBEngine(self, DBEngine):
         self._DBEngine = DBEngine
+
+    @property
+    def StorageType(self):
+        r"""<p>Instance storage type. Valid values: PHYSICAL_LOCAL_SSD: local SSD of physical machine. CLOUD_PREMIUM: Premium Disk. CLOUD_SSD: Cloud SSD. CLOUD_HSSD: Enhanced SSD.</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
 
 
     def _deserialize(self, params):
@@ -11760,6 +13821,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self._InstanceChargeType = params.get("InstanceChargeType")
         self._InstanceType = params.get("InstanceType")
         self._DBEngine = params.get("DBEngine")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11777,9 +13839,9 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: Published price in US Cent
+        :param _OriginalPrice: <p>List price, in cents.</p>
         :type OriginalPrice: int
-        :param _Price: Discounted total amount in US Cent
+        :param _Price: <p>Actual payment amount after discount, in cents.</p>
         :type Price: int
         :param _Currency: Currency, such as USD.
         :type Currency: str
@@ -11793,7 +13855,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""Published price in US Cent
+        r"""<p>List price, in cents.</p>
         :rtype: int
         """
         return self._OriginalPrice
@@ -11804,7 +13866,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        r"""Discounted total amount in US Cent
+        r"""<p>Actual payment amount after discount, in cents.</p>
         :rtype: int
         """
         return self._Price
@@ -12200,6 +14262,85 @@ class IsolateDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LockAccountRequest(AbstractModel):
+    r"""LockAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID.		
+        :type DBInstanceId: str
+        :param _UserName: Account name.
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID.		
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""Account name.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LockAccountResponse(AbstractModel):
+    r"""LockAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class LogBackup(AbstractModel):
     r"""Log backup information of a database
 
@@ -12369,6 +14510,105 @@ class LogBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    r"""ModifyAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :type DBInstanceId: str
+        :param _UserName: Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.
+        :type UserName: str
+        :param _ModifyPrivilegeSet: Permission information to modify. supports batch modification. the maximum number of modifications per batch is 50.
+        :type ModifyPrivilegeSet: list of ModifyPrivilege
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._ModifyPrivilegeSet = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ModifyPrivilegeSet(self):
+        r"""Permission information to modify. supports batch modification. the maximum number of modifications per batch is 50.
+        :rtype: list of ModifyPrivilege
+        """
+        return self._ModifyPrivilegeSet
+
+    @ModifyPrivilegeSet.setter
+    def ModifyPrivilegeSet(self, ModifyPrivilegeSet):
+        self._ModifyPrivilegeSet = ModifyPrivilegeSet
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("ModifyPrivilegeSet") is not None:
+            self._ModifyPrivilegeSet = []
+            for item in params.get("ModifyPrivilegeSet"):
+                obj = ModifyPrivilege()
+                obj._deserialize(item)
+                self._ModifyPrivilegeSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    r"""ModifyAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAccountRemarkRequest(AbstractModel):
@@ -12735,9 +14975,9 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
-        :param _BaseBackupId: Data Backup ID.
+        :param _BaseBackupId: Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en).
         :type BaseBackupId: str
         :param _NewExpireTime: New expiration time
         :type NewExpireTime: str
@@ -12748,7 +14988,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -12759,7 +14999,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        r"""Data Backup ID.
+        r"""Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en).
         :rtype: str
         """
         return self._BaseBackupId
@@ -13375,7 +15615,7 @@ class ModifyDBInstanceParametersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID.
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
         :param _ParamList: Parameters to be modified and expected values.
         :type ParamList: list of ParamEntry
@@ -13385,7 +15625,7 @@ class ModifyDBInstanceParametersRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -13431,10 +15671,24 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -13449,6 +15703,7 @@ class ModifyDBInstanceParametersResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13558,6 +15813,115 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSSLConfigRequest(AbstractModel):
+    r"""ModifyDBInstanceSSLConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _SSLEnabled: Turn on or off SSL. true - turn on; false - turn off.
+        :type SSLEnabled: bool
+        :param _ConnectAddress: The unique connection address protected by an SSL certificate. for a primary instance, it can be set to private and public IP addresses. for a read-only instance, it can be set to the instance IP or read-only group IP. this parameter is required when enabling SSL or modifying the SSL-protected connection address. it will be ignored when disabling SSL.
+        :type ConnectAddress: str
+        """
+        self._DBInstanceId = None
+        self._SSLEnabled = None
+        self._ConnectAddress = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def SSLEnabled(self):
+        r"""Turn on or off SSL. true - turn on; false - turn off.
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def ConnectAddress(self):
+        r"""The unique connection address protected by an SSL certificate. for a primary instance, it can be set to private and public IP addresses. for a read-only instance, it can be set to the instance IP or read-only group IP. this parameter is required when enabling SSL or modifying the SSL-protected connection address. it will be ignored when disabling SSL.
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._ConnectAddress = params.get("ConnectAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSSLConfigResponse(AbstractModel):
+    r"""ModifyDBInstanceSSLConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13996,6 +16360,209 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDatabaseOwnerRequest(AbstractModel):
+    r"""ModifyDatabaseOwner request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :type DBInstanceId: str
+        :param _DatabaseName: Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).
+        :type DatabaseName: str
+        :param _DatabaseOwner: New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :type DatabaseOwner: str
+        """
+        self._DBInstanceId = None
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        r"""New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseOwnerResponse(AbstractModel):
+    r"""ModifyDatabaseOwner response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMaintainTimeWindowRequest(AbstractModel):
+    r"""ModifyMaintainTimeWindow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _MaintainStartTime: Maintenance start time. time zone is UTC+8.
+        :type MaintainStartTime: str
+        :param _MaintainDuration: Maintenance duration. unit: hr. value range: [1,4].
+        :type MaintainDuration: int
+        :param _MaintainWeekDays: Specifies the maintenance period.
+        :type MaintainWeekDays: list of str
+        """
+        self._DBInstanceId = None
+        self._MaintainStartTime = None
+        self._MaintainDuration = None
+        self._MaintainWeekDays = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def MaintainStartTime(self):
+        r"""Maintenance start time. time zone is UTC+8.
+        :rtype: str
+        """
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainDuration(self):
+        r"""Maintenance duration. unit: hr. value range: [1,4].
+        :rtype: int
+        """
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainWeekDays(self):
+        r"""Specifies the maintenance period.
+        :rtype: list of str
+        """
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMaintainTimeWindowResponse(AbstractModel):
+    r"""ModifyMaintainTimeWindow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyParameterTemplateRequest(AbstractModel):
     r"""ModifyParameterTemplate request structure.
 
@@ -14003,7 +16570,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Parameter template ID, which uniquely identifies a parameter template and cannot be modified.
+        :param _TemplateId: Specifies the parameter template ID, which uniquely identifies the parameter template and cannot be modified. it can be obtained through the api [DescribeParameterTemplates](https://www.tencentcloud.com/document/product/409/52651?lang=en).
         :type TemplateId: str
         :param _TemplateName: Parameter template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this field is empty, the original parameter template name will be used.
         :type TemplateName: str
@@ -14022,7 +16589,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Parameter template ID, which uniquely identifies a parameter template and cannot be modified.
+        r"""Specifies the parameter template ID, which uniquely identifies the parameter template and cannot be modified. it can be obtained through the api [DescribeParameterTemplates](https://www.tencentcloud.com/document/product/409/52651?lang=en).
         :rtype: str
         """
         return self._TemplateId
@@ -14099,6 +16666,168 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
 class ModifyParameterTemplateResponse(AbstractModel):
     r"""ModifyParameterTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPrivilege(AbstractModel):
+    r"""Specifies the permissions for modifying a database object, including the data structure of the database object description, the list of permissions required for modification, and the modification type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabasePrivilege: Specifies the database object and permission list to be modified.
+        :type DatabasePrivilege: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
+        :param _ModifyType: Modifies via grantObject, revokeObject, or alterRole. grantObject represents authorization, revokeObject represents withdraw, alterRole represents modify account type.
+        :type ModifyType: str
+        :param _IsCascade: This parameter is required only when ModifyType is revokeObject. when set to true, the permission will be revoked with cascading effect. default false.
+        :type IsCascade: bool
+        """
+        self._DatabasePrivilege = None
+        self._ModifyType = None
+        self._IsCascade = None
+
+    @property
+    def DatabasePrivilege(self):
+        r"""Specifies the database object and permission list to be modified.
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
+        """
+        return self._DatabasePrivilege
+
+    @DatabasePrivilege.setter
+    def DatabasePrivilege(self, DatabasePrivilege):
+        self._DatabasePrivilege = DatabasePrivilege
+
+    @property
+    def ModifyType(self):
+        r"""Modifies via grantObject, revokeObject, or alterRole. grantObject represents authorization, revokeObject represents withdraw, alterRole represents modify account type.
+        :rtype: str
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def IsCascade(self):
+        r"""This parameter is required only when ModifyType is revokeObject. when set to true, the permission will be revoked with cascading effect. default false.
+        :rtype: bool
+        """
+        return self._IsCascade
+
+    @IsCascade.setter
+    def IsCascade(self, IsCascade):
+        self._IsCascade = IsCascade
+
+
+    def _deserialize(self, params):
+        if params.get("DatabasePrivilege") is not None:
+            self._DatabasePrivilege = DatabasePrivilege()
+            self._DatabasePrivilege._deserialize(params.get("DatabasePrivilege"))
+        self._ModifyType = params.get("ModifyType")
+        self._IsCascade = params.get("IsCascade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
+    r"""ModifyReadOnlyDBInstanceWeight request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :type DBInstanceId: str
+        :param _ReadOnlyGroupId: ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en).
+        :type ReadOnlyGroupId: str
+        :param _Weight: Specifies the traffic weight of the read-only instance in the read-only group. valid values: 1-50.
+        :type Weight: int
+        """
+        self._DBInstanceId = None
+        self._ReadOnlyGroupId = None
+        self._Weight = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ReadOnlyGroupId(self):
+        r"""ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en).
+        :rtype: str
+        """
+        return self._ReadOnlyGroupId
+
+    @ReadOnlyGroupId.setter
+    def ReadOnlyGroupId(self, ReadOnlyGroupId):
+        self._ReadOnlyGroupId = ReadOnlyGroupId
+
+    @property
+    def Weight(self):
+        r"""Specifies the traffic weight of the read-only instance in the read-only group. valid values: 1-50.
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReadOnlyDBInstanceWeightResponse(AbstractModel):
+    r"""ModifyReadOnlyDBInstanceWeight response structure.
 
     """
 
@@ -14767,9 +17496,10 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of postgres-hez4fh0v
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-hez4fh0v. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :type DBInstanceId: str
-        :param _IsIpv6: Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        :param _IsIpv6: Specifies whether to enable public network Ipv6. valid values: 1 (yes), 0 (no).
+Default value: 0
         :type IsIpv6: int
         """
         self._DBInstanceId = None
@@ -14777,7 +17507,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID in the format of postgres-hez4fh0v
+        r"""Specifies the instance ID, such as postgres-hez4fh0v. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).
         :rtype: str
         """
         return self._DBInstanceId
@@ -14788,7 +17518,8 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     @property
     def IsIpv6(self):
-        r"""Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        r"""Specifies whether to enable public network Ipv6. valid values: 1 (yes), 0 (no).
+Default value: 0
         :rtype: int
         """
         return self._IsIpv6
@@ -14818,17 +17549,20 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Async task flow ID
+        :param _FlowId: Process ID. FlowId is equivalent to TaskId.
         :type FlowId: int
+        :param _TaskId: Task ID.
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""Async task flow ID
+        r"""Process ID. FlowId is equivalent to TaskId.
         :rtype: int
         """
         return self._FlowId
@@ -14836,6 +17570,17 @@ class OpenDBExtranetAccessResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -14851,6 +17596,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -14992,61 +17738,44 @@ class ParamInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: Parameter ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ID: int
-        :param _Name: Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Name: Parameter name.
         :type Name: str
-        :param _ParamValueType: Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).
-For an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. 
-For a `bool` parameter, the valid values include `true` and `false`; 
-For an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ParamValueType: Parameter value type: integer, real, bool, enum, mutil_enum.
+When the parameter type is integer or real (floating-point), the value range is determined based on the Max and Min of the return value. 
+When the parameter type is boolean, the valid values are true or false. 
+When the parameter type is enum (enumeration type) or mutil_enum (multi-enum type), the valid values are determined by EnumValue in the return value.
         :type ParamValueType: str
-        :param _Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Unit: Parameter value unit. returns null if the parameter has no units.
         :type Unit: str
-        :param _DefaultValue: Default value of the parameter, which is returned as a string
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DefaultValue: Default parameter value. returns in string form.
         :type DefaultValue: str
-        :param _CurrentValue: Current value of the parameter, which is returned as a string
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _CurrentValue: Specifies the current value in string form.
         :type CurrentValue: str
-        :param _Max: The maximum value of the `integer` or `real` parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Max: Specifies the numerical type (integer, real) parameter and its lower bound.
         :type Max: float
         :param _EnumValue: Value range of the enum parameter
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type EnumValue: list of str
-        :param _Min: The minimum value of the `integer` or `real` parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Min: Numerical type (integer, real) parameter specifies the upper bound.
         :type Min: float
-        :param _ParamDescriptionCH: Parameter description in Chinese
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ParamDescriptionCH: Chinese description.
         :type ParamDescriptionCH: str
-        :param _ParamDescriptionEN: Parameter description in English
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ParamDescriptionEN: Specifies the english description of the parameter.
         :type ParamDescriptionEN: str
-        :param _NeedReboot: Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _NeedReboot: Specifies whether a restart is required for parameter modification (true indicates required, false indicates not required).
         :type NeedReboot: bool
-        :param _ClassificationCN: Parameter category in Chinese
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ClassificationCN: Parameter chinese category.
         :type ClassificationCN: str
-        :param _ClassificationEN: Parameter category in English
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _ClassificationEN: Parameter english category.
         :type ClassificationEN: str
-        :param _SpecRelated: Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SpecRelated: Specifies whether it is related to the specification (true for related, false for unrelated).
         :type SpecRelated: bool
-        :param _Advanced: Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Advanced: Indicates whether it is a key parameter (true means it is a key parameter, modification requires special attention and may affect instance performance).
         :type Advanced: bool
-        :param _LastModifyTime: The last modified time of the parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _LastModifyTime: Specifies the last modified time.
         :type LastModifyTime: str
-        :param _StandbyRelated: Parameter primary-secondary constraints, `0`: No constraint, `1`: Standby parameter value must be greater than that of the primary machine, `2`: Primary parameter value must be greater than that of the standby machine.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StandbyRelated: Parameter primary-secondary constraints. `0`: no constraint between primary and standby. `1`: standby parameter value > primary machine parameter value. `2`: primary parameter value must be greater than that of the standby machine.
         :type StandbyRelated: int
         :param _VersionRelationSet: Parameter version association information, containing detailed parameter information for the respective kernel version
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -15079,7 +17808,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ID(self):
         r"""Parameter ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ID
@@ -15090,8 +17818,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
-        r"""Parameter name
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter name.
         :rtype: str
         """
         return self._Name
@@ -15102,11 +17829,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParamValueType(self):
-        r"""Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).
-For an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. 
-For a `bool` parameter, the valid values include `true` and `false`; 
-For an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter value type: integer, real, bool, enum, mutil_enum.
+When the parameter type is integer or real (floating-point), the value range is determined based on the Max and Min of the return value. 
+When the parameter type is boolean, the valid values are true or false. 
+When the parameter type is enum (enumeration type) or mutil_enum (multi-enum type), the valid values are determined by EnumValue in the return value.
         :rtype: str
         """
         return self._ParamValueType
@@ -15117,8 +17843,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Unit(self):
-        r"""Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter value unit. returns null if the parameter has no units.
         :rtype: str
         """
         return self._Unit
@@ -15129,8 +17854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultValue(self):
-        r"""Default value of the parameter, which is returned as a string
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Default parameter value. returns in string form.
         :rtype: str
         """
         return self._DefaultValue
@@ -15141,8 +17865,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CurrentValue(self):
-        r"""Current value of the parameter, which is returned as a string
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the current value in string form.
         :rtype: str
         """
         return self._CurrentValue
@@ -15153,8 +17876,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Max(self):
-        r"""The maximum value of the `integer` or `real` parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the numerical type (integer, real) parameter and its lower bound.
         :rtype: float
         """
         return self._Max
@@ -15177,8 +17899,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Min(self):
-        r"""The minimum value of the `integer` or `real` parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Numerical type (integer, real) parameter specifies the upper bound.
         :rtype: float
         """
         return self._Min
@@ -15189,8 +17910,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParamDescriptionCH(self):
-        r"""Parameter description in Chinese
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Chinese description.
         :rtype: str
         """
         return self._ParamDescriptionCH
@@ -15201,8 +17921,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParamDescriptionEN(self):
-        r"""Parameter description in English
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the english description of the parameter.
         :rtype: str
         """
         return self._ParamDescriptionEN
@@ -15213,8 +17932,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NeedReboot(self):
-        r"""Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies whether a restart is required for parameter modification (true indicates required, false indicates not required).
         :rtype: bool
         """
         return self._NeedReboot
@@ -15225,8 +17943,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClassificationCN(self):
-        r"""Parameter category in Chinese
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter chinese category.
         :rtype: str
         """
         return self._ClassificationCN
@@ -15237,8 +17954,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClassificationEN(self):
-        r"""Parameter category in English
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Parameter english category.
         :rtype: str
         """
         return self._ClassificationEN
@@ -15249,8 +17965,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SpecRelated(self):
-        r"""Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies whether it is related to the specification (true for related, false for unrelated).
         :rtype: bool
         """
         return self._SpecRelated
@@ -15261,8 +17976,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Advanced(self):
-        r"""Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Indicates whether it is a key parameter (true means it is a key parameter, modification requires special attention and may affect instance performance).
         :rtype: bool
         """
         return self._Advanced
@@ -15273,8 +17987,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastModifyTime(self):
-        r"""The last modified time of the parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Specifies the last modified time.
         :rtype: str
         """
         return self._LastModifyTime
@@ -15285,8 +17998,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StandbyRelated(self):
-        r"""Parameter primary-secondary constraints, `0`: No constraint, `1`: Standby parameter value must be greater than that of the primary machine, `2`: Primary parameter value must be greater than that of the standby machine.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter primary-secondary constraints. `0`: no constraint between primary and standby. `1`: standby parameter value > primary machine parameter value. `2`: primary parameter value must be greater than that of the standby machine.
         :rtype: int
         """
         return self._StandbyRelated
@@ -15368,23 +18080,17 @@ class ParamSpecRelation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Parameter name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Parameter name.
         :type Name: str
-        :param _Memory: The specification that corresponds to the parameter information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Memory: Parameter information belonging to specification.
         :type Memory: str
-        :param _Value: The default parameter value under this specification
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Default value of the parameter for this specification.
         :type Value: str
-        :param _Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Unit: Parameter value unit. returns null if the parameter has no units.
         :type Unit: str
-        :param _Max: The maximum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Max: Numerical type (integer, real) parameter specifies the upper bound.
         :type Max: float
-        :param _Min: The minimum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Min: Specifies the numerical type (integer, real) parameter and its lower bound.
         :type Min: float
         :param _EnumValue: Value range of the enum parameter
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -15400,8 +18106,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        r"""Parameter name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter name.
         :rtype: str
         """
         return self._Name
@@ -15412,8 +18117,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
-        r"""The specification that corresponds to the parameter information
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter information belonging to specification.
         :rtype: str
         """
         return self._Memory
@@ -15424,8 +18128,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        r"""The default parameter value under this specification
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Default value of the parameter for this specification.
         :rtype: str
         """
         return self._Value
@@ -15436,8 +18139,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        r"""Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter value unit. returns null if the parameter has no units.
         :rtype: str
         """
         return self._Unit
@@ -15448,8 +18150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        r"""The maximum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Numerical type (integer, real) parameter specifies the upper bound.
         :rtype: float
         """
         return self._Max
@@ -15460,8 +18161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Min(self):
-        r"""The minimum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the numerical type (integer, real) parameter and its lower bound.
         :rtype: float
         """
         return self._Min
@@ -15508,23 +18208,17 @@ class ParamVersionRelation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Parameter name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Parameter name.
         :type Name: str
-        :param _DBKernelVersion: The kernel version that corresponds to the parameter information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DBKernelVersion: Parameter information belonging to kernel version.
         :type DBKernelVersion: str
-        :param _Value: Default parameter value under the kernel version and specification of the instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Default value of the parameter for this version and specification.
         :type Value: str
-        :param _Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Unit: Parameter value unit. returns null if the parameter has no units.
         :type Unit: str
-        :param _Max: The maximum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Max: Numerical type (integer, real) parameter specifies the upper bound.
         :type Max: float
-        :param _Min: The minimum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Min: Specifies the numerical type (integer, real) parameter and its lower bound.
         :type Min: float
         :param _EnumValue: Value range of the enum parameter
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -15540,8 +18234,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        r"""Parameter name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter name.
         :rtype: str
         """
         return self._Name
@@ -15552,8 +18245,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBKernelVersion(self):
-        r"""The kernel version that corresponds to the parameter information
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter information belonging to kernel version.
         :rtype: str
         """
         return self._DBKernelVersion
@@ -15564,8 +18256,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        r"""Default parameter value under the kernel version and specification of the instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Default value of the parameter for this version and specification.
         :rtype: str
         """
         return self._Value
@@ -15576,8 +18267,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        r"""Unit of the parameter value. If the parameter has no unit, this field will return null.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter value unit. returns null if the parameter has no units.
         :rtype: str
         """
         return self._Unit
@@ -15588,8 +18278,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        r"""The maximum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Numerical type (integer, real) parameter specifies the upper bound.
         :rtype: float
         """
         return self._Max
@@ -15600,8 +18289,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Min(self):
-        r"""The minimum value of the `integer` or `real` parameter
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specifies the numerical type (integer, real) parameter and its lower bound.
         :rtype: float
         """
         return self._Min
@@ -18334,6 +21022,362 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TaskDetail(AbstractModel):
+    r"""Task details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentStep: Current task step name.
+        :type CurrentStep: str
+        :param _AllSteps: Describes the step description of the current task you own.
+        :type AllSteps: str
+        :param _Input: Input of the task.
+        :type Input: str
+        :param _Output: Output parameter of the task.
+        :type Output: str
+        :param _SwitchTag: Specifies the switch time after instance configurations are modified. default value: 0.
+This task does not require switching.
+Switch immediately.
+2: switch at specified time.
+3: switch during maintenance time window.
+        :type SwitchTag: int
+        :param _SwitchTime: Specifies the switch time.
+        :type SwitchTime: str
+        :param _Message: Note of the task.
+        :type Message: str
+        """
+        self._CurrentStep = None
+        self._AllSteps = None
+        self._Input = None
+        self._Output = None
+        self._SwitchTag = None
+        self._SwitchTime = None
+        self._Message = None
+
+    @property
+    def CurrentStep(self):
+        r"""Current task step name.
+        :rtype: str
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def AllSteps(self):
+        r"""Describes the step description of the current task you own.
+        :rtype: str
+        """
+        return self._AllSteps
+
+    @AllSteps.setter
+    def AllSteps(self, AllSteps):
+        self._AllSteps = AllSteps
+
+    @property
+    def Input(self):
+        r"""Input of the task.
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""Output parameter of the task.
+        :rtype: str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SwitchTag(self):
+        r"""Specifies the switch time after instance configurations are modified. default value: 0.
+This task does not require switching.
+Switch immediately.
+2: switch at specified time.
+3: switch during maintenance time window.
+        :rtype: int
+        """
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchTime(self):
+        r"""Specifies the switch time.
+        :rtype: str
+        """
+        return self._SwitchTime
+
+    @SwitchTime.setter
+    def SwitchTime(self, SwitchTime):
+        self._SwitchTime = SwitchTime
+
+    @property
+    def Message(self):
+        r"""Note of the task.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._CurrentStep = params.get("CurrentStep")
+        self._AllSteps = params.get("AllSteps")
+        self._Input = params.get("Input")
+        self._Output = params.get("Output")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchTime = params.get("SwitchTime")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskSet(AbstractModel):
+    r"""Task list information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _TaskType: Specifies the task type.
+        :type TaskType: str
+        :param _DBInstanceId: Specifies the instance ID of the task instance.
+        :type DBInstanceId: str
+        :param _StartTime: Start time of the task.
+        :type StartTime: str
+        :param _EndTime: Task end time.
+        :type EndTime: str
+        :param _Status: Specifies the task Running status, including Running, Success, WaitSwitch, Fail, Pause.
+        :type Status: str
+        :param _Progress: Indicates the progress of task execution, with a value range of 0-100.
+        :type Progress: int
+        :param _TaskDetail: Specifies the task details.
+        :type TaskDetail: :class:`tencentcloud.postgres.v20170312.models.TaskDetail`
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._DBInstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Progress = None
+        self._TaskDetail = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""Specifies the task type.
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def DBInstanceId(self):
+        r"""Specifies the instance ID of the task instance.
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def StartTime(self):
+        r"""Start time of the task.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""Task end time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""Specifies the task Running status, including Running, Success, WaitSwitch, Fail, Pause.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""Indicates the progress of task execution, with a value range of 0-100.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskDetail(self):
+        r"""Specifies the task details.
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.TaskDetail`
+        """
+        return self._TaskDetail
+
+    @TaskDetail.setter
+    def TaskDetail(self, TaskDetail):
+        self._TaskDetail = TaskDetail
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        if params.get("TaskDetail") is not None:
+            self._TaskDetail = TaskDetail()
+            self._TaskDetail._deserialize(params.get("TaskDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlockAccountRequest(AbstractModel):
+    r"""UnlockAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID.		
+        :type DBInstanceId: str
+        :param _UserName: Account name.
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""Instance ID.		
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        r"""Account name.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlockAccountResponse(AbstractModel):
+    r"""UnlockAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
