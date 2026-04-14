@@ -613,7 +613,7 @@ class ApplyWebVerificationBizTokenIntlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RedirectURL: The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
+        :param _RedirectURL: Web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
 After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
 Example: https://www.tencentcloud.com/products/faceid.
         :type RedirectURL: str
@@ -636,7 +636,7 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
 
     @property
     def RedirectURL(self):
-        r"""The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
+        r"""Web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
 After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
 Example: https://www.tencentcloud.com/products/faceid.
         :rtype: str
@@ -964,6 +964,621 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BankCard2EVerificationRequest(AbstractModel):
+    r"""BankCard2EVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+        :type Name: str
+        :param _BankCard: Bank card.
+        :type BankCard: str
+        :param _Encryption: Sensitive data encryption info.
+- Users with encryption requirements for incoming information (name, bank card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._Name = None
+        self._BankCard = None
+        self._Encryption = None
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BankCard(self):
+        r"""Bank card.
+        :rtype: str
+        """
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+- Users with encryption requirements for incoming information (name, bank card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._BankCard = params.get("BankCard")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BankCard2EVerificationResponse(AbstractModel):
+    r"""BankCard2EVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code.
+-Billing result code:
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-4': 'Cardholder information is incorrect'.
+'-5': 'Cardless payment not enabled'.
+'-6': 'Card confiscated'.
+'-7': 'Invalid card number'.
+'-8': 'No corresponding issuing bank for this card'.
+'-9': 'The card is uninitialized or a Sleep Card'.
+'-10': 'Cheat card, card confiscation'.
+'-11': 'Reported lost'.
+'-12': 'The card has expired'.
+'-13': 'Restricted card'.
+'-14': 'Number of password errors exceeds the limit'.
+'-15': 'Issuer does not support this transaction'.
+'-18': 'Card status exception or card number error'.
+
+-Non-billing Result Code:
+'-2': 'Name verification failed'.
+'-3': 'Incorrect bank card number format'.
+'-16': 'Verification Center Service busy'.
+'-17': 'Verification attempts exceeded. Please retry the next day.'
+
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code.
+-Billing result code:
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-4': 'Cardholder information is incorrect'.
+'-5': 'Cardless payment not enabled'.
+'-6': 'Card confiscated'.
+'-7': 'Invalid card number'.
+'-8': 'No corresponding issuing bank for this card'.
+'-9': 'The card is uninitialized or a Sleep Card'.
+'-10': 'Cheat card, card confiscation'.
+'-11': 'Reported lost'.
+'-12': 'The card has expired'.
+'-13': 'Restricted card'.
+'-14': 'Number of password errors exceeds the limit'.
+'-15': 'Issuer does not support this transaction'.
+'-18': 'Card status exception or card number error'.
+
+-Non-billing Result Code:
+'-2': 'Name verification failed'.
+'-3': 'Incorrect bank card number format'.
+'-16': 'Verification Center Service busy'.
+'-17': 'Verification attempts exceeded. Please retry the next day.'
+
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
+class BankCard4EVerificationRequest(AbstractModel):
+    r"""BankCard4EVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+        :type Name: str
+        :param _BankCard: Bank card.
+        :type BankCard: str
+        :param _Phone: Mobile number.
+        :type Phone: str
+        :param _IdCard: ID number for account opening.
+-The document type must match the Type parameter, for example: input the ID card number for an identity card.
+        :type IdCard: str
+        :param _CertType: Document type.
+-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.
+-Currently defaults to 0: ID card. Other document types are not currently supported.
+        :type CertType: int
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number, mobile number, bank card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._Name = None
+        self._BankCard = None
+        self._Phone = None
+        self._IdCard = None
+        self._CertType = None
+        self._Encryption = None
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BankCard(self):
+        r"""Bank card.
+        :rtype: str
+        """
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Phone(self):
+        r"""Mobile number.
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def IdCard(self):
+        r"""ID number for account opening.
+-The document type must match the Type parameter, for example: input the ID card number for an identity card.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def CertType(self):
+        r"""Document type.
+-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.
+-Currently defaults to 0: ID card. Other document types are not currently supported.
+        :rtype: int
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number, mobile number, bank card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._BankCard = params.get("BankCard")
+        self._Phone = params.get("Phone")
+        self._IdCard = params.get("IdCard")
+        self._CertType = params.get("CertType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BankCard4EVerificationResponse(AbstractModel):
+    r"""BankCard4EVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code.
+-Result code for charges
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-6': 'Cardholder information is incorrect'.
+'-7': 'Cardless payment not enabled'.
+'-8': 'Card confiscated'.
+'-9': 'Invalid card number'.
+'-10': 'No corresponding issuing bank for this card'.
+'-11': 'The card is uninitialized or a Sleep Card'.
+'-12': 'Cheat card, card confiscation'.
+'-13': 'Reported lost'.
+'-14': 'The card has expired.'
+'-15': 'Restricted card'.
+'-16': 'Exceeded the number of password errors'.
+'-17': 'Issuer does not support this transaction'.
+'-21': 'Card status exception or card number error'.
+
+-Result code with no charge
+'-2': 'Name verification failed'.
+'-3': 'Identity number error'.
+'-4': 'Incorrect bank card number format'.
+'-5': 'Invalid phone number'.
+'-18': 'Verification Center Service busy'.
+'-19': 'Exceeded maximum verification attempts. Please retry the next day.'
+'-20': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code.
+-Result code for charges
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-6': 'Cardholder information is incorrect'.
+'-7': 'Cardless payment not enabled'.
+'-8': 'Card confiscated'.
+'-9': 'Invalid card number'.
+'-10': 'No corresponding issuing bank for this card'.
+'-11': 'The card is uninitialized or a Sleep Card'.
+'-12': 'Cheat card, card confiscation'.
+'-13': 'Reported lost'.
+'-14': 'The card has expired.'
+'-15': 'Restricted card'.
+'-16': 'Exceeded the number of password errors'.
+'-17': 'Issuer does not support this transaction'.
+'-21': 'Card status exception or card number error'.
+
+-Result code with no charge
+'-2': 'Name verification failed'.
+'-3': 'Identity number error'.
+'-4': 'Incorrect bank card number format'.
+'-5': 'Invalid phone number'.
+'-18': 'Verification Center Service busy'.
+'-19': 'Exceeded maximum verification attempts. Please retry the next day.'
+'-20': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
+class BankCardVerificationRequest(AbstractModel):
+    r"""BankCardVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: ID number for account opening.
+-The document type must match the Type parameter, for example: input the ID card number for an identity card.
+        :type IdCard: str
+        :param _Name: Name
+        :type Name: str
+        :param _BankCard: Bank card.
+        :type BankCard: str
+        :param _CertType: Document type.
+-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.
+-Currently default: 0 ID card. Other document types are not currently supported.
+        :type CertType: int
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number, bank card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._IdCard = None
+        self._Name = None
+        self._BankCard = None
+        self._CertType = None
+        self._Encryption = None
+
+    @property
+    def IdCard(self):
+        r"""ID number for account opening.
+-The document type must match the Type parameter, for example: input the ID card number for an identity card.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BankCard(self):
+        r"""Bank card.
+        :rtype: str
+        """
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def CertType(self):
+        r"""Document type.
+-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.
+-Currently default: 0 ID card. Other document types are not currently supported.
+        :rtype: int
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number, bank card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._BankCard = params.get("BankCard")
+        self._CertType = params.get("CertType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BankCardVerificationResponse(AbstractModel):
+    r"""BankCardVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code.
+-Result code for charges
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-5': 'Cardholder information is incorrect'.
+'-6': 'Cardless payment not enabled'.
+'-7': 'Card confiscated'.
+'-8': 'Invalid card number'.
+'-9': 'No corresponding issuing bank for this card'.
+'-10': 'The card is uninitialized or a Sleep Card'.
+'-11': 'Cheat card, card retention'.
+'-12': 'Reported lost'.
+'-13': 'The card has expired.'
+'-14': 'Restricted card'.
+'-15': 'Exceeded the number of password errors.'
+'-16': 'Issuer does not support this transaction'.
+'-20': 'Card status exception or card number error'.
+
+-Result code with no charge
+'-2': 'Name verification failed'.
+'-3': 'Identity number error'.
+'-4': 'Incorrect bank card number format'.
+'-17': 'Verification Center Service busy'.
+'-18': 'Exceeded verification attempts. Please retry the next day.'
+'-19': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'	
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code.
+-Result code for charges
+'0': 'Authentication passed'.
+'-1': 'Authentication failed'.
+'-5': 'Cardholder information is incorrect'.
+'-6': 'Cardless payment not enabled'.
+'-7': 'Card confiscated'.
+'-8': 'Invalid card number'.
+'-9': 'No corresponding issuing bank for this card'.
+'-10': 'The card is uninitialized or a Sleep Card'.
+'-11': 'Cheat card, card retention'.
+'-12': 'Reported lost'.
+'-13': 'The card has expired.'
+'-14': 'Restricted card'.
+'-15': 'Exceeded the number of password errors.'
+'-16': 'Issuer does not support this transaction'.
+'-20': 'Card status exception or card number error'.
+
+-Result code with no charge
+'-2': 'Name verification failed'.
+'-3': 'Identity number error'.
+'-4': 'Incorrect bank card number format'.
+'-17': 'Verification Center Service busy'.
+'-18': 'Exceeded verification attempts. Please retry the next day.'
+'-19': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'	
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CardInfo(AbstractModel):
@@ -2881,21 +3496,26 @@ class EditDetail(AbstractModel):
 
 
 class Encryption(AbstractModel):
-    r"""Sensitive Data Encryption
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _EncryptList: When using the encryption service, fill in the fields to be encrypted. One or more encrypted fields can be entered in this interface.
+        :param _EncryptList: <p>When using the encryption service, fill in the field to be encrypted. One or more encrypted fields can be auto-filled in this API.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EncryptList: list of str
-        :param _CiphertextBlob: Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://www.tencentcloud.com/document/product/1061/77849?lang=en&pg=">Data Encryption</a> document.
+        :param _CiphertextBlob: <p>Encrypted symmetric key. See the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document for key generation and use.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CiphertextBlob: str
-        :param _Iv: initialization vector for CBC encryption (a customer-defined string with a length of 16 characters).
+        :param _Iv: <p>Users with encryption requirements import the initial vector for CBC encryption (custom string with a length of 16 characters).</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Iv: str
-        :param _Algorithm: Encryption algorithm (supports 'AES-256-CBC'/'SM4-GCM'); default: 'AES-256-CBC' if not specified.
+        :param _Algorithm: <p>Encryption algorithm (supports 'AES-256-CBC', 'SM4-GCM'). Defaults to 'AES-256-CBC' if not specified.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Algorithm: str
-        :param _TagList: Message digest generated by the SM4-GCM algorithm (used for verifying message integrity).
+        :param _TagList: <p>Message digest generated by the SM4-GCM algorithm (used when verifying message integrity)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TagList: list of str
         """
         self._EncryptList = None
@@ -2906,7 +3526,8 @@ class Encryption(AbstractModel):
 
     @property
     def EncryptList(self):
-        r"""When using the encryption service, fill in the fields to be encrypted. One or more encrypted fields can be entered in this interface.
+        r"""<p>When using the encryption service, fill in the field to be encrypted. One or more encrypted fields can be auto-filled in this API.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._EncryptList
@@ -2917,7 +3538,8 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        r"""Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href="https://www.tencentcloud.com/document/product/1061/77849?lang=en&pg=">Data Encryption</a> document.
+        r"""<p>Encrypted symmetric key. See the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document for key generation and use.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CiphertextBlob
@@ -2928,7 +3550,8 @@ class Encryption(AbstractModel):
 
     @property
     def Iv(self):
-        r"""initialization vector for CBC encryption (a customer-defined string with a length of 16 characters).
+        r"""<p>Users with encryption requirements import the initial vector for CBC encryption (custom string with a length of 16 characters).</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Iv
@@ -2939,7 +3562,8 @@ class Encryption(AbstractModel):
 
     @property
     def Algorithm(self):
-        r"""Encryption algorithm (supports 'AES-256-CBC'/'SM4-GCM'); default: 'AES-256-CBC' if not specified.
+        r"""<p>Encryption algorithm (supports 'AES-256-CBC', 'SM4-GCM'). Defaults to 'AES-256-CBC' if not specified.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Algorithm
@@ -2950,7 +3574,8 @@ class Encryption(AbstractModel):
 
     @property
     def TagList(self):
-        r"""Message digest generated by the SM4-GCM algorithm (used for verifying message integrity).
+        r"""<p>Message digest generated by the SM4-GCM algorithm (used when verifying message integrity)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._TagList
@@ -9957,6 +10582,223 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class VideoLivenessCompareRequest(AbstractModel):
+    r"""VideoLivenessCompare request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
+
+The image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.
+        :type ImageUrl: str
+        :param _ImageMd5: The 32-bit MD5 checksum of the image for comparison
+        :type ImageMd5: str
+        :param _VideoUrl: The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
+
+The video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.
+        :type VideoUrl: str
+        :param _VideoMd5: The 32-bit MD5 checksum of the video
+        :type VideoMd5: str
+        :param _LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        :type LivenessType: str
+        :param _ValidateData: LIP parameter: Pass in a custom 4-digit verification code.
+ACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).
+SILENT parameter: Null.
+        :type ValidateData: str
+        """
+        self._ImageUrl = None
+        self._ImageMd5 = None
+        self._VideoUrl = None
+        self._VideoMd5 = None
+        self._LivenessType = None
+        self._ValidateData = None
+
+    @property
+    def ImageUrl(self):
+        r"""The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
+
+The image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageMd5(self):
+        r"""The 32-bit MD5 checksum of the image for comparison
+        :rtype: str
+        """
+        return self._ImageMd5
+
+    @ImageMd5.setter
+    def ImageMd5(self, ImageMd5):
+        self._ImageMd5 = ImageMd5
+
+    @property
+    def VideoUrl(self):
+        r"""The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
+
+The video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def VideoMd5(self):
+        r"""The 32-bit MD5 checksum of the video
+        :rtype: str
+        """
+        return self._VideoMd5
+
+    @VideoMd5.setter
+    def VideoMd5(self, VideoMd5):
+        self._VideoMd5 = VideoMd5
+
+    @property
+    def LivenessType(self):
+        r"""The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        :rtype: str
+        """
+        return self._LivenessType
+
+    @LivenessType.setter
+    def LivenessType(self, LivenessType):
+        self._LivenessType = LivenessType
+
+    @property
+    def ValidateData(self):
+        r"""LIP parameter: Pass in a custom 4-digit verification code.
+ACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).
+SILENT parameter: Null.
+        :rtype: str
+        """
+        return self._ValidateData
+
+    @ValidateData.setter
+    def ValidateData(self, ValidateData):
+        self._ValidateData = ValidateData
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageMd5 = params.get("ImageMd5")
+        self._VideoUrl = params.get("VideoUrl")
+        self._VideoMd5 = params.get("VideoMd5")
+        self._LivenessType = params.get("LivenessType")
+        self._ValidateData = params.get("ValidateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoLivenessCompareResponse(AbstractModel):
+    r"""VideoLivenessCompare response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sim: The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
+        :type Sim: float
+        :param _Result: The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :type Result: str
+        :param _Description: The service result description
+        :type Description: str
+        :param _BestFrame: The best video screenshot after successful verification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._BestFrame = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        r"""The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
+        :rtype: float
+        """
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        r"""The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""The service result description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BestFrame(self):
+        r"""The best video screenshot after successful verification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
+        return self._BestFrame
+
+    @BestFrame.setter
+    def BestFrame(self, BestFrame):
+        self._BestFrame = BestFrame
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        if params.get("BestFrame") is not None:
+            self._BestFrame = FileInfo()
+            self._BestFrame._deserialize(params.get("BestFrame"))
+        self._RequestId = params.get("RequestId")
+
+
 class WebVerificationConfigIntl(AbstractModel):
     r"""eKYC Web related configuration
 
@@ -10001,7 +10843,8 @@ Example: false
 2:Action mode;
 3:Lighting mode;
 4:Action+Lighting mode;
-5:Action+Lighting(High security) mode.
+5:Action+Lighting(High security) mode. This mode offers higher security but has a lower pass rate. Please contact us before use.
+
 Example: 4
         :type SecurityLevel: int
         :param _SkipPrivacyPolicy: Whether to skip the agreement page. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page. The default is false.
@@ -10053,6 +10896,11 @@ The default value is 45.
 true (default value): Expired HKID is allowed to enter the liveness process.
 false : Expired HKID is rejected and cannot enter the liveness process.
         :type AllowExpiredDocument: bool
+        :param _Version: Service version, including Basic version (BASIC) and PLUS version (PLUS). The currently supported service version are as follows:
+BASIC: Basic version.
+PLUS: PLUS version.
+The default value is BASIC.
+        :type Version: str
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -10070,6 +10918,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._LivenessTimeout = None
         self._SelectedWarningCodes = None
         self._AllowExpiredDocument = None
+        self._Version = None
 
     @property
     def AutoSkipStartPage(self):
@@ -10155,7 +11004,8 @@ Example: false
 2:Action mode;
 3:Lighting mode;
 4:Action+Lighting mode;
-5:Action+Lighting(High security) mode.
+5:Action+Lighting(High security) mode. This mode offers higher security but has a lower pass rate. Please contact us before use.
+
 Example: 4
         :rtype: int
         """
@@ -10304,6 +11154,20 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     def AllowExpiredDocument(self, AllowExpiredDocument):
         self._AllowExpiredDocument = AllowExpiredDocument
 
+    @property
+    def Version(self):
+        r"""Service version, including Basic version (BASIC) and PLUS version (PLUS). The currently supported service version are as follows:
+BASIC: Basic version.
+PLUS: PLUS version.
+The default value is BASIC.
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -10322,6 +11186,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._LivenessTimeout = params.get("LivenessTimeout")
         self._SelectedWarningCodes = params.get("SelectedWarningCodes")
         self._AllowExpiredDocument = params.get("AllowExpiredDocument")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

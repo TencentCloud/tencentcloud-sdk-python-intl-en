@@ -371,31 +371,32 @@ class AsrParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Lang: The model type used for the transcription service. Example: `"zh"`.
+        :param _Lang: The model type used for the transcription service. Example: <code>"zh"</code>.
 
 Supported languages for speech-to-text:
 
-- `"zh"`: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
-- `"zh-TW"`: Chinese (Traditional)
-- `"vi"`: Vietnamese
-- `"ja"`: Japanese
-- `"ko"`: Korean
-- `"id"`: Indonesian
-- `"th"`: Thai
-- `"pt"`: Portuguese
-- `"tr"`: Turkish
-- `"ar"`: Arabic
-- `"es"`: Spanish
-- `"hi"`: Hindi
-- `"fr"`: French
-- `"ms"`: Malay
-- `"fil"`: Filipino
-- `"de"`: German
-- `"it"`: Italian
-- `"ru"`: Russian
-- `"sv"`: Swedish
-- `"da"`: Danish
-- `"no"`: Norwegian
+- <code>"zh"</code>: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
+- <code>"zh-TW"</code>: Chinese (Traditional)
+- <code>"en"</code>: English
+- <code>"vi"</code>: Vietnamese
+- <code>"ja"</code>: Japanese
+- <code>"ko"</code>: Korean
+- <code>"id"</code>: Indonesian
+- <code>"th"</code>: Thai
+- <code>"pt"</code>: Portuguese
+- <code>"tr"</code>: Turkish
+- <code>"ar"</code>: Arabic
+- <code>"es"</code>: Spanish
+- <code>"hi"</code>: Hindi
+- <code>"fr"</code>: French
+- <code>"ms"</code>: Malay
+- <code>"fil"</code>: Filipino
+- <code>"de"</code>: German
+- <code>"it"</code>: Italian
+- <code>"ru"</code>: Russian
+- <code>"sv"</code>: Swedish
+- <code>"da"</code>: Danish
+- <code>"no"</code>: Norwegian
 
 > **Note:** If the language you need is not listed, please contact our support team.
         :type Lang: str
@@ -428,31 +429,32 @@ Supported languages for speech-to-text:
 
     @property
     def Lang(self):
-        r"""The model type used for the transcription service. Example: `"zh"`.
+        r"""The model type used for the transcription service. Example: <code>"zh"</code>.
 
 Supported languages for speech-to-text:
 
-- `"zh"`: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
-- `"zh-TW"`: Chinese (Traditional)
-- `"vi"`: Vietnamese
-- `"ja"`: Japanese
-- `"ko"`: Korean
-- `"id"`: Indonesian
-- `"th"`: Thai
-- `"pt"`: Portuguese
-- `"tr"`: Turkish
-- `"ar"`: Arabic
-- `"es"`: Spanish
-- `"hi"`: Hindi
-- `"fr"`: French
-- `"ms"`: Malay
-- `"fil"`: Filipino
-- `"de"`: German
-- `"it"`: Italian
-- `"ru"`: Russian
-- `"sv"`: Swedish
-- `"da"`: Danish
-- `"no"`: Norwegian
+- <code>"zh"</code>: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.
+- <code>"zh-TW"</code>: Chinese (Traditional)
+- <code>"en"</code>: English
+- <code>"vi"</code>: Vietnamese
+- <code>"ja"</code>: Japanese
+- <code>"ko"</code>: Korean
+- <code>"id"</code>: Indonesian
+- <code>"th"</code>: Thai
+- <code>"pt"</code>: Portuguese
+- <code>"tr"</code>: Turkish
+- <code>"ar"</code>: Arabic
+- <code>"es"</code>: Spanish
+- <code>"hi"</code>: Hindi
+- <code>"fr"</code>: French
+- <code>"ms"</code>: Malay
+- <code>"fil"</code>: Filipino
+- <code>"de"</code>: German
+- <code>"it"</code>: Italian
+- <code>"ru"</code>: Russian
+- <code>"sv"</code>: Swedish
+- <code>"da"</code>: Danish
+- <code>"no"</code>: Norwegian
 
 > **Note:** If the language you need is not listed, please contact our support team.
         :rtype: str

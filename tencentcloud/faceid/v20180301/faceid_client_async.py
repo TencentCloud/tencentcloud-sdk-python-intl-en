@@ -79,6 +79,60 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BankCard2EVerification(
+            self,
+            request: models.BankCard2EVerificationRequest,
+            opts: Dict = None,
+    ) -> models.BankCard2EVerificationResponse:
+        """
+        This API is used to validate the authenticity and consistency of the name and bank card number.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BankCard2EVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BankCard2EVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BankCard4EVerification(
+            self,
+            request: models.BankCard4EVerificationRequest,
+            opts: Dict = None,
+    ) -> models.BankCard4EVerificationResponse:
+        """
+        This API is used to verify the authenticity and consistency of the bank card number, name, ID number, and mobile number for account opening.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BankCard4EVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BankCard4EVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BankCardVerification(
+            self,
+            request: models.BankCardVerificationRequest,
+            opts: Dict = None,
+    ) -> models.BankCardVerificationResponse:
+        """
+        This API is used to verify the authenticity and consistency of the bank card number, name, and ID number of information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BankCardVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BankCardVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CompareFaceLiveness(
             self,
             request: models.CompareFaceLivenessRequest,
@@ -276,6 +330,24 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "LivenessCompare"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.LivenessCompareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VideoLivenessCompare(
+            self,
+            request: models.VideoLivenessCompareRequest,
+            opts: Dict = None,
+    ) -> models.VideoLivenessCompareResponse:
+        """
+        This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VideoLivenessCompare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VideoLivenessCompareResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -70,3 +70,26 @@ class VclmClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitImageToVideoViduJob(self, request):
+        r"""Submit a Vidu image-to-video task API
+
+        :param request: Request instance for SubmitImageToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitImageToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitImageToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
