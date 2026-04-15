@@ -133,6 +133,24 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckBankCardInformation(
+            self,
+            request: models.CheckBankCardInformationRequest,
+            opts: Dict = None,
+    ) -> models.CheckBankCardInformationResponse:
+        """
+        Bank card basic information query
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckBankCardInformation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckBankCardInformationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CompareFaceLiveness(
             self,
             request: models.CompareFaceLivenessRequest,

@@ -164,6 +164,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckBankCardInformation(self, request):
+        r"""Bank card basic information query
+
+        :param request: Request instance for CheckBankCardInformation.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckBankCardInformationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckBankCardInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckBankCardInformation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckBankCardInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CompareFaceLiveness(self, request):
         r"""This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.
 

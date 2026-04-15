@@ -1525,7 +1525,7 @@ class ClbClient(AbstractClient):
         This API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
         This API is used to describe restrictions.
         -SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.
-        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1).
+        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Checking Account Type](https://www.tencentcloud.com/document/product/684/15246).
         -Classic CLB does not support binding SCF.
         -Basic Network Type does not support binding SCF.
         -CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.
