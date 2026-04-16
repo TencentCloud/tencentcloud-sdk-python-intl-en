@@ -31,7 +31,7 @@ class RceClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRiskAssessmentResponse:
         """
-        This API is used to query risk assessment results.
+        This API is used to query risk assessment results
         """
         
         kwargs = {}

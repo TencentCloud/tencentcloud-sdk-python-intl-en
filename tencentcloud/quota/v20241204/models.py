@@ -228,7 +228,7 @@ class CreateAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Alarm rule name. specifies the name of the Alarm rule.
+        :param _Name: Alarm rule name. specifies the name of the Alarm rule
         :type Name: str
         :param _ProductId: Product ID.
         :type ProductId: int
@@ -253,7 +253,7 @@ class CreateAlarmRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Alarm rule name. specifies the name of the Alarm rule.
+        r"""Alarm rule name. specifies the name of the Alarm rule
         :rtype: str
         """
         return self._Name

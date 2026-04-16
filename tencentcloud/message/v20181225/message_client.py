@@ -27,7 +27,7 @@ class MessageClient(AbstractClient):
 
 
     def ModifySendChannelOnMsgTypes(self, request):
-        r"""This API is used to batch modify delivery methods.
+        r"""This API is used to batch modify delivery methods
 
         :param request: Request instance for ModifySendChannelOnMsgTypes.
         :type request: :class:`tencentcloud.message.v20181225.models.ModifySendChannelOnMsgTypesRequest`

@@ -31,7 +31,7 @@ class MessageClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySendChannelOnMsgTypesResponse:
         """
-        This API is used to batch modify delivery methods.
+        This API is used to batch modify delivery methods
         """
         
         kwargs = {}

@@ -267,14 +267,14 @@ class DescribeCloudDedicatedZoneResourceSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CdzId: Unique id of the cloud dedicated zone.
+        :param _CdzId: Unique id of the cloud dedicated zone
         :type CdzId: str
         """
         self._CdzId = None
 
     @property
     def CdzId(self):
-        r"""Unique id of the cloud dedicated zone.
+        r"""Unique id of the cloud dedicated zone
         :rtype: str
         """
         return self._CdzId

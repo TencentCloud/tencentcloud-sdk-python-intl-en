@@ -25,14 +25,14 @@ class ModifySendChannelOnMsgTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SendTypes: Message sending channel.
+        :param _SendTypes: Message sending channel
         :type SendTypes: list of SendType
         """
         self._SendTypes = None
 
     @property
     def SendTypes(self):
-        r"""Message sending channel.
+        r"""Message sending channel
         :rtype: list of SendType
         """
         return self._SendTypes
