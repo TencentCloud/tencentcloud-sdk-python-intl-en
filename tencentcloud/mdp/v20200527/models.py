@@ -572,7 +572,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class CdnDomainInfo(AbstractModel):
-    r"""Channel-associated domain information list.
+    r"""
 
     """
 
@@ -936,7 +936,7 @@ class ConfigAliasesInfo(AbstractModel):
 
 
 class CosInputInfo(AbstractModel):
-    r"""cos input information
+    r"""
 
     """
 
@@ -1779,6 +1779,8 @@ Optional values: Live, VOD.
         :type PlaybackConf: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
         :param _AdBreaks: AdBreaks is only valid when the source type is Vod.
         :type AdBreaks: list of AdBreakInfo
+        :param _VodAcquisitionMethod: VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.
+        :type VodAcquisitionMethod: str
         """
         self._Name = None
         self._AttachedChannel = None
@@ -1787,6 +1789,7 @@ Optional values: Live, VOD.
         self._SourceName = None
         self._PlaybackConf = None
         self._AdBreaks = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Name(self):
@@ -1866,6 +1869,17 @@ Optional values: Live, VOD.
     def AdBreaks(self, AdBreaks):
         self._AdBreaks = AdBreaks
 
+    @property
+    def VodAcquisitionMethod(self):
+        r"""VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1882,6 +1896,7 @@ Optional values: Live, VOD.
                 obj = AdBreakInfo()
                 obj._deserialize(item)
                 self._AdBreaks.append(obj)
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6330,7 +6345,7 @@ class DescribeStreamPackageVodRemuxTasksResponse(AbstractModel):
 
 
 class DomainRecordInfo(AbstractModel):
-    r"""Channel-associated domain record information.
+    r"""
 
     """
 
@@ -7389,6 +7404,8 @@ class LinearAssemblyProgramInfo(AbstractModel):
         :type Region: str
         :param _SourceLocationName: SourceLocation name.
         :type SourceLocationName: str
+        :param _VodAcquisitionMethod: VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported
+        :type VodAcquisitionMethod: str
         """
         self._Name = None
         self._SourceType = None
@@ -7401,6 +7418,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
         self._Id = None
         self._Region = None
         self._SourceLocationName = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Name(self):
@@ -7523,6 +7541,17 @@ class LinearAssemblyProgramInfo(AbstractModel):
     def SourceLocationName(self, SourceLocationName):
         self._SourceLocationName = SourceLocationName
 
+    @property
+    def VodAcquisitionMethod(self):
+        r"""VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7543,6 +7572,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
         self._Id = params.get("Id")
         self._Region = params.get("Region")
         self._SourceLocationName = params.get("SourceLocationName")
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8451,6 +8481,8 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
         :type PlaybackConf: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
         :param _AdBreaks: AdBreaks.
         :type AdBreaks: list of AdBreakInfo
+        :param _VodAcquisitionMethod: VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.
+        :type VodAcquisitionMethod: str
         """
         self._Id = None
         self._Name = None
@@ -8459,6 +8491,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
         self._SourceName = None
         self._PlaybackConf = None
         self._AdBreaks = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Id(self):
@@ -8537,6 +8570,17 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
     def AdBreaks(self, AdBreaks):
         self._AdBreaks = AdBreaks
 
+    @property
+    def VodAcquisitionMethod(self):
+        r"""VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8553,6 +8597,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
                 obj = AdBreakInfo()
                 obj._deserialize(item)
                 self._AdBreaks.append(obj)
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9970,7 +10015,7 @@ class ProgramScheduleInfo(AbstractModel):
 
 
 class SSAIChannelInfo(AbstractModel):
-    r"""Ad insertion channel configuration information.
+    r"""
 
     """
 
