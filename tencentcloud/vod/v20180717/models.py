@@ -12609,29 +12609,32 @@ class ApplyUploadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaType: Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        :param _MediaType: Media type. For available values, refer to [Upload Capability Summary](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type MediaType: str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <b>The VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _MediaName: Media name.
         :type MediaName: str
-        :param _CoverType: Cover type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        :param _CoverType: Cover Type. For available values, refer to [Upload Capability Summary](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type CoverType: str
-        :param _Procedure: Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](https://intl.cloud.tencent.com/document/product/266/33819?from_cn_redirect=1) and naming the templates.
+        :param _Procedure: Subsequent media task processing operations allow automatic task initiation after media upload is completed. The parameter value is the task flow template name. VOD supports [creating a task flow template](https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1) and template naming.
         :type Procedure: str
-        :param _ExpireTime: Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _ExpireTime: Media file expiry time, format according to ISO 8601 standard representation. See [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F) for details.
         :type ExpireTime: str
-        :param _StorageRegion: Specifies upload region. This is only applicable to users that have special requirements for the upload region.
+        :param _StorageRegion: Designated upload park, applicable only to the user with special requirement for upload target region.
         :type StorageRegion: str
-        :param _ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
-<li>Default value: 0, which means "Other".</li>
+        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+<li>Default value: 0, indicating other categories.</li>
         :type ClassId: int
-        :param _SourceContext: Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.
+        :param _SourceContext: Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters.
         :type SourceContext: str
-        :param _SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters.
+        :param _SessionContext: Session context, used for passing through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, with a maximum of 1000 characters.
         :type SessionContext: str
-        :param _ExtInfo: Reserved parameter for special purposes.
+        :param _ExtInfo: Reserved field, used when special purpose.
         :type ExtInfo: str
+        :param _MediaStoragePath: Media storage path, starting with /.
+Only sub-apps in [FileID + Path mode](https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1) can specify the storage path.
+        :type MediaStoragePath: str
         """
         self._MediaType = None
         self._SubAppId = None
@@ -12644,10 +12647,11 @@ class ApplyUploadRequest(AbstractModel):
         self._SourceContext = None
         self._SessionContext = None
         self._ExtInfo = None
+        self._MediaStoragePath = None
 
     @property
     def MediaType(self):
-        r"""Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        r"""Media type. For available values, refer to [Upload Capability Summary](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :rtype: str
         """
         return self._MediaType
@@ -12658,7 +12662,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        r"""<b>The VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :rtype: int
         """
         return self._SubAppId
@@ -12680,7 +12684,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def CoverType(self):
-        r"""Cover type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        r"""Cover Type. For available values, refer to [Upload Capability Summary](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :rtype: str
         """
         return self._CoverType
@@ -12691,7 +12695,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def Procedure(self):
-        r"""Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](https://intl.cloud.tencent.com/document/product/266/33819?from_cn_redirect=1) and naming the templates.
+        r"""Subsequent media task processing operations allow automatic task initiation after media upload is completed. The parameter value is the task flow template name. VOD supports [creating a task flow template](https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1) and template naming.
         :rtype: str
         """
         return self._Procedure
@@ -12702,7 +12706,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Media file expiry time, format according to ISO 8601 standard representation. See [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F) for details.
         :rtype: str
         """
         return self._ExpireTime
@@ -12713,7 +12717,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""Specifies upload region. This is only applicable to users that have special requirements for the upload region.
+        r"""Designated upload park, applicable only to the user with special requirement for upload target region.
         :rtype: str
         """
         return self._StorageRegion
@@ -12724,8 +12728,8 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
-<li>Default value: 0, which means "Other".</li>
+        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+<li>Default value: 0, indicating other categories.</li>
         :rtype: int
         """
         return self._ClassId
@@ -12736,7 +12740,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def SourceContext(self):
-        r"""Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.
+        r"""Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters.
         :rtype: str
         """
         return self._SourceContext
@@ -12747,7 +12751,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters.
+        r"""Session context, used for passing through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, with a maximum of 1000 characters.
         :rtype: str
         """
         return self._SessionContext
@@ -12758,7 +12762,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""Reserved parameter for special purposes.
+        r"""Reserved field, used when special purpose.
         :rtype: str
         """
         return self._ExtInfo
@@ -12766,6 +12770,18 @@ class ApplyUploadRequest(AbstractModel):
     @ExtInfo.setter
     def ExtInfo(self, ExtInfo):
         self._ExtInfo = ExtInfo
+
+    @property
+    def MediaStoragePath(self):
+        r"""Media storage path, starting with /.
+Only sub-apps in [FileID + Path mode](https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1) can specify the storage path.
+        :rtype: str
+        """
+        return self._MediaStoragePath
+
+    @MediaStoragePath.setter
+    def MediaStoragePath(self, MediaStoragePath):
+        self._MediaStoragePath = MediaStoragePath
 
 
     def _deserialize(self, params):
@@ -12780,6 +12796,7 @@ class ApplyUploadRequest(AbstractModel):
         self._SourceContext = params.get("SourceContext")
         self._SessionContext = params.get("SessionContext")
         self._ExtInfo = params.get("ExtInfo")
+        self._MediaStoragePath = params.get("MediaStoragePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12797,19 +12814,17 @@ class ApplyUploadResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageBucket: Storage bucket, which is used as the `bucket_name` in the URL of the upload API.
+        :param _StorageBucket: Bucket for uploading the API URL bucket_name.
         :type StorageBucket: str
-        :param _StorageRegion: Storage region, which is used as the `Region` in the `Host` of the upload API.
+        :param _StorageRegion: Storage campus for uploading the Host Region of the port.
         :type StorageRegion: str
-        :param _VodSessionKey: VOD session, which is used to confirm the `VodSessionKey` parameter of the upload API.
+        :param _VodSessionKey: VOD session for confirmation of API parameters VodSessionKey.
         :type VodSessionKey: str
-        :param _MediaStoragePath: Media storage path, which is used as the `Key` of the stored media of the upload API.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MediaStoragePath: Media storage path for the object key (Key) used by the upload API to store media.
         :type MediaStoragePath: str
-        :param _CoverStoragePath: Cover storage path, which is used as the `Key` of the stored cover of the upload API.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CoverStoragePath: Cover storage path for uploading the object Key of the cover via API.
         :type CoverStoragePath: str
-        :param _TempCertificate: Temporary credential, which is used for authentication of the upload API.
+        :param _TempCertificate: Temporary credentials for uploading API permission verification.
         :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12824,7 +12839,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageBucket(self):
-        r"""Storage bucket, which is used as the `bucket_name` in the URL of the upload API.
+        r"""Bucket for uploading the API URL bucket_name.
         :rtype: str
         """
         return self._StorageBucket
@@ -12835,7 +12850,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageRegion(self):
-        r"""Storage region, which is used as the `Region` in the `Host` of the upload API.
+        r"""Storage campus for uploading the Host Region of the port.
         :rtype: str
         """
         return self._StorageRegion
@@ -12846,7 +12861,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodSessionKey(self):
-        r"""VOD session, which is used to confirm the `VodSessionKey` parameter of the upload API.
+        r"""VOD session for confirmation of API parameters VodSessionKey.
         :rtype: str
         """
         return self._VodSessionKey
@@ -12857,8 +12872,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MediaStoragePath(self):
-        r"""Media storage path, which is used as the `Key` of the stored media of the upload API.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Media storage path for the object key (Key) used by the upload API to store media.
         :rtype: str
         """
         return self._MediaStoragePath
@@ -12869,8 +12883,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoverStoragePath(self):
-        r"""Cover storage path, which is used as the `Key` of the stored cover of the upload API.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Cover storage path for uploading the object Key of the cover via API.
         :rtype: str
         """
         return self._CoverStoragePath
@@ -12881,7 +12894,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TempCertificate(self):
-        r"""Temporary credential, which is used for authentication of the upload API.
+        r"""Temporary credentials for uploading API permission verification.
         :rtype: :class:`tencentcloud.vod.v20180717.models.TempCertificate`
         """
         return self._TempCertificate

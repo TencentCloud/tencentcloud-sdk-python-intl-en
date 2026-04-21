@@ -371,6 +371,9 @@ INVALIDPARAMETERVALUE_LIMITTOOLARGE = 'InvalidParameterValue.LimitTooLarge'
 # Incorrect parameter value: MediaManifestContent.
 INVALIDPARAMETERVALUE_MEDIAMANIFESTCONTENT = 'InvalidParameterValue.MediaManifestContent'
 
+# Parameter value error: Media storage path.
+INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = 'InvalidParameterValue.MediaStoragePath'
+
 # Incorrect parameter value: media type.
 INVALIDPARAMETERVALUE_MEDIATYPE = 'InvalidParameterValue.MediaType'
 

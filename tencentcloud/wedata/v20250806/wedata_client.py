@@ -2901,6 +2901,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTriggerTaskRuns(self, request):
+        r"""Query workflow operation
+
+        :param request: Request instance for ListTriggerTaskRuns.
+        :type request: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTriggerTaskRuns", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTriggerTaskRunsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTriggerTaskVersions(self, request):
         r"""Task save version list.
 

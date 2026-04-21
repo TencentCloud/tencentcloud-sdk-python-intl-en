@@ -28822,6 +28822,595 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ListTriggerTaskRunBrief(AbstractModel):
+    r"""Query job run list returned parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionId: Running ID of the task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionId: str
+        :param _WorkflowId: Workflow ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowId: str
+        :param _WorkflowExecutionId: Running ID of the workflow
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowExecutionId: str
+        :param _TaskId: Task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _TriggerType: Trigger Type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TriggerType: str
+        :param _WaitTime: Waiting duration, in seconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WaitTime: str
+        :param _ExecuteUserUin: Operating Account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecuteUserUin: str
+        :param _ScheduleTime: Planned scheduling time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScheduleTime: str
+        :param _ExecutionStartTime: Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: Running end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionEndTime: str
+        :param _ExecutionTime: Running time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionTime: str
+        :param _RetryTimes: Times of automatic retry
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RetryTimes: int
+        :param _ErrorCodeStr: Error code description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorCodeStr: str
+        :param _TaskName: Task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskName: str
+        :param _WorkflowName: Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowName: str
+        :param _RerunTimes: Number of manual rerun attempts by the user
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RerunTimes: int
+        :param _TaskExecutionState: Task running status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskExecutionState: str
+        :param _IsLatestExecution: Whether it is the most recent run
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsLatestExecution: bool
+        """
+        self._ExecutionId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionId = None
+        self._TaskId = None
+        self._TriggerType = None
+        self._WaitTime = None
+        self._ExecuteUserUin = None
+        self._ScheduleTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._ExecutionTime = None
+        self._RetryTimes = None
+        self._ErrorCodeStr = None
+        self._TaskName = None
+        self._WorkflowName = None
+        self._RerunTimes = None
+        self._TaskExecutionState = None
+        self._IsLatestExecution = None
+
+    @property
+    def ExecutionId(self):
+        r"""Running ID of the task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def WorkflowId(self):
+        r"""Workflow ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""Running ID of the workflow
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TriggerType(self):
+        r"""Trigger Type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def WaitTime(self):
+        r"""Waiting duration, in seconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WaitTime
+
+    @WaitTime.setter
+    def WaitTime(self, WaitTime):
+        self._WaitTime = WaitTime
+
+    @property
+    def ExecuteUserUin(self):
+        r"""Operating Account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
+    def ScheduleTime(self):
+        r"""Planned scheduling time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ScheduleTime
+
+    @ScheduleTime.setter
+    def ScheduleTime(self, ScheduleTime):
+        self._ScheduleTime = ScheduleTime
+
+    @property
+    def ExecutionStartTime(self):
+        r"""Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        r"""Running end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def ExecutionTime(self):
+        r"""Running time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def RetryTimes(self):
+        r"""Times of automatic retry
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+    @property
+    def ErrorCodeStr(self):
+        r"""Error code description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+    @property
+    def TaskName(self):
+        r"""Task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowName(self):
+        r"""Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def RerunTimes(self):
+        r"""Number of manual rerun attempts by the user
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RerunTimes
+
+    @RerunTimes.setter
+    def RerunTimes(self, RerunTimes):
+        self._RerunTimes = RerunTimes
+
+    @property
+    def TaskExecutionState(self):
+        r"""Task running status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskExecutionState
+
+    @TaskExecutionState.setter
+    def TaskExecutionState(self, TaskExecutionState):
+        self._TaskExecutionState = TaskExecutionState
+
+    @property
+    def IsLatestExecution(self):
+        r"""Whether it is the most recent run
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsLatestExecution
+
+    @IsLatestExecution.setter
+    def IsLatestExecution(self, IsLatestExecution):
+        self._IsLatestExecution = IsLatestExecution
+
+
+    def _deserialize(self, params):
+        self._ExecutionId = params.get("ExecutionId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        self._TaskId = params.get("TaskId")
+        self._TriggerType = params.get("TriggerType")
+        self._WaitTime = params.get("WaitTime")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._ScheduleTime = params.get("ScheduleTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._RetryTimes = params.get("RetryTimes")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowName = params.get("WorkflowName")
+        self._RerunTimes = params.get("RerunTimes")
+        self._TaskExecutionState = params.get("TaskExecutionState")
+        self._IsLatestExecution = params.get("IsLatestExecution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunResult(AbstractModel):
+    r"""Query workflow results
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param _TotalPageNumber: Number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPageNumber: int
+        :param _PageNumber: Page number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageNumber: int
+        :param _PageSize: Page size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageSize: int
+        :param _Items: Task running information collection
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of ListTriggerTaskRunBrief
+        """
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""Number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""Page number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""Page size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        r"""Task running information collection
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ListTriggerTaskRunBrief
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ListTriggerTaskRunBrief()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunsRequest(AbstractModel):
+    r"""ListTriggerTaskRuns request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: str
+        :param _Filters: Filtering parameters: Keyword for task name or ID query, WorkflowId for workflow ID query, FolderId for folder query, InChargeUin for responsible person query, WorkflowExecutionId for workflow execution ID, ExecutionId for task execution ID, TaskId for task ID, ScheduleTimeGreaterEqual / ScheduleTimeLessEqual for planned scheduling time interval
+        :type Filters: list of Filter
+        :param _OrderFields: Sorting field, sorting field name as follows: start time: CreateTime, end time: EndTime, scheduled dispatch time: ScheduleTime
+        :type OrderFields: list of OrderField
+        :param _PageNumber: Page number
+        :type PageNumber: int
+        :param _PageSize: Page size.
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._Filters = None
+        self._OrderFields = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""Project ID.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Filters(self):
+        r"""Filtering parameters: Keyword for task name or ID query, WorkflowId for workflow ID query, FolderId for folder query, InChargeUin for responsible person query, WorkflowExecutionId for workflow execution ID, ExecutionId for task execution ID, TaskId for task ID, ScheduleTimeGreaterEqual / ScheduleTimeLessEqual for planned scheduling time interval
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""Sorting field, sorting field name as follows: start time: CreateTime, end time: EndTime, scheduled dispatch time: ScheduleTime
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def PageNumber(self):
+        r"""Page number
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""Page size.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunsResponse(AbstractModel):
+    r"""ListTriggerTaskRuns response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Task run query result
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunResult`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Task run query result
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTriggerTaskRunResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListTriggerTaskVersions(AbstractModel):
     r"""Query task version pagination list.
 

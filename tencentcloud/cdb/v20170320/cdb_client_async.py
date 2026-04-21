@@ -1595,6 +1595,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSSLStatus(
+            self,
+            request: models.DescribeSSLStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSSLStatusResponse:
+        """
+        This API is used to query the SSL enabling status. If the SSL is enabled, the certificate download link will be returned synchronously.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSSLStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSSLStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSlowLogData(
             self,
             request: models.DescribeSlowLogDataRequest,

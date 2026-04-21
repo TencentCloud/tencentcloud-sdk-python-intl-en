@@ -2026,6 +2026,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSSLStatus(self, request):
+        r"""This API is used to query the SSL enabling status. If the SSL is enabled, the certificate download link will be returned synchronously.
+
+        :param request: Request instance for DescribeSSLStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSSLStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSlowLogData(self, request):
         r"""This API is used to query the slow logs of an instance over the past month by search criteria.
         Note: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.

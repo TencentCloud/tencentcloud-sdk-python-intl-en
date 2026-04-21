@@ -8722,7 +8722,7 @@ class InputTrack(AbstractModel):
 
 
 class InputTracks(AbstractModel):
-    r"""Audio track configuration list.
+    r"""
 
     """
 
@@ -8763,7 +8763,7 @@ class InputTracks(AbstractModel):
 
 
 class LSqueezeSetting(AbstractModel):
-    r"""Compression recovery configuration
+    r"""
 
     """
 
@@ -9576,7 +9576,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
         :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
         :param _TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
         :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
-        :param _AbWatermarkSettings: AB watermark configuration.
+        :param _AbWatermarkSettings: 
         :type AbWatermarkSettings: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         self._Id = None
@@ -9631,7 +9631,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def AbWatermarkSettings(self):
-        r"""AB watermark configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         return self._AbWatermarkSettings
@@ -9692,7 +9692,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
 
 class MotionGraphicsActivateSetting(AbstractModel):
-    r"""Motion Graphic Activate Setting
+    r"""
 
     """
 
@@ -9743,7 +9743,7 @@ class MotionGraphicsActivateSetting(AbstractModel):
 
 
 class MotionGraphicsSetting(AbstractModel):
-    r"""Motion Graphic Setting
+    r"""
 
     """
 
@@ -13209,7 +13209,7 @@ class TaskNotifyConfig(AbstractModel):
 
 
 class ThumbnailSettings(AbstractModel):
-    r"""Thumbnail configuration
+    r"""
 
     """
 
@@ -13321,14 +13321,17 @@ class TimedMetadataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID3: Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.
+        :param _ID3: Base64-encoded ID3 metadata information, with a maximum limit of 1024 characters. When both ID3 and Tag have values, the ID3 value takes precedence
         :type ID3: str
+        :param _Tag: Label, the maximum supported length is 1024 characters for the label, 
+        :type Tag: str
         """
         self._ID3 = None
+        self._Tag = None
 
     @property
     def ID3(self):
-        r"""Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.
+        r"""Base64-encoded ID3 metadata information, with a maximum limit of 1024 characters. When both ID3 and Tag have values, the ID3 value takes precedence
         :rtype: str
         """
         return self._ID3
@@ -13337,9 +13340,21 @@ class TimedMetadataInfo(AbstractModel):
     def ID3(self, ID3):
         self._ID3 = ID3
 
+    @property
+    def Tag(self):
+        r"""Label, the maximum supported length is 1024 characters for the label, 
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._ID3 = params.get("ID3")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
