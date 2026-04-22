@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Address(AbstractModel):
-    r"""Overseas Document Address
+    r"""
 
     """
 
@@ -349,6 +349,10 @@ The default value is blink. The different action types passed in this parameter 
 true (default value): Expired HKID is allowed to enter the liveness process.
 false : Expired HKID is rejected and cannot enter the liveness process.
         :type AllowExpiredDocument: bool
+        :param _SkipResultPage: 
+        :type SkipResultPage: bool
+        :param _CardOcrDisplayFields: 
+        :type CardOcrDisplayFields: list of str
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -362,6 +366,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._SdkVersion = None
         self._ActionList = None
         self._AllowExpiredDocument = None
+        self._SkipResultPage = None
+        self._CardOcrDisplayFields = None
 
     @property
     def CheckMode(self):
@@ -539,6 +545,28 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     def AllowExpiredDocument(self, AllowExpiredDocument):
         self._AllowExpiredDocument = AllowExpiredDocument
 
+    @property
+    def SkipResultPage(self):
+        r"""
+        :rtype: bool
+        """
+        return self._SkipResultPage
+
+    @SkipResultPage.setter
+    def SkipResultPage(self, SkipResultPage):
+        self._SkipResultPage = SkipResultPage
+
+    @property
+    def CardOcrDisplayFields(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._CardOcrDisplayFields
+
+    @CardOcrDisplayFields.setter
+    def CardOcrDisplayFields(self, CardOcrDisplayFields):
+        self._CardOcrDisplayFields = CardOcrDisplayFields
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -553,6 +581,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._SdkVersion = params.get("SdkVersion")
         self._ActionList = params.get("ActionList")
         self._AllowExpiredDocument = params.get("AllowExpiredDocument")
+        self._SkipResultPage = params.get("SkipResultPage")
+        self._CardOcrDisplayFields = params.get("CardOcrDisplayFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3605,7 +3635,7 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
 
 class EditDetail(AbstractModel):
-    r"""EKYC ID Document OCR Result Modification Details
+    r"""
 
     """
 

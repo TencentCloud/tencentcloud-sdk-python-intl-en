@@ -1871,6 +1871,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceDeletionProtection(self, request):
+        r"""This interface (DeletionProtection) is used to enable or disable instance destruction protection.
+
+        :param request: Request instance for ModifyDBInstanceDeletionProtection.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceDeletionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceDeployment(self, request):
         r"""This API is used to modify the AZs where the nodes of a source instance reside.
 
