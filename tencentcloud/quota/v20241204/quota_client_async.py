@@ -61,6 +61,24 @@ class QuotaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAggregateUserQuotas(
+            self,
+            request: models.DescribeAggregateUserQuotasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAggregateUserQuotasResponse:
+        """
+        user quota list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAggregateUserQuotas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAggregateUserQuotasResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarms(
             self,
             request: models.DescribeAlarmsRequest,
@@ -74,6 +92,24 @@ class QuotaClient(AbstractClient):
         kwargs["action"] = "DescribeAlarms"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAlarmsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserQuota(
+            self,
+            request: models.DescribeUserQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserQuotaResponse:
+        """
+        Query a user quota
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

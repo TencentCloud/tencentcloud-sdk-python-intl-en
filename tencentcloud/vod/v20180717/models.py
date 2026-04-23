@@ -669,30 +669,30 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Adaptive bitrate streaming specification.
+        :param _Definition: <p>Convert to adaptive bitrate streaming specification.</p>
         :type Definition: int
-        :param _Package: The packaging format. Valid values:
-<li>`HLS`</li>
-<li>`DASH`</li>
+        :param _Package: <p>Packaging format. Value ranges from:</p><li>HLS;</li><li>DASH.</li>
         :type Package: str
-        :param _DrmType: Encryption type.
+        :param _DrmType: <p>Encryption type.</p>
         :type DrmType: str
-        :param _Url: Playback address.
+        :param _Url: <p>Playback address.</p>
         :type Url: str
-        :param _Size: File size (bytes)
-<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
-<li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>
-<li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>
+        :param _Size: <p>Media file size, unit: byte.</p><li>When the media file is HLS, the size is the sum of m3u8 and ts file sizes.</li><li>When the media file is DASH, the size is the sum of mpd and fragment file sizes.</li><li><font color="red">Note</font>: This field is 0 for adaptive bitrate stream files generated through pre-processing before 2022-01-10T16:00:00Z.</li>
         :type Size: int
-        :param _DigitalWatermarkType: Digital watermark type. Optional values:
-<li>Trace means traceability watermark processing; </li>
-<li>CopyRight means copyright watermark processing; </li>
-<li>None means no digital watermark processing. </li>
+        :param _DigitalWatermarkType: <p>Watermark type. Available values:</p><li>Trace means transit watermark processing;</li><li>CopyRight means copyright watermark processing;</li><li>None means no watermark processing.</li>
         :type DigitalWatermarkType: str
-        :param _SubStreamSet: The information of the streams.
+        :param _SubStreamSet: <p>Substream info list.</p>
         :type SubStreamSet: list of MediaSubStreamInfoItem
-        :param _CopyRightWatermarkText: Copyright Information.
+        :param _CopyRightWatermarkText: <p>Copyright information.</p>
         :type CopyRightWatermarkText: str
+        :param _BlindWatermarkDefinition: <p>Digital watermark template id.</p>
+        :type BlindWatermarkDefinition: int
+        :param _SubtitleSet: <p>Subtitle information list.</p>
+        :type SubtitleSet: list of MediaSubtitleItem
+        :param _DefaultSubtitleId: <p>Unique identifier for default subtitle.</p>
+        :type DefaultSubtitleId: str
+        :param _DrmEncryptType: <p>DRM encryption method.</p>
+        :type DrmEncryptType: str
         """
         self._Definition = None
         self._Package = None
@@ -702,10 +702,14 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self._DigitalWatermarkType = None
         self._SubStreamSet = None
         self._CopyRightWatermarkText = None
+        self._BlindWatermarkDefinition = None
+        self._SubtitleSet = None
+        self._DefaultSubtitleId = None
+        self._DrmEncryptType = None
 
     @property
     def Definition(self):
-        r"""Adaptive bitrate streaming specification.
+        r"""<p>Convert to adaptive bitrate streaming specification.</p>
         :rtype: int
         """
         return self._Definition
@@ -716,9 +720,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Package(self):
-        r"""The packaging format. Valid values:
-<li>`HLS`</li>
-<li>`DASH`</li>
+        r"""<p>Packaging format. Value ranges from:</p><li>HLS;</li><li>DASH.</li>
         :rtype: str
         """
         return self._Package
@@ -729,7 +731,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def DrmType(self):
-        r"""Encryption type.
+        r"""<p>Encryption type.</p>
         :rtype: str
         """
         return self._DrmType
@@ -740,7 +742,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Url(self):
-        r"""Playback address.
+        r"""<p>Playback address.</p>
         :rtype: str
         """
         return self._Url
@@ -751,10 +753,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""File size (bytes)
-<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
-<li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>
-<li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>
+        r"""<p>Media file size, unit: byte.</p><li>When the media file is HLS, the size is the sum of m3u8 and ts file sizes.</li><li>When the media file is DASH, the size is the sum of mpd and fragment file sizes.</li><li><font color="red">Note</font>: This field is 0 for adaptive bitrate stream files generated through pre-processing before 2022-01-10T16:00:00Z.</li>
         :rtype: int
         """
         return self._Size
@@ -765,10 +764,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def DigitalWatermarkType(self):
-        r"""Digital watermark type. Optional values:
-<li>Trace means traceability watermark processing; </li>
-<li>CopyRight means copyright watermark processing; </li>
-<li>None means no digital watermark processing. </li>
+        r"""<p>Watermark type. Available values:</p><li>Trace means transit watermark processing;</li><li>CopyRight means copyright watermark processing;</li><li>None means no watermark processing.</li>
         :rtype: str
         """
         return self._DigitalWatermarkType
@@ -779,7 +775,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def SubStreamSet(self):
-        r"""The information of the streams.
+        r"""<p>Substream info list.</p>
         :rtype: list of MediaSubStreamInfoItem
         """
         return self._SubStreamSet
@@ -790,7 +786,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def CopyRightWatermarkText(self):
-        r"""Copyright Information.
+        r"""<p>Copyright information.</p>
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -798,6 +794,50 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     @CopyRightWatermarkText.setter
     def CopyRightWatermarkText(self, CopyRightWatermarkText):
         self._CopyRightWatermarkText = CopyRightWatermarkText
+
+    @property
+    def BlindWatermarkDefinition(self):
+        r"""<p>Digital watermark template id.</p>
+        :rtype: int
+        """
+        return self._BlindWatermarkDefinition
+
+    @BlindWatermarkDefinition.setter
+    def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
+        self._BlindWatermarkDefinition = BlindWatermarkDefinition
+
+    @property
+    def SubtitleSet(self):
+        r"""<p>Subtitle information list.</p>
+        :rtype: list of MediaSubtitleItem
+        """
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+    @property
+    def DefaultSubtitleId(self):
+        r"""<p>Unique identifier for default subtitle.</p>
+        :rtype: str
+        """
+        return self._DefaultSubtitleId
+
+    @DefaultSubtitleId.setter
+    def DefaultSubtitleId(self, DefaultSubtitleId):
+        self._DefaultSubtitleId = DefaultSubtitleId
+
+    @property
+    def DrmEncryptType(self):
+        r"""<p>DRM encryption method.</p>
+        :rtype: str
+        """
+        return self._DrmEncryptType
+
+    @DrmEncryptType.setter
+    def DrmEncryptType(self, DrmEncryptType):
+        self._DrmEncryptType = DrmEncryptType
 
 
     def _deserialize(self, params):
@@ -814,6 +854,15 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
                 obj._deserialize(item)
                 self._SubStreamSet.append(obj)
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
+        self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        self._DefaultSubtitleId = params.get("DefaultSubtitleId")
+        self._DrmEncryptType = params.get("DrmEncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41726,6 +41775,154 @@ Default value: `0.0`.
         
 
 
+class FaceRecognitionInfo(AbstractModel):
+    r"""Face recognition media information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceRecognitionTasks: <p>Face recognition task list</p>
+        :type FaceRecognitionTasks: list of FaceRecognitionTask
+        """
+        self._FaceRecognitionTasks = None
+
+    @property
+    def FaceRecognitionTasks(self):
+        r"""<p>Face recognition task list</p>
+        :rtype: list of FaceRecognitionTask
+        """
+        return self._FaceRecognitionTasks
+
+    @FaceRecognitionTasks.setter
+    def FaceRecognitionTasks(self, FaceRecognitionTasks):
+        self._FaceRecognitionTasks = FaceRecognitionTasks
+
+
+    def _deserialize(self, params):
+        if params.get("FaceRecognitionTasks") is not None:
+            self._FaceRecognitionTasks = []
+            for item in params.get("FaceRecognitionTasks"):
+                obj = FaceRecognitionTask()
+                obj._deserialize(item)
+                self._FaceRecognitionTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FaceRecognitionOutputFileInfo(AbstractModel):
+    r"""Face recognition output file information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: <p>Face recognition output file type</p><p>Enumeration value:</p><ul><li>Output: Result output of task generation. The file corresponds to the result in the face recognition task return and is generated in JSON format.</li></ul>
+        :type FileType: str
+        :param _Url: <p>File URL of face recognition output</p>
+        :type Url: str
+        """
+        self._FileType = None
+        self._Url = None
+
+    @property
+    def FileType(self):
+        r"""<p>Face recognition output file type</p><p>Enumeration value:</p><ul><li>Output: Result output of task generation. The file corresponds to the result in the face recognition task return and is generated in JSON format.</li></ul>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Url(self):
+        r"""<p>File URL of face recognition output</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FaceRecognitionTask(AbstractModel):
+    r"""face recognition task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Face identification template No.</p>
+        :type Definition: int
+        :param _OutputFile: <p>Output file information</p>
+        :type OutputFile: list of FaceRecognitionOutputFileInfo
+        """
+        self._Definition = None
+        self._OutputFile = None
+
+    @property
+    def Definition(self):
+        r"""<p>Face identification template No.</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputFile(self):
+        r"""<p>Output file information</p>
+        :rtype: list of FaceRecognitionOutputFileInfo
+        """
+        return self._OutputFile
+
+    @OutputFile.setter
+    def OutputFile(self, OutputFile):
+        self._OutputFile = OutputFile
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputFile") is not None:
+            self._OutputFile = []
+            for item in params.get("OutputFile"):
+                obj = FaceRecognitionOutputFileInfo()
+                obj._deserialize(item)
+                self._OutputFile.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FastEditMediaFileInfo(AbstractModel):
     r"""VOD  fast media editing information
 
@@ -44754,6 +44951,103 @@ This is valid if `Type` is `Flip`.
         
 
 
+class ImageUnderstandingInfo(AbstractModel):
+    r"""Image understanding information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUnderstandingSet: Image understanding collection.
+        :type ImageUnderstandingSet: list of ImageUnderstandingItem
+        """
+        self._ImageUnderstandingSet = None
+
+    @property
+    def ImageUnderstandingSet(self):
+        r"""Image understanding collection.
+        :rtype: list of ImageUnderstandingItem
+        """
+        return self._ImageUnderstandingSet
+
+    @ImageUnderstandingSet.setter
+    def ImageUnderstandingSet(self, ImageUnderstandingSet):
+        self._ImageUnderstandingSet = ImageUnderstandingSet
+
+
+    def _deserialize(self, params):
+        if params.get("ImageUnderstandingSet") is not None:
+            self._ImageUnderstandingSet = []
+            for item in params.get("ImageUnderstandingSet"):
+                obj = ImageUnderstandingItem()
+                obj._deserialize(item)
+                self._ImageUnderstandingSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageUnderstandingItem(AbstractModel):
+    r"""Image understanding information item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Template id.
+        :type Definition: int
+        :param _OutputFile: Task output file.
+        :type OutputFile: list of MPSOutputFileInfo
+        """
+        self._Definition = None
+        self._OutputFile = None
+
+    @property
+    def Definition(self):
+        r"""Template id.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputFile(self):
+        r"""Task output file.
+        :rtype: list of MPSOutputFileInfo
+        """
+        return self._OutputFile
+
+    @OutputFile.setter
+    def OutputFile(self, OutputFile):
+        self._OutputFile = OutputFile
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputFile") is not None:
+            self._OutputFile = []
+            for item in params.get("OutputFile"):
+                obj = MPSOutputFileInfo()
+                obj._deserialize(item)
+                self._OutputFile.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageWatermarkInput(AbstractModel):
     r"""Input parameter of image watermarking template
 
@@ -45887,6 +46181,42 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class KnowledgeBasesInfo(AbstractModel):
+    r"""Intelligent knowledge base info for media assets
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bases: <p>Current library list of media assets to import</p>
+        :type Bases: list of str
+        """
+        self._Bases = None
+
+    @property
+    def Bases(self):
+        r"""<p>Current library list of media assets to import</p>
+        :rtype: list of str
+        """
+        return self._Bases
+
+    @Bases.setter
+    def Bases(self, Bases):
+        self._Bases = Bases
+
+
+    def _deserialize(self, params):
+        self._Bases = params.get("Bases")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMComprehendAsr(AbstractModel):
     r"""Large model parse text transcribe parse configuration
 
@@ -46941,20 +47271,48 @@ class LiveRecordInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StreamId: Live recording stream ID.
+        :param _Domain: <p>Live streaming Recording domain name</p>
+        :type Domain: str
+        :param _Path: <p>Live streaming Recording Path</p>
+        :type Path: str
+        :param _StreamId: <p>Live recording stream ID.</p>
         :type StreamId: str
-        :param _RecordStartTime: Recording start time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :param _RecordStartTime: <p>Recording start time in <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO datetime format</a>.</p>
         :type RecordStartTime: str
-        :param _RecordEndTime: Recording end time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :param _RecordEndTime: <p>Recording end time, using <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>.</p>
         :type RecordEndTime: str
         """
+        self._Domain = None
+        self._Path = None
         self._StreamId = None
         self._RecordStartTime = None
         self._RecordEndTime = None
 
     @property
+    def Domain(self):
+        r"""<p>Live streaming Recording domain name</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Path(self):
+        r"""<p>Live streaming Recording Path</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
     def StreamId(self):
-        r"""Live recording stream ID.
+        r"""<p>Live recording stream ID.</p>
         :rtype: str
         """
         return self._StreamId
@@ -46965,7 +47323,7 @@ class LiveRecordInfo(AbstractModel):
 
     @property
     def RecordStartTime(self):
-        r"""Recording start time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        r"""<p>Recording start time in <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO datetime format</a>.</p>
         :rtype: str
         """
         return self._RecordStartTime
@@ -46976,7 +47334,7 @@ class LiveRecordInfo(AbstractModel):
 
     @property
     def RecordEndTime(self):
-        r"""Recording end time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        r"""<p>Recording end time, using <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>.</p>
         :rtype: str
         """
         return self._RecordEndTime
@@ -46987,6 +47345,8 @@ class LiveRecordInfo(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Path = params.get("Path")
         self._StreamId = params.get("StreamId")
         self._RecordStartTime = params.get("RecordStartTime")
         self._RecordEndTime = params.get("RecordEndTime")
@@ -47049,6 +47409,242 @@ Default value: `normal`.
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSAiMediaInfo(AbstractModel):
+    r"""Intelligent media information processed with MPS
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AiMediaList: List of intelligent media information processed by MPS
+        :type AiMediaList: list of MPSAiMediaItem
+        """
+        self._AiMediaList = None
+
+    @property
+    def AiMediaList(self):
+        r"""List of intelligent media information processed by MPS
+        :rtype: list of MPSAiMediaItem
+        """
+        return self._AiMediaList
+
+    @AiMediaList.setter
+    def AiMediaList(self, AiMediaList):
+        self._AiMediaList = AiMediaList
+
+
+    def _deserialize(self, params):
+        if params.get("AiMediaList") is not None:
+            self._AiMediaList = []
+            for item in params.get("AiMediaList"):
+                obj = MPSAiMediaItem()
+                obj._deserialize(item)
+                self._AiMediaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSAiMediaItem(AbstractModel):
+    r"""MPS AI media task item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: MPS intelligent processing task type. Valid values:
+<li>AiAnalysis.ClassificationTask: intelligent classification task.</li>
+<li>AiAnalysis.CoverTask: intelligent thumbnail generating.</li>
+<li>AiAnalysis.TagTask: intelligent tag task.</li>
+<li>AiAnalysis.FrameTagTask: intelligent frame-by-frame tagging task.</li>
+<li>AiAnalysis.HighlightTask: Intelligent highlight task.</li>
+<li>AiAnalysis.SegmentTask: Intelligent video splitting task.</li>
+<li>AiAnalysis.HeadTailTask: Intelligent opening and closing credits task.</li>
+<li>AiAnalysis.DescriptionTask: Intelligent summary task.</li>
+<li>AiAnalysis.HorizontalToVerticalTask: Intelligent Landscape to Portrait Task.</li>
+<li>AiAnalysis.DubbingTask: Intelligent dubbing task.</li>
+<li>AiAnalysis.VideoRemakeTask: Intelligent deduplication task.</li>
+<li>AiAnalysis.VideoComprehensionTask: Video understanding task.</li>
+<li>SmartSubtitle.AsrFullTextTask: Intelligent speech full-text recognition task.</li>
+<li>SmartSubtitle.TransTextTask: Translation result.</li>
+<li>SmartSubtitle.PureSubtitleTransTask: Returns the pure subtitle file translation result.</li>
+<li>SmartSubtitle.OcrFullTextTask: Intelligent text extraction subtitle task.</li>
+        :type TaskType: str
+        :param _AiMediaTasks: MPS intelligent processing task result set
+        :type AiMediaTasks: list of MPSAiMediaTask
+        """
+        self._TaskType = None
+        self._AiMediaTasks = None
+
+    @property
+    def TaskType(self):
+        r"""MPS intelligent processing task type. Valid values:
+<li>AiAnalysis.ClassificationTask: intelligent classification task.</li>
+<li>AiAnalysis.CoverTask: intelligent thumbnail generating.</li>
+<li>AiAnalysis.TagTask: intelligent tag task.</li>
+<li>AiAnalysis.FrameTagTask: intelligent frame-by-frame tagging task.</li>
+<li>AiAnalysis.HighlightTask: Intelligent highlight task.</li>
+<li>AiAnalysis.SegmentTask: Intelligent video splitting task.</li>
+<li>AiAnalysis.HeadTailTask: Intelligent opening and closing credits task.</li>
+<li>AiAnalysis.DescriptionTask: Intelligent summary task.</li>
+<li>AiAnalysis.HorizontalToVerticalTask: Intelligent Landscape to Portrait Task.</li>
+<li>AiAnalysis.DubbingTask: Intelligent dubbing task.</li>
+<li>AiAnalysis.VideoRemakeTask: Intelligent deduplication task.</li>
+<li>AiAnalysis.VideoComprehensionTask: Video understanding task.</li>
+<li>SmartSubtitle.AsrFullTextTask: Intelligent speech full-text recognition task.</li>
+<li>SmartSubtitle.TransTextTask: Translation result.</li>
+<li>SmartSubtitle.PureSubtitleTransTask: Returns the pure subtitle file translation result.</li>
+<li>SmartSubtitle.OcrFullTextTask: Intelligent text extraction subtitle task.</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def AiMediaTasks(self):
+        r"""MPS intelligent processing task result set
+        :rtype: list of MPSAiMediaTask
+        """
+        return self._AiMediaTasks
+
+    @AiMediaTasks.setter
+    def AiMediaTasks(self, AiMediaTasks):
+        self._AiMediaTasks = AiMediaTasks
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("AiMediaTasks") is not None:
+            self._AiMediaTasks = []
+            for item in params.get("AiMediaTasks"):
+                obj = MPSAiMediaTask()
+                obj._deserialize(item)
+                self._AiMediaTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSAiMediaTask(AbstractModel):
+    r"""MPS intelligent task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: MPS intelligent task template ID
+        :type Definition: int
+        :param _OutputFile: MPS intelligent task output file collection
+        :type OutputFile: list of MPSOutputFileInfo
+        :param _OutputText: The returned result of the MPS intelligent task. This field corresponds to the Output result in the MPS task return and is returned in JSON format.
+Different MPS task output results have different structures. For the specific return content, see the MPS task output struct.
+[Intelligent classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskClassificationOutput)
+[Intelligent cover result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskCoverOutput)
+[Intelligent Tag Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskTagOutput)
+[Intelligent frame tagging classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskFrameTagOutput)
+[Intelligent Highlight Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHighlightOutput)
+[Video Splitting Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskSegmentOutput)
+[Intelligent video opening/closing credits result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHeadTailOutput)
+[Intelligent summary result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDescriptionOutput)
+[Horizontal-to-Vertical Video Transformation Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHorizontalToVerticalOutput)
+[Intelligent dubbing result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDubbingOutput)
+[Intelligent video understanding result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskVideoComprehensionOutput)
+[Intelligent caption full speech recognition result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskAsrFullTextResultOutput)
+[Intelligent caption translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTransTextResultOutput)
+[Intelligent caption pure srt translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#PureSubtitleTransResultOutput)
+[Smart subtitling text extraction result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTextResultOutput)
+
+
+        :type OutputText: str
+        """
+        self._Definition = None
+        self._OutputFile = None
+        self._OutputText = None
+
+    @property
+    def Definition(self):
+        r"""MPS intelligent task template ID
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputFile(self):
+        r"""MPS intelligent task output file collection
+        :rtype: list of MPSOutputFileInfo
+        """
+        return self._OutputFile
+
+    @OutputFile.setter
+    def OutputFile(self, OutputFile):
+        self._OutputFile = OutputFile
+
+    @property
+    def OutputText(self):
+        r"""The returned result of the MPS intelligent task. This field corresponds to the Output result in the MPS task return and is returned in JSON format.
+Different MPS task output results have different structures. For the specific return content, see the MPS task output struct.
+[Intelligent classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskClassificationOutput)
+[Intelligent cover result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskCoverOutput)
+[Intelligent Tag Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskTagOutput)
+[Intelligent frame tagging classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskFrameTagOutput)
+[Intelligent Highlight Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHighlightOutput)
+[Video Splitting Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskSegmentOutput)
+[Intelligent video opening/closing credits result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHeadTailOutput)
+[Intelligent summary result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDescriptionOutput)
+[Horizontal-to-Vertical Video Transformation Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHorizontalToVerticalOutput)
+[Intelligent dubbing result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDubbingOutput)
+[Intelligent video understanding result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskVideoComprehensionOutput)
+[Intelligent caption full speech recognition result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskAsrFullTextResultOutput)
+[Intelligent caption translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTransTextResultOutput)
+[Intelligent caption pure srt translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#PureSubtitleTransResultOutput)
+[Smart subtitling text extraction result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTextResultOutput)
+
+
+        :rtype: str
+        """
+        return self._OutputText
+
+    @OutputText.setter
+    def OutputText(self, OutputText):
+        self._OutputText = OutputText
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputFile") is not None:
+            self._OutputFile = []
+            for item in params.get("OutputFile"):
+                obj = MPSOutputFileInfo()
+                obj._deserialize(item)
+                self._OutputFile.append(obj)
+        self._OutputText = params.get("OutputText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47145,6 +47741,99 @@ class MPSOutputFile(AbstractModel):
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
         self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSOutputFileInfo(AbstractModel):
+    r"""MPS output file information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: MPS output file type. Valid values:
+<li>Video: the generated video file of the task.</li>
+<li>Cover: cover file generated by task generation.</li>
+<li>Audio: audio file generated by task generation.</li>
+<li>Output: The result output of task generation. The file corresponds to the Output result in the MPS task response and is generated in JSON format.</li>
+
+Output file. Different MPS tasks have different output results. For specific return content, refer to the MPS task output struct. The struct is JSON-serialized to generate the Output file.
+[Intelligent classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskClassificationOutput)
+[Intelligent cover result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskCoverOutput)
+[Intelligent Tag Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskTagOutput)
+[Intelligent frame tagging classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskFrameTagOutput)
+[Intelligent Highlight Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHighlightOutput)
+[Video Splitting Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskSegmentOutput)
+[Intelligent video opening/closing credits result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHeadTailOutput)
+[Intelligent summary result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDescriptionOutput)
+[Horizontal-to-Vertical Video Transformation Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHorizontalToVerticalOutput)
+[Intelligent dubbing result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDubbingOutput)
+[Intelligent video understanding result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskVideoComprehensionOutput)
+[Intelligent caption full speech recognition result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskAsrFullTextResultOutput)
+[Intelligent caption translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTransTextResultOutput)
+[Intelligent caption pure srt translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#PureSubtitleTransResultOutput)
+[Smart subtitling text extraction result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTextResultOutput)
+        :type FileType: str
+        :param _Url: MPS output file URL
+        :type Url: str
+        """
+        self._FileType = None
+        self._Url = None
+
+    @property
+    def FileType(self):
+        r"""MPS output file type. Valid values:
+<li>Video: the generated video file of the task.</li>
+<li>Cover: cover file generated by task generation.</li>
+<li>Audio: audio file generated by task generation.</li>
+<li>Output: The result output of task generation. The file corresponds to the Output result in the MPS task response and is generated in JSON format.</li>
+
+Output file. Different MPS tasks have different output results. For specific return content, refer to the MPS task output struct. The struct is JSON-serialized to generate the Output file.
+[Intelligent classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskClassificationOutput)
+[Intelligent cover result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskCoverOutput)
+[Intelligent Tag Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskTagOutput)
+[Intelligent frame tagging classification result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskFrameTagOutput)
+[Intelligent Highlight Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHighlightOutput)
+[Video Splitting Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskSegmentOutput)
+[Intelligent video opening/closing credits result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHeadTailOutput)
+[Intelligent summary result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDescriptionOutput)
+[Horizontal-to-Vertical Video Transformation Result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskHorizontalToVerticalOutput)
+[Intelligent dubbing result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskDubbingOutput)
+[Intelligent video understanding result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#AiAnalysisTaskVideoComprehensionOutput)
+[Intelligent caption full speech recognition result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskAsrFullTextResultOutput)
+[Intelligent caption translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTransTextResultOutput)
+[Intelligent caption pure srt translation result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#PureSubtitleTransResultOutput)
+[Smart subtitling text extraction result](https://www.tencentcloud.com/document/product/862/37615?from_cn_redirect=1#SmartSubtitleTaskTextResultOutput)
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Url(self):
+        r"""MPS output file URL
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48204,14 +48893,11 @@ class MediaAudioStreamItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bitrate: Bitrate of audio stream in bps.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Bitrate: <p>Bitrate of the audio stream. Measurement unit: bps.</p>
         :type Bitrate: int
-        :param _SamplingRate: Sample rate of audio stream in Hz.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SamplingRate: <p>Sampling rate of the audio stream, unit: hz.</p>
         :type SamplingRate: int
-        :param _Codec: Audio stream encoder, such as aac.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Codec: <p>Audio stream encoding format, such as aac.</p>
         :type Codec: str
         """
         self._Bitrate = None
@@ -48220,8 +48906,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
-        r"""Bitrate of audio stream in bps.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Bitrate of the audio stream. Measurement unit: bps.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -48232,8 +48917,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SamplingRate(self):
-        r"""Sample rate of audio stream in Hz.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sampling rate of the audio stream, unit: hz.</p>
         :rtype: int
         """
         return self._SamplingRate
@@ -48244,8 +48928,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
-        r"""Audio stream encoder, such as aac.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Audio stream encoding format, such as aac.</p>
         :rtype: str
         """
         return self._Codec
@@ -48314,6 +48997,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
         :param _StorageRegion: Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Region](https://intl.cloud.tencent.com/document/product/266/9760).
         :type StorageRegion: str
+        :param _StoragePath: Media storage path.
+        :type StoragePath: str
         :param _TagSet: Tag information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagSet: list of str
@@ -48346,6 +49031,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MediaUrl = None
         self._SourceInfo = None
         self._StorageRegion = None
+        self._StoragePath = None
         self._TagSet = None
         self._Vid = None
         self._Category = None
@@ -48508,6 +49194,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._StorageRegion = StorageRegion
 
     @property
+    def StoragePath(self):
+        r"""Media storage path.
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
     def TagSet(self):
         r"""Tag information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -48587,6 +49284,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self._SourceInfo = MediaSourceData()
             self._SourceInfo._deserialize(params.get("SourceInfo"))
         self._StorageRegion = params.get("StorageRegion")
+        self._StoragePath = params.get("StoragePath")
         self._TagSet = params.get("TagSet")
         self._Vid = params.get("Vid")
         self._Category = params.get("Category")
@@ -49536,20 +50234,15 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Definition: <p>Sprite sheet specification. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF">sprite sheet parameter template</a>.</p>
         :type Definition: int
-        :param _Height: Subimage height of image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Height: <p>Height of the sprite sheet.</p>
         :type Height: int
-        :param _Width: Subimage width of image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Width: <p>Width of the sprite sheet.</p>
         :type Width: int
-        :param _TotalCount: Total number of subimages in each image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: <p>The number of small images in each sprite sheet.</p>
         :type TotalCount: int
-        :param _ImageUrlSet: Address of each image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ImageUrlSet: <p>The domain names or IP addresses of each sprite sheet.</p>
         :type ImageUrlSet: list of str
         :param _WebVttUrl: Address of WebVtt file for the position-time relationship among subimages in an image sprite. The WebVtt file indicates the corresponding time points of each subimage and their coordinates in the image sprite, which is typically used by the player for implementing preview.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -49564,8 +50257,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
-        r"""Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sprite sheet specification. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF">sprite sheet parameter template</a>.</p>
         :rtype: int
         """
         return self._Definition
@@ -49576,8 +50268,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        r"""Subimage height of image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Height of the sprite sheet.</p>
         :rtype: int
         """
         return self._Height
@@ -49588,8 +50279,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
-        r"""Subimage width of image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Width of the sprite sheet.</p>
         :rtype: int
         """
         return self._Width
@@ -49600,8 +50290,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of subimages in each image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>The number of small images in each sprite sheet.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -49612,8 +50301,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageUrlSet(self):
-        r"""Address of each image sprite.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>The domain names or IP addresses of each sprite sheet.</p>
         :rtype: list of str
         """
         return self._ImageUrlSet
@@ -49659,44 +50347,53 @@ class MediaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BasicInfo: Basic information, such as video name, category, playback address, and cover image.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _BasicInfo: <p>Basic information. Include video name, category, playback address, cover image.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param _MetaData: Metadata, such as size, duration, video stream information, and audio stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MetaData: <p>Meta information, including size, duration, video stream information, and audio stream information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _TranscodeInfo: Result information of transcoding, such as address, specification, bitrate, and resolution of the videos in various bitrates generated by transcoding a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TranscodeInfo: <p>Transcoding result information, including domain names or IP addresses, specifications, bitrates, and resolutions of various types of videos generated by video transcoding.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeInfo: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeInfo`
-        :param _AnimatedGraphicsInfo: Result information of animated image generating, i.e., relevant information of an animated image (such as .gif) generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AnimatedGraphicsInfo: <p>AnimatedGraphicsInfo. Information related to the animated graphics (such as gif) after video-to-gif conversion.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AnimatedGraphicsInfo: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsInfo`
-        :param _SampleSnapshotInfo: Sampled screenshot information, i.e., relevant information of a sampled screenshot generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SampleSnapshotInfo: <p>Sampling screenshot information. Screenshot information related to the video after sampling screenshot taking.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleSnapshotInfo: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotInfo`
-        :param _ImageSpriteInfo: Image sprite information, i.e., relevant information of image sprite generated from video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ImageSpriteInfo: <p>Sprite image information. Relevant information of the sprite after capturing CSS sprites from the video.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageSpriteInfo: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteInfo`
-        :param _SnapshotByTimeOffsetInfo: Time point screenshot information, i.e., information of each time point screenshot generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SnapshotByTimeOffsetInfo: <p>Screenshot information at the specified time point. Information of each screenshot after capturing the video at the specified time point.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotByTimeOffsetInfo: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetInfo`
-        :param _KeyFrameDescInfo: Timestamp information, i.e., information of each timestamp set for a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _KeyFrameDescInfo: <p>Video timestamp information. Each dotting information set for the video.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type KeyFrameDescInfo: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`
-        :param _AdaptiveDynamicStreamingInfo: Adaptive bitrate streaming information, such as specification, encryption type, and container format.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AdaptiveDynamicStreamingInfo: <p>Adaptive Bitrate Streaming information. Includes specification, encryption type, packaging format and information related to.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AdaptiveDynamicStreamingInfo: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`
-        :param _MiniProgramReviewInfo: WeChat Mini Program audit information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MiniProgramReviewInfo: <p>miniProgramReviewInfo</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
-        :param _SubtitleInfo: Subtitle information
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param _SubtitleInfo: <p>Subtitle information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
-        :param _FileId: Unique ID of media file.
+        :param _FileId: <p>Media file unique identifier ID.</p>
         :type FileId: str
-        :param _ReviewInfo: Moderation details.
+        :param _ReviewInfo: <p>Verification information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewInfo: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
+        :param _MPSAiMediaInfo: <p>MPS intelligent media asset information</p>
+        :type MPSAiMediaInfo: :class:`tencentcloud.vod.v20180717.models.MPSAiMediaInfo`
+        :param _ImageUnderstandingInfo: <p>Image understanding information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageUnderstandingInfo: :class:`tencentcloud.vod.v20180717.models.ImageUnderstandingInfo`
+        :param _KnowledgeBasesInfo: <p>Intelligent library information.</p>
+        :type KnowledgeBasesInfo: :class:`tencentcloud.vod.v20180717.models.KnowledgeBasesInfo`
+        :param _FaceRecognitionInfo: <p>Facial recognition information.</p>
+        :type FaceRecognitionInfo: :class:`tencentcloud.vod.v20180717.models.FaceRecognitionInfo`
         """
         self._BasicInfo = None
         self._MetaData = None
@@ -49711,11 +50408,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SubtitleInfo = None
         self._FileId = None
         self._ReviewInfo = None
+        self._MPSAiMediaInfo = None
+        self._ImageUnderstandingInfo = None
+        self._KnowledgeBasesInfo = None
+        self._FaceRecognitionInfo = None
 
     @property
     def BasicInfo(self):
-        r"""Basic information, such as video name, category, playback address, and cover image.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Basic information. Include video name, category, playback address, cover image.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         """
         return self._BasicInfo
@@ -49726,8 +50427,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaData(self):
-        r"""Metadata, such as size, duration, video stream information, and audio stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Meta information, including size, duration, video stream information, and audio stream information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -49738,8 +50439,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranscodeInfo(self):
-        r"""Result information of transcoding, such as address, specification, bitrate, and resolution of the videos in various bitrates generated by transcoding a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Transcoding result information, including domain names or IP addresses, specifications, bitrates, and resolutions of various types of videos generated by video transcoding.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeInfo`
         """
         return self._TranscodeInfo
@@ -49750,8 +50451,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AnimatedGraphicsInfo(self):
-        r"""Result information of animated image generating, i.e., relevant information of an animated image (such as .gif) generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>AnimatedGraphicsInfo. Information related to the animated graphics (such as gif) after video-to-gif conversion.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsInfo`
         """
         return self._AnimatedGraphicsInfo
@@ -49762,8 +50463,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleSnapshotInfo(self):
-        r"""Sampled screenshot information, i.e., relevant information of a sampled screenshot generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sampling screenshot information. Screenshot information related to the video after sampling screenshot taking.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotInfo`
         """
         return self._SampleSnapshotInfo
@@ -49774,8 +50475,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageSpriteInfo(self):
-        r"""Image sprite information, i.e., relevant information of image sprite generated from video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sprite image information. Relevant information of the sprite after capturing CSS sprites from the video.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteInfo`
         """
         return self._ImageSpriteInfo
@@ -49786,8 +50487,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetInfo(self):
-        r"""Time point screenshot information, i.e., information of each time point screenshot generated from a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Screenshot information at the specified time point. Information of each screenshot after capturing the video at the specified time point.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetInfo`
         """
         return self._SnapshotByTimeOffsetInfo
@@ -49798,8 +50499,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyFrameDescInfo(self):
-        r"""Timestamp information, i.e., information of each timestamp set for a video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Video timestamp information. Each dotting information set for the video.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`
         """
         return self._KeyFrameDescInfo
@@ -49810,8 +50511,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdaptiveDynamicStreamingInfo(self):
-        r"""Adaptive bitrate streaming information, such as specification, encryption type, and container format.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Adaptive Bitrate Streaming information. Includes specification, encryption type, packaging format and information related to.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`
         """
         return self._AdaptiveDynamicStreamingInfo
@@ -49822,8 +50523,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MiniProgramReviewInfo(self):
-        r"""WeChat Mini Program audit information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>miniProgramReviewInfo</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
         """
         return self._MiniProgramReviewInfo
@@ -49834,8 +50535,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubtitleInfo(self):
-        r"""Subtitle information
-Note: this field may return `null`, indicating that no valid value is obtained.
+        r"""<p>Subtitle information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
         """
         return self._SubtitleInfo
@@ -49846,7 +50547,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FileId(self):
-        r"""Unique ID of media file.
+        r"""<p>Media file unique identifier ID.</p>
         :rtype: str
         """
         return self._FileId
@@ -49857,7 +50558,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ReviewInfo(self):
-        r"""Moderation details.
+        r"""<p>Verification information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
         """
@@ -49866,6 +50567,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ReviewInfo.setter
     def ReviewInfo(self, ReviewInfo):
         self._ReviewInfo = ReviewInfo
+
+    @property
+    def MPSAiMediaInfo(self):
+        r"""<p>MPS intelligent media asset information</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSAiMediaInfo`
+        """
+        return self._MPSAiMediaInfo
+
+    @MPSAiMediaInfo.setter
+    def MPSAiMediaInfo(self, MPSAiMediaInfo):
+        self._MPSAiMediaInfo = MPSAiMediaInfo
+
+    @property
+    def ImageUnderstandingInfo(self):
+        r"""<p>Image understanding information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageUnderstandingInfo`
+        """
+        return self._ImageUnderstandingInfo
+
+    @ImageUnderstandingInfo.setter
+    def ImageUnderstandingInfo(self, ImageUnderstandingInfo):
+        self._ImageUnderstandingInfo = ImageUnderstandingInfo
+
+    @property
+    def KnowledgeBasesInfo(self):
+        r"""<p>Intelligent library information.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.KnowledgeBasesInfo`
+        """
+        return self._KnowledgeBasesInfo
+
+    @KnowledgeBasesInfo.setter
+    def KnowledgeBasesInfo(self, KnowledgeBasesInfo):
+        self._KnowledgeBasesInfo = KnowledgeBasesInfo
+
+    @property
+    def FaceRecognitionInfo(self):
+        r"""<p>Facial recognition information.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FaceRecognitionInfo`
+        """
+        return self._FaceRecognitionInfo
+
+    @FaceRecognitionInfo.setter
+    def FaceRecognitionInfo(self, FaceRecognitionInfo):
+        self._FaceRecognitionInfo = FaceRecognitionInfo
 
 
     def _deserialize(self, params):
@@ -49906,6 +50652,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ReviewInfo") is not None:
             self._ReviewInfo = FileReviewInfo()
             self._ReviewInfo._deserialize(params.get("ReviewInfo"))
+        if params.get("MPSAiMediaInfo") is not None:
+            self._MPSAiMediaInfo = MPSAiMediaInfo()
+            self._MPSAiMediaInfo._deserialize(params.get("MPSAiMediaInfo"))
+        if params.get("ImageUnderstandingInfo") is not None:
+            self._ImageUnderstandingInfo = ImageUnderstandingInfo()
+            self._ImageUnderstandingInfo._deserialize(params.get("ImageUnderstandingInfo"))
+        if params.get("KnowledgeBasesInfo") is not None:
+            self._KnowledgeBasesInfo = KnowledgeBasesInfo()
+            self._KnowledgeBasesInfo._deserialize(params.get("KnowledgeBasesInfo"))
+        if params.get("FaceRecognitionInfo") is not None:
+            self._FaceRecognitionInfo = FaceRecognitionInfo()
+            self._FaceRecognitionInfo._deserialize(params.get("FaceRecognitionInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50312,7 +51070,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaMiniProgramReviewElem(AbstractModel):
-    r"""Mini Program Audio-Video Review Summary Metadata
+    r"""
 
     """
 
@@ -50398,7 +51156,7 @@ class MediaMiniProgramReviewElem(AbstractModel):
 
 
 class MediaMiniProgramReviewInfo(AbstractModel):
-    r"""Mini Program Audio-Video Review Information
+    r"""
 
     """
 
@@ -50439,7 +51197,7 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
 
 class MediaMiniProgramReviewInfoItem(AbstractModel):
-    r"""Mini Program Audio-Video Review Information Unit
+    r"""
 
     """
 
@@ -52454,15 +53212,24 @@ class MediaSourceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceType: Media files source category: <li>Record: From recording. Such as live streaming recording, live time shift recording, etc.</li> <li>Upload: From upload. Such as pull upload, upload from server, client UGC upload, etc.</li> <li>VideoProcessing: From video processing. Such as video splicing, video editing, etc.</li> <li>TrtcRecord: From TRTC accompanying recording.</li> <li>WebPageRecord: From panoramic recording.</li> <li>Unknown: Unknown source.</li>
+        :param _SourceType: Media file source category:
+<li>Record: comes from recording, such as live recording, live streaming time shift recording.</li>
+<li>Upload: Comes from upload, such as pull upload, server-side upload, and client UGC upload.</li>
+<li>VideoProcessing: comes from video processing, such as video splicing, video editing.</li>
+<li>TrtcRecord: Comes from TRTC simultaneous recording.</li>
+<li>WebPageRecord: comes from panoramic recording.</li>
+<li>Unknown: Unknown source.</li>
         :type SourceType: str
-        :param _SourceContext: User-transparent transmission field when creating a file.
+        :param _SourceContext: Field passed through when the user creates a file.
         :type SourceContext: str
-        :param _LiveRecordInfo: Live streaming recording information, valid when the file source is Record.
+        :param _LiveRecordInfo: Live recording information is valid when file source is Record.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveRecordInfo: :class:`tencentcloud.vod.v20180717.models.LiveRecordInfo`
-        :param _TrtcRecordInfo: TRTC recording information, valid when the file source is TrtcRecord.
+        :param _TrtcRecordInfo: TRTC Companion Recording Information. Valid at that time when the file source is TrtcRecord.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TrtcRecordInfo: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
-        :param _WebPageRecordInfo: Panoramic recording information, valid when the file source is WebPageRecord.
+        :param _WebPageRecordInfo: Panoramic recording information. Valid when the file source is WebPageRecord.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type WebPageRecordInfo: :class:`tencentcloud.vod.v20180717.models.WebPageRecordInfo`
         """
         self._SourceType = None
@@ -52473,7 +53240,13 @@ class MediaSourceData(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""Media files source category: <li>Record: From recording. Such as live streaming recording, live time shift recording, etc.</li> <li>Upload: From upload. Such as pull upload, upload from server, client UGC upload, etc.</li> <li>VideoProcessing: From video processing. Such as video splicing, video editing, etc.</li> <li>TrtcRecord: From TRTC accompanying recording.</li> <li>WebPageRecord: From panoramic recording.</li> <li>Unknown: Unknown source.</li>
+        r"""Media file source category:
+<li>Record: comes from recording, such as live recording, live streaming time shift recording.</li>
+<li>Upload: Comes from upload, such as pull upload, server-side upload, and client UGC upload.</li>
+<li>VideoProcessing: comes from video processing, such as video splicing, video editing.</li>
+<li>TrtcRecord: Comes from TRTC simultaneous recording.</li>
+<li>WebPageRecord: comes from panoramic recording.</li>
+<li>Unknown: Unknown source.</li>
         :rtype: str
         """
         return self._SourceType
@@ -52484,7 +53257,7 @@ class MediaSourceData(AbstractModel):
 
     @property
     def SourceContext(self):
-        r"""User-transparent transmission field when creating a file.
+        r"""Field passed through when the user creates a file.
         :rtype: str
         """
         return self._SourceContext
@@ -52495,7 +53268,8 @@ class MediaSourceData(AbstractModel):
 
     @property
     def LiveRecordInfo(self):
-        r"""Live streaming recording information, valid when the file source is Record.
+        r"""Live recording information is valid when file source is Record.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.LiveRecordInfo`
         """
         return self._LiveRecordInfo
@@ -52506,7 +53280,8 @@ class MediaSourceData(AbstractModel):
 
     @property
     def TrtcRecordInfo(self):
-        r"""TRTC recording information, valid when the file source is TrtcRecord.
+        r"""TRTC Companion Recording Information. Valid at that time when the file source is TrtcRecord.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
         """
         return self._TrtcRecordInfo
@@ -52517,7 +53292,8 @@ class MediaSourceData(AbstractModel):
 
     @property
     def WebPageRecordInfo(self):
-        r"""Panoramic recording information, valid when the file source is WebPageRecord.
+        r"""Panoramic recording information. Valid when the file source is WebPageRecord.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.WebPageRecordInfo`
         """
         return self._WebPageRecordInfo
@@ -52812,29 +53588,30 @@ class MediaSubtitleItem(AbstractModel):
         :type Id: str
         :param _Name: Subtitle name
         :type Name: str
-        :param _Language: Subtitle language. Common values:
-<li>`zh`: Chinese</li>
-<li>`en`: English</li>
-<li>`ja`: Japanese</li>
-<li>`ko`: Korean</li>
-<li>`vi`: Vietnamese</li>
-<li>`ms`: Malay</li>
-<li>`th`: Thai</li>
-<li>`pt`: Portuguese</li>
-<li>`tr`: Turkish</li>
-<li>`ar`: Arabic</li>
-<li>`es`: Spanish</li>
-<li>`hi`: Hindi</li>
-<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
+        :param _Language: Subtitle language. Common values are as follows:
+<li>zh: Chinese;</li>
+<li>en: English;</li>
+<li>ja: Japanese;</li>
+<li>ko: Korean;</li>
+<li>vi: Vietnamese.</li>
+<li>ms: Malay;</li>
+<li>th: Thai;</li>
+<li>pt: Portuguese;</li>
+<li>tr: Turkish;</li>
+<li>ar: Arabic;</li>
+<li>es: Spanish;</li>
+<li>hi: Hindi;</li>
+<li>fr: French.</li>
+For other values, see [RFC5646](https://tools.ietf.org/html/rfc5646)
         :type Language: str
         :param _Format: Subtitle format. Valid value:
 <li>vtt</li>
         :type Format: str
         :param _Url: Subtitle URL
         :type Url: str
-        :param _Source: Subtitle source, values:
-<li>UserUploaded: user uploaded;</li>
-<li>AIRecognition: AI recognition, generated through asr full text recognition or voice translation.</li>
+        :param _Source: Subtitle source. Value ranges from...to...
+<li>UserUploaded: User upload.</li>
+<li>AIRecognition: AI recognition, generated through speech recognition or speech translation generation.</li>
         :type Source: str
         """
         self._Id = None
@@ -52868,20 +53645,21 @@ class MediaSubtitleItem(AbstractModel):
 
     @property
     def Language(self):
-        r"""Subtitle language. Common values:
-<li>`zh`: Chinese</li>
-<li>`en`: English</li>
-<li>`ja`: Japanese</li>
-<li>`ko`: Korean</li>
-<li>`vi`: Vietnamese</li>
-<li>`ms`: Malay</li>
-<li>`th`: Thai</li>
-<li>`pt`: Portuguese</li>
-<li>`tr`: Turkish</li>
-<li>`ar`: Arabic</li>
-<li>`es`: Spanish</li>
-<li>`hi`: Hindi</li>
-<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
+        r"""Subtitle language. Common values are as follows:
+<li>zh: Chinese;</li>
+<li>en: English;</li>
+<li>ja: Japanese;</li>
+<li>ko: Korean;</li>
+<li>vi: Vietnamese.</li>
+<li>ms: Malay;</li>
+<li>th: Thai;</li>
+<li>pt: Portuguese;</li>
+<li>tr: Turkish;</li>
+<li>ar: Arabic;</li>
+<li>es: Spanish;</li>
+<li>hi: Hindi;</li>
+<li>fr: French.</li>
+For other values, see [RFC5646](https://tools.ietf.org/html/rfc5646)
         :rtype: str
         """
         return self._Language
@@ -52915,9 +53693,9 @@ class MediaSubtitleItem(AbstractModel):
 
     @property
     def Source(self):
-        r"""Subtitle source, values:
-<li>UserUploaded: user uploaded;</li>
-<li>AIRecognition: AI recognition, generated through asr full text recognition or voice translation.</li>
+        r"""Subtitle source. Value ranges from...to...
+<li>UserUploaded: User upload.</li>
+<li>AIRecognition: AI recognition, generated through speech recognition or speech translation generation.</li>
         :rtype: str
         """
         return self._Source
@@ -53242,8 +54020,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Trace: Digital watermark</li>
 <li>None: Regular watermark</li>
         :type DigitalWatermarkType: str
-        :param _CopyRightWatermarkText: Copyright information.
+        :param _CopyRightWatermarkText: 
         :type CopyRightWatermarkText: str
+        :param _BlindWatermarkDefinition: Digital watermark template id.
+        :type BlindWatermarkDefinition: int
         """
         self._Url = None
         self._Definition = None
@@ -53258,6 +54038,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._AudioStreamSet = None
         self._DigitalWatermarkType = None
         self._CopyRightWatermarkText = None
+        self._BlindWatermarkDefinition = None
 
     @property
     def Url(self):
@@ -53406,7 +54187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CopyRightWatermarkText(self):
-        r"""Copyright information.
+        r"""
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -53414,6 +54195,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @CopyRightWatermarkText.setter
     def CopyRightWatermarkText(self, CopyRightWatermarkText):
         self._CopyRightWatermarkText = CopyRightWatermarkText
+
+    @property
+    def BlindWatermarkDefinition(self):
+        r"""Digital watermark template id.
+        :rtype: int
+        """
+        return self._BlindWatermarkDefinition
+
+    @BlindWatermarkDefinition.setter
+    def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
+        self._BlindWatermarkDefinition = BlindWatermarkDefinition
 
 
     def _deserialize(self, params):
@@ -53440,6 +54232,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self._AudioStreamSet.append(obj)
         self._DigitalWatermarkType = params.get("DigitalWatermarkType")
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
+        self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74295,126 +75088,70 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/33987">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the app ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _FileIds: File ID set. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
-<li>ID length limit: 40 characters.</li>
+        :param _FileIds: <p>File id collection, match any element in the collection.</p><li>Array length limit: 10.</li><li>Single ID length limit: 40 character.</li>
         :type FileIds: list of str
-        :param _Names: The file names to use for fuzzy search, which are sorted by relevance in descending order.
-<li>Name length limit: 100 characters.</li>
-<li>Array length limit: 10</li>
+        :param _Names: <p>File name collection. Fuzzy match media files by file name. The higher the matching degree, the higher the priority in sorting.</p><li>Single file name length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :type Names: list of str
-        :param _NamePrefixes: The file name prefixes to search.
-<li>Prefix length limit: 100 characters.</li>
-<li>Array length limit: 10.</li>
+        :param _NamePrefixes: <p>File name prefix. Prefix match media files.</p><li>Single file name prefix length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :type NamePrefixes: list of str
-        :param _Descriptions: File description set. Media file descriptions are fuzzily matched. The higher the match rate, the higher-ranked the result.
-<li>Length limit for a single description: 100 characters</li>
-<li>Array length limit: 10</li>
+        :param _Descriptions: <p>File description set, fuzzy match media files. The higher the matching degree, higher priority in sorting.</p><li>Single description length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :type Descriptions: list of str
-        :param _ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
-<li>Array length limit: 10.</li>
+        :param _ClassIds: <p>Category id collection, match the specified ID in the collection and all its subclasses.</p><li>Array length limit: 10.</li>
         :type ClassIds: list of int
-        :param _Tags: The tags to search. A file is considered a match if it has any of the tags specified.
-<li>Tag length limit: 32 characters.</li>
-<li>Array length limit: 16.</li>
+        :param _Tags: <p>Tag set, match any element in the collection.</p><li>Single tag length limit: 32 character.</li><li>Array length limit: 16.</li>
         :type Tags: list of str
-        :param _Categories: File type. Any element in the set can be matched.
-<li>Video: video file</li>
-<li>Audio: audio file</li>
-<li>Image: image file</li>
+        :param _Categories: <p>File type. Match any element in the collection:</p><li>Video: video file</li><li>Audio: audio file</li><li>Image: image file</li>
         :type Categories: list of str
-        :param _SourceTypes: Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
-<li>Array length limit: 10.</li>
+        :param _SourceTypes: <p>Media file source collection. Source value reference <a href="https://www.tencentcloud.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData">SourceType</a>.</p><li>Array length limit: 10.</li>
         :type SourceTypes: list of str
-        :param _StreamIds: The live stream code array. A media file will be returned if it matches any element in the array.
-<li>Array length limit: 10</li>
+        :param _StreamIds: <p>Push stream live code collection. Match any element in the collection.</p><li>Array length limit: 10.</li>
         :type StreamIds: list of str
-        :param _CreateTime: Matches files created within the time period.
-<li>Includes specified start and end points in time.</li>
+        :param _CreateTime: <p>Match files with creation time within this time period.</p><li>Include the specified start and end points in time.</li>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _ExpireTime: Files whose expiration time points are within the specified time range will be returned. Expired files will not be returned.
-<li>The files whose expiration time points are on the start or end time of the specified range will also be returned.</li>
+        :param _ExpireTime: <p>Match files with expiration time within this period. Unable to retrieve expired files.</p><li>Include the specified start and end points in time.</li>
         :type ExpireTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _StorageRegions: Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Regions](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
-<li>Length limit for a single region: 20 characters</li>
-<li>Array length limit: 20</li>
+        :param _StorageRegions: <p>Media file storage region, such as ap-chongqing. Please refer to <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a>.</p><li>Single storage region length limit: 20 characters.</li><li>Array length limit: 20.</li>
         :type StorageRegions: list of str
-        :param _StorageClasses: An array of storage classes. Valid values:
-<li>STANDARD</li>
-<li>STANDARD_IA</li>
-<li>ARCHIVE</li>
-<li>DEEP_ARCHIVE</li>
+        :param _StorageClasses: <p>Storage type array. Optional values:</p><li> STANDARD: Standard storage.</li><li> STANDARD_IA: Infrequent storage.</li><li> ARCHIVE: Archive storage.</li><li> DEEP_ARCHIVE: Deep archive storage.</li>
         :type StorageClasses: list of str
-        :param _MediaTypes: The file formats.
-<li>Array length limit: 10</li>
+        :param _MediaTypes: <p>Media file packaging format collection, match any element in the collection.</p><li>Array length limit: 10.</li>
         :type MediaTypes: list of str
-        :param _Status: The file statuses.
-<li>`Normal`</li>
-<li>`SystemForbidden` (blocked by VOD)</li>
-<li>`Forbidden` (blocked by you)</li>
+        :param _Status: <p>Media file status, match any element in the collection.</p><li> Normal: normal;</li><li> SystemForbidden: Platform Ban;</li><li> Forbidden: proactive ban.</li>
         :type Status: list of str
-        :param _ReviewResults: The types of moderation result.
-<li>`pass`</li>
-<li>`review` (the content may be non-compliant and needs to be reviewed)</li>
-<li>`block` (the content is non-compliant and should be blocked)</li>
-<li>`notModerated` (the file hasn't been moderated yet)</li>
+        :param _ReviewResults: <p>Media file review result, match any element in the collection.</p><li> pass: Pass review;</li><li> review: Suspected violation, suggest re-examination;</li><li> block: Confirmed violation, suggest banning;</li><li> notModerated: Not moderated.</li>
         :type ReviewResults: list of str
-        :param _TrtcSdkAppIds: The TRTC application IDs. Any file that matches one of the application IDs will be returned.
-<li>Array length limit: 10</li>
+        :param _TrtcSdkAppIds: <p>TRTC application ID collection. Matches any element in the collection.</p><li>Array length limit: 10.</li>
         :type TrtcSdkAppIds: list of int non-negative
-        :param _TrtcRoomIds: The TRTC room IDs. Any file that matches one of the room IDs will be returned.
-<li>Element length limit: 64 characters.</li>
-<li>Array length limit: 10.</li>
+        :param _TrtcRoomIds: <p>TRTC room ID collection. Matches any element in the collection.</p><li>Single room ID length limit: 64 characters;</li><li>Array length limit: 10.</li>
         :type TrtcRoomIds: list of str
-        :param _Filters: Specifies information entry that needs to be returned for all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:
-<li>basicInfo (basic video information).</li>
-<li>metaData (video metadata).</li>
-<li>transcodeInfo (result information of video transcoding).</li>
-<li>animatedGraphicsInfo (result information of animated image generating task).</li>
-<li>imageSpriteInfo (image sprite information).</li>
-<li>snapshotByTimeOffsetInfo (point-in-time screenshot information).</li>
-<li>sampleSnapshotInfo (sampled screenshot information).</li>
-<li>keyFrameDescInfo (timestamp information).</li>
-<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
-<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
+        :param _Filters: <p>Information to be returned for all specified media files, multiple information can be specified simultaneously, N starts incrementing from 0. If this field is not filled in, default return all information. Options include:</p><li>basicInfo (video basic information).</li><li>metaData (video metadata).</li><li>transcodeInfo (video transcoding result information).</li><li>animatedGraphicsInfo (video motion graphic result information).</li><li>imageSpriteInfo (video thumbnail information).</li><li>snapshotByTimeOffsetInfo (video screenshot by specified time point).</li><li>sampleSnapshotInfo (sampling screenshot information).</li><li>keyFrameDescInfo (Dotting Information).</li><li>adaptiveDynamicStreamingInfo (Adaptive Bitrate Streaming information).</li><li>miniProgramReviewInfo (miniProgramReviewInfo).</li>
         :type Filters: list of str
-        :param _Sort: Sorting order.
-<li>Valid value of `Sort.Field`: CreateTime.</li>
-<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>
+        :param _Sort: <p>Sorting method.</p><li>Sort.Field optional CreateTime.</li><li>When Text, Names, or Descriptions is not empty, the Sort.Field field is invalid. Search results sorted by relevance.</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param _Offset: <div id="p_offset">Start offset of a paged return. Default value: 0. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
-<li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
+        :param _Offset: <div id="p_offset">Starting offset amount for pagination return, default value: 0. Returns entries from Offset to Offset+Limit-1.<li>Value ranges from...to... Offset + Limit is no more than 5000. (See: <a href="#maxResultsDesc">API return result count limit</a>)</li></div>
         :type Offset: int
-        :param _Limit: <div id="p_limit">Number of entries returned by a paged query. Default value: 10. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
-<li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
+        :param _Limit: <div id="p_limit">Number of records returned in pages. Default value: 10. Records from Offset to Offset+Limit-1 will be returned.<li>Value ranges from...to... Offset + Limit is no more than 5000. (Refer to: <a href="#maxResultsDesc">API return result count limit</a>)</li></div>
         :type Limit: int
-        :param _Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
-Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
+        :param _Text: <p>(Not recommended: Use Names, NamePrefixes, or Descriptions as alternatives)<br>Search text, fuzzy match media file name or description information. The higher the matching degree and more matches, the higher priority in sorting. Length limit: 64 characters.</p>
         :type Text: str
-        :param _SourceType: (This is not recommended. `SourceTypes` should be used instead)
-Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+        :param _SourceType: <p>(Not recommended: Use SourceTypes as an alternative)<br>Media file source. Source value reference <a href="https://www.tencentcloud.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData">SourceType</a>.</p>
         :type SourceType: str
-        :param _StreamId: (Not recommended. Consider using `StreamIds` instead.)
-The live stream code.
+        :param _StreamId: <p>(Not recommended: Use StreamIds as an alternative)<br>Push stream live code.</p>
         :type StreamId: str
-        :param _StartTime: (This is not recommended. `CreateTime` should be used instead)
-Start time in the creation time range.
-<li>After or at the start time.</li>
-<li>If `CreateTime.After` also exists, it will be used first.</li>
-<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :param _StartTime: <p>(Not recommended: Use CreateTime instead)<br>Start time of creation time.</p><li>Greater than or equal to start time.</li><li>When CreateTime.After also exists, CreateTime.After will be used first.</li><li>Format according to ISO 8601 standard. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type StartTime: str
-        :param _EndTime: (This is not recommended. `CreateTime` should be used instead)
-End time in the creation time range.
-<li>Before the end time.</li>
-<li>If `CreateTime.Before` also exists, it will be used first.</li>
-<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :param _EndTime: <p>(Not recommended: Use CreateTime instead)<br>End time of creation time.</p><li>Less than end time.</li><li>When CreateTime.Before also exists, CreateTime.Before will be used first.</li><li>Format according to ISO 8601 standard. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type EndTime: str
-        :param _Vids: This parameter is invalid now.
+        :param _Vids: <p>This field is invalid.</p>
         :type Vids: list of str
-        :param _Vid: This parameter is invalid now.
+        :param _Vid: <p>This field is invalid.</p>
         :type Vid: str
+        :param _StreamDomains: <p>Live streaming push Domain. Valid when the media source is Live streaming Recording.</p>
+        :type StreamDomains: list of str
+        :param _StreamPaths: <p>Live streaming push Path. Valid at that time when the source is live recording.</p>
+        :type StreamPaths: list of str
         """
         self._SubAppId = None
         self._FileIds = None
@@ -74446,10 +75183,12 @@ End time in the creation time range.
         self._EndTime = None
         self._Vids = None
         self._Vid = None
+        self._StreamDomains = None
+        self._StreamPaths = None
 
     @property
     def SubAppId(self):
-        r"""<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/33987">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the app ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -74460,9 +75199,7 @@ End time in the creation time range.
 
     @property
     def FileIds(self):
-        r"""File ID set. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
-<li>ID length limit: 40 characters.</li>
+        r"""<p>File id collection, match any element in the collection.</p><li>Array length limit: 10.</li><li>Single ID length limit: 40 character.</li>
         :rtype: list of str
         """
         return self._FileIds
@@ -74473,9 +75210,7 @@ End time in the creation time range.
 
     @property
     def Names(self):
-        r"""The file names to use for fuzzy search, which are sorted by relevance in descending order.
-<li>Name length limit: 100 characters.</li>
-<li>Array length limit: 10</li>
+        r"""<p>File name collection. Fuzzy match media files by file name. The higher the matching degree, the higher the priority in sorting.</p><li>Single file name length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._Names
@@ -74486,9 +75221,7 @@ End time in the creation time range.
 
     @property
     def NamePrefixes(self):
-        r"""The file name prefixes to search.
-<li>Prefix length limit: 100 characters.</li>
-<li>Array length limit: 10.</li>
+        r"""<p>File name prefix. Prefix match media files.</p><li>Single file name prefix length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._NamePrefixes
@@ -74499,9 +75232,7 @@ End time in the creation time range.
 
     @property
     def Descriptions(self):
-        r"""File description set. Media file descriptions are fuzzily matched. The higher the match rate, the higher-ranked the result.
-<li>Length limit for a single description: 100 characters</li>
-<li>Array length limit: 10</li>
+        r"""<p>File description set, fuzzy match media files. The higher the matching degree, higher priority in sorting.</p><li>Single description length limit: 100 characters.</li><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._Descriptions
@@ -74512,8 +75243,7 @@ End time in the creation time range.
 
     @property
     def ClassIds(self):
-        r"""Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
-<li>Array length limit: 10.</li>
+        r"""<p>Category id collection, match the specified ID in the collection and all its subclasses.</p><li>Array length limit: 10.</li>
         :rtype: list of int
         """
         return self._ClassIds
@@ -74524,9 +75254,7 @@ End time in the creation time range.
 
     @property
     def Tags(self):
-        r"""The tags to search. A file is considered a match if it has any of the tags specified.
-<li>Tag length limit: 32 characters.</li>
-<li>Array length limit: 16.</li>
+        r"""<p>Tag set, match any element in the collection.</p><li>Single tag length limit: 32 character.</li><li>Array length limit: 16.</li>
         :rtype: list of str
         """
         return self._Tags
@@ -74537,10 +75265,7 @@ End time in the creation time range.
 
     @property
     def Categories(self):
-        r"""File type. Any element in the set can be matched.
-<li>Video: video file</li>
-<li>Audio: audio file</li>
-<li>Image: image file</li>
+        r"""<p>File type. Match any element in the collection:</p><li>Video: video file</li><li>Audio: audio file</li><li>Image: image file</li>
         :rtype: list of str
         """
         return self._Categories
@@ -74551,8 +75276,7 @@ End time in the creation time range.
 
     @property
     def SourceTypes(self):
-        r"""Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
-<li>Array length limit: 10.</li>
+        r"""<p>Media file source collection. Source value reference <a href="https://www.tencentcloud.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData">SourceType</a>.</p><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._SourceTypes
@@ -74563,8 +75287,7 @@ End time in the creation time range.
 
     @property
     def StreamIds(self):
-        r"""The live stream code array. A media file will be returned if it matches any element in the array.
-<li>Array length limit: 10</li>
+        r"""<p>Push stream live code collection. Match any element in the collection.</p><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._StreamIds
@@ -74575,8 +75298,7 @@ End time in the creation time range.
 
     @property
     def CreateTime(self):
-        r"""Matches files created within the time period.
-<li>Includes specified start and end points in time.</li>
+        r"""<p>Match files with creation time within this time period.</p><li>Include the specified start and end points in time.</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._CreateTime
@@ -74587,8 +75309,7 @@ End time in the creation time range.
 
     @property
     def ExpireTime(self):
-        r"""Files whose expiration time points are within the specified time range will be returned. Expired files will not be returned.
-<li>The files whose expiration time points are on the start or end time of the specified range will also be returned.</li>
+        r"""<p>Match files with expiration time within this period. Unable to retrieve expired files.</p><li>Include the specified start and end points in time.</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._ExpireTime
@@ -74599,9 +75320,7 @@ End time in the creation time range.
 
     @property
     def StorageRegions(self):
-        r"""Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Regions](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
-<li>Length limit for a single region: 20 characters</li>
-<li>Array length limit: 20</li>
+        r"""<p>Media file storage region, such as ap-chongqing. Please refer to <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a>.</p><li>Single storage region length limit: 20 characters.</li><li>Array length limit: 20.</li>
         :rtype: list of str
         """
         return self._StorageRegions
@@ -74612,11 +75331,7 @@ End time in the creation time range.
 
     @property
     def StorageClasses(self):
-        r"""An array of storage classes. Valid values:
-<li>STANDARD</li>
-<li>STANDARD_IA</li>
-<li>ARCHIVE</li>
-<li>DEEP_ARCHIVE</li>
+        r"""<p>Storage type array. Optional values:</p><li> STANDARD: Standard storage.</li><li> STANDARD_IA: Infrequent storage.</li><li> ARCHIVE: Archive storage.</li><li> DEEP_ARCHIVE: Deep archive storage.</li>
         :rtype: list of str
         """
         return self._StorageClasses
@@ -74627,8 +75342,7 @@ End time in the creation time range.
 
     @property
     def MediaTypes(self):
-        r"""The file formats.
-<li>Array length limit: 10</li>
+        r"""<p>Media file packaging format collection, match any element in the collection.</p><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._MediaTypes
@@ -74639,10 +75353,7 @@ End time in the creation time range.
 
     @property
     def Status(self):
-        r"""The file statuses.
-<li>`Normal`</li>
-<li>`SystemForbidden` (blocked by VOD)</li>
-<li>`Forbidden` (blocked by you)</li>
+        r"""<p>Media file status, match any element in the collection.</p><li> Normal: normal;</li><li> SystemForbidden: Platform Ban;</li><li> Forbidden: proactive ban.</li>
         :rtype: list of str
         """
         return self._Status
@@ -74653,11 +75364,7 @@ End time in the creation time range.
 
     @property
     def ReviewResults(self):
-        r"""The types of moderation result.
-<li>`pass`</li>
-<li>`review` (the content may be non-compliant and needs to be reviewed)</li>
-<li>`block` (the content is non-compliant and should be blocked)</li>
-<li>`notModerated` (the file hasn't been moderated yet)</li>
+        r"""<p>Media file review result, match any element in the collection.</p><li> pass: Pass review;</li><li> review: Suspected violation, suggest re-examination;</li><li> block: Confirmed violation, suggest banning;</li><li> notModerated: Not moderated.</li>
         :rtype: list of str
         """
         return self._ReviewResults
@@ -74668,8 +75375,7 @@ End time in the creation time range.
 
     @property
     def TrtcSdkAppIds(self):
-        r"""The TRTC application IDs. Any file that matches one of the application IDs will be returned.
-<li>Array length limit: 10</li>
+        r"""<p>TRTC application ID collection. Matches any element in the collection.</p><li>Array length limit: 10.</li>
         :rtype: list of int non-negative
         """
         return self._TrtcSdkAppIds
@@ -74680,9 +75386,7 @@ End time in the creation time range.
 
     @property
     def TrtcRoomIds(self):
-        r"""The TRTC room IDs. Any file that matches one of the room IDs will be returned.
-<li>Element length limit: 64 characters.</li>
-<li>Array length limit: 10.</li>
+        r"""<p>TRTC room ID collection. Matches any element in the collection.</p><li>Single room ID length limit: 64 characters;</li><li>Array length limit: 10.</li>
         :rtype: list of str
         """
         return self._TrtcRoomIds
@@ -74693,17 +75397,7 @@ End time in the creation time range.
 
     @property
     def Filters(self):
-        r"""Specifies information entry that needs to be returned for all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:
-<li>basicInfo (basic video information).</li>
-<li>metaData (video metadata).</li>
-<li>transcodeInfo (result information of video transcoding).</li>
-<li>animatedGraphicsInfo (result information of animated image generating task).</li>
-<li>imageSpriteInfo (image sprite information).</li>
-<li>snapshotByTimeOffsetInfo (point-in-time screenshot information).</li>
-<li>sampleSnapshotInfo (sampled screenshot information).</li>
-<li>keyFrameDescInfo (timestamp information).</li>
-<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
-<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
+        r"""<p>Information to be returned for all specified media files, multiple information can be specified simultaneously, N starts incrementing from 0. If this field is not filled in, default return all information. Options include:</p><li>basicInfo (video basic information).</li><li>metaData (video metadata).</li><li>transcodeInfo (video transcoding result information).</li><li>animatedGraphicsInfo (video motion graphic result information).</li><li>imageSpriteInfo (video thumbnail information).</li><li>snapshotByTimeOffsetInfo (video screenshot by specified time point).</li><li>sampleSnapshotInfo (sampling screenshot information).</li><li>keyFrameDescInfo (Dotting Information).</li><li>adaptiveDynamicStreamingInfo (Adaptive Bitrate Streaming information).</li><li>miniProgramReviewInfo (miniProgramReviewInfo).</li>
         :rtype: list of str
         """
         return self._Filters
@@ -74714,9 +75408,7 @@ End time in the creation time range.
 
     @property
     def Sort(self):
-        r"""Sorting order.
-<li>Valid value of `Sort.Field`: CreateTime.</li>
-<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>
+        r"""<p>Sorting method.</p><li>Sort.Field optional CreateTime.</li><li>When Text, Names, or Descriptions is not empty, the Sort.Field field is invalid. Search results sorted by relevance.</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SortBy`
         """
         return self._Sort
@@ -74727,8 +75419,7 @@ End time in the creation time range.
 
     @property
     def Offset(self):
-        r"""<div id="p_offset">Start offset of a paged return. Default value: 0. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
-<li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
+        r"""<div id="p_offset">Starting offset amount for pagination return, default value: 0. Returns entries from Offset to Offset+Limit-1.<li>Value ranges from...to... Offset + Limit is no more than 5000. (See: <a href="#maxResultsDesc">API return result count limit</a>)</li></div>
         :rtype: int
         """
         return self._Offset
@@ -74739,8 +75430,7 @@ End time in the creation time range.
 
     @property
     def Limit(self):
-        r"""<div id="p_limit">Number of entries returned by a paged query. Default value: 10. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
-<li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
+        r"""<div id="p_limit">Number of records returned in pages. Default value: 10. Records from Offset to Offset+Limit-1 will be returned.<li>Value ranges from...to... Offset + Limit is no more than 5000. (Refer to: <a href="#maxResultsDesc">API return result count limit</a>)</li></div>
         :rtype: int
         """
         return self._Limit
@@ -74751,8 +75441,7 @@ End time in the creation time range.
 
     @property
     def Text(self):
-        r"""(This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
-Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
+        r"""<p>(Not recommended: Use Names, NamePrefixes, or Descriptions as alternatives)<br>Search text, fuzzy match media file name or description information. The higher the matching degree and more matches, the higher priority in sorting. Length limit: 64 characters.</p>
         :rtype: str
         """
         return self._Text
@@ -74763,8 +75452,7 @@ Search text, which fuzzily matches the media file name or description. The more 
 
     @property
     def SourceType(self):
-        r"""(This is not recommended. `SourceTypes` should be used instead)
-Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+        r"""<p>(Not recommended: Use SourceTypes as an alternative)<br>Media file source. Source value reference <a href="https://www.tencentcloud.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData">SourceType</a>.</p>
         :rtype: str
         """
         return self._SourceType
@@ -74775,8 +75463,7 @@ Media file source. For valid values, please see [SourceType](https://intl.cloud.
 
     @property
     def StreamId(self):
-        r"""(Not recommended. Consider using `StreamIds` instead.)
-The live stream code.
+        r"""<p>(Not recommended: Use StreamIds as an alternative)<br>Push stream live code.</p>
         :rtype: str
         """
         return self._StreamId
@@ -74787,11 +75474,7 @@ The live stream code.
 
     @property
     def StartTime(self):
-        r"""(This is not recommended. `CreateTime` should be used instead)
-Start time in the creation time range.
-<li>After or at the start time.</li>
-<li>If `CreateTime.After` also exists, it will be used first.</li>
-<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        r"""<p>(Not recommended: Use CreateTime instead)<br>Start time of creation time.</p><li>Greater than or equal to start time.</li><li>When CreateTime.After also exists, CreateTime.After will be used first.</li><li>Format according to ISO 8601 standard. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :rtype: str
         """
         return self._StartTime
@@ -74802,11 +75485,7 @@ Start time in the creation time range.
 
     @property
     def EndTime(self):
-        r"""(This is not recommended. `CreateTime` should be used instead)
-End time in the creation time range.
-<li>Before the end time.</li>
-<li>If `CreateTime.Before` also exists, it will be used first.</li>
-<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        r"""<p>(Not recommended: Use CreateTime instead)<br>End time of creation time.</p><li>Less than end time.</li><li>When CreateTime.Before also exists, CreateTime.Before will be used first.</li><li>Format according to ISO 8601 standard. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :rtype: str
         """
         return self._EndTime
@@ -74817,7 +75496,7 @@ End time in the creation time range.
 
     @property
     def Vids(self):
-        r"""This parameter is invalid now.
+        r"""<p>This field is invalid.</p>
         :rtype: list of str
         """
         return self._Vids
@@ -74828,7 +75507,7 @@ End time in the creation time range.
 
     @property
     def Vid(self):
-        r"""This parameter is invalid now.
+        r"""<p>This field is invalid.</p>
         :rtype: str
         """
         return self._Vid
@@ -74836,6 +75515,28 @@ End time in the creation time range.
     @Vid.setter
     def Vid(self, Vid):
         self._Vid = Vid
+
+    @property
+    def StreamDomains(self):
+        r"""<p>Live streaming push Domain. Valid when the media source is Live streaming Recording.</p>
+        :rtype: list of str
+        """
+        return self._StreamDomains
+
+    @StreamDomains.setter
+    def StreamDomains(self, StreamDomains):
+        self._StreamDomains = StreamDomains
+
+    @property
+    def StreamPaths(self):
+        r"""<p>Live streaming push Path. Valid at that time when the source is live recording.</p>
+        :rtype: list of str
+        """
+        return self._StreamPaths
+
+    @StreamPaths.setter
+    def StreamPaths(self, StreamPaths):
+        self._StreamPaths = StreamPaths
 
 
     def _deserialize(self, params):
@@ -74875,6 +75576,8 @@ End time in the creation time range.
         self._EndTime = params.get("EndTime")
         self._Vids = params.get("Vids")
         self._Vid = params.get("Vid")
+        self._StreamDomains = params.get("StreamDomains")
+        self._StreamPaths = params.get("StreamPaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74892,10 +75595,9 @@ class SearchMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of eligible entries.
-<li>Maximum value: 5000. If the number of eligible entries is greater than 5,000, this field will return 5,000 instead of the actual number.</li>
+        :param _TotalCount: <p>Total records that meet search criteria.</p><li>Maximum value: 5000. When the number of records hit exceeds 5000, this field will return 5000 instead of the actual total count.</li>
         :type TotalCount: int
-        :param _MediaInfoSet: Media file information list
+        :param _MediaInfoSet: <p>Media file information list.</p>
         :type MediaInfoSet: list of MediaInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -74906,8 +75608,7 @@ class SearchMediaResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of eligible entries.
-<li>Maximum value: 5000. If the number of eligible entries is greater than 5,000, this field will return 5,000 instead of the actual number.</li>
+        r"""<p>Total records that meet search criteria.</p><li>Maximum value: 5000. When the number of records hit exceeds 5000, this field will return 5000 instead of the actual total count.</li>
         :rtype: int
         """
         return self._TotalCount
@@ -74918,7 +75619,7 @@ class SearchMediaResponse(AbstractModel):
 
     @property
     def MediaInfoSet(self):
-        r"""Media file information list
+        r"""<p>Media file information list.</p>
         :rtype: list of MediaInfo
         """
         return self._MediaInfoSet

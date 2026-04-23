@@ -72,6 +72,29 @@ class QuotaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAggregateUserQuotas(self, request):
+        r"""user quota list
+
+        :param request: Request instance for DescribeAggregateUserQuotas.
+        :type request: :class:`tencentcloud.quota.v20241204.models.DescribeAggregateUserQuotasRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.DescribeAggregateUserQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAggregateUserQuotas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAggregateUserQuotasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlarms(self, request):
         r"""This API is used to query the alarm rule list.
 
@@ -86,6 +109,29 @@ class QuotaClient(AbstractClient):
             body = self.call("DescribeAlarms", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlarmsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserQuota(self, request):
+        r"""Query a user quota
+
+        :param request: Request instance for DescribeUserQuota.
+        :type request: :class:`tencentcloud.quota.v20241204.models.DescribeUserQuotaRequest`
+        :rtype: :class:`tencentcloud.quota.v20241204.models.DescribeUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

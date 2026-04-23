@@ -3428,47 +3428,48 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchMediaResponse:
         """
-        Search for media information, supporting multiple condition filtering, as well as sorting and filtering of returned results. This includes:
-        - Specify a collection of file IDs (FileIds) to return media with any ID in the collection.
-        - Fuzzy search based on multiple media file names (Names) or description information (Descriptions).
-        - Search based on multiple file name prefixes (NamePrefixes).
-        - Specify a collection of categories (ClassIds, see input parameters) to return media that meets any category in the collection. For example, media categories include movies, TV shows, variety shows, etc., and there are subcategories such as historical films, action films, and romance films under the movie category. If ClassIds specifies movies and TV shows, all subcategories under movies and TV shows will be returned; if ClassIds specifies historical films and action films, only media under these two subcategories will be returned.
-        - Specify a collection of tags (Tags, see input parameters) to return media that meets any tag in the collection. For example, media tags include ACG, palace fighting, and ghost animal. If Tags specifies ACG and ghost animal, media that meets any of these two tags will be retrieved.
-        - Specify a collection of file types (Categories, see input parameters) to return media that meets any type in the collection. For example, file types include Video (video), Audio (audio), and Image (image). If Categories specifies Video and Audio, media that meets these types will be retrieved.
-        - Specify a collection of sources (SourceTypes, see input parameters) to return media that meets any source in the collection. For example, media sources include Record (live recording) and Upload (upload). If SourceTypes specifies Record and Upload, media that meets these sources will be retrieved.
-        - Specify a collection of file container formats (MediaTypes, see input parameters) to return media that meets any container format in the collection. For example, container formats include MP4, AVI, MP3, etc. If MediaTypes specifies MP4 and MP3, media that meets these container formats will be retrieved.
-        - Specify a collection of file statuses (Status, see input parameters) to return media that meets any status in the collection. For example, file statuses include Normal (normal), SystemForbidden (platform ban), and Forbidden (active ban). If Status specifies Normal and Forbidden, media that meets these statuses will be retrieved.
-        - Specify a collection of file moderation results (ReviewResults, see input parameters) to return media that meets any status in the collection. For example, file moderation results include pass (passed) and block (not compliant). If ReviewResults specifies pass and block, media that meets these moderation results will be retrieved.
-        - Filter live recorded media by specifying a collection of live streaming codes (StreamIds, see input parameters).
-        - Filter media by specifying the creation time range of the media.
-        - Filter media by specifying a collection of TRTC application IDs.
-        - Filter media by specifying a collection of TRTC room IDs.
+        Search media information, support multiple conditions filter criteria, and sort returned results, filter, and other features. This includes:
+        -Specify the file id collection FileIds, return media that matches any ID in the collection.
+        -Do fuzzy search based on multiple media file Names or Descriptions.
+        -Search for multiple filename prefixes NamePrefixes.
+        -Specify the category collection ClassIds (see input parameter), and media that meets any category in the collection will be returned. For example: media categories include movie, TV series, variety shows, among which movie has subcategories such as historical film, action film, romance film. If ClassIds specifies movie, TV series, then all subcategories under movie and TV series will be returned. If ClassIds specifies historical film, action film, then only media under these 2 subcategories will be returned.
+        -Specify the tag collection Tags (see input parameter), return media that meets any tag in the collection. For example: if a media has tags like ACG, palace drama, or parody remix, and Tags specifies ACG and parody remix, then any media that complies with any one of these two tags will be retrieved.
+        -Specify the file type set Categories (see input parameter), and return media that meets any type in the collection. For example: file types include Video, Audio, and Image. If Categories specifies Video and Audio, then media compliant with these types will be retrieved.
+        -Specify the source collection SourceTypes (see input parameter), return media that meets any source in the collection. For example: media sources include Record (live recording service) and Upload. If SourceTypes specifies Record and Upload, media that complies with these sources will be retrieved.
+        -Specify the file packaging format set MediaTypes (see input parameter), return media that meets any muxing format in the collection. For example: muxing formats include MP4, AVI, MP3. If MediaTypes specifies MP4 and MP3, then media that complies with these muxing formats will be retrieved.
+        -Specify the file status collection Status (see input parameter), return media that meets any status in the collection. For example: file status includes Normal, SystemForbidden (Platform Ban), Forbidden (Proactive Ban). If Status specifies Normal and Forbidden, media that complies with these states will be retrieved.
+        -Specify the file review result set ReviewResults (see input parameter), return media that meets any status in the collection. For example: file review results include pass and block. If ReviewResults specifies pass and block, media that complies with these review results will be retrieved.
+        -Specify the collection of live streaming codes StreamIds (see input parameter) to filter media for live recording.
+        -Filter media by creation time range of specified media.
+        -Specify TRTC application ID collection to filter media.
+        -Specify TRTC room ID collection to filter media.
 
-        - The above parameters can be combined in any way to search. For example, filter media created between 12:00:00 on December 1, 2018, and 12:00:00 on December 8, 2018, categorized as movies or TV shows, and tagged with palace fighting and suspense. Note that the search logic for elements of any parameter that supports array input is 'or'. The logical relationship between all parameters is 'and'
+        -The above parameters can be combined in any combination for search. For example: filter media with creation time between 2018-12-01 12:00:00 and 2018-12-08 12:00:00, categorized as movie or TV series, and tagged with palace intrigue and suspense. Note that for any parameter supporting array input, the search logic between its elements is 'OR'. The logical relationship between ALL parameters is 'AND'.
 
-        - Allow to control the type of media information returned through Filters (default to return all information). Optional inputs include:
-            1. Basic information (basicInfo): including media name, category, playback URL, cover image, etc.
-            2. Metadata (metaData): including size, duration, video stream information, audio stream information, etc.
-            3. Transcoding result information (transcodeInfo): including the media addresses, video stream parameters, audio stream parameters, etc., generated by transcoding the media into various specifications.
-            4.  Animated image result information (animatedGraphicsInfo): information on the animated image (such as gif) generated after converting the video.
-            Sampled screenshot information (sampleSnapshotInfo): screenshot information after sampling the video.
-            6. Image sprite information (imageSpriteInfo): image sprite information after generating the sprite from the video.
-            7. Specified time point screenshot information (snapshotByTimeOffsetInfo): screenshot information after capturing the video at specified time points.
-            8. Video timestamp info (keyFrameDescInfo): timestamp information set for the video.
-            9. Adaptive Bitrate Streaming information (adaptiveDynamicStreamingInfo): including specifications, encryption types, muxing formats, and other relevant information.
+        -Allow passage through Filters to control the type of media information returned (default return all information). Selectable inputs include:
+        1. Basic information (basicInfo): media name, category, playback address, cover image.
+        2. Meta information (metaData): include size, duration, video stream information, audio stream information.
+        3. Transcoding result information (transcodeInfo): includes generated media addresses, video stream parameters, audio stream parameters for different specifications.
+        4. Animated graphics info (animatedGraphicsInfo): The info of animated graphics after video-to-gif conversion, such as gif.
+        5. Sampled screenshot information (sampleSnapshotInfo): Screenshot information after sampling screenshot taking.
+        6. Sprite image information (imageSpriteInfo): The sprite image information of the captured sprite image file from the video.
+        7. Screenshot information at the specified time point (snapshotByTimeOffsetInfo): This API is used to obtain screenshot information after capturing snapshots at specified time points.
+        8. Video timestamp information (keyFrameDescInfo): The dotting information for video setting.
+        9. Adaptive Bitrate Streaming information (adaptiveDynamicStreamingInfo): including specification, encryption type, packaging format and other related information.
 
-        - Allow sorting the results by creation time and returning them in pages. Pagination is controlled by Offset and Limit (see input parameters).
+        -Allow sorting the results by creation time and return in pages, using Offset and Limit (see input parameter) to control pagination.
 
-        <div id="maxResultsDesc">API result count limitation:</div>
-        - <b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> both affect the number of results returned in a single page query. Please pay special attention: when both of these values are missing, this API will return a maximum of 10 query results.</b>
-        - <b>Supports up to 5,000 search results, and queries beyond this limit are not supported. If the search result volume is too large, it is recommended to use more refined filtering conditions to reduce search results.</b>
+        <div id="maxResultsDesc">API return result count limit:</div>
 
-        <br>Not recommended for conditional filtering:
-        - (Not recommended: use Names, NamePrefixes, or Descriptions instead) Fuzzy search for media file names or description information with a single text (Text).
-        - (Not recommended: use SourceTypes instead) Search for media files with a single source (SourceType).
-        - (Not recommended: use StreamIds instead) Search for media files with a single live streaming code (StreamId).
-        - (Not recommended: use CreateTime instead) Search for media files with a single start creation time (StartTime).
-        - (Not recommended: use CreateTime instead) Search for media files with a single end creation time (EndTime).
+        -<b>Both <a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> parameters impact the number of pagination query results. Special attention: by default, this interface only returns up to 10 query results when both values are not specified.</b>
+        -<b>The maximum number of search results supported is 5000. Excess results are no longer supported for querying. If the search result volume is too large, recommend using more granular criteria to reduce the results.</b>
+
+        Conditional filtering not recommend
+        -(Not recommended: Use Names, NamePrefixes, or Descriptions as alternatives) Specify single text Text to do fuzzy search on media file name or description.
+        -(Not recommended: Use SourceTypes as an alternative) Search for one media file source by specifying SourceType.
+        -(Not recommended: Use StreamIds as an alternative) Specify single push stream live code StreamId to search for.
+        -(Not recommended: Use CreateTime instead) Specify single start creation time StartTime to search.
+        -(Not recommended: Use CreateTime as alternative) Specify single ending creation time EndTime to search.
         """
         
         kwargs = {}
