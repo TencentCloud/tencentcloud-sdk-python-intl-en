@@ -50,6 +50,9 @@ FAILEDOPERATION_ACTIONOPENMOUTH = 'FailedOperation.ActionOpenMouth'
 # Comparison failed.
 FAILEDOPERATION_COMPAREFAIL = 'FailedOperation.CompareFail'
 
+# Comparison library source maintaining, temporarily unavailable
+FAILEDOPERATION_COMPARELIBSERVICEUNAVAILABLE = 'FailedOperation.CompareLibServiceUnavailable'
+
 # The comparison similarity did not reach the passing standard.
 FAILEDOPERATION_COMPARELOWSIMILARITY = 'FailedOperation.CompareLowSimilarity'
 
@@ -74,11 +77,44 @@ FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 # File download timed out.
 FAILEDOPERATION_DOWNLOADTIMEOUTERROR = 'FailedOperation.DownLoadTimeoutError'
 
+# Image content is empty.
+FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
+
+# Encryption failed.
+FAILEDOPERATION_ENCRYPTSYSTEMERROR = 'FailedOperation.EncryptSystemError'
+
+# Failed to store file. Please retry later.
+FAILEDOPERATION_FILESAVEERROR = 'FailedOperation.FileSaveError'
+
+# Input identity card number error.
+FAILEDOPERATION_IDFORMATERROR = 'FailedOperation.IdFormatError'
+
+# Name and ID card number mismatch. Please verify and try again after.
+FAILEDOPERATION_IDNAMEMISMATCH = 'FailedOperation.IdNameMisMatch'
+
+# The number is not found in the database. Please go to the place of household registration to verify.
+FAILEDOPERATION_IDNOEXISTSYSTEM = 'FailedOperation.IdNoExistSystem'
+
+# The photo of this number is not found in the database. Please go to the place of household registration to verify.
+FAILEDOPERATION_IDPHOTONOEXIST = 'FailedOperation.IdPhotoNoExist'
+
+# Document image is of poor quality. Please update and try again.
+FAILEDOPERATION_IDPHOTOPOORQUALITY = 'FailedOperation.IdPhotoPoorQuality'
+
+# The customer database, self-built database, or authentication center failed to return the photo. Try again later.
+FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = 'FailedOperation.IdPhotoSystemNoanswer'
+
+# Name/ID card number authentication attempts exceed the daily limit. Please retry the next day.
+FAILEDOPERATION_IDENTITYAUTHLIMITEXCEEDED = 'FailedOperation.IdentityAuthLimitExceeded'
+
 # The image is blurry.
 FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'
 
 # Image decoding failed.
 FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
+
+# No ID card is detected in the image.
+FAILEDOPERATION_IMAGENOIDCARD = 'FailedOperation.ImageNoIdCard'
 
 # The image is too large.
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
@@ -143,8 +179,17 @@ FAILEDOPERATION_LIVESSSYSTEMERROR = 'FailedOperation.LivessSystemError'
 # Video-based real person detection failed.
 FAILEDOPERATION_LIVESSUNKNOWNERROR = 'FailedOperation.LivessUnknownError'
 
+# Input name error.
+FAILEDOPERATION_NAMEFORMATERROR = 'FailedOperation.NameFormatError'
+
+# Ocr recognition failed.
+FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
+
 # The image quality is too poor, please check the image quality
 FAILEDOPERATION_POORIMAGEQUALITY = 'FailedOperation.PoorImageQuality'
+
+# The number of calls exceeded the limit.
+FAILEDOPERATION_REQUESTLIMITEXCEEDED = 'FailedOperation.RequestLimitExceeded'
 
 # Real person detection failed.
 FAILEDOPERATION_SILENTDETECTFAIL = 'FailedOperation.SilentDetectFail'
@@ -203,6 +248,9 @@ INTERNALERROR_ACTIONNODETECTFACE = 'InternalError.ActionNodetectFace'
 # The similarity did not reach the passing standard.
 INTERNALERROR_COMPARELOWSIMILARITY = 'InternalError.CompareLowSimilarity'
 
+# Encryption failed.
+INTERNALERROR_ENCRYPTSYSTEMERROR = 'InternalError.EncryptSystemError'
+
 # The resolution of the image passed in is too low. Please upload a new one.
 INTERNALERROR_LIFEPHOTOPOORQUALITY = 'InternalError.LifePhotoPoorQuality'
 
@@ -226,6 +274,9 @@ INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = 'InvalidParameterValue.BizTokenExpired'
 
 # Invalid BizToken.
 INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = 'InvalidParameterValue.BizTokenIllegal'
+
+# RuleId does not exist. Go to the eKYC console to apply.
+INVALIDPARAMETERVALUE_RULEIDNOTEXIST = 'InvalidParameterValue.RuleIdNotExist'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'

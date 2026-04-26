@@ -151,6 +151,42 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckIdCardInformation(
+            self,
+            request: models.CheckIdCardInformationRequest,
+            opts: Dict = None,
+    ) -> models.CheckIdCardInformationResponse:
+        """
+        This API is used to import the ID card portrait side photo, recognize the information on the ID card photo, and compare the name, identity card number, and ID card portrait photo with the ID photo in the authoritative database to verify if they belong to the same person, thereby verifying the authenticity of the identity card information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckIdCardInformation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckIdCardInformationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckIdNameDate(
+            self,
+            request: models.CheckIdNameDateRequest,
+            opts: Dict = None,
+    ) -> models.CheckIdNameDateResponse:
+        """
+        This API is used to validate the authenticity and consistency of the name, identity card number, and valid period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckIdNameDate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckIdNameDateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CompareFaceLiveness(
             self,
             request: models.CompareFaceLivenessRequest,
@@ -334,6 +370,78 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IdCardOCRVerification(
+            self,
+            request: models.IdCardOCRVerificationRequest,
+            opts: Dict = None,
+    ) -> models.IdCardOCRVerificationResponse:
+        """
+        This API is used to validate the authenticity and consistency of the name and identity card number. You can provide the required verification information by manually inputting the name and identity card number or importing the ID card portrait side image.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IdCardOCRVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IdCardOCRVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IdCardVerification(
+            self,
+            request: models.IdCardVerificationRequest,
+            opts: Dict = None,
+    ) -> models.IdCardVerificationResponse:
+        """
+        This API is used to validate the authenticity and consistency of the name and identity card number.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IdCardVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IdCardVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ImageRecognition(
+            self,
+            request: models.ImageRecognitionRequest,
+            opts: Dict = None,
+    ) -> models.ImageRecognitionResponse:
+        """
+        This API is used to judge whether the image passed in and the ID photo in the authoritative database belong to the same person based on the identity information (this interface has stopped integration, new customers please use the <a href="https://www.tencentcloud.com/document/product/1007/102203?from_cn_redirect=1">photo face verification (V2.0)</a> API).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImageRecognition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImageRecognitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ImageRecognitionV2(
+            self,
+            request: models.ImageRecognitionV2Request,
+            opts: Dict = None,
+    ) -> models.ImageRecognitionV2Response:
+        """
+        This API is used to judge whether the image passed in and the ID photo in the authoritative database belong to the same person based on the identity information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImageRecognitionV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImageRecognitionV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def LivenessCompare(
             self,
             request: models.LivenessCompareRequest,
@@ -348,6 +456,60 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "LivenessCompare"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.LivenessCompareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def MobileNetworkTimeVerification(
+            self,
+            request: models.MobileNetworkTimeVerificationRequest,
+            opts: Dict = None,
+    ) -> models.MobileNetworkTimeVerificationResponse:
+        """
+        This API is used to query the duration of a mobile number. Enter mobile number to query.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MobileNetworkTimeVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MobileNetworkTimeVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def MobileStatus(
+            self,
+            request: models.MobileStatusRequest,
+            opts: Dict = None,
+    ) -> models.MobileStatusResponse:
+        """
+        This API is used to verify phone number status. You can enter mobile number to query.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MobileStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MobileStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PhoneVerification(
+            self,
+            request: models.PhoneVerificationRequest,
+            opts: Dict = None,
+    ) -> models.PhoneVerificationResponse:
+        """
+        This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1007/46063?from_cn_redirect=1">carrier</a> document.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PhoneVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PhoneVerificationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

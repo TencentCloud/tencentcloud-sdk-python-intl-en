@@ -297,265 +297,6 @@ class CosRegionInfo(AbstractModel):
         
 
 
-class CreateAuditRequest(AbstractModel):
-    r"""CreateAudit request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsEnableCmqNotify: Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
-        :type IsEnableCmqNotify: int
-        :param _ReadWriteAttribute: Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
-        :type ReadWriteAttribute: int
-        :param _AuditName: Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).
-        :type AuditName: str
-        :param _CosRegion: COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
-        :type CosRegion: str
-        :param _IsCreateNewBucket: Whether to create a COS bucket. 1: Yes; 0: No.
-        :type IsCreateNewBucket: int
-        :param _CosBucketName: User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
-        :type CosBucketName: str
-        :param _KeyId: Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.
-        :type KeyId: str
-        :param _CmqQueueName: Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
-        :type CmqQueueName: str
-        :param _KmsRegion: KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.
-        :type KmsRegion: str
-        :param _IsEnableKmsEncry: Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
-        :type IsEnableKmsEncry: int
-        :param _CmqRegion: Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
-        :type CmqRegion: str
-        :param _LogFilePrefix: Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is the account ID by default.
-        :type LogFilePrefix: str
-        :param _IsCreateNewQueue: Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.
-        :type IsCreateNewQueue: int
-        """
-        self._IsEnableCmqNotify = None
-        self._ReadWriteAttribute = None
-        self._AuditName = None
-        self._CosRegion = None
-        self._IsCreateNewBucket = None
-        self._CosBucketName = None
-        self._KeyId = None
-        self._CmqQueueName = None
-        self._KmsRegion = None
-        self._IsEnableKmsEncry = None
-        self._CmqRegion = None
-        self._LogFilePrefix = None
-        self._IsCreateNewQueue = None
-
-    @property
-    def IsEnableCmqNotify(self):
-        r"""Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
-        :rtype: int
-        """
-        return self._IsEnableCmqNotify
-
-    @IsEnableCmqNotify.setter
-    def IsEnableCmqNotify(self, IsEnableCmqNotify):
-        self._IsEnableCmqNotify = IsEnableCmqNotify
-
-    @property
-    def ReadWriteAttribute(self):
-        r"""Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
-        :rtype: int
-        """
-        return self._ReadWriteAttribute
-
-    @ReadWriteAttribute.setter
-    def ReadWriteAttribute(self, ReadWriteAttribute):
-        self._ReadWriteAttribute = ReadWriteAttribute
-
-    @property
-    def AuditName(self):
-        r"""Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).
-        :rtype: str
-        """
-        return self._AuditName
-
-    @AuditName.setter
-    def AuditName(self, AuditName):
-        self._AuditName = AuditName
-
-    @property
-    def CosRegion(self):
-        r"""COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
-        :rtype: str
-        """
-        return self._CosRegion
-
-    @CosRegion.setter
-    def CosRegion(self, CosRegion):
-        self._CosRegion = CosRegion
-
-    @property
-    def IsCreateNewBucket(self):
-        r"""Whether to create a COS bucket. 1: Yes; 0: No.
-        :rtype: int
-        """
-        return self._IsCreateNewBucket
-
-    @IsCreateNewBucket.setter
-    def IsCreateNewBucket(self, IsCreateNewBucket):
-        self._IsCreateNewBucket = IsCreateNewBucket
-
-    @property
-    def CosBucketName(self):
-        r"""User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
-        :rtype: str
-        """
-        return self._CosBucketName
-
-    @CosBucketName.setter
-    def CosBucketName(self, CosBucketName):
-        self._CosBucketName = CosBucketName
-
-    @property
-    def KeyId(self):
-        r"""Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.
-        :rtype: str
-        """
-        return self._KeyId
-
-    @KeyId.setter
-    def KeyId(self, KeyId):
-        self._KeyId = KeyId
-
-    @property
-    def CmqQueueName(self):
-        r"""Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
-        :rtype: str
-        """
-        return self._CmqQueueName
-
-    @CmqQueueName.setter
-    def CmqQueueName(self, CmqQueueName):
-        self._CmqQueueName = CmqQueueName
-
-    @property
-    def KmsRegion(self):
-        r"""KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.
-        :rtype: str
-        """
-        return self._KmsRegion
-
-    @KmsRegion.setter
-    def KmsRegion(self, KmsRegion):
-        self._KmsRegion = KmsRegion
-
-    @property
-    def IsEnableKmsEncry(self):
-        r"""Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
-        :rtype: int
-        """
-        return self._IsEnableKmsEncry
-
-    @IsEnableKmsEncry.setter
-    def IsEnableKmsEncry(self, IsEnableKmsEncry):
-        self._IsEnableKmsEncry = IsEnableKmsEncry
-
-    @property
-    def CmqRegion(self):
-        r"""Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
-        :rtype: str
-        """
-        return self._CmqRegion
-
-    @CmqRegion.setter
-    def CmqRegion(self, CmqRegion):
-        self._CmqRegion = CmqRegion
-
-    @property
-    def LogFilePrefix(self):
-        r"""Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is the account ID by default.
-        :rtype: str
-        """
-        return self._LogFilePrefix
-
-    @LogFilePrefix.setter
-    def LogFilePrefix(self, LogFilePrefix):
-        self._LogFilePrefix = LogFilePrefix
-
-    @property
-    def IsCreateNewQueue(self):
-        r"""Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.
-        :rtype: int
-        """
-        return self._IsCreateNewQueue
-
-    @IsCreateNewQueue.setter
-    def IsCreateNewQueue(self, IsCreateNewQueue):
-        self._IsCreateNewQueue = IsCreateNewQueue
-
-
-    def _deserialize(self, params):
-        self._IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self._ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self._AuditName = params.get("AuditName")
-        self._CosRegion = params.get("CosRegion")
-        self._IsCreateNewBucket = params.get("IsCreateNewBucket")
-        self._CosBucketName = params.get("CosBucketName")
-        self._KeyId = params.get("KeyId")
-        self._CmqQueueName = params.get("CmqQueueName")
-        self._KmsRegion = params.get("KmsRegion")
-        self._IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self._CmqRegion = params.get("CmqRegion")
-        self._LogFilePrefix = params.get("LogFilePrefix")
-        self._IsCreateNewQueue = params.get("IsCreateNewQueue")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAuditResponse(AbstractModel):
-    r"""CreateAudit response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsSuccess: Whether creation succeeded.
-        :type IsSuccess: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._IsSuccess = None
-        self._RequestId = None
-
-    @property
-    def IsSuccess(self):
-        r"""Whether creation succeeded.
-        :rtype: int
-        """
-        return self._IsSuccess
-
-    @IsSuccess.setter
-    def IsSuccess(self, IsSuccess):
-        self._IsSuccess = IsSuccess
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._IsSuccess = params.get("IsSuccess")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateAuditTrackRequest(AbstractModel):
     r"""CreateAuditTrack request structure.
 
@@ -565,26 +306,29 @@ class CreateAuditTrackRequest(AbstractModel):
         r"""
         :param _Name: Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.
         :type Name: str
+        :param _Status: Tracking set status (0: Not enabled; 1: Enabled).
+        :type Status: int
+        :param _Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         :param _ActionType: Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
         :type ActionType: str
         :param _ResourceType: The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.
         :type ResourceType: str
-        :param _Status: Tracking set status (0: Not enabled; 1: Enabled)
-        :type Status: int
         :param _EventNames: The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
         :type EventNames: list of str
-        :param _Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
-        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
         :type TrackForAllMembers: int
+        :param _ExportId: 
+        :type ExportId: str
         """
         self._Name = None
+        self._Status = None
+        self._Storage = None
         self._ActionType = None
         self._ResourceType = None
-        self._Status = None
         self._EventNames = None
-        self._Storage = None
         self._TrackForAllMembers = None
+        self._ExportId = None
 
     @property
     def Name(self):
@@ -596,6 +340,28 @@ class CreateAuditTrackRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def Status(self):
+        r"""Tracking set status (0: Not enabled; 1: Enabled).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Storage(self):
+        r"""Storage type of shipped data. Valid values: `cos`, `cls`.
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
 
     @property
     def ActionType(self):
@@ -620,17 +386,6 @@ class CreateAuditTrackRequest(AbstractModel):
         self._ResourceType = ResourceType
 
     @property
-    def Status(self):
-        r"""Tracking set status (0: Not enabled; 1: Enabled)
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
     def EventNames(self):
         r"""The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
         :rtype: list of str
@@ -642,19 +397,8 @@ class CreateAuditTrackRequest(AbstractModel):
         self._EventNames = EventNames
 
     @property
-    def Storage(self):
-        r"""Storage type of shipped data. Valid values: `cos`, `cls`.
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        """
-        return self._Storage
-
-    @Storage.setter
-    def Storage(self, Storage):
-        self._Storage = Storage
-
-    @property
     def TrackForAllMembers(self):
-        r"""Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        r"""Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -663,17 +407,29 @@ class CreateAuditTrackRequest(AbstractModel):
     def TrackForAllMembers(self, TrackForAllMembers):
         self._TrackForAllMembers = TrackForAllMembers
 
+    @property
+    def ExportId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
-        self._ActionType = params.get("ActionType")
-        self._ResourceType = params.get("ResourceType")
         self._Status = params.get("Status")
-        self._EventNames = params.get("EventNames")
         if params.get("Storage") is not None:
             self._Storage = Storage()
             self._Storage._deserialize(params.get("Storage"))
+        self._ActionType = params.get("ActionType")
+        self._ResourceType = params.get("ResourceType")
+        self._EventNames = params.get("EventNames")
         self._TrackForAllMembers = params.get("TrackForAllMembers")
+        self._ExportId = params.get("ExportId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -727,85 +483,6 @@ class CreateAuditTrackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DeleteAuditRequest(AbstractModel):
-    r"""DeleteAudit request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AuditName: Tracking set name
-        :type AuditName: str
-        """
-        self._AuditName = None
-
-    @property
-    def AuditName(self):
-        r"""Tracking set name
-        :rtype: str
-        """
-        return self._AuditName
-
-    @AuditName.setter
-    def AuditName(self, AuditName):
-        self._AuditName = AuditName
-
-
-    def _deserialize(self, params):
-        self._AuditName = params.get("AuditName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteAuditResponse(AbstractModel):
-    r"""DeleteAudit response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsSuccess: Whether deletion succeeded
-        :type IsSuccess: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._IsSuccess = None
-        self._RequestId = None
-
-    @property
-    def IsSuccess(self):
-        r"""Whether deletion succeeded
-        :rtype: int
-        """
-        return self._IsSuccess
-
-    @IsSuccess.setter
-    def IsSuccess(self, IsSuccess):
-        self._IsSuccess = IsSuccess
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._IsSuccess = params.get("IsSuccess")
-        self._RequestId = params.get("RequestId")
-
-
 class DeleteAuditTrackRequest(AbstractModel):
     r"""DeleteAuditTrack request structure.
 
@@ -849,14 +526,14 @@ class DeleteAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -939,7 +616,7 @@ class DescribeAuditResponse(AbstractModel):
         :type CmqRegion: str
         :param _LogFilePrefix: Log prefix.
         :type LogFilePrefix: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IsEnableCmqNotify = None
@@ -1102,7 +779,7 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1186,10 +863,12 @@ class DescribeAuditTrackResponse(AbstractModel):
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
         :param _CreateTime: Creation time of the tracking set
         :type CreateTime: str
-        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account
+        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TrackForAllMembers: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _Filters: Data delivery filter conditions
+        :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Name = None
@@ -1200,6 +879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Storage = None
         self._CreateTime = None
         self._TrackForAllMembers = None
+        self._Filters = None
         self._RequestId = None
 
     @property
@@ -1281,7 +961,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrackForAllMembers(self):
-        r"""Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account
+        r"""Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1292,8 +972,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TrackForAllMembers = TrackForAllMembers
 
     @property
+    def Filters(self):
+        r"""Data delivery filter conditions
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1314,6 +1005,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Storage._deserialize(params.get("Storage"))
         self._CreateTime = params.get("CreateTime")
         self._TrackForAllMembers = params.get("TrackForAllMembers")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1379,7 +1073,7 @@ class DescribeAuditTracksResponse(AbstractModel):
         :type Tracks: list of Tracks
         :param _TotalCount: Total number of tracking sets
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Tracks = None
@@ -1410,7 +1104,7 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1926,6 +1620,47 @@ Note: `null` may be returned for this field, indicating that no valid values can
         
 
 
+class Filter(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceFields: 
+        :type ResourceFields: list of ResourceField
+        """
+        self._ResourceFields = None
+
+    @property
+    def ResourceFields(self):
+        r"""
+        :rtype: list of ResourceField
+        """
+        return self._ResourceFields
+
+    @ResourceFields.setter
+    def ResourceFields(self, ResourceFields):
+        self._ResourceFields = ResourceFields
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceFields") is not None:
+            self._ResourceFields = []
+            for item in params.get("ResourceFields"):
+                obj = ResourceField()
+                obj._deserialize(item)
+                self._ResourceFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetAttributeKeyRequest(AbstractModel):
     r"""GetAttributeKey request structure.
 
@@ -1971,7 +1706,7 @@ class GetAttributeKeyResponse(AbstractModel):
         r"""
         :param _AttributeKeyDetails: Valid values of `AttributeKey`
         :type AttributeKeyDetails: list of AttributeKeyDetail
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AttributeKeyDetails = None
@@ -1990,7 +1725,7 @@ class GetAttributeKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2025,7 +1760,7 @@ class InquireAuditCreditResponse(AbstractModel):
         r"""
         :param _AuditAmount: Number of tracking sets that can be created
         :type AuditAmount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AuditAmount = None
@@ -2044,7 +1779,7 @@ class InquireAuditCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2075,7 +1810,7 @@ class ListAuditsResponse(AbstractModel):
         :param _AuditSummarys: Set of queried tracking set summaries
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AuditSummarys: list of AuditSummary
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AuditSummarys = None
@@ -2095,7 +1830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2160,7 +1895,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
         r"""
         :param _EnableRegions: CloudAudit-enabled CMQ AZs
         :type EnableRegions: list of CmqRegionInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EnableRegions = None
@@ -2179,7 +1914,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2244,7 +1979,7 @@ class ListCosEnableRegionResponse(AbstractModel):
         r"""
         :param _EnableRegions: CloudAudit-enabled COS AZs
         :type EnableRegions: list of CosRegionInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EnableRegions = None
@@ -2263,7 +1998,7 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2415,7 +2150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ListOver: Whether the logset ends
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ListOver: bool
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._NextToken = None
@@ -2461,7 +2196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2559,7 +2294,7 @@ class ModifyAuditTrackRequest(AbstractModel):
         :type EventNames: list of str
         :param _Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :param _TrackForAllMembers: Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
         :type TrackForAllMembers: int
         """
         self._TrackId = None
@@ -2650,7 +2385,7 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
-        r"""Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        r"""Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -2688,14 +2423,14 @@ class ModifyAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2762,6 +2497,72 @@ Note: `null` may be returned for this field, indicating that no valid values can
         
 
 
+class ResourceField(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 
+        :type ResourceType: str
+        :param _ActionType: 
+        :type ActionType: str
+        :param _EventNames: 
+        :type EventNames: list of str
+        """
+        self._ResourceType = None
+        self._ActionType = None
+        self._EventNames = None
+
+    @property
+    def ResourceType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ActionType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def EventNames(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ActionType = params.get("ActionType")
+        self._EventNames = params.get("EventNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartLoggingRequest(AbstractModel):
     r"""StartLogging request structure.
 
@@ -2807,7 +2608,7 @@ class StartLoggingResponse(AbstractModel):
         r"""
         :param _IsSuccess: Whether enablement succeeded
         :type IsSuccess: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IsSuccess = None
@@ -2826,7 +2627,7 @@ class StartLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2886,7 +2687,7 @@ class StopLoggingResponse(AbstractModel):
         r"""
         :param _IsSuccess: Whether disablement succeeded
         :type IsSuccess: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IsSuccess = None
@@ -2905,7 +2706,7 @@ class StopLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3169,11 +2970,11 @@ class UpdateAuditRequest(AbstractModel):
         :type KmsRegion: str
         :param _IsEnableKmsEncry: Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
         :type IsEnableKmsEncry: int
-        :param _CosBucketName: User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        :param _CosBucketName: User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
         :type CosBucketName: str
         :param _CmqRegion: Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type CmqRegion: str
-        :param _LogFilePrefix: Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).
+        :param _LogFilePrefix: Log file prefix, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9).
         :type LogFilePrefix: str
         :param _IsCreateNewQueue: Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type IsCreateNewQueue: int
@@ -3293,7 +3094,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
-        r"""User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        r"""User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
         :rtype: str
         """
         return self._CosBucketName
@@ -3315,7 +3116,7 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def LogFilePrefix(self):
-        r"""Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).
+        r"""Log file prefix, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9).
         :rtype: str
         """
         return self._LogFilePrefix
@@ -3369,7 +3170,7 @@ class UpdateAuditResponse(AbstractModel):
         r"""
         :param _IsSuccess: Whether update succeeded
         :type IsSuccess: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IsSuccess = None
@@ -3388,7 +3189,7 @@ class UpdateAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

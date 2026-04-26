@@ -307,7 +307,7 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParentNodeId: Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).
+        :param _ParentNodeId: Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1)
         :type ParentNodeId: int
         :param _Name: Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.
         :type Name: str
@@ -323,7 +323,7 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
-        r"""Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).
+        r"""Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1)
         :rtype: int
         """
         return self._ParentNodeId

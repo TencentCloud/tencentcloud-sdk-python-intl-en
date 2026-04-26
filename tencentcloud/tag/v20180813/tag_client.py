@@ -27,7 +27,7 @@ class TagClient(AbstractClient):
 
 
     def AddProject(self, request):
-        r"""Creates a project
+        r"""Creates a project.
 
         :param request: Request instance for AddProject.
         :type request: :class:`tencentcloud.tag.v20180813.models.AddProjectRequest`

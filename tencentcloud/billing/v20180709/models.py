@@ -39,7 +39,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
         :param _BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
@@ -136,7 +136,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -190,38 +190,26 @@ class ActionSummaryOverviewItem(AbstractModel):
 
 
 class AdjustInfoDetail(AbstractModel):
-    r"""This API is used to view UIN exception adjustment details.
+    r"""Abnormal adjustment details of UIN
 
     """
 
     def __init__(self):
         r"""
-        :param _PayerUin: Payer UIN, namely the account ID of the payer. The account ID is the user's unique account identifier on Tencent Cloud.
-Note: This field may return null, indicating that no valid values can be obtained.
-Example value: 909619400.
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
         :type PayerUin: str
-        :param _Month: Bill month. Format: yyyy-MM.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2024-10.
+        :param _Month: Bill month, formatted as yyyy-MM.
         :type Month: str
-        :param _AdjustType: Adjustment type.
-Adjustment: manualAdjustment.
-Supplementary settlement: supplementarySettlement.
-Re-settlement: reSettlement.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: manualAdjustment.
+        :param _AdjustType: Adjustment type
+Bill adjustment: manualAdjustment
+Supplementary settlement: supplementarySettlement
+Re-settlement
         :type AdjustType: str
-        :param _AdjustNum: Adjustment order number.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2220726096135.
+        :param _AdjustNum: Adjustment Number
         :type AdjustNum: str
-        :param _AdjustCompletionTime: Completion time of exception adjustment. Format: yyyy-MM-dd HH:mm:ss.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2022-12-02 12:39:04.
+        :param _AdjustCompletionTime: Abnormal adjustment completion time. Format: yyyy-MM-dd HH:mm:ss
         :type AdjustCompletionTime: str
-        :param _AdjustAmount: Adjustment amount.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 333.00000000.
+        :param _AdjustAmount: Adjustment Amount
         :type AdjustAmount: float
         """
         self._PayerUin = None
@@ -233,9 +221,7 @@ Example value: 333.00000000.
 
     @property
     def PayerUin(self):
-        r"""Payer UIN, namely the account ID of the payer. The account ID is the user's unique account identifier on Tencent Cloud.
-Note: This field may return null, indicating that no valid values can be obtained.
-Example value: 909619400.
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
         :rtype: str
         """
         return self._PayerUin
@@ -246,9 +232,7 @@ Example value: 909619400.
 
     @property
     def Month(self):
-        r"""Bill month. Format: yyyy-MM.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2024-10.
+        r"""Bill month, formatted as yyyy-MM.
         :rtype: str
         """
         return self._Month
@@ -259,12 +243,10 @@ Example value: 2024-10.
 
     @property
     def AdjustType(self):
-        r"""Adjustment type.
-Adjustment: manualAdjustment.
-Supplementary settlement: supplementarySettlement.
-Re-settlement: reSettlement.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: manualAdjustment.
+        r"""Adjustment type
+Bill adjustment: manualAdjustment
+Supplementary settlement: supplementarySettlement
+Re-settlement
         :rtype: str
         """
         return self._AdjustType
@@ -275,9 +257,7 @@ Example value: manualAdjustment.
 
     @property
     def AdjustNum(self):
-        r"""Adjustment order number.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2220726096135.
+        r"""Adjustment Number
         :rtype: str
         """
         return self._AdjustNum
@@ -288,9 +268,7 @@ Example value: 2220726096135.
 
     @property
     def AdjustCompletionTime(self):
-        r"""Completion time of exception adjustment. Format: yyyy-MM-dd HH:mm:ss.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 2022-12-02 12:39:04.
+        r"""Abnormal adjustment completion time. Format: yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._AdjustCompletionTime
@@ -301,9 +279,7 @@ Example value: 2022-12-02 12:39:04.
 
     @property
     def AdjustAmount(self):
-        r"""Adjustment amount.
-Note: This field may return null, indicating that no valid value can be obtained.
-Example value: 333.00000000.
+        r"""Adjustment Amount
         :rtype: float
         """
         return self._AdjustAmount
@@ -320,6 +296,2424 @@ Example value: 333.00000000.
         self._AdjustNum = params.get("AdjustNum")
         self._AdjustCompletionTime = params.get("AdjustCompletionTime")
         self._AdjustAmount = params.get("AdjustAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationAverageData(AbstractModel):
+    r"""Average value for the trend graph of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginMonth: Start month
+        :type BeginMonth: str
+        :param _EndMonth: End month.
+        :type EndMonth: str
+        :param _RealTotalCost: Average value of total fees (discounted total)
+        :type RealTotalCost: str
+        """
+        self._BeginMonth = None
+        self._EndMonth = None
+        self._RealTotalCost = None
+
+    @property
+    def BeginMonth(self):
+        r"""Start month
+        :rtype: str
+        """
+        return self._BeginMonth
+
+    @BeginMonth.setter
+    def BeginMonth(self, BeginMonth):
+        self._BeginMonth = BeginMonth
+
+    @property
+    def EndMonth(self):
+        r"""End month.
+        :rtype: str
+        """
+        return self._EndMonth
+
+    @EndMonth.setter
+    def EndMonth(self, EndMonth):
+        self._EndMonth = EndMonth
+
+    @property
+    def RealTotalCost(self):
+        r"""Average value of total fees (discounted total)
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+
+    def _deserialize(self, params):
+        self._BeginMonth = params.get("BeginMonth")
+        self._EndMonth = params.get("EndMonth")
+        self._RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationBillTrendDetail(AbstractModel):
+    r"""Detail data of cost allocation trend chart
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month
+        :type Month: str
+        :param _Name: Displayed name of bill month
+        :type Name: str
+        :param _RealTotalCost: Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated Fees (discounted total)
+        :type RealTotalCost: str
+        """
+        self._Month = None
+        self._Name = None
+        self._RealTotalCost = None
+
+    @property
+    def Month(self):
+        r"""Bill month
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Name(self):
+        r"""Displayed name of bill month
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RealTotalCost(self):
+        r"""Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated Fees (discounted total)
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._Name = params.get("Name")
+        self._RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationDetail(AbstractModel):
+    r"""Details of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: Date: Settlement date
+        :type BillDate: str
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :type PayerUin: str
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :type OperateUin: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        :param _PayMode: Billing mode code
+        :type PayMode: str
+        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ProjectName: Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :type ProjectName: str
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _RegionName: Region name: The region where the resource is located
+        :type RegionName: str
+        :param _ZoneId: AZ ID
+        :type ZoneId: int
+        :param _ZoneName: Availability zone: The availability zone where the resource is located.
+        :type ZoneName: str
+        :param _ResourceId: Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :type ResourceName: str
+        :param _InstanceType: Instance type code
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :type InstanceTypeName: str
+        :param _SplitItemId: Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemId: str
+        :param _SplitItemName: Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemName: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user
+        :type ProductCodeName: str
+        :param _ActionType: Transaction type code
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type: Detailed transaction type
+        :type ActionTypeName: str
+        :param _OrderId: Order ID: The order number for purchase in the annual and monthly billing mode
+
+        :type OrderId: str
+        :param _BillId: Transaction ID: The settlement and deduction number
+        :type BillId: str
+        :param _PayTime: Deduction time: Deduction time
+        :type PayTime: str
+        :param _FeeBeginTime: Usage start time: Usage start time
+        :type FeeBeginTime: str
+        :param _FeeEndTime: Usage end time: Product or service usage end time
+        :type FeeEndTime: str
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ComponentCodeName: Component type: The major component category corresponding to the product or service purchased by the user
+        :type ComponentCodeName: str
+        :param _SinglePrice: Component list price: The original unit price of the component on the portal (not displayed if the customer enjoys a fixed price/contract price)
+        :type SinglePrice: str
+        :param _ContractPrice: Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
+        :type ContractPrice: str
+        :param _SinglePriceUnit: Component Price Unit: Unit of component price, Unit Composition: CNY/usage unit/duration unit
+        :type SinglePriceUnit: str
+        :param _UsedAmount: Component usage: The actual settlement usage of the component, Component Usage = Original Component Usage - Deducted Usage (including resource packages)
+        :type UsedAmount: str
+        :param _UsedAmountUnit: Component usage unit: Unit of measurement corresponding to component usage.
+        :type UsedAmountUnit: str
+        :param _TimeSpan: Usage duration: The duration of resource usage, Component Usage = Original Component Usage Duration - Deducted Duration (including resource packages)
+        :type TimeSpan: str
+        :param _TimeUnit: Duration unit: Unit of resource usage duration.
+        :type TimeUnit: str
+        :param _ReserveDetail: Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
+        :type ReserveDetail: str
+        :param _SplitRatio: Split item usage/duration ratio: Split item usage (duration) ratio, Split Item Usage (Duration) /Total Usage Before Splitting (Duration)
+        :type SplitRatio: str
+        :param _TotalCost: Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :type TotalCost: str
+        :param _RITimeSpan: Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :type RITimeSpan: str
+        :param _RICost: Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :type RICost: str
+        :param _SPCost: Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :type SPCost: str
+        :param _Discount: Discount rate: The discount rate enjoyed by this resource (it is not shown by default if the customer enjoys a fixed/contract price, and it is also not shown by default in the refund scenario)
+        :type Discount: str
+        :param _BlendedDiscount: Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Original Price.
+        :type BlendedDiscount: str
+        :param _RealTotalCost: Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash account expenditure (CNY): The amount paid through the cash account
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Gift account expenditure (CNY): The amount paid using free credits
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Royalty account expenditure (CNY): The amount paid through the royalty account
+        :type TransferPayAmount: str
+        :param _Tag: Allocation tag: The resource-bound tag
+        :type Tag: list of BillTag
+        :param _RegionType: Domestic and international codes
+        :type RegionType: str
+        :param _RegionTypeName: Domestic and international: Resource region type (domestic, international)
+        :type RegionTypeName: str
+        :param _ItemCode: Component name code
+        :type ItemCode: str
+        :param _ItemCodeName: Component name: The specific component of a product or service purchased by the user
+        :type ItemCodeName: str
+        :param _AssociatedOrder: Associated document ID: Document ID associated with this transaction, such as the original new purchase order corresponding to a refund order
+        :type AssociatedOrder: str
+        :param _PriceInfo: Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
+        :type PriceInfo: list of str
+        :param _Formula: Calculation rule explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
+        :type Formula: str
+        :param _FormulaUrl: Billing Rules: The detailed billing rules for each product shown in the portal explanation link
+        :type FormulaUrl: str
+        :param _RealTotalMeasure: Original usage/duration: The original usage of the component before deduction by resource packages.
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :type RealTotalMeasure: str
+        :param _DeductedMeasure: Deduction of usage/duration (including resource packages): The amount of usage deducted by resource packages
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :type DeductedMeasure: str
+        :param _ComponentConfig: Configuration description: Information on specification of resource configuration
+        :type ComponentConfig: str
+        :param _AllocationType: Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+2 - Unallocated
+        :type AllocationType: int
+        :param _CostBeforeTax: CostBeforeTax
+        :type CostBeforeTax: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _AmountBeforeTax: AmountBeforeTax
+        :type AmountBeforeTax: str
+        :param _DiscountObject: Discount object of the current consumption item, such as official website discount, user discount and activity discount.
+        :type DiscountObject: str
+        :param _DiscountType: Discount type of the current consumption item, such as discount and contract price.
+        :type DiscountType: str
+        :param _DiscountContent: Supplementary description of the offer type, for example: business discount 20% off, the offer type is "discount" and the discount content is "0.8".
+        :type DiscountContent: str
+        :param _SPDeduction: SPDeduction
+        :type SPDeduction: str
+        :param _SPDeductionRate: SPDeduction
+        :type SPDeductionRate: str
+        :param _Currency: Currency
+        :type Currency: str
+        :param _BillMonth: Billing month
+        :type BillMonth: str
+        :param _TaxRate: tax rate
+        :type TaxRate: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._BillId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+        self._SinglePrice = None
+        self._ContractPrice = None
+        self._SinglePriceUnit = None
+        self._UsedAmount = None
+        self._UsedAmountUnit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ReserveDetail = None
+        self._SplitRatio = None
+        self._TotalCost = None
+        self._RITimeSpan = None
+        self._RICost = None
+        self._SPCost = None
+        self._Discount = None
+        self._BlendedDiscount = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._Tag = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._AssociatedOrder = None
+        self._PriceInfo = None
+        self._Formula = None
+        self._FormulaUrl = None
+        self._RealTotalMeasure = None
+        self._DeductedMeasure = None
+        self._ComponentConfig = None
+        self._AllocationType = None
+        self._CostBeforeTax = None
+        self._Tax = None
+        self._AmountBeforeTax = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
+        self._SPDeduction = None
+        self._SPDeductionRate = None
+        self._Currency = None
+        self._BillMonth = None
+        self._TaxRate = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN: Account ID of the actual resource user
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def PayMode(self):
+        r"""Billing mode code
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :rtype: str
+        """
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""Region name: The region where the resource is located
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        r"""AZ ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Availability zone: The availability zone where the resource is located.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def InstanceType(self):
+        r"""Instance type code
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :rtype: str
+        """
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        r"""Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        r"""Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        self._SplitItemName = SplitItemName
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name: Product subdivision type purchased by the user
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def ActionType(self):
+        r"""Transaction type code
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""Transaction type: Detailed transaction type
+        :rtype: str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        r"""Order ID: The order number for purchase in the annual and monthly billing mode
+
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BillId(self):
+        r"""Transaction ID: The settlement and deduction number
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def PayTime(self):
+        r"""Deduction time: Deduction time
+        :rtype: str
+        """
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        r"""Usage start time: Usage start time
+        :rtype: str
+        """
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        r"""Usage end time: Product or service usage end time
+        :rtype: str
+        """
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        r"""Component type: The major component category corresponding to the product or service purchased by the user
+        :rtype: str
+        """
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+    @property
+    def SinglePrice(self):
+        r"""Component list price: The original unit price of the component on the portal (not displayed if the customer enjoys a fixed price/contract price)
+        :rtype: str
+        """
+        return self._SinglePrice
+
+    @SinglePrice.setter
+    def SinglePrice(self, SinglePrice):
+        self._SinglePrice = SinglePrice
+
+    @property
+    def ContractPrice(self):
+        r"""Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
+        :rtype: str
+        """
+        return self._ContractPrice
+
+    @ContractPrice.setter
+    def ContractPrice(self, ContractPrice):
+        self._ContractPrice = ContractPrice
+
+    @property
+    def SinglePriceUnit(self):
+        r"""Component Price Unit: Unit of component price, Unit Composition: CNY/usage unit/duration unit
+        :rtype: str
+        """
+        return self._SinglePriceUnit
+
+    @SinglePriceUnit.setter
+    def SinglePriceUnit(self, SinglePriceUnit):
+        self._SinglePriceUnit = SinglePriceUnit
+
+    @property
+    def UsedAmount(self):
+        r"""Component usage: The actual settlement usage of the component, Component Usage = Original Component Usage - Deducted Usage (including resource packages)
+        :rtype: str
+        """
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def UsedAmountUnit(self):
+        r"""Component usage unit: Unit of measurement corresponding to component usage.
+        :rtype: str
+        """
+        return self._UsedAmountUnit
+
+    @UsedAmountUnit.setter
+    def UsedAmountUnit(self, UsedAmountUnit):
+        self._UsedAmountUnit = UsedAmountUnit
+
+    @property
+    def TimeSpan(self):
+        r"""Usage duration: The duration of resource usage, Component Usage = Original Component Usage Duration - Deducted Duration (including resource packages)
+        :rtype: str
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""Duration unit: Unit of resource usage duration.
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ReserveDetail(self):
+        r"""Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
+        :rtype: str
+        """
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
+    @property
+    def SplitRatio(self):
+        r"""Split item usage/duration ratio: Split item usage (duration) ratio, Split Item Usage (Duration) /Total Usage Before Splitting (Duration)
+        :rtype: str
+        """
+        return self._SplitRatio
+
+    @SplitRatio.setter
+    def SplitRatio(self, SplitRatio):
+        self._SplitRatio = SplitRatio
+
+    @property
+    def TotalCost(self):
+        r"""Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :rtype: str
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RITimeSpan(self):
+        r"""Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :rtype: str
+        """
+        return self._RITimeSpan
+
+    @RITimeSpan.setter
+    def RITimeSpan(self, RITimeSpan):
+        self._RITimeSpan = RITimeSpan
+
+    @property
+    def RICost(self):
+        r"""Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :rtype: str
+        """
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def SPCost(self):
+        r"""Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :rtype: str
+        """
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def Discount(self):
+        r"""Discount rate: The discount rate enjoyed by this resource (it is not shown by default if the customer enjoys a fixed/contract price, and it is also not shown by default in the refund scenario)
+        :rtype: str
+        """
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def BlendedDiscount(self):
+        r"""Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Original Price.
+        :rtype: str
+        """
+        return self._BlendedDiscount
+
+    @BlendedDiscount.setter
+    def BlendedDiscount(self, BlendedDiscount):
+        self._BlendedDiscount = BlendedDiscount
+
+    @property
+    def RealTotalCost(self):
+        r"""Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash account expenditure (CNY): The amount paid through the cash account
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Gift account expenditure (CNY): The amount paid using free credits
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty account expenditure (CNY): The amount paid through the royalty account
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def Tag(self):
+        r"""Allocation tag: The resource-bound tag
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def RegionType(self):
+        r"""Domestic and international codes
+        :rtype: str
+        """
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        r"""Domestic and international: Resource region type (domestic, international)
+        :rtype: str
+        """
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ItemCode(self):
+        r"""Component name code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        r"""Component name: The specific component of a product or service purchased by the user
+        :rtype: str
+        """
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def AssociatedOrder(self):
+        r"""Associated document ID: Document ID associated with this transaction, such as the original new purchase order corresponding to a refund order
+        :rtype: str
+        """
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def PriceInfo(self):
+        r"""Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
+        :rtype: list of str
+        """
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def Formula(self):
+        r"""Calculation rule explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
+        :rtype: str
+        """
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        r"""Billing Rules: The detailed billing rules for each product shown in the portal explanation link
+        :rtype: str
+        """
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+    @property
+    def RealTotalMeasure(self):
+        r"""Original usage/duration: The original usage of the component before deduction by resource packages.
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :rtype: str
+        """
+        return self._RealTotalMeasure
+
+    @RealTotalMeasure.setter
+    def RealTotalMeasure(self, RealTotalMeasure):
+        self._RealTotalMeasure = RealTotalMeasure
+
+    @property
+    def DeductedMeasure(self):
+        r"""Deduction of usage/duration (including resource packages): The amount of usage deducted by resource packages
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :rtype: str
+        """
+        return self._DeductedMeasure
+
+    @DeductedMeasure.setter
+    def DeductedMeasure(self, DeductedMeasure):
+        self._DeductedMeasure = DeductedMeasure
+
+    @property
+    def ComponentConfig(self):
+        r"""Configuration description: Information on specification of resource configuration
+        :rtype: str
+        """
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+2 - Unallocated
+        :rtype: int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def CostBeforeTax(self):
+        r"""CostBeforeTax
+        :rtype: str
+        """
+        return self._CostBeforeTax
+
+    @CostBeforeTax.setter
+    def CostBeforeTax(self, CostBeforeTax):
+        self._CostBeforeTax = CostBeforeTax
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def AmountBeforeTax(self):
+        r"""AmountBeforeTax
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
+
+    @property
+    def DiscountObject(self):
+        r"""Discount object of the current consumption item, such as official website discount, user discount and activity discount.
+        :rtype: str
+        """
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        r"""Discount type of the current consumption item, such as discount and contract price.
+        :rtype: str
+        """
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        r"""Supplementary description of the offer type, for example: business discount 20% off, the offer type is "discount" and the discount content is "0.8".
+        :rtype: str
+        """
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
+    @property
+    def SPDeduction(self):
+        r"""SPDeduction
+        :rtype: str
+        """
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def SPDeductionRate(self):
+        r"""SPDeduction
+        :rtype: str
+        """
+        return self._SPDeductionRate
+
+    @SPDeductionRate.setter
+    def SPDeductionRate(self, SPDeductionRate):
+        self._SPDeductionRate = SPDeductionRate
+
+    @property
+    def Currency(self):
+        r"""Currency
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def BillMonth(self):
+        r"""Billing month
+        :rtype: str
+        """
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def TaxRate(self):
+        r"""tax rate
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._BillId = params.get("BillId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        self._SinglePrice = params.get("SinglePrice")
+        self._ContractPrice = params.get("ContractPrice")
+        self._SinglePriceUnit = params.get("SinglePriceUnit")
+        self._UsedAmount = params.get("UsedAmount")
+        self._UsedAmountUnit = params.get("UsedAmountUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ReserveDetail = params.get("ReserveDetail")
+        self._SplitRatio = params.get("SplitRatio")
+        self._TotalCost = params.get("TotalCost")
+        self._RITimeSpan = params.get("RITimeSpan")
+        self._RICost = params.get("RICost")
+        self._SPCost = params.get("SPCost")
+        self._Discount = params.get("Discount")
+        self._BlendedDiscount = params.get("BlendedDiscount")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._AssociatedOrder = params.get("AssociatedOrder")
+        self._PriceInfo = params.get("PriceInfo")
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        self._RealTotalMeasure = params.get("RealTotalMeasure")
+        self._DeductedMeasure = params.get("DeductedMeasure")
+        self._ComponentConfig = params.get("ComponentConfig")
+        self._AllocationType = params.get("AllocationType")
+        self._CostBeforeTax = params.get("CostBeforeTax")
+        self._Tax = params.get("Tax")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
+        self._SPDeduction = params.get("SPDeduction")
+        self._SPDeductionRate = params.get("SPDeductionRate")
+        self._Currency = params.get("Currency")
+        self._BillMonth = params.get("BillMonth")
+        self._TaxRate = params.get("TaxRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationMonthOverviewDetail(AbstractModel):
+    r"""Monthly overview amount details of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatherCashPayAmount: Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: Allocated fees (vouchers): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated fees (Cash)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Voucher) + Allocated fees (Voucher)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated fees (Free Credit)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: Total fees (royalty amount): Total cost of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated fees (Royalty Amount)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :type GatherRealCost: str
+        :param _AllocateRealCost: Allocated fees (discounted total): Total resource amount after discount directly allocated to the cost allocation unit based on the allocation rules
+        :type AllocateRealCost: str
+        :param _RealTotalCost: Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated fees (discounted total)
+        :type RealTotalCost: str
+        :param _Ratio: Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :type Ratio: str
+        :param _Trend: Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :type Trend: str
+        :param _TrendType: Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :type TrendType: str
+        :param _AllocateCostBeforeTax: AllocateCostBeforeTax
+        :type AllocateCostBeforeTax: str
+        :param _GatherCostBeforeTax: GatherCostBeforeTax
+        :type GatherCostBeforeTax: str
+        :param _TotalCostBeforeTax: TotalCostBeforeTax
+        :type TotalCostBeforeTax: str
+        :param _AllocateTax: AllocateTax
+        :type AllocateTax: str
+        :param _GatherTax: GatherTax
+        :type GatherTax: str
+        :param _TotalTax: TotalTax
+        :type TotalTax: str
+        """
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+        self._AllocateCostBeforeTax = None
+        self._GatherCostBeforeTax = None
+        self._TotalCostBeforeTax = None
+        self._AllocateTax = None
+        self._GatherTax = None
+        self._TotalTax = None
+
+    @property
+    def GatherCashPayAmount(self):
+        r"""Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        r"""Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        r"""Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        r"""Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        r"""Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        r"""Allocated fees (vouchers): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        r"""Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        r"""Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        r"""Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated fees (Cash)
+        :rtype: str
+        """
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        r"""Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Voucher) + Allocated fees (Voucher)
+        :rtype: str
+        """
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        r"""Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated fees (Free Credit)
+        :rtype: str
+        """
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        r"""Total fees (royalty amount): Total cost of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated fees (Royalty Amount)
+        :rtype: str
+        """
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        r"""Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        r"""Allocated fees (discounted total): Total resource amount after discount directly allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        r"""Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated fees (discounted total)
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        r"""Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        r"""Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :rtype: str
+        """
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        r"""Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :rtype: str
+        """
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+    @property
+    def AllocateCostBeforeTax(self):
+        r"""AllocateCostBeforeTax
+        :rtype: str
+        """
+        return self._AllocateCostBeforeTax
+
+    @AllocateCostBeforeTax.setter
+    def AllocateCostBeforeTax(self, AllocateCostBeforeTax):
+        self._AllocateCostBeforeTax = AllocateCostBeforeTax
+
+    @property
+    def GatherCostBeforeTax(self):
+        r"""GatherCostBeforeTax
+        :rtype: str
+        """
+        return self._GatherCostBeforeTax
+
+    @GatherCostBeforeTax.setter
+    def GatherCostBeforeTax(self, GatherCostBeforeTax):
+        self._GatherCostBeforeTax = GatherCostBeforeTax
+
+    @property
+    def TotalCostBeforeTax(self):
+        r"""TotalCostBeforeTax
+        :rtype: str
+        """
+        return self._TotalCostBeforeTax
+
+    @TotalCostBeforeTax.setter
+    def TotalCostBeforeTax(self, TotalCostBeforeTax):
+        self._TotalCostBeforeTax = TotalCostBeforeTax
+
+    @property
+    def AllocateTax(self):
+        r"""AllocateTax
+        :rtype: str
+        """
+        return self._AllocateTax
+
+    @AllocateTax.setter
+    def AllocateTax(self, AllocateTax):
+        self._AllocateTax = AllocateTax
+
+    @property
+    def GatherTax(self):
+        r"""GatherTax
+        :rtype: str
+        """
+        return self._GatherTax
+
+    @GatherTax.setter
+    def GatherTax(self, GatherTax):
+        self._GatherTax = GatherTax
+
+    @property
+    def TotalTax(self):
+        r"""TotalTax
+        :rtype: str
+        """
+        return self._TotalTax
+
+    @TotalTax.setter
+    def TotalTax(self, TotalTax):
+        self._TotalTax = TotalTax
+
+
+    def _deserialize(self, params):
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        self._AllocateCostBeforeTax = params.get("AllocateCostBeforeTax")
+        self._GatherCostBeforeTax = params.get("GatherCostBeforeTax")
+        self._TotalCostBeforeTax = params.get("TotalCostBeforeTax")
+        self._AllocateTax = params.get("AllocateTax")
+        self._GatherTax = params.get("GatherTax")
+        self._TotalTax = params.get("TotalTax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewDetail(AbstractModel):
+    r"""Details of the cost allocation overview
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: Date: Settlement date
+        :type BillDate: str
+        :param _GatherCashPayAmount: Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: Allocated fees (voucher): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated Fees (Cash)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Voucher) + Allocated Fees (Voucher)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated Fees (Free Credit)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: Total fees (royalty amount): Total fees of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated Fees (Royalty Amount)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :type GatherRealCost: str
+        :param _AllocateRealCost: Allocated fees (discounted total): Total resource amount after discount directly allocated to the cost allocation unit based on the allocation rules
+        :type AllocateRealCost: str
+        :param _RealTotalCost: Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated Fees (discounted total)
+        :type RealTotalCost: str
+        :param _Ratio: Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :type Ratio: str
+        :param _Trend: Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :type Trend: str
+        :param _TrendType: Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :type TrendType: str
+        :param _GatherCostBeforeTax: GatherCostBeforeTax
+        :type GatherCostBeforeTax: str
+        :param _AllocateCostBeforeTax: AllocateCostBeforeTax
+        :type AllocateCostBeforeTax: str
+        :param _TotalCostBeforeTax: TotalCostBeforeTax
+        :type TotalCostBeforeTax: str
+        :param _GatherTax: GatherTax
+        :type GatherTax: str
+        :param _AllocateTax: AllocateTax
+        :type AllocateTax: str
+        :param _TotalTax: TotalTax
+        :type TotalTax: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+        self._GatherCostBeforeTax = None
+        self._AllocateCostBeforeTax = None
+        self._TotalCostBeforeTax = None
+        self._GatherTax = None
+        self._AllocateTax = None
+        self._TotalTax = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def GatherCashPayAmount(self):
+        r"""Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        r"""Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        r"""Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        r"""Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        r"""Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        r"""Allocated fees (voucher): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        r"""Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        r"""Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        r"""Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated Fees (Cash)
+        :rtype: str
+        """
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        r"""Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Voucher) + Allocated Fees (Voucher)
+        :rtype: str
+        """
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        r"""Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated Fees (Free Credit)
+        :rtype: str
+        """
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        r"""Total fees (royalty amount): Total fees of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated Fees (Royalty Amount)
+        :rtype: str
+        """
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        r"""Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        r"""Allocated fees (discounted total): Total resource amount after discount directly allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        r"""Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated Fees (discounted total)
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        r"""Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        r"""Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :rtype: str
+        """
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        r"""Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :rtype: str
+        """
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+    @property
+    def GatherCostBeforeTax(self):
+        r"""GatherCostBeforeTax
+        :rtype: str
+        """
+        return self._GatherCostBeforeTax
+
+    @GatherCostBeforeTax.setter
+    def GatherCostBeforeTax(self, GatherCostBeforeTax):
+        self._GatherCostBeforeTax = GatherCostBeforeTax
+
+    @property
+    def AllocateCostBeforeTax(self):
+        r"""AllocateCostBeforeTax
+        :rtype: str
+        """
+        return self._AllocateCostBeforeTax
+
+    @AllocateCostBeforeTax.setter
+    def AllocateCostBeforeTax(self, AllocateCostBeforeTax):
+        self._AllocateCostBeforeTax = AllocateCostBeforeTax
+
+    @property
+    def TotalCostBeforeTax(self):
+        r"""TotalCostBeforeTax
+        :rtype: str
+        """
+        return self._TotalCostBeforeTax
+
+    @TotalCostBeforeTax.setter
+    def TotalCostBeforeTax(self, TotalCostBeforeTax):
+        self._TotalCostBeforeTax = TotalCostBeforeTax
+
+    @property
+    def GatherTax(self):
+        r"""GatherTax
+        :rtype: str
+        """
+        return self._GatherTax
+
+    @GatherTax.setter
+    def GatherTax(self, GatherTax):
+        self._GatherTax = GatherTax
+
+    @property
+    def AllocateTax(self):
+        r"""AllocateTax
+        :rtype: str
+        """
+        return self._AllocateTax
+
+    @AllocateTax.setter
+    def AllocateTax(self, AllocateTax):
+        self._AllocateTax = AllocateTax
+
+    @property
+    def TotalTax(self):
+        r"""TotalTax
+        :rtype: str
+        """
+        return self._TotalTax
+
+    @TotalTax.setter
+    def TotalTax(self, TotalTax):
+        self._TotalTax = TotalTax
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        self._GatherCostBeforeTax = params.get("GatherCostBeforeTax")
+        self._AllocateCostBeforeTax = params.get("AllocateCostBeforeTax")
+        self._TotalCostBeforeTax = params.get("TotalCostBeforeTax")
+        self._GatherTax = params.get("GatherTax")
+        self._AllocateTax = params.get("AllocateTax")
+        self._TotalTax = params.get("TotalTax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewNode(AbstractModel):
+    r"""Monthly overview of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Cost allocation unit ID
+        :type Id: int
+        :param _Name: Name of a cost allocation unit
+        :type Name: str
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _Symbol: Billing unit including a rule flag
+0 - No rule exists.
+1 - Both collection rules and allocation rules exist.
+2 - Only collection rules exist.
+3 - Only allocation rules exist.
+        :type Symbol: int
+        :param _Children: Detailed monthly overview of a sub-unit
+        :type Children: list of AllocationOverviewNode
+        :param _Detail: Monthly overview amount details of a cost allocation bill
+        :type Detail: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Symbol = None
+        self._Children = None
+        self._Detail = None
+
+    @property
+    def Id(self):
+        r"""Cost allocation unit ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Symbol(self):
+        r"""Billing unit including a rule flag
+0 - No rule exists.
+1 - Both collection rules and allocation rules exist.
+2 - Only collection rules exist.
+3 - Only allocation rules exist.
+        :rtype: int
+        """
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def Children(self):
+        r"""Detailed monthly overview of a sub-unit
+        :rtype: list of AllocationOverviewNode
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def Detail(self):
+        r"""Monthly overview amount details of a cost allocation bill
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._Symbol = params.get("Symbol")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationOverviewNode()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        if params.get("Detail") is not None:
+            self._Detail = AllocationMonthOverviewDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewTotal(AbstractModel):
+    r"""Total amount of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RealTotalCost: Total fees: Total Fees (Cash) + Total Fees (Royalty Amount) + Total Fees (Free Credit) + Total Fees (Voucher)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash: Total fees of cash
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: Free credit: Total fees of free credit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param _VoucherPayAmount: Voucher: Total fees of voucher
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _TransferPayAmount: Royalty amount: Total fees of royalty amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param _CostBeforeTax: Pre-tax price after discount
+        :type CostBeforeTax: str
+        :param _Tax: Tax
+        :type Tax: str
+        """
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._VoucherPayAmount = None
+        self._TransferPayAmount = None
+        self._CostBeforeTax = None
+        self._Tax = None
+
+    @property
+    def RealTotalCost(self):
+        r"""Total fees: Total Fees (Cash) + Total Fees (Royalty Amount) + Total Fees (Free Credit) + Total Fees (Voucher)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash: Total fees of cash
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Free credit: Total fees of free credit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Voucher: Total fees of voucher
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty amount: Total fees of royalty amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def CostBeforeTax(self):
+        r"""Pre-tax price after discount
+        :rtype: str
+        """
+        return self._CostBeforeTax
+
+    @CostBeforeTax.setter
+    def CostBeforeTax(self, CostBeforeTax):
+        self._CostBeforeTax = CostBeforeTax
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+
+    def _deserialize(self, params):
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._CostBeforeTax = params.get("CostBeforeTax")
+        self._Tax = params.get("Tax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -371,6 +2765,57 @@ class AllocationRationExpression(AbstractModel):
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRule(AbstractModel):
+    r"""Information on allocation rules hit by the current resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Allocation rule ID
+        :type RuleId: int
+        :param _RuleName: Allocation rule name
+        :type RuleName: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+
+    @property
+    def RuleId(self):
+        r"""Allocation rule ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""Allocation rule name
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -721,6 +3166,2580 @@ class AllocationRulesSummary(AbstractModel):
         
 
 
+class AllocationStat(AbstractModel):
+    r"""Trend graph of a cost allocation bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Average: Average cost information
+        :type Average: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
+        """
+        self._Average = None
+
+    @property
+    def Average(self):
+        r"""Average cost information
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
+        """
+        return self._Average
+
+    @Average.setter
+    def Average(self, Average):
+        self._Average = Average
+
+
+    def _deserialize(self, params):
+        if params.get("Average") is not None:
+            self._Average = AllocationAverageData()
+            self._Average._deserialize(params.get("Average"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByBusiness(AbstractModel):
+    r"""Detailed summary of the cost allocation bill by business
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: Date: Settlement date
+        :type BillDate: str
+        :param _GatherCashPayAmount: Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: Allocated fees (voucher): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated fees (Cash)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Vouchers) + Allocated fees (Vouchers)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated fees (Free Credit)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: Total fees (royalty amount): Total fees of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated fees (Royalty Amount)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :type GatherRealCost: str
+        :param _AllocateRealCost: Allocated fees (discounted total): Total resource amount after discount allocated to the cost allocation unit based on the allocation rules
+        :type AllocateRealCost: str
+        :param _RealTotalCost: Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated fees (discounted total)
+        :type RealTotalCost: str
+        :param _Ratio: Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :type Ratio: str
+        :param _Trend: Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :type Trend: str
+        :param _TrendType: Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :type TrendType: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        :param _TotalCost: Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :type TotalCost: str
+        :param _RICost: Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :type RICost: str
+        :param _SPCost: Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :type SPCost: str
+        :param _CashPayAmount: Cash account expenditure (CNY): The amount paid through the cash account
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Gift account expenditure (CNY): The amount paid using free credits
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Royalty account expenditure (CNY): The amount paid through the royalty account
+        :type TransferPayAmount: str
+        :param _AllocationRealTotalCost: Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :type AllocationRealTotalCost: str
+        :param _GatherTax: Collected fees (tax): Tax directly collected to the cost allocation unit based on the collection rules
+        :type GatherTax: str
+        :param _AllocateTax: Allocated fees (tax): Resource tax allocated to the cost allocation unit based on the allocation rules
+        :type AllocateTax: str
+        :param _TotalTax: Total fees (tax): Total fees of the cost allocation unit, Collected Fees (Tax) + Allocated fees (Tax)
+        :type TotalTax: str
+        :param _GatherCostBeforeTax: GatherCostBeforeTax
+        :type GatherCostBeforeTax: str
+        :param _AllocateCostBeforeTax: AllocateCostBeforeTax
+        :type AllocateCostBeforeTax: str
+        :param _TotalCostBeforeTax: TotalCostBeforeTax
+        :type TotalCostBeforeTax: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _CostBeforeTax: CostBeforeTax
+        :type CostBeforeTax: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._TotalCost = None
+        self._RICost = None
+        self._SPCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._AllocationRealTotalCost = None
+        self._GatherTax = None
+        self._AllocateTax = None
+        self._TotalTax = None
+        self._GatherCostBeforeTax = None
+        self._AllocateCostBeforeTax = None
+        self._TotalCostBeforeTax = None
+        self._Tax = None
+        self._CostBeforeTax = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def GatherCashPayAmount(self):
+        r"""Collected fees (cash): Cash directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        r"""Collected fees (voucher): Resource vouchers directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        r"""Collected fees (free credit): Resource free credit directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        r"""Collected fees (royalty amount): Resource royalty amount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        r"""Allocated fees (cash): Resource cash allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        r"""Allocated fees (voucher): Resource vouchers allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        r"""Allocated fees (free credit): Resource free credit allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        r"""Allocated fees (royalty amount): Resource royalty amount allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        r"""Total fees (cash): Total fees of the cost allocation unit, Collected Fees (Cash) + Allocated fees (Cash)
+        :rtype: str
+        """
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        r"""Total fees (voucher): Total fees of the cost allocation unit, Collected Fees (Vouchers) + Allocated fees (Vouchers)
+        :rtype: str
+        """
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        r"""Total fees (free credit): Total fees of the cost allocation unit, Collected Fees (Free Credit) + Allocated fees (Free Credit)
+        :rtype: str
+        """
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        r"""Total fees (royalty amount): Total fees of the cost allocation unit, Collected Fees (Royalty Amount) + Allocated fees (Royalty Amount)
+        :rtype: str
+        """
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        r"""Collected fees (discounted total): Total resource amount after discount directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        r"""Allocated fees (discounted total): Total resource amount after discount allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        r"""Total fees (discounted total): Total fees of the cost allocation unit, Collected Fees (discounted total) + Allocated fees (discounted total)
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        r"""Proportion (discounted total): Total fees (discounted total) of the Cost Allocation Unit/Total Fees (discounted total) * 100%
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        r"""Month-on-month ratio (discounted total): [Total fees (discounted total) of the cost allocation unit in this month - Total fees (discounted total) of the cost allocation unit in the previous month]/Total fees (discounted total) of the cost allocation unit in the previous month * 100%
+        :rtype: str
+        """
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        r"""Sequential Comparison Arrow
+upward - Upward
+downward - Downward
+none - Stable
+        :rtype: str
+        """
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def TotalCost(self):
+        r"""Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :rtype: str
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RICost(self):
+        r"""Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :rtype: str
+        """
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def SPCost(self):
+        r"""Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :rtype: str
+        """
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash account expenditure (CNY): The amount paid through the cash account
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Gift account expenditure (CNY): The amount paid using free credits
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty account expenditure (CNY): The amount paid through the royalty account
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def AllocationRealTotalCost(self):
+        r"""Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :rtype: str
+        """
+        return self._AllocationRealTotalCost
+
+    @AllocationRealTotalCost.setter
+    def AllocationRealTotalCost(self, AllocationRealTotalCost):
+        self._AllocationRealTotalCost = AllocationRealTotalCost
+
+    @property
+    def GatherTax(self):
+        r"""Collected fees (tax): Tax directly collected to the cost allocation unit based on the collection rules
+        :rtype: str
+        """
+        return self._GatherTax
+
+    @GatherTax.setter
+    def GatherTax(self, GatherTax):
+        self._GatherTax = GatherTax
+
+    @property
+    def AllocateTax(self):
+        r"""Allocated fees (tax): Resource tax allocated to the cost allocation unit based on the allocation rules
+        :rtype: str
+        """
+        return self._AllocateTax
+
+    @AllocateTax.setter
+    def AllocateTax(self, AllocateTax):
+        self._AllocateTax = AllocateTax
+
+    @property
+    def TotalTax(self):
+        r"""Total fees (tax): Total fees of the cost allocation unit, Collected Fees (Tax) + Allocated fees (Tax)
+        :rtype: str
+        """
+        return self._TotalTax
+
+    @TotalTax.setter
+    def TotalTax(self, TotalTax):
+        self._TotalTax = TotalTax
+
+    @property
+    def GatherCostBeforeTax(self):
+        r"""GatherCostBeforeTax
+        :rtype: str
+        """
+        return self._GatherCostBeforeTax
+
+    @GatherCostBeforeTax.setter
+    def GatherCostBeforeTax(self, GatherCostBeforeTax):
+        self._GatherCostBeforeTax = GatherCostBeforeTax
+
+    @property
+    def AllocateCostBeforeTax(self):
+        r"""AllocateCostBeforeTax
+        :rtype: str
+        """
+        return self._AllocateCostBeforeTax
+
+    @AllocateCostBeforeTax.setter
+    def AllocateCostBeforeTax(self, AllocateCostBeforeTax):
+        self._AllocateCostBeforeTax = AllocateCostBeforeTax
+
+    @property
+    def TotalCostBeforeTax(self):
+        r"""TotalCostBeforeTax
+        :rtype: str
+        """
+        return self._TotalCostBeforeTax
+
+    @TotalCostBeforeTax.setter
+    def TotalCostBeforeTax(self, TotalCostBeforeTax):
+        self._TotalCostBeforeTax = TotalCostBeforeTax
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def CostBeforeTax(self):
+        r"""CostBeforeTax
+        :rtype: str
+        """
+        return self._CostBeforeTax
+
+    @CostBeforeTax.setter
+    def CostBeforeTax(self, CostBeforeTax):
+        self._CostBeforeTax = CostBeforeTax
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._TotalCost = params.get("TotalCost")
+        self._RICost = params.get("RICost")
+        self._SPCost = params.get("SPCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._AllocationRealTotalCost = params.get("AllocationRealTotalCost")
+        self._GatherTax = params.get("GatherTax")
+        self._AllocateTax = params.get("AllocateTax")
+        self._TotalTax = params.get("TotalTax")
+        self._GatherCostBeforeTax = params.get("GatherCostBeforeTax")
+        self._AllocateCostBeforeTax = params.get("AllocateCostBeforeTax")
+        self._TotalCostBeforeTax = params.get("TotalCostBeforeTax")
+        self._Tax = params.get("Tax")
+        self._CostBeforeTax = params.get("CostBeforeTax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByItem(AbstractModel):
+    r"""Details of a Cost Allocation Bill by item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: Date: Settlement date
+        :type BillDate: str
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :type PayerUin: str
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :type OperateUin: str
+        :param _PayMode: Billing mode code
+        :type PayMode: str
+        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ActionType: Transaction type code
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type: Detailed transaction type
+        :type ActionTypeName: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user
+        :type ProductCodeName: str
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _RegionName: Region name: The region where the resource is located
+        :type RegionName: str
+        :param _ZoneId: AZ ID
+        :type ZoneId: int
+        :param _ZoneName: Availability zone: The availability zone where the resource is located.
+        :type ZoneName: str
+        :param _InstanceType: Instance type code
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :type InstanceTypeName: str
+        :param _ResourceId: Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :type ResourceName: str
+        :param _Tag: Allocation tag: The resource-bound tag
+        :type Tag: list of BillTag
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ProjectName: Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :type ProjectName: str
+        :param _AllocationType: Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :type AllocationType: int
+        :param _TotalCost: Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :type TotalCost: str
+        :param _RiTimeSpan: Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :type RiTimeSpan: str
+        :param _RiCost: Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :type RiCost: str
+        :param _RealTotalCost: Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash account expenditure (CNY): The amount paid through the cash account
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Gift account expenditure (CNY): The amount paid using free credits
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Royalty account expenditure (CNY): The amount paid through the royalty account
+        :type TransferPayAmount: str
+        :param _ItemCode: Component name code
+        :type ItemCode: str
+        :param _ItemCodeName: Component name: The specific component of a product or service purchased by the user
+        :type ItemCodeName: str
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ComponentCodeName: Component type: The major component category corresponding to the product or service purchased by the user
+        :type ComponentCodeName: str
+        :param _SplitItemId: Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemId: str
+        :param _SplitItemName: Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemName: str
+        :param _FeeBeginTime: Usage start time: Usage start time
+        :type FeeBeginTime: str
+        :param _FeeEndTime: Usage end time: Product or service usage end time
+        :type FeeEndTime: str
+        :param _SPCost: Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :type SPCost: str
+        :param _RegionType: Domestic and international codes
+        :type RegionType: str
+        :param _RegionTypeName: Domestic and international: Resource region type (domestic, international)
+        :type RegionTypeName: str
+        :param _SinglePrice: Component list price: The original unit price of the component on the portal (not displayed if the customer enjoys a fixed price/contract price)
+        :type SinglePrice: str
+        :param _ContractPrice: Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
+        :type ContractPrice: str
+        :param _SinglePriceUnit: Component Price Unit: Unit of component price, Unit Composition: CNY/usage unit/duration unit
+        :type SinglePriceUnit: str
+        :param _UsedAmount: Component usage: The actual settlement usage of the component, Component Usage = Original Component Usage - Deducted Usage (including resource packages)
+        :type UsedAmount: str
+        :param _UsedAmountUnit: Component usage unit: Unit of measurement corresponding to component usage.
+        :type UsedAmountUnit: str
+        :param _TimeSpan: Usage duration: The duration of resource usage, Component Usage = Original Component Usage Duration - Deducted Duration (including resource packages)
+        :type TimeSpan: str
+        :param _TimeUnit: Duration unit: Unit of resource usage duration.
+        :type TimeUnit: str
+        :param _ReserveDetail: Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
+        :type ReserveDetail: str
+        :param _RealTotalMeasure: Original usage/duration: The original usage of the component before deduction by resource packages.
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :type RealTotalMeasure: str
+        :param _DeductedMeasure: Deduction of usage/duration (including resource packages): The amount of usage deducted by resource packages
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :type DeductedMeasure: str
+        :param _Discount: Discount rate: The discount rate enjoyed by this resource (it is not shown by default if the customer enjoys a fixed/contract price, and it is also not shown by default in the refund scenario)
+        :type Discount: str
+        :param _BlendedDiscount: Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Original Price.
+        :type BlendedDiscount: str
+        :param _PriceInfo: Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
+        :type PriceInfo: list of str
+        :param _Formula: Calculation rule explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
+        :type Formula: str
+        :param _FormulaUrl: Billing Rules: The detailed billing rules for each product shown in the portal explanation link
+        :type FormulaUrl: str
+        :param _ComponentConfig: Configuration description: Information on specification of resource configuration
+        :type ComponentConfig: str
+        :param _SPDeduction: SPDeduction
+        :type SPDeduction: str
+        :param _SPDeductionRate: Savings plan deduction rate: The discount rate for this component within the available balance limit of the savings plan
+        :type SPDeductionRate: str
+        :param _Currency: Currency.
+        :type Currency: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _TaxRate: tax rate
+        :type TaxRate: str
+        :param _CostBeforeTax: CostBeforeTax
+        :type CostBeforeTax: str
+        :param _AmountBeforeTax: AmountBeforeTax
+        :type AmountBeforeTax: str
+        :param _AssociatedOrder: AssociatedOrder
+        :type AssociatedOrder: str
+        :param _DiscountObject: Discount object of the current consumption item, such as official website discount, user discount and activity discount.
+        :type DiscountObject: str
+        :param _DiscountType: Discount type of the current consumption item, such as discount and contract price.
+        :type DiscountType: str
+        :param _DiscountContent: Supplementary description of the offer type, for example: business discount 20% off, the offer type is "discount" and the discount content is "0.8".
+        :type DiscountContent: str
+        :param _BillMonth: Billing month
+        :type BillMonth: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Tag = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._AllocationType = None
+        self._TotalCost = None
+        self._RiTimeSpan = None
+        self._RiCost = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._SPCost = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._SinglePrice = None
+        self._ContractPrice = None
+        self._SinglePriceUnit = None
+        self._UsedAmount = None
+        self._UsedAmountUnit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ReserveDetail = None
+        self._RealTotalMeasure = None
+        self._DeductedMeasure = None
+        self._Discount = None
+        self._BlendedDiscount = None
+        self._PriceInfo = None
+        self._Formula = None
+        self._FormulaUrl = None
+        self._ComponentConfig = None
+        self._SPDeduction = None
+        self._SPDeductionRate = None
+        self._Currency = None
+        self._Tax = None
+        self._TaxRate = None
+        self._CostBeforeTax = None
+        self._AmountBeforeTax = None
+        self._AssociatedOrder = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
+        self._BillMonth = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN: Account ID of the actual resource user
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def PayMode(self):
+        r"""Billing mode code
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :rtype: str
+        """
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        r"""Transaction type code
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""Transaction type: Detailed transaction type
+        :rtype: str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name: Product subdivision type purchased by the user
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""Region name: The region where the resource is located
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        r"""AZ ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Availability zone: The availability zone where the resource is located.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceType(self):
+        r"""Instance type code
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :rtype: str
+        """
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Tag(self):
+        r"""Allocation tag: The resource-bound tag
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :rtype: int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def TotalCost(self):
+        r"""Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :rtype: str
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RiTimeSpan(self):
+        r"""Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :rtype: str
+        """
+        return self._RiTimeSpan
+
+    @RiTimeSpan.setter
+    def RiTimeSpan(self, RiTimeSpan):
+        self._RiTimeSpan = RiTimeSpan
+
+    @property
+    def RiCost(self):
+        r"""Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :rtype: str
+        """
+        return self._RiCost
+
+    @RiCost.setter
+    def RiCost(self, RiCost):
+        self._RiCost = RiCost
+
+    @property
+    def RealTotalCost(self):
+        r"""Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash account expenditure (CNY): The amount paid through the cash account
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Gift account expenditure (CNY): The amount paid using free credits
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty account expenditure (CNY): The amount paid through the royalty account
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def ItemCode(self):
+        r"""Component name code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        r"""Component name: The specific component of a product or service purchased by the user
+        :rtype: str
+        """
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        r"""Component type: The major component category corresponding to the product or service purchased by the user
+        :rtype: str
+        """
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+    @property
+    def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        r"""Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        r"""Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        self._SplitItemName = SplitItemName
+
+    @property
+    def FeeBeginTime(self):
+        r"""Usage start time: Usage start time
+        :rtype: str
+        """
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        r"""Usage end time: Product or service usage end time
+        :rtype: str
+        """
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def SPCost(self):
+        r"""Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :rtype: str
+        """
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def RegionType(self):
+        r"""Domestic and international codes
+        :rtype: str
+        """
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        r"""Domestic and international: Resource region type (domestic, international)
+        :rtype: str
+        """
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def SinglePrice(self):
+        r"""Component list price: The original unit price of the component on the portal (not displayed if the customer enjoys a fixed price/contract price)
+        :rtype: str
+        """
+        return self._SinglePrice
+
+    @SinglePrice.setter
+    def SinglePrice(self, SinglePrice):
+        self._SinglePrice = SinglePrice
+
+    @property
+    def ContractPrice(self):
+        r"""Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
+        :rtype: str
+        """
+        return self._ContractPrice
+
+    @ContractPrice.setter
+    def ContractPrice(self, ContractPrice):
+        self._ContractPrice = ContractPrice
+
+    @property
+    def SinglePriceUnit(self):
+        r"""Component Price Unit: Unit of component price, Unit Composition: CNY/usage unit/duration unit
+        :rtype: str
+        """
+        return self._SinglePriceUnit
+
+    @SinglePriceUnit.setter
+    def SinglePriceUnit(self, SinglePriceUnit):
+        self._SinglePriceUnit = SinglePriceUnit
+
+    @property
+    def UsedAmount(self):
+        r"""Component usage: The actual settlement usage of the component, Component Usage = Original Component Usage - Deducted Usage (including resource packages)
+        :rtype: str
+        """
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def UsedAmountUnit(self):
+        r"""Component usage unit: Unit of measurement corresponding to component usage.
+        :rtype: str
+        """
+        return self._UsedAmountUnit
+
+    @UsedAmountUnit.setter
+    def UsedAmountUnit(self, UsedAmountUnit):
+        self._UsedAmountUnit = UsedAmountUnit
+
+    @property
+    def TimeSpan(self):
+        r"""Usage duration: The duration of resource usage, Component Usage = Original Component Usage Duration - Deducted Duration (including resource packages)
+        :rtype: str
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""Duration unit: Unit of resource usage duration.
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ReserveDetail(self):
+        r"""Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
+        :rtype: str
+        """
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
+    @property
+    def RealTotalMeasure(self):
+        r"""Original usage/duration: The original usage of the component before deduction by resource packages.
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :rtype: str
+        """
+        return self._RealTotalMeasure
+
+    @RealTotalMeasure.setter
+    def RealTotalMeasure(self, RealTotalMeasure):
+        self._RealTotalMeasure = RealTotalMeasure
+
+    @property
+    def DeductedMeasure(self):
+        r"""Deduction of usage/duration (including resource packages): The amount of usage deducted by resource packages
+(Currently only TRTC, TEM, Cloud Call Center, and CDZ products support this information display. Other products are being integrated.)
+        :rtype: str
+        """
+        return self._DeductedMeasure
+
+    @DeductedMeasure.setter
+    def DeductedMeasure(self, DeductedMeasure):
+        self._DeductedMeasure = DeductedMeasure
+
+    @property
+    def Discount(self):
+        r"""Discount rate: The discount rate enjoyed by this resource (it is not shown by default if the customer enjoys a fixed/contract price, and it is also not shown by default in the refund scenario)
+        :rtype: str
+        """
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def BlendedDiscount(self):
+        r"""Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Original Price.
+        :rtype: str
+        """
+        return self._BlendedDiscount
+
+    @BlendedDiscount.setter
+    def BlendedDiscount(self, BlendedDiscount):
+        self._BlendedDiscount = BlendedDiscount
+
+    @property
+    def PriceInfo(self):
+        r"""Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
+        :rtype: list of str
+        """
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def Formula(self):
+        r"""Calculation rule explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
+        :rtype: str
+        """
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        r"""Billing Rules: The detailed billing rules for each product shown in the portal explanation link
+        :rtype: str
+        """
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+    @property
+    def ComponentConfig(self):
+        r"""Configuration description: Information on specification of resource configuration
+        :rtype: str
+        """
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+    @property
+    def SPDeduction(self):
+        r"""SPDeduction
+        :rtype: str
+        """
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def SPDeductionRate(self):
+        r"""Savings plan deduction rate: The discount rate for this component within the available balance limit of the savings plan
+        :rtype: str
+        """
+        return self._SPDeductionRate
+
+    @SPDeductionRate.setter
+    def SPDeductionRate(self, SPDeductionRate):
+        self._SPDeductionRate = SPDeductionRate
+
+    @property
+    def Currency(self):
+        r"""Currency.
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def TaxRate(self):
+        r"""tax rate
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def CostBeforeTax(self):
+        r"""CostBeforeTax
+        :rtype: str
+        """
+        return self._CostBeforeTax
+
+    @CostBeforeTax.setter
+    def CostBeforeTax(self, CostBeforeTax):
+        self._CostBeforeTax = CostBeforeTax
+
+    @property
+    def AmountBeforeTax(self):
+        r"""AmountBeforeTax
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
+
+    @property
+    def AssociatedOrder(self):
+        r"""AssociatedOrder
+        :rtype: str
+        """
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def DiscountObject(self):
+        r"""Discount object of the current consumption item, such as official website discount, user discount and activity discount.
+        :rtype: str
+        """
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        r"""Discount type of the current consumption item, such as discount and contract price.
+        :rtype: str
+        """
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        r"""Supplementary description of the offer type, for example: business discount 20% off, the offer type is "discount" and the discount content is "0.8".
+        :rtype: str
+        """
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
+    @property
+    def BillMonth(self):
+        r"""Billing month
+        :rtype: str
+        """
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._AllocationType = params.get("AllocationType")
+        self._TotalCost = params.get("TotalCost")
+        self._RiTimeSpan = params.get("RiTimeSpan")
+        self._RiCost = params.get("RiCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._SPCost = params.get("SPCost")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._SinglePrice = params.get("SinglePrice")
+        self._ContractPrice = params.get("ContractPrice")
+        self._SinglePriceUnit = params.get("SinglePriceUnit")
+        self._UsedAmount = params.get("UsedAmount")
+        self._UsedAmountUnit = params.get("UsedAmountUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ReserveDetail = params.get("ReserveDetail")
+        self._RealTotalMeasure = params.get("RealTotalMeasure")
+        self._DeductedMeasure = params.get("DeductedMeasure")
+        self._Discount = params.get("Discount")
+        self._BlendedDiscount = params.get("BlendedDiscount")
+        self._PriceInfo = params.get("PriceInfo")
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        self._ComponentConfig = params.get("ComponentConfig")
+        self._SPDeduction = params.get("SPDeduction")
+        self._SPDeductionRate = params.get("SPDeductionRate")
+        self._Currency = params.get("Currency")
+        self._Tax = params.get("Tax")
+        self._TaxRate = params.get("TaxRate")
+        self._CostBeforeTax = params.get("CostBeforeTax")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
+        self._AssociatedOrder = params.get("AssociatedOrder")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
+        self._BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByResource(AbstractModel):
+    r"""Detailed summary of the cost allocation bill by resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: Date: Settlement date
+        :type BillDate: str
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :type PayerUin: str
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :type OperateUin: str
+        :param _PayMode: Billing mode code
+        :type PayMode: str
+        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ActionType: Transaction type code
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type: Detailed transaction type
+        :type ActionTypeName: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user
+        :type ProductCodeName: str
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _RegionName: Region name: The region where the resource is located
+        :type RegionName: str
+        :param _ZoneId: AZ ID
+        :type ZoneId: int
+        :param _ZoneName: Availability zone: The availability zone where the resource is located.
+        :type ZoneName: str
+        :param _InstanceType: Instance type code
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :type InstanceTypeName: str
+        :param _ResourceId: Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :type ResourceName: str
+        :param _Tag: Allocation tag: The resource-bound tag
+        :type Tag: list of BillTag
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ProjectName: Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :type ProjectName: str
+        :param _AllocationType: Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation 
+1 - Collection 
+-1 - Unallocated
+        :type AllocationType: int
+        :param _TotalCost: Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :type TotalCost: str
+        :param _RiTimeSpan: Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :type RiTimeSpan: str
+        :param _RiCost: Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :type RiCost: str
+        :param _RealTotalCost: Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash account expenditure (CNY): The amount paid through the cash account
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Gift account expenditure (CNY): The amount paid using free credits
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Royalty account expenditure (CNY): The amount paid through the royalty account
+        :type TransferPayAmount: str
+        :param _SplitItemId: Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemId: str
+        :param _SplitItemName: Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemName: str
+        :param _FeeBeginTime: Usage start time: Usage start time
+        :type FeeBeginTime: str
+        :param _FeeEndTime: Usage end time: Product or service usage end time
+        :type FeeEndTime: str
+        :param _SPCost: Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :type SPCost: str
+        :param _RegionType: Domestic and international codes
+        :type RegionType: str
+        :param _RegionTypeName: Domestic and international: Resource region type (domestic, international)
+        :type RegionTypeName: str
+        :param _ComponentConfig: Configuration description: Name and usage of each component under the corresponding resource (the total usage if the component is cumulative usage billing type)
+        :type ComponentConfig: str
+        :param _SPDeduction: SPDeduction
+        :type SPDeduction: str
+        :param _Currency: Currency.
+        :type Currency: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _TaxRate: tax rate
+        :type TaxRate: str
+        :param _CostBeforeTax: CostBeforeTax
+        :type CostBeforeTax: str
+        :param _AmountBeforeTax: AmountBeforeTax
+        :type AmountBeforeTax: str
+        :param _BillMonth: Billing month
+        :type BillMonth: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Tag = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._AllocationType = None
+        self._TotalCost = None
+        self._RiTimeSpan = None
+        self._RiCost = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._SPCost = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ComponentConfig = None
+        self._SPDeduction = None
+        self._Currency = None
+        self._Tax = None
+        self._TaxRate = None
+        self._CostBeforeTax = None
+        self._AmountBeforeTax = None
+        self._BillMonth = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN: Account ID of the actual resource user
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def PayMode(self):
+        r"""Billing mode code
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :rtype: str
+        """
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        r"""Transaction type code
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""Transaction type: Detailed transaction type
+        :rtype: str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name: Product subdivision type purchased by the user
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""Region name: The region where the resource is located
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        r"""AZ ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Availability zone: The availability zone where the resource is located.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceType(self):
+        r"""Instance type code
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :rtype: str
+        """
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Tag(self):
+        r"""Allocation tag: The resource-bound tag
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation 
+1 - Collection 
+-1 - Unallocated
+        :rtype: int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def TotalCost(self):
+        r"""Original price of a component: Original Price = Component List Price * Component Usage * Duration of Use (not displayed if the customer enjoys a fixed price/contract price, and not displayed by default in refund scenarios), specified price mode
+        :rtype: str
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RiTimeSpan(self):
+        r"""Reserved instance deduction duration: The duration of use deducted by reserved instances for this product or service.
+        :rtype: str
+        """
+        return self._RiTimeSpan
+
+    @RiTimeSpan.setter
+    def RiTimeSpan(self, RiTimeSpan):
+        self._RiTimeSpan = RiTimeSpan
+
+    @property
+    def RiCost(self):
+        r"""Original price deducted by a reserved instance: The original price of a component deducted by reserved instances for this product or service
+        :rtype: str
+        """
+        return self._RiCost
+
+    @RiCost.setter
+    def RiCost(self, RiCost):
+        self._RiCost = RiCost
+
+    @property
+    def RealTotalCost(self):
+        r"""Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash account expenditure (CNY): The amount paid through the cash account
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Gift account expenditure (CNY): The amount paid using free credits
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty account expenditure (CNY): The amount paid through the royalty account
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        r"""Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        r"""Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        self._SplitItemName = SplitItemName
+
+    @property
+    def FeeBeginTime(self):
+        r"""Usage start time: Usage start time
+        :rtype: str
+        """
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        r"""Usage end time: Product or service usage end time
+        :rtype: str
+        """
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def SPCost(self):
+        r"""Savings plan deduction from original price: Savings Plan Deduction from Original Price = Monetary Value of Savings Plan Deduction/ Savings Plan Deduction Rate
+        :rtype: str
+        """
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def RegionType(self):
+        r"""Domestic and international codes
+        :rtype: str
+        """
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        r"""Domestic and international: Resource region type (domestic, international)
+        :rtype: str
+        """
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ComponentConfig(self):
+        r"""Configuration description: Name and usage of each component under the corresponding resource (the total usage if the component is cumulative usage billing type)
+        :rtype: str
+        """
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+    @property
+    def SPDeduction(self):
+        r"""SPDeduction
+        :rtype: str
+        """
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def Currency(self):
+        r"""Currency.
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def TaxRate(self):
+        r"""tax rate
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def CostBeforeTax(self):
+        r"""CostBeforeTax
+        :rtype: str
+        """
+        return self._CostBeforeTax
+
+    @CostBeforeTax.setter
+    def CostBeforeTax(self, CostBeforeTax):
+        self._CostBeforeTax = CostBeforeTax
+
+    @property
+    def AmountBeforeTax(self):
+        r"""AmountBeforeTax
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
+
+    @property
+    def BillMonth(self):
+        r"""Billing month
+        :rtype: str
+        """
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._AllocationType = params.get("AllocationType")
+        self._TotalCost = params.get("TotalCost")
+        self._RiTimeSpan = params.get("RiTimeSpan")
+        self._RiCost = params.get("RiCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._SPCost = params.get("SPCost")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ComponentConfig = params.get("ComponentConfig")
+        self._SPDeduction = params.get("SPDeduction")
+        self._Currency = params.get("Currency")
+        self._Tax = params.get("Tax")
+        self._TaxRate = params.get("TaxRate")
+        self._CostBeforeTax = params.get("CostBeforeTax")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
+        self._BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocationTree(AbstractModel):
     r"""Cost allocation tree.
 
@@ -807,6 +5826,57 @@ class AllocationTree(AbstractModel):
         
 
 
+class AllocationTreeNode(AbstractModel):
+    r"""Information of the current allocation unit
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocationUnit(AbstractModel):
     r"""Specifies the ID and name of a cost allocation unit.
 
@@ -865,9 +5935,9 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionType: Transaction type code
         :type ActionType: str
-        :param _ActionTypeName: Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionTypeName: Transaction type Name
         :type ActionTypeName: str
         """
         self._ActionType = None
@@ -875,7 +5945,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type code
         :rtype: str
         """
         return self._ActionType
@@ -886,7 +5956,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type Name
         :rtype: str
         """
         return self._ActionTypeName
@@ -916,9 +5986,9 @@ class AnalyseAmountDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Key: Fee type
         :type Key: str
-        :param _Display: Whether to displayNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Display: Indicates whether to display
         :type Display: int
         """
         self._Key = None
@@ -926,7 +5996,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Key(self):
-        r"""Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee type
         :rtype: str
         """
         return self._Key
@@ -937,7 +6007,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Display(self):
-        r"""Whether to displayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Indicates whether to display
         :rtype: int
         """
         return self._Display
@@ -967,9 +6037,9 @@ class AnalyseBusinessDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCode: Product codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCode: Product code
         :type BusinessCode: str
-        :param _BusinessCodeName: Product nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCodeName: Product name
         :type BusinessCodeName: str
         """
         self._BusinessCode = None
@@ -977,7 +6047,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""Product codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -988,7 +6058,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        r"""Product nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product name
         :rtype: str
         """
         return self._BusinessCodeName
@@ -1018,21 +6088,21 @@ class AnalyseConditionDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: ProductNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Business: product
         :type Business: list of AnalyseBusinessDetail
-        :param _Project: ItemNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Project: Project
         :type Project: list of AnalyseProjectDetail
-        :param _Region: RegionNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: Region.
         :type Region: list of AnalyseRegionDetail
-        :param _PayMode: Billing modeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _PayMode: Billing mode.
         :type PayMode: list of AnalysePayModeDetail
-        :param _ActionType: Transaction typeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionType: Transaction type
         :type ActionType: list of AnalyseActionTypeDetail
-        :param _Zone: Availability zoneNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Zone: Availability zone
         :type Zone: list of AnalyseZoneDetail
-        :param _OwnerUin: Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.
+        :param _OwnerUin: Resource owner Uin
         :type OwnerUin: list of AnalyseOwnerUinDetail
-        :param _Amount: Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Amount: Fee type
         :type Amount: list of AnalyseAmountDetail
         """
         self._Business = None
@@ -1046,7 +6116,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Business(self):
-        r"""ProductNote: This field may return null, indicating that no valid values can be obtained.
+        r"""product
         :rtype: list of AnalyseBusinessDetail
         """
         return self._Business
@@ -1057,7 +6127,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Project(self):
-        r"""ItemNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Project
         :rtype: list of AnalyseProjectDetail
         """
         return self._Project
@@ -1068,7 +6138,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Region(self):
-        r"""RegionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region.
         :rtype: list of AnalyseRegionDetail
         """
         return self._Region
@@ -1079,7 +6149,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Billing modeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode.
         :rtype: list of AnalysePayModeDetail
         """
         return self._PayMode
@@ -1090,7 +6160,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""Transaction typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type
         :rtype: list of AnalyseActionTypeDetail
         """
         return self._ActionType
@@ -1101,7 +6171,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zoneNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone
         :rtype: list of AnalyseZoneDetail
         """
         return self._Zone
@@ -1112,7 +6182,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Resource owner Uin
         :rtype: list of AnalyseOwnerUinDetail
         """
         return self._OwnerUin
@@ -1123,7 +6193,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Amount(self):
-        r"""Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee type
         :rtype: list of AnalyseAmountDetail
         """
         return self._Amount
@@ -1199,31 +6269,36 @@ class AnalyseConditions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCodes: Product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCodes: Product name code
         :type BusinessCodes: str
-        :param _ProductCodes: Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductCodes: Subproduct name code
         :type ProductCodes: str
-        :param _ComponentCode: Component type codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ComponentCode: Component type code
         :type ComponentCode: str
-        :param _ZoneIds: Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ZoneIds: Availability zone ID: The availability zone ID where the resource is located.
         :type ZoneIds: str
-        :param _RegionIds: Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionIds: Region ID: Resource region ID
         :type RegionIds: str
-        :param _ProjectIds: Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectIds: Project ID: Project ID of the resource
         :type ProjectIds: str
-        :param _PayModes: Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PayModes: Billing mode prePay (monthly subscription)/postPay (pay-as-you-go billing)
         :type PayModes: str
-        :param _ActionTypes: Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionTypes: Transaction type. Query transaction type (please use transaction type code as input parameter).
         :type ActionTypes: str
-        :param _Tags: Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Tags: Cost allocation tag key
         :type Tags: str
-        :param _FeeType: Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.
+        :param _FeeType: Fee type. Query fee type (please use fee type code input parameter). The input parameter enumeration is as follows:
+cashPayAmount: Cash 
+incentivePayAmount: Bonus 
+voucherPayAmount: Coupon 
+tax: tax. 
+costBeforeTax: pre-tax price
         :type FeeType: str
-        :param _PayerUins: User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.
+        :param _PayerUins: User UIN for querying cost analysis data
         :type PayerUins: str
-        :param _OwnerUins: User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        :param _OwnerUins: User UIN for using resources
         :type OwnerUins: str
-        :param _ConsumptionTypes: Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConsumptionTypes: Consumption type. Query consumption type (please use consumption type code input parameter).
         :type ConsumptionTypes: str
         """
         self._BusinessCodes = None
@@ -1242,7 +6317,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        r"""Product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product name code
         :rtype: str
         """
         return self._BusinessCodes
@@ -1253,7 +6328,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ProductCodes(self):
-        r"""Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct name code
         :rtype: str
         """
         return self._ProductCodes
@@ -1264,7 +6339,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ComponentCode(self):
-        r"""Component type codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Component type code
         :rtype: str
         """
         return self._ComponentCode
@@ -1275,7 +6350,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone ID: The availability zone ID where the resource is located.
         :rtype: str
         """
         return self._ZoneIds
@@ -1286,7 +6361,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def RegionIds(self):
-        r"""Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID: Resource region ID
         :rtype: str
         """
         return self._RegionIds
@@ -1297,7 +6372,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ProjectIds(self):
-        r"""Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Project ID: Project ID of the resource
         :rtype: str
         """
         return self._ProjectIds
@@ -1308,7 +6383,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def PayModes(self):
-        r"""Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode prePay (monthly subscription)/postPay (pay-as-you-go billing)
         :rtype: str
         """
         return self._PayModes
@@ -1319,7 +6394,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ActionTypes(self):
-        r"""Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type. Query transaction type (please use transaction type code as input parameter).
         :rtype: str
         """
         return self._ActionTypes
@@ -1330,7 +6405,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Cost allocation tag key
         :rtype: str
         """
         return self._Tags
@@ -1341,7 +6416,12 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def FeeType(self):
-        r"""Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee type. Query fee type (please use fee type code input parameter). The input parameter enumeration is as follows:
+cashPayAmount: Cash 
+incentivePayAmount: Bonus 
+voucherPayAmount: Coupon 
+tax: tax. 
+costBeforeTax: pre-tax price
         :rtype: str
         """
         return self._FeeType
@@ -1352,7 +6432,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def PayerUins(self):
-        r"""User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN for querying cost analysis data
         :rtype: str
         """
         return self._PayerUins
@@ -1363,7 +6443,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def OwnerUins(self):
-        r"""User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN for using resources
         :rtype: str
         """
         return self._OwnerUins
@@ -1374,7 +6454,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ConsumptionTypes(self):
-        r"""Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption type. Query consumption type (please use consumption type code input parameter).
         :rtype: str
         """
         return self._ConsumptionTypes
@@ -1419,7 +6499,7 @@ class AnalyseDetail(AbstractModel):
         :type Name: str
         :param _Total: Amount
         :type Total: str
-        :param _TimeDetail: Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TimeDetail: Date Detail Amount
         :type TimeDetail: list of AnalyseTimeDetail
         """
         self._Name = None
@@ -1450,7 +6530,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def TimeDetail(self):
-        r"""Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Date Detail Amount
         :rtype: list of AnalyseTimeDetail
         """
         return self._TimeDetail
@@ -1486,11 +6566,11 @@ class AnalyseHeaderDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadDetail: Header dateNote: This field may return null, indicating that no valid values can be obtained.
+        :param _HeadDetail: Header date
         :type HeadDetail: list of AnalyseHeaderTimeDetail
-        :param _Name: TimeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Time
         :type Name: str
-        :param _Total: TotalNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Total: total
         :type Total: str
         """
         self._HeadDetail = None
@@ -1499,7 +6579,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def HeadDetail(self):
-        r"""Header dateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Header date
         :rtype: list of AnalyseHeaderTimeDetail
         """
         return self._HeadDetail
@@ -1510,7 +6590,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""TimeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Time
         :rtype: str
         """
         return self._Name
@@ -1521,7 +6601,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Total(self):
-        r"""TotalNote: This field may return null, indicating that no valid values can be obtained.
+        r"""total
         :rtype: str
         """
         return self._Total
@@ -1557,14 +6637,14 @@ class AnalyseHeaderTimeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: DateNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Date
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        r"""DateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Date
         :rtype: str
         """
         return self._Name
@@ -1593,16 +6673,14 @@ class AnalyseOwnerUinDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: User UIN
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OwnerUin: User uin
         :type OwnerUin: str
         """
         self._OwnerUin = None
 
     @property
     def OwnerUin(self):
-        r"""User UIN
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""User uin
         :rtype: str
         """
         return self._OwnerUin
@@ -1631,9 +6709,9 @@ class AnalysePayModeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayMode: Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _PayModeName: Billing mode Name
         :type PayModeName: str
         """
         self._PayMode = None
@@ -1641,7 +6719,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode code
         :rtype: str
         """
         return self._PayMode
@@ -1652,7 +6730,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode Name
         :rtype: str
         """
         return self._PayModeName
@@ -1683,9 +6761,8 @@ class AnalyseProjectDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: Project ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param _ProjectName: Default projectNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectName: default project
         :type ProjectName: str
         """
         self._ProjectId = None
@@ -1694,7 +6771,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ProjectId(self):
         r"""Project ID
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProjectId
@@ -1705,7 +6781,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        r"""Default projectNote: This field may return null, indicating that no valid values can be obtained.
+        r"""default project
         :rtype: str
         """
         return self._ProjectName
@@ -1735,10 +6811,9 @@ class AnalyseRegionDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: Region ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionId: Region ID.
         :type RegionId: str
-        :param _RegionName: Region nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionName: Region name
         :type RegionName: str
         """
         self._RegionId = None
@@ -1746,8 +6821,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        r"""Region ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID.
         :rtype: str
         """
         return self._RegionId
@@ -1758,7 +6832,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        r"""Region nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region name
         :rtype: str
         """
         return self._RegionName
@@ -1788,9 +6862,9 @@ class AnalyseTimeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: DateNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Time: Date
         :type Time: str
-        :param _Money: AmountNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Money: Amount
         :type Money: str
         """
         self._Time = None
@@ -1798,7 +6872,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Time(self):
-        r"""DateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Date
         :rtype: str
         """
         return self._Time
@@ -1809,7 +6883,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Money(self):
-        r"""AmountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Amount
         :rtype: str
         """
         return self._Money
@@ -1839,9 +6913,9 @@ class AnalyseZoneDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ZoneId: AZ ID.
         :type ZoneId: str
-        :param _ZoneName: Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ZoneName: Available zone Name
         :type ZoneName: str
         """
         self._ZoneId = None
@@ -1849,7 +6923,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.
+        r"""AZ ID.
         :rtype: str
         """
         return self._ZoneId
@@ -1860,7 +6934,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Available zone Name
         :rtype: str
         """
         return self._ZoneName
@@ -1934,6 +7008,270 @@ class ApplicableProducts(AbstractModel):
         
 
 
+class BillActionType(AbstractModel):
+    r"""Transaction type filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: Transaction type code
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type: Detailed transaction type
+        :type ActionTypeName: str
+        """
+        self._ActionType = None
+        self._ActionTypeName = None
+
+    @property
+    def ActionType(self):
+        r"""Transaction type code
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""Transaction type: Detailed transaction type
+        :rtype: str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillBusiness(AbstractModel):
+    r"""Product filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: Product code
+
+
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+
+
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillBusinessLink(AbstractModel):
+    r"""Product cascade filter value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name
+        :type BusinessCodeName: str
+        :param _Children: Subproduct
+        :type Children: list of BillProductLink
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._Children = None
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def Children(self):
+        r"""Subproduct
+        :rtype: list of BillProductLink
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = BillProductLink()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillComponent(AbstractModel):
+    r"""Component type filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ComponentCodeName: Component type: The major component category corresponding to the product or service purchased by the user
+        :type ComponentCodeName: str
+        """
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        r"""Component type: The major component category corresponding to the product or service purchased by the user
+        :rtype: str
+        """
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+
+    def _deserialize(self, params):
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDays(AbstractModel):
+    r"""Date filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillDay: Date: Settlement date
+        :type BillDay: str
+        """
+        self._BillDay = None
+
+    @property
+    def BillDay(self):
+        r"""Date: Settlement date
+        :rtype: str
+        """
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+
+    def _deserialize(self, params):
+        self._BillDay = params.get("BillDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillDetail(AbstractModel):
     r"""Bill details
 
@@ -1959,7 +7297,8 @@ class BillDetail(AbstractModel):
         :type ResourceName: str
         :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param _OrderId: Order ID: The order number for a monthly subscription purchase
+        :param _OrderId: Order ID: The sub-order number corresponding to the monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
+
         :type OrderId: str
         :param _BillId: Transaction ID: The bill number for a deducted payment
         :type BillId: str
@@ -1977,48 +7316,43 @@ class BillDetail(AbstractModel):
         :type OwnerUin: str
         :param _OperateUin: Operator account ID: The account or role ID of the operator who purchases or activates a resource
         :type OperateUin: str
-        :param _Tags: Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Tags: Tag information.
         :type Tags: list of BillTagInfo
-        :param _BusinessCode: Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCode: Product code
         :type BusinessCode: str
-        :param _ProductCode: Subproduct code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductCode: Subproduct code
         :type ProductCode: str
-        :param _ActionType: Transaction type code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionType: Transaction type code
         :type ActionType: str
-        :param _RegionId: Region ID. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionId: Region ID
         :type RegionId: str
         :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _PriceInfo: Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PriceInfo: Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
         :type PriceInfo: list of str
-        :param _AssociatedOrder: Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AssociatedOrder: Associated transaction document ID: Document ID associated with this transaction, such as a write-off order, the original order, a resettlement order, or the original purchase order number recorded in a refund order.
         :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
-        :param _Formula: Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Formula: Calculation explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
         :type Formula: str
-        :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FormulaUrl: Billing Rules: The detailed billing rules for each product shown in the portal explanation link
         :type FormulaUrl: str
-        :param _BillDay: Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillDay: Billing day
         :type BillDay: str
-        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillMonth: Billing month
         :type BillMonth: str
-        :param _Id: Billing record IDNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Id: Billing record ID
         :type Id: str
-        :param _RegionType: Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionType: Domestic and international codes
         :type RegionType: str
-        :param _RegionTypeName: Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionTypeName: Domestic and international: Resource region type (domestic, international)
         :type RegionTypeName: str
-        :param _ReserveDetail: Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReserveDetail: Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
         :type ReserveDetail: str
-        :param _DiscountObject: the discount object for the current consumption item, such as official website discount, user discount, and event discount.
+        :param _DiscountObject: discount object
         :type DiscountObject: str
-        :param _DiscountType: the discount type for the current consumption item, such as discount and contract price.
-
+        :param _DiscountType: Offer type
         :type DiscountType: str
-        :param _DiscountContent: supplementary description of the discount type, such as 0.2.
+        :param _DiscountContent: discount content
         :type DiscountContent: str
         """
         self._BusinessCodeName = None
@@ -2160,7 +7494,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        r"""Order ID: The order number for a monthly subscription purchase
+        r"""Order ID: The sub-order number corresponding to the monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
+
         :rtype: str
         """
         return self._OrderId
@@ -2259,7 +7594,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        r"""Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -2270,7 +7605,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        r"""Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -2281,7 +7616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        r"""Subproduct code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct code
         :rtype: str
         """
         return self._ProductCode
@@ -2292,7 +7627,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        r"""Transaction type code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type code
         :rtype: str
         """
         return self._ActionType
@@ -2303,7 +7638,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        r"""Region ID. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -2325,8 +7660,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceInfo(self):
-        r"""Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
         :rtype: list of str
         """
         return self._PriceInfo
@@ -2337,8 +7671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedOrder(self):
-        r"""Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Associated transaction document ID: Document ID associated with this transaction, such as a write-off order, the original order, a resettlement order, or the original purchase order number recorded in a refund order.
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -2349,8 +7682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        r"""Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Calculation explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
         :rtype: str
         """
         return self._Formula
@@ -2361,8 +7693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormulaUrl(self):
-        r"""Billing rules: Official website links for detailed billing rules of each product.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing Rules: The detailed billing rules for each product shown in the portal explanation link
         :rtype: str
         """
         return self._FormulaUrl
@@ -2373,7 +7704,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillDay(self):
-        r"""Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing day
         :rtype: str
         """
         return self._BillDay
@@ -2384,7 +7715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing month
         :rtype: str
         """
         return self._BillMonth
@@ -2395,7 +7726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        r"""Billing record IDNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing record ID
         :rtype: str
         """
         return self._Id
@@ -2406,7 +7737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionType(self):
-        r"""Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Domestic and international codes
         :rtype: str
         """
         return self._RegionType
@@ -2417,7 +7748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionTypeName(self):
-        r"""Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Domestic and international: Resource region type (domestic, international)
         :rtype: str
         """
         return self._RegionTypeName
@@ -2428,7 +7759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveDetail(self):
-        r"""Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Remark attribute (instance configuration): Additional remark information, such as reserved instance type and transaction type for reserved instances, regional information of both ends for CCN products.
         :rtype: str
         """
         return self._ReserveDetail
@@ -2439,7 +7770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountObject(self):
-        r"""the discount object for the current consumption item, such as official website discount, user discount, and event discount.
+        r"""discount object
         :rtype: str
         """
         return self._DiscountObject
@@ -2450,8 +7781,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountType(self):
-        r"""the discount type for the current consumption item, such as discount and contract price.
-
+        r"""Offer type
         :rtype: str
         """
         return self._DiscountType
@@ -2462,7 +7792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountContent(self):
-        r"""supplementary description of the discount type, such as 0.2.
+        r"""discount content
         :rtype: str
         """
         return self._DiscountContent
@@ -2539,23 +7869,17 @@ class BillDetailAssociatedOrder(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PrepayPurchase: Purchase order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PrepayPurchase: Newly purchased order
         :type PrepayPurchase: str
-        :param _PrepayRenew: Renewal order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PrepayRenew: Renewal order
         :type PrepayRenew: str
-        :param _PrepayModifyUp: Upgrade order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PrepayModifyUp: Configuration upgrade order
         :type PrepayModifyUp: str
-        :param _ReverseOrder: Write-off order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReverseOrder: Write-off order
         :type ReverseOrder: str
-        :param _NewOrder: The order after discount.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NewOrder: Order after discount adjustment
         :type NewOrder: str
-        :param _Original: The original order before discount.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Original: Order before discount adjustment
         :type Original: str
         """
         self._PrepayPurchase = None
@@ -2567,8 +7891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayPurchase(self):
-        r"""Purchase order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Newly purchased order
         :rtype: str
         """
         return self._PrepayPurchase
@@ -2579,8 +7902,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayRenew(self):
-        r"""Renewal order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Renewal order
         :rtype: str
         """
         return self._PrepayRenew
@@ -2591,8 +7913,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayModifyUp(self):
-        r"""Upgrade order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Configuration upgrade order
         :rtype: str
         """
         return self._PrepayModifyUp
@@ -2603,8 +7924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReverseOrder(self):
-        r"""Write-off order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Write-off order
         :rtype: str
         """
         return self._ReverseOrder
@@ -2615,8 +7935,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewOrder(self):
-        r"""The order after discount.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order after discount adjustment
         :rtype: str
         """
         return self._NewOrder
@@ -2627,8 +7946,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Original(self):
-        r"""The original order before discount.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Order before discount adjustment
         :rtype: str
         """
         return self._Original
@@ -2676,9 +7994,9 @@ class BillDetailComponent(AbstractModel):
         :type UsedAmount: str
         :param _UsedAmountUnit: Component usage unit: The unit of measurement for component usage
         :type UsedAmountUnit: str
-        :param _RealTotalMeasure: Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RealTotalMeasure: Original usage/duration: The original usage of the component before deduction by resource packages.
         :type RealTotalMeasure: str
-        :param _DeductedMeasure: Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeductedMeasure: Deduction of usage/duration (including resource packages): The amount of usage/duration deducted by resource packages
         :type DeductedMeasure: str
         :param _TimeSpan: Usage duration: The resource usage duration
         :type TimeSpan: str
@@ -2700,36 +8018,35 @@ class BillDetailComponent(AbstractModel):
         :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
 
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
-        :param _ItemCode: Component type code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ItemCode: Component type code
         :type ItemCode: str
-        :param _ComponentCode: Component name code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ComponentCode: Component name code
         :type ComponentCode: str
-        :param _ContractPrice: Component contracted price: The contracted unit price of a component, which is "List price x Discount". Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ContractPrice: Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
         :type ContractPrice: str
-        :param _InstanceType: Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceType: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. Normal instance display is not displayed by default.
         :type InstanceType: str
-        :param _RiTimeSpan: RI deduction (duration): The usage duration deducted by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RiTimeSpan: RI deduction duration: The duration of use deducted by reserved instances for this product or service.
         :type RiTimeSpan: str
-        :param _OriginalCostWithRI: RI deduction (cost): The amount deducted from the original cost by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OriginalCostWithRI: Reserved Instance Deduction Component Original Price: The original price of a component deducted by reserved instances for this product or service
         :type OriginalCostWithRI: str
-        :param _SPDeductionRate: Savings plan deduction rate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SPDeductionRate: Savings plan deduction rate: The discount rate for this component within the available balance limit of the savings plan
         :type SPDeductionRate: str
         :param _SPDeduction: Cost deduction by SP. This parameter has been deprecated. Note: This field may return null, indicating that no valid values can be obtained.
         :type SPDeduction: str
-        :param _OriginalCostWithSP: SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OriginalCostWithSP: Original Price of Savings Plan Deduction Component: Savings Plan Deduction from Original Price = Deduction Amount of Savings Plan Package / Savings Plan Deduction Rate
         :type OriginalCostWithSP: str
-        :param _BlendedDiscount: Blended discount multiplier: The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BlendedDiscount: Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Component original price.
         :type BlendedDiscount: str
-        :param _ComponentConfig: Configuration description: The specification configuration of an instance.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ComponentConfig: Configuration description: Information on specification of resource configuration
         :type ComponentConfig: list of BillDetailComponentConfig
-        :param _TaxRate: The tax rate.
+        :param _TaxRate: tax rate
         :type TaxRate: str
-        :param _TaxAmount: The tax amount.
+        :param _TaxAmount: Tax.
         :type TaxAmount: str
-        :param _Currency: The currency used for the settlement of a component.
+        :param _Currency: Currency.
         :type Currency: str
         """
         self._ComponentCodeName = None
@@ -2849,7 +8166,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalMeasure(self):
-        r"""Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Original usage/duration: The original usage of the component before deduction by resource packages.
         :rtype: str
         """
         return self._RealTotalMeasure
@@ -2860,7 +8177,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeductedMeasure(self):
-        r"""Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Deduction of usage/duration (including resource packages): The amount of usage/duration deducted by resource packages
         :rtype: str
         """
         return self._DeductedMeasure
@@ -2972,7 +8289,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -2983,7 +8300,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ItemCode(self):
-        r"""Component type code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component type code
         :rtype: str
         """
         return self._ItemCode
@@ -2994,7 +8311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentCode(self):
-        r"""Component name code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component name code
         :rtype: str
         """
         return self._ComponentCode
@@ -3005,7 +8322,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContractPrice(self):
-        r"""Component contracted price: The contracted unit price of a component, which is "List price x Discount". Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component unit price: Discounted unit price of the component. Component unit price = list price * discount.
         :rtype: str
         """
         return self._ContractPrice
@@ -3016,7 +8333,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        r"""Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. Normal instance display is not displayed by default.
         :rtype: str
         """
         return self._InstanceType
@@ -3027,7 +8344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiTimeSpan(self):
-        r"""RI deduction (duration): The usage duration deducted by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""RI deduction duration: The duration of use deducted by reserved instances for this product or service.
         :rtype: str
         """
         return self._RiTimeSpan
@@ -3038,7 +8355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithRI(self):
-        r"""RI deduction (cost): The amount deducted from the original cost by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reserved Instance Deduction Component Original Price: The original price of a component deducted by reserved instances for this product or service
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -3049,7 +8366,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SPDeductionRate(self):
-        r"""Savings plan deduction rate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Savings plan deduction rate: The discount rate for this component within the available balance limit of the savings plan
         :rtype: str
         """
         return self._SPDeductionRate
@@ -3075,7 +8392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithSP(self):
-        r"""SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Original Price of Savings Plan Deduction Component: Savings Plan Deduction from Original Price = Deduction Amount of Savings Plan Package / Savings Plan Deduction Rate
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -3086,7 +8403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlendedDiscount(self):
-        r"""Blended discount multiplier: The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Mixed discount rate: The final discount rate after integrating various discount deductions. Mixed Discount Rate = Discounted total price/Component original price.
         :rtype: str
         """
         return self._BlendedDiscount
@@ -3097,8 +8414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentConfig(self):
-        r"""Configuration description: The specification configuration of an instance.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Configuration description: Information on specification of resource configuration
         :rtype: list of BillDetailComponentConfig
         """
         return self._ComponentConfig
@@ -3109,7 +8425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaxRate(self):
-        r"""The tax rate.
+        r"""tax rate
         :rtype: str
         """
         return self._TaxRate
@@ -3120,7 +8436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaxAmount(self):
-        r"""The tax amount.
+        r"""Tax.
         :rtype: str
         """
         return self._TaxAmount
@@ -3131,7 +8447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
-        r"""The currency used for the settlement of a component.
+        r"""Currency.
         :rtype: str
         """
         return self._Currency
@@ -3198,10 +8514,8 @@ class BillDetailComponentConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: Configuration description name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
         :param _Value: Configuration description value
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Value: str
         """
         self._Name = None
@@ -3210,7 +8524,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Name(self):
         r"""Configuration description name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -3222,7 +8535,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Value(self):
         r"""Configuration description value
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Value
@@ -3298,8 +8610,7 @@ class BillDistributionResourceSummary(AbstractModel):
         :type CashPayAmount: str
         :param _IncentivePayAmount: Free credit payment: The amount paid with the user's free credit.
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Commission credit payment: The amount paid with the user's commission credit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
         :param _ExtendField3: Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField3: str
@@ -3308,7 +8619,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ExtendField5: Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField5: str
         :param _Tags: Tag information.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
         :param _OwnerUin: Owner account ID: The account ID of the actual resource user.
         :type OwnerUin: str
@@ -3328,7 +8638,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SPDeduction: str
         :param _OriginalCostWithSP: SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :type OriginalCostWithSP: str
-        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillMonth: Billing month
         :type BillMonth: str
         """
         self._BusinessCodeName = None
@@ -3625,8 +8935,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit payment: The amount paid with the user's commission credit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -3671,7 +8980,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Tags(self):
         r"""Tag information.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -3785,7 +9093,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing month
         :rtype: str
         """
         return self._BillMonth
@@ -3839,6 +9147,455 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
         self._BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillInstanceType(AbstractModel):
+    r"""Instance type filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: Instance type code
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :type InstanceTypeName: str
+        """
+        self._InstanceType = None
+        self._InstanceTypeName = None
+
+    @property
+    def InstanceType(self):
+        r"""Instance type code
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :rtype: str
+        """
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillItem(AbstractModel):
+    r"""Component name filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemCode: Component name code
+        :type ItemCode: str
+        :param _ItemCodeName: Component name: The specific component of a product or service purchased by the user
+        :type ItemCodeName: str
+        """
+        self._ItemCode = None
+        self._ItemCodeName = None
+
+    @property
+    def ItemCode(self):
+        r"""Component name code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        r"""Component name: The specific component of a product or service purchased by the user
+        :rtype: str
+        """
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+
+    def _deserialize(self, params):
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillOperateUin(AbstractModel):
+    r"""Operator UIN filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperateUin: Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :type OperateUin: str
+        """
+        self._OperateUin = None
+
+    @property
+    def OperateUin(self):
+        r"""Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+
+    def _deserialize(self, params):
+        self._OperateUin = params.get("OperateUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillOwnerUin(AbstractModel):
+    r"""User UIN filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
+        :type OwnerUin: str
+        """
+        self._OwnerUin = None
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN: Account ID of the actual resource user
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillPayMode(AbstractModel):
+    r"""Billing mode filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: Billing mode code
+        :type PayMode: str
+        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        """
+        self._PayMode = None
+        self._PayModeName = None
+
+    @property
+    def PayMode(self):
+        r"""Billing mode code
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :rtype: str
+        """
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillProduct(AbstractModel):
+    r"""Subproduct filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user
+        :type ProductCodeName: str
+        """
+        self._ProductCode = None
+        self._ProductCodeName = None
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name: Product subdivision type purchased by the user
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillProductLink(AbstractModel):
+    r"""Subproduct filtering under cost allocation conditions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name
+        :type ProductCodeName: str
+        :param _Children: Component name
+        :type Children: list of BillItem
+        """
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._Children = None
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def Children(self):
+        r"""Component name
+        :rtype: list of BillItem
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillProject(AbstractModel):
+    r"""Project filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ProjectName: Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :type ProjectName: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillRegion(AbstractModel):
+    r"""Region filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _RegionName: Region name: The region where the resource is located
+        :type RegionName: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+
+    @property
+    def RegionId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""Region name: The region where the resource is located
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3904,7 +9661,7 @@ class BillResourceSummary(AbstractModel):
         :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
 
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
         :param _ExtendField3: Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField3: str
@@ -3912,7 +9669,7 @@ class BillResourceSummary(AbstractModel):
         :type ExtendField4: str
         :param _ExtendField5: Extended field 5: Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField5: str
-        :param _Tags: Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Tags: Tag information.
         :type Tags: list of BillTagInfo
         :param _PayerUin: Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
         :type PayerUin: str
@@ -3934,7 +9691,7 @@ class BillResourceSummary(AbstractModel):
         :type SPDeduction: str
         :param _OriginalCostWithSP: SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :type OriginalCostWithSP: str
-        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillMonth: Billing month
         :type BillMonth: str
         """
         self._BusinessCodeName = None
@@ -4234,7 +9991,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4278,7 +10035,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -4403,7 +10160,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BillMonth(self):
-        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing month
         :rtype: str
         """
         return self._BillMonth
@@ -4468,6 +10225,57 @@ class BillResourceSummary(AbstractModel):
         
 
 
+class BillTag(AbstractModel):
+    r"""Tag filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Tag key
+        :type TagKey: str
+        :param _TagValue: Tag value
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""Tag key
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""Tag value
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillTagInfo(AbstractModel):
     r"""Bill tag information.
 
@@ -4519,6 +10327,57 @@ class BillTagInfo(AbstractModel):
         
 
 
+class BillZoneId(AbstractModel):
+    r"""Availability zone filter list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: AZ ID
+        :type ZoneId: int
+        :param _ZoneName: Availability zone: The availability zone where the resource is located.
+        :type ZoneName: str
+        """
+        self._ZoneId = None
+        self._ZoneName = None
+
+    @property
+    def ZoneId(self):
+        r"""AZ ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""Availability zone: The availability zone where the resource is located.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryInfo(AbstractModel):
     r"""Detailed summary of products
 
@@ -4530,8 +10389,7 @@ class BusinessSummaryInfo(AbstractModel):
         :type BusinessCode: str
         :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :type BusinessCodeName: str
-        :param _TotalCost: Original cost in USD. This parameter became valid when Bill 3.0 took effect in May 2021. Before that, `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCost: Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :type TotalCost: str
         :param _RealTotalCost: Total amount after discount
         :type RealTotalCost: str
@@ -4541,7 +10399,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
         """
         self._BusinessCode = None
@@ -4577,8 +10435,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        r"""Original cost in USD. This parameter became valid when Bill 3.0 took effect in May 2021. Before that, `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :rtype: str
         """
         return self._TotalCost
@@ -4633,7 +10490,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4669,7 +10526,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCode: Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCode: Product code
         :type BusinessCode: str
         :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :type BusinessCodeName: str
@@ -4703,7 +10560,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -5472,17 +11329,18 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         :param _Trend: Cost trend
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         :param _CashPayAmount: Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CashPayAmount: str
         :param _IncentivePayAmount: Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IncentivePayAmount: str
-        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :param _VoucherPayAmount: Voucher
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty amount
         :type TransferPayAmount: str
+        :param _AmountBeforeTax: Cash payment (pre-tax)
+        :type AmountBeforeTax: str
+        :param _Tax: Tax
+        :type Tax: str
         :param _RegionName: Region name (only shown in regional summary)
-Note: This field may return null, indicating that no valid values can be obtained.
         :type RegionName: str
         """
         self._BusinessCode = None
@@ -5493,6 +11351,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IncentivePayAmount = None
         self._VoucherPayAmount = None
         self._TransferPayAmount = None
+        self._AmountBeforeTax = None
+        self._Tax = None
         self._RegionName = None
 
     @property
@@ -5542,7 +11402,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CashPayAmount(self):
         r"""Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CashPayAmount
@@ -5554,7 +11413,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IncentivePayAmount(self):
         r"""Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -5565,7 +11423,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Voucher
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5576,7 +11434,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty amount
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5586,9 +11444,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TransferPayAmount = TransferPayAmount
 
     @property
+    def AmountBeforeTax(self):
+        r"""Cash payment (pre-tax)
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
     def RegionName(self):
         r"""Region name (only shown in regional summary)
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionName
@@ -5609,6 +11488,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
+        self._Tax = params.get("Tax")
         self._RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5638,15 +11519,17 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
         :param _Business: Product consumption details
         :type Business: list of ConsumptionBusinessSummaryDataItem
         :param _CashPayAmount: Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CashPayAmount: str
         :param _IncentivePayAmount: Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IncentivePayAmount: str
-        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :param _VoucherPayAmount: Voucher
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty amount
         :type TransferPayAmount: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _AmountBeforeTax: Cash payment (pre-tax)
+        :type AmountBeforeTax: str
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -5657,6 +11540,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IncentivePayAmount = None
         self._VoucherPayAmount = None
         self._TransferPayAmount = None
+        self._Tax = None
+        self._AmountBeforeTax = None
 
     @property
     def ProjectId(self):
@@ -5716,7 +11601,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CashPayAmount(self):
         r"""Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CashPayAmount
@@ -5728,7 +11612,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IncentivePayAmount(self):
         r"""Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -5739,7 +11622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Voucher
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5750,7 +11633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty amount
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5758,6 +11641,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @TransferPayAmount.setter
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def AmountBeforeTax(self):
+        r"""Cash payment (pre-tax)
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
 
 
     def _deserialize(self, params):
@@ -5777,6 +11682,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._Tax = params.get("Tax")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5805,15 +11712,17 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
         :param _Business: Product consumption details
         :type Business: list of ConsumptionBusinessSummaryDataItem
         :param _CashPayAmount: Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CashPayAmount: str
-        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :param _VoucherPayAmount: Voucher
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty amount
         :type TransferPayAmount: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _AmountBeforeTax: Cash payment (pre-tax)
+        :type AmountBeforeTax: str
         """
         self._RegionId = None
         self._RegionName = None
@@ -5824,6 +11733,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._VoucherPayAmount = None
         self._IncentivePayAmount = None
         self._TransferPayAmount = None
+        self._Tax = None
+        self._AmountBeforeTax = None
 
     @property
     def RegionId(self):
@@ -5883,7 +11794,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CashPayAmount(self):
         r"""Cash
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CashPayAmount
@@ -5894,7 +11804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Voucher
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5906,7 +11816,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IncentivePayAmount(self):
         r"""Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -5917,7 +11826,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty amount
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5925,6 +11834,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @TransferPayAmount.setter
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def AmountBeforeTax(self):
+        r"""Cash payment (pre-tax)
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
 
 
     def _deserialize(self, params):
@@ -5944,6 +11875,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._Tax = params.get("Tax")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6088,61 +12021,65 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :type BusinessCodeName: str
         :param _ConsumptionTypeName: Consumption type
         :type ConsumptionTypeName: str
-        :param _RealCost: Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RealCost: Original price
         :type RealCost: str
-        :param _FeeBeginTime: Start time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        :param _FeeBeginTime: Fee start time
         :type FeeBeginTime: str
-        :param _FeeEndTime: End time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        :param _FeeEndTime: End time of fees
         :type FeeEndTime: str
         :param _DayDiff: Days
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DayDiff: str
-        :param _DailyTotalCost: Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.
+        :param _DailyTotalCost: Daily consumption
         :type DailyTotalCost: str
-        :param _OrderId: Order numberNote: This field may return null, indicating that no valid values can be obtained.
+        :param _OrderId: Order ID
         :type OrderId: str
-        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :param _VoucherPayAmount: Voucher
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty amount
         :type TransferPayAmount: str
-        :param _PayerUin: Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Tax: Tax
+        :type Tax: str
+        :param _TaxRate: tax rate
+        :type TaxRate: str
+        :param _AmountBeforeTax: Cash payment (pre-tax)
+        :type AmountBeforeTax: str
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
         :type PayerUin: str
-        :param _OwnerUin: User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
         :type OwnerUin: str
-        :param _OperateUin: Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        :param _OperateUin: Operator UIN: Operator account ID (ID of the operator who places orders for prepaid resources or activates postpaid resource account, or role ID).
         :type OperateUin: str
-        :param _ProductCode: Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductCode: Subproduct code
         :type ProductCode: str
-        :param _ProductCodeName: Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user, such as Cloud Virtual Machine (CVM)-Standard Type S1
         :type ProductCodeName: str
-        :param _RegionType: Region typeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionType: Region type
         :type RegionType: str
-        :param _RegionTypeName: Region type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionTypeName: Region type name.
         :type RegionTypeName: str
-        :param _Extend1: Extended field 1Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Extend1: Extension Field 1
         :type Extend1: str
-        :param _Extend2: Extended field 2Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Extend2: Extension Field 2
         :type Extend2: str
-        :param _Extend3: Extended field 3Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Extend3: Extension Field 3
         :type Extend3: str
-        :param _Extend4: Extended field 4Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Extend4: Extension Field 4
         :type Extend4: str
-        :param _Extend5: Extended field 5Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Extend5: Extension Field 5
         :type Extend5: str
-        :param _InstanceType: Instance typeNote: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceType: Instance type
         :type InstanceType: str
-        :param _InstanceTypeName: Instance type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceTypeName: Instance Type Name
         :type InstanceTypeName: str
-        :param _PayTime: Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.
+        :param _PayTime: Deduction time: Deduction time
         :type PayTime: str
-        :param _ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ZoneName: Availability zone: The availability zone where the resource is located, such as Guangzhou Zone 3.
         :type ZoneName: str
-        :param _ComponentConfig: Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ComponentConfig: Describing Configurations
         :type ComponentConfig: str
-        :param _Tags: Tag information.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Tags: Tag information.
         :type Tags: str
         """
         self._ResourceId = None
@@ -6167,6 +12104,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._VoucherPayAmount = None
         self._IncentivePayAmount = None
         self._TransferPayAmount = None
+        self._Tax = None
+        self._TaxRate = None
+        self._AmountBeforeTax = None
         self._PayerUin = None
         self._OwnerUin = None
         self._OperateUin = None
@@ -6331,7 +12271,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealCost(self):
-        r"""Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Original price
         :rtype: str
         """
         return self._RealCost
@@ -6342,7 +12282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeBeginTime(self):
-        r"""Start time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee start time
         :rtype: str
         """
         return self._FeeBeginTime
@@ -6353,7 +12293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeEndTime(self):
-        r"""End time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""End time of fees
         :rtype: str
         """
         return self._FeeEndTime
@@ -6365,7 +12305,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DayDiff(self):
         r"""Days
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DayDiff
@@ -6376,7 +12315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DailyTotalCost(self):
-        r"""Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Daily consumption
         :rtype: str
         """
         return self._DailyTotalCost
@@ -6387,7 +12326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        r"""Order numberNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Order ID
         :rtype: str
         """
         return self._OrderId
@@ -6398,7 +12337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Voucher
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -6410,7 +12349,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def IncentivePayAmount(self):
         r"""Bonus
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -6421,7 +12359,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty amount
         :rtype: str
         """
         return self._TransferPayAmount
@@ -6431,8 +12369,41 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TransferPayAmount = TransferPayAmount
 
     @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def TaxRate(self):
+        r"""tax rate
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def AmountBeforeTax(self):
+        r"""Cash payment (pre-tax)
+        :rtype: str
+        """
+        return self._AmountBeforeTax
+
+    @AmountBeforeTax.setter
+    def AmountBeforeTax(self, AmountBeforeTax):
+        self._AmountBeforeTax = AmountBeforeTax
+
+    @property
     def PayerUin(self):
-        r"""Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
         :rtype: str
         """
         return self._PayerUin
@@ -6443,7 +12414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        r"""User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN: Account ID of the actual resource user
         :rtype: str
         """
         return self._OwnerUin
@@ -6454,7 +12425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        r"""Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Operator UIN: Operator account ID (ID of the operator who places orders for prepaid resources or activates postpaid resource account, or role ID).
         :rtype: str
         """
         return self._OperateUin
@@ -6465,7 +12436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        r"""Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct code
         :rtype: str
         """
         return self._ProductCode
@@ -6476,7 +12447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        r"""Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct name: Product subdivision type purchased by the user, such as Cloud Virtual Machine (CVM)-Standard Type S1
         :rtype: str
         """
         return self._ProductCodeName
@@ -6487,7 +12458,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionType(self):
-        r"""Region typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region type
         :rtype: str
         """
         return self._RegionType
@@ -6498,7 +12469,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionTypeName(self):
-        r"""Region type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region type name.
         :rtype: str
         """
         return self._RegionTypeName
@@ -6509,7 +12480,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend1(self):
-        r"""Extended field 1Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extension Field 1
         :rtype: str
         """
         return self._Extend1
@@ -6520,7 +12491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend2(self):
-        r"""Extended field 2Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extension Field 2
         :rtype: str
         """
         return self._Extend2
@@ -6531,7 +12502,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend3(self):
-        r"""Extended field 3Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extension Field 3
         :rtype: str
         """
         return self._Extend3
@@ -6542,7 +12513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend4(self):
-        r"""Extended field 4Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extension Field 4
         :rtype: str
         """
         return self._Extend4
@@ -6553,7 +12524,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend5(self):
-        r"""Extended field 5Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extension Field 5
         :rtype: str
         """
         return self._Extend5
@@ -6564,7 +12535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        r"""Instance typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type
         :rtype: str
         """
         return self._InstanceType
@@ -6575,7 +12546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypeName(self):
-        r"""Instance type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance Type Name
         :rtype: str
         """
         return self._InstanceTypeName
@@ -6586,7 +12557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayTime(self):
-        r"""Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Deduction time: Deduction time
         :rtype: str
         """
         return self._PayTime
@@ -6597,7 +12568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        r"""Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone: The availability zone where the resource is located, such as Guangzhou Zone 3.
         :rtype: str
         """
         return self._ZoneName
@@ -6608,7 +12579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentConfig(self):
-        r"""Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Describing Configurations
         :rtype: str
         """
         return self._ComponentConfig
@@ -6619,7 +12590,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        r"""Tag information.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information.
         :rtype: str
         """
         return self._Tags
@@ -6652,6 +12623,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._Tax = params.get("Tax")
+        self._TaxRate = params.get("TaxRate")
+        self._AmountBeforeTax = params.get("AmountBeforeTax")
         self._PayerUin = params.get("PayerUin")
         self._OwnerUin = params.get("OwnerUin")
         self._OperateUin = params.get("OperateUin")
@@ -6725,7 +12699,7 @@ class ConsumptionSummaryTrend(AbstractModel):
         r"""
         :param _Type: Trend type, upward for rising, downward for falling, none for no change
         :type Type: str
-        :param _Value: Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Trend value. The value of this field is null when Type is none.
         :type Value: str
         """
         self._Type = None
@@ -6744,7 +12718,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
     @property
     def Value(self):
-        r"""Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Trend value. The value of this field is null when Type is none.
         :rtype: str
         """
         return self._Value
@@ -6924,6 +12898,10 @@ class CostComponentSet(AbstractModel):
         :type CashPayAmount: str
         :param _IncentivePayAmount: Bonus payment amount
         :type IncentivePayAmount: str
+        :param _Tax: Tax
+        :type Tax: str
+        :param _TaxRate: tax rate
+        :type TaxRate: str
         """
         self._ComponentCodeName = None
         self._ItemCodeName = None
@@ -6937,6 +12915,8 @@ class CostComponentSet(AbstractModel):
         self._VoucherPayAmount = None
         self._CashPayAmount = None
         self._IncentivePayAmount = None
+        self._Tax = None
+        self._TaxRate = None
 
     @property
     def ComponentCodeName(self):
@@ -7070,6 +13050,28 @@ class CostComponentSet(AbstractModel):
     def IncentivePayAmount(self, IncentivePayAmount):
         self._IncentivePayAmount = IncentivePayAmount
 
+    @property
+    def Tax(self):
+        r"""Tax
+        :rtype: str
+        """
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def TaxRate(self):
+        r"""tax rate
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
 
     def _deserialize(self, params):
         self._ComponentCodeName = params.get("ComponentCodeName")
@@ -7084,6 +13086,8 @@ class CostComponentSet(AbstractModel):
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._CashPayAmount = params.get("CashPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._Tax = params.get("Tax")
+        self._TaxRate = params.get("TaxRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7119,7 +13123,7 @@ class CostDetail(AbstractModel):
         :type ResourceId: str
         :param _ResourceName: Resource name
         :type ResourceName: str
-        :param _ActionTypeName: Type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionTypeName: Type name
         :type ActionTypeName: str
         :param _OrderId: Order ID
         :type OrderId: str
@@ -7133,6 +13137,8 @@ class CostDetail(AbstractModel):
         :type ComponentSet: list of CostComponentSet
         :param _ProductCode: Subproduct name code
         :type ProductCode: str
+        :param _Tags: Tag information.	
+        :type Tags: list of BillTagInfo
         """
         self._PayerUin = None
         self._BusinessCodeName = None
@@ -7150,6 +13156,7 @@ class CostDetail(AbstractModel):
         self._FeeEndTime = None
         self._ComponentSet = None
         self._ProductCode = None
+        self._Tags = None
 
     @property
     def PayerUin(self):
@@ -7252,7 +13259,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Type name
         :rtype: str
         """
         return self._ActionTypeName
@@ -7327,6 +13334,17 @@ class CostDetail(AbstractModel):
     def ProductCode(self, ProductCode):
         self._ProductCode = ProductCode
 
+    @property
+    def Tags(self):
+        r"""Tag information.	
+        :rtype: list of BillTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._PayerUin = params.get("PayerUin")
@@ -7350,6 +13368,12 @@ class CostDetail(AbstractModel):
                 obj._deserialize(item)
                 self._ComponentSet.append(obj)
         self._ProductCode = params.get("ProductCode")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7367,7 +13391,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleList: List of sharing rules.
+        :param _RuleList: List of sharing rules
         :type RuleList: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
         :param _Month: Month, the current month by default if not provided.
         :type Month: str
@@ -7377,7 +13401,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""List of sharing rules.
+        r"""List of sharing rules
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
         """
         return self._RuleList
@@ -8095,6 +14119,8 @@ postMoveIn specifies the pay-as-you-go resources for inbound migration.
         :param _ResourceId: The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceId: list of str
+        :param _ZoneCode: Availability zone Id corresponding to the order
+        :type ZoneCode: str
         """
         self._OrderId = None
         self._Status = None
@@ -8122,6 +14148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProductName = None
         self._SubProductName = None
         self._ResourceId = None
+        self._ZoneCode = None
 
     @property
     def OrderId(self):
@@ -8423,6 +14450,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def ZoneCode(self):
+        r"""Availability zone Id corresponding to the order
+        :rtype: str
+        """
+        return self._ZoneCode
+
+    @ZoneCode.setter
+    def ZoneCode(self, ZoneCode):
+        self._ZoneCode = ZoneCode
+
 
     def _deserialize(self, params):
         self._OrderId = params.get("OrderId")
@@ -8456,6 +14494,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProductName = params.get("ProductName")
         self._SubProductName = params.get("SubProductName")
         self._ResourceId = params.get("ResourceId")
+        self._ZoneCode = params.get("ZoneCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8772,6 +14811,36 @@ class DescribeAccountBalanceRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TempCredit: Query the temporary limit
+        :type TempCredit: bool
+        """
+        self._TempCredit = None
+
+    @property
+    def TempCredit(self):
+        r"""Query the temporary limit
+        :rtype: bool
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+
+    def _deserialize(self, params):
+        self._TempCredit = params.get("TempCredit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAccountBalanceResponse(AbstractModel):
     r"""DescribeAccountBalance response structure.
@@ -8782,7 +14851,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
         r"""
         :param _Balance: Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.
         :type Balance: int
-        :param _Uin: The UIN to query.
+        :param _Uin: The user Uin for the query
         :type Uin: int
         :param _RealBalance: Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.
         :type RealBalance: float
@@ -8806,6 +14875,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type CreditBalance: float
         :param _RealCreditBalance: Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.
         :type RealCreditBalance: float
+        :param _TempCredit: Temporary limit, unit cent
+        :type TempCredit: float
+        :param _TempAmountInfoList: Temporary limit details
+        :type TempAmountInfoList: list of UinTempAmountModel
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -8822,6 +14895,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = None
         self._CreditBalance = None
         self._RealCreditBalance = None
+        self._TempCredit = None
+        self._TempAmountInfoList = None
         self._RequestId = None
 
     @property
@@ -8837,7 +14912,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""The UIN to query.
+        r"""The user Uin for the query
         :rtype: int
         """
         return self._Uin
@@ -8914,6 +14989,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IsAllowArrears(self):
+        warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
+
         r"""Whether overdue payments are allowed. Currently, this field is not applied.
         :rtype: bool
         """
@@ -8921,10 +14998,14 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @IsAllowArrears.setter
     def IsAllowArrears(self, IsAllowArrears):
+        warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
+
         self._IsAllowArrears = IsAllowArrears
 
     @property
     def IsCreditLimited(self):
+        warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
+
         r"""Whether you have a credit limit. Currently, this field is not applied.
         :rtype: bool
         """
@@ -8932,6 +15013,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @IsCreditLimited.setter
     def IsCreditLimited(self, IsCreditLimited):
+        warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
+
         self._IsCreditLimited = IsCreditLimited
 
     @property
@@ -8968,6 +15051,28 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._RealCreditBalance = RealCreditBalance
 
     @property
+    def TempCredit(self):
+        r"""Temporary limit, unit cent
+        :rtype: float
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+    @property
+    def TempAmountInfoList(self):
+        r"""Temporary limit details
+        :rtype: list of UinTempAmountModel
+        """
+        return self._TempAmountInfoList
+
+    @TempAmountInfoList.setter
+    def TempAmountInfoList(self, TempAmountInfoList):
+        self._TempAmountInfoList = TempAmountInfoList
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -8993,6 +15098,1714 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._TempCredit = params.get("TempCredit")
+        if params.get("TempAmountInfoList") is not None:
+            self._TempAmountInfoList = []
+            for item in params.get("TempAmountInfoList"):
+                obj = UinTempAmountModel()
+                obj._deserialize(item)
+                self._TempAmountInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocateConditionsRequest(AbstractModel):
+    r"""DescribeAllocateConditions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocateConditionsResponse(AbstractModel):
+    r"""DescribeAllocateConditions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: Product filter list
+        :type Business: list of BillBusinessLink
+        :param _Product: Subproduct filter list
+        :type Product: list of BillProduct
+        :param _Item: Component name filter list
+        :type Item: list of BillItem
+        :param _Region: Region filter list
+        :type Region: list of BillRegion
+        :param _InstanceType: Instance type filter list
+        :type InstanceType: list of BillInstanceType
+        :param _PayMode: Billing mode filter list
+        :type PayMode: list of BillPayMode
+        :param _Project: Project filter list
+        :type Project: list of BillProject
+        :param _Tag: Tag filter list
+        :type Tag: list of BillTag
+        :param _OwnerUin: User UIN filter list
+        :type OwnerUin: list of BillOwnerUin
+        :param _OperateUin: Operator UIN filter list
+        :type OperateUin: list of BillOperateUin
+        :param _ActionType: Transaction type filter list
+        :type ActionType: list of BillActionType
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Business = None
+        self._Product = None
+        self._Item = None
+        self._Region = None
+        self._InstanceType = None
+        self._PayMode = None
+        self._Project = None
+        self._Tag = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._ActionType = None
+        self._RequestId = None
+
+    @property
+    def Business(self):
+        r"""Product filter list
+        :rtype: list of BillBusinessLink
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Product(self):
+        r"""Subproduct filter list
+        :rtype: list of BillProduct
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Item(self):
+        r"""Component name filter list
+        :rtype: list of BillItem
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Region(self):
+        r"""Region filter list
+        :rtype: list of BillRegion
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceType(self):
+        r"""Instance type filter list
+        :rtype: list of BillInstanceType
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def PayMode(self):
+        r"""Billing mode filter list
+        :rtype: list of BillPayMode
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Project(self):
+        r"""Project filter list
+        :rtype: list of BillProject
+        """
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Tag(self):
+        r"""Tag filter list
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN filter list
+        :rtype: list of BillOwnerUin
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator UIN filter list
+        :rtype: list of BillOperateUin
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def ActionType(self):
+        r"""Transaction type filter list
+        :rtype: list of BillActionType
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BillBusinessLink()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Product") is not None:
+            self._Product = []
+            for item in params.get("Product"):
+                obj = BillProduct()
+                obj._deserialize(item)
+                self._Product.append(obj)
+        if params.get("Item") is not None:
+            self._Item = []
+            for item in params.get("Item"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Item.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = BillRegion()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("InstanceType") is not None:
+            self._InstanceType = []
+            for item in params.get("InstanceType"):
+                obj = BillInstanceType()
+                obj._deserialize(item)
+                self._InstanceType.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = BillPayMode()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = BillProject()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = BillOwnerUin()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("OperateUin") is not None:
+            self._OperateUin = []
+            for item in params.get("OperateUin"):
+                obj = BillOperateUin()
+                obj._deserialize(item)
+                self._OperateUin.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = BillActionType()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationBillConditionsRequest(AbstractModel):
+    r"""DescribeAllocationBillConditions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+        :type TreeNodeUniqKeys: list of str
+        :param _BillDates: Date
+        :type BillDates: list of str
+        :param _BusinessCodes: Product code
+        :type BusinessCodes: list of str
+        :param _OwnerUins: User UIN
+        :type OwnerUins: list of str
+        :param _OperateUins: Operator UIN
+        :type OperateUins: list of str
+        :param _PayModes: Billing mode code
+        :type PayModes: list of str
+        :param _ActionTypes: Transaction type code
+        :type ActionTypes: list of str
+        :param _ProductCodes: Subproduct code
+        :type ProductCodes: list of str
+        :param _RegionIds: Region ID
+        :type RegionIds: list of str
+        :param _ZoneIds: AZ ID
+        :type ZoneIds: list of str
+        :param _InstanceTypes: Instance type code
+        :type InstanceTypes: list of str
+        :param _Tag: Tag
+        :type Tag: list of str
+        :param _ComponentCodes: Component type code
+        :type ComponentCodes: list of str
+        :param _ItemCodes: Component name code
+        :type ItemCodes: list of str
+        :param _SearchKey: Fuzzy search criteria
+        :type SearchKey: str
+        :param _ProjectIds: Project ID
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: Cost collection type
+        :type AllocationType: list of int
+        """
+        self._Month = None
+        self._TreeNodeUniqKeys = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def BillDates(self):
+        r"""Date
+        :rtype: list of str
+        """
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        r"""User UIN
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        r"""Operator UIN
+        :rtype: list of str
+        """
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        r"""Billing mode code
+        :rtype: list of str
+        """
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        r"""Transaction type code
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        r"""Subproduct code
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        r"""Region ID
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        r"""AZ ID
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        r"""Instance type code
+        :rtype: list of str
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        r"""Tag
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        r"""Component type code
+        :rtype: list of str
+        """
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        r"""Component name code
+        :rtype: list of str
+        """
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        r"""Fuzzy search criteria
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        r"""Project ID
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type
+        :rtype: list of int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationBillConditionsResponse(AbstractModel):
+    r"""DescribeAllocationBillConditions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: Product filter list
+        :type Business: list of BillBusiness
+        :param _Product: Subproduct filter list
+        :type Product: list of BillProduct
+        :param _Item: Component name filter list
+        :type Item: list of BillItem
+        :param _Region: Region filter list
+        :type Region: list of BillRegion
+        :param _InstanceType: Instance type filter list
+        :type InstanceType: list of BillInstanceType
+        :param _PayMode: Billing mode filter list
+        :type PayMode: list of BillPayMode
+        :param _Project: Project filter list
+        :type Project: list of BillProject
+        :param _Tag: Tag filter list
+        :type Tag: list of BillTag
+        :param _OwnerUin: User UIN filter list
+        :type OwnerUin: list of BillOwnerUin
+        :param _OperateUin: Operator UIN filter list
+        :type OperateUin: list of BillOperateUin
+        :param _BillDay: Date filter list
+        :type BillDay: list of BillDays
+        :param _ActionType: Transaction type filter list
+        :type ActionType: list of BillActionType
+        :param _Component: Component type filter list
+        :type Component: list of BillComponent
+        :param _Zone: Availability zone filter list
+        :type Zone: list of BillZoneId
+        :param _AllocationTreeNode: Cost allocation unit filter list
+        :type AllocationTreeNode: list of AllocationTreeNode
+        :param _TagKey: Cost allocation tag key
+        :type TagKey: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Business = None
+        self._Product = None
+        self._Item = None
+        self._Region = None
+        self._InstanceType = None
+        self._PayMode = None
+        self._Project = None
+        self._Tag = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BillDay = None
+        self._ActionType = None
+        self._Component = None
+        self._Zone = None
+        self._AllocationTreeNode = None
+        self._TagKey = None
+        self._RequestId = None
+
+    @property
+    def Business(self):
+        r"""Product filter list
+        :rtype: list of BillBusiness
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Product(self):
+        r"""Subproduct filter list
+        :rtype: list of BillProduct
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Item(self):
+        r"""Component name filter list
+        :rtype: list of BillItem
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Region(self):
+        r"""Region filter list
+        :rtype: list of BillRegion
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceType(self):
+        r"""Instance type filter list
+        :rtype: list of BillInstanceType
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def PayMode(self):
+        r"""Billing mode filter list
+        :rtype: list of BillPayMode
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Project(self):
+        r"""Project filter list
+        :rtype: list of BillProject
+        """
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Tag(self):
+        r"""Tag filter list
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN filter list
+        :rtype: list of BillOwnerUin
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator UIN filter list
+        :rtype: list of BillOperateUin
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BillDay(self):
+        r"""Date filter list
+        :rtype: list of BillDays
+        """
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def ActionType(self):
+        r"""Transaction type filter list
+        :rtype: list of BillActionType
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Component(self):
+        r"""Component type filter list
+        :rtype: list of BillComponent
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Zone(self):
+        r"""Availability zone filter list
+        :rtype: list of BillZoneId
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AllocationTreeNode(self):
+        r"""Cost allocation unit filter list
+        :rtype: list of AllocationTreeNode
+        """
+        return self._AllocationTreeNode
+
+    @AllocationTreeNode.setter
+    def AllocationTreeNode(self, AllocationTreeNode):
+        self._AllocationTreeNode = AllocationTreeNode
+
+    @property
+    def TagKey(self):
+        r"""Cost allocation tag key
+        :rtype: list of str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BillBusiness()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Product") is not None:
+            self._Product = []
+            for item in params.get("Product"):
+                obj = BillProduct()
+                obj._deserialize(item)
+                self._Product.append(obj)
+        if params.get("Item") is not None:
+            self._Item = []
+            for item in params.get("Item"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Item.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = BillRegion()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("InstanceType") is not None:
+            self._InstanceType = []
+            for item in params.get("InstanceType"):
+                obj = BillInstanceType()
+                obj._deserialize(item)
+                self._InstanceType.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = BillPayMode()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = BillProject()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = BillOwnerUin()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("OperateUin") is not None:
+            self._OperateUin = []
+            for item in params.get("OperateUin"):
+                obj = BillOperateUin()
+                obj._deserialize(item)
+                self._OperateUin.append(obj)
+        if params.get("BillDay") is not None:
+            self._BillDay = []
+            for item in params.get("BillDay"):
+                obj = BillDays()
+                obj._deserialize(item)
+                self._BillDay.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = BillActionType()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        if params.get("Component") is not None:
+            self._Component = []
+            for item in params.get("Component"):
+                obj = BillComponent()
+                obj._deserialize(item)
+                self._Component.append(obj)
+        if params.get("Zone") is not None:
+            self._Zone = []
+            for item in params.get("Zone"):
+                obj = BillZoneId()
+                obj._deserialize(item)
+                self._Zone.append(obj)
+        if params.get("AllocationTreeNode") is not None:
+            self._AllocationTreeNode = []
+            for item in params.get("AllocationTreeNode"):
+                obj = AllocationTreeNode()
+                obj._deserialize(item)
+                self._AllocationTreeNode.append(obj)
+        self._TagKey = params.get("TagKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationBillDetailRequest(AbstractModel):
+    r"""DescribeAllocationBillDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+        :type Limit: int
+        :param _Offset: Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :type Sort: str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _BusinessCodes: Product code, used for filtering
+        :type BusinessCodes: list of str
+        :param _OwnerUins: User UIN, used for filtering
+        :type OwnerUins: list of str
+        :param _OperateUins: Operator UIN, used for filtering
+        :type OperateUins: list of str
+        :param _PayModes: Billing mode code, used for filtering
+        :type PayModes: list of str
+        :param _ActionTypes: Transaction type code, used for filtering
+        :type ActionTypes: list of str
+        :param _ProductCodes: Subproduct code, used for filtering
+        :type ProductCodes: list of str
+        :param _RegionIds: Region ID, used for filtering
+        :type RegionIds: list of str
+        :param _ZoneIds: AZ ID, used for filtering
+        :type ZoneIds: list of str
+        :param _InstanceTypes: Instance type code, used for filtering
+        :type InstanceTypes: list of str
+        :param _Tag: Tag, used for filtering
+        :type Tag: list of str
+        :param _ComponentCodes: Component type code, used for filtering
+        :type ComponentCodes: list of str
+        :param _ItemCodes: Component name code, used for filtering
+        :type ItemCodes: list of str
+        :param _SearchKey: Fuzzy search: supports tag, resource ID, and resource alias.
+        :type SearchKey: str
+        :param _ProjectIds: Project ID, used for filtering
+        :type ProjectIds: list of int non-negative
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code, used for filtering
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        r"""User UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        r"""Operator UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        r"""Billing mode code, used for filtering
+        :rtype: list of str
+        """
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        r"""Transaction type code, used for filtering
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        r"""Subproduct code, used for filtering
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        r"""Region ID, used for filtering
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        r"""AZ ID, used for filtering
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        r"""Instance type code, used for filtering
+        :rtype: list of str
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        r"""Tag, used for filtering
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        r"""Component type code, used for filtering
+        :rtype: list of str
+        """
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        r"""Component name code, used for filtering
+        :rtype: list of str
+        """
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        r"""Fuzzy search: supports tag, resource ID, and resource alias.
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        r"""Project ID, used for filtering
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationBillDetailResponse(AbstractModel):
+    r"""DescribeAllocationBillDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+        :type RecordNum: int
+        :param _Total: Total amount of a cost allocation bill
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: Details of a cost allocation bill
+        :type Detail: list of AllocationDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        r"""Details of a cost allocation bill
+        :rtype: list of AllocationDetail
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationMonthOverviewRequest(AbstractModel):
+    r"""DescribeAllocationMonthOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationMonthOverviewResponse(AbstractModel):
+    r"""DescribeAllocationMonthOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: Monthly overview of a cost allocation bill
+        :type Detail: list of AllocationOverviewNode
+        :param _Total: Total amount of a cost allocation bill
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        r"""Monthly overview of a cost allocation bill
+        :rtype: list of AllocationOverviewNode
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationOverviewNode()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationOverviewRequest(AbstractModel):
+    r"""DescribeAllocationOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+        :type Limit: int
+        :param _Offset: Pagination offset. If offset is 0, it indicates the first page. If limit is 100, then offset is 100, it indicates the second page; if offset is 200, it indicates the third page, and so on
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        :param _PeriodType: Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: Sorting field, with the enumerated values as follows: 
+GatherCashPayAmount - Collected fees (cash)
+GatherVoucherPayAmount - Collected fees (voucher)
+GatherIncentivePayAmount - Collected fees (free credit)
+GatherTransferPayAmount - Collected fees (royalty amount)
+AllocateCashPayAmount - Allocated fees (cash)
+AllocateVoucherPayAmount - Allocated fees (voucher)
+AllocateIncentivePayAmount - Allocated fees (free credit)
+AllocateTransferPayAmount - Allocated fees (royalty amount)
+TotalCashPayAmount - Total fees (cash)
+TotalVoucherPayAmount - Total fees (voucher)
+TotalIncentivePayAmount - Total fees (free credit)
+TotalTransferPayAmount - Total fees (royalty amount)
+GatherRealCost - Collected fees (discounted total)
+AllocateRealCost - Allocated fees (discounted total)
+RealTotalCost - Total fees (discounted total)
+Ratio - Proportion (discounted total)
+        :type Sort: str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _BillDates: Date, used for filtering
+        :type BillDates: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If offset is 0, it indicates the first page. If limit is 100, then offset is 100, it indicates the second page; if offset is 200, it indicates the third page, and so on
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        r"""Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows: 
+GatherCashPayAmount - Collected fees (cash)
+GatherVoucherPayAmount - Collected fees (voucher)
+GatherIncentivePayAmount - Collected fees (free credit)
+GatherTransferPayAmount - Collected fees (royalty amount)
+AllocateCashPayAmount - Allocated fees (cash)
+AllocateVoucherPayAmount - Allocated fees (voucher)
+AllocateIncentivePayAmount - Allocated fees (free credit)
+AllocateTransferPayAmount - Allocated fees (royalty amount)
+TotalCashPayAmount - Total fees (cash)
+TotalVoucherPayAmount - Total fees (voucher)
+TotalIncentivePayAmount - Total fees (free credit)
+TotalTransferPayAmount - Total fees (royalty amount)
+GatherRealCost - Collected fees (discounted total)
+AllocateRealCost - Allocated fees (discounted total)
+RealTotalCost - Total fees (discounted total)
+Ratio - Proportion (discounted total)
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        r"""Date, used for filtering
+        :rtype: list of str
+        """
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationOverviewResponse(AbstractModel):
+    r"""DescribeAllocationOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+        :type RecordNum: int
+        :param _Total: Total amount of a cost allocation bill
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: Details of the cost allocation overview
+        :type Detail: list of AllocationOverviewDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        r"""Details of the cost allocation overview
+        :rtype: list of AllocationOverviewDetail
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationOverviewDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9345,6 +17158,1317 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAllocationSummaryByBusinessRequest(AbstractModel):
+    r"""DescribeAllocationSummaryByBusiness request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+        :type Limit: int
+        :param _Offset: Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :type Month: str
+        :param _PeriodType: Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+
+
+        :type TreeNodeUniqKeys: list of str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _Sort: Sorting field, with the enumerated values as follows:
+GatherCashPayAmount - Collected fees (cash)
+GatherVoucherPayAmount - Collected fees (voucher)
+GatherIncentivePayAmount - Collected fees (free credit)
+GatherTransferPayAmount - Collected fees (royalty amount)
+AllocateCashPayAmount - Allocated fees (cash)
+AllocateVoucherPayAmount - Allocated fees (voucher)
+AllocateIncentivePayAmount - Allocated fees (free credit)
+AllocateTransferPayAmount - Allocated fees (royalty amount)
+TotalCashPayAmount - Total fees (cash)
+TotalVoucherPayAmount - Total fees (voucher)
+TotalIncentivePayAmount - Total fees (free credit)
+TotalTransferPayAmount - Total fees (royalty amount)
+GatherRealCost - Collected fees (discounted total)
+AllocateRealCost - Allocated fees (discounted total)
+RealTotalCost - Total fees (discounted total)
+BusinessCode - Product code
+Ratio - Proportion (discounted total)
+Trend - Month-on-month ratio (discounted total)
+        :type Sort: str
+        :param _BillDates: Date, used for filtering and provided when PeriodType is set to day
+
+        :type BillDates: list of str
+        :param _BusinessCodes: Product code, used for filtering
+        :type BusinessCodes: list of str
+        :param _SearchKey: Fuzzy search criteria
+        :type SearchKey: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._SortType = None
+        self._Sort = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._SearchKey = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        r"""Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows:
+GatherCashPayAmount - Collected fees (cash)
+GatherVoucherPayAmount - Collected fees (voucher)
+GatherIncentivePayAmount - Collected fees (free credit)
+GatherTransferPayAmount - Collected fees (royalty amount)
+AllocateCashPayAmount - Allocated fees (cash)
+AllocateVoucherPayAmount - Allocated fees (voucher)
+AllocateIncentivePayAmount - Allocated fees (free credit)
+AllocateTransferPayAmount - Allocated fees (royalty amount)
+TotalCashPayAmount - Total fees (cash)
+TotalVoucherPayAmount - Total fees (voucher)
+TotalIncentivePayAmount - Total fees (free credit)
+TotalTransferPayAmount - Total fees (royalty amount)
+GatherRealCost - Collected fees (discounted total)
+AllocateRealCost - Allocated fees (discounted total)
+RealTotalCost - Total fees (discounted total)
+BusinessCode - Product code
+Ratio - Proportion (discounted total)
+Trend - Month-on-month ratio (discounted total)
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def BillDates(self):
+        r"""Date, used for filtering and provided when PeriodType is set to day
+
+        :rtype: list of str
+        """
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code, used for filtering
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def SearchKey(self):
+        warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
+
+        r"""Fuzzy search criteria
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
+
+        self._SearchKey = SearchKey
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._SortType = params.get("SortType")
+        self._Sort = params.get("Sort")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
+    r"""DescribeAllocationSummaryByBusiness response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+        :type RecordNum: int
+        :param _Total: Total amount of a cost allocation bill
+
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: Detailed summary of the cost allocation bill by business
+        :type Detail: list of AllocationSummaryByBusiness
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        r"""Detailed summary of the cost allocation bill by business
+        :rtype: list of AllocationSummaryByBusiness
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByBusiness()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationSummaryByItemRequest(AbstractModel):
+    r"""DescribeAllocationSummaryByItem request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+
+
+        :type Limit: int
+        :param _Offset: Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :type Month: str
+        :param _PeriodType: Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+
+
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :type Sort: str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _BillDates: Date, used for filtering
+
+
+        :type BillDates: list of str
+        :param _BusinessCodes: Product code, used for filtering
+
+
+        :type BusinessCodes: list of str
+        :param _OwnerUins: User UIN, used for filtering
+
+
+        :type OwnerUins: list of str
+        :param _OperateUins: Operator UIN, used for filtering
+
+
+        :type OperateUins: list of str
+        :param _PayModes: Billing mode code, used for filtering
+
+
+        :type PayModes: list of str
+        :param _ActionTypes: Transaction type code, used for filtering
+
+
+        :type ActionTypes: list of str
+        :param _ProductCodes: Subproduct code, used for filtering
+
+
+        :type ProductCodes: list of str
+        :param _RegionIds: Region ID, used for filtering
+
+
+        :type RegionIds: list of str
+        :param _ZoneIds: Availability Zone (AZ) ID, used for filtering
+
+
+        :type ZoneIds: list of str
+        :param _InstanceTypes: Instance type code, used for filtering
+
+
+        :type InstanceTypes: list of str
+        :param _Tag: Tag, used for filtering
+
+
+        :type Tag: list of str
+        :param _ComponentCodes: Component type code, used for filtering
+        :type ComponentCodes: list of str
+        :param _ItemCodes: Component name code, used for filtering
+        :type ItemCodes: list of str
+        :param _SearchKey: Fuzzy search: supports tag, resource ID, and resource alias.
+        :type SearchKey: str
+        :param _ProjectIds: Project ID, used for filtering
+
+
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: Cost collection type, with the enumerated values as follows:
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :type AllocationType: list of int
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+
+
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        r"""Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        r"""Date, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        r"""User UIN, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        r"""Operator UIN, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        r"""Billing mode code, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        r"""Transaction type code, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        r"""Subproduct code, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        r"""Region ID, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        r"""Availability Zone (AZ) ID, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        r"""Instance type code, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        r"""Tag, used for filtering
+
+
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        r"""Component type code, used for filtering
+        :rtype: list of str
+        """
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        r"""Component name code, used for filtering
+        :rtype: list of str
+        """
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        r"""Fuzzy search: supports tag, resource ID, and resource alias.
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        r"""Project ID, used for filtering
+
+
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type, with the enumerated values as follows:
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :rtype: list of int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByItemResponse(AbstractModel):
+    r"""DescribeAllocationSummaryByItem response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+
+        :type RecordNum: int
+        :param _Total: Total amount of a cost allocation bill
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: Details of a Cost Allocation Bill by item
+
+        :type Detail: list of AllocationSummaryByItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        r"""Details of a Cost Allocation Bill by item
+
+        :rtype: list of AllocationSummaryByItem
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByItem()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationSummaryByResourceRequest(AbstractModel):
+    r"""DescribeAllocationSummaryByResource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+
+
+        :type Limit: int
+        :param _Offset: Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :type Month: str
+        :param _PeriodType: Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: Unique identifier of a billing unit, used for filtering
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :type Sort: str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _BillDates: Date, used for filtering
+        :type BillDates: list of str
+        :param _BusinessCodes: Product code, used for filtering
+        :type BusinessCodes: list of str
+        :param _OwnerUins: User UIN, used for filtering
+        :type OwnerUins: list of str
+        :param _OperateUins: Operator UIN, used for filtering
+        :type OperateUins: list of str
+        :param _PayModes: Billing mode code, used for filtering
+        :type PayModes: list of str
+        :param _ActionTypes: Transaction type code, used for filtering
+        :type ActionTypes: list of str
+        :param _ProductCodes: Subproduct code, used for filtering
+        :type ProductCodes: list of str
+        :param _RegionIds: Region ID, used for filtering
+        :type RegionIds: list of str
+        :param _ZoneIds: Availability zone (AZ) ID, used for filtering
+        :type ZoneIds: list of str
+        :param _InstanceTypes: Instance type code, used for filtering
+        :type InstanceTypes: list of str
+        :param _Tag: Tag, used for filtering
+        :type Tag: list of str
+        :param _SearchKey: Fuzzy search: supports tag, resource ID, and resource alias
+        :type SearchKey: str
+        :param _ProjectIds: Project ID, used for filtering
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: Cost collection type, with the enumerated values as follows:
+0 - Allocation 
+1 - Collection 
+-1 - Unallocated
+        :type AllocationType: list of int
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+
+
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+
+
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        r"""Statistical period, with the enumerated values as follows:
+month - Month
+day - Day
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""Unique identifier of a billing unit, used for filtering
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows:
+RiTimeSpan - Deduction duration of a reserved instance
+ExtendPayAmount1 - Original price for the deduction duration of a reserved instance
+RealCost - Discounted total
+CashPayAmount - Cash amount
+VoucherPayAmount - Amount of promo voucher
+IncentivePayAmount - Amount of free credit
+TransferPayAmount - Royalty amount
+Cost - Original price of a component
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        r"""Date, used for filtering
+        :rtype: list of str
+        """
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code, used for filtering
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        r"""User UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        r"""Operator UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        r"""Billing mode code, used for filtering
+        :rtype: list of str
+        """
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        r"""Transaction type code, used for filtering
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        r"""Subproduct code, used for filtering
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        r"""Region ID, used for filtering
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        r"""Availability zone (AZ) ID, used for filtering
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        r"""Instance type code, used for filtering
+        :rtype: list of str
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        r"""Tag, used for filtering
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def SearchKey(self):
+        r"""Fuzzy search: supports tag, resource ID, and resource alias
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        r"""Project ID, used for filtering
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type, with the enumerated values as follows:
+0 - Allocation 
+1 - Collection 
+-1 - Unallocated
+        :rtype: list of int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByResourceResponse(AbstractModel):
+    r"""DescribeAllocationSummaryByResource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+
+        :type RecordNum: int
+        :param _Total: Total amount of a cost allocation bill
+
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: Detailed summary of the cost allocation bill by resource
+
+        :type Detail: list of AllocationSummaryByResource
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        r"""Total amount of a cost allocation bill
+
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        r"""Detailed summary of the cost allocation bill by resource
+
+        :rtype: list of AllocationSummaryByResource
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByResource()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAllocationTreeRequest(AbstractModel):
     r"""DescribeAllocationTree request structure.
 
@@ -9471,6 +18595,154 @@ class DescribeAllocationTreeResponse(AbstractModel):
                 obj = AllocationTree()
                 obj._deserialize(item)
                 self._Children.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationTrendByMonthRequest(AbstractModel):
+    r"""DescribeAllocationTrendByMonth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :type Month: str
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _BusinessCode: Product code, used for filtering
+        :type BusinessCode: str
+        """
+        self._Month = None
+        self._TreeNodeUniqKey = None
+        self._BusinessCode = None
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def BusinessCode(self):
+        r"""Product code, used for filtering
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._BusinessCode = params.get("BusinessCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationTrendByMonthResponse(AbstractModel):
+    r"""DescribeAllocationTrendByMonth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Current: Current month's expense information
+        :type Current: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
+        :param _Previous: Previous months' expense information
+        :type Previous: list of AllocationBillTrendDetail
+        :param _Stat: Expense statistical information
+        :type Stat: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Current = None
+        self._Previous = None
+        self._Stat = None
+        self._RequestId = None
+
+    @property
+    def Current(self):
+        r"""Current month's expense information
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+    @property
+    def Previous(self):
+        r"""Previous months' expense information
+        :rtype: list of AllocationBillTrendDetail
+        """
+        return self._Previous
+
+    @Previous.setter
+    def Previous(self, Previous):
+        self._Previous = Previous
+
+    @property
+    def Stat(self):
+        r"""Expense statistical information
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
+        """
+        return self._Stat
+
+    @Stat.setter
+    def Stat(self, Stat):
+        self._Stat = Stat
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Current") is not None:
+            self._Current = AllocationBillTrendDetail()
+            self._Current._deserialize(params.get("Current"))
+        if params.get("Previous") is not None:
+            self._Previous = []
+            for item in params.get("Previous"):
+                obj = AllocationBillTrendDetail()
+                obj._deserialize(item)
+                self._Previous.append(obj)
+        if params.get("Stat") is not None:
+            self._Stat = AllocationStat()
+            self._Stat._deserialize(params.get("Stat"))
         self._RequestId = params.get("RequestId")
 
 
@@ -9695,28 +18967,23 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: Format: yyyy-MM.
-Billing month. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If the TimeFrom and TimeTo are passed, the Month field is invalid.
-Example: 2024-10.
+        :param _Month: <p>Format: yyyy-MM<br>Bill month. Either month or timeFrom&amp;timeTo must be specified. If timeFrom&amp;timeTo is specified, the month field is invalid.</p>
         :type Month: str
-        :param _TimeFrom: Format: yyyy-MM-dd.
-Start date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
-Example: 2024-10-01.
+        :param _TimeFrom: <p>Format: yyyy-MM-dd<br>Start time. Either month or timeFrom&amp;timeTo must be specified. If timeFrom&amp;timeTo is specified, the month field is invalid. timeFrom and timeTo must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month.</p>
         :type TimeFrom: str
-        :param _TimeTo: Format: yyyy-MM-dd.
-End date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
-Example: 2024-10-02.
+        :param _TimeTo: <p>Format: yyyy-MM-dd<br>End time. Either month or timeFrom&amp;timeTo must be specified. If this field is specified, the month field is invalid. timeFrom and timeTo must be passed together and be in the same month. Cross-month queries are not supported. The query result is data of the entire month.</p>
         :type TimeTo: str
+        :param _PayerUin: <p>Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.</p>
+        :type PayerUin: str
         """
         self._Month = None
         self._TimeFrom = None
         self._TimeTo = None
+        self._PayerUin = None
 
     @property
     def Month(self):
-        r"""Format: yyyy-MM.
-Billing month. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If the TimeFrom and TimeTo are passed, the Month field is invalid.
-Example: 2024-10.
+        r"""<p>Format: yyyy-MM<br>Bill month. Either month or timeFrom&amp;timeTo must be specified. If timeFrom&amp;timeTo is specified, the month field is invalid.</p>
         :rtype: str
         """
         return self._Month
@@ -9727,9 +18994,7 @@ Example: 2024-10.
 
     @property
     def TimeFrom(self):
-        r"""Format: yyyy-MM-dd.
-Start date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
-Example: 2024-10-01.
+        r"""<p>Format: yyyy-MM-dd<br>Start time. Either month or timeFrom&amp;timeTo must be specified. If timeFrom&amp;timeTo is specified, the month field is invalid. timeFrom and timeTo must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month.</p>
         :rtype: str
         """
         return self._TimeFrom
@@ -9740,9 +19005,7 @@ Example: 2024-10-01.
 
     @property
     def TimeTo(self):
-        r"""Format: yyyy-MM-dd.
-End date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
-Example: 2024-10-02.
+        r"""<p>Format: yyyy-MM-dd<br>End time. Either month or timeFrom&amp;timeTo must be specified. If this field is specified, the month field is invalid. timeFrom and timeTo must be passed together and be in the same month. Cross-month queries are not supported. The query result is data of the entire month.</p>
         :rtype: str
         """
         return self._TimeTo
@@ -9751,11 +19014,23 @@ Example: 2024-10-02.
     def TimeTo(self, TimeTo):
         self._TimeTo = TimeTo
 
+    @property
+    def PayerUin(self):
+        r"""<p>Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.</p>
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
 
     def _deserialize(self, params):
         self._Month = params.get("Month")
         self._TimeFrom = params.get("TimeFrom")
         self._TimeTo = params.get("TimeTo")
+        self._PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9773,11 +19048,9 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: Total amount of data.
-Example value: 10.
+        :param _Total: <p>Total data</p>
         :type Total: int
-        :param _Data: Detailed data.
-Example value: [].
+        :param _Data: <p>Detailed data</p>
         :type Data: list of AdjustInfoDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9788,8 +19061,7 @@ Example value: [].
 
     @property
     def Total(self):
-        r"""Total amount of data.
-Example value: 10.
+        r"""<p>Total data</p>
         :rtype: int
         """
         return self._Total
@@ -9800,8 +19072,7 @@ Example value: 10.
 
     @property
     def Data(self):
-        r"""Detailed data.
-Example value: [].
+        r"""<p>Detailed data</p>
         :rtype: list of AdjustInfoDetail
         """
         return self._Data
@@ -10125,8 +19396,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
         :param _Total: Total number of records, which is cached every 24 hours and may be less than the actual total number of records.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param _Context: Context information of the current request, which can be used in the parameters of the next request to speed up the query.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Context: Context information of this request can be used in the request parameter of the next request to accelerate query speed.
         :type Context: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10161,8 +19431,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Context(self):
-        r"""Context information of the current request, which can be used in the parameters of the next request to speed up the query.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Context information of this request can be used in the request parameter of the next request to accelerate query speed.
         :rtype: str
         """
         return self._Context
@@ -10202,32 +19471,20 @@ class DescribeBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Offset
+        :param _Offset: Pagination offset. Offset=0 indicates the first page. If Limit=100, Offset=100 indicates the second page, Offset=200 indicates the third page, and so on.
         :type Offset: int
-        :param _Limit: Quantity, maximum is 300
+        :param _Limit: The number of entries returned at a time. The maximum value is `300`.
         :type Limit: int
-        :param _PeriodType: The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
+        :param _PeriodType: Period type, byUsedTime by billing period/byPayTime by fee deduction cycle. It should be consistent with the billing cycle for the month in the expense center. You can go to the top of the [bill overview](https://console.cloud.tencent.com/expense/bill/overview) page to view and confirm your billing cycle type.
         :type PeriodType: str
-        :param _Month: Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :param _Month: The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.
         :type Month: str
-        :param _BeginTime: The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
-
-Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
-
-Alternatively, you can use Month to query the billing details of a month.
-Example:
-ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
+        :param _BeginTime: The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :type BeginTime: str
-        :param _EndTime: The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
-
-Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
-
-Alternatively, you can use `Month` to query the billing details of a month. 
-Example:
-ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
+        :param _EndTime: The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :type EndTime: str
-        :param _NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
-1 = yes, 0 = no
+        :param _NeedRecordNum: Total number of records for access list needed for frontend pagination
+1: needed, 0: not needed
         :type NeedRecordNum: int
         :param _ProductCode: Queries information on a specified product
         :type ProductCode: str
@@ -10251,14 +19508,14 @@ Hourly Savings Plan fee
 Offline project deduction
 Offline product deduction
         :type ActionType: str
-        :param _ProjectId: Project ID: ID of the project to which the resource belongs
+        :param _ProjectId: Project ID: Project ID of the resource
         :type ProjectId: int
-        :param _BusinessCode: Product code
-Note: To query the product codes used in the current month, call <a href="https://www.tencentcloud.com/document/product/555/32374">DescribeBillSummaryByProduct</a>.
+        :param _BusinessCode: Product name code
+Remark: If needed to obtain BusinessCode used in current month, invoke API: <a href="https://www.tencentcloud.com/document/product/555/35761?from_cn_redirect=1">Get fee distribution by product</a>
         :type BusinessCode: str
-        :param _Context: Context information returned by the last request. You can set `Month` to `2023-05` or later to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
+        :param _Context: Context information returned from the last request. Paginated query of data for months with Month>=2023-05 can speed up query speed. Recommended for users with data volume at tens of thousands level. Query speed can be improved by 2-10x.
         :type Context: str
-        :param _PayerUin: The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
+        :param _PayerUin: Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.
         :type PayerUin: str
         """
         self._Offset = None
@@ -10279,7 +19536,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Offset(self):
-        r"""Offset
+        r"""Pagination offset. Offset=0 indicates the first page. If Limit=100, Offset=100 indicates the second page, Offset=200 indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -10290,7 +19547,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Limit(self):
-        r"""Quantity, maximum is 300
+        r"""The number of entries returned at a time. The maximum value is `300`.
         :rtype: int
         """
         return self._Limit
@@ -10303,7 +19560,7 @@ Note: To query the product codes used in the current month, call <a href="https:
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        r"""The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
+        r"""Period type, byUsedTime by billing period/byPayTime by fee deduction cycle. It should be consistent with the billing cycle for the month in the expense center. You can go to the top of the [bill overview](https://console.cloud.tencent.com/expense/bill/overview) page to view and confirm your billing cycle type.
         :rtype: str
         """
         return self._PeriodType
@@ -10316,7 +19573,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Month(self):
-        r"""Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        r"""The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._Month
@@ -10327,13 +19584,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def BeginTime(self):
-        r"""The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
-
-Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
-
-Alternatively, you can use Month to query the billing details of a month.
-Example:
-ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
+        r"""The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._BeginTime
@@ -10344,13 +19595,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def EndTime(self):
-        r"""The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
-
-Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
-
-Alternatively, you can use `Month` to query the billing details of a month. 
-Example:
-ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
+        r"""The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._EndTime
@@ -10361,8 +19606,8 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def NeedRecordNum(self):
-        r"""Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
-1 = yes, 0 = no
+        r"""Total number of records for access list needed for frontend pagination
+1: needed, 0: not needed
         :rtype: int
         """
         return self._NeedRecordNum
@@ -10435,7 +19680,7 @@ Offline product deduction
 
     @property
     def ProjectId(self):
-        r"""Project ID: ID of the project to which the resource belongs
+        r"""Project ID: Project ID of the resource
         :rtype: int
         """
         return self._ProjectId
@@ -10446,8 +19691,8 @@ Offline product deduction
 
     @property
     def BusinessCode(self):
-        r"""Product code
-Note: To query the product codes used in the current month, call <a href="https://www.tencentcloud.com/document/product/555/32374">DescribeBillSummaryByProduct</a>.
+        r"""Product name code
+Remark: If needed to obtain BusinessCode used in current month, invoke API: <a href="https://www.tencentcloud.com/document/product/555/35761?from_cn_redirect=1">Get fee distribution by product</a>
         :rtype: str
         """
         return self._BusinessCode
@@ -10458,7 +19703,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Context(self):
-        r"""Context information returned by the last request. You can set `Month` to `2023-05` or later to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
+        r"""Context information returned from the last request. Paginated query of data for months with Month>=2023-05 can speed up query speed. Recommended for users with data volume at tens of thousands level. Query speed can be improved by 2-10x.
         :rtype: str
         """
         return self._Context
@@ -10469,7 +19714,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def PayerUin(self):
-        r"""The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
+        r"""Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.
         :rtype: str
         """
         return self._PayerUin
@@ -10512,12 +19757,11 @@ class DescribeBillDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetailSet: Details list
+        :param _DetailSet: Detail list
         :type DetailSet: list of BillDetail
-        :param _Total: 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Total: Total record count, cached once every 24 hours, may be less than the actual total record count
         :type Total: int
-        :param _Context: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Context: Context information of this request can be used in the request parameter of the next request to accelerate query speed.
         :type Context: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10529,7 +19773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailSet(self):
-        r"""Details list
+        r"""Detail list
         :rtype: list of BillDetail
         """
         return self._DetailSet
@@ -10540,8 +19784,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        r"""
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total record count, cached once every 24 hours, may be less than the actual total record count
         :rtype: int
         """
         return self._Total
@@ -10552,7 +19795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Context(self):
-        r"""Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Context information of this request can be used in the request parameter of the next request to accelerate query speed.
         :rtype: str
         """
         return self._Context
@@ -10592,18 +19835,18 @@ class DescribeBillDownloadUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileType: Bill type. Valid values:
-`billOverview` (L0: PDF bills)
-`billSummary` (L1: Bill summary)	
-`billResource` (L2: Bill by instance)	
-`billDetail` (L3: Bill details)	
-`billPack` (Bill packs)
+        :param _FileType: Billing mode. Enumeration values
+billOverview=L0-PDF Bill
+Bill Summary=L1-Summary Bill	
+billResource=L2-Resource bill	
+billDetail=L3-Detailed Bill	
+billPack
         :type FileType: str
-        :param _Month: Bill month.
-The earliest month that can be queried is January 2021.
-L0 bills and bill packs cannot be downloaded for the current month. Please download the current month's bills after it is generated at 19:00 on the 1st day of the next month.
+        :param _Month: Billing month
+Earliest start month supported is 2021-01
+L0-PDF&bill package does not support download for the current month. Please download the monthly bill after billing on the 1st of next month at 19:00.
         :type Month: str
-        :param _ChildUin: List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.
+        :param _ChildUin: Downloaded account ID list. By default, the query returns the account statement of the current account. If the group management account needs to download the self-pay bills of member accounts, enter the member account UIN in this field.
         :type ChildUin: list of str
         """
         self._FileType = None
@@ -10612,12 +19855,12 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def FileType(self):
-        r"""Bill type. Valid values:
-`billOverview` (L0: PDF bills)
-`billSummary` (L1: Bill summary)	
-`billResource` (L2: Bill by instance)	
-`billDetail` (L3: Bill details)	
-`billPack` (Bill packs)
+        r"""Billing mode. Enumeration values
+billOverview=L0-PDF Bill
+Bill Summary=L1-Summary Bill	
+billResource=L2-Resource bill	
+billDetail=L3-Detailed Bill	
+billPack
         :rtype: str
         """
         return self._FileType
@@ -10628,9 +19871,9 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def Month(self):
-        r"""Bill month.
-The earliest month that can be queried is January 2021.
-L0 bills and bill packs cannot be downloaded for the current month. Please download the current month's bills after it is generated at 19:00 on the 1st day of the next month.
+        r"""Billing month
+Earliest start month supported is 2021-01
+L0-PDF&bill package does not support download for the current month. Please download the monthly bill after billing on the 1st of next month at 19:00.
         :rtype: str
         """
         return self._Month
@@ -10641,7 +19884,7 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def ChildUin(self):
-        r"""List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.
+        r"""Downloaded account ID list. By default, the query returns the account statement of the current account. If the group management account needs to download the self-pay bills of member accounts, enter the member account UIN in this field.
         :rtype: list of str
         """
         return self._ChildUin
@@ -10672,9 +19915,10 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
+        :param _Ready: Whether the bill file is ready. 0: file generating, 1: file generated
         :type Ready: int
-        :param _DownloadUrl: Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DownloadUrl: Billing file download link, valid for 1 day
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DownloadUrl: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10685,7 +19929,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
+        r"""Whether the bill file is ready. 0: file generating, 1: file generated
         :rtype: int
         """
         return self._Ready
@@ -10696,7 +19940,8 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing file download link, valid for 1 day
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DownloadUrl
@@ -12226,15 +21471,15 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: Bill month in the format of "yyyy-mm"
+        :param _Month: <p>Bill month, formatted as 2023-04</p>
         :type Month: str
-        :param _GroupType: Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`
+        :param _GroupType: <p>Billing dimension type. Enumeration values as follows: business, project, region, payMode, tag</p>
         :type GroupType: str
-        :param _TagKey: Tag key, which is used when `GroupType` is `tag`.
+        :param _TagKey: <p>Tag key. Pass GroupType=tag when obtaining dimensional billing by tag.</p>
         :type TagKey: list of str
-        :param _OperateUin: 
+        :param _OperateUin: <p>Operator UIN: Operator account ID (ID of the prepaid resource order or postpaid operation, activate postpaid resource account or role ID)</p>
         :type OperateUin: str
-        :param _PayerUin: 
+        :param _PayerUin: <p>Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.</p>
         :type PayerUin: str
         """
         self._Month = None
@@ -12245,7 +21490,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""Bill month in the format of "yyyy-mm"
+        r"""<p>Bill month, formatted as 2023-04</p>
         :rtype: str
         """
         return self._Month
@@ -12256,7 +21501,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`
+        r"""<p>Billing dimension type. Enumeration values as follows: business, project, region, payMode, tag</p>
         :rtype: str
         """
         return self._GroupType
@@ -12267,7 +21512,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Tag key, which is used when `GroupType` is `tag`.
+        r"""<p>Tag key. Pass GroupType=tag when obtaining dimensional billing by tag.</p>
         :rtype: list of str
         """
         return self._TagKey
@@ -12278,7 +21523,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""
+        r"""<p>Operator UIN: Operator account ID (ID of the prepaid resource order or postpaid operation, activate postpaid resource account or role ID)</p>
         :rtype: str
         """
         return self._OperateUin
@@ -12289,7 +21534,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""
+        r"""<p>Account ID of the payer (Account ID is the unique account identifier for the user in Tencent Cloud). By default, the query returns the account statement of the current account. If the group management account needs to query the self-pay bills of member accounts, enter the member account UIN in this field.</p>
         :rtype: str
         """
         return self._PayerUin
@@ -12322,9 +21567,9 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        :param _Ready: <p>Data readiness, 0 preparing, 1 ready. (Ready=0 indicates the first time initialization billing is in progress for the present UIN, is expected to take 5-10 minutes. Just retry after 10 minutes.)</p>
         :type Ready: int
-        :param _SummaryDetail: Detailed summary of costs by multiple dimensions
+        :param _SummaryDetail: <p>Multidimensional bill summary of consumption detail</p>
         :type SummaryDetail: list of SummaryDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12335,7 +21580,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""<p>Data readiness, 0 preparing, 1 ready. (Ready=0 indicates the first time initialization billing is in progress for the present UIN, is expected to take 5-10 minutes. Just retry after 10 minutes.)</p>
         :rtype: int
         """
         return self._Ready
@@ -12346,7 +21591,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        r"""Detailed summary of costs by multiple dimensions
+        r"""<p>Multidimensional bill summary of consumption detail</p>
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail
@@ -12378,6 +21623,270 @@ class DescribeBillSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCPQBillingMappingRequest(AbstractModel):
+    r"""DescribeCPQBillingMapping request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Offset
+        :type Offset: str
+        :param _Limit: The number of entries returned at a time. The maximum value is `100`.	
+        :type Limit: str
+        :param _SpuName: Quoted subproduct name
+        :type SpuName: str
+        :param _CategoryName: Quoted product name
+        :type CategoryName: str
+        :param _BusinessName: Product name
+        :type BusinessName: str
+        :param _ProductName: Subproduct name
+        :type ProductName: str
+        :param _ComponentName: Component type name
+        :type ComponentName: str
+        :param _ItemName: Component name
+        :type ItemName: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ItemCode: Component code
+        :type ItemCode: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._SpuName = None
+        self._CategoryName = None
+        self._BusinessName = None
+        self._ProductName = None
+        self._ComponentName = None
+        self._ItemName = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._ComponentCode = None
+        self._ItemCode = None
+
+    @property
+    def Offset(self):
+        r"""Offset
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""The number of entries returned at a time. The maximum value is `100`.	
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SpuName(self):
+        r"""Quoted subproduct name
+        :rtype: str
+        """
+        return self._SpuName
+
+    @SpuName.setter
+    def SpuName(self, SpuName):
+        self._SpuName = SpuName
+
+    @property
+    def CategoryName(self):
+        r"""Quoted product name
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def BusinessName(self):
+        r"""Product name
+        :rtype: str
+        """
+        return self._BusinessName
+
+    @BusinessName.setter
+    def BusinessName(self, BusinessName):
+        self._BusinessName = BusinessName
+
+    @property
+    def ProductName(self):
+        r"""Subproduct name
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ComponentName(self):
+        r"""Component type name
+        :rtype: str
+        """
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ItemName(self):
+        r"""Component name
+        :rtype: str
+        """
+        return self._ItemName
+
+    @ItemName.setter
+    def ItemName(self, ItemName):
+        self._ItemName = ItemName
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ItemCode(self):
+        r"""Component code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SpuName = params.get("SpuName")
+        self._CategoryName = params.get("CategoryName")
+        self._BusinessName = params.get("BusinessName")
+        self._ProductName = params.get("ProductName")
+        self._ComponentName = params.get("ComponentName")
+        self._ItemName = params.get("ItemName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ItemCode = params.get("ItemCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCPQBillingMappingResponse(AbstractModel):
+    r"""DescribeCPQBillingMapping response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSpuSet: Return data details
+        :type ResourceSpuSet: list of ResourceSpuSet
+        :param _Total: 10
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourceSpuSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ResourceSpuSet(self):
+        r"""Return data details
+        :rtype: list of ResourceSpuSet
+        """
+        return self._ResourceSpuSet
+
+    @ResourceSpuSet.setter
+    def ResourceSpuSet(self, ResourceSpuSet):
+        self._ResourceSpuSet = ResourceSpuSet
+
+    @property
+    def Total(self):
+        r"""10
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSpuSet") is not None:
+            self._ResourceSpuSet = []
+            for item in params.get("ResourceSpuSet"):
+                obj = ResourceSpuSet()
+                obj._deserialize(item)
+                self._ResourceSpuSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCostDetailRequest(AbstractModel):
     r"""DescribeCostDetail request structure.
 
@@ -12389,15 +21898,15 @@ class DescribeCostDetailRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Offset
         :type Offset: int
-        :param _BeginTime: Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        :param _BeginTime: Cycle start time. The query granularity is daily. The hour/minute/second parameter must be input in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after consumption bill is enabled and within the past 18 months.
         :type BeginTime: str
-        :param _EndTime: Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        :param _EndTime: Cycle end time. The query granularity is daily. The hour-minute-second parameter must be imported in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If this field is present, Month becomes invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after consumption bill is enabled and within the past 18 months.
         :type EndTime: str
         :param _NeedRecordNum: Whether the total number of records in the list is needed, for frontend pagination1: needed, 0: not needed
         :type NeedRecordNum: int
-        :param _Month: Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.
+        :param _Month: The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. It cannot be earlier than the month when the consumption bill was enabled. Data within the last 18 months can be pulled at most.
         :type Month: str
-        :param _ProductCode: Used to query information of a specified product (currently not available)
+        :param _ProductCode: Query information of a specified product
         :type ProductCode: str
         :param _PayMode: Payment mode. Options include prePay and postPay.
         :type PayMode: str
@@ -12438,7 +21947,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        r"""Cycle start time. The query granularity is daily. The hour/minute/second parameter must be input in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after consumption bill is enabled and within the past 18 months.
         :rtype: str
         """
         return self._BeginTime
@@ -12449,7 +21958,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        r"""Cycle end time. The query granularity is daily. The hour-minute-second parameter must be imported in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If this field is present, Month becomes invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after consumption bill is enabled and within the past 18 months.
         :rtype: str
         """
         return self._EndTime
@@ -12471,7 +21980,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.
+        r"""The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. It cannot be earlier than the month when the consumption bill was enabled. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._Month
@@ -12482,7 +21991,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""Used to query information of a specified product (currently not available)
+        r"""Query information of a specified product
         :rtype: str
         """
         return self._ProductCode
@@ -12542,7 +22051,6 @@ class DescribeCostDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DetailSet: Consumption details
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DetailSet: list of CostDetail
         :param _Total: Record countNote: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
@@ -12556,7 +22064,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DetailSet(self):
         r"""Consumption details
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CostDetail
         """
         return self._DetailSet
@@ -12619,7 +22126,7 @@ feeType = Fee typebillType = Bill typebusiness = Product
 product = Sub-productregion=Region
 zone = Availability zoneactionType = Transaction typepayMode = Billing modetags = Tagproject = ProjectpayerUin = Payer accountownerUin = User account
         :type Dimensions: str
-        :param _FeeType: Fee type: cost-total cost, totalCost-original price cost
+        :param _FeeType: Fee type: cost-discounted total cost, totalCost-original price cost
         :type FeeType: str
         :param _PageSize: Quantity. The maximum value per page is 100.
         :type PageSize: int
@@ -12704,7 +22211,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def FeeType(self):
-        r"""Fee type: cost-total cost, totalCost-original price cost
+        r"""Fee type: cost-discounted total cost, totalCost-original price cost
         :rtype: str
         """
         return self._FeeType
@@ -12800,16 +22307,15 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: Number of data entries
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Total: Number of data records
         :type Total: int
-        :param _Header: Header informationNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Header: Header information.
         :type Header: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
-        :param _Detail: Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Detail: Data details
         :type Detail: list of AnalyseDetail
-        :param _TotalDetail: Data amountNote: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalDetail: data total
         :type TotalDetail: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
-        :param _ConditionValue: Filter boxNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ConditionValue: filtering box
         :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12823,8 +22329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        r"""Number of data entries
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of data records
         :rtype: int
         """
         return self._Total
@@ -12835,7 +22340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Header(self):
-        r"""Header informationNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Header information.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
         """
         return self._Header
@@ -12846,7 +22351,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        r"""Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Data details
         :rtype: list of AnalyseDetail
         """
         return self._Detail
@@ -12857,7 +22362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalDetail(self):
-        r"""Data amountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""data total
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
         """
         return self._TotalDetail
@@ -12868,7 +22373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionValue(self):
-        r"""Filter boxNote: This field may return null, indicating that no valid values can be obtained.
+        r"""filtering box
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         """
         return self._ConditionValue
@@ -13031,9 +22536,9 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
         :type Ready: int
         :param _Total: Consumption details
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
-        :param _Data: Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Consumption details summarized by product
         :type Data: list of ConsumptionBusinessSummaryDataItem
-        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RecordNum: Record count. If NeedRecordNum is 0, null is returned.
         :type RecordNum: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13068,7 +22573,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption details summarized by product
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Data
@@ -13079,7 +22584,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Record count. If NeedRecordNum is 0, null is returned.
         :rtype: int
         """
         return self._RecordNum
@@ -13239,7 +22744,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _Data: Consumption details summarized by business
         :type Data: list of ConsumptionProjectSummaryDataItem
-        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.
+        :param _RecordNum: Record count. If NeedRecordNum is 0, null is returned.
         :type RecordNum: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13285,7 +22790,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""Record count. The system returns null when NeedRecordNum is 0.
+        r"""Record count. If NeedRecordNum is 0, null is returned.
         :rtype: int
         """
         return self._RecordNum
@@ -13445,7 +22950,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _Data: Consumption details summarized by region
         :type Data: list of ConsumptionRegionSummaryDataItem
-        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RecordNum: Record count. If NeedRecordNum is 0, null is returned.
         :type RecordNum: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13491,7 +22996,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Record count. If NeedRecordNum is 0, null is returned.
         :rtype: int
         """
         return self._RecordNum
@@ -13679,14 +23184,14 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
         r"""
         :param _Ready: Data readiness, 0 for not ready, 1 for ready
         :type Ready: int
-        :param _Total: Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Total: Consumption details
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _ConditionValue: Filter criteria
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
         :param _RecordNum: Record countNote: This field may return null, indicating that no valid values can be obtained.
         :type RecordNum: int
-        :param _Data: Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Resource consumption details
         :type Data: list of ConsumptionResourceSummaryDataItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13711,7 +23216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        r"""Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption details
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -13745,7 +23250,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Resource consumption details
         :rtype: list of ConsumptionResourceSummaryDataItem
         """
         return self._Data
@@ -13826,6 +23331,8 @@ Example: 202202021234566
         :param _ResourceId: Resource ID
 Example:ins-a2bb34
         :type ResourceId: str
+        :param _StatusSet: Order status
+        :type StatusSet: list of int
         """
         self._StartTime = None
         self._EndTime = None
@@ -13835,6 +23342,7 @@ Example:ins-a2bb34
         self._OrderId = None
         self._BigDealId = None
         self._ResourceId = None
+        self._StatusSet = None
 
     @property
     def StartTime(self):
@@ -13943,6 +23451,17 @@ Example:ins-a2bb34
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def StatusSet(self):
+        r"""Order status
+        :rtype: list of int
+        """
+        return self._StatusSet
+
+    @StatusSet.setter
+    def StatusSet(self, StatusSet):
+        self._StatusSet = StatusSet
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -13953,6 +23472,7 @@ Example:ins-a2bb34
         self._OrderId = params.get("OrderId")
         self._BigDealId = params.get("BigDealId")
         self._ResourceId = params.get("ResourceId")
+        self._StatusSet = params.get("StatusSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14033,9 +23553,9 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartDate: The start date of the usage query, such as `2020-09-01`.
+        :param _StartDate: The start date of the usage query in the format of yyyy-mm-dd, such as `2020-09-01`.
         :type StartDate: str
-        :param _EndDate: The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.
+        :param _EndDate: The end date of the usage query in the format of yyyy-mm-dd, such as `2020-09-30`. (The end date must be in the same month as the start date. Cross-month queries are not supported.)
         :type EndDate: str
         :param _BucketName: Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).
         :type BucketName: str
@@ -14046,7 +23566,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""The start date of the usage query, such as `2020-09-01`.
+        r"""The start date of the usage query in the format of yyyy-mm-dd, such as `2020-09-01`.
         :rtype: str
         """
         return self._StartDate
@@ -14057,7 +23577,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.
+        r"""The end date of the usage query in the format of yyyy-mm-dd, such as `2020-09-30`. (The end date must be in the same month as the start date. Cross-month queries are not supported.)
         :rtype: str
         """
         return self._EndDate
@@ -14137,6 +23657,416 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
                 obj = CosDetailSets()
                 obj._deserialize(item)
                 self._DetailSets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGatherResourceRequest(AbstractModel):
+    r"""DescribeGatherResource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Quantity, with the maximum value of 1,000
+        :type Limit: int
+        :param _Offset: Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Month: Bill month, in the format of 2024-02, which is the current month by default if not provided.
+        :type Month: str
+        :param _TreeNodeUniqKey: Unique identifier of a billing unit, used for filtering
+        :type TreeNodeUniqKey: str
+        :param _GatherType: Resource directory category, with the enumerated values as follows:
+all - All 
+none - Not collected
+        :type GatherType: str
+        :param _Sort: Sorting field, with the enumerated values as follows:
+realCost - Discounted total
+cashPayAmount - Cash amount
+voucherPayAmount - Amount of promo voucher
+incentivePayAmount - Amount of free credit
+transferPayAmount - Royalty amount
+        :type Sort: str
+        :param _SortType: Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :type SortType: str
+        :param _BusinessCodes: Product code, used for filtering
+        :type BusinessCodes: list of str
+        :param _ProductCodes: Subproduct code, used for filtering
+        :type ProductCodes: list of str
+        :param _ItemCodes: Component name code, used for filtering
+        :type ItemCodes: list of str
+        :param _RegionIds: Region ID, used for filtering
+        :type RegionIds: list of int non-negative
+        :param _InstanceTypes: Instance type code, used for filtering
+        :type InstanceTypes: list of str
+        :param _PayModes: Billing mode code, used for filtering
+        :type PayModes: list of str
+        :param _OperateUins: Operator UIN, used for filtering
+        :type OperateUins: list of str
+        :param _OwnerUins: User UIN, used for filtering
+        :type OwnerUins: list of str
+        :param _SearchKey: Fuzzy search: supports tag, resource ID, and resource alias.
+        :type SearchKey: str
+        :param _Tag: Tag, used for filtering
+        :type Tag: list of str
+        :param _ProjectIds: Project ID, used for filtering
+        :type ProjectIds: list of str
+        :param _ActionTypes: Transaction type code, used for filtering
+        :type ActionTypes: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._TreeNodeUniqKey = None
+        self._GatherType = None
+        self._Sort = None
+        self._SortType = None
+        self._BusinessCodes = None
+        self._ProductCodes = None
+        self._ItemCodes = None
+        self._RegionIds = None
+        self._InstanceTypes = None
+        self._PayModes = None
+        self._OperateUins = None
+        self._OwnerUins = None
+        self._SearchKey = None
+        self._Tag = None
+        self._ProjectIds = None
+        self._ActionTypes = None
+
+    @property
+    def Limit(self):
+        r"""Quantity, with the maximum value of 1,000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If Offset is 0, it indicates the first page. If Limit is 100, then Offset is 100, and it indicates the second page. If Offset is 200, it indicates the third page, and so on.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        r"""Bill month, in the format of 2024-02, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a billing unit, used for filtering
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def GatherType(self):
+        r"""Resource directory category, with the enumerated values as follows:
+all - All 
+none - Not collected
+        :rtype: str
+        """
+        return self._GatherType
+
+    @GatherType.setter
+    def GatherType(self, GatherType):
+        self._GatherType = GatherType
+
+    @property
+    def Sort(self):
+        r"""Sorting field, with the enumerated values as follows:
+realCost - Discounted total
+cashPayAmount - Cash amount
+voucherPayAmount - Amount of promo voucher
+incentivePayAmount - Amount of free credit
+transferPayAmount - Royalty amount
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        r"""Sorting type, with the enumerated values as follows:
+asc - Ascending
+desc - Descending
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BusinessCodes(self):
+        r"""Product code, used for filtering
+        :rtype: list of str
+        """
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def ProductCodes(self):
+        r"""Subproduct code, used for filtering
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ItemCodes(self):
+        r"""Component name code, used for filtering
+        :rtype: list of str
+        """
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def RegionIds(self):
+        r"""Region ID, used for filtering
+        :rtype: list of int non-negative
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def InstanceTypes(self):
+        r"""Instance type code, used for filtering
+        :rtype: list of str
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def PayModes(self):
+        r"""Billing mode code, used for filtering
+        :rtype: list of str
+        """
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def OperateUins(self):
+        r"""Operator UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def OwnerUins(self):
+        r"""User UIN, used for filtering
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def SearchKey(self):
+        r"""Fuzzy search: supports tag, resource ID, and resource alias.
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Tag(self):
+        r"""Tag, used for filtering
+        :rtype: list of str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectIds(self):
+        r"""Project ID, used for filtering
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ActionTypes(self):
+        r"""Transaction type code, used for filtering
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._GatherType = params.get("GatherType")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._PayModes = params.get("PayModes")
+        self._OperateUins = params.get("OperateUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._SearchKey = params.get("SearchKey")
+        self._Tag = params.get("Tag")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ActionTypes = params.get("ActionTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatherResourceResponse(AbstractModel):
+    r"""DescribeGatherResource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total quantity.
+        :type RecordNum: int
+        :param _GatherResourceSummary: Resource collection summary
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GatherResourceSummary: list of GatherResourceSummary
+        :param _LastUpdateTime: Data update time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastUpdateTime: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._GatherResourceSummary = None
+        self._LastUpdateTime = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        r"""Total quantity.
+        :rtype: int
+        """
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def GatherResourceSummary(self):
+        r"""Resource collection summary
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GatherResourceSummary
+        """
+        return self._GatherResourceSummary
+
+    @GatherResourceSummary.setter
+    def GatherResourceSummary(self, GatherResourceSummary):
+        self._GatherResourceSummary = GatherResourceSummary
+
+    @property
+    def LastUpdateTime(self):
+        r"""Data update time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("GatherResourceSummary") is not None:
+            self._GatherResourceSummary = []
+            for item in params.get("GatherResourceSummary"):
+                obj = GatherResourceSummary()
+                obj._deserialize(item)
+                self._GatherResourceSummary.append(obj)
+        self._LastUpdateTime = params.get("LastUpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -14489,15 +24419,15 @@ class DescribeTagListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: The number of entries returned at a time. The maximum value is `1000`.
+        :param _Limit: Quantity, with the maximum value of 1,000
         :type Limit: int
-        :param _Offset: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        :param _Offset: Pagination offset. Offset=0 indicates the first page. If Limit=100, Offset=100 indicates the second page, Offset=200 indicates the third page, and so on.
         :type Offset: int
-        :param _TagKey: Cost allocation tag key, used for fuzzy search.
+        :param _TagKey: Cost allocation tag key, used as fuzzy search
         :type TagKey: str
-        :param _Status: Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.
+        :param _Status: Tag type, enumeration value: 0 ordinary tag, 1 allocation tag, used for filtering. If not passed, get all tag keys.
         :type Status: int
-        :param _OrderType: Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).
+        :param _OrderType: Sorting method, enumeration value: asc for ascending order, desc for descending order.
         :type OrderType: str
         """
         self._Limit = None
@@ -14508,7 +24438,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""The number of entries returned at a time. The maximum value is `1000`.
+        r"""Quantity, with the maximum value of 1,000
         :rtype: int
         """
         return self._Limit
@@ -14519,7 +24449,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        r"""Pagination offset. Offset=0 indicates the first page. If Limit=100, Offset=100 indicates the second page, Offset=200 indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -14530,7 +24460,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Cost allocation tag key, used for fuzzy search.
+        r"""Cost allocation tag key, used as fuzzy search
         :rtype: str
         """
         return self._TagKey
@@ -14541,7 +24471,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.
+        r"""Tag type, enumeration value: 0 ordinary tag, 1 allocation tag, used for filtering. If not passed, get all tag keys.
         :rtype: int
         """
         return self._Status
@@ -14552,7 +24482,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).
+        r"""Sorting method, enumeration value: asc for ascending order, desc for descending order.
         :rtype: str
         """
         return self._OrderType
@@ -14585,7 +24515,7 @@ class DescribeTagListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: Total number of records.
+        :param _RecordNum: Total number of records
         :type RecordNum: int
         :param _Data: Tag information.
         :type Data: list of TagDataInfo
@@ -14598,7 +24528,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""Total number of records.
+        r"""Total number of records
         :rtype: int
         """
         return self._RecordNum
@@ -15207,8 +25137,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
         :type TotalCount: int
         :param _TotalUsedAmount: The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :type TotalUsedAmount: int
-        :param _UsageRecords: The usage details.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _UsageRecords: Voucher usage record details
         :type UsageRecords: list of UsageRecords
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15242,8 +25171,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsageRecords(self):
-        r"""The usage details.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Voucher usage record details
         :rtype: list of UsageRecords
         """
         return self._UsageRecords
@@ -15318,37 +25246,28 @@ class DistributionBillDetail(AbstractModel):
         :param _OperateUin: Operator account ID: The account or role ID of the operator who purchases or activates a resource.
         :type OperateUin: str
         :param _Tags: Tag information.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
-        :param _BusinessCode: Product code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BusinessCode: Product code
         :type BusinessCode: str
-        :param _ProductCode: Subproduct code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductCode: Subproduct code
         :type ProductCode: str
-        :param _ActionType: Transaction type code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ActionType: Transaction type code
         :type ActionType: str
-        :param _RegionId: Region ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionId: Region ID
         :type RegionId: str
         :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _PriceInfo: Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PriceInfo: Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
         :type PriceInfo: list of str
-        :param _AssociatedOrder: Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AssociatedOrder: Associated transaction document ID: Document ID associated with this transaction, such as a write-off order, the original order, a resettlement order, or the original purchase order number recorded in a refund order.
         :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
-        :param _Formula: Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Formula: Calculation explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
         :type Formula: str
-        :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FormulaUrl: Billing Rules: The detailed billing rules for each product shown in the portal explanation link
         :type FormulaUrl: str
-        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillMonth: Billing month
         :type BillMonth: str
-        :param _BillDay: Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        :param _BillDay: Billing day
         :type BillDay: str
         """
         self._BusinessCodeName = None
@@ -15571,7 +25490,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Tags(self):
         r"""Tag information.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -15582,8 +25500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        r"""Product code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -15594,8 +25511,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        r"""Subproduct code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct code
         :rtype: str
         """
         return self._ProductCode
@@ -15606,8 +25522,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        r"""Transaction type code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type code
         :rtype: str
         """
         return self._ActionType
@@ -15618,8 +25533,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        r"""Region ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -15641,8 +25555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceInfo(self):
-        r"""Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Price attribute: Other attributes of the component that affect discount pricing besides unit price and duration
         :rtype: list of str
         """
         return self._PriceInfo
@@ -15653,8 +25566,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedOrder(self):
-        r"""Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Associated transaction document ID: Document ID associated with this transaction, such as a write-off order, the original order, a resettlement order, or the original purchase order number recorded in a refund order.
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -15665,8 +25577,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        r"""Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Calculation explanation: A detailed explanation to calculations of billing settlement for special transaction types, such as refund and configuration changes.
         :rtype: str
         """
         return self._Formula
@@ -15677,8 +25588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormulaUrl(self):
-        r"""Billing rules: Official website links for detailed billing rules of each product.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing Rules: The detailed billing rules for each product shown in the portal explanation link
         :rtype: str
         """
         return self._FormulaUrl
@@ -15689,7 +25599,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing month
         :rtype: str
         """
         return self._BillMonth
@@ -15700,7 +25610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillDay(self):
-        r"""Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing day
         :rtype: str
         """
         return self._BillDay
@@ -15803,6 +25713,634 @@ class ExcludedProducts(AbstractModel):
     def _deserialize(self, params):
         self._GoodsName = params.get("GoodsName")
         self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatherResourceSummary(AbstractModel):
+    r"""Resource collection summary
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :type PayerUin: str
+        :param _OwnerUin: User UIN: Account ID of the actual resource user
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :type OperateUin: str
+        :param _InstanceType: Instance type code
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :type InstanceTypeName: str
+        :param _ResourceId: Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :type ResourceName: str
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: Name of a cost allocation unit
+        :type TreeNodeUniqKeyName: str
+        :param _RuleId: Allocation rule ID hit by the resource
+        :type RuleId: int
+        :param _RuleName: Allocation rule name hit by the resource
+        :type RuleName: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name: Various cloud products purchased by users
+        :type BusinessCodeName: str
+        :param _ItemCode: Component name code
+        :type ItemCode: str
+        :param _ItemCodeName: Component name: The specific component of a product or service purchased by the user
+        :type ItemCodeName: str
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _RegionName: Region name: The region where the resource is located
+        :type RegionName: str
+        :param _Tag: Allocation tag: The resource-bound tag
+        :type Tag: list of BillTag
+        :param _RealTotalCost: Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash account expenditure (CNY): The amount paid through the cash account
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Gift account expenditure (CNY): The amount paid using free credits
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Royalty account expenditure (CNY): The amount paid through the royalty account
+        :type TransferPayAmount: str
+        :param _AllocationType: Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :type AllocationType: int
+        :param _BelongTreeNodeUniqKey: Information of the current allocation unit
+        :type BelongTreeNodeUniqKey: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
+        :param _BelongRule: Information on allocation rules hit by the current resource
+        :type BelongRule: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
+        :param _OtherTreeNodeUniqKeys: Information on other allocation units
+        :type OtherTreeNodeUniqKeys: list of AllocationTreeNode
+        :param _OtherRules: Information on other hit rules
+        :type OtherRules: list of AllocationRule
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _ProjectName: Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :type ProjectName: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: Product subdivision type purchased by the user
+        :type ProductCodeName: str
+        :param _PayMode: Billing mode code
+        :type PayMode: str
+        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ActionType: Transaction type code
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type: Detailed transaction type
+        :type ActionTypeName: str
+        :param _SplitItemId: Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemId: str
+        :param _SplitItemName: Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SplitItemName: str
+        """
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._RuleId = None
+        self._RuleName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._Tag = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._AllocationType = None
+        self._BelongTreeNodeUniqKey = None
+        self._BelongRule = None
+        self._OtherTreeNodeUniqKeys = None
+        self._OtherRules = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+
+    @property
+    def PayerUin(self):
+        r"""Payer UIN: Account ID of the payer, which is the unique account identifier for the user in Tencent Cloud.
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""User UIN: Account ID of the actual resource user
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operator account ID (the resource account ID or role ID opened by prepaid resource ordering or postpaid operation)
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def InstanceType(self):
+        r"""Instance type code
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        r"""Instance type: The type of an instance corresponding to the product service purchased, including resource packages, RI, SP, and spot instances. It is displayed as "-" by default for regular instances.
+        :rtype: str
+        """
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID: Resources vary by product, and the content is not identical. For example, Cloud Virtual Machine (CVM) corresponds to the instance ID. If the product is split, it shows the split item ID, such as COS bucket ID and CDN domain name.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""Instance name: The name set by the user for the resource in the console, which is empty by default if not set. If the product is split, it shows the split resource alias.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def TreeNodeUniqKey(self):
+        r"""Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        r"""Name of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def RuleId(self):
+        r"""Allocation rule ID hit by the resource
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""Allocation rule name hit by the resource
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        r"""Product name: Various cloud products purchased by users
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ItemCode(self):
+        r"""Component name code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        r"""Component name: The specific component of a product or service purchased by the user
+        :rtype: str
+        """
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def RegionId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""Region name: The region where the resource is located
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Tag(self):
+        r"""Allocation tag: The resource-bound tag
+        :rtype: list of BillTag
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def RealTotalCost(self):
+        r"""Discounted total: discounted total = (Original Price - Original Price Deducted by a Reserved Instance - Savings Plan Deduction from Original Price) * Discount Rate
+        :rtype: str
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        r"""Cash account expenditure (CNY): The amount paid through the cash account
+        :rtype: str
+        """
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        r"""Promo voucher expenditure (CNY): The amount paid using various vouchers (such as promo vouchers and cash vouchers)
+        :rtype: str
+        """
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        r"""Gift account expenditure (CNY): The amount paid using free credits
+        :rtype: str
+        """
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        r"""Royalty account expenditure (CNY): The amount paid through the royalty account
+        :rtype: str
+        """
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def AllocationType(self):
+        r"""Cost collection type: The source types of fees, including allocated, collection and unallocated.
+0 - Allocation
+1 - Collection
+-1 - Unallocated
+        :rtype: int
+        """
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def BelongTreeNodeUniqKey(self):
+        r"""Information of the current allocation unit
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
+        """
+        return self._BelongTreeNodeUniqKey
+
+    @BelongTreeNodeUniqKey.setter
+    def BelongTreeNodeUniqKey(self, BelongTreeNodeUniqKey):
+        self._BelongTreeNodeUniqKey = BelongTreeNodeUniqKey
+
+    @property
+    def BelongRule(self):
+        r"""Information on allocation rules hit by the current resource
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
+        """
+        return self._BelongRule
+
+    @BelongRule.setter
+    def BelongRule(self, BelongRule):
+        self._BelongRule = BelongRule
+
+    @property
+    def OtherTreeNodeUniqKeys(self):
+        r"""Information on other allocation units
+        :rtype: list of AllocationTreeNode
+        """
+        return self._OtherTreeNodeUniqKeys
+
+    @OtherTreeNodeUniqKeys.setter
+    def OtherTreeNodeUniqKeys(self, OtherTreeNodeUniqKeys):
+        self._OtherTreeNodeUniqKeys = OtherTreeNodeUniqKeys
+
+    @property
+    def OtherRules(self):
+        r"""Information on other hit rules
+        :rtype: list of AllocationRule
+        """
+        return self._OtherRules
+
+    @OtherRules.setter
+    def OtherRules(self, OtherRules):
+        self._OtherRules = OtherRules
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""Project name: The Project to which a resource belongs, which is independently allocated by the user for the resource in the console. If a resource has not been allocated to an Project, it will be a default Project.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        r"""Subproduct name: Product subdivision type purchased by the user
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayMode(self):
+        r"""Billing mode code
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :rtype: str
+        """
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        r"""Transaction type code
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""Transaction type: Detailed transaction type
+        :rtype: str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        r"""Split item ID: The ID of the split item involved in the split product, such as COS bucket ID and CDN domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        r"""Split item name: The split item involved in the split product
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
+        self._SplitItemName = SplitItemName
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._AllocationType = params.get("AllocationType")
+        if params.get("BelongTreeNodeUniqKey") is not None:
+            self._BelongTreeNodeUniqKey = AllocationTreeNode()
+            self._BelongTreeNodeUniqKey._deserialize(params.get("BelongTreeNodeUniqKey"))
+        if params.get("BelongRule") is not None:
+            self._BelongRule = AllocationRule()
+            self._BelongRule._deserialize(params.get("BelongRule"))
+        if params.get("OtherTreeNodeUniqKeys") is not None:
+            self._OtherTreeNodeUniqKeys = []
+            for item in params.get("OtherTreeNodeUniqKeys"):
+                obj = AllocationTreeNode()
+                obj._deserialize(item)
+                self._OtherTreeNodeUniqKeys.append(obj)
+        if params.get("OtherRules") is not None:
+            self._OtherRules = []
+            for item in params.get("OtherRules"):
+                obj = AllocationRule()
+                obj._deserialize(item)
+                self._OtherRules.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17033,7 +27571,6 @@ class RegionSummaryOverviewItem(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionId: Region ID
-Note: This field may return null, indicating that no valid value was found.
         :type RegionId: str
         :param _RegionName: Region: The region to which a resource belongs, such as South China (Guangzhou).
         :type RegionName: str
@@ -17068,7 +27605,6 @@ Note: This field may return null, indicating that no valid value was found.
     @property
     def RegionId(self):
         r"""Region ID
-Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
         return self._RegionId
@@ -17602,6 +28138,267 @@ class RenewInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceSpuSet(AbstractModel):
+    r"""Quotation for 4-tier product details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpuNameZh: Quoted subproduct (Chinese)
+        :type SpuNameZh: str
+        :param _SpuNameEn: Quoted subproduct (English)
+        :type SpuNameEn: str
+        :param _CategoryNameZh: Quoted product (Chinese)
+        :type CategoryNameZh: str
+        :param _CategoryNameEn: Quoted product (English)
+        :type CategoryNameEn: str
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _BusinessNameZh: Product name (Chinese)
+        :type BusinessNameZh: str
+        :param _BusinessNameEn: Product name (English)
+        :type BusinessNameEn: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ProductNameZh: Subproduct name (Chinese)
+        :type ProductNameZh: str
+        :param _ProductNameEn: Subproduct name (English)
+        :type ProductNameEn: str
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ComponentNameZh: Component type name (Chinese)
+        :type ComponentNameZh: str
+        :param _ComponentNameEn: Component type name (English)
+        :type ComponentNameEn: str
+        :param _ItemCode: Component code
+        :type ItemCode: str
+        :param _ItemNameZh: Component name (Chinese)
+        :type ItemNameZh: str
+        :param _ItemNameEn: Component name (English)
+        :type ItemNameEn: str
+        """
+        self._SpuNameZh = None
+        self._SpuNameEn = None
+        self._CategoryNameZh = None
+        self._CategoryNameEn = None
+        self._BusinessCode = None
+        self._BusinessNameZh = None
+        self._BusinessNameEn = None
+        self._ProductCode = None
+        self._ProductNameZh = None
+        self._ProductNameEn = None
+        self._ComponentCode = None
+        self._ComponentNameZh = None
+        self._ComponentNameEn = None
+        self._ItemCode = None
+        self._ItemNameZh = None
+        self._ItemNameEn = None
+
+    @property
+    def SpuNameZh(self):
+        r"""Quoted subproduct (Chinese)
+        :rtype: str
+        """
+        return self._SpuNameZh
+
+    @SpuNameZh.setter
+    def SpuNameZh(self, SpuNameZh):
+        self._SpuNameZh = SpuNameZh
+
+    @property
+    def SpuNameEn(self):
+        r"""Quoted subproduct (English)
+        :rtype: str
+        """
+        return self._SpuNameEn
+
+    @SpuNameEn.setter
+    def SpuNameEn(self, SpuNameEn):
+        self._SpuNameEn = SpuNameEn
+
+    @property
+    def CategoryNameZh(self):
+        r"""Quoted product (Chinese)
+        :rtype: str
+        """
+        return self._CategoryNameZh
+
+    @CategoryNameZh.setter
+    def CategoryNameZh(self, CategoryNameZh):
+        self._CategoryNameZh = CategoryNameZh
+
+    @property
+    def CategoryNameEn(self):
+        r"""Quoted product (English)
+        :rtype: str
+        """
+        return self._CategoryNameEn
+
+    @CategoryNameEn.setter
+    def CategoryNameEn(self, CategoryNameEn):
+        self._CategoryNameEn = CategoryNameEn
+
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessNameZh(self):
+        r"""Product name (Chinese)
+        :rtype: str
+        """
+        return self._BusinessNameZh
+
+    @BusinessNameZh.setter
+    def BusinessNameZh(self, BusinessNameZh):
+        self._BusinessNameZh = BusinessNameZh
+
+    @property
+    def BusinessNameEn(self):
+        r"""Product name (English)
+        :rtype: str
+        """
+        return self._BusinessNameEn
+
+    @BusinessNameEn.setter
+    def BusinessNameEn(self, BusinessNameEn):
+        self._BusinessNameEn = BusinessNameEn
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductNameZh(self):
+        r"""Subproduct name (Chinese)
+        :rtype: str
+        """
+        return self._ProductNameZh
+
+    @ProductNameZh.setter
+    def ProductNameZh(self, ProductNameZh):
+        self._ProductNameZh = ProductNameZh
+
+    @property
+    def ProductNameEn(self):
+        r"""Subproduct name (English)
+        :rtype: str
+        """
+        return self._ProductNameEn
+
+    @ProductNameEn.setter
+    def ProductNameEn(self, ProductNameEn):
+        self._ProductNameEn = ProductNameEn
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentNameZh(self):
+        r"""Component type name (Chinese)
+        :rtype: str
+        """
+        return self._ComponentNameZh
+
+    @ComponentNameZh.setter
+    def ComponentNameZh(self, ComponentNameZh):
+        self._ComponentNameZh = ComponentNameZh
+
+    @property
+    def ComponentNameEn(self):
+        r"""Component type name (English)
+        :rtype: str
+        """
+        return self._ComponentNameEn
+
+    @ComponentNameEn.setter
+    def ComponentNameEn(self, ComponentNameEn):
+        self._ComponentNameEn = ComponentNameEn
+
+    @property
+    def ItemCode(self):
+        r"""Component code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemNameZh(self):
+        r"""Component name (Chinese)
+        :rtype: str
+        """
+        return self._ItemNameZh
+
+    @ItemNameZh.setter
+    def ItemNameZh(self, ItemNameZh):
+        self._ItemNameZh = ItemNameZh
+
+    @property
+    def ItemNameEn(self):
+        r"""Component name (English)
+        :rtype: str
+        """
+        return self._ItemNameEn
+
+    @ItemNameEn.setter
+    def ItemNameEn(self, ItemNameEn):
+        self._ItemNameEn = ItemNameEn
+
+
+    def _deserialize(self, params):
+        self._SpuNameZh = params.get("SpuNameZh")
+        self._SpuNameEn = params.get("SpuNameEn")
+        self._CategoryNameZh = params.get("CategoryNameZh")
+        self._CategoryNameEn = params.get("CategoryNameEn")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessNameZh = params.get("BusinessNameZh")
+        self._BusinessNameEn = params.get("BusinessNameEn")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductNameZh = params.get("ProductNameZh")
+        self._ProductNameEn = params.get("ProductNameEn")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentNameZh = params.get("ComponentNameZh")
+        self._ComponentNameEn = params.get("ComponentNameEn")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemNameZh = params.get("ItemNameZh")
+        self._ItemNameEn = params.get("ItemNameEn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetRenewalRequest(AbstractModel):
     r"""SetRenewal request structure.
 
@@ -17784,9 +28581,9 @@ class SummaryDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupKey: Bill dimension code. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _GroupKey: Bill dimension code
         :type GroupKey: str
-        :param _GroupValue: Bill dimension value. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _GroupValue: Billing dimension value
         :type GroupValue: str
         :param _TotalCost: Original cost in USD. This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter.
         :type TotalCost: str
@@ -17798,9 +28595,9 @@ class SummaryDetail(AbstractModel):
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
-        :param _Business: Detailed summary of products. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Business: Product summary information
         :type Business: list of BusinessSummaryInfo
         """
         self._GroupKey = None
@@ -17815,7 +28612,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupKey(self):
-        r"""Bill dimension code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Bill dimension code
         :rtype: str
         """
         return self._GroupKey
@@ -17826,7 +28623,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupValue(self):
-        r"""Bill dimension value. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing dimension value
         :rtype: str
         """
         return self._GroupValue
@@ -17892,7 +28689,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -17903,7 +28700,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def Business(self):
-        r"""Detailed summary of products. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product summary information
         :rtype: list of BusinessSummaryInfo
         """
         return self._Business
@@ -17945,10 +28742,9 @@ class SummaryTotal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RealTotalCost: Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RealTotalCost: discounted total price
         :type RealTotalCost: str
-        :param _TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TotalCost: Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :type TotalCost: str
         """
         self._RealTotalCost = None
@@ -17956,7 +28752,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealTotalCost(self):
-        r"""Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -17967,8 +28763,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCost(self):
-        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :rtype: str
         """
         return self._TotalCost
@@ -18002,8 +28797,7 @@ class TagDataInfo(AbstractModel):
         :type TagKey: str
         :param _Status: Tag type. Valid values: `0` (general tags), `1` (cost allocation tags).
         :type Status: int
-        :param _UpdateTime: Time to set the cost allocation tag. It will not be returned if `Status` is `0`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateTime: Set the allocation tag time. Ordinary tags do not return.
         :type UpdateTime: str
         """
         self._TagKey = None
@@ -18034,8 +28828,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Time to set the cost allocation tag. It will not be returned if `Status` is `0`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Set the allocation tag time. Ordinary tags do not return.
         :rtype: str
         """
         return self._UpdateTime
@@ -18067,23 +28860,20 @@ class TagSummaryOverviewItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TagValue: Tag value
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TagValue: str
-        :param _RealTotalCostRatio: Cost percentage rounded to two decimal places
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RealTotalCostRatio: Percentage of the fee, with 2 decimal places.
         :type RealTotalCostRatio: str
-        :param _RealTotalCost: Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RealTotalCost: discounted total price
         :type RealTotalCost: str
-        :param _CashPayAmount: Cash credit: The amount paid from the user’s cash account. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CashPayAmount: Cash account expenditure: The amount paid through the cash account
         :type CashPayAmount: str
-        :param _IncentivePayAmount: Free credit: The amount paid with the user’s free credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IncentivePayAmount: Gift account expenditure: The amount paid using free credits
         :type IncentivePayAmount: str
-        :param _VoucherPayAmount: Voucher payment: The amount deducted by using vouchers. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VoucherPayAmount: Coupon expenditure: The amount paid using various vouchers (such as vouchers and cash vouchers)
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Royalty account expenditure: The amount paid through the royalty account
         :type TransferPayAmount: str
-        :param _TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _TotalCost: Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :type TotalCost: str
         """
         self._TagValue = None
@@ -18098,7 +28888,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def TagValue(self):
         r"""Tag value
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TagValue
@@ -18109,8 +28898,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCostRatio(self):
-        r"""Cost percentage rounded to two decimal places
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Percentage of the fee, with 2 decimal places.
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -18121,7 +28909,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        r"""Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -18132,7 +28920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        r"""Cash credit: The amount paid from the user’s cash account. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cash account expenditure: The amount paid through the cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -18143,7 +28931,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        r"""Free credit: The amount paid with the user’s free credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Gift account expenditure: The amount paid using free credits
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -18154,7 +28942,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        r"""Voucher payment: The amount deducted by using vouchers. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Coupon expenditure: The amount paid using various vouchers (such as vouchers and cash vouchers)
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -18165,7 +28953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Royalty account expenditure: The amount paid through the royalty account
         :rtype: str
         """
         return self._TransferPayAmount
@@ -18176,8 +28964,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Original price in CNY. The TotalCost field comes into effect after bill 3.0 (May 2021) and returns "-" before bill 3.0. In the current situation of contract price, the TotalCost field returns "-" if a price difference exists with the official website price.
         :rtype: str
         """
         return self._TotalCost
@@ -18206,6 +28993,87 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class UinTempAmountModel(AbstractModel):
+    r"""Temporary limit details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: User UIN
+        :type Uin: str
+        :param _TempAmount: temporary limit
+        :type TempAmount: float
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        """
+        self._Uin = None
+        self._TempAmount = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Uin(self):
+        r"""User UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TempAmount(self):
+        r"""temporary limit
+        :rtype: float
+        """
+        return self._TempAmount
+
+    @TempAmount.setter
+    def TempAmount(self, TempAmount):
+        self._TempAmount = TempAmount
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._TempAmount = params.get("TempAmount")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UsageDetails(AbstractModel):
     r"""The product purchased.
 
@@ -18213,19 +29081,41 @@ class UsageDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: The name of the product.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ProductName: Product name
         :type ProductName: str
-        :param _SubProductName: Product Details
+        :param _SubProductName: product details
         :type SubProductName: str
+        :param _ProductCode: Product code	
+        :type ProductCode: str
+        :param _SubProductCode: Sub-product code	
+        :type SubProductCode: str
+        :param _BillingItemCode: Billing item code.	
+        :type BillingItemCode: str
+        :param _SubBillingItemCode: Billing sub-item code.	
+        :type SubBillingItemCode: str
+        :param _ProductEnName: Product English Name	
+        :type ProductEnName: str
+        :param _SubProductEnName: English name of the sub-product.	
+        :type SubProductEnName: str
+        :param _CalcUnit: billing cycle	
+        :type CalcUnit: str
+        :param _Action: payMode is prepay and payScene is common in the current situation
+        :type Action: str
         """
         self._ProductName = None
         self._SubProductName = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._BillingItemCode = None
+        self._SubBillingItemCode = None
+        self._ProductEnName = None
+        self._SubProductEnName = None
+        self._CalcUnit = None
+        self._Action = None
 
     @property
     def ProductName(self):
-        r"""The name of the product.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Product name
         :rtype: str
         """
         return self._ProductName
@@ -18236,7 +29126,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubProductName(self):
-        r"""Product Details
+        r"""product details
         :rtype: str
         """
         return self._SubProductName
@@ -18245,10 +29135,106 @@ Note: This field may return `null`, indicating that no valid value was found.
     def SubProductName(self, SubProductName):
         self._SubProductName = SubProductName
 
+    @property
+    def ProductCode(self):
+        r"""Product code	
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        r"""Sub-product code	
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def BillingItemCode(self):
+        r"""Billing item code.	
+        :rtype: str
+        """
+        return self._BillingItemCode
+
+    @BillingItemCode.setter
+    def BillingItemCode(self, BillingItemCode):
+        self._BillingItemCode = BillingItemCode
+
+    @property
+    def SubBillingItemCode(self):
+        r"""Billing sub-item code.	
+        :rtype: str
+        """
+        return self._SubBillingItemCode
+
+    @SubBillingItemCode.setter
+    def SubBillingItemCode(self, SubBillingItemCode):
+        self._SubBillingItemCode = SubBillingItemCode
+
+    @property
+    def ProductEnName(self):
+        r"""Product English Name	
+        :rtype: str
+        """
+        return self._ProductEnName
+
+    @ProductEnName.setter
+    def ProductEnName(self, ProductEnName):
+        self._ProductEnName = ProductEnName
+
+    @property
+    def SubProductEnName(self):
+        r"""English name of the sub-product.	
+        :rtype: str
+        """
+        return self._SubProductEnName
+
+    @SubProductEnName.setter
+    def SubProductEnName(self, SubProductEnName):
+        self._SubProductEnName = SubProductEnName
+
+    @property
+    def CalcUnit(self):
+        r"""billing cycle	
+        :rtype: str
+        """
+        return self._CalcUnit
+
+    @CalcUnit.setter
+    def CalcUnit(self, CalcUnit):
+        self._CalcUnit = CalcUnit
+
+    @property
+    def Action(self):
+        r"""payMode is prepay and payScene is common in the current situation
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
 
     def _deserialize(self, params):
         self._ProductName = params.get("ProductName")
         self._SubProductName = params.get("SubProductName")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._BillingItemCode = params.get("BillingItemCode")
+        self._SubBillingItemCode = params.get("SubBillingItemCode")
+        self._ProductEnName = params.get("ProductEnName")
+        self._SubProductEnName = params.get("SubProductEnName")
+        self._CalcUnit = params.get("CalcUnit")
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18270,13 +29256,24 @@ class UsageRecords(AbstractModel):
         :type UsedAmount: int
         :param _UsedTime: The time when the voucher was used.
         :type UsedTime: str
-        :param _UsageDetails: The details of the product purchased.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _UsageDetails: Usage record details
         :type UsageDetails: list of UsageDetails
+        :param _PayMode: Payment mode
+        :type PayMode: str
+        :param _VoucherId: Queried coupon id
+        :type VoucherId: str
+        :param _PayScene: Transaction scene: (adjust: adjust accounts, common: normal transaction scene)
+        :type PayScene: str
+        :param _SeqId: Unique ID, corresponding to transaction: prepaid dealName, bill adjustment/postpaid outTradeNo
+        :type SeqId: str
         """
         self._UsedAmount = None
         self._UsedTime = None
         self._UsageDetails = None
+        self._PayMode = None
+        self._VoucherId = None
+        self._PayScene = None
+        self._SeqId = None
 
     @property
     def UsedAmount(self):
@@ -18302,8 +29299,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsageDetails(self):
-        r"""The details of the product purchased.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Usage record details
         :rtype: list of UsageDetails
         """
         return self._UsageDetails
@@ -18311,6 +29307,50 @@ Note: This field may return `null`, indicating that no valid value was found.
     @UsageDetails.setter
     def UsageDetails(self, UsageDetails):
         self._UsageDetails = UsageDetails
+
+    @property
+    def PayMode(self):
+        r"""Payment mode
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def VoucherId(self):
+        r"""Queried coupon id
+        :rtype: str
+        """
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+    @property
+    def PayScene(self):
+        r"""Transaction scene: (adjust: adjust accounts, common: normal transaction scene)
+        :rtype: str
+        """
+        return self._PayScene
+
+    @PayScene.setter
+    def PayScene(self, PayScene):
+        self._PayScene = PayScene
+
+    @property
+    def SeqId(self):
+        r"""Unique ID, corresponding to transaction: prepaid dealName, bill adjustment/postpaid outTradeNo
+        :rtype: str
+        """
+        return self._SeqId
+
+    @SeqId.setter
+    def SeqId(self, SeqId):
+        self._SeqId = SeqId
 
 
     def _deserialize(self, params):
@@ -18322,6 +29362,10 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = UsageDetails()
                 obj._deserialize(item)
                 self._UsageDetails.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._VoucherId = params.get("VoucherId")
+        self._PayScene = params.get("PayScene")
+        self._SeqId = params.get("SeqId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

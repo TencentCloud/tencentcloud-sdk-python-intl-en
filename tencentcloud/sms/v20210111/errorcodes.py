@@ -176,6 +176,9 @@ INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = 'InvalidParameterValue.LimitVerifyFail'
 # Marketing messages must include an unsubscribe method.
 INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = 'InvalidParameterValue.MarketingTemplateWithoutUnsubscribe'
 
+# The MultiSmsInfoSet list is empty. Please verify that the MultiSmsInfoSet parameter is included in your request.
+INVALIDPARAMETERVALUE_MULTISMSINFOSETEMPTY = 'InvalidParameterValue.MultiSmsInfoSetEmpty'
+
 # `Offset` parameter check failed.
 INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = 'InvalidParameterValue.OffsetVerifyFail'
 
@@ -277,6 +280,9 @@ UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = 'UnsupportedOperatio
 
 # The group message request contains both Chinese mainland numbers and international numbers. Please check: (1) whether the message is sent to international numbers with a Chinese mainland signature or template; (2) whether the message is sent to Chinese mainland numbers with an international signature or template.
 UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber'
+
+# The request contains Chinese Mainland phone numbers. This API only supports Global SMS phone numbers.
+UNSUPPORTEDOPERATION_CONTAINDOMESTICPHONENUMBER = 'UnsupportedOperation.ContainDomesticPhoneNumber'
 
 # A Global SMS template cannot be used to sent messages to Chinese mainland numbers. Please use a Chinese Mainland SMS template instead.
 UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = 'UnsupportedOperation.GlobalTemplateToChineseMainlandPhone'

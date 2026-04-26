@@ -38,10 +38,10 @@ FAILEDOPERATION_CSUNSUPPORTMETHOD = 'FailedOperation.CSUnsupportMethod'
 # The cloud transcription method does not support this.
 FAILEDOPERATION_CTUNSUPPORTMETHOD = 'FailedOperation.CTUnsupportMethod'
 
-# Need to unlock the required ability
+# Unlock the required capability bit.
 FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 
-# This operation is not allowed, please submit a ticket to contact us
+# This operation is not allowed. submit a ticket to contact us.
 FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
 
 # RTMP is not enabled.
@@ -59,7 +59,7 @@ FAILEDOPERATION_ROOMNOTEXIST = 'FailedOperation.RoomNotExist'
 # The application ID does not exist.
 FAILEDOPERATION_SDKAPPIDNOTEXIST = 'FailedOperation.SdkAppIdNotExist'
 
-# There is no resource for this SdkAppId  In this AppId
+# No resource belonging to this SdkAppId under the AppId.
 FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = 'FailedOperation.SdkAppIdNotUnderAppId'
 
 # Task already exists

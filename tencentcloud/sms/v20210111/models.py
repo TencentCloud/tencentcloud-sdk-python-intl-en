@@ -2090,6 +2090,108 @@ class ModifyTemplateStatus(AbstractModel):
         
 
 
+class MultiSmsInfo(AbstractModel):
+    r"""SMS information for each phone number in a batch delivery.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhoneNumber: Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all global mobile numbers). For example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
+        :type PhoneNumber: str
+        :param _TemplateId: Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.
+        :type TemplateId: str
+        :param _TemplateParamSet: Template parameter. If there is no template parameter, leave this field empty.
+<dx-alert infotype="notice" title="Note">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>
+        :type TemplateParamSet: list of str
+        :param _SenderId: Sender ID for Global SMS. For detail, please refer to the [Sender ID](https://www.tencentcloud.com/document/product/382/58270) Guidelines.
+Note: This parameter applies solely to Global SMS. If you do not require a dedicated Sender ID, the public Sender ID will be used by default, and this parameter may be left blank.
+Example: Qsms
+        :type SenderId: str
+        :param _SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server. Note that the length must be less than 512 bytes.
+        :type SessionContext: str
+        """
+        self._PhoneNumber = None
+        self._TemplateId = None
+        self._TemplateParamSet = None
+        self._SenderId = None
+        self._SessionContext = None
+
+    @property
+    def PhoneNumber(self):
+        r"""Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all global mobile numbers). For example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def TemplateId(self):
+        r"""Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateParamSet(self):
+        r"""Template parameter. If there is no template parameter, leave this field empty.
+<dx-alert infotype="notice" title="Note">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>
+        :rtype: list of str
+        """
+        return self._TemplateParamSet
+
+    @TemplateParamSet.setter
+    def TemplateParamSet(self, TemplateParamSet):
+        self._TemplateParamSet = TemplateParamSet
+
+    @property
+    def SenderId(self):
+        r"""Sender ID for Global SMS. For detail, please refer to the [Sender ID](https://www.tencentcloud.com/document/product/382/58270) Guidelines.
+Note: This parameter applies solely to Global SMS. If you do not require a dedicated Sender ID, the public Sender ID will be used by default, and this parameter may be left blank.
+Example: Qsms
+        :rtype: str
+        """
+        return self._SenderId
+
+    @SenderId.setter
+    def SenderId(self, SenderId):
+        self._SenderId = SenderId
+
+    @property
+    def SessionContext(self):
+        r"""User session content, which can carry context information such as user-side ID and will be returned as-is by the server. Note that the length must be less than 512 bytes.
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateParamSet = params.get("TemplateParamSet")
+        self._SenderId = params.get("SenderId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PhoneNumberInfo(AbstractModel):
     r"""Mobile number information.
 
@@ -3171,6 +3273,236 @@ class ReportConversionStatus(AbstractModel):
         
 
 
+class SendMultiGlobalSmsRequest(AbstractModel):
+    r"""SendMultiGlobalSms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 2400006666.
+        :type SmsSdkAppId: str
+        :param _MultiSmsInfoSet: Multi SMS information list. Up to 200 phone numbers are supported in one request, which should be all Global SMS numbers. Each element contains a phone number and its corresponding template, template parameters, and other information.
+        :type MultiSmsInfoSet: list of MultiSmsInfo
+        """
+        self._SmsSdkAppId = None
+        self._MultiSmsInfoSet = None
+
+    @property
+    def SmsSdkAppId(self):
+        r"""The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 2400006666.
+        :rtype: str
+        """
+        return self._SmsSdkAppId
+
+    @SmsSdkAppId.setter
+    def SmsSdkAppId(self, SmsSdkAppId):
+        self._SmsSdkAppId = SmsSdkAppId
+
+    @property
+    def MultiSmsInfoSet(self):
+        r"""Multi SMS information list. Up to 200 phone numbers are supported in one request, which should be all Global SMS numbers. Each element contains a phone number and its corresponding template, template parameters, and other information.
+        :rtype: list of MultiSmsInfo
+        """
+        return self._MultiSmsInfoSet
+
+    @MultiSmsInfoSet.setter
+    def MultiSmsInfoSet(self, MultiSmsInfoSet):
+        self._MultiSmsInfoSet = MultiSmsInfoSet
+
+
+    def _deserialize(self, params):
+        self._SmsSdkAppId = params.get("SmsSdkAppId")
+        if params.get("MultiSmsInfoSet") is not None:
+            self._MultiSmsInfoSet = []
+            for item in params.get("MultiSmsInfoSet"):
+                obj = MultiSmsInfo()
+                obj._deserialize(item)
+                self._MultiSmsInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMultiGlobalSmsResponse(AbstractModel):
+    r"""SendMultiGlobalSms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SendMultiStatusSet: Multi SMS send status.
+        :type SendMultiStatusSet: list of SendMultiStatus
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SendMultiStatusSet = None
+        self._RequestId = None
+
+    @property
+    def SendMultiStatusSet(self):
+        r"""Multi SMS send status.
+        :rtype: list of SendMultiStatus
+        """
+        return self._SendMultiStatusSet
+
+    @SendMultiStatusSet.setter
+    def SendMultiStatusSet(self, SendMultiStatusSet):
+        self._SendMultiStatusSet = SendMultiStatusSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SendMultiStatusSet") is not None:
+            self._SendMultiStatusSet = []
+            for item in params.get("SendMultiStatusSet"):
+                obj = SendMultiStatus()
+                obj._deserialize(item)
+                self._SendMultiStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class SendMultiStatus(AbstractModel):
+    r"""SMS send status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialNo: Delivery serial number.
+        :type SerialNo: str
+        :param _PhoneNumber: Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
+        :type PhoneNumber: str
+        :param _Fee: Number of billable SMS messages. For billing rules, see Billing Policy.
+        :type Fee: int
+        :param _SessionContext: User session content.
+        :type SessionContext: str
+        :param _Code: SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        :type Code: str
+        :param _Message: SMS request error message.
+        :type Message: str
+        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        :type IsoCode: str
+        """
+        self._SerialNo = None
+        self._PhoneNumber = None
+        self._Fee = None
+        self._SessionContext = None
+        self._Code = None
+        self._Message = None
+        self._IsoCode = None
+
+    @property
+    def SerialNo(self):
+        r"""Delivery serial number.
+        :rtype: str
+        """
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def PhoneNumber(self):
+        r"""Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Fee(self):
+        r"""Number of billable SMS messages. For billing rules, see Billing Policy.
+        :rtype: int
+        """
+        return self._Fee
+
+    @Fee.setter
+    def Fee(self, Fee):
+        self._Fee = Fee
+
+    @property
+    def SessionContext(self):
+        r"""User session content.
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Code(self):
+        r"""SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""SMS request error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsoCode(self):
+        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._IsoCode
+
+    @IsoCode.setter
+    def IsoCode(self, IsoCode):
+        self._IsoCode = IsoCode
+
+
+    def _deserialize(self, params):
+        self._SerialNo = params.get("SerialNo")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Fee = params.get("Fee")
+        self._SessionContext = params.get("SessionContext")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._IsoCode = params.get("IsoCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendSmsRequest(AbstractModel):
     r"""SendSms request structure.
 
@@ -3325,7 +3657,7 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SendStatusSet: SMS delivery status.
+        :param _SendStatusSet: SMS send status.
         :type SendStatusSet: list of SendStatus
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3335,7 +3667,7 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def SendStatusSet(self):
-        r"""SMS delivery status.
+        r"""SMS send status.
         :rtype: list of SendStatus
         """
         return self._SendStatusSet
@@ -3367,7 +3699,7 @@ class SendSmsResponse(AbstractModel):
 
 
 class SendStatus(AbstractModel):
-    r"""SMS delivery status
+    r"""SMS send status
 
     """
 
@@ -3375,7 +3707,7 @@ class SendStatus(AbstractModel):
         r"""
         :param _SerialNo: Delivery serial number.
         :type SerialNo: str
-        :param _PhoneNumber: Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PhoneNumber: Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
         :type PhoneNumber: str
         :param _Fee: Number of billable SMS messages. For billing rules, see Billing Policy.
         :type Fee: int
@@ -3385,7 +3717,7 @@ class SendStatus(AbstractModel):
         :type Code: str
         :param _Message: SMS request error message.
         :type Message: str
-        :param _IsoCode: Country/Region code, such as CN and US. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
         :type IsoCode: str
         """
         self._SerialNo = None
@@ -3409,7 +3741,7 @@ class SendStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        r"""Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).
         :rtype: str
         """
         return self._PhoneNumber
@@ -3464,7 +3796,7 @@ class SendStatus(AbstractModel):
 
     @property
     def IsoCode(self):
-        r"""Country/Region code, such as CN and US. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
         :rtype: str
         """
         return self._IsoCode

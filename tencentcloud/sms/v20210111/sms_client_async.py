@@ -335,6 +335,24 @@ class SmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SendMultiGlobalSms(
+            self,
+            request: models.SendMultiGlobalSmsRequest,
+            opts: Dict = None,
+    ) -> models.SendMultiGlobalSmsResponse:
+        """
+        This API is used to send Global SMS messages in batches. Compared with the SendSms API, it supports sending SMS messages with different content to multiple phone numbers in a single request and allows specifying different SenderIds.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendMultiGlobalSms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendMultiGlobalSmsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SendSms(
             self,
             request: models.SendSmsRequest,
@@ -342,8 +360,6 @@ class SmsClient(AbstractClient):
     ) -> models.SendSmsResponse:
         """
         This API is used to send SMS verification codes, notification, or marketing messages to users.
-        >- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).
-        >- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.
         """
         
         kwargs = {}

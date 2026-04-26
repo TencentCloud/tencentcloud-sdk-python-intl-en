@@ -62,14 +62,14 @@ If this parameter is set to 5, make sure that an [oral-to-written resource packa
         :type ResTextFormat: int
         :param _SourceType: Audio source.
 0: Audio URL.
-1: Local audio file (body of the POST request).
+1: Local audio file (body of the POST request)
         :type SourceType: int
         :param _Data: Audio file Base64 code.
 ** This parameter is required if SourceType is set to 1. Otherwise, it can be left blank. **
 
 Note: The audio data size cannot exceed 5 MB.
         :type Data: str
-        :param _DataLen: Data length (before Base64 encoding).
+        :param _DataLen: Data length (before Base64 encoding)
         :type DataLen: int
         :param _Url: Audio URL. (The audio should be downloadable via a public network browser.)
 ** This parameter is required if SourceType is set to 0. Otherwise, it can be left blank. **
@@ -172,6 +172,8 @@ Notes:
         :param _KeyWordLibIdList: List of keyword IDs for recognition. This parameter is left blank by default, indicating that no keyword is recognized. You can enter up to 10 IDs.
 
         :type KeyWordLibIdList: list of str
+        :param _ReplaceTextId: 
+        :type ReplaceTextId: str
         """
         self._EngineModelType = None
         self._ChannelNum = None
@@ -196,6 +198,7 @@ Notes:
         self._Extra = None
         self._HotwordList = None
         self._KeyWordLibIdList = None
+        self._ReplaceTextId = None
 
     @property
     def EngineModelType(self):
@@ -263,7 +266,7 @@ If this parameter is set to 5, make sure that an [oral-to-written resource packa
     def SourceType(self):
         r"""Audio source.
 0: Audio URL.
-1: Local audio file (body of the POST request).
+1: Local audio file (body of the POST request)
         :rtype: int
         """
         return self._SourceType
@@ -288,7 +291,7 @@ Note: The audio data size cannot exceed 5 MB.
 
     @property
     def DataLen(self):
-        r"""Data length (before Base64 encoding).
+        r"""Data length (before Base64 encoding)
         :rtype: int
         """
         return self._DataLen
@@ -555,6 +558,17 @@ Notes:
     def KeyWordLibIdList(self, KeyWordLibIdList):
         self._KeyWordLibIdList = KeyWordLibIdList
 
+    @property
+    def ReplaceTextId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ReplaceTextId
+
+    @ReplaceTextId.setter
+    def ReplaceTextId(self, ReplaceTextId):
+        self._ReplaceTextId = ReplaceTextId
+
 
     def _deserialize(self, params):
         self._EngineModelType = params.get("EngineModelType")
@@ -580,6 +594,7 @@ Notes:
         self._Extra = params.get("Extra")
         self._HotwordList = params.get("HotwordList")
         self._KeyWordLibIdList = params.get("KeyWordLibIdList")
+        self._ReplaceTextId = params.get("ReplaceTextId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

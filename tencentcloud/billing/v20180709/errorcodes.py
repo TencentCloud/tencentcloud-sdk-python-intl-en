@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # No permission.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
@@ -103,6 +106,9 @@ INVALIDPARAMETER_RESOURCELOCKED = 'InvalidParameter.ResourceLocked'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# Parameters are missing
+MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'

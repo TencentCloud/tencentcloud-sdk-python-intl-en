@@ -29,7 +29,7 @@ class DescribeEventsRequest(AbstractModel):
         :type EventDate: str
         :param _ProductIds: Query by Product ID(s). Product ID examples: cvm, lb, cdb, cdn, crs.
         :type ProductIds: list of str
-        :param _RegionIds:  1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.
+        :param _RegionIds:  1. Query by Region ID(s). Region ID examples: ap-guangzhou, ap-shanghai, ap-singapore.
 2. The region ID for non-region-specific products should be set to non-regional.
         :type RegionIds: list of str
         """
@@ -61,7 +61,7 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
-        r""" 1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.
+        r""" 1. Query by Region ID(s). Region ID examples: ap-guangzhou, ap-shanghai, ap-singapore.
 2. The region ID for non-region-specific products should be set to non-regional.
         :rtype: list of str
         """

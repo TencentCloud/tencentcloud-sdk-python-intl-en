@@ -187,6 +187,52 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckIdCardInformation(self, request):
+        r"""This API is used to import the ID card portrait side photo, recognize the information on the ID card photo, and compare the name, identity card number, and ID card portrait photo with the ID photo in the authoritative database to verify if they belong to the same person, thereby verifying the authenticity of the identity card information.
+
+        :param request: Request instance for CheckIdCardInformation.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckIdCardInformationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckIdCardInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckIdCardInformation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckIdCardInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckIdNameDate(self, request):
+        r"""This API is used to validate the authenticity and consistency of the name, identity card number, and valid period.
+
+        :param request: Request instance for CheckIdNameDate.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckIdNameDateRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckIdNameDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckIdNameDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckIdNameDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CompareFaceLiveness(self, request):
         r"""This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.
 
@@ -420,6 +466,98 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IdCardOCRVerification(self, request):
+        r"""This API is used to validate the authenticity and consistency of the name and identity card number. You can provide the required verification information by manually inputting the name and identity card number or importing the ID card portrait side image.
+
+        :param request: Request instance for IdCardOCRVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IdCardOCRVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.IdCardOCRVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IdCardVerification(self, request):
+        r"""This API is used to validate the authenticity and consistency of the name and identity card number.
+
+        :param request: Request instance for IdCardVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IdCardVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.IdCardVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImageRecognition(self, request):
+        r"""This API is used to judge whether the image passed in and the ID photo in the authoritative database belong to the same person based on the identity information (this interface has stopped integration, new customers please use the <a href="https://www.tencentcloud.com/document/product/1007/102203?from_cn_redirect=1">photo face verification (V2.0)</a> API).
+
+        :param request: Request instance for ImageRecognition.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageRecognition", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageRecognitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImageRecognitionV2(self, request):
+        r"""This API is used to judge whether the image passed in and the ID photo in the authoritative database belong to the same person based on the identity information.
+
+        :param request: Request instance for ImageRecognitionV2.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionV2Request`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageRecognitionV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageRecognitionV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def LivenessCompare(self, request):
         r"""This API is used to pass in a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
         This API on the legacy version will continue to serve existing users but will be unavailable to new users. We recommend you use `VideoLivenessCompare` for better service quality.
@@ -435,6 +573,75 @@ class FaceidClient(AbstractClient):
             body = self.call("LivenessCompare", params, headers=headers)
             response = json.loads(body)
             model = models.LivenessCompareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MobileNetworkTimeVerification(self, request):
+        r"""This API is used to query the duration of a mobile number. Enter mobile number to query.
+
+        :param request: Request instance for MobileNetworkTimeVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.MobileNetworkTimeVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MobileNetworkTimeVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MobileNetworkTimeVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.MobileNetworkTimeVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MobileStatus(self, request):
+        r"""This API is used to verify phone number status. You can enter mobile number to query.
+
+        :param request: Request instance for MobileStatus.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.MobileStatusRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MobileStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MobileStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.MobileStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PhoneVerification(self, request):
+        r"""This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1007/46063?from_cn_redirect=1">carrier</a> document.
+
+        :param request: Request instance for PhoneVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PhoneVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.PhoneVerificationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

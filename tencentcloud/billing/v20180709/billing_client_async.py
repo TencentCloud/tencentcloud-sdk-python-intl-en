@@ -206,6 +206,96 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAllocateConditions(
+            self,
+            request: models.DescribeAllocateConditionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocateConditionsResponse:
+        """
+        This API is used to query the filter conditions of a resource directory.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocateConditions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocateConditionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationBillConditions(
+            self,
+            request: models.DescribeAllocationBillConditionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationBillConditionsResponse:
+        """
+        This API is used to query the filter conditions of a cost allocation bill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationBillConditions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationBillConditionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationBillDetail(
+            self,
+            request: models.DescribeAllocationBillDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationBillDetailResponse:
+        """
+        This API is used to query the details of a cost allocation bill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationBillDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationBillDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationMonthOverview(
+            self,
+            request: models.DescribeAllocationMonthOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationMonthOverviewResponse:
+        """
+        This API is used to query the monthly overview of a cost allocation bill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationMonthOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationMonthOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationOverview(
+            self,
+            request: models.DescribeAllocationOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationOverviewResponse:
+        """
+        This API is used to query the daily overview of a cost allocation bill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllocationRuleDetail(
             self,
             request: models.DescribeAllocationRuleDetailRequest,
@@ -242,6 +332,60 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAllocationSummaryByBusiness(
+            self,
+            request: models.DescribeAllocationSummaryByBusinessRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationSummaryByBusinessResponse:
+        """
+        This API is used to query the details of a cost allocation bill by product.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationSummaryByBusiness"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationSummaryByBusinessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationSummaryByItem(
+            self,
+            request: models.DescribeAllocationSummaryByItemRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationSummaryByItemResponse:
+        """
+        This API is used to query the details of a cost allocation bill by item.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationSummaryByItem"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationSummaryByItemResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationSummaryByResource(
+            self,
+            request: models.DescribeAllocationSummaryByResourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationSummaryByResourceResponse:
+        """
+        This API is used to query the details of a cost allocation bill by resource.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationSummaryByResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationSummaryByResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllocationTree(
             self,
             request: models.DescribeAllocationTreeRequest,
@@ -255,6 +399,24 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "DescribeAllocationTree"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAllocationTreeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAllocationTrendByMonth(
+            self,
+            request: models.DescribeAllocationTrendByMonthRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAllocationTrendByMonthResponse:
+        """
+        This API is used to query the cost trend of a cost allocation bill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAllocationTrendByMonth"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAllocationTrendByMonthResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -284,7 +446,7 @@ class BillingClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBillAdjustInfoResponse:
         """
-        This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
+        This API is used to query whether there is a bill adjustment for the current UIN through API. Customers can obtain bill adjustment status faster and proactively.
         """
         
         kwargs = {}
@@ -516,6 +678,24 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCPQBillingMapping(
+            self,
+            request: models.DescribeCPQBillingMappingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCPQBillingMappingResponse:
+        """
+        Query the four-layer matching relationship between the quoted product name and billing products
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCPQBillingMapping"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCPQBillingMappingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCostDetail(
             self,
             request: models.DescribeCostDetailRequest,
@@ -523,6 +703,9 @@ class BillingClient(AbstractClient):
     ) -> models.DescribeCostDetailResponse:
         """
         This API is used to query consumption details.
+
+        Notes:
+        For customers with large-scale consumption detail (for example, monthly consumption detail exceeding 1M), there will be a timeout risk when retrieving detailed data via API call. It is recommended to enable the billing data storage function and analyze bill files obtained in a bucket. [Store bills to COS](https://www.tencentcloud.com/document/product/555/61275?from_cn_redirect=1)
         """
         
         kwargs = {}
@@ -655,6 +838,24 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "DescribeDosageCosDetailByDate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDosageCosDetailByDateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeGatherResource(
+            self,
+            request: models.DescribeGatherResourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGatherResourceResponse:
+        """
+        This API is used to query the details of a cost allocation bill by resource.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGatherResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGatherResourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

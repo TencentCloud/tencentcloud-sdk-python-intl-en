@@ -1039,7 +1039,7 @@ class CloudStorage(AbstractModel):
         :param _Vendor: The cloud storage provider.
 `0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -1054,6 +1054,8 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
         :type SecretKey: str
         :param _FileNamePrefix: The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of ["prefix1", "prefix2"].
         :type FileNamePrefix: list of str
+        :param _EndpointUrl: If specified, the client uses this S3-compatible endpoint override instead of the default AWS S3 endpoint. This is useful for S3-compatible storage services such as Cloudflare R2. Example: "account_id.r2.cloudflarestorage.com"
+        :type EndpointUrl: str
         """
         self._Vendor = None
         self._Region = None
@@ -1061,6 +1063,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
         self._AccessKey = None
         self._SecretKey = None
         self._FileNamePrefix = None
+        self._EndpointUrl = None
 
     @property
     def Vendor(self):
@@ -1076,7 +1079,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -1134,6 +1137,17 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
     def FileNamePrefix(self, FileNamePrefix):
         self._FileNamePrefix = FileNamePrefix
 
+    @property
+    def EndpointUrl(self):
+        r"""If specified, the client uses this S3-compatible endpoint override instead of the default AWS S3 endpoint. This is useful for S3-compatible storage services such as Cloudflare R2. Example: "account_id.r2.cloudflarestorage.com"
+        :rtype: str
+        """
+        return self._EndpointUrl
+
+    @EndpointUrl.setter
+    def EndpointUrl(self, EndpointUrl):
+        self._EndpointUrl = EndpointUrl
+
 
     def _deserialize(self, params):
         self._Vendor = params.get("Vendor")
@@ -1142,6 +1156,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
         self._AccessKey = params.get("AccessKey")
         self._SecretKey = params.get("SecretKey")
         self._FileNamePrefix = params.get("FileNamePrefix")
+        self._EndpointUrl = params.get("EndpointUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1500,7 +1515,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         r"""
         :param _SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :type RoomId: str
@@ -1550,7 +1565,7 @@ Note: the room id type defaults to integer. if the room id type is a string, spe
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :rtype: str
@@ -5936,19 +5951,19 @@ class DismissRoomResponse(AbstractModel):
 
 
 class EmulateMobileParams(AbstractModel):
-    r"""Render mobile mode parameters. Do not set this parameter when not rendering the mobile mode.
+    r"""Render the mobile mode parameter. do not set this parameter when not rendering mobile mode.
 
     """
 
     def __init__(self):
         r"""
-        :param _MobileDeviceType: Mobile device types,
-0: Phone
-1: Tablet
+        :param _MobileDeviceType: Mobile device type.
+Mobile phone.
+Tablet.
         :type MobileDeviceType: int
-        :param _ScreenOrientation: Screen orientation,
-0: Portrait,
-1: Landscape
+        :param _ScreenOrientation: Screen orientation.
+Portrait mode.
+Landscape mode.
         :type ScreenOrientation: int
         """
         self._MobileDeviceType = None
@@ -5956,9 +5971,9 @@ class EmulateMobileParams(AbstractModel):
 
     @property
     def MobileDeviceType(self):
-        r"""Mobile device types,
-0: Phone
-1: Tablet
+        r"""Mobile device type.
+Mobile phone.
+Tablet.
         :rtype: int
         """
         return self._MobileDeviceType
@@ -5969,9 +5984,9 @@ class EmulateMobileParams(AbstractModel):
 
     @property
     def ScreenOrientation(self):
-        r"""Screen orientation,
-0: Portrait,
-1: Landscape
+        r"""Screen orientation.
+Portrait mode.
+Landscape mode.
         :rtype: int
         """
         return self._ScreenOrientation
@@ -6252,8 +6267,9 @@ class McuAudioParams(AbstractModel):
         r"""
         :param _AudioEncode: The audio encoding parameters.
         :type AudioEncode: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
-        :param _SubscribeAudioList: The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.
-In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
+        :param _SubscribeAudioList: The audio user allowlist. for start, being empty or not filled means mixing all anchor audio; filling a specific value means mixing specified anchor audio. for update, not filling means does not update; being empty means update to mixing all anchor audio; filling a specific value means update to mixing specified anchor audio.
+When using blocklist and allowlist, both must be filled in simultaneously. if left empty, it means the list does not update. if the same user is in both lists, the blocklist takes precedence.
+Note: if it is cross-room pk, the cross-room mix requires specifying the audio allowlist, otherwise the pk host's audio uplink will be pulled twice, causing accent.
         :type SubscribeAudioList: list of McuUserInfoParams
         :param _UnSubscribeAudioList: The audio mix blocklist. If you do not pass this parameter or leave it empty, there won’t be a blocklist. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current blocklist; if you pass in an empty string, the blocklist will be reset.
 In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
@@ -6276,8 +6292,9 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
 
     @property
     def SubscribeAudioList(self):
-        r"""The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.
-In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
+        r"""The audio user allowlist. for start, being empty or not filled means mixing all anchor audio; filling a specific value means mixing specified anchor audio. for update, not filling means does not update; being empty means update to mixing all anchor audio; filling a specific value means update to mixing specified anchor audio.
+When using blocklist and allowlist, both must be filled in simultaneously. if left empty, it means the list does not update. if the same user is in both lists, the blocklist takes precedence.
+Note: if it is cross-room pk, the cross-room mix requires specifying the audio allowlist, otherwise the pk host's audio uplink will be pulled twice, causing accent.
         :rtype: list of McuUserInfoParams
         """
         return self._SubscribeAudioList
@@ -6325,23 +6342,87 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
         
 
 
-class McuCloudVod(AbstractModel):
-    r"""Mcu relay recording; video on demand (VOD) related parameters.
+class McuBackgroundCustomRender(AbstractModel):
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _McuTencentVod: Tencent VOD Parameters
-Example :{"ExpireTime":86400}
+        :param _Width: 
+        :type Width: int
+        :param _Height: 
+        :type Height: int
+        :param _Radius: 
+        :type Radius: int
+        """
+        self._Width = None
+        self._Height = None
+        self._Radius = None
+
+    @property
+    def Width(self):
+        r"""
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Radius(self):
+        r"""
+        :rtype: int
+        """
+        return self._Radius
+
+    @Radius.setter
+    def Radius(self, Radius):
+        self._Radius = Radius
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Radius = params.get("Radius")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuCloudVod(AbstractModel):
+    r"""Mcu relay recording. on-demand video related parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McuTencentVod: Parameters of tencent cloud video on demand (vod).	
         :type McuTencentVod: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
         """
         self._McuTencentVod = None
 
     @property
     def McuTencentVod(self):
-        r"""Tencent VOD Parameters
-Example :{"ExpireTime":86400}
+        r"""Parameters of tencent cloud video on demand (vod).	
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
         """
         return self._McuTencentVod
@@ -6534,35 +6615,55 @@ class McuLayout(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserMediaStream: The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.
+        :param _UserMediaStream: User media stream parameters. if left blank, tencent cloud backend fills them automatically by the room entry sequence of the uplink host.
         :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
-        :param _ImageWidth: The video width (pixels). If you do not pass this parameter, 0 will be used.
+        :param _ImageWidth: The width of the sub-screen in the output, unit: pixel value. defaults to 0 if left blank.
         :type ImageWidth: int
-        :param _ImageHeight: The video height (pixels). If you do not pass this parameter, 0 will be used.
+        :param _ImageHeight: The height of the sub-screen in the output, in pixel values. default is 0.
         :type ImageHeight: int
-        :param _LocationX: The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.
+        :param _LocationX: The X-axis offset of the sub-screen in the output, unit: pixel value. the sum of LocationX and ImageWidth must not exceed the total width of the mixed stream output. default is 0.
         :type LocationX: int
-        :param _LocationY: The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.
+        :param _LocationY: The Y-axis offset of the sub-screen in the output, unit: pixel value. the sum of LocationY and ImageHeight must not exceed the total height of the mixed stream output. default is 0 if left blank.
         :type LocationY: int
-        :param _ZOrder: The image layer of the video. If you do not pass this parameter, 0 will be used.
+        :param _ZOrder: The hierarchy of the sub-screen in the output. default is 0.
         :type ZOrder: int
-        :param _RenderMode: The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.
+        :param _RenderMode: The display mode of the sub-screen in the output: 0 for crop, 1 for scale and display background, 2 for scale and display black background. defaults to 0 if left blank.
         :type RenderMode: int
-        :param _BackGroundColor: (Not supported yet) The background color of a video. Below are the values for some commonly used colors:
-Red: `0xcc0033`
-Yellow: `0xcc9900`
-Green: `0xcccc33`
-Blue: `0x99CCFF`
-Black: `0x000000`
-White: `0xFFFFFF`
-Grey: `0x999999`
+        :param _BackGroundColor: [This parameter configuration is invalid and not currently supported] the background color of the sub-picture. commonly used colors are:.
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999.
         :type BackGroundColor: str
-        :param _BackgroundImageUrl: The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
+        :param _BackgroundImageUrl: The url of the placeholder image for the sub-window. fill in this parameter to specify the image displayed in the layout position when the user turns the camera off or has not joined the TRTC room. if the specified image has a different size ratio from the layout position, it will be stretched. this parameter has a higher priority than BackGroundColor. supported formats include png, jpg, jpeg, bmp, gif, and webm. the image size limit is no more than 5MB.
+Note:.
+1. make sure the image link is accessible. the backend single download timeout period is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the placeholder image will not take effect.
+2. supported character sets for urls: ['0-9', 'a-z', 'a-z', '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if characters outside the supported character sets exist, the placeholder image will not take effect.
         :type BackgroundImageUrl: str
-        :param _CustomCrop: Custom cropping.
+        :param _CustomCrop: Customer custom crop, targeting the input stream.
         :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
-        :param _BackgroundRenderMode: The display mode of the sub-background image during output: 0 for cropping, 1 for scaling and displaying the background, 2 for scaling and displaying the black background, 3 for proportional scaling. If not filled in, the default is 3.
+        :param _BackgroundRenderMode: The display mode of the sub-background image in the output: 0 for crop, 1 for scale and display background, 2 for scale and display black background, 3 for variable-scale scaling, 4 for custom rendering. defaults to 3 if left blank.
         :type BackgroundRenderMode: int
+        :param _TransparentUrl: The sub-screen template url points to a template image with an alpha channel. fill in this parameter, and the backend will extract the alpha channel of the template image during compositing, scale it as the alpha channel of the target frame, and mix it with other frames. you can use the transparent template to achieve a semi-transparent effect and arbitrary shape cropping (such as rounded corners, stars, hearts) for the target frame. png format is supported. the image size limit is no more than 5MB.
+Note:.
+1. the image aspect ratio of the template should be close to the target frame aspect ratio to avoid deformation of the template effect when scaling to fit the target frame. 2. the transparent template only takes effect when RenderMode is 0 (crop). 3. make sure the image link is accessible. the backend single download timeout period is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the transparent template will not take effect.
+2. url supported character sets: ['0-9','a-z','a-z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if characters outside the supported character sets exist, the transparent template will not take effect.
+        :type TransparentUrl: str
+        :param _BackgroundCustomRender: 
+        :type BackgroundCustomRender: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
+        :param _BackGroundColorMode: Sub-Background color effective mode. default value 0 means disabled.
+bit0 specifies whether placeholder image scaling takes effect.
+bit1 specifies whether upstream flow scaling takes effect.
+You can set the corresponding bit position to 1 to start up and take effect, such as:.
+0(00) means the sub background color is disabled.
+1(01) indicates the sub-background color is valid only when placeholder image scaling is enabled.
+2(10) means the sub background color is valid only when upstream flow scaling.
+3(11) indicates the sub-background color takes effect in both placeholder image scaling and upstream flow scaling.
+
+        :type BackGroundColorMode: int
         """
         self._UserMediaStream = None
         self._ImageWidth = None
@@ -6575,10 +6676,13 @@ Grey: `0x999999`
         self._BackgroundImageUrl = None
         self._CustomCrop = None
         self._BackgroundRenderMode = None
+        self._TransparentUrl = None
+        self._BackgroundCustomRender = None
+        self._BackGroundColorMode = None
 
     @property
     def UserMediaStream(self):
-        r"""The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.
+        r"""User media stream parameters. if left blank, tencent cloud backend fills them automatically by the room entry sequence of the uplink host.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
         """
         return self._UserMediaStream
@@ -6589,7 +6693,7 @@ Grey: `0x999999`
 
     @property
     def ImageWidth(self):
-        r"""The video width (pixels). If you do not pass this parameter, 0 will be used.
+        r"""The width of the sub-screen in the output, unit: pixel value. defaults to 0 if left blank.
         :rtype: int
         """
         return self._ImageWidth
@@ -6600,7 +6704,7 @@ Grey: `0x999999`
 
     @property
     def ImageHeight(self):
-        r"""The video height (pixels). If you do not pass this parameter, 0 will be used.
+        r"""The height of the sub-screen in the output, in pixel values. default is 0.
         :rtype: int
         """
         return self._ImageHeight
@@ -6611,7 +6715,7 @@ Grey: `0x999999`
 
     @property
     def LocationX(self):
-        r"""The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.
+        r"""The X-axis offset of the sub-screen in the output, unit: pixel value. the sum of LocationX and ImageWidth must not exceed the total width of the mixed stream output. default is 0.
         :rtype: int
         """
         return self._LocationX
@@ -6622,7 +6726,7 @@ Grey: `0x999999`
 
     @property
     def LocationY(self):
-        r"""The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.
+        r"""The Y-axis offset of the sub-screen in the output, unit: pixel value. the sum of LocationY and ImageHeight must not exceed the total height of the mixed stream output. default is 0 if left blank.
         :rtype: int
         """
         return self._LocationY
@@ -6633,7 +6737,7 @@ Grey: `0x999999`
 
     @property
     def ZOrder(self):
-        r"""The image layer of the video. If you do not pass this parameter, 0 will be used.
+        r"""The hierarchy of the sub-screen in the output. default is 0.
         :rtype: int
         """
         return self._ZOrder
@@ -6644,7 +6748,7 @@ Grey: `0x999999`
 
     @property
     def RenderMode(self):
-        r"""The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.
+        r"""The display mode of the sub-screen in the output: 0 for crop, 1 for scale and display background, 2 for scale and display black background. defaults to 0 if left blank.
         :rtype: int
         """
         return self._RenderMode
@@ -6655,14 +6759,14 @@ Grey: `0x999999`
 
     @property
     def BackGroundColor(self):
-        r"""(Not supported yet) The background color of a video. Below are the values for some commonly used colors:
-Red: `0xcc0033`
-Yellow: `0xcc9900`
-Green: `0xcccc33`
-Blue: `0x99CCFF`
-Black: `0x000000`
-White: `0xFFFFFF`
-Grey: `0x999999`
+        r"""[This parameter configuration is invalid and not currently supported] the background color of the sub-picture. commonly used colors are:.
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999.
         :rtype: str
         """
         return self._BackGroundColor
@@ -6673,7 +6777,10 @@ Grey: `0x999999`
 
     @property
     def BackgroundImageUrl(self):
-        r"""The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
+        r"""The url of the placeholder image for the sub-window. fill in this parameter to specify the image displayed in the layout position when the user turns the camera off or has not joined the TRTC room. if the specified image has a different size ratio from the layout position, it will be stretched. this parameter has a higher priority than BackGroundColor. supported formats include png, jpg, jpeg, bmp, gif, and webm. the image size limit is no more than 5MB.
+Note:.
+1. make sure the image link is accessible. the backend single download timeout period is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the placeholder image will not take effect.
+2. supported character sets for urls: ['0-9', 'a-z', 'a-z', '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if characters outside the supported character sets exist, the placeholder image will not take effect.
         :rtype: str
         """
         return self._BackgroundImageUrl
@@ -6684,7 +6791,7 @@ Grey: `0x999999`
 
     @property
     def CustomCrop(self):
-        r"""Custom cropping.
+        r"""Customer custom crop, targeting the input stream.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
         """
         return self._CustomCrop
@@ -6695,7 +6802,7 @@ Grey: `0x999999`
 
     @property
     def BackgroundRenderMode(self):
-        r"""The display mode of the sub-background image during output: 0 for cropping, 1 for scaling and displaying the background, 2 for scaling and displaying the black background, 3 for proportional scaling. If not filled in, the default is 3.
+        r"""The display mode of the sub-background image in the output: 0 for crop, 1 for scale and display background, 2 for scale and display black background, 3 for variable-scale scaling, 4 for custom rendering. defaults to 3 if left blank.
         :rtype: int
         """
         return self._BackgroundRenderMode
@@ -6703,6 +6810,50 @@ Grey: `0x999999`
     @BackgroundRenderMode.setter
     def BackgroundRenderMode(self, BackgroundRenderMode):
         self._BackgroundRenderMode = BackgroundRenderMode
+
+    @property
+    def TransparentUrl(self):
+        r"""The sub-screen template url points to a template image with an alpha channel. fill in this parameter, and the backend will extract the alpha channel of the template image during compositing, scale it as the alpha channel of the target frame, and mix it with other frames. you can use the transparent template to achieve a semi-transparent effect and arbitrary shape cropping (such as rounded corners, stars, hearts) for the target frame. png format is supported. the image size limit is no more than 5MB.
+Note:.
+1. the image aspect ratio of the template should be close to the target frame aspect ratio to avoid deformation of the template effect when scaling to fit the target frame. 2. the transparent template only takes effect when RenderMode is 0 (crop). 3. make sure the image link is accessible. the backend single download timeout period is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the transparent template will not take effect.
+2. url supported character sets: ['0-9','a-z','a-z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if characters outside the supported character sets exist, the transparent template will not take effect.
+        :rtype: str
+        """
+        return self._TransparentUrl
+
+    @TransparentUrl.setter
+    def TransparentUrl(self, TransparentUrl):
+        self._TransparentUrl = TransparentUrl
+
+    @property
+    def BackgroundCustomRender(self):
+        r"""
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
+        """
+        return self._BackgroundCustomRender
+
+    @BackgroundCustomRender.setter
+    def BackgroundCustomRender(self, BackgroundCustomRender):
+        self._BackgroundCustomRender = BackgroundCustomRender
+
+    @property
+    def BackGroundColorMode(self):
+        r"""Sub-Background color effective mode. default value 0 means disabled.
+bit0 specifies whether placeholder image scaling takes effect.
+bit1 specifies whether upstream flow scaling takes effect.
+You can set the corresponding bit position to 1 to start up and take effect, such as:.
+0(00) means the sub background color is disabled.
+1(01) indicates the sub-background color is valid only when placeholder image scaling is enabled.
+2(10) means the sub background color is valid only when upstream flow scaling.
+3(11) indicates the sub-background color takes effect in both placeholder image scaling and upstream flow scaling.
+
+        :rtype: int
+        """
+        return self._BackGroundColorMode
+
+    @BackGroundColorMode.setter
+    def BackGroundColorMode(self, BackGroundColorMode):
+        self._BackGroundColorMode = BackGroundColorMode
 
 
     def _deserialize(self, params):
@@ -6721,6 +6872,11 @@ Grey: `0x999999`
             self._CustomCrop = McuCustomCrop()
             self._CustomCrop._deserialize(params.get("CustomCrop"))
         self._BackgroundRenderMode = params.get("BackgroundRenderMode")
+        self._TransparentUrl = params.get("TransparentUrl")
+        if params.get("BackgroundCustomRender") is not None:
+            self._BackgroundCustomRender = McuBackgroundCustomRender()
+            self._BackgroundCustomRender._deserialize(params.get("BackgroundCustomRender"))
+        self._BackGroundColorMode = params.get("BackGroundColorMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6738,11 +6894,11 @@ class McuLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MixLayoutMode: The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.
+        :param _MixLayoutMode: Layout mode: dynamic layout (1: floating layout (default), 2: screen sharing layout, 3: nine-grid layout), static layout (4: custom layout). supports up to 16 mixed media streams. if the user only sends upstream audio, it will be counted as one stream. in custom layout, if the sub-screen only uses placeholder images, it will also be counted as one stream.
         :type MixLayoutMode: int
         :param _PureAudioHoldPlaceMode: Whether to display users who publish only audio. 0: No; 1: Yes. This parameter is valid only if a dynamic layout is used. If you do not pass this parameter, 0 will be used.
         :type PureAudioHoldPlaceMode: int
-        :param _MixLayoutList: The details of a custom layout.
+        :param _MixLayoutList: Valid in custom template. specifies the position of designated user video in mixed display. supports setting up to 16 input streams.
         :type MixLayoutList: list of McuLayout
         :param _MaxVideoUser: The information of the large video in screen sharing or floating layout mode.
         :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
@@ -6757,7 +6913,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutMode(self):
-        r"""The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.
+        r"""Layout mode: dynamic layout (1: floating layout (default), 2: screen sharing layout, 3: nine-grid layout), static layout (4: custom layout). supports up to 16 mixed media streams. if the user only sends upstream audio, it will be counted as one stream. in custom layout, if the sub-screen only uses placeholder images, it will also be counted as one stream.
         :rtype: int
         """
         return self._MixLayoutMode
@@ -6779,7 +6935,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutList(self):
-        r"""The details of a custom layout.
+        r"""Valid in custom template. specifies the position of designated user video in mixed display. supports setting up to 16 input streams.
         :rtype: list of McuLayout
         """
         return self._MixLayoutList
@@ -6925,7 +7081,8 @@ class McuPassThrough(AbstractModel):
         r"""
         :param _PayloadContent: The payload of the pass-through SEI.
         :type PayloadContent: str
-        :param _PayloadType: The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        :param _PayloadType: PayloadType of SEI message. valid values: 5, 100-254 (exclusion: 244, which is internal custom timestamp SEI).
+Note: some players may not support the standard type with PayloadType 5 and PayloadUuid. recommend using another PayloadType.
         :type PayloadType: int
         :param _PayloadUuid: This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.
         :type PayloadUuid: str
@@ -6953,7 +7110,8 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadType(self):
-        r"""The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        r"""PayloadType of SEI message. valid values: 5, 100-254 (exclusion: 244, which is internal custom timestamp SEI).
+Note: some players may not support the standard type with PayloadType 5 and PayloadUuid. recommend using another PayloadType.
         :rtype: int
         """
         return self._PayloadType
@@ -7064,58 +7222,39 @@ class McuPublishCdnParam(AbstractModel):
 
 
 class McuRecordParams(AbstractModel):
-    r"""Relay Recording Parameters
+    r"""Relay recording parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _UniRecord: Relay Recording Mode
-0/blank: Not currently supported, behavior undefined.
-1: Disable recording.
-2: Start recording (uses console's auto-recording template parameters. Reference: [Link to Documentation]).
-3: Start recording (uses API-specified parameters).
-Example: 2
+        :param _UniRecord: Retweet recording mode. 
+0/Leave blank: not currently supported; behavior is undefined.
+1: disable recording.
+2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+3: enable recording (use API to specify parameter).
         :type UniRecord: int
-        :param _RecordKey: Recording Task Key
-Identifies a recording task. This parameter allows merging multiple relay tasks into one recording file. If unspecified, only records the current relay task.
-[Format: Up to 128 bytes; only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).]
-Example: test_record_key_a
+        :param _RecordKey: Recording task key, identifies a recording task. you can record multiple relay tasks into a file by specifying this parameter. if this parameter is not specified, only the current relay task is recorded.
+Limit length to 128 bytes, only allow a combination of uppercase and lowercase letters (a-zA-Z), digits (0-9), underscores (_), and hyphens (-).
         :type RecordKey: str
-        :param _RecordWaitTime: [Valid only when UniRecord=3]
-Recording Resume Wait Time
-Corresponds to template parameter "Resume Wait Duration." Unit: seconds.
-Range: 5-86400 (24 hours). Default: 30. Recording stops if idle longer than this value.
-Example: 30
+        :param _RecordWaitTime: [Valid only when UniRecord=3.].
+Resume recording waiting time, corresponding to the "wait time for resumption" in the recording template, unit: seconds. the value must be greater than or equal to 5 and less than or equal to 86400 (24 hours), with a default value of 30. when resumption is enabled, the recording task ends automatically if idle for a duration exceeding RecordWaitTime.
         :type RecordWaitTime: int
-        :param _RecordFormat: [Valid only when UniRecord=3]
-Recording Output Formats
-Corresponds to template parameter "File Format." Supported values: hls, mp4, aac. Default: mp4.
-Note: mp4 and aac formats are mutually exclusive.
-Example (MP4 only): ["mp4"]
-Example (MP4 + HLS): ["mp4","hls"]
+        :param _RecordFormat: [Valid only when UniRecord=3.].
+The list of output file formats for recording corresponds to the "file format" in the recording template. it supports three formats: "hls", "mp4", and "aac". the default value is "mp4". among them, "mp4" and "aac" formats cannot be specified simultaneously.
+Record only the mp4 format, example value: ["mp4"]. record both mp4 and HLS formats simultaneously, example value: ["mp4","HLS"].
         :type RecordFormat: list of str
-        :param _MaxMediaFileDuration: [Valid only when UniRecord=3]
-Single File Duration
-Corresponds to template parameter "Max File Duration." Unit: minutes.
-Range: 1-1440 (24 hours). Default: 1440. Applies only to mp4/aac. Actual duration is capped at 2GB file size.
-Example: 1440
+        :param _MaxMediaFileDuration: [Valid only when UniRecord=3.].
+Single file recording duration, corresponding to the "max recording time per file" in the recording template, unit: minutes. the value must be greater than or equal to 1 and less than or equal to 1440 (24 hours), with a default value of 1440. it only takes effect for "mp4" or "aac" format. the actual single file recording duration is also limited by the file size not exceeding 2G. if it exceeds 2G, the file will be forcibly split.
         :type MaxMediaFileDuration: int
-        :param _StreamType: [Valid only when UniRecord=3]
-Recording Media Type
-Corresponds to template parameter "Recording Format."
-0: Audio+Video, 1: Audio only, 2: Video only. Output is the intersection of this setting and relay content.
-Example: 0
+        :param _StreamType: [Valid only when UniRecord=3.].
+The audio and video type of the recording corresponds to the "recording format" in the recording template. valid values: 0 (audio and video), 1 (pure audio), 2 (video only). the final recording file content is the intersection of the specified type and the relayed content.
         :type StreamType: int
-        :param _UserDefineRecordPrefix: Recording Filename Prefix
-Filename prefix (<=64 bytes). Applies only to VOD storage.
-*Format: Letters (a-z, A-Z), numbers (0-9), underscores (_), hyphens (-).*
-Example: mcu_record_prefix
+        :param _UserDefineRecordPrefix: Recording file name prefix, no more than 64 characters. this parameter is valid only when store is vod.
+Limit length to 64 bytes, only allow a combination of uppercase and lowercase letters (a-zA-Z), digits (0-9), underscores (_), and hyphens (-).
         :type UserDefineRecordPrefix: str
-        :param _McuStorageParams: [Valid only when UniRecord=3]
-Recording Storage Parameters
-Corresponds to console parameter "Storage Location." Supports Tencent VOD or COS (exclusively).
-Example: {"McuCloudVod":{"McuTencentVod":{"ExpireTime":86400}}}
+        :param _McuStorageParams: [Valid only when UniRecord=3.].
+Recording files storage parameters, corresponding console "storage location" and related parameters. currently supports VOD and COS storage methods. only one can be filled.
         :type McuStorageParams: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
         """
         self._UniRecord = None
@@ -7129,12 +7268,11 @@ Example: {"McuCloudVod":{"McuTencentVod":{"ExpireTime":86400}}}
 
     @property
     def UniRecord(self):
-        r"""Relay Recording Mode
-0/blank: Not currently supported, behavior undefined.
-1: Disable recording.
-2: Start recording (uses console's auto-recording template parameters. Reference: [Link to Documentation]).
-3: Start recording (uses API-specified parameters).
-Example: 2
+        r"""Retweet recording mode. 
+0/Leave blank: not currently supported; behavior is undefined.
+1: disable recording.
+2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+3: enable recording (use API to specify parameter).
         :rtype: int
         """
         return self._UniRecord
@@ -7145,10 +7283,8 @@ Example: 2
 
     @property
     def RecordKey(self):
-        r"""Recording Task Key
-Identifies a recording task. This parameter allows merging multiple relay tasks into one recording file. If unspecified, only records the current relay task.
-[Format: Up to 128 bytes; only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).]
-Example: test_record_key_a
+        r"""Recording task key, identifies a recording task. you can record multiple relay tasks into a file by specifying this parameter. if this parameter is not specified, only the current relay task is recorded.
+Limit length to 128 bytes, only allow a combination of uppercase and lowercase letters (a-zA-Z), digits (0-9), underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._RecordKey
@@ -7159,11 +7295,8 @@ Example: test_record_key_a
 
     @property
     def RecordWaitTime(self):
-        r"""[Valid only when UniRecord=3]
-Recording Resume Wait Time
-Corresponds to template parameter "Resume Wait Duration." Unit: seconds.
-Range: 5-86400 (24 hours). Default: 30. Recording stops if idle longer than this value.
-Example: 30
+        r"""[Valid only when UniRecord=3.].
+Resume recording waiting time, corresponding to the "wait time for resumption" in the recording template, unit: seconds. the value must be greater than or equal to 5 and less than or equal to 86400 (24 hours), with a default value of 30. when resumption is enabled, the recording task ends automatically if idle for a duration exceeding RecordWaitTime.
         :rtype: int
         """
         return self._RecordWaitTime
@@ -7174,12 +7307,9 @@ Example: 30
 
     @property
     def RecordFormat(self):
-        r"""[Valid only when UniRecord=3]
-Recording Output Formats
-Corresponds to template parameter "File Format." Supported values: hls, mp4, aac. Default: mp4.
-Note: mp4 and aac formats are mutually exclusive.
-Example (MP4 only): ["mp4"]
-Example (MP4 + HLS): ["mp4","hls"]
+        r"""[Valid only when UniRecord=3.].
+The list of output file formats for recording corresponds to the "file format" in the recording template. it supports three formats: "hls", "mp4", and "aac". the default value is "mp4". among them, "mp4" and "aac" formats cannot be specified simultaneously.
+Record only the mp4 format, example value: ["mp4"]. record both mp4 and HLS formats simultaneously, example value: ["mp4","HLS"].
         :rtype: list of str
         """
         return self._RecordFormat
@@ -7190,11 +7320,8 @@ Example (MP4 + HLS): ["mp4","hls"]
 
     @property
     def MaxMediaFileDuration(self):
-        r"""[Valid only when UniRecord=3]
-Single File Duration
-Corresponds to template parameter "Max File Duration." Unit: minutes.
-Range: 1-1440 (24 hours). Default: 1440. Applies only to mp4/aac. Actual duration is capped at 2GB file size.
-Example: 1440
+        r"""[Valid only when UniRecord=3.].
+Single file recording duration, corresponding to the "max recording time per file" in the recording template, unit: minutes. the value must be greater than or equal to 1 and less than or equal to 1440 (24 hours), with a default value of 1440. it only takes effect for "mp4" or "aac" format. the actual single file recording duration is also limited by the file size not exceeding 2G. if it exceeds 2G, the file will be forcibly split.
         :rtype: int
         """
         return self._MaxMediaFileDuration
@@ -7205,11 +7332,8 @@ Example: 1440
 
     @property
     def StreamType(self):
-        r"""[Valid only when UniRecord=3]
-Recording Media Type
-Corresponds to template parameter "Recording Format."
-0: Audio+Video, 1: Audio only, 2: Video only. Output is the intersection of this setting and relay content.
-Example: 0
+        r"""[Valid only when UniRecord=3.].
+The audio and video type of the recording corresponds to the "recording format" in the recording template. valid values: 0 (audio and video), 1 (pure audio), 2 (video only). the final recording file content is the intersection of the specified type and the relayed content.
         :rtype: int
         """
         return self._StreamType
@@ -7220,10 +7344,8 @@ Example: 0
 
     @property
     def UserDefineRecordPrefix(self):
-        r"""Recording Filename Prefix
-Filename prefix (<=64 bytes). Applies only to VOD storage.
-*Format: Letters (a-z, A-Z), numbers (0-9), underscores (_), hyphens (-).*
-Example: mcu_record_prefix
+        r"""Recording file name prefix, no more than 64 characters. this parameter is valid only when store is vod.
+Limit length to 64 bytes, only allow a combination of uppercase and lowercase letters (a-zA-Z), digits (0-9), underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._UserDefineRecordPrefix
@@ -7234,10 +7356,8 @@ Example: mcu_record_prefix
 
     @property
     def McuStorageParams(self):
-        r"""[Valid only when UniRecord=3]
-Recording Storage Parameters
-Corresponds to console parameter "Storage Location." Supports Tencent VOD or COS (exclusively).
-Example: {"McuCloudVod":{"McuTencentVod":{"ExpireTime":86400}}}
+        r"""[Valid only when UniRecord=3.].
+Recording files storage parameters, corresponding console "storage location" and related parameters. currently supports VOD and COS storage methods. only one can be filled.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
         """
         return self._McuStorageParams
@@ -7324,18 +7444,15 @@ class McuSeiParams(AbstractModel):
 
 
 class McuStorageParams(AbstractModel):
-    r"""Mcu relay recording; third-party storage parameters.
+    r"""Mcu relay recording. third-party object storage parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _CloudStorage: Third-Party Cloud Storage Account Information
-(Note: Storing files in Object Storage COS will incur recording file delivery fees. For details, see [Cloud Recording Billing]. Storing in VOD does not incur this fee.)
-Example:{"Vendor":0,"Region":"ap-shanghai","Bucket":"*","AccessKey":"*","SecretKey":"***","FileNamePrefix":["mcu_record"]}
+        :param _CloudStorage: Account information for third-party cloud storage (special note: if you select storage to cloud object storage (COS), there will be a charge for shipping recorded files to COS. for details, see cloud recording pricing information. storing to VOD will incur no charge for this item.).
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param _McuCloudVod: Tencent Cloud VOD Account Information
-Example:{"McuTencentVod":{"ExpireTime":86400}}
+        :param _McuCloudVod: Account information of tencent cloud vod.
         :type McuCloudVod: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
         """
         self._CloudStorage = None
@@ -7343,9 +7460,7 @@ Example:{"McuTencentVod":{"ExpireTime":86400}}
 
     @property
     def CloudStorage(self):
-        r"""Third-Party Cloud Storage Account Information
-(Note: Storing files in Object Storage COS will incur recording file delivery fees. For details, see [Cloud Recording Billing]. Storing in VOD does not incur this fee.)
-Example:{"Vendor":0,"Region":"ap-shanghai","Bucket":"*","AccessKey":"*","SecretKey":"***","FileNamePrefix":["mcu_record"]}
+        r"""Account information for third-party cloud storage (special note: if you select storage to cloud object storage (COS), there will be a charge for shipping recorded files to COS. for details, see cloud recording pricing information. storing to VOD will incur no charge for this item.).
         :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
         """
         return self._CloudStorage
@@ -7356,8 +7471,7 @@ Example:{"Vendor":0,"Region":"ap-shanghai","Bucket":"*","AccessKey":"*","SecretK
 
     @property
     def McuCloudVod(self):
-        r"""Tencent Cloud VOD Account Information
-Example:{"McuTencentVod":{"ExpireTime":86400}}
+        r"""Account information of tencent cloud vod.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
         """
         return self._McuCloudVod
@@ -7385,43 +7499,26 @@ Example:{"McuTencentVod":{"ExpireTime":86400}}
 
 
 class McuTencentVod(AbstractModel):
-    r"""Mcu Relay Recording and Tencent VOD Parameters
+    r"""Mcu relay recording. tencent cloud video on demand (vod) related parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _Procedure: Post-Upload Task Processing
-Automatically initiates task flows after media uploads complete. Value = Task flow template name.
-VOD supports creating and naming task flow templates.
-Example: template_name
+        :param _Procedure: Subsequent media task processing operations allow automatic task initiation after media upload is completed. the parameter value is the task flow template name. VOD (video on demand) supports creating task flow templates and template naming.
         :type Procedure: str
-        :param _ExpireTime: Media File Expiration Time
-Absolute expiration time from current timestamp.
-86400 = 1 day retention
-0 = permanent storage (default)
-Example: 86400
+        :param _ExpireTime: Media file expiry time is the absolute expiration time from the current system time. to save for one day, enter "86400". to retain permanently, enter "0". the default is permanent preservation.
         :type ExpireTime: int
-        :param _StorageRegion: Upload Region Specification
-For users requiring specific upload regions.
-Example: ap-shanghai
+        :param _StorageRegion: Specify the upload park, applicable only to the user with special requirement for upload region.
         :type StorageRegion: str
-        :param _ClassId: Category ID
-Manages media classification. Obtain via category creation API.
-Default: 0 (Other category)
-Example: 0
+        :param _ClassId: Category ID is used to categorize and manage media. you can create a category and obtain the category ID through the create category api.
+The default value is 0, indicating other categories.
         :type ClassId: int
-        :param _SubAppId: VOD SubAppId
-Required when accessing sub-application resources. Leave empty otherwise.
-Example: 0
+        :param _SubAppId: Subapplication ID for video-on-demand (vod). if you need to access resources belonging to a subapplication, fill in this field with the subapplication ID. otherwise, this field is not required.
         :type SubAppId: int
-        :param _SessionContext: Task Flow Context
-Passed through in task completion callbacks.
-Example: user_custom
+        :param _SessionContext: Task flow context, passed through when task complete.
         :type SessionContext: str
-        :param _SourceContext: Upload Context
-Passed through in upload completion callbacks.
-Example: user_custom
+        :param _SourceContext: Upload context, passed through on upload completion callback.
         :type SourceContext: str
         """
         self._Procedure = None
@@ -7434,10 +7531,7 @@ Example: user_custom
 
     @property
     def Procedure(self):
-        r"""Post-Upload Task Processing
-Automatically initiates task flows after media uploads complete. Value = Task flow template name.
-VOD supports creating and naming task flow templates.
-Example: template_name
+        r"""Subsequent media task processing operations allow automatic task initiation after media upload is completed. the parameter value is the task flow template name. VOD (video on demand) supports creating task flow templates and template naming.
         :rtype: str
         """
         return self._Procedure
@@ -7448,11 +7542,7 @@ Example: template_name
 
     @property
     def ExpireTime(self):
-        r"""Media File Expiration Time
-Absolute expiration time from current timestamp.
-86400 = 1 day retention
-0 = permanent storage (default)
-Example: 86400
+        r"""Media file expiry time is the absolute expiration time from the current system time. to save for one day, enter "86400". to retain permanently, enter "0". the default is permanent preservation.
         :rtype: int
         """
         return self._ExpireTime
@@ -7463,9 +7553,7 @@ Example: 86400
 
     @property
     def StorageRegion(self):
-        r"""Upload Region Specification
-For users requiring specific upload regions.
-Example: ap-shanghai
+        r"""Specify the upload park, applicable only to the user with special requirement for upload region.
         :rtype: str
         """
         return self._StorageRegion
@@ -7476,10 +7564,8 @@ Example: ap-shanghai
 
     @property
     def ClassId(self):
-        r"""Category ID
-Manages media classification. Obtain via category creation API.
-Default: 0 (Other category)
-Example: 0
+        r"""Category ID is used to categorize and manage media. you can create a category and obtain the category ID through the create category api.
+The default value is 0, indicating other categories.
         :rtype: int
         """
         return self._ClassId
@@ -7490,9 +7576,7 @@ Example: 0
 
     @property
     def SubAppId(self):
-        r"""VOD SubAppId
-Required when accessing sub-application resources. Leave empty otherwise.
-Example: 0
+        r"""Subapplication ID for video-on-demand (vod). if you need to access resources belonging to a subapplication, fill in this field with the subapplication ID. otherwise, this field is not required.
         :rtype: int
         """
         return self._SubAppId
@@ -7503,9 +7587,7 @@ Example: 0
 
     @property
     def SessionContext(self):
-        r"""Task Flow Context
-Passed through in task completion callbacks.
-Example: user_custom
+        r"""Task flow context, passed through when task complete.
         :rtype: str
         """
         return self._SessionContext
@@ -7516,9 +7598,7 @@ Example: user_custom
 
     @property
     def SourceContext(self):
-        r"""Upload Context
-Passed through in upload completion callbacks.
-Example: user_custom
+        r"""Upload context, passed through on upload completion callback.
         :rtype: str
         """
         return self._SourceContext
@@ -7555,8 +7635,12 @@ class McuUserInfoParams(AbstractModel):
         r"""
         :param _UserInfo: The user information.
         :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        :param _SoundLevel: Audio mix volume adjustment. value ranges from 0 to 100. 100 indicates the original uplink volume. the default value is 100 if left blank. a lower value results in a lower volume.
+Note: this parameter takes effect only when configured in the volume allowlist and is unavailable in other scenarios.
+        :type SoundLevel: int
         """
         self._UserInfo = None
+        self._SoundLevel = None
 
     @property
     def UserInfo(self):
@@ -7569,11 +7653,24 @@ class McuUserInfoParams(AbstractModel):
     def UserInfo(self, UserInfo):
         self._UserInfo = UserInfo
 
+    @property
+    def SoundLevel(self):
+        r"""Audio mix volume adjustment. value ranges from 0 to 100. 100 indicates the original uplink volume. the default value is 100 if left blank. a lower value results in a lower volume.
+Note: this parameter takes effect only when configured in the volume allowlist and is unavailable in other scenarios.
+        :rtype: int
+        """
+        return self._SoundLevel
+
+    @SoundLevel.setter
+    def SoundLevel(self, SoundLevel):
+        self._SoundLevel = SoundLevel
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
             self._UserInfo = MixUserInfo()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        self._SoundLevel = params.get("SoundLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7591,24 +7688,27 @@ class McuVideoParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoEncode: The video encoding parameters.
+        :param _VideoEncode: Video encoding parameter for the output stream.
         :type VideoEncode: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
-        :param _LayoutParams: The layout parameters.
+        :param _LayoutParams: Stream mixing layout parameter.
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
-        :param _BackGroundColor: The canvas color. Below are the values for some common colors:
-Red: 0xcc0033
-Yellow: 0xcc9900
-Green: 0xcccc33
-Blue: 0x99CCFF
-Black: 0x000000
-White: 0xFFFFFF
-Grey: 0x999999
+        :param _BackGroundColor: The entire canvas background color. commonly used colors:.
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999.
         :type BackGroundColor: str
-        :param _BackgroundImageUrl: The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.
+        :param _BackgroundImageUrl: The url of the background image for the entire canvas. priority is higher than BackGroundColor. supports png, jpg, and jpeg formats. image size limit is not more than 5MB.
+Note:.
+1. make sure the image link is accessible. the backend download timeout is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the background image will not take effect.
+2. url supported character sets: ['0-9','a-z','a-z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if any character outside the supported character sets exists, the background image will not take effect.
         :type BackgroundImageUrl: str
-        :param _WaterMarkList: The watermark information for the mixed stream.
+        :param _WaterMarkList: Watermark parameters for the stream mixing layout.
         :type WaterMarkList: list of McuWaterMarkParams
-        :param _BackgroundRenderMode: Background image display mode during output: 0 for crop, 1 for scale and display with black background, 2 for proportional scaling. The backend default is proportional scaling.
+        :param _BackgroundRenderMode: The display mode of the background image in the output: 0 for crop, 1 for scale and display black background, 2 for variable-scale scaling. the backend defaults to variable-scale scaling.
         :type BackgroundRenderMode: int
         """
         self._VideoEncode = None
@@ -7620,7 +7720,7 @@ Grey: 0x999999
 
     @property
     def VideoEncode(self):
-        r"""The video encoding parameters.
+        r"""Video encoding parameter for the output stream.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
         """
         return self._VideoEncode
@@ -7631,7 +7731,7 @@ Grey: 0x999999
 
     @property
     def LayoutParams(self):
-        r"""The layout parameters.
+        r"""Stream mixing layout parameter.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
         """
         return self._LayoutParams
@@ -7642,14 +7742,14 @@ Grey: 0x999999
 
     @property
     def BackGroundColor(self):
-        r"""The canvas color. Below are the values for some common colors:
-Red: 0xcc0033
-Yellow: 0xcc9900
-Green: 0xcccc33
-Blue: 0x99CCFF
-Black: 0x000000
-White: 0xFFFFFF
-Grey: 0x999999
+        r"""The entire canvas background color. commonly used colors:.
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999.
         :rtype: str
         """
         return self._BackGroundColor
@@ -7660,7 +7760,10 @@ Grey: 0x999999
 
     @property
     def BackgroundImageUrl(self):
-        r"""The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.
+        r"""The url of the background image for the entire canvas. priority is higher than BackGroundColor. supports png, jpg, and jpeg formats. image size limit is not more than 5MB.
+Note:.
+1. make sure the image link is accessible. the backend download timeout is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the background image will not take effect.
+2. url supported character sets: ['0-9','a-z','a-z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if any character outside the supported character sets exists, the background image will not take effect.
         :rtype: str
         """
         return self._BackgroundImageUrl
@@ -7671,7 +7774,7 @@ Grey: 0x999999
 
     @property
     def WaterMarkList(self):
-        r"""The watermark information for the mixed stream.
+        r"""Watermark parameters for the stream mixing layout.
         :rtype: list of McuWaterMarkParams
         """
         return self._WaterMarkList
@@ -7682,7 +7785,7 @@ Grey: 0x999999
 
     @property
     def BackgroundRenderMode(self):
-        r"""Background image display mode during output: 0 for crop, 1 for scale and display with black background, 2 for proportional scaling. The backend default is proportional scaling.
+        r"""The display mode of the background image in the output: 0 for crop, 1 for scale and display black background, 2 for variable-scale scaling. the backend defaults to variable-scale scaling.
         :rtype: int
         """
         return self._BackgroundRenderMode
@@ -7725,7 +7828,10 @@ class McuWaterMarkImage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WaterMarkUrl: The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.
+        :param _WaterMarkUrl: Watermark image URL address. supports png, jpg, and jpeg formats. image size limit not more than 5MB.
+Note:.
+Make sure the image link has data accessibility. the backend download timeout is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the watermark image will not take effect.
+2. supported character sets for urls: ['0-9', 'a-z', 'a-z', '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if any characters exist outside the supported character sets, the watermark image will not take effect.
         :type WaterMarkUrl: str
         :param _WaterMarkWidth: The watermark width (pixels).
         :type WaterMarkWidth: int
@@ -7737,6 +7843,8 @@ class McuWaterMarkImage(AbstractModel):
         :type LocationY: int
         :param _ZOrder: The image layer of the watermark. If you do not pass this parameter, 0 will be used.
         :type ZOrder: int
+        :param _DynamicPosType: 
+        :type DynamicPosType: int
         """
         self._WaterMarkUrl = None
         self._WaterMarkWidth = None
@@ -7744,10 +7852,14 @@ class McuWaterMarkImage(AbstractModel):
         self._LocationX = None
         self._LocationY = None
         self._ZOrder = None
+        self._DynamicPosType = None
 
     @property
     def WaterMarkUrl(self):
-        r"""The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.
+        r"""Watermark image URL address. supports png, jpg, and jpeg formats. image size limit not more than 5MB.
+Note:.
+Make sure the image link has data accessibility. the backend download timeout is 10 seconds with a maximum of 3 retries. if the image download fails eventually, the watermark image will not take effect.
+2. supported character sets for urls: ['0-9', 'a-z', 'a-z', '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|']. make sure url characters are within the supported character sets. if any characters exist outside the supported character sets, the watermark image will not take effect.
         :rtype: str
         """
         return self._WaterMarkUrl
@@ -7811,6 +7923,17 @@ class McuWaterMarkImage(AbstractModel):
     def ZOrder(self, ZOrder):
         self._ZOrder = ZOrder
 
+    @property
+    def DynamicPosType(self):
+        r"""
+        :rtype: int
+        """
+        return self._DynamicPosType
+
+    @DynamicPosType.setter
+    def DynamicPosType(self, DynamicPosType):
+        self._DynamicPosType = DynamicPosType
+
 
     def _deserialize(self, params):
         self._WaterMarkUrl = params.get("WaterMarkUrl")
@@ -7819,6 +7942,7 @@ class McuWaterMarkImage(AbstractModel):
         self._LocationX = params.get("LocationX")
         self._LocationY = params.get("LocationY")
         self._ZOrder = params.get("ZOrder")
+        self._DynamicPosType = params.get("DynamicPosType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7922,6 +8046,12 @@ class McuWaterMarkText(AbstractModel):
         :type FontColor: str
         :param _BackGroundColor: The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.	
         :type BackGroundColor: str
+        :param _DynamicPosType: 
+        :type DynamicPosType: int
+        :param _ZOrder: 
+        :type ZOrder: int
+        :param _Font: Watermark font, by default if left blank is Tencent. valid values: Tencent (default), SourceHanSans.
+        :type Font: str
         """
         self._Text = None
         self._WaterMarkWidth = None
@@ -7931,6 +8061,9 @@ class McuWaterMarkText(AbstractModel):
         self._FontSize = None
         self._FontColor = None
         self._BackGroundColor = None
+        self._DynamicPosType = None
+        self._ZOrder = None
+        self._Font = None
 
     @property
     def Text(self):
@@ -8020,6 +8153,39 @@ class McuWaterMarkText(AbstractModel):
     def BackGroundColor(self, BackGroundColor):
         self._BackGroundColor = BackGroundColor
 
+    @property
+    def DynamicPosType(self):
+        r"""
+        :rtype: int
+        """
+        return self._DynamicPosType
+
+    @DynamicPosType.setter
+    def DynamicPosType(self, DynamicPosType):
+        self._DynamicPosType = DynamicPosType
+
+    @property
+    def ZOrder(self):
+        r"""
+        :rtype: int
+        """
+        return self._ZOrder
+
+    @ZOrder.setter
+    def ZOrder(self, ZOrder):
+        self._ZOrder = ZOrder
+
+    @property
+    def Font(self):
+        r"""Watermark font, by default if left blank is Tencent. valid values: Tencent (default), SourceHanSans.
+        :rtype: str
+        """
+        return self._Font
+
+    @Font.setter
+    def Font(self, Font):
+        self._Font = Font
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -8030,6 +8196,9 @@ class McuWaterMarkText(AbstractModel):
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._BackGroundColor = params.get("BackGroundColor")
+        self._DynamicPosType = params.get("DynamicPosType")
+        self._ZOrder = params.get("ZOrder")
+        self._Font = params.get("Font")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8549,7 +8718,7 @@ class MixUserInfo(AbstractModel):
         :type UserId: str
         :param _RoomId: If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.
         :type RoomId: str
-        :param _RoomIdType: The type of the `RoomId` parameter. 0: integer; 1: string.
+        :param _RoomIdType: Room id type. 0 indicates integer room number. 1 indicates string room number.
         :type RoomIdType: int
         """
         self._UserId = None
@@ -8580,7 +8749,7 @@ class MixUserInfo(AbstractModel):
 
     @property
     def RoomIdType(self):
-        r"""The type of the `RoomId` parameter. 0: integer; 1: string.
+        r"""Room id type. 0 indicates integer room number. 1 indicates string room number.
         :rtype: int
         """
         return self._RoomIdType
@@ -9463,7 +9632,7 @@ class RecordParams(AbstractModel):
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         :param _OutputFormat: Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :type OutputFormat: int
         :param _AvMerge: In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.
         :type AvMerge: int
@@ -9548,7 +9717,7 @@ When this option is enabled, it is recommended to use the "Subscription Allowlis
     def OutputFormat(self):
         r"""Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :rtype: int
         """
         return self._OutputFormat
@@ -11204,30 +11373,30 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
         :type SdkAppId: int
-        :param _RoomId: The ID of the room whose streams are relayed (the main room).
+        :param _RoomId: Main room information RoomId, the RoomId corresponding to the TRTC room for relay.
         :type RoomId: str
-        :param _RoomIdType: The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.
+        :param _RoomIdType: Main room information RoomType must be the same as the RoomId type of the relayed room. 0 indicates integer type room id, and 1 indicates string room number.
         :type RoomIdType: int
-        :param _AgentParams: The information of the relaying robot in the room.
+        :param _AgentParams: Relay service bot parameters for joining TRTC room.
         :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
-        :param _WithTranscoding: Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.
+        :param _WithTranscoding: Whether to transcode. 0 indicates no need to transcode, 1 indicates requirement to transcode. whether to charge transcoding fee is determined by the WithTranscoding parameter. WithTranscoding set to 0 means bypass forwarding and no transcoding costs will be incurred. WithTranscoding set to 1 means mixed-stream relay and transcoding costs will be charged.
+Note: transcoding is required for stream mixing, and this parameter must be set to 1.
         :type WithTranscoding: int
-        :param _AudioParams: The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.
+        :param _AudioParams: Audio encoding parameters for stream retransmission. since audio must be transcoded (no transcoding costs will be incurred), this field is required when starting a task.
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
-        :param _VideoParams: The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.
+        :param _VideoParams: Video encoding parameters for the relay stream. leave blank for audio-only relay.
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
-        :param _SingleSubscribeParams: The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.
+        :param _SingleSubscribeParams: The user uplink parameters require single stream bypass forwarding. WithTranscoding needs to be set to 0 for single stream bypass forwarding.
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
-        :param _PublishCdnParams: The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.
+        :param _PublishCdnParams: The CDN parameters for relay push support up to 10 push urls for a task. there must be one pushback room parameter.
         :type PublishCdnParams: list of McuPublishCdnParam
-        :param _SeiParams: The stream mixing SEI parameters.
+        :param _SeiParams: Stream mixing SEI parameter.
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param _FeedBackRoomParams: The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.
+        :param _FeedBackRoomParams: Push back room information. a task supports up to 10 push rooms, and there must be one forward CDN parameter. note: use SDK version 10.4 or higher to push room. if you need assistance, contact tencent cloud technical support.
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
-        :param _RecordParams: Relay Recording Parameters.
-Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
+        :param _RecordParams: Relay recording parameters. refer to the reference document (https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1).
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         self._SdkAppId = None
@@ -11245,7 +11414,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def SdkAppId(self):
-        r"""The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        r"""[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
         :rtype: int
         """
         return self._SdkAppId
@@ -11256,7 +11425,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def RoomId(self):
-        r"""The ID of the room whose streams are relayed (the main room).
+        r"""Main room information RoomId, the RoomId corresponding to the TRTC room for relay.
         :rtype: str
         """
         return self._RoomId
@@ -11267,7 +11436,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def RoomIdType(self):
-        r"""The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.
+        r"""Main room information RoomType must be the same as the RoomId type of the relayed room. 0 indicates integer type room id, and 1 indicates string room number.
         :rtype: int
         """
         return self._RoomIdType
@@ -11278,7 +11447,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def AgentParams(self):
-        r"""The information of the relaying robot in the room.
+        r"""Relay service bot parameters for joining TRTC room.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
         """
         return self._AgentParams
@@ -11289,7 +11458,8 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def WithTranscoding(self):
-        r"""Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.
+        r"""Whether to transcode. 0 indicates no need to transcode, 1 indicates requirement to transcode. whether to charge transcoding fee is determined by the WithTranscoding parameter. WithTranscoding set to 0 means bypass forwarding and no transcoding costs will be incurred. WithTranscoding set to 1 means mixed-stream relay and transcoding costs will be charged.
+Note: transcoding is required for stream mixing, and this parameter must be set to 1.
         :rtype: int
         """
         return self._WithTranscoding
@@ -11300,7 +11470,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def AudioParams(self):
-        r"""The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.
+        r"""Audio encoding parameters for stream retransmission. since audio must be transcoded (no transcoding costs will be incurred), this field is required when starting a task.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
         """
         return self._AudioParams
@@ -11311,7 +11481,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def VideoParams(self):
-        r"""The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.
+        r"""Video encoding parameters for the relay stream. leave blank for audio-only relay.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
         """
         return self._VideoParams
@@ -11322,7 +11492,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def SingleSubscribeParams(self):
-        r"""The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.
+        r"""The user uplink parameters require single stream bypass forwarding. WithTranscoding needs to be set to 0 for single stream bypass forwarding.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
         """
         return self._SingleSubscribeParams
@@ -11333,7 +11503,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def PublishCdnParams(self):
-        r"""The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.
+        r"""The CDN parameters for relay push support up to 10 push urls for a task. there must be one pushback room parameter.
         :rtype: list of McuPublishCdnParam
         """
         return self._PublishCdnParams
@@ -11344,7 +11514,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def SeiParams(self):
-        r"""The stream mixing SEI parameters.
+        r"""Stream mixing SEI parameter.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         """
         return self._SeiParams
@@ -11355,7 +11525,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def FeedBackRoomParams(self):
-        r"""The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.
+        r"""Push back room information. a task supports up to 10 push rooms, and there must be one forward CDN parameter. note: use SDK version 10.4 or higher to push room. if you need assistance, contact tencent cloud technical support.
         :rtype: list of McuFeedBackRoomParams
         """
         return self._FeedBackRoomParams
@@ -11366,8 +11536,7 @@ Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
 
     @property
     def RecordParams(self):
-        r"""Relay Recording Parameters.
-Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
+        r"""Relay recording parameters. refer to the reference document (https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         return self._RecordParams
@@ -11429,7 +11598,7 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.
+        :param _TaskId: Used to uniquely identify the forwarding task, generated by the tencent cloud server. you need to carry the TaskID parameter for follow-up updates and to stop the request.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11439,7 +11608,7 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.
+        r"""Used to uniquely identify the forwarding task, generated by the tencent cloud server. you need to carry the TaskID parameter for follow-up updates and to stop the request.
         :rtype: str
         """
         return self._TaskId
@@ -11779,30 +11948,31 @@ class StartWebRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordUrl: URL of the web page to be recorded
+        :param _RecordUrl: [Required] webpage URL that needs to be recorded.
         :type RecordUrl: str
-        :param _MaxDurationLimit: Maximum recording duration limit, in seconds. Valid range: [1800, 36000]. Default is 36,000 seconds (10 hours).
-        :type MaxDurationLimit: int
-        :param _StorageParams: [Required] Parameters related to cloud storage. Currently, Tencent Cloud Object Storage and Tencent Cloud VOD are supported, but third-party cloud storage is not supported. The storage format of the output file only supports hls or mp4.
+        :param _StorageParams: [Required] cloud storage related parameters. currently supports tencent cloud object storage as well as VOD. no support for third-party cloud storage. the storage format of the output file is only supported for hls or mp4.
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
-        :param _WebRecordVideoParams: web-page recording video parameters
-        :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
-        :param _SdkAppId: [Required] The SDKAppID of the TRTC room 
+        :param _SdkAppId: [Required] the SdkAppId of TRTC.
         :type SdkAppId: int
-        :param _RecordId: When sensitive to repetitive tasks, please pay attention to this value: To avoid tasks being initiated repeatedly in a short period, leading to task duplication, pass in the recording RecordId to identify the current task. The RecordId should be less than 32 bytes. If you carry the RecordId and initiate the start recording request more than once, only one task will be started, and the second one will report the error FailedOperation.TaskExist. Note that if the StartWebRecord call fails with an error other than FailedOperation.TaskExist, please change the RecordId and initiate the request again.
+        :param _MaxDurationLimit: Maximum recording duration limit in seconds. valid values [1800, 86400]. default 86400s (24 hr).
+        :type MaxDurationLimit: int
+        :param _WebRecordVideoParams: Page recording video parameter.
+        :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
+        :param _RecordId: When sensitive to repetition tasks, pay attention to this value: to avoid triggering tasks repeatedly in a short time frame, which may lead to task duplication.
+Import the recording RecordId to identify the task, less than 32 bytes. if carrying RecordId initiates start recording requests more than twice, only one task will start up, and the second will report error FailedOperation.TaskExist. note that when StartWebRecord call fails instead of FailedOperation.TaskExist error, change RecordId and re-initiate the request.
         :type RecordId: str
-        :param _PublishCdnParams: If you want to push the stream to a CDN, you can use the PublishCdnParams.N parameter to set it. It supports pushing streams to up to 10 CDN addresses simultaneously. If the relay address is a Tencent Cloud CDN, please explicitly set IsTencentCdn to 1.
+        :param _PublishCdnParams: If you want to push stream to CDN, you can configure parameters in PublishCdnParams.N. it supports streaming simultaneously to up to 10 CDN addresses. if the relay address is tencent cloud CDN, set IsTencentCdn to 1.
         :type PublishCdnParams: list of McuPublishCdnParam
-        :param _ReadyTimeout: The timeout for loading page resources during recording, in seconds. The default value is 0 seconds. This value must be greater than or equal to 0 seconds and less than or equal to 60 seconds. If page load timeout detection is not enabled for the recording page, please do not set this parameter.
+        :param _ReadyTimeout: Timeout period for recording page resource loading, unit: second. default value is 0, which must be greater than or equal to 0 and less than or equal to 60. do not set this parameter when page loading timeout detection is disabled for the recording page.
         :type ReadyTimeout: int
-        :param _EmulateMobileParams: Render mobile mode parameters; do not set this parameter if you are not going to render mobile mode pages.
+        :param _EmulateMobileParams: Render the mobile mode parameter. do not set this parameter when not preparing to render the mobile mode webpage.
         :type EmulateMobileParams: :class:`tencentcloud.trtc.v20190722.models.EmulateMobileParams`
         """
         self._RecordUrl = None
-        self._MaxDurationLimit = None
         self._StorageParams = None
-        self._WebRecordVideoParams = None
         self._SdkAppId = None
+        self._MaxDurationLimit = None
+        self._WebRecordVideoParams = None
         self._RecordId = None
         self._PublishCdnParams = None
         self._ReadyTimeout = None
@@ -11810,7 +11980,7 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def RecordUrl(self):
-        r"""URL of the web page to be recorded
+        r"""[Required] webpage URL that needs to be recorded.
         :rtype: str
         """
         return self._RecordUrl
@@ -11820,19 +11990,8 @@ class StartWebRecordRequest(AbstractModel):
         self._RecordUrl = RecordUrl
 
     @property
-    def MaxDurationLimit(self):
-        r"""Maximum recording duration limit, in seconds. Valid range: [1800, 36000]. Default is 36,000 seconds (10 hours).
-        :rtype: int
-        """
-        return self._MaxDurationLimit
-
-    @MaxDurationLimit.setter
-    def MaxDurationLimit(self, MaxDurationLimit):
-        self._MaxDurationLimit = MaxDurationLimit
-
-    @property
     def StorageParams(self):
-        r"""[Required] Parameters related to cloud storage. Currently, Tencent Cloud Object Storage and Tencent Cloud VOD are supported, but third-party cloud storage is not supported. The storage format of the output file only supports hls or mp4.
+        r"""[Required] cloud storage related parameters. currently supports tencent cloud object storage as well as VOD. no support for third-party cloud storage. the storage format of the output file is only supported for hls or mp4.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
         """
         return self._StorageParams
@@ -11842,19 +12001,8 @@ class StartWebRecordRequest(AbstractModel):
         self._StorageParams = StorageParams
 
     @property
-    def WebRecordVideoParams(self):
-        r"""web-page recording video parameters
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
-        """
-        return self._WebRecordVideoParams
-
-    @WebRecordVideoParams.setter
-    def WebRecordVideoParams(self, WebRecordVideoParams):
-        self._WebRecordVideoParams = WebRecordVideoParams
-
-    @property
     def SdkAppId(self):
-        r"""[Required] The SDKAppID of the TRTC room 
+        r"""[Required] the SdkAppId of TRTC.
         :rtype: int
         """
         return self._SdkAppId
@@ -11864,8 +12012,31 @@ class StartWebRecordRequest(AbstractModel):
         self._SdkAppId = SdkAppId
 
     @property
+    def MaxDurationLimit(self):
+        r"""Maximum recording duration limit in seconds. valid values [1800, 86400]. default 86400s (24 hr).
+        :rtype: int
+        """
+        return self._MaxDurationLimit
+
+    @MaxDurationLimit.setter
+    def MaxDurationLimit(self, MaxDurationLimit):
+        self._MaxDurationLimit = MaxDurationLimit
+
+    @property
+    def WebRecordVideoParams(self):
+        r"""Page recording video parameter.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
+        """
+        return self._WebRecordVideoParams
+
+    @WebRecordVideoParams.setter
+    def WebRecordVideoParams(self, WebRecordVideoParams):
+        self._WebRecordVideoParams = WebRecordVideoParams
+
+    @property
     def RecordId(self):
-        r"""When sensitive to repetitive tasks, please pay attention to this value: To avoid tasks being initiated repeatedly in a short period, leading to task duplication, pass in the recording RecordId to identify the current task. The RecordId should be less than 32 bytes. If you carry the RecordId and initiate the start recording request more than once, only one task will be started, and the second one will report the error FailedOperation.TaskExist. Note that if the StartWebRecord call fails with an error other than FailedOperation.TaskExist, please change the RecordId and initiate the request again.
+        r"""When sensitive to repetition tasks, pay attention to this value: to avoid triggering tasks repeatedly in a short time frame, which may lead to task duplication.
+Import the recording RecordId to identify the task, less than 32 bytes. if carrying RecordId initiates start recording requests more than twice, only one task will start up, and the second will report error FailedOperation.TaskExist. note that when StartWebRecord call fails instead of FailedOperation.TaskExist error, change RecordId and re-initiate the request.
         :rtype: str
         """
         return self._RecordId
@@ -11876,7 +12047,7 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
-        r"""If you want to push the stream to a CDN, you can use the PublishCdnParams.N parameter to set it. It supports pushing streams to up to 10 CDN addresses simultaneously. If the relay address is a Tencent Cloud CDN, please explicitly set IsTencentCdn to 1.
+        r"""If you want to push stream to CDN, you can configure parameters in PublishCdnParams.N. it supports streaming simultaneously to up to 10 CDN addresses. if the relay address is tencent cloud CDN, set IsTencentCdn to 1.
         :rtype: list of McuPublishCdnParam
         """
         return self._PublishCdnParams
@@ -11887,7 +12058,7 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def ReadyTimeout(self):
-        r"""The timeout for loading page resources during recording, in seconds. The default value is 0 seconds. This value must be greater than or equal to 0 seconds and less than or equal to 60 seconds. If page load timeout detection is not enabled for the recording page, please do not set this parameter.
+        r"""Timeout period for recording page resource loading, unit: second. default value is 0, which must be greater than or equal to 0 and less than or equal to 60. do not set this parameter when page loading timeout detection is disabled for the recording page.
         :rtype: int
         """
         return self._ReadyTimeout
@@ -11898,7 +12069,7 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def EmulateMobileParams(self):
-        r"""Render mobile mode parameters; do not set this parameter if you are not going to render mobile mode pages.
+        r"""Render the mobile mode parameter. do not set this parameter when not preparing to render the mobile mode webpage.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.EmulateMobileParams`
         """
         return self._EmulateMobileParams
@@ -11910,14 +12081,14 @@ class StartWebRecordRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._RecordUrl = params.get("RecordUrl")
-        self._MaxDurationLimit = params.get("MaxDurationLimit")
         if params.get("StorageParams") is not None:
             self._StorageParams = StorageParams()
             self._StorageParams._deserialize(params.get("StorageParams"))
+        self._SdkAppId = params.get("SdkAppId")
+        self._MaxDurationLimit = params.get("MaxDurationLimit")
         if params.get("WebRecordVideoParams") is not None:
             self._WebRecordVideoParams = WebRecordVideoParams()
             self._WebRecordVideoParams._deserialize(params.get("WebRecordVideoParams"))
-        self._SdkAppId = params.get("SdkAppId")
         self._RecordId = params.get("RecordId")
         if params.get("PublishCdnParams") is not None:
             self._PublishCdnParams = []
@@ -11946,7 +12117,7 @@ class StartWebRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The unique ID of the recording task
+        :param _TaskId: Unique Id of the recording task.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11956,7 +12127,7 @@ class StartWebRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""The unique ID of the recording task
+        r"""Unique Id of the recording task.
         :rtype: str
         """
         return self._TaskId
@@ -14225,7 +14396,7 @@ class VideoEncode(AbstractModel):
         r"""
         :param _Width: The width of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1920].
         :type Width: int
-        :param _Height: The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].
+        :param _Height: Output stream is high and required for audio and video output. value ranges from 0 to 1920. unit: pixel value.
         :type Height: int
         :param _Fps: The frame rate (fps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 60].
         :type Fps: int
@@ -14253,7 +14424,7 @@ class VideoEncode(AbstractModel):
 
     @property
     def Height(self):
-        r"""The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].
+        r"""Output stream is high and required for audio and video output. value ranges from 0 to 1920. unit: pixel value.
         :rtype: int
         """
         return self._Height
@@ -14592,7 +14763,7 @@ class WaterMark(AbstractModel):
 
 
 class WaterMarkChar(AbstractModel):
-    r"""Custom text watermark data structure
+    r"""
 
     """
 
@@ -14829,7 +15000,7 @@ class WaterMarkImage(AbstractModel):
 
 
 class WaterMarkTimestamp(AbstractModel):
-    r"""Timestamp watermark data structure
+    r"""
 
     """
 
@@ -14880,22 +15051,22 @@ class WaterMarkTimestamp(AbstractModel):
 
 
 class WebRecordVideoParams(AbstractModel):
-    r"""Page recording control parameters
+    r"""Recording control parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _Width: Recording screen width, defaults to 1280, value range [0, 1920]
+        :param _Width: Recording image width defaults to 1280, with a value range of [0, 1920].
         :type Width: int
-        :param _Height: Recording screen height, defaults to 720, value range [0, 1080]
+        :param _Height: Recording image height, defaults to 720, in the range of [0, 1080].
         :type Height: int
-        :param _Format: Specify the output format, optional hls, mp4. When storing to VOD, this parameter is invalid; please use the MediaType setting within TencentVod (https://cloud.tencent.com/document/api/647/44055#TencentVod).
- 
+        :param _Format: Specify output format. valid values: hls, mp4. this parameter is invalid when storing in VOD. to store in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+
         :type Format: str
-        :param _MaxMediaFileDuration: If the file format is aac or mp4, the system will automatically split the video file when it exceeds the length limit. Unit: minutes. Default: 1440 min (24h), value range: 1-1440. [Single file size is limited to a maximum of 2G. Files will be automatically split if either condition is met: file size >2G or recording duration > 24h]
-This parameter does not take effect for Hls format recordings.
-Sample value: 1440
+        :param _MaxMediaFileDuration: If the file format is aac or mp4, the system will automatically split the video file when the length limit is exceeded. measurement unit: minute. defaults to 1440 min (24h). value range: 1-1440. [single file limit is 2G. if file size exceeds 2G or recording duration exceeds 24h, the file will be automatically split.].
+Hls format recording. this parameter is not effective.
+Example value: 1440.
         :type MaxMediaFileDuration: int
         """
         self._Width = None
@@ -14905,7 +15076,7 @@ Sample value: 1440
 
     @property
     def Width(self):
-        r"""Recording screen width, defaults to 1280, value range [0, 1920]
+        r"""Recording image width defaults to 1280, with a value range of [0, 1920].
         :rtype: int
         """
         return self._Width
@@ -14916,7 +15087,7 @@ Sample value: 1440
 
     @property
     def Height(self):
-        r"""Recording screen height, defaults to 720, value range [0, 1080]
+        r"""Recording image height, defaults to 720, in the range of [0, 1080].
         :rtype: int
         """
         return self._Height
@@ -14927,8 +15098,8 @@ Sample value: 1440
 
     @property
     def Format(self):
-        r"""Specify the output format, optional hls, mp4. When storing to VOD, this parameter is invalid; please use the MediaType setting within TencentVod (https://cloud.tencent.com/document/api/647/44055#TencentVod).
- 
+        r"""Specify output format. valid values: hls, mp4. this parameter is invalid when storing in VOD. to store in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+
         :rtype: str
         """
         return self._Format
@@ -14939,9 +15110,9 @@ Sample value: 1440
 
     @property
     def MaxMediaFileDuration(self):
-        r"""If the file format is aac or mp4, the system will automatically split the video file when it exceeds the length limit. Unit: minutes. Default: 1440 min (24h), value range: 1-1440. [Single file size is limited to a maximum of 2G. Files will be automatically split if either condition is met: file size >2G or recording duration > 24h]
-This parameter does not take effect for Hls format recordings.
-Sample value: 1440
+        r"""If the file format is aac or mp4, the system will automatically split the video file when the length limit is exceeded. measurement unit: minute. defaults to 1440 min (24h). value range: 1-1440. [single file limit is 2G. if file size exceeds 2G or recording duration exceeds 24h, the file will be automatically split.].
+Hls format recording. this parameter is not effective.
+Example value: 1440.
         :rtype: int
         """
         return self._MaxMediaFileDuration

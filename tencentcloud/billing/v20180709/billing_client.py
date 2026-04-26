@@ -257,6 +257,121 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocateConditions(self, request):
+        r"""This API is used to query the filter conditions of a resource directory.
+
+        :param request: Request instance for DescribeAllocateConditions.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocateConditionsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocateConditionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocateConditions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocateConditionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationBillConditions(self, request):
+        r"""This API is used to query the filter conditions of a cost allocation bill.
+
+        :param request: Request instance for DescribeAllocationBillConditions.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillConditionsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillConditionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationBillConditions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationBillConditionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationBillDetail(self, request):
+        r"""This API is used to query the details of a cost allocation bill.
+
+        :param request: Request instance for DescribeAllocationBillDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationBillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationBillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationMonthOverview(self, request):
+        r"""This API is used to query the monthly overview of a cost allocation bill.
+
+        :param request: Request instance for DescribeAllocationMonthOverview.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationMonthOverviewRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationMonthOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationMonthOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationMonthOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationOverview(self, request):
+        r"""This API is used to query the daily overview of a cost allocation bill.
+
+        :param request: Request instance for DescribeAllocationOverview.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationOverviewRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllocationRuleDetail(self, request):
         r"""This API is used to query sharing rule details.
 
@@ -303,6 +418,75 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocationSummaryByBusiness(self, request):
+        r"""This API is used to query the details of a cost allocation bill by product.
+
+        :param request: Request instance for DescribeAllocationSummaryByBusiness.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByBusinessRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByBusinessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByBusiness", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByBusinessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationSummaryByItem(self, request):
+        r"""This API is used to query the details of a cost allocation bill by item.
+
+        :param request: Request instance for DescribeAllocationSummaryByItem.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByItemRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByItemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByItem", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByItemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationSummaryByResource(self, request):
+        r"""This API is used to query the details of a cost allocation bill by resource.
+
+        :param request: Request instance for DescribeAllocationSummaryByResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllocationTree(self, request):
         r"""This API is used to query the cost tree.
 
@@ -317,6 +501,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeAllocationTree", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAllocationTreeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationTrendByMonth(self, request):
+        r"""This API is used to query the cost trend of a cost allocation bill.
+
+        :param request: Request instance for DescribeAllocationTrendByMonth.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTrendByMonthRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTrendByMonthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationTrendByMonth", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationTrendByMonthResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -350,7 +557,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillAdjustInfo(self, request):
-        r"""This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
+        r"""This API is used to query whether there is a bill adjustment for the current UIN through API. Customers can obtain bill adjustment status faster and proactively.
 
         :param request: Request instance for DescribeBillAdjustInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoRequest`
@@ -652,8 +859,34 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCPQBillingMapping(self, request):
+        r"""Query the four-layer matching relationship between the quoted product name and billing products
+
+        :param request: Request instance for DescribeCPQBillingMapping.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCPQBillingMappingRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCPQBillingMappingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCPQBillingMapping", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCPQBillingMappingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCostDetail(self, request):
         r"""This API is used to query consumption details.
+
+        Notes:
+        For customers with large-scale consumption detail (for example, monthly consumption detail exceeding 1M), there will be a timeout risk when retrieving detailed data via API call. It is recommended to enable the billing data storage function and analyze bill files obtained in a bucket. [Store bills to COS](https://www.tencentcloud.com/document/product/555/61275?from_cn_redirect=1)
 
         :param request: Request instance for DescribeCostDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailRequest`
@@ -827,6 +1060,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeDosageCosDetailByDate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDosageCosDetailByDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGatherResource(self, request):
+        r"""This API is used to query the details of a cost allocation bill by resource.
+
+        :param request: Request instance for DescribeGatherResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeGatherResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatherResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatherResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -25,28 +25,6 @@ class CloudauditClient(AbstractClient):
     _endpoint = 'cloudaudit.intl.tencentcloudapi.com'
     _service = 'cloudaudit'
 
-    async def CreateAudit(
-            self,
-            request: models.CreateAuditRequest,
-            opts: Dict = None,
-    ) -> models.CreateAuditResponse:
-        """
-        Parameter requirements:
-        1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `osBucketName` are required.
-        2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
-        3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
-        4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateAudit"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateAuditResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateAuditTrack(
             self,
             request: models.CreateAuditTrackRequest,
@@ -60,24 +38,6 @@ class CloudauditClient(AbstractClient):
         kwargs["action"] = "CreateAuditTrack"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAuditTrackResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteAudit(
-            self,
-            request: models.DeleteAuditRequest,
-            opts: Dict = None,
-    ) -> models.DeleteAuditResponse:
-        """
-        This API is used to delete a tracking set.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteAudit"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteAuditResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

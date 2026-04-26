@@ -31,7 +31,7 @@ class TagClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddProjectResponse:
         """
-        Creates a project
+        Creates a project.
         """
         
         kwargs = {}

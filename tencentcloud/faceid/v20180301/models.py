@@ -2604,6 +2604,549 @@ Query succeeded
         self._RequestId = params.get("RequestId")
 
 
+class CheckIdCardInformationRequest(AbstractModel):
+    r"""CheckIdCardInformation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: <p>Base64 value of the ID card portrait side.</p><ul><li>Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.</li><li>Supported image size: the downloaded image should be no more than 7M after Base64 encoding.</li><li>Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for coding specification.</li><li>Either ImageBase64 or ImageUrl must be provided. If both are provided, proceed to use parameters according to the priority of ImageUrl > ImageBase64.</li></ul>
+        :type ImageBase64: str
+        :param _ImageUrl: <p>Url address of the ID card portrait side</p><ul><li>Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.</li><li>Supported image size: The downloaded image after Base64 encoding is no more than 3M. Image download time is no more than 3 seconds.</li><li>Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>Speed and stability of non-Tencent Cloud Storage URLs may be impacted to a certain extent.</li></ul>
+        :type ImageUrl: str
+        :param _Config: <p>Configuration.</p><ul><li><p>All the following optional fields are bool type, default false.<br>CopyWarn, alarm for photocopy.<br>BorderCheckWarn, border and frame block alarm.<br>ReshootWarn, alarm for rephotographing.<br>DetectPsWarn, PS detection alarm (suspected PS traces).<br>TempIdWarn, temporary ID card alarm.<br>Quality, image Quality alarm (evaluates blurriness).</p></li><li><p>SDK configuration method for reference:<br>Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true}).</p></li><li><p>API 3.0 Explorer setting method for reference:<br>Config = {"CopyWarn":true,"ReshootWarn":true}.</p></li></ul>
+        :type Config: str
+        :param _IsEncrypt: <p>Whether required to encrypt sensitive information in the response.</p><ul><li>Default false.</li><li>Sensitive information includes Response.IdNum and Response.Name.</li></ul>
+        :type IsEncrypt: bool
+        :param _IsEncryptResponse: <p>Whether required to encrypt the response body.</p>
+        :type IsEncryptResponse: bool
+        :param _Encryption: <p>Whether required to encrypt sensitive information in the response, need to be specified encryption algorithm Algorithm, initial vector for CBC encryption, and encrypted symmetric key.</p>
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._Config = None
+        self._IsEncrypt = None
+        self._IsEncryptResponse = None
+        self._Encryption = None
+
+    @property
+    def ImageBase64(self):
+        r"""<p>Base64 value of the ID card portrait side.</p><ul><li>Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.</li><li>Supported image size: the downloaded image should be no more than 7M after Base64 encoding.</li><li>Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for coding specification.</li><li>Either ImageBase64 or ImageUrl must be provided. If both are provided, proceed to use parameters according to the priority of ImageUrl > ImageBase64.</li></ul>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""<p>Url address of the ID card portrait side</p><ul><li>Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.</li><li>Supported image size: The downloaded image after Base64 encoding is no more than 3M. Image download time is no more than 3 seconds.</li><li>Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>Speed and stability of non-Tencent Cloud Storage URLs may be impacted to a certain extent.</li></ul>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Config(self):
+        r"""<p>Configuration.</p><ul><li><p>All the following optional fields are bool type, default false.<br>CopyWarn, alarm for photocopy.<br>BorderCheckWarn, border and frame block alarm.<br>ReshootWarn, alarm for rephotographing.<br>DetectPsWarn, PS detection alarm (suspected PS traces).<br>TempIdWarn, temporary ID card alarm.<br>Quality, image Quality alarm (evaluates blurriness).</p></li><li><p>SDK configuration method for reference:<br>Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true}).</p></li><li><p>API 3.0 Explorer setting method for reference:<br>Config = {"CopyWarn":true,"ReshootWarn":true}.</p></li></ul>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def IsEncrypt(self):
+        r"""<p>Whether required to encrypt sensitive information in the response.</p><ul><li>Default false.</li><li>Sensitive information includes Response.IdNum and Response.Name.</li></ul>
+        :rtype: bool
+        """
+        return self._IsEncrypt
+
+    @IsEncrypt.setter
+    def IsEncrypt(self, IsEncrypt):
+        self._IsEncrypt = IsEncrypt
+
+    @property
+    def IsEncryptResponse(self):
+        r"""<p>Whether required to encrypt the response body.</p>
+        :rtype: bool
+        """
+        return self._IsEncryptResponse
+
+    @IsEncryptResponse.setter
+    def IsEncryptResponse(self, IsEncryptResponse):
+        self._IsEncryptResponse = IsEncryptResponse
+
+    @property
+    def Encryption(self):
+        r"""<p>Whether required to encrypt sensitive information in the response, need to be specified encryption algorithm Algorithm, initial vector for CBC encryption, and encrypted symmetric key.</p>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._Config = params.get("Config")
+        self._IsEncrypt = params.get("IsEncrypt")
+        self._IsEncryptResponse = params.get("IsEncryptResponse")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckIdCardInformationResponse(AbstractModel):
+    r"""CheckIdCardInformation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sim: <p>Similarity. - Value ranges from 0.00 to 100.00. - Recommend threshold at least 70 to judge as same person, self-adjust based on specific scenario (pass rate for threshold 70 is 0.01%).</p>
+        :type Sim: float
+        :param _Result: <p>Business error code.</p><ul><li>Success case returns Success.</li><li>For error conditions, refer to the FailedOperation part in the error code list below.</li></ul>
+        :type Result: str
+        :param _Description: <p>Business result description.</p>
+        :type Description: str
+        :param _Name: <p>Name.</p>
+        :type Name: str
+        :param _Sex: <p>Gender.</p>
+        :type Sex: str
+        :param _Nation: <p>Ethnicity.</p>
+        :type Nation: str
+        :param _Birth: <p>Date of birth.</p>
+        :type Birth: str
+        :param _Address: <p>Address.</p>
+        :type Address: str
+        :param _IdNum: <p>Identity card number.</p>
+        :type IdNum: str
+        :param _Portrait: <p>The base64 encoding of the ID card portrait photo. If the image cropping fails, it will compare with the entire ID card and return null.</p>
+        :type Portrait: str
+        :param _Warnings: <p>Alarm information.</p><ul><li><p>When alarm information is configured in Config, portrait comparison will be disabled, Result returns an error (FailedOperation.OcrWarningOccurred) with this alarm information.</p></li><li><p>Code list of alarm codes and definition:<br>&#39;-9101&#39;: Incomplete ID card border alarm.<br>&#39;-9102&#39;: ID card copy alarm.<br>&#39;-9103&#39;: ID card photocopy alarm.<br>&#39;-9105&#39;: ID card frame occlusion alarm.<br>&#39;-9104&#39;: Temporary ID card alarm.<br>&#39;-9106&#39;: ID card PS alarm (suspected PS traces).<br>&#39;-8001&#39;: Warn about blurry images.</p></li><li><p>Multiple codes are separated by "|", such as "-9101|-9106|-9104".</p></li></ul>
+        :type Warnings: str
+        :param _Quality: <p>Image quality score.</p><ul><li>This parameter is significant only when warn about blurry images is configured in the request Config.</li><li>Value ranges from 0 to 100. The current default threshold is 50. A score lower than 50 triggers blurry image warnings.</li></ul>
+        :type Quality: float
+        :param _Encryption: <p>Sensitive data encryption info.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: <p>Encrypted data.</p>
+        :type EncryptedBody: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._Name = None
+        self._Sex = None
+        self._Nation = None
+        self._Birth = None
+        self._Address = None
+        self._IdNum = None
+        self._Portrait = None
+        self._Warnings = None
+        self._Quality = None
+        self._Encryption = None
+        self._EncryptedBody = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        r"""<p>Similarity. - Value ranges from 0.00 to 100.00. - Recommend threshold at least 70 to judge as same person, self-adjust based on specific scenario (pass rate for threshold 70 is 0.01%).</p>
+        :rtype: float
+        """
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        r"""<p>Business error code.</p><ul><li>Success case returns Success.</li><li>For error conditions, refer to the FailedOperation part in the error code list below.</li></ul>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""<p>Business result description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        r"""<p>Name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Sex(self):
+        r"""<p>Gender.</p>
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Nation(self):
+        r"""<p>Ethnicity.</p>
+        :rtype: str
+        """
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Birth(self):
+        r"""<p>Date of birth.</p>
+        :rtype: str
+        """
+        return self._Birth
+
+    @Birth.setter
+    def Birth(self, Birth):
+        self._Birth = Birth
+
+    @property
+    def Address(self):
+        r"""<p>Address.</p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def IdNum(self):
+        r"""<p>Identity card number.</p>
+        :rtype: str
+        """
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+    @property
+    def Portrait(self):
+        r"""<p>The base64 encoding of the ID card portrait photo. If the image cropping fails, it will compare with the entire ID card and return null.</p>
+        :rtype: str
+        """
+        return self._Portrait
+
+    @Portrait.setter
+    def Portrait(self, Portrait):
+        self._Portrait = Portrait
+
+    @property
+    def Warnings(self):
+        r"""<p>Alarm information.</p><ul><li><p>When alarm information is configured in Config, portrait comparison will be disabled, Result returns an error (FailedOperation.OcrWarningOccurred) with this alarm information.</p></li><li><p>Code list of alarm codes and definition:<br>&#39;-9101&#39;: Incomplete ID card border alarm.<br>&#39;-9102&#39;: ID card copy alarm.<br>&#39;-9103&#39;: ID card photocopy alarm.<br>&#39;-9105&#39;: ID card frame occlusion alarm.<br>&#39;-9104&#39;: Temporary ID card alarm.<br>&#39;-9106&#39;: ID card PS alarm (suspected PS traces).<br>&#39;-8001&#39;: Warn about blurry images.</p></li><li><p>Multiple codes are separated by "|", such as "-9101|-9106|-9104".</p></li></ul>
+        :rtype: str
+        """
+        return self._Warnings
+
+    @Warnings.setter
+    def Warnings(self, Warnings):
+        self._Warnings = Warnings
+
+    @property
+    def Quality(self):
+        r"""<p>Image quality score.</p><ul><li>This parameter is significant only when warn about blurry images is configured in the request Config.</li><li>Value ranges from 0 to 100. The current default threshold is 50. A score lower than 50 triggers blurry image warnings.</li></ul>
+        :rtype: float
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
+    @property
+    def Encryption(self):
+        r"""<p>Sensitive data encryption info.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        r"""<p>Encrypted data.</p>
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Sex = params.get("Sex")
+        self._Nation = params.get("Nation")
+        self._Birth = params.get("Birth")
+        self._Address = params.get("Address")
+        self._IdNum = params.get("IdNum")
+        self._Portrait = params.get("Portrait")
+        self._Warnings = params.get("Warnings")
+        self._Quality = params.get("Quality")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckIdNameDateRequest(AbstractModel):
+    r"""CheckIdNameDate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+        :type Name: str
+        :param _IdCard: Identity card number.
+        :type IdCard: str
+        :param _ValidityBegin: ID card validity start time.
+-Format: YYYYMMDD, for example: 20210701.
+        :type ValidityBegin: str
+        :param _ValidityEnd: ID card expiration time.
+Format: YYYYMMDD, use "00000000" for long-term, for example: 20210701.
+        :type ValidityEnd: str
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._Name = None
+        self._IdCard = None
+        self._ValidityBegin = None
+        self._ValidityEnd = None
+        self._Encryption = None
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCard(self):
+        r"""Identity card number.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def ValidityBegin(self):
+        r"""ID card validity start time.
+-Format: YYYYMMDD, for example: 20210701.
+        :rtype: str
+        """
+        return self._ValidityBegin
+
+    @ValidityBegin.setter
+    def ValidityBegin(self, ValidityBegin):
+        self._ValidityBegin = ValidityBegin
+
+    @property
+    def ValidityEnd(self):
+        r"""ID card expiration time.
+Format: YYYYMMDD, use "00000000" for long-term, for example: 20210701.
+        :rtype: str
+        """
+        return self._ValidityEnd
+
+    @ValidityEnd.setter
+    def ValidityEnd(self, ValidityEnd):
+        self._ValidityEnd = ValidityEnd
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._IdCard = params.get("IdCard")
+        self._ValidityBegin = params.get("ValidityBegin")
+        self._ValidityEnd = params.get("ValidityEnd")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckIdNameDateResponse(AbstractModel):
+    r"""CheckIdNameDate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code. Billing is as follows.
+
+-Result code for charges
+Same.
+-1: Inconsistent.
+
+-Result code with no charge
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length or format).
+-4: Invalid validity period (incorrect length, format, etc.).
+-5: Invalid identity information.
+-6: Document library service exception.
+-7: No ID card record found in the document library.
+-8: Authentication attempts exceeded the daily limit. Retry the next day.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code. Billing is as follows.
+
+-Result code for charges
+Same.
+-1: Inconsistent.
+
+-Result code with no charge
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length or format).
+-4: Invalid validity period (incorrect length, format, etc.).
+-5: Invalid identity information.
+-6: Document library service exception.
+-7: No ID card record found in the document library.
+-8: Authentication attempts exceeded the daily limit. Retry the next day.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
 class CompareFaceLivenessRequest(AbstractModel):
     r"""CompareFaceLiveness request structure.
 
@@ -3807,20 +4350,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ExtraInfo(AbstractModel):
-    r"""Additional Details
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _RetrievalLivenessExtraInfo: Details of matched templates, only returns the template information with the highest similarity
+        :param _RetrievalLivenessExtraInfo: 
         :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
         """
         self._RetrievalLivenessExtraInfo = None
 
     @property
     def RetrievalLivenessExtraInfo(self):
-        r"""Details of matched templates, only returns the template information with the highest similarity
+        r"""
         :rtype: list of RetrievalLivenessExtraInfo
         """
         return self._RetrievalLivenessExtraInfo
@@ -5763,6 +6306,818 @@ class HMTPermit(AbstractModel):
         
 
 
+class IdCardOCRVerificationRequest(AbstractModel):
+    r"""IdCardOCRVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: Identity card number.
+-Name, identity card number, ImageBase64, or ImageUrl must provide one of the three.
+-If both are provided, proceed to use parameters according to the priority of name and identity card number > ImageBase64 > ImageUrl.
+        :type IdCard: str
+        :param _Name: Name
+        :type Name: str
+        :param _ImageBase64: Base64 value of the ID card portrait side.
+-Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.
+-Supported image size: The downloaded image after Base64 encoding is no more than 3M. Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.
+        :type ImageBase64: str
+        :param _ImageUrl: Url of the ID card portrait side.
+-Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.
+-Supported image size: The downloaded image is no more than 3M after Base64 encoding. Image download time is no more than 3 seconds.
+-Images stored on Tencent Cloud's Url guarantee higher download speed and stability. It is advisable to store images on Tencent Cloud.
+-The speed and stability of non-Tencent Cloud Storage URLs may be impacted.
+        :type ImageUrl: str
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._IdCard = None
+        self._Name = None
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._Encryption = None
+
+    @property
+    def IdCard(self):
+        r"""Identity card number.
+-Name, identity card number, ImageBase64, or ImageUrl must provide one of the three.
+-If both are provided, proceed to use parameters according to the priority of name and identity card number > ImageBase64 > ImageUrl.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ImageBase64(self):
+        r"""Base64 value of the ID card portrait side.
+-Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.
+-Supported image size: The downloaded image after Base64 encoding is no more than 3M. Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""Url of the ID card portrait side.
+-Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported.
+-Supported image size: The downloaded image is no more than 3M after Base64 encoding. Image download time is no more than 3 seconds.
+-Images stored on Tencent Cloud's Url guarantee higher download speed and stability. It is advisable to store images on Tencent Cloud.
+-The speed and stability of non-Tencent Cloud Storage URLs may be impacted.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IdCardOCRVerificationResponse(AbstractModel):
+    r"""IdCardOCRVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code. Billing is as follows.
+-Result code for charges
+The name and identity card number match.
+-Name and ID card number mismatch.
+-Result code with no charge
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length or format).
+-4: Document library service exception.
+-5: No ID card record found in the document library.
+-6: The authoritative comparison system is being upgraded. Try again later.
+-7: Authentication attempts exceeded the daily limit.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _Name: Name to verify.
+        :type Name: str
+        :param _IdCard: Identity card number to verify.
+        :type IdCard: str
+        :param _Sex: Gender obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        :param _Nation: Ethnicity obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nation: str
+        :param _Birth: Birthday obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birth: str
+        :param _Address: Address obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._Name = None
+        self._IdCard = None
+        self._Sex = None
+        self._Nation = None
+        self._Birth = None
+        self._Address = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code. Billing is as follows.
+-Result code for charges
+The name and identity card number match.
+-Name and ID card number mismatch.
+-Result code with no charge
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length or format).
+-4: Document library service exception.
+-5: No ID card record found in the document library.
+-6: The authoritative comparison system is being upgraded. Try again later.
+-7: Authentication attempts exceeded the daily limit.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        r"""Name to verify.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCard(self):
+        r"""Identity card number to verify.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Sex(self):
+        r"""Gender obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Nation(self):
+        r"""Ethnicity obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Birth(self):
+        r"""Birthday obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birth
+
+    @Birth.setter
+    def Birth(self, Birth):
+        self._Birth = Birth
+
+    @property
+    def Address(self):
+        r"""Address obtained by OCR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._IdCard = params.get("IdCard")
+        self._Sex = params.get("Sex")
+        self._Nation = params.get("Nation")
+        self._Birth = params.get("Birth")
+        self._Address = params.get("Address")
+        self._RequestId = params.get("RequestId")
+
+
+class IdCardVerificationRequest(AbstractModel):
+    r"""IdCardVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: Identity card number.
+        :type IdCard: str
+        :param _Name: Name
+        :type Name: str
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._IdCard = None
+        self._Name = None
+        self._Encryption = None
+
+    @property
+    def IdCard(self):
+        r"""Identity card number.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IdCardVerificationResponse(AbstractModel):
+    r"""IdCardVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code. Billing is as follows.
+-Result code for charges
+Name and identity card number match
+-Name and ID card number mismatch
+No charge result code:
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length, format, etc.)
+-4: Document library service exception
+-5: No ID card record found in the document library
+-6: The authoritative comparison system is being upgraded. Try again later.
+-7: Authentication attempts exceeded the daily limit.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code. Billing is as follows.
+-Result code for charges
+Name and identity card number match
+-Name and ID card number mismatch
+No charge result code:
+-2: Invalid ID number (incorrect length or check digit).
+-3: Invalid name (incorrect length, format, etc.)
+-4: Document library service exception
+-5: No ID card record found in the document library
+-6: The authoritative comparison system is being upgraded. Try again later.
+-7: Authentication attempts exceeded the daily limit.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
+class ImageRecognitionRequest(AbstractModel):
+    r"""ImageRecognition request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: <p>Identity card number</p>
+        :type IdCard: str
+        :param _Name: <p>Name. For Chinese, please use UTF-8 encode.</p>
+        :type Name: str
+        :param _ImageBase64: <p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
+        :type ImageBase64: str
+        :param _Optional: <p>This parameter is not required for this API.</p>
+        :type Optional: str
+        :param _Encryption: <p>Sensitive data encryption information. Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</p>
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._IdCard = None
+        self._Name = None
+        self._ImageBase64 = None
+        self._Optional = None
+        self._Encryption = None
+
+    @property
+    def IdCard(self):
+        r"""<p>Identity card number</p>
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""<p>Name. For Chinese, please use UTF-8 encode.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ImageBase64(self):
+        r"""<p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Optional(self):
+        r"""<p>This parameter is not required for this API.</p>
+        :rtype: str
+        """
+        return self._Optional
+
+    @Optional.setter
+    def Optional(self, Optional):
+        self._Optional = Optional
+
+    @property
+    def Encryption(self):
+        r"""<p>Sensitive data encryption information. Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</p>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageRecognitionResponse(AbstractModel):
+    r"""ImageRecognition response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sim: <p>Similarity, value ranges from 0.00 to 100.00. Recommend judging as the same person when similarity is at least 70. Threshold can be self-adjusted based on specific scenarios (pass rate for false matches is one in a thousand at threshold 70, and one in ten thousand at threshold 80).</p>
+        :type Sim: float
+        :param _Result: <p>Business error code. Successfully returns Success in successful case. For error conditions, refer to the FailedOperation part in the error code list below.</p>
+        :type Result: str
+        :param _Description: <p>Business result description.</p>
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        r"""<p>Similarity, value ranges from 0.00 to 100.00. Recommend judging as the same person when similarity is at least 70. Threshold can be self-adjusted based on specific scenarios (pass rate for false matches is one in a thousand at threshold 70, and one in ten thousand at threshold 80).</p>
+        :rtype: float
+        """
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        r"""<p>Business error code. Successfully returns Success in successful case. For error conditions, refer to the FailedOperation part in the error code list below.</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""<p>Business result description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
+class ImageRecognitionV2Request(AbstractModel):
+    r"""ImageRecognitionV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: <p>Identity card number.</p>
+        :type IdCard: str
+        :param _Name: <p>Name.</p><ul><li>For Chinese, please use UTF-8 encode.</li></ul>
+        :type Name: str
+        :param _ImageBase64: <p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
+        :type ImageBase64: str
+        :param _Optional: <p>This parameter is not required for this API.</p>
+        :type Optional: str
+        :param _Encryption: <p>Sensitive data encryption information.</p><ul><li>Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</li></ul>
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _Extra: <p>Customized description field.</p><ul><li>For description of invoke business info. This description field will return in the output.</li><li>Each customized description field supports [1,10] characters.</li></ul>
+        :type Extra: str
+        """
+        self._IdCard = None
+        self._Name = None
+        self._ImageBase64 = None
+        self._Optional = None
+        self._Encryption = None
+        self._Extra = None
+
+    @property
+    def IdCard(self):
+        r"""<p>Identity card number.</p>
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""<p>Name.</p><ul><li>For Chinese, please use UTF-8 encode.</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ImageBase64(self):
+        r"""<p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Optional(self):
+        r"""<p>This parameter is not required for this API.</p>
+        :rtype: str
+        """
+        return self._Optional
+
+    @Optional.setter
+    def Optional(self, Optional):
+        self._Optional = Optional
+
+    @property
+    def Encryption(self):
+        r"""<p>Sensitive data encryption information.</p><ul><li>Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</li></ul>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def Extra(self):
+        r"""<p>Customized description field.</p><ul><li>For description of invoke business info. This description field will return in the output.</li><li>Each customized description field supports [1,10] characters.</li></ul>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageRecognitionV2Response(AbstractModel):
+    r"""ImageRecognitionV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sim: <p>Similarity. - Value ranges from 0.00 to 100.00. - Recommend at least 70 to be determined as the same person. You can self-adjust the threshold based on specific scenarios (the pass rate for false matches at threshold 70 is 0.01%).</p>
+        :type Sim: float
+        :param _Result: <p>Business error code.</p><ul><li>Success case returns Success.</li><li>For error conditions, refer to the FailedOperation part in the error code list below.</li></ul>
+        :type Result: str
+        :param _Description: <p>Business result description.</p>
+        :type Description: str
+        :param _Extra: <p>Custom description field in the API call.</p>
+        :type Extra: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._Extra = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        r"""<p>Similarity. - Value ranges from 0.00 to 100.00. - Recommend at least 70 to be determined as the same person. You can self-adjust the threshold based on specific scenarios (the pass rate for false matches at threshold 70 is 0.01%).</p>
+        :rtype: float
+        """
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        r"""<p>Business error code.</p><ul><li>Success case returns Success.</li><li>For error conditions, refer to the FailedOperation part in the error code list below.</li></ul>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""<p>Business result description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Extra(self):
+        r"""<p>Custom description field in the API call.</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Extra = params.get("Extra")
+        self._RequestId = params.get("RequestId")
+
+
 class IndonesiaDrivingLicense(AbstractModel):
     r"""Indonesia driving license.
 
@@ -7308,6 +8663,312 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class MobileNetworkTimeVerificationRequest(AbstractModel):
+    r"""MobileNetworkTimeVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mobile: Mobile number.
+        :type Mobile: str
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (mobile number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._Mobile = None
+        self._Encryption = None
+
+    @property
+    def Mobile(self):
+        r"""Mobile number.
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (mobile number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._Mobile = params.get("Mobile")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MobileNetworkTimeVerificationResponse(AbstractModel):
+    r"""MobileNetworkTimeVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code. Billing is as follows.
+-Result code for charges
+Success.
+-2: Mobile number does not exist.
+-3: The mobile number exists, but unable to query the duration.
+
+-Result code with no charge
+-Invalid phone number format.
+-4: Verification Center Service is busy.
+-5: Authentication attempts exceeded the daily limit. Retry the next day.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _Range: Online duration interval.
+-The format is [a,b), which means the online duration is longer than a months and shorter than b months.
+-If b is +, it means no upper limit.
+        :type Range: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._Range = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code. Billing is as follows.
+-Result code for charges
+Success.
+-2: Mobile number does not exist.
+-3: The mobile number exists, but unable to query the duration.
+
+-Result code with no charge
+-Invalid phone number format.
+-4: Verification Center Service is busy.
+-5: Authentication attempts exceeded the daily limit. Retry the next day.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Range(self):
+        r"""Online duration interval.
+-The format is [a,b), which means the online duration is longer than a months and shorter than b months.
+-If b is +, it means no upper limit.
+        :rtype: str
+        """
+        return self._Range
+
+    @Range.setter
+    def Range(self, Range):
+        self._Range = Range
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Range = params.get("Range")
+        self._RequestId = params.get("RequestId")
+
+
+class MobileStatusRequest(AbstractModel):
+    r"""MobileStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mobile: Mobile number.
+        :type Mobile: str
+        :param _Encryption: Sensitive data encryption info.
+-Users with encryption requirements for incoming information (mobile number) can use this parameter. For details, please click the left-side link.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._Mobile = None
+        self._Encryption = None
+
+    @property
+    def Mobile(self):
+        r"""Mobile number.
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Encryption(self):
+        r"""Sensitive data encryption info.
+-Users with encryption requirements for incoming information (mobile number) can use this parameter. For details, please click the left-side link.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._Mobile = params.get("Mobile")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MobileStatusResponse(AbstractModel):
+    r"""MobileStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code. Billing is as follows.
+-Result code for charges
+0: Success.
+
+-Result code with no charge
+-No results found.
+-2: Invalid phone number format.
+-3: Verification Center Service is busy.
+-4: Authentication attempts exceeded the daily limit. Retry the next day.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _StatusCode: Status code.
+-Value range:
+0: Normal.
+1: Out of service.
+2: Account cancellation.
+4: Offline.
+99: unknown status.
+        :type StatusCode: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._StatusCode = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code. Billing is as follows.
+-Result code for charges
+0: Success.
+
+-Result code with no charge
+-No results found.
+-2: Invalid phone number format.
+-3: Verification Center Service is busy.
+-4: Authentication attempts exceeded the daily limit. Retry the next day.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StatusCode(self):
+        r"""Status code.
+-Value range:
+0: Normal.
+1: Out of service.
+2: Account cancellation.
+4: Offline.
+99: unknown status.
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._StatusCode = params.get("StatusCode")
+        self._RequestId = params.get("RequestId")
 
 
 class NigeriaDrivingLicense(AbstractModel):
@@ -9992,18 +11653,230 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
-class RetrievalLivenessExtraInfo(AbstractModel):
-    r"""Template search details
+class PhoneVerificationRequest(AbstractModel):
+    r"""PhoneVerification request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _HitGroup: Matched template types, where Common - public library; Auto - automatic clustering library; Owner - self-built template library.
+        :param _IdCard: Identity card number.
+        :type IdCard: str
+        :param _Name: Name
+        :type Name: str
+        :param _Phone: Mobile number.
+        :type Phone: str
+        :param _CiphertextBlob: Users with encryption requirements can import the CiphertextBlob of kms. Read the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document about encrypting data.
+        :type CiphertextBlob: str
+        :param _EncryptList: When using the encryption service, fill in the field to be encrypted.
+-This API can fill in one or more of encrypted IdCard, Name, and Phone.
+        :type EncryptList: list of str
+        :param _Iv: Users with encryption requirements import the initial vector for CBC encryption.
+        :type Iv: str
+        """
+        self._IdCard = None
+        self._Name = None
+        self._Phone = None
+        self._CiphertextBlob = None
+        self._EncryptList = None
+        self._Iv = None
+
+    @property
+    def IdCard(self):
+        r"""Identity card number.
+        :rtype: str
+        """
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Phone(self):
+        r"""Mobile number.
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def CiphertextBlob(self):
+        r"""Users with encryption requirements can import the CiphertextBlob of kms. Read the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document about encrypting data.
+        :rtype: str
+        """
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def EncryptList(self):
+        r"""When using the encryption service, fill in the field to be encrypted.
+-This API can fill in one or more of encrypted IdCard, Name, and Phone.
+        :rtype: list of str
+        """
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+    @property
+    def Iv(self):
+        r"""Users with encryption requirements import the initial vector for CBC encryption.
+        :rtype: str
+        """
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._Phone = params.get("Phone")
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._EncryptList = params.get("EncryptList")
+        self._Iv = params.get("Iv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneVerificationResponse(AbstractModel):
+    r"""PhoneVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Verification result code.
+-Fee result code
+Three-element information consistency.
+-4: Three-element information inconsistency.
+
+-No charge result code
+-6: Invalid phone number.
+-7: Identity number error.
+-8: Name verification failed.
+-9: No records.
+-11: The Verification Center Service is busy.
+-12: Authentication attempts exceeded the daily limit. Retry the next day.
+-13: The number range is unsupported for verification.
+        :type Result: str
+        :param _Description: Business result description.
+        :type Description: str
+        :param _Isp: ISP name.
+-Valid values: ["", "mobile", "telecom", "cucc"]
+        :type Isp: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._Isp = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Verification result code.
+-Fee result code
+Three-element information consistency.
+-4: Three-element information inconsistency.
+
+-No charge result code
+-6: Invalid phone number.
+-7: Identity number error.
+-8: Name verification failed.
+-9: No records.
+-11: The Verification Center Service is busy.
+-12: Authentication attempts exceeded the daily limit. Retry the next day.
+-13: The number range is unsupported for verification.
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        r"""Business result description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Isp(self):
+        r"""ISP name.
+-Valid values: ["", "mobile", "telecom", "cucc"]
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Isp = params.get("Isp")
+        self._RequestId = params.get("RequestId")
+
+
+class RetrievalLivenessExtraInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitGroup: 
         :type HitGroup: str
-        :param _SimilarityScore: Matched Similarity
+        :param _SimilarityScore: 
         :type SimilarityScore: float
-        :param _HitTemplate: Matched Template id
+        :param _HitTemplate: 
         :type HitTemplate: str
         """
         self._HitGroup = None
@@ -10012,7 +11885,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitGroup(self):
-        r"""Matched template types, where Common - public library; Auto - automatic clustering library; Owner - self-built template library.
+        r"""
         :rtype: str
         """
         return self._HitGroup
@@ -10023,7 +11896,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def SimilarityScore(self):
-        r"""Matched Similarity
+        r"""
         :rtype: float
         """
         return self._SimilarityScore
@@ -10034,7 +11907,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitTemplate(self):
-        r"""Matched Template id
+        r"""
         :rtype: str
         """
         return self._HitTemplate

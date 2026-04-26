@@ -34,12 +34,14 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920, qcs::ca
         :param _RoleSessionName: User-defined temporary session name.
 It can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\w+=,.@_-]*
         :type RoleSessionName: str
-        :param _DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+        :param _DurationSeconds: Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :type DurationSeconds: int
         :param _Policy: Policy description
+
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+
+This parameter needs to be URL-encoded. The server will URL-decode this field and grant temporary access credentials based on the processed policy. Please pass the parameter according to the specification. (If you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+The policy syntax refers to [CAM's Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
 3. The policy cannot contain the `principal` element.
         :type Policy: str
         :param _ExternalId: External role ID, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
@@ -49,6 +51,10 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
         :type Tags: list of Tag
         :param _SourceIdentity: UIN of the initiator
         :type SourceIdentity: str
+        :param _SerialNumber: 
+        :type SerialNumber: str
+        :param _TokenCode: 
+        :type TokenCode: str
         """
         self._RoleArn = None
         self._RoleSessionName = None
@@ -57,6 +63,8 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
         self._ExternalId = None
         self._Tags = None
         self._SourceIdentity = None
+        self._SerialNumber = None
+        self._TokenCode = None
 
     @property
     def RoleArn(self):
@@ -87,7 +95,7 @@ It can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\w+=,.@_-]*
 
     @property
     def DurationSeconds(self):
-        r"""Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+        r"""Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :rtype: int
         """
         return self._DurationSeconds
@@ -99,9 +107,11 @@ It can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\w+=,.@_-]*
     @property
     def Policy(self):
         r"""Policy description
+
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+
+This parameter needs to be URL-encoded. The server will URL-decode this field and grant temporary access credentials based on the processed policy. Please pass the parameter according to the specification. (If you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+The policy syntax refers to [CAM's Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
 3. The policy cannot contain the `principal` element.
         :rtype: str
         """
@@ -145,6 +155,28 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
     def SourceIdentity(self, SourceIdentity):
         self._SourceIdentity = SourceIdentity
 
+    @property
+    def SerialNumber(self):
+        r"""
+        :rtype: str
+        """
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def TokenCode(self):
+        r"""
+        :rtype: str
+        """
+        return self._TokenCode
+
+    @TokenCode.setter
+    def TokenCode(self, TokenCode):
+        self._TokenCode = TokenCode
+
 
     def _deserialize(self, params):
         self._RoleArn = params.get("RoleArn")
@@ -159,6 +191,8 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SourceIdentity = params.get("SourceIdentity")
+        self._SerialNumber = params.get("SerialNumber")
+        self._TokenCode = params.get("TokenCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -176,13 +210,13 @@ class AssumeRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Credentials: Temporary security credentials
+        :param _Credentials: Temporary access credentials
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param _ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :param _ExpiredTime: Expiration time of the temporary access credentials. A Unix timestamp will be returned which is accurate to the second.
         :type ExpiredTime: int
-        :param _Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+        :param _Expiration: Expiration time of the temporary access credentials in UTC time in ISO 8601 format.
         :type Expiration: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Credentials = None
@@ -192,7 +226,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        r"""Temporary security credentials
+        r"""Temporary access credentials
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -203,7 +237,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        r"""Expiration time of the temporary access credentials. A Unix timestamp will be returned which is accurate to the second.
         :rtype: int
         """
         return self._ExpiredTime
@@ -214,7 +248,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        r"""Credentials expiration time in UTC time in ISO 8601 format.
+        r"""Expiration time of the temporary access credentials in UTC time in ISO 8601 format.
         :rtype: str
         """
         return self._Expiration
@@ -225,7 +259,7 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -259,7 +293,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         :type RoleArn: str
         :param _RoleSessionName: Session name
         :type RoleSessionName: str
-        :param _DurationSeconds: The validity period of the temporary credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        :param _DurationSeconds: Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :type DurationSeconds: int
         """
         self._SAMLAssertion = None
@@ -314,7 +348,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        r"""The validity period of the temporary credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        r"""Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :rtype: int
         """
         return self._DurationSeconds
@@ -349,11 +383,11 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         r"""
         :param _Credentials: An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param _ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :param _ExpiredTime: Indicates the expiration time of the temporary access credentials. A Unix timestamp will be returned which is accurate to the second.
         :type ExpiredTime: int
-        :param _Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+        :param _Expiration: Indicates the expiration time of the temporary access credentials in UTC time in ISO 8601 format.
         :type Expiration: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Credentials = None
@@ -374,7 +408,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        r"""Indicates the expiration time of the temporary access credentials. A Unix timestamp will be returned which is accurate to the second.
         :rtype: int
         """
         return self._ExpiredTime
@@ -385,7 +419,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        r"""Credentials expiration time in UTC time in ISO 8601 format.
+        r"""Indicates the expiration time of the temporary access credentials in UTC time in ISO 8601 format.
         :rtype: str
         """
         return self._Expiration
@@ -396,7 +430,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -430,7 +464,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
         :type RoleArn: str
         :param _RoleSessionName: Session name
         :type RoleSessionName: str
-        :param _DurationSeconds: The validity period of the temporary credential in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        :param _DurationSeconds: Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :type DurationSeconds: int
         """
         self._ProviderId = None
@@ -485,7 +519,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        r"""The validity period of the temporary credential in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        r"""Specifies the validity period of the temporary access credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :rtype: int
         """
         return self._DurationSeconds
@@ -518,13 +552,13 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExpiredTime: Expiration time of the temporary credential (timestamp)
+        :param _ExpiredTime: Expiration time of the temporary access credentials (timestamp).
         :type ExpiredTime: int
-        :param _Expiration: Expiration time of the temporary credential
+        :param _Expiration: Expiration time of the temporary access credentials.
         :type Expiration: str
-        :param _Credentials: Temporary credential
+        :param _Credentials: Temporary access credentials
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ExpiredTime = None
@@ -534,7 +568,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""Expiration time of the temporary credential (timestamp)
+        r"""Expiration time of the temporary access credentials (timestamp).
         :rtype: int
         """
         return self._ExpiredTime
@@ -545,7 +579,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Expiration(self):
-        r"""Expiration time of the temporary credential
+        r"""Expiration time of the temporary access credentials.
         :rtype: str
         """
         return self._Expiration
@@ -556,7 +590,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        r"""Temporary credential
+        r"""Temporary access credentials
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -567,7 +601,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -680,7 +714,7 @@ class GetCallerIdentityResponse(AbstractModel):
         :type PrincipalId: str
         :param _Type: Identity type.
         :type Type: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Arn = None
@@ -752,7 +786,7 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -780,11 +814,11 @@ class GetFederationTokenRequest(AbstractModel):
         r"""
         :param _Name: The customizable name of the caller, consisting of letters
         :type Name: str
-        :param _Policy: Policy description
-Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
-3. The policy cannot contain the `principal` element.
+        :param _Policy: Note:
+
+The policy syntax refers to [CAM's Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+The policy cannot contain the principal element.
+This parameter needs to be URL-encoded. The server will URL-decode this field and grant temporary access credentials based on the processed policy. Please pass the parameter according to the specification.
         :type Policy: str
         :param _DurationSeconds: The validity period of temporary credentials in seconds. Default value: 1,800s. Maximum value for a root account: 7,200s. Maximum value for a sub-account: 129,600s.
         :type DurationSeconds: int
@@ -806,11 +840,11 @@ Note:
 
     @property
     def Policy(self):
-        r"""Policy description
-Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
-3. The policy cannot contain the `principal` element.
+        r"""Note:
+
+The policy syntax refers to [CAM's Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+The policy cannot contain the principal element.
+This parameter needs to be URL-encoded. The server will URL-decode this field and grant temporary access credentials based on the processed policy. Please pass the parameter according to the specification.
         :rtype: str
         """
         return self._Policy
@@ -852,14 +886,14 @@ class GetFederationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Credentials: Temporary credentials
+        :param _Credentials: Temporary access credentials
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param _ExpiredTime: Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :param _ExpiredTime: Temporary access credentials expiration time. A Unix timestamp will be returned which is accurate to the second.
         :type ExpiredTime: int
-        :param _Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+        :param _Expiration: Temporary access credentials expiration time in UTC time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Expiration: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Credentials = None
@@ -869,7 +903,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Credentials(self):
-        r"""Temporary credentials
+        r"""Temporary access credentials
         :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
         """
         return self._Credentials
@@ -880,7 +914,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiredTime(self):
-        r"""Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        r"""Temporary access credentials expiration time. A Unix timestamp will be returned which is accurate to the second.
         :rtype: int
         """
         return self._ExpiredTime
@@ -891,7 +925,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expiration(self):
-        r"""Credentials expiration time in UTC time in ISO 8601 format.
+        r"""Temporary access credentials expiration time in UTC time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -903,7 +937,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
