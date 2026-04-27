@@ -295,6 +295,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMNPSecretKey(
+            self,
+            request: models.CreateMNPSecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateMNPSecretKeyResponse:
+        """
+        This API is used to create a secret key for a mini program or mini game.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMNPSecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMNPSecretKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMNPSensitiveAPIPermissionApproval(
             self,
             request: models.CreateMNPSensitiveAPIPermissionApprovalRequest,

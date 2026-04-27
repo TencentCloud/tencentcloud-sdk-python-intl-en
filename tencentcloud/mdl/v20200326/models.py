@@ -3142,9 +3142,9 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: ID of the channel for which you want to configure an event
+        :param _ChannelId: ID of the channel for which you want to configure an event.
         :type ChannelId: str
-        :param _Plan: Event configuration
+        :param _Plan: Event configuration.
         :type Plan: :class:`tencentcloud.mdl.v20200326.models.PlanReq`
         """
         self._ChannelId = None
@@ -3152,7 +3152,7 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""ID of the channel for which you want to configure an event
+        r"""ID of the channel for which you want to configure an event.
         :rtype: str
         """
         return self._ChannelId
@@ -3163,7 +3163,7 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
     @property
     def Plan(self):
-        r"""Event configuration
+        r"""Event configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanReq`
         """
         return self._Plan
@@ -6722,7 +6722,7 @@ class EventSettingsReq(AbstractModel):
         r"""
         :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`,`TIMED_METADATA `,`STATIC_IMAGE_ACTIVATE `,`STATIC_IMAGE_DEACTIVATE `. If it is not specified, `INPUT_SWITCH` will be used.
         :type EventType: str
-        :param _InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
+        :param _InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`.
         :type InputAttachment: str
         :param _PipelineId: When the type is FIXED_PTS, it is mandatory and defaults to 0
         :type PipelineId: int
@@ -6777,7 +6777,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def InputAttachment(self):
-        r"""ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
+        r"""ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`.
         :rtype: str
         """
         return self._InputAttachment

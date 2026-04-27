@@ -371,6 +371,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMNPSecretKey(self, request):
+        r"""This API is used to create a secret key for a mini program or mini game.
+
+        :param request: Request instance for CreateMNPSecretKey.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSecretKeyRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPSecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPSecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMNPSensitiveAPIPermissionApproval(self, request):
         r"""This API is used to create a permission request to allow a mini program to call sensitive APIs.
 
