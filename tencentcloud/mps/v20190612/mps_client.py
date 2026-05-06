@@ -349,6 +349,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProject(self, request):
+        r"""This API is used to create an episode project.
+
+        :param request: Request instance for CreateProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQualityControlTemplate(self, request):
         r"""This API is used to create a media quality inspection template. Up to 50 templates can be created.
 
@@ -884,6 +907,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteProject(self, request):
+        r"""This API is used to delete an episode project.
+
+        :param request: Request instance for DeleteProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteQualityControlTemplate(self, request):
         r"""This API is used to delete a media quality inspection template.
 
@@ -1381,6 +1427,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeContentReviewTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContentReviewTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDesignTask(self, request):
+        r"""This API is used to query the result of an asynchronous voice design task.
+
+        :param request: Request instance for DescribeDesignTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeDesignTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeDesignTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDesignTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDesignTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

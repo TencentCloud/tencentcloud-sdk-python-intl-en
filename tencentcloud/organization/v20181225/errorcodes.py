@@ -74,13 +74,13 @@ RESOURCEINUSE_NODENAME = 'ResourceInUse.NodeName'
 # This name is already in use.
 RESOURCEINUSE_NODENAMEUSED = 'ResourceInUse.NodeNameUsed'
 
-# The invitation information does not exist.
+# Invitation message does not exist.
 RESOURCENOTFOUND_INVITATIONNOTEXIST = 'ResourceNotFound.InvitationNotExist'
 
 # The member does not exist.
 RESOURCENOTFOUND_MEMBERNOTEXIST = 'ResourceNotFound.MemberNotExist'
 
-# The organizational unit does not exist.
+# Enterprise organizational unit does not exist.
 RESOURCENOTFOUND_NODENOTEXIST = 'ResourceNotFound.NodeNotExist'
 
 # The organization does not exist.

@@ -33,7 +33,7 @@ class TeoClient(AbstractClient):
         Step 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.
         Step 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.
 
-        The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).
+        The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
         description:.
         - Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.
         - If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.
@@ -154,7 +154,7 @@ class TeoClient(AbstractClient):
 
     def CheckFreeCertificateVerification(self, request):
         r"""This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.
-        This API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
+        This API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
 
         :param request: Request instance for CheckFreeCertificateVerification.
         :type request: :class:`tencentcloud.teo.v20220901.models.CheckFreeCertificateVerificationRequest`
@@ -813,7 +813,7 @@ class TeoClient(AbstractClient):
         -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.
         -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.
 
-        This API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.comom/document/product/1552/104110?from_cn_redirect=1) API first.
+        This API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API first.
 
         :param request: Request instance for CreateRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
@@ -3100,7 +3100,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        r"""<p>This API is used to query the time series Data list of Layer 4.</p>.
+        r"""<p>This API is used to query time series monitoring data for L4 proxy instences.</p>
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4DataRequest`
@@ -4806,7 +4806,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneWorkMode(self, request):
-        r"""This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to version management (https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        r"""This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to [version management](https://www.tencentcloud.com/document/product/1145/67719).
 
         :param request: Request instance for ModifyZoneWorkMode.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneWorkModeRequest`

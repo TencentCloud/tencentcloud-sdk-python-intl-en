@@ -266,6 +266,15 @@ INVALIDPARAMETERVALUE_PRIVACYMODEL = 'InvalidParameterValue.PrivacyModel'
 # The privacy protection target of the erasing template is incorrect.
 INVALIDPARAMETERVALUE_PRIVACYTARGETS = 'InvalidParameterValue.PrivacyTargets'
 
+# The number of episode projects exceeds the upper limit.
+INVALIDPARAMETERVALUE_PROJECTLIMITEXCEEDED = 'InvalidParameterValue.ProjectLimitExceeded'
+
+# The episode project name already exists.
+INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = 'InvalidParameterValue.ProjectNameDuplicate'
+
+# The episode project does not exist.
+INVALIDPARAMETERVALUE_PROJECTNOTFOUND = 'InvalidParameterValue.ProjectNotFound'
+
 # Incorrect parameter value: Quality.
 INVALIDPARAMETERVALUE_QUALITY = 'InvalidParameterValue.Quality'
 
@@ -397,6 +406,9 @@ INVALIDPARAMETERVALUE_USEORIGINALSIZE = 'InvalidParameterValue.UseOriginalSize'
 
 # Incorrect parameter value: the custom face library filter tag is invalid.
 INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = 'InvalidParameterValue.UserDefineLibraryLabelSet'
+
+# The user is not registered for MPS.
+INVALIDPARAMETERVALUE_USERUNREGISTER = 'InvalidParameterValue.UserUnRegister'
 
 # Parameter error: video stream bitrate.
 INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'

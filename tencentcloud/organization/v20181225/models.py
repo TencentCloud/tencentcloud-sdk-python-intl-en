@@ -514,14 +514,14 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeIds: Organizational unit ID list
+        :param _NodeIds: Organizational unit ID list.
         :type NodeIds: list of int non-negative
         """
         self._NodeIds = None
 
     @property
     def NodeIds(self):
-        r"""Organizational unit ID list
+        r"""Organizational unit ID list.
         :rtype: list of int non-negative
         """
         return self._NodeIds

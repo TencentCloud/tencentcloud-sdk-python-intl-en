@@ -278,6 +278,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProject(
+            self,
+            request: models.CreateProjectRequest,
+            opts: Dict = None,
+    ) -> models.CreateProjectResponse:
+        """
+        This API is used to create an episode project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateQualityControlTemplate(
             self,
             request: models.CreateQualityControlTemplateRequest,
@@ -703,6 +721,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteProject(
+            self,
+            request: models.DeleteProjectRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProjectResponse:
+        """
+        This API is used to delete an episode project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteQualityControlTemplate(
             self,
             request: models.DeleteQualityControlTemplateRequest,
@@ -1094,6 +1130,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeContentReviewTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeContentReviewTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDesignTask(
+            self,
+            request: models.DescribeDesignTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDesignTaskResponse:
+        """
+        This API is used to query the result of an asynchronous voice design task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDesignTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDesignTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

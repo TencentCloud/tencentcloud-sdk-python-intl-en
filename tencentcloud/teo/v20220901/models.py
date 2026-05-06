@@ -670,7 +670,7 @@ class AccelerationDomainCertificate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
+        :param _Mode: The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
         :type Mode: str
         :param _List: List of server certificates. The relevant certificates are deployed on the entrance side of the EO.
 Note: This field may return null, which indicates a failure to obtain a valid value.
@@ -687,7 +687,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Mode(self):
-        r"""The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
+        r"""The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.
         :rtype: str
         """
         return self._Mode
@@ -3032,11 +3032,11 @@ class ApplyFreeCertificateRequest(AbstractModel):
         :type ZoneId: str
         :param _Domain: Specifies the target domain name for free certificate application.
         :type Domain: str
-        :param _VerificationMethod: Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
+        :param _VerificationMethod: Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). valid values:.
 <li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
 <li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
 
-Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
         :type VerificationMethod: str
         """
         self._ZoneId = None
@@ -3067,11 +3067,11 @@ Note: after triggering this api, you need to complete the verification content c
 
     @property
     def VerificationMethod(self):
-        r"""Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.
+        r"""Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). valid values:.
 <li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>
 <li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>
 
-Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
+Note: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.
         :rtype: str
         """
         return self._VerificationMethod
@@ -5950,7 +5950,7 @@ class CNAMEDetail(AbstractModel):
 <Li>1: fake site.</li>.
 
         :type IsFake: int
-        :param _OwnershipVerification: Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :param _OwnershipVerification: Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         self._IsFake = None
@@ -5972,7 +5972,7 @@ class CNAMEDetail(AbstractModel):
 
     @property
     def OwnershipVerification(self):
-        r"""Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        r"""Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         return self._OwnershipVerification
@@ -7344,7 +7344,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Domain: Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
+        :param _Domain: Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1).
         :type Domain: str
         """
         self._ZoneId = None
@@ -7363,7 +7363,7 @@ class CheckFreeCertificateVerificationRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).
+        r"""Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1).
         :rtype: str
         """
         return self._Domain
@@ -8689,9 +8689,7 @@ class ConfigGroupVersionInfo(AbstractModel):
         :type VersionNumber: str
         :param _GroupId: Configuraration group ID.
         :type GroupId: str
-        :param _GroupType: Configuration group type. Valid values: 
-<li>l7_acceleration: L7 acceleration configuration group. </li>
-<li>edge_functions: Edge function configuration group. </li>
+        :param _GroupType: Configuration group type. Optional options are as follows: <li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group;</li><li>web_security: web protection configuration group.</li>
         :type GroupType: str
         :param _Description: Version description.
         :type Description: str
@@ -8746,9 +8744,7 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""Configuration group type. Valid values: 
-<li>l7_acceleration: L7 acceleration configuration group. </li>
-<li>edge_functions: Edge function configuration group. </li>
+        r"""Configuration group type. Optional options are as follows: <li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group;</li><li>web_security: web protection configuration group.</li>
         :rtype: str
         """
         return self._GroupType
@@ -10947,7 +10943,7 @@ class CreateFunctionRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID.
+        :param _ZoneId: Zone ID
         :type ZoneId: str
         :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between different conditions of the same trigger rule.
         :type FunctionRuleConditions: list of FunctionRuleCondition
@@ -10976,7 +10972,7 @@ Specifies the default value as direct when left blank.
 
     @property
     def ZoneId(self):
-        r"""Zone ID.
+        r"""Zone ID
         :rtype: str
         """
         return self._ZoneId
@@ -11334,19 +11330,19 @@ class CreateL4ProxyRequest(AbstractModel):
 <li>overseas: global availability zone (excluding the Chinese mainland);</li>
 <li>global: global availability zone.</li>
         :type Area: str
-        :param _Ipv6: Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        :param _Ipv6: Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :type Ipv6: str
-        :param _StaticIp: Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        :param _StaticIp: Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :type StaticIp: str
-        :param _AccelerateMainland: Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        :param _AccelerateMainland: Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :type AccelerateMainland: str
-        :param _DDosProtectionConfig: Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.comom/document/product/1552/95994?from_cn_redirect=1).
+        :param _DDosProtectionConfig: Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.com/document/product/1552/95994?from_cn_redirect=1).
 This field is deprecated, please use DDosProtectionId field specification for associated protection configuration.
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
@@ -11397,7 +11393,7 @@ This field is deprecated, please use DDosProtectionId field specification for as
 
     @property
     def Ipv6(self):
-        r"""Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        r"""Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :rtype: str
@@ -11410,7 +11406,7 @@ This field is deprecated, please use DDosProtectionId field specification for as
 
     @property
     def StaticIp(self):
-        r"""Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        r"""Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :rtype: str
@@ -11423,7 +11419,7 @@ This field is deprecated, please use DDosProtectionId field specification for as
 
     @property
     def AccelerateMainland(self):
-        r"""Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.
+        r"""Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
         :rtype: str
@@ -11438,7 +11434,7 @@ This field is deprecated, please use DDosProtectionId field specification for as
     def DDosProtectionConfig(self):
         warnings.warn("parameter `DDosProtectionConfig` is deprecated", DeprecationWarning) 
 
-        r"""Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.comom/document/product/1552/95994?from_cn_redirect=1).
+        r"""Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.com/document/product/1552/95994?from_cn_redirect=1).
 This field is deprecated, please use DDosProtectionId field specification for associated protection configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
@@ -11693,7 +11689,7 @@ class CreateL7AccRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleIds: Rule id list.
+        :param _RuleIds: Rule id list
         :type RuleIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11703,7 +11699,7 @@ class CreateL7AccRulesResponse(AbstractModel):
 
     @property
     def RuleIds(self):
-        r"""Rule id list.
+        r"""Rule id list
         :rtype: list of str
         """
         return self._RuleIds
@@ -12746,7 +12742,7 @@ If you wish to quickly submit Targets urls under different sites, you can fill i
         :type ZoneId: str
         :param _Targets: List of resources to be preheated. required. each element format is as follows:.
 http://www.example.com/example.txt.
-Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.comom/document/product/1552/77380?from_cn_redirect=1).
+Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.com/document/product/1552/77380?from_cn_redirect=1).
         :type Targets: list of str
         :param _Mode: Preheat mode. valid values:.
 <Li>Default: default mode, which preheats to the middle layer.</li>.
@@ -12797,7 +12793,7 @@ If you wish to quickly submit Targets urls under different sites, you can fill i
     def Targets(self):
         r"""List of resources to be preheated. required. each element format is as follows:.
 http://www.example.com/example.txt.
-Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.comom/document/product/1552/77380?from_cn_redirect=1).
+Note: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.com/document/product/1552/77380?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._Targets
@@ -13192,9 +13188,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 <li>overseas: global (excluding the Chinese mainland).</li>
         :type Area: str
         :param _Fields: Predefined fields for delivery. valid values:.
-<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.comom/document/product/1552/105791?from_cn_redirect=1)</li>.
-<Li><A href="https://www.tencentcloud.comom/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
-<Li>Specifies the edge function logs (https://www.tencentcloud.comom/document/product/1552/115585?from_cn_redirect=1).</li>.
+<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li>.
+<Li><A href="https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
+<Li>Specifies the edge function logs (https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1).</li>.
         :type Fields: list of str
         :param _CustomFields: The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (`LogType`=`domain`) support custom fields.
         :type CustomFields: list of CustomField
@@ -13313,9 +13309,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
     @property
     def Fields(self):
         r"""Predefined fields for delivery. valid values:.
-<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.comom/document/product/1552/105791?from_cn_redirect=1)</li>.
-<Li><A href="https://www.tencentcloud.comom/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
-<Li>Specifies the edge function logs (https://www.tencentcloud.comom/document/product/1552/115585?from_cn_redirect=1).</li>.
+<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li>.
+<Li><A href="https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li>.
+<Li>Specifies the edge function logs (https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1).</li>.
         :rtype: list of str
         """
         return self._Fields
@@ -14322,7 +14318,7 @@ class CreateWebSecurityTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Policy template ID.
+        :param _TemplateId: Policy template ID
         :type TemplateId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14332,7 +14328,7 @@ class CreateWebSecurityTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Policy template ID.
+        r"""Policy template ID
         :rtype: str
         """
         return self._TemplateId
@@ -18948,9 +18944,9 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total of matched alias domain names.
+        :param _TotalCount: Total of matched alias domain names
         :type TotalCount: int
-        :param _AccelerationDomains: Information of all matched acceleration domain names
+        :param _AccelerationDomains: Information of all matched acceleration domain names.
         :type AccelerationDomains: list of AccelerationDomain
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18961,7 +18957,7 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total of matched alias domain names.
+        r"""Total of matched alias domain names
         :rtype: int
         """
         return self._TotalCount
@@ -18972,7 +18968,7 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     @property
     def AccelerationDomains(self):
-        r"""Information of all matched acceleration domain names
+        r"""Information of all matched acceleration domain names.
         :rtype: list of AccelerationDomain
         """
         return self._AccelerationDomains
@@ -20258,7 +20254,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>
 <li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -20321,7 +20317,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20467,7 +20463,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
         :type EndTime: str
         :param _PolicyIds: List of DDoS policy IDs. All policies are selected if this field is not specified.
         :type PolicyIds: list of int
-        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
         :type Limit: int
@@ -20535,7 +20531,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20723,7 +20719,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>
 <li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>
         :type MetricName: str
-        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        :param _ZoneIds: Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: The list of DDoS policy IDs to be specified. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -20798,7 +20794,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
+        r"""Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -25340,7 +25336,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
@@ -25362,7 +25358,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :rtype: str
         """
         return self._ZoneId
@@ -27378,32 +27374,29 @@ class DescribeTimingL4DataRequest(AbstractModel):
         r"""
         :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: End time. the query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _MetricNames: Query metrics. valid values:.
-<ul><li>**l4Flow_flux**: specifies the total access traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_inFlux**: specifies access inbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_outFlux**: access outbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_inBandwidth**: specifies the inbound bandwidth peak of the visit. measurement unit: bps. metric value type: Integer.</li>.
-<li>**l4Flow_outBandwidth**: specifies the outbound bandwidth peak. measurement unit: bps. metric value type: Integer.</li>.
-<li>**l4Flow_connections**: specifies the number of concurrent connections, measurement unit: unit, metric value type: Integer.</li>.
-<li>**l4Flow_newConnectionsRate**: the rate of new connections, measurement unit: per second, metric value type: Float, rounded to two decimal places.</li></ul>**note**:<ul><li>metrics of <code>Integer</code> type will return corresponding time series Data from <code>Data.N.TypeValue</code>;</li>.
-<li>Metrics with <code>Float</code> value type will return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.</li></ul>.
+        :param _MetricNames: Metric list. Valid values:
+<ul><li>**l4Flow_flux**: Total client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_inFlux**: Inbound client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_outFlux**: Outbound client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_inBandwidth**: Peak inbound client bandwidth. Unit: bps. Value type: Integer.</li>
+<li>**l4Flow_outBandwidth**: Peak outbound client bandwidth. Unit: bps. Value type: Integer.</li>
+<li>**l4Flow_connections**: Concurrent client connections. Unit: count. Value type: Integer.</li>
+<li>**l4Flow_newConnectionsRate**: New connection rate. Unit: connections/second. Value type: Float. Rounded to two decimal places.</li></ul>**Note**:<ul><li>Metrics with an <code>Integer</code> value type return time-series data via <code>Data.N.TypeValue</code>;</li>
+<li>Metrics with a <code>Float</code> value type return time-series data via <code>Data.N.FloatTypeValue</code>.</li></ul>
         :type MetricNames: list of str
-        :param _ZoneIds: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
-Import up to 100 site ids. to query all site data under the tencent cloud root account, use `*` as a replacement. querying account-level data requires permission for all site resources of this api.
+        :param _ZoneIds: Site ID. This parameter will change from selectable to required after May 30, 2024. For details, see the announcement: [Tencent Cloud EdgeOne: Tencent Cloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
+Import up to 100 zone-ids. To query all site data under the Tencent Cloud root account, use `*` as a replacement. Querying account-level data requires permission for all site resources of this API.
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.
         :type ProxyIds: list of str
-        :param _Interval: Time granularity of the query. valid values:.
-<ul><li>**min**: 1 minute;</li>.
-<Li>**5min**: 5 minutes;</li>.
-<Li>**Hour**: 1 hour;</li>.
-<Li>**Day**: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
+        :param _Interval: Time granularity of the query. Valid values:
+<ul><li>**min**: 1 minute;</li><Li>**5min**: 5 minutes;</li><Li>**hour**: 1 hour;</li><Li>**day**: 1 day.</li></ul>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
-        :param _Filters: Filter criteria. the detailed Key values of filter criteria are as follows:.
-<ul><li>**ruleId**: filter by forwarding rule ID.</li>.
-<li>**proxyId**: filters by l4 proxy instance ID.</li></ul>.
+        :param _Filters: Filter criteria. The detailed key values of filter criteria are as follows:.
+<ul><li>**ruleId**: filter by forwarding rule ID.</li>
+<li>**proxyId**: filter by L4 proxy instance ID.</li></ul>
         :type Filters: list of QueryCondition
         :param _Area: Data ownership region. This parameter is deprecated. Please filter data by client region in Filters.country.
         :type Area: str
@@ -27430,7 +27423,7 @@ Import up to 100 site ids. to query all site data under the tencent cloud root a
 
     @property
     def EndTime(self):
-        r"""End time. the query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
+        r"""The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -27441,15 +27434,15 @@ Import up to 100 site ids. to query all site data under the tencent cloud root a
 
     @property
     def MetricNames(self):
-        r"""Query metrics. valid values:.
-<ul><li>**l4Flow_flux**: specifies the total access traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_inFlux**: specifies access inbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_outFlux**: access outbound traffic. measurement unit: Byte. metric value type: Integer.</li>.
-<li>**l4Flow_inBandwidth**: specifies the inbound bandwidth peak of the visit. measurement unit: bps. metric value type: Integer.</li>.
-<li>**l4Flow_outBandwidth**: specifies the outbound bandwidth peak. measurement unit: bps. metric value type: Integer.</li>.
-<li>**l4Flow_connections**: specifies the number of concurrent connections, measurement unit: unit, metric value type: Integer.</li>.
-<li>**l4Flow_newConnectionsRate**: the rate of new connections, measurement unit: per second, metric value type: Float, rounded to two decimal places.</li></ul>**note**:<ul><li>metrics of <code>Integer</code> type will return corresponding time series Data from <code>Data.N.TypeValue</code>;</li>.
-<li>Metrics with <code>Float</code> value type will return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.</li></ul>.
+        r"""Metric list. Valid values:
+<ul><li>**l4Flow_flux**: Total client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_inFlux**: Inbound client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_outFlux**: Outbound client traffic. Unit: Byte. Value type: Integer.</li>
+<li>**l4Flow_inBandwidth**: Peak inbound client bandwidth. Unit: bps. Value type: Integer.</li>
+<li>**l4Flow_outBandwidth**: Peak outbound client bandwidth. Unit: bps. Value type: Integer.</li>
+<li>**l4Flow_connections**: Concurrent client connections. Unit: count. Value type: Integer.</li>
+<li>**l4Flow_newConnectionsRate**: New connection rate. Unit: connections/second. Value type: Float. Rounded to two decimal places.</li></ul>**Note**:<ul><li>Metrics with an <code>Integer</code> value type return time-series data via <code>Data.N.TypeValue</code>;</li>
+<li>Metrics with a <code>Float</code> value type return time-series data via <code>Data.N.FloatTypeValue</code>.</li></ul>
         :rtype: list of str
         """
         return self._MetricNames
@@ -27460,8 +27453,8 @@ Import up to 100 site ids. to query all site data under the tencent cloud root a
 
     @property
     def ZoneIds(self):
-        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
-Import up to 100 site ids. to query all site data under the tencent cloud root account, use `*` as a replacement. querying account-level data requires permission for all site resources of this api.
+        r"""Site ID. This parameter will change from selectable to required after May 30, 2024. For details, see the announcement: [Tencent Cloud EdgeOne: Tencent Cloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
+Import up to 100 zone-ids. To query all site data under the Tencent Cloud root account, use `*` as a replacement. Querying account-level data requires permission for all site resources of this API.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -27483,11 +27476,8 @@ Import up to 100 site ids. to query all site data under the tencent cloud root a
 
     @property
     def Interval(self):
-        r"""Time granularity of the query. valid values:.
-<ul><li>**min**: 1 minute;</li>.
-<Li>**5min**: 5 minutes;</li>.
-<Li>**Hour**: 1 hour;</li>.
-<Li>**Day**: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
+        r"""Time granularity of the query. Valid values:
+<ul><li>**min**: 1 minute;</li><Li>**5min**: 5 minutes;</li><Li>**hour**: 1 hour;</li><Li>**day**: 1 day.</li></ul>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -27498,9 +27488,9 @@ Import up to 100 site ids. to query all site data under the tencent cloud root a
 
     @property
     def Filters(self):
-        r"""Filter criteria. the detailed Key values of filter criteria are as follows:.
-<ul><li>**ruleId**: filter by forwarding rule ID.</li>.
-<li>**proxyId**: filters by l4 proxy instance ID.</li></ul>.
+        r"""Filter criteria. The detailed key values of filter criteria are as follows:.
+<ul><li>**ruleId**: filter by forwarding rule ID.</li>
+<li>**proxyId**: filter by L4 proxy instance ID.</li></ul>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -27558,9 +27548,7 @@ class DescribeTimingL4DataResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of query results.
         :type TotalCount: int
-        :param _Data: <p>Layer 4 time series traffic Data list.<br>for different queried metrics, time series Data is returned from different parameters based on the value type.<br>currently, there are the following two value types:</p><ul><li><strong>Integer</strong>: metrics with <code>Integer</code> value type return corresponding time series Data from <code>Data.N.TypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_flux</code>: total access traffic;</li><li><code>l4Flow_inFlux</code>: access inbound traffic;</li><li><code>l4Flow_outFlux</code>: access outbound traffic;</li><li><code>l4Flow_inBandwidth</code>: inbound bandwidth peak;</li><li><code>l4Flow_outBandwidth</code>: outbound bandwidth peak;</li><li><code>l4Flow_connections</code>: number of concurrent connections.</li></ul></li><li><strong>Float</strong>: metrics with <code>Float</code> value type return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_newConnectionsRate</code>: rate of new connections.</li></ul></li>.
-</ul><p>This API does not support dimension query for now. it aggregates and returns Data by root account by default, which means <code>Data.N.TypeKey = AppId</code>. AppId is the unique id of the tencent cloud root account, and N always equals 1.</p>.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _Data: Layer 4 time series traffic data list.<br>For different queried metrics, time series data is returned from different parameters based on the value type. Currently, there are the following two value types:<ul><li><strong>Integer</strong>: Metrics with <code>Integer</code> value type return corresponding time series data from <code>Data.N.TypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_flux</code>: Total client traffic.</li><li><code>l4Flow_inFlux</code>: Inbound client traffic.</li><li><code>l4Flow_outFlux</code>: Outbound client traffic.</li><li><code>l4Flow_inBandwidth</code>: Peak inbound client bandwidth.</li><li><code>l4Flow_outBandwidth</code>: Peak outbound client bandwidth.</li><li><code>l4Flow_connections</code>: Concurrent client connections.</li></ul></li><li><strong>Float</strong>: Metrics with <code>Float</code> value type return corresponding time series data from <code>Data.N.FloatTypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_newConnectionsRate</code>: New connection rate. Rounded to two decimal places.</li></ul></li></ul>This API does not support dimension queries. It aggregates and returns data by root account by default, meaning <code>Data.N.TypeKey = AppId</code>. <code>AppId</code> is the unique ID of the Tencent Cloud root account, and <code>N</code> always equals <code>1</code>.<br><strong>Note</strong>: This field may return null, indicating a failure to obtain a valid value.
         :type Data: list of TimingDataRecord
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -27582,9 +27570,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Data(self):
-        r"""<p>Layer 4 time series traffic Data list.<br>for different queried metrics, time series Data is returned from different parameters based on the value type.<br>currently, there are the following two value types:</p><ul><li><strong>Integer</strong>: metrics with <code>Integer</code> value type return corresponding time series Data from <code>Data.N.TypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_flux</code>: total access traffic;</li><li><code>l4Flow_inFlux</code>: access inbound traffic;</li><li><code>l4Flow_outFlux</code>: access outbound traffic;</li><li><code>l4Flow_inBandwidth</code>: inbound bandwidth peak;</li><li><code>l4Flow_outBandwidth</code>: outbound bandwidth peak;</li><li><code>l4Flow_connections</code>: number of concurrent connections.</li></ul></li><li><strong>Float</strong>: metrics with <code>Float</code> value type return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_newConnectionsRate</code>: rate of new connections.</li></ul></li>.
-</ul><p>This API does not support dimension query for now. it aggregates and returns Data by root account by default, which means <code>Data.N.TypeKey = AppId</code>. AppId is the unique id of the tencent cloud root account, and N always equals 1.</p>.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        r"""Layer 4 time series traffic data list.<br>For different queried metrics, time series data is returned from different parameters based on the value type. Currently, there are the following two value types:<ul><li><strong>Integer</strong>: Metrics with <code>Integer</code> value type return corresponding time series data from <code>Data.N.TypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_flux</code>: Total client traffic.</li><li><code>l4Flow_inFlux</code>: Inbound client traffic.</li><li><code>l4Flow_outFlux</code>: Outbound client traffic.</li><li><code>l4Flow_inBandwidth</code>: Peak inbound client bandwidth.</li><li><code>l4Flow_outBandwidth</code>: Peak outbound client bandwidth.</li><li><code>l4Flow_connections</code>: Concurrent client connections.</li></ul></li><li><strong>Float</strong>: Metrics with <code>Float</code> value type return corresponding time series data from <code>Data.N.FloatTypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_newConnectionsRate</code>: New connection rate. Rounded to two decimal places.</li></ul></li></ul>This API does not support dimension queries. It aggregates and returns data by root account by default, meaning <code>Data.N.TypeKey = AppId</code>. <code>AppId</code> is the unique ID of the Tencent Cloud root account, and <code>N</code> always equals <code>1</code>.<br><strong>Note</strong>: This field may return null, indicating a failure to obtain a valid value.
         :rtype: list of TimingDataRecord
         """
         return self._Data
@@ -28063,26 +28049,25 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
         r"""
         :param _ZoneIds: Site ID set. This parameter is required. A maximum of 100 zone-ids can be imported. Use `*` to query data for all sites under the Tencent Cloud root account. Querying account-level data requires permissions for all site resources in this API.
         :type ZoneIds: list of str
-        :param _MetricNames: Metric list. valid values:
-<ul><li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server direction. measurement unit: Byte.</li>
-<li>l7Flow_outBandwidth_hy: request bandwidth from EdgeOne node to origin server direction, measurement unit: bps;</li>.
-<li>l7Flow_request_hy: number of requests in the EdgeOne node to origin server direction. unit: count.</li>.
-<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node direction, measurement unit: Byte.</li>.
-<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. measurement unit: bps.</li></ul>.
+        :param _MetricNames: Metric list. Valid values:
+<ul><li>l7Flow_outFlux_hy: Request traffic from the EdgeOne node to the origin server. Unit: Byte.</li><li>l7Flow_outBandwidth_hy: Request bandwidth from the EdgeOne node to the origin server. Unit: bps.</li><li>l7Flow_request_hy: Number of requests from the EdgeOne node to the origin server. Unit: count.</li><li>l7Flow_inFlux_hy: Response traffic from the origin server to the EdgeOne node. Unit: Byte.</li><li>l7Flow_inBandwidth_hy: Response bandwidth from the origin server to the EdgeOne node. Unit: bps.</li></ul>
         :type MetricNames: list of str
         :param _StartTime: Start time.
         :type StartTime: str
         :param _EndTime: End time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _Interval: Time granularity of the query. valid values:.
-<Ul><Li>Min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is within 2 hours, within 2 days, within 7 days, and exceeding 7 days.
+        :param _Interval: Time granularity of the query. Valid values:
+<ul><li>min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>If this parameter is not specified, the granularity will be automatically inferred based on the time range between the start time and end time. Specifically, the granularity will be min, 5min, hour, and day when the time range is within 2 hours, within 2 days, within 7 days, and exceeding 7 days, respectively.
         :type Interval: str
-        :param _Filters: Filter criteria. detailed filter criteria:.
-<ul><li><strong>domain</strong>: the requested domain name from the client. if accessing EdgeOne via wildcard domain, the data records the wildcard domain name rather than the specific domain.</li><li><strong>originStatusCode</strong>: origin status code. this filter item is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.<br>the corresponding Value options are as follows:<ul><li><code>1xx</code>: status codes of the 1xx kind.</li><li><code>2xx</code>: status codes of the 2xx kind.</li><li><code>3xx</code>: status codes of the 3xx kind.</li><li><code>4xx</code>: status codes of the 4xx kind.</li><li><code>5xx</code>: status codes of the 5xx kind.</li><li>integer within range <code>[0, 600)</code> (excluding 600).</li></ul></li></ul>.
-**Note**: when <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
+        :param _Filters: Filter criteria. Detailed filter criteria:
+<ul><li><strong>domain</strong>: The requested domain name from the client. If accessing EdgeOne via a wildcard domain, the data records the wildcard domain name rather than the specific subdomain.</li><li><strong>originStatusCode</strong>: Origin status code. This filter is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.
+Valid values:<ul><li><code>1xx</code>: Status codes in the 1xx range.</li><li><code>2xx</code>: Status codes in the 2xx range.</li><li><code>3xx</code>: Status codes in the 3xx range.</li><li><code>4xx</code>: Status codes in the 4xx range.</li><li><code>5xx</code>: Status codes in the 5xx range.</li><li>Any integer in the range <code>[0, 600)</code>.</li></ul></li></ul>**Note**: When <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
         :type Filters: list of QueryCondition
-        :param _DimensionName: <p>Query dimension name. valid values:</p><ul><li><strong>domain</strong>: the domain name requested by the client. if EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.<br>when using the domain dimension, the <code>Filters</code> must include the <code>domain</code> filter item, specifying a list of no more than 100 domain names to query.</li><li><strong>origin-status-code</strong>: origin status code, such as 200, 404.<br>this dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: origin status code category, such as 2xx, 4xx.<br>this dimension is supported only when <code>MetricNames =["l7Flow_request_hy"]</code>.</li></ul><p>if the <code>DimensionName</code> input parameter is empty, the data is aggregated by the <code>AppId</code> dimension by default, returning only one set of data.</p><p>if the <code>DimensionName</code> input parameter is not empty, the corresponding time series data is returned grouped by the specified query dimension. for example:</p><ul>when <code>DimensionName = origin-status-code</code>:<ul><li>the <code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li>the <code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul>.
-<strong>Note</strong>: when specifying DimensionName during queries, concurrent calls are forbidden. if exceeded the query frequency limit, it will return an error <code><strong>InvalidParameter.ActionInProgress</strong></code>.
+        :param _DimensionName: Query dimension name. Valid values:
+<ul><li><strong>domain</strong>: The domain name requested by the client. If EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.
+When using the domain dimension, the <code>Filters</code> parameter must include the <code>domain</code> filter item, specifying a list of up to 100 domain names.</li><li><strong>origin-status-code</strong>: Origin status code, such as 200 or 404.
+This dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: Origin status code category, such as 2xx or 4xx.
+This dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li></ul><p>If <code>DimensionName</code> is left empty, data is aggregated by the <code>AppId</code> dimension by default, returning a single set of data.</p><p>If <code>DimensionName</code> is specified, time series data is returned grouped by the specified dimension. For example:</p><ul>When <code>DimensionName = origin-status-code</code>:<ul><li><code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li><code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul><p><strong>Note</strong>: When <code>DimensionName</code> is specified, concurrent calls are not allowed. Exceeding the query rate limit will return the error <code><strong>InvalidParameter.ActionInProgress</strong></code>.</p>
         :type DimensionName: str
         """
         self._ZoneIds = None
@@ -28106,12 +28091,8 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        r"""Metric list. valid values:
-<ul><li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server direction. measurement unit: Byte.</li>
-<li>l7Flow_outBandwidth_hy: request bandwidth from EdgeOne node to origin server direction, measurement unit: bps;</li>.
-<li>l7Flow_request_hy: number of requests in the EdgeOne node to origin server direction. unit: count.</li>.
-<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node direction, measurement unit: Byte.</li>.
-<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. measurement unit: bps.</li></ul>.
+        r"""Metric list. Valid values:
+<ul><li>l7Flow_outFlux_hy: Request traffic from the EdgeOne node to the origin server. Unit: Byte.</li><li>l7Flow_outBandwidth_hy: Request bandwidth from the EdgeOne node to the origin server. Unit: bps.</li><li>l7Flow_request_hy: Number of requests from the EdgeOne node to the origin server. Unit: count.</li><li>l7Flow_inFlux_hy: Response traffic from the origin server to the EdgeOne node. Unit: Byte.</li><li>l7Flow_inBandwidth_hy: Response bandwidth from the origin server to the EdgeOne node. Unit: bps.</li></ul>
         :rtype: list of str
         """
         return self._MetricNames
@@ -28144,8 +28125,8 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""Time granularity of the query. valid values:.
-<Ul><Li>Min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is within 2 hours, within 2 days, within 7 days, and exceeding 7 days.
+        r"""Time granularity of the query. Valid values:
+<ul><li>min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>If this parameter is not specified, the granularity will be automatically inferred based on the time range between the start time and end time. Specifically, the granularity will be min, 5min, hour, and day when the time range is within 2 hours, within 2 days, within 7 days, and exceeding 7 days, respectively.
         :rtype: str
         """
         return self._Interval
@@ -28156,9 +28137,9 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter criteria. detailed filter criteria:.
-<ul><li><strong>domain</strong>: the requested domain name from the client. if accessing EdgeOne via wildcard domain, the data records the wildcard domain name rather than the specific domain.</li><li><strong>originStatusCode</strong>: origin status code. this filter item is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.<br>the corresponding Value options are as follows:<ul><li><code>1xx</code>: status codes of the 1xx kind.</li><li><code>2xx</code>: status codes of the 2xx kind.</li><li><code>3xx</code>: status codes of the 3xx kind.</li><li><code>4xx</code>: status codes of the 4xx kind.</li><li><code>5xx</code>: status codes of the 5xx kind.</li><li>integer within range <code>[0, 600)</code> (excluding 600).</li></ul></li></ul>.
-**Note**: when <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
+        r"""Filter criteria. Detailed filter criteria:
+<ul><li><strong>domain</strong>: The requested domain name from the client. If accessing EdgeOne via a wildcard domain, the data records the wildcard domain name rather than the specific subdomain.</li><li><strong>originStatusCode</strong>: Origin status code. This filter is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.
+Valid values:<ul><li><code>1xx</code>: Status codes in the 1xx range.</li><li><code>2xx</code>: Status codes in the 2xx range.</li><li><code>3xx</code>: Status codes in the 3xx range.</li><li><code>4xx</code>: Status codes in the 4xx range.</li><li><code>5xx</code>: Status codes in the 5xx range.</li><li>Any integer in the range <code>[0, 600)</code>.</li></ul></li></ul>**Note**: When <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -28169,8 +28150,11 @@ class DescribeTimingL7OriginPullDataRequest(AbstractModel):
 
     @property
     def DimensionName(self):
-        r"""<p>Query dimension name. valid values:</p><ul><li><strong>domain</strong>: the domain name requested by the client. if EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.<br>when using the domain dimension, the <code>Filters</code> must include the <code>domain</code> filter item, specifying a list of no more than 100 domain names to query.</li><li><strong>origin-status-code</strong>: origin status code, such as 200, 404.<br>this dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: origin status code category, such as 2xx, 4xx.<br>this dimension is supported only when <code>MetricNames =["l7Flow_request_hy"]</code>.</li></ul><p>if the <code>DimensionName</code> input parameter is empty, the data is aggregated by the <code>AppId</code> dimension by default, returning only one set of data.</p><p>if the <code>DimensionName</code> input parameter is not empty, the corresponding time series data is returned grouped by the specified query dimension. for example:</p><ul>when <code>DimensionName = origin-status-code</code>:<ul><li>the <code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li>the <code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul>.
-<strong>Note</strong>: when specifying DimensionName during queries, concurrent calls are forbidden. if exceeded the query frequency limit, it will return an error <code><strong>InvalidParameter.ActionInProgress</strong></code>.
+        r"""Query dimension name. Valid values:
+<ul><li><strong>domain</strong>: The domain name requested by the client. If EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.
+When using the domain dimension, the <code>Filters</code> parameter must include the <code>domain</code> filter item, specifying a list of up to 100 domain names.</li><li><strong>origin-status-code</strong>: Origin status code, such as 200 or 404.
+This dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li><li><strong>origin-status-code-category</strong>: Origin status code category, such as 2xx or 4xx.
+This dimension is supported only when <code>MetricNames = ["l7Flow_request_hy"]</code>.</li></ul><p>If <code>DimensionName</code> is left empty, data is aggregated by the <code>AppId</code> dimension by default, returning a single set of data.</p><p>If <code>DimensionName</code> is specified, time series data is returned grouped by the specified dimension. For example:</p><ul>When <code>DimensionName = origin-status-code</code>:<ul><li><code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li><code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul><p><strong>Note</strong>: When <code>DimensionName</code> is specified, concurrent calls are not allowed. Exceeding the query rate limit will return the error <code><strong>InvalidParameter.ActionInProgress</strong></code>.</p>
         :rtype: str
         """
         return self._DimensionName
@@ -29213,7 +29197,7 @@ class DescribeZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: The page offset. Default value: 0
+        :param _Offset: The page offset. Default value: 0.
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -29240,7 +29224,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""The page offset. Default value: 0
+        r"""The page offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -30689,7 +30673,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        :param _ZoneIds: The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy instance IDs.
         :type ProxyIds: list of str
@@ -30729,7 +30713,7 @@ class DownloadL4LogsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        r"""The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ZoneIds
@@ -30863,7 +30847,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        :param _ZoneIds: Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneIds: list of str
         :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
@@ -30903,7 +30887,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        r"""Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ZoneIds
@@ -34019,7 +34003,7 @@ class FunctionRegionSelection(AbstractModel):
         r"""
         :param _FunctionId: Function ID.
         :type FunctionId: str
-        :param _Regions: List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.comom/document/product/1552/112542?from_cn_redirect=1).
+        :param _Regions: List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.com/document/product/1552/112542?from_cn_redirect=1).
         :type Regions: list of str
         """
         self._FunctionId = None
@@ -34038,7 +34022,7 @@ class FunctionRegionSelection(AbstractModel):
 
     @property
     def Regions(self):
-        r"""List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.comom/document/product/1552/112542?from_cn_redirect=1).
+        r"""List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.com/document/product/1552/112542?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._Regions
@@ -41936,12 +41920,12 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type Hosts: list of str
         :param _Mode: Configures the mode of the server certificate. valid values:.
 Disables server-side certificate configuration.
-<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).</li>.
+<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).</li>.
 
 -In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
--When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
 eofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
-Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
 sslcert: specifies the managed service side certificate configuration.
         :type Mode: str
         :param _ServerCertInfo: SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
@@ -41953,7 +41937,7 @@ Default value: `none`.
         :type ApplyType: str
         :param _ClientCertInfo: In the mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for the client to authenticate the EO node. By default, it is disabled. If it is left blank, it indicates retaining the original configuration.
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
-        :param _UpstreamCertInfo: Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
+        :param _UpstreamCertInfo: Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).
         :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._ZoneId = None
@@ -41990,12 +41974,12 @@ Default value: `none`.
     def Mode(self):
         r"""Configures the mode of the server certificate. valid values:.
 Disables server-side certificate configuration.
-<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).</li>.
+<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).</li>.
 
 -In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.
--When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
 eofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.
-Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
+Note: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.
 sslcert: specifies the managed service side certificate configuration.
         :rtype: str
         """
@@ -42047,7 +42031,7 @@ Default value: `none`.
 
     @property
     def UpstreamCertInfo(self):
-        r"""Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).
+        r"""Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         return self._UpstreamCertInfo
@@ -46070,7 +46054,7 @@ class ModifyZoneWorkModeRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).
         :type WorkModeInfos: list of ConfigGroupWorkModeInfo
         """
         self._ZoneId = None
@@ -46089,7 +46073,7 @@ class ModifyZoneWorkModeRequest(AbstractModel):
 
     @property
     def WorkModeInfos(self):
-        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).
         :rtype: list of ConfigGroupWorkModeInfo
         """
         return self._WorkModeInfos
@@ -46732,7 +46716,7 @@ class NSDetail(AbstractModel):
 <Li>0: no site with the same name exists.</li>.
 <Li>Specifies the name already exists.</li>.
         :type IsFake: int
-        :param _OwnershipVerification: Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        :param _OwnershipVerification: Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _OriginalNameServers: Lists the NS servers currently in use by the selected site detected by EdgeOne.
         :type OriginalNameServers: list of str
@@ -46779,7 +46763,7 @@ class NSDetail(AbstractModel):
 
     @property
     def OwnershipVerification(self):
-        r"""Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).
+        r"""Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         return self._OwnershipVerification
@@ -51398,7 +51382,7 @@ class RateLimitingRule(AbstractModel):
         :type Id: str
         :param _Name: Specifies the name of the precise rate limit.
         :type Name: str
-        :param _Condition: The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to the product document (https://www.tencentcloud.comom/document/product/1552/125343?from_cn_redirect=1).
+        :param _Condition: The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .
         :type Condition: str
         :param _CountBy: The match mode of the rate threshold request feature. this field is required when Enabled is on.<br /><br />when there are multiple conditions, composite conditions are used to collect statistics. the maximum number of conditions cannot exceed 5. valid values:<br/><li><b>http.request.ip</b>: client ip;</li><li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: ja3 fingerprint of the request;</li><li><b>http.request.ja4</b>: ja4 fingerprint of the request;</li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own parameter.</li>.
         :type CountBy: list of str
@@ -51406,7 +51390,7 @@ class RateLimitingRule(AbstractModel):
         :type MaxRequestThreshold: int
         :param _CountingPeriod: Specifies the time window for statistics. valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li>.
         :type CountingPeriod: str
-        :param _ActionDuration: The duration of an Action is only supported in the following units: <li>s: seconds, value range 1–120;</li> <li>m: minutes, value range 1–120;</li> <li>h: hours, value range 1–48;</li> <li>d: days, value range 1–30.</li>.
+        :param _ActionDuration: The duration of an Action is only supported in the following units: <li>s: seconds, value range 1-120;</li> <li>m: minutes, value range 1-120;</li> <li>h: hours, value range 1-48;</li> <li>d: days, value range 1-30.</li>.
         :type ActionDuration: str
         :param _Action: Precision rate limiting handling methods. valid values: <li>Monitor: Monitor;</li> <li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL;</li>.
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
@@ -51450,7 +51434,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to the product document (https://www.tencentcloud.comom/document/product/1552/125343?from_cn_redirect=1).
+        r"""The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .
         :rtype: str
         """
         return self._Condition
@@ -51494,7 +51478,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def ActionDuration(self):
-        r"""The duration of an Action is only supported in the following units: <li>s: seconds, value range 1–120;</li> <li>m: minutes, value range 1–120;</li> <li>h: hours, value range 1–48;</li> <li>d: days, value range 1–30.</li>.
+        r"""The duration of an Action is only supported in the following units: <li>s: seconds, value range 1-120;</li> <li>m: minutes, value range 1-120;</li> <li>h: hours, value range 1-48;</li> <li>d: days, value range 1-30.</li>.
         :rtype: str
         """
         return self._ActionDuration
@@ -60037,7 +60021,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         :param _VanityNameServersIps: User-Customized NS IP information. (this field is a historic reserved field and is no longer maintained. refer to the corresponding field according to the website type.).
 Note: This field may return null, which indicates a failure to obtain a valid value.
         :type VanityNameServersIps: list of VanityNameServersIps
-        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        :param _WorkModeInfos: Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).
         :type WorkModeInfos: list of ConfigGroupWorkModeInfo
         """
         self._ZoneId = None
@@ -60359,7 +60343,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def WorkModeInfos(self):
-        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).
+        r"""Version management configuration group working mode. site configuration modules can enable "version management mode" or "immediate effect mode" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).
         :rtype: list of ConfigGroupWorkModeInfo
         """
         return self._WorkModeInfos
