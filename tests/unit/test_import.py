@@ -699,6 +699,11 @@ def test_import_trtc_v20190722():
     from tencentcloud.trtc.v20190722 import models
 
 
+def test_import_tse_v20201207():
+    from tencentcloud.tse.v20201207 import tse_client
+    from tencentcloud.tse.v20201207 import models
+
+
 def test_import_tts_v20190823():
     from tencentcloud.tts.v20190823 import tts_client
     from tencentcloud.tts.v20190823 import models
