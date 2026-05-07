@@ -61,6 +61,8 @@ Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: 
         :type Field: str
         :param _References: Reference example, up to 10.
         :type References: list of Reference
+        :param _GlossaryIDs: 
+        :type GlossaryIDs: list of str
         """
         self._Model = None
         self._Stream = None
@@ -69,6 +71,7 @@ Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: 
         self._Target = None
         self._Field = None
         self._References = None
+        self._GlossaryIDs = None
 
     @property
     def Model(self):
@@ -169,6 +172,17 @@ Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: 
     def References(self, References):
         self._References = References
 
+    @property
+    def GlossaryIDs(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._GlossaryIDs
+
+    @GlossaryIDs.setter
+    def GlossaryIDs(self, GlossaryIDs):
+        self._GlossaryIDs = GlossaryIDs
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -183,6 +197,7 @@ Filipino: fil, hindi: hi, polish: pl, czech: cs, dutch: nl, khmer: km, burmese: 
                 obj = Reference()
                 obj._deserialize(item)
                 self._References.append(obj)
+        self._GlossaryIDs = params.get("GlossaryIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2085,8 +2100,8 @@ Specifies the supported face count generation range. value range: 3000-1500000
         :type FaceCount: int
         :param _GenerateType: Generation task type. default: Normal. valid values:
 Normal: generates a geometric model with textures
-LowPoly: specifies the model generated after intelligent polygon reduction.
-Geometry: specifies whether to generate a Geometry model without textures (white model). when this task is selected, the EnablePBR parameter does not take effect
+LowPoly: specifies the model generated after intelligent polygon reduction
+Geometry: specifies whether to generate a Geometry model without textures (white model). When this parameter is enabled, only GLB will be output andthe EnablePBR parameter does not take effect
 Specifies the Sketch for the generative model, allowing input of a Sketch or line drawing. in this mode, both prompt and ImageUrl/ImageBase64 can be entered together
         :type GenerateType: str
         :param _PolygonType: This parameter only takes effect when LowPoly mode is selected from GenerateType
@@ -2221,8 +2236,8 @@ Specifies the supported face count generation range. value range: 3000-1500000
     def GenerateType(self):
         r"""Generation task type. default: Normal. valid values:
 Normal: generates a geometric model with textures
-LowPoly: specifies the model generated after intelligent polygon reduction.
-Geometry: specifies whether to generate a Geometry model without textures (white model). when this task is selected, the EnablePBR parameter does not take effect
+LowPoly: specifies the model generated after intelligent polygon reduction
+Geometry: specifies whether to generate a Geometry model without textures (white model). When this parameter is enabled, only GLB will be output andthe EnablePBR parameter does not take effect
 Specifies the Sketch for the generative model, allowing input of a Sketch or line drawing. in this mode, both prompt and ImageUrl/ImageBase64 can be entered together
         :rtype: str
         """
@@ -2653,7 +2668,7 @@ class SubmitHunyuanTo3DUVJobRequest(AbstractModel):
         r"""
         :param _File: File URL of the 3D model requiring UV unfold
 Supported formats: FBX, OBJ, GLB
-3D model limit: less than 30000 faces
+3D model limit: The face count of the 3D model is less than 30,000 and the number of connected components does not exceed 100
         :type File: :class:`tencentcloud.hunyuan.v20230901.models.InputFile3D`
         """
         self._File = None
@@ -2662,7 +2677,7 @@ Supported formats: FBX, OBJ, GLB
     def File(self):
         r"""File URL of the 3D model requiring UV unfold
 Supported formats: FBX, OBJ, GLB
-3D model limit: less than 30000 faces
+3D model limit: The face count of the 3D model is less than 30,000 and the number of connected components does not exceed 100
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.InputFile3D`
         """
         return self._File

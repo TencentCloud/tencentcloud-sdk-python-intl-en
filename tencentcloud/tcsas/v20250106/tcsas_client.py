@@ -27,7 +27,7 @@ class TcsasClient(AbstractClient):
 
 
     def AddTeamMember(self, request):
-        r"""This API is used to add a team member.
+        r"""This API is used to add a team member
 
         :param request: Request instance for AddTeamMember.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.AddTeamMemberRequest`

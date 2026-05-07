@@ -2105,7 +2105,7 @@ class CreateApplicationSensitiveAPIRequest(AbstractModel):
         r"""
         :param _ApplicationId: Application ID
         :type ApplicationId: str
-        :param _APIList: List of newly-added APIs
+        :param _APIList: List of newly-added APIs.
         :type APIList: list of CreateApplicationSensitiveAPIReq
         :param _PlatformId: Platform ID
         :type PlatformId: str
@@ -2127,7 +2127,7 @@ class CreateApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def APIList(self):
-        r"""List of newly-added APIs
+        r"""List of newly-added APIs.
         :rtype: list of CreateApplicationSensitiveAPIReq
         """
         return self._APIList

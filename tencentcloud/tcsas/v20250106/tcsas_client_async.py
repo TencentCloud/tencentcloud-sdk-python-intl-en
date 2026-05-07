@@ -31,7 +31,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddTeamMemberResponse:
         """
-        This API is used to add a team member.
+        This API is used to add a team member
         """
         
         kwargs = {}

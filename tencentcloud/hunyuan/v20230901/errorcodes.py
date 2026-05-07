@@ -52,3 +52,6 @@ INVALIDPARAMETERVALUE_MODEL = 'InvalidParameterValue.Model'
 
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 
+RESOURCENOTFOUND = 'ResourceNotFound'

@@ -41,11 +41,17 @@ INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
 # Invalid BizId.(SDKAppid)
 INVALIDPARAMETERVALUE_INVALIDBIZID = 'InvalidParameterValue.InvalidBizId'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDDELETETYPE = 'InvalidParameterValue.InvalidDeleteType'
+
 # Invalid RecordMode.
 INVALIDPARAMETERVALUE_INVALIDRECORDMODE = 'InvalidParameterValue.InvalidRecordMode'
 
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_INVALIDROOMID = 'InvalidParameterValue.InvalidRoomId'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDSTRUIN = 'InvalidParameterValue.InvalidStrUin'
 
 # Incorrect blocklist/allowlist format.
 INVALIDPARAMETERVALUE_INVALIDSUBSCRIBERECORDUSERIDS = 'InvalidParameterValue.InvalidSubscribeRecordUserIds'
@@ -58,6 +64,9 @@ INVALIDPARAMETERVALUE_INVALIDTASKID = 'InvalidParameterValue.InvalidTaskId'
 
 # The number of entries on the blocklist exceeds 20.
 INVALIDPARAMETERVALUE_INVALIDUNSUBSCRIBEUSERIDS = 'InvalidParameterValue.InvalidUNSubscribeUserIds'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = 'InvalidParameterValue.InvalidUinOrStrUin'
 
 # The number of created applications has reached the upper limit.
 LIMITEXCEEDED_APPLICATION = 'LimitExceeded.Application'
@@ -97,6 +106,9 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Operation unsupported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 
+UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = 'UnsupportedOperation.LimitDeleteExceeded'
 
 # The recording service is not activated.
 UNSUPPORTEDOPERATION_SERVICENOTOPENED = 'UnsupportedOperation.ServiceNotOpened'
