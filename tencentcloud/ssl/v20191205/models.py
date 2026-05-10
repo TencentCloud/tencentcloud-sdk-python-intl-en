@@ -1706,6 +1706,876 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class CertificateInfoSubmitRequest(AbstractModel):
+    r"""CertificateInfoSubmit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: Paid SSL certificate ID of materials to be submitted.	
+        :type CertId: str
+        :param _GenCsrType: This field is required. CSR generation method, value is:
+-online: Tencent Cloud submits the filled parameter information to generate a CSR and private key, and by Tencent Cloud for encrypted storage.
+-parse: Generate CSR and private key manually, and apply for a certificate by uploading CSR.
+        :type GenCsrType: str
+        :param _CertCommonName: Common name for certificate binding. If an uploaded CSR is used, that domain name must match the common name resolved by the CSR.
+        :type CertCommonName: str
+        :param _CompanyType: Organization information type. Valid values:
+1 (Personal): Only DV-type certificates can be set to 1. For personal-type certificates, organization information fields (Org, Admin, Tech) can be omitted.
+2 (Company): All types of certificates can be set to 2. Pass organization information fields as needed.
+        :type CompanyType: int
+        :param _CompanyId: Company ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no company information is found, set this parameter to 0. If company information matching the current order exists, you can view the company ID via [DescribeCompanies](https://www.tencentcloud.com/document/product/400/90375?from_cn_redirect=1). If a company ID is provided, parameters starting with "Org" can be omitted.
+
+
+        :type CompanyId: str
+        :param _OrgIdType: Company document type. Valid values:
+TYDMZ (unified social credit code): This field is required only for CFCA certificates, not required for other types.
+OTHERS
+        :type OrgIdType: str
+        :param _OrgIdNumber: Company identification number, value ranges from...to...
+TYDMZ (unified social credit code): 11532xxxxxxxx24820
+
+        :type OrgIdNumber: str
+        :param _AdminIdType: Document type of the manager. Valid values:
+SFZ (ID card): This field is required only for CFCA certs, not required for other types.
+HZ (passport): This field is required only for CFCA certs and not required for other types.
+        :type AdminIdType: str
+        :param _AdminIdNumber: ID number of the manager. This field is required only for CFCA certificates, not required for other types. Value ranges from...to...
+ID card: 110000xxxxxxxx1242
+HZ (Passport): EFxxxxxxx
+        :type AdminIdNumber: str
+        :param _TechIdType: Contact person document type. Valid values:
+SFZ (ID card): This field is required only for CFCA certs, not required for other types.
+HZ (passport): This field is required only for CFCA certs and not required for other types.
+        :type TechIdType: str
+        :param _TechIdNumber: ID number of the contact person. This field is required only for CFCA certs and not required for other types. Value ranges from...to...
+ID card: 110000xxxxxxxx1242
+HZ (Passport): EFxxxxxxx
+        :type TechIdNumber: str
+        :param _Csr: Uploaded CSR content.
+If GenCsrType is parse, this field is required.
+        :type Csr: str
+        :param _DnsNames: Other domains bound to the certificate. No need to provide for single domain or wildcard certificates. Required for multi-domain names and multiple wildcard certificates.
+        :type DnsNames: list of str
+        :param _KeyPass: Private key password. Currently used only when generating certs in jks or pfx format; private key certificates in other formats are unencrypted.	
+        :type KeyPass: str
+        :param _OrgOrganization: Company name. This field is required if CompanyId or ManagerId is not provided.
+        :type OrgOrganization: str
+        :param _OrgDivision: Department name. If not passing CompanyId or ManagerId, this field is required.
+        :type OrgDivision: str
+        :param _OrgAddress: Company detailed address. If not pass CompanyId or ManagerId, this field is required.
+        :type OrgAddress: str
+        :param _OrgCountry: Country/region name, for example China: CN. If not passing CompanyId or ManagerId, this field is required.
+        :type OrgCountry: str
+        :param _OrgCity: Located city. If not pass CompanyId or ManagerId, this field is required.
+        :type OrgCity: str
+        :param _OrgRegion: Province where the company is located. If not passing CompanyId or ManagerId, this field is required.
+        :type OrgRegion: str
+        :param _OrgPhoneArea: Area code of the company. If not passing CompanyId or ManagerId, this field is required.
+For example: 021. Pass 86 as the mobile number.
+        :type OrgPhoneArea: str
+        :param _OrgPhoneNumber: Company number. If CompanyId or ManagerId is not provided, this field is required.
+        :type OrgPhoneNumber: str
+        :param _VerifyType: Domain validation method of the certificate
+DNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.
+FILE: Manual addition of domain name FILE verification. Users are advised to manually add a specified path FILE in the root directory of the domain site to perform FILE verification. Either http or https passing is sufficient. The domain site must be accessible by overseas certificate authorities. The specific access allowlist is: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
+        :type VerifyType: str
+        :param _AdminFirstName: Manage name. If not passing ManagerId, this field is required.
+        :type AdminFirstName: str
+        :param _AdminLastName: Manager name. If not, this field is required when ManagerId is not passed.
+        :type AdminLastName: str
+        :param _AdminPhone: Manager mobile number. If not passing ManagerId, this field is required.
+        :type AdminPhone: str
+        :param _AdminEmail: Manager email address. If not passing ManagerId, this field is required.
+        :type AdminEmail: str
+        :param _AdminTitle: Manager position. If not passing ManagerId, this field is required.
+        :type AdminTitle: str
+        :param _TechFirstName: Contact name. If not passing ManagerId, this field is required.
+        :type TechFirstName: str
+        :param _TechLastName: Last name of the contact. If not, this field is required when ManagerId is not passed.
+        :type TechLastName: str
+        :param _ContactEmail: Contact email address. This field is required when CompanyType is 1.
+        :type ContactEmail: str
+        :param _AutoRenewFlag: Whether to enable auto-renewal: 0, not enabled; 1, enabled; defaults to 0.
+        :type AutoRenewFlag: int
+        :param _CsrKeyParameter: Key pair parameters. RSA supports 2048 and 4096. ECC is only supported for prime256v1. This parameter is required when the CSR generation method is online.
+
+        :type CsrKeyParameter: str
+        :param _CsrEncryptAlgo: Encryption algorithm, value is ECC or RSA, defaults to RSA. This parameter is required when CSR generation method is online.
+        :type CsrEncryptAlgo: str
+        :param _ManagerId: Manager ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no administrator information is found, pass 0 for this parameter. If administrator information exists that meets the current order, the manager ID can be selected based on [DescribeManagers](https://www.tencentcloud.com/document/product/400/52672?from_cn_redirect=1). If the manager ID is passed, parameters beginning with Org, Admin, or Tech can be omitted. The manager ID includes company information.
+
+        :type ManagerId: str
+        :param _TechPhone: Contact phone. If not passing ManagerId, this field is required.
+        :type TechPhone: str
+        :param _TechEmail: contact email
+        :type TechEmail: str
+        :param _TechTitle: Contact person position. If not passing ManagerId, this field is required.
+        :type TechTitle: str
+        :param _Type: Certificate type
+        :type Type: int
+        :param _CaType: Valid only for Dnspod series certs. ca organization kind can be sectigo and digicert.
+        :type CaType: str
+        :param _SignAlgo: signature algorithm
+        :type SignAlgo: str
+        :param _UseCrossSignRoot: Whether to use intersect root certificate
+        :type UseCrossSignRoot: bool
+        """
+        self._CertId = None
+        self._GenCsrType = None
+        self._CertCommonName = None
+        self._CompanyType = None
+        self._CompanyId = None
+        self._OrgIdType = None
+        self._OrgIdNumber = None
+        self._AdminIdType = None
+        self._AdminIdNumber = None
+        self._TechIdType = None
+        self._TechIdNumber = None
+        self._Csr = None
+        self._DnsNames = None
+        self._KeyPass = None
+        self._OrgOrganization = None
+        self._OrgDivision = None
+        self._OrgAddress = None
+        self._OrgCountry = None
+        self._OrgCity = None
+        self._OrgRegion = None
+        self._OrgPhoneArea = None
+        self._OrgPhoneNumber = None
+        self._VerifyType = None
+        self._AdminFirstName = None
+        self._AdminLastName = None
+        self._AdminPhone = None
+        self._AdminEmail = None
+        self._AdminTitle = None
+        self._TechFirstName = None
+        self._TechLastName = None
+        self._ContactEmail = None
+        self._AutoRenewFlag = None
+        self._CsrKeyParameter = None
+        self._CsrEncryptAlgo = None
+        self._ManagerId = None
+        self._TechPhone = None
+        self._TechEmail = None
+        self._TechTitle = None
+        self._Type = None
+        self._CaType = None
+        self._SignAlgo = None
+        self._UseCrossSignRoot = None
+
+    @property
+    def CertId(self):
+        r"""Paid SSL certificate ID of materials to be submitted.	
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def GenCsrType(self):
+        r"""This field is required. CSR generation method, value is:
+-online: Tencent Cloud submits the filled parameter information to generate a CSR and private key, and by Tencent Cloud for encrypted storage.
+-parse: Generate CSR and private key manually, and apply for a certificate by uploading CSR.
+        :rtype: str
+        """
+        return self._GenCsrType
+
+    @GenCsrType.setter
+    def GenCsrType(self, GenCsrType):
+        self._GenCsrType = GenCsrType
+
+    @property
+    def CertCommonName(self):
+        r"""Common name for certificate binding. If an uploaded CSR is used, that domain name must match the common name resolved by the CSR.
+        :rtype: str
+        """
+        return self._CertCommonName
+
+    @CertCommonName.setter
+    def CertCommonName(self, CertCommonName):
+        self._CertCommonName = CertCommonName
+
+    @property
+    def CompanyType(self):
+        r"""Organization information type. Valid values:
+1 (Personal): Only DV-type certificates can be set to 1. For personal-type certificates, organization information fields (Org, Admin, Tech) can be omitted.
+2 (Company): All types of certificates can be set to 2. Pass organization information fields as needed.
+        :rtype: int
+        """
+        return self._CompanyType
+
+    @CompanyType.setter
+    def CompanyType(self, CompanyType):
+        self._CompanyType = CompanyType
+
+    @property
+    def CompanyId(self):
+        r"""Company ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no company information is found, set this parameter to 0. If company information matching the current order exists, you can view the company ID via [DescribeCompanies](https://www.tencentcloud.com/document/product/400/90375?from_cn_redirect=1). If a company ID is provided, parameters starting with "Org" can be omitted.
+
+
+        :rtype: str
+        """
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def OrgIdType(self):
+        r"""Company document type. Valid values:
+TYDMZ (unified social credit code): This field is required only for CFCA certificates, not required for other types.
+OTHERS
+        :rtype: str
+        """
+        return self._OrgIdType
+
+    @OrgIdType.setter
+    def OrgIdType(self, OrgIdType):
+        self._OrgIdType = OrgIdType
+
+    @property
+    def OrgIdNumber(self):
+        r"""Company identification number, value ranges from...to...
+TYDMZ (unified social credit code): 11532xxxxxxxx24820
+
+        :rtype: str
+        """
+        return self._OrgIdNumber
+
+    @OrgIdNumber.setter
+    def OrgIdNumber(self, OrgIdNumber):
+        self._OrgIdNumber = OrgIdNumber
+
+    @property
+    def AdminIdType(self):
+        r"""Document type of the manager. Valid values:
+SFZ (ID card): This field is required only for CFCA certs, not required for other types.
+HZ (passport): This field is required only for CFCA certs and not required for other types.
+        :rtype: str
+        """
+        return self._AdminIdType
+
+    @AdminIdType.setter
+    def AdminIdType(self, AdminIdType):
+        self._AdminIdType = AdminIdType
+
+    @property
+    def AdminIdNumber(self):
+        r"""ID number of the manager. This field is required only for CFCA certificates, not required for other types. Value ranges from...to...
+ID card: 110000xxxxxxxx1242
+HZ (Passport): EFxxxxxxx
+        :rtype: str
+        """
+        return self._AdminIdNumber
+
+    @AdminIdNumber.setter
+    def AdminIdNumber(self, AdminIdNumber):
+        self._AdminIdNumber = AdminIdNumber
+
+    @property
+    def TechIdType(self):
+        r"""Contact person document type. Valid values:
+SFZ (ID card): This field is required only for CFCA certs, not required for other types.
+HZ (passport): This field is required only for CFCA certs and not required for other types.
+        :rtype: str
+        """
+        return self._TechIdType
+
+    @TechIdType.setter
+    def TechIdType(self, TechIdType):
+        self._TechIdType = TechIdType
+
+    @property
+    def TechIdNumber(self):
+        r"""ID number of the contact person. This field is required only for CFCA certs and not required for other types. Value ranges from...to...
+ID card: 110000xxxxxxxx1242
+HZ (Passport): EFxxxxxxx
+        :rtype: str
+        """
+        return self._TechIdNumber
+
+    @TechIdNumber.setter
+    def TechIdNumber(self, TechIdNumber):
+        self._TechIdNumber = TechIdNumber
+
+    @property
+    def Csr(self):
+        r"""Uploaded CSR content.
+If GenCsrType is parse, this field is required.
+        :rtype: str
+        """
+        return self._Csr
+
+    @Csr.setter
+    def Csr(self, Csr):
+        self._Csr = Csr
+
+    @property
+    def DnsNames(self):
+        r"""Other domains bound to the certificate. No need to provide for single domain or wildcard certificates. Required for multi-domain names and multiple wildcard certificates.
+        :rtype: list of str
+        """
+        return self._DnsNames
+
+    @DnsNames.setter
+    def DnsNames(self, DnsNames):
+        self._DnsNames = DnsNames
+
+    @property
+    def KeyPass(self):
+        r"""Private key password. Currently used only when generating certs in jks or pfx format; private key certificates in other formats are unencrypted.	
+        :rtype: str
+        """
+        return self._KeyPass
+
+    @KeyPass.setter
+    def KeyPass(self, KeyPass):
+        self._KeyPass = KeyPass
+
+    @property
+    def OrgOrganization(self):
+        r"""Company name. This field is required if CompanyId or ManagerId is not provided.
+        :rtype: str
+        """
+        return self._OrgOrganization
+
+    @OrgOrganization.setter
+    def OrgOrganization(self, OrgOrganization):
+        self._OrgOrganization = OrgOrganization
+
+    @property
+    def OrgDivision(self):
+        r"""Department name. If not passing CompanyId or ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._OrgDivision
+
+    @OrgDivision.setter
+    def OrgDivision(self, OrgDivision):
+        self._OrgDivision = OrgDivision
+
+    @property
+    def OrgAddress(self):
+        r"""Company detailed address. If not pass CompanyId or ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._OrgAddress
+
+    @OrgAddress.setter
+    def OrgAddress(self, OrgAddress):
+        self._OrgAddress = OrgAddress
+
+    @property
+    def OrgCountry(self):
+        r"""Country/region name, for example China: CN. If not passing CompanyId or ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._OrgCountry
+
+    @OrgCountry.setter
+    def OrgCountry(self, OrgCountry):
+        self._OrgCountry = OrgCountry
+
+    @property
+    def OrgCity(self):
+        r"""Located city. If not pass CompanyId or ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._OrgCity
+
+    @OrgCity.setter
+    def OrgCity(self, OrgCity):
+        self._OrgCity = OrgCity
+
+    @property
+    def OrgRegion(self):
+        r"""Province where the company is located. If not passing CompanyId or ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._OrgRegion
+
+    @OrgRegion.setter
+    def OrgRegion(self, OrgRegion):
+        self._OrgRegion = OrgRegion
+
+    @property
+    def OrgPhoneArea(self):
+        r"""Area code of the company. If not passing CompanyId or ManagerId, this field is required.
+For example: 021. Pass 86 as the mobile number.
+        :rtype: str
+        """
+        return self._OrgPhoneArea
+
+    @OrgPhoneArea.setter
+    def OrgPhoneArea(self, OrgPhoneArea):
+        self._OrgPhoneArea = OrgPhoneArea
+
+    @property
+    def OrgPhoneNumber(self):
+        r"""Company number. If CompanyId or ManagerId is not provided, this field is required.
+        :rtype: str
+        """
+        return self._OrgPhoneNumber
+
+    @OrgPhoneNumber.setter
+    def OrgPhoneNumber(self, OrgPhoneNumber):
+        self._OrgPhoneNumber = OrgPhoneNumber
+
+    @property
+    def VerifyType(self):
+        r"""Domain validation method of the certificate
+DNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.
+FILE: Manual addition of domain name FILE verification. Users are advised to manually add a specified path FILE in the root directory of the domain site to perform FILE verification. Either http or https passing is sufficient. The domain site must be accessible by overseas certificate authorities. The specific access allowlist is: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def AdminFirstName(self):
+        r"""Manage name. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._AdminFirstName
+
+    @AdminFirstName.setter
+    def AdminFirstName(self, AdminFirstName):
+        self._AdminFirstName = AdminFirstName
+
+    @property
+    def AdminLastName(self):
+        r"""Manager name. If not, this field is required when ManagerId is not passed.
+        :rtype: str
+        """
+        return self._AdminLastName
+
+    @AdminLastName.setter
+    def AdminLastName(self, AdminLastName):
+        self._AdminLastName = AdminLastName
+
+    @property
+    def AdminPhone(self):
+        r"""Manager mobile number. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._AdminPhone
+
+    @AdminPhone.setter
+    def AdminPhone(self, AdminPhone):
+        self._AdminPhone = AdminPhone
+
+    @property
+    def AdminEmail(self):
+        r"""Manager email address. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._AdminEmail
+
+    @AdminEmail.setter
+    def AdminEmail(self, AdminEmail):
+        self._AdminEmail = AdminEmail
+
+    @property
+    def AdminTitle(self):
+        r"""Manager position. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._AdminTitle
+
+    @AdminTitle.setter
+    def AdminTitle(self, AdminTitle):
+        self._AdminTitle = AdminTitle
+
+    @property
+    def TechFirstName(self):
+        r"""Contact name. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._TechFirstName
+
+    @TechFirstName.setter
+    def TechFirstName(self, TechFirstName):
+        self._TechFirstName = TechFirstName
+
+    @property
+    def TechLastName(self):
+        r"""Last name of the contact. If not, this field is required when ManagerId is not passed.
+        :rtype: str
+        """
+        return self._TechLastName
+
+    @TechLastName.setter
+    def TechLastName(self, TechLastName):
+        self._TechLastName = TechLastName
+
+    @property
+    def ContactEmail(self):
+        r"""Contact email address. This field is required when CompanyType is 1.
+        :rtype: str
+        """
+        return self._ContactEmail
+
+    @ContactEmail.setter
+    def ContactEmail(self, ContactEmail):
+        self._ContactEmail = ContactEmail
+
+    @property
+    def AutoRenewFlag(self):
+        r"""Whether to enable auto-renewal: 0, not enabled; 1, enabled; defaults to 0.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def CsrKeyParameter(self):
+        r"""Key pair parameters. RSA supports 2048 and 4096. ECC is only supported for prime256v1. This parameter is required when the CSR generation method is online.
+
+        :rtype: str
+        """
+        return self._CsrKeyParameter
+
+    @CsrKeyParameter.setter
+    def CsrKeyParameter(self, CsrKeyParameter):
+        self._CsrKeyParameter = CsrKeyParameter
+
+    @property
+    def CsrEncryptAlgo(self):
+        r"""Encryption algorithm, value is ECC or RSA, defaults to RSA. This parameter is required when CSR generation method is online.
+        :rtype: str
+        """
+        return self._CsrEncryptAlgo
+
+    @CsrEncryptAlgo.setter
+    def CsrEncryptAlgo(self, CsrEncryptAlgo):
+        self._CsrEncryptAlgo = CsrEncryptAlgo
+
+    @property
+    def ManagerId(self):
+        r"""Manager ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no administrator information is found, pass 0 for this parameter. If administrator information exists that meets the current order, the manager ID can be selected based on [DescribeManagers](https://www.tencentcloud.com/document/product/400/52672?from_cn_redirect=1). If the manager ID is passed, parameters beginning with Org, Admin, or Tech can be omitted. The manager ID includes company information.
+
+        :rtype: str
+        """
+        return self._ManagerId
+
+    @ManagerId.setter
+    def ManagerId(self, ManagerId):
+        self._ManagerId = ManagerId
+
+    @property
+    def TechPhone(self):
+        r"""Contact phone. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._TechPhone
+
+    @TechPhone.setter
+    def TechPhone(self, TechPhone):
+        self._TechPhone = TechPhone
+
+    @property
+    def TechEmail(self):
+        r"""contact email
+        :rtype: str
+        """
+        return self._TechEmail
+
+    @TechEmail.setter
+    def TechEmail(self, TechEmail):
+        self._TechEmail = TechEmail
+
+    @property
+    def TechTitle(self):
+        r"""Contact person position. If not passing ManagerId, this field is required.
+        :rtype: str
+        """
+        return self._TechTitle
+
+    @TechTitle.setter
+    def TechTitle(self, TechTitle):
+        self._TechTitle = TechTitle
+
+    @property
+    def Type(self):
+        r"""Certificate type
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CaType(self):
+        r"""Valid only for Dnspod series certs. ca organization kind can be sectigo and digicert.
+        :rtype: str
+        """
+        return self._CaType
+
+    @CaType.setter
+    def CaType(self, CaType):
+        self._CaType = CaType
+
+    @property
+    def SignAlgo(self):
+        r"""signature algorithm
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
+    @property
+    def UseCrossSignRoot(self):
+        r"""Whether to use intersect root certificate
+        :rtype: bool
+        """
+        return self._UseCrossSignRoot
+
+    @UseCrossSignRoot.setter
+    def UseCrossSignRoot(self, UseCrossSignRoot):
+        self._UseCrossSignRoot = UseCrossSignRoot
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._GenCsrType = params.get("GenCsrType")
+        self._CertCommonName = params.get("CertCommonName")
+        self._CompanyType = params.get("CompanyType")
+        self._CompanyId = params.get("CompanyId")
+        self._OrgIdType = params.get("OrgIdType")
+        self._OrgIdNumber = params.get("OrgIdNumber")
+        self._AdminIdType = params.get("AdminIdType")
+        self._AdminIdNumber = params.get("AdminIdNumber")
+        self._TechIdType = params.get("TechIdType")
+        self._TechIdNumber = params.get("TechIdNumber")
+        self._Csr = params.get("Csr")
+        self._DnsNames = params.get("DnsNames")
+        self._KeyPass = params.get("KeyPass")
+        self._OrgOrganization = params.get("OrgOrganization")
+        self._OrgDivision = params.get("OrgDivision")
+        self._OrgAddress = params.get("OrgAddress")
+        self._OrgCountry = params.get("OrgCountry")
+        self._OrgCity = params.get("OrgCity")
+        self._OrgRegion = params.get("OrgRegion")
+        self._OrgPhoneArea = params.get("OrgPhoneArea")
+        self._OrgPhoneNumber = params.get("OrgPhoneNumber")
+        self._VerifyType = params.get("VerifyType")
+        self._AdminFirstName = params.get("AdminFirstName")
+        self._AdminLastName = params.get("AdminLastName")
+        self._AdminPhone = params.get("AdminPhone")
+        self._AdminEmail = params.get("AdminEmail")
+        self._AdminTitle = params.get("AdminTitle")
+        self._TechFirstName = params.get("TechFirstName")
+        self._TechLastName = params.get("TechLastName")
+        self._ContactEmail = params.get("ContactEmail")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._CsrKeyParameter = params.get("CsrKeyParameter")
+        self._CsrEncryptAlgo = params.get("CsrEncryptAlgo")
+        self._ManagerId = params.get("ManagerId")
+        self._TechPhone = params.get("TechPhone")
+        self._TechEmail = params.get("TechEmail")
+        self._TechTitle = params.get("TechTitle")
+        self._Type = params.get("Type")
+        self._CaType = params.get("CaType")
+        self._SignAlgo = params.get("SignAlgo")
+        self._UseCrossSignRoot = params.get("UseCrossSignRoot")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateInfoSubmitResponse(AbstractModel):
+    r"""CertificateInfoSubmit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CertificateOrderSubmitRequest(AbstractModel):
+    r"""CertificateOrderSubmit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: Paid SSL certificate ID of materials to be submitted.	
+        :type CertId: str
+        :param _DeleteDnsAutoRecord: Whether to delete automatic DNS validation: 0, do not delete; 1, delete; default is do not delete.
+        :type DeleteDnsAutoRecord: int
+        :param _VerifyType: Domain validation method of the certificate
+DNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.
+FILE: Manual domain addition via FILE verification. Users are advised to manually add the specified path FILE to the root directory of the domain site for FILE verification. Either http or https access is sufficient. The domain site must be accessible by overseas certificate authorities. For the specific access allowlist, refer to the console page.
+        :type VerifyType: str
+        """
+        self._CertId = None
+        self._DeleteDnsAutoRecord = None
+        self._VerifyType = None
+
+    @property
+    def CertId(self):
+        r"""Paid SSL certificate ID of materials to be submitted.	
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def DeleteDnsAutoRecord(self):
+        r"""Whether to delete automatic DNS validation: 0, do not delete; 1, delete; default is do not delete.
+        :rtype: int
+        """
+        return self._DeleteDnsAutoRecord
+
+    @DeleteDnsAutoRecord.setter
+    def DeleteDnsAutoRecord(self, DeleteDnsAutoRecord):
+        self._DeleteDnsAutoRecord = DeleteDnsAutoRecord
+
+    @property
+    def VerifyType(self):
+        r"""Domain validation method of the certificate
+DNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.
+FILE: Manual domain addition via FILE verification. Users are advised to manually add the specified path FILE to the root directory of the domain site for FILE verification. Either http or https access is sufficient. The domain site must be accessible by overseas certificate authorities. For the specific access allowlist, refer to the console page.
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._DeleteDnsAutoRecord = params.get("DeleteDnsAutoRecord")
+        self._VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateOrderSubmitResponse(AbstractModel):
+    r"""CertificateOrderSubmit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: Order number from the certificate authority.
+        :type OrderId: str
+        :param _Status: Certificate status. 0=Under review, 1=Approved, 2=Review failed, 3=Expired, 4=DNS record added, 5=Enterprise certificate, pending submission, 6=Order cancellation in progress, 7=Canceled, 8=Documents submitted, pending upload of confirmation letter, 9=Certificate revocation in progress, 10=Revoked, 11=Reissue in progress, 12=Pending upload of revocation confirmation letter, 13=Free certificate pending document submission.
+        :type Status: int
+        :param _IsAudited: Whether prereview is required or not
+        :type IsAudited: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._IsAudited = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        r"""Order number from the certificate authority.
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        r"""Certificate status. 0=Under review, 1=Approved, 2=Review failed, 3=Expired, 4=DNS record added, 5=Enterprise certificate, pending submission, 6=Order cancellation in progress, 7=Canceled, 8=Documents submitted, pending upload of confirmation letter, 9=Certificate revocation in progress, 10=Revoked, 11=Reissue in progress, 12=Pending upload of revocation confirmation letter, 13=Free certificate pending document submission.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsAudited(self):
+        r"""Whether prereview is required or not
+        :rtype: bool
+        """
+        return self._IsAudited
+
+    @IsAudited.setter
+    def IsAudited(self, IsAudited):
+        self._IsAudited = IsAudited
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._IsAudited = params.get("IsAudited")
+        self._RequestId = params.get("RequestId")
+
+
 class Certificates(AbstractModel):
     r"""Content of the `Certificates` parameter returned by `DescribeCertificates`
 

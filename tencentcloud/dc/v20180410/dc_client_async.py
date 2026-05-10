@@ -49,7 +49,7 @@ class DcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ApplyInternetAddressResponse:
         """
-        This API is used to apply for an internet tunnel’s CIDR block.
+        This API is used to apply for an internet tunnel's CIDR block.
         """
         
         kwargs = {}

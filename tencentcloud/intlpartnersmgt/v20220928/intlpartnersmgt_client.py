@@ -474,6 +474,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerOwnVoucherUsageDetails(self, request):
+        r"""Description: The current API is used to query usage details of customer's own voucher by the customer self.
+        Call role: End customer.
+
+        :param request: Request instance for DescribeCustomerOwnVoucherUsageDetails.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnVoucherUsageDetailsRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnVoucherUsageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerOwnVoucherUsageDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerOwnVoucherUsageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCustomerUin(self, request):
         r"""This API is used to query the list of customer UINs.
 

@@ -383,6 +383,25 @@ class IntlpartnersmgtClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCustomerOwnVoucherUsageDetails(
+            self,
+            request: models.DescribeCustomerOwnVoucherUsageDetailsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomerOwnVoucherUsageDetailsResponse:
+        """
+        Description: The current API is used to query usage details of customer's own voucher by the customer self.
+        Call role: End customer.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomerOwnVoucherUsageDetails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomerOwnVoucherUsageDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCustomerUin(
             self,
             request: models.DescribeCustomerUinRequest,

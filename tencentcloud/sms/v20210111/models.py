@@ -1244,28 +1244,24 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignIdSet: Signature ID array.
-Note: the maximum length of the array is 100 by default.
-        :type SignIdSet: list of int non-negative
         :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        """
-        self._SignIdSet = None
-        self._International = None
-
-    @property
-    def SignIdSet(self):
-        r"""Signature ID array.
+        :param _SignIdSet: Signature ID array.
 Note: the maximum length of the array is 100 by default.
-        :rtype: list of int non-negative
+        :type SignIdSet: list of int non-negative
+        :param _Limit: Upper limit. Maximum value: 100.
+Note: it is 10 by default and is enabled when SignIdSet is empty.
+        :type Limit: int
+        :param _Offset: Offset.
+Note: it is 0 by default and is enabled when SignIdSet is empty.
+        :type Offset: int
         """
-        return self._SignIdSet
-
-    @SignIdSet.setter
-    def SignIdSet(self, SignIdSet):
-        self._SignIdSet = SignIdSet
+        self._International = None
+        self._SignIdSet = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def International(self):
@@ -1280,10 +1276,48 @@ Note: the maximum length of the array is 100 by default.
     def International(self, International):
         self._International = International
 
+    @property
+    def SignIdSet(self):
+        r"""Signature ID array.
+Note: the maximum length of the array is 100 by default.
+        :rtype: list of int non-negative
+        """
+        return self._SignIdSet
+
+    @SignIdSet.setter
+    def SignIdSet(self, SignIdSet):
+        self._SignIdSet = SignIdSet
+
+    @property
+    def Limit(self):
+        r"""Upper limit. Maximum value: 100.
+Note: it is 10 by default and is enabled when SignIdSet is empty.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+Note: it is 0 by default and is enabled when SignIdSet is empty.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
-        self._SignIdSet = params.get("SignIdSet")
         self._International = params.get("International")
+        self._SignIdSet = params.get("SignIdSet")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

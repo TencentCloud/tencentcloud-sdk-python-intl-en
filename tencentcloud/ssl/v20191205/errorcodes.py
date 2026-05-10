@@ -83,6 +83,15 @@ FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = 'FailedOperation.Cert
 # The cloud resource type is invalid.
 FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = 'FailedOperation.CertificateHostResourceTypeInvalid'
 
+# Mailbox cannot be empty
+FAILEDOPERATION_CERTIFICATEINFOSUBMITCONTACTEMAILEMPTY = 'FailedOperation.CertificateInfoSubmitContactEmailEmpty'
+
+# The input domain name %s is in incorrect format. Please check and resubmit.
+FAILEDOPERATION_CERTIFICATEINFOSUBMITDOMAININVALID = 'FailedOperation.CertificateInfoSubmitDomainInvalid'
+
+# Certificate status does not allow submitting documentation.
+FAILEDOPERATION_CERTIFICATEINFOSUBMITSTATUSINVALID = 'FailedOperation.CertificateInfoSubmitStatusInvalid'
+
 # The certificate is invalid.
 FAILEDOPERATION_CERTIFICATEINVALID = 'FailedOperation.CertificateInvalid'
 
@@ -104,11 +113,23 @@ FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 # The certificate does not exist, or the review cannot be canceled.
 FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = 'FailedOperation.CertificateNotFoundOrCantCancel'
 
+# Your order is being processed. Please wait patiently.
+FAILEDOPERATION_CERTIFICATEORDERSUBMITPROCESSING = 'FailedOperation.CertificateOrderSubmitProcessing'
+
+# The currently selected root certificate is invalid. Please reselect.
+FAILEDOPERATION_CERTIFICATEORDERSUBMITROOTCAINVALID = 'FailedOperation.CertificateOrderSubmitRootCAInvalid'
+
 # Parsing failed. check if the certificate meets the standard and pay attention to whether there are extra spaces.
 FAILEDOPERATION_CERTIFICATEPARSEERROR = 'FailedOperation.CertificateParseError'
 
+# The format of the entered email address is incorrect. Please check and resubmit.
+FAILEDOPERATION_CERTIFICATEPREVERIFYEMAILINVALID = 'FailedOperation.CertificatePreVerifyEmailInvalid'
+
 # You cannot re-submit a review application for a certificate in this status.
 FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = 'FailedOperation.CertificateStatusNotAllowResubmit'
+
+# Uploaded certificate managed renewal cannot submit order manually
+FAILEDOPERATION_CERTIFICATESUBMITHOSTINGCERTERROR = 'FailedOperation.CertificateSubmitHostingCertError'
 
 # The cert associated with the cloud resource query task id is invalid.
 FAILEDOPERATION_CERTIFICATESYNCTASKIDINVALID = 'FailedOperation.CertificateSyncTaskIdInvalid'

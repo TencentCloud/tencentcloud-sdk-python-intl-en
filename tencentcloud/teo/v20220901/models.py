@@ -3028,7 +3028,7 @@ class ApplyFreeCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID.
+        :param _ZoneId: Site ID
         :type ZoneId: str
         :param _Domain: Specifies the target domain name for free certificate application.
         :type Domain: str
@@ -3045,7 +3045,7 @@ Note: after triggering this api, you need to complete the verification content c
 
     @property
     def ZoneId(self):
-        r"""Site ID.
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -25515,7 +25515,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        :param _ZoneId: Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
@@ -25542,7 +25542,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).
+        r"""Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne] tencentcloud API change notification (https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).
         :rtype: str
         """
         return self._ZoneId

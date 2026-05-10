@@ -97,6 +97,42 @@ class SslClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CertificateInfoSubmit(
+            self,
+            request: models.CertificateInfoSubmitRequest,
+            opts: Dict = None,
+    ) -> models.CertificateInfoSubmitResponse:
+        """
+        Submit certificate information for payment
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CertificateInfoSubmit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CertificateInfoSubmitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CertificateOrderSubmit(
+            self,
+            request: models.CertificateOrderSubmitRequest,
+            opts: Dict = None,
+    ) -> models.CertificateOrderSubmitResponse:
+        """
+        Submit a certificate order
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CertificateOrderSubmit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CertificateOrderSubmitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CommitCertificateInformation(
             self,
             request: models.CommitCertificateInformationRequest,

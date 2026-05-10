@@ -343,6 +343,22 @@ class CreateTargetGroupRequest(AbstractModel):
         :type ScheduleAlgorithm: str
         :param _AllDeadToAlive: Whether "All Dead, All Alive" is supported. It is supported by default.
         :type AllDeadToAlive: bool
+        :param _Tags: Tags
+        :type Tags: list of TagInfo
+        :param _ForwardingMode: Traffic Distribution Mode
+<ul>
+<li>STATELESS: Stateless</li>
+<li>STATEFUL: Stateful</li>
+</ul>
+        :type ForwardingMode: str
+        :param _RescheduleUnbindRs: <p>Switch for unbinding backend services in the rescheduling function. When enabled, unbinding backend services will trigger rescheduling.</p>
+        :type RescheduleUnbindRs: bool
+        :param _RescheduleUnbindRsStartTime: <p>The time to enable rescheduling after unbinding RS, configurable from 0s to 3600s, with a default value of 0s</p>
+        :type RescheduleUnbindRsStartTime: int
+        :param _RescheduleUnhealthy: <p>Switch for backend service health detection exception in the rescheduling function. When enabled, abnormal health checks of backend services will trigger rescheduling.</p>
+        :type RescheduleUnhealthy: bool
+        :param _RescheduleUnhealthyStartTime: <p>The waiting time to enable rescheduling after abnormal health detection of backend services, configurable from 0s to 3600s, default is 0s</p>
+        :type RescheduleUnhealthyStartTime: int
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -352,6 +368,12 @@ class CreateTargetGroupRequest(AbstractModel):
         self._HealthCheck = None
         self._ScheduleAlgorithm = None
         self._AllDeadToAlive = None
+        self._Tags = None
+        self._ForwardingMode = None
+        self._RescheduleUnbindRs = None
+        self._RescheduleUnbindRsStartTime = None
+        self._RescheduleUnhealthy = None
+        self._RescheduleUnhealthyStartTime = None
 
     @property
     def TargetGroupName(self):
@@ -445,6 +467,76 @@ class CreateTargetGroupRequest(AbstractModel):
     def AllDeadToAlive(self, AllDeadToAlive):
         self._AllDeadToAlive = AllDeadToAlive
 
+    @property
+    def Tags(self):
+        r"""Tags
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ForwardingMode(self):
+        r"""Traffic Distribution Mode
+<ul>
+<li>STATELESS: Stateless</li>
+<li>STATEFUL: Stateful</li>
+</ul>
+        :rtype: str
+        """
+        return self._ForwardingMode
+
+    @ForwardingMode.setter
+    def ForwardingMode(self, ForwardingMode):
+        self._ForwardingMode = ForwardingMode
+
+    @property
+    def RescheduleUnbindRs(self):
+        r"""<p>Switch for unbinding backend services in the rescheduling function. When enabled, unbinding backend services will trigger rescheduling.</p>
+        :rtype: bool
+        """
+        return self._RescheduleUnbindRs
+
+    @RescheduleUnbindRs.setter
+    def RescheduleUnbindRs(self, RescheduleUnbindRs):
+        self._RescheduleUnbindRs = RescheduleUnbindRs
+
+    @property
+    def RescheduleUnbindRsStartTime(self):
+        r"""<p>The time to enable rescheduling after unbinding RS, configurable from 0s to 3600s, with a default value of 0s</p>
+        :rtype: int
+        """
+        return self._RescheduleUnbindRsStartTime
+
+    @RescheduleUnbindRsStartTime.setter
+    def RescheduleUnbindRsStartTime(self, RescheduleUnbindRsStartTime):
+        self._RescheduleUnbindRsStartTime = RescheduleUnbindRsStartTime
+
+    @property
+    def RescheduleUnhealthy(self):
+        r"""<p>Switch for backend service health detection exception in the rescheduling function. When enabled, abnormal health checks of backend services will trigger rescheduling.</p>
+        :rtype: bool
+        """
+        return self._RescheduleUnhealthy
+
+    @RescheduleUnhealthy.setter
+    def RescheduleUnhealthy(self, RescheduleUnhealthy):
+        self._RescheduleUnhealthy = RescheduleUnhealthy
+
+    @property
+    def RescheduleUnhealthyStartTime(self):
+        r"""<p>The waiting time to enable rescheduling after abnormal health detection of backend services, configurable from 0s to 3600s, default is 0s</p>
+        :rtype: int
+        """
+        return self._RescheduleUnhealthyStartTime
+
+    @RescheduleUnhealthyStartTime.setter
+    def RescheduleUnhealthyStartTime(self, RescheduleUnhealthyStartTime):
+        self._RescheduleUnhealthyStartTime = RescheduleUnhealthyStartTime
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -462,6 +554,17 @@ class CreateTargetGroupRequest(AbstractModel):
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._ScheduleAlgorithm = params.get("ScheduleAlgorithm")
         self._AllDeadToAlive = params.get("AllDeadToAlive")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ForwardingMode = params.get("ForwardingMode")
+        self._RescheduleUnbindRs = params.get("RescheduleUnbindRs")
+        self._RescheduleUnbindRsStartTime = params.get("RescheduleUnbindRsStartTime")
+        self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
+        self._RescheduleUnhealthyStartTime = params.get("RescheduleUnhealthyStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2120,9 +2223,12 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _LoadBalancerName: GWLB instance name. It supports input of 1 to 60 characters.
         :type LoadBalancerName: str
+        :param _DeleteProtect: 
+        :type DeleteProtect: bool
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
+        self._DeleteProtect = None
 
     @property
     def LoadBalancerId(self):
@@ -2146,10 +2252,22 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
     def LoadBalancerName(self, LoadBalancerName):
         self._LoadBalancerName = LoadBalancerName
 
+    @property
+    def DeleteProtect(self):
+        r"""
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._LoadBalancerName = params.get("LoadBalancerName")
+        self._DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2203,11 +2321,23 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
         :param _AllDeadToAlive: Whether "All Dead, All Alive" is supported.
         :type AllDeadToAlive: bool
+        :param _RescheduleUnbindRs: 
+        :type RescheduleUnbindRs: bool
+        :param _RescheduleUnbindRsStartTime: 
+        :type RescheduleUnbindRsStartTime: int
+        :param _RescheduleUnhealthy: 
+        :type RescheduleUnhealthy: bool
+        :param _RescheduleUnhealthyStartTime: 
+        :type RescheduleUnhealthyStartTime: int
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
         self._HealthCheck = None
         self._AllDeadToAlive = None
+        self._RescheduleUnbindRs = None
+        self._RescheduleUnbindRsStartTime = None
+        self._RescheduleUnhealthy = None
+        self._RescheduleUnhealthyStartTime = None
 
     @property
     def TargetGroupId(self):
@@ -2253,6 +2383,50 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     def AllDeadToAlive(self, AllDeadToAlive):
         self._AllDeadToAlive = AllDeadToAlive
 
+    @property
+    def RescheduleUnbindRs(self):
+        r"""
+        :rtype: bool
+        """
+        return self._RescheduleUnbindRs
+
+    @RescheduleUnbindRs.setter
+    def RescheduleUnbindRs(self, RescheduleUnbindRs):
+        self._RescheduleUnbindRs = RescheduleUnbindRs
+
+    @property
+    def RescheduleUnbindRsStartTime(self):
+        r"""
+        :rtype: int
+        """
+        return self._RescheduleUnbindRsStartTime
+
+    @RescheduleUnbindRsStartTime.setter
+    def RescheduleUnbindRsStartTime(self, RescheduleUnbindRsStartTime):
+        self._RescheduleUnbindRsStartTime = RescheduleUnbindRsStartTime
+
+    @property
+    def RescheduleUnhealthy(self):
+        r"""
+        :rtype: bool
+        """
+        return self._RescheduleUnhealthy
+
+    @RescheduleUnhealthy.setter
+    def RescheduleUnhealthy(self, RescheduleUnhealthy):
+        self._RescheduleUnhealthy = RescheduleUnhealthy
+
+    @property
+    def RescheduleUnhealthyStartTime(self):
+        r"""
+        :rtype: int
+        """
+        return self._RescheduleUnhealthyStartTime
+
+    @RescheduleUnhealthyStartTime.setter
+    def RescheduleUnhealthyStartTime(self, RescheduleUnhealthyStartTime):
+        self._RescheduleUnhealthyStartTime = RescheduleUnhealthyStartTime
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -2261,6 +2435,10 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
             self._HealthCheck = TargetGroupHealthCheck()
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._AllDeadToAlive = params.get("AllDeadToAlive")
+        self._RescheduleUnbindRs = params.get("RescheduleUnbindRs")
+        self._RescheduleUnbindRsStartTime = params.get("RescheduleUnbindRsStartTime")
+        self._RescheduleUnhealthy = params.get("RescheduleUnhealthy")
+        self._RescheduleUnhealthyStartTime = params.get("RescheduleUnhealthyStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

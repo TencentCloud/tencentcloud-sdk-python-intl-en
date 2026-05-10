@@ -96,6 +96,29 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAutoRiggingJob(self, request):
+        r"""3D Model Auto Rigging API, powered by the Hunyuan Large Model, processes input 3D models of characters or animals to perform automatic rigging and skinning, outputting a 3D model complete with skeletal data. By default, one concurrent slot is provided, meaning that a maximum of one submitted task can be processed simultaneously; the next task can only begin processing once the previous one has been completed.
+
+        :param request: Request instance for DescribeAutoRiggingJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.DescribeAutoRiggingJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.DescribeAutoRiggingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoRiggingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoRiggingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConvert3DFormatJob(self, request):
         r"""According to Convert3DFormatJob, querying the specific results of the model format conversion typically requires the unique JobID corresponding to that task.
 
@@ -251,6 +274,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("Submit3DSmartTopologyJob", params, headers=headers)
             response = json.loads(body)
             model = models.Submit3DSmartTopologyJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitAutoRiggingJob(self, request):
+        r"""3D Model Auto Rigging API, powered by the HY Large Model, processes input 3D models of characters or animals to perform automatic rigging and skinning, outputting a 3D model complete with skeletal data. By default, one concurrent slot is provided, meaning that a maximum of one submitted task can be processed simultaneously; the next task can only begin processing once the previous one has been completed.
+
+        :param request: Request instance for SubmitAutoRiggingJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitAutoRiggingJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitAutoRiggingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitAutoRiggingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitAutoRiggingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

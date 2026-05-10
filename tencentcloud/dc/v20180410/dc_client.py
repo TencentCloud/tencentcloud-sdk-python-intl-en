@@ -50,7 +50,7 @@ class DcClient(AbstractClient):
 
 
     def ApplyInternetAddress(self, request):
-        r"""This API is used to apply for an internet tunnel’s CIDR block.
+        r"""This API is used to apply for an internet tunnel's CIDR block.
 
         :param request: Request instance for ApplyInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.ApplyInternetAddressRequest`

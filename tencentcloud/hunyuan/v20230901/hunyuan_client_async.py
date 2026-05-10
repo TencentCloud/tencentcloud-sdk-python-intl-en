@@ -85,6 +85,24 @@ class HunyuanClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAutoRiggingJob(
+            self,
+            request: models.DescribeAutoRiggingJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoRiggingJobResponse:
+        """
+        3D Model Auto Rigging API, powered by the Hunyuan Large Model, processes input 3D models of characters or animals to perform automatic rigging and skinning, outputting a 3D model complete with skeletal data. By default, one concurrent slot is provided, meaning that a maximum of one submitted task can be processed simultaneously; the next task can only begin processing once the previous one has been completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoRiggingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoRiggingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConvert3DFormatJob(
             self,
             request: models.DescribeConvert3DFormatJobRequest,
@@ -209,6 +227,24 @@ class HunyuanClient(AbstractClient):
         kwargs["action"] = "Submit3DSmartTopologyJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.Submit3DSmartTopologyJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitAutoRiggingJob(
+            self,
+            request: models.SubmitAutoRiggingJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitAutoRiggingJobResponse:
+        """
+        3D Model Auto Rigging API, powered by the HY Large Model, processes input 3D models of characters or animals to perform automatic rigging and skinning, outputting a 3D model complete with skeletal data. By default, one concurrent slot is provided, meaning that a maximum of one submitted task can be processed simultaneously; the next task can only begin processing once the previous one has been completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitAutoRiggingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitAutoRiggingJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
