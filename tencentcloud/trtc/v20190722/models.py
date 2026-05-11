@@ -1039,7 +1039,7 @@ class CloudStorage(AbstractModel):
         :param _Vendor: The cloud storage provider.
 `0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -1079,7 +1079,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
+        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
 Example value: cn-shanghai-1.
 
 [Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
@@ -1515,7 +1515,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         r"""
         :param _SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :type RoomId: str
@@ -1565,7 +1565,7 @@ Note: the room id type defaults to integer. if the room id type is a string, spe
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.
 Note: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.
 
         :rtype: str
@@ -7231,7 +7231,7 @@ class McuRecordParams(AbstractModel):
         :param _UniRecord: Retweet recording mode. 
 0/Leave blank: not currently supported; behavior is undefined.
 1: disable recording.
-2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
 3: enable recording (use API to specify parameter).
         :type UniRecord: int
         :param _RecordKey: Recording task key, identifies a recording task. you can record multiple relay tasks into a file by specifying this parameter. if this parameter is not specified, only the current relay task is recorded.
@@ -7271,7 +7271,7 @@ Recording files storage parameters, corresponding console "storage location" and
         r"""Retweet recording mode. 
 0/Leave blank: not currently supported; behavior is undefined.
 1: disable recording.
-2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
 3: enable recording (use API to specify parameter).
         :rtype: int
         """
@@ -9632,7 +9632,7 @@ class RecordParams(AbstractModel):
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         :param _OutputFormat: Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :type OutputFormat: int
         :param _AvMerge: In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.
         :type AvMerge: int
@@ -9717,7 +9717,7 @@ When this option is enabled, it is recommended to use the "Subscription Allowlis
     def OutputFormat(self):
         r"""Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.
 
-This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).
+This parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).
         :rtype: int
         """
         return self._OutputFormat
@@ -11373,7 +11373,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
         :type SdkAppId: int
         :param _RoomId: Main room information RoomId, the RoomId corresponding to the TRTC room for relay.
         :type RoomId: str
@@ -11396,7 +11396,7 @@ Note: transcoding is required for stream mixing, and this parameter must be set 
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         :param _FeedBackRoomParams: Push back room information. a task supports up to 10 push rooms, and there must be one forward CDN parameter. note: use SDK version 10.4 or higher to push room. if you need assistance, contact tencent cloud technical support.
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
-        :param _RecordParams: Relay recording parameters. refer to the reference document (https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1).
+        :param _RecordParams: Relay recording parameters. refer to the reference document (https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1).
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         self._SdkAppId = None
@@ -11414,7 +11414,7 @@ Note: transcoding is required for stream mixing, and this parameter must be set 
 
     @property
     def SdkAppId(self):
-        r"""[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
+        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.
         :rtype: int
         """
         return self._SdkAppId
@@ -11536,7 +11536,7 @@ Note: transcoding is required for stream mixing, and this parameter must be set 
 
     @property
     def RecordParams(self):
-        r"""Relay recording parameters. refer to the reference document (https://www.tencentcloud.comom/document/product/647/111748?from_cn_redirect=1).
+        r"""Relay recording parameters. refer to the reference document (https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         return self._RecordParams

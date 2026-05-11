@@ -43,7 +43,7 @@ Only return the final result once (return value takes the value from Choices[n].
 Note:.
 When making an SDK call, streaming and non-streaming calls require **different ways** to obtain the return value. refer to the comments or sample code in the SDK (in the examples/hunyuan/v20230901/ directory of each language SDK code repository).
         :type Stream: bool
-        :param _Text: Text to be translated.
+        :param _Text: Text to be translated
         :type Text: str
         :param _Source: Source language.
 Supported language list:. 
@@ -111,7 +111,7 @@ When making an SDK call, streaming and non-streaming calls require **different w
 
     @property
     def Text(self):
-        r"""Text to be translated.
+        r"""Text to be translated
         :rtype: str
         """
         return self._Text

@@ -28,7 +28,7 @@ class MpsClient(AbstractClient):
 
     def BatchProcessMedia(self, request):
         r"""This API is used to initiate batch processing tasks for URL video links, with features including:
-        Smart subtitle (full speech, speech hotword, and speech translation)
+        Smart subtitle (full speech, speech hotword, and speech translation).
 
         :param request: Request instance for BatchProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.BatchProcessMediaRequest`
@@ -1829,6 +1829,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTextToSpeechAsyncTask(self, request):
+        r"""This API is used to query the result of an asynchronous text to speech task.
+
+        :param request: Request instance for DescribeTextToSpeechAsyncTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTextToSpeechAsyncTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeTextToSpeechAsyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTextToSpeechAsyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTextToSpeechAsyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTranscodeTemplates(self, request):
         r"""This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 
@@ -1868,6 +1891,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeUsageData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVoices(self, request):
+        r"""This synchronous API is used to query available voices. It supports filtering voices by type, tag, language, and other criteria.
+
+        :param request: Request instance for DescribeVoices.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVoicesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeVoicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1937,6 +1983,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeWorkflows", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWorkflowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DesignVoiceAsync(self, request):
+        r"""This API is used to design a voice. It generates a voice ID based on a prompt.
+
+        :param request: Request instance for DesignVoiceAsync.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DesignVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DesignVoiceAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2767,6 +2836,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryProject(self, request):
+        r"""This API is used to query an episode project.
+
+        :param request: Request instance for QueryProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.QueryProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeAudio(self, request):
         r"""This API is used to return the speech recognition results synchronously.
 
@@ -2836,8 +2928,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextToSpeechAsync(self, request):
+        r"""This API is used to convert text to speech asynchronously and supports long text to speech.
+
+        :param request: Request instance for TextToSpeechAsync.
+        :type request: :class:`tencentcloud.mps.v20190612.models.TextToSpeechAsyncRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextToSpeechAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TextTranslation(self, request):
-        r"""This API is used to translate text.
+        r"""
 
         :param request: Request instance for TextTranslation.
         :type request: :class:`tencentcloud.mps.v20190612.models.TextTranslationRequest`
@@ -2850,6 +2965,29 @@ class MpsClient(AbstractClient):
             body = self.call("TextTranslation", params, headers=headers)
             response = json.loads(body)
             model = models.TextTranslationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProject(self, request):
+        r"""This API is used to update an episode project.
+
+        :param request: Request instance for UpdateProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.UpdateProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

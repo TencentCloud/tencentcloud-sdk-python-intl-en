@@ -1112,7 +1112,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        :param _DBInstanceId: The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
@@ -1145,7 +1145,7 @@ Default value: 0
 
 Default value: PREPAID
         :type InstanceChargeType: str
-        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
+        :param _SecurityGroupIds: Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
 
         :type SecurityGroupIds: list of str
         :param _ProjectId: Project ID. default value is 0, which means it belongs to the default project.
@@ -1153,7 +1153,7 @@ Default value: PREPAID
         :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
         :type TagList: list of Tag
         :param _DBNodeSet: Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.
-AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
+AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
         :type DBNodeSet: list of DBNode
         :param _AutoVoucher: Whether to automatically use coupons:
 
@@ -1202,7 +1202,7 @@ Default value for the read-only instance: Async
 
     @property
     def DBInstanceId(self):
-        r"""The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        r"""The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -1316,7 +1316,7 @@ Default value: PREPAID
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
+        r"""Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
 
         :rtype: list of str
         """
@@ -1351,7 +1351,7 @@ Default value: PREPAID
     @property
     def DBNodeSet(self):
         r"""Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.
-AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
+AZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.
         :rtype: list of DBNode
         """
         return self._DBNodeSet
@@ -3590,65 +3590,49 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Primary AZ of an instance, such as "ap-guangzhou-3".
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :param _Zone: <p>Primary availability zone of the instance, such as: ap-guangzhou-3.<br>The availability zone can be obtained from the returned Zone field of the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :type Zone: str
-        :param _MasterDBInstanceId: Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        :param _MasterDBInstanceId: <p>Primary instance ID of the read-only instance, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :type MasterDBInstanceId: str
-        :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        :param _SpecCode: <p>Purchasable specification code. The value of this parameter can be obtained from the returned SpecCode field of the <a href="https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1">DescribeClasses</a> API.</p>
         :type SpecCode: str
-        :param _Storage: Instance disk capacity size in GB. specifies the step length for parameter settings as 10.
+        :param _Storage: <p>Instance disk capacity, in GB. The value for this parameter must be set in increments of 10.</p>
         :type Storage: int
-        :param _InstanceCount: Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.
+        :param _InstanceCount: <p>Number of instances to purchase. Value range: [1-6]. The maximum allowed number is 6.</p>
         :type InstanceCount: int
-        :param _Period: Purchase duration, in months.
-<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
-<li>Pay-as-you-go: Only supports `1`.</li>
+        :param _Period: <p>Purchase duration, in months.</p><li>Prepaid: supports 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.</li><li>Postpaid: supports only 1.</li>
         :type Period: int
-        :param _VpcId: VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>
         :type VpcId: str
-        :param _SubnetId: VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :param _SubnetId: <p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is required). A valid VPC subnet ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> API and obtain it from the unSubnetId field in the return value.</p>
         :type SubnetId: str
-        :param _InstanceChargeType: Instance billing type, which currently supports:.
-<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.
-<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
-Default value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.
+        :param _InstanceChargeType: <p>Instance billing type. Valid values:</p><li>PREPAID: prepaid (yearly/monthly subscription).</li><li>POSTPAID_BY_HOUR: postpaid (pay-as-you-go).</li>Default value: PREPAID. If the primary instance is postpaid, the read-only instance must also be postpaid.
         :type InstanceChargeType: str
-        :param _AutoVoucher: Specifies whether to automatically use a voucher.
-<Li>0: no.</li>.
-<Li>`1`: yes.</li>.
-Default value: 0
+        :param _AutoVoucher: <p>Indicates whether to use vouchers automatically:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.
         :type AutoVoucher: int
-        :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :param _VoucherIds: <p>Voucher ID list. Only one voucher can be specified.</p>
         :type VoucherIds: list of str
-        :param _AutoRenewFlag: Specifies the auto-renewal flag.
-<Li>`0`: manual renewal.</li>.
-<Li>`1`: auto-renewal</li>.
-Default value: 0
+        :param _AutoRenewFlag: <p>Renewal flag:</p><li>0: manual renewal.</li><li>1: auto-renewal.</li>Default value: 0.
         :type AutoRenewFlag: int
-        :param _ProjectId: Project ID. default value is 0, means it belongs to the default project.
+        :param _ProjectId: <p>Project ID. The default value is 0, which means it belongs to the default project.</p>
         :type ProjectId: int
-        :param _ActivityId: Special offer ID
+        :param _ActivityId: <p>Discount offer ID.</p>
         :type ActivityId: int
-        :param _ReadOnlyGroupId: RO group ID
+        :param _ReadOnlyGroupId: <p>Read-only group ID.</p>
         :type ReadOnlyGroupId: str
-        :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
+        :param _TagList: <p>Tags to be bound to the instance. This is empty by default. Tags can be obtained from the returned Tags field of the <a href="https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1">DescribeTags</a> API.</p>
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
-        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
-
+        :param _SecurityGroupIds: <p>Security group to which the instance belongs. The value of this parameter can be obtained from the returned sgId field of the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API. If this parameter is not specified, the default security group is bound.</p>
         :type SecurityGroupIds: list of str
-        :param _NeedSupportIpv6: Specifies whether to support Ipv6.
-<Li>0: no.</li>.
-<Li>`1`: yes.</li>.
-Default value: 0
+        :param _NeedSupportIpv6: <p>Indicates whether to support IPv6:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.
         :type NeedSupportIpv6: int
-        :param _Name: Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.
+        :param _Name: <p>Instance name. The name can contain only Chinese characters, letters, digits, underscores (&quot;_&quot;), and hyphens (&quot;-&quot;), with a length of less than 60.</p>
         :type Name: str
-        :param _DBVersion: Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.
+        :param _DBVersion: <p>Not required anymore. The kernel version is consistent with that of the primary instance.</p>
         :type DBVersion: str
-        :param _DedicatedClusterId: CDC ID.
+        :param _DedicatedClusterId: <p>Dedicated cluster ID.</p>
         :type DedicatedClusterId: str
-        :param _DeletionProtection: Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        :param _DeletionProtection: <p>Indicates whether to enable deletion protection for the instance: true - enables deletion protection. false - disables deletion protection.</p>
         :type DeletionProtection: bool
         """
         self._Zone = None
@@ -3676,8 +3660,7 @@ Default value: 0
 
     @property
     def Zone(self):
-        r"""Primary AZ of an instance, such as "ap-guangzhou-3".
-The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        r"""<p>Primary availability zone of the instance, such as: ap-guangzhou-3.<br>The availability zone can be obtained from the returned Zone field of the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> API.</p>
         :rtype: str
         """
         return self._Zone
@@ -3688,7 +3671,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def MasterDBInstanceId(self):
-        r"""Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        r"""<p>Primary instance ID of the read-only instance, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -3699,7 +3682,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def SpecCode(self):
-        r"""Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        r"""<p>Purchasable specification code. The value of this parameter can be obtained from the returned SpecCode field of the <a href="https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1">DescribeClasses</a> API.</p>
         :rtype: str
         """
         return self._SpecCode
@@ -3710,7 +3693,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Storage(self):
-        r"""Instance disk capacity size in GB. specifies the step length for parameter settings as 10.
+        r"""<p>Instance disk capacity, in GB. The value for this parameter must be set in increments of 10.</p>
         :rtype: int
         """
         return self._Storage
@@ -3721,7 +3704,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def InstanceCount(self):
-        r"""Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.
+        r"""<p>Number of instances to purchase. Value range: [1-6]. The maximum allowed number is 6.</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -3732,9 +3715,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def Period(self):
-        r"""Purchase duration, in months.
-<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
-<li>Pay-as-you-go: Only supports `1`.</li>
+        r"""<p>Purchase duration, in months.</p><li>Prepaid: supports 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.</li><li>Postpaid: supports only 1.</li>
         :rtype: int
         """
         return self._Period
@@ -3745,7 +3726,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def VpcId(self):
-        r"""VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>
         :rtype: str
         """
         return self._VpcId
@@ -3756,7 +3737,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def SubnetId(self):
-        r"""VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        r"""<p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is required). A valid VPC subnet ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> API and obtain it from the unSubnetId field in the return value.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -3767,10 +3748,7 @@ The information of AZ can be obtained from the `Zone` field in the return value 
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing type, which currently supports:.
-<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.
-<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.
-Default value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.
+        r"""<p>Instance billing type. Valid values:</p><li>PREPAID: prepaid (yearly/monthly subscription).</li><li>POSTPAID_BY_HOUR: postpaid (pay-as-you-go).</li>Default value: PREPAID. If the primary instance is postpaid, the read-only instance must also be postpaid.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3781,10 +3759,7 @@ Default value: PREPAID. if the primary instance is postpaid, the read-only insta
 
     @property
     def AutoVoucher(self):
-        r"""Specifies whether to automatically use a voucher.
-<Li>0: no.</li>.
-<Li>`1`: yes.</li>.
-Default value: 0
+        r"""<p>Indicates whether to use vouchers automatically:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.
         :rtype: int
         """
         return self._AutoVoucher
@@ -3795,7 +3770,7 @@ Default value: 0
 
     @property
     def VoucherIds(self):
-        r"""Voucher ID list. Currently, you can specify only one voucher.
+        r"""<p>Voucher ID list. Only one voucher can be specified.</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3806,10 +3781,7 @@ Default value: 0
 
     @property
     def AutoRenewFlag(self):
-        r"""Specifies the auto-renewal flag.
-<Li>`0`: manual renewal.</li>.
-<Li>`1`: auto-renewal</li>.
-Default value: 0
+        r"""<p>Renewal flag:</p><li>0: manual renewal.</li><li>1: auto-renewal.</li>Default value: 0.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3820,7 +3792,7 @@ Default value: 0
 
     @property
     def ProjectId(self):
-        r"""Project ID. default value is 0, means it belongs to the default project.
+        r"""<p>Project ID. The default value is 0, which means it belongs to the default project.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3831,7 +3803,7 @@ Default value: 0
 
     @property
     def ActivityId(self):
-        r"""Special offer ID
+        r"""<p>Discount offer ID.</p>
         :rtype: int
         """
         return self._ActivityId
@@ -3842,7 +3814,7 @@ Default value: 0
 
     @property
     def ReadOnlyGroupId(self):
-        r"""RO group ID
+        r"""<p>Read-only group ID.</p>
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3853,7 +3825,7 @@ Default value: 0
 
     @property
     def TagList(self):
-        r"""The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
+        r"""<p>Tags to be bound to the instance. This is empty by default. Tags can be obtained from the returned Tags field of the <a href="https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1">DescribeTags</a> API.</p>
         :rtype: :class:`tencentcloud.postgres.v20170312.models.Tag`
         """
         return self._TagList
@@ -3864,8 +3836,7 @@ Default value: 0
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
-
+        r"""<p>Security group to which the instance belongs. The value of this parameter can be obtained from the returned sgId field of the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API. If this parameter is not specified, the default security group is bound.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -3876,10 +3847,7 @@ Default value: 0
 
     @property
     def NeedSupportIpv6(self):
-        r"""Specifies whether to support Ipv6.
-<Li>0: no.</li>.
-<Li>`1`: yes.</li>.
-Default value: 0
+        r"""<p>Indicates whether to support IPv6:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.
         :rtype: int
         """
         return self._NeedSupportIpv6
@@ -3890,7 +3858,7 @@ Default value: 0
 
     @property
     def Name(self):
-        r"""Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.
+        r"""<p>Instance name. The name can contain only Chinese characters, letters, digits, underscores (&quot;_&quot;), and hyphens (&quot;-&quot;), with a length of less than 60.</p>
         :rtype: str
         """
         return self._Name
@@ -3903,7 +3871,7 @@ Default value: 0
     def DBVersion(self):
         warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
 
-        r"""Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.
+        r"""<p>Not required anymore. The kernel version is consistent with that of the primary instance.</p>
         :rtype: str
         """
         return self._DBVersion
@@ -3916,7 +3884,7 @@ Default value: 0
 
     @property
     def DedicatedClusterId(self):
-        r"""CDC ID.
+        r"""<p>Dedicated cluster ID.</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3927,7 +3895,7 @@ Default value: 0
 
     @property
     def DeletionProtection(self):
-        r"""Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).
+        r"""<p>Indicates whether to enable deletion protection for the instance: true - enables deletion protection. false - disables deletion protection.</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -3979,13 +3947,13 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealNames: Order number list. Each instance corresponds to an order number.
+        :param _DealNames: <p>Order number list. Each instance corresponds to an order number.</p>
         :type DealNames: list of str
-        :param _BillId: Bill ID of frozen fees
+        :param _BillId: <p>Frozen bill ID.</p>
         :type BillId: str
-        :param _DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
+        :param _DBInstanceIdSet: <p>ID set of successfully created instances. The return value is available only in postpaid scenarios.</p>
         :type DBInstanceIdSet: list of str
-        :param _BillingParameters: BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.
+        :param _BillingParameters: <p>The output parameter has a value only when the input parameter BillingParameters has a value. The value is the parameters for product order placement.</p>
         :type BillingParameters: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3998,7 +3966,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""Order number list. Each instance corresponds to an order number.
+        r"""<p>Order number list. Each instance corresponds to an order number.</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -4009,7 +3977,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def BillId(self):
-        r"""Bill ID of frozen fees
+        r"""<p>Frozen bill ID.</p>
         :rtype: str
         """
         return self._BillId
@@ -4020,7 +3988,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        r"""ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
+        r"""<p>ID set of successfully created instances. The return value is available only in postpaid scenarios.</p>
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -4031,7 +3999,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     @property
     def BillingParameters(self):
-        r"""BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.
+        r"""<p>The output parameter has a value only when the input parameter BillingParameters has a value. The value is the parameters for product order placement.</p>
         :rtype: str
         """
         return self._BillingParameters
@@ -8883,14 +8851,14 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -12902,7 +12870,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
+        :param _DBInstanceIdSet: Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
         :type DBInstanceIdSet: list of str
         :param _Period: Purchase duration, in months.
 <Li>Prepaid: Yearly/monthly subscription, supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.
@@ -12923,7 +12891,7 @@ Default value: `false`.
 
     @property
     def DBInstanceIdSet(self):
-        r"""Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
+        r"""Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -15069,7 +15037,7 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        :param _DBInstanceId: Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         :param _InstanceChargeType: Instance billing type, which currently supports:.
 <Li>PREPAID: prepaid, i.e., yearly/monthly subscription</li>.
@@ -15099,7 +15067,7 @@ Default value: 0
 
     @property
     def DBInstanceId(self):
-        r"""Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        r"""Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId
@@ -15230,7 +15198,7 @@ class ModifyDBInstanceDeletionProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        :param _DBInstanceId: Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
         :param _DeletionProtection: Specifies whether to enable instance deletion protection. valid values: true (enable), false (disable).
         :type DeletionProtection: bool
@@ -15240,7 +15208,7 @@ class ModifyDBInstanceDeletionProtectionRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).
+        r"""Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :rtype: str
         """
         return self._DBInstanceId

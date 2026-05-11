@@ -839,7 +839,7 @@ class AutoScalingGroup(AbstractModel):
         :type Tags: list of Tag
         :param _ServiceSettings: Service settings
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/zh/document/product/215/78469).
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: Multi-AZ/subnet policy.
 <li>PRIORITY: The instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
@@ -863,8 +863,17 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
 <li>TRUE: Enable this feature. When spot instances in the scaling group are about to be automatically recycled by the spot instance service, AS proactively initiates the termination process of the spot instances. If there is a configured scale-in hook, it will be triggered before termination. After the termination process starts, AS asynchronously initiates the scale-out to reach the expected number of instances.</li>
 <li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
         :type CapacityRebalance: bool
-        :param _InstanceNameIndexSettings: Instance name sequencing settings.
+        :param _InstanceNameIndexSettings: Instance name index settings.
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: Instance host name index settings.
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:
+
+- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.
+- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.
+- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.
+Default: FALSE(indicating that concurrent scaling is disabled).
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -898,6 +907,8 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupId(self):
@@ -1180,7 +1191,7 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
 
     @property
     def Ipv6AddressCount(self):
-        r"""The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        r"""The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/zh/document/product/215/78469).
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -1267,7 +1278,7 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
 
     @property
     def InstanceNameIndexSettings(self):
-        r"""Instance name sequencing settings.
+        r"""Instance name index settings.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         return self._InstanceNameIndexSettings
@@ -1275,6 +1286,33 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
     @InstanceNameIndexSettings.setter
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
+    @property
+    def HostNameIndexSettings(self):
+        r"""Instance host name index settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:
+
+- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.
+- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.
+- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.
+Default: FALSE(indicating that concurrent scaling is disabled).
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
 
 
     def _deserialize(self, params):
@@ -1326,6 +1364,10 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2106,7 +2148,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
         :type Tags: list of Tag
         :param _ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/document/product/215/78469).
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
 <li>PRIORITY: The instances are attempted to be created taking the order of the AZ/subnet list as the priority. If instances can be successfully created in the highest-priority AZ/subnet, they will always be created in that AZ/subnet.</li>
@@ -2137,8 +2179,17 @@ This parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MI
 
 Default value: FALSE.
         :type CapacityRebalance: bool
-        :param _InstanceNameIndexSettings: Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :param _InstanceNameIndexSettings: Instance name index settings. If not specified, it is disabled by default. When enabled, an incremental numeric index will be appended to the names of instances automatically created within the scaling group.
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        :param _HostNameIndexSettings: Specifies the related settings for the instance hostname index number. If not specified, it is disabled by default. When enabled, it appends incremental numeric index to the hostname of instances auto-created within the scaling group.
+        :type HostNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        :param _ConcurrentScaleOutForDesiredCapacity: This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:
+
+- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.
+- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.
+- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.
+Default: FALSE(indicating that concurrent scaling is disabled).
+        :type ConcurrentScaleOutForDesiredCapacity: bool
         """
         self._AutoScalingGroupName = None
         self._LaunchConfigurationId = None
@@ -2165,6 +2216,8 @@ Default value: FALSE.
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
         self._InstanceNameIndexSettings = None
+        self._HostNameIndexSettings = None
+        self._ConcurrentScaleOutForDesiredCapacity = None
 
     @property
     def AutoScalingGroupName(self):
@@ -2365,7 +2418,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def Ipv6AddressCount(self):
-        r"""The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
+        r"""The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/document/product/215/78469).
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -2459,7 +2512,7 @@ Default value: FALSE.
 
     @property
     def InstanceNameIndexSettings(self):
-        r"""Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        r"""Instance name index settings. If not specified, it is disabled by default. When enabled, an incremental numeric index will be appended to the names of instances automatically created within the scaling group.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         return self._InstanceNameIndexSettings
@@ -2467,6 +2520,33 @@ Default value: FALSE.
     @InstanceNameIndexSettings.setter
     def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
         self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
+    @property
+    def HostNameIndexSettings(self):
+        r"""Specifies the related settings for the instance hostname index number. If not specified, it is disabled by default. When enabled, it appends incremental numeric index to the hostname of instances auto-created within the scaling group.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameIndexSettings`
+        """
+        return self._HostNameIndexSettings
+
+    @HostNameIndexSettings.setter
+    def HostNameIndexSettings(self, HostNameIndexSettings):
+        self._HostNameIndexSettings = HostNameIndexSettings
+
+    @property
+    def ConcurrentScaleOutForDesiredCapacity(self):
+        r"""This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:
+
+- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.
+- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.
+- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.
+Default: FALSE(indicating that concurrent scaling is disabled).
+        :rtype: bool
+        """
+        return self._ConcurrentScaleOutForDesiredCapacity
+
+    @ConcurrentScaleOutForDesiredCapacity.setter
+    def ConcurrentScaleOutForDesiredCapacity(self, ConcurrentScaleOutForDesiredCapacity):
+        self._ConcurrentScaleOutForDesiredCapacity = ConcurrentScaleOutForDesiredCapacity
 
 
     def _deserialize(self, params):
@@ -2511,6 +2591,10 @@ Default value: FALSE.
         if params.get("InstanceNameIndexSettings") is not None:
             self._InstanceNameIndexSettings = InstanceNameIndexSettings()
             self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
+        if params.get("HostNameIndexSettings") is not None:
+            self._HostNameIndexSettings = HostNameIndexSettings()
+            self._HostNameIndexSettings._deserialize(params.get("HostNameIndexSettings"))
+        self._ConcurrentScaleOutForDesiredCapacity = params.get("ConcurrentScaleOutForDesiredCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2578,7 +2662,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param _ProjectId: Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).
 Note: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.
         :type ProjectId: int
-        :param _InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        :param _InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
 `InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
         :type InstanceType: str
         :param _SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
@@ -2603,7 +2687,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
         :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param _InstanceTypes: Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
-The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceTypes: list of str
         :param _CamRoleName: CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :type CamRoleName: str
@@ -2618,10 +2702,15 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
         :type InstanceTags: list of InstanceTag
         :param _Tags: List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.
         :type Tags: list of Tag
-        :param _HostNameSettings: CVM hostname settings.
+        :param _HostNameSettings: Specifies the related settings for the cloud virtual machine HostName (HostName).
+windows instances do not support setting hostname. 
+When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
+Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: Settings of CVM instance names
-If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
+        :param _InstanceNameSettings: Specifies the related settings of the cloud server instance name (InstanceName).
+If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
+Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
+Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
@@ -2629,7 +2718,7 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
 <li>ORIGINAL: Use the set cloud disk type.</li>
 <li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+        :param _HpcClusterId: High-Performance computing cluster ID. This parameter is not currently supported for the international site.
 Note: this field is empty by default.
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
@@ -2708,7 +2797,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InstanceType(self):
-        r"""Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        r"""Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
 `InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
         :rtype: str
         """
@@ -2823,7 +2912,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
     @property
     def InstanceTypes(self):
         r"""Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
-The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -2883,7 +2972,10 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def HostNameSettings(self):
-        r"""CVM hostname settings.
+        r"""Specifies the related settings for the cloud virtual machine HostName (HostName).
+windows instances do not support setting hostname. 
+When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
+Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -2894,8 +2986,10 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def InstanceNameSettings(self):
-        r"""Settings of CVM instance names
-If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
+        r"""Specifies the related settings of the cloud server instance name (InstanceName).
+If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
+Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
+Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -2930,7 +3024,7 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
 
     @property
     def HpcClusterId(self):
-        r"""High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+        r"""High-Performance computing cluster ID. This parameter is not currently supported for the international site.
 Note: this field is empty by default.
         :rtype: str
         """
@@ -4046,7 +4140,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>FALSE: Not encrypted.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Encrypt: bool
-        :param _ThroughputPerformance: Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).
+        :param _ThroughputPerformance: Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/zh/document/product/362/39611).
 This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ThroughputPerformance: int
@@ -4136,7 +4230,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThroughputPerformance(self):
-        r"""Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).
+        r"""Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/zh/document/product/362/39611).
 This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
@@ -8318,7 +8412,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
+        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
 
 <Li>BGP: general bgp line.</li>.
 For a user who has enabled the static single-line IP allowlist, valid values include:.
@@ -8333,7 +8427,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
-<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. 
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>. 
 If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
 
 High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
@@ -8408,7 +8502,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
-        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.
+        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
 
 <Li>BGP: general bgp line.</li>.
 For a user who has enabled the static single-line IP allowlist, valid values include:.
@@ -8432,7 +8526,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.
-<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. 
+<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>. 
 If needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.
 
 High quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).
@@ -10465,7 +10559,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :type ImageId: str
         :param _InstanceTypes: Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceTypes: list of str
         :param _InstanceTypesCheckPolicy: InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
 <li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
@@ -10593,7 +10687,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
     @property
     def InstanceTypes(self):
         r"""Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceTypes

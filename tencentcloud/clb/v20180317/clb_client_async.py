@@ -186,7 +186,7 @@ class ClbClient(AbstractClient):
 
         This API is used to describe restriction descriptions.
         This API is used to set instance attribute restrictions.
-        -The cloning feature supports both pay-as-you-go and monthly subscription instances. For cloned monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.
+        -The cloning feature supports both pay-as-you-go and yearly/monthly subscription instances. For cloned yearly/monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.
         -CLB instances not associated with billable items cannot be cloned (historic free activity creation).
         -Classic CLB instances and Anti-DDoS CLBs cannot be cloned.
         -Cloning of classic network-based instances is not supported.
@@ -503,7 +503,7 @@ class ClbClient(AbstractClient):
         This API is used to describe restrictions.
 
         -SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.
-        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1).
+        -Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Account Types](https://www.tencentcloud.com/document/product/684/15246).
         -Classic CLB does not support binding SCF.
         -Basic Network Type does not support binding SCF.
         -CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.

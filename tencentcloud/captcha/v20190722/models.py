@@ -27,9 +27,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
         r"""
         :param _CaptchaType: Fill with fixed value: 9.
         :type CaptchaType: int
-        :param _Ticket: The user verification ticket returned by the frontend callback function
+        :param _Ticket: The user verification ticket returned by the frontend callback function.
         :type Ticket: str
-        :param _UserIp: The user public IP obtained from the customer backend server
+        :param _UserIp: The user public IP obtained from the customer backend server.
         :type UserIp: str
         :param _Randstr: A random string returned by the frontend callback function
         :type Randstr: str
@@ -73,7 +73,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        r"""The user verification ticket returned by the frontend callback function
+        r"""The user verification ticket returned by the frontend callback function.
         :rtype: str
         """
         return self._Ticket
@@ -84,7 +84,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""The user public IP obtained from the customer backend server
+        r"""The user public IP obtained from the customer backend server.
         :rtype: str
         """
         return self._UserIp

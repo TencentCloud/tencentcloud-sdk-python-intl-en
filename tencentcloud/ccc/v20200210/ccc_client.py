@@ -165,9 +165,9 @@ class CccClient(AbstractClient):
 
 
     def CreateAIAgentCall(self, request):
-        r"""Used to create one-time Intelligent Agent outbound calls. You can create a voice Intelligent Agent in the management console - Intelligent Agent Management and perform dialogue process configuration (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). This API is used to initiate a single outbound call task with a configured Intelligent Agent. To create batch Intelligent Agent outbound call tasks, refer to the documentation for creating automatic outbound call tasks (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1).
+        r"""Used to create one-time Intelligent Agent outbound calls. You can create a voice Intelligent Agent in the management console - Intelligent Agent Management and perform dialogue process configuration (https://www.tencentcloud.com/document/product/679/119796?from_cn_redirect=1). This API is used to initiate a single outbound call task with a configured Intelligent Agent. To create batch Intelligent Agent outbound call tasks, refer to the documentation for creating automatic outbound call tasks (https://www.tencentcloud.com/document/product/679/69194?from_cn_redirect=1).
 
-        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.com/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAIAgentCall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAIAgentCallRequest`
@@ -192,7 +192,7 @@ class CccClient(AbstractClient):
     def CreateAICall(self, request):
         r"""This API is used to **call the AI model directly** to trigger a **single** outbound call. It supports configuring the model, prompt content, voice, and all call elements through API parameters.
 
-        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone numbers. For details, refer to the Intelligent Agent Call Purchase Guide (https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone numbers. For details, refer to the Intelligent Agent Call Purchase Guide (https://www.tencentcloud.com/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAICall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAICallRequest`
@@ -261,9 +261,9 @@ class CccClient(AbstractClient):
 
 
     def CreateAutoCalloutTask(self, request):
-        r"""This API is used to create bulk automatic outbound calls. The system will automatically initiate outbound calls to the designated called number list based on task configuration. This API can call the configured Intelligent Agent to perform batch outbound call tasks. You can create a voice Intelligent Agent in the management console-Intelligent Agent Management and configure the dialogue process (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). To create a single Intelligent Agent outbound call task, refer to the documentation (https://www.tencentcloud.comom/document/product/679/115681?from_cn_redirect=1).
+        r"""This API is used to create bulk automatic outbound calls. The system will automatically initiate outbound calls to the designated called number list based on task configuration. This API can call the configured Intelligent Agent to perform batch outbound call tasks. You can create a voice Intelligent Agent in the management console-Intelligent Agent Management and configure the dialogue process (https://www.tencentcloud.com/document/product/679/119796?from_cn_redirect=1). To create a single Intelligent Agent outbound call task, refer to the documentation (https://www.tencentcloud.com/document/product/679/115681?from_cn_redirect=1).
 
-        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.com/document/product/679/125953?from_cn_redirect=1).
 
         :param request: Request instance for CreateAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
@@ -635,7 +635,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAICallExtractResult(self, request):
-        r"""This API is used to query specified session's post-call Tag results by Session ID after the Intelligent Agent call session ends. Related post-call Tags need to be configured in advance in the management console. For details, please refer to post-call Tags (https://www.tencentcloud.comom/document/product/679/119800?from_cn_redirect=1).
+        r"""This API is used to query specified session's post-call Tag results by Session ID after the Intelligent Agent call session ends. Related post-call Tags need to be configured in advance in the management console. For details, please refer to post-call Tags (https://www.tencentcloud.com/document/product/679/119800?from_cn_redirect=1).
 
         :param request: Request instance for DescribeAICallExtractResult.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultRequest`
@@ -709,7 +709,7 @@ class CccClient(AbstractClient):
 
     def DescribeAutoCalloutTask(self, request):
         r"""This API is used to query detailed information of an automatic outbound call task by TaskId, including basic configuration, start and end time, name list, execution status, and call status.
-        This API is usually used together with Create Bulk Automatic Outbound Call Task (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1) to check whether the task configuration takes effect, the current task status, and real-time progress during execution once created.
+        This API is usually used together with Create Bulk Automatic Outbound Call Task (https://www.tencentcloud.com/document/product/679/69194?from_cn_redirect=1) to check whether the task configuration takes effect, the current task status, and real-time progress during execution once created.
 
         :param request: Request instance for DescribeAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
@@ -1377,7 +1377,7 @@ class CccClient(AbstractClient):
 
     def PauseAutoCalloutTask(self, request):
         r"""This API is used to suspend an ongoing automatic outbound call task by TaskId. After calling this API, the task will be temporarily interrupted and no longer initiate new outbound call requests; initiated calls are not affected.
-        A paused task can continue execution via the [Restore Suspended Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/125356?from_cn_redirect=1) API. If needed, refer to [Stop Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/69192?from_cn_redirect=1) to permanently terminate the task.
+        A paused task can continue execution via the [Restore Suspended Automatic Outbound Call Task](https://www.tencentcloud.com/document/product/679/125356?from_cn_redirect=1) API. If needed, refer to [Stop Automatic Outbound Call Task](https://www.tencentcloud.com/document/product/679/69192?from_cn_redirect=1) to permanently terminate the task.
 
         :param request: Request instance for PauseAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.PauseAutoCalloutTaskRequest`

@@ -2738,7 +2738,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type SnatPro: bool
         :param _SnatIps: Enables cross-regional or cross-Vpc IP binding and creates a SnatIp.
         :type SnatIps: list of SnatIp
-        :param _ClusterIds: Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.com/document/product/214/49278?from_cn_redirect=1) api.
+        :param _ClusterIds: Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). 
         :type ClusterIds: list of str
         :param _SlaType: Performance capacity specification. <li>clb.c2.medium (standard type)</li> <li>clb.c3.small (advanced type 1)</li> <li>clb.c3.medium (advanced type 2)</li> <li>clb.c4.small (high-strength type 1)</li> <li>clb.c4.medium (high-strength type 2)</li> <li>clb.c4.large (high-strength type 3)</li> <li>clb.c4.xlarge (high-strength type 4)</li>.
         :type SlaType: str
@@ -2928,7 +2928,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def ClusterIds(self):
-        r"""Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.com/document/product/214/49278?from_cn_redirect=1) api.
+        r"""Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). 
         :rtype: list of str
         """
         return self._ClusterIds

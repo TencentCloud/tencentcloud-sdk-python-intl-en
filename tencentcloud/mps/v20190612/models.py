@@ -2440,14 +2440,17 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent video categorization template ID.
+        :param _Definition: <p>ID of the intelligent video classification template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent video categorization template ID.
+        r"""<p>ID of the intelligent video classification template.</p>
         :rtype: int
         """
         return self._Definition
@@ -2456,9 +2459,21 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2632,14 +2647,17 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent video cover generating template ID.
+        :param _Definition: <p>ID of the intelligent video cover template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent video cover generating template ID.
+        r"""<p>ID of the intelligent video cover template.</p>
         :rtype: int
         """
         return self._Definition
@@ -2648,9 +2666,21 @@ class AiAnalysisTaskCoverInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2841,14 +2871,17 @@ class AiAnalysisTaskCutoutInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: ID of the intelligent video matting template.
+        :param _Definition: <p>ID of the intelligent video matting template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""ID of the intelligent video matting template.
+        r"""<p>ID of the intelligent video matting template.</p>
         :rtype: int
         """
         return self._Definition
@@ -2857,9 +2890,21 @@ class AiAnalysisTaskCutoutInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2932,7 +2977,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
         r"""
         :param _Status: Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -2969,7 +3014,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -3075,14 +3120,17 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent removal template ID.
+        :param _Definition: <p>ID of the intelligent video erasing template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent removal template ID.
+        r"""<p>ID of the intelligent video erasing template.</p>
         :rtype: int
         """
         return self._Definition
@@ -3091,9 +3139,21 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3347,14 +3407,17 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent description template ID.
+        :param _Definition: <p>ID of the intelligent video description template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent description template ID.
+        r"""<p>ID of the intelligent video description template.</p>
         :rtype: int
         """
         return self._Definition
@@ -3363,9 +3426,21 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3526,14 +3601,17 @@ class AiAnalysisTaskDubbingInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Video translation template ID.
+        :param _Definition: <p>ID of the video localization template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Video translation template ID.
+        r"""<p>ID of the video localization template.</p>
         :rtype: int
         """
         return self._Definition
@@ -3542,9 +3620,21 @@ class AiAnalysisTaskDubbingInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3747,14 +3837,17 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent frame-specific video tagging template ID.
+        :param _Definition: <p>ID of the intelligent video frame-by-frame tagging template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent frame-specific video tagging template ID.
+        r"""<p>ID of the intelligent video frame-by-frame tagging template.</p>
         :rtype: int
         """
         return self._Definition
@@ -3763,9 +3856,21 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3939,14 +4044,17 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Opening and closing segments recognition template ID.
+        :param _Definition: <p>ID of the intro and outro recognition template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Opening and closing segments recognition template ID.
+        r"""<p>ID of the intro and outro recognition template.</p>
         :rtype: int
         """
         return self._Definition
@@ -3955,9 +4063,21 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4130,14 +4250,17 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: The ID of the intelligent highlight generation template.
+        :param _Definition: <p>ID of the intelligent video highlight template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""The ID of the intelligent highlight generation template.
+        r"""<p>ID of the intelligent video highlight template.</p>
         :rtype: int
         """
         return self._Definition
@@ -4146,9 +4269,21 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4328,15 +4463,18 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent landscape-to-portrait template ID.
+        :param _Definition: <p>ID of the horizontal-to-vertical video transformation template.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent landscape-to-portrait template ID.
+        r"""<p>ID of the horizontal-to-vertical video transformation template.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4346,9 +4484,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4619,14 +4769,17 @@ class AiAnalysisTaskReelInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: ID of the intelligent video editing template.
+        :param _Definition: <p>ID of the intelligent video editing template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""ID of the intelligent video editing template.
+        r"""<p>ID of the intelligent video editing template.</p>
         :rtype: int
         """
         return self._Definition
@@ -4635,9 +4788,21 @@ class AiAnalysisTaskReelInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4914,14 +5079,17 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Splitting task template ID.
+        :param _Definition: <p>ID of the video clipping task template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Splitting task template ID.
+        r"""<p>ID of the video clipping task template.</p>
         :rtype: int
         """
         return self._Definition
@@ -4930,9 +5098,21 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5108,14 +5288,17 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent video tagging template ID.
+        :param _Definition: <p>ID of the intelligent video tagging template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent video tagging template ID.
+        r"""<p>ID of the intelligent video tagging template.</p>
         :rtype: int
         """
         return self._Definition
@@ -5124,9 +5307,21 @@ class AiAnalysisTaskTagInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5300,14 +5495,17 @@ class AiAnalysisTaskVideoComprehensionInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Video (audio) recognition template ID.
+        :param _Definition: <p>ID of the video (audio) understanding template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Video (audio) recognition template ID.
+        r"""<p>ID of the video (audio) understanding template.</p>
         :rtype: int
         """
         return self._Definition
@@ -5316,9 +5514,21 @@ class AiAnalysisTaskVideoComprehensionInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5569,14 +5779,17 @@ class AiAnalysisTaskVideoRemakeInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Intelligent deduplication template ID.
+        :param _Definition: <p>ID of the intelligent video deduplication template.</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""Intelligent deduplication template ID.
+        r"""<p>ID of the intelligent video deduplication template.</p>
         :rtype: int
         """
         return self._Definition
@@ -5585,9 +5798,21 @@ class AiAnalysisTaskVideoRemakeInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11917,17 +12142,23 @@ class AigcImageExtraParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AspectRatio: The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.
+        :param _AspectRatio: <p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
         :type AspectRatio: str
-        :param _Resolution: Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.
+        :param _Resolution: <p>Output resolution of the image.</p><p>Models that support this parameter:<br>Valid values: 720P, 1080P, 2K, and 4K.</p>
         :type Resolution: str
+        :param _LogoAdd: <p>Indicates whether to add a logo watermark. No watermark is added by default. 1 - A watermark is added. 0 - No watermark is added.</p><p>Value range: [0, 1].</p><p>Default value: 0.</p>
+        :type LogoAdd: int
+        :param _OutputFormat: 
+        :type OutputFormat: str
         """
         self._AspectRatio = None
         self._Resolution = None
+        self._LogoAdd = None
+        self._OutputFormat = None
 
     @property
     def AspectRatio(self):
-        r"""The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.
+        r"""<p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -11938,7 +12169,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.
+        r"""<p>Output resolution of the image.</p><p>Models that support this parameter:<br>Valid values: 720P, 1080P, 2K, and 4K.</p>
         :rtype: str
         """
         return self._Resolution
@@ -11947,10 +12178,34 @@ class AigcImageExtraParam(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def LogoAdd(self):
+        r"""<p>Indicates whether to add a logo watermark. No watermark is added by default. 1 - A watermark is added. 0 - No watermark is added.</p><p>Value range: [0, 1].</p><p>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def OutputFormat(self):
+        r"""
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
 
     def _deserialize(self, params):
         self._AspectRatio = params.get("AspectRatio")
         self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        self._OutputFormat = params.get("OutputFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12323,34 +12578,30 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Animated image generating template ID.
+        :param _Definition: <p>Video-to-GIF conversion template ID.</p>
         :type Definition: int
-        :param _StartTimeOffset: Start time of an animated image in a video in seconds.
+        :param _StartTimeOffset: <p>Start time of the GIF in the video, in seconds.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time of an animated image in a video in seconds.
+        :param _EndTimeOffset: <p>End time of the GIF in the video, in seconds.</p>
         :type EndTimeOffset: float
-        :param _OutputStorage: Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        :param _OutputStorage: <p>Target storage for the file after GIF conversion. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path of a file after animated image generating, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
-Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
+        :param _OutputObjectPath: <p>Output path of the file after GIF conversion, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_animatedGraphic_{definition}.{format}</code>.
         :type OutputObjectPath: str
+        :param _ExtInfo: <p>Extended parameter.</p>
+        :type ExtInfo: str
         """
         self._Definition = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._OutputStorage = None
         self._OutputObjectPath = None
+        self._ExtInfo = None
 
     @property
     def Definition(self):
-        r"""Animated image generating template ID.
+        r"""<p>Video-to-GIF conversion template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -12361,7 +12612,7 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def StartTimeOffset(self):
-        r"""Start time of an animated image in a video in seconds.
+        r"""<p>Start time of the GIF in the video, in seconds.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -12372,7 +12623,7 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def EndTimeOffset(self):
-        r"""End time of an animated image in a video in seconds.
+        r"""<p>End time of the GIF in the video, in seconds.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -12383,7 +12634,7 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def OutputStorage(self):
-        r"""Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        r"""<p>Target storage for the file after GIF conversion. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -12395,14 +12646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
-        r"""Output path of a file after animated image generating, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
-Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
+        r"""<p>Output path of the file after GIF conversion, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_animatedGraphic_{definition}.{format}</code>.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -12410,6 +12654,17 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
     @OutputObjectPath.setter
     def OutputObjectPath(self, OutputObjectPath):
         self._OutputObjectPath = OutputObjectPath
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
 
 
     def _deserialize(self, params):
@@ -12420,6 +12675,7 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputObjectPath = params.get("OutputObjectPath")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13573,7 +13829,7 @@ Cannot be set to 0.
 
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
@@ -13646,7 +13902,7 @@ Cannot be set to 0.
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
@@ -13735,7 +13991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
         :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13799,7 +14055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SampleRate(self):
         r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
 Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -14602,9 +14858,9 @@ class BlindWatermarkTemplate(AbstractModel):
         :type TextContent: str
         :param _Comment: Description information of the digital watermark template.
         :type Comment: str
-        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _Strength: Digital watermark strength. 
 default: default, balance between hd video quality and resilience. 
@@ -14678,7 +14934,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def CreateTime(self):
-        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -14689,7 +14945,7 @@ strongest: normal video quality, strongest resilience.
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -18429,9 +18685,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.</p>
+        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.<br>PixVerse.</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02 and 2.3].</li><li>Kling: [2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, and q3-turbo].</li><li>GV: [3.1].</li><li>OS: [2.0].</li></ol>
+        :param _ModelVersion: <p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>GV: [3.1 and 3.1-fast].</li><li>OS: [2.0].</li><li>PixVerse: [v5.6, v6, and c1].</li></ol>
         :type ModelVersion: str
         :param _SceneType: <p>Scenario for the generated video.<br>Note: Not all models support scenarios.</p><ol><li>Kling supports motion control (motion_control).</li><li>Mingmou supports landscape-to-portrait conversion (land2port).</li><li>Vidu supports special effect templates (template_effect).</li></ol>
         :type SceneType: str
@@ -18478,7 +18734,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.</p>
+        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.<br>PixVerse.</p>
         :rtype: str
         """
         return self._ModelName
@@ -18489,7 +18745,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02 and 2.3].</li><li>Kling: [2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, and q3-turbo].</li><li>GV: [3.1].</li><li>OS: [2.0].</li></ol>
+        r"""<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>GV: [3.1 and 3.1-fast].</li><li>OS: [2.0].</li><li>PixVerse: [v5.6, v6, and c1].</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -20967,7 +21223,12 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         r"""
         :param _Name: <p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :type Name: str
-        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br><br>ASR recognition and pure caption translation currently support the following: 
+
+[ASR Supported Languages](https://www.tencentcloud.com/zh/document/product/1041/68175#ASRlanguages)
+
+
+Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplified Chinese), <br>`en` (English), <br>`ja` (Japanese), <br>`ko` (Korean), <br>`zh-PY `(Chinese, English and Cantonese), <br>`zh_medical `(Medical Chinese), <br>`vi` (Vietnamese), <br>`ms` (Malay), <br>`id` (Indonesian), <br>`fil` (Filipino), <br>`th` (Thai), <br>`pt` (Portuguese), <br>`tr` (Turkish), <br>`ar` (Arabic), <br>`es` (Spanish), <br>`hi` (Hindi), <br>`fr` (French), <br>`de` (German), <br>`it` (Italian), <br>`zh_dialect` (Chinese Dialects), <br>`zh_en` (Chinese & English Mixed), <br>`yue` (Cantonese), <br>`ru` (Russian), <br>`prime_zh` (Chinese, English & Chinese Dialects)
         :type VideoSrcLanguage: str
         :param _SubtitleType: <p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :type SubtitleType: int
@@ -20987,6 +21248,10 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
         :type SubtitleEmbedId: int
+        :param _SpeakerMode: <p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>By default, speaker identification is disabled.</p>
+        :type SpeakerMode: int
+        :param _SpeakerLabel: <p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>By default, the speaker is not output to the subtitle file.</p>
+        :type SpeakerLabel: int
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -20999,6 +21264,8 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
         self._SubtitleEmbedId = None
+        self._SpeakerMode = None
+        self._SpeakerLabel = None
 
     @property
     def Name(self):
@@ -21013,7 +21280,12 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
 
     @property
     def VideoSrcLanguage(self):
-        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
+        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br><br>ASR recognition and pure caption translation currently support the following: 
+
+[ASR Supported Languages](https://www.tencentcloud.com/zh/document/product/1041/68175#ASRlanguages)
+
+
+Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplified Chinese), <br>`en` (English), <br>`ja` (Japanese), <br>`ko` (Korean), <br>`zh-PY `(Chinese, English and Cantonese), <br>`zh_medical `(Medical Chinese), <br>`vi` (Vietnamese), <br>`ms` (Malay), <br>`id` (Indonesian), <br>`fil` (Filipino), <br>`th` (Thai), <br>`pt` (Portuguese), <br>`tr` (Turkish), <br>`ar` (Arabic), <br>`es` (Spanish), <br>`hi` (Hindi), <br>`fr` (French), <br>`de` (German), <br>`it` (Italian), <br>`zh_dialect` (Chinese Dialects), <br>`zh_en` (Chinese & English Mixed), <br>`yue` (Cantonese), <br>`ru` (Russian), <br>`prime_zh` (Chinese, English & Chinese Dialects)
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -21121,6 +21393,28 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
     def SubtitleEmbedId(self, SubtitleEmbedId):
         self._SubtitleEmbedId = SubtitleEmbedId
 
+    @property
+    def SpeakerMode(self):
+        r"""<p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>By default, speaker identification is disabled.</p>
+        :rtype: int
+        """
+        return self._SpeakerMode
+
+    @SpeakerMode.setter
+    def SpeakerMode(self, SpeakerMode):
+        self._SpeakerMode = SpeakerMode
+
+    @property
+    def SpeakerLabel(self):
+        r"""<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>By default, the speaker is not output to the subtitle file.</p>
+        :rtype: int
+        """
+        return self._SpeakerLabel
+
+    @SpeakerLabel.setter
+    def SpeakerLabel(self, SpeakerLabel):
+        self._SpeakerLabel = SpeakerLabel
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -21138,6 +21432,8 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._SpeakerMode = params.get("SpeakerMode")
+        self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28824,6 +29120,160 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTextToSpeechAsyncTaskRequest(AbstractModel):
+    r"""DescribeTextToSpeechAsyncTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTextToSpeechAsyncTaskResponse(AbstractModel):
+    r"""DescribeTextToSpeechAsyncTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>fail: Failure, </li><li>processing: Processing.</li></ul>
+        :type Status: str
+        :param _AudioUrl: <p>Synthetic audio URL.</p>
+        :type AudioUrl: str
+        :param _VoiceId: <p>Used voice ID.</p>
+        :type VoiceId: str
+        :param _ExtInfo: <p>Extended information.</p>
+        :type ExtInfo: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Status = None
+        self._AudioUrl = None
+        self._VoiceId = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        r"""<p>Task status.</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>fail: Failure, </li><li>processing: Processing.</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Synthetic audio URL.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def VoiceId(self):
+        r"""<p>Used voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended information.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._AudioUrl = params.get("AudioUrl")
+        self._VoiceId = params.get("VoiceId")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTranscodeTemplatesRequest(AbstractModel):
     r"""DescribeTranscodeTemplates request structure.
 
@@ -29301,6 +29751,139 @@ class DescribeUsageDataResponse(AbstractModel):
                 obj = TaskStatData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVoicesRequest(AbstractModel):
+    r"""DescribeVoices request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceType: <p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        :type VoiceType: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
+voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
+        :type ExtParam: str
+        """
+        self._VoiceType = None
+        self._ExtParam = None
+
+    @property
+    def VoiceType(self):
+        r"""<p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        :rtype: str
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
+voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceType = params.get("VoiceType")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoicesResponse(AbstractModel):
+    r"""DescribeVoices response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _Voices: <p>Available voice list.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Voices: list of VoiceInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Voices = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Voices(self):
+        r"""<p>Available voice list.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of VoiceInfo
+        """
+        return self._Voices
+
+    @Voices.setter
+    def Voices(self, Voices):
+        self._Voices = Voices
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        if params.get("Voices") is not None:
+            self._Voices = []
+            for item in params.get("Voices"):
+                obj = VoiceInfo()
+                obj._deserialize(item)
+                self._Voices.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29795,6 +30378,130 @@ class DescribeWorkflowsResponse(AbstractModel):
                 obj = WorkflowInfo()
                 obj._deserialize(item)
                 self._WorkflowInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DesignVoiceAsyncRequest(AbstractModel):
+    r"""DesignVoiceAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>Voice description.</p>
+        :type Prompt: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        """
+        self._Prompt = None
+        self._ExtParam = None
+
+    @property
+    def Prompt(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncResponse(AbstractModel):
+    r"""DesignVoiceAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _TaskId: <p>Task ID, used when querying a task.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID, used when querying a task.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -33457,34 +34164,31 @@ class ImageSpriteTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: ID of an image sprite generating template.
+        :param _Definition: <p>Sprite screenshot template ID.</p>
         :type Definition: int
-        :param _OutputStorage: Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        :param _OutputStorage: <p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path of a captured sprite image file, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: <p>Output path of the sprite screenshot image file after the sprite screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _WebVttObjectName: Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.
+        :param _WebVttObjectName: <p>Output path of the Web VTT file after the sprite screenshot is taken, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}.{format}</code>.</p>
         :type WebVttObjectName: str
-        :param _ObjectNumberFormat: Rule of the `{number}` variable in the image sprite output path.
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param _ExtInfo: <p>Extended parameter.</p>
+        :type ExtInfo: str
         """
         self._Definition = None
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._WebVttObjectName = None
         self._ObjectNumberFormat = None
+        self._ExtInfo = None
 
     @property
     def Definition(self):
-        r"""ID of an image sprite generating template.
+        r"""<p>Sprite screenshot template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -33495,7 +34199,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        r"""<p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -33507,13 +34211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
-        r"""Output path of a captured sprite image file, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
+        r"""<p>Output path of the sprite screenshot image file after the sprite screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}_{number}.{format}</code>.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -33524,7 +34222,7 @@ If left empty, a relative path is used by default: `{inputName}_imageSprite_{def
 
     @property
     def WebVttObjectName(self):
-        r"""Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.
+        r"""<p>Output path of the Web VTT file after the sprite screenshot is taken, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}.{format}</code>.</p>
         :rtype: str
         """
         return self._WebVttObjectName
@@ -33535,7 +34233,7 @@ If left empty, a relative path is used by default: `{inputName}_imageSprite_{def
 
     @property
     def ObjectNumberFormat(self):
-        r"""Rule of the `{number}` variable in the image sprite output path.
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
@@ -33544,6 +34242,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ObjectNumberFormat.setter
     def ObjectNumberFormat(self, ObjectNumberFormat):
         self._ObjectNumberFormat = ObjectNumberFormat
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
 
 
     def _deserialize(self, params):
@@ -33556,6 +34265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ObjectNumberFormat") is not None:
             self._ObjectNumberFormat = NumberFormat()
             self._ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37643,7 +38353,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         r"""
         :param _NotifyType: Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
@@ -37672,7 +38382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NotifyType(self):
         r"""Notification type:
 TDMQ-CMQ: message queue.
-"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
 <Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
@@ -44582,6 +45292,10 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR). Cannot fill in when multiple target languages are enabled.</p>
         :type SubtitleEmbedId: int
+        :param _SpeakerMode: <p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.</p>
+        :type SpeakerMode: int
+        :param _SpeakerLabel: <p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.</p>
+        :type SpeakerLabel: int
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -44595,6 +45309,8 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
         self._SubtitleEmbedId = None
+        self._SpeakerMode = None
+        self._SpeakerLabel = None
 
     @property
     def Definition(self):
@@ -44728,6 +45444,28 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
     def SubtitleEmbedId(self, SubtitleEmbedId):
         self._SubtitleEmbedId = SubtitleEmbedId
 
+    @property
+    def SpeakerMode(self):
+        r"""<p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.</p>
+        :rtype: int
+        """
+        return self._SpeakerMode
+
+    @SpeakerMode.setter
+    def SpeakerMode(self, SpeakerMode):
+        self._SpeakerMode = SpeakerMode
+
+    @property
+    def SpeakerLabel(self):
+        r"""<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.</p>
+        :rtype: int
+        """
+        return self._SpeakerLabel
+
+    @SpeakerLabel.setter
+    def SpeakerLabel(self, SpeakerLabel):
+        self._SpeakerLabel = SpeakerLabel
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -44746,6 +45484,8 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._SpeakerMode = params.get("SpeakerMode")
+        self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48496,7 +49236,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
+        :param _Url: <p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/products/css?from_qcintl=topnav&lang=en&pg=">CSS</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
         :type Url: str
         :param _TaskNotifyConfig: <p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -48539,7 +49279,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
+        r"""<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/products/css?from_qcintl=topnav&lang=en&pg=">CSS</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
         :rtype: str
         """
         return self._Url
@@ -49536,6 +50276,142 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class Project(AbstractModel):
+    r"""Episode project information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>Project ID.</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>Project name.</p>
+        :type ProjectName: str
+        :param _Description: <p>Project description.</p>
+        :type Description: str
+        :param _TermBase: <p>Project term base.</p>
+        :type TermBase: list of TermBase
+        :param _Speakers: <p>List of characters.</p>
+        :type Speakers: list of Speakers
+        :param _CreatedAt: <p>Creation time (Unix timestamp).</p>
+        :type CreatedAt: int
+        :param _UpdatedAt: <p>Update time (Unix timestamp).</p>
+        :type UpdatedAt: int
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._Description = None
+        self._TermBase = None
+        self._Speakers = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>Project ID.</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>Project name.</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Description(self):
+        r"""<p>Project description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TermBase(self):
+        r"""<p>Project term base.</p>
+        :rtype: list of TermBase
+        """
+        return self._TermBase
+
+    @TermBase.setter
+    def TermBase(self, TermBase):
+        self._TermBase = TermBase
+
+    @property
+    def Speakers(self):
+        r"""<p>List of characters.</p>
+        :rtype: list of Speakers
+        """
+        return self._Speakers
+
+    @Speakers.setter
+    def Speakers(self, Speakers):
+        self._Speakers = Speakers
+
+    @property
+    def CreatedAt(self):
+        r"""<p>Creation time (Unix timestamp).</p>
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>Update time (Unix timestamp).</p>
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._Description = params.get("Description")
+        if params.get("TermBase") is not None:
+            self._TermBase = []
+            for item in params.get("TermBase"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._TermBase.append(obj)
+        if params.get("Speakers") is not None:
+            self._Speakers = []
+            for item in params.get("Speakers"):
+                obj = Speakers()
+                obj._deserialize(item)
+                self._Speakers.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PureSubtitleTransResult(AbstractModel):
     r"""Translation result of pure subtitle files.
 
@@ -49741,29 +50617,32 @@ class QualityControlData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoAudio: When this field is set to true, it indicates that the video has no audio track.
+        :param _NoAudio: <p>A value of true indicates that the video has no audio track.</p>
         :type NoAudio: bool
-        :param _NoVideo: When this field is set to true, it indicates that the video has no video track.
+        :param _NoVideo: <p>A value of true indicates that the video has no video track.</p>
         :type NoVideo: bool
-        :param _QualityEvaluationScore: No-reference quality score of the video (100 points in total).
+        :param _QualityEvaluationScore: <p>No-reference quality score of the video, on a scale of 0 to 100.</p>
         :type QualityEvaluationScore: int
-        :param _QualityEvaluationMeanOpinionScore: No-reference quality score of the video (MOS).
+        :param _QualityEvaluationMeanOpinionScore: <p>No-reference quality score of the video (MOS).</p>
         :type QualityEvaluationMeanOpinionScore: float
-        :param _QualityControlResultSet: Exception items identified in content quality inspection.
+        :param _AestheticEvaluationScore: <p>Video aesthetic score. Value range: [0, 100].</p>
+        :type AestheticEvaluationScore: int
+        :param _QualityControlResultSet: <p>Exception items detected in content quality inspection.</p>
         :type QualityControlResultSet: list of QualityControlResult
-        :param _ContainerDiagnoseResultSet: Exception items identified in format diagnosis.
+        :param _ContainerDiagnoseResultSet: <p>Exception items detected in format diagnosis.</p>
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
         self._QualityEvaluationMeanOpinionScore = None
+        self._AestheticEvaluationScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
 
     @property
     def NoAudio(self):
-        r"""When this field is set to true, it indicates that the video has no audio track.
+        r"""<p>A value of true indicates that the video has no audio track.</p>
         :rtype: bool
         """
         return self._NoAudio
@@ -49774,7 +50653,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def NoVideo(self):
-        r"""When this field is set to true, it indicates that the video has no video track.
+        r"""<p>A value of true indicates that the video has no video track.</p>
         :rtype: bool
         """
         return self._NoVideo
@@ -49785,7 +50664,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
-        r"""No-reference quality score of the video (100 points in total).
+        r"""<p>No-reference quality score of the video, on a scale of 0 to 100.</p>
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -49796,7 +50675,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationMeanOpinionScore(self):
-        r"""No-reference quality score of the video (MOS).
+        r"""<p>No-reference quality score of the video (MOS).</p>
         :rtype: float
         """
         return self._QualityEvaluationMeanOpinionScore
@@ -49806,8 +50685,19 @@ class QualityControlData(AbstractModel):
         self._QualityEvaluationMeanOpinionScore = QualityEvaluationMeanOpinionScore
 
     @property
+    def AestheticEvaluationScore(self):
+        r"""<p>Video aesthetic score. Value range: [0, 100].</p>
+        :rtype: int
+        """
+        return self._AestheticEvaluationScore
+
+    @AestheticEvaluationScore.setter
+    def AestheticEvaluationScore(self, AestheticEvaluationScore):
+        self._AestheticEvaluationScore = AestheticEvaluationScore
+
+    @property
     def QualityControlResultSet(self):
-        r"""Exception items identified in content quality inspection.
+        r"""<p>Exception items detected in content quality inspection.</p>
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResultSet
@@ -49818,7 +50708,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def ContainerDiagnoseResultSet(self):
-        r"""Exception items identified in format diagnosis.
+        r"""<p>Exception items detected in format diagnosis.</p>
         :rtype: list of ContainerDiagnoseResultItem
         """
         return self._ContainerDiagnoseResultSet
@@ -49833,6 +50723,7 @@ class QualityControlData(AbstractModel):
         self._NoVideo = params.get("NoVideo")
         self._QualityEvaluationScore = params.get("QualityEvaluationScore")
         self._QualityEvaluationMeanOpinionScore = params.get("QualityEvaluationMeanOpinionScore")
+        self._AestheticEvaluationScore = params.get("AestheticEvaluationScore")
         if params.get("QualityControlResultSet") is not None:
             self._QualityControlResultSet = []
             for item in params.get("QualityControlResultSet"):
@@ -50522,6 +51413,150 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class QueryProjectRequest(AbstractModel):
+    r"""QueryProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>Project ID.</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>Project name.</p>
+        :type ProjectName: str
+        :param _Page: <p>Page number. Value range: starts from 1. Default value: 1.</p>
+        :type Page: int
+        :param _PageSize: <p>Number of items per page. Default value: 20.</p>
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>Project ID.</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>Project name.</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Page(self):
+        r"""<p>Page number. Value range: starts from 1. Default value: 1.</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Default value: 20.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryProjectResponse(AbstractModel):
+    r"""QueryProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>Total number of eligible items.</p>
+        :type Total: int
+        :param _Data: <p>Project data.</p>
+        :type Data: list of Project
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>Total number of eligible items.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""<p>Project data.</p>
+        :rtype: list of Project
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = Project()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class RawImageWatermarkInput(AbstractModel):
     r"""Input parameter of image watermark template
 
@@ -50793,6 +51828,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR).</p>
         :type SubtitleEmbedId: int
+        :param _SpeakerMode: <p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
+        :type SpeakerMode: int
+        :param _SpeakerLabel: <p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
+        :type SpeakerLabel: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -50804,6 +51843,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
         self._SubtitleEmbedId = None
+        self._SpeakerMode = None
+        self._SpeakerLabel = None
 
     @property
     def SubtitleType(self):
@@ -50920,6 +51961,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SubtitleEmbedId(self, SubtitleEmbedId):
         self._SubtitleEmbedId = SubtitleEmbedId
 
+    @property
+    def SpeakerMode(self):
+        r"""<p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._SpeakerMode
+
+    @SpeakerMode.setter
+    def SpeakerMode(self, SpeakerMode):
+        self._SpeakerMode = SpeakerMode
+
+    @property
+    def SpeakerLabel(self):
+        r"""<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._SpeakerLabel
+
+    @SpeakerLabel.setter
+    def SpeakerLabel(self, SpeakerLabel):
+        self._SpeakerLabel = SpeakerLabel
+
 
     def _deserialize(self, params):
         self._SubtitleType = params.get("SubtitleType")
@@ -50936,6 +51999,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
         self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._SpeakerMode = params.get("SpeakerMode")
+        self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52079,35 +53144,31 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Sampled screenshot template ID.
+        :param _Definition: <p>Sampled screenshot template ID.</p>
         :type Definition: int
-        :param _WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        :param _OutputStorage: <p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path of an image file after sampled screenshot taking, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: <p>Output path of the image file after the sampled screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: Rule of the `{number}` variable in the sampled screenshot output path.
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param _ExtInfo: <p>Extended parameter.</p>
+        :type ExtInfo: str
         """
         self._Definition = None
         self._WatermarkSet = None
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._ObjectNumberFormat = None
+        self._ExtInfo = None
 
     @property
     def Definition(self):
-        r"""Sampled screenshot template ID.
+        r"""<p>Sampled screenshot template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -52118,8 +53179,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
-        r"""List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -52130,7 +53190,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        r"""<p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -52142,13 +53202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
-        r"""Output path of an image file after sampled screenshot taking, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
+        r"""<p>Output path of the image file after the sampled screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -52159,7 +53213,7 @@ If left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{
 
     @property
     def ObjectNumberFormat(self):
-        r"""Rule of the `{number}` variable in the sampled screenshot output path.
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
@@ -52168,6 +53222,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ObjectNumberFormat.setter
     def ObjectNumberFormat(self, ObjectNumberFormat):
         self._ObjectNumberFormat = ObjectNumberFormat
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
 
 
     def _deserialize(self, params):
@@ -52185,6 +53250,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ObjectNumberFormat") is not None:
             self._ObjectNumberFormat = NumberFormat()
             self._ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52608,7 +53674,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -52637,7 +53703,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        r"""Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54681,7 +55747,7 @@ class SmartEraseTaskResult(AbstractModel):
         r"""
         :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
@@ -54720,7 +55786,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -54852,9 +55918,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ErasePrivacyConfig: Privacy protection configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
-        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         :param _AliasName: Alias of the preset smart erasing template.
         :type AliasName: str
@@ -54969,7 +56035,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -54980,7 +56046,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime
@@ -55522,19 +56588,19 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Progress: Task progress.
+        :param _Progress: <p>Task progress.</p>
         :type Progress: int
-        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, WAITING, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _TransTextTask: Translation task output information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _TransTextTask: <p>Translation task output information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
-        :param _AsrFullTextTask: Output information on the full speech recognition task.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AsrFullTextTask: <p>Full speech recognition task output information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
         self._Progress = None
@@ -55546,7 +56612,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Progress(self):
-        r"""Task progress.
+        r"""<p>Task progress.</p>
         :rtype: int
         """
         return self._Progress
@@ -55557,7 +56623,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
-        r"""Task status, including PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, WAITING, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -55568,7 +56634,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -55579,7 +56645,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -55590,8 +56656,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TransTextTask(self):
-        r"""Translation task output information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Translation task output information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
         """
         return self._TransTextTask
@@ -55602,8 +56668,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AsrFullTextTask(self):
-        r"""Output information on the full speech recognition task.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Full speech recognition task output information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
         return self._AsrFullTextTask
@@ -55643,7 +56709,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         r"""
         :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
         :type Status: str
-        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
         :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
         :type ErrCode: int
@@ -55679,7 +56745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :rtype: str
         """
         return self._ErrCodeExt
@@ -55775,19 +56841,21 @@ class SmartSubtitleTaskResultInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Smart subtitle template ID.
+        :param _Definition: <p>Smart subtitle template ID.</p>
         :type Definition: int
-        :param _RawParameter: Custom smart subtitle parameter. It takes effect when Definition is set to 0.
-This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RawParameter: <p>Custom smart subtitle parameter. It takes effect when Definition is set to 0.<br>This parameter is used in highly customized scenarios. We recommend that you use Definition to specify smart subtitle parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        :param _UserExtPara: <p>Extended parameter.</p>
+        :type UserExtPara: str
         """
         self._Definition = None
         self._RawParameter = None
+        self._UserExtPara = None
 
     @property
     def Definition(self):
-        r"""Smart subtitle template ID.
+        r"""<p>Smart subtitle template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -55798,9 +56866,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RawParameter(self):
-        r"""Custom smart subtitle parameter. It takes effect when Definition is set to 0.
-This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Custom smart subtitle parameter. It takes effect when Definition is set to 0.<br>This parameter is used in highly customized scenarios. We recommend that you use Definition to specify smart subtitle parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
         """
         return self._RawParameter
@@ -55809,12 +56876,24 @@ Note: This field may return null, indicating that no valid value can be obtained
     def RawParameter(self, RawParameter):
         self._RawParameter = RawParameter
 
+    @property
+    def UserExtPara(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         if params.get("RawParameter") is not None:
             self._RawParameter = RawSmartSubtitleParameter()
             self._RawParameter._deserialize(params.get("RawParameter"))
+        self._UserExtPara = params.get("UserExtPara")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56295,102 +57374,54 @@ class SmartSubtitleTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique identifier of the smart subtitle template.
+        :param _Definition: <p>Unique identifier of the smart subtitle template.</p>
         :type Definition: int
-        :param _Name: Smart subtitle template name.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Name: <p>Smart subtitle template name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param _Comment: Smart subtitle template description.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Comment: <p>Smart subtitle template description.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Comment: str
-        :param _Type: Template type. Valid values:
-* Preset: system preset template
-* Custom: user-defined template
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Type: <p>Template type. Valid values:</p><ul><li>Preset: preset template.</li><li>Custom: custom template.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AsrHotWordsConfigure: <p>ASR hotword lexicon parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _AsrHotWordsLibraryName: Name of the hotword lexicon associated with the template.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AsrHotWordsLibraryName: <p>Name of the hotword lexicon associated with the template.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrHotWordsLibraryName: str
-        :param _VideoSrcLanguage: List of source languages of the video with smart subtitles.
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`zh_en`: Chinese and English.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
-`fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+        :param _VideoSrcLanguage: <p>Video source language list for smart subtitle:</p><p><code>zh</code>: Simplified Chinese<br><code>yue</code>: Cantonese<br><code>zh-PY</code>: Chinese, English, and Cantonese<br><code>zh_medical</code>: Chinese healthcare<br><code>zh_dialect</code>: Chinese dialect<br><code>prime_zh</code>: Chinese and English dialects<br><code>zh_en</code>: Chinese and English<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino<br><code>auto</code>: Automatic identification (only supported for subtitle translation)</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: Smart subtitle file format.
-- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubtitleFormat: <p>Smart subtitle file format.</p><ul><li>vtt: WebVTT.</li><li>srt: SRT.</li><li>original: same as the source subtitle file (for subtitle translation templates).</li><li>Not specified or empty: no subtitle file generated.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleFormat: str
-        :param _SubtitleType: Smart subtitle language type.
-0: source language1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :param _SubtitleType: <p>Smart subtitle language type.<br>0: source language.<br>1: target language.<br>2: source language and target language.<br>Only 0 is supported when TranslateSwitch is OFF.<br>Only 1 or 2 is supported when TranslateSwitch is ON.</p>
         :type SubtitleType: int
-        :param _TranslateSwitch: Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _TranslateSwitch: <p>Subtitle translation switch.<br>ON: enables translation.<br>OFF: disables translation.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON.
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
-`fil`: Filipino.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        :param _TranslateDstLanguage: <p>Target language for subtitle translation.<br>This parameter takes effect when TranslateSwitch is ON.<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino</p><p><strong>Note</strong>: Use <code>/</code> to separate multiple languages, such as <code>en/ja</code>, which indicates English and Japanese.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateDstLanguage: str
-        :param _CreateTime: Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _CreateTime: <p>Template creation time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date format</a>.</p>
         :type CreateTime: str
-        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _UpdateTime: <p>Last template modification time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date format</a>.</p>
         :type UpdateTime: str
-        :param _AliasName: Alias of the preset smart subtitle template.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AliasName: <p>Preset template alias for smart subtitle.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AliasName: str
-        :param _ProcessType: Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.
+        :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR.</li><li>1: subtitle translation.</li><li>2: OCR.</li></ul>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SelectingSubtitleAreasConfig: <p>Area configurations for the subtitle OCR extraction box.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>Subtitle burn-in template ID.</p>
+        :type SubtitleEmbedId: int
+        :param _SpeakerMode: <p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
+        :type SpeakerMode: int
+        :param _SpeakerLabel: <p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
+        :type SpeakerLabel: int
         """
         self._Definition = None
         self._Name = None
@@ -56408,10 +57439,13 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._AliasName = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
+        self._SpeakerMode = None
+        self._SpeakerLabel = None
 
     @property
     def Definition(self):
-        r"""Unique identifier of the smart subtitle template.
+        r"""<p>Unique identifier of the smart subtitle template.</p>
         :rtype: int
         """
         return self._Definition
@@ -56422,8 +57456,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Name(self):
-        r"""Smart subtitle template name.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Smart subtitle template name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -56434,8 +57468,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Comment(self):
-        r"""Smart subtitle template description.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Smart subtitle template description.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Comment
@@ -56446,10 +57480,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Type(self):
-        r"""Template type. Valid values:
-* Preset: system preset template
-* Custom: user-defined template
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Template type. Valid values:</p><ul><li>Preset: preset template.</li><li>Custom: custom template.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -56460,8 +57492,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR hotword lexicon parameter.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>ASR hotword lexicon parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -56472,8 +57504,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AsrHotWordsLibraryName(self):
-        r"""Name of the hotword lexicon associated with the template.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Name of the hotword lexicon associated with the template.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AsrHotWordsLibraryName
@@ -56484,33 +57516,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoSrcLanguage(self):
-        r"""List of source languages of the video with smart subtitles.
-`zh`: Simplified Chinese.
-`yue`: Cantonese.
-`zh-PY`: Chinese, English, and Cantonese.
-`zh_medical`: Chinese (medical scenario).
-`zh_dialect`: Chinese dialect.
-`prime_zh`: Chinese, English, and Chinese dialects.
-`zh_en`: Chinese and English.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
-`fil`: Filipino.
-`auto`: automatic recognition (it is only supported in pure subtitle translation).
+        r"""<p>Video source language list for smart subtitle:</p><p><code>zh</code>: Simplified Chinese<br><code>yue</code>: Cantonese<br><code>zh-PY</code>: Chinese, English, and Cantonese<br><code>zh_medical</code>: Chinese healthcare<br><code>zh_dialect</code>: Chinese dialect<br><code>prime_zh</code>: Chinese and English dialects<br><code>zh_en</code>: Chinese and English<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino<br><code>auto</code>: Automatic identification (only supported for subtitle translation)</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -56521,8 +57527,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleFormat(self):
-        r"""Smart subtitle file format.
-- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Smart subtitle file format.</p><ul><li>vtt: WebVTT.</li><li>srt: SRT.</li><li>original: same as the source subtitle file (for subtitle translation templates).</li><li>Not specified or empty: no subtitle file generated.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -56533,10 +57539,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleType(self):
-        r"""Smart subtitle language type.
-0: source language1: target language
-2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        r"""<p>Smart subtitle language type.<br>0: source language.<br>1: target language.<br>2: source language and target language.<br>Only 0 is supported when TranslateSwitch is OFF.<br>Only 1 or 2 is supported when TranslateSwitch is ON.</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -56547,10 +57550,8 @@ The value can only be 0 when TranslateSwitch is set to OFF.The value can only be
 
     @property
     def TranslateSwitch(self):
-        r"""Subtitle translation switch.
-ON: enable translation
-OFF: disable translation
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Subtitle translation switch.<br>ON: enables translation.<br>OFF: disables translation.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TranslateSwitch
@@ -56561,29 +57562,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TranslateDstLanguage(self):
-        r"""Target language for subtitle translation.
-This field is valid when the value of TranslateSwitch is ON.
-`zh`: Simplified Chinese.
-`zh-TW`: Traditional Chinese.
-`en`: English.
-`ja`: Japanese.
-`ko`: Korean.
-`fr`: French.
-`es`: Spanish.
-`it`: Italian.
-`de`: German.
-`tr`: Turkish.
-`ru`: Russian.
-`pt`: Portuguese (Brazil).
-`pt-PT`: Portuguese (Portugal).
-`vi`: Vietnamese.
-`id`: Indonesian.
-`ms`: Malay.
-`th`: Thai.
-`ar`: Arabic.
-`hi`: Hindi.
-`fil`: Filipino.
-**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.
+        r"""<p>Target language for subtitle translation.<br>This parameter takes effect when TranslateSwitch is ON.<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino</p><p><strong>Note</strong>: Use <code>/</code> to separate multiple languages, such as <code>en/ja</code>, which indicates English and Japanese.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -56595,7 +57574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""<p>Template creation time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date format</a>.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -56606,7 +57585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""<p>Last template modification time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date format</a>.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -56617,8 +57596,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AliasName(self):
-        r"""Alias of the preset smart subtitle template.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Preset template alias for smart subtitle.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AliasName
@@ -56629,7 +57608,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessType(self):
-        r"""Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.
+        r"""<p>Subtitle processing type:</p><ul><li>0: ASR.</li><li>1: subtitle translation.</li><li>2: OCR.</li></ul>
         :rtype: int
         """
         return self._ProcessType
@@ -56640,7 +57619,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Area configurations for the subtitle OCR extraction box.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -56648,6 +57628,39 @@ Note: This field may return null, indicating that no valid value can be obtained
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>Subtitle burn-in template ID.</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def SpeakerMode(self):
+        r"""<p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._SpeakerMode
+
+    @SpeakerMode.setter
+    def SpeakerMode(self, SpeakerMode):
+        self._SpeakerMode = SpeakerMode
+
+    @property
+    def SpeakerLabel(self):
+        r"""<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._SpeakerLabel
+
+    @SpeakerLabel.setter
+    def SpeakerLabel(self, SpeakerLabel):
+        self._SpeakerLabel = SpeakerLabel
 
 
     def _deserialize(self, params):
@@ -56671,6 +57684,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._SpeakerMode = params.get("SpeakerMode")
+        self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56942,32 +57958,24 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: ID of a time point screenshot template.
+        :param _Definition: <p>Time point screenshot template ID.</p>
         :type Definition: int
-        :param _ExtTimeOffsetSet: List of screenshot time points in the format of `s` or `%`:
-<li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>
-<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>
+        :param _ExtTimeOffsetSet: <p>List of screenshot time points. Time points support two formats: s and %.</p><li>The unit for a string that ends with s is second. For example, 3.5s means the time point is at 3.5 seconds.</li><li>The unit for a string that ends with % is a percentage of the video duration. For example, 10% means the time point is at 10% of the video's total duration.</li>
         :type ExtTimeOffsetSet: list of str
-        :param _TimeOffsetSet: List of time points of screenshots in <font color=red>seconds</font>.
+        :param _TimeOffsetSet: <p>List of screenshot time points, in <font color="red">seconds</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
         :type TimeOffsetSet: list of float
-        :param _WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        :param _OutputStorage: <p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path for an image file of screenshots taken at specific time points, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
-Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: <p>Output path of the image file after the time point screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: Rule of the `{number}` variable in the time point screenshot output path.
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param _ExtInfo: <p>Extended parameter.</p>
+        :type ExtInfo: str
         """
         self._Definition = None
         self._ExtTimeOffsetSet = None
@@ -56976,10 +57984,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._ObjectNumberFormat = None
+        self._ExtInfo = None
 
     @property
     def Definition(self):
-        r"""ID of a time point screenshot template.
+        r"""<p>Time point screenshot template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -56990,9 +57999,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtTimeOffsetSet(self):
-        r"""List of screenshot time points in the format of `s` or `%`:
-<li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>
-<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>
+        r"""<p>List of screenshot time points. Time points support two formats: s and %.</p><li>The unit for a string that ends with s is second. For example, 3.5s means the time point is at 3.5 seconds.</li><li>The unit for a string that ends with % is a percentage of the video duration. For example, 10% means the time point is at 10% of the video's total duration.</li>
         :rtype: list of str
         """
         return self._ExtTimeOffsetSet
@@ -57003,7 +58010,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeOffsetSet(self):
-        r"""List of time points of screenshots in <font color=red>seconds</font>.
+        r"""<p>List of screenshot time points, in <font color="red">seconds</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
         :rtype: list of float
         """
         return self._TimeOffsetSet
@@ -57014,8 +58021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
-        r"""List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -57026,7 +58032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        r"""<p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -57038,14 +58044,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
-        r"""Output path for an image file of screenshots taken at specific time points, which can be a relative or absolute path.
-If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
-Relative path example:
-<li>Filename_{Variable name}.{format}.</li>
-<li>Filename.{format}.</li>
-Absolute path example:
-<li>/Custom path/Filename_{Variable name}.{format}.</li>
-If left empty, a relative path is used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
+        r"""<p>Output path of the image file after the time point screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -57056,7 +58055,7 @@ If left empty, a relative path is used by default: `{inputName}_snapshotByTimeOf
 
     @property
     def ObjectNumberFormat(self):
-        r"""Rule of the `{number}` variable in the time point screenshot output path.
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
@@ -57065,6 +58064,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ObjectNumberFormat.setter
     def ObjectNumberFormat(self, ObjectNumberFormat):
         self._ObjectNumberFormat = ObjectNumberFormat
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
 
 
     def _deserialize(self, params):
@@ -57084,6 +58094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ObjectNumberFormat") is not None:
             self._ObjectNumberFormat = NumberFormat()
             self._ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59733,20 +60744,20 @@ Default value: 0px.
 
 
 class SyncDubbingOutputOption(AbstractModel):
-    r"""
+    r"""Output parameter setting for synchronous dubbing.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: <p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>data: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
         :type Type: str
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>data: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
         :rtype: str
         """
         return self._Type
@@ -59775,64 +60786,21 @@ class SyncDubbingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.
+        :param _Text: <p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.</p>
         :type Text: str
-        :param _TextLang: Text language. This defaults to zh (Chinese) if left empty.
-Supported languages:
-zh: Chinese.
-en: English.
-ja: Japanese.
-de: German.
-fr: French.
-ko: Korean.
-ru: Russian.
-uk: Ukrainian.
-pt: Portuguese.
-it: Italian.
-es: Spanish.
-id: Indonesian.
-nl: Dutch.
-tr: Turkish.
-fil: Filipino.
-ms: Malay.
-el: Greek.
-fi: Finnish.
-hr: Croatian.
-sk: Slovak.
-pl: Polish.
-sv: Swedish.
-hi: Hindi.
-bg: Bulgarian.
-ro: Romanian.
-ar: Arabic.
-cs: Czech.
-da: Danish.
-ta: Tamil.
-hun: Hungarian.
-vi: Vietnamese.
-no: Norwegian.
-yue: Cantonese.
-th: Thai.
-he: Hebrew.
-ca: Catalan.
-nn: Nynorsk.
-af: Afrikaans.
-fa: Persian.
-sl: Slovenian.
-
+        :param _TextLang: <p>Text language. This defaults to Chinese if left empty.<br>Supported languages:<br>zh    Chinese<br>en    English<br>ja    Japanese<br>de    German<br>fr    French<br>ko    Korean<br>ru    Russian<br>uk    Ukrainian<br>pt    Portuguese<br>it    Italian<br>es    Spanish<br>id    Indonesian<br>nl    Dutch<br>tr    Turkish<br>fil    Filipino<br>ms    Malay<br>el    Greek<br>fi    Finnish<br>hr    Croatian<br>sk    Slovak<br>pl    Polish<br>sv    Swedish<br>hi    Hindi<br>bg    Bulgarian<br>ro    Romanian<br>ar    Arabic<br>cs    Czech<br>da    Danish<br>ta    Tamil<br>hun    Hungarian<br>vi    Vietnamese<br>no    Norwegian<br>yue    Cantonese<br>th    Thai<br>he    Hebrew<br>ca    Catalan<br>nn    Nynorsk<br>af    Afrikaans<br>fa    Persian<br>sl    Slovenian</p>
         :type TextLang: str
-        :param _VoiceId: Voice type ID. This is required for synthesis with a specific voice type. System voice types and voice type cloning are supported.
+        :param _VoiceId: <p>Voice ID. This is required for synthesis with a specific voice. System voice and voice cloning are supported.</p>
         :type VoiceId: str
-        :param _AudioData: Base64-encoded audio for cloning.
+        :param _AudioData: <p>Base64-encoded audio for cloning.</p>
         :type AudioData: str
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Cloning audio URL. Valid when AudioData is empty.</p>
         :type AudioUrl: str
-        :param _AudioLang: Cloning audio language. The default language is Chinese.
-Supported languages are the same as those for TextLang.
+        :param _AudioLang: <p>Cloning audio language. The default language is Chinese. <br>Supported languages are the same as those for TextLang.</p>
         :type AudioLang: str
-        :param _Output: 
+        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
-        :param _ExtParam: Extended parameters in the format of a JSON string.
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p><p>‑ synExt (Object): Speech synthesis extension parameter.<br>- duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>- sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br> pitch (Integer): -Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>‑ cloneExt (Object): Voice cloning extension parameter.<br>    - timeRanges (Float[][]): Specifies the time ranges for audio cloning. Default value: [[0, 20]]. Example: [[5.2, 10], [45, 59.8]].</p>
         :type ExtParam: str
         """
         self._Text = None
@@ -59846,7 +60814,7 @@ Supported languages are the same as those for TextLang.
 
     @property
     def Text(self):
-        r"""Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.
+        r"""<p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.</p>
         :rtype: str
         """
         return self._Text
@@ -59857,49 +60825,7 @@ Supported languages are the same as those for TextLang.
 
     @property
     def TextLang(self):
-        r"""Text language. This defaults to zh (Chinese) if left empty.
-Supported languages:
-zh: Chinese.
-en: English.
-ja: Japanese.
-de: German.
-fr: French.
-ko: Korean.
-ru: Russian.
-uk: Ukrainian.
-pt: Portuguese.
-it: Italian.
-es: Spanish.
-id: Indonesian.
-nl: Dutch.
-tr: Turkish.
-fil: Filipino.
-ms: Malay.
-el: Greek.
-fi: Finnish.
-hr: Croatian.
-sk: Slovak.
-pl: Polish.
-sv: Swedish.
-hi: Hindi.
-bg: Bulgarian.
-ro: Romanian.
-ar: Arabic.
-cs: Czech.
-da: Danish.
-ta: Tamil.
-hun: Hungarian.
-vi: Vietnamese.
-no: Norwegian.
-yue: Cantonese.
-th: Thai.
-he: Hebrew.
-ca: Catalan.
-nn: Nynorsk.
-af: Afrikaans.
-fa: Persian.
-sl: Slovenian.
-
+        r"""<p>Text language. This defaults to Chinese if left empty.<br>Supported languages:<br>zh    Chinese<br>en    English<br>ja    Japanese<br>de    German<br>fr    French<br>ko    Korean<br>ru    Russian<br>uk    Ukrainian<br>pt    Portuguese<br>it    Italian<br>es    Spanish<br>id    Indonesian<br>nl    Dutch<br>tr    Turkish<br>fil    Filipino<br>ms    Malay<br>el    Greek<br>fi    Finnish<br>hr    Croatian<br>sk    Slovak<br>pl    Polish<br>sv    Swedish<br>hi    Hindi<br>bg    Bulgarian<br>ro    Romanian<br>ar    Arabic<br>cs    Czech<br>da    Danish<br>ta    Tamil<br>hun    Hungarian<br>vi    Vietnamese<br>no    Norwegian<br>yue    Cantonese<br>th    Thai<br>he    Hebrew<br>ca    Catalan<br>nn    Nynorsk<br>af    Afrikaans<br>fa    Persian<br>sl    Slovenian</p>
         :rtype: str
         """
         return self._TextLang
@@ -59910,7 +60836,7 @@ sl: Slovenian.
 
     @property
     def VoiceId(self):
-        r"""Voice type ID. This is required for synthesis with a specific voice type. System voice types and voice type cloning are supported.
+        r"""<p>Voice ID. This is required for synthesis with a specific voice. System voice and voice cloning are supported.</p>
         :rtype: str
         """
         return self._VoiceId
@@ -59921,7 +60847,7 @@ sl: Slovenian.
 
     @property
     def AudioData(self):
-        r"""Base64-encoded audio for cloning.
+        r"""<p>Base64-encoded audio for cloning.</p>
         :rtype: str
         """
         return self._AudioData
@@ -59932,7 +60858,7 @@ sl: Slovenian.
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Cloning audio URL. Valid when AudioData is empty.</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -59943,8 +60869,7 @@ sl: Slovenian.
 
     @property
     def AudioLang(self):
-        r"""Cloning audio language. The default language is Chinese.
-Supported languages are the same as those for TextLang.
+        r"""<p>Cloning audio language. The default language is Chinese. <br>Supported languages are the same as those for TextLang.</p>
         :rtype: str
         """
         return self._AudioLang
@@ -59955,7 +60880,7 @@ Supported languages are the same as those for TextLang.
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output parameters.</p><p>Specifies the output format, etc.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         """
         return self._Output
@@ -59966,7 +60891,7 @@ Supported languages are the same as those for TextLang.
 
     @property
     def ExtParam(self):
-        r"""Extended parameters in the format of a JSON string.
+        r"""<p>Extended parameters in the format of a JSON string.</p><p>‑ synExt (Object): Speech synthesis extension parameter.<br>- duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>- sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br> pitch (Integer): -Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>‑ cloneExt (Object): Voice cloning extension parameter.<br>    - timeRanges (Float[][]): Specifies the time ranges for audio cloning. Default value: [[0, 20]]. Example: [[5.2, 10], [45, 59.8]].</p>
         :rtype: str
         """
         return self._ExtParam
@@ -60004,19 +60929,19 @@ class SyncDubbingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: Error code. 0 is returned if the request is successful.
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
         :type ErrorCode: int
-        :param _Msg: Error message. success is returned if the request is successful.
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
         :type Msg: str
-        :param _AudioData: Synthetic audio in Base64 encoding and WAV format.
+        :param _AudioData: <p>Synthetic audio in Base64 encoding and WAV format.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioData: str
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Synthetic audio URL. It is valid for 24 hours.</p>
         :type AudioUrl: str
-        :param _VoiceId: Cloned voice type ID.
+        :param _VoiceId: <p>Cloned voice ID.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceId: str
-        :param _ExtInfo: 
+        :param _ExtInfo: <p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>
         :type ExtInfo: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -60031,7 +60956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
-        r"""Error code. 0 is returned if the request is successful.
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
         :rtype: int
         """
         return self._ErrorCode
@@ -60042,7 +60967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        r"""Error message. success is returned if the request is successful.
+        r"""<p>Error message. success is returned if the request is successful.</p>
         :rtype: str
         """
         return self._Msg
@@ -60053,7 +60978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioData(self):
-        r"""Synthetic audio in Base64 encoding and WAV format.
+        r"""<p>Synthetic audio in Base64 encoding and WAV format.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -60065,7 +60990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Synthetic audio URL. It is valid for 24 hours.</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -60076,7 +61001,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoiceId(self):
-        r"""Cloned voice type ID.
+        r"""<p>Cloned voice ID.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -60088,7 +61013,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtInfo(self):
-        r"""
+        r"""<p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -61550,6 +62475,160 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class TextToSpeechAsyncRequest(AbstractModel):
+    r"""TextToSpeechAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>Text to convert to speech.</p>
+        :type Text: str
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _TextLang: <p>Text language. The default value is Chinese.</p>
+        :type TextLang: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p><p>synExt (Object): Extended text to speech parameter.<br>  duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>  sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br>  pitch (Integer): -Pitch. Default value: 0 (original voice output). Value range: [-12, 12].</p><p>transExt (Object): Extended translation parameter.<br>  transInfo (Object).<br>   transDst (String): Target language, such as en.<br>  transRequirement (String): Translation requirements.</p>
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._TextLang = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""<p>Text to convert to speech.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def TextLang(self):
+        r"""<p>Text language. The default value is Chinese.</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p><p>synExt (Object): Extended text to speech parameter.<br>  duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>  sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br>  pitch (Integer): -Pitch. Default value: 0 (original voice output). Value range: [-12, 12].</p><p>transExt (Object): Extended translation parameter.<br>  transInfo (Object).<br>   transDst (String): Target language, such as en.<br>  transRequirement (String): Translation requirements.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._TextLang = params.get("TextLang")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncResponse(AbstractModel):
+    r"""TextToSpeechAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _TaskId: <p>Task ID. Use this ID to query the result.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID. Use this ID to query the result.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class TextTranslationRequest(AbstractModel):
     r"""TextTranslation request structure.
 
@@ -61557,398 +62636,13 @@ class TextTranslationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceText: Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.
+        :param _SourceText: <p>Text to be translated. The text must be encoded in UTF-8 format. Non-UTF-8 encoded characters may cause translation failures. Provide valid text. Unconventional text such as HTML tags may fail to translate. The text length per request cannot exceed 2,000 characters.</p>
         :type SourceText: str
-        :param _Source: Source language. Valid values:
-    "auto": "automatic recognition (recognized as a language).",
-    "ab": "Abkhaz language.",
-    "ace": Acehnese.",
-    "ach": "Acholi.",
-    "af": "Afrikaans.",
-    "ak": "Twi (Akan).",
-    "am": "Amharic",
-    "ar": "Arabic.",
-    "as": "Assamese.",
-    "ay": "Aymara.",
-    "az": "Azerbaijani.",
-    "ba": "Bashkir.",
-    "ban": "Balinese",
-    "bbc": "Batak Toba.",
-    "bem": "Bemba",
-    "bew": "Betawi",
-    "bg": "Bulgarian.",
-    "bho": "Bhojpuri.",
-    "bik": "Bikol",
-    "bm": "Bambara.",
-    "bn": "Bengali.",
-    "br": "Breton.",
-    "bs": "Bosnian.",
-    "btx": "Batak Karo.",
-    "bts": "Batak Simalungun.",
-    "bua": "Buryat.",
-    "ca": "Catalan.",
-    "ceb": "Cebuano.",
-    "cgg": "Kiga",
-    "chm": "Meadow Mari language.",
-    "ckb": "Kurdish (Sorani).",
-    "cnh": "Hakha Chin.",
-    "co": "Corsican.",
-    "crh": "Crimean Tatar.",
-    "crs": "Seychellois Creole.",
-    "cs": "Czech.",
-    "cv": "Chuvash.",
-    "cy": "Welsh.",
-    "da": "Danish.",
-    "de": "German.",
-    "din": "Dinka",
-    "doi": "Dogri.",
-    "dov": "Dombe.",
-    "dv": "Divehi.",
-    "dz": "Dzongkha.",
-    "ee": "Ewe",
-    "el": "Greek.",
-    "en": "English.",
-    "eo": "Esperanto.",
-    "es": "Spanish.",
-    "et": "Estonian.",
-    "eu": "Basque.",
-    "fa": "Persian.",
-    "ff": "Fula.",
-    "fi": "Finnish.",
-    "fil": "Filipino (Tagalog).",
-    "fj": "Fijian.",
-    "fr": "French.",
-    "fr-CA": "French (Canada).",
-    "fr-FR": "French (France).",
-    "fy": "Frisian.",
-    "ga": "Irish.",
-    "gaa": "Ga.",
-    "gd": "Scottish Gaelic.",
-    "gl": "Galician.",
-    "gn": "Guarani.",
-    "gom": "Goan Konkani.",
-    "gu": "Gujarati.",
-    "gv": "Manx.",
-    "ha": "Hausa",
-    "haw": "Hawaiian.",
-    "he": "Hebrew.",
-    "hi": "Hindi.",
-    "hil": "Hiligaynon.",
-    "hmn": "Hmong.",
-    "hr": "Croatian.",
-    "hrx": "Hunsrik.",
-    "ht": "Haitian Creole.",
-    "hu": "Hungarian.",
-    "hy": "Armenian.",
-    "id": "Indonesian.",
-    "ig": "Igbo",
-    "ilo": "Iloko.",
-    "is": "Icelandic.",
-    "it": "Italian.",
-    "iw": "Hebrew.",
-    "ja": "Japanese.",
-    "jv": "Javanese.",
-    "jw": "Javanese.",
-    "ka": "Georgian.",
-    "kk": "Kazakh.",
-    "km": "Khmer.",
-    "kn": "Kanada.",
-    "ko": "Korean.",
-    "kri": "Krio",
-    "ku": "Kurdish (Kurmanji).",
-    "ktu": "Kituba.",
-    "ky": "Kirghiz.",
-    "la": "Latin.",
-    "lb": "Luxembourgish.",
-    "lg": "Ganda (Luganda).",
-    "li": "Limburgish.",
-    "lij": "Ligurian.",
-    "lmo": "Lombard.",
-    "ln": "Lingala.",
-    "lo": "Lao.",
-    "lt": "Lithuanian.",
-    "ltg": "Latgalian.",
-    "luo": "Luo",
-    "lus": "Mizo.",
-    "lv": "Latvian.",
-    "mai": "Maithili.",
-    "mak": "Makassar.",
-    "mg": "Malagasy.",
-    "mi": "Maori.",
-    "min": "Minangkabau.",
-    "mk": "Macedonian.",
-    "ml": "Malayalam.",
-    "mn": "Mongolian.",
-    "mr": "Marathi.",
-    "ms": "Malay.",
-    "mt": "Maltese.",
-    "my": "Burmese.",
-    "ne": "Nepali.",
-    "new": "Nepali (Newar).",
-    "nl": "Dutch.",
-    "no": "Norwegian.",
-    "nr": "Ndebele (South).",
-    "nso": "Northern Sotho (Sepedi).",
-    "nus": "Nuer.",
-    "ny": "Chichewa (Nyanja).",
-    "oc": "Occitan.",
-    "om": "Oromo",
-    "or": "Odia (Oria).",
-    "pa": "Punjabi.",
-    "pag": "Pangasinan.",
-    "pam": "Kapampangan.",
-    "pap": "Papiamento",
-    "pl": "Polish.",
-    "ps": "Pashto",
-    "pt": "Portuguese.",
-    "pt-BR": "Portuguese (Brazil).",
-    "pt-PT": "Portuguese (Portugal).",
-    "qu": "Quechuan.",
-    "ro": "Romanian.",
-    "rom": "Romani.",
-    "rn": "Rundi",
-    "ru": "Russian.",
-    "rw": "Kinyarwanda.",
-    "sa": "Sanskrit.",
-    "scn": "Sicilian.",
-    "sd": "Sindhi.",
-    "sg": "Sango",
-    "shn": "Shan.",
-    "si": "Sinhalese.",
-    "sk": "Slovak.",
-    "sl": "Slovene.",
-    "sm": "Samoan.",
-    "sn": "Shona.",
-    "so": "Somali.",
-    "sq": "Albanian.",
-    "sr": "Serbian.",
-    "ss": "Swati.",
-    "st": "Sesotho.",
-    "su": "Sundanese.",
-    "sv": "Swedish.",
-    "sw": "Swahili.",
-    "szl": "Silesian.",
-    "ta": "Tamil.",
-    "te": "Telugu.",
-    "tet": "Tetum.",
-    "tg": "Tajik.",
-    "th": "Thai.",
-    "ti": "Tigrinya.",
-    "tk": "Turkmen.",
-    "tl": " Filipino (Tagalog).",
-    "tn": "Tswana.",
-    "tr": "Turkish.",
-    "ts": "Tsonga.",
-    "tt": "Tatar.",
-    "ug": "Uyghur.",
-    "uk": "Ukrainian.",
-    "ur": "Urdu.",
-    "uz": "Uzbek.",
-    "vi": "Vietnamese.",
-    "xh": "Xhosa.",
-    "yi": "Yiddish.",
-    "yo": "Yoruba.",
-    "yua": "Yucatec Maya.",
-    "yue": "Cantonese.",
-    "zh": "Simplified Chinese.",
-    "zh-TW": "Chinese (Traditional).",
-    "zu": "Zulu."
+        :param _Source: <p>Source language. Valid values:<br>    &quot;auto&quot;: &quot; Auto-detection (detects as one language)&quot;,<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>
         :type Source: str
-        :param _Target: Target language. Valid values:
-    "ab": "Abkhaz language.",
-    "ace": "Acehnese.",
-    "ach": "Acholi.",
-    "af": "Afrikaans.",
-    "ak": "Twi (Akan).",
-    "am": "Amharic",
-    "ar": "Arabic.",
-    "as": "Assamese.",
-    "ay": "Aymara.",
-    "az": "Azerbaijani.",
-    "ba": "Bashkir.",
-    "ban": "Balinese",
-    "bbc": "Batak Toba.",
-    "bem": "Bemba",
-    "bew": "Betawi",
-    "bg": "Bulgarian.",
-    "bho": "Bhojpuri.",
-    "bik": "Bikol",
-    "bm": "Bambara.",
-    "bn": "Bengali.",
-    "br": "Breton.",
-    "bs": "Bosnian.",
-    "btx": "Batak Karo.",
-    "bts": "Batak Simalungun.",
-    "bua": "Buryat.",
-    "ca": "Catalan.",
-    "ceb": "Cebuano.",
-    "cgg": "Kiga",
-    "chm": "Meadow Mari language.",
-    "ckb": "Kurdish (Sorani).",
-    "cnh": "Hakha Chin.",
-    "co": "Corsican.",
-    "crh": "Crimean Tatar.",
-    "crs": "Seychellois Creole.",
-    "cs": "Czech.",
-    "cv": "Chuvash.",
-    "cy": "Welsh.",
-    "da": "Danish.",
-    "de": "German.",
-    "din": "Dinka",
-    "doi": "Dogri.",
-    "dov": "Dombe.",
-    "dv": "Divehi.",
-    "dz": "Dzongkha.",
-    "ee": "Ewe",
-    "el": "Greek.",
-    "en": "English.",
-    "eo": "Esperanto.",
-    "es": "Spanish.",
-    "et": "Estonian.",
-    "eu": "Basque.",
-    "fa": "Persian.",
-    "ff": "Fula.",
-    "fi": "Finnish.",
-    "fil": "Filipino (Tagalog).",
-    "fj": "Fijian.",
-    "fr": "French.",
-    "fr-CA": "French (Canada).",
-    "fr-FR": "French (France).",
-    "fy": "Frisian.",
-    "ga": "Irish.",
-    "gaa": "Ga.",
-    "gd": "Scottish Gaelic.",
-    "gl": "Galician.",
-    "gn": "Guarani.",
-    "gom": "Goan Konkani.",
-    "gu": "Gujarati.",
-    "gv": "Manx.",
-    "ha": "Hausa",
-    "haw": "Hawaiian.",
-    "he": "Hebrew.",
-    "hi": "Hindi.",
-    "hil": "Hiligaynon.",
-    "hmn": "Hmong.",
-    "hr": "Croatian.",
-    "hrx": "Hunsrik.",
-    "ht": "Haitian Creole.",
-    "hu": "Hungarian.",
-    "hy": "Armenian.",
-    "id": "Indonesian.",
-    "ig": "Igbo",
-    "ilo": "Iloko.",
-    "is": "Icelandic.",
-    "it": "Italian.",
-    "iw": "Hebrew.",
-    "ja": "Japanese.",
-    "jv": "Javanese.",
-    "jw": "Javanese.",
-    "ka": "Georgian.",
-    "kk": "Kazakh.",
-    "km": "Khmer.",
-    "kn": "Kanada.",
-    "ko": "Korean.",
-    "kri": "Krio",
-    "ku": "Kurdish (Kurmanji).",
-    "ktu": "Kituba.",
-    "ky": "Kirghiz.",
-    "la": "Latin.",
-    "lb": "Luxembourgish.",
-    "lg": "Ganda (Luganda).",
-    "li": "Limburgish.",
-    "lij": "Ligurian.",
-    "lmo": "Lombard.",
-    "ln": "Lingala.",
-    "lo": "Lao.",
-    "lt": "Lithuanian.",
-    "ltg": "Latgalian.",
-    "luo": "Luo",
-    "lus": "Mizo.",
-    "lv": "Latvian.",
-    "mai": "Maithili.",
-    "mak": "Makassar.",
-    "mg": "Malagasy.",
-    "mi": "Maori.",
-    "min": "Minangkabau.",
-    "mk": "Macedonian.",
-    "ml": "Malayalam.",
-    "mn": "Mongolian.",
-    "mr": "Marathi.",
-    "ms": "Malay.",
-    "mt": "Maltese.",
-    "my": "Burmese.",
-    "ne": "Nepali.",
-    "new": "Nepali (Newar).",
-    "nl": "Dutch.",
-    "no": "Norwegian.",
-    "nr": "Ndebele (South).",
-    "nso": "Northern Sotho (Sepedi).",
-    "nus": "Nuer.",
-    "ny": "Chichewa (Nyanja).",
-    "oc": "Occitan.",
-    "om": "Oromo",
-    "or": "Odia (Oria).",
-    "pa": "Punjabi.",
-    "pag": "Pangasinan.",
-    "pam": "Kapampangan.",
-    "pap": "Papiamento",
-    "pl": "Polish.",
-    "ps": "Pashto",
-    "pt": "Portuguese.",
-    "pt-BR": "Portuguese (Brazil).",
-    "pt-PT": "Portuguese (Portugal).",
-    "qu": "Quechuan.",
-    "ro": "Romanian.",
-    "rom": "Romani.",
-    "rn": "Rundi",
-    "ru": "Russian.",
-    "rw": "Kinyarwanda.",
-    "sa": "Sanskrit.",
-    "scn": "Sicilian.",
-    "sd": "Sindhi.",
-    "sg": "Sango",
-    "shn": "Shan.",
-    "si": "Sinhalese.",
-    "sk": "Slovak.",
-    "sl": "Slovene.",
-    "sm": "Samoan.",
-    "sn": "Shona.",
-    "so": "Somali.",
-    "sq": "Albanian.",
-    "sr": "Serbian.",
-    "ss": "Swati.",
-    "st": "Sesotho.",
-    "su": "Sundanese.",
-    "sv": "Swedish.",
-    "sw": "Swahili.",
-    "szl": "Silesian.",
-    "ta": "Tamil.",
-    "te": "Telugu.",
-    "tet": "Tetum.",
-    "tg": "Tajik.",
-    "th": "Thai.",
-    "ti": "Tigrinya.",
-    "tk": "Turkmen.",
-    "tl": " Filipino (Tagalog).",
-    "tn": "Tswana.",
-    "tr": "Turkish.",
-    "ts": "Tsonga.",
-    "tt": "Tatar.",
-    "ug": "Uyghur.",
-    "uk": "Ukrainian.",
-    "ur": "Urdu.",
-    "uz": "Uzbek.",
-    "vi": "Vietnamese.",
-    "xh": "Xhosa.",
-    "yi": "Yiddish.",
-    "yo": "Yoruba.",
-    "yua": "Yucatec Maya.",
-    "yue": "Cantonese.",
-    "zh": "Simplified Chinese.",
-    "zh-TW": "Chinese (Traditional).",
-    "zu": "Zulu."
+        :param _Target: <p>Target language. Valid values:<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>
         :type Target: str
-        :param _UserExtPara: User extension parameter.
+        :param _UserExtPara: <p>User extension parameter.</p>
         :type UserExtPara: str
         """
         self._SourceText = None
@@ -61958,7 +62652,7 @@ class TextTranslationRequest(AbstractModel):
 
     @property
     def SourceText(self):
-        r"""Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.
+        r"""<p>Text to be translated. The text must be encoded in UTF-8 format. Non-UTF-8 encoded characters may cause translation failures. Provide valid text. Unconventional text such as HTML tags may fail to translate. The text length per request cannot exceed 2,000 characters.</p>
         :rtype: str
         """
         return self._SourceText
@@ -61969,200 +62663,7 @@ class TextTranslationRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""Source language. Valid values:
-    "auto": "automatic recognition (recognized as a language).",
-    "ab": "Abkhaz language.",
-    "ace": Acehnese.",
-    "ach": "Acholi.",
-    "af": "Afrikaans.",
-    "ak": "Twi (Akan).",
-    "am": "Amharic",
-    "ar": "Arabic.",
-    "as": "Assamese.",
-    "ay": "Aymara.",
-    "az": "Azerbaijani.",
-    "ba": "Bashkir.",
-    "ban": "Balinese",
-    "bbc": "Batak Toba.",
-    "bem": "Bemba",
-    "bew": "Betawi",
-    "bg": "Bulgarian.",
-    "bho": "Bhojpuri.",
-    "bik": "Bikol",
-    "bm": "Bambara.",
-    "bn": "Bengali.",
-    "br": "Breton.",
-    "bs": "Bosnian.",
-    "btx": "Batak Karo.",
-    "bts": "Batak Simalungun.",
-    "bua": "Buryat.",
-    "ca": "Catalan.",
-    "ceb": "Cebuano.",
-    "cgg": "Kiga",
-    "chm": "Meadow Mari language.",
-    "ckb": "Kurdish (Sorani).",
-    "cnh": "Hakha Chin.",
-    "co": "Corsican.",
-    "crh": "Crimean Tatar.",
-    "crs": "Seychellois Creole.",
-    "cs": "Czech.",
-    "cv": "Chuvash.",
-    "cy": "Welsh.",
-    "da": "Danish.",
-    "de": "German.",
-    "din": "Dinka",
-    "doi": "Dogri.",
-    "dov": "Dombe.",
-    "dv": "Divehi.",
-    "dz": "Dzongkha.",
-    "ee": "Ewe",
-    "el": "Greek.",
-    "en": "English.",
-    "eo": "Esperanto.",
-    "es": "Spanish.",
-    "et": "Estonian.",
-    "eu": "Basque.",
-    "fa": "Persian.",
-    "ff": "Fula.",
-    "fi": "Finnish.",
-    "fil": "Filipino (Tagalog).",
-    "fj": "Fijian.",
-    "fr": "French.",
-    "fr-CA": "French (Canada).",
-    "fr-FR": "French (France).",
-    "fy": "Frisian.",
-    "ga": "Irish.",
-    "gaa": "Ga.",
-    "gd": "Scottish Gaelic.",
-    "gl": "Galician.",
-    "gn": "Guarani.",
-    "gom": "Goan Konkani.",
-    "gu": "Gujarati.",
-    "gv": "Manx.",
-    "ha": "Hausa",
-    "haw": "Hawaiian.",
-    "he": "Hebrew.",
-    "hi": "Hindi.",
-    "hil": "Hiligaynon.",
-    "hmn": "Hmong.",
-    "hr": "Croatian.",
-    "hrx": "Hunsrik.",
-    "ht": "Haitian Creole.",
-    "hu": "Hungarian.",
-    "hy": "Armenian.",
-    "id": "Indonesian.",
-    "ig": "Igbo",
-    "ilo": "Iloko.",
-    "is": "Icelandic.",
-    "it": "Italian.",
-    "iw": "Hebrew.",
-    "ja": "Japanese.",
-    "jv": "Javanese.",
-    "jw": "Javanese.",
-    "ka": "Georgian.",
-    "kk": "Kazakh.",
-    "km": "Khmer.",
-    "kn": "Kanada.",
-    "ko": "Korean.",
-    "kri": "Krio",
-    "ku": "Kurdish (Kurmanji).",
-    "ktu": "Kituba.",
-    "ky": "Kirghiz.",
-    "la": "Latin.",
-    "lb": "Luxembourgish.",
-    "lg": "Ganda (Luganda).",
-    "li": "Limburgish.",
-    "lij": "Ligurian.",
-    "lmo": "Lombard.",
-    "ln": "Lingala.",
-    "lo": "Lao.",
-    "lt": "Lithuanian.",
-    "ltg": "Latgalian.",
-    "luo": "Luo",
-    "lus": "Mizo.",
-    "lv": "Latvian.",
-    "mai": "Maithili.",
-    "mak": "Makassar.",
-    "mg": "Malagasy.",
-    "mi": "Maori.",
-    "min": "Minangkabau.",
-    "mk": "Macedonian.",
-    "ml": "Malayalam.",
-    "mn": "Mongolian.",
-    "mr": "Marathi.",
-    "ms": "Malay.",
-    "mt": "Maltese.",
-    "my": "Burmese.",
-    "ne": "Nepali.",
-    "new": "Nepali (Newar).",
-    "nl": "Dutch.",
-    "no": "Norwegian.",
-    "nr": "Ndebele (South).",
-    "nso": "Northern Sotho (Sepedi).",
-    "nus": "Nuer.",
-    "ny": "Chichewa (Nyanja).",
-    "oc": "Occitan.",
-    "om": "Oromo",
-    "or": "Odia (Oria).",
-    "pa": "Punjabi.",
-    "pag": "Pangasinan.",
-    "pam": "Kapampangan.",
-    "pap": "Papiamento",
-    "pl": "Polish.",
-    "ps": "Pashto",
-    "pt": "Portuguese.",
-    "pt-BR": "Portuguese (Brazil).",
-    "pt-PT": "Portuguese (Portugal).",
-    "qu": "Quechuan.",
-    "ro": "Romanian.",
-    "rom": "Romani.",
-    "rn": "Rundi",
-    "ru": "Russian.",
-    "rw": "Kinyarwanda.",
-    "sa": "Sanskrit.",
-    "scn": "Sicilian.",
-    "sd": "Sindhi.",
-    "sg": "Sango",
-    "shn": "Shan.",
-    "si": "Sinhalese.",
-    "sk": "Slovak.",
-    "sl": "Slovene.",
-    "sm": "Samoan.",
-    "sn": "Shona.",
-    "so": "Somali.",
-    "sq": "Albanian.",
-    "sr": "Serbian.",
-    "ss": "Swati.",
-    "st": "Sesotho.",
-    "su": "Sundanese.",
-    "sv": "Swedish.",
-    "sw": "Swahili.",
-    "szl": "Silesian.",
-    "ta": "Tamil.",
-    "te": "Telugu.",
-    "tet": "Tetum.",
-    "tg": "Tajik.",
-    "th": "Thai.",
-    "ti": "Tigrinya.",
-    "tk": "Turkmen.",
-    "tl": " Filipino (Tagalog).",
-    "tn": "Tswana.",
-    "tr": "Turkish.",
-    "ts": "Tsonga.",
-    "tt": "Tatar.",
-    "ug": "Uyghur.",
-    "uk": "Ukrainian.",
-    "ur": "Urdu.",
-    "uz": "Uzbek.",
-    "vi": "Vietnamese.",
-    "xh": "Xhosa.",
-    "yi": "Yiddish.",
-    "yo": "Yoruba.",
-    "yua": "Yucatec Maya.",
-    "yue": "Cantonese.",
-    "zh": "Simplified Chinese.",
-    "zh-TW": "Chinese (Traditional).",
-    "zu": "Zulu."
+        r"""<p>Source language. Valid values:<br>    &quot;auto&quot;: &quot; Auto-detection (detects as one language)&quot;,<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>
         :rtype: str
         """
         return self._Source
@@ -62173,199 +62674,7 @@ class TextTranslationRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""Target language. Valid values:
-    "ab": "Abkhaz language.",
-    "ace": "Acehnese.",
-    "ach": "Acholi.",
-    "af": "Afrikaans.",
-    "ak": "Twi (Akan).",
-    "am": "Amharic",
-    "ar": "Arabic.",
-    "as": "Assamese.",
-    "ay": "Aymara.",
-    "az": "Azerbaijani.",
-    "ba": "Bashkir.",
-    "ban": "Balinese",
-    "bbc": "Batak Toba.",
-    "bem": "Bemba",
-    "bew": "Betawi",
-    "bg": "Bulgarian.",
-    "bho": "Bhojpuri.",
-    "bik": "Bikol",
-    "bm": "Bambara.",
-    "bn": "Bengali.",
-    "br": "Breton.",
-    "bs": "Bosnian.",
-    "btx": "Batak Karo.",
-    "bts": "Batak Simalungun.",
-    "bua": "Buryat.",
-    "ca": "Catalan.",
-    "ceb": "Cebuano.",
-    "cgg": "Kiga",
-    "chm": "Meadow Mari language.",
-    "ckb": "Kurdish (Sorani).",
-    "cnh": "Hakha Chin.",
-    "co": "Corsican.",
-    "crh": "Crimean Tatar.",
-    "crs": "Seychellois Creole.",
-    "cs": "Czech.",
-    "cv": "Chuvash.",
-    "cy": "Welsh.",
-    "da": "Danish.",
-    "de": "German.",
-    "din": "Dinka",
-    "doi": "Dogri.",
-    "dov": "Dombe.",
-    "dv": "Divehi.",
-    "dz": "Dzongkha.",
-    "ee": "Ewe",
-    "el": "Greek.",
-    "en": "English.",
-    "eo": "Esperanto.",
-    "es": "Spanish.",
-    "et": "Estonian.",
-    "eu": "Basque.",
-    "fa": "Persian.",
-    "ff": "Fula.",
-    "fi": "Finnish.",
-    "fil": "Filipino (Tagalog).",
-    "fj": "Fijian.",
-    "fr": "French.",
-    "fr-CA": "French (Canada).",
-    "fr-FR": "French (France).",
-    "fy": "Frisian.",
-    "ga": "Irish.",
-    "gaa": "Ga.",
-    "gd": "Scottish Gaelic.",
-    "gl": "Galician.",
-    "gn": "Guarani.",
-    "gom": "Goan Konkani.",
-    "gu": "Gujarati.",
-    "gv": "Manx.",
-    "ha": "Hausa",
-    "haw": "Hawaiian.",
-    "he": "Hebrew.",
-    "hi": "Hindi.",
-    "hil": "Hiligaynon.",
-    "hmn": "Hmong.",
-    "hr": "Croatian.",
-    "hrx": "Hunsrik.",
-    "ht": "Haitian Creole.",
-    "hu": "Hungarian.",
-    "hy": "Armenian.",
-    "id": "Indonesian.",
-    "ig": "Igbo",
-    "ilo": "Iloko.",
-    "is": "Icelandic.",
-    "it": "Italian.",
-    "iw": "Hebrew.",
-    "ja": "Japanese.",
-    "jv": "Javanese.",
-    "jw": "Javanese.",
-    "ka": "Georgian.",
-    "kk": "Kazakh.",
-    "km": "Khmer.",
-    "kn": "Kanada.",
-    "ko": "Korean.",
-    "kri": "Krio",
-    "ku": "Kurdish (Kurmanji).",
-    "ktu": "Kituba.",
-    "ky": "Kirghiz.",
-    "la": "Latin.",
-    "lb": "Luxembourgish.",
-    "lg": "Ganda (Luganda).",
-    "li": "Limburgish.",
-    "lij": "Ligurian.",
-    "lmo": "Lombard.",
-    "ln": "Lingala.",
-    "lo": "Lao.",
-    "lt": "Lithuanian.",
-    "ltg": "Latgalian.",
-    "luo": "Luo",
-    "lus": "Mizo.",
-    "lv": "Latvian.",
-    "mai": "Maithili.",
-    "mak": "Makassar.",
-    "mg": "Malagasy.",
-    "mi": "Maori.",
-    "min": "Minangkabau.",
-    "mk": "Macedonian.",
-    "ml": "Malayalam.",
-    "mn": "Mongolian.",
-    "mr": "Marathi.",
-    "ms": "Malay.",
-    "mt": "Maltese.",
-    "my": "Burmese.",
-    "ne": "Nepali.",
-    "new": "Nepali (Newar).",
-    "nl": "Dutch.",
-    "no": "Norwegian.",
-    "nr": "Ndebele (South).",
-    "nso": "Northern Sotho (Sepedi).",
-    "nus": "Nuer.",
-    "ny": "Chichewa (Nyanja).",
-    "oc": "Occitan.",
-    "om": "Oromo",
-    "or": "Odia (Oria).",
-    "pa": "Punjabi.",
-    "pag": "Pangasinan.",
-    "pam": "Kapampangan.",
-    "pap": "Papiamento",
-    "pl": "Polish.",
-    "ps": "Pashto",
-    "pt": "Portuguese.",
-    "pt-BR": "Portuguese (Brazil).",
-    "pt-PT": "Portuguese (Portugal).",
-    "qu": "Quechuan.",
-    "ro": "Romanian.",
-    "rom": "Romani.",
-    "rn": "Rundi",
-    "ru": "Russian.",
-    "rw": "Kinyarwanda.",
-    "sa": "Sanskrit.",
-    "scn": "Sicilian.",
-    "sd": "Sindhi.",
-    "sg": "Sango",
-    "shn": "Shan.",
-    "si": "Sinhalese.",
-    "sk": "Slovak.",
-    "sl": "Slovene.",
-    "sm": "Samoan.",
-    "sn": "Shona.",
-    "so": "Somali.",
-    "sq": "Albanian.",
-    "sr": "Serbian.",
-    "ss": "Swati.",
-    "st": "Sesotho.",
-    "su": "Sundanese.",
-    "sv": "Swedish.",
-    "sw": "Swahili.",
-    "szl": "Silesian.",
-    "ta": "Tamil.",
-    "te": "Telugu.",
-    "tet": "Tetum.",
-    "tg": "Tajik.",
-    "th": "Thai.",
-    "ti": "Tigrinya.",
-    "tk": "Turkmen.",
-    "tl": " Filipino (Tagalog).",
-    "tn": "Tswana.",
-    "tr": "Turkish.",
-    "ts": "Tsonga.",
-    "tt": "Tatar.",
-    "ug": "Uyghur.",
-    "uk": "Ukrainian.",
-    "ur": "Urdu.",
-    "uz": "Uzbek.",
-    "vi": "Vietnamese.",
-    "xh": "Xhosa.",
-    "yi": "Yiddish.",
-    "yo": "Yoruba.",
-    "yua": "Yucatec Maya.",
-    "yue": "Cantonese.",
-    "zh": "Simplified Chinese.",
-    "zh-TW": "Chinese (Traditional).",
-    "zu": "Zulu."
+        r"""<p>Target language. Valid values:<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>
         :rtype: str
         """
         return self._Target
@@ -62376,7 +62685,7 @@ class TextTranslationRequest(AbstractModel):
 
     @property
     def UserExtPara(self):
-        r"""User extension parameter.
+        r"""<p>User extension parameter.</p>
         :rtype: str
         """
         return self._UserExtPara
@@ -62408,11 +62717,11 @@ class TextTranslationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetText: Text after translation.
+        :param _TargetText: <p>Translated text.</p>
         :type TargetText: str
-        :param _Source: Source language. See the input parameter Source.
+        :param _Source: <p>Source language. See the input parameter Source.</p>
         :type Source: str
-        :param _Target: Target language. See the input parameter Target.
+        :param _Target: <p>Target language. See the input parameter Target.</p>
         :type Target: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -62424,7 +62733,7 @@ class TextTranslationResponse(AbstractModel):
 
     @property
     def TargetText(self):
-        r"""Text after translation.
+        r"""<p>Translated text.</p>
         :rtype: str
         """
         return self._TargetText
@@ -62435,7 +62744,7 @@ class TextTranslationResponse(AbstractModel):
 
     @property
     def Source(self):
-        r"""Source language. See the input parameter Source.
+        r"""<p>Source language. See the input parameter Source.</p>
         :rtype: str
         """
         return self._Source
@@ -62446,7 +62755,7 @@ class TextTranslationResponse(AbstractModel):
 
     @property
     def Target(self):
-        r"""Target language. See the input parameter Target.
+        r"""<p>Target language. See the input parameter Target.</p>
         :rtype: str
         """
         return self._Target
@@ -63519,6 +63828,140 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateProjectRequest(AbstractModel):
+    r"""UpdateProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>Project ID.</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>Project name.</p>
+        :type ProjectName: str
+        :param _TermBase: <p>Project term base.</p>
+        :type TermBase: list of TermBase
+        :param _Description: <p>Project description.</p>
+        :type Description: str
+        :param _Speakers: <p>List of characters.</p>
+        :type Speakers: list of Speakers
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._TermBase = None
+        self._Description = None
+        self._Speakers = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>Project ID.</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>Project name.</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def TermBase(self):
+        r"""<p>Project term base.</p>
+        :rtype: list of TermBase
+        """
+        return self._TermBase
+
+    @TermBase.setter
+    def TermBase(self, TermBase):
+        self._TermBase = TermBase
+
+    @property
+    def Description(self):
+        r"""<p>Project description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Speakers(self):
+        r"""<p>List of characters.</p>
+        :rtype: list of Speakers
+        """
+        return self._Speakers
+
+    @Speakers.setter
+    def Speakers(self, Speakers):
+        self._Speakers = Speakers
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        if params.get("TermBase") is not None:
+            self._TermBase = []
+            for item in params.get("TermBase"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._TermBase.append(obj)
+        self._Description = params.get("Description")
+        if params.get("Speakers") is not None:
+            self._Speakers = []
+            for item in params.get("Speakers"):
+                obj = Speakers()
+                obj._deserialize(item)
+                self._Speakers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProjectResponse(AbstractModel):
+    r"""UpdateProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSmartErasePrivacyConfig(AbstractModel):
@@ -66613,6 +67056,162 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ScenarioBased = params.get("ScenarioBased")
         self._SceneType = params.get("SceneType")
         self._CompressType = params.get("CompressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceInfo(AbstractModel):
+    r"""Voice information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Category: <p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        :type Category: str
+        :param _Gender: <p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>
+        :type Gender: str
+        :param _Languages: <p>List of supported languages. </p><p>For example: en.</p>
+        :type Languages: list of str
+        :param _AudioUrl: <p>Audition audio URL.</p>
+        :type AudioUrl: str
+        :param _Labels: <p>List of tags. </p><p>For example: gentle.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Recommended scenarios. </p><p>For example: education.</p>
+        :type Scenes: list of str
+        """
+        self._VoiceId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Gender = None
+        self._Languages = None
+        self._AudioUrl = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Gender(self):
+        r"""<p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Languages(self):
+        r"""<p>List of supported languages. </p><p>For example: en.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Audition audio URL.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Labels(self):
+        r"""<p>List of tags. </p><p>For example: gentle.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Recommended scenarios. </p><p>For example: education.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Gender = params.get("Gender")
+        self._Languages = params.get("Languages")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

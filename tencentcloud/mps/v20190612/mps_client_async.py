@@ -32,7 +32,7 @@ class MpsClient(AbstractClient):
     ) -> models.BatchProcessMediaResponse:
         """
         This API is used to initiate batch processing tasks for URL video links, with features including:
-        Smart subtitle (full speech, speech hotword, and speech translation)
+        Smart subtitle (full speech, speech hotword, and speech translation).
         """
         
         kwargs = {}
@@ -1443,6 +1443,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTextToSpeechAsyncTask(
+            self,
+            request: models.DescribeTextToSpeechAsyncTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTextToSpeechAsyncTaskResponse:
+        """
+        This API is used to query the result of an asynchronous text to speech task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTextToSpeechAsyncTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTextToSpeechAsyncTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTranscodeTemplates(
             self,
             request: models.DescribeTranscodeTemplatesRequest,
@@ -1476,6 +1494,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeUsageData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVoices(
+            self,
+            request: models.DescribeVoicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoicesResponse:
+        """
+        This synchronous API is used to query available voices. It supports filtering voices by type, tag, language, and other criteria.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1530,6 +1566,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeWorkflows"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DesignVoiceAsync(
+            self,
+            request: models.DesignVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DesignVoiceAsyncResponse:
+        """
+        This API is used to design a voice. It generates a voice ID based on a prompt.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DesignVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2186,6 +2240,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryProject(
+            self,
+            request: models.QueryProjectRequest,
+            opts: Dict = None,
+    ) -> models.QueryProjectResponse:
+        """
+        This API is used to query an episode project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RecognizeAudio(
             self,
             request: models.RecognizeAudioRequest,
@@ -2240,19 +2312,55 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TextToSpeechAsync(
+            self,
+            request: models.TextToSpeechAsyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechAsyncResponse:
+        """
+        This API is used to convert text to speech asynchronously and supports long text to speech.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TextTranslation(
             self,
             request: models.TextTranslationRequest,
             opts: Dict = None,
     ) -> models.TextTranslationResponse:
         """
-        This API is used to translate text.
+        
         """
         
         kwargs = {}
         kwargs["action"] = "TextTranslation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TextTranslationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateProject(
+            self,
+            request: models.UpdateProjectRequest,
+            opts: Dict = None,
+    ) -> models.UpdateProjectResponse:
+        """
+        This API is used to update an episode project.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateProjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

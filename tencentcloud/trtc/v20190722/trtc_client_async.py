@@ -74,7 +74,7 @@ class TrtcClient(AbstractClient):
         """
         API description:.
         Start on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.
-        Before official online operation, pay attention to the recording best practices (https://www.tencentcloud.comom/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.
+        Before official online operation, pay attention to the recording best practices (https://www.tencentcloud.com/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.
 
         This API is used to achieve the following goals:.
         Specify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.
@@ -892,13 +892,13 @@ class TrtcClient(AbstractClient):
     ) -> models.StartPublishCdnStreamResponse:
         """
         API description:.
-        Start a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently. See document: [Feature Description](https://www.tencentcloud.comom/document/product/647/84721?from_cn_redirect=1#b9a855f4-e38c-4616-9b07-fc44e0e8282a) and [Common Issues](https://www.tencentcloud.comom/document/product/647/62620?from_cn_redirect=1).
+        Start a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently. See document: [Feature Description](https://www.tencentcloud.com/document/product/647/84721?from_cn_redirect=1#b9a855f4-e38c-4616-9b07-fc44e0e8282a) and [Common Issues](https://www.tencentcloud.com/document/product/647/62620?from_cn_redirect=1).
 
         Note:.
-        You can enable bypass relay callback through console activation for monitoring events of CDN state. Refer to the documentation for callback: [Bypass Relay Callback Description](https://www.tencentcloud.comom/document/product/647/88552?from_cn_redirect=1).
+        You can enable bypass relay callback through console activation for monitoring events of CDN state. Refer to the documentation for callback: [Bypass Relay Callback Description](https://www.tencentcloud.com/document/product/647/88552?from_cn_redirect=1).
         Initiating a mixed stream push task may incur the following fees:.
-        For MCU mix transcoding fees, refer to the documentation: On-Cloud MixTranscoding billing (https://www.tencentcloud.comom/document/product/647/49446?from_cn_redirect=1).
-        For forwarding expenses of non-Tencent Cloud CDN, refer to the documentation: [Cloud-based forwarding billing explanation](https://www.tencentcloud.comom/document/product/647/82155?from_cn_redirect=1).
+        For MCU mix transcoding fees, refer to the documentation: On-Cloud MixTranscoding billing (https://www.tencentcloud.com/document/product/647/49446?from_cn_redirect=1).
+        For forwarding expenses of non-Tencent Cloud CDN, refer to the documentation: [Cloud-based forwarding billing explanation](https://www.tencentcloud.com/document/product/647/82155?from_cn_redirect=1).
         """
         
         kwargs = {}
