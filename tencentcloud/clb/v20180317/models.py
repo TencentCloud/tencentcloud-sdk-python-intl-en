@@ -620,6 +620,72 @@ class AutoRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AvailableZoneAffinityInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 
+        :type Enable: bool
+        :param _ExitRatio: 
+        :type ExitRatio: int
+        :param _ReentryRatio: 
+        :type ReentryRatio: int
+        """
+        self._Enable = None
+        self._ExitRatio = None
+        self._ReentryRatio = None
+
+    @property
+    def Enable(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def ExitRatio(self):
+        r"""
+        :rtype: int
+        """
+        return self._ExitRatio
+
+    @ExitRatio.setter
+    def ExitRatio(self, ExitRatio):
+        self._ExitRatio = ExitRatio
+
+    @property
+    def ReentryRatio(self):
+        r"""
+        :rtype: int
+        """
+        return self._ReentryRatio
+
+    @ReentryRatio.setter
+    def ReentryRatio(self, ReentryRatio):
+        self._ReentryRatio = ReentryRatio
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._ExitRatio = params.get("ExitRatio")
+        self._ReentryRatio = params.get("ReentryRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Backend(AbstractModel):
     r"""Details of a real server bound to a listener
 
@@ -3903,7 +3969,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
         :type MasterZoneId: str
         :param _ZoneId: Applicable only to public network IPv4 clb instances. specifies the AZ ID or availability zone name for creating a clb instance. for example, 100001 or ap-guangzhou-1.
         :type ZoneId: str
-        :param _InternetAccessible: Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _InternetAccessible: Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
         :type VipIsp: str
@@ -3939,9 +4005,9 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
         :type DynamicVip: bool
         :param _Egress: Network egress point
         :type Egress: str
-        :param _LBChargePrepaid: Prepayment-related attributes of a CLB instance. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _LBChargePrepaid: Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
-        :param _LBChargeType: Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _LBChargeType: Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type LBChargeType: str
         :param _AccessLogTopicId: Topic ID of logs of traffic access over layer-7 protocols.
         :type AccessLogTopicId: str
@@ -4095,7 +4161,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def InternetAccessible(self):
-        r"""Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4284,7 +4350,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def LBChargePrepaid(self):
-        r"""Prepayment-related attributes of a CLB instance. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         return self._LBChargePrepaid
@@ -4295,7 +4361,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def LBChargeType(self):
-        r"""Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: str
         """
         return self._LBChargeType
@@ -4700,6 +4766,8 @@ class CreateTargetGroupRequest(AbstractModel):
         :type SessionExpireTime: int
         :param _IpVersion: IP version type.
         :type IpVersion: str
+        :param _SnatEnable: 
+        :type SnatEnable: bool
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -4715,6 +4783,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
         self._IpVersion = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupName(self):
@@ -4873,6 +4942,17 @@ class CreateTargetGroupRequest(AbstractModel):
     def IpVersion(self, IpVersion):
         self._IpVersion = IpVersion
 
+    @property
+    def SnatEnable(self):
+        r"""
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -4901,6 +4981,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
         self._IpVersion = params.get("IpVersion")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11082,7 +11163,7 @@ class InquiryPriceCreateLoadBalancerRequest(AbstractModel):
         :type GoodsNum: int
         :param _ZoneId: Availability zone in the format of "ap-guangzhou-1"
         :type ZoneId: str
-        :param _SlaType: Specification of the LCU-supported instance, which is input to query the monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.
+        :param _SlaType: Specification of the LCU-supported instance, which is input to query the yearly/monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.
         :type SlaType: str
         :param _AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). 
         :type AddressIPVersion: str
@@ -11167,7 +11248,7 @@ class InquiryPriceCreateLoadBalancerRequest(AbstractModel):
 
     @property
     def SlaType(self):
-        r"""Specification of the LCU-supported instance, which is input to query the monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.
+        r"""Specification of the LCU-supported instance, which is input to query the yearly/monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.
         :rtype: str
         """
         return self._SlaType
@@ -11761,7 +11842,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
 
 class LBChargePrepaid(AbstractModel):
-    r"""Monthly subscription configuration of a CLB instance
+    r"""Yearly/monthly subscription configuration of a CLB instance
 
     """
 
@@ -13019,7 +13100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ExpireTime: CLB instance expiration time, which takes effect only for prepaid instances
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param _ChargeType: Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).
+        :param _ChargeType: Billing mode of CLB instance. Valid values: PREPAID (yearly/monthly subscription), POSTPAID_BY_HOUR (pay as you go).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ChargeType: str
         :param _NetworkAttributes: CLB instance network attributes
@@ -13117,6 +13198,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TargetCount: int
         :param _AssociateEndpoint: Specifies the Endpoint id associated with the clb instance.
         :type AssociateEndpoint: str
+        :param _AvailableZoneAffinityInfo: 
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -13176,6 +13259,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Exclusive = None
         self._TargetCount = None
         self._AssociateEndpoint = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerId(self):
@@ -13496,7 +13580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
-        r"""Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).
+        r"""Billing mode of CLB instance. Valid values: PREPAID (yearly/monthly subscription), POSTPAID_BY_HOUR (pay as you go).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13871,6 +13955,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AssociateEndpoint(self, AssociateEndpoint):
         self._AssociateEndpoint = AssociateEndpoint
 
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -13958,6 +14053,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Exclusive = params.get("Exclusive")
         self._TargetCount = params.get("TargetCount")
         self._AssociateEndpoint = params.get("AssociateEndpoint")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16279,6 +16377,8 @@ Enable pass-through (true): verify security groups on CLB only.
 Denies CLB traffic to the target (false): verify security groups on both CLB and backend instances.
 Specifies no modification if left blank.
         :type LoadBalancerPassToTarget: bool
+        :param _SwitchFlag: 
+        :type SwitchFlag: int
         :param _SnatPro: Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.
         :type SnatPro: bool
         :param _DeleteProtect: Specifies whether to enable deletion protection. leave it blank to keep the current setting.
@@ -16293,6 +16393,7 @@ Specifies no modification if left blank.
         self._TargetRegionInfo = None
         self._InternetChargeInfo = None
         self._LoadBalancerPassToTarget = None
+        self._SwitchFlag = None
         self._SnatPro = None
         self._DeleteProtect = None
         self._ModifyClassicDomain = None
@@ -16357,6 +16458,17 @@ Specifies no modification if left blank.
         self._LoadBalancerPassToTarget = LoadBalancerPassToTarget
 
     @property
+    def SwitchFlag(self):
+        r"""
+        :rtype: int
+        """
+        return self._SwitchFlag
+
+    @SwitchFlag.setter
+    def SwitchFlag(self, SwitchFlag):
+        self._SwitchFlag = SwitchFlag
+
+    @property
     def SnatPro(self):
         r"""Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.
         :rtype: bool
@@ -16411,6 +16523,7 @@ Specifies no modification if left blank.
             self._InternetChargeInfo = InternetAccessible()
             self._InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self._SwitchFlag = params.get("SwitchFlag")
         self._SnatPro = params.get("SnatPro")
         self._DeleteProtect = params.get("DeleteProtect")
         self._ModifyClassicDomain = params.get("ModifyClassicDomain")
@@ -16533,10 +16646,24 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DealName: 
+        :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._DealName = None
         self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
 
     @property
     def RequestId(self):
@@ -16551,6 +16678,7 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 
@@ -16896,6 +17024,8 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type KeepaliveEnable: bool
         :param _SessionExpireTime: Specifies the session persistence time in seconds. value range: 30-3600. default: 0 (disabled). this parameter is unsupported for TCP/UDP target groups.
         :type SessionExpireTime: int
+        :param _SnatEnable: 
+        :type SnatEnable: bool
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
@@ -16905,6 +17035,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         self._Weight = None
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupId(self):
@@ -16995,6 +17126,17 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     def SessionExpireTime(self, SessionExpireTime):
         self._SessionExpireTime = SessionExpireTime
 
+    @property
+    def SnatEnable(self):
+        r"""
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -17007,6 +17149,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20056,7 +20199,7 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
         :param _LoadBalancerId: ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.
         :type LoadBalancerId: str
         :param _LogSetId: Log set ID of cloud log service (CLS).
-<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/42778?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :type LogSetId: str
         :param _LogTopicId: Specifies the log topic ID of cloud log service (CLS).
@@ -20088,7 +20231,7 @@ Default: `ACCESS`
     @property
     def LogSetId(self):
         r"""Log set ID of cloud log service (CLS).
-<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.
+<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/42778?from_cn_redirect=1) API when adding or updating a log topic.</li>.
 <Li>When deleting a log topic, set this parameter to an empty string.</li>.
         :rtype: str
         """

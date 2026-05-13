@@ -47183,17 +47183,22 @@ class HwPrivateAccess(AbstractModel):
 
 
 class IPFilterPolicy(AbstractModel):
-    r"""
+    r"""IP access restriction rules, currently supports configuring IP blocklist and allowlist.
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: IP access restriction status. Optional values:
+<li>Enabled: enable;</li>
+<li>Disabled: disable.</li>
         :type Status: str
-        :param _FilterType: 
+        :param _FilterType: IP access restriction type:
+<li>Black: blocklist-based verification. Only IP requests from the IPList will be blocked.</li>
+<li>White: allowlist-based verification. Only IP requests from the IPList will be allowed.</li>
+<li>When Status is set to Enabled, FilterType must be assigned.</li>
         :type FilterType: str
-        :param _IPList: 
+        :param _IPList: IP list, supporting IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or CIDR notation /N (IPV4: 1 <= N <= 32; IPV6: 1 <= N <= 128). A maximum of 200 IPs or CIDR blocks can be added. When Status is set to Enabled, IPList must be assigned.
         :type IPList: list of str
         """
         self._Status = None
@@ -47202,7 +47207,9 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""IP access restriction status. Optional values:
+<li>Enabled: enable;</li>
+<li>Disabled: disable.</li>
         :rtype: str
         """
         return self._Status
@@ -47213,7 +47220,10 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def FilterType(self):
-        r"""
+        r"""IP access restriction type:
+<li>Black: blocklist-based verification. Only IP requests from the IPList will be blocked.</li>
+<li>White: allowlist-based verification. Only IP requests from the IPList will be allowed.</li>
+<li>When Status is set to Enabled, FilterType must be assigned.</li>
         :rtype: str
         """
         return self._FilterType
@@ -47224,7 +47234,7 @@ class IPFilterPolicy(AbstractModel):
 
     @property
     def IPList(self):
-        r"""
+        r"""IP list, supporting IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or CIDR notation /N (IPV4: 1 <= N <= 32; IPV6: 1 <= N <= 128). A maximum of 200 IPs or CIDR blocks can be added. When Status is set to Enabled, IPList must be assigned.
         :rtype: list of str
         """
         return self._IPList
@@ -64802,7 +64812,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         r"""
         :param _Domain: Domain name
         :type Domain: str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _RefererAuthPolicy: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/14046?from_cn_redirect=1) policy
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
@@ -64810,12 +64820,15 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
         :param _QUICConfig: The QUIC configuration.
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
+        :param _IPFilterPolicy: IP access restriction rules.
+        :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         self._Domain = None
         self._SubAppId = None
         self._RefererAuthPolicy = None
         self._UrlSignatureAuthPolicy = None
         self._QUICConfig = None
+        self._IPFilterPolicy = None
 
     @property
     def Domain(self):
@@ -64830,7 +64843,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        r"""<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :rtype: int
         """
         return self._SubAppId
@@ -64872,6 +64885,17 @@ class ModifyVodDomainConfigRequest(AbstractModel):
     def QUICConfig(self, QUICConfig):
         self._QUICConfig = QUICConfig
 
+    @property
+    def IPFilterPolicy(self):
+        r"""IP access restriction rules.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        """
+        return self._IPFilterPolicy
+
+    @IPFilterPolicy.setter
+    def IPFilterPolicy(self, IPFilterPolicy):
+        self._IPFilterPolicy = IPFilterPolicy
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -64885,6 +64909,9 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         if params.get("QUICConfig") is not None:
             self._QUICConfig = DomainQUICConfig()
             self._QUICConfig._deserialize(params.get("QUICConfig"))
+        if params.get("IPFilterPolicy") is not None:
+            self._IPFilterPolicy = IPFilterPolicy()
+            self._IPFilterPolicy._deserialize(params.get("IPFilterPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69798,7 +69825,7 @@ class ProcessMediaByMPSRequest(AbstractModel):
         :type FileId: str
         :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID.</b></p>
         :type SubAppId: int
-        :param _MPSProcessMediaParams: <p>Optional parameter. This parameter is used for passing through to the media processing service (MPS) to trigger MPS video processing tasks from VOD. For details on different types of video processing parameters, refer to <a href="https://www.tencentcloud.com/document/product/266/131209?from_cn_redirect=1">Using MPS Media AI Capability</a>. You can create custom templates via the <a href="https://www.tencentcloud.com/document/product/266/122580?from_cn_redirect=1">CreateMPSTemplate</a> API.</p>
+        :param _MPSProcessMediaParams: <p>Optional parameter. This parameter is used for passing through to the media processing service (MPS) to trigger MPS video processing tasks from VOD.
         :type MPSProcessMediaParams: str
         :param _AiAnalysisTask: <p>Parameters for the video content analysis task. Valid when MPSProcessMediaParams is empty.</p>
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.MPSAiAnalysisTaskInput`
@@ -69841,7 +69868,7 @@ class ProcessMediaByMPSRequest(AbstractModel):
 
     @property
     def MPSProcessMediaParams(self):
-        r"""<p>Optional parameter. This parameter is used for passing through to the media processing service (MPS) to trigger MPS video processing tasks from VOD. For details on different types of video processing parameters, refer to <a href="https://www.tencentcloud.com/document/product/266/131209?from_cn_redirect=1">Using MPS Media AI Capability</a>. You can create custom templates via the <a href="https://www.tencentcloud.com/document/product/266/122580?from_cn_redirect=1">CreateMPSTemplate</a> API.</p>
+        r"""<p>Optional parameter. This parameter is used for passing through to the media processing service (MPS) to trigger MPS video processing tasks from VOD.
         :rtype: str
         """
         return self._MPSProcessMediaParams

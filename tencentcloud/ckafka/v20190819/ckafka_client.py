@@ -188,7 +188,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateInstancePre(self, request):
-        r"""This API is used to create prepaid annual and monthly instances. It only supports creating Pro Edition instances.
+        r"""This API is used to create prepaid yearly/monthly subscribed instances. It only supports creating Pro Edition instances.
 
         :param request: Request instance for CreateInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreRequest`
@@ -947,7 +947,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRegion(self, request):
-        r"""This API is used to enumerate regions, and can be called only in Guangzhou.
+        r"""Enumerate regional information
 
         :param request: Request instance for DescribeRegion.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRegionRequest`

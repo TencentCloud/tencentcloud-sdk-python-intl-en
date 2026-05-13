@@ -1132,7 +1132,7 @@ Valid values:.
 
 Default value: 0
         :type AutoRenewFlag: int
-        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the DescribeVpcEx API.
         :type VpcId: str
         :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :type SubnetId: str
@@ -1267,7 +1267,7 @@ Default value: 0
 
     @property
     def VpcId(self):
-        r"""VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        r"""VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the DescribeVpcEx API.
         :rtype: str
         """
         return self._VpcId
@@ -2867,8 +2867,6 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: <p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
-        :type Zone: str
         :param _SpecCode: <p>Purchasable specification code. Obtain this parameter by calling the `SpecCode` field in the return value of <a href="https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1">DescribeClasses</a>.</p>
         :type SpecCode: str
         :param _Storage: <p>Instance disk capacity size, unit: GB. The step length for parameter settings is 10.</p>
@@ -2883,6 +2881,8 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminName: str
         :param _AdminPassword: <p>Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with "/".<br>Must contain the following four character types:</p><li>Lowercase letter: [a-z]</li><li>Uppercase letter: [a-z]</li><li>Number: 0-9</li><li>Special character: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
         :type AdminPassword: str
+        :param _Zone: <p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
+        :type Zone: str
         :param _DBMajorVersion: <p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href="https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>
         :type DBMajorVersion: str
         :param _DBVersion: <p>PostgreSQL community major version + minor version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.</p>
@@ -2891,7 +2891,7 @@ class CreateInstancesRequest(AbstractModel):
         :type DBKernelVersion: str
         :param _InstanceChargeType: <p>Instance billing type. Currently supports:</p><li>PREPAID: Prepayment, i.e., yearly/monthly subscription</li><li>POSTPAID_BY_HOUR: Postpaid, i.e., pay-as-you-go</li>Default value: PREPAID
         :type InstanceChargeType: str
-        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>
+        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API DescribeVpcEx and acquiring the unVpcId field in the API return.</p>
         :type VpcId: str
         :param _SubnetId: <p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is currently required). Effective VPC subnet IDs can be queried by logging in to the console or by calling the API <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> and acquiring the unSubnetId field in the API return.</p>
         :type SubnetId: str
@@ -2934,7 +2934,6 @@ class CreateInstancesRequest(AbstractModel):
         :param _StorageType: <p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>
         :type StorageType: str
         """
-        self._Zone = None
         self._SpecCode = None
         self._Storage = None
         self._InstanceCount = None
@@ -2942,6 +2941,7 @@ class CreateInstancesRequest(AbstractModel):
         self._Charset = None
         self._AdminName = None
         self._AdminPassword = None
+        self._Zone = None
         self._DBMajorVersion = None
         self._DBVersion = None
         self._DBKernelVersion = None
@@ -2967,17 +2967,6 @@ class CreateInstancesRequest(AbstractModel):
         self._NeedSupportIpv6 = None
         self._DeletionProtection = None
         self._StorageType = None
-
-    @property
-    def Zone(self):
-        r"""<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
-        :rtype: str
-        """
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
 
     @property
     def SpecCode(self):
@@ -3057,6 +3046,17 @@ class CreateInstancesRequest(AbstractModel):
         self._AdminPassword = AdminPassword
 
     @property
+    def Zone(self):
+        r"""<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1">DescribeZones</a> api and checking the Zone field in the returned value.</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
     def DBMajorVersion(self):
         r"""<p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href="https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href="https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>
         :rtype: str
@@ -3102,7 +3102,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>
+        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API DescribeVpcEx and acquiring the unVpcId field in the API return.</p>
         :rtype: str
         """
         return self._VpcId
@@ -3333,7 +3333,6 @@ class CreateInstancesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Zone = params.get("Zone")
         self._SpecCode = params.get("SpecCode")
         self._Storage = params.get("Storage")
         self._InstanceCount = params.get("InstanceCount")
@@ -3341,6 +3340,7 @@ class CreateInstancesRequest(AbstractModel):
         self._Charset = params.get("Charset")
         self._AdminName = params.get("AdminName")
         self._AdminPassword = params.get("AdminPassword")
+        self._Zone = params.get("Zone")
         self._DBMajorVersion = params.get("DBMajorVersion")
         self._DBVersion = params.get("DBVersion")
         self._DBKernelVersion = params.get("DBKernelVersion")
@@ -3602,7 +3602,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type InstanceCount: int
         :param _Period: <p>Purchase duration, in months.</p><li>Prepaid: supports 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.</li><li>Postpaid: supports only 1.</li>
         :type Period: int
-        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>
+        :param _VpcId: <p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the DescribeVpcEx API to obtain it from the unVpcId field in the return value.</p>
         :type VpcId: str
         :param _SubnetId: <p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is required). A valid VPC subnet ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1">DescribeSubnets</a> API and obtain it from the unSubnetId field in the return value.</p>
         :type SubnetId: str
@@ -3726,7 +3726,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href="https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>
+        r"""<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the DescribeVpcEx API to obtain it from the unVpcId field in the return value.</p>
         :rtype: str
         """
         return self._VpcId
@@ -4646,8 +4646,7 @@ class DBBackup(AbstractModel):
         :type InternalAddr: str
         :param _ExternalAddr: Download address on public network
         :type ExternalAddr: str
-        :param _SetId: Backup set ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SetId: Backup set ID.
         :type SetId: str
         """
         self._Id = None
@@ -4786,8 +4785,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
-        r"""Backup set ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Backup set ID.
         :rtype: str
         """
         return self._SetId
@@ -16416,7 +16414,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
-        :param _DatabaseName: Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).
+        :param _DatabaseName: Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/product/409/37118).
         :type DatabaseName: str
         :param _DatabaseOwner: New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
         :type DatabaseOwner: str
@@ -16438,7 +16436,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).
+        r"""Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/product/409/37118).
         :rtype: str
         """
         return self._DatabaseName

@@ -79,24 +79,6 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateCluster(
-            self,
-            request: models.CreateClusterRequest,
-            opts: Dict = None,
-    ) -> models.CreateClusterResponse:
-        """
-        This API is used to create a cluster.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCluster"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateClusterResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateCmqQueue(
             self,
             request: models.CreateCmqQueueRequest,
@@ -283,7 +265,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRocketMQClusterResponse:
         """
-        This API is used to create a RocketMQ cluster.
+        Create a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [CreateRocketMQVipInstance](https://www.tencentcloud.com/document/api/1179/95721?from_cn_redirect=1). For 5.x clusters, refer to the API documentation [CreateInstance](https://www.tencentcloud.com/document/api/1493/97868?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -301,7 +284,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRocketMQEnvironmentRoleResponse:
         """
-        Creates environment role authorization
+        Grant access by role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateRole](https://www.tencentcloud.com/document/api/1493/98864?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -319,13 +303,33 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRocketMQGroupResponse:
         """
-        This API is used to create a RocketMQ consumer group.
+        This API is used to create a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateConsumerGroup](https://www.tencentcloud.com/document/api/1493/97943?from_cn_redirect=1) to create a consumer group.
         """
         
         kwargs = {}
         kwargs["action"] = "CreateRocketMQGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateRocketMQGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRocketMQGroupV2(
+            self,
+            request: models.CreateRocketMQGroupV2Request,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQGroupV2Response:
+        """
+        This API is used to create a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateConsumerGroup](https://www.tencentcloud.com/document/api/1493/97943?from_cn_redirect=1) to create a consumer group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQGroupV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQGroupV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -338,6 +342,7 @@ class TdmqClient(AbstractClient):
     ) -> models.CreateRocketMQNamespaceResponse:
         """
         This API is used to create a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
         """
         
         kwargs = {}
@@ -355,7 +360,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRocketMQRoleResponse:
         """
-        This API is used to create a role.
+        Create a role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateRole](https://www.tencentcloud.com/document/api/1493/98864?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -373,7 +379,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRocketMQTopicResponse:
         """
-        This API is used to create a RocketMQ topic.
+        Create RocketMQ topics in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateTopic](https://www.tencentcloud.com/document/api/1493/97947?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -385,13 +392,33 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQTopicV2(
+            self,
+            request: models.CreateRocketMQTopicV2Request,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQTopicV2Response:
+        """
+        This API is used to create a RocketMQ topic.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateTopic](https://www.tencentcloud.com/document/api/1493/97947?from_cn_redirect=1).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQTopicV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQTopicV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQVipInstance(
             self,
             request: models.CreateRocketMQVipInstanceRequest,
             opts: Dict = None,
     ) -> models.CreateRocketMQVipInstanceResponse:
         """
-        This API is used to create a RocketMQ Exclusive Edition instance.
+        This API is used to create a RocketMQ 4.x cluster.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateInstance](https://www.tencentcloud.com/document/api/1493/97868?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -680,6 +707,7 @@ class TdmqClient(AbstractClient):
     ) -> models.DeleteRocketMQClusterResponse:
         """
         This API is used to delete a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [DeleteRocketMQVipInstance](https://www.tencentcloud.com/document/api/1179/95802?from_cn_redirect=1). For 5.x clusters, refer to [DeleteInstance](https://www.tencentcloud.com/document/product/1493/97867?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -697,7 +725,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRocketMQEnvironmentRolesResponse:
         """
-        Deletes environment role authorization
+        Delete role authorizations in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteRole](https://www.tencentcloud.com/document/api/1493/98863?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -715,7 +744,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRocketMQGroupResponse:
         """
-        This API is used to delete a RocketMQ consumer group.
+        This API is used to delete a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteConsumerGroup](https://www.tencentcloud.com/document/api/1493/97942?from_cn_redirect=1) to delete the consumer group.
         """
         
         kwargs = {}
@@ -734,6 +764,7 @@ class TdmqClient(AbstractClient):
     ) -> models.DeleteRocketMQNamespaceResponse:
         """
         This API is used to delete a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
         """
         
         kwargs = {}
@@ -751,7 +782,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRocketMQRolesResponse:
         """
-        Deletes roles. Batch deletion is supported.
+        Delete roles in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteRole](https://www.tencentcloud.com/document/api/1493/98863?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -769,7 +801,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRocketMQTopicResponse:
         """
-        This API is used to delete a RocketMQ topic.
+        Delete a RocketMQ topic.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteTopic](https://www.tencentcloud.com/document/api/1493/97946?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -787,7 +820,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRocketMQVipInstanceResponse:
         """
-        This API is used to delete a RocketMQ Exclusive Edition instance.
+        This API is used to delete a RocketMQ dedicated or generic cluster.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteInstance](https://www.tencentcloud.com/document/api/1493/97867?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1111,7 +1145,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMsgTraceResponse:
         """
-        Queries message trajectory
+        Query the message trace of a single message
         """
         
         kwargs = {}
@@ -1381,7 +1415,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQClusterResponse:
         """
-        This API is used to get the information of a specific RocketMQ cluster.
+        Query RocketMQ virtual cluster information.
+        Current API applicable clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, see the REST API documentation for querying cluster information at [DescribeRocketMQVipInstanceDetail](https://www.tencentcloud.com/document/api/1179/86725?from_cn_redirect=1). For 5.x clusters, see the REST API documentation for querying cluster information at [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1399,7 +1434,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQClustersResponse:
         """
-        This API is used to get the list of RocketMQ clusters.
+        Query the RocketMQ virtual cluster list.
+        This API is applicable to clusters: 4.x virtual cluster. For querying 5.x cluster list, see List API Documentation [DescribeInstanceList](https://www.tencentcloud.com/document/api/1493/96028?from_cn_redirect=1), or use [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) applicable to all cluster types.
         """
         
         kwargs = {}
@@ -1417,7 +1453,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQEnvironmentRolesResponse:
         """
-        Obtains the namespace role list
+        Query a role-based license list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeRoleList](https://www.tencentcloud.com/document/api/1493/98862?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1429,13 +1466,33 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRocketMQGeneralSKUs(
+            self,
+            request: models.DescribeRocketMQGeneralSKUsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRocketMQGeneralSKUsResponse:
+        """
+        Query the sales specification of a generic cluster.
+        This API is applicable to clusters: 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeProductSKUs](https://www.tencentcloud.com/document/api/1493/107676?from_cn_redirect=1).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRocketMQGeneralSKUs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRocketMQGeneralSKUsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRocketMQGroups(
             self,
             request: models.DescribeRocketMQGroupsRequest,
             opts: Dict = None,
     ) -> models.DescribeRocketMQGroupsResponse:
         """
-        This API is used to get the list of RocketMQ consumer groups.
+        Query the RocketMQ consumer group list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeConsumerGroupList](https://www.tencentcloud.com/document/api/1493/101535?from_cn_redirect=1) to query the consumption group list.
         """
         
         kwargs = {}
@@ -1453,7 +1510,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQMsgResponse:
         """
-        This API is used to query the TDMQ for RocketMQ message details.
+        Query RocketMQ message details.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for query message details at [DescribeMessage](https://www.tencentcloud.com/document/api/1493/114594?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1471,7 +1529,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQMsgTraceResponse:
         """
-        Queries message trajectory
+        Query message trajectory.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for query message trajectory at [DescribeMessageTrace](https://www.tencentcloud.com/document/api/1493/114302?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1489,7 +1548,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQNamespacesResponse:
         """
-        This API is used to get the list of RocketMQ namespaces.
+        Query the RocketMQ namespace list.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
         """
         
         kwargs = {}
@@ -1508,6 +1568,7 @@ class TdmqClient(AbstractClient):
     ) -> models.DescribeRocketMQProducersResponse:
         """
         This API is used to query the producer client list under a specified topic in RocketMQ.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeProducerList](https://www.tencentcloud.com/document/api/1493/122548?from_cn_redirect=1) for producer clients.
         """
         
         kwargs = {}
@@ -1525,7 +1586,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQPublicAccessMonitorDataResponse:
         """
-        This API is used to pull public network metric monitoring data from TCOP. Currently, only inbound bandwidth and outbound bandwidth metrics from client to LB are supported.
+        Query public network metric monitoring data. Currently only support inbound bandwidth and outbound bandwidth metrics for Client to LB.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. 5.x clusters are not supported yet.
         """
         
         kwargs = {}
@@ -1543,7 +1605,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQPublicAccessPointResponse:
         """
-        This API is used to query the public network access information of RocketMQ instances.
+        Query the public network access point information of a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For public network access point information of 5.x clusters, refer to the API Documentation [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1561,7 +1624,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQRolesResponse:
         """
-        Obtains the list of roles
+        This API is used to query the list of roles.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeRoleList](https://www.tencentcloud.com/document/api/1493/98862?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1580,6 +1644,7 @@ class TdmqClient(AbstractClient):
     ) -> models.DescribeRocketMQTopUsagesResponse:
         """
         Used to obtain the RocketMQ metric sorting list, such as sorting topics under a cluster instance by the most occupied storage space.
+        This API is used for applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. The feature is not supported yet for 5.x clusters.
         """
         
         kwargs = {}
@@ -1615,7 +1680,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQTopicMsgsResponse:
         """
-        Query RocketMQ messages.
+        Query the RocketMQ message list.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the List API Documentation for query messages at [DescribeMessageList](https://www.tencentcloud.com/document/api/1493/114593?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1633,7 +1699,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQTopicStatsResponse:
         """
-        This API is used to obtain the topic production details list.
+        Query the production detail list of RocketMQ topics.
+        This API is used for applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. The feature is not supported yet for 5.x clusters.
         """
         
         kwargs = {}
@@ -1651,7 +1718,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQTopicsResponse:
         """
-        This API is used to get the list of RocketMQ topics.
+        Query the RocketMQ topic list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeTopicList](https://www.tencentcloud.com/document/api/1493/96030?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1669,7 +1737,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQTopicsByGroupResponse:
         """
-        Obtains the list of topics subscribed under a specified consumer group
+        This API is used to query the list of subscribed topics for a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeTopicListByGroup](https://www.tencentcloud.com/document/api/1493/115314?from_cn_redirect=1) to query the list of subscribed topics for a consumption group.
         """
         
         kwargs = {}
@@ -1687,7 +1756,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQVipInstanceDetailResponse:
         """
-        This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.
+        Query RocketMQ cluster info.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -1705,7 +1775,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRocketMQVipInstancesResponse:
         """
-        This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
+        Query the RocketMQ 4.x cluster list.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeInstanceList](https://www.tencentcloud.com/document/api/1493/96028?from_cn_redirect=1), or use the [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) API applicable to all cluster types.
         """
         
         kwargs = {}
@@ -1993,7 +2064,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQClusterResponse:
         """
-        This API is used to update a RocketMQ cluster.
+        This API is used to modify the attributes of a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [ModifyRocketMQInstance](https://www.tencentcloud.com/document/api/1179/108862?from_cn_redirect=1). For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2011,7 +2083,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQEnvironmentRoleResponse:
         """
-        Modifies environment role authorization
+        Modify role authorization.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyRole](https://www.tencentcloud.com/document/api/1493/98861?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2029,7 +2102,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQGroupResponse:
         """
-        This API is used to update a RocketMQ consumer group.
+        Modify a RocketMQ consumption group property.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyConsumerGroup](https://www.tencentcloud.com/document/api/1493/97940?from_cn_redirect=1) to modify the consumer group's attributes.
         """
         
         kwargs = {}
@@ -2047,7 +2121,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQInstanceResponse:
         """
-        Modify the RocketMQ dedicated instance.
+        Modify RocketMQ Dedicated or Generic Cluster Property.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2065,7 +2140,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQInstanceSpecResponse:
         """
-        This API is used to modify the configurations of a TDMQ for RocketMQ exclusive instance, including the upgrade of the instance specification, node count, and storage, and the downgrade of the instance specification. After you call this API to place the order and make payments, the configuration modification will be in progress. You can query whether the modification has been completed through the `DescribeRocketMQVipInstances` API`.
+        This API is used to modify the RocketMQ dedicated cluster configuration, supporting upgrades of instance specification, number of nodes and storage, as well as downgrades of instance specification. After initiating order and completing payment, it will enter the instance configuration change process. You can check whether the change is completed via [DescribeRocketMQVipInstances](https://www.tencentcloud.com/document/api/1179/80903?from_cn_redirect=1).
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2084,6 +2160,7 @@ class TdmqClient(AbstractClient):
     ) -> models.ModifyRocketMQNamespaceResponse:
         """
         This API is used to update a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
         """
         
         kwargs = {}
@@ -2101,7 +2178,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQRoleResponse:
         """
-        Modifies roles
+        Modify a role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyRole](https://www.tencentcloud.com/document/api/1493/98861?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2119,7 +2197,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRocketMQTopicResponse:
         """
-        This API is used to update a RocketMQ topic.
+        This API is used to modify RocketMQ topic attributes.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyTopic](https://www.tencentcloud.com/document/api/1493/97944?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2246,7 +2325,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResetRocketMQConsumerOffSetResponse:
         """
-        This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.
+        Reset consumer offset.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ResetConsumerGroupOffset](https://www.tencentcloud.com/document/api/1493/116942?from_cn_redirect=1) to reset the consumer offset.
         """
         
         kwargs = {}
@@ -2264,7 +2344,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RetryRocketMQDlqMessageResponse:
         """
-        Resend the RocketMQ dead letter messages.
+        Resend a RocketMQ dead letter message.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for resending dead letter messages at [ResendDeadLetterMessage](https://www.tencentcloud.com/document/api/1493/114592?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -2393,7 +2474,8 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetRocketMQPublicAccessPointResponse:
         """
-        This API is used to enable/disable public network access, and set the security access policy.
+        Enable or disable public network access, set security access policy.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For public network access point settings of 5.x clusters, refer to the API Documentation [ModifyInstanceEndpoint](https://www.tencentcloud.com/document/api/1493/115981?from_cn_redirect=1).
         """
         
         kwargs = {}

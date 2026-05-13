@@ -27,11 +27,11 @@ class CbsClient(AbstractClient):
 
 
     def ApplyDiskBackup(self, request):
-        r"""This API is used to roll back a backup point to the original cloud disk.
+        r"""This API is used to roll back a backup to the original cloud disk.
 
-        * Only rollback to the original cloud disk is supported. For a data disk backup point, if you want to copy the backup point data to another cloud disk, use the `CreateSnapshot` API to convert the backup point into a snapshot, use the `CreateDisks` API to create an elastic cloud disk, and then copy the snapshot data to it.
-        * Only backup points in `NORMAL` status can be rolled back. To query the status of a backup point, call the `DescribeDiskBackups` API and see the `BackupState` field in the response.
-        * For an elastic cloud disk, it must be in unattached status. To query the status of the cloud disk, call the `DescribeDisks` API and see the `Attached` field in the response. For a non-elastic cloud disk purchased together with an instance, the instance must be in shutdown status, which can be queried through the `DescribeInstancesStatus` API.
+        This API only supports rolling back to the original cloud disk. For data disk backup points, if you need to copy backup point data to other CBS, use first [CreateSnapshot](https://www.tencentcloud.com/document/product/362/15648?from_cn_redirect=1) to convert the backup point to a snapshot, and use [CreateDisks](https://www.tencentcloud.com/document/product/362/16312?from_cn_redirect=1) to create a new elastic cloud disk, then copy snapshot data to the newly purchased cloud disk.
+        The backup point used for rollback must be in NORMAL status. The backup point status can be checked through the [DescribeDiskBackups](https://www.tencentcloud.com/document/product/362/80278?from_cn_redirect=1) API, see BackupState field explanation in the output parameter.
+        If it is an elastic cloud disk, the CBS must be in an unmounted state. The CBS mount status can be queried through the [DescribeDisks](https://www.tencentcloud.com/document/product/362/16315?from_cn_redirect=1) API. See Attached field explanation. If it is a non-elastic cloud hard disk purchased together with the instance, the instance must be in a powered off state. The instance status can be queried through the [DescribeInstancesStatus](https://www.tencentcloud.com/document/product/213/15738?from_cn_redirect=1) API.
 
         :param request: Request instance for ApplyDiskBackup.
         :type request: :class:`tencentcloud.cbs.v20170312.models.ApplyDiskBackupRequest`
@@ -71,6 +71,32 @@ class CbsClient(AbstractClient):
             body = self.call("ApplySnapshot", params, headers=headers)
             response = json.loads(body)
             model = models.ApplySnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ApplySnapshotGroup(self, request):
+        r"""This API is used to rollback a snapshot group and restore the instance to the state at the moment the snapshot group was created.
+        This API is used to roll back all or part of the disks in the snapshot group.
+        This API is used to roll back disks. If the disks to be rolled back contain mounted disks, they must be mounted to the same instance, and the instance must be shut down before rollback.
+        Rollback is an asynchronous operation. A successful API return does not indicate a successful rollback. You can call DescribeSnapshotGroups to check the snapshot group status.
+
+        :param request: Request instance for ApplySnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ApplySnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ApplySnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplySnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplySnapshotGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -133,10 +159,10 @@ class CbsClient(AbstractClient):
 
 
     def CopySnapshotCrossRegions(self, request):
-        r"""This API is used to replicate a snapshot to another region.
+        r"""This API is used to replicate snapshots across regions.
 
-        * This is an async API. A new snapshot ID is issued when the cross-region replication task is generated. It does not mean that the snapshot has been replicated successfully. You can all the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API in the destination region to check for this snapshot. If the snapshot status is `NORMAL`, the snapshot is replicated successfully.
-        * The snapshot cross-region replication service will be commercialized in the Q3 of 2022. We will notify users about the commercialization in advance. Please check your messages in the Message Center.
+        This API is asynchronous. When the cross-region replication request is issued successfully, it returns a new snapshot ID. At this point, the snapshot is not immediately replicated to the target region. You can use the [DescribeSnapshots](https://www.tencentcloud.com/document/product/362/15647?from_cn_redirect=1) API for the query in the target region to check the snapshot status and determine whether the replication is complete. If the snapshot status is "NORMAL", it indicates snapshot replication is complete.
+        This API is used to perform snapshot cross-region replication, which will generate cross-region traffic. Commercial billing for this feature is expected in Q3 2025. Please check subsequent Message Center notices to avoid unexpected charges.
 
         :param request: Request instance for CopySnapshotCrossRegions.
         :type request: :class:`tencentcloud.cbs.v20170312.models.CopySnapshotCrossRegionsRequest`
@@ -260,6 +286,31 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSnapshotGroup(self, request):
+        r"""This API is used to create a snapshot group.
+        This API is used to create snapshot groups. The CBS list must be mounted on the same instance.
+        This API is used to create snapshot groups for all or some of the disks mounted to instance.
+
+        :param request: Request instance for CreateSnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateSnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateSnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSnapshotGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAutoSnapshotPolicies(self, request):
         r"""This API (DeleteAutoSnapshotPolicies) is used to delete scheduled snapshot policies.
 
@@ -299,6 +350,31 @@ class CbsClient(AbstractClient):
             body = self.call("DeleteDiskBackups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDiskBackupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSnapshotGroup(self, request):
+        r"""This API is used to delete snapshot groups. One snapshot group can be deleted per call.
+        This API is used to delete all snapshots in the snapshot group by default.
+        This API is used to delete a snapshot group. If a snapshot in the snapshot group has an associated image, deletion will fail and no snapshot will be deleted. Parameters can be input to enable simultaneous deletion of images bound to the snapshot by setting DeleteBindImages equal to true.
+
+        :param request: Request instance for DeleteSnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteSnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DeleteSnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSnapshotGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -432,33 +508,6 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDiskOperationLogs(self, request):
-        r"""接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
-
-        This API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.
-
-        This API is used to query the operation logs of a cloud disk. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.
-
-        :param request: Request instance for DescribeDiskOperationLogs.
-        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsRequest`
-        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDiskOperationLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDiskOperationLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDisks(self, request):
         r"""This API (DescribeDisks) is used to query the list of cloud disks.
 
@@ -510,24 +559,45 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSnapshotOperationLogs(self, request):
-        r"""接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
+    def DescribeSnapshotGroups(self, request):
+        r"""This API is used to query the snapshot group list.
+        This API is used to query the snapshot group list based on snapshot group ID, snapshot group status or snapshot ID associated with the snapshot group. The relationship among different criteria is AND. For detailed filtering information, see `Filter`.
+        If the parameter is empty, a certain number of the cloud disk list for the current user is returned (specified by `Limit`, defaults to 20).
 
-        This API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.
-
-        This API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.
-
-        :param request: Request instance for DescribeSnapshotOperationLogs.
-        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsRequest`
-        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsResponse`
+        :param request: Request instance for DescribeSnapshotGroups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotGroupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotGroupsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSnapshotOperationLogs", params, headers=headers)
+            body = self.call("DescribeSnapshotGroups", params, headers=headers)
             response = json.loads(body)
-            model = models.DescribeSnapshotOperationLogsResponse()
+            model = models.DescribeSnapshotGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSnapshotOverview(self, request):
+        r"""This API is used to query the usage overview of user snapshots, including total snapshot capacity, cost capacity, etc.
+
+        :param request: Request instance for DescribeSnapshotOverview.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOverviewRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -613,7 +683,9 @@ class CbsClient(AbstractClient):
 
 
     def GetSnapOverview(self, request):
-        r"""This API is used to get snapshot overview information.
+        r"""This API is used to standardize API naming. This API will be decommissioned and replaced by the new API named DescribeSnapshotOverview.
+
+        This API is used to obtain snapshot overview information.
 
         :param request: Request instance for GetSnapOverview.
         :type request: :class:`tencentcloud.cbs.v20170312.models.GetSnapOverviewRequest`
@@ -733,6 +805,32 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquiryPriceRenewDisks(self, request):
+        r"""This API is used to query the renewal price of CBS.
+
+        This API is used to support renewal along with mounted instances. The parameter specifies CurInstanceDeadline in [DiskChargePrepaid](https://www.tencentcloud.com/document/product/362/15669?from_cn_redirect=1#DiskChargePrepaid), and renewal will be performed at the expiry date after the instance is renewed.
+        This API is used to support specifying different renewal durations for multiple cloud disks. The total price for renewing multiple cloud disks is returned.
+
+        :param request: Request instance for InquiryPriceRenewDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceRenewDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceRenewDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquiryPriceResizeDisk(self, request):
         r"""This API is used to query the price for expanding cloud disks.
 
@@ -783,9 +881,9 @@ class CbsClient(AbstractClient):
 
 
     def ModifyDiskAttributes(self, request):
-        r"""* Only the project ID of elastic cloud disk can be modified. The project ID of the cloud disk created with the CVM is linked with the CVM. The project ID can be can be queried in the Portable field in the output parameters through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
-        * "Cloud disk name" is only used by users for their management. Tencent Cloud does not use the name as the basis for ticket submission or cloud disk management.
-        * Batch operations are supported. If multiple cloud disk IDs are specified, all the specified cloud disks must have the same attribute. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.
+        r"""This API is used to modify only the Project ID of elastic cloud disks. The Project ID of a cloud disk created with a host is linked to the host. Whether a cloud disk is elastic can be checked through the [DescribeDisks](https://www.tencentcloud.com/document/product/362/16315?from_cn_redirect=1) API. See the Portable field explanation in the output parameters.
+        The "cloud disk name" is only for ease of management for users. Tencent Cloud does not use this name as a basis for submitting tickets or performing cloud disk management operations.
+        This API is used to support batch operations. If multiple cloud disk IDs are passed in, modify cloud disks to the same attribute. If there is a cloud disk that does not allow operation, the operation will not be executed and return a specific error code.
 
         :param request: Request instance for ModifyDiskAttributes.
         :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskAttributesRequest`
@@ -856,10 +954,10 @@ class CbsClient(AbstractClient):
 
 
     def ModifySnapshotAttribute(self, request):
-        r"""This API (ModifySnapshotAttribute) is used to modify the attributes of a specified snapshot.
+        r"""This API is used to modify the attributes of a specified snapshot.
 
-        * Currently, you can only modify snapshot name and change non-permanent snapshots into permanent snapshots.
-        * "Snapshot name" is only used by users for their management. Tencent Cloud does not use the name as the basis for ticket submission or snapshot management.
+        This API supports modifying snapshot name and expiration time, as well as changing a non-permanent snapshot to a permanent one.
+        The "snapshot name" is only for making user management convenient. Tencent Cloud does not use this name as a basis for submitting tickets or managing snapshot operations.
 
         :param request: Request instance for ModifySnapshotAttribute.
         :type request: :class:`tencentcloud.cbs.v20170312.models.ModifySnapshotAttributeRequest`

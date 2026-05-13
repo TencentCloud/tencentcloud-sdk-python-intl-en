@@ -629,7 +629,7 @@ class FaceidClient(AbstractClient):
 
 
     def PhoneVerification(self, request):
-        r"""This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1007/46063?from_cn_redirect=1">carrier</a> document.
+        r"""This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1061/79689">carrier</a> document.
 
         :param request: Request instance for PhoneVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationRequest`

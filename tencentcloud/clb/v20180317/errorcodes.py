@@ -26,6 +26,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# The business bandwidth of the EIP resource bound to the instance exceeds the anti-misoperation detection threshold. Performing the operation may pose risks. If you want to proceed, please disable the anti-misoperation detection for the corresponding EIP in the EIP console and try again.
+FAILEDOPERATION_EIPTRAFFICCHECKRISK = 'FailedOperation.EipTrafficCheckRisk'
+
 # Instance deletion is determined to be a high-risk operation through frequency verification. Please check the business or try again later.
 FAILEDOPERATION_FREQUENCYCHECKRISK = 'FailedOperation.FrequencyCheckRisk'
 

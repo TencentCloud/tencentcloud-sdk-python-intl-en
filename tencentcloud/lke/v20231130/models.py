@@ -19,21 +19,21 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICallConfig(AbstractModel):
-    r"""Smart Conversation
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _EnableVoiceInteract: Enable voice interaction feature
+        :param _EnableVoiceInteract: 
         :type EnableVoiceInteract: bool
-        :param _EnableVoiceCall: Enable voice call
+        :param _EnableVoiceCall: 
         :type EnableVoiceCall: bool
-        :param _EnableDigitalHuman: Enable digital human
+        :param _EnableDigitalHuman: 
         :type EnableDigitalHuman: bool
-        :param _Voice: Timbre Configuration
+        :param _Voice: 
         :type Voice: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
-        :param _DigitalHuman: Digital Human Configuration
+        :param _DigitalHuman: 
         :type DigitalHuman: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         self._EnableVoiceInteract = None
@@ -44,7 +44,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceInteract(self):
-        r"""Enable voice interaction feature
+        r"""
         :rtype: bool
         """
         return self._EnableVoiceInteract
@@ -55,7 +55,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceCall(self):
-        r"""Enable voice call
+        r"""
         :rtype: bool
         """
         return self._EnableVoiceCall
@@ -66,7 +66,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableDigitalHuman(self):
-        r"""Enable digital human
+        r"""
         :rtype: bool
         """
         return self._EnableDigitalHuman
@@ -77,7 +77,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def Voice(self):
-        r"""Timbre Configuration
+        r"""
         :rtype: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
         """
         return self._Voice
@@ -88,7 +88,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def DigitalHuman(self):
-        r"""Digital Human Configuration
+        r"""
         :rtype: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         return self._DigitalHuman
@@ -119,23 +119,26 @@ class AICallConfig(AbstractModel):
 
 
 class AgentDebugInfo(AbstractModel):
-    r"""Agent Debugging Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Input: Input Information for Tools and Large Models, json
+        :param _Input: 
         :type Input: str
-        :param _Output: Output Information for Tools and Large Models, json
+        :param _Output: 
         :type Output: str
+        :param _ModelName: 
+        :type ModelName: str
         """
         self._Input = None
         self._Output = None
+        self._ModelName = None
 
     @property
     def Input(self):
-        r"""Input Information for Tools and Large Models, json
+        r"""
         :rtype: str
         """
         return self._Input
@@ -146,7 +149,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""Output Information for Tools and Large Models, json
+        r"""
         :rtype: str
         """
         return self._Output
@@ -155,10 +158,22 @@ class AgentDebugInfo(AbstractModel):
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def ModelName(self):
+        r"""
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
 
     def _deserialize(self, params):
         self._Input = params.get("Input")
         self._Output = params.get("Output")
+        self._ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -714,6 +729,72 @@ class AgentReference(AbstractModel):
         self._QaBizId = params.get("QaBizId")
         self._Index = params.get("Index")
         self._Title = params.get("Title")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentTask(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 
+        :type Index: int
+        :param _Content: 
+        :type Content: str
+        :param _Status: 
+        :type Status: str
+        """
+        self._Index = None
+        self._Content = None
+        self._Status = None
+
+    @property
+    def Index(self):
+        r"""
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Content(self):
+        r"""
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        r"""
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1577,6 +1658,8 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrKey(self):
+        warnings.warn("parameter `AttrKey` is deprecated", DeprecationWarning) 
+
         r"""Label identification.
         :rtype: str
         """
@@ -1584,6 +1667,8 @@ class AttrLabelDetail(AbstractModel):
 
     @AttrKey.setter
     def AttrKey(self, AttrKey):
+        warnings.warn("parameter `AttrKey` is deprecated", DeprecationWarning) 
+
         self._AttrKey = AttrKey
 
     @property
@@ -2670,6 +2755,430 @@ class ClassifyLabel(AbstractModel):
         
 
 
+class Content(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _Text: 
+        :type Text: str
+        :param _QuoteInfos: 
+        :type QuoteInfos: list of QuoteInfo
+        :param _References: 
+        :type References: list of ContentReference
+        :param _Image: 
+        :type Image: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
+        :param _File: 
+        :type File: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
+        :param _OptionCards: 
+        :type OptionCards: list of str
+        :param _CustomParams: 
+        :type CustomParams: list of str
+        :param _CustomVariables: 
+        :type CustomVariables: list of str
+        :param _Sandbox: 
+        :type Sandbox: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
+        :param _WebSearch: 
+        :type WebSearch: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
+        :param _FileCollection: 
+        :type FileCollection: :class:`tencentcloud.lke.v20231130.models.FileCollection`
+        :param _Widget: 
+        :type Widget: :class:`tencentcloud.lke.v20231130.models.Widget`
+        :param _WidgetAction: 
+        :type WidgetAction: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
+        :param _Tasks: 
+        :type Tasks: list of AgentTask
+        :param _Questionnaire: 
+        :type Questionnaire: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
+        :param _OptionMode: 
+        :type OptionMode: int
+        """
+        self._Type = None
+        self._Text = None
+        self._QuoteInfos = None
+        self._References = None
+        self._Image = None
+        self._File = None
+        self._OptionCards = None
+        self._CustomParams = None
+        self._CustomVariables = None
+        self._Sandbox = None
+        self._WebSearch = None
+        self._FileCollection = None
+        self._Widget = None
+        self._WidgetAction = None
+        self._Tasks = None
+        self._Questionnaire = None
+        self._OptionMode = None
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        r"""
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def QuoteInfos(self):
+        r"""
+        :rtype: list of QuoteInfo
+        """
+        return self._QuoteInfos
+
+    @QuoteInfos.setter
+    def QuoteInfos(self, QuoteInfos):
+        self._QuoteInfos = QuoteInfos
+
+    @property
+    def References(self):
+        r"""
+        :rtype: list of ContentReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def Image(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def File(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
+        """
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+    @property
+    def OptionCards(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._OptionCards
+
+    @OptionCards.setter
+    def OptionCards(self, OptionCards):
+        self._OptionCards = OptionCards
+
+    @property
+    def CustomParams(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._CustomParams
+
+    @CustomParams.setter
+    def CustomParams(self, CustomParams):
+        self._CustomParams = CustomParams
+
+    @property
+    def CustomVariables(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def Sandbox(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
+        """
+        return self._Sandbox
+
+    @Sandbox.setter
+    def Sandbox(self, Sandbox):
+        self._Sandbox = Sandbox
+
+    @property
+    def WebSearch(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
+        """
+        return self._WebSearch
+
+    @WebSearch.setter
+    def WebSearch(self, WebSearch):
+        self._WebSearch = WebSearch
+
+    @property
+    def FileCollection(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.FileCollection`
+        """
+        return self._FileCollection
+
+    @FileCollection.setter
+    def FileCollection(self, FileCollection):
+        self._FileCollection = FileCollection
+
+    @property
+    def Widget(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Widget`
+        """
+        return self._Widget
+
+    @Widget.setter
+    def Widget(self, Widget):
+        self._Widget = Widget
+
+    @property
+    def WidgetAction(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
+        """
+        return self._WidgetAction
+
+    @WidgetAction.setter
+    def WidgetAction(self, WidgetAction):
+        self._WidgetAction = WidgetAction
+
+    @property
+    def Tasks(self):
+        r"""
+        :rtype: list of AgentTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Questionnaire(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
+        """
+        return self._Questionnaire
+
+    @Questionnaire.setter
+    def Questionnaire(self, Questionnaire):
+        self._Questionnaire = Questionnaire
+
+    @property
+    def OptionMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        if params.get("QuoteInfos") is not None:
+            self._QuoteInfos = []
+            for item in params.get("QuoteInfos"):
+                obj = QuoteInfo()
+                obj._deserialize(item)
+                self._QuoteInfos.append(obj)
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = ContentReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        if params.get("Image") is not None:
+            self._Image = ImageInfoContent()
+            self._Image._deserialize(params.get("Image"))
+        if params.get("File") is not None:
+            self._File = FileInfoContent()
+            self._File._deserialize(params.get("File"))
+        self._OptionCards = params.get("OptionCards")
+        self._CustomParams = params.get("CustomParams")
+        self._CustomVariables = params.get("CustomVariables")
+        if params.get("Sandbox") is not None:
+            self._Sandbox = SandboxContent()
+            self._Sandbox._deserialize(params.get("Sandbox"))
+        if params.get("WebSearch") is not None:
+            self._WebSearch = WebSearchContent()
+            self._WebSearch._deserialize(params.get("WebSearch"))
+        if params.get("FileCollection") is not None:
+            self._FileCollection = FileCollection()
+            self._FileCollection._deserialize(params.get("FileCollection"))
+        if params.get("Widget") is not None:
+            self._Widget = Widget()
+            self._Widget._deserialize(params.get("Widget"))
+        if params.get("WidgetAction") is not None:
+            self._WidgetAction = WidgetAction()
+            self._WidgetAction._deserialize(params.get("WidgetAction"))
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = AgentTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        if params.get("Questionnaire") is not None:
+            self._Questionnaire = Questionnaire()
+            self._Questionnaire._deserialize(params.get("Questionnaire"))
+        self._OptionMode = params.get("OptionMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentReference(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 
+        :type Index: int
+        :param _Name: 
+        :type Name: str
+        :param _Type: 
+        :type Type: int
+        :param _DocRefer: 
+        :type DocRefer: :class:`tencentcloud.lke.v20231130.models.DocReference`
+        :param _QaRefer: 
+        :type QaRefer: :class:`tencentcloud.lke.v20231130.models.QaReference`
+        :param _WebSearchRefer: 
+        :type WebSearchRefer: :class:`tencentcloud.lke.v20231130.models.WebSearchReference`
+        """
+        self._Index = None
+        self._Name = None
+        self._Type = None
+        self._DocRefer = None
+        self._QaRefer = None
+        self._WebSearchRefer = None
+
+    @property
+    def Index(self):
+        r"""
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DocRefer(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DocReference`
+        """
+        return self._DocRefer
+
+    @DocRefer.setter
+    def DocRefer(self, DocRefer):
+        self._DocRefer = DocRefer
+
+    @property
+    def QaRefer(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.QaReference`
+        """
+        return self._QaRefer
+
+    @QaRefer.setter
+    def QaRefer(self, QaRefer):
+        self._QaRefer = QaRefer
+
+    @property
+    def WebSearchRefer(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.WebSearchReference`
+        """
+        return self._WebSearchRefer
+
+    @WebSearchRefer.setter
+    def WebSearchRefer(self, WebSearchRefer):
+        self._WebSearchRefer = WebSearchRefer
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("DocRefer") is not None:
+            self._DocRefer = DocReference()
+            self._DocRefer._deserialize(params.get("DocRefer"))
+        if params.get("QaRefer") is not None:
+            self._QaRefer = QaReference()
+            self._QaRefer._deserialize(params.get("QaRefer"))
+        if params.get("WebSearchRefer") is not None:
+            self._WebSearchRefer = WebSearchReference()
+            self._WebSearchRefer._deserialize(params.get("WebSearchRefer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Context(AbstractModel):
     r"""Obtain response of unsatisfied reply context.
 
@@ -2812,9 +3321,15 @@ class CreateAppRequest(AbstractModel):
         :type AppType: str
         :param _BaseConfig: Basic application configuration.
         :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        :param _Pattern: <p>Application Mode: standard - Standard Mode, agent - Agent Mode, single_workflow - Single Workflow Mode, ClawAgent - Claw Mode</p>
+        :type Pattern: str
+        :param _AgentType: <p>Agent type, used to distinguish the final agent form in which the application provides external services (dialogue) / Official Account (wechat). The current ADP creation page does not distinguish between dialogue and Official Account agents, and defaults to the dialogue agent.</p>
+        :type AgentType: str
         """
         self._AppType = None
         self._BaseConfig = None
+        self._Pattern = None
+        self._AgentType = None
 
     @property
     def AppType(self):
@@ -2838,12 +3353,36 @@ class CreateAppRequest(AbstractModel):
     def BaseConfig(self, BaseConfig):
         self._BaseConfig = BaseConfig
 
+    @property
+    def Pattern(self):
+        r"""<p>Application Mode: standard - Standard Mode, agent - Agent Mode, single_workflow - Single Workflow Mode, ClawAgent - Claw Mode</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def AgentType(self):
+        r"""<p>Agent type, used to distinguish the final agent form in which the application provides external services (dialogue) / Official Account (wechat). The current ADP creation page does not distinguish between dialogue and Official Account agents, and defaults to the dialogue agent.</p>
+        :rtype: str
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
 
     def _deserialize(self, params):
         self._AppType = params.get("AppType")
         if params.get("BaseConfig") is not None:
             self._BaseConfig = BaseConfig()
             self._BaseConfig._deserialize(params.get("BaseConfig"))
+        self._Pattern = params.get("Pattern")
+        self._AgentType = params.get("AgentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3071,130 +3610,6 @@ class CreateAttributeLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateCorpRequest(AbstractModel):
-    r"""CreateCorp request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FullName: Full name of the corporate.
-        :type FullName: str
-        :param _ContactName: Contact person's name.
-        :type ContactName: str
-        :param _Email: Contact person's mailbox.
-        :type Email: str
-        :param _Telephone: Contact person's mobile phone number.
-        :type Telephone: str
-        """
-        self._FullName = None
-        self._ContactName = None
-        self._Email = None
-        self._Telephone = None
-
-    @property
-    def FullName(self):
-        r"""Full name of the corporate.
-        :rtype: str
-        """
-        return self._FullName
-
-    @FullName.setter
-    def FullName(self, FullName):
-        self._FullName = FullName
-
-    @property
-    def ContactName(self):
-        r"""Contact person's name.
-        :rtype: str
-        """
-        return self._ContactName
-
-    @ContactName.setter
-    def ContactName(self, ContactName):
-        self._ContactName = ContactName
-
-    @property
-    def Email(self):
-        r"""Contact person's mailbox.
-        :rtype: str
-        """
-        return self._Email
-
-    @Email.setter
-    def Email(self, Email):
-        self._Email = Email
-
-    @property
-    def Telephone(self):
-        r"""Contact person's mobile phone number.
-        :rtype: str
-        """
-        return self._Telephone
-
-    @Telephone.setter
-    def Telephone(self, Telephone):
-        self._Telephone = Telephone
-
-
-    def _deserialize(self, params):
-        self._FullName = params.get("FullName")
-        self._ContactName = params.get("ContactName")
-        self._Email = params.get("Email")
-        self._Telephone = params.get("Telephone")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateCorpResponse(AbstractModel):
-    r"""CreateCorp response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CorpBizId: Corporate ID.
-        :type CorpBizId: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._CorpBizId = None
-        self._RequestId = None
-
-    @property
-    def CorpBizId(self):
-        r"""Corporate ID.
-        :rtype: str
-        """
-        return self._CorpBizId
-
-    @CorpBizId.setter
-    def CorpBizId(self, CorpBizId):
-        self._CorpBizId = CorpBizId
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._CorpBizId = params.get("CorpBizId")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateDocCateRequest(AbstractModel):
     r"""CreateDocCate request structure.
 
@@ -3202,7 +3617,7 @@ class CreateDocCateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: Application ID.
+        :param _BotBizId: Application ID
         :type BotBizId: str
         :param _ParentBizId: Parent business ID.
         :type ParentBizId: str
@@ -3216,7 +3631,7 @@ class CreateDocCateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""Application ID.
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -3761,233 +4176,6 @@ class CreateQAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateReconstructDocumentFlowConfig(AbstractModel):
-    r"""Configuration information for creating a smart document parsing task.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TableResultType: The returned form of a table in a markdown file: 
-0: the table is returned in MD format;
-1: the table is returned in HTML form.
-The default is 1.
-        :type TableResultType: str
-        :param _ResultType: The format of smart document parsing results:
-0: only return full-text MD;
-1: only return OCR original JSON of each page;.
-2: only return MD of each page;
-3: return full-text MD + OCR original JSON of each page;.
-4: return full-text MD + MD of each page.
-The default value is 3 (return full-text MD + OCR original JSON of each page).
-
-        :type ResultType: str
-        """
-        self._TableResultType = None
-        self._ResultType = None
-
-    @property
-    def TableResultType(self):
-        r"""The returned form of a table in a markdown file: 
-0: the table is returned in MD format;
-1: the table is returned in HTML form.
-The default is 1.
-        :rtype: str
-        """
-        return self._TableResultType
-
-    @TableResultType.setter
-    def TableResultType(self, TableResultType):
-        self._TableResultType = TableResultType
-
-    @property
-    def ResultType(self):
-        r"""The format of smart document parsing results:
-0: only return full-text MD;
-1: only return OCR original JSON of each page;.
-2: only return MD of each page;
-3: return full-text MD + OCR original JSON of each page;.
-4: return full-text MD + MD of each page.
-The default value is 3 (return full-text MD + OCR original JSON of each page).
-
-        :rtype: str
-        """
-        return self._ResultType
-
-    @ResultType.setter
-    def ResultType(self, ResultType):
-        self._ResultType = ResultType
-
-
-    def _deserialize(self, params):
-        self._TableResultType = params.get("TableResultType")
-        self._ResultType = params.get("ResultType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateReconstructDocumentFlowRequest(AbstractModel):
-    r"""CreateReconstructDocumentFlow request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FileType: File type. Supported file types: pdf, doc, docx, ppt, pptx, md, txt, xls, xlsx, csv, png, jpg, jpeg, bmp, gif, webp, heic, eps, icns, im, pcx, ppm, tiff, xbm, heif, jp2.
-        :type FileType: str
-        :param _FileBase64: The base64 value of the file. File size limit: the downloaded file does not exceed 8m after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
-        :type FileBase64: str
-        :param _FileUrl: <p>File URL. The file download time does not exceed 15 seconds. Supported image pixels: the length of a single side is between 20-10000px. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. The downloaded file shall not exceed the supported file size after Base64 encoding: </p><table> <tbody> <tr> <td>File Type</td> <td>Supported File Size</td> </tr> <tr> <td>PDF</td> <td>200M</td> </tr> <tr> <td>DOC</td> <td>200M</td> </tr> <tr> <td>DOCX</td> <td>200M</td> </tr> <tr> <td>PPT</td> <td>200M</td> </tr> <tr> <td>PPTX</td> <td>200M</td> </tr> <tr> <td>MD</td> <td>10M</td> </tr> <tr> <td>TXT</td> <td>10M</td> </tr> <tr> <td>XLS</td> <td>20M</td> </tr> <tr> <td>XLSX</td> <td>20M</td> </tr> <tr> <td>CSV</td> <td>20M</td> </tr> <tr> <td>PNG</td> <td>20M</td> </tr> <tr> <td>JPG</td> <td>20M</td> </tr> <tr> <td>JPEG</td> <td>20M</td> </tr> <tr> <td>BMP</td> <td>20M</td> </tr> <tr> <td>GIF</td> <td>20M</td> </tr> <tr> <td>WEBP</td> <td>20M</td> </tr> <tr> <td>HEIC</td> <td>20M</td> </tr> <tr> <td>EPS</td> <td>20M</td> </tr> <tr> <td>ICNS</td> <td>20M</td> </tr> <tr> <td>IM</td> <td>20M</td> </tr> <tr> <td>PCX</td> <td>20M</td> </tr> <tr> <td>PPM</td> <td>20M</td> </tr> <tr> <td>TIFF</td> <td>20M</td> </tr> <tr> <td>XBM</td> <td>20M</td> </tr> <tr> <td>HEIF</td> <td>20M</td> </tr> <tr> <td>JP2</td> <td>20M</td> </tr> </tbody> <colgroup> <col> <col> </colgroup></table>
-        :type FileUrl: str
-        :param _FileStartPageNumber: When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for file recognition, including the current value. The default is 1, indicating recognition starts from the first page of the file.
-        :type FileStartPageNumber: int
-        :param _FileEndPageNumber: When type of the uploaded file is pdf, doc, docx, orppt, pptx, it specifies the end page number for file recognition, including the current value. The default is 100, indicating recognition up to page 100 of the file. a single call supports recognition of up to 1000 pages, i.e., FileEndPageNumber-FileStartPageNumber should be no more than 1000.
-        :type FileEndPageNumber: int
-        :param _Config: Configuration information for creating a document parsing task.
-        :type Config: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
-        """
-        self._FileType = None
-        self._FileBase64 = None
-        self._FileUrl = None
-        self._FileStartPageNumber = None
-        self._FileEndPageNumber = None
-        self._Config = None
-
-    @property
-    def FileType(self):
-        r"""File type. Supported file types: pdf, doc, docx, ppt, pptx, md, txt, xls, xlsx, csv, png, jpg, jpeg, bmp, gif, webp, heic, eps, icns, im, pcx, ppm, tiff, xbm, heif, jp2.
-        :rtype: str
-        """
-        return self._FileType
-
-    @FileType.setter
-    def FileType(self, FileType):
-        self._FileType = FileType
-
-    @property
-    def FileBase64(self):
-        r"""The base64 value of the file. File size limit: the downloaded file does not exceed 8m after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
-        :rtype: str
-        """
-        return self._FileBase64
-
-    @FileBase64.setter
-    def FileBase64(self, FileBase64):
-        self._FileBase64 = FileBase64
-
-    @property
-    def FileUrl(self):
-        r"""<p>File URL. The file download time does not exceed 15 seconds. Supported image pixels: the length of a single side is between 20-10000px. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. The downloaded file shall not exceed the supported file size after Base64 encoding: </p><table> <tbody> <tr> <td>File Type</td> <td>Supported File Size</td> </tr> <tr> <td>PDF</td> <td>200M</td> </tr> <tr> <td>DOC</td> <td>200M</td> </tr> <tr> <td>DOCX</td> <td>200M</td> </tr> <tr> <td>PPT</td> <td>200M</td> </tr> <tr> <td>PPTX</td> <td>200M</td> </tr> <tr> <td>MD</td> <td>10M</td> </tr> <tr> <td>TXT</td> <td>10M</td> </tr> <tr> <td>XLS</td> <td>20M</td> </tr> <tr> <td>XLSX</td> <td>20M</td> </tr> <tr> <td>CSV</td> <td>20M</td> </tr> <tr> <td>PNG</td> <td>20M</td> </tr> <tr> <td>JPG</td> <td>20M</td> </tr> <tr> <td>JPEG</td> <td>20M</td> </tr> <tr> <td>BMP</td> <td>20M</td> </tr> <tr> <td>GIF</td> <td>20M</td> </tr> <tr> <td>WEBP</td> <td>20M</td> </tr> <tr> <td>HEIC</td> <td>20M</td> </tr> <tr> <td>EPS</td> <td>20M</td> </tr> <tr> <td>ICNS</td> <td>20M</td> </tr> <tr> <td>IM</td> <td>20M</td> </tr> <tr> <td>PCX</td> <td>20M</td> </tr> <tr> <td>PPM</td> <td>20M</td> </tr> <tr> <td>TIFF</td> <td>20M</td> </tr> <tr> <td>XBM</td> <td>20M</td> </tr> <tr> <td>HEIF</td> <td>20M</td> </tr> <tr> <td>JP2</td> <td>20M</td> </tr> </tbody> <colgroup> <col> <col> </colgroup></table>
-        :rtype: str
-        """
-        return self._FileUrl
-
-    @FileUrl.setter
-    def FileUrl(self, FileUrl):
-        self._FileUrl = FileUrl
-
-    @property
-    def FileStartPageNumber(self):
-        r"""When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for file recognition, including the current value. The default is 1, indicating recognition starts from the first page of the file.
-        :rtype: int
-        """
-        return self._FileStartPageNumber
-
-    @FileStartPageNumber.setter
-    def FileStartPageNumber(self, FileStartPageNumber):
-        self._FileStartPageNumber = FileStartPageNumber
-
-    @property
-    def FileEndPageNumber(self):
-        r"""When type of the uploaded file is pdf, doc, docx, orppt, pptx, it specifies the end page number for file recognition, including the current value. The default is 100, indicating recognition up to page 100 of the file. a single call supports recognition of up to 1000 pages, i.e., FileEndPageNumber-FileStartPageNumber should be no more than 1000.
-        :rtype: int
-        """
-        return self._FileEndPageNumber
-
-    @FileEndPageNumber.setter
-    def FileEndPageNumber(self, FileEndPageNumber):
-        self._FileEndPageNumber = FileEndPageNumber
-
-    @property
-    def Config(self):
-        r"""Configuration information for creating a document parsing task.
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
-        """
-        return self._Config
-
-    @Config.setter
-    def Config(self, Config):
-        self._Config = Config
-
-
-    def _deserialize(self, params):
-        self._FileType = params.get("FileType")
-        self._FileBase64 = params.get("FileBase64")
-        self._FileUrl = params.get("FileUrl")
-        self._FileStartPageNumber = params.get("FileStartPageNumber")
-        self._FileEndPageNumber = params.get("FileEndPageNumber")
-        if params.get("Config") is not None:
-            self._Config = CreateReconstructDocumentFlowConfig()
-            self._Config._deserialize(params.get("Config"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateReconstructDocumentFlowResponse(AbstractModel):
-    r"""CreateReconstructDocumentFlow response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult](https://cloud.tencent.com/document/product/1759/107505) within 30 days.
-        :type TaskId: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TaskId = None
-        self._RequestId = None
-
-    @property
-    def TaskId(self):
-        r"""Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult](https://cloud.tencent.com/document/product/1759/107505) within 30 days.
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5441,6 +5629,14 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: Filter sub-scenarios (used in document parsing scenarios).
         :type SubScenes: list of str
+        :param _AppType: Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
+        :type AppType: str
+        :param _SpaceId: Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
+        :type SpaceId: str
+        :param _StatStartTime: Start time. Unix timestamp in seconds, empty by default.
+        :type StatStartTime: int
+        :param _StatEndTime: End time. Unix timestamp in seconds, empty by default.
+        :type StatEndTime: int
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -5451,6 +5647,10 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._EndTime = None
         self._AppBizIds = None
         self._SubScenes = None
+        self._AppType = None
+        self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def UinAccount(self):
@@ -5509,6 +5709,8 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         r"""Start timestamp, in seconds.
         :rtype: str
         """
@@ -5516,10 +5718,14 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         r"""End timestamp, in seconds.
         :rtype: str
         """
@@ -5527,6 +5733,8 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
     @property
@@ -5551,6 +5759,50 @@ class DescribeCallStatsGraphRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        r"""Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def SpaceId(self):
+        r"""Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def StatStartTime(self):
+        r"""Start time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""End time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -5562,6 +5814,10 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
+        self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5643,6 +5899,12 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         :type SubBizType: str
         :param _AppBizIds: Application ID list.
         :type AppBizIds: list of str
+        :param _SpaceId: Space ID
+        :type SpaceId: str
+        :param _StatStartTime: Start timestamp, unit: seconds
+        :type StatStartTime: int
+        :param _StatEndTime: End timestamp, unit: seconds
+        :type StatEndTime: int
         """
         self._ModelName = None
         self._StartTime = None
@@ -5652,6 +5914,9 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         self._LoginSubAccountUin = None
         self._SubBizType = None
         self._AppBizIds = None
+        self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def ModelName(self):
@@ -5741,6 +6006,39 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
     def AppBizIds(self, AppBizIds):
         self._AppBizIds = AppBizIds
 
+    @property
+    def SpaceId(self):
+        r"""Space ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def StatStartTime(self):
+        r"""Start timestamp, unit: seconds
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""End timestamp, unit: seconds
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -5751,6 +6049,9 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         self._SubBizType = params.get("SubBizType")
         self._AppBizIds = params.get("AppBizIds")
+        self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5985,149 +6286,6 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
         self._AvailableConcurrency = params.get("AvailableConcurrency")
         self._ConcurrencyPeak = params.get("ConcurrencyPeak")
         self._ExceedUsageTime = params.get("ExceedUsageTime")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeCorpRequest(AbstractModel):
-    r"""DescribeCorp request structure.
-
-    """
-
-
-class DescribeCorpResponse(AbstractModel):
-    r"""DescribeCorp response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CorpBizId: Corporate ID.
-
-        :type CorpBizId: str
-        :param _RobotQuota: Application quota.
-        :type RobotQuota: int
-        :param _FullName: Full name of the corporate.
-
-        :type FullName: str
-        :param _IsTrial: Whether to try out.
-        :type IsTrial: bool
-        :param _IsTrialExpired: Whether the trial has expired.
-        :type IsTrialExpired: bool
-        :param _AvailableAppQuota: Quantity of available applications.
-        :type AvailableAppQuota: int
-        :param _IsSupportCustomModel: Whether custom model configuration is supported.
-        :type IsSupportCustomModel: bool
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._CorpBizId = None
-        self._RobotQuota = None
-        self._FullName = None
-        self._IsTrial = None
-        self._IsTrialExpired = None
-        self._AvailableAppQuota = None
-        self._IsSupportCustomModel = None
-        self._RequestId = None
-
-    @property
-    def CorpBizId(self):
-        r"""Corporate ID.
-
-        :rtype: str
-        """
-        return self._CorpBizId
-
-    @CorpBizId.setter
-    def CorpBizId(self, CorpBizId):
-        self._CorpBizId = CorpBizId
-
-    @property
-    def RobotQuota(self):
-        r"""Application quota.
-        :rtype: int
-        """
-        return self._RobotQuota
-
-    @RobotQuota.setter
-    def RobotQuota(self, RobotQuota):
-        self._RobotQuota = RobotQuota
-
-    @property
-    def FullName(self):
-        r"""Full name of the corporate.
-
-        :rtype: str
-        """
-        return self._FullName
-
-    @FullName.setter
-    def FullName(self, FullName):
-        self._FullName = FullName
-
-    @property
-    def IsTrial(self):
-        r"""Whether to try out.
-        :rtype: bool
-        """
-        return self._IsTrial
-
-    @IsTrial.setter
-    def IsTrial(self, IsTrial):
-        self._IsTrial = IsTrial
-
-    @property
-    def IsTrialExpired(self):
-        r"""Whether the trial has expired.
-        :rtype: bool
-        """
-        return self._IsTrialExpired
-
-    @IsTrialExpired.setter
-    def IsTrialExpired(self, IsTrialExpired):
-        self._IsTrialExpired = IsTrialExpired
-
-    @property
-    def AvailableAppQuota(self):
-        r"""Quantity of available applications.
-        :rtype: int
-        """
-        return self._AvailableAppQuota
-
-    @AvailableAppQuota.setter
-    def AvailableAppQuota(self, AvailableAppQuota):
-        self._AvailableAppQuota = AvailableAppQuota
-
-    @property
-    def IsSupportCustomModel(self):
-        r"""Whether custom model configuration is supported.
-        :rtype: bool
-        """
-        return self._IsSupportCustomModel
-
-    @IsSupportCustomModel.setter
-    def IsSupportCustomModel(self, IsSupportCustomModel):
-        self._IsSupportCustomModel = IsSupportCustomModel
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._CorpBizId = params.get("CorpBizId")
-        self._RobotQuota = params.get("RobotQuota")
-        self._FullName = params.get("FullName")
-        self._IsTrial = params.get("IsTrial")
-        self._IsTrialExpired = params.get("IsTrialExpired")
-        self._AvailableAppQuota = params.get("AvailableAppQuota")
-        self._IsSupportCustomModel = params.get("IsSupportCustomModel")
         self._RequestId = params.get("RequestId")
 
 
@@ -7828,6 +7986,12 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: Application id list.
         :type AppBizIds: list of str
+        :param _SpaceId: Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
+        :type SpaceId: str
+        :param _StatStartTime: Start time. Unix timestamp in seconds, empty by default.
+        :type StatStartTime: int
+        :param _StatEndTime: End time. Unix timestamp in seconds, empty by default.
+        :type StatEndTime: int
         """
         self._LoginUin = None
         self._LoginSubAccountUin = None
@@ -7837,6 +8001,9 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._AppBizIds = None
+        self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def LoginUin(self):
@@ -7895,6 +8062,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         r"""Start timestamp, in seconds.
         :rtype: str
         """
@@ -7902,10 +8071,14 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         r"""End timestamp, in seconds.
         :rtype: str
         """
@@ -7913,6 +8086,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
     @property
@@ -7926,6 +8101,39 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
     def AppBizIds(self, AppBizIds):
         self._AppBizIds = AppBizIds
 
+    @property
+    def SpaceId(self):
+        r"""Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def StatStartTime(self):
+        r"""Start time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""End time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._LoginUin = params.get("LoginUin")
@@ -7936,6 +8144,9 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
+        self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8375,9 +8586,9 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: Application ID list.
         :type AppBizIds: list of str
-        :param _AppType: Application type. Optional values: knowledge_qa(knowledge QA)/plugin_parsing_qa(plugin)/shared_knowledge(knowledge base)/evaluate_test(evaluation). If not filled, query all types.
+        :param _AppType: 
         :type AppType: str
-        :param _SubScenes: Filter Sub-scenarios
+        :param _SubScenes: 
         :type SubScenes: list of str
         """
         self._UinAccount = None
@@ -8424,6 +8635,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         r"""Start timestamp, in seconds.
         :rtype: str
         """
@@ -8431,10 +8644,14 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         r"""End timestamp, in seconds.
         :rtype: str
         """
@@ -8442,6 +8659,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
     @property
@@ -8457,7 +8676,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""Application type. Optional values: knowledge_qa(knowledge QA)/plugin_parsing_qa(plugin)/shared_knowledge(knowledge base)/evaluate_test(evaluation). If not filled, query all types.
+        r"""
         :rtype: str
         """
         return self._AppType
@@ -8468,7 +8687,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        r"""Filter Sub-scenarios
+        r"""
         :rtype: list of str
         """
         return self._SubScenes
@@ -8610,10 +8829,14 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: Filter sub-scenario (used in document parsing scenario).
         :type SubScenes: list of str
-        :param _AppType: Application type (knowledge_qa application management, shared_knowlege shared knowledge base)
+        :param _AppType: Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
         :type AppType: str
-        :param _SpaceId: Space ID, used to limit the query scope. When not filled, data from all spaces are queried.
+        :param _SpaceId: Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
         :type SpaceId: str
+        :param _StatStartTime: Start time. Unix timestamp in seconds, empty by default.
+        :type StatStartTime: int
+        :param _StatEndTime: End time. Unix timestamp in seconds, empty by default.
+        :type StatEndTime: int
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -8626,6 +8849,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._SubScenes = None
         self._AppType = None
         self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def UinAccount(self):
@@ -8684,6 +8909,8 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         r"""Start timestamp, in seconds (default value: 0).
         :rtype: str
         """
@@ -8691,10 +8918,14 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         r"""End timestamp, in seconds (default value: 0, must be greater than the start timestamp).
         :rtype: str
         """
@@ -8702,6 +8933,8 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
     @property
@@ -8728,7 +8961,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""Application type (knowledge_qa application management, shared_knowlege shared knowledge base)
+        r"""Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
         :rtype: str
         """
         return self._AppType
@@ -8739,7 +8972,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""Space ID, used to limit the query scope. When not filled, data from all spaces are queried.
+        r"""Space ID, used to limit the query scope. If left blank, data of all spaces will be returned.
         :rtype: str
         """
         return self._SpaceId
@@ -8747,6 +8980,28 @@ class DescribeTokenUsageRequest(AbstractModel):
     @SpaceId.setter
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
+
+    @property
+    def StatStartTime(self):
+        r"""Start time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""End time. Unix timestamp in seconds, empty by default.
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
 
 
     def _deserialize(self, params):
@@ -8761,6 +9016,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._SubScenes = params.get("SubScenes")
         self._AppType = params.get("AppType")
         self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9094,26 +9351,29 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
 
 class DigitalHumanConfig(AbstractModel):
-    r"""Digital Human Configuration
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _AssetKey: Digital Human Asset key
+        :param _AssetKey: 
         :type AssetKey: str
-        :param _Name: Digital Human Name
+        :param _Name: 
         :type Name: str
-        :param _Avatar: Image
+        :param _Avatar: 
         :type Avatar: str
+        :param _PreviewUrl: 
+        :type PreviewUrl: str
         """
         self._AssetKey = None
         self._Name = None
         self._Avatar = None
+        self._PreviewUrl = None
 
     @property
     def AssetKey(self):
-        r"""Digital Human Asset key
+        r"""
         :rtype: str
         """
         return self._AssetKey
@@ -9124,7 +9384,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Name(self):
-        r"""Digital Human Name
+        r"""
         :rtype: str
         """
         return self._Name
@@ -9135,7 +9395,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Avatar(self):
-        r"""Image
+        r"""
         :rtype: str
         """
         return self._Avatar
@@ -9144,11 +9404,23 @@ class DigitalHumanConfig(AbstractModel):
     def Avatar(self, Avatar):
         self._Avatar = Avatar
 
+    @property
+    def PreviewUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
 
     def _deserialize(self, params):
         self._AssetKey = params.get("AssetKey")
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
+        self._PreviewUrl = params.get("PreviewUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9160,15 +9432,15 @@ class DigitalHumanConfig(AbstractModel):
 
 
 class DocFilterFlag(AbstractModel):
-    r"""Document list filter flag
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Flag: Flag
+        :param _Flag: 
         :type Flag: str
-        :param _Value: ID Value
+        :param _Value: 
         :type Value: bool
         """
         self._Flag = None
@@ -9176,7 +9448,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Flag(self):
-        r"""Flag
+        r"""
         :rtype: str
         """
         return self._Flag
@@ -9187,7 +9459,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Value(self):
-        r"""ID Value
+        r"""
         :rtype: bool
         """
         return self._Value
@@ -9200,6 +9472,117 @@ class DocFilterFlag(AbstractModel):
     def _deserialize(self, params):
         self._Flag = params.get("Flag")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocReference(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocBizId: 
+        :type DocBizId: int
+        :param _ReferBizId: 
+        :type ReferBizId: int
+        :param _DocName: 
+        :type DocName: str
+        :param _KnowledgeBizId: 
+        :type KnowledgeBizId: int
+        :param _KnowledgeName: 
+        :type KnowledgeName: str
+        :param _Url: 
+        :type Url: str
+        """
+        self._DocBizId = None
+        self._ReferBizId = None
+        self._DocName = None
+        self._KnowledgeBizId = None
+        self._KnowledgeName = None
+        self._Url = None
+
+    @property
+    def DocBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def ReferBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._ReferBizId
+
+    @ReferBizId.setter
+    def ReferBizId(self, ReferBizId):
+        self._ReferBizId = ReferBizId
+
+    @property
+    def DocName(self):
+        r"""
+        :rtype: str
+        """
+        return self._DocName
+
+    @DocName.setter
+    def DocName(self, DocName):
+        self._DocName = DocName
+
+    @property
+    def KnowledgeBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def KnowledgeName(self):
+        r"""
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._DocBizId = params.get("DocBizId")
+        self._ReferBizId = params.get("ReferBizId")
+        self._DocName = params.get("DocName")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._KnowledgeName = params.get("KnowledgeName")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9382,15 +9765,15 @@ class DocSegment(AbstractModel):
 
 
 class DuplicateFileHandle(AbstractModel):
-    r"""Duplicate document handling method
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _CheckType: Duplicate document identification method, 1: By document content, i.e., using the cos_hash field to determine whether duplicates exist
+        :param _CheckType: 
         :type CheckType: int
-        :param _HandleType: Duplicate document handling method, 1: Return an error, 2: Skip and return the business ID of the duplicate document
+        :param _HandleType: 
         :type HandleType: int
         """
         self._CheckType = None
@@ -9398,7 +9781,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""Duplicate document identification method, 1: By document content, i.e., using the cos_hash field to determine whether duplicates exist
+        r"""
         :rtype: int
         """
         return self._CheckType
@@ -9409,7 +9792,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def HandleType(self):
-        r"""Duplicate document handling method, 1: Return an error, 2: Skip and return the business ID of the duplicate document
+        r"""
         :rtype: int
         """
         return self._HandleType
@@ -9796,20 +10179,20 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    r"""Extended Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _EChartsInfo: ECharts Information
+        :param _EChartsInfo: 
         :type EChartsInfo: list of str
         """
         self._EChartsInfo = None
 
     @property
     def EChartsInfo(self):
-        r"""ECharts Information
+        r"""
         :rtype: list of str
         """
         return self._EChartsInfo
@@ -9821,6 +10204,57 @@ class ExtraInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._EChartsInfo = params.get("EChartsInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileCollection(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxFileCount: 
+        :type MaxFileCount: int
+        :param _SupportedFileTypes: 
+        :type SupportedFileTypes: list of str
+        """
+        self._MaxFileCount = None
+        self._SupportedFileTypes = None
+
+    @property
+    def MaxFileCount(self):
+        r"""
+        :rtype: int
+        """
+        return self._MaxFileCount
+
+    @MaxFileCount.setter
+    def MaxFileCount(self, MaxFileCount):
+        self._MaxFileCount = MaxFileCount
+
+    @property
+    def SupportedFileTypes(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._SupportedFileTypes
+
+    @SupportedFileTypes.setter
+    def SupportedFileTypes(self, SupportedFileTypes):
+        self._SupportedFileTypes = SupportedFileTypes
+
+
+    def _deserialize(self, params):
+        self._MaxFileCount = params.get("MaxFileCount")
+        self._SupportedFileTypes = params.get("SupportedFileTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9932,6 +10366,187 @@ class FileInfo(AbstractModel):
         self._FileType = params.get("FileType")
         self._DocId = params.get("DocId")
         self._CreatedAt = params.get("CreatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileInfoContent(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocBizId: 
+        :type DocBizId: str
+        :param _FileName: 
+        :type FileName: str
+        :param _FileType: 
+        :type FileType: str
+        :param _FileSize: 
+        :type FileSize: str
+        :param _FileUrl: 
+        :type FileUrl: str
+        :param _DocId: 
+        :type DocId: str
+        :param _CreateTime: 
+        :type CreateTime: str
+        """
+        self._DocBizId = None
+        self._FileName = None
+        self._FileType = None
+        self._FileSize = None
+        self._FileUrl = None
+        self._DocId = None
+        self._CreateTime = None
+
+    @property
+    def DocBizId(self):
+        warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
+
+        r"""
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
+
+        self._DocBizId = DocBizId
+
+    @property
+    def FileName(self):
+        r"""
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        r"""
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileSize(self):
+        r"""
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def DocId(self):
+        r"""
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def CreateTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._DocBizId = params.get("DocBizId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._FileSize = params.get("FileSize")
+        self._FileUrl = params.get("FileUrl")
+        self._DocId = params.get("DocId")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterKey: 
+        :type FilterKey: str
+        :param _FilterValue: 
+        :type FilterValue: list of str
+        """
+        self._FilterKey = None
+        self._FilterValue = None
+
+    @property
+    def FilterKey(self):
+        r"""
+        :rtype: str
+        """
+        return self._FilterKey
+
+    @FilterKey.setter
+    def FilterKey(self, FilterKey):
+        self._FilterKey = FilterKey
+
+    @property
+    def FilterValue(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._FilterValue
+
+    @FilterValue.setter
+    def FilterValue(self, FilterValue):
+        self._FilterValue = FilterValue
+
+
+    def _deserialize(self, params):
+        self._FilterKey = params.get("FilterKey")
+        self._FilterValue = params.get("FilterValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11234,120 +11849,6 @@ class GetMsgRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class GetReconstructDocumentResultRequest(AbstractModel):
-    r"""GetReconstructDocumentResult request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
-        :type TaskId: str
-        """
-        self._TaskId = None
-
-    @property
-    def TaskId(self):
-        r"""Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetReconstructDocumentResultResponse(AbstractModel):
-    r"""GetReconstructDocumentResult response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
-        :type Status: str
-        :param _DocumentRecognizeResultUrl: The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
-        :type DocumentRecognizeResultUrl: str
-        :param _FailedPages: Page number information where document parsing failed this time.
-        :type FailedPages: list of ReconstructDocumentFailedPage
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Status = None
-        self._DocumentRecognizeResultUrl = None
-        self._FailedPages = None
-        self._RequestId = None
-
-    @property
-    def Status(self):
-        r"""Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def DocumentRecognizeResultUrl(self):
-        r"""The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
-        :rtype: str
-        """
-        return self._DocumentRecognizeResultUrl
-
-    @DocumentRecognizeResultUrl.setter
-    def DocumentRecognizeResultUrl(self, DocumentRecognizeResultUrl):
-        self._DocumentRecognizeResultUrl = DocumentRecognizeResultUrl
-
-    @property
-    def FailedPages(self):
-        r"""Page number information where document parsing failed this time.
-        :rtype: list of ReconstructDocumentFailedPage
-        """
-        return self._FailedPages
-
-    @FailedPages.setter
-    def FailedPages(self, FailedPages):
-        self._FailedPages = FailedPages
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        self._DocumentRecognizeResultUrl = params.get("DocumentRecognizeResultUrl")
-        if params.get("FailedPages") is not None:
-            self._FailedPages = []
-            for item in params.get("FailedPages"):
-                obj = ReconstructDocumentFailedPage()
-                obj._deserialize(item)
-                self._FailedPages.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class GetTaskStatusRequest(AbstractModel):
     r"""GetTaskStatus request structure.
 
@@ -11632,6 +12133,8 @@ How to Obtain It:</br>
 
     @property
     def VisitorLabels(self):
+        warnings.warn("parameter `VisitorLabels` is deprecated", DeprecationWarning) 
+
         r"""Knowledge label, used for search filter in the knowledge base. This field is about to be deactivated. Please use the custom_variables field in the dialogue endpoint API to replace this field.
         :rtype: list of GetWsTokenReq_Label
         """
@@ -11639,6 +12142,8 @@ How to Obtain It:</br>
 
     @VisitorLabels.setter
     def VisitorLabels(self, VisitorLabels):
+        warnings.warn("parameter `VisitorLabels` is deprecated", DeprecationWarning) 
+
         self._VisitorLabels = VisitorLabels
 
 
@@ -12181,16 +12686,52 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class IntentAchievement(AbstractModel):
-    r"""Intent Implementation Approach
+class ImageInfoContent(AbstractModel):
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Intent Implementation Approach, qa: Q&A response, doc: document-based response, workflow: workflow-based response, llm: LLM response
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentAchievement(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 
         :type Name: str
-        :param _Desc: Intent Implementation Approach Description
+        :param _Desc: 
         :type Desc: str
         """
         self._Name = None
@@ -12198,7 +12739,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Name(self):
-        r"""Intent Implementation Approach, qa: Q&A response, doc: document-based response, workflow: workflow-based response, llm: LLM response
+        r"""
         :rtype: str
         """
         return self._Name
@@ -12209,7 +12750,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Desc(self):
-        r"""Intent Implementation Approach Description
+        r"""
         :rtype: str
         """
         return self._Desc
@@ -12386,6 +12927,100 @@ class InvokeAPI(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class IsTransferIntentRequest(AbstractModel):
+    r"""IsTransferIntent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Content.
+        :type Content: str
+        :param _BotAppKey: Application appkey.
+        :type BotAppKey: str
+        """
+        self._Content = None
+        self._BotAppKey = None
+
+    @property
+    def Content(self):
+        r"""Content.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def BotAppKey(self):
+        r"""Application appkey.
+        :rtype: str
+        """
+        return self._BotAppKey
+
+    @BotAppKey.setter
+    def BotAppKey(self, BotAppKey):
+        self._BotAppKey = BotAppKey
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._BotAppKey = params.get("BotAppKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsTransferIntentResponse(AbstractModel):
+    r"""IsTransferIntent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hit: Whether to transfer to human service.
+        :type Hit: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Hit = None
+        self._RequestId = None
+
+    @property
+    def Hit(self):
+        r"""Whether to transfer to human service.
+        :rtype: bool
+        """
+        return self._Hit
+
+    @Hit.setter
+    def Hit(self, Hit):
+        self._Hit = Hit
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Hit = params.get("Hit")
+        self._RequestId = params.get("RequestId")
 
 
 class KnowledgeCapacityPieGraphDetail(AbstractModel):
@@ -13527,126 +14162,6 @@ class Label(AbstractModel):
     def _deserialize(self, params):
         self._LabelBizId = params.get("LabelBizId")
         self._LabelName = params.get("LabelName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ListAppCategoryRequest(AbstractModel):
-    r"""ListAppCategory request structure.
-
-    """
-
-
-class ListAppCategoryResponse(AbstractModel):
-    r"""ListAppCategory response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _List: Application type list.
-        :type List: list of ListAppCategoryRspOption
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def List(self):
-        r"""Application type list.
-        :rtype: list of ListAppCategoryRspOption
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = ListAppCategoryRspOption()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class ListAppCategoryRspOption(AbstractModel):
-    r"""Application type details.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Text: Type name.
-        :type Text: str
-        :param _Value: Type value.
-        :type Value: str
-        :param _Logo: Type log.
-        :type Logo: str
-        """
-        self._Text = None
-        self._Value = None
-        self._Logo = None
-
-    @property
-    def Text(self):
-        r"""Type name.
-        :rtype: str
-        """
-        return self._Text
-
-    @Text.setter
-    def Text(self, Text):
-        self._Text = Text
-
-    @property
-    def Value(self):
-        r"""Type value.
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-    @property
-    def Logo(self):
-        r"""Type log.
-        :rtype: str
-        """
-        return self._Logo
-
-    @Logo.setter
-    def Logo(self, Logo):
-        self._Logo = Logo
-
-
-    def _deserialize(self, params):
-        self._Text = params.get("Text")
-        self._Value = params.get("Value")
-        self._Logo = params.get("Logo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16100,11 +16615,14 @@ class ListRejectedQuestionRequest(AbstractModel):
         :param _Query: Query content.
 
         :type Query: str
+        :param _Filters: <p>Filter Conditions:<br>Effective: EnableScope: 1,2,3,4</p>
+        :type Filters: list of FilterItem
         """
         self._BotBizId = None
         self._PageNumber = None
         self._PageSize = None
         self._Query = None
+        self._Filters = None
 
     @property
     def BotBizId(self):
@@ -16154,12 +16672,29 @@ class ListRejectedQuestionRequest(AbstractModel):
     def Query(self, Query):
         self._Query = Query
 
+    @property
+    def Filters(self):
+        r"""<p>Filter Conditions:<br>Effective: EnableScope: 1,2,3,4</p>
+        :rtype: list of FilterItem
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         self._Query = params.get("Query")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FilterItem()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17474,14 +18009,14 @@ class ListUsageCallDetailRequest(AbstractModel):
         r"""
         :param _ModelName: Model identifier.
         :type ModelName: str
-        :param _StartTime: Start time.
-        :type StartTime: str
-        :param _EndTime: End time.
-        :type EndTime: str
         :param _PageNumber: Page number.
         :type PageNumber: int
         :param _PageSize: Number of items per page.
         :type PageSize: int
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
         :param _UinAccount: Uin list.
         :type UinAccount: list of str
         :param _AppBizIds: Application ID list.
@@ -17490,16 +18025,31 @@ class ListUsageCallDetailRequest(AbstractModel):
         :type CallType: str
         :param _SubScenes: Filter sub-scenario.
         :type SubScenes: list of str
+        :param _AppType: Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
+        :type AppType: str
+        :param _BillingTag: Custom tag corresponding to bill details
+        :type BillingTag: str
+        :param _SpaceId: Space ID
+        :type SpaceId: str
+        :param _StatStartTime: Start timestamp, unit: seconds
+        :type StatStartTime: int
+        :param _StatEndTime: Start timestamp, unit: seconds
+        :type StatEndTime: int
         """
         self._ModelName = None
-        self._StartTime = None
-        self._EndTime = None
         self._PageNumber = None
         self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
         self._UinAccount = None
         self._AppBizIds = None
         self._CallType = None
         self._SubScenes = None
+        self._AppType = None
+        self._BillingTag = None
+        self._SpaceId = None
+        self._StatStartTime = None
+        self._StatEndTime = None
 
     @property
     def ModelName(self):
@@ -17511,28 +18061,6 @@ class ListUsageCallDetailRequest(AbstractModel):
     @ModelName.setter
     def ModelName(self, ModelName):
         self._ModelName = ModelName
-
-    @property
-    def StartTime(self):
-        r"""Start time.
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""End time.
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
 
     @property
     def PageNumber(self):
@@ -17555,6 +18083,28 @@ class ListUsageCallDetailRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
     @property
     def UinAccount(self):
@@ -17600,17 +18150,77 @@ class ListUsageCallDetailRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        r"""Application Type (knowledge_qa: Knowledge Q&A Application Management, shared_knowledge: Shared Knowledge Base)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def BillingTag(self):
+        r"""Custom tag corresponding to bill details
+        :rtype: str
+        """
+        return self._BillingTag
+
+    @BillingTag.setter
+    def BillingTag(self, BillingTag):
+        self._BillingTag = BillingTag
+
+    @property
+    def SpaceId(self):
+        r"""Space ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def StatStartTime(self):
+        r"""Start timestamp, unit: seconds
+        :rtype: int
+        """
+        return self._StatStartTime
+
+    @StatStartTime.setter
+    def StatStartTime(self, StatStartTime):
+        self._StatStartTime = StatStartTime
+
+    @property
+    def StatEndTime(self):
+        r"""Start timestamp, unit: seconds
+        :rtype: int
+        """
+        return self._StatEndTime
+
+    @StatEndTime.setter
+    def StatEndTime(self, StatEndTime):
+        self._StatEndTime = StatEndTime
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._UinAccount = params.get("UinAccount")
         self._AppBizIds = params.get("AppBizIds")
         self._CallType = params.get("CallType")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
+        self._BillingTag = params.get("BillingTag")
+        self._SpaceId = params.get("SpaceId")
+        self._StatStartTime = params.get("StatStartTime")
+        self._StatEndTime = params.get("StatEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21047,6 +21657,366 @@ class QAQuery(AbstractModel):
         
 
 
+class QaReference(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QaBizId: 
+        :type QaBizId: int
+        :param _ReferBizId: 
+        :type ReferBizId: int
+        :param _KnowledgeBizId: 
+        :type KnowledgeBizId: int
+        :param _KnowledgeName: 
+        :type KnowledgeName: str
+        """
+        self._QaBizId = None
+        self._ReferBizId = None
+        self._KnowledgeBizId = None
+        self._KnowledgeName = None
+
+    @property
+    def QaBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def ReferBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._ReferBizId
+
+    @ReferBizId.setter
+    def ReferBizId(self, ReferBizId):
+        self._ReferBizId = ReferBizId
+
+    @property
+    def KnowledgeBizId(self):
+        r"""
+        :rtype: int
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def KnowledgeName(self):
+        r"""
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+
+    def _deserialize(self, params):
+        self._QaBizId = params.get("QaBizId")
+        self._ReferBizId = params.get("ReferBizId")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._KnowledgeName = params.get("KnowledgeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionOption(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 
+        :type Label: str
+        :param _Description: 
+        :type Description: str
+        """
+        self._Label = None
+        self._Description = None
+
+    @property
+    def Label(self):
+        r"""
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Description(self):
+        r"""
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Questionnaire(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 
+        :type Title: str
+        :param _Questions: 
+        :type Questions: list of QuestionnaireQuestion
+        :param _Answers: 
+        :type Answers: list of QuestionnaireQuestionAnswer
+        """
+        self._Title = None
+        self._Questions = None
+        self._Answers = None
+
+    @property
+    def Title(self):
+        r"""
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Questions(self):
+        r"""
+        :rtype: list of QuestionnaireQuestion
+        """
+        return self._Questions
+
+    @Questions.setter
+    def Questions(self, Questions):
+        self._Questions = Questions
+
+    @property
+    def Answers(self):
+        r"""
+        :rtype: list of QuestionnaireQuestionAnswer
+        """
+        return self._Answers
+
+    @Answers.setter
+    def Answers(self, Answers):
+        self._Answers = Answers
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Questions") is not None:
+            self._Questions = []
+            for item in params.get("Questions"):
+                obj = QuestionnaireQuestion()
+                obj._deserialize(item)
+                self._Questions.append(obj)
+        if params.get("Answers") is not None:
+            self._Answers = []
+            for item in params.get("Answers"):
+                obj = QuestionnaireQuestionAnswer()
+                obj._deserialize(item)
+                self._Answers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionnaireQuestion(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 
+        :type Index: int
+        :param _Question: 
+        :type Question: str
+        :param _Type: 
+        :type Type: int
+        :param _Required: 
+        :type Required: bool
+        :param _Options: 
+        :type Options: list of QuestionOption
+        """
+        self._Index = None
+        self._Question = None
+        self._Type = None
+        self._Required = None
+        self._Options = None
+
+    @property
+    def Index(self):
+        r"""
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Question(self):
+        r"""
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Required(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Options(self):
+        r"""
+        :rtype: list of QuestionOption
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Question = params.get("Question")
+        self._Type = params.get("Type")
+        self._Required = params.get("Required")
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = QuestionOption()
+                obj._deserialize(item)
+                self._Options.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionnaireQuestionAnswer(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: 
+        :type Question: str
+        :param _SelectedLabels: 
+        :type SelectedLabels: list of str
+        """
+        self._Question = None
+        self._SelectedLabels = None
+
+    @property
+    def Question(self):
+        r"""
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def SelectedLabels(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._SelectedLabels
+
+    @SelectedLabels.setter
+    def SelectedLabels(self, SelectedLabels):
+        self._SelectedLabels = SelectedLabels
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._SelectedLabels = params.get("SelectedLabels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuoteInfo(AbstractModel):
     r"""Search engine reference source index.
 
@@ -21205,42 +22175,6 @@ class RateMsgRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class ReconstructDocumentFailedPage(AbstractModel):
-    r"""Document parsing failure record.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PageNumber: Failure page number.
-        :type PageNumber: int
-        """
-        self._PageNumber = None
-
-    @property
-    def PageNumber(self):
-        r"""Failure page number.
-        :rtype: int
-        """
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-
-    def _deserialize(self, params):
-        self._PageNumber = params.get("PageNumber")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class ReferDetail(AbstractModel):
@@ -22603,6 +23537,72 @@ class RunNodeInfo(AbstractModel):
         
 
 
+class SandboxContent(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        :param _DisplayUrl: 
+        :type DisplayUrl: str
+        :param _Content: 
+        :type Content: str
+        """
+        self._Url = None
+        self._DisplayUrl = None
+        self._Content = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DisplayUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._DisplayUrl
+
+    @DisplayUrl.setter
+    def DisplayUrl(self, DisplayUrl):
+        self._DisplayUrl = DisplayUrl
+
+    @property
+    def Content(self):
+        r"""
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._DisplayUrl = params.get("DisplayUrl")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SaveDocRequest(AbstractModel):
     r"""SaveDoc request structure.
 
@@ -22645,27 +23645,24 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
         :type Opt: int
         :param _CateBizId: Category ID.
         :type CateBizId: str
-        :param _IsDownload: Whether it can be downloaded. This value is meaningful only when IsRefer is true and ReferUrlType is 0.
+        :param _IsDownload: Downloadable or not. This parameter is only valid when `IsRefer` is **true** and `ReferUrlType` is 0.
         :type IsDownload: bool
-        :param _DuplicateFileHandles: Duplicate document handling method, processed by sequentially matching the first condition that is met
+        :param _DuplicateFileHandles: Duplicate document processing method; match the first eligible method in sequence for processing.
         :type DuplicateFileHandles: list of DuplicateFileHandle
-        :param _SplitRule: Custom Segmentation Rules
+        :param _SplitRule: # Custom Splitting Rules
+The request parameter is a **JSON Object**. Refer to the API sample value for the specific format. It contains the following core fields:
 
-The request parameter is a **JSON Object**. For specific format, refer to the interface sample value. It contains the following main fields:
-
-| Field Name          | Type     | Description                                  |
-|--------------------|----------|---------------------------------------------|
-| `xlsx_splitter`    | Object   | **Excel (xlsx) file segmentation policy configuration**, valid only when processing Excel files |
-| `common_splitter`  | Object   | **General file (e.g., txt, pdf) segmentation policy configuration**, segmented by page or tag |
-| `table_style`      | String   | Output format of table content, e.g., HTML or Markdown |
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `xlsx_splitter` | Object | **Excel (xlsx) file splitting policy configuration**, valid only when processing Excel files |
+| `common_splitter` | Object | **General file splitting policy configuration** (for TXT, PDF and other files), supports splitting by page or by tag |
+| `table_style` | String | Output format of table content, e.g., HTML or Markdown |
 
 ---
 
-## `xlsx_splitter` (Excel Segmentation Policy)
-
-Used to configure **segmentation methods for spreadsheet files**.
+## `xlsx_splitter` (Excel Splitting Policy)
+Used to configure the **splitting method for table files**.
 **Type: Object**
-
 ```json
 "xlsx_splitter": {
   "header_interval": [1, 2],
@@ -22674,24 +23671,18 @@ Used to configure **segmentation methods for spreadsheet files**.
 }
 ```
 
-### Field Description:
-
-| Field Name         | Type          | Description                                                                
-   |
-|--------------------|---------------|-----------------------------------------------------------------------------|
-| `header_interval` | Array\<Number\> | Row range of headers, formatted as `[start_row, end_row]`, **row numbers start from 1**. E.g., `[1, 2]` indicates rows 1-2 are headers. |
-| `content_start`   | Number        | **Starting row number of table content (1-based)**.                        
-   |
-| `split_row`       | Number        | **Number of rows per segment**.                                            
-   |
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `header_interval` | Array\<Number\> | Row range of the table header, formatted as `[start row, end row]`. **Row numbers start from 1**. For example, `[1, 2]` means rows 1 to 2 are table headers. |
+| `content_start` | Number | **Start row number of table content (starting from 1)** |
+| `split_row` | Number | **Number of rows per split** |
 
 ---
-## `common_splitter` (General File Segmentation Policy)
 
-Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DOCX)**, supporting two strategies: **by-page segmentation** or **by-tag segmentation**.
-
+## `common_splitter` (General File Splitting Policy)
+Used to configure the splitting method for **non-Excel files (TXT, PDF, DOCX, etc.)**. Two strategies are supported: **page-based splitting** or **identifier-based splitting**.
 **Type: Object**
-
 ```json
 "common_splitter": {
   "splitter": "page",
@@ -22702,51 +23693,47 @@ Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DO
 }
 ```
 
-### Field Description:
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `splitter` | String | Splitting strategy type. Optional values: `"page"` (split by page), `"tag"` (split by identifier). |
+| `page_splitter` | Object | Configuration for **page-based splitting** |
+| `page_splitter.chunk_length` | Number | **Maximum chunk length** |
+| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length** |
+| `tag_splitter` | Object | Configuration for **custom splitting** |
+| `tag_splitter.tag` | Array\<String\> | **Splitting identifiers** |
+| `tag_splitter.chunk_length` | Number | **Maximum chunk length** |
+| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length** |
 
-| Field Name                     | Type          | Description                                                                
-   |
-|--------------------------------|---------------|-----------------------------------------------------------------------------|
-| `splitter`                     | String        | Segmentation strategy type. Valid values: `"page"` (by-page) or `"tag"` (by-tag). |
-| `page_splitter`                | Object        | **By-page segmentation configuration**.                                     |
-| `page_splitter.chunk_length`   | Number        | **Maximum chunk length**.                                                  
-   |
-| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
-   |
-| `tag_splitter`                 | Object        | **Custom segmentation configuration**.                                      |
-| `tag_splitter.tag`             | Array\<String\> | **Segmentation tags**.                                                     
-   |
-| `tag_splitter.chunk_length`    | Number        | **Maximum chunk length**.                                                  
-   |
-| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
-   |
+### Supplementary Notes
+- Valid values for the `splitter` field:
+  - `"page"`: Only page-based splitting is used; only configure fields under `page_splitter`.
+  - `"tag"`: Only identifier-based splitting (semicolon, line break, etc.) is used; only configure fields under `tag_splitter`.
 
-🔹 **Additional Notes:**
-
-- Valid values for `splitter`:
-    - `"page"`: Only use by-page segmentation logic. Only `page_splitter` fields are relevant.
-    - `"tag"`: Only use by-tag segmentation logic (e.g., using delimiters like semicolons or line breaks). Only `tag_splitter` fields are relevant.
 ---
 
 ## `table_style` (Table Output Style)
-
-Specifies **the format in which tabular content (e.g., tables extracted from Excel or CSV) is returned**, facilitating frontend display or subsequent processing.
-
+Specifies the final return format of **table content extracted from Excel / CSV**, for front-end display and subsequent processing.
 **Type: String**
-
 ```json
 "table_style": "md"
 ```
 
-### Field Description:
-
-| Field Name     | Type   | Description                                                                
-   |
-|----------------|--------|-----------------------------------------------------------------------------|
-| `table_style`  | String | Output format of table content. Valid values:<br>• `"html"`: Returns as HTML tables, suitable for web display.<br>• `"md"`: Returns in Markdown table syntax, suitable for documentation or Markdown rendering environments. |
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `table_style` | String | Specifies the output format of table content. Available values:<br> `"html"`: Return as HTML table, suitable for web page display.<br> `"md"`: Return as Markdown table syntax, suitable for documents and Markdown rendering environments. |
         :type SplitRule: str
-        :param _UpdatePeriodInfo: Document update frequency, default value is 0 (no updates)
+        :param _UpdatePeriodInfo: Document update frequency. Default value 0 means no update.
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
+        :param _EnableScope: Document Effective Scope:
+1 - Not effective;
+2 - Effective only in development scope;
+3 - Effective only in release scope;
+4 - Effective in both development and release scopes.
+
+Default value: The default knowledge base within the application is 2, and the shared knowledge base is 4.
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._FileName = None
@@ -22769,6 +23756,7 @@ Specifies **the format in which tabular content (e.g., tables extracted from Exc
         self._DuplicateFileHandles = None
         self._SplitRule = None
         self._UpdatePeriodInfo = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
@@ -22960,7 +23948,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsDownload(self):
-        r"""Whether it can be downloaded. This value is meaningful only when IsRefer is true and ReferUrlType is 0.
+        r"""Downloadable or not. This parameter is only valid when `IsRefer` is **true** and `ReferUrlType` is 0.
         :rtype: bool
         """
         return self._IsDownload
@@ -22971,7 +23959,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def DuplicateFileHandles(self):
-        r"""Duplicate document handling method, processed by sequentially matching the first condition that is met
+        r"""Duplicate document processing method; match the first eligible method in sequence for processing.
         :rtype: list of DuplicateFileHandle
         """
         return self._DuplicateFileHandles
@@ -22982,23 +23970,20 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def SplitRule(self):
-        r"""Custom Segmentation Rules
+        r"""# Custom Splitting Rules
+The request parameter is a **JSON Object**. Refer to the API sample value for the specific format. It contains the following core fields:
 
-The request parameter is a **JSON Object**. For specific format, refer to the interface sample value. It contains the following main fields:
-
-| Field Name          | Type     | Description                                  |
-|--------------------|----------|---------------------------------------------|
-| `xlsx_splitter`    | Object   | **Excel (xlsx) file segmentation policy configuration**, valid only when processing Excel files |
-| `common_splitter`  | Object   | **General file (e.g., txt, pdf) segmentation policy configuration**, segmented by page or tag |
-| `table_style`      | String   | Output format of table content, e.g., HTML or Markdown |
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `xlsx_splitter` | Object | **Excel (xlsx) file splitting policy configuration**, valid only when processing Excel files |
+| `common_splitter` | Object | **General file splitting policy configuration** (for TXT, PDF and other files), supports splitting by page or by tag |
+| `table_style` | String | Output format of table content, e.g., HTML or Markdown |
 
 ---
 
-## `xlsx_splitter` (Excel Segmentation Policy)
-
-Used to configure **segmentation methods for spreadsheet files**.
+## `xlsx_splitter` (Excel Splitting Policy)
+Used to configure the **splitting method for table files**.
 **Type: Object**
-
 ```json
 "xlsx_splitter": {
   "header_interval": [1, 2],
@@ -23007,24 +23992,18 @@ Used to configure **segmentation methods for spreadsheet files**.
 }
 ```
 
-### Field Description:
-
-| Field Name         | Type          | Description                                                                
-   |
-|--------------------|---------------|-----------------------------------------------------------------------------|
-| `header_interval` | Array\<Number\> | Row range of headers, formatted as `[start_row, end_row]`, **row numbers start from 1**. E.g., `[1, 2]` indicates rows 1-2 are headers. |
-| `content_start`   | Number        | **Starting row number of table content (1-based)**.                        
-   |
-| `split_row`       | Number        | **Number of rows per segment**.                                            
-   |
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `header_interval` | Array\<Number\> | Row range of the table header, formatted as `[start row, end row]`. **Row numbers start from 1**. For example, `[1, 2]` means rows 1 to 2 are table headers. |
+| `content_start` | Number | **Start row number of table content (starting from 1)** |
+| `split_row` | Number | **Number of rows per split** |
 
 ---
-## `common_splitter` (General File Segmentation Policy)
 
-Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DOCX)**, supporting two strategies: **by-page segmentation** or **by-tag segmentation**.
-
+## `common_splitter` (General File Splitting Policy)
+Used to configure the splitting method for **non-Excel files (TXT, PDF, DOCX, etc.)**. Two strategies are supported: **page-based splitting** or **identifier-based splitting**.
 **Type: Object**
-
 ```json
 "common_splitter": {
   "splitter": "page",
@@ -23035,48 +24014,36 @@ Used to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DO
 }
 ```
 
-### Field Description:
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `splitter` | String | Splitting strategy type. Optional values: `"page"` (split by page), `"tag"` (split by identifier). |
+| `page_splitter` | Object | Configuration for **page-based splitting** |
+| `page_splitter.chunk_length` | Number | **Maximum chunk length** |
+| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length** |
+| `tag_splitter` | Object | Configuration for **custom splitting** |
+| `tag_splitter.tag` | Array\<String\> | **Splitting identifiers** |
+| `tag_splitter.chunk_length` | Number | **Maximum chunk length** |
+| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length** |
 
-| Field Name                     | Type          | Description                                                                
-   |
-|--------------------------------|---------------|-----------------------------------------------------------------------------|
-| `splitter`                     | String        | Segmentation strategy type. Valid values: `"page"` (by-page) or `"tag"` (by-tag). |
-| `page_splitter`                | Object        | **By-page segmentation configuration**.                                     |
-| `page_splitter.chunk_length`   | Number        | **Maximum chunk length**.                                                  
-   |
-| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
-   |
-| `tag_splitter`                 | Object        | **Custom segmentation configuration**.                                      |
-| `tag_splitter.tag`             | Array\<String\> | **Segmentation tags**.                                                     
-   |
-| `tag_splitter.chunk_length`    | Number        | **Maximum chunk length**.                                                  
-   |
-| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  
-   |
+### Supplementary Notes
+- Valid values for the `splitter` field:
+  - `"page"`: Only page-based splitting is used; only configure fields under `page_splitter`.
+  - `"tag"`: Only identifier-based splitting (semicolon, line break, etc.) is used; only configure fields under `tag_splitter`.
 
-🔹 **Additional Notes:**
-
-- Valid values for `splitter`:
-    - `"page"`: Only use by-page segmentation logic. Only `page_splitter` fields are relevant.
-    - `"tag"`: Only use by-tag segmentation logic (e.g., using delimiters like semicolons or line breaks). Only `tag_splitter` fields are relevant.
 ---
 
 ## `table_style` (Table Output Style)
-
-Specifies **the format in which tabular content (e.g., tables extracted from Excel or CSV) is returned**, facilitating frontend display or subsequent processing.
-
+Specifies the final return format of **table content extracted from Excel / CSV**, for front-end display and subsequent processing.
 **Type: String**
-
 ```json
 "table_style": "md"
 ```
 
-### Field Description:
-
-| Field Name     | Type   | Description                                                                
-   |
-|----------------|--------|-----------------------------------------------------------------------------|
-| `table_style`  | String | Output format of table content. Valid values:<br>• `"html"`: Returns as HTML tables, suitable for web display.<br>• `"md"`: Returns in Markdown table syntax, suitable for documentation or Markdown rendering environments. |
+### Field Description
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `table_style` | String | Specifies the output format of table content. Available values:<br> `"html"`: Return as HTML table, suitable for web page display.<br> `"md"`: Return as Markdown table syntax, suitable for documents and Markdown rendering environments. |
         :rtype: str
         """
         return self._SplitRule
@@ -23087,7 +24054,7 @@ Specifies **the format in which tabular content (e.g., tables extracted from Exc
 
     @property
     def UpdatePeriodInfo(self):
-        r"""Document update frequency, default value is 0 (no updates)
+        r"""Document update frequency. Default value 0 means no update.
         :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         return self._UpdatePeriodInfo
@@ -23095,6 +24062,23 @@ Specifies **the format in which tabular content (e.g., tables extracted from Exc
     @UpdatePeriodInfo.setter
     def UpdatePeriodInfo(self, UpdatePeriodInfo):
         self._UpdatePeriodInfo = UpdatePeriodInfo
+
+    @property
+    def EnableScope(self):
+        r"""Document Effective Scope:
+1 - Not effective;
+2 - Effective only in development scope;
+3 - Effective only in release scope;
+4 - Effective in both development and release scopes.
+
+Default value: The default knowledge base within the application is 2, and the shared knowledge base is 4.
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
 
 
     def _deserialize(self, params):
@@ -23131,6 +24115,7 @@ Specifies **the format in which tabular content (e.g., tables extracted from Exc
         if params.get("UpdatePeriodInfo") is not None:
             self._UpdatePeriodInfo = UpdatePeriodInfo()
             self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23156,7 +24141,7 @@ class SaveDocResponse(AbstractModel):
         :type ErrorLink: str
         :param _ErrorLinkText: Error link text.
         :type ErrorLinkText: str
-        :param _DuplicateFileCheckType: 
+        :param _DuplicateFileCheckType: Duplication type. 0 means no duplication; for other values, refer to the CheckType field of the input parameter DuplicateFileHandle  structure.
         :type DuplicateFileCheckType: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23214,7 +24199,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def DuplicateFileCheckType(self):
-        r"""
+        r"""Duplication type. 0 means no duplication; for other values, refer to the CheckType field of the input parameter DuplicateFileHandle  structure.
         :rtype: int
         """
         return self._DuplicateFileCheckType
@@ -24455,20 +25440,20 @@ class UnsatisfiedReply(AbstractModel):
 
 
 class UpdatePeriodInfo(AbstractModel):
-    r"""Update Policy
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _UpdatePeriodH: Document update frequency type: 0: No update, -H: Hourly granularity. Currently only supports 24 (1 day), 72 (3 days), 168 (7 days). Only valid for source=2 Tencent document type.
+        :param _UpdatePeriodH: 
         :type UpdatePeriodH: int
         """
         self._UpdatePeriodH = None
 
     @property
     def UpdatePeriodH(self):
-        r"""Document update frequency type: 0: No update, -H: Hourly granularity. Currently only supports 24 (1 day), 72 (3 days), 168 (7 days). Only valid for source=2 Tencent document type.
+        r"""
         :rtype: int
         """
         return self._UpdatePeriodH
@@ -24945,17 +25930,17 @@ class VerifyQAResponse(AbstractModel):
 
 
 class VoiceConfig(AbstractModel):
-    r"""Timbre Parameters
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceType: Public Cloud Timbre ID
+        :param _VoiceType: 
         :type VoiceType: int
-        :param _TimbreKey: Timbre Key
+        :param _TimbreKey: 
         :type TimbreKey: str
-        :param _VoiceName: Timbre Name
+        :param _VoiceName: 
         :type VoiceName: str
         """
         self._VoiceType = None
@@ -24964,7 +25949,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""Public Cloud Timbre ID
+        r"""
         :rtype: int
         """
         return self._VoiceType
@@ -24975,7 +25960,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def TimbreKey(self):
-        r"""Timbre Key
+        r"""
         :rtype: str
         """
         return self._TimbreKey
@@ -24986,7 +25971,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceName(self):
-        r"""Timbre Name
+        r"""
         :rtype: str
         """
         return self._VoiceName
@@ -25000,6 +25985,285 @@ class VoiceConfig(AbstractModel):
         self._VoiceType = params.get("VoiceType")
         self._TimbreKey = params.get("TimbreKey")
         self._VoiceName = params.get("VoiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebSearchContent(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 
+        :type Content: str
+        """
+        self._Content = None
+
+    @property
+    def Content(self):
+        r"""
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebSearchReference(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Widget(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WidgetId: 
+        :type WidgetId: str
+        :param _WidgetRunId: 
+        :type WidgetRunId: str
+        :param _View: 
+        :type View: str
+        :param _State: 
+        :type State: str
+        :param _Position: 
+        :type Position: int
+        :param _EncodedWidget: 
+        :type EncodedWidget: str
+        :param _Payload: 
+        :type Payload: str
+        """
+        self._WidgetId = None
+        self._WidgetRunId = None
+        self._View = None
+        self._State = None
+        self._Position = None
+        self._EncodedWidget = None
+        self._Payload = None
+
+    @property
+    def WidgetId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+    @property
+    def WidgetRunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WidgetRunId
+
+    @WidgetRunId.setter
+    def WidgetRunId(self, WidgetRunId):
+        self._WidgetRunId = WidgetRunId
+
+    @property
+    def View(self):
+        r"""
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def State(self):
+        r"""
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Position(self):
+        r"""
+        :rtype: int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def EncodedWidget(self):
+        r"""
+        :rtype: str
+        """
+        return self._EncodedWidget
+
+    @EncodedWidget.setter
+    def EncodedWidget(self, EncodedWidget):
+        self._EncodedWidget = EncodedWidget
+
+    @property
+    def Payload(self):
+        r"""
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+
+    def _deserialize(self, params):
+        self._WidgetId = params.get("WidgetId")
+        self._WidgetRunId = params.get("WidgetRunId")
+        self._View = params.get("View")
+        self._State = params.get("State")
+        self._Position = params.get("Position")
+        self._EncodedWidget = params.get("EncodedWidget")
+        self._Payload = params.get("Payload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WidgetAction(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WidgetId: 
+        :type WidgetId: str
+        :param _WidgetRunId: 
+        :type WidgetRunId: str
+        :param _ActionType: 
+        :type ActionType: str
+        :param _Payload: 
+        :type Payload: str
+        """
+        self._WidgetId = None
+        self._WidgetRunId = None
+        self._ActionType = None
+        self._Payload = None
+
+    @property
+    def WidgetId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+    @property
+    def WidgetRunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WidgetRunId
+
+    @WidgetRunId.setter
+    def WidgetRunId(self, WidgetRunId):
+        self._WidgetRunId = WidgetRunId
+
+    @property
+    def ActionType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Payload(self):
+        r"""
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+
+    def _deserialize(self, params):
+        self._WidgetId = params.get("WidgetId")
+        self._WidgetRunId = params.get("WidgetRunId")
+        self._ActionType = params.get("ActionType")
+        self._Payload = params.get("Payload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25142,24 +26406,28 @@ class WorkFlowSummary(AbstractModel):
 
 
 class WorkflowInfo(AbstractModel):
-    r"""Workflow Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _WorkflowId: Workflow ID
+        :param _WorkflowId: 
         :type WorkflowId: str
-        :param _WorkflowName: Workflow Name
+        :param _WorkflowName: 
         :type WorkflowName: str
-        :param _WorkflowRunId: Workflow Run ID
+        :param _WorkflowRunId: 
         :type WorkflowRunId: str
-        :param _OptionCards: Tab
+        :param _OptionCards: 
         :type OptionCards: list of str
-        :param _Outputs: Multi-bubble output results
+        :param _Outputs: 
         :type Outputs: list of str
-        :param _WorkflowReleaseTime: Workflow Publish Time, unix timestamp
+        :param _WorkflowReleaseTime: 
         :type WorkflowReleaseTime: str
+        :param _Contents: 
+        :type Contents: list of Content
+        :param _OptionMode: 
+        :type OptionMode: int
         """
         self._WorkflowId = None
         self._WorkflowName = None
@@ -25167,10 +26435,12 @@ class WorkflowInfo(AbstractModel):
         self._OptionCards = None
         self._Outputs = None
         self._WorkflowReleaseTime = None
+        self._Contents = None
+        self._OptionMode = None
 
     @property
     def WorkflowId(self):
-        r"""Workflow ID
+        r"""
         :rtype: str
         """
         return self._WorkflowId
@@ -25181,7 +26451,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""Workflow Name
+        r"""
         :rtype: str
         """
         return self._WorkflowName
@@ -25192,7 +26462,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""Workflow Run ID
+        r"""
         :rtype: str
         """
         return self._WorkflowRunId
@@ -25203,7 +26473,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""Tab
+        r"""
         :rtype: list of str
         """
         return self._OptionCards
@@ -25214,7 +26484,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""Multi-bubble output results
+        r"""
         :rtype: list of str
         """
         return self._Outputs
@@ -25225,7 +26495,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        r"""Workflow Publish Time, unix timestamp
+        r"""
         :rtype: str
         """
         return self._WorkflowReleaseTime
@@ -25233,6 +26503,28 @@ class WorkflowInfo(AbstractModel):
     @WorkflowReleaseTime.setter
     def WorkflowReleaseTime(self, WorkflowReleaseTime):
         self._WorkflowReleaseTime = WorkflowReleaseTime
+
+    @property
+    def Contents(self):
+        r"""
+        :rtype: list of Content
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def OptionMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
 
 
     def _deserialize(self, params):
@@ -25242,6 +26534,13 @@ class WorkflowInfo(AbstractModel):
         self._OptionCards = params.get("OptionCards")
         self._Outputs = params.get("Outputs")
         self._WorkflowReleaseTime = params.get("WorkflowReleaseTime")
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = Content()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._OptionMode = params.get("OptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

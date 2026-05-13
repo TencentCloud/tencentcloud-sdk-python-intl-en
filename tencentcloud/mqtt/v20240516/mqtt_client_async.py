@@ -61,6 +61,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDeviceIdentity(
+            self,
+            request: models.CreateDeviceIdentityRequest,
+            opts: Dict = None,
+    ) -> models.CreateDeviceIdentityResponse:
+        """
+        Create a device signature for per-device secret
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDeviceIdentity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDeviceIdentityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInstance(
             self,
             request: models.CreateInstanceRequest,
@@ -146,6 +164,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DeleteClientSubscription"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteClientSubscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDeviceIdentity(
+            self,
+            request: models.DeleteDeviceIdentityRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeviceIdentityResponse:
+        """
+        Delete a device signature
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeviceIdentity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeviceIdentityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -259,6 +295,60 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceCertificates(
+            self,
+            request: models.DescribeDeviceCertificatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCertificatesResponse:
+        """
+        Query device certificates with paging
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCertificates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCertificatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeviceIdentities(
+            self,
+            request: models.DescribeDeviceIdentitiesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceIdentitiesResponse:
+        """
+        Query the list of device identifiers in a cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceIdentities"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceIdentitiesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeviceIdentity(
+            self,
+            request: models.DescribeDeviceIdentityRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceIdentityResponse:
+        """
+        Query device identification
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceIdentity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceIdentityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstance(
             self,
             request: models.DescribeInstanceRequest,
@@ -272,6 +362,29 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DescribeInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceList(
+            self,
+            request: models.DescribeInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceListResponse:
+        """
+        Get instance list. Description of the Filters parameter use is as follows:
+        1. InstanceName, fuzzy search by name
+        2. InstanceId, query by instance ID
+        3. InstanceStatus, instance status query, supports multiple selections
+
+        When using the TagFilters parameter for search, the filters parameter is invalid.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -326,6 +439,78 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DescribeMessageEnrichmentRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMessageEnrichmentRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProductSKUList(
+            self,
+            request: models.DescribeProductSKUListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProductSKUListResponse:
+        """
+        This API is used to obtain product sales specifications.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProductSKUList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProductSKUListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSharedSubscriptionClient(
+            self,
+            request: models.DescribeSharedSubscriptionClientRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedSubscriptionClientResponse:
+        """
+        Query shared subscription group detailed information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedSubscriptionClient"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedSubscriptionClientResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSharedSubscriptionGroups(
+            self,
+            request: models.DescribeSharedSubscriptionGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedSubscriptionGroupsResponse:
+        """
+        This API is used to query the subscription group list shared within the cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedSubscriptionGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedSubscriptionGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSharedSubscriptions(
+            self,
+            request: models.DescribeSharedSubscriptionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedSubscriptionsResponse:
+        """
+        Query the subscription list of a shared subscription group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedSubscriptions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedSubscriptionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -400,6 +585,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "ModifyAuthorizationPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAuthorizationPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeviceIdentity(
+            self,
+            request: models.ModifyDeviceIdentityRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeviceIdentityResponse:
+        """
+        Modify the device signature
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeviceIdentity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeviceIdentityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

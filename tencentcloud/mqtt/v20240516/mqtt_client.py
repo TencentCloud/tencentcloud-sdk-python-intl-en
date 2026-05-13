@@ -72,6 +72,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDeviceIdentity(self, request):
+        r"""Create a device signature for per-device secret
+
+        :param request: Request instance for CreateDeviceIdentity.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateDeviceIdentityRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateDeviceIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstance(self, request):
         r"""This API is used to purchase a new MQTT instance.
 
@@ -178,6 +201,29 @@ class MqttClient(AbstractClient):
             body = self.call("DeleteClientSubscription", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteClientSubscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDeviceIdentity(self, request):
+        r"""Delete a device signature
+
+        :param request: Request instance for DeleteDeviceIdentity.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceIdentityRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceIdentityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -325,6 +371,75 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCertificates(self, request):
+        r"""Query device certificates with paging
+
+        :param request: Request instance for DescribeDeviceCertificates.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificatesRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCertificates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceIdentities(self, request):
+        r"""Query the list of device identifiers in a cluster
+
+        :param request: Request instance for DescribeDeviceIdentities.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentitiesRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentitiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceIdentities", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceIdentitiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceIdentity(self, request):
+        r"""Query device identification
+
+        :param request: Request instance for DescribeDeviceIdentity.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentityRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         r"""This API is used to query instance information.
 
@@ -339,6 +454,34 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceList(self, request):
+        r"""Get instance list. Description of the Filters parameter use is as follows:
+        1. InstanceName, fuzzy search by name
+        2. InstanceId, query by instance ID
+        3. InstanceStatus, instance status query, supports multiple selections
+
+        When using the TagFilters parameter for search, the filters parameter is invalid.
+
+        :param request: Request instance for DescribeInstanceList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInstanceListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -408,6 +551,98 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeMessageEnrichmentRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMessageEnrichmentRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProductSKUList(self, request):
+        r"""This API is used to obtain product sales specifications.
+
+        :param request: Request instance for DescribeProductSKUList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeProductSKUListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeProductSKUListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductSKUList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductSKUListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedSubscriptionClient(self, request):
+        r"""Query shared subscription group detailed information
+
+        :param request: Request instance for DescribeSharedSubscriptionClient.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionClientRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionClient", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionClientResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedSubscriptionGroups(self, request):
+        r"""This API is used to query the subscription group list shared within the cluster.
+
+        :param request: Request instance for DescribeSharedSubscriptionGroups.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedSubscriptions(self, request):
+        r"""Query the subscription list of a shared subscription group
+
+        :param request: Request instance for DescribeSharedSubscriptions.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -502,6 +737,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeviceIdentity(self, request):
+        r"""Modify the device signature
+
+        :param request: Request instance for ModifyDeviceIdentity.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyDeviceIdentityRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyDeviceIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceIdentityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

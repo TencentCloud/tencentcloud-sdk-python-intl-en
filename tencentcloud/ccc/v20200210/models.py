@@ -1324,6 +1324,149 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class AvailableTimeConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DayType: 
+        :type DayType: str
+        :param _DaysOfWeek: 
+        :type DaysOfWeek: list of str
+        :param _TimeRanges: 
+        :type TimeRanges: list of TimeRange
+        """
+        self._DayType = None
+        self._DaysOfWeek = None
+        self._TimeRanges = None
+
+    @property
+    def DayType(self):
+        r"""
+        :rtype: str
+        """
+        return self._DayType
+
+    @DayType.setter
+    def DayType(self, DayType):
+        self._DayType = DayType
+
+    @property
+    def DaysOfWeek(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._DaysOfWeek
+
+    @DaysOfWeek.setter
+    def DaysOfWeek(self, DaysOfWeek):
+        self._DaysOfWeek = DaysOfWeek
+
+    @property
+    def TimeRanges(self):
+        r"""
+        :rtype: list of TimeRange
+        """
+        return self._TimeRanges
+
+    @TimeRanges.setter
+    def TimeRanges(self, TimeRanges):
+        self._TimeRanges = TimeRanges
+
+
+    def _deserialize(self, params):
+        self._DayType = params.get("DayType")
+        self._DaysOfWeek = params.get("DaysOfWeek")
+        if params.get("TimeRanges") is not None:
+            self._TimeRanges = []
+            for item in params.get("TimeRanges"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._TimeRanges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BasicAuth(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BasicToken: 
+        :type BasicToken: str
+        """
+        self._BasicToken = None
+
+    @property
+    def BasicToken(self):
+        r"""
+        :rtype: str
+        """
+        return self._BasicToken
+
+    @BasicToken.setter
+    def BasicToken(self, BasicToken):
+        self._BasicToken = BasicToken
+
+
+    def _deserialize(self, params):
+        self._BasicToken = params.get("BasicToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BearerAuth(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BearerToken: 
+        :type BearerToken: str
+        """
+        self._BearerToken = None
+
+    @property
+    def BearerToken(self):
+        r"""
+        :rtype: str
+        """
+        return self._BearerToken
+
+    @BearerToken.setter
+    def BearerToken(self, BearerToken):
+        self._BearerToken = BearerToken
+
+
+    def _deserialize(self, params):
+        self._BearerToken = params.get("BearerToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindNumberCallInInterfaceRequest(AbstractModel):
     r"""BindNumberCallInInterface request structure.
 
@@ -2595,7 +2738,7 @@ Currently, the supported languages are as follows. The English name of the langu
         :param _CustomTTSConfig: <p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>
 <ul>
 <li>Tencent TTS<br>
-For configuration, see <a href="https://www.tencentcloud.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>
+For configuration, see <a href="https://www.tencentcloud.com/zh/document/product/1154/48916" target="_blank">tencent cloud TTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
 "TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
@@ -3128,7 +3271,7 @@ Currently, the supported languages are as follows. The English name of the langu
         r"""<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>
 <ul>
 <li>Tencent TTS<br>
-For configuration, see <a href="https://www.tencentcloud.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">tencent cloud TTS documentation link</a></li>
+For configuration, see <a href="https://www.tencentcloud.com/zh/document/product/1154/48916" target="_blank">tencent cloud TTS documentation link</a></li>
 </ul>
 <div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
 "TTSType": "tencent", // String TTS type. currently supports "tencent" and "minixmax". the rest manufacturers are under support.
@@ -3864,6 +4007,15 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type RetryInterval: int
         :param _MaxRingTimeoutSecond: Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.
         :type MaxRingTimeoutSecond: int
+        :param _RetryHangupTypes: <p>Retry according to the specified hang-up reasons (optional hang-up status codes: 202, 203, 204, 205, 206, 207, 208, 210, 212, 213, 215, 216, 217, 218, 219, 221, 222, 234). This only takes effect for tasks using AIAgentID. For the description of hang-up status codes</p>
+<p><a href="https://cloud.tencent.com/document/product/679/123938">see details</a></p>
+        :type RetryHangupTypes: list of str
+        :param _RetryTags: Retry based on the specified post-dialogue tag. It only takes effect for AIAgentID tasks that use the dialogue model. Tag information can be queried in the agent configuration.
+        :type RetryTags: list of RetryTagItem
+        :param _AvailableWorkTimeConfig: <p>Effective working time configuration. It is recommended to use this field instead of the AvailableTime field. If both are used simultaneously, AvailableTime takes priority.</p>
+        :type AvailableWorkTimeConfig: list of AvailableTimeConfig
+        :param _TriggerStrategy: <p>Trigger Strategy</p>
+        :type TriggerStrategy: list of TriggerStrategyItem
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -3882,6 +4034,10 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._AIAgentId = None
         self._RetryInterval = None
         self._MaxRingTimeoutSecond = None
+        self._RetryHangupTypes = None
+        self._RetryTags = None
+        self._AvailableWorkTimeConfig = None
+        self._TriggerStrategy = None
 
     @property
     def SdkAppId(self):
@@ -4070,6 +4226,51 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
         self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
 
+    @property
+    def RetryHangupTypes(self):
+        r"""<p>Retry according to the specified hang-up reasons (optional hang-up status codes: 202, 203, 204, 205, 206, 207, 208, 210, 212, 213, 215, 216, 217, 218, 219, 221, 222, 234). This only takes effect for tasks using AIAgentID. For the description of hang-up status codes</p>
+<p><a href="https://cloud.tencent.com/document/product/679/123938">see details</a></p>
+        :rtype: list of str
+        """
+        return self._RetryHangupTypes
+
+    @RetryHangupTypes.setter
+    def RetryHangupTypes(self, RetryHangupTypes):
+        self._RetryHangupTypes = RetryHangupTypes
+
+    @property
+    def RetryTags(self):
+        r"""Retry based on the specified post-dialogue tag. It only takes effect for AIAgentID tasks that use the dialogue model. Tag information can be queried in the agent configuration.
+        :rtype: list of RetryTagItem
+        """
+        return self._RetryTags
+
+    @RetryTags.setter
+    def RetryTags(self, RetryTags):
+        self._RetryTags = RetryTags
+
+    @property
+    def AvailableWorkTimeConfig(self):
+        r"""<p>Effective working time configuration. It is recommended to use this field instead of the AvailableTime field. If both are used simultaneously, AvailableTime takes priority.</p>
+        :rtype: list of AvailableTimeConfig
+        """
+        return self._AvailableWorkTimeConfig
+
+    @AvailableWorkTimeConfig.setter
+    def AvailableWorkTimeConfig(self, AvailableWorkTimeConfig):
+        self._AvailableWorkTimeConfig = AvailableWorkTimeConfig
+
+    @property
+    def TriggerStrategy(self):
+        r"""<p>Trigger Strategy</p>
+        :rtype: list of TriggerStrategyItem
+        """
+        return self._TriggerStrategy
+
+    @TriggerStrategy.setter
+    def TriggerStrategy(self, TriggerStrategy):
+        self._TriggerStrategy = TriggerStrategy
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4104,6 +4305,25 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._AIAgentId = params.get("AIAgentId")
         self._RetryInterval = params.get("RetryInterval")
         self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
+        self._RetryHangupTypes = params.get("RetryHangupTypes")
+        if params.get("RetryTags") is not None:
+            self._RetryTags = []
+            for item in params.get("RetryTags"):
+                obj = RetryTagItem()
+                obj._deserialize(item)
+                self._RetryTags.append(obj)
+        if params.get("AvailableWorkTimeConfig") is not None:
+            self._AvailableWorkTimeConfig = []
+            for item in params.get("AvailableWorkTimeConfig"):
+                obj = AvailableTimeConfig()
+                obj._deserialize(item)
+                self._AvailableWorkTimeConfig.append(obj)
+        if params.get("TriggerStrategy") is not None:
+            self._TriggerStrategy = []
+            for item in params.get("TriggerStrategy"):
+                obj = TriggerStrategyItem()
+                obj._deserialize(item)
+                self._TriggerStrategy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11577,6 +11797,317 @@ class HangUpCallResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HeaderParams(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpCallbackConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        :param _HeaderParams: 
+        :type HeaderParams: list of HeaderParams
+        :param _Params: 
+        :type Params: list of HttpParams
+        :param _Returns: 
+        :type Returns: list of ReturnKey
+        :param _Async: 
+        :type Async: bool
+        :param _AuthType: 
+        :type AuthType: int
+        :param _BasicAuth: 
+        :type BasicAuth: :class:`tencentcloud.ccc.v20200210.models.BasicAuth`
+        :param _BearerAuth: 
+        :type BearerAuth: :class:`tencentcloud.ccc.v20200210.models.BearerAuth`
+        :param _CustomAuth: 
+        :type CustomAuth: :class:`tencentcloud.ccc.v20200210.models.HttpParams`
+        :param _Oauth2Auth: 
+        :type Oauth2Auth: :class:`tencentcloud.ccc.v20200210.models.OauthConfig`
+        """
+        self._Url = None
+        self._HeaderParams = None
+        self._Params = None
+        self._Returns = None
+        self._Async = None
+        self._AuthType = None
+        self._BasicAuth = None
+        self._BearerAuth = None
+        self._CustomAuth = None
+        self._Oauth2Auth = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def HeaderParams(self):
+        r"""
+        :rtype: list of HeaderParams
+        """
+        return self._HeaderParams
+
+    @HeaderParams.setter
+    def HeaderParams(self, HeaderParams):
+        self._HeaderParams = HeaderParams
+
+    @property
+    def Params(self):
+        r"""
+        :rtype: list of HttpParams
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def Returns(self):
+        r"""
+        :rtype: list of ReturnKey
+        """
+        return self._Returns
+
+    @Returns.setter
+    def Returns(self, Returns):
+        self._Returns = Returns
+
+    @property
+    def Async(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Async
+
+    @Async.setter
+    def Async(self, Async):
+        self._Async = Async
+
+    @property
+    def AuthType(self):
+        r"""
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def BasicAuth(self):
+        r"""
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BasicAuth`
+        """
+        return self._BasicAuth
+
+    @BasicAuth.setter
+    def BasicAuth(self, BasicAuth):
+        self._BasicAuth = BasicAuth
+
+    @property
+    def BearerAuth(self):
+        r"""
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BearerAuth`
+        """
+        return self._BearerAuth
+
+    @BearerAuth.setter
+    def BearerAuth(self, BearerAuth):
+        self._BearerAuth = BearerAuth
+
+    @property
+    def CustomAuth(self):
+        r"""
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.HttpParams`
+        """
+        return self._CustomAuth
+
+    @CustomAuth.setter
+    def CustomAuth(self, CustomAuth):
+        self._CustomAuth = CustomAuth
+
+    @property
+    def Oauth2Auth(self):
+        r"""
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.OauthConfig`
+        """
+        return self._Oauth2Auth
+
+    @Oauth2Auth.setter
+    def Oauth2Auth(self, Oauth2Auth):
+        self._Oauth2Auth = Oauth2Auth
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        if params.get("HeaderParams") is not None:
+            self._HeaderParams = []
+            for item in params.get("HeaderParams"):
+                obj = HeaderParams()
+                obj._deserialize(item)
+                self._HeaderParams.append(obj)
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = HttpParams()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        if params.get("Returns") is not None:
+            self._Returns = []
+            for item in params.get("Returns"):
+                obj = ReturnKey()
+                obj._deserialize(item)
+                self._Returns.append(obj)
+        self._Async = params.get("Async")
+        self._AuthType = params.get("AuthType")
+        if params.get("BasicAuth") is not None:
+            self._BasicAuth = BasicAuth()
+            self._BasicAuth._deserialize(params.get("BasicAuth"))
+        if params.get("BearerAuth") is not None:
+            self._BearerAuth = BearerAuth()
+            self._BearerAuth._deserialize(params.get("BearerAuth"))
+        if params.get("CustomAuth") is not None:
+            self._CustomAuth = HttpParams()
+            self._CustomAuth._deserialize(params.get("CustomAuth"))
+        if params.get("Oauth2Auth") is not None:
+            self._Oauth2Auth = OauthConfig()
+            self._Oauth2Auth._deserialize(params.get("Oauth2Auth"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpParams(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        :param _ValueType: 
+        :type ValueType: str
+        """
+        self._Key = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IVRKeyPressedElement(AbstractModel):
     r"""IVR Key Information.
 
@@ -12409,6 +12940,72 @@ class NumberInfo(AbstractModel):
         self._Number = params.get("Number")
         self._CallOutSkillGroupIds = params.get("CallOutSkillGroupIds")
         self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OauthConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenURL: 
+        :type TokenURL: str
+        :param _ClientId: 
+        :type ClientId: str
+        :param _ClientSecret: 
+        :type ClientSecret: str
+        """
+        self._TokenURL = None
+        self._ClientId = None
+        self._ClientSecret = None
+
+    @property
+    def TokenURL(self):
+        r"""
+        :rtype: str
+        """
+        return self._TokenURL
+
+    @TokenURL.setter
+    def TokenURL(self, TokenURL):
+        self._TokenURL = TokenURL
+
+    @property
+    def ClientId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+
+    def _deserialize(self, params):
+        self._TokenURL = params.get("TokenURL")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13820,6 +14417,93 @@ class ResumePredictiveDialingCampaignResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RetryTagItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagName: 
+        :type TagName: str
+        :param _TagValue: 
+        :type TagValue: str
+        """
+        self._TagName = None
+        self._TagValue = None
+
+    @property
+    def TagName(self):
+        r"""
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def TagValue(self):
+        r"""
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagName = params.get("TagName")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReturnKey(AbstractModel):
+    r"""http return key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        """
+        self._Key = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SdkAppIdBuyInfo(AbstractModel):
@@ -17091,6 +17775,94 @@ class TransferToManualResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TriggerStrategyItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceConfig: 
+        :type InterfaceConfig: :class:`tencentcloud.ccc.v20200210.models.HttpCallbackConfig`
+        :param _HangupTypes: 
+        :type HangupTypes: list of str
+        :param _CallTags: 
+        :type CallTags: list of RetryTagItem
+        :param _TriggerMode: 
+        :type TriggerMode: str
+        """
+        self._InterfaceConfig = None
+        self._HangupTypes = None
+        self._CallTags = None
+        self._TriggerMode = None
+
+    @property
+    def InterfaceConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.HttpCallbackConfig`
+        """
+        return self._InterfaceConfig
+
+    @InterfaceConfig.setter
+    def InterfaceConfig(self, InterfaceConfig):
+        self._InterfaceConfig = InterfaceConfig
+
+    @property
+    def HangupTypes(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._HangupTypes
+
+    @HangupTypes.setter
+    def HangupTypes(self, HangupTypes):
+        self._HangupTypes = HangupTypes
+
+    @property
+    def CallTags(self):
+        r"""
+        :rtype: list of RetryTagItem
+        """
+        return self._CallTags
+
+    @CallTags.setter
+    def CallTags(self, CallTags):
+        self._CallTags = CallTags
+
+    @property
+    def TriggerMode(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
+
+    def _deserialize(self, params):
+        if params.get("InterfaceConfig") is not None:
+            self._InterfaceConfig = HttpCallbackConfig()
+            self._InterfaceConfig._deserialize(params.get("InterfaceConfig"))
+        self._HangupTypes = params.get("HangupTypes")
+        if params.get("CallTags") is not None:
+            self._CallTags = []
+            for item in params.get("CallTags"):
+                obj = RetryTagItem()
+                obj._deserialize(item)
+                self._CallTags.append(obj)
+        self._TriggerMode = params.get("TriggerMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnbindNumberCallOutSkillGroupRequest(AbstractModel):

@@ -95,29 +95,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCluster(self, request):
-        r"""This API is used to create a cluster.
-
-        :param request: Request instance for CreateCluster.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCluster", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateClusterResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateCmqQueue(self, request):
         r"""This API is used to create a CMQ queue.
 
@@ -349,7 +326,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQCluster(self, request):
-        r"""This API is used to create a RocketMQ cluster.
+        r"""Create a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [CreateRocketMQVipInstance](https://www.tencentcloud.com/document/api/1179/95721?from_cn_redirect=1). For 5.x clusters, refer to the API documentation [CreateInstance](https://www.tencentcloud.com/document/api/1493/97868?from_cn_redirect=1).
 
         :param request: Request instance for CreateRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterRequest`
@@ -372,7 +350,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQEnvironmentRole(self, request):
-        r"""Creates environment role authorization
+        r"""Grant access by role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateRole](https://www.tencentcloud.com/document/api/1493/98864?from_cn_redirect=1).
 
         :param request: Request instance for CreateRocketMQEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQEnvironmentRoleRequest`
@@ -395,7 +374,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQGroup(self, request):
-        r"""This API is used to create a RocketMQ consumer group.
+        r"""This API is used to create a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateConsumerGroup](https://www.tencentcloud.com/document/api/1493/97943?from_cn_redirect=1) to create a consumer group.
 
         :param request: Request instance for CreateRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupRequest`
@@ -417,8 +397,33 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQGroupV2(self, request):
+        r"""This API is used to create a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateConsumerGroup](https://www.tencentcloud.com/document/api/1493/97943?from_cn_redirect=1) to create a consumer group.
+
+        :param request: Request instance for CreateRocketMQGroupV2.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupV2Request`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQGroupV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQGroupV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQNamespace(self, request):
         r"""This API is used to create a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
 
         :param request: Request instance for CreateRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceRequest`
@@ -441,7 +446,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQRole(self, request):
-        r"""This API is used to create a role.
+        r"""Create a role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateRole](https://www.tencentcloud.com/document/api/1493/98864?from_cn_redirect=1).
 
         :param request: Request instance for CreateRocketMQRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRoleRequest`
@@ -464,7 +470,8 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQTopic(self, request):
-        r"""This API is used to create a RocketMQ topic.
+        r"""Create RocketMQ topics in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateTopic](https://www.tencentcloud.com/document/api/1493/97947?from_cn_redirect=1).
 
         :param request: Request instance for CreateRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicRequest`
@@ -486,8 +493,33 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQTopicV2(self, request):
+        r"""This API is used to create a RocketMQ topic.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateTopic](https://www.tencentcloud.com/document/api/1493/97947?from_cn_redirect=1).
+
+        :param request: Request instance for CreateRocketMQTopicV2.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicV2Request`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQTopicV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQTopicV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQVipInstance(self, request):
-        r"""This API is used to create a RocketMQ Exclusive Edition instance.
+        r"""This API is used to create a RocketMQ 4.x cluster.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [CreateInstance](https://www.tencentcloud.com/document/api/1493/97868?from_cn_redirect=1).
 
         :param request: Request instance for CreateRocketMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQVipInstanceRequest`
@@ -856,6 +888,7 @@ class TdmqClient(AbstractClient):
 
     def DeleteRocketMQCluster(self, request):
         r"""This API is used to delete a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [DeleteRocketMQVipInstance](https://www.tencentcloud.com/document/api/1179/95802?from_cn_redirect=1). For 5.x clusters, refer to [DeleteInstance](https://www.tencentcloud.com/document/product/1493/97867?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterRequest`
@@ -878,7 +911,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQEnvironmentRoles(self, request):
-        r"""Deletes environment role authorization
+        r"""Delete role authorizations in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteRole](https://www.tencentcloud.com/document/api/1493/98863?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRocketMQEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQEnvironmentRolesRequest`
@@ -901,7 +935,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQGroup(self, request):
-        r"""This API is used to delete a RocketMQ consumer group.
+        r"""This API is used to delete a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteConsumerGroup](https://www.tencentcloud.com/document/api/1493/97942?from_cn_redirect=1) to delete the consumer group.
 
         :param request: Request instance for DeleteRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupRequest`
@@ -925,6 +960,7 @@ class TdmqClient(AbstractClient):
 
     def DeleteRocketMQNamespace(self, request):
         r"""This API is used to delete a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
 
         :param request: Request instance for DeleteRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceRequest`
@@ -947,7 +983,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQRoles(self, request):
-        r"""Deletes roles. Batch deletion is supported.
+        r"""Delete roles in batches.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteRole](https://www.tencentcloud.com/document/api/1493/98863?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRocketMQRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQRolesRequest`
@@ -970,7 +1007,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQTopic(self, request):
-        r"""This API is used to delete a RocketMQ topic.
+        r"""Delete a RocketMQ topic.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteTopic](https://www.tencentcloud.com/document/api/1493/97946?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicRequest`
@@ -993,7 +1031,8 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQVipInstance(self, request):
-        r"""This API is used to delete a RocketMQ Exclusive Edition instance.
+        r"""This API is used to delete a RocketMQ dedicated or generic cluster.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DeleteInstance](https://www.tencentcloud.com/document/api/1493/97867?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRocketMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQVipInstanceRequest`
@@ -1407,7 +1446,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeMsgTrace(self, request):
-        r"""Queries message trajectory
+        r"""Query the message trace of a single message
 
         :param request: Request instance for DescribeMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeMsgTraceRequest`
@@ -1752,7 +1791,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQCluster(self, request):
-        r"""This API is used to get the information of a specific RocketMQ cluster.
+        r"""Query RocketMQ virtual cluster information.
+        Current API applicable clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, see the REST API documentation for querying cluster information at [DescribeRocketMQVipInstanceDetail](https://www.tencentcloud.com/document/api/1179/86725?from_cn_redirect=1). For 5.x clusters, see the REST API documentation for querying cluster information at [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClusterRequest`
@@ -1775,7 +1815,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQClusters(self, request):
-        r"""This API is used to get the list of RocketMQ clusters.
+        r"""Query the RocketMQ virtual cluster list.
+        This API is applicable to clusters: 4.x virtual cluster. For querying 5.x cluster list, see List API Documentation [DescribeInstanceList](https://www.tencentcloud.com/document/api/1493/96028?from_cn_redirect=1), or use [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) applicable to all cluster types.
 
         :param request: Request instance for DescribeRocketMQClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClustersRequest`
@@ -1798,7 +1839,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQEnvironmentRoles(self, request):
-        r"""Obtains the namespace role list
+        r"""Query a role-based license list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeRoleList](https://www.tencentcloud.com/document/api/1493/98862?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQEnvironmentRolesRequest`
@@ -1820,8 +1862,33 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQGeneralSKUs(self, request):
+        r"""Query the sales specification of a generic cluster.
+        This API is applicable to clusters: 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeProductSKUs](https://www.tencentcloud.com/document/api/1493/107676?from_cn_redirect=1).
+
+        :param request: Request instance for DescribeRocketMQGeneralSKUs.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGeneralSKUsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGeneralSKUsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQGeneralSKUs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQGeneralSKUsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQGroups(self, request):
-        r"""This API is used to get the list of RocketMQ consumer groups.
+        r"""Query the RocketMQ consumer group list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeConsumerGroupList](https://www.tencentcloud.com/document/api/1493/101535?from_cn_redirect=1) to query the consumption group list.
 
         :param request: Request instance for DescribeRocketMQGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsRequest`
@@ -1844,7 +1911,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsg(self, request):
-        r"""This API is used to query the TDMQ for RocketMQ message details.
+        r"""Query RocketMQ message details.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for query message details at [DescribeMessage](https://www.tencentcloud.com/document/api/1493/114594?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgRequest`
@@ -1867,7 +1935,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsgTrace(self, request):
-        r"""Queries message trajectory
+        r"""Query message trajectory.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for query message trajectory at [DescribeMessageTrace](https://www.tencentcloud.com/document/api/1493/114302?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQMsgTrace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgTraceRequest`
@@ -1890,7 +1959,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQNamespaces(self, request):
-        r"""This API is used to get the list of RocketMQ namespaces.
+        r"""Query the RocketMQ namespace list.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
 
         :param request: Request instance for DescribeRocketMQNamespaces.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesRequest`
@@ -1914,6 +1984,7 @@ class TdmqClient(AbstractClient):
 
     def DescribeRocketMQProducers(self, request):
         r"""This API is used to query the producer client list under a specified topic in RocketMQ.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeProducerList](https://www.tencentcloud.com/document/api/1493/122548?from_cn_redirect=1) for producer clients.
 
         :param request: Request instance for DescribeRocketMQProducers.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQProducersRequest`
@@ -1936,7 +2007,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQPublicAccessMonitorData(self, request):
-        r"""This API is used to pull public network metric monitoring data from TCOP. Currently, only inbound bandwidth and outbound bandwidth metrics from client to LB are supported.
+        r"""Query public network metric monitoring data. Currently only support inbound bandwidth and outbound bandwidth metrics for Client to LB.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. 5.x clusters are not supported yet.
 
         :param request: Request instance for DescribeRocketMQPublicAccessMonitorData.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessMonitorDataRequest`
@@ -1959,7 +2031,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQPublicAccessPoint(self, request):
-        r"""This API is used to query the public network access information of RocketMQ instances.
+        r"""Query the public network access point information of a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For public network access point information of 5.x clusters, refer to the API Documentation [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQPublicAccessPoint.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessPointRequest`
@@ -1982,7 +2055,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQRoles(self, request):
-        r"""Obtains the list of roles
+        r"""This API is used to query the list of roles.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the List API Documentation [DescribeRoleList](https://www.tencentcloud.com/document/api/1493/98862?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQRolesRequest`
@@ -2006,6 +2080,7 @@ class TdmqClient(AbstractClient):
 
     def DescribeRocketMQTopUsages(self, request):
         r"""Used to obtain the RocketMQ metric sorting list, such as sorting topics under a cluster instance by the most occupied storage space.
+        This API is used for applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. The feature is not supported yet for 5.x clusters.
 
         :param request: Request instance for DescribeRocketMQTopUsages.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopUsagesRequest`
@@ -2051,7 +2126,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicMsgs(self, request):
-        r"""Query RocketMQ messages.
+        r"""Query the RocketMQ message list.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the List API Documentation for query messages at [DescribeMessageList](https://www.tencentcloud.com/document/api/1493/114593?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQTopicMsgs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicMsgsRequest`
@@ -2074,7 +2150,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicStats(self, request):
-        r"""This API is used to obtain the topic production details list.
+        r"""Query the production detail list of RocketMQ topics.
+        This API is used for applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. The feature is not supported yet for 5.x clusters.
 
         :param request: Request instance for DescribeRocketMQTopicStats.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicStatsRequest`
@@ -2097,7 +2174,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopics(self, request):
-        r"""This API is used to get the list of RocketMQ topics.
+        r"""Query the RocketMQ topic list.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeTopicList](https://www.tencentcloud.com/document/api/1493/96030?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsRequest`
@@ -2120,7 +2198,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopicsByGroup(self, request):
-        r"""Obtains the list of topics subscribed under a specified consumer group
+        r"""This API is used to query the list of subscribed topics for a RocketMQ consumption group.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeTopicListByGroup](https://www.tencentcloud.com/document/api/1493/115314?from_cn_redirect=1) to query the list of subscribed topics for a consumption group.
 
         :param request: Request instance for DescribeRocketMQTopicsByGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsByGroupRequest`
@@ -2143,7 +2222,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstanceDetail(self, request):
-        r"""This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.
+        r"""Query RocketMQ cluster info.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeInstance](https://www.tencentcloud.com/document/api/1493/97866?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRocketMQVipInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailRequest`
@@ -2166,7 +2246,8 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstances(self, request):
-        r"""This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
+        r"""Query the RocketMQ 4.x cluster list.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [DescribeInstanceList](https://www.tencentcloud.com/document/api/1493/96028?from_cn_redirect=1), or use the [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) API applicable to all cluster types.
 
         :param request: Request instance for DescribeRocketMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstancesRequest`
@@ -2534,7 +2615,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQCluster(self, request):
-        r"""This API is used to update a RocketMQ cluster.
+        r"""This API is used to modify the attributes of a RocketMQ cluster.
+        This API is applicable to clusters: 4.x virtual cluster. For 4.x dedicated or generic clusters, refer to the API documentation [ModifyRocketMQInstance](https://www.tencentcloud.com/document/api/1179/108862?from_cn_redirect=1). For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQClusterRequest`
@@ -2557,7 +2639,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQEnvironmentRole(self, request):
-        r"""Modifies environment role authorization
+        r"""Modify role authorization.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyRole](https://www.tencentcloud.com/document/api/1493/98861?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQEnvironmentRoleRequest`
@@ -2580,7 +2663,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQGroup(self, request):
-        r"""This API is used to update a RocketMQ consumer group.
+        r"""Modify a RocketMQ consumption group property.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyConsumerGroup](https://www.tencentcloud.com/document/api/1493/97940?from_cn_redirect=1) to modify the consumer group's attributes.
 
         :param request: Request instance for ModifyRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupRequest`
@@ -2603,7 +2687,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQInstance(self, request):
-        r"""Modify the RocketMQ dedicated instance.
+        r"""Modify RocketMQ Dedicated or Generic Cluster Property.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceRequest`
@@ -2626,7 +2711,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQInstanceSpec(self, request):
-        r"""This API is used to modify the configurations of a TDMQ for RocketMQ exclusive instance, including the upgrade of the instance specification, node count, and storage, and the downgrade of the instance specification. After you call this API to place the order and make payments, the configuration modification will be in progress. You can query whether the modification has been completed through the `DescribeRocketMQVipInstances` API`.
+        r"""This API is used to modify the RocketMQ dedicated cluster configuration, supporting upgrades of instance specification, number of nodes and storage, as well as downgrades of instance specification. After initiating order and completing payment, it will enter the instance configuration change process. You can check whether the change is completed via [DescribeRocketMQVipInstances](https://www.tencentcloud.com/document/api/1179/80903?from_cn_redirect=1).
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyInstance](https://www.tencentcloud.com/document/api/1493/97865?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQInstanceSpec.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecRequest`
@@ -2650,6 +2736,7 @@ class TdmqClient(AbstractClient):
 
     def ModifyRocketMQNamespace(self, request):
         r"""This API is used to update a RocketMQ namespace.
+        This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.
 
         :param request: Request instance for ModifyRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceRequest`
@@ -2672,7 +2759,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQRole(self, request):
-        r"""Modifies roles
+        r"""Modify a role.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyRole](https://www.tencentcloud.com/document/api/1493/98861?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQRoleRequest`
@@ -2695,7 +2783,8 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQTopic(self, request):
-        r"""This API is used to update a RocketMQ topic.
+        r"""This API is used to modify RocketMQ topic attributes.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ModifyTopic](https://www.tencentcloud.com/document/api/1493/97944?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicRequest`
@@ -2852,7 +2941,8 @@ class TdmqClient(AbstractClient):
 
 
     def ResetRocketMQConsumerOffSet(self, request):
-        r"""This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.
+        r"""Reset consumer offset.
+        This API is applicable to clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, refer to the API documentation [ResetConsumerGroupOffset](https://www.tencentcloud.com/document/api/1493/116942?from_cn_redirect=1) to reset the consumer offset.
 
         :param request: Request instance for ResetRocketMQConsumerOffSet.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetRocketMQConsumerOffSetRequest`
@@ -2875,7 +2965,8 @@ class TdmqClient(AbstractClient):
 
 
     def RetryRocketMQDlqMessage(self, request):
-        r"""Resend the RocketMQ dead letter messages.
+        r"""Resend a RocketMQ dead letter message.
+        Current API applicable clusters: 4.x virtual cluster, 4.x dedicated cluster, and 4.x generic cluster. For 5.x clusters, see the REST API documentation for resending dead letter messages at [ResendDeadLetterMessage](https://www.tencentcloud.com/document/api/1493/114592?from_cn_redirect=1).
 
         :param request: Request instance for RetryRocketMQDlqMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.RetryRocketMQDlqMessageRequest`
@@ -3039,7 +3130,8 @@ class TdmqClient(AbstractClient):
 
 
     def SetRocketMQPublicAccessPoint(self, request):
-        r"""This API is used to enable/disable public network access, and set the security access policy.
+        r"""Enable or disable public network access, set security access policy.
+        This API is applicable to clusters: 4.x dedicated cluster and 4.x generic cluster. For public network access point settings of 5.x clusters, refer to the API Documentation [ModifyInstanceEndpoint](https://www.tencentcloud.com/document/api/1493/115981?from_cn_redirect=1).
 
         :param request: Request instance for SetRocketMQPublicAccessPoint.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SetRocketMQPublicAccessPointRequest`

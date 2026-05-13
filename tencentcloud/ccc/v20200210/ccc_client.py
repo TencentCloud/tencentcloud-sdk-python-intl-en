@@ -263,7 +263,7 @@ class CccClient(AbstractClient):
     def CreateAutoCalloutTask(self, request):
         r"""This API is used to create bulk automatic outbound calls. The system will automatically initiate outbound calls to the designated called number list based on task configuration. This API can call the configured Intelligent Agent to perform batch outbound call tasks. You can create a voice Intelligent Agent in the management console-Intelligent Agent Management and configure the dialogue process (https://www.tencentcloud.com/document/product/679/119796?from_cn_redirect=1). To create a single Intelligent Agent outbound call task, refer to the documentation (https://www.tencentcloud.com/document/product/679/115681?from_cn_redirect=1).
 
-        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.com/document/product/679/125953?from_cn_redirect=1).
+        The feature requires purchase of the Intelligent Agent call package and is only available for own telephone number.
 
         :param request: Request instance for CreateAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`

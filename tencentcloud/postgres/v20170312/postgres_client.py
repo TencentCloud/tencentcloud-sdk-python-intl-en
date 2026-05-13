@@ -857,7 +857,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBBackups(self, request):
-        r"""This API is used to query the backup list of an instance. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.
+        r"""This api is used to query instance backup list. This interface belongs to early stage and stopped feature iteration. We recommend using api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343) as an alternative.
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBBackupsRequest`

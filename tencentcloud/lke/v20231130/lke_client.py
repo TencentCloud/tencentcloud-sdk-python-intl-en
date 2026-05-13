@@ -118,29 +118,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCorp(self, request):
-        r"""This API is used to create enterprises.
-
-        :param request: Request instance for CreateCorp.
-        :type request: :class:`tencentcloud.lke.v20231130.models.CreateCorpRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateCorpResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCorp", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCorpResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateDocCate(self, request):
         r"""This API is used to create doc categories.
 
@@ -201,31 +178,6 @@ class LkeClient(AbstractClient):
             body = self.call("CreateQACate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateQACateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateReconstructDocumentFlow(self, request):
-        r"""This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
-        Document parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order.
-        During the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.
-
-        :param request: Request instance for CreateReconstructDocumentFlow.
-        :type request: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateReconstructDocumentFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateReconstructDocumentFlowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -548,29 +500,6 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeConcurrencyUsageGraph", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConcurrencyUsageGraphResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCorp(self, request):
-        r"""This API is used to query corporate details.
-
-        :param request: Request instance for DescribeCorp.
-        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCorpRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeCorpResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCorp", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCorpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1132,29 +1061,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetReconstructDocumentResult(self, request):
-        r"""This is an asynchronous APIs, used to get document parsing task results.
-
-        :param request: Request instance for GetReconstructDocumentResult.
-        :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetReconstructDocumentResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetReconstructDocumentResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetTaskStatus(self, request):
         r"""This API is used to get the task status.
 
@@ -1270,6 +1176,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IsTransferIntent(self, request):
+        r"""This API is used to determine whether to transfer to human service.
+
+        :param request: Request instance for IsTransferIntent.
+        :type request: :class:`tencentcloud.lke.v20231130.models.IsTransferIntentRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.IsTransferIntentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsTransferIntent", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsTransferIntentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListApp(self, request):
         r"""This API is used to get the application list under the corporate.
 
@@ -1284,29 +1213,6 @@ class LkeClient(AbstractClient):
             body = self.call("ListApp", params, headers=headers)
             response = json.loads(body)
             model = models.ListAppResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListAppCategory(self, request):
-        r"""This API is used to get list of application types.
-
-        :param request: Request instance for ListAppCategory.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListAppCategory", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListAppCategoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -584,9 +584,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _PublicEndPoint: Public network access point
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PublicEndPoint: str
+        :param _OldPublicEndPoint: Old public network access point
+        :type OldPublicEndPoint: str
         :param _VpcEndPoint: VPC access point
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcEndPoint: str
+        :param _OldVpcEndPoint: Old VPC access point
+        :type OldVpcEndPoint: str
         :param _NamespaceNum: Number of namespaces
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NamespaceNum: int
@@ -617,9 +621,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Tags: Tag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
+        :param _OldInternalPulsarEndPoint: Old support network Pulsar access point
+        :type OldInternalPulsarEndPoint: str
+        :param _OldInternalHttpEndPoint: Old support network HTTP access point
+        :type OldInternalHttpEndPoint: str
         :param _PayMode: Billing mode:
 `0`: Pay-as-you-go
-`1`: Monthly subscription
+`1`: Yearly/Monthly subscription
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PayMode: int
         :param _ProjectId: Project ID.
@@ -646,7 +654,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MaxStorageCapacity = None
         self._Version = None
         self._PublicEndPoint = None
+        self._OldPublicEndPoint = None
         self._VpcEndPoint = None
+        self._OldVpcEndPoint = None
         self._NamespaceNum = None
         self._UsedStorageBudget = None
         self._MaxPublishRateInMessages = None
@@ -657,6 +667,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MaxMessageDelayInSeconds = None
         self._PublicAccessEnabled = None
         self._Tags = None
+        self._OldInternalPulsarEndPoint = None
+        self._OldInternalHttpEndPoint = None
         self._PayMode = None
         self._ProjectId = None
         self._ProjectName = None
@@ -831,6 +843,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._PublicEndPoint = PublicEndPoint
 
     @property
+    def OldPublicEndPoint(self):
+        r"""Old public network access point
+        :rtype: str
+        """
+        return self._OldPublicEndPoint
+
+    @OldPublicEndPoint.setter
+    def OldPublicEndPoint(self, OldPublicEndPoint):
+        self._OldPublicEndPoint = OldPublicEndPoint
+
+    @property
     def VpcEndPoint(self):
         r"""VPC access point
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -841,6 +864,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @VpcEndPoint.setter
     def VpcEndPoint(self, VpcEndPoint):
         self._VpcEndPoint = VpcEndPoint
+
+    @property
+    def OldVpcEndPoint(self):
+        r"""Old VPC access point
+        :rtype: str
+        """
+        return self._OldVpcEndPoint
+
+    @OldVpcEndPoint.setter
+    def OldVpcEndPoint(self, OldVpcEndPoint):
+        self._OldVpcEndPoint = OldVpcEndPoint
 
     @property
     def NamespaceNum(self):
@@ -963,10 +997,32 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Tags = Tags
 
     @property
+    def OldInternalPulsarEndPoint(self):
+        r"""Old support network Pulsar access point
+        :rtype: str
+        """
+        return self._OldInternalPulsarEndPoint
+
+    @OldInternalPulsarEndPoint.setter
+    def OldInternalPulsarEndPoint(self, OldInternalPulsarEndPoint):
+        self._OldInternalPulsarEndPoint = OldInternalPulsarEndPoint
+
+    @property
+    def OldInternalHttpEndPoint(self):
+        r"""Old support network HTTP access point
+        :rtype: str
+        """
+        return self._OldInternalHttpEndPoint
+
+    @OldInternalHttpEndPoint.setter
+    def OldInternalHttpEndPoint(self, OldInternalHttpEndPoint):
+        self._OldInternalHttpEndPoint = OldInternalHttpEndPoint
+
+    @property
     def PayMode(self):
         r"""Billing mode:
 `0`: Pay-as-you-go
-`1`: Monthly subscription
+`1`: Yearly/Monthly subscription
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1028,7 +1084,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MaxStorageCapacity = params.get("MaxStorageCapacity")
         self._Version = params.get("Version")
         self._PublicEndPoint = params.get("PublicEndPoint")
+        self._OldPublicEndPoint = params.get("OldPublicEndPoint")
         self._VpcEndPoint = params.get("VpcEndPoint")
+        self._OldVpcEndPoint = params.get("OldVpcEndPoint")
         self._NamespaceNum = params.get("NamespaceNum")
         self._UsedStorageBudget = params.get("UsedStorageBudget")
         self._MaxPublishRateInMessages = params.get("MaxPublishRateInMessages")
@@ -1044,6 +1102,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._OldInternalPulsarEndPoint = params.get("OldInternalPulsarEndPoint")
+        self._OldInternalHttpEndPoint = params.get("OldInternalHttpEndPoint")
         self._PayMode = params.get("PayMode")
         self._ProjectId = params.get("ProjectId")
         self._ProjectName = params.get("ProjectName")
@@ -2693,150 +2753,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
-class CreateClusterRequest(AbstractModel):
-    r"""CreateCluster request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterName: Specifies the cluster name, which does not support chinese characters and special characters other than hyphens and underscores, with a length of no more than 64 characters.
-        :type ClusterName: str
-        :param _BindClusterId: ID of your dedicated physical cluster. If it is not passed in, cluster resources will be created in a public cluster by default.
-        :type BindClusterId: int
-        :param _Remark: Remarks (up to 128 characters).
-        :type Remark: str
-        :param _Tags: Cluster tag list (deprecated).
-        :type Tags: list of Tag
-        :param _PublicAccessEnabled: Whether to enable public network access. If this parameter is left empty, the feature will be enabled by default
-        :type PublicAccessEnabled: bool
-        """
-        self._ClusterName = None
-        self._BindClusterId = None
-        self._Remark = None
-        self._Tags = None
-        self._PublicAccessEnabled = None
-
-    @property
-    def ClusterName(self):
-        r"""Specifies the cluster name, which does not support chinese characters and special characters other than hyphens and underscores, with a length of no more than 64 characters.
-        :rtype: str
-        """
-        return self._ClusterName
-
-    @ClusterName.setter
-    def ClusterName(self, ClusterName):
-        self._ClusterName = ClusterName
-
-    @property
-    def BindClusterId(self):
-        r"""ID of your dedicated physical cluster. If it is not passed in, cluster resources will be created in a public cluster by default.
-        :rtype: int
-        """
-        return self._BindClusterId
-
-    @BindClusterId.setter
-    def BindClusterId(self, BindClusterId):
-        self._BindClusterId = BindClusterId
-
-    @property
-    def Remark(self):
-        r"""Remarks (up to 128 characters).
-        :rtype: str
-        """
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
-    def Tags(self):
-        r"""Cluster tag list (deprecated).
-        :rtype: list of Tag
-        """
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-    @property
-    def PublicAccessEnabled(self):
-        r"""Whether to enable public network access. If this parameter is left empty, the feature will be enabled by default
-        :rtype: bool
-        """
-        return self._PublicAccessEnabled
-
-    @PublicAccessEnabled.setter
-    def PublicAccessEnabled(self, PublicAccessEnabled):
-        self._PublicAccessEnabled = PublicAccessEnabled
-
-
-    def _deserialize(self, params):
-        self._ClusterName = params.get("ClusterName")
-        self._BindClusterId = params.get("BindClusterId")
-        self._Remark = params.get("Remark")
-        if params.get("Tags") is not None:
-            self._Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self._Tags.append(obj)
-        self._PublicAccessEnabled = params.get("PublicAccessEnabled")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateClusterResponse(AbstractModel):
-    r"""CreateCluster response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterId: Cluster ID
-        :type ClusterId: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._ClusterId = None
-        self._RequestId = None
-
-    @property
-    def ClusterId(self):
-        r"""Cluster ID
-        :rtype: str
-        """
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ClusterId = params.get("ClusterId")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateCmqQueueRequest(AbstractModel):
     r"""CreateCmqQueue request structure.
 
@@ -2844,7 +2760,7 @@ class CreateCmqQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueName: Queue name, which is unique under the same account in a single region. It is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :param _QueueName: Queue name is unique under the same account in a single region. Queue name starts with a letter and can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It is case-insensitive.
         :type QueueName: str
         :param _MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
         :type MaxMsgHeapNum: int
@@ -2899,7 +2815,7 @@ class CreateCmqQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""Queue name, which is unique under the same account in a single region. It is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        r"""Queue name is unique under the same account in a single region. Queue name starts with a letter and can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It is case-insensitive.
         :rtype: str
         """
         return self._QueueName
@@ -3170,7 +3086,7 @@ class CreateCmqSubscribeRequest(AbstractModel):
         r"""
         :param _TopicName: Topic name, which must be unique under the same account in a single region. The name is a string of no more than 64 characters, starting with a letter, and the remaining part may include letters, numbers, and hyphens (-).
         :type TopicName: str
-        :param _SubscriptionName: Subscription name, uniquely identifies under the same topic of the same account in a single region. subscription name is a string of no more than 64 characters, beginning with a letter, the remaining part can contain letters, digits, and hyphens (-).
+        :param _SubscriptionName: Subscription name is unique under the same account and same topic in a single region. Subscription name starts with a letter and can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It cannot be modified after creation.
         :type SubscriptionName: str
         :param _Protocol: Subscription protocol. Currently, two protocols are supported: HTTP and queue. To use the HTTP protocol, you need to build your own web server to receive messages. With the queue protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.
         :type Protocol: str
@@ -3207,7 +3123,7 @@ class CreateCmqSubscribeRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
-        r"""Subscription name, uniquely identifies under the same topic of the same account in a single region. subscription name is a string of no more than 64 characters, beginning with a letter, the remaining part can contain letters, digits, and hyphens (-).
+        r"""Subscription name is unique under the same account and same topic in a single region. Subscription name starts with a letter and can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It cannot be modified after creation.
         :rtype: str
         """
         return self._SubscriptionName
@@ -3352,7 +3268,7 @@ class CreateCmqTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic name, which must be unique under the same account in a single region. The name is a string of no more than 64 characters, starting with a letter, and the remaining part may include letters, numbers, and hyphens (-).
+        :param _TopicName: Topic name is unique under the same account in a single region. Topic name can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It cannot be modified after creation and is case-insensitive.
         :type TopicName: str
         :param _MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
         :type MaxMsgSize: int
@@ -3374,7 +3290,7 @@ class CreateCmqTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""Topic name, which must be unique under the same account in a single region. The name is a string of no more than 64 characters, starting with a letter, and the remaining part may include letters, numbers, and hyphens (-).
+        r"""Topic name is unique under the same account in a single region. Topic name can only contain letters, numbers, "-", and "_", with a maximum of 64 characters. It cannot be modified after creation and is case-insensitive.
         :rtype: str
         """
         return self._TopicName
@@ -3523,6 +3439,12 @@ class CreateEnvironmentRequest(AbstractModel):
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time switch
+        :type SubscriptionExpirationTimeEnable: bool
+        :param _Tags: Namespace tag
+        :type Tags: list of Tag
         """
         self._EnvironmentId = None
         self._MsgTTL = None
@@ -3530,6 +3452,9 @@ class CreateEnvironmentRequest(AbstractModel):
         self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
+        self._Tags = None
 
     @property
     def EnvironmentId(self):
@@ -3597,6 +3522,39 @@ class CreateEnvironmentRequest(AbstractModel):
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time switch
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
+    def Tags(self):
+        r"""Namespace tag
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -3607,6 +3565,14 @@ class CreateEnvironmentRequest(AbstractModel):
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3633,6 +3599,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Remark: str
         :param _NamespaceId: Namespace ID
         :type NamespaceId: str
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3640,6 +3610,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MsgTTL = None
         self._Remark = None
         self._NamespaceId = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -3688,6 +3660,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._NamespaceId = NamespaceId
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -3704,6 +3698,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MsgTTL = params.get("MsgTTL")
         self._Remark = params.get("Remark")
         self._NamespaceId = params.get("NamespaceId")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -3830,9 +3826,6 @@ Single-AZ deployment selects an availability zone. example: [200002].
         :param _ProductName: Cluster specification code.
 Refers to professional cluster specifications (https://www.tencentcloud.com/document/product/1179/83705?from_cn_redirect=1).
         :type ProductName: str
-        :param _StorageSize: Specifies the storage specification.
-Refers to professional cluster specifications (https://www.tencentcloud.com/document/product/1179/83705?from_cn_redirect=1).
-        :type StorageSize: int
         :param _AutoRenewFlag: `1`: true. enables automatic monthly renewal.
 
 false. disables automatic monthly renewal.
@@ -3843,6 +3836,9 @@ false. disables automatic monthly renewal.
         :type ClusterName: str
         :param _AutoVoucher: Whether to automatically select voucher. valid values: 1 (yes), 0 (no). default is 0.
         :type AutoVoucher: int
+        :param _StorageSize: Specifies the storage specification.
+Refers to professional cluster specifications (https://www.tencentcloud.com/document/product/1179/83705?from_cn_redirect=1).
+        :type StorageSize: int
         :param _Vpc: Specifies the vpc network tag.
         :type Vpc: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _Tags: Tag list of the cluster (abandoned).
@@ -3850,11 +3846,11 @@ false. disables automatic monthly renewal.
         """
         self._ZoneIds = None
         self._ProductName = None
-        self._StorageSize = None
         self._AutoRenewFlag = None
         self._TimeSpan = None
         self._ClusterName = None
         self._AutoVoucher = None
+        self._StorageSize = None
         self._Vpc = None
         self._Tags = None
 
@@ -3882,18 +3878,6 @@ Refers to professional cluster specifications (https://www.tencentcloud.com/docu
     @ProductName.setter
     def ProductName(self, ProductName):
         self._ProductName = ProductName
-
-    @property
-    def StorageSize(self):
-        r"""Specifies the storage specification.
-Refers to professional cluster specifications (https://www.tencentcloud.com/document/product/1179/83705?from_cn_redirect=1).
-        :rtype: int
-        """
-        return self._StorageSize
-
-    @StorageSize.setter
-    def StorageSize(self, StorageSize):
-        self._StorageSize = StorageSize
 
     @property
     def AutoRenewFlag(self):
@@ -3942,6 +3926,18 @@ false. disables automatic monthly renewal.
         self._AutoVoucher = AutoVoucher
 
     @property
+    def StorageSize(self):
+        r"""Specifies the storage specification.
+Refers to professional cluster specifications (https://www.tencentcloud.com/document/product/1179/83705?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
     def Vpc(self):
         r"""Specifies the vpc network tag.
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
@@ -3967,11 +3963,11 @@ false. disables automatic monthly renewal.
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
         self._ProductName = params.get("ProductName")
-        self._StorageSize = params.get("StorageSize")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._ClusterName = params.get("ClusterName")
         self._AutoVoucher = params.get("AutoVoucher")
+        self._StorageSize = params.get("StorageSize")
         if params.get("Vpc") is not None:
             self._Vpc = VpcInfo()
             self._Vpc._deserialize(params.get("Vpc"))
@@ -5051,7 +5047,7 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: Namespace
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _RoleName: Role name.
         :type RoleName: str
@@ -5070,7 +5066,7 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Namespace
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -5182,7 +5178,7 @@ class CreateRocketMQGroupRequest(AbstractModel):
         r"""
         :param _GroupId: Group name (8–64 characters)
         :type GroupId: str
-        :param _Namespaces: Namespace. Currently, only one namespace is supported
+        :param _Namespaces: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type Namespaces: list of str
         :param _ReadEnable: Whether to enable consumption
         :type ReadEnable: bool
@@ -5219,7 +5215,7 @@ class CreateRocketMQGroupRequest(AbstractModel):
 
     @property
     def Namespaces(self):
-        r"""Namespace. Currently, only one namespace is supported
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: list of str
         """
         return self._Namespaces
@@ -5316,6 +5312,195 @@ class CreateRocketMQGroupRequest(AbstractModel):
 
 class CreateRocketMQGroupResponse(AbstractModel):
     r"""CreateRocketMQGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRocketMQGroupV2Request(AbstractModel):
+    r"""CreateRocketMQGroupV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: consumer group name
+        :type GroupId: str
+        :param _Namespace: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
+        :type Namespace: str
+        :param _ReadEnable: Enable consumption
+        :type ReadEnable: bool
+        :param _BroadcastEnable: Enable broadcast consumption
+        :type BroadcastEnable: bool
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _GroupType: Group Type (TCP/HTTP)
+        :type GroupType: str
+        :param _RetryMaxTimes: Group Max Retry Count
+        :type RetryMaxTimes: int
+        :param _TagList: Tag list
+        :type TagList: list of Tag
+        """
+        self._GroupId = None
+        self._Namespace = None
+        self._ReadEnable = None
+        self._BroadcastEnable = None
+        self._ClusterId = None
+        self._Remark = None
+        self._GroupType = None
+        self._RetryMaxTimes = None
+        self._TagList = None
+
+    @property
+    def GroupId(self):
+        r"""consumer group name
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Namespace(self):
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ReadEnable(self):
+        r"""Enable consumption
+        :rtype: bool
+        """
+        return self._ReadEnable
+
+    @ReadEnable.setter
+    def ReadEnable(self, ReadEnable):
+        self._ReadEnable = ReadEnable
+
+    @property
+    def BroadcastEnable(self):
+        r"""Enable broadcast consumption
+        :rtype: bool
+        """
+        return self._BroadcastEnable
+
+    @BroadcastEnable.setter
+    def BroadcastEnable(self, BroadcastEnable):
+        self._BroadcastEnable = BroadcastEnable
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def GroupType(self):
+        r"""Group Type (TCP/HTTP)
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def RetryMaxTimes(self):
+        r"""Group Max Retry Count
+        :rtype: int
+        """
+        return self._RetryMaxTimes
+
+    @RetryMaxTimes.setter
+    def RetryMaxTimes(self, RetryMaxTimes):
+        self._RetryMaxTimes = RetryMaxTimes
+
+    @property
+    def TagList(self):
+        r"""Tag list
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Namespace = params.get("Namespace")
+        self._ReadEnable = params.get("ReadEnable")
+        self._BroadcastEnable = params.get("BroadcastEnable")
+        self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
+        self._GroupType = params.get("GroupType")
+        self._RetryMaxTimes = params.get("RetryMaxTimes")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQGroupV2Response(AbstractModel):
+    r"""CreateRocketMQGroupV2 response structure.
 
     """
 
@@ -5631,7 +5816,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
         r"""
         :param _Topic: Topic name, which can contain 3–64 letters, digits, hyphens, and underscores
         :type Topic: str
-        :param _Namespaces: Topic namespace. Currently, you can create topics only in one single namespace.
+        :param _Namespaces: Namespace of the topic. The common Cluster Namespace for 4.x is fixed as: tdmq_default
         :type Namespaces: list of str
         :param _Type: Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction, and DelayScheduled. Transaction is only supported in the Exclusive Edition.
         :type Type: str
@@ -5662,7 +5847,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
 
     @property
     def Namespaces(self):
-        r"""Topic namespace. Currently, you can create topics only in one single namespace.
+        r"""Namespace of the topic. The common Cluster Namespace for 4.x is fixed as: tdmq_default
         :rtype: list of str
         """
         return self._Namespaces
@@ -5761,6 +5946,165 @@ class CreateRocketMQTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQTopicV2Request(AbstractModel):
+    r"""CreateRocketMQTopicV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: Topic name
+        :type Topic: str
+        :param _Type: Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction, and DelayScheduled. Transaction is only supported in the Exclusive Edition.
+        :type Type: str
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _Namespace: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
+        :type Namespace: str
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _PartitionNum: Number of partitions, invalid for global order
+        :type PartitionNum: int
+        :param _TagList: Tag list
+        :type TagList: list of Tag
+        """
+        self._Topic = None
+        self._Type = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._Remark = None
+        self._PartitionNum = None
+        self._TagList = None
+
+    @property
+    def Topic(self):
+        r"""Topic name
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        r"""Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction, and DelayScheduled. Transaction is only supported in the Exclusive Edition.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PartitionNum(self):
+        r"""Number of partitions, invalid for global order
+        :rtype: int
+        """
+        return self._PartitionNum
+
+    @PartitionNum.setter
+    def PartitionNum(self, PartitionNum):
+        self._PartitionNum = PartitionNum
+
+    @property
+    def TagList(self):
+        r"""Tag list
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        self._PartitionNum = params.get("PartitionNum")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQTopicV2Response(AbstractModel):
+    r"""CreateRocketMQTopicV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQVipInstanceRequest(AbstractModel):
     r"""CreateRocketMQVipInstance request structure.
 
@@ -5772,8 +6116,6 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         :type Name: str
         :param _Spec: Cluster specification. Supported specifications: 1. 	General: rocket-vip-basic-0; 2. Basic: rocket-vip-basic-1; 3. Standard: rocket-vip-basic-2; 4. Advanced I: rocket-vip-basic-3; 5. Advanced II: rocket-vip-basic-4.
         :type Spec: str
-        :param _NodeCount: Number of nodes. Value range: 2–20.
-        :type NodeCount: int
         :param _StorageSize: Single-node storage space, in GB. The minimum space is 200 GB.
         :type StorageSize: int
         :param _ZoneIds: The zone ID list for node deployment. For example, the ID of Guangzhou Zone 1 is 100001. For details, see the official website of the cloud platform.
@@ -5782,6 +6124,10 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         :type VpcInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _TimeSpan: Purchase duration, in months.
         :type TimeSpan: int
+        :param _NodeCount: Node count, required when creating a dedicated cluster
+        :type NodeCount: int
+        :param _GeneralSkuCode: Flag of the generic cluster specification, required for new purchase. Obtain it from the GeneralSKU field in the API response of [DescribeRocketMQGeneralSKUs](https://www.tencentcloud.com/document/api/1179/127066?from_cn_redirect=1).
+        :type GeneralSkuCode: str
         :param _SupportsMigrateToCloud: Whether it is used for cloud migration. The default value is false.
         :type SupportsMigrateToCloud: bool
         :param _EnablePublic: Specifies whether public network access is enabled.
@@ -5795,11 +6141,12 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         """
         self._Name = None
         self._Spec = None
-        self._NodeCount = None
         self._StorageSize = None
         self._ZoneIds = None
         self._VpcInfo = None
         self._TimeSpan = None
+        self._NodeCount = None
+        self._GeneralSkuCode = None
         self._SupportsMigrateToCloud = None
         self._EnablePublic = None
         self._Bandwidth = None
@@ -5827,17 +6174,6 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     @Spec.setter
     def Spec(self, Spec):
         self._Spec = Spec
-
-    @property
-    def NodeCount(self):
-        r"""Number of nodes. Value range: 2–20.
-        :rtype: int
-        """
-        return self._NodeCount
-
-    @NodeCount.setter
-    def NodeCount(self, NodeCount):
-        self._NodeCount = NodeCount
 
     @property
     def StorageSize(self):
@@ -5882,6 +6218,28 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     @TimeSpan.setter
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
+
+    @property
+    def NodeCount(self):
+        r"""Node count, required when creating a dedicated cluster
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def GeneralSkuCode(self):
+        r"""Flag of the generic cluster specification, required for new purchase. Obtain it from the GeneralSKU field in the API response of [DescribeRocketMQGeneralSKUs](https://www.tencentcloud.com/document/api/1179/127066?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._GeneralSkuCode
+
+    @GeneralSkuCode.setter
+    def GeneralSkuCode(self, GeneralSkuCode):
+        self._GeneralSkuCode = GeneralSkuCode
 
     @property
     def SupportsMigrateToCloud(self):
@@ -5942,13 +6300,14 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Spec = params.get("Spec")
-        self._NodeCount = params.get("NodeCount")
         self._StorageSize = params.get("StorageSize")
         self._ZoneIds = params.get("ZoneIds")
         if params.get("VpcInfo") is not None:
             self._VpcInfo = VpcInfo()
             self._VpcInfo._deserialize(params.get("VpcInfo"))
         self._TimeSpan = params.get("TimeSpan")
+        self._NodeCount = params.get("NodeCount")
+        self._GeneralSkuCode = params.get("GeneralSkuCode")
         self._SupportsMigrateToCloud = params.get("SupportsMigrateToCloud")
         self._EnablePublic = params.get("EnablePublic")
         self._Bandwidth = params.get("Bandwidth")
@@ -6402,6 +6761,12 @@ class CreateTopicRequest(AbstractModel):
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: Specifies the consumer Ack timeout period in seconds. value range: 60-(3600*24).
         :type AckTimeOut: int
+        :param _PulsarTopicMessageType: Pulsar topic message Type 0: composite message 1: regular message 2: delayed message
+        :type PulsarTopicMessageType: int
+        :param _Tags: Theme tag
+        :type Tags: list of Tag
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :type DelayMessagePolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -6414,6 +6779,9 @@ class CreateTopicRequest(AbstractModel):
         self._UnackPolicy = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._PulsarTopicMessageType = None
+        self._Tags = None
+        self._DelayMessagePolicy = None
 
     @property
     def EnvironmentId(self):
@@ -6545,6 +6913,39 @@ class CreateTopicRequest(AbstractModel):
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def PulsarTopicMessageType(self):
+        r"""Pulsar topic message Type 0: composite message 1: regular message 2: delayed message
+        :rtype: int
+        """
+        return self._PulsarTopicMessageType
+
+    @PulsarTopicMessageType.setter
+    def PulsarTopicMessageType(self, PulsarTopicMessageType):
+        self._PulsarTopicMessageType = PulsarTopicMessageType
+
+    @property
+    def Tags(self):
+        r"""Theme tag
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -6558,6 +6959,14 @@ class CreateTopicRequest(AbstractModel):
         self._UnackPolicy = params.get("UnackPolicy")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7803,7 +8212,7 @@ class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: Environment (namespace) name.
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _RoleNames: Role name array.
         :type RoleNames: list of str
@@ -7816,7 +8225,7 @@ class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Environment (namespace) name.
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -7899,7 +8308,7 @@ class DeleteRocketMQGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Namespace name
+        :param _NamespaceId: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _GroupId: Consumer group name
         :type GroupId: str
@@ -7921,7 +8330,7 @@ class DeleteRocketMQGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace name
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -8166,7 +8575,7 @@ class DeleteRocketMQTopicRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Namespace name
+        :param _NamespaceId: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _Topic: Topic name
         :type Topic: str
@@ -8188,7 +8597,7 @@ class DeleteRocketMQTopicRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace name
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -9890,6 +10299,10 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         :type Replicas: int
         :param _Remark: Remarks.
         :type Remark: str
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time switch
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -9901,6 +10314,8 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._EnvironmentId = None
         self._Replicas = None
         self._Remark = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -9992,6 +10407,28 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._Remark = Remark
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time switch
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -10012,6 +10449,8 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self._EnvironmentId = params.get("EnvironmentId")
         self._Replicas = params.get("Replicas")
         self._Remark = params.get("Remark")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -10843,6 +11282,8 @@ class DescribeMsgTraceRequest(AbstractModel):
         :type SubscriptionName: str
         :param _ClusterId: Pulsar cluster ID
         :type ClusterId: str
+        :param _TopicName: topic name
+        :type TopicName: str
         """
         self._EnvironmentId = None
         self._MsgId = None
@@ -10851,6 +11292,7 @@ class DescribeMsgTraceRequest(AbstractModel):
         self._Limit = None
         self._SubscriptionName = None
         self._ClusterId = None
+        self._TopicName = None
 
     @property
     def EnvironmentId(self):
@@ -10929,6 +11371,17 @@ class DescribeMsgTraceRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def TopicName(self):
+        r"""topic name
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -10938,6 +11391,7 @@ class DescribeMsgTraceRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._SubscriptionName = params.get("SubscriptionName")
         self._ClusterId = params.get("ClusterId")
+        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11400,14 +11854,14 @@ class DescribePulsarProInstanceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: Cluster ID.
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""Cluster ID.
         :rtype: str
         """
         return self._ClusterId
@@ -11444,12 +11898,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ClusterSpecInfo: Cluster specification information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterSpecInfo: :class:`tencentcloud.tdmq.v20200217.models.PulsarProClusterSpecInfo`
+        :param _CertificateList: Certificate list of the cluster
+        :type CertificateList: list of CertificateInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ClusterInfo = None
         self._NetworkAccessPointInfos = None
         self._ClusterSpecInfo = None
+        self._CertificateList = None
         self._RequestId = None
 
     @property
@@ -11488,6 +11945,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ClusterSpecInfo = ClusterSpecInfo
 
     @property
+    def CertificateList(self):
+        r"""Certificate list of the cluster
+        :rtype: list of CertificateInfo
+        """
+        return self._CertificateList
+
+    @CertificateList.setter
+    def CertificateList(self, CertificateList):
+        self._CertificateList = CertificateList
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -11512,6 +11980,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ClusterSpecInfo") is not None:
             self._ClusterSpecInfo = PulsarProClusterSpecInfo()
             self._ClusterSpecInfo._deserialize(params.get("ClusterSpecInfo"))
+        if params.get("CertificateList") is not None:
+            self._CertificateList = []
+            for item in params.get("CertificateList"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CertificateList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14337,7 +14811,8 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
         r"""
         :param _ClusterId: Required. Specifies the ID of the RocketMQ cluster.
         :type ClusterId: str
-        :param _EnvironmentId: Namespace
+        :param _EnvironmentId: Namespace, the common Cluster Namespace for 4.x is fixed as: tdmq_default
+
         :type EnvironmentId: str
         :param _Offset: Starting index. Default is 0 if left empty.
         :type Offset: int
@@ -14368,7 +14843,8 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Namespace
+        r"""Namespace, the common Cluster Namespace for 4.x is fixed as: tdmq_default
+
         :rtype: str
         """
         return self._EnvironmentId
@@ -14451,9 +14927,9 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Record count.
+        :param _TotalCount: Total number.
         :type TotalCount: int
-        :param _EnvironmentRoleSets: Namespace role collection.
+        :param _EnvironmentRoleSets: Role-based license list
         :type EnvironmentRoleSets: list of EnvironmentRole
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14464,7 +14940,7 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Record count.
+        r"""Total number.
         :rtype: int
         """
         return self._TotalCount
@@ -14475,7 +14951,7 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
 
     @property
     def EnvironmentRoleSets(self):
-        r"""Namespace role collection.
+        r"""Role-based license list
         :rtype: list of EnvironmentRole
         """
         return self._EnvironmentRoleSets
@@ -14507,6 +14983,60 @@ class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQGeneralSKUsRequest(AbstractModel):
+    r"""DescribeRocketMQGeneralSKUs request structure.
+
+    """
+
+
+class DescribeRocketMQGeneralSKUsResponse(AbstractModel):
+    r"""DescribeRocketMQGeneralSKUs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Skus: Product configuration information
+        :type Skus: list of GeneralSKU
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Skus = None
+        self._RequestId = None
+
+    @property
+    def Skus(self):
+        r"""Product configuration information
+        :rtype: list of GeneralSKU
+        """
+        return self._Skus
+
+    @Skus.setter
+    def Skus(self, Skus):
+        self._Skus = Skus
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Skus") is not None:
+            self._Skus = []
+            for item in params.get("Skus"):
+                obj = GeneralSKU()
+                obj._deserialize(item)
+                self._Skus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQGroupsRequest(AbstractModel):
     r"""DescribeRocketMQGroups request structure.
 
@@ -14516,11 +15046,11 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _NamespaceId: Namespace.
+        :param _NamespaceId: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _Offset: Offset.
         :type Offset: int
-        :param _Limit: The max number of returned results.
+        :param _Limit: Maximum number of entries per request. Range: [0–100]. Default value: 20.
         :type Limit: int
         :param _FilterTopic: Topic name, which can be used to query all subscription groups under the topic
         :type FilterTopic: str
@@ -14562,7 +15092,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace.
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -14584,7 +15114,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""The max number of returned results.
+        r"""Maximum number of entries per request. Range: [0–100]. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -14770,7 +15300,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _EnvironmentId: Namespace ID
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: Topic name. Pass in the group ID when querying a dead letter queue.
         :type TopicName: str
@@ -14813,7 +15343,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Namespace ID
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -15102,7 +15632,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _EnvironmentId: Namespace
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: Topic. When the system queries RocketMQ dead letters, the value is groupId.
         :type TopicName: str
@@ -15136,7 +15666,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Namespace
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -15439,7 +15969,7 @@ class DescribeRocketMQProducersRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Namespace
+        :param _NamespaceId: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _Topic: Topic name
         :type Topic: str
@@ -15473,7 +16003,7 @@ class DescribeRocketMQProducersRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -15622,9 +16152,12 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Exclusive Edition cluster ID.
+        :param _InstanceId: Cluster ID
         :type InstanceId: str
-        :param _MetricName: Metric name. Only single-metric pulling is supported. Currently supported metrics: ClientIntraffic and ClientOuttraffic.
+        :param _MetricName: Metric name. Only single metric pull is supported. The metrics are enumerated as follows:
+
+-ClientIntraffic: Inbound traffic
+-ClientOuttraffic: Outbound traffic
         :type MetricName: str
         :param _StartTime: Start time.
         :type StartTime: str
@@ -15641,7 +16174,7 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Exclusive Edition cluster ID.
+        r"""Cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -15652,7 +16185,10 @@ class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""Metric name. Only single-metric pulling is supported. Currently supported metrics: ClientIntraffic and ClientOuttraffic.
+        r"""Metric name. Only single metric pull is supported. The metrics are enumerated as follows:
+
+-ClientIntraffic: Inbound traffic
+-ClientOuttraffic: Outbound traffic
         :rtype: str
         """
         return self._MetricName
@@ -16154,9 +16690,9 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Record count.
+        :param _TotalCount: Total number.
         :type TotalCount: int
-        :param _RoleSets: Role array.
+        :param _RoleSets: This API is used to provide the role list.
         :type RoleSets: list of Role
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16167,7 +16703,7 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Record count.
+        r"""Total number.
         :rtype: int
         """
         return self._TotalCount
@@ -16178,7 +16714,7 @@ class DescribeRocketMQRolesResponse(AbstractModel):
 
     @property
     def RoleSets(self):
-        r"""Role array.
+        r"""This API is used to provide the role list.
         :rtype: list of Role
         """
         return self._RoleSets
@@ -16362,7 +16898,7 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _EnvironmentId: Namespace
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _TopicName: Topic name, which is groupId when the system queries dead letters.
         :type TopicName: str
@@ -16417,7 +16953,7 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Namespace
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -16833,7 +17369,7 @@ class DescribeRocketMQTopicStatsRequest(AbstractModel):
         r"""
         :param _ClusterId: Instance ID.
         :type ClusterId: str
-        :param _NamespaceId: Namespace
+        :param _NamespaceId: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _TopicName: Topic name
         :type TopicName: str
@@ -16855,7 +17391,7 @@ class DescribeRocketMQTopicStatsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -16947,7 +17483,7 @@ class DescribeRocketMQTopicsByGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Specifies the namespace name.
+        :param _NamespaceId: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _GroupId: Consumer group name.
         :type GroupId: str
@@ -16975,7 +17511,7 @@ class DescribeRocketMQTopicsByGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Specifies the namespace name.
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -17105,7 +17641,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
         :type Limit: int
         :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _NamespaceId: Namespace.
+        :param _NamespaceId: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _FilterType: Filter by topic type. Valid values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`.
         :type FilterType: list of str
@@ -17160,7 +17696,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace.
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -18347,7 +18883,10 @@ class DetailedRolePerm(AbstractModel):
         :type PermWrite: bool
         :param _PermRead: Whether to enable consumption permission
         :type PermRead: bool
-        :param _ResourceType: Authorized resource type (Topic: topic; Group: consumer group).
+        :param _ResourceType: Authorized resource type. Enumeration values are as follows:
+-Topic: Topic dimension
+-Group: Consumer group dimension
+-Cluster: cluster-level (default value)
         :type ResourceType: str
         :param _Remark: Resource remarks.
         :type Remark: str
@@ -18393,7 +18932,10 @@ class DetailedRolePerm(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""Authorized resource type (Topic: topic; Group: consumer group).
+        r"""Authorized resource type. Enumeration values are as follows:
+-Topic: Topic dimension
+-Group: Consumer group dimension
+-Cluster: cluster-level (default value)
         :rtype: str
         """
         return self._ResourceType
@@ -18558,6 +19100,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time switch
+        :type SubscriptionExpirationTimeEnable: bool
+        :param _Tags: Namespace tag
+        :type Tags: list of Tag
         """
         self._EnvironmentId = None
         self._Remark = None
@@ -18569,6 +19117,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TopicNum = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
+        self._Tags = None
 
     @property
     def EnvironmentId(self):
@@ -18683,6 +19234,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time switch
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
+    def Tags(self):
+        r"""Namespace tag
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -18697,6 +19281,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18876,13 +19468,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ExchangeQuota(AbstractModel):
-    r"""exchange usage quota information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxExchange: Maximum number of creatable exchanges
+        :param _MaxExchange: 
         :type MaxExchange: int
         :param _UsedExchange: Number of created exchanges.
         :type UsedExchange: int
@@ -18892,7 +19484,7 @@ class ExchangeQuota(AbstractModel):
 
     @property
     def MaxExchange(self):
-        r"""Maximum number of creatable exchanges
+        r"""
         :rtype: int
         """
         return self._MaxExchange
@@ -19374,6 +19966,137 @@ class FilterSubscription(AbstractModel):
         self._ConsumerHasBacklog = params.get("ConsumerHasBacklog")
         self._ConsumerHasExpired = params.get("ConsumerHasExpired")
         self._SubscriptionNames = params.get("SubscriptionNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralSKU(AbstractModel):
+    r"""Generic cluster sales information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkuCode: Specification flag
+        :type SkuCode: str
+        :param _OnSale: available for sale
+        :type OnSale: bool
+        :param _TpsLimit: TPS limit
+        :type TpsLimit: int
+        :param _TopicNumLimit: Number of topics free quota
+        :type TopicNumLimit: int
+        :param _TopicNumUpperLimit: Number of topics cap
+        :type TopicNumUpperLimit: int
+        :param _PriceTags: Billing item information
+        :type PriceTags: list of PriceTag
+        :param _NodeCount: Number of storage nodes
+        :type NodeCount: int
+        """
+        self._SkuCode = None
+        self._OnSale = None
+        self._TpsLimit = None
+        self._TopicNumLimit = None
+        self._TopicNumUpperLimit = None
+        self._PriceTags = None
+        self._NodeCount = None
+
+    @property
+    def SkuCode(self):
+        r"""Specification flag
+        :rtype: str
+        """
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def OnSale(self):
+        r"""available for sale
+        :rtype: bool
+        """
+        return self._OnSale
+
+    @OnSale.setter
+    def OnSale(self, OnSale):
+        self._OnSale = OnSale
+
+    @property
+    def TpsLimit(self):
+        r"""TPS limit
+        :rtype: int
+        """
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def TopicNumLimit(self):
+        r"""Number of topics free quota
+        :rtype: int
+        """
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def TopicNumUpperLimit(self):
+        r"""Number of topics cap
+        :rtype: int
+        """
+        return self._TopicNumUpperLimit
+
+    @TopicNumUpperLimit.setter
+    def TopicNumUpperLimit(self, TopicNumUpperLimit):
+        self._TopicNumUpperLimit = TopicNumUpperLimit
+
+    @property
+    def PriceTags(self):
+        r"""Billing item information
+        :rtype: list of PriceTag
+        """
+        return self._PriceTags
+
+    @PriceTags.setter
+    def PriceTags(self, PriceTags):
+        self._PriceTags = PriceTags
+
+    @property
+    def NodeCount(self):
+        r"""Number of storage nodes
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+
+    def _deserialize(self, params):
+        self._SkuCode = params.get("SkuCode")
+        self._OnSale = params.get("OnSale")
+        self._TpsLimit = params.get("TpsLimit")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
+        if params.get("PriceTags") is not None:
+            self._PriceTags = []
+            for item in params.get("PriceTags"):
+                obj = PriceTag()
+                obj._deserialize(item)
+                self._PriceTags.append(obj)
+        self._NodeCount = params.get("NodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20166,6 +20889,10 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
         :type AutoSubscriptionCreation: bool
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time switch
+        :type SubscriptionExpirationTimeEnable: bool
         """
         self._EnvironmentId = None
         self._MsgTTL = None
@@ -20173,6 +20900,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
 
     @property
     def EnvironmentId(self):
@@ -20240,6 +20969,28 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
         self._AutoSubscriptionCreation = AutoSubscriptionCreation
 
+    @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time switch
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -20250,6 +21001,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20277,6 +21030,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _NamespaceId: Namespace ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NamespaceId: str
+        :param _SubscriptionExpirationTime: Offline subscription automatic expiration cleanup time
+        :type SubscriptionExpirationTime: int
+        :param _SubscriptionExpirationTimeEnable: Offline subscription automatic expiration cleanup time switch
+        :type SubscriptionExpirationTimeEnable: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -20284,6 +21041,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MsgTTL = None
         self._Remark = None
         self._NamespaceId = None
+        self._SubscriptionExpirationTime = None
+        self._SubscriptionExpirationTimeEnable = None
         self._RequestId = None
 
     @property
@@ -20333,6 +21092,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._NamespaceId = NamespaceId
 
     @property
+    def SubscriptionExpirationTime(self):
+        r"""Offline subscription automatic expiration cleanup time
+        :rtype: int
+        """
+        return self._SubscriptionExpirationTime
+
+    @SubscriptionExpirationTime.setter
+    def SubscriptionExpirationTime(self, SubscriptionExpirationTime):
+        self._SubscriptionExpirationTime = SubscriptionExpirationTime
+
+    @property
+    def SubscriptionExpirationTimeEnable(self):
+        r"""Offline subscription automatic expiration cleanup time switch
+        :rtype: bool
+        """
+        return self._SubscriptionExpirationTimeEnable
+
+    @SubscriptionExpirationTimeEnable.setter
+    def SubscriptionExpirationTimeEnable(self, SubscriptionExpirationTimeEnable):
+        self._SubscriptionExpirationTimeEnable = SubscriptionExpirationTimeEnable
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -20349,6 +21130,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MsgTTL = params.get("MsgTTL")
         self._Remark = params.get("Remark")
         self._NamespaceId = params.get("NamespaceId")
+        self._SubscriptionExpirationTime = params.get("SubscriptionExpirationTime")
+        self._SubscriptionExpirationTimeEnable = params.get("SubscriptionExpirationTimeEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -20723,7 +21506,7 @@ class ModifyRabbitMQUserRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID, such as amqp-xxxxxxxx. effective InstanceId can be queried by logging in to the TDMQ RabbitMQ console (https://console.cloud.tencent.com/trabbitmq/cluster?rid=1).
         :type InstanceId: str
-        :param _User: Username, such as admin. effective User names can be found by logging in to the TDMQ RabbitMQ console (https://console.cloud.tencent.com/trabbitmq/cluster?rid=1), clicking a cluster in the cluster list, entering cluster details, and locating the list of users under the User and permission management tab, thereby finding the username.
+        :param _User: Username, such as rabbitmq. To find an effective username, log in to the [TDMQ RabbitMQ Console](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1), click a cluster in the list, enter cluster details, and find the list of users in the user and permission management tab, so as to locate the username. Modifying the admin password is not supported currently.
         :type User: str
         :param _Password: Password, used when logging in. requirement: cannot be empty, 8-64 characters, must contain at least two items from lowercase letters, uppercase letters, digits, and special characters [`()~!@#$%^&*_=|{}[]:;',.?/].
         :type Password: str
@@ -20758,7 +21541,7 @@ management: ordinary console user. monitoring: administrative console user. othe
 
     @property
     def User(self):
-        r"""Username, such as admin. effective User names can be found by logging in to the TDMQ RabbitMQ console (https://console.cloud.tencent.com/trabbitmq/cluster?rid=1), clicking a cluster in the cluster list, entering cluster details, and locating the list of users under the User and permission management tab, thereby finding the username.
+        r"""Username, such as rabbitmq. To find an effective username, log in to the [TDMQ RabbitMQ Console](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1), click a cluster in the list, enter cluster details, and find the list of users in the user and permission management tab, so as to locate the username. Modifying the admin password is not supported currently.
         :rtype: str
         """
         return self._User
@@ -21095,7 +21878,7 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: Environment (namespace) name.
+        :param _EnvironmentId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type EnvironmentId: str
         :param _RoleName: Role name.
         :type RoleName: str
@@ -21114,7 +21897,7 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""Environment (namespace) name.
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._EnvironmentId
@@ -21226,7 +22009,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Namespace
+        :param _NamespaceId: Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _GroupId: Consumer group name
         :type GroupId: str
@@ -21260,7 +22043,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace
+        r"""Namespace of the consumption group. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -21929,7 +22712,7 @@ class ModifyRocketMQTopicRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _NamespaceId: Namespace name
+        :param _NamespaceId: Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _Topic: Topic name
         :type Topic: str
@@ -21957,7 +22740,7 @@ class ModifyRocketMQTopicRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace name
+        r"""Namespace of the topic. For 4.x common clusters, the Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -22229,6 +23012,8 @@ class ModifyTopicRequest(AbstractModel):
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: Consumer Ack timeout period in seconds. value range: 60-(3600*24).
         :type AckTimeOut: int
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :type DelayMessagePolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -22239,6 +23024,7 @@ class ModifyTopicRequest(AbstractModel):
         self._UnackPolicy = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._DelayMessagePolicy = None
 
     @property
     def EnvironmentId(self):
@@ -22340,6 +23126,17 @@ class ModifyTopicRequest(AbstractModel):
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -22351,6 +23148,7 @@ class ModifyTopicRequest(AbstractModel):
         self._UnackPolicy = params.get("UnackPolicy")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22742,6 +23540,93 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PriceTag(AbstractModel):
+    r"""Price tag information. A complete price tag includes the billing category and the billing item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Pricing name. Enumeration values are as follows:
+
+-tps: TPS base price
+-stepTps: TPS step length
+        :type Name: str
+        :param _Category: Billing category
+        :type Category: str
+        :param _Code: Tag of the billable item.
+        :type Code: str
+        :param _Step: Step size corresponding to the billing item.
+        :type Step: int
+        """
+        self._Name = None
+        self._Category = None
+        self._Code = None
+        self._Step = None
+
+    @property
+    def Name(self):
+        r"""Pricing name. Enumeration values are as follows:
+
+-tps: TPS base price
+-stepTps: TPS step length
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Category(self):
+        r"""Billing category
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Code(self):
+        r"""Tag of the billable item.
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Step(self):
+        r"""Step size corresponding to the billing item.
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Category = params.get("Category")
+        self._Code = params.get("Code")
+        self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProducerInfo(AbstractModel):
     r"""Producer client details.
 
@@ -22984,19 +23869,19 @@ class ProducerLog(AbstractModel):
 
 
 class PrometheusEndpointInfo(AbstractModel):
-    r"""rabbitmq Prometheus Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _PrometheusEndpointStatus: Status of the Prometheus switch
+        :param _PrometheusEndpointStatus: 
         :type PrometheusEndpointStatus: str
-        :param _VpcPrometheusEndpoint: prometheus Information
+        :param _VpcPrometheusEndpoint: 
         :type VpcPrometheusEndpoint: list of str
-        :param _NodePrometheusAddress: Node Information
+        :param _NodePrometheusAddress: 
         :type NodePrometheusAddress: list of str
-        :param _VpcEndpointInfo: vpc information
+        :param _VpcEndpointInfo: 
         :type VpcEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         self._PrometheusEndpointStatus = None
@@ -23006,7 +23891,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def PrometheusEndpointStatus(self):
-        r"""Status of the Prometheus switch
+        r"""
         :rtype: str
         """
         return self._PrometheusEndpointStatus
@@ -23017,7 +23902,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def VpcPrometheusEndpoint(self):
-        r"""prometheus Information
+        r"""
         :rtype: list of str
         """
         return self._VpcPrometheusEndpoint
@@ -23028,7 +23913,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def NodePrometheusAddress(self):
-        r"""Node Information
+        r"""
         :rtype: list of str
         """
         return self._NodePrometheusAddress
@@ -23039,7 +23924,7 @@ class PrometheusEndpointInfo(AbstractModel):
 
     @property
     def VpcEndpointInfo(self):
-        r"""vpc information
+        r"""
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         return self._VpcEndpointInfo
@@ -23480,6 +24365,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Tls: bool
         :param _CustomUrl: Access point custom domain name.
         :type CustomUrl: str
+        :param _SecurityGroupIds: id list of the bound security group for the access point. Only valid for vpc access points.
+        :type SecurityGroupIds: list of str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -23494,6 +24381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ZoneName = None
         self._Tls = None
         self._CustomUrl = None
+        self._SecurityGroupIds = None
 
     @property
     def VpcId(self):
@@ -23653,6 +24541,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CustomUrl(self, CustomUrl):
         self._CustomUrl = CustomUrl
 
+    @property
+    def SecurityGroupIds(self):
+        r"""id list of the bound security group for the access point. Only valid for vpc access points.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -23673,6 +24572,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ZoneName = params.get("ZoneName")
         self._Tls = params.get("Tls")
         self._CustomUrl = params.get("CustomUrl")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23965,7 +24865,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
         :type MaxBandWidth: int
         :param _MaxNamespaces: Maximum number of namespaces
         :type MaxNamespaces: int
-        :param _MaxTopics: Maximum number of topic partitions
+        :param _MaxTopics: Maximum number of topics that can be created
         :type MaxTopics: int
         :param _ScalableTps: Elastic TPS beyond the specification
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -23974,8 +24874,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Maximum number of partitions for topics in the current cluster.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxPartitions: int
-        :param _MaxDelayedMessages: Maximum delayed message count for the product. 0 indicates no limit.	
+        :param _MaxDelayedMessages: Maximum delayed message count. 0 means no limit.	
         :type MaxDelayedMessages: int
+        :param _MaxTopicsPartitioned: Maximum number of topic partitions that can be created
+        :type MaxTopicsPartitioned: int
+        :param _BrokerMaxConnections: Maximum number of connections per broker
+        :type BrokerMaxConnections: int
+        :param _BrokerMaxConnectionsPerIp: Maximum number of connections per IP
+        :type BrokerMaxConnectionsPerIp: int
+        :param _MaximumElasticStorage: Elastic storage cluster maximum storage specification; fixed storage is 0.
+        :type MaximumElasticStorage: int
         """
         self._SpecName = None
         self._MaxTps = None
@@ -23985,6 +24893,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ScalableTps = None
         self._MaxPartitions = None
         self._MaxDelayedMessages = None
+        self._MaxTopicsPartitioned = None
+        self._BrokerMaxConnections = None
+        self._BrokerMaxConnectionsPerIp = None
+        self._MaximumElasticStorage = None
 
     @property
     def SpecName(self):
@@ -24032,7 +24944,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxTopics(self):
-        r"""Maximum number of topic partitions
+        r"""Maximum number of topics that can be created
         :rtype: int
         """
         return self._MaxTopics
@@ -24068,7 +24980,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxDelayedMessages(self):
-        r"""Maximum delayed message count for the product. 0 indicates no limit.	
+        r"""Maximum delayed message count. 0 means no limit.	
         :rtype: int
         """
         return self._MaxDelayedMessages
@@ -24076,6 +24988,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @MaxDelayedMessages.setter
     def MaxDelayedMessages(self, MaxDelayedMessages):
         self._MaxDelayedMessages = MaxDelayedMessages
+
+    @property
+    def MaxTopicsPartitioned(self):
+        r"""Maximum number of topic partitions that can be created
+        :rtype: int
+        """
+        return self._MaxTopicsPartitioned
+
+    @MaxTopicsPartitioned.setter
+    def MaxTopicsPartitioned(self, MaxTopicsPartitioned):
+        self._MaxTopicsPartitioned = MaxTopicsPartitioned
+
+    @property
+    def BrokerMaxConnections(self):
+        r"""Maximum number of connections per broker
+        :rtype: int
+        """
+        return self._BrokerMaxConnections
+
+    @BrokerMaxConnections.setter
+    def BrokerMaxConnections(self, BrokerMaxConnections):
+        self._BrokerMaxConnections = BrokerMaxConnections
+
+    @property
+    def BrokerMaxConnectionsPerIp(self):
+        r"""Maximum number of connections per IP
+        :rtype: int
+        """
+        return self._BrokerMaxConnectionsPerIp
+
+    @BrokerMaxConnectionsPerIp.setter
+    def BrokerMaxConnectionsPerIp(self, BrokerMaxConnectionsPerIp):
+        self._BrokerMaxConnectionsPerIp = BrokerMaxConnectionsPerIp
+
+    @property
+    def MaximumElasticStorage(self):
+        r"""Elastic storage cluster maximum storage specification; fixed storage is 0.
+        :rtype: int
+        """
+        return self._MaximumElasticStorage
+
+    @MaximumElasticStorage.setter
+    def MaximumElasticStorage(self, MaximumElasticStorage):
+        self._MaximumElasticStorage = MaximumElasticStorage
 
 
     def _deserialize(self, params):
@@ -24087,6 +25043,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ScalableTps = params.get("ScalableTps")
         self._MaxPartitions = params.get("MaxPartitions")
         self._MaxDelayedMessages = params.get("MaxDelayedMessages")
+        self._MaxTopicsPartitioned = params.get("MaxTopicsPartitioned")
+        self._BrokerMaxConnections = params.get("BrokerMaxConnections")
+        self._BrokerMaxConnectionsPerIp = params.get("BrokerMaxConnectionsPerIp")
+        self._MaximumElasticStorage = params.get("MaximumElasticStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24122,7 +25082,7 @@ class PulsarProInstance(AbstractModel):
         :type ExpireTime: int
         :param _AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).
         :type AutoRenewFlag: int
-        :param _PayMode: Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Monthly subscription).
+        :param _PayMode: Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Yearly/Monthly subscription).
         :type PayMode: int
         :param _Remark: Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -24277,7 +25237,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        r"""Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Monthly subscription).
+        r"""Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Yearly/Monthly subscription).
         :rtype: int
         """
         return self._PayMode
@@ -24458,13 +25418,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class QueueQuota(AbstractModel):
-    r"""queue usage quota information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxQueue: Maximum number of creatable queues
+        :param _MaxQueue: 
         :type MaxQueue: int
         :param _UsedQueue: Number of created Queues.
         :type UsedQueue: int
@@ -24474,7 +25434,7 @@ class QueueQuota(AbstractModel):
 
     @property
     def MaxQueue(self):
-        r"""Maximum number of creatable queues
+        r"""
         :rtype: int
         """
         return self._MaxQueue
@@ -24695,27 +25655,27 @@ class RabbitMQBindingListInfo(AbstractModel):
 
 
 class RabbitMQClusterAccessInfo(AbstractModel):
-    r"""RabbitMQ Cluster Access Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _PublicAccessEndpoint: Cluster Public Network Access Address
+        :param _PublicAccessEndpoint: 
         :type PublicAccessEndpoint: str
-        :param _WebConsoleEndpoint: Cluster Console Access Address
+        :param _WebConsoleEndpoint: 
         :type WebConsoleEndpoint: str
-        :param _WebConsoleUsername: Cluster Console Login Username
+        :param _WebConsoleUsername: 
         :type WebConsoleUsername: str
-        :param _WebConsolePassword: Cluster Console Login Password
+        :param _WebConsolePassword: 
         :type WebConsolePassword: str
-        :param _PublicAccessEndpointStatus: Deprecated
+        :param _PublicAccessEndpointStatus: 
         :type PublicAccessEndpointStatus: bool
-        :param _PublicControlConsoleSwitchStatus: Deprecated
+        :param _PublicControlConsoleSwitchStatus: 
         :type PublicControlConsoleSwitchStatus: bool
-        :param _VpcControlConsoleSwitchStatus: Deprecated
+        :param _VpcControlConsoleSwitchStatus: 
         :type VpcControlConsoleSwitchStatus: bool
-        :param _VpcWebConsoleEndpoint: Vpc management console access address, example value: http://1.1.1.1:15672
+        :param _VpcWebConsoleEndpoint: 
         :type VpcWebConsoleEndpoint: str
         :param _PublicWebConsoleSwitchStatus: Status of the public network access point in the console. Valid values: OFF, ON, CREATING, and DELETING.
         :type PublicWebConsoleSwitchStatus: str
@@ -24734,6 +25694,12 @@ OFF/ON/CREATING/DELETING
         :type PublicTlsAccessEndpoint: str
         :param _PublicIpReused: Specifies whether to reuse the public IP address.
         :type PublicIpReused: bool
+        :param _PublicWebConsoleErrorMessage: Error message for public network console access point operations.
+        :type PublicWebConsoleErrorMessage: str
+        :param _VpcWebConsoleErrorMessage: Error message for private network console access point operations.
+        :type VpcWebConsoleErrorMessage: str
+        :param _PublicDataStreamErrorMessage: Error message for public network access point operation failure.
+        :type PublicDataStreamErrorMessage: str
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -24751,10 +25717,13 @@ OFF/ON/CREATING/DELETING
         self._ControlPlaneEndpointInfo = None
         self._PublicTlsAccessEndpoint = None
         self._PublicIpReused = None
+        self._PublicWebConsoleErrorMessage = None
+        self._VpcWebConsoleErrorMessage = None
+        self._PublicDataStreamErrorMessage = None
 
     @property
     def PublicAccessEndpoint(self):
-        r"""Cluster Public Network Access Address
+        r"""
         :rtype: str
         """
         return self._PublicAccessEndpoint
@@ -24765,7 +25734,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleEndpoint(self):
-        r"""Cluster Console Access Address
+        r"""
         :rtype: str
         """
         return self._WebConsoleEndpoint
@@ -24776,7 +25745,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleUsername(self):
-        r"""Cluster Console Login Username
+        r"""
         :rtype: str
         """
         return self._WebConsoleUsername
@@ -24787,7 +25756,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsolePassword(self):
-        r"""Cluster Console Login Password
+        r"""
         :rtype: str
         """
         return self._WebConsolePassword
@@ -24798,7 +25767,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicAccessEndpointStatus(self):
-        r"""Deprecated
+        r"""
         :rtype: bool
         """
         return self._PublicAccessEndpointStatus
@@ -24809,7 +25778,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicControlConsoleSwitchStatus(self):
-        r"""Deprecated
+        r"""
         :rtype: bool
         """
         return self._PublicControlConsoleSwitchStatus
@@ -24820,7 +25789,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcControlConsoleSwitchStatus(self):
-        r"""Deprecated
+        r"""
         :rtype: bool
         """
         return self._VpcControlConsoleSwitchStatus
@@ -24831,7 +25800,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcWebConsoleEndpoint(self):
-        r"""Vpc management console access address, example value: http://1.1.1.1:15672
+        r"""
         :rtype: str
         """
         return self._VpcWebConsoleEndpoint
@@ -24929,6 +25898,39 @@ OFF/ON/CREATING/DELETING
     def PublicIpReused(self, PublicIpReused):
         self._PublicIpReused = PublicIpReused
 
+    @property
+    def PublicWebConsoleErrorMessage(self):
+        r"""Error message for public network console access point operations.
+        :rtype: str
+        """
+        return self._PublicWebConsoleErrorMessage
+
+    @PublicWebConsoleErrorMessage.setter
+    def PublicWebConsoleErrorMessage(self, PublicWebConsoleErrorMessage):
+        self._PublicWebConsoleErrorMessage = PublicWebConsoleErrorMessage
+
+    @property
+    def VpcWebConsoleErrorMessage(self):
+        r"""Error message for private network console access point operations.
+        :rtype: str
+        """
+        return self._VpcWebConsoleErrorMessage
+
+    @VpcWebConsoleErrorMessage.setter
+    def VpcWebConsoleErrorMessage(self, VpcWebConsoleErrorMessage):
+        self._VpcWebConsoleErrorMessage = VpcWebConsoleErrorMessage
+
+    @property
+    def PublicDataStreamErrorMessage(self):
+        r"""Error message for public network access point operation failure.
+        :rtype: str
+        """
+        return self._PublicDataStreamErrorMessage
+
+    @PublicDataStreamErrorMessage.setter
+    def PublicDataStreamErrorMessage(self, PublicDataStreamErrorMessage):
+        self._PublicDataStreamErrorMessage = PublicDataStreamErrorMessage
+
 
     def _deserialize(self, params):
         self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
@@ -24951,6 +25953,9 @@ OFF/ON/CREATING/DELETING
             self._ControlPlaneEndpointInfo._deserialize(params.get("ControlPlaneEndpointInfo"))
         self._PublicTlsAccessEndpoint = params.get("PublicTlsAccessEndpoint")
         self._PublicIpReused = params.get("PublicIpReused")
+        self._PublicWebConsoleErrorMessage = params.get("PublicWebConsoleErrorMessage")
+        self._VpcWebConsoleErrorMessage = params.get("VpcWebConsoleErrorMessage")
+        self._PublicDataStreamErrorMessage = params.get("PublicDataStreamErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24970,35 +25975,35 @@ class RabbitMQClusterInfo(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _ClusterName: Cluster Name
+        :param _ClusterName: 
         :type ClusterName: str
-        :param _Region: Region Information
+        :param _Region: 
         :type Region: str
         :param _CreateTime: Creation time in milliseconds. unix timestamp.
         :type CreateTime: int
         :param _Remark: Cluster description information
         :type Remark: str
-        :param _Vpcs: VPC and network information
+        :param _Vpcs: 
         :type Vpcs: list of VpcEndpointInfo
         :param _ZoneIds: AZ information
         :type ZoneIds: list of int
-        :param _VirtualHostNumber: Virtual Host Quantity
+        :param _VirtualHostNumber: 
         :type VirtualHostNumber: int
-        :param _QueueNumber: Number of Queues
+        :param _QueueNumber: 
         :type QueueNumber: int
-        :param _MessagePublishRate: Number of messages produced per second Unit: messages/second
+        :param _MessagePublishRate: 
         :type MessagePublishRate: float
-        :param _MessageStackNumber: Number of backlogged messages Unit: messages
+        :param _MessageStackNumber: 
         :type MessageStackNumber: int
         :param _ExpireTime: Specifies the instance expiration time in milliseconds as a unix timestamp. the value is 0 for pay-as-you-go resources.
         :type ExpireTime: int
-        :param _ChannelNumber: Channel Count
+        :param _ChannelNumber: 
         :type ChannelNumber: int
-        :param _ConnectionNumber: Connection Count
+        :param _ConnectionNumber: 
         :type ConnectionNumber: int
-        :param _ConsumerNumber: Consumer Count
+        :param _ConsumerNumber: 
         :type ConsumerNumber: int
-        :param _ExchangeNumber: Exchange Count
+        :param _ExchangeNumber: 
         :type ExchangeNumber: int
         :param _ExceptionInformation: Cluster exception information.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -25025,6 +26030,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Tags: list of Tag
         :param _EnableDeletionProtection: Whether deletion protection is enabled.
         :type EnableDeletionProtection: bool
+        :param _MirroredQueueRisk: Whether there is a risk of vhost without mirror queue enabled
+        :type MirroredQueueRisk: bool
+        :param _EnableRiskWarning: whether to indicate risk
+        :type EnableRiskWarning: bool
+        :param _ConsumeTimeout: Timeout period for consumption
+        :type ConsumeTimeout: int
+        :param _ChannelMax: Maximum number of channels
+        :type ChannelMax: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -25054,6 +26067,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Container = None
         self._Tags = None
         self._EnableDeletionProtection = None
+        self._MirroredQueueRisk = None
+        self._EnableRiskWarning = None
+        self._ConsumeTimeout = None
+        self._ChannelMax = None
 
     @property
     def ClusterId(self):
@@ -25068,7 +26085,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        r"""Cluster Name
+        r"""
         :rtype: str
         """
         return self._ClusterName
@@ -25079,7 +26096,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""Region Information
+        r"""
         :rtype: str
         """
         return self._Region
@@ -25112,7 +26129,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vpcs(self):
-        r"""VPC and network information
+        r"""
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -25134,7 +26151,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualHostNumber(self):
-        r"""Virtual Host Quantity
+        r"""
         :rtype: int
         """
         return self._VirtualHostNumber
@@ -25145,7 +26162,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueNumber(self):
-        r"""Number of Queues
+        r"""
         :rtype: int
         """
         return self._QueueNumber
@@ -25156,7 +26173,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessagePublishRate(self):
-        r"""Number of messages produced per second Unit: messages/second
+        r"""
         :rtype: float
         """
         return self._MessagePublishRate
@@ -25167,7 +26184,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessageStackNumber(self):
-        r"""Number of backlogged messages Unit: messages
+        r"""
         :rtype: int
         """
         return self._MessageStackNumber
@@ -25189,7 +26206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelNumber(self):
-        r"""Channel Count
+        r"""
         :rtype: int
         """
         return self._ChannelNumber
@@ -25200,7 +26217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectionNumber(self):
-        r"""Connection Count
+        r"""
         :rtype: int
         """
         return self._ConnectionNumber
@@ -25211,7 +26228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConsumerNumber(self):
-        r"""Consumer Count
+        r"""
         :rtype: int
         """
         return self._ConsumerNumber
@@ -25222,7 +26239,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExchangeNumber(self):
-        r"""Exchange Count
+        r"""
         :rtype: int
         """
         return self._ExchangeNumber
@@ -25364,6 +26381,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EnableDeletionProtection(self, EnableDeletionProtection):
         self._EnableDeletionProtection = EnableDeletionProtection
 
+    @property
+    def MirroredQueueRisk(self):
+        r"""Whether there is a risk of vhost without mirror queue enabled
+        :rtype: bool
+        """
+        return self._MirroredQueueRisk
+
+    @MirroredQueueRisk.setter
+    def MirroredQueueRisk(self, MirroredQueueRisk):
+        self._MirroredQueueRisk = MirroredQueueRisk
+
+    @property
+    def EnableRiskWarning(self):
+        r"""whether to indicate risk
+        :rtype: bool
+        """
+        return self._EnableRiskWarning
+
+    @EnableRiskWarning.setter
+    def EnableRiskWarning(self, EnableRiskWarning):
+        self._EnableRiskWarning = EnableRiskWarning
+
+    @property
+    def ConsumeTimeout(self):
+        r"""Timeout period for consumption
+        :rtype: int
+        """
+        return self._ConsumeTimeout
+
+    @ConsumeTimeout.setter
+    def ConsumeTimeout(self, ConsumeTimeout):
+        self._ConsumeTimeout = ConsumeTimeout
+
+    @property
+    def ChannelMax(self):
+        r"""Maximum number of channels
+        :rtype: int
+        """
+        return self._ChannelMax
+
+    @ChannelMax.setter
+    def ChannelMax(self, ChannelMax):
+        self._ChannelMax = ChannelMax
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -25404,6 +26465,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        self._MirroredQueueRisk = params.get("MirroredQueueRisk")
+        self._EnableRiskWarning = params.get("EnableRiskWarning")
+        self._ConsumeTimeout = params.get("ConsumeTimeout")
+        self._ChannelMax = params.get("ChannelMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25415,23 +26480,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RabbitMQClusterSpecInfo(AbstractModel):
-    r"""RabbitMQ Cluster Specifications Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SpecName: Cluster Specification Name
+        :param _SpecName: 
         :type SpecName: str
-        :param _NodeCount: Number of Nodes
+        :param _NodeCount: 
         :type NodeCount: int
-        :param _MaxTps: Peak tps
+        :param _MaxTps: 
         :type MaxTps: int
-        :param _MaxBandWidth: Peak bandwidth Unit: mbps
+        :param _MaxBandWidth: 
         :type MaxBandWidth: int
-        :param _MaxStorage: Storage capacity Unit: GB
+        :param _MaxStorage: 
         :type MaxStorage: int
-        :param _PublicNetworkTps: public network bandwidth tps. Unit: Mbps
+        :param _PublicNetworkTps: 
         :type PublicNetworkTps: int
         """
         self._SpecName = None
@@ -25443,7 +26508,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""Cluster Specification Name
+        r"""
         :rtype: str
         """
         return self._SpecName
@@ -25454,7 +26519,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""Number of Nodes
+        r"""
         :rtype: int
         """
         return self._NodeCount
@@ -25465,7 +26530,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""Peak tps
+        r"""
         :rtype: int
         """
         return self._MaxTps
@@ -25476,7 +26541,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""Peak bandwidth Unit: mbps
+        r"""
         :rtype: int
         """
         return self._MaxBandWidth
@@ -25487,7 +26552,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def MaxStorage(self):
-        r"""Storage capacity Unit: GB
+        r"""
         :rtype: int
         """
         return self._MaxStorage
@@ -25498,7 +26563,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
     @property
     def PublicNetworkTps(self):
-        r"""public network bandwidth tps. Unit: Mbps
+        r"""
         :rtype: int
         """
         return self._PublicNetworkTps
@@ -25526,7 +26591,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
 
 
 class RabbitMQClusterWhiteListInfo(AbstractModel):
-    r"""RabbitMQ Cluster Allowlist Information
+    r"""
 
     """
 
@@ -25538,9 +26603,9 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
         :type PublicControlConsoleWhiteList: str
         :param _PublicDataStreamWhiteList: Public network data flow allowlist.
         :type PublicDataStreamWhiteList: str
-        :param _PublicControlConsoleWhiteListStatus: Public Network Management Console Allowlist Status
+        :param _PublicControlConsoleWhiteListStatus: 
         :type PublicControlConsoleWhiteListStatus: str
-        :param _PublicDataStreamWhiteListStatus: Public Network Data Flow Allowlist Status
+        :param _PublicDataStreamWhiteListStatus: 
         :type PublicDataStreamWhiteListStatus: str
         """
         self._WhiteList = None
@@ -25584,7 +26649,7 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
 
     @property
     def PublicControlConsoleWhiteListStatus(self):
-        r"""Public Network Management Console Allowlist Status
+        r"""
         :rtype: str
         """
         return self._PublicControlConsoleWhiteListStatus
@@ -25595,7 +26660,7 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
 
     @property
     def PublicDataStreamWhiteListStatus(self):
-        r"""Public Network Data Flow Allowlist Status
+        r"""
         :rtype: str
         """
         return self._PublicDataStreamWhiteListStatus
@@ -27987,7 +29052,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _NamespaceId: Namespace name.
+        :param _NamespaceId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _GroupId: Consumer group name.
         :type GroupId: str
@@ -27995,7 +29060,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         :type Type: int
         :param _Topic: Topic name.
         :type Topic: str
-        :param _ResetTimestamp: The specified timestamp that has been reset, in milliseconds. This parameter only takes effect when the value of `Type` is `1`.
+        :param _ResetTimestamp: Reset the specified timestamp. This parameter is valid only when Type is 1, in milliseconds.
         :type ResetTimestamp: int
         :param _RetryFlag: Whether the reset flag is retry topic.
         :type RetryFlag: bool
@@ -28021,7 +29086,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Namespace name.
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -28065,7 +29130,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
 
     @property
     def ResetTimestamp(self):
-        r"""The specified timestamp that has been reset, in milliseconds. This parameter only takes effect when the value of `Type` is `1`.
+        r"""Reset the specified timestamp. This parameter is valid only when Type is 1, in milliseconds.
         :rtype: int
         """
         return self._ResetTimestamp
@@ -28192,7 +29257,7 @@ class RetryRocketMQDlqMessageRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _NamespaceId: Specifies the namespace name.
+        :param _NamespaceId: namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :type NamespaceId: str
         :param _GroupName: Group Name
         :type GroupName: str
@@ -28217,7 +29282,7 @@ class RetryRocketMQDlqMessageRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""Specifies the namespace name.
+        r"""namespace. The 4.x common Cluster Namespace is fixed as: tdmq_default
         :rtype: str
         """
         return self._NamespaceId
@@ -29719,7 +30784,7 @@ class RocketMQInstanceConfig(AbstractModel):
         :type NodeDistribution: list of InstanceNodeDistribution
         :param _TopicDistribution: Topic distribution
         :type TopicDistribution: list of RocketMQTopicDistribution
-        :param _MaxQueuesPerTopic: Maximum number of queues per topic
+        :param _MaxQueuesPerTopic: 
         :type MaxQueuesPerTopic: int
         :param _MaxRetention: Maximum configurable message retention time, in hours	
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -29738,6 +30803,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TopicNumUpperLimit: int
         :param _SendReceiveRatio: Controls the TPS ratio for producing and consuming messages. Value range: 0–1. Default value: 0.5.
         :type SendReceiveRatio: float
+        :param _TpsLimit: Send and receive TPS peak cap
+        :type TpsLimit: int
+        :param _GeneralSkuCode: Generic cluster specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GeneralSkuCode: str
         """
         self._MaxTpsPerNamespace = None
         self._MaxNamespaceNum = None
@@ -29757,6 +30827,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TopicNumLowerLimit = None
         self._TopicNumUpperLimit = None
         self._SendReceiveRatio = None
+        self._TpsLimit = None
+        self._GeneralSkuCode = None
 
     @property
     def MaxTpsPerNamespace(self):
@@ -29881,7 +30953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxQueuesPerTopic(self):
-        r"""Maximum number of queues per topic
+        r"""
         :rtype: int
         """
         return self._MaxQueuesPerTopic
@@ -29961,6 +31033,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SendReceiveRatio(self, SendReceiveRatio):
         self._SendReceiveRatio = SendReceiveRatio
 
+    @property
+    def TpsLimit(self):
+        r"""Send and receive TPS peak cap
+        :rtype: int
+        """
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def GeneralSkuCode(self):
+        r"""Generic cluster specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GeneralSkuCode
+
+    @GeneralSkuCode.setter
+    def GeneralSkuCode(self, GeneralSkuCode):
+        self._GeneralSkuCode = GeneralSkuCode
+
 
     def _deserialize(self, params):
         self._MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
@@ -29991,6 +31086,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TopicNumLowerLimit = params.get("TopicNumLowerLimit")
         self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
         self._SendReceiveRatio = params.get("SendReceiveRatio")
+        self._TpsLimit = params.get("TpsLimit")
+        self._GeneralSkuCode = params.get("GeneralSkuCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30023,11 +31120,17 @@ Consumption status UNKNOWN.
         :param _ExceptionDesc: Exception information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExceptionDesc: str
+        :param _ConsumeStatusSource: Consumption status source. The enumeration values are as follows:
+
+-DIFF_OFFSET: Calculate by server offset
+-TRACE_REPORT: Judge by the reported path.
+        :type ConsumeStatusSource: str
         """
         self._Group = None
         self._ConsumeStatus = None
         self._TrackType = None
         self._ExceptionDesc = None
+        self._ConsumeStatusSource = None
 
     @property
     def Group(self):
@@ -30080,12 +31183,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ExceptionDesc(self, ExceptionDesc):
         self._ExceptionDesc = ExceptionDesc
 
+    @property
+    def ConsumeStatusSource(self):
+        r"""Consumption status source. The enumeration values are as follows:
+
+-DIFF_OFFSET: Calculate by server offset
+-TRACE_REPORT: Judge by the reported path.
+        :rtype: str
+        """
+        return self._ConsumeStatusSource
+
+    @ConsumeStatusSource.setter
+    def ConsumeStatusSource(self, ConsumeStatusSource):
+        self._ConsumeStatusSource = ConsumeStatusSource
+
 
     def _deserialize(self, params):
         self._Group = params.get("Group")
         self._ConsumeStatus = params.get("ConsumeStatus")
         self._TrackType = params.get("TrackType")
         self._ExceptionDesc = params.get("ExceptionDesc")
+        self._ConsumeStatusSource = params.get("ConsumeStatusSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33152,6 +34270,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type IsolateConsumerEnable: bool
         :param _AckTimeOut: Specifies the consumer Ack timeout period in seconds.
         :type AckTimeOut: int
+        :param _PulsarTopicMessageType: Pulsar topic message Type 0: composite message 1: regular message 2: delayed message
+        :type PulsarTopicMessageType: int
+        :param _Tags: Theme tag
+        :type Tags: list of Tag
+        :param _DelayMessagePolicy: defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :type DelayMessagePolicy: str
         """
         self._AverageMsgSize = None
         self._ConsumerCount = None
@@ -33180,6 +34304,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Tenant = None
         self._IsolateConsumerEnable = None
         self._AckTimeOut = None
+        self._PulsarTopicMessageType = None
+        self._Tags = None
+        self._DelayMessagePolicy = None
 
     @property
     def AverageMsgSize(self):
@@ -33512,6 +34639,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AckTimeOut(self, AckTimeOut):
         self._AckTimeOut = AckTimeOut
 
+    @property
+    def PulsarTopicMessageType(self):
+        r"""Pulsar topic message Type 0: composite message 1: regular message 2: delayed message
+        :rtype: int
+        """
+        return self._PulsarTopicMessageType
+
+    @PulsarTopicMessageType.setter
+    def PulsarTopicMessageType(self, PulsarTopicMessageType):
+        self._PulsarTopicMessageType = PulsarTopicMessageType
+
+    @property
+    def Tags(self):
+        r"""Theme tag
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DelayMessagePolicy(self):
+        r"""defaultPolicy/timingwheelPolicy defaults to the community edition delayed message delivery policy if not passed
+        :rtype: str
+        """
+        return self._DelayMessagePolicy
+
+    @DelayMessagePolicy.setter
+    def DelayMessagePolicy(self, DelayMessagePolicy):
+        self._DelayMessagePolicy = DelayMessagePolicy
+
 
     def _deserialize(self, params):
         self._AverageMsgSize = params.get("AverageMsgSize")
@@ -33546,6 +34706,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Tenant = params.get("Tenant")
         self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
         self._AckTimeOut = params.get("AckTimeOut")
+        self._PulsarTopicMessageType = params.get("PulsarTopicMessageType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DelayMessagePolicy = params.get("DelayMessagePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33846,13 +35014,13 @@ class UnbindCmqDeadLetterResponse(AbstractModel):
 
 
 class VirtualHostQuota(AbstractModel):
-    r"""vhost usage quota information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxVirtualHost: Maximum number of vhosts allowed to be created
+        :param _MaxVirtualHost: 
         :type MaxVirtualHost: int
         :param _UsedVirtualHost: Number of created vhosts.
         :type UsedVirtualHost: int
@@ -33871,7 +35039,7 @@ class VirtualHostQuota(AbstractModel):
 
     @property
     def MaxVirtualHost(self):
-        r"""Maximum number of vhosts allowed to be created
+        r"""
         :rtype: int
         """
         return self._MaxVirtualHost
@@ -34106,32 +35274,35 @@ class VpcConfig(AbstractModel):
 
 
 class VpcEndpointInfo(AbstractModel):
-    r"""VPC Access Point Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _VpcId: vpc id
+        :param _VpcId: 
         :type VpcId: str
-        :param _SubnetId: subnet id
+        :param _SubnetId: 
         :type SubnetId: str
-        :param _VpcEndpoint: vpc Access Point Information
+        :param _VpcEndpoint: 
         :type VpcEndpoint: str
         :param _VpcDataStreamEndpointStatus: Access point status. valid values: OFF, ON, CREATING, DELETING.
         :type VpcDataStreamEndpointStatus: str
         :param _VpcTlsEndpoint: Encrypted TLS data stream access point.
         :type VpcTlsEndpoint: str
+        :param _VpcErrorMessage: Error message for VPC access point operations.
+        :type VpcErrorMessage: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._VpcEndpoint = None
         self._VpcDataStreamEndpointStatus = None
         self._VpcTlsEndpoint = None
+        self._VpcErrorMessage = None
 
     @property
     def VpcId(self):
-        r"""vpc id
+        r"""
         :rtype: str
         """
         return self._VpcId
@@ -34142,7 +35313,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""subnet id
+        r"""
         :rtype: str
         """
         return self._SubnetId
@@ -34153,7 +35324,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcEndpoint(self):
-        r"""vpc Access Point Information
+        r"""
         :rtype: str
         """
         return self._VpcEndpoint
@@ -34184,6 +35355,17 @@ class VpcEndpointInfo(AbstractModel):
     def VpcTlsEndpoint(self, VpcTlsEndpoint):
         self._VpcTlsEndpoint = VpcTlsEndpoint
 
+    @property
+    def VpcErrorMessage(self):
+        r"""Error message for VPC access point operations.
+        :rtype: str
+        """
+        return self._VpcErrorMessage
+
+    @VpcErrorMessage.setter
+    def VpcErrorMessage(self, VpcErrorMessage):
+        self._VpcErrorMessage = VpcErrorMessage
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -34191,6 +35373,7 @@ class VpcEndpointInfo(AbstractModel):
         self._VpcEndpoint = params.get("VpcEndpoint")
         self._VpcDataStreamEndpointStatus = params.get("VpcDataStreamEndpointStatus")
         self._VpcTlsEndpoint = params.get("VpcTlsEndpoint")
+        self._VpcErrorMessage = params.get("VpcErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

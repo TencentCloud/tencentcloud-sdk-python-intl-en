@@ -503,7 +503,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.PhoneVerificationResponse:
         """
-        This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1007/46063?from_cn_redirect=1">carrier</a> document.
+        This API is used to validate the authenticity and consistency of the mobile number, name, and identity card number. For details on supported mobile number segments, see the <a href="https://www.tencentcloud.com/document/product/1061/79689">carrier</a> document.
         """
         
         kwargs = {}

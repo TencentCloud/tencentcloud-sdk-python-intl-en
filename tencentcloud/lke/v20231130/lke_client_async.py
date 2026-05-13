@@ -97,24 +97,6 @@ class LkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateCorp(
-            self,
-            request: models.CreateCorpRequest,
-            opts: Dict = None,
-    ) -> models.CreateCorpResponse:
-        """
-        This API is used to create enterprises.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCorp"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateCorpResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateDocCate(
             self,
             request: models.CreateDocCateRequest,
@@ -164,26 +146,6 @@ class LkeClient(AbstractClient):
         kwargs["action"] = "CreateQACate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateQACateResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateReconstructDocumentFlow(
-            self,
-            request: models.CreateReconstructDocumentFlowRequest,
-            opts: Dict = None,
-    ) -> models.CreateReconstructDocumentFlowResponse:
-        """
-        This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
-        Document parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order.
-        During the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateReconstructDocumentFlow"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateReconstructDocumentFlowResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -436,24 +398,6 @@ class LkeClient(AbstractClient):
         kwargs["action"] = "DescribeConcurrencyUsageGraph"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConcurrencyUsageGraphResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCorp(
-            self,
-            request: models.DescribeCorpRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCorpResponse:
-        """
-        This API is used to query corporate details.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCorp"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCorpResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -891,24 +835,6 @@ class LkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetReconstructDocumentResult(
-            self,
-            request: models.GetReconstructDocumentResultRequest,
-            opts: Dict = None,
-    ) -> models.GetReconstructDocumentResultResponse:
-        """
-        This is an asynchronous APIs, used to get document parsing task results.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetReconstructDocumentResult"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetReconstructDocumentResultResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetTaskStatus(
             self,
             request: models.GetTaskStatusRequest,
@@ -999,6 +925,24 @@ class LkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IsTransferIntent(
+            self,
+            request: models.IsTransferIntentRequest,
+            opts: Dict = None,
+    ) -> models.IsTransferIntentResponse:
+        """
+        This API is used to determine whether to transfer to human service.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsTransferIntent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsTransferIntentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListApp(
             self,
             request: models.ListAppRequest,
@@ -1012,24 +956,6 @@ class LkeClient(AbstractClient):
         kwargs["action"] = "ListApp"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListAppResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListAppCategory(
-            self,
-            request: models.ListAppCategoryRequest,
-            opts: Dict = None,
-    ) -> models.ListAppCategoryResponse:
-        """
-        This API is used to get list of application types.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListAppCategory"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListAppCategoryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
