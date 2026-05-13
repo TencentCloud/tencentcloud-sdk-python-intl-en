@@ -746,29 +746,6 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeInstanceLoginKeyPairAttribute(self, request):
-        r"""This API is used to query the attributes of the default login key of an instance.
-
-        :param request: Request instance for DescribeInstanceLoginKeyPairAttribute.
-        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstanceLoginKeyPairAttributeRequest`
-        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstanceLoginKeyPairAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInstanceLoginKeyPairAttribute", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInstanceLoginKeyPairAttributeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInstanceVncUrl(self, request):
         r"""This API is used to query the URL for VNC login.
 
@@ -1583,30 +1560,6 @@ class LighthouseClient(AbstractClient):
             body = self.call("ModifyInstancesBundle", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstancesBundleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyInstancesLoginKeyPairAttribute(self, request):
-        r"""This API is used to set the attributes of the default login key pair of an instance.
-
-
-        :param request: Request instance for ModifyInstancesLoginKeyPairAttribute.
-        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesLoginKeyPairAttributeRequest`
-        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesLoginKeyPairAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyInstancesLoginKeyPairAttribute", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyInstancesLoginKeyPairAttributeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

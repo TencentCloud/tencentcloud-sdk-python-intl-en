@@ -595,24 +595,6 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeInstanceLoginKeyPairAttribute(
-            self,
-            request: models.DescribeInstanceLoginKeyPairAttributeRequest,
-            opts: Dict = None,
-    ) -> models.DescribeInstanceLoginKeyPairAttributeResponse:
-        """
-        This API is used to query the attributes of the default login key of an instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeInstanceLoginKeyPairAttribute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeInstanceLoginKeyPairAttributeResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeInstanceVncUrl(
             self,
             request: models.DescribeInstanceVncUrlRequest,
@@ -1266,25 +1248,6 @@ class LighthouseClient(AbstractClient):
         kwargs["action"] = "ModifyInstancesBundle"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstancesBundleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyInstancesLoginKeyPairAttribute(
-            self,
-            request: models.ModifyInstancesLoginKeyPairAttributeRequest,
-            opts: Dict = None,
-    ) -> models.ModifyInstancesLoginKeyPairAttributeResponse:
-        """
-        This API is used to set the attributes of the default login key pair of an instance.
-
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyInstancesLoginKeyPairAttribute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyInstancesLoginKeyPairAttributeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
