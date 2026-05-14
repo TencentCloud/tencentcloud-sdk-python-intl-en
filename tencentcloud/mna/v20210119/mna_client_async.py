@@ -1,0 +1,962 @@
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+
+from tencentcloud.common.abstract_client_async import AbstractClient
+from tencentcloud.mna.v20210119 import models
+from typing import Dict
+
+
+class MnaClient(AbstractClient):
+    _apiVersion = '2021-01-19'
+    _endpoint = 'mna.intl.tencentcloudapi.com'
+    _service = 'mna'
+
+    async def ActivateHardware(
+            self,
+            request: models.ActivateHardwareRequest,
+            opts: Dict = None,
+    ) -> models.ActivateHardwareResponse:
+        """
+        Activate hardware device
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateHardware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateHardwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddApplication(
+            self,
+            request: models.AddApplicationRequest,
+            opts: Dict = None,
+    ) -> models.AddApplicationResponse:
+        """
+        This API is used to create an application
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddDevice(
+            self,
+            request: models.AddDeviceRequest,
+            opts: Dict = None,
+    ) -> models.AddDeviceResponse:
+        """
+        Create new device records
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddGroup(
+            self,
+            request: models.AddGroupRequest,
+            opts: Dict = None,
+    ) -> models.AddGroupResponse:
+        """
+        Create group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddHardware(
+            self,
+            request: models.AddHardwareRequest,
+            opts: Dict = None,
+    ) -> models.AddHardwareResponse:
+        """
+        Add hardware devices, generate inactive hardware devices, and support batch addition
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddHardware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddHardwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddL3Conn(
+            self,
+            request: models.AddL3ConnRequest,
+            opts: Dict = None,
+    ) -> models.AddL3ConnResponse:
+        """
+        Create an interconnection rule
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddL3Conn"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddL3ConnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateEncryptedKey(
+            self,
+            request: models.CreateEncryptedKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateEncryptedKeyResponse:
+        """
+        This API is used to configure and refresh preset keys.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEncryptedKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEncryptedKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApplication(
+            self,
+            request: models.DeleteApplicationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApplicationResponse:
+        """
+        This API is used to delete applications
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDevice(
+            self,
+            request: models.DeleteDeviceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeviceResponse:
+        """
+        Delete device info
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGroup(
+            self,
+            request: models.DeleteGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGroupResponse:
+        """
+        Delete group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteL3Conn(
+            self,
+            request: models.DeleteL3ConnRequest,
+            opts: Dict = None,
+    ) -> models.DeleteL3ConnResponse:
+        """
+        Delete an interconnection rule
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteL3Conn"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteL3ConnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DownloadActiveDeviceCount(
+            self,
+            request: models.DownloadActiveDeviceCountRequest,
+            opts: Dict = None,
+    ) -> models.DownloadActiveDeviceCountResponse:
+        """
+        Download the number of active devices statistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadActiveDeviceCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadActiveDeviceCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetActiveDeviceCount(
+            self,
+            request: models.GetActiveDeviceCountRequest,
+            opts: Dict = None,
+    ) -> models.GetActiveDeviceCountResponse:
+        """
+        Number of active devices statistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetActiveDeviceCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetActiveDeviceCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetApplication(
+            self,
+            request: models.GetApplicationRequest,
+            opts: Dict = None,
+    ) -> models.GetApplicationResponse:
+        """
+        This API is used to query applications.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDestIPByName(
+            self,
+            request: models.GetDestIPByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetDestIPByNameResponse:
+        """
+        Statistics of a single device accessing the target IP address
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDestIPByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDestIPByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDevice(
+            self,
+            request: models.GetDeviceRequest,
+            opts: Dict = None,
+    ) -> models.GetDeviceResponse:
+        """
+        This API is used to search device details by specified device ID.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDevicePayMode(
+            self,
+            request: models.GetDevicePayModeRequest,
+            opts: Dict = None,
+    ) -> models.GetDevicePayModeResponse:
+        """
+        This API is used to obtain the payment mode of a device.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDevicePayMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDevicePayModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetDevices(
+            self,
+            request: models.GetDevicesRequest,
+            opts: Dict = None,
+    ) -> models.GetDevicesResponse:
+        """
+        This API is used to get device information list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetDevices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetDevicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowAlarmInfo(
+            self,
+            request: models.GetFlowAlarmInfoRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowAlarmInfoResponse:
+        """
+        This API is used to query user traffic alarm settings based on AppId, including threshold, callback url and key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowAlarmInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowAlarmInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowPackages(
+            self,
+            request: models.GetFlowPackagesRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowPackagesResponse:
+        """
+        Retrieve the data transfer plan list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowPackages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowPackagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowStatistic(
+            self,
+            request: models.GetFlowStatisticRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowStatisticResponse:
+        """
+        Retrieve traffic usage data for a specified device Id at a specified time point.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowStatistic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowStatisticResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowStatisticByGroup(
+            self,
+            request: models.GetFlowStatisticByGroupRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowStatisticByGroupResponse:
+        """
+        Retrieve traffic usage data for the specified group and time period
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowStatisticByGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowStatisticByGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowStatisticByName(
+            self,
+            request: models.GetFlowStatisticByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowStatisticByNameResponse:
+        """
+        Retrieve traffic usage data for a specified device Id at a specified time point.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowStatisticByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowStatisticByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFlowStatisticByRegion(
+            self,
+            request: models.GetFlowStatisticByRegionRequest,
+            opts: Dict = None,
+    ) -> models.GetFlowStatisticByRegionResponse:
+        """
+        Retrieve traffic usage data for the specified region and time point
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFlowStatisticByRegion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFlowStatisticByRegionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetGroupDetail(
+            self,
+            request: models.GetGroupDetailRequest,
+            opts: Dict = None,
+    ) -> models.GetGroupDetailResponse:
+        """
+        View group details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetGroupDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetGroupDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetGroupList(
+            self,
+            request: models.GetGroupListRequest,
+            opts: Dict = None,
+    ) -> models.GetGroupListResponse:
+        """
+        This API is used to obtain a group list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetHardwareInfo(
+            self,
+            request: models.GetHardwareInfoRequest,
+            opts: Dict = None,
+    ) -> models.GetHardwareInfoResponse:
+        """
+        This API is used to get hardware device information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetHardwareInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetHardwareInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetHardwareList(
+            self,
+            request: models.GetHardwareListRequest,
+            opts: Dict = None,
+    ) -> models.GetHardwareListResponse:
+        """
+        This API is used to get the hardware list of the manufacturer.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetHardwareList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetHardwareListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetL3ConnList(
+            self,
+            request: models.GetL3ConnListRequest,
+            opts: Dict = None,
+    ) -> models.GetL3ConnListResponse:
+        """
+        Retrieve the list of interconnection rules
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetL3ConnList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetL3ConnListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMonitorDataByName(
+            self,
+            request: models.GetMonitorDataByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetMonitorDataByNameResponse:
+        """
+        This API is used to obtain the download file URL for all monitoring metrics of a single device.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMonitorDataByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMonitorDataByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMultiFlowStatistic(
+            self,
+            request: models.GetMultiFlowStatisticRequest,
+            opts: Dict = None,
+    ) -> models.GetMultiFlowStatisticResponse:
+        """
+        Obtain batch device traffic statistics curves
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMultiFlowStatistic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMultiFlowStatisticResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetNetMonitor(
+            self,
+            request: models.GetNetMonitorRequest,
+            opts: Dict = None,
+    ) -> models.GetNetMonitorResponse:
+        """
+        This API is used to obtain real-time traffic statistics per device.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetNetMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetNetMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetNetMonitorByName(
+            self,
+            request: models.GetNetMonitorByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetNetMonitorByNameResponse:
+        """
+        This API is used to obtain real-time traffic statistics per device.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetNetMonitorByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetNetMonitorByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetPublicKey(
+            self,
+            request: models.GetPublicKeyRequest,
+            opts: Dict = None,
+    ) -> models.GetPublicKeyResponse:
+        """
+        This API is used to access the public key for signature verification.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetPublicKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetPublicKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetStatisticData(
+            self,
+            request: models.GetStatisticDataRequest,
+            opts: Dict = None,
+    ) -> models.GetStatisticDataResponse:
+        """
+        Download traffic data on the usage statistics page
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetStatisticData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetStatisticDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetStatisticDataByName(
+            self,
+            request: models.GetStatisticDataByNameRequest,
+            opts: Dict = None,
+    ) -> models.GetStatisticDataByNameResponse:
+        """
+        Download traffic data on the usage statistics page
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetStatisticDataByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetStatisticDataByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetVendorHardware(
+            self,
+            request: models.GetVendorHardwareRequest,
+            opts: Dict = None,
+    ) -> models.GetVendorHardwareResponse:
+        """
+        This API is used to get the hardware device list of the manufacturer.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetVendorHardware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetVendorHardwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GroupAddDevice(
+            self,
+            request: models.GroupAddDeviceRequest,
+            opts: Dict = None,
+    ) -> models.GroupAddDeviceResponse:
+        """
+        Add device to already exist group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GroupAddDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GroupAddDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GroupDeleteDevice(
+            self,
+            request: models.GroupDeleteDeviceRequest,
+            opts: Dict = None,
+    ) -> models.GroupDeleteDeviceResponse:
+        """
+        Delete devices in the group
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GroupDeleteDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GroupDeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPackageRenewFlag(
+            self,
+            request: models.ModifyPackageRenewFlagRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPackageRenewFlagResponse:
+        """
+        Auto renewal of data transfer plans can be enabled or disabled, unaffected by ongoing effective plans in the current cycle.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPackageRenewFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPackageRenewFlagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OrderFlowPackage(
+            self,
+            request: models.OrderFlowPackageRequest,
+            opts: Dict = None,
+    ) -> models.OrderFlowPackageResponse:
+        """
+        Purchase a Prepaid Traffic Package
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OrderFlowPackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OrderFlowPackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OrderPerLicense(
+            self,
+            request: models.OrderPerLicenseRequest,
+            opts: Dict = None,
+    ) -> models.OrderPerLicenseResponse:
+        """
+        Purchase a single-use License
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OrderPerLicense"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OrderPerLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReportOrder(
+            self,
+            request: models.ReportOrderRequest,
+            opts: Dict = None,
+    ) -> models.ReportOrderResponse:
+        """
+        Users report custom order information, and the Multiple Network Acceleration service saves the information related to.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReportOrder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReportOrderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetNotifyUrl(
+            self,
+            request: models.SetNotifyUrlRequest,
+            opts: Dict = None,
+    ) -> models.SetNotifyUrlResponse:
+        """
+        This API is used to set user traffic alarm information. Use this API setting to configure the data transfer plan alarm threshold as well as the callback url and key when an alarm is generated.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetNotifyUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetNotifyUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateApplicationInfo(
+            self,
+            request: models.UpdateApplicationInfoRequest,
+            opts: Dict = None,
+    ) -> models.UpdateApplicationInfoResponse:
+        """
+        Update application information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateApplicationInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateApplicationInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateApplicationKey(
+            self,
+            request: models.UpdateApplicationKeyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateApplicationKeyResponse:
+        """
+        Update application key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateApplicationKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateApplicationKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateDevice(
+            self,
+            request: models.UpdateDeviceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateDeviceResponse:
+        """
+        Update device information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateDevice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateGroup(
+            self,
+            request: models.UpdateGroupRequest,
+            opts: Dict = None,
+    ) -> models.UpdateGroupResponse:
+        """
+        Update group remark
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateHardware(
+            self,
+            request: models.UpdateHardwareRequest,
+            opts: Dict = None,
+    ) -> models.UpdateHardwareResponse:
+        """
+        Refresh hardware info
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateHardware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateHardwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateL3Cidr(
+            self,
+            request: models.UpdateL3CidrRequest,
+            opts: Dict = None,
+    ) -> models.UpdateL3CidrResponse:
+        """
+        Update the interconnection rule CIDR
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateL3Cidr"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateL3CidrResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateL3Conn(
+            self,
+            request: models.UpdateL3ConnRequest,
+            opts: Dict = None,
+    ) -> models.UpdateL3ConnResponse:
+        """
+        Update the interconnection rule remark
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateL3Conn"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateL3ConnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateL3Switch(
+            self,
+            request: models.UpdateL3SwitchRequest,
+            opts: Dict = None,
+    ) -> models.UpdateL3SwitchResponse:
+        """
+        Update the interconnection rule switch
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateL3Switch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateL3SwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

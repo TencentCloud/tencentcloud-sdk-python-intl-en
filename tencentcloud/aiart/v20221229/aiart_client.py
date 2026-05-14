@@ -26,6 +26,30 @@ class AiartClient(AbstractClient):
     _service = 'aiart'
 
 
+    def ChangeClothes(self, request):
+        r"""This API is used to generate the images of the model changing clothes based on the model photo and the clothes image.
+        It supports 1 concurrency by default, which means that up to 1 submitted task can be processed simultaneously. Subsequent tasks can be processed only after ongoing ones are completed.
+
+        :param request: Request instance for ChangeClothes.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.ChangeClothesRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.ChangeClothesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeClothes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangeClothesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageToImage(self, request):
         r"""This API is used to transfer the image style based on the image to image technology. Images with small figures, complex gestures or too many figures are not recommended.
         It supports 3 concurrency by default, which means that up to 3 submitted tasks can be processed simultaneously. Subsequent tasks can be processed only after ongoing ones are completed.

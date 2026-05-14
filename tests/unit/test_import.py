@@ -439,6 +439,11 @@ def test_import_message_v20181225():
     from tencentcloud.message.v20181225 import models
 
 
+def test_import_mna_v20210119():
+    from tencentcloud.mna.v20210119 import mna_client
+    from tencentcloud.mna.v20210119 import models
+
+
 def test_import_mongodb_v20190725():
     from tencentcloud.mongodb.v20190725 import mongodb_client
     from tencentcloud.mongodb.v20190725 import models

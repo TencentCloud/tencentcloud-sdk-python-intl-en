@@ -1,0 +1,9435 @@
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import warnings
+
+from tencentcloud.common.abstract_model import AbstractModel
+
+
+class ActivateHardware(AbstractModel):
+    r"""Activate device
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: Vendor name
+        :type Vendor: str
+        :param _SN: Device SN serial number
+        :type SN: str
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _Description: Remarks
+        :type Description: str
+        :param _DataKey: device key
+        :type DataKey: str
+        :param _AccessScope: Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: device can only integrate with public cloud gateway (nearby access). Private gateway: device can only integrate with private gateway that has been launched (nearby access or fixed ip). Public cloud gateway and private gateway: device can also integrate with public cloud gateway and private gateway that has been launched (nearby access or fixed ip).
+        :type AccessScope: int
+        :param _LicensePayMode: When the payer is the tenant, the tenant license payment method is available.
+Monthly authorization
+1: Permanent license
+If not passed, it defaults to monthly authorization.
+This parameter is invalid when the manufacturer is the payer.
+
+        :type LicensePayMode: int
+        :param _GroupId: device group ID
+        :type GroupId: str
+        :param _GroupName: Device group name. Reserved parameter. GroupId must be imported when grouping is required.
+        :type GroupName: str
+        :param _FlowTrunc: No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :type FlowTrunc: int
+        :param _DeviceId: Device ID after activation
+        :type DeviceId: str
+        """
+        self._Vendor = None
+        self._SN = None
+        self._DeviceName = None
+        self._Description = None
+        self._DataKey = None
+        self._AccessScope = None
+        self._LicensePayMode = None
+        self._GroupId = None
+        self._GroupName = None
+        self._FlowTrunc = None
+        self._DeviceId = None
+
+    @property
+    def Vendor(self):
+        r"""Vendor name
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def SN(self):
+        r"""Device SN serial number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Description(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DataKey(self):
+        r"""device key
+        :rtype: str
+        """
+        return self._DataKey
+
+    @DataKey.setter
+    def DataKey(self, DataKey):
+        self._DataKey = DataKey
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: device can only integrate with public cloud gateway (nearby access). Private gateway: device can only integrate with private gateway that has been launched (nearby access or fixed ip). Public cloud gateway and private gateway: device can also integrate with public cloud gateway and private gateway that has been launched (nearby access or fixed ip).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+    @property
+    def LicensePayMode(self):
+        r"""When the payer is the tenant, the tenant license payment method is available.
+Monthly authorization
+1: Permanent license
+If not passed, it defaults to monthly authorization.
+This parameter is invalid when the manufacturer is the payer.
+
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def GroupId(self):
+        r"""device group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Device group name. Reserved parameter. GroupId must be imported when grouping is required.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def FlowTrunc(self):
+        r"""No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :rtype: int
+        """
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+    @property
+    def DeviceId(self):
+        r"""Device ID after activation
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._SN = params.get("SN")
+        self._DeviceName = params.get("DeviceName")
+        self._Description = params.get("Description")
+        self._DataKey = params.get("DataKey")
+        self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHardwareRequest(AbstractModel):
+    r"""ActivateHardware request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: Device list to be activated
+        :type Hardware: list of ActivateHardware
+        """
+        self._Hardware = None
+
+    @property
+    def Hardware(self):
+        r"""Device list to be activated
+        :rtype: list of ActivateHardware
+        """
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = ActivateHardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHardwareResponse(AbstractModel):
+    r"""ActivateHardware response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareInfo: Device information after activation
+        :type HardwareInfo: list of ActivateHardware
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._HardwareInfo = None
+        self._RequestId = None
+
+    @property
+    def HardwareInfo(self):
+        r"""Device information after activation
+        :rtype: list of ActivateHardware
+        """
+        return self._HardwareInfo
+
+    @HardwareInfo.setter
+    def HardwareInfo(self, HardwareInfo):
+        self._HardwareInfo = HardwareInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HardwareInfo") is not None:
+            self._HardwareInfo = []
+            for item in params.get("HardwareInfo"):
+                obj = ActivateHardware()
+                obj._deserialize(item)
+                self._HardwareInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ActiveDeviceList(AbstractModel):
+    r"""Activated device statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: Quantity.
+        :type Count: int
+        :param _Time: Time
+        :type Time: str
+        """
+        self._Count = None
+        self._Time = None
+
+    @property
+    def Count(self):
+        r"""Quantity.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Time(self):
+        r"""Time
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddApplicationRequest(AbstractModel):
+    r"""AddApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationName: Application name of the created app
+        :type MpApplicationName: str
+        :param _Remark: Remark of the created device
+        :type Remark: str
+        :param _MpApplicationKey: base64 key string of the new application, optional, automatically generated by the system if not filled
+        :type MpApplicationKey: str
+        :param _AccessScope: Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :type AccessScope: int
+        """
+        self._MpApplicationName = None
+        self._Remark = None
+        self._MpApplicationKey = None
+        self._AccessScope = None
+
+    @property
+    def MpApplicationName(self):
+        r"""Application name of the created app
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""Remark of the created device
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MpApplicationKey(self):
+        r"""base64 key string of the new application, optional, automatically generated by the system if not filled
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+
+    def _deserialize(self, params):
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._AccessScope = params.get("AccessScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddApplicationResponse(AbstractModel):
+    r"""AddApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: Application ID
+        :type MpApplicationId: str
+        :param _MpApplicationKey: base64-format key encrypted with the encryption algorithm
+        :type MpApplicationKey: str
+        :param _MpApplicationName: Application name
+        :type MpApplicationName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MpApplicationId = None
+        self._MpApplicationKey = None
+        self._MpApplicationName = None
+        self._RequestId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationKey(self):
+        r"""base64-format key encrypted with the encryption algorithm
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationName(self):
+        r"""Application name
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._RequestId = params.get("RequestId")
+
+
+class AddDeviceRequest(AbstractModel):
+    r"""AddDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Name of the new device
+        :type DeviceName: str
+        :param _Remark: Remark of the created device
+        :type Remark: str
+        :param _DataKey: base64-encoded key string of the new device, optional. If not filled, automatically generated by the system.
+        :type DataKey: str
+        :param _Encrypted: Whether to set the preset key.
+true: set preset key.
+false: Leave the preset key unset.
+        :type Encrypted: bool
+        :param _AccessScope: Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway.
+specific meaning
+Public cloud gateway: The device can only integrate with the public cloud gateway (nearby access).
+Private gateway: The device can only integrate with the already launched private gateway (nearby access or fixed ip integration).
+Public cloud gateway and private gateway: The device can also integrate with the public cloud gateway and the already launched private gateway (connected to nearby or fixed ip access).
+        :type AccessScope: int
+        :param _LicensePayMode: license payment method 
+Monthly authorization 
+Permanent license 
+If not specified, it defaults to monthly authorization. To permanently license a device, you need to call the OrderPerLicense API to pay the authorization fee. Otherwise, the device cannot be used.
+        :type LicensePayMode: int
+        :param _GroupName: Device group name. Optional. Reserved parameter. GroupId must be imported when grouping is required.
+        :type GroupName: str
+        :param _GroupId: Device group ID. Optional. If not filled, the default device is not grouped.
+        :type GroupId: str
+        :param _FlowTrunc: No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :type FlowTrunc: int
+        """
+        self._DeviceName = None
+        self._Remark = None
+        self._DataKey = None
+        self._Encrypted = None
+        self._AccessScope = None
+        self._LicensePayMode = None
+        self._GroupName = None
+        self._GroupId = None
+        self._FlowTrunc = None
+
+    @property
+    def DeviceName(self):
+        r"""Name of the new device
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Remark(self):
+        r"""Remark of the created device
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def DataKey(self):
+        r"""base64-encoded key string of the new device, optional. If not filled, automatically generated by the system.
+        :rtype: str
+        """
+        return self._DataKey
+
+    @DataKey.setter
+    def DataKey(self, DataKey):
+        self._DataKey = DataKey
+
+    @property
+    def Encrypted(self):
+        r"""Whether to set the preset key.
+true: set preset key.
+false: Leave the preset key unset.
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway.
+specific meaning
+Public cloud gateway: The device can only integrate with the public cloud gateway (nearby access).
+Private gateway: The device can only integrate with the already launched private gateway (nearby access or fixed ip integration).
+Public cloud gateway and private gateway: The device can also integrate with the public cloud gateway and the already launched private gateway (connected to nearby or fixed ip access).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+    @property
+    def LicensePayMode(self):
+        r"""license payment method 
+Monthly authorization 
+Permanent license 
+If not specified, it defaults to monthly authorization. To permanently license a device, you need to call the OrderPerLicense API to pay the authorization fee. Otherwise, the device cannot be used.
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def GroupName(self):
+        r"""Device group name. Optional. Reserved parameter. GroupId must be imported when grouping is required.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        r"""Device group ID. Optional. If not filled, the default device is not grouped.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def FlowTrunc(self):
+        r"""No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :rtype: int
+        """
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._Remark = params.get("Remark")
+        self._DataKey = params.get("DataKey")
+        self._Encrypted = params.get("Encrypted")
+        self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
+        self._FlowTrunc = params.get("FlowTrunc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddDeviceResponse(AbstractModel):
+    r"""AddDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKey: base64-format key encrypted by the encryption algorithm
+        :type DataKey: str
+        :param _DeviceId: device ID
+        :type DeviceId: str
+        :param _Signature: signature string
+        :type Signature: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DataKey = None
+        self._DeviceId = None
+        self._Signature = None
+        self._RequestId = None
+
+    @property
+    def DataKey(self):
+        r"""base64-format key encrypted by the encryption algorithm
+        :rtype: str
+        """
+        return self._DataKey
+
+    @DataKey.setter
+    def DataKey(self, DataKey):
+        self._DataKey = DataKey
+
+    @property
+    def DeviceId(self):
+        r"""device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Signature(self):
+        r"""signature string
+        :rtype: str
+        """
+        return self._Signature
+
+    @Signature.setter
+    def Signature(self, Signature):
+        self._Signature = Signature
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataKey = params.get("DataKey")
+        self._DeviceId = params.get("DeviceId")
+        self._Signature = params.get("Signature")
+        self._RequestId = params.get("RequestId")
+
+
+class AddGroupRequest(AbstractModel):
+    r"""AddGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: Group name
+        :type GroupName: str
+        :param _Description: Group description
+        :type Description: str
+        """
+        self._GroupName = None
+        self._Description = None
+
+    @property
+    def GroupName(self):
+        r"""Group name
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        r"""Group description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddGroupResponse(AbstractModel):
+    r"""AddGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Unique ID of the group, only for grouping case-sensitive
+        :type GroupId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""Unique ID of the group, only for grouping case-sensitive
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class AddHardwareRequest(AbstractModel):
+    r"""AddHardware request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: List of Hardware
+        :type Hardware: list of Hardware
+        """
+        self._Hardware = None
+
+    @property
+    def Hardware(self):
+        r"""List of Hardware
+        :rtype: list of Hardware
+        """
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = Hardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddHardwareResponse(AbstractModel):
+    r"""AddHardware response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: Hardware device
+        :type Hardware: list of Hardware
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Hardware = None
+        self._RequestId = None
+
+    @property
+    def Hardware(self):
+        r"""Hardware device
+        :rtype: list of Hardware
+        """
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = Hardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class AddL3ConnRequest(AbstractModel):
+    r"""AddL3Conn request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cidr1: Set the interconnect CIDR1. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.
+        :type Cidr1: str
+        :param _Cidr2: Set the interconnection CIDR2. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.
+        :type Cidr2: str
+        :param _DeviceId1: Device ID corresponding to CIDR1
+        :type DeviceId1: str
+        :param _DeviceId2: Device ID corresponding to CIDR2
+        :type DeviceId2: str
+        :param _Description: Rule description
+        :type Description: str
+        """
+        self._Cidr1 = None
+        self._Cidr2 = None
+        self._DeviceId1 = None
+        self._DeviceId2 = None
+        self._Description = None
+
+    @property
+    def Cidr1(self):
+        r"""Set the interconnect CIDR1. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.
+        :rtype: str
+        """
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def Cidr2(self):
+        r"""Set the interconnection CIDR2. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.
+        :rtype: str
+        """
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+    @property
+    def DeviceId1(self):
+        r"""Device ID corresponding to CIDR1
+        :rtype: str
+        """
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def DeviceId2(self):
+        r"""Device ID corresponding to CIDR2
+        :rtype: str
+        """
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Description(self):
+        r"""Rule description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Cidr1 = params.get("Cidr1")
+        self._Cidr2 = params.get("Cidr2")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddL3ConnResponse(AbstractModel):
+    r"""AddL3Conn response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: Interconnection rule ID
+        :type L3ConnId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._L3ConnId = None
+        self._RequestId = None
+
+    @property
+    def L3ConnId(self):
+        r"""Interconnection rule ID
+        :rtype: str
+        """
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEncryptedKeyRequest(AbstractModel):
+    r"""CreateEncryptedKey request structure.
+
+    """
+
+
+class CreateEncryptedKeyResponse(AbstractModel):
+    r"""CreateEncryptedKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptedKey: Preset key
+        :type EncryptedKey: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._EncryptedKey = None
+        self._RequestId = None
+
+    @property
+    def EncryptedKey(self):
+        r"""Preset key
+        :rtype: str
+        """
+        return self._EncryptedKey
+
+    @EncryptedKey.setter
+    def EncryptedKey(self, EncryptedKey):
+        self._EncryptedKey = EncryptedKey
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EncryptedKey = params.get("EncryptedKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DelApplicationList(AbstractModel):
+    r"""Application ID list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: Application ID.
+        :type MpApplicationId: str
+        """
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID.
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationRequest(AbstractModel):
+    r"""DeleteApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationIdList: Application ID list
+        :type MpApplicationIdList: list of DelApplicationList
+        """
+        self._MpApplicationIdList = None
+
+    @property
+    def MpApplicationIdList(self):
+        r"""Application ID list
+        :rtype: list of DelApplicationList
+        """
+        return self._MpApplicationIdList
+
+    @MpApplicationIdList.setter
+    def MpApplicationIdList(self, MpApplicationIdList):
+        self._MpApplicationIdList = MpApplicationIdList
+
+
+    def _deserialize(self, params):
+        if params.get("MpApplicationIdList") is not None:
+            self._MpApplicationIdList = []
+            for item in params.get("MpApplicationIdList"):
+                obj = DelApplicationList()
+                obj._deserialize(item)
+                self._MpApplicationIdList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationResponse(AbstractModel):
+    r"""DeleteApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDeviceRequest(AbstractModel):
+    r"""DeleteDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Delete the device unique ID
+        :type DeviceId: str
+        """
+        self._DeviceId = None
+
+    @property
+    def DeviceId(self):
+        r"""Delete the device unique ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceResponse(AbstractModel):
+    r"""DeleteDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGroupRequest(AbstractModel):
+    r"""DeleteGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Delete the specified group
+        :type GroupId: str
+        """
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        r"""Delete the specified group
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupResponse(AbstractModel):
+    r"""DeleteGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteL3ConnRequest(AbstractModel):
+    r"""DeleteL3Conn request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnIdList: List of interconnection rule IDs
+        :type L3ConnIdList: list of str
+        """
+        self._L3ConnIdList = None
+
+    @property
+    def L3ConnIdList(self):
+        r"""List of interconnection rule IDs
+        :rtype: list of str
+        """
+        return self._L3ConnIdList
+
+    @L3ConnIdList.setter
+    def L3ConnIdList(self, L3ConnIdList):
+        self._L3ConnIdList = L3ConnIdList
+
+
+    def _deserialize(self, params):
+        self._L3ConnIdList = params.get("L3ConnIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL3ConnResponse(AbstractModel):
+    r"""DeleteL3Conn response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DestIpInfo(AbstractModel):
+    r"""Target IP info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: Time: s
+        :type Time: str
+        :param _GatewayIp: Gateway IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GatewayIp: str
+        :param _GatewaySite: gateway address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GatewaySite: str
+        :param _IpCount: Number of target IPs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpCount: int
+        :param _IpList: Target IP list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpList: list of str
+        """
+        self._Time = None
+        self._GatewayIp = None
+        self._GatewaySite = None
+        self._IpCount = None
+        self._IpList = None
+
+    @property
+    def Time(self):
+        r"""Time: s
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def GatewayIp(self):
+        r"""Gateway IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GatewayIp
+
+    @GatewayIp.setter
+    def GatewayIp(self, GatewayIp):
+        self._GatewayIp = GatewayIp
+
+    @property
+    def GatewaySite(self):
+        r"""gateway address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GatewaySite
+
+    @GatewaySite.setter
+    def GatewaySite(self, GatewaySite):
+        self._GatewaySite = GatewaySite
+
+    @property
+    def IpCount(self):
+        r"""Number of target IPs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IpCount
+
+    @IpCount.setter
+    def IpCount(self, IpCount):
+        self._IpCount = IpCount
+
+    @property
+    def IpList(self):
+        r"""Target IP list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._GatewayIp = params.get("GatewayIp")
+        self._GatewaySite = params.get("GatewaySite")
+        self._IpCount = params.get("IpCount")
+        self._IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceBaseInfo(AbstractModel):
+    r"""basic device information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Device unique ID
+        :type DeviceId: str
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _CreateTime: The time when the device is created, in ms.
+        :type CreateTime: str
+        :param _LastTime: Last online time of the device, in ms.
+        :type LastTime: str
+        :param _Remark: Device remark
+        :type Remark: str
+        :param _AccessScope: Access environment. 0: Public cloud gateway; 1: Private gateway; 2: Public cloud gateway and private gateway. Default is public cloud gateway. Specific meaning: Public cloud gateway: The device can only connect to the public cloud gateway (nearby access). Private gateway: The device can only connect to the already launched private gateway (nearby access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both the public cloud gateway and the already launched private gateway (nearby access or fixed ip access).
+        :type AccessScope: int
+        :param _LicensePayMode: Authorization validity period of license 0: Monthly authorization 1: Permanent license
+        :type LicensePayMode: int
+        :param _Payer: Payer 0: Manufacturer payment 1: Customer payment
+        :type Payer: int
+        :param _GroupId: device group ID
+        :type GroupId: str
+        :param _GroupName: Device group name
+        :type GroupName: str
+        :param _FlowTrunc: No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :type FlowTrunc: int
+        :param _Sn: Device sn
+        :type Sn: str
+        :param _Vendor: manufacturer
+        :type Vendor: str
+        """
+        self._DeviceId = None
+        self._DeviceName = None
+        self._CreateTime = None
+        self._LastTime = None
+        self._Remark = None
+        self._AccessScope = None
+        self._LicensePayMode = None
+        self._Payer = None
+        self._GroupId = None
+        self._GroupName = None
+        self._FlowTrunc = None
+        self._Sn = None
+        self._Vendor = None
+
+    @property
+    def DeviceId(self):
+        r"""Device unique ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def CreateTime(self):
+        r"""The time when the device is created, in ms.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastTime(self):
+        r"""Last online time of the device, in ms.
+        :rtype: str
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def Remark(self):
+        r"""Device remark
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: Public cloud gateway; 1: Private gateway; 2: Public cloud gateway and private gateway. Default is public cloud gateway. Specific meaning: Public cloud gateway: The device can only connect to the public cloud gateway (nearby access). Private gateway: The device can only connect to the already launched private gateway (nearby access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both the public cloud gateway and the already launched private gateway (nearby access or fixed ip access).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+    @property
+    def LicensePayMode(self):
+        r"""Authorization validity period of license 0: Monthly authorization 1: Permanent license
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        r"""Payer 0: Manufacturer payment 1: Customer payment
+        :rtype: int
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def GroupId(self):
+        r"""device group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Device group name
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def FlowTrunc(self):
+        r"""No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :rtype: int
+        """
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+    @property
+    def Sn(self):
+        r"""Device sn
+        :rtype: str
+        """
+        return self._Sn
+
+    @Sn.setter
+    def Sn(self, Sn):
+        self._Sn = Sn
+
+    @property
+    def Vendor(self):
+        r"""manufacturer
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._CreateTime = params.get("CreateTime")
+        self._LastTime = params.get("LastTime")
+        self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
+        self._Sn = params.get("Sn")
+        self._Vendor = params.get("Vendor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceDetails(AbstractModel):
+    r"""device details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceBaseInfo: Device basic info
+        :type DeviceBaseInfo: :class:`tencentcloud.mna.v20210119.models.DeviceBaseInfo`
+        :param _DeviceNetInfo: Device network info
+        :type DeviceNetInfo: list of DeviceNetInfo
+        :param _GatewaySite: Aggregate server address
+        :type GatewaySite: str
+        :param _BusinessDownRate: Downlink Rate
+        :type BusinessDownRate: float
+        :param _BusinessUpRate: Business-wise uplink rate
+        :type BusinessUpRate: float
+        """
+        self._DeviceBaseInfo = None
+        self._DeviceNetInfo = None
+        self._GatewaySite = None
+        self._BusinessDownRate = None
+        self._BusinessUpRate = None
+
+    @property
+    def DeviceBaseInfo(self):
+        r"""Device basic info
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeviceBaseInfo`
+        """
+        return self._DeviceBaseInfo
+
+    @DeviceBaseInfo.setter
+    def DeviceBaseInfo(self, DeviceBaseInfo):
+        self._DeviceBaseInfo = DeviceBaseInfo
+
+    @property
+    def DeviceNetInfo(self):
+        r"""Device network info
+        :rtype: list of DeviceNetInfo
+        """
+        return self._DeviceNetInfo
+
+    @DeviceNetInfo.setter
+    def DeviceNetInfo(self, DeviceNetInfo):
+        self._DeviceNetInfo = DeviceNetInfo
+
+    @property
+    def GatewaySite(self):
+        r"""Aggregate server address
+        :rtype: str
+        """
+        return self._GatewaySite
+
+    @GatewaySite.setter
+    def GatewaySite(self, GatewaySite):
+        self._GatewaySite = GatewaySite
+
+    @property
+    def BusinessDownRate(self):
+        r"""Downlink Rate
+        :rtype: float
+        """
+        return self._BusinessDownRate
+
+    @BusinessDownRate.setter
+    def BusinessDownRate(self, BusinessDownRate):
+        self._BusinessDownRate = BusinessDownRate
+
+    @property
+    def BusinessUpRate(self):
+        r"""Business-wise uplink rate
+        :rtype: float
+        """
+        return self._BusinessUpRate
+
+    @BusinessUpRate.setter
+    def BusinessUpRate(self, BusinessUpRate):
+        self._BusinessUpRate = BusinessUpRate
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceBaseInfo") is not None:
+            self._DeviceBaseInfo = DeviceBaseInfo()
+            self._DeviceBaseInfo._deserialize(params.get("DeviceBaseInfo"))
+        if params.get("DeviceNetInfo") is not None:
+            self._DeviceNetInfo = []
+            for item in params.get("DeviceNetInfo"):
+                obj = DeviceNetInfo()
+                obj._deserialize(item)
+                self._DeviceNetInfo.append(obj)
+        self._GatewaySite = params.get("GatewaySite")
+        self._BusinessDownRate = params.get("BusinessDownRate")
+        self._BusinessUpRate = params.get("BusinessUpRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceNetInfo(AbstractModel):
+    r"""Device network status information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Network type:
+Data
+1:Wi-Fi
+2: Wired
+        :type Type: int
+        :param _DataEnable: Enable or disable.
+        :type DataEnable: bool
+        :param _UploadLimit: Uplink speed limit
+        :type UploadLimit: str
+        :param _DownloadLimit: Downstream speed limit
+        :type DownloadLimit: str
+        :param _DataRx: receive real-time speed
+        :type DataRx: int
+        :param _DataTx: Send real-time speed
+        :type DataTx: int
+        :param _Vendor: Operator type:
+1: CMCC;
+2: CTCC 
+3: CUCC
+        :type Vendor: int
+        :param _State: Connection status:
+0: connectionless
+1: Connecting
+2: Connected
+        :type State: int
+        :param _PublicIp: Public IP address
+        :type PublicIp: str
+        :param _SignalStrength: Signal strength/Measurement unit: dbm
+        :type SignalStrength: int
+        :param _Rat: Data network type:
+-1: Invalid value.   
+2:2G 
+3:3G 
+4:4G 
+5:5G
+        :type Rat: int
+        :param _NetInfoName: NIC Name
+        :type NetInfoName: str
+        :param _DownRate: Downstream real-time rate (floating-point type replaces the integer type of the previous version DataRx).
+        :type DownRate: float
+        :param _UpRate: Uplink real-time rate (floating-point type replaces the integer of the previous version TxRate)
+        :type UpRate: float
+        """
+        self._Type = None
+        self._DataEnable = None
+        self._UploadLimit = None
+        self._DownloadLimit = None
+        self._DataRx = None
+        self._DataTx = None
+        self._Vendor = None
+        self._State = None
+        self._PublicIp = None
+        self._SignalStrength = None
+        self._Rat = None
+        self._NetInfoName = None
+        self._DownRate = None
+        self._UpRate = None
+
+    @property
+    def Type(self):
+        r"""Network type:
+Data
+1:Wi-Fi
+2: Wired
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DataEnable(self):
+        r"""Enable or disable.
+        :rtype: bool
+        """
+        return self._DataEnable
+
+    @DataEnable.setter
+    def DataEnable(self, DataEnable):
+        self._DataEnable = DataEnable
+
+    @property
+    def UploadLimit(self):
+        r"""Uplink speed limit
+        :rtype: str
+        """
+        return self._UploadLimit
+
+    @UploadLimit.setter
+    def UploadLimit(self, UploadLimit):
+        self._UploadLimit = UploadLimit
+
+    @property
+    def DownloadLimit(self):
+        r"""Downstream speed limit
+        :rtype: str
+        """
+        return self._DownloadLimit
+
+    @DownloadLimit.setter
+    def DownloadLimit(self, DownloadLimit):
+        self._DownloadLimit = DownloadLimit
+
+    @property
+    def DataRx(self):
+        r"""receive real-time speed
+        :rtype: int
+        """
+        return self._DataRx
+
+    @DataRx.setter
+    def DataRx(self, DataRx):
+        self._DataRx = DataRx
+
+    @property
+    def DataTx(self):
+        r"""Send real-time speed
+        :rtype: int
+        """
+        return self._DataTx
+
+    @DataTx.setter
+    def DataTx(self, DataTx):
+        self._DataTx = DataTx
+
+    @property
+    def Vendor(self):
+        r"""Operator type:
+1: CMCC;
+2: CTCC 
+3: CUCC
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def State(self):
+        r"""Connection status:
+0: connectionless
+1: Connecting
+2: Connected
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def PublicIp(self):
+        r"""Public IP address
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def SignalStrength(self):
+        r"""Signal strength/Measurement unit: dbm
+        :rtype: int
+        """
+        return self._SignalStrength
+
+    @SignalStrength.setter
+    def SignalStrength(self, SignalStrength):
+        self._SignalStrength = SignalStrength
+
+    @property
+    def Rat(self):
+        r"""Data network type:
+-1: Invalid value.   
+2:2G 
+3:3G 
+4:4G 
+5:5G
+        :rtype: int
+        """
+        return self._Rat
+
+    @Rat.setter
+    def Rat(self, Rat):
+        self._Rat = Rat
+
+    @property
+    def NetInfoName(self):
+        r"""NIC Name
+        :rtype: str
+        """
+        return self._NetInfoName
+
+    @NetInfoName.setter
+    def NetInfoName(self, NetInfoName):
+        self._NetInfoName = NetInfoName
+
+    @property
+    def DownRate(self):
+        r"""Downstream real-time rate (floating-point type replaces the integer type of the previous version DataRx).
+        :rtype: float
+        """
+        return self._DownRate
+
+    @DownRate.setter
+    def DownRate(self, DownRate):
+        self._DownRate = DownRate
+
+    @property
+    def UpRate(self):
+        r"""Uplink real-time rate (floating-point type replaces the integer of the previous version TxRate)
+        :rtype: float
+        """
+        return self._UpRate
+
+    @UpRate.setter
+    def UpRate(self, UpRate):
+        self._UpRate = UpRate
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._DataEnable = params.get("DataEnable")
+        self._UploadLimit = params.get("UploadLimit")
+        self._DownloadLimit = params.get("DownloadLimit")
+        self._DataRx = params.get("DataRx")
+        self._DataTx = params.get("DataTx")
+        self._Vendor = params.get("Vendor")
+        self._State = params.get("State")
+        self._PublicIp = params.get("PublicIp")
+        self._SignalStrength = params.get("SignalStrength")
+        self._Rat = params.get("Rat")
+        self._NetInfoName = params.get("NetInfoName")
+        self._DownRate = params.get("DownRate")
+        self._UpRate = params.get("UpRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DevicePayModeInfo(AbstractModel):
+    r"""Device payment mode info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: device ID
+        :type DeviceId: str
+        :param _PayMode: Payment mode.
+Prepaid Traffic Package
+0: Pay-as-you-go by traffic
+        :type PayMode: int
+        :param _PayModeDesc: Payment mode description.
+        :type PayModeDesc: str
+        :param _ResourceId: Traffic package ID. Only available when the payment mode is package type.
+        :type ResourceId: str
+        """
+        self._DeviceId = None
+        self._PayMode = None
+        self._PayModeDesc = None
+        self._ResourceId = None
+
+    @property
+    def DeviceId(self):
+        r"""device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def PayMode(self):
+        r"""Payment mode.
+Prepaid Traffic Package
+0: Pay-as-you-go by traffic
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeDesc(self):
+        r"""Payment mode description.
+        :rtype: str
+        """
+        return self._PayModeDesc
+
+    @PayModeDesc.setter
+    def PayModeDesc(self, PayModeDesc):
+        self._PayModeDesc = PayModeDesc
+
+    @property
+    def ResourceId(self):
+        r"""Traffic package ID. Only available when the payment mode is package type.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._PayMode = params.get("PayMode")
+        self._PayModeDesc = params.get("PayModeDesc")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadActiveDeviceCountRequest(AbstractModel):
+    r"""DownloadActiveDeviceCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :type Period: int
+        :param _StartTime: Start time. In seconds.
+        :type StartTime: int
+        :param _EndTime: End time. In seconds.
+        :type EndTime: int
+        :param _DevGroup: device group, if not passed, query all
+        :type DevGroup: str
+        :param _LicenseType: License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :type LicenseType: int
+        """
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+
+    @property
+    def Period(self):
+        r"""Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        r"""Start time. In seconds.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time. In seconds.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        r"""device group, if not passed, query all
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        r"""License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :rtype: int
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadActiveDeviceCountResponse(AbstractModel):
+    r"""DownloadActiveDeviceCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: URL address
+        :type FilePath: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""URL address
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
+class FlowDetails(AbstractModel):
+    r"""Device traffic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: Traffic data point
+        :type NetDetails: list of NetDetails
+        :param _DeviceId: device ID
+        :type DeviceId: str
+        :param _MaxValue: Maximum value of traffic (measurement unit: bytes)
+        :type MaxValue: float
+        :param _AvgValue: Average traffic (unit: bytes)
+        :type AvgValue: float
+        :param _TotalValue: Total traffic (unit: bytes)
+        :type TotalValue: float
+        """
+        self._NetDetails = None
+        self._DeviceId = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+
+    @property
+    def NetDetails(self):
+        r"""Traffic data point
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def DeviceId(self):
+        r"""device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def MaxValue(self):
+        r"""Maximum value of traffic (measurement unit: bytes)
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""Average traffic (unit: bytes)
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""Total traffic (unit: bytes)
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._DeviceId = params.get("DeviceId")
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowPackageInfo(AbstractModel):
+    r"""Traffic package information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Unique resource ID of the data transfer plan
+        :type ResourceId: str
+        :param _AppId: User AppId belonging to the data transfer plan
+        :type AppId: int
+        :param _PackageType: Traffic package specification type. Values are as follows:
+DEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,
+DEVICE_3_FLOW_100G,
+DEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.
+Gear selection also impacts the bandwidth cap of the data transfer plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :type PackageType: str
+        :param _Status: Traffic packet status. 0: Inactive, 1: Within validity period, 2: Expired.
+        :type Status: int
+        :param _CreateTime: Purchase time, Unix timestamp format, unit: second
+        :type CreateTime: int
+        :param _ActiveTime: Effective time, Unix Timestamp Format, unit: second
+        :type ActiveTime: int
+        :param _ExpireTime: Expiration time, Unix Timestamp Format, unit: second
+        :type ExpireTime: int
+        :param _DeviceList: Device ID list bound to the data transfer plan
+        :type DeviceList: list of str
+        :param _CapacitySize: Total traffic plan capacity (unit: MB)
+        :type CapacitySize: int
+        :param _CapacityRemain: Remaining data transfer plan, unit: MB
+        :type CapacityRemain: int
+        :param _RenewFlag: Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.
+        :type RenewFlag: bool
+        :param _ModifyStatus: Resource package change status: 0: No change; 1: Changing; 2: Changed or renewed
+        :type ModifyStatus: int
+        :param _TruncFlag: Traffic truncation flag. true to enable traffic truncation, false to disable traffic truncation.
+        :type TruncFlag: bool
+        :param _CapacityRemainPrecise: Precise remaining data transfer plan, unit: MB
+        :type CapacityRemainPrecise: int
+        """
+        self._ResourceId = None
+        self._AppId = None
+        self._PackageType = None
+        self._Status = None
+        self._CreateTime = None
+        self._ActiveTime = None
+        self._ExpireTime = None
+        self._DeviceList = None
+        self._CapacitySize = None
+        self._CapacityRemain = None
+        self._RenewFlag = None
+        self._ModifyStatus = None
+        self._TruncFlag = None
+        self._CapacityRemainPrecise = None
+
+    @property
+    def ResourceId(self):
+        r"""Unique resource ID of the data transfer plan
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AppId(self):
+        r"""User AppId belonging to the data transfer plan
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PackageType(self):
+        r"""Traffic package specification type. Values are as follows:
+DEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,
+DEVICE_3_FLOW_100G,
+DEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.
+Gear selection also impacts the bandwidth cap of the data transfer plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def Status(self):
+        r"""Traffic packet status. 0: Inactive, 1: Within validity period, 2: Expired.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""Purchase time, Unix timestamp format, unit: second
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ActiveTime(self):
+        r"""Effective time, Unix Timestamp Format, unit: second
+        :rtype: int
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ExpireTime(self):
+        r"""Expiration time, Unix Timestamp Format, unit: second
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeviceList(self):
+        r"""Device ID list bound to the data transfer plan
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def CapacitySize(self):
+        r"""Total traffic plan capacity (unit: MB)
+        :rtype: int
+        """
+        return self._CapacitySize
+
+    @CapacitySize.setter
+    def CapacitySize(self, CapacitySize):
+        self._CapacitySize = CapacitySize
+
+    @property
+    def CapacityRemain(self):
+        r"""Remaining data transfer plan, unit: MB
+        :rtype: int
+        """
+        return self._CapacityRemain
+
+    @CapacityRemain.setter
+    def CapacityRemain(self, CapacityRemain):
+        self._CapacityRemain = CapacityRemain
+
+    @property
+    def RenewFlag(self):
+        r"""Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.
+        :rtype: bool
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ModifyStatus(self):
+        r"""Resource package change status: 0: No change; 1: Changing; 2: Changed or renewed
+        :rtype: int
+        """
+        return self._ModifyStatus
+
+    @ModifyStatus.setter
+    def ModifyStatus(self, ModifyStatus):
+        self._ModifyStatus = ModifyStatus
+
+    @property
+    def TruncFlag(self):
+        r"""Traffic truncation flag. true to enable traffic truncation, false to disable traffic truncation.
+        :rtype: bool
+        """
+        return self._TruncFlag
+
+    @TruncFlag.setter
+    def TruncFlag(self, TruncFlag):
+        self._TruncFlag = TruncFlag
+
+    @property
+    def CapacityRemainPrecise(self):
+        r"""Precise remaining data transfer plan, unit: MB
+        :rtype: int
+        """
+        return self._CapacityRemainPrecise
+
+    @CapacityRemainPrecise.setter
+    def CapacityRemainPrecise(self, CapacityRemainPrecise):
+        self._CapacityRemainPrecise = CapacityRemainPrecise
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._AppId = params.get("AppId")
+        self._PackageType = params.get("PackageType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeviceList = params.get("DeviceList")
+        self._CapacitySize = params.get("CapacitySize")
+        self._CapacityRemain = params.get("CapacityRemain")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ModifyStatus = params.get("ModifyStatus")
+        self._TruncFlag = params.get("TruncFlag")
+        self._CapacityRemainPrecise = params.get("CapacityRemainPrecise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetActiveDeviceCountRequest(AbstractModel):
+    r"""GetActiveDeviceCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :type Period: int
+        :param _StartTime: Start time. In seconds.
+        :type StartTime: int
+        :param _EndTime: End time. In seconds.
+        :type EndTime: int
+        :param _DevGroup: device group, if not passed, query all
+        :type DevGroup: str
+        :param _LicenseType: License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :type LicenseType: int
+        """
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+
+    @property
+    def Period(self):
+        r"""Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        r"""Start time. In seconds.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time. In seconds.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        r"""device group, if not passed, query all
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        r"""License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :rtype: int
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetActiveDeviceCountResponse(AbstractModel):
+    r"""GetActiveDeviceCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActiveDeviceList: Activate device statistics
+        :type ActiveDeviceList: list of ActiveDeviceList
+        :param _Period: Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :type Period: int
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _DevGroup: device group
+        :type DevGroup: str
+        :param _LicenseType: License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :type LicenseType: str
+        :param _AppId: tenant ID
+        :type AppId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ActiveDeviceList = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+        self._AppId = None
+        self._RequestId = None
+
+    @property
+    def ActiveDeviceList(self):
+        r"""Activate device statistics
+        :rtype: list of ActiveDeviceList
+        """
+        return self._ActiveDeviceList
+
+    @ActiveDeviceList.setter
+    def ActiveDeviceList(self, ActiveDeviceList):
+        self._ActiveDeviceList = ActiveDeviceList
+
+    @property
+    def Period(self):
+        r"""Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        r"""device group
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        r"""License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
+    def AppId(self):
+        r"""tenant ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ActiveDeviceList") is not None:
+            self._ActiveDeviceList = []
+            for item in params.get("ActiveDeviceList"):
+                obj = ActiveDeviceList()
+                obj._deserialize(item)
+                self._ActiveDeviceList.append(obj)
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
+
+
+class GetApplicationRequest(AbstractModel):
+    r"""GetApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: Application ID.
+        :type MpApplicationId: str
+        """
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID.
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetApplicationResponse(AbstractModel):
+    r"""GetApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: Application ID
+        :type MpApplicationId: str
+        :param _MpApplicationKey: base64-format key encrypted with the encryption algorithm
+        :type MpApplicationKey: str
+        :param _MpApplicationName: Application name
+        :type MpApplicationName: str
+        :param _Remark: Device remark
+        :type Remark: str
+        :param _AccessScope: Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :type AccessScope: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MpApplicationId = None
+        self._MpApplicationKey = None
+        self._MpApplicationName = None
+        self._Remark = None
+        self._AccessScope = None
+        self._RequestId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationKey(self):
+        r"""base64-format key encrypted with the encryption algorithm
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationName(self):
+        r"""Application name
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""Device remark
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDestIPByNameRequest(AbstractModel):
+    r"""GetDestIPByName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Device name
+        :type DeviceName: str
+        :param _BeginTime: Start time.
+        :type BeginTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""Device name
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDestIPByNameResponse(AbstractModel):
+    r"""GetDestIPByName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestIpInfo: Target IP info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DestIpInfo: list of DestIpInfo
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas.
+        :type AccessRegion: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DestIpInfo = None
+        self._AccessRegion = None
+        self._RequestId = None
+
+    @property
+    def DestIpInfo(self):
+        r"""Target IP info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DestIpInfo
+        """
+        return self._DestIpInfo
+
+    @DestIpInfo.setter
+    def DestIpInfo(self, DestIpInfo):
+        self._DestIpInfo = DestIpInfo
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DestIpInfo") is not None:
+            self._DestIpInfo = []
+            for item in params.get("DestIpInfo"):
+                obj = DestIpInfo()
+                obj._deserialize(item)
+                self._DestIpInfo.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDevicePayModeRequest(AbstractModel):
+    r"""GetDevicePayMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIdList: Device ID list
+        :type DeviceIdList: list of str
+        """
+        self._DeviceIdList = None
+
+    @property
+    def DeviceIdList(self):
+        r"""Device ID list
+        :rtype: list of str
+        """
+        return self._DeviceIdList
+
+    @DeviceIdList.setter
+    def DeviceIdList(self, DeviceIdList):
+        self._DeviceIdList = DeviceIdList
+
+
+    def _deserialize(self, params):
+        self._DeviceIdList = params.get("DeviceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDevicePayModeResponse(AbstractModel):
+    r"""GetDevicePayMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Result Information
+        :type Result: list of DevicePayModeInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Result Information
+        :rtype: list of DevicePayModeInfo
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = DevicePayModeInfo()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetDeviceRequest(AbstractModel):
+    r"""GetDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Search for the id of the specified device
+        :type DeviceId: str
+        """
+        self._DeviceId = None
+
+    @property
+    def DeviceId(self):
+        r"""Search for the id of the specified device
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDeviceResponse(AbstractModel):
+    r"""GetDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceDetails: device details
+        :type DeviceDetails: :class:`tencentcloud.mna.v20210119.models.DeviceDetails`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeviceDetails = None
+        self._RequestId = None
+
+    @property
+    def DeviceDetails(self):
+        r"""device details
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeviceDetails`
+        """
+        return self._DeviceDetails
+
+    @DeviceDetails.setter
+    def DeviceDetails(self, DeviceDetails):
+        self._DeviceDetails = DeviceDetails
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceDetails") is not None:
+            self._DeviceDetails = DeviceDetails()
+            self._DeviceDetails._deserialize(params.get("DeviceDetails"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetDevicesRequest(AbstractModel):
+    r"""GetDevices request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.
+        :type PageSize: int
+        :param _PageNumber: Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.
+        :type PageNumber: int
+        :param _Keyword: Search for a device by keyword (ID or device name). Leave it empty to match all devices.
+        :type Keyword: str
+        :param _DeviceType: DeviceType
+Leave it blank: Return all devices.
+1: Your own equipment;
+2: Third-party device
+        :type DeviceType: int
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._Keyword = None
+        self._DeviceType = None
+
+    @property
+    def PageSize(self):
+        r"""Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Keyword(self):
+        r"""Search for a device by keyword (ID or device name). Leave it empty to match all devices.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def DeviceType(self):
+        r"""DeviceType
+Leave it blank: Return all devices.
+1: Your own equipment;
+2: Third-party device
+        :rtype: int
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Keyword = params.get("Keyword")
+        self._DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDevicesResponse(AbstractModel):
+    r"""GetDevices response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceInfos: List of Device Information
+        :type DeviceInfos: list of DeviceBaseInfo
+        :param _Length: Total number of devices
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeviceInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def DeviceInfos(self):
+        r"""List of Device Information
+        :rtype: list of DeviceBaseInfo
+        """
+        return self._DeviceInfos
+
+    @DeviceInfos.setter
+    def DeviceInfos(self, DeviceInfos):
+        self._DeviceInfos = DeviceInfos
+
+    @property
+    def Length(self):
+        r"""Total number of devices
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceInfos") is not None:
+            self._DeviceInfos = []
+            for item in params.get("DeviceInfos"):
+                obj = DeviceBaseInfo()
+                obj._deserialize(item)
+                self._DeviceInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowAlarmInfoRequest(AbstractModel):
+    r"""GetFlowAlarmInfo request structure.
+
+    """
+
+
+class GetFlowAlarmInfoResponse(AbstractModel):
+    r"""GetFlowAlarmInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmValue: Alarm threshold of the data transfer plan
+        :type AlarmValue: int
+        :param _NotifyUrl: Alarm notification callback url
+        :type NotifyUrl: str
+        :param _CallbackKey: Alarm notification callback key
+        :type CallbackKey: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AlarmValue = None
+        self._NotifyUrl = None
+        self._CallbackKey = None
+        self._RequestId = None
+
+    @property
+    def AlarmValue(self):
+        r"""Alarm threshold of the data transfer plan
+        :rtype: int
+        """
+        return self._AlarmValue
+
+    @AlarmValue.setter
+    def AlarmValue(self, AlarmValue):
+        self._AlarmValue = AlarmValue
+
+    @property
+    def NotifyUrl(self):
+        r"""Alarm notification callback url
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+    @property
+    def CallbackKey(self):
+        r"""Alarm notification callback key
+        :rtype: str
+        """
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AlarmValue = params.get("AlarmValue")
+        self._NotifyUrl = params.get("NotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowPackagesRequest(AbstractModel):
+    r"""GetFlowPackages request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: Page number, starting from 1.
+        :type PageNumber: int
+        :param _PageSize: Number of Entry Per Page
+        :type PageSize: int
+        :param _ResourceId: Unique resource ID of the data transfer plan
+        :type ResourceId: str
+        :param _DeviceId: Device ID bound to the data transfer plan
+        :type DeviceId: str
+        :param _Status: Traffic packet status. 0: Not in effect, 1: Within the validity period, 2: Expired.
+
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._ResourceId = None
+        self._DeviceId = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        r"""Page number, starting from 1.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""Number of Entry Per Page
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ResourceId(self):
+        r"""Unique resource ID of the data transfer plan
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def DeviceId(self):
+        r"""Device ID bound to the data transfer plan
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        r"""Traffic packet status. 0: Not in effect, 1: Within the validity period, 2: Expired.
+
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ResourceId = params.get("ResourceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowPackagesResponse(AbstractModel):
+    r"""GetFlowPackages response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageList: Data Transfer Plan List
+        :type PackageList: list of FlowPackageInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PackageList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def PackageList(self):
+        r"""Data Transfer Plan List
+        :rtype: list of FlowPackageInfo
+        """
+        return self._PackageList
+
+    @PackageList.setter
+    def PackageList(self, PackageList):
+        self._PackageList = PackageList
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PackageList") is not None:
+            self._PackageList = []
+            for item in params.get("PackageList"):
+                obj = FlowPackageInfo()
+                obj._deserialize(item)
+                self._PackageList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticByGroupRequest(AbstractModel):
+    r"""GetFlowStatisticByGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _BeginTime: Search start time
+        :type BeginTime: int
+        :param _EndTime: end time
+        :type EndTime: int
+        :param _Type: Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :type Type: int
+        :param _TimeGranularity: Time granularity (1: hourly statistics, 2: daily statistics)
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        :param _MpApplicationId: Application ID. No need to use when querying group traffic. When querying application traffic, this field is the application ID. Fill "-1" for GroupId.
+        :type MpApplicationId: str
+        """
+        self._GroupId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._MpApplicationId = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def BeginTime(self):
+        r"""Search start time
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""end time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""Time granularity (1: hourly statistics, 2: daily statistics)
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID. No need to use when querying group traffic. When querying application traffic, this field is the application ID. Fill "-1" for GroupId.
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByGroupResponse(AbstractModel):
+    r"""GetFlowStatisticByGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: Traffic details
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :type MaxValue: float
+        :param _AvgValue: Search time period traffic usage average (unit: byte)
+        :type AvgValue: float
+        :param _TotalValue: Search total traffic usage in the time period (unit: byte)
+        :type TotalValue: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        r"""Traffic details
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        r"""Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""Search time period traffic usage average (unit: byte)
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""Search total traffic usage in the time period (unit: byte)
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticByNameRequest(AbstractModel):
+    r"""GetFlowStatisticByName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _BeginTime: Search start time
+        :type BeginTime: int
+        :param _EndTime: end time
+        :type EndTime: int
+        :param _Type: Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :type Type: int
+        :param _TimeGranularity: Time granularity (1: hourly statistics, 2: daily statistics)
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        :param _DeviceList: Device name list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be "-1".
+        :type DeviceList: list of str
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""Search start time
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""end time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""Time granularity (1: hourly statistics, 2: daily statistics)
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""Device name list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be "-1".
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByNameResponse(AbstractModel):
+    r"""GetFlowStatisticByName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: Traffic details
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :type MaxValue: float
+        :param _AvgValue: Search time period traffic usage average (unit: byte)
+        :type AvgValue: float
+        :param _TotalValue: Search total traffic usage in the time period (unit: byte)
+        :type TotalValue: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        r"""Traffic details
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        r"""Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""Search time period traffic usage average (unit: byte)
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""Search total traffic usage in the time period (unit: byte)
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticByRegionRequest(AbstractModel):
+    r"""GetFlowStatisticByRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: Search start time
+        :type BeginTime: int
+        :param _EndTime: end time
+        :type EndTime: int
+        :param _Type: Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :type Type: int
+        :param _TimeGranularity: Time granularity (1: hourly statistics, 2: daily statistics)
+        :type TimeGranularity: int
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway.
+        :type GatewayType: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._GatewayType = None
+        self._AccessRegion = None
+
+    @property
+    def BeginTime(self):
+        r"""Search start time
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""end time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""Time granularity (1: hourly statistics, 2: daily statistics)
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._GatewayType = params.get("GatewayType")
+        self._AccessRegion = params.get("AccessRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByRegionResponse(AbstractModel):
+    r"""GetFlowStatisticByRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: Traffic details
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :type MaxValue: float
+        :param _AvgValue: Search time period traffic usage average (unit: byte)
+        :type AvgValue: float
+        :param _TotalValue: Search total traffic usage in the time period (unit: byte)
+        :type TotalValue: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        r"""Traffic details
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        r"""Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""Search time period traffic usage average (unit: byte)
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""Search total traffic usage in the time period (unit: byte)
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticRequest(AbstractModel):
+    r"""GetFlowStatistic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: device ID
+        :type DeviceId: str
+        :param _BeginTime: Search start time
+        :type BeginTime: int
+        :param _EndTime: end time
+        :type EndTime: int
+        :param _Type: Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :type Type: int
+        :param _TimeGranularity: Time granularity (1: hourly statistics, 2: daily statistics)
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        :param _DeviceList: Device ID list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be "-1".
+        :type DeviceList: list of str
+        """
+        self._DeviceId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+
+    @property
+    def DeviceId(self):
+        r"""device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def BeginTime(self):
+        r"""Search start time
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""end time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""Time granularity (1: hourly statistics, 2: daily statistics)
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""Device ID list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be "-1".
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticResponse(AbstractModel):
+    r"""GetFlowStatistic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: Traffic details
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :type MaxValue: float
+        :param _AvgValue: Search time period traffic usage average (unit: byte)
+        :type AvgValue: float
+        :param _TotalValue: Search total traffic usage in the time period (unit: byte)
+        :type TotalValue: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        r"""Traffic details
+        :rtype: list of NetDetails
+        """
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        r"""Search the maximum value of traffic usage in a time period (measurement unit: byte)
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        r"""Search time period traffic usage average (unit: byte)
+        :rtype: float
+        """
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        r"""Search total traffic usage in the time period (unit: byte)
+        :rtype: float
+        """
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetGroupDetailRequest(AbstractModel):
+    r"""GetGroupDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _PageSize: Display per page number of records. When PageSize and PageNumber are -1, match all devices by 1 page with no limit entries.	
+Example value: 1.
+
+        :type PageSize: int
+        :param _PageNumber: Number of records displayed per page. When PageSize and PageNumber are both -1, match all devices by 1 page with no limit entries.	
+Example value: 10.
+
+        :type PageNumber: int
+        :param _KeyWord: Search Keywords
+        :type KeyWord: str
+        """
+        self._GroupId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._KeyWord = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def PageSize(self):
+        r"""Display per page number of records. When PageSize and PageNumber are -1, match all devices by 1 page with no limit entries.	
+Example value: 1.
+
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""Number of records displayed per page. When PageSize and PageNumber are both -1, match all devices by 1 page with no limit entries.	
+Example value: 10.
+
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def KeyWord(self):
+        r"""Search Keywords
+        :rtype: str
+        """
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._KeyWord = params.get("KeyWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGroupDetailResponse(AbstractModel):
+    r"""GetGroupDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupInfo: Group basic info
+        :type GroupInfo: :class:`tencentcloud.mna.v20210119.models.GroupInfo`
+        :param _DeviceInfos: Device list grouped in
+        :type DeviceInfos: list of DeviceBaseInfo
+        :param _Length: Total number of devices
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GroupInfo = None
+        self._DeviceInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def GroupInfo(self):
+        r"""Group basic info
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GroupInfo`
+        """
+        return self._GroupInfo
+
+    @GroupInfo.setter
+    def GroupInfo(self, GroupInfo):
+        self._GroupInfo = GroupInfo
+
+    @property
+    def DeviceInfos(self):
+        r"""Device list grouped in
+        :rtype: list of DeviceBaseInfo
+        """
+        return self._DeviceInfos
+
+    @DeviceInfos.setter
+    def DeviceInfos(self, DeviceInfos):
+        self._DeviceInfos = DeviceInfos
+
+    @property
+    def Length(self):
+        r"""Total number of devices
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupInfo") is not None:
+            self._GroupInfo = GroupInfo()
+            self._GroupInfo._deserialize(params.get("GroupInfo"))
+        if params.get("DeviceInfos") is not None:
+            self._DeviceInfos = []
+            for item in params.get("DeviceInfos"):
+                obj = DeviceBaseInfo()
+                obj._deserialize(item)
+                self._DeviceInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetGroupListRequest(AbstractModel):
+    r"""GetGroupList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: Number of records displayed per page. When both PageSize and PageNumber are -1, match all devices with no limit on a single page.
+Example value: 10.
+        :type PageSize: int
+        :param _PageNumber: Currently viewed page number. When both PageSize and PageNumber are -1, match all devices as one page with no limit on entries.
+Example value: 1.
+        :type PageNumber: int
+        :param _Keyword: Search for groups by keyword. Match all groups when empty.
+        :type Keyword: str
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._Keyword = None
+
+    @property
+    def PageSize(self):
+        r"""Number of records displayed per page. When both PageSize and PageNumber are -1, match all devices with no limit on a single page.
+Example value: 10.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""Currently viewed page number. When both PageSize and PageNumber are -1, match all devices as one page with no limit on entries.
+Example value: 1.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Keyword(self):
+        r"""Search for groups by keyword. Match all groups when empty.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGroupListResponse(AbstractModel):
+    r"""GetGroupList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupInfos: List of Device Information
+        :type GroupInfos: list of GroupInfo
+        :param _Length: Total number of devices
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._GroupInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def GroupInfos(self):
+        r"""List of Device Information
+        :rtype: list of GroupInfo
+        """
+        return self._GroupInfos
+
+    @GroupInfos.setter
+    def GroupInfos(self, GroupInfos):
+        self._GroupInfos = GroupInfos
+
+    @property
+    def Length(self):
+        r"""Total number of devices
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupInfos") is not None:
+            self._GroupInfos = []
+            for item in params.get("GroupInfos"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._GroupInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetHardwareInfoRequest(AbstractModel):
+    r"""GetHardwareInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: Vendor name
+        :type Vendor: str
+        :param _SN: Device SN serial number
+        :type SN: str
+        """
+        self._Vendor = None
+        self._SN = None
+
+    @property
+    def Vendor(self):
+        r"""Vendor name
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def SN(self):
+        r"""Device SN serial number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._SN = params.get("SN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetHardwareInfoResponse(AbstractModel):
+    r"""GetHardwareInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicensePayMode: Authorization validity period of license 
+0: Monthly authorization 
+1: Permanent license 
+-Unknown
+        :type LicensePayMode: int
+        :param _Payer: Payer 0: Customer payment 1: Manufacturer payment
+        :type Payer: int
+        :param _SN: Hardware Serial Number
+        :type SN: str
+        :param _Vendor: Vendor name
+        :type Vendor: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._LicensePayMode = None
+        self._Payer = None
+        self._SN = None
+        self._Vendor = None
+        self._RequestId = None
+
+    @property
+    def LicensePayMode(self):
+        r"""Authorization validity period of license 
+0: Monthly authorization 
+1: Permanent license 
+-Unknown
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        r"""Payer 0: Customer payment 1: Manufacturer payment
+        :rtype: int
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def SN(self):
+        r"""Hardware Serial Number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def Vendor(self):
+        r"""Vendor name
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._SN = params.get("SN")
+        self._Vendor = params.get("Vendor")
+        self._RequestId = params.get("RequestId")
+
+
+class GetHardwareListRequest(AbstractModel):
+    r"""GetHardwareList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: Page number
+        :type PageNumber: int
+        :param _PageSize: Device quantity on the webpage
+        :type PageSize: int
+        :param _Keyword: Keyword.
+        :type Keyword: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+
+    @property
+    def PageNumber(self):
+        r"""Page number
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""Device quantity on the webpage
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        r"""Keyword.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetHardwareListResponse(AbstractModel):
+    r"""GetHardwareList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareInfos: List of Hardware Information
+        :type HardwareInfos: list of HardwareInfo
+        :param _Length: Total number of hardware
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._HardwareInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def HardwareInfos(self):
+        r"""List of Hardware Information
+        :rtype: list of HardwareInfo
+        """
+        return self._HardwareInfos
+
+    @HardwareInfos.setter
+    def HardwareInfos(self, HardwareInfos):
+        self._HardwareInfos = HardwareInfos
+
+    @property
+    def Length(self):
+        r"""Total number of hardware
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HardwareInfos") is not None:
+            self._HardwareInfos = []
+            for item in params.get("HardwareInfos"):
+                obj = HardwareInfo()
+                obj._deserialize(item)
+                self._HardwareInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetL3ConnListRequest(AbstractModel):
+    r"""GetL3ConnList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.
+        :type PageSize: int
+        :param _PageNumber: Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.
+        :type PageNumber: int
+        :param _DeviceId: Search for groups by DeviceId. Match all groups when empty.
+        :type DeviceId: str
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._DeviceId = None
+
+    @property
+    def PageSize(self):
+        r"""Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def DeviceId(self):
+        r"""Search for groups by DeviceId. Match all groups when empty.
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetL3ConnListResponse(AbstractModel):
+    r"""GetL3ConnList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnList: List of interconnection rules
+        :type L3ConnList: list of L3ConnInfo
+        :param _Length: Total number of devices
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._L3ConnList = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def L3ConnList(self):
+        r"""List of interconnection rules
+        :rtype: list of L3ConnInfo
+        """
+        return self._L3ConnList
+
+    @L3ConnList.setter
+    def L3ConnList(self, L3ConnList):
+        self._L3ConnList = L3ConnList
+
+    @property
+    def Length(self):
+        r"""Total number of devices
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("L3ConnList") is not None:
+            self._L3ConnList = []
+            for item in params.get("L3ConnList"):
+                obj = L3ConnInfo()
+                obj._deserialize(item)
+                self._L3ConnList.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetMonitorDataByNameRequest(AbstractModel):
+    r"""GetMonitorDataByName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _BeginTime: Start time.
+        :type BeginTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMonitorDataByNameResponse(AbstractModel):
+    r"""GetMonitorDataByName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: File download link
+        :type FilePath: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""File download link
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
+class GetMultiFlowStatisticRequest(AbstractModel):
+    r"""GetMultiFlowStatistic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: Device id list, up to 10 devices at a time
+        :type DeviceIds: list of str
+        :param _BeginTime: 1659514436
+        :type BeginTime: int
+        :param _EndTime: 1659515000
+        :type EndTime: int
+        :param _Type: Statistics traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :type Type: int
+        :param _TimeGranularity: Statistical time granularity (1: hourly statistics, 2: daily statistics).
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        """
+        self._DeviceIds = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+
+    @property
+    def DeviceIds(self):
+        r"""Device id list, up to 10 devices at a time
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+    @property
+    def BeginTime(self):
+        r"""1659514436
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""1659515000
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Statistics traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        r"""Statistical time granularity (1: hourly statistics, 2: daily statistics).
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMultiFlowStatisticResponse(AbstractModel):
+    r"""GetMultiFlowStatistic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowDetails: Batch device traffic information
+        :type FlowDetails: list of FlowDetails
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowDetails = None
+        self._RequestId = None
+
+    @property
+    def FlowDetails(self):
+        r"""Batch device traffic information
+        :rtype: list of FlowDetails
+        """
+        return self._FlowDetails
+
+    @FlowDetails.setter
+    def FlowDetails(self, FlowDetails):
+        self._FlowDetails = FlowDetails
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FlowDetails") is not None:
+            self._FlowDetails = []
+            for item in params.get("FlowDetails"):
+                obj = FlowDetails()
+                obj._deserialize(item)
+                self._FlowDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetNetMonitorByNameRequest(AbstractModel):
+    r"""GetNetMonitorByName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Device name
+        :type DeviceName: str
+        :param _BeginTime: Start time.
+        :type BeginTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _Metrics: Statistical metric (Uplink rate: "TxRate": bit/s, Downstream rate: "RxRate": bit/s, Packet loss: "Loss": %, Latency: "RTT": ms)
+        :type Metrics: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Metrics = None
+        self._GatewayType = None
+
+    @property
+    def DeviceName(self):
+        r"""Device name
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        r"""Statistical metric (Uplink rate: "TxRate": bit/s, Downstream rate: "RxRate": bit/s, Packet loss: "Loss": %, Latency: "RTT": ms)
+        :rtype: str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetNetMonitorByNameResponse(AbstractModel):
+    r"""GetNetMonitorByName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorData: monitoring data
+        :type MonitorData: list of MonitorData
+        :param _AccessRegion: Access region. Valid values: ['MC','AP','EU','AM'].
+MC=Chinese mainland
+AP=Asia Pacific
+EU=Europe
+AM=Americas
+        :type AccessRegion: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MonitorData = None
+        self._AccessRegion = None
+        self._RequestId = None
+
+    @property
+    def MonitorData(self):
+        r"""monitoring data
+        :rtype: list of MonitorData
+        """
+        return self._MonitorData
+
+    @MonitorData.setter
+    def MonitorData(self, MonitorData):
+        self._MonitorData = MonitorData
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Valid values: ['MC','AP','EU','AM'].
+MC=Chinese mainland
+AP=Asia Pacific
+EU=Europe
+AM=Americas
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MonitorData") is not None:
+            self._MonitorData = []
+            for item in params.get("MonitorData"):
+                obj = MonitorData()
+                obj._deserialize(item)
+                self._MonitorData.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
+        self._RequestId = params.get("RequestId")
+
+
+class GetNetMonitorRequest(AbstractModel):
+    r"""GetNetMonitor request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Device ID
+        :type DeviceId: str
+        :param _BeginTime: Start time.
+        :type BeginTime: int
+        :param _EndTime: End time.
+        :type EndTime: int
+        :param _Metrics: Statistical metric (Uplink rate: "TxRate": bit/s, Downstream rate: "RxRate": bit/s, Packet loss: "Loss": %, Latency: "RTT": ms)
+        :type Metrics: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        """
+        self._DeviceId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Metrics = None
+        self._GatewayType = None
+
+    @property
+    def DeviceId(self):
+        r"""Device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def BeginTime(self):
+        r"""Start time.
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        r"""Statistical metric (Uplink rate: "TxRate": bit/s, Downstream rate: "RxRate": bit/s, Packet loss: "Loss": %, Latency: "RTT": ms)
+        :rtype: str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetNetMonitorResponse(AbstractModel):
+    r"""GetNetMonitor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorData: monitoring data
+        :type MonitorData: list of MonitorData
+        :param _AccessRegion: Access region. Valid values: ['MC','AP','EU','AM'].
+MC=Chinese mainland
+AP=Asia Pacific
+EU=Europe
+AM=Americas
+        :type AccessRegion: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MonitorData = None
+        self._AccessRegion = None
+        self._RequestId = None
+
+    @property
+    def MonitorData(self):
+        r"""monitoring data
+        :rtype: list of MonitorData
+        """
+        return self._MonitorData
+
+    @MonitorData.setter
+    def MonitorData(self, MonitorData):
+        self._MonitorData = MonitorData
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Valid values: ['MC','AP','EU','AM'].
+MC=Chinese mainland
+AP=Asia Pacific
+EU=Europe
+AM=Americas
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MonitorData") is not None:
+            self._MonitorData = []
+            for item in params.get("MonitorData"):
+                obj = MonitorData()
+                obj._deserialize(item)
+                self._MonitorData.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
+        self._RequestId = params.get("RequestId")
+
+
+class GetPublicKeyRequest(AbstractModel):
+    r"""GetPublicKey request structure.
+
+    """
+
+
+class GetPublicKeyResponse(AbstractModel):
+    r"""GetPublicKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicKey: Asymmetric public key
+        :type PublicKey: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PublicKey = None
+        self._RequestId = None
+
+    @property
+    def PublicKey(self):
+        r"""Asymmetric public key
+        :rtype: str
+        """
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PublicKey = params.get("PublicKey")
+        self._RequestId = params.get("RequestId")
+
+
+class GetStatisticDataByNameRequest(AbstractModel):
+    r"""GetStatisticDataByName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: Device name. If not specified, pass "-1".
+        :type DeviceName: str
+        :param _BeginTime: Start time of statistics (seconds).
+        :type BeginTime: int
+        :param _EndTime: Statistics end time (s).
+        :type EndTime: int
+        :param _TimeGranularity: Aggregation granularity:
+Hourly statistics
+2: Daily statistics
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        :param _DeviceList: Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be "-1".
+        :type DeviceList: list of str
+        :param _GroupId: Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        :type GroupId: str
+        :param _MpApplicationId: Application ID. Leave blank if no designated application is specified. Used when downloading data by app.
+        :type MpApplicationId: str
+        """
+        self._DeviceName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+        self._GroupId = None
+        self._MpApplicationId = None
+
+    @property
+    def DeviceName(self):
+        r"""Device name. If not specified, pass "-1".
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BeginTime(self):
+        r"""Start time of statistics (seconds).
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""Statistics end time (s).
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TimeGranularity(self):
+        r"""Aggregation granularity:
+Hourly statistics
+2: Daily statistics
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be "-1".
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def GroupId(self):
+        r"""Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID. Leave blank if no designated application is specified. Used when downloading data by app.
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        self._GroupId = params.get("GroupId")
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetStatisticDataByNameResponse(AbstractModel):
+    r"""GetStatisticDataByName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: File address url
+        :type FilePath: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""File address url
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
+class GetStatisticDataRequest(AbstractModel):
+    r"""GetStatisticData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Device ID. If not specified, pass "-1".
+        :type DeviceId: str
+        :param _BeginTime: Start time of statistics (seconds).
+        :type BeginTime: int
+        :param _EndTime: Statistics end time (s).
+        :type EndTime: int
+        :param _TimeGranularity: Aggregation granularity:
+Hourly statistics
+2: Daily statistics
+        :type TimeGranularity: int
+        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :type AccessRegion: str
+        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :type GatewayType: int
+        :param _DeviceList: Device ID list. Up to 10 devices. Used when downloading total traffic of multiple devices. At this point, DeviceId can be "-1".
+        :type DeviceList: list of str
+        :param _GroupId: Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        :type GroupId: str
+        """
+        self._DeviceId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+        self._DeviceList = None
+        self._GroupId = None
+
+    @property
+    def DeviceId(self):
+        r"""Device ID. If not specified, pass "-1".
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def BeginTime(self):
+        r"""Start time of statistics (seconds).
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""Statistics end time (s).
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TimeGranularity(self):
+        r"""Aggregation granularity:
+Hourly statistics
+2: Daily statistics
+        :rtype: int
+        """
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :rtype: str
+        """
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :rtype: int
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def DeviceList(self):
+        r"""Device ID list. Up to 10 devices. Used when downloading total traffic of multiple devices. At this point, DeviceId can be "-1".
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def GroupId(self):
+        r"""Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetStatisticDataResponse(AbstractModel):
+    r"""GetStatisticData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: File address url
+        :type FilePath: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        r"""File address url
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
+class GetVendorHardwareRequest(AbstractModel):
+    r"""GetVendorHardware request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: Page number
+        :type PageNumber: int
+        :param _PageSize: Page count
+        :type PageSize: int
+        :param _Keyword: Keyword.
+        :type Keyword: str
+        :param _Status: Activation status
+Empty: All;
+1: To be activated.
+2: Activated;
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        r"""Page number
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""Page count
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        r"""Keyword.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Status(self):
+        r"""Activation status
+Empty: All;
+1: To be activated.
+2: Activated;
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVendorHardwareResponse(AbstractModel):
+    r"""GetVendorHardware response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VendorHardware: List of Hardware Information
+        :type VendorHardware: list of VendorHardware
+        :param _Length: Total number of devices
+        :type Length: int
+        :param _TotalPage: Total pages
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VendorHardware = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def VendorHardware(self):
+        r"""List of Hardware Information
+        :rtype: list of VendorHardware
+        """
+        return self._VendorHardware
+
+    @VendorHardware.setter
+    def VendorHardware(self, VendorHardware):
+        self._VendorHardware = VendorHardware
+
+    @property
+    def Length(self):
+        r"""Total number of devices
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        r"""Total pages
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VendorHardware") is not None:
+            self._VendorHardware = []
+            for item in params.get("VendorHardware"):
+                obj = VendorHardware()
+                obj._deserialize(item)
+                self._VendorHardware.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupAddDeviceRequest(AbstractModel):
+    r"""GroupAddDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _DeviceList: Device list to be added
+        :type DeviceList: list of str
+        """
+        self._GroupId = None
+        self._DeviceList = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DeviceList(self):
+        r"""Device list to be added
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupAddDeviceResponse(AbstractModel):
+    r"""GroupAddDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceNum: Number of devices grouped in
+        :type DeviceNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeviceNum = None
+        self._RequestId = None
+
+    @property
+    def DeviceNum(self):
+        r"""Number of devices grouped in
+        :rtype: int
+        """
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeviceNum = params.get("DeviceNum")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupDeleteDeviceRequest(AbstractModel):
+    r"""GroupDeleteDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _DeviceList: Device list to be deleted
+        :type DeviceList: list of str
+        """
+        self._GroupId = None
+        self._DeviceList = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DeviceList(self):
+        r"""Device list to be deleted
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupDeleteDeviceResponse(AbstractModel):
+    r"""GroupDeleteDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceNum: Number of devices grouped in
+        :type DeviceNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeviceNum = None
+        self._RequestId = None
+
+    @property
+    def DeviceNum(self):
+        r"""Number of devices grouped in
+        :rtype: int
+        """
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeviceNum = params.get("DeviceNum")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupInfo(AbstractModel):
+    r"""Basic info of the group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _GroupName: Group name
+        :type GroupName: str
+        :param _CreateTime: The time when the group is created, in ms.	
+        :type CreateTime: str
+        :param _UpdateTime: The time when the group is updated, in ms.	
+        :type UpdateTime: str
+        :param _Description: Group description
+        :type Description: str
+        :param _DeviceNum: Number of devices grouped in
+        :type DeviceNum: int
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Description = None
+        self._DeviceNum = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Group name
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def CreateTime(self):
+        r"""The time when the group is created, in ms.	
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""The time when the group is updated, in ms.	
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Description(self):
+        r"""Group description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DeviceNum(self):
+        r"""Number of devices grouped in
+        :rtype: int
+        """
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Description = params.get("Description")
+        self._DeviceNum = params.get("DeviceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Hardware(AbstractModel):
+    r"""Create Hardware input parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SN: Hardware Serial Number
+        :type SN: str
+        :param _LicenseChargingMode: license billing mode:
+1. Tenant payment
+2: Manufacturer monthly payment
+3: Manufacturer permanent license
+        :type LicenseChargingMode: int
+        :param _Description: Device description
+        :type Description: str
+        :param _HardwareId: Hardware ID. No need to pass as an input parameter.
+        :type HardwareId: str
+        """
+        self._SN = None
+        self._LicenseChargingMode = None
+        self._Description = None
+        self._HardwareId = None
+
+    @property
+    def SN(self):
+        r"""Hardware Serial Number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def LicenseChargingMode(self):
+        r"""license billing mode:
+1. Tenant payment
+2: Manufacturer monthly payment
+3: Manufacturer permanent license
+        :rtype: int
+        """
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def Description(self):
+        r"""Device description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HardwareId(self):
+        r"""Hardware ID. No need to pass as an input parameter.
+        :rtype: str
+        """
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+
+    def _deserialize(self, params):
+        self._SN = params.get("SN")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._Description = params.get("Description")
+        self._HardwareId = params.get("HardwareId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HardwareInfo(AbstractModel):
+    r"""Hardware Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: device ID
+        :type DeviceId: str
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _ActiveTime: Activation time
+        :type ActiveTime: str
+        :param _LastOnlineTime: Last online time
+        :type LastOnlineTime: str
+        :param _Description: Remarks
+        :type Description: str
+        :param _VendorDescription: vendor remarks
+        :type VendorDescription: str
+        :param _LicenseChargingMode: License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.
+Note: This parameter will be subsequently deprecated. Please use LicensePayMode and Payer for new access.
+        :type LicenseChargingMode: int
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _SN: Hardware Serial Number
+        :type SN: str
+        :param _LicensePayMode: Authorization validity period of license 
+0: Monthly authorization 
+1: Permanent license
+        :type LicensePayMode: int
+        :param _Payer: Payer 
+0: Customer payment 
+1: Manufacturer payment
+        :type Payer: int
+        :param _GroupId: device group ID
+        :type GroupId: str
+        :param _GroupName: Device group name
+        :type GroupName: str
+        :param _FlowTrunc: No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate	
+        :type FlowTrunc: int
+        """
+        self._DeviceId = None
+        self._DeviceName = None
+        self._ActiveTime = None
+        self._LastOnlineTime = None
+        self._Description = None
+        self._VendorDescription = None
+        self._LicenseChargingMode = None
+        self._CreateTime = None
+        self._SN = None
+        self._LicensePayMode = None
+        self._Payer = None
+        self._GroupId = None
+        self._GroupName = None
+        self._FlowTrunc = None
+
+    @property
+    def DeviceId(self):
+        r"""device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ActiveTime(self):
+        r"""Activation time
+        :rtype: str
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def LastOnlineTime(self):
+        r"""Last online time
+        :rtype: str
+        """
+        return self._LastOnlineTime
+
+    @LastOnlineTime.setter
+    def LastOnlineTime(self, LastOnlineTime):
+        self._LastOnlineTime = LastOnlineTime
+
+    @property
+    def Description(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VendorDescription(self):
+        r"""vendor remarks
+        :rtype: str
+        """
+        return self._VendorDescription
+
+    @VendorDescription.setter
+    def VendorDescription(self, VendorDescription):
+        self._VendorDescription = VendorDescription
+
+    @property
+    def LicenseChargingMode(self):
+        r"""License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.
+Note: This parameter will be subsequently deprecated. Please use LicensePayMode and Payer for new access.
+        :rtype: int
+        """
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SN(self):
+        r"""Hardware Serial Number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def LicensePayMode(self):
+        r"""Authorization validity period of license 
+0: Monthly authorization 
+1: Permanent license
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        r"""Payer 
+0: Customer payment 
+1: Manufacturer payment
+        :rtype: int
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def GroupId(self):
+        r"""device group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""Device group name
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def FlowTrunc(self):
+        r"""No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate	
+        :rtype: int
+        """
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._ActiveTime = params.get("ActiveTime")
+        self._LastOnlineTime = params.get("LastOnlineTime")
+        self._Description = params.get("Description")
+        self._VendorDescription = params.get("VendorDescription")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._CreateTime = params.get("CreateTime")
+        self._SN = params.get("SN")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L3ConnInfo(AbstractModel):
+    r"""Layer 3 interconnection rule information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: Interconnection rule ID
+        :type L3ConnId: str
+        :param _DeviceId1: interworking device ID
+        :type DeviceId1: str
+        :param _Cidr1: Interconnection rule CIDR
+        :type Cidr1: str
+        :param _DeviceId2: interworking device ID
+        :type DeviceId2: str
+        :param _Cidr2: Interconnection rule CIDR
+        :type Cidr2: str
+        :param _Enable: Rule Enable Status
+        :type Enable: bool
+        :param _Description: Interconnection rule description
+        :type Description: str
+        """
+        self._L3ConnId = None
+        self._DeviceId1 = None
+        self._Cidr1 = None
+        self._DeviceId2 = None
+        self._Cidr2 = None
+        self._Enable = None
+        self._Description = None
+
+    @property
+    def L3ConnId(self):
+        r"""Interconnection rule ID
+        :rtype: str
+        """
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def DeviceId1(self):
+        r"""interworking device ID
+        :rtype: str
+        """
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def Cidr1(self):
+        r"""Interconnection rule CIDR
+        :rtype: str
+        """
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def DeviceId2(self):
+        r"""interworking device ID
+        :rtype: str
+        """
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Cidr2(self):
+        r"""Interconnection rule CIDR
+        :rtype: str
+        """
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+    @property
+    def Enable(self):
+        r"""Rule Enable Status
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        r"""Interconnection rule description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._Cidr1 = params.get("Cidr1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Cidr2 = params.get("Cidr2")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPackageRenewFlagRequest(AbstractModel):
+    r"""ModifyPackageRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Unique resource ID of the data transfer plan
+        :type ResourceId: str
+        :param _RenewFlag: Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.
+        :type RenewFlag: bool
+        """
+        self._ResourceId = None
+        self._RenewFlag = None
+
+    @property
+    def ResourceId(self):
+        r"""Unique resource ID of the data transfer plan
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RenewFlag(self):
+        r"""Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.
+        :rtype: bool
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPackageRenewFlagResponse(AbstractModel):
+    r"""ModifyPackageRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class MonitorData(AbstractModel):
+    r"""Traffic monitoring metrics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: Time point: s
+        :type Time: str
+        :param _BusinessMetrics: Business Metric (bps/ms/%)
+        :type BusinessMetrics: float
+        :param _SlotNetInfo: Network interface status info
+        :type SlotNetInfo: list of SlotNetInfo
+        """
+        self._Time = None
+        self._BusinessMetrics = None
+        self._SlotNetInfo = None
+
+    @property
+    def Time(self):
+        r"""Time point: s
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def BusinessMetrics(self):
+        r"""Business Metric (bps/ms/%)
+        :rtype: float
+        """
+        return self._BusinessMetrics
+
+    @BusinessMetrics.setter
+    def BusinessMetrics(self, BusinessMetrics):
+        self._BusinessMetrics = BusinessMetrics
+
+    @property
+    def SlotNetInfo(self):
+        r"""Network interface status info
+        :rtype: list of SlotNetInfo
+        """
+        return self._SlotNetInfo
+
+    @SlotNetInfo.setter
+    def SlotNetInfo(self, SlotNetInfo):
+        self._SlotNetInfo = SlotNetInfo
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._BusinessMetrics = params.get("BusinessMetrics")
+        if params.get("SlotNetInfo") is not None:
+            self._SlotNetInfo = []
+            for item in params.get("SlotNetInfo"):
+                obj = SlotNetInfo()
+                obj._deserialize(item)
+                self._SlotNetInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetDetails(AbstractModel):
+    r"""Network details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Current: Traffic volume (byte)
+        :type Current: float
+        :param _Time: Time point, unit: s
+        :type Time: str
+        """
+        self._Current = None
+        self._Time = None
+
+    @property
+    def Current(self):
+        r"""Traffic volume (byte)
+        :rtype: float
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+    @property
+    def Time(self):
+        r"""Time point, unit: s
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._Current = params.get("Current")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderFlowPackageRequest(AbstractModel):
+    r"""OrderFlowPackage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageType: Traffic package specification type. Values are as follows:
+DEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,
+DEVICE_3_FLOW_100G,
+DEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.
+Gear selection also impacts the bandwidth cap of the data transfer plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :type PackageType: str
+        :param _DeviceList: Device ID list bound to the data transfer plan. Number of bundled instances depends on the specification tiers of the plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :type DeviceList: list of str
+        :param _AutoRenewFlag: Whether the service is automatically renewed conflicts with traffic truncation. You can only enable one option.
+        :type AutoRenewFlag: bool
+        :param _PackageRegion: Region flag. 0: Chinese mainland, 1: outside the Chinese mainland
+        :type PackageRegion: int
+        :param _FlowTruncFlag: Whether traffic truncation is enabled. This option conflicts with auto renewal.
+        :type FlowTruncFlag: bool
+        :param _AutoVoucher: Whether to automatically select voucher. Default false.
+Selection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.
+        :type AutoVoucher: bool
+        :param _VoucherIds: Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.
+Note: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.
+        :type VoucherIds: list of str
+        """
+        self._PackageType = None
+        self._DeviceList = None
+        self._AutoRenewFlag = None
+        self._PackageRegion = None
+        self._FlowTruncFlag = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+
+    @property
+    def PackageType(self):
+        r"""Traffic package specification type. Values are as follows:
+DEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,
+DEVICE_3_FLOW_100G,
+DEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.
+Gear selection also impacts the bandwidth cap of the data transfer plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def DeviceList(self):
+        r"""Device ID list bound to the data transfer plan. Number of bundled instances depends on the specification tiers of the plan.
+20G: Bind up to 1 device.
+50G: Bind up to 2 devices.
+100G: Bind up to 3 devices.
+500G: Bind up to 5 devices.
+        :rtype: list of str
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def AutoRenewFlag(self):
+        r"""Whether the service is automatically renewed conflicts with traffic truncation. You can only enable one option.
+        :rtype: bool
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def PackageRegion(self):
+        r"""Region flag. 0: Chinese mainland, 1: outside the Chinese mainland
+        :rtype: int
+        """
+        return self._PackageRegion
+
+    @PackageRegion.setter
+    def PackageRegion(self, PackageRegion):
+        self._PackageRegion = PackageRegion
+
+    @property
+    def FlowTruncFlag(self):
+        r"""Whether traffic truncation is enabled. This option conflicts with auto renewal.
+        :rtype: bool
+        """
+        return self._FlowTruncFlag
+
+    @FlowTruncFlag.setter
+    def FlowTruncFlag(self, FlowTruncFlag):
+        self._FlowTruncFlag = FlowTruncFlag
+
+    @property
+    def AutoVoucher(self):
+        r"""Whether to automatically select voucher. Default false.
+Selection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        r"""Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.
+Note: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.
+        :rtype: list of str
+        """
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+
+    def _deserialize(self, params):
+        self._PackageType = params.get("PackageType")
+        self._DeviceList = params.get("DeviceList")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._PackageRegion = params.get("PackageRegion")
+        self._FlowTruncFlag = params.get("FlowTruncFlag")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderFlowPackageResponse(AbstractModel):
+    r"""OrderFlowPackage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Unique resource ID of the data transfer plan
+        :type ResourceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        r"""Unique resource ID of the data transfer plan
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
+
+
+class OrderInfo(AbstractModel):
+    r"""Return the reported order information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: Account uin of the parent account
+        :type Uin: str
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        :param _PackageType: Usage type
+        :type PackageType: str
+        :param _OrderId: Order number unique identifier
+        :type OrderId: str
+        :param _ReportMonth: Report month, current month by default
+        :type ReportMonth: str
+        :param _Updated: Data update time
+        :type Updated: str
+        """
+        self._Uin = None
+        self._ProjectId = None
+        self._PackageType = None
+        self._OrderId = None
+        self._ReportMonth = None
+        self._Updated = None
+
+    @property
+    def Uin(self):
+        r"""Account uin of the parent account
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PackageType(self):
+        r"""Usage type
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def OrderId(self):
+        r"""Order number unique identifier
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ReportMonth(self):
+        r"""Report month, current month by default
+        :rtype: str
+        """
+        return self._ReportMonth
+
+    @ReportMonth.setter
+    def ReportMonth(self, ReportMonth):
+        self._ReportMonth = ReportMonth
+
+    @property
+    def Updated(self):
+        r"""Data update time
+        :rtype: str
+        """
+        return self._Updated
+
+    @Updated.setter
+    def Updated(self, Updated):
+        self._Updated = Updated
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._ProjectId = params.get("ProjectId")
+        self._PackageType = params.get("PackageType")
+        self._OrderId = params.get("OrderId")
+        self._ReportMonth = params.get("ReportMonth")
+        self._Updated = params.get("Updated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderPerLicenseRequest(AbstractModel):
+    r"""OrderPerLicense request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Device ID for purchasing a permanent License. If it is an unactivated device from the manufacturer, use HardwareId.
+        :type DeviceId: str
+        :param _Type: Device type. 0: SDK, 1: CPE. Enter 0 when creating or activating a device as a user. Enter 1 when creating a device to be activated as a manufacturer.
+        :type Type: int
+        :param _RollBack: Rollback or not (delete device) after purchase fail, default false. If the device is bound to a currently effective traffic package, rollback is not allowed.
+        :type RollBack: bool
+        :param _AutoVoucher: Whether to automatically select voucher. Default false.
+Selection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.
+        :type AutoVoucher: bool
+        :param _VoucherIds: Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.
+Note: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.
+        :type VoucherIds: list of str
+        """
+        self._DeviceId = None
+        self._Type = None
+        self._RollBack = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+
+    @property
+    def DeviceId(self):
+        r"""Device ID for purchasing a permanent License. If it is an unactivated device from the manufacturer, use HardwareId.
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Type(self):
+        r"""Device type. 0: SDK, 1: CPE. Enter 0 when creating or activating a device as a user. Enter 1 when creating a device to be activated as a manufacturer.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RollBack(self):
+        r"""Rollback or not (delete device) after purchase fail, default false. If the device is bound to a currently effective traffic package, rollback is not allowed.
+        :rtype: bool
+        """
+        return self._RollBack
+
+    @RollBack.setter
+    def RollBack(self, RollBack):
+        self._RollBack = RollBack
+
+    @property
+    def AutoVoucher(self):
+        r"""Whether to automatically select voucher. Default false.
+Selection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        r"""Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.
+Note: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.
+        :rtype: list of str
+        """
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Type = params.get("Type")
+        self._RollBack = params.get("RollBack")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderPerLicenseResponse(AbstractModel):
+    r"""OrderPerLicense response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Resource ID of the single-use License
+        :type ResourceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID of the single-use License
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
+
+
+class ReportOrderRequest(AbstractModel):
+    r"""ReportOrder request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: Order number unique identifier
+        :type OrderId: str
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        :param _PackageType: Usage type
+        :type PackageType: str
+        :param _ReportMonth: Report month, current month by default
+        :type ReportMonth: str
+        """
+        self._OrderId = None
+        self._ProjectId = None
+        self._PackageType = None
+        self._ReportMonth = None
+
+    @property
+    def OrderId(self):
+        r"""Order number unique identifier
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PackageType(self):
+        r"""Usage type
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ReportMonth(self):
+        r"""Report month, current month by default
+        :rtype: str
+        """
+        return self._ReportMonth
+
+    @ReportMonth.setter
+    def ReportMonth(self, ReportMonth):
+        self._ReportMonth = ReportMonth
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._ProjectId = params.get("ProjectId")
+        self._PackageType = params.get("PackageType")
+        self._ReportMonth = params.get("ReportMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportOrderResponse(AbstractModel):
+    r"""ReportOrder response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderInfo: Order information
+        :type OrderInfo: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OrderInfo = None
+        self._RequestId = None
+
+    @property
+    def OrderInfo(self):
+        r"""Order information
+        :rtype: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
+        """
+        return self._OrderInfo
+
+    @OrderInfo.setter
+    def OrderInfo(self, OrderInfo):
+        self._OrderInfo = OrderInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OrderInfo") is not None:
+            self._OrderInfo = OrderInfo()
+            self._OrderInfo._deserialize(params.get("OrderInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class SetNotifyUrlRequest(AbstractModel):
+    r"""SetNotifyUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotifyUrl: Alarm notification callback url
+        :type NotifyUrl: str
+        :param _CallbackKey: Alarm notification callback key
+        :type CallbackKey: str
+        :param _AlarmValue: Alarm threshold of the data transfer plan
+        :type AlarmValue: int
+        """
+        self._NotifyUrl = None
+        self._CallbackKey = None
+        self._AlarmValue = None
+
+    @property
+    def NotifyUrl(self):
+        r"""Alarm notification callback url
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+    @property
+    def CallbackKey(self):
+        r"""Alarm notification callback key
+        :rtype: str
+        """
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def AlarmValue(self):
+        r"""Alarm threshold of the data transfer plan
+        :rtype: int
+        """
+        return self._AlarmValue
+
+    @AlarmValue.setter
+    def AlarmValue(self, AlarmValue):
+        self._AlarmValue = AlarmValue
+
+
+    def _deserialize(self, params):
+        self._NotifyUrl = params.get("NotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._AlarmValue = params.get("AlarmValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetNotifyUrlResponse(AbstractModel):
+    r"""SetNotifyUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SlotNetInfo(AbstractModel):
+    r"""NIC traffic metric data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetInfoName: NIC Name
+        :type NetInfoName: str
+        :param _PublicIP: Public IP address
+        :type PublicIP: str
+        :param _Current: Metric data (bps/ms/%)
+        :type Current: float
+        """
+        self._NetInfoName = None
+        self._PublicIP = None
+        self._Current = None
+
+    @property
+    def NetInfoName(self):
+        r"""NIC Name
+        :rtype: str
+        """
+        return self._NetInfoName
+
+    @NetInfoName.setter
+    def NetInfoName(self, NetInfoName):
+        self._NetInfoName = NetInfoName
+
+    @property
+    def PublicIP(self):
+        r"""Public IP address
+        :rtype: str
+        """
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def Current(self):
+        r"""Metric data (bps/ms/%)
+        :rtype: float
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._NetInfoName = params.get("NetInfoName")
+        self._PublicIP = params.get("PublicIP")
+        self._Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateApplicationInfoRequest(AbstractModel):
+    r"""UpdateApplicationInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: Application ID
+        :type MpApplicationId: str
+        :param _MpApplicationName: Application name of the created app
+        :type MpApplicationName: str
+        :param _Remark: Remark of the created device
+        :type Remark: str
+        :param _AccessScope: Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :type AccessScope: int
+        """
+        self._MpApplicationId = None
+        self._MpApplicationName = None
+        self._Remark = None
+        self._AccessScope = None
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationName(self):
+        r"""Application name of the created app
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""Remark of the created device
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AccessScope(self):
+        r"""Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateApplicationInfoResponse(AbstractModel):
+    r"""UpdateApplicationInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateApplicationKeyRequest(AbstractModel):
+    r"""UpdateApplicationKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationKey: base64 key string of the application
+        :type MpApplicationKey: str
+        :param _MpApplicationId: Application ID
+        :type MpApplicationId: str
+        """
+        self._MpApplicationKey = None
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationKey(self):
+        r"""base64 key string of the application
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationId(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateApplicationKeyResponse(AbstractModel):
+    r"""UpdateApplicationKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDeviceRequest(AbstractModel):
+    r"""UpdateDevice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: Device ID
+        :type DeviceId: str
+        :param _DeviceName: Device name.
+        :type DeviceName: str
+        :param _Remark: device Remarks
+        :type Remark: str
+        :param _UpdateNetInfo: Update device network info
+        :type UpdateNetInfo: list of UpdateNetInfo
+        :param _FlowTrunc: No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :type FlowTrunc: int
+        """
+        self._DeviceId = None
+        self._DeviceName = None
+        self._Remark = None
+        self._UpdateNetInfo = None
+        self._FlowTrunc = None
+
+    @property
+    def DeviceId(self):
+        r"""Device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        r"""Device name.
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Remark(self):
+        r"""device Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def UpdateNetInfo(self):
+        r"""Update device network info
+        :rtype: list of UpdateNetInfo
+        """
+        return self._UpdateNetInfo
+
+    @UpdateNetInfo.setter
+    def UpdateNetInfo(self, UpdateNetInfo):
+        self._UpdateNetInfo = UpdateNetInfo
+
+    @property
+    def FlowTrunc(self):
+        r"""No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate
+        :rtype: int
+        """
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._Remark = params.get("Remark")
+        if params.get("UpdateNetInfo") is not None:
+            self._UpdateNetInfo = []
+            for item in params.get("UpdateNetInfo"):
+                obj = UpdateNetInfo()
+                obj._deserialize(item)
+                self._UpdateNetInfo.append(obj)
+        self._FlowTrunc = params.get("FlowTrunc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDeviceResponse(AbstractModel):
+    r"""UpdateDevice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateGroupRequest(AbstractModel):
+    r"""UpdateGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: group ID
+        :type GroupId: str
+        :param _Description: Group remark
+        :type Description: str
+        """
+        self._GroupId = None
+        self._Description = None
+
+    @property
+    def GroupId(self):
+        r"""group ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Description(self):
+        r"""Group remark
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGroupResponse(AbstractModel):
+    r"""UpdateGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateHardwareRequest(AbstractModel):
+    r"""UpdateHardware request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareId: Hardware ID
+        :type HardwareId: str
+        :param _SN: Hardware Serial Number
+        :type SN: str
+        :param _Description: device Remarks
+        :type Description: str
+        """
+        self._HardwareId = None
+        self._SN = None
+        self._Description = None
+
+    @property
+    def HardwareId(self):
+        r"""Hardware ID
+        :rtype: str
+        """
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+    @property
+    def SN(self):
+        r"""Hardware Serial Number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def Description(self):
+        r"""device Remarks
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._HardwareId = params.get("HardwareId")
+        self._SN = params.get("SN")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateHardwareResponse(AbstractModel):
+    r"""UpdateHardware response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3CidrRequest(AbstractModel):
+    r"""UpdateL3Cidr request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: Interconnection rule ID
+        :type L3ConnId: str
+        :param _Cidr1: Interconnection rule CIDR
+        :type Cidr1: str
+        :param _DeviceId1: interworking device ID
+        :type DeviceId1: str
+        :param _DeviceId2: interworking device ID
+        :type DeviceId2: str
+        :param _Cidr2: Interconnection rule CIDR
+        :type Cidr2: str
+        """
+        self._L3ConnId = None
+        self._Cidr1 = None
+        self._DeviceId1 = None
+        self._DeviceId2 = None
+        self._Cidr2 = None
+
+    @property
+    def L3ConnId(self):
+        r"""Interconnection rule ID
+        :rtype: str
+        """
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Cidr1(self):
+        r"""Interconnection rule CIDR
+        :rtype: str
+        """
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def DeviceId1(self):
+        r"""interworking device ID
+        :rtype: str
+        """
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def DeviceId2(self):
+        r"""interworking device ID
+        :rtype: str
+        """
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Cidr2(self):
+        r"""Interconnection rule CIDR
+        :rtype: str
+        """
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Cidr1 = params.get("Cidr1")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Cidr2 = params.get("Cidr2")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3CidrResponse(AbstractModel):
+    r"""UpdateL3Cidr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3ConnRequest(AbstractModel):
+    r"""UpdateL3Conn request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: Interconnection rule ID
+        :type L3ConnId: str
+        :param _Description: Interconnection rule remark
+        :type Description: str
+        """
+        self._L3ConnId = None
+        self._Description = None
+
+    @property
+    def L3ConnId(self):
+        r"""Interconnection rule ID
+        :rtype: str
+        """
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Description(self):
+        r"""Interconnection rule remark
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3ConnResponse(AbstractModel):
+    r"""UpdateL3Conn response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3SwitchRequest(AbstractModel):
+    r"""UpdateL3Switch request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: Interconnection rule ID
+        :type L3ConnId: str
+        :param _Enable: Interconnection rule switch
+        :type Enable: bool
+        """
+        self._L3ConnId = None
+        self._Enable = None
+
+    @property
+    def L3ConnId(self):
+        r"""Interconnection rule ID
+        :rtype: str
+        """
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Enable(self):
+        r"""Interconnection rule switch
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3SwitchResponse(AbstractModel):
+    r"""UpdateL3Switch response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateNetInfo(AbstractModel):
+    r"""Update device network status information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Network type:
+Data
+1:Wi-Fi
+        :type Type: int
+        :param _DataEnable: Enable or disable.
+        :type DataEnable: bool
+        :param _UploadLimit: Uplink speed limit: bit
+        :type UploadLimit: int
+        :param _DownloadLimit: Downstream speed limit: bit.
+        :type DownloadLimit: int
+        :param _NetInfoName: NIC Name
+        :type NetInfoName: str
+        """
+        self._Type = None
+        self._DataEnable = None
+        self._UploadLimit = None
+        self._DownloadLimit = None
+        self._NetInfoName = None
+
+    @property
+    def Type(self):
+        r"""Network type:
+Data
+1:Wi-Fi
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DataEnable(self):
+        r"""Enable or disable.
+        :rtype: bool
+        """
+        return self._DataEnable
+
+    @DataEnable.setter
+    def DataEnable(self, DataEnable):
+        self._DataEnable = DataEnable
+
+    @property
+    def UploadLimit(self):
+        r"""Uplink speed limit: bit
+        :rtype: int
+        """
+        return self._UploadLimit
+
+    @UploadLimit.setter
+    def UploadLimit(self, UploadLimit):
+        self._UploadLimit = UploadLimit
+
+    @property
+    def DownloadLimit(self):
+        r"""Downstream speed limit: bit.
+        :rtype: int
+        """
+        return self._DownloadLimit
+
+    @DownloadLimit.setter
+    def DownloadLimit(self, DownloadLimit):
+        self._DownloadLimit = DownloadLimit
+
+    @property
+    def NetInfoName(self):
+        r"""NIC Name
+        :rtype: str
+        """
+        return self._NetInfoName
+
+    @NetInfoName.setter
+    def NetInfoName(self, NetInfoName):
+        self._NetInfoName = NetInfoName
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._DataEnable = params.get("DataEnable")
+        self._UploadLimit = params.get("UploadLimit")
+        self._DownloadLimit = params.get("DownloadLimit")
+        self._NetInfoName = params.get("NetInfoName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VendorHardware(AbstractModel):
+    r"""Manufacturer Hardware Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareId: Hardware id
+        :type HardwareId: str
+        :param _SN: Hardware Serial Number
+        :type SN: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _Status: Activation status, empty: all; 1: to be activated; 2: activated
+        :type Status: int
+        :param _ActiveTime: Activation time
+        :type ActiveTime: str
+        :param _Description: vendor remarks
+        :type Description: str
+        :param _DeviceId: Device ID
+        :type DeviceId: str
+        :param _LicenseChargingMode: License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.
+Note: When the device is paid by the tenant and inactive (not selected for monthly or permanent payment), this parameter returns 1, indicating only that the tenant has paid. This parameter will be subsequently deprecated. For new access, please use LicensePayMode and Payer.
+        :type LicenseChargingMode: int
+        :param _LastOnlineTime: Last online time
+        :type LastOnlineTime: str
+        :param _LicensePayMode: Authorization validity period
+Monthly authorization
+1: Permanent license
+-Unknown
+        :type LicensePayMode: int
+        :param _Payer: Payer
+0: Customer payment
+1: Manufacturer payment
+        :type Payer: int
+        """
+        self._HardwareId = None
+        self._SN = None
+        self._CreateTime = None
+        self._Status = None
+        self._ActiveTime = None
+        self._Description = None
+        self._DeviceId = None
+        self._LicenseChargingMode = None
+        self._LastOnlineTime = None
+        self._LicensePayMode = None
+        self._Payer = None
+
+    @property
+    def HardwareId(self):
+        r"""Hardware id
+        :rtype: str
+        """
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+    @property
+    def SN(self):
+        r"""Hardware Serial Number
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""Activation status, empty: all; 1: to be activated; 2: activated
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActiveTime(self):
+        r"""Activation time
+        :rtype: str
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def Description(self):
+        r"""vendor remarks
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DeviceId(self):
+        r"""Device ID
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def LicenseChargingMode(self):
+        r"""License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.
+Note: When the device is paid by the tenant and inactive (not selected for monthly or permanent payment), this parameter returns 1, indicating only that the tenant has paid. This parameter will be subsequently deprecated. For new access, please use LicensePayMode and Payer.
+        :rtype: int
+        """
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def LastOnlineTime(self):
+        r"""Last online time
+        :rtype: str
+        """
+        return self._LastOnlineTime
+
+    @LastOnlineTime.setter
+    def LastOnlineTime(self, LastOnlineTime):
+        self._LastOnlineTime = LastOnlineTime
+
+    @property
+    def LicensePayMode(self):
+        r"""Authorization validity period
+Monthly authorization
+1: Permanent license
+-Unknown
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        r"""Payer
+0: Customer payment
+1: Manufacturer payment
+        :rtype: int
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+
+    def _deserialize(self, params):
+        self._HardwareId = params.get("HardwareId")
+        self._SN = params.get("SN")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._ActiveTime = params.get("ActiveTime")
+        self._Description = params.get("Description")
+        self._DeviceId = params.get("DeviceId")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._LastOnlineTime = params.get("LastOnlineTime")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

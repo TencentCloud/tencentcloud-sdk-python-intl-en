@@ -232,6 +232,256 @@ class ClientSubscriptionInfo(AbstractModel):
         
 
 
+class ConsumeGroupItem(AbstractModel):
+    r"""Consumer group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _ConsumerGroup: Consumer group name
+        :type ConsumerGroup: str
+        :param _ConsumeEnable: Enable consumption
+        :type ConsumeEnable: bool
+        :param _ConsumeMessageOrderly: Ordered delivery: true
+Concurrent delivery: false.
+        :type ConsumeMessageOrderly: bool
+        :param _MaxRetryTimes: Maximum number of retries
+        :type MaxRetryTimes: int
+        :param _Remark: Remarks
+        :type Remark: str
+        :param _ClusterIdV4: ID of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterIdV4: str
+        :param _NamespaceV4: Namespace of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NamespaceV4: str
+        :param _ConsumerGroupV4: Consumer group name of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConsumerGroupV4: str
+        :param _FullNamespaceV4: Complete namespace of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullNamespaceV4: str
+        :param _SubscribeTopicNum: Number of subscribed topics.
+        :type SubscribeTopicNum: int
+        :param _CreateTime: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param _TagList: List of bound tags
+        :type TagList: list of Tag
+        :param _RetryPolicy: Retry policy
+        :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._ConsumeEnable = None
+        self._ConsumeMessageOrderly = None
+        self._MaxRetryTimes = None
+        self._Remark = None
+        self._ClusterIdV4 = None
+        self._NamespaceV4 = None
+        self._ConsumerGroupV4 = None
+        self._FullNamespaceV4 = None
+        self._SubscribeTopicNum = None
+        self._CreateTime = None
+        self._TagList = None
+        self._RetryPolicy = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        r"""Consumer group name
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def ConsumeEnable(self):
+        r"""Enable consumption
+        :rtype: bool
+        """
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def ConsumeMessageOrderly(self):
+        r"""Ordered delivery: true
+Concurrent delivery: false.
+        :rtype: bool
+        """
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def MaxRetryTimes(self):
+        r"""Maximum number of retries
+        :rtype: int
+        """
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def Remark(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ClusterIdV4(self):
+        r"""ID of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterIdV4
+
+    @ClusterIdV4.setter
+    def ClusterIdV4(self, ClusterIdV4):
+        self._ClusterIdV4 = ClusterIdV4
+
+    @property
+    def NamespaceV4(self):
+        r"""Namespace of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def ConsumerGroupV4(self):
+        r"""Consumer group name of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ConsumerGroupV4
+
+    @ConsumerGroupV4.setter
+    def ConsumerGroupV4(self, ConsumerGroupV4):
+        self._ConsumerGroupV4 = ConsumerGroupV4
+
+    @property
+    def FullNamespaceV4(self):
+        r"""Complete namespace of a 4.x cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
+    @property
+    def SubscribeTopicNum(self):
+        r"""Number of subscribed topics.
+        :rtype: int
+        """
+        return self._SubscribeTopicNum
+
+    @SubscribeTopicNum.setter
+    def SubscribeTopicNum(self, SubscribeTopicNum):
+        self._SubscribeTopicNum = SubscribeTopicNum
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TagList(self):
+        r"""List of bound tags
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def RetryPolicy(self):
+        r"""Retry policy
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._Remark = params.get("Remark")
+        self._ClusterIdV4 = params.get("ClusterIdV4")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._ConsumerGroupV4 = params.get("ConsumerGroupV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._SubscribeTopicNum = params.get("SubscribeTopicNum")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        if params.get("RetryPolicy") is not None:
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumerClient(AbstractModel):
     r"""Consumer client
 
@@ -1788,6 +2038,228 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = TopicConsumeStats()
                 obj._deserialize(item)
                 self._TopicList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerGroupListRequest(AbstractModel):
+    r"""DescribeConsumerGroupList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TDMQ RocketMQ instance ID. It can be obtained from the API [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) or the console.
+        :type InstanceId: str
+        :param _TagFilters: Tag filter
+        :type TagFilters: list of TagFilter
+        :param _Filters: Filtering condition list. See the description of the API using this parameter for the usage method.
+        :type Filters: list of Filter
+        :param _Offset: Starting position of the query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Maximum number of queried results. Default value: 20.
+        :type Limit: int
+        :param _FromTopic: Queries consumer groups under a specified topic.
+        :type FromTopic: str
+        :param _SortedBy: Sort by specified field, with the enumerated values as follows:
+-subscribeNum: Number of topics subscribed
+        :type SortedBy: str
+        :param _SortOrder: Sort in ascending or descending order, with the enumerated values as follows:
+
+-asc: Ascending
+- DESC: descending order.
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._TagFilters = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._FromTopic = None
+        self._SortedBy = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        r"""TDMQ RocketMQ instance ID. It can be obtained from the API [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) or the console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TagFilters(self):
+        r"""Tag filter
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def Filters(self):
+        r"""Filtering condition list. See the description of the API using this parameter for the usage method.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""Starting position of the query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Maximum number of queried results. Default value: 20.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FromTopic(self):
+        r"""Queries consumer groups under a specified topic.
+        :rtype: str
+        """
+        return self._FromTopic
+
+    @FromTopic.setter
+    def FromTopic(self, FromTopic):
+        self._FromTopic = FromTopic
+
+    @property
+    def SortedBy(self):
+        r"""Sort by specified field, with the enumerated values as follows:
+-subscribeNum: Number of topics subscribed
+        :rtype: str
+        """
+        return self._SortedBy
+
+    @SortedBy.setter
+    def SortedBy(self, SortedBy):
+        self._SortedBy = SortedBy
+
+    @property
+    def SortOrder(self):
+        r"""Sort in ascending or descending order, with the enumerated values as follows:
+
+-asc: Ascending
+- DESC: descending order.
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FromTopic = params.get("FromTopic")
+        self._SortedBy = params.get("SortedBy")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerGroupListResponse(AbstractModel):
+    r"""DescribeConsumerGroupList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total query count
+        :type TotalCount: int
+        :param _Data: Consumer group list
+        :type Data: list of ConsumeGroupItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total query count
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""Consumer group list
+        :rtype: list of ConsumeGroupItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumeGroupItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9495,6 +9967,63 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RetryPolicy(AbstractModel):
+    r"""retry policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: Retry policy type. The enumeration values are as follows:
+
+-EXPONENTIAL: Fixed interval
+-CUSTOMIZED: Tier backoff
+        :type PolicyType: str
+        :param _RetryInterval: Fixed retry interval. This parameter takes effect when a fixed interval-based retry policy is configured.
+        :type RetryInterval: int
+        """
+        self._PolicyType = None
+        self._RetryInterval = None
+
+    @property
+    def PolicyType(self):
+        r"""Retry policy type. The enumeration values are as follows:
+
+-EXPONENTIAL: Fixed interval
+-CUSTOMIZED: Tier backoff
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def RetryInterval(self):
+        r"""Fixed retry interval. This parameter takes effect when a fixed interval-based retry policy is configured.
+        :rtype: int
+        """
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._RetryInterval = params.get("RetryInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RoleItem(AbstractModel):

@@ -241,6 +241,36 @@ class TrocketClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConsumerGroupList(
+            self,
+            request: models.DescribeConsumerGroupListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerGroupListResponse:
+        """
+        Get the consumer group list. The Filter parameter usage instructions are as follows:
+
+        -ConsumerGroupName, the consumer group name, supports fuzzy query and can be obtained from the [ConsumeGroupItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#ConsumeGroupItem) in the API response of [DescribeConsumerGroupList](https://www.tencentcloud.com/document/api/1493/101535?from_cn_redirect=1) or the console.
+        -ConsumeMessageOrderly, shipping order, enumeration value as follows:
+        -ordered delivery
+        -Concurrent delivery: false.
+        -RetryPolicy, retry policy, enumeration values as follows:
+        -EXPONENTIAL: fixed interval
+        -CUSTOMIZED: Tier backoff
+
+        Example of Filters:
+        [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
+        This API is applicable to 5.x clusters. For 4.x clusters, refer to the REST API documentation [DescribeRocketMQGroups](https://www.tencentcloud.com/document/api/1179/63420?from_cn_redirect=1) to get the consumer group list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConsumerLag(
             self,
             request: models.DescribeConsumerLagRequest,

@@ -25,6 +25,25 @@ class AiartClient(AbstractClient):
     _endpoint = 'aiart.intl.tencentcloudapi.com'
     _service = 'aiart'
 
+    async def ChangeClothes(
+            self,
+            request: models.ChangeClothesRequest,
+            opts: Dict = None,
+    ) -> models.ChangeClothesResponse:
+        """
+        This API is used to generate the images of the model changing clothes based on the model photo and the clothes image.
+        It supports 1 concurrency by default, which means that up to 1 submitted task can be processed simultaneously. Subsequent tasks can be processed only after ongoing ones are completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChangeClothes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChangeClothesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ImageToImage(
             self,
             request: models.ImageToImageRequest,

@@ -38745,8 +38745,8 @@ class ManageTaskRequest(AbstractModel):
         :param _OperationType: Operation type. Valid values:
 <ul>
 <li>Abort: task termination. Description:
-<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>
-<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>
+<ul><li>If the [task type](https://www.tencentcloud.com/document/product/1041/33644?has_map=1#3.-output-parameters) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://www.tencentcloud.com/document/product/1041/33644?has_map=1#3.-output-parameters) is `WAITING` or `PROCESSING` can be terminated.</li>
+<li>For other task types, only tasks whose task status is `WAITING` can be terminated.</li></ul>
 </li></ul>
         :type OperationType: str
         :param _TaskId: Video processing task ID.
@@ -38760,8 +38760,8 @@ class ManageTaskRequest(AbstractModel):
         r"""Operation type. Valid values:
 <ul>
 <li>Abort: task termination. Description:
-<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>
-<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>
+<ul><li>If the [task type](https://www.tencentcloud.com/document/product/1041/33644?has_map=1#3.-output-parameters) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://www.tencentcloud.com/document/product/1041/33644?has_map=1#3.-output-parameters) is `WAITING` or `PROCESSING` can be terminated.</li>
+<li>For other task types, only tasks whose task status is `WAITING` can be terminated.</li></ul>
 </li></ul>
         :rtype: str
         """

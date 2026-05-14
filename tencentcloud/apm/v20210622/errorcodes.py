@@ -77,6 +77,9 @@ FAILEDOPERATION_DUPLICATESERVICE = 'FailedOperation.DuplicateService'
 # Do not enter duplicate Tag names.
 FAILEDOPERATION_DUPLICATETAGFIELD = 'FailedOperation.DuplicateTagField'
 
+# The central node in the topology map does not exist.
+FAILEDOPERATION_FOCUSNODENOTFOUND = 'FailedOperation.FocusNodeNotFound'
+
 # Modification of this business system is not allowed.
 FAILEDOPERATION_INSTANCECANNOTMODIFY = 'FailedOperation.InstanceCannotModify'
 

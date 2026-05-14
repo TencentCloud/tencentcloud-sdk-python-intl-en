@@ -164,6 +164,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmAllVulCount(self, request):
+        r"""Query all vulnerability information of the user
+
+        :param request: Request instance for DescribeApmAllVulCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAllVulCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmAllVulCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmAllVulCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmAllVulCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmApplicationConfig(self, request):
         r"""This API is used to query application configuration.
 
@@ -256,6 +279,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmSQLInjectionDetail(self, request):
+        r"""Query SQL injection details
+
+        :param request: Request instance for DescribeApmSQLInjectionDetail.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmSQLInjectionDetailRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmSQLInjectionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmSQLInjectionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmSQLInjectionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmSampleConfig(self, request):
         r"""Query sampling configuration
 
@@ -302,6 +348,52 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApmVulnerabilityCount(self, request):
+        r"""Query vulnerability metrics
+
+        :param request: Request instance for DescribeApmVulnerabilityCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmVulnerabilityCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmVulnerabilityCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApmVulnerabilityDetail(self, request):
+        r"""Query vulnerability details.
+
+        :param request: Request instance for DescribeApmVulnerabilityDetail.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityDetailRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmVulnerabilityDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApmVulnerabilityDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApmVulnerabilityDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGeneralApmApplicationConfig(self, request):
         r"""This API is used to query the application configuration information.
 
@@ -326,27 +418,28 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralMetricData(self, request):
-        r"""This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.
-        The API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.
-        **Usage of the General Interface for Fetching Metric Data**
-        DescribeGeneralMetricData is a general interface for querying metric data, supporting flexible data retrieval. The query method of this interface is similar to using the following SQL statement:
-        SELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}.
+        r"""General interface to obtain metric data. Submit request parameters as needed and receive the corresponding metric data.
+        API call frequency limit: 20 requests/second, 1,200 requests/minute. Data point limit per single request: up to 1,440 data points.
+
+        General interface to obtain metric data usage: This API is used to query metric data flexibly. The query method of this API is similar to using the following SQL statement: SELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}. Before initiating request, please confirm the following key parameters:
         1. View (ViewName)
-        Determines the data domain you want to query.
-        Examples: service_metric (Service Monitoring View), db_metric (Database View), etc. For views supported by APM, please refer to [Metric Views](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=)
-        2. Metrics (Metrics)
-        Used to specify one or more metric items to be included in the returned results.
-        Examples: request_count (Total Requests), duration_avg (Average Latency), error_rate (Error Rate). For metrics supported by APM, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
-        3. Filters (Filters)
-        Supports one or more filtering conditions in the form of Key-Value pairs.
-        Example: Querying only a specific service: service.name = "order-service". Common dimensions and specific dimensions supported by each ViewName can be used as keys in filtering conditions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
-        4. Aggregation (GroupBy)
-        Supports one or more aggregation dimensions, equivalent to the GROUP BY clause in SQL.
-        Example: Grouping by the interface name operation to view the performance of each interface. Common dimensions and specific dimensions supported by each ViewName can be used as aggregation dimensions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).
+        Determine the domain of the queried data.
+        For example: service_metric (service monitoring view), db_metric (database view). For views supported by APM, see metrics view (https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1#069b06a9-2593-49db-b694-dea4200f3b19).
+
+        2. Metrics
+        Used to specify one or more metric items in the returned result.
+        For example: request_count (request count), duration_avg (avg duration), error_rate (error rate). For supported metrics about APM, see [APM Protocol Standards](https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1). Each view (ViewName) supports an exclusive metric set.
+        3. Filters
+        Support filter criteria in the form of one or multiple Key-Value pairs.
+        For example: Only query a certain specific service with service.name = "order-service". Common dimensional and each view (ViewName) support exclusive dimensions, which can be used as keys in filter conditions. For details, refer to the APM metrics protocol standard (https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1).
+
+        4. GroupBy (aggregation)
+        Support one or more aggregate dimensions, equivalent to SQL GROUP BY.
+        For example: Group by API name operation to view the performance of each API. Common dimensional and each view (ViewName) support exclusive dimensional, which can be used as aggregation dimension. For details, see [APM protocol standards](https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1).
         5. Granularity (Period)
-        This parameter determines whether the data needs to be aggregated by time slices.
-            - Period = 1 (Time Series Mode): The returned results are aggregated by time slices. The multiple values contained in the TimeSerial and DataSerial correspond one-to-one, representing the aggregation results for specific time slices. Time Series Mode is primarily used for displaying time trend charts.
-            - Period = 0 (Summary Statistics Mode): In the returned results, the DataSerial contains only a single value, representing the summarized data for the entire time range.
+        This parameter determines whether time slice aggregation is required.
+        -Period = 1: Time series mode: In the returned result, aggregation is performed by time slice. The time series (TimeSerial) and data sequence (DataSerial) have a one-to-one correspondence, representing aggregation results for specific time slices. Time series mode is mainly used to show time trend charts.
+        -Period = 0: Summarize mode. In the returned result, the data sequence (DataSerial) only contains a unique value, representing the aggregated data for the entire time interval.
 
         :param request: Request instance for DescribeGeneralMetricData.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralMetricDataRequest`
@@ -437,6 +530,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOPRAllVulCount(self, request):
+        r"""Query all vulnerability information of the user
+
+        :param request: Request instance for DescribeOPRAllVulCount.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeOPRAllVulCountRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeOPRAllVulCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOPRAllVulCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOPRAllVulCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServiceOverview(self, request):
         r"""This API is used to pull application overview data.
 
@@ -474,6 +590,29 @@ class ApmClient(AbstractClient):
             body = self.call("DescribeTagValues", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTagValuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopologyNew(self, request):
+        r"""This API is used to query the service topology diagram according to the application name.
+
+        :param request: Request instance for DescribeTopologyNew.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeTopologyNewRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeTopologyNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopologyNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopologyNewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -589,6 +728,29 @@ class ApmClient(AbstractClient):
             body = self.call("ModifyApmSampleConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApmSampleConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApmService(self, request):
+        r"""This API is used to edit information about applications of APM.
+
+        :param request: Request instance for ModifyApmService.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmServiceRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

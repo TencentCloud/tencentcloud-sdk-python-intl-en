@@ -371,6 +371,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCertificate(self, request):
+        r"""This API is used to query device certificate details.
+
+        :param request: Request instance for DescribeDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceCertificates(self, request):
         r"""Query device certificates with paging
 

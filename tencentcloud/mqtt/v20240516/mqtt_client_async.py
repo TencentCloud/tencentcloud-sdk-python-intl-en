@@ -295,6 +295,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceCertificate(
+            self,
+            request: models.DescribeDeviceCertificateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCertificateResponse:
+        """
+        This API is used to query device certificate details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCertificate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceCertificates(
             self,
             request: models.DescribeDeviceCertificatesRequest,

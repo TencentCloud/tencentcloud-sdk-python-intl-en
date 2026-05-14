@@ -310,133 +310,153 @@ class ApmAppConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: Instance ID.
+        :param _InstanceKey: <p>Instance ID</p>
         :type InstanceKey: str
-        :param _ServiceName: Service name.
+        :param _ServiceName: <p>Service name</p>
         :type ServiceName: str
-        :param _UrlConvergenceSwitch: URL convergence switch.
+        :param _UrlConvergenceSwitch: <p>URL convergence switch</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL convergence threshold
+        :param _UrlConvergenceThreshold: <p>URL convergence threshold</p>
         :type UrlConvergenceThreshold: int
-        :param _UrlConvergence: URL convergence regular expression.
+        :param _UrlConvergence: <p>URL regular convergence</p>
         :type UrlConvergence: str
-        :param _ExceptionFilter: Exception filtering regular expression.
+        :param _ExceptionFilter: <p>Exception filter regular</p>
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: Error code filtering.
+        :param _ErrorCodeFilter: <p>Error code filtering</p>
         :type ErrorCodeFilter: str
-        :param _Components: Service component type.
+        :param _Components: <p>Service component type</p>
         :type Components: str
-        :param _UrlExclude: URL exclusion regular.
+        :param _UrlExclude: <p>URL exclusion regular</p>
         :type UrlExclude: str
-        :param _LogSource: Specifies the log source.
+        :param _LogSource: <p>Log source</p>
         :type LogSource: str
-        :param _LogRegion: Log region.
+        :param _LogRegion: <p>Log region</p>
         :type LogRegion: str
-        :param _IsRelatedLog: Whether logging is enabled. valid values: 0 (disabled), 1 (enabled).
+        :param _IsRelatedLog: <p>Whether logging is enabled 0 Disabled 1 Enabled</p>
         :type IsRelatedLog: int
-        :param _LogTopicID: Log topic ID
+        :param _LogTopicID: <p>Log topic ID</p>
         :type LogTopicID: str
-        :param _IgnoreOperationName: API names to filter
+        :param _IgnoreOperationName: <p>Interface Names to Filter</p>
         :type IgnoreOperationName: str
-        :param _LogSet: CLS log set/ES cluster ID
+        :param _LogSet: <p>CLS logset | ES cluster ID</p>
         :type LogSet: str
-        :param _TraceRateLimit: Number of traces reported by the probe per second.
+        :param _TraceRateLimit: <p>Number of traces reported by the probe per second</p>
         :type TraceRateLimit: int
-        :param _EnableSnapshot: Whether thread profiling is enabled.
+        :param _EnableSnapshot: <p>Whether thread profiling is enabled</p>
         :type EnableSnapshot: bool
-        :param _SnapshotTimeout: Timeout threshold for thread profiling.
+        :param _SnapshotTimeout: <p>Timeout threshold for thread profiling</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: Whether agent is enabled.
+        :param _AgentEnable: <p>Whether to enable agent</p>
         :type AgentEnable: bool
-        :param _InstrumentList: Component List
+        :param _InstrumentList: <p>Component list</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: Whether link compression is enabled.
+        :param _TraceSquash: <p>Whether to enable link compression</p>
         :type TraceSquash: bool
-        :param _EventEnable: Whether application diagnosis is enabled.
+        :param _EventEnable: <p>Whether the application diagnosis switch is enabled</p>
         :type EventEnable: bool
-        :param _AgentOperationConfigView: Related configurations of the probe APIs.
+        :param _AgentOperationConfigView: <p>probe API related configuration</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AgentOperationConfigView: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
-        :param _EnableLogConfig: Whether to enable application log configuration.
+        :param _EnableLogConfig: <p>Whether the application log configuration is enabled</p>
         :type EnableLogConfig: bool
-        :param _ServiceID: Application ID
+        :param _ServiceID: <p>Application ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceID: str
-        :param _EnableDashboardConfig: Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).
+        :param _EnableDashboardConfig: <p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, hierarchical configuration)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnableDashboardConfig: bool
-        :param _IsRelatedDashboard: Whether to associate with Dashboard. 0: disabled; 1: enabled.
+        :param _IsRelatedDashboard: <p>Whether dashboard is associated: 0 Disabled 1 Enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
+        :param _DashboardTopicID: <p>dashboard ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DashboardTopicID: str
-        :param _EnableSecurityConfig: Whether to enable the application-level configuration.
+        :param _EnableSecurityConfig: <p>Whether the application-level configuration is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnableSecurityConfig: bool
-        :param _IsInstrumentationVulnerabilityScan: Whether to enable detection of component vulnerability.
+        :param _IsInstrumentationVulnerabilityScan: <p>Whether the component vulnerability detection is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsSqlInjectionAnalysis: Whether to enable SQL injection analysis.
+        :param _IsSqlInjectionAnalysis: <p>Whether SQL injection analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsSqlInjectionAnalysis: int
-        :param _IsRemoteCommandExecutionAnalysis: Whether to enable execution analysis of remote command.
+        :param _IsRemoteCommandExecutionAnalysis: <p>Whether remote command execution analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: Whether to enable detection analysis of Java webshell.
+        :param _IsMemoryHijackingAnalysis: <p>Whether Java Webshell detection and analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsMemoryHijackingAnalysis: int
-        :param _LogIndexType: CLS index type. (0 = full-text index; 1 = key-value index).
+        :param _LogIndexType: <p>CLS index type (0=full-text index, 1=key-value index)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: Index key of traceId. It is valid when the CLS index type is key-value index.
+        :param _LogTraceIdKey: <p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>
         :type LogTraceIdKey: str
-        :param _IsDeleteAnyFileAnalysis: Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)
+        :param _IsDeleteAnyFileAnalysis: <p>Whether to enable file deletion detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)
+        :param _IsReadAnyFileAnalysis: <p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)
+        :param _IsUploadAnyFileAnalysis: <p>Whether to enable arbitrary file upload detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)
+        :param _IsIncludeAnyFileAnalysis: <p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).
+        :param _IsDirectoryTraversalAnalysis: <p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: Whether to enable template engine injection detection. (0: disabled; 1: enabled.)
+        :param _IsTemplateEngineInjectionAnalysis: <p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsScriptEngineInjectionAnalysis: <p>Whether script engine injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsExpressionInjectionAnalysis: <p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsJNDIInjectionAnalysis: <p>Whether JNDI injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).
+        :param _IsJNIInjectionAnalysis: <p>Whether JNI injection detection is enabled (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).
+        :param _IsWebshellBackdoorAnalysis: <p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: Whether to enable deserialization detection. (0 - disabled; 1 - enabled).
+        :param _IsDeserializationAnalysis: <p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsDeserializationAnalysis: int
-        :param _UrlAutoConvergenceEnable: API name automatic convergence switch (0 - disabled; 1 - enabled)
+        :param _UrlAutoConvergenceEnable: <p>API name auto convergence switch (0-off, 1-on)</p>
         :type UrlAutoConvergenceEnable: bool
-        :param _UrlLongSegmentThreshold: Convergence threshold for URL long segments.
+        :param _UrlLongSegmentThreshold: <p>URL long segment convergence threshold</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: Convergence threshold for URL numerical segments.
+        :param _UrlNumberSegmentThreshold: <p>URL digit segment convergence threshold</p>
         :type UrlNumberSegmentThreshold: int
-        :param _DisableMemoryUsed: Specifies the memory threshold for probe fusing.
+        :param _DisableMemoryUsed: <p>Fuse memory threshold of the probe</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: Specifies the CPU threshold for probe fusing.
+        :param _DisableCpuUsed: <p>Probe fuse CPU threshold</p>
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: <p>Whether SQL parameter access is enabled</p>
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: <p>Slow SQL threshold</p>
+        :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: <p>Whether the masking rule is enabled</p>
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: <p>Masking rule</p>
+        :type DesensitizationRule: str
+        :param _LogSpanIdKey: <p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>
+        :type LogSpanIdKey: str
+        :param _AutoProfilingConfig: <p>Automated performance analysis configuration</p>
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>Error rate threshold (%) used to judge the application health status as "red".</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>Alert threshold for response time (ms), used to judge the application health status as "yellow".</p>
+        :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>Whether to use the built-in fuse threshold of the probe by default</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -490,10 +510,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UrlNumberSegmentThreshold = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
+        self._LogSpanIdKey = None
+        self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceKey(self):
-        r"""Instance ID.
+        r"""<p>Instance ID</p>
         :rtype: str
         """
         return self._InstanceKey
@@ -504,7 +534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        r"""Service name.
+        r"""<p>Service name</p>
         :rtype: str
         """
         return self._ServiceName
@@ -515,7 +545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL convergence switch.
+        r"""<p>URL convergence switch</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -526,7 +556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL convergence threshold
+        r"""<p>URL convergence threshold</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -537,7 +567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlConvergence(self):
-        r"""URL convergence regular expression.
+        r"""<p>URL regular convergence</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -548,7 +578,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExceptionFilter(self):
-        r"""Exception filtering regular expression.
+        r"""<p>Exception filter regular</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -559,7 +589,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCodeFilter(self):
-        r"""Error code filtering.
+        r"""<p>Error code filtering</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -570,7 +600,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Components(self):
-        r"""Service component type.
+        r"""<p>Service component type</p>
         :rtype: str
         """
         return self._Components
@@ -581,7 +611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlExclude(self):
-        r"""URL exclusion regular.
+        r"""<p>URL exclusion regular</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -592,7 +622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogSource(self):
-        r"""Specifies the log source.
+        r"""<p>Log source</p>
         :rtype: str
         """
         return self._LogSource
@@ -603,7 +633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogRegion(self):
-        r"""Log region.
+        r"""<p>Log region</p>
         :rtype: str
         """
         return self._LogRegion
@@ -614,7 +644,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsRelatedLog(self):
-        r"""Whether logging is enabled. valid values: 0 (disabled), 1 (enabled).
+        r"""<p>Whether logging is enabled 0 Disabled 1 Enabled</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -625,7 +655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogTopicID(self):
-        r"""Log topic ID
+        r"""<p>Log topic ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -636,7 +666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IgnoreOperationName(self):
-        r"""API names to filter
+        r"""<p>Interface Names to Filter</p>
         :rtype: str
         """
         return self._IgnoreOperationName
@@ -647,7 +677,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogSet(self):
-        r"""CLS log set/ES cluster ID
+        r"""<p>CLS logset | ES cluster ID</p>
         :rtype: str
         """
         return self._LogSet
@@ -658,7 +688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TraceRateLimit(self):
-        r"""Number of traces reported by the probe per second.
+        r"""<p>Number of traces reported by the probe per second</p>
         :rtype: int
         """
         return self._TraceRateLimit
@@ -669,7 +699,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableSnapshot(self):
-        r"""Whether thread profiling is enabled.
+        r"""<p>Whether thread profiling is enabled</p>
         :rtype: bool
         """
         return self._EnableSnapshot
@@ -680,7 +710,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotTimeout(self):
-        r"""Timeout threshold for thread profiling.
+        r"""<p>Timeout threshold for thread profiling</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -691,7 +721,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentEnable(self):
-        r"""Whether agent is enabled.
+        r"""<p>Whether to enable agent</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -702,7 +732,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstrumentList(self):
-        r"""Component List
+        r"""<p>Component list</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Instrument
         """
@@ -714,7 +744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TraceSquash(self):
-        r"""Whether link compression is enabled.
+        r"""<p>Whether to enable link compression</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -725,7 +755,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventEnable(self):
-        r"""Whether application diagnosis is enabled.
+        r"""<p>Whether the application diagnosis switch is enabled</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -736,7 +766,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentOperationConfigView(self):
-        r"""Related configurations of the probe APIs.
+        r"""<p>probe API related configuration</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
         """
@@ -748,7 +778,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableLogConfig(self):
-        r"""Whether to enable application log configuration.
+        r"""<p>Whether the application log configuration is enabled</p>
         :rtype: bool
         """
         return self._EnableLogConfig
@@ -759,7 +789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceID(self):
-        r"""Application ID
+        r"""<p>Application ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -771,7 +801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableDashboardConfig(self):
-        r"""Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).
+        r"""<p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, hierarchical configuration)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -783,7 +813,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsRelatedDashboard(self):
-        r"""Whether to associate with Dashboard. 0: disabled; 1: enabled.
+        r"""<p>Whether dashboard is associated: 0 Disabled 1 Enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -795,7 +825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DashboardTopicID(self):
-        r"""dashboard ID
+        r"""<p>dashboard ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -807,7 +837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableSecurityConfig(self):
-        r"""Whether to enable the application-level configuration.
+        r"""<p>Whether the application-level configuration is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -819,7 +849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""Whether to enable detection of component vulnerability.
+        r"""<p>Whether the component vulnerability detection is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -831,7 +861,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""Whether to enable SQL injection analysis.
+        r"""<p>Whether SQL injection analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -843,7 +873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""Whether to enable execution analysis of remote command.
+        r"""<p>Whether remote command execution analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -855,7 +885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""Whether to enable detection analysis of Java webshell.
+        r"""<p>Whether Java Webshell detection and analysis is enabled</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -867,7 +897,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogIndexType(self):
-        r"""CLS index type. (0 = full-text index; 1 = key-value index).
+        r"""<p>CLS index type (0=full-text index, 1=key-value index)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -878,7 +908,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogTraceIdKey(self):
-        r"""Index key of traceId. It is valid when the CLS index type is key-value index.
+        r"""<p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -889,7 +919,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)
+        r"""<p>Whether to enable file deletion detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -901,7 +931,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -913,7 +943,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether to enable arbitrary file upload detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -925,7 +955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)
+        r"""<p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -937,7 +967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).
+        r"""<p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -949,7 +979,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""Whether to enable template engine injection detection. (0: disabled; 1: enabled.)
+        r"""<p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -961,7 +991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether script engine injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -973,7 +1003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -985,7 +1015,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether JNDI injection detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -997,7 +1027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).
+        r"""<p>Whether JNI injection detection is enabled (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1009,7 +1039,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).
+        r"""<p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1021,7 +1051,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""Whether to enable deserialization detection. (0 - disabled; 1 - enabled).
+        r"""<p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1033,7 +1063,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlAutoConvergenceEnable(self):
-        r"""API name automatic convergence switch (0 - disabled; 1 - enabled)
+        r"""<p>API name auto convergence switch (0-off, 1-on)</p>
         :rtype: bool
         """
         return self._UrlAutoConvergenceEnable
@@ -1044,7 +1074,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""Convergence threshold for URL long segments.
+        r"""<p>URL long segment convergence threshold</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -1055,7 +1085,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""Convergence threshold for URL numerical segments.
+        r"""<p>URL digit segment convergence threshold</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -1066,7 +1096,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisableMemoryUsed(self):
-        r"""Specifies the memory threshold for probe fusing.
+        r"""<p>Fuse memory threshold of the probe</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -1077,7 +1107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisableCpuUsed(self):
-        r"""Specifies the CPU threshold for probe fusing.
+        r"""<p>Probe fuse CPU threshold</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -1085,6 +1115,116 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DisableCpuUsed.setter
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
+
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""<p>Whether SQL parameter access is enabled</p>
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""<p>Slow SQL threshold</p>
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
+    @property
+    def EnableDesensitizationRule(self):
+        r"""<p>Whether the masking rule is enabled</p>
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""<p>Masking rule</p>
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
+    @property
+    def LogSpanIdKey(self):
+        r"""<p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
+    @property
+    def AutoProfilingConfig(self):
+        r"""<p>Automated performance analysis configuration</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>Error rate threshold (%) used to judge the application health status as "red".</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>Alert threshold for response time (ms), used to judge the application health status as "yellow".</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
+
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>Whether to use the built-in fuse threshold of the probe by default</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
 
     def _deserialize(self, params):
@@ -1147,6 +1287,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1164,48 +1321,108 @@ class ApmApplicationConfigView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: Business system id.
+        :param _InstanceKey: <p>Business system ID</p>
         :type InstanceKey: str
-        :param _ServiceName: Application name	.	
+        :param _ServiceName: <p>Application name</p>
         :type ServiceName: str
-        :param _OperationNameFilter: API filtering.
+        :param _OperationNameFilter: <p>Interface Filtering</p>
         :type OperationNameFilter: str
-        :param _ExceptionFilter: Error type filtering.
+        :param _ExceptionFilter: <p>Error type filtering</p>
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: HTTP status code filtering.
+        :param _ErrorCodeFilter: <p>HTTP status code filtering</p>
         :type ErrorCodeFilter: str
-        :param _EventEnable: Application diagnosis switch (deprecated).
+        :param _EventEnable: <p>Application diagnosis switch (abandoned)</p>
         :type EventEnable: bool
-        :param _UrlConvergenceSwitch: URL convergence switch. 0: off; 1: on.
+        :param _UrlConvergenceSwitch: <p>URL convergence switch 0 Off 1 On</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL convergence threshold.	
+        :param _UrlConvergenceThreshold: <p>URL convergence threshold</p>
         :type UrlConvergenceThreshold: int
-        :param _UrlConvergence: URL convergence rule in the form of a regular expression.	
+        :param _UrlConvergence: <p>URL regular convergence rules</p>
         :type UrlConvergence: str
-        :param _UrlExclude: URL exclusion rule in the form of a regular expression.
+        :param _UrlExclude: <p>URL exclusion rule regex</p>
         :type UrlExclude: str
-        :param _IsRelatedLog: Log feature switch. 0: off; 1: on.
+        :param _IsRelatedLog: <p>Whether logging is enabled 0 Disabled 1 Enabled</p>
         :type IsRelatedLog: int
-        :param _LogSource: Log source.	
+        :param _LogSource: <p>Log source</p>
         :type LogSource: str
-        :param _LogSet: Log set. 
+        :param _LogSet: <p>Logset</p>
         :type LogSet: str
-        :param _LogTopicID: Log topic.
+        :param _LogTopicID: <p>Log topic</p>
         :type LogTopicID: str
-        :param _SnapshotEnable: Method stack snapshot switch: true to enable, false to disable.
+        :param _SnapshotEnable: <p>Method stack snapshot switch. Enabled indicates true. false indicates disabled.</p>
         :type SnapshotEnable: bool
-        :param _SnapshotTimeout: Slow call listening trigger threshold.
+        :param _SnapshotTimeout: <p>Slow call monitoring trigger threshold</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: Probe master switch.
+        :param _AgentEnable: <p>Master switch for probes</p>
         :type AgentEnable: bool
-        :param _InstrumentList: Component list switch (deprecated).
+        :param _InstrumentList: <p>Component list toggle (abandoned)</p>
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: Link compression switch (deprecated).
+        :param _TraceSquash: <p>Link compression switch (abandoned)</p>
         :type TraceSquash: bool
-        :param _DisableMemoryUsed: Specifies the memory threshold for probe fusing.
+        :param _AgentIgnoreOperation: <p>Link filtering configuration</p>
+        :type AgentIgnoreOperation: str
+        :param _EnableSecurityConfig: <p>Enable the application security switch</p>
+        :type EnableSecurityConfig: bool
+        :param _IsSqlInjectionAnalysis: <p>Whether SQL injection detection is enabled</p>
+        :type IsSqlInjectionAnalysis: int
+        :param _IsInstrumentationVulnerabilityScan: <p>Whether component vulnerability detection is enabled</p>
+        :type IsInstrumentationVulnerabilityScan: int
+        :param _IsRemoteCommandExecutionAnalysis: <p>Whether remote command execution detection is enabled</p>
+        :type IsRemoteCommandExecutionAnalysis: int
+        :param _IsMemoryHijackingAnalysis: <p>Whether memory leakage detection is enabled</p>
+        :type IsMemoryHijackingAnalysis: int
+        :param _IsDeleteAnyFileAnalysis: <p>Whether to enable detection of any file deletion</p>
+        :type IsDeleteAnyFileAnalysis: int
+        :param _IsReadAnyFileAnalysis: <p>Whether to enable arbitrary file read detection</p>
+        :type IsReadAnyFileAnalysis: int
+        :param _IsUploadAnyFileAnalysis: <p>Whether to enable arbitrary file upload detection</p>
+        :type IsUploadAnyFileAnalysis: int
+        :param _IsIncludeAnyFileAnalysis: <p>Whether to enable detection of arbitrary files</p>
+        :type IsIncludeAnyFileAnalysis: int
+        :param _IsDirectoryTraversalAnalysis: <p>Whether path traversal detection is enabled</p>
+        :type IsDirectoryTraversalAnalysis: int
+        :param _IsTemplateEngineInjectionAnalysis: <p>Whether to enable template engine injection detection</p>
+        :type IsTemplateEngineInjectionAnalysis: int
+        :param _IsScriptEngineInjectionAnalysis: <p>Whether script engine injection detection is enabled</p>
+        :type IsScriptEngineInjectionAnalysis: int
+        :param _IsExpressionInjectionAnalysis: <p>Whether expression injection detection is enabled</p>
+        :type IsExpressionInjectionAnalysis: int
+        :param _IsJndiInjectionAnalysis: <p>Whether JNDI injection detection is enabled</p>
+        :type IsJndiInjectionAnalysis: int
+        :param _IsJniInjectionAnalysis: <p>Whether JNI injection detection is enabled</p>
+        :type IsJniInjectionAnalysis: int
+        :param _IsWebshellBackdoorAnalysis: <p>Whether Webshell backdoor detection is enabled</p>
+        :type IsWebshellBackdoorAnalysis: int
+        :param _IsDeserializationAnalysis: <p>Whether deserialization detection is enabled</p>
+        :type IsDeserializationAnalysis: int
+        :param _EnableDashboardConfig: <p>Whether the console switch is enabled</p>
+        :type EnableDashboardConfig: bool
+        :param _IsRelatedDashboard: <p>Whether to associate with Dashboard</p>
+        :type IsRelatedDashboard: int
+        :param _DashboardTopicID: <p>Dashboard topic</p>
+        :type DashboardTopicID: str
+        :param _DisableMemoryUsed: <p>Fuse memory threshold of the probe</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: Specifies the CPU threshold for probe fusing.
+        :param _DisableCpuUsed: <p>Probe fuse CPU threshold</p>
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: <p>Whether SQL parameter access is enabled</p>
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: <p>Slow SQL threshold</p>
+        :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: <p>Whether the masking rule is enabled</p>
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: <p>Masking rule</p>
+        :type DesensitizationRule: str
+        :param _AutoProfilingConfig: <p>Automated performance analysis task configuration</p>
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>Threshold configuration switch</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>Error rate threshold</p><p>Unit: %</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>Alert threshold of response time</p><p>Unit: ms</p>
+        :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>Whether to use the default fuse threshold of the probe</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1226,12 +1443,42 @@ class ApmApplicationConfigView(AbstractModel):
         self._AgentEnable = None
         self._InstrumentList = None
         self._TraceSquash = None
+        self._AgentIgnoreOperation = None
+        self._EnableSecurityConfig = None
+        self._IsSqlInjectionAnalysis = None
+        self._IsInstrumentationVulnerabilityScan = None
+        self._IsRemoteCommandExecutionAnalysis = None
+        self._IsMemoryHijackingAnalysis = None
+        self._IsDeleteAnyFileAnalysis = None
+        self._IsReadAnyFileAnalysis = None
+        self._IsUploadAnyFileAnalysis = None
+        self._IsIncludeAnyFileAnalysis = None
+        self._IsDirectoryTraversalAnalysis = None
+        self._IsTemplateEngineInjectionAnalysis = None
+        self._IsScriptEngineInjectionAnalysis = None
+        self._IsExpressionInjectionAnalysis = None
+        self._IsJndiInjectionAnalysis = None
+        self._IsJniInjectionAnalysis = None
+        self._IsWebshellBackdoorAnalysis = None
+        self._IsDeserializationAnalysis = None
+        self._EnableDashboardConfig = None
+        self._IsRelatedDashboard = None
+        self._DashboardTopicID = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
+        self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceKey(self):
-        r"""Business system id.
+        r"""<p>Business system ID</p>
         :rtype: str
         """
         return self._InstanceKey
@@ -1242,7 +1489,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""Application name	.	
+        r"""<p>Application name</p>
         :rtype: str
         """
         return self._ServiceName
@@ -1253,7 +1500,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def OperationNameFilter(self):
-        r"""API filtering.
+        r"""<p>Interface Filtering</p>
         :rtype: str
         """
         return self._OperationNameFilter
@@ -1264,7 +1511,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        r"""Error type filtering.
+        r"""<p>Error type filtering</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -1275,7 +1522,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        r"""HTTP status code filtering.
+        r"""<p>HTTP status code filtering</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -1286,7 +1533,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""Application diagnosis switch (deprecated).
+        r"""<p>Application diagnosis switch (abandoned)</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -1297,7 +1544,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL convergence switch. 0: off; 1: on.
+        r"""<p>URL convergence switch 0 Off 1 On</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -1308,7 +1555,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL convergence threshold.	
+        r"""<p>URL convergence threshold</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -1319,7 +1566,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        r"""URL convergence rule in the form of a regular expression.	
+        r"""<p>URL regular convergence rules</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -1330,7 +1577,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlExclude(self):
-        r"""URL exclusion rule in the form of a regular expression.
+        r"""<p>URL exclusion rule regex</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -1341,7 +1588,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""Log feature switch. 0: off; 1: on.
+        r"""<p>Whether logging is enabled 0 Disabled 1 Enabled</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1352,7 +1599,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""Log source.	
+        r"""<p>Log source</p>
         :rtype: str
         """
         return self._LogSource
@@ -1363,7 +1610,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""Log set. 
+        r"""<p>Logset</p>
         :rtype: str
         """
         return self._LogSet
@@ -1374,7 +1621,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""Log topic.
+        r"""<p>Log topic</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -1385,7 +1632,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotEnable(self):
-        r"""Method stack snapshot switch: true to enable, false to disable.
+        r"""<p>Method stack snapshot switch. Enabled indicates true. false indicates disabled.</p>
         :rtype: bool
         """
         return self._SnapshotEnable
@@ -1396,7 +1643,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        r"""Slow call listening trigger threshold.
+        r"""<p>Slow call monitoring trigger threshold</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -1407,7 +1654,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def AgentEnable(self):
-        r"""Probe master switch.
+        r"""<p>Master switch for probes</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -1418,7 +1665,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""Component list switch (deprecated).
+        r"""<p>Component list toggle (abandoned)</p>
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -1429,7 +1676,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""Link compression switch (deprecated).
+        r"""<p>Link compression switch (abandoned)</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -1439,8 +1686,239 @@ class ApmApplicationConfigView(AbstractModel):
         self._TraceSquash = TraceSquash
 
     @property
+    def AgentIgnoreOperation(self):
+        r"""<p>Link filtering configuration</p>
+        :rtype: str
+        """
+        return self._AgentIgnoreOperation
+
+    @AgentIgnoreOperation.setter
+    def AgentIgnoreOperation(self, AgentIgnoreOperation):
+        self._AgentIgnoreOperation = AgentIgnoreOperation
+
+    @property
+    def EnableSecurityConfig(self):
+        r"""<p>Enable the application security switch</p>
+        :rtype: bool
+        """
+        return self._EnableSecurityConfig
+
+    @EnableSecurityConfig.setter
+    def EnableSecurityConfig(self, EnableSecurityConfig):
+        self._EnableSecurityConfig = EnableSecurityConfig
+
+    @property
+    def IsSqlInjectionAnalysis(self):
+        r"""<p>Whether SQL injection detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsSqlInjectionAnalysis
+
+    @IsSqlInjectionAnalysis.setter
+    def IsSqlInjectionAnalysis(self, IsSqlInjectionAnalysis):
+        self._IsSqlInjectionAnalysis = IsSqlInjectionAnalysis
+
+    @property
+    def IsInstrumentationVulnerabilityScan(self):
+        r"""<p>Whether component vulnerability detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsInstrumentationVulnerabilityScan
+
+    @IsInstrumentationVulnerabilityScan.setter
+    def IsInstrumentationVulnerabilityScan(self, IsInstrumentationVulnerabilityScan):
+        self._IsInstrumentationVulnerabilityScan = IsInstrumentationVulnerabilityScan
+
+    @property
+    def IsRemoteCommandExecutionAnalysis(self):
+        r"""<p>Whether remote command execution detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsRemoteCommandExecutionAnalysis
+
+    @IsRemoteCommandExecutionAnalysis.setter
+    def IsRemoteCommandExecutionAnalysis(self, IsRemoteCommandExecutionAnalysis):
+        self._IsRemoteCommandExecutionAnalysis = IsRemoteCommandExecutionAnalysis
+
+    @property
+    def IsMemoryHijackingAnalysis(self):
+        r"""<p>Whether memory leakage detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsMemoryHijackingAnalysis
+
+    @IsMemoryHijackingAnalysis.setter
+    def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
+        self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
+
+    @property
+    def IsDeleteAnyFileAnalysis(self):
+        r"""<p>Whether to enable detection of any file deletion</p>
+        :rtype: int
+        """
+        return self._IsDeleteAnyFileAnalysis
+
+    @IsDeleteAnyFileAnalysis.setter
+    def IsDeleteAnyFileAnalysis(self, IsDeleteAnyFileAnalysis):
+        self._IsDeleteAnyFileAnalysis = IsDeleteAnyFileAnalysis
+
+    @property
+    def IsReadAnyFileAnalysis(self):
+        r"""<p>Whether to enable arbitrary file read detection</p>
+        :rtype: int
+        """
+        return self._IsReadAnyFileAnalysis
+
+    @IsReadAnyFileAnalysis.setter
+    def IsReadAnyFileAnalysis(self, IsReadAnyFileAnalysis):
+        self._IsReadAnyFileAnalysis = IsReadAnyFileAnalysis
+
+    @property
+    def IsUploadAnyFileAnalysis(self):
+        r"""<p>Whether to enable arbitrary file upload detection</p>
+        :rtype: int
+        """
+        return self._IsUploadAnyFileAnalysis
+
+    @IsUploadAnyFileAnalysis.setter
+    def IsUploadAnyFileAnalysis(self, IsUploadAnyFileAnalysis):
+        self._IsUploadAnyFileAnalysis = IsUploadAnyFileAnalysis
+
+    @property
+    def IsIncludeAnyFileAnalysis(self):
+        r"""<p>Whether to enable detection of arbitrary files</p>
+        :rtype: int
+        """
+        return self._IsIncludeAnyFileAnalysis
+
+    @IsIncludeAnyFileAnalysis.setter
+    def IsIncludeAnyFileAnalysis(self, IsIncludeAnyFileAnalysis):
+        self._IsIncludeAnyFileAnalysis = IsIncludeAnyFileAnalysis
+
+    @property
+    def IsDirectoryTraversalAnalysis(self):
+        r"""<p>Whether path traversal detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsDirectoryTraversalAnalysis
+
+    @IsDirectoryTraversalAnalysis.setter
+    def IsDirectoryTraversalAnalysis(self, IsDirectoryTraversalAnalysis):
+        self._IsDirectoryTraversalAnalysis = IsDirectoryTraversalAnalysis
+
+    @property
+    def IsTemplateEngineInjectionAnalysis(self):
+        r"""<p>Whether to enable template engine injection detection</p>
+        :rtype: int
+        """
+        return self._IsTemplateEngineInjectionAnalysis
+
+    @IsTemplateEngineInjectionAnalysis.setter
+    def IsTemplateEngineInjectionAnalysis(self, IsTemplateEngineInjectionAnalysis):
+        self._IsTemplateEngineInjectionAnalysis = IsTemplateEngineInjectionAnalysis
+
+    @property
+    def IsScriptEngineInjectionAnalysis(self):
+        r"""<p>Whether script engine injection detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsScriptEngineInjectionAnalysis
+
+    @IsScriptEngineInjectionAnalysis.setter
+    def IsScriptEngineInjectionAnalysis(self, IsScriptEngineInjectionAnalysis):
+        self._IsScriptEngineInjectionAnalysis = IsScriptEngineInjectionAnalysis
+
+    @property
+    def IsExpressionInjectionAnalysis(self):
+        r"""<p>Whether expression injection detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsExpressionInjectionAnalysis
+
+    @IsExpressionInjectionAnalysis.setter
+    def IsExpressionInjectionAnalysis(self, IsExpressionInjectionAnalysis):
+        self._IsExpressionInjectionAnalysis = IsExpressionInjectionAnalysis
+
+    @property
+    def IsJndiInjectionAnalysis(self):
+        r"""<p>Whether JNDI injection detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsJndiInjectionAnalysis
+
+    @IsJndiInjectionAnalysis.setter
+    def IsJndiInjectionAnalysis(self, IsJndiInjectionAnalysis):
+        self._IsJndiInjectionAnalysis = IsJndiInjectionAnalysis
+
+    @property
+    def IsJniInjectionAnalysis(self):
+        r"""<p>Whether JNI injection detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsJniInjectionAnalysis
+
+    @IsJniInjectionAnalysis.setter
+    def IsJniInjectionAnalysis(self, IsJniInjectionAnalysis):
+        self._IsJniInjectionAnalysis = IsJniInjectionAnalysis
+
+    @property
+    def IsWebshellBackdoorAnalysis(self):
+        r"""<p>Whether Webshell backdoor detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsWebshellBackdoorAnalysis
+
+    @IsWebshellBackdoorAnalysis.setter
+    def IsWebshellBackdoorAnalysis(self, IsWebshellBackdoorAnalysis):
+        self._IsWebshellBackdoorAnalysis = IsWebshellBackdoorAnalysis
+
+    @property
+    def IsDeserializationAnalysis(self):
+        r"""<p>Whether deserialization detection is enabled</p>
+        :rtype: int
+        """
+        return self._IsDeserializationAnalysis
+
+    @IsDeserializationAnalysis.setter
+    def IsDeserializationAnalysis(self, IsDeserializationAnalysis):
+        self._IsDeserializationAnalysis = IsDeserializationAnalysis
+
+    @property
+    def EnableDashboardConfig(self):
+        r"""<p>Whether the console switch is enabled</p>
+        :rtype: bool
+        """
+        return self._EnableDashboardConfig
+
+    @EnableDashboardConfig.setter
+    def EnableDashboardConfig(self, EnableDashboardConfig):
+        self._EnableDashboardConfig = EnableDashboardConfig
+
+    @property
+    def IsRelatedDashboard(self):
+        r"""<p>Whether to associate with Dashboard</p>
+        :rtype: int
+        """
+        return self._IsRelatedDashboard
+
+    @IsRelatedDashboard.setter
+    def IsRelatedDashboard(self, IsRelatedDashboard):
+        self._IsRelatedDashboard = IsRelatedDashboard
+
+    @property
+    def DashboardTopicID(self):
+        r"""<p>Dashboard topic</p>
+        :rtype: str
+        """
+        return self._DashboardTopicID
+
+    @DashboardTopicID.setter
+    def DashboardTopicID(self, DashboardTopicID):
+        self._DashboardTopicID = DashboardTopicID
+
+    @property
     def DisableMemoryUsed(self):
-        r"""Specifies the memory threshold for probe fusing.
+        r"""<p>Fuse memory threshold of the probe</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -1451,7 +1929,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        r"""Specifies the CPU threshold for probe fusing.
+        r"""<p>Probe fuse CPU threshold</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -1459,6 +1937,105 @@ class ApmApplicationConfigView(AbstractModel):
     @DisableCpuUsed.setter
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
+
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""<p>Whether SQL parameter access is enabled</p>
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""<p>Slow SQL threshold</p>
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
+    @property
+    def EnableDesensitizationRule(self):
+        r"""<p>Whether the masking rule is enabled</p>
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""<p>Masking rule</p>
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
+    @property
+    def AutoProfilingConfig(self):
+        r"""<p>Automated performance analysis task configuration</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>Threshold configuration switch</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>Error rate threshold</p><p>Unit: %</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>Alert threshold of response time</p><p>Unit: ms</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
+
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>Whether to use the default fuse threshold of the probe</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
 
     def _deserialize(self, params):
@@ -1486,8 +2063,45 @@ class ApmApplicationConfigView(AbstractModel):
                 obj._deserialize(item)
                 self._InstrumentList.append(obj)
         self._TraceSquash = params.get("TraceSquash")
+        self._AgentIgnoreOperation = params.get("AgentIgnoreOperation")
+        self._EnableSecurityConfig = params.get("EnableSecurityConfig")
+        self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
+        self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
+        self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
+        self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
+        self._IsDeleteAnyFileAnalysis = params.get("IsDeleteAnyFileAnalysis")
+        self._IsReadAnyFileAnalysis = params.get("IsReadAnyFileAnalysis")
+        self._IsUploadAnyFileAnalysis = params.get("IsUploadAnyFileAnalysis")
+        self._IsIncludeAnyFileAnalysis = params.get("IsIncludeAnyFileAnalysis")
+        self._IsDirectoryTraversalAnalysis = params.get("IsDirectoryTraversalAnalysis")
+        self._IsTemplateEngineInjectionAnalysis = params.get("IsTemplateEngineInjectionAnalysis")
+        self._IsScriptEngineInjectionAnalysis = params.get("IsScriptEngineInjectionAnalysis")
+        self._IsExpressionInjectionAnalysis = params.get("IsExpressionInjectionAnalysis")
+        self._IsJndiInjectionAnalysis = params.get("IsJndiInjectionAnalysis")
+        self._IsJniInjectionAnalysis = params.get("IsJniInjectionAnalysis")
+        self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
+        self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
+        self._EnableDashboardConfig = params.get("EnableDashboardConfig")
+        self._IsRelatedDashboard = params.get("IsRelatedDashboard")
+        self._DashboardTopicID = params.get("DashboardTopicID")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1505,22 +2119,25 @@ class ApmAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PeerId: Associated product instance ID.
+        :param _PeerId: <p>Instance ID of the associated product</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PeerId: str
-        :param _Status: Association status: 1 (enabled), 2 (disabled), 3 (invalid).
+        :param _Status: <p>Association status: 1 (enabled), 2 (not enabled), 3 (invalid)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param _Topic: Specifies the CKafka message topic.
+        :param _Topic: <p>CKafka message topic</p>
         :type Topic: str
+        :param _MetricTopic: <p>Ckafka consumption topic</p><p>Used for Kafka metric delivery</p>
+        :type MetricTopic: str
         """
         self._PeerId = None
         self._Status = None
         self._Topic = None
+        self._MetricTopic = None
 
     @property
     def PeerId(self):
-        r"""Associated product instance ID.
+        r"""<p>Instance ID of the associated product</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1532,7 +2149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Association status: 1 (enabled), 2 (disabled), 3 (invalid).
+        r"""<p>Association status: 1 (enabled), 2 (not enabled), 3 (invalid)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1544,7 +2161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
-        r"""Specifies the CKafka message topic.
+        r"""<p>CKafka message topic</p>
         :rtype: str
         """
         return self._Topic
@@ -1553,11 +2170,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Topic(self, Topic):
         self._Topic = Topic
 
+    @property
+    def MetricTopic(self):
+        r"""<p>Ckafka consumption topic</p><p>Used for Kafka metric delivery</p>
+        :rtype: str
+        """
+        return self._MetricTopic
+
+    @MetricTopic.setter
+    def MetricTopic(self, MetricTopic):
+        self._MetricTopic = MetricTopic
+
 
     def _deserialize(self, params):
         self._PeerId = params.get("PeerId")
         self._Status = params.get("Status")
         self._Topic = params.get("Topic")
+        self._MetricTopic = params.get("MetricTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1848,6 +2477,8 @@ Account in arrears.
         :type UrlLongSegmentThreshold: int
         :param _UrlNumberSegmentThreshold: Convergence threshold for URL numerical segments.
         :type UrlNumberSegmentThreshold: int
+        :param _LogSpanIdKey: Index key of spanId: This parameter is valid only when the CLS index type is key-value index
+        :type LogSpanIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -1905,6 +2536,7 @@ Account in arrears.
         self._Token = None
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceId(self):
@@ -2528,6 +3160,17 @@ Account in arrears.
     def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
         self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
 
+    @property
+    def LogSpanIdKey(self):
+        r"""Index key of spanId: This parameter is valid only when the CLS index type is key-value index
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2591,6 +3234,7 @@ Account in arrears.
         self._Token = params.get("Token")
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3100,6 +3744,316 @@ class ApmTag(AbstractModel):
         
 
 
+class ApmVulnerabilityServiceDetail(AbstractModel):
+    r"""Vulnerability-related information of APM application instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceInstance: Application instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceInstance: str
+        :param _Path: Path of the jar package with the vulnerability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        :param _LastOccurTime: Last occurrence time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastOccurTime: int
+        """
+        self._ServiceInstance = None
+        self._Path = None
+        self._LastOccurTime = None
+
+    @property
+    def ServiceInstance(self):
+        r"""Application instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ServiceInstance
+
+    @ServiceInstance.setter
+    def ServiceInstance(self, ServiceInstance):
+        self._ServiceInstance = ServiceInstance
+
+    @property
+    def Path(self):
+        r"""Path of the jar package with the vulnerability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def LastOccurTime(self):
+        r"""Last occurrence time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LastOccurTime
+
+    @LastOccurTime.setter
+    def LastOccurTime(self, LastOccurTime):
+        self._LastOccurTime = LastOccurTime
+
+
+    def _deserialize(self, params):
+        self._ServiceInstance = params.get("ServiceInstance")
+        self._Path = params.get("Path")
+        self._LastOccurTime = params.get("LastOccurTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoProfilingConfig(AbstractModel):
+    r"""Automated performance analysis configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CpuProfilingEnable: Auto CPU profiling task switch
+        :type CpuProfilingEnable: bool
+        :param _MemoryProfilingEnable: Auto memory profiling task switch
+        :type MemoryProfilingEnable: bool
+        :param _CpuProfilingThreshold: Auto CPU profiling task threshold
+        :type CpuProfilingThreshold: int
+        :param _MemoryProfilingThreshold: Automated memory profiling task threshold
+        :type MemoryProfilingThreshold: int
+        :param _CpuProfilingDuration: CPU auto profiling task duration
+        :type CpuProfilingDuration: int
+        :param _MemoryProfilingDuration: Memory auto profiling task duration
+        :type MemoryProfilingDuration: int
+        """
+        self._CpuProfilingEnable = None
+        self._MemoryProfilingEnable = None
+        self._CpuProfilingThreshold = None
+        self._MemoryProfilingThreshold = None
+        self._CpuProfilingDuration = None
+        self._MemoryProfilingDuration = None
+
+    @property
+    def CpuProfilingEnable(self):
+        r"""Auto CPU profiling task switch
+        :rtype: bool
+        """
+        return self._CpuProfilingEnable
+
+    @CpuProfilingEnable.setter
+    def CpuProfilingEnable(self, CpuProfilingEnable):
+        self._CpuProfilingEnable = CpuProfilingEnable
+
+    @property
+    def MemoryProfilingEnable(self):
+        r"""Auto memory profiling task switch
+        :rtype: bool
+        """
+        return self._MemoryProfilingEnable
+
+    @MemoryProfilingEnable.setter
+    def MemoryProfilingEnable(self, MemoryProfilingEnable):
+        self._MemoryProfilingEnable = MemoryProfilingEnable
+
+    @property
+    def CpuProfilingThreshold(self):
+        r"""Auto CPU profiling task threshold
+        :rtype: int
+        """
+        return self._CpuProfilingThreshold
+
+    @CpuProfilingThreshold.setter
+    def CpuProfilingThreshold(self, CpuProfilingThreshold):
+        self._CpuProfilingThreshold = CpuProfilingThreshold
+
+    @property
+    def MemoryProfilingThreshold(self):
+        r"""Automated memory profiling task threshold
+        :rtype: int
+        """
+        return self._MemoryProfilingThreshold
+
+    @MemoryProfilingThreshold.setter
+    def MemoryProfilingThreshold(self, MemoryProfilingThreshold):
+        self._MemoryProfilingThreshold = MemoryProfilingThreshold
+
+    @property
+    def CpuProfilingDuration(self):
+        r"""CPU auto profiling task duration
+        :rtype: int
+        """
+        return self._CpuProfilingDuration
+
+    @CpuProfilingDuration.setter
+    def CpuProfilingDuration(self, CpuProfilingDuration):
+        self._CpuProfilingDuration = CpuProfilingDuration
+
+    @property
+    def MemoryProfilingDuration(self):
+        r"""Memory auto profiling task duration
+        :rtype: int
+        """
+        return self._MemoryProfilingDuration
+
+    @MemoryProfilingDuration.setter
+    def MemoryProfilingDuration(self, MemoryProfilingDuration):
+        self._MemoryProfilingDuration = MemoryProfilingDuration
+
+
+    def _deserialize(self, params):
+        self._CpuProfilingEnable = params.get("CpuProfilingEnable")
+        self._MemoryProfilingEnable = params.get("MemoryProfilingEnable")
+        self._CpuProfilingThreshold = params.get("CpuProfilingThreshold")
+        self._MemoryProfilingThreshold = params.get("MemoryProfilingThreshold")
+        self._CpuProfilingDuration = params.get("CpuProfilingDuration")
+        self._MemoryProfilingDuration = params.get("MemoryProfilingDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CVMMeta(AbstractModel):
+    r"""CVM metadata.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _InstanceID: Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceID: str
+        """
+        self._Region = None
+        self._InstanceID = None
+
+    @property
+    def Region(self):
+        r"""Region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceID(self):
+        r"""Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentTopologyView(AbstractModel):
+    r"""Contains the quantity of node component types in the view.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: Number of nodes at the service level.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Service: int
+        :param _Database: Node count of the database.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: int
+        :param _MQ: Node count of the message queue.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MQ: int
+        """
+        self._Service = None
+        self._Database = None
+        self._MQ = None
+
+    @property
+    def Service(self):
+        r"""Number of nodes at the service level.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Database(self):
+        r"""Node count of the database.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def MQ(self):
+        r"""Node count of the message queue.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MQ
+
+    @MQ.setter
+    def MQ(self, MQ):
+        self._MQ = MQ
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._Database = params.get("Database")
+        self._MQ = params.get("MQ")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateApmInstanceRequest(AbstractModel):
     r"""CreateApmInstance request structure.
 
@@ -3377,10 +4331,24 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleId: ID of the metric match rule
+        :type RuleId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._RuleId = None
         self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""ID of the metric match rule
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -3395,6 +4363,7 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3978,6 +4947,150 @@ class DescribeApmAgentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeApmAllVulCountRequest(AbstractModel):
+    r"""DescribeApmAllVulCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: unix second-level timestamp
+        :type StartTime: int
+        :param _EndTime: unix second-level timestamp
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmAllVulCountResponse(AbstractModel):
+    r"""DescribeApmAllVulCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: Vulnerability metrics as well as number of business systems	
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: Total number of vulnerabilities
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: Number of critical vulnerabilities
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: High-risk vulnerability count
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""Vulnerability metrics as well as number of business systems	
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""Total number of vulnerabilities
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""Number of critical vulnerabilities
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""High-risk vulnerability count
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeApmApplicationConfigRequest(AbstractModel):
     r"""DescribeApmApplicationConfig request structure.
 
@@ -4417,6 +5530,242 @@ class DescribeApmPrometheusRuleResponse(AbstractModel):
                 obj = ApmPrometheusRules()
                 obj._deserialize(item)
                 self._ApmPrometheusRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApmSQLInjectionDetailRequest(AbstractModel):
+    r"""DescribeApmSQLInjectionDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Business system ID
+        :type InstanceId: str
+        :param _Limit: Limit
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _StartTime: unix second-level timestamp
+        :type StartTime: int
+        :param _EndTime: unix second-level timestamp
+        :type EndTime: int
+        :param _OrderBy: Order.
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param _Filters: Query filter criteria.
+        :type Filters: list of Filter
+        :param _GroupBy: Aggregation dimension
+        :type GroupBy: list of str
+        :param _Metrics: Metric list
+        :type Metrics: list of QueryMetricItem
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._OrderBy = None
+        self._Filters = None
+        self._GroupBy = None
+        self._Metrics = None
+
+    @property
+    def InstanceId(self):
+        r"""Business system ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""Limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def OrderBy(self):
+        r"""Order.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filters(self):
+        r"""Query filter criteria.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def GroupBy(self):
+        r"""Aggregation dimension
+        :rtype: list of str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def Metrics(self):
+        r"""Metric list
+        :rtype: list of QueryMetricItem
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._GroupBy = params.get("GroupBy")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = QueryMetricItem()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmSQLInjectionDetailResponse(AbstractModel):
+    r"""DescribeApmSQLInjectionDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: SQL dimension information
+        :type Tags: list of ApmTag
+        :param _Records: Link information
+        :type Records: list of ApmMetricRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Tags = None
+        self._Records = None
+        self._RequestId = None
+
+    @property
+    def Tags(self):
+        r"""SQL dimension information
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Records(self):
+        r"""Link information
+        :rtype: list of ApmMetricRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4887,6 +6236,349 @@ class DescribeApmServiceMetricResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeApmVulnerabilityCountRequest(AbstractModel):
+    r"""DescribeApmVulnerabilityCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: APM business system ID
+        :type InstanceId: str
+        :param _ServiceName: app name
+        :type ServiceName: str
+        :param _StartTime: unix second-level timestamp
+        :type StartTime: int
+        :param _EndTime: unix second-level timestamp
+        :type EndTime: int
+        :param _Type: Data type of queried data. Attack detection is "attack_detect".
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        r"""APM business system ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        r"""app name
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def StartTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""Data type of queried data. Attack detection is "attack_detect".
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmVulnerabilityCountResponse(AbstractModel):
+    r"""DescribeApmVulnerabilityCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: Vulnerability metrics as well as number of business systems
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: Total number of vulnerabilities
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: Number of critical vulnerabilities
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: High-risk vulnerability count
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""Vulnerability metrics as well as number of business systems
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""Total number of vulnerabilities
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""Number of critical vulnerabilities
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""High-risk vulnerability count
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApmVulnerabilityDetailRequest(AbstractModel):
+    r"""DescribeApmVulnerabilityDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: unix second-level timestamp
+        :type StartTime: int
+        :param _EndTime: unix second-level timestamp
+        :type EndTime: int
+        :param _InstanceId: APM business system ID
+        :type InstanceId: str
+        :param _Filters: Conditional filtering, required service.name, instrumentation.name, version, vul.id
+        :type Filters: list of Filter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""APM business system ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        r"""Conditional filtering, required service.name, instrumentation.name, version, vul.id
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmVulnerabilityDetailResponse(AbstractModel):
+    r"""DescribeApmVulnerabilityDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: Vulnerability details
+        :type Tags: list of ApmTag
+        :param _ServiceInstanceList: List of business systems related to vulnerabilities
+        :type ServiceInstanceList: list of ApmVulnerabilityServiceDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Tags = None
+        self._ServiceInstanceList = None
+        self._RequestId = None
+
+    @property
+    def Tags(self):
+        r"""Vulnerability details
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ServiceInstanceList(self):
+        r"""List of business systems related to vulnerabilities
+        :rtype: list of ApmVulnerabilityServiceDetail
+        """
+        return self._ServiceInstanceList
+
+    @ServiceInstanceList.setter
+    def ServiceInstanceList(self, ServiceInstanceList):
+        self._ServiceInstanceList = ServiceInstanceList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ServiceInstanceList") is not None:
+            self._ServiceInstanceList = []
+            for item in params.get("ServiceInstanceList"):
+                obj = ApmVulnerabilityServiceDetail()
+                obj._deserialize(item)
+                self._ServiceInstanceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
     r"""DescribeGeneralApmApplicationConfig request structure.
 
@@ -5234,32 +6926,21 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Business system id.
+        :param _InstanceId: <p>Business system ID</p>
         :type InstanceId: str
-        :param _StartTime: Span query start timestamp (unit: seconds).
+        :param _StartTime: <p>Span query start timestamp (unit: seconds)</p>
         :type StartTime: int
-        :param _EndTime: Span query end timestamp (unit: seconds).
+        :param _EndTime: <p>Span query end timestamp (unit: s)</p>
         :type EndTime: int
-        :param _Filters: Universal filter parameters.
+        :param _Filters: <p>Universal filter parameters supported filter key such as service.name</p>
         :type Filters: list of Filter
-        :param _OrderBy: Sort
-.
-The currently supported keys are:.
-
--StartTime (start time).
--EndTime (end time).
--Duration (response time).
-
-The currently supported values are:.
-
-- desc: sort in descending order.
--Asc - ascending order.
+        :param _OrderBy: <p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _BusinessName: The service name of the business itself. console users should fill in taw.
+        :param _BusinessName: <p>Business service name. Console users please enter taw</p>
         :type BusinessName: str
-        :param _Limit: Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.
+        :param _Limit: <p>Count of single-page projects. Defaults to 10000. Valid value range is 0–10000.</p>
         :type Limit: int
-        :param _Offset: Pagination.
+        :param _Offset: <p>Page</p>
         :type Offset: int
         """
         self._InstanceId = None
@@ -5273,7 +6954,7 @@ The currently supported values are:.
 
     @property
     def InstanceId(self):
-        r"""Business system id.
+        r"""<p>Business system ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5284,7 +6965,7 @@ The currently supported values are:.
 
     @property
     def StartTime(self):
-        r"""Span query start timestamp (unit: seconds).
+        r"""<p>Span query start timestamp (unit: seconds)</p>
         :rtype: int
         """
         return self._StartTime
@@ -5295,7 +6976,7 @@ The currently supported values are:.
 
     @property
     def EndTime(self):
-        r"""Span query end timestamp (unit: seconds).
+        r"""<p>Span query end timestamp (unit: s)</p>
         :rtype: int
         """
         return self._EndTime
@@ -5306,7 +6987,7 @@ The currently supported values are:.
 
     @property
     def Filters(self):
-        r"""Universal filter parameters.
+        r"""<p>Universal filter parameters supported filter key such as service.name</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5317,18 +6998,7 @@ The currently supported values are:.
 
     @property
     def OrderBy(self):
-        r"""Sort
-.
-The currently supported keys are:.
-
--StartTime (start time).
--EndTime (end time).
--Duration (response time).
-
-The currently supported values are:.
-
-- desc: sort in descending order.
--Asc - ascending order.
+        r"""<p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -5339,7 +7009,7 @@ The currently supported values are:.
 
     @property
     def BusinessName(self):
-        r"""The service name of the business itself. console users should fill in taw.
+        r"""<p>Business service name. Console users please enter taw</p>
         :rtype: str
         """
         return self._BusinessName
@@ -5350,7 +7020,7 @@ The currently supported values are:.
 
     @property
     def Limit(self):
-        r"""Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.
+        r"""<p>Count of single-page projects. Defaults to 10000. Valid value range is 0–10000.</p>
         :rtype: int
         """
         return self._Limit
@@ -5361,7 +7031,7 @@ The currently supported values are:.
 
     @property
     def Offset(self):
-        r"""Pagination.
+        r"""<p>Page</p>
         :rtype: int
         """
         return self._Offset
@@ -5404,13 +7074,9 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number.
+        :param _TotalCount: <p>Total number</p>
         :type TotalCount: int
-        :param _Spans: The Spans field contains the entire content of the link data. since the data is compressed, perform the following three steps to switch back to the original text.
-Decode the text in the Spans field with Base64 to get the compressed byte[].
-Use gzip to decompress the compressed byte array and get the byte array before compression.
-Uses UTF-8 character set to convert byte[] before compression to text.
-
+        :param _Spans: <p>The Spans field contains all content of the link data. Since the data is compressed, perform the following three steps to restore the original text.</p><ol><li>Decode the text in the Spans field with Base64 to get the compressed byte[].</li><li>Decompress the compressed byte[] with gzip to get the byte array before compression.</li><li>Convert the byte array before compression to text using the UTF-8 character set.</li></ol>
         :type Spans: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5421,7 +7087,7 @@ Uses UTF-8 character set to convert byte[] before compression to text.
 
     @property
     def TotalCount(self):
-        r"""Total number.
+        r"""<p>Total number</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5432,11 +7098,7 @@ Uses UTF-8 character set to convert byte[] before compression to text.
 
     @property
     def Spans(self):
-        r"""The Spans field contains the entire content of the link data. since the data is compressed, perform the following three steps to switch back to the original text.
-Decode the text in the Spans field with Base64 to get the compressed byte[].
-Use gzip to decompress the compressed byte array and get the byte array before compression.
-Uses UTF-8 character set to convert byte[] before compression to text.
-
+        r"""<p>The Spans field contains all content of the link data. Since the data is compressed, perform the following three steps to restore the original text.</p><ol><li>Decode the text in the Spans field with Base64 to get the compressed byte[].</li><li>Decompress the compressed byte[] with gzip to get the byte array before compression.</li><li>Convert the byte array before compression to text using the UTF-8 character set.</li></ol>
         :rtype: str
         """
         return self._Spans
@@ -5470,32 +7132,21 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Business system id.
+        :param _InstanceId: <p>Business system ID</p>
         :type InstanceId: str
-        :param _StartTime: Span query start timestamp (unit: seconds).
+        :param _StartTime: <p>Span query start timestamp (unit: seconds)</p>
         :type StartTime: int
-        :param _EndTime: Span query end timestamp (unit: seconds).
+        :param _EndTime: <p>Span query end timestamp (unit: s)</p>
         :type EndTime: int
-        :param _Filters: Universal filter parameters.
+        :param _Filters: <p>Universal filter parameters supported filter key such as service.name</p>
         :type Filters: list of Filter
-        :param _OrderBy: Sort
-.
-The currently supported keys are:.
-
--StartTime (start time).
--EndTime (end time).
--Duration (response time).
-
-The currently supported values are:.
-
-- desc: sort in descending order.
--Asc - ascending order.
+        :param _OrderBy: <p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _BusinessName: The service name of the business itself. console users should fill in taw.
+        :param _BusinessName: <p>Business service name. Console users please enter taw</p>
         :type BusinessName: str
-        :param _Limit: Number of items per page, defaults to 10,000, valid values are 0 to 10,000.
+        :param _Limit: <p>Count of single-page projects. Defaults to 1000. Valid value range is 1–1000.</p>
         :type Limit: int
-        :param _Offset: Pagination.
+        :param _Offset: <p>Page</p>
         :type Offset: int
         """
         self._InstanceId = None
@@ -5509,7 +7160,7 @@ The currently supported values are:.
 
     @property
     def InstanceId(self):
-        r"""Business system id.
+        r"""<p>Business system ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5520,7 +7171,7 @@ The currently supported values are:.
 
     @property
     def StartTime(self):
-        r"""Span query start timestamp (unit: seconds).
+        r"""<p>Span query start timestamp (unit: seconds)</p>
         :rtype: int
         """
         return self._StartTime
@@ -5531,7 +7182,7 @@ The currently supported values are:.
 
     @property
     def EndTime(self):
-        r"""Span query end timestamp (unit: seconds).
+        r"""<p>Span query end timestamp (unit: s)</p>
         :rtype: int
         """
         return self._EndTime
@@ -5542,7 +7193,7 @@ The currently supported values are:.
 
     @property
     def Filters(self):
-        r"""Universal filter parameters.
+        r"""<p>Universal filter parameters supported filter key such as service.name</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5553,18 +7204,7 @@ The currently supported values are:.
 
     @property
     def OrderBy(self):
-        r"""Sort
-.
-The currently supported keys are:.
-
--StartTime (start time).
--EndTime (end time).
--Duration (response time).
-
-The currently supported values are:.
-
-- desc: sort in descending order.
--Asc - ascending order.
+        r"""<p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -5575,7 +7215,7 @@ The currently supported values are:.
 
     @property
     def BusinessName(self):
-        r"""The service name of the business itself. console users should fill in taw.
+        r"""<p>Business service name. Console users please enter taw</p>
         :rtype: str
         """
         return self._BusinessName
@@ -5586,7 +7226,7 @@ The currently supported values are:.
 
     @property
     def Limit(self):
-        r"""Number of items per page, defaults to 10,000, valid values are 0 to 10,000.
+        r"""<p>Count of single-page projects. Defaults to 1000. Valid value range is 1–1000.</p>
         :rtype: int
         """
         return self._Limit
@@ -5597,7 +7237,7 @@ The currently supported values are:.
 
     @property
     def Offset(self):
-        r"""Pagination.
+        r"""<p>Page</p>
         :rtype: int
         """
         return self._Offset
@@ -5640,9 +7280,9 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number.
+        :param _TotalCount: <p>Total number</p>
         :type TotalCount: int
-        :param _Spans: Span pagination list.
+        :param _Spans: <p>Span pagination list</p>
         :type Spans: list of Span
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5653,7 +7293,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number.
+        r"""<p>Total number</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5664,7 +7304,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        r"""Span pagination list.
+        r"""<p>Span pagination list</p>
         :rtype: list of Span
         """
         return self._Spans
@@ -6026,6 +7666,150 @@ class DescribeMetricRecordsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Records.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOPRAllVulCountRequest(AbstractModel):
+    r"""DescribeOPRAllVulCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: unix second-level timestamp
+        :type StartTime: int
+        :param _EndTime: unix second-level timestamp
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""unix second-level timestamp
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOPRAllVulCountResponse(AbstractModel):
+    r"""DescribeOPRAllVulCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulnerabilityList: Vulnerability metrics as well as number of business systems	
+        :type VulnerabilityList: list of ApmMetricRecord
+        :param _VulnerabilityCount: Total number of vulnerabilities
+        :type VulnerabilityCount: int
+        :param _ImportantVulnerabilityCount: Number of critical vulnerabilities
+        :type ImportantVulnerabilityCount: int
+        :param _CriticalVulnerabilityCount: High-risk vulnerability count
+        :type CriticalVulnerabilityCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VulnerabilityList = None
+        self._VulnerabilityCount = None
+        self._ImportantVulnerabilityCount = None
+        self._CriticalVulnerabilityCount = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        r"""Vulnerability metrics as well as number of business systems	
+        :rtype: list of ApmMetricRecord
+        """
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def VulnerabilityCount(self):
+        r"""Total number of vulnerabilities
+        :rtype: int
+        """
+        return self._VulnerabilityCount
+
+    @VulnerabilityCount.setter
+    def VulnerabilityCount(self, VulnerabilityCount):
+        self._VulnerabilityCount = VulnerabilityCount
+
+    @property
+    def ImportantVulnerabilityCount(self):
+        r"""Number of critical vulnerabilities
+        :rtype: int
+        """
+        return self._ImportantVulnerabilityCount
+
+    @ImportantVulnerabilityCount.setter
+    def ImportantVulnerabilityCount(self, ImportantVulnerabilityCount):
+        self._ImportantVulnerabilityCount = ImportantVulnerabilityCount
+
+    @property
+    def CriticalVulnerabilityCount(self):
+        r"""High-risk vulnerability count
+        :rtype: int
+        """
+        return self._CriticalVulnerabilityCount
+
+    @CriticalVulnerabilityCount.setter
+    def CriticalVulnerabilityCount(self, CriticalVulnerabilityCount):
+        self._CriticalVulnerabilityCount = CriticalVulnerabilityCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VulnerabilityList") is not None:
+            self._VulnerabilityList = []
+            for item in params.get("VulnerabilityList"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self._VulnerabilityList.append(obj)
+        self._VulnerabilityCount = params.get("VulnerabilityCount")
+        self._ImportantVulnerabilityCount = params.get("ImportantVulnerabilityCount")
+        self._CriticalVulnerabilityCount = params.get("CriticalVulnerabilityCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -6432,6 +8216,402 @@ class DescribeTagValuesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopologyNewRequest(AbstractModel):
+    r"""DescribeTopologyNew request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Business system ID
+        :type InstanceId: str
+        :param _StartTime: Querying start time.
+        :type StartTime: int
+        :param _EndTime: Query end time
+        :type EndTime: int
+        :param _ServiceName: Application name
+        :type ServiceName: str
+        :param _UpLevel: Upstream level.
+        :type UpLevel: int
+        :param _ServiceInstance: Application instance information.
+        :type ServiceInstance: str
+        :param _DownLevel: downstream hierarchy
+        :type DownLevel: int
+        :param _View: perspective
+        :type View: str
+        :param _Filters: Filter.
+        :type Filters: list of Filter
+        :param _Topic: Represents topic (for MQ topology)
+        :type Topic: str
+        :param _Selectors: View filtering list.
+        :type Selectors: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        :param _Id: View ID
+        :type Id: str
+        :param _TraceID: TraceID
+        :type TraceID: str
+        :param _IsSlowTopFive: Specifies the top 5 slow response nodes query.
+        :type IsSlowTopFive: bool
+        :param _GetResource: Whether the resource layer information is obtained.
+        :type GetResource: bool
+        :param _Tags: Filters by application tag.
+        :type Tags: list of ApmTag
+        :param _Hidden: Node type not displayed.
+        :type Hidden: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ServiceName = None
+        self._UpLevel = None
+        self._ServiceInstance = None
+        self._DownLevel = None
+        self._View = None
+        self._Filters = None
+        self._Topic = None
+        self._Selectors = None
+        self._Id = None
+        self._TraceID = None
+        self._IsSlowTopFive = None
+        self._GetResource = None
+        self._Tags = None
+        self._Hidden = None
+
+    @property
+    def InstanceId(self):
+        r"""Business system ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Querying start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""Query end time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ServiceName(self):
+        r"""Application name
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def UpLevel(self):
+        r"""Upstream level.
+        :rtype: int
+        """
+        return self._UpLevel
+
+    @UpLevel.setter
+    def UpLevel(self, UpLevel):
+        self._UpLevel = UpLevel
+
+    @property
+    def ServiceInstance(self):
+        r"""Application instance information.
+        :rtype: str
+        """
+        return self._ServiceInstance
+
+    @ServiceInstance.setter
+    def ServiceInstance(self, ServiceInstance):
+        self._ServiceInstance = ServiceInstance
+
+    @property
+    def DownLevel(self):
+        r"""downstream hierarchy
+        :rtype: int
+        """
+        return self._DownLevel
+
+    @DownLevel.setter
+    def DownLevel(self, DownLevel):
+        self._DownLevel = DownLevel
+
+    @property
+    def View(self):
+        r"""perspective
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filters(self):
+        r"""Filter.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Topic(self):
+        r"""Represents topic (for MQ topology)
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Selectors(self):
+        r"""View filtering list.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        return self._Selectors
+
+    @Selectors.setter
+    def Selectors(self, Selectors):
+        self._Selectors = Selectors
+
+    @property
+    def Id(self):
+        r"""View ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TraceID(self):
+        r"""TraceID
+        :rtype: str
+        """
+        return self._TraceID
+
+    @TraceID.setter
+    def TraceID(self, TraceID):
+        self._TraceID = TraceID
+
+    @property
+    def IsSlowTopFive(self):
+        r"""Specifies the top 5 slow response nodes query.
+        :rtype: bool
+        """
+        return self._IsSlowTopFive
+
+    @IsSlowTopFive.setter
+    def IsSlowTopFive(self, IsSlowTopFive):
+        self._IsSlowTopFive = IsSlowTopFive
+
+    @property
+    def GetResource(self):
+        r"""Whether the resource layer information is obtained.
+        :rtype: bool
+        """
+        return self._GetResource
+
+    @GetResource.setter
+    def GetResource(self, GetResource):
+        self._GetResource = GetResource
+
+    @property
+    def Tags(self):
+        r"""Filters by application tag.
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Hidden(self):
+        r"""Node type not displayed.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        """
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ServiceName = params.get("ServiceName")
+        self._UpLevel = params.get("UpLevel")
+        self._ServiceInstance = params.get("ServiceInstance")
+        self._DownLevel = params.get("DownLevel")
+        self._View = params.get("View")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Topic = params.get("Topic")
+        if params.get("Selectors") is not None:
+            self._Selectors = Selectors()
+            self._Selectors._deserialize(params.get("Selectors"))
+        self._Id = params.get("Id")
+        self._TraceID = params.get("TraceID")
+        self._IsSlowTopFive = params.get("IsSlowTopFive")
+        self._GetResource = params.get("GetResource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Hidden") is not None:
+            self._Hidden = Selectors()
+            self._Hidden._deserialize(params.get("Hidden"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopologyNewResponse(AbstractModel):
+    r"""DescribeTopologyNew response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: Node collection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nodes: list of TopologyNode
+        :param _Edges: Edge set.
+        :type Edges: list of TopologyEdgeNew
+        :param _TopologyModifyFlag: Whether the topology map is modified
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopologyModifyFlag: int
+        :param _Selectors: Number of nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Selectors: :class:`tencentcloud.apm.v20210622.models.SelectorView`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Nodes = None
+        self._Edges = None
+        self._TopologyModifyFlag = None
+        self._Selectors = None
+        self._RequestId = None
+
+    @property
+    def Nodes(self):
+        r"""Node collection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TopologyNode
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Edges(self):
+        r"""Edge set.
+        :rtype: list of TopologyEdgeNew
+        """
+        return self._Edges
+
+    @Edges.setter
+    def Edges(self, Edges):
+        self._Edges = Edges
+
+    @property
+    def TopologyModifyFlag(self):
+        r"""Whether the topology map is modified
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TopologyModifyFlag
+
+    @TopologyModifyFlag.setter
+    def TopologyModifyFlag(self, TopologyModifyFlag):
+        self._TopologyModifyFlag = TopologyModifyFlag
+
+    @property
+    def Selectors(self):
+        r"""Number of nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SelectorView`
+        """
+        return self._Selectors
+
+    @Selectors.setter
+    def Selectors(self, Selectors):
+        self._Selectors = Selectors
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = TopologyNode()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
+        if params.get("Edges") is not None:
+            self._Edges = []
+            for item in params.get("Edges"):
+                obj = TopologyEdgeNew()
+                obj._deserialize(item)
+                self._Edges.append(obj)
+        self._TopologyModifyFlag = params.get("TopologyModifyFlag")
+        if params.get("Selectors") is not None:
+            self._Selectors = SelectorView()
+            self._Selectors._deserialize(params.get("Selectors"))
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     r"""Queries filter parameters.
 
@@ -6439,11 +8619,11 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Filtering method (=, !=, in).
+        :param _Type: <p>Filter method (=, !=, in)</p>
         :type Type: str
-        :param _Key: Filter dimension name.
+        :param _Key: <p>Filter dimension name</p><p>For details, see the actual interface field description</p>
         :type Key: str
-        :param _Value: Filter value. uses commas to separate multiple values in in filtering method.
+        :param _Value: <p>Filter value. Use comma-separated multiple values for in filtering method.</p>
         :type Value: str
         """
         self._Type = None
@@ -6452,7 +8632,7 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
-        r"""Filtering method (=, !=, in).
+        r"""<p>Filter method (=, !=, in)</p>
         :rtype: str
         """
         return self._Type
@@ -6463,7 +8643,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        r"""Filter dimension name.
+        r"""<p>Filter dimension name</p><p>For details, see the actual interface field description</p>
         :rtype: str
         """
         return self._Key
@@ -6474,7 +8654,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        r"""Filter value. uses commas to separate multiple values in in filtering method.
+        r"""<p>Filter value. Use comma-separated multiple values for in filtering method.</p>
         :rtype: str
         """
         return self._Value
@@ -6723,104 +8903,124 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Business system ID.
+        :param _InstanceId: <p>Business system ID</p>
         :type InstanceId: str
-        :param _ServiceName: Application name
+        :param _ServiceName: <p>Application name</p>
         :type ServiceName: str
-        :param _UrlConvergenceSwitch: URL convergence switch. 0: Off; 1: On
+        :param _UrlConvergenceSwitch: <p>URL convergence switch, 0 Off | 1 On</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL convergence threshold
+        :param _UrlConvergenceThreshold: <p>URL convergence threshold</p>
         :type UrlConvergenceThreshold: int
-        :param _ExceptionFilter: Regex rules for exception filtering, separated by commas
+        :param _ExceptionFilter: <p>Exception filtering regex rules, comma-separated</p>
         :type ExceptionFilter: str
-        :param _UrlConvergence: Regex rules for URL convergence, separated by commas
+        :param _UrlConvergence: <p>URL convergence regex rules, comma-separated</p>
         :type UrlConvergence: str
-        :param _ErrorCodeFilter: Error code filtering, separated by commas
+        :param _ErrorCodeFilter: <p>Error code filtering, comma-separated</p>
         :type ErrorCodeFilter: str
-        :param _UrlExclude: Regex rules for URL exclusion, separated by commas
+        :param _UrlExclude: <p>URL exclusion regex rule, comma-separated</p>
         :type UrlExclude: str
-        :param _IsRelatedLog: Log switch. 0: Off; 1: On
+        :param _IsRelatedLog: <p>Log switch 0 Disabled 1 Enabled</p>
         :type IsRelatedLog: int
-        :param _LogRegion: Log region.
+        :param _LogRegion: <p>Log region</p>
         :type LogRegion: str
-        :param _LogTopicID: Log topic ID
+        :param _LogTopicID: <p>Log topic ID</p>
         :type LogTopicID: str
-        :param _LogSet: CLS log set/ES cluster ID
+        :param _LogSet: <p>CLS logset | ES cluster ID</p>
         :type LogSet: str
-        :param _LogSource: Log source: CLS or ES
+        :param _LogSource: <p>Log source CLS | ES</p>
         :type LogSource: str
-        :param _IgnoreOperationName: APIs to be filtered
+        :param _IgnoreOperationName: <p>Interfaces to Filter</p>
         :type IgnoreOperationName: str
-        :param _EnableSnapshot: Whether thread profiling is enabled.
+        :param _EnableSnapshot: <p>Whether thread profiling is enabled</p>
         :type EnableSnapshot: bool
-        :param _SnapshotTimeout: Timeout threshold for thread profiling.
+        :param _SnapshotTimeout: <p>Timeout threshold for thread profiling</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: Whether agent is enabled.
+        :param _AgentEnable: <p>Whether to enable agent</p>
         :type AgentEnable: bool
-        :param _TraceSquash: Whether link compression is enabled.
+        :param _TraceSquash: <p>Whether to enable link compression</p>
         :type TraceSquash: bool
-        :param _EventEnable: Switch for enabling application diagnosis.
+        :param _EventEnable: <p>Whether the switch for enabling application diagnosis is enabled</p>
         :type EventEnable: bool
-        :param _InstrumentList: Component List
+        :param _InstrumentList: <p>Component list</p>
         :type InstrumentList: list of Instrument
-        :param _AgentOperationConfigView: Related configurations of the probe APIs.
+        :param _AgentOperationConfigView: <p>probe API related configuration</p>
         :type AgentOperationConfigView: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
-        :param _EnableLogConfig: Whether to enable application log configuration.
+        :param _EnableLogConfig: <p>Whether the application log configuration is enabled</p>
         :type EnableLogConfig: bool
-        :param _EnableDashboardConfig: Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).
+        :param _EnableDashboardConfig: <p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, application-level configuration)</p>
         :type EnableDashboardConfig: bool
-        :param _IsRelatedDashboard: Whether to associate with Dashboard. 0: disabled; 1: enabled.
+        :param _IsRelatedDashboard: <p>Whether to associate with dashboard: 0 off 1 on</p>
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
+        :param _DashboardTopicID: <p>dashboard ID</p>
         :type DashboardTopicID: str
-        :param _LogIndexType: CLS index type. (0 = full-text index; 1 = key-value index).
+        :param _LogIndexType: <p>CLS index type (0=full-text index, 1=key-value index)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: Index key of traceId. It is valid when the CLS index type is key-value index.
+        :param _LogTraceIdKey: <p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>
         :type LogTraceIdKey: str
-        :param _EnableSecurityConfig: Whether to enable the application security configuration.
+        :param _EnableSecurityConfig: <p>Whether application security configuration is enabled</p>
         :type EnableSecurityConfig: bool
-        :param _IsSqlInjectionAnalysis: Whether to enable SQL injection analysis.
+        :param _IsSqlInjectionAnalysis: <p>Whether SQL injection analysis is enabled</p>
         :type IsSqlInjectionAnalysis: int
-        :param _IsInstrumentationVulnerabilityScan: Whether to enable detection of component vulnerability.
+        :param _IsInstrumentationVulnerabilityScan: <p>Whether component vulnerability detection is enabled</p>
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsRemoteCommandExecutionAnalysis: Whether remote command detection is enabled.
+        :param _IsRemoteCommandExecutionAnalysis: <p>Whether remote command detection is enabled</p>
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: Whether to enable detection of Java webshell.
+        :param _IsMemoryHijackingAnalysis: <p>Whether Java Webshell detection is enabled</p>
         :type IsMemoryHijackingAnalysis: int
-        :param _IsDeleteAnyFileAnalysis: Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)
+        :param _IsDeleteAnyFileAnalysis: <p>Whether to enable detection of any file deletion (0 - turn off, 1 - turn on)</p>
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)
+        :param _IsReadAnyFileAnalysis: <p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)
+        :param _IsUploadAnyFileAnalysis: <p>Whether to enable arbitrary file upload detection (0-disable, 1-enable)</p>
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)
+        :param _IsIncludeAnyFileAnalysis: <p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).
+        :param _IsDirectoryTraversalAnalysis: <p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: Whether to enable template engine injection detection. (0: disabled; 1: enabled.)
+        :param _IsTemplateEngineInjectionAnalysis: <p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsScriptEngineInjectionAnalysis: <p>Whether to enable script engine injection detection (0-disable, 1-enable)</p>
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsExpressionInjectionAnalysis: <p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)
+        :param _IsJNDIInjectionAnalysis: <p>Whether JNDI injection detection is enabled (0 - disabled, 1 - enabled)</p>
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).
+        :param _IsJNIInjectionAnalysis: <p>Whether JNI injection detection is enabled (0-disabled, 1-enabled)</p>
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).
+        :param _IsWebshellBackdoorAnalysis: <p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: Whether to enable deserialization detection. (0 - disabled; 1 - enabled).
+        :param _IsDeserializationAnalysis: <p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>
         :type IsDeserializationAnalysis: int
-        :param _UrlAutoConvergenceEnable: Automatic convergence switch for APIs. 0: disabled | 1: enabled.
+        :param _UrlAutoConvergenceEnable: <p>API auto convergence switch, 0-off | 1-on</p>
         :type UrlAutoConvergenceEnable: bool
-        :param _UrlLongSegmentThreshold: Convergence threshold for URL long segments.
+        :param _UrlLongSegmentThreshold: <p>URL long segment convergence threshold</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: Convergence threshold for URL numerical segments.
+        :param _UrlNumberSegmentThreshold: <p>URL digit segment convergence threshold</p>
         :type UrlNumberSegmentThreshold: int
-        :param _DisableMemoryUsed: Specifies the memory threshold for probe fusing.
+        :param _DisableMemoryUsed: <p>Fuse memory threshold of the probe</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: Specifies the CPU threshold for probe fusing.
+        :param _DisableCpuUsed: <p>Probe fuse CPU threshold</p>
         :type DisableCpuUsed: int
+        :param _DbStatementParametersEnabled: <p>Whether SQL parameter access is enabled</p>
+        :type DbStatementParametersEnabled: bool
+        :param _SlowSQLThresholds: <p>Slow SQL threshold</p>
+        :type SlowSQLThresholds: list of ApmTag
+        :param _EnableDesensitizationRule: <p>Whether the masking rule is enabled</p>
+        :type EnableDesensitizationRule: int
+        :param _DesensitizationRule: <p>Masking rule</p>
+        :type DesensitizationRule: str
+        :param _LogSpanIdKey: <p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>
+        :type LogSpanIdKey: str
+        :param _AutoProfilingConfig: <p>Automated performance analysis task configuration</p>
+        :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>Error rate threshold (%) used to judge the application health status as "red".</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>Alert threshold for response time (ms), used to judge the application health status as "yellow".</p>
+        :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>Whether to use the default fuse threshold of the probe</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -6871,10 +9071,20 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._UrlNumberSegmentThreshold = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
+        self._DbStatementParametersEnabled = None
+        self._SlowSQLThresholds = None
+        self._EnableDesensitizationRule = None
+        self._DesensitizationRule = None
+        self._LogSpanIdKey = None
+        self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceId(self):
-        r"""Business system ID.
+        r"""<p>Business system ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6885,7 +9095,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""Application name
+        r"""<p>Application name</p>
         :rtype: str
         """
         return self._ServiceName
@@ -6896,7 +9106,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL convergence switch. 0: Off; 1: On
+        r"""<p>URL convergence switch, 0 Off | 1 On</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -6907,7 +9117,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL convergence threshold
+        r"""<p>URL convergence threshold</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -6918,7 +9128,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        r"""Regex rules for exception filtering, separated by commas
+        r"""<p>Exception filtering regex rules, comma-separated</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -6929,7 +9139,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        r"""Regex rules for URL convergence, separated by commas
+        r"""<p>URL convergence regex rules, comma-separated</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -6940,7 +9150,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        r"""Error code filtering, separated by commas
+        r"""<p>Error code filtering, comma-separated</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -6951,7 +9161,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlExclude(self):
-        r"""Regex rules for URL exclusion, separated by commas
+        r"""<p>URL exclusion regex rule, comma-separated</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -6962,7 +9172,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""Log switch. 0: Off; 1: On
+        r"""<p>Log switch 0 Disabled 1 Enabled</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -6973,7 +9183,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        r"""Log region.
+        r"""<p>Log region</p>
         :rtype: str
         """
         return self._LogRegion
@@ -6984,7 +9194,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""Log topic ID
+        r"""<p>Log topic ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -6995,7 +9205,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""CLS log set/ES cluster ID
+        r"""<p>CLS logset | ES cluster ID</p>
         :rtype: str
         """
         return self._LogSet
@@ -7006,7 +9216,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""Log source: CLS or ES
+        r"""<p>Log source CLS | ES</p>
         :rtype: str
         """
         return self._LogSource
@@ -7017,7 +9227,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IgnoreOperationName(self):
-        r"""APIs to be filtered
+        r"""<p>Interfaces to Filter</p>
         :rtype: str
         """
         return self._IgnoreOperationName
@@ -7028,7 +9238,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableSnapshot(self):
-        r"""Whether thread profiling is enabled.
+        r"""<p>Whether thread profiling is enabled</p>
         :rtype: bool
         """
         return self._EnableSnapshot
@@ -7039,7 +9249,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        r"""Timeout threshold for thread profiling.
+        r"""<p>Timeout threshold for thread profiling</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -7050,7 +9260,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def AgentEnable(self):
-        r"""Whether agent is enabled.
+        r"""<p>Whether to enable agent</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -7061,7 +9271,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""Whether link compression is enabled.
+        r"""<p>Whether to enable link compression</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -7072,7 +9282,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""Switch for enabling application diagnosis.
+        r"""<p>Whether the switch for enabling application diagnosis is enabled</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -7083,7 +9293,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""Component List
+        r"""<p>Component list</p>
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -7094,7 +9304,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def AgentOperationConfigView(self):
-        r"""Related configurations of the probe APIs.
+        r"""<p>probe API related configuration</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
         """
         return self._AgentOperationConfigView
@@ -7105,7 +9315,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableLogConfig(self):
-        r"""Whether to enable application log configuration.
+        r"""<p>Whether the application log configuration is enabled</p>
         :rtype: bool
         """
         return self._EnableLogConfig
@@ -7116,7 +9326,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableDashboardConfig(self):
-        r"""Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).
+        r"""<p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, application-level configuration)</p>
         :rtype: bool
         """
         return self._EnableDashboardConfig
@@ -7127,7 +9337,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        r"""Whether to associate with Dashboard. 0: disabled; 1: enabled.
+        r"""<p>Whether to associate with dashboard: 0 off 1 on</p>
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -7138,7 +9348,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        r"""dashboard ID
+        r"""<p>dashboard ID</p>
         :rtype: str
         """
         return self._DashboardTopicID
@@ -7149,7 +9359,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogIndexType(self):
-        r"""CLS index type. (0 = full-text index; 1 = key-value index).
+        r"""<p>CLS index type (0=full-text index, 1=key-value index)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -7160,7 +9370,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        r"""Index key of traceId. It is valid when the CLS index type is key-value index.
+        r"""<p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -7171,7 +9381,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableSecurityConfig(self):
-        r"""Whether to enable the application security configuration.
+        r"""<p>Whether application security configuration is enabled</p>
         :rtype: bool
         """
         return self._EnableSecurityConfig
@@ -7182,7 +9392,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""Whether to enable SQL injection analysis.
+        r"""<p>Whether SQL injection analysis is enabled</p>
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -7193,7 +9403,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""Whether to enable detection of component vulnerability.
+        r"""<p>Whether component vulnerability detection is enabled</p>
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -7204,7 +9414,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""Whether remote command detection is enabled.
+        r"""<p>Whether remote command detection is enabled</p>
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -7215,7 +9425,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""Whether to enable detection of Java webshell.
+        r"""<p>Whether Java Webshell detection is enabled</p>
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -7226,7 +9436,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)
+        r"""<p>Whether to enable detection of any file deletion (0 - turn off, 1 - turn on)</p>
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -7237,7 +9447,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -7248,7 +9458,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether to enable arbitrary file upload detection (0-disable, 1-enable)</p>
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -7259,7 +9469,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)
+        r"""<p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -7270,7 +9480,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).
+        r"""<p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -7281,7 +9491,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""Whether to enable template engine injection detection. (0: disabled; 1: enabled.)
+        r"""<p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -7292,7 +9502,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether to enable script engine injection detection (0-disable, 1-enable)</p>
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -7303,7 +9513,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -7314,7 +9524,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)
+        r"""<p>Whether JNDI injection detection is enabled (0 - disabled, 1 - enabled)</p>
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -7325,7 +9535,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).
+        r"""<p>Whether JNI injection detection is enabled (0-disabled, 1-enabled)</p>
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -7336,7 +9546,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).
+        r"""<p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -7347,7 +9557,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""Whether to enable deserialization detection. (0 - disabled; 1 - enabled).
+        r"""<p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -7358,7 +9568,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlAutoConvergenceEnable(self):
-        r"""Automatic convergence switch for APIs. 0: disabled | 1: enabled.
+        r"""<p>API auto convergence switch, 0-off | 1-on</p>
         :rtype: bool
         """
         return self._UrlAutoConvergenceEnable
@@ -7369,7 +9579,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""Convergence threshold for URL long segments.
+        r"""<p>URL long segment convergence threshold</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -7380,7 +9590,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""Convergence threshold for URL numerical segments.
+        r"""<p>URL digit segment convergence threshold</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -7391,7 +9601,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DisableMemoryUsed(self):
-        r"""Specifies the memory threshold for probe fusing.
+        r"""<p>Fuse memory threshold of the probe</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -7402,7 +9612,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        r"""Specifies the CPU threshold for probe fusing.
+        r"""<p>Probe fuse CPU threshold</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -7410,6 +9620,116 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     @DisableCpuUsed.setter
     def DisableCpuUsed(self, DisableCpuUsed):
         self._DisableCpuUsed = DisableCpuUsed
+
+    @property
+    def DbStatementParametersEnabled(self):
+        r"""<p>Whether SQL parameter access is enabled</p>
+        :rtype: bool
+        """
+        return self._DbStatementParametersEnabled
+
+    @DbStatementParametersEnabled.setter
+    def DbStatementParametersEnabled(self, DbStatementParametersEnabled):
+        self._DbStatementParametersEnabled = DbStatementParametersEnabled
+
+    @property
+    def SlowSQLThresholds(self):
+        r"""<p>Slow SQL threshold</p>
+        :rtype: list of ApmTag
+        """
+        return self._SlowSQLThresholds
+
+    @SlowSQLThresholds.setter
+    def SlowSQLThresholds(self, SlowSQLThresholds):
+        self._SlowSQLThresholds = SlowSQLThresholds
+
+    @property
+    def EnableDesensitizationRule(self):
+        r"""<p>Whether the masking rule is enabled</p>
+        :rtype: int
+        """
+        return self._EnableDesensitizationRule
+
+    @EnableDesensitizationRule.setter
+    def EnableDesensitizationRule(self, EnableDesensitizationRule):
+        self._EnableDesensitizationRule = EnableDesensitizationRule
+
+    @property
+    def DesensitizationRule(self):
+        r"""<p>Masking rule</p>
+        :rtype: str
+        """
+        return self._DesensitizationRule
+
+    @DesensitizationRule.setter
+    def DesensitizationRule(self, DesensitizationRule):
+        self._DesensitizationRule = DesensitizationRule
+
+    @property
+    def LogSpanIdKey(self):
+        r"""<p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
+    @property
+    def AutoProfilingConfig(self):
+        r"""<p>Automated performance analysis task configuration</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        """
+        return self._AutoProfilingConfig
+
+    @AutoProfilingConfig.setter
+    def AutoProfilingConfig(self, AutoProfilingConfig):
+        self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>Error rate threshold (%) used to judge the application health status as "red".</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>Alert threshold for response time (ms), used to judge the application health status as "yellow".</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
+
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>Whether to use the default fuse threshold of the probe</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
 
     def _deserialize(self, params):
@@ -7469,6 +9789,23 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
+        self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
+        if params.get("SlowSQLThresholds") is not None:
+            self._SlowSQLThresholds = []
+            for item in params.get("SlowSQLThresholds"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._SlowSQLThresholds.append(obj)
+        self._EnableDesensitizationRule = params.get("EnableDesensitizationRule")
+        self._DesensitizationRule = params.get("DesensitizationRule")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
+        if params.get("AutoProfilingConfig") is not None:
+            self._AutoProfilingConfig = AutoProfilingConfig()
+            self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7514,26 +9851,29 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: Associated product name. currently only supports Prometheus.
+        :param _ProductName: <p>Associated product name, currently only support Prometheus, CKafka</p>
         :type ProductName: str
-        :param _Status: Status of the association relationship: // association status: 1 (enabled), 2 (disabled), 4 (deleted).
+        :param _Status: <p>Status of the association relationship: // Association relationship status: 1 (enabled), 2 (disabled)</p>
         :type Status: int
-        :param _InstanceId: Business system ID
+        :param _InstanceId: <p>Business system ID</p>
         :type InstanceId: str
-        :param _PeerId: Associated product instance ID.
+        :param _PeerId: <p>ID of the associated product instance</p>
         :type PeerId: str
-        :param _Topic: Specifies the CKafka message topic.
+        :param _Topic: <p>CKafka message topic</p>
         :type Topic: str
+        :param _MetricTopic: <p>Ckafka message topic</p>
+        :type MetricTopic: str
         """
         self._ProductName = None
         self._Status = None
         self._InstanceId = None
         self._PeerId = None
         self._Topic = None
+        self._MetricTopic = None
 
     @property
     def ProductName(self):
-        r"""Associated product name. currently only supports Prometheus.
+        r"""<p>Associated product name, currently only support Prometheus, CKafka</p>
         :rtype: str
         """
         return self._ProductName
@@ -7544,7 +9884,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""Status of the association relationship: // association status: 1 (enabled), 2 (disabled), 4 (deleted).
+        r"""<p>Status of the association relationship: // Association relationship status: 1 (enabled), 2 (disabled)</p>
         :rtype: int
         """
         return self._Status
@@ -7555,7 +9895,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Business system ID
+        r"""<p>Business system ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7566,7 +9906,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def PeerId(self):
-        r"""Associated product instance ID.
+        r"""<p>ID of the associated product instance</p>
         :rtype: str
         """
         return self._PeerId
@@ -7577,7 +9917,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""Specifies the CKafka message topic.
+        r"""<p>CKafka message topic</p>
         :rtype: str
         """
         return self._Topic
@@ -7586,6 +9926,17 @@ class ModifyApmAssociationRequest(AbstractModel):
     def Topic(self, Topic):
         self._Topic = Topic
 
+    @property
+    def MetricTopic(self):
+        r"""<p>Ckafka message topic</p>
+        :rtype: str
+        """
+        return self._MetricTopic
+
+    @MetricTopic.setter
+    def MetricTopic(self, MetricTopic):
+        self._MetricTopic = MetricTopic
+
 
     def _deserialize(self, params):
         self._ProductName = params.get("ProductName")
@@ -7593,6 +9944,7 @@ class ModifyApmAssociationRequest(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._PeerId = params.get("PeerId")
         self._Topic = params.get("Topic")
+        self._MetricTopic = params.get("MetricTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7722,6 +10074,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type UrlLongSegmentThreshold: int
         :param _UrlNumberSegmentThreshold: Convergence threshold for URL numerical segments.
         :type UrlNumberSegmentThreshold: int
+        :param _LogSpanIdKey: Index key of spanId: This parameter is valid only when the CLS index type is key-value index
+        :type LogSpanIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -7765,6 +10119,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsDeserializationAnalysis = None
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
+        self._LogSpanIdKey = None
 
     @property
     def InstanceId(self):
@@ -8228,6 +10583,17 @@ class ModifyApmInstanceRequest(AbstractModel):
     def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
         self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
 
+    @property
+    def LogSpanIdKey(self):
+        r"""Index key of spanId: This parameter is valid only when the CLS index type is key-value index
+        :rtype: str
+        """
+        return self._LogSpanIdKey
+
+    @LogSpanIdKey.setter
+    def LogSpanIdKey(self, LogSpanIdKey):
+        self._LogSpanIdKey = LogSpanIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8277,6 +10643,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
+        self._LogSpanIdKey = params.get("LogSpanIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8658,6 +11025,105 @@ class ModifyApmSampleConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyApmServiceRequest(AbstractModel):
+    r"""ModifyApmService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceID: Application ID
+        :type ServiceID: str
+        :param _ServiceDescription: Application description
+        :type ServiceDescription: str
+        :param _Tags: Tag list
+        :type Tags: list of ApmTag
+        """
+        self._ServiceID = None
+        self._ServiceDescription = None
+        self._Tags = None
+
+    @property
+    def ServiceID(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def ServiceDescription(self):
+        r"""Application description
+        :rtype: str
+        """
+        return self._ServiceDescription
+
+    @ServiceDescription.setter
+    def ServiceDescription(self, ServiceDescription):
+        self._ServiceDescription = ServiceDescription
+
+    @property
+    def Tags(self):
+        r"""Tag list
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ServiceID = params.get("ServiceID")
+        self._ServiceDescription = params.get("ServiceDescription")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApmServiceResponse(AbstractModel):
+    r"""ModifyApmService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
     r"""ModifyGeneralApmApplicationConfig request structure.
 
@@ -8827,6 +11293,61 @@ class OrderBy(AbstractModel):
         
 
 
+class Position(AbstractModel):
+    r"""Node location information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: Node horizontal coordinate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type X: float
+        :param _Y: Node vertical coordinate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Y: float
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        r"""Node horizontal coordinate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""Node vertical coordinate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryMetricItem(AbstractModel):
     r"""Querying.
 
@@ -8893,6 +11414,164 @@ class QueryMetricItem(AbstractModel):
         
 
 
+class Resource(AbstractModel):
+    r"""Resource layer information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Resource type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: list of str
+        :param _TKEMeta: TKE resource layer information.
+        :type TKEMeta: list of TkeMeta
+        :param _CVMMeta: CVM resource information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CVMMeta: list of CVMMeta
+        """
+        self._Type = None
+        self._TKEMeta = None
+        self._CVMMeta = None
+
+    @property
+    def Type(self):
+        r"""Resource type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TKEMeta(self):
+        r"""TKE resource layer information.
+        :rtype: list of TkeMeta
+        """
+        return self._TKEMeta
+
+    @TKEMeta.setter
+    def TKEMeta(self, TKEMeta):
+        self._TKEMeta = TKEMeta
+
+    @property
+    def CVMMeta(self):
+        r"""CVM resource information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CVMMeta
+        """
+        return self._CVMMeta
+
+    @CVMMeta.setter
+    def CVMMeta(self, CVMMeta):
+        self._CVMMeta = CVMMeta
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("TKEMeta") is not None:
+            self._TKEMeta = []
+            for item in params.get("TKEMeta"):
+                obj = TkeMeta()
+                obj._deserialize(item)
+                self._TKEMeta.append(obj)
+        if params.get("CVMMeta") is not None:
+            self._CVMMeta = []
+            for item in params.get("CVMMeta"):
+                obj = CVMMeta()
+                obj._deserialize(item)
+                self._CVMMeta.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SelectorView(AbstractModel):
+    r"""Contains the quantities of components and healthy nodes in the nodes.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: Component Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Component: :class:`tencentcloud.apm.v20210622.models.ComponentTopologyView`
+        """
+        self._Component = None
+
+    @property
+    def Component(self):
+        r"""Component Count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ComponentTopologyView`
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        if params.get("Component") is not None:
+            self._Component = ComponentTopologyView()
+            self._Component._deserialize(params.get("Component"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Selectors(AbstractModel):
+    r"""Selection status of the topology view.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: Selection status of the component.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Component: list of str
+        """
+        self._Component = None
+
+    @property
+    def Component(self):
+        r"""Selection status of the component.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        self._Component = params.get("Component")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceDetail(AbstractModel):
     r"""Detailed information about applications.
 
@@ -8900,32 +11579,41 @@ class ServiceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceID: Application ID
+        :param _ServiceID: <p>Application ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceID: str
-        :param _InstanceKey: Business system ID
+        :param _InstanceKey: <p>Business system ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceKey: str
-        :param _AppID: User appid.
+        :param _AppID: <p>User appid</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AppID: int
-        :param _CreateUIN: Host account UIN
+        :param _CreateUIN: <p>main account uin</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateUIN: str
-        :param _ServiceName: Application name
+        :param _ServiceName: <p>Application name</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
-        :param _ServiceDescription: Application description
+        :param _ServiceDescription: <p>Application description</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceDescription: str
-        :param _Region: Region.
+        :param _Region: <p>Region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _Tags: Tag.
+        :param _Tags: <p>Tag</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of ApmTag
-        :param _InstanceName: Business system name.
+        :param _InstanceName: <p>Business system name</p>
         :type InstanceName: str
+        :param _EnableThresholdConfig: <p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>Error rate threshold (%) used to judge the application health status as "red".</p><p>Unit: %</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>Alert threshold for response time (ms), used to judge application health status as "yellow".</p><p>Unit: ms</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResponseDurationWarningThreshold: int
         """
         self._ServiceID = None
         self._InstanceKey = None
@@ -8936,10 +11624,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Region = None
         self._Tags = None
         self._InstanceName = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def ServiceID(self):
-        r"""Application ID
+        r"""<p>Application ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8951,7 +11642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceKey(self):
-        r"""Business system ID
+        r"""<p>Business system ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8963,7 +11654,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppID(self):
-        r"""User appid.
+        r"""<p>User appid</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8975,7 +11666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUIN(self):
-        r"""Host account UIN
+        r"""<p>main account uin</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8987,7 +11678,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        r"""Application name
+        r"""<p>Application name</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8999,7 +11690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDescription(self):
-        r"""Application description
+        r"""<p>Application description</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9011,7 +11702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""Region.
+        r"""<p>Region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9023,7 +11714,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        r"""Tag.
+        r"""<p>Tag</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApmTag
         """
@@ -9035,7 +11726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        r"""Business system name.
+        r"""<p>Business system name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -9043,6 +11734,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>Error rate threshold (%) used to judge the application health status as "red".</p><p>Unit: %</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>Alert threshold for response time (ms), used to judge application health status as "yellow".</p><p>Unit: ms</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
 
     def _deserialize(self, params):
@@ -9060,6 +11787,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceName = params.get("InstanceName")
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9601,3 +12331,717 @@ class TerminateApmInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TkeMeta(AbstractModel):
+    r"""TKE resource metadata.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Region.
+        :type Region: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _PodName: pod name
+        :type PodName: str
+        :param _Namespace: Namespace
+        :type Namespace: str
+        :param _Deployment: workload
+        :type Deployment: str
+        :param _PodIP: pod ip
+        :type PodIP: str
+        :param _NodeIP: node ip
+        :type NodeIP: str
+        """
+        self._Region = None
+        self._ClusterID = None
+        self._PodName = None
+        self._Namespace = None
+        self._Deployment = None
+        self._PodIP = None
+        self._NodeIP = None
+
+    @property
+    def Region(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterID(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodName(self):
+        r"""pod name
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Namespace(self):
+        r"""Namespace
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Deployment(self):
+        r"""workload
+        :rtype: str
+        """
+        return self._Deployment
+
+    @Deployment.setter
+    def Deployment(self, Deployment):
+        self._Deployment = Deployment
+
+    @property
+    def PodIP(self):
+        r"""pod ip
+        :rtype: str
+        """
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeIP(self):
+        r"""node ip
+        :rtype: str
+        """
+        return self._NodeIP
+
+    @NodeIP.setter
+    def NodeIP(self, NodeIP):
+        self._NodeIP = NodeIP
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._ClusterID = params.get("ClusterID")
+        self._PodName = params.get("PodName")
+        self._Namespace = params.get("Namespace")
+        self._Deployment = params.get("Deployment")
+        self._PodIP = params.get("PodIP")
+        self._NodeIP = params.get("NodeIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyEdgeNew(AbstractModel):
+    r"""Topology edge definition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: Source node
+        :type Source: str
+        :param _Id: Edge ID
+        :type Id: str
+        :param _Weight: Edge weight
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: float
+        :param _Target: Target node
+        :type Target: str
+        :param _Duration: response time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: float
+        :param _ErrRate: Error rate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrRate: float
+        :param _Qps: throughput
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Qps: float
+        :param _Type: Edge type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Color: Edge color
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Color: str
+        :param _SqlRequestCount: SQL call count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SqlRequestCount: float
+        :param _SqlErrorRequestCount: SQL call error count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SqlErrorRequestCount: float
+        :param _SourceComp: Source node type on the edge of the topology diagram. Application/MQ/DB.
+        :type SourceComp: str
+        :param _TargetComp: Target node type on the edge of the topology diagram. Application/MQ/DB.
+        :type TargetComp: str
+        """
+        self._Source = None
+        self._Id = None
+        self._Weight = None
+        self._Target = None
+        self._Duration = None
+        self._ErrRate = None
+        self._Qps = None
+        self._Type = None
+        self._Color = None
+        self._SqlRequestCount = None
+        self._SqlErrorRequestCount = None
+        self._SourceComp = None
+        self._TargetComp = None
+
+    @property
+    def Source(self):
+        r"""Source node
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Id(self):
+        r"""Edge ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Weight(self):
+        r"""Edge weight
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Target(self):
+        r"""Target node
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Duration(self):
+        r"""response time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ErrRate(self):
+        r"""Error rate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._ErrRate
+
+    @ErrRate.setter
+    def ErrRate(self, ErrRate):
+        self._ErrRate = ErrRate
+
+    @property
+    def Qps(self):
+        r"""throughput
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def Type(self):
+        r"""Edge type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Color(self):
+        r"""Edge color
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def SqlRequestCount(self):
+        r"""SQL call count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._SqlRequestCount
+
+    @SqlRequestCount.setter
+    def SqlRequestCount(self, SqlRequestCount):
+        self._SqlRequestCount = SqlRequestCount
+
+    @property
+    def SqlErrorRequestCount(self):
+        r"""SQL call error count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._SqlErrorRequestCount
+
+    @SqlErrorRequestCount.setter
+    def SqlErrorRequestCount(self, SqlErrorRequestCount):
+        self._SqlErrorRequestCount = SqlErrorRequestCount
+
+    @property
+    def SourceComp(self):
+        r"""Source node type on the edge of the topology diagram. Application/MQ/DB.
+        :rtype: str
+        """
+        return self._SourceComp
+
+    @SourceComp.setter
+    def SourceComp(self, SourceComp):
+        self._SourceComp = SourceComp
+
+    @property
+    def TargetComp(self):
+        r"""Target node type on the edge of the topology diagram. Application/MQ/DB.
+        :rtype: str
+        """
+        return self._TargetComp
+
+    @TargetComp.setter
+    def TargetComp(self, TargetComp):
+        self._TargetComp = TargetComp
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Id = params.get("Id")
+        self._Weight = params.get("Weight")
+        self._Target = params.get("Target")
+        self._Duration = params.get("Duration")
+        self._ErrRate = params.get("ErrRate")
+        self._Qps = params.get("Qps")
+        self._Type = params.get("Type")
+        self._Color = params.get("Color")
+        self._SqlRequestCount = params.get("SqlRequestCount")
+        self._SqlErrorRequestCount = params.get("SqlErrorRequestCount")
+        self._SourceComp = params.get("SourceComp")
+        self._TargetComp = params.get("TargetComp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyNode(AbstractModel):
+    r"""Topology graph edge node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrRate: Error rate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrRate: float
+        :param _Kind: Node type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Kind: str
+        :param _Name: Node name
+        :type Name: str
+        :param _Weight: Node weight
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: float
+        :param _Color: Node color
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Color: str
+        :param _Duration: response time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: float
+        :param _Qps: throughput
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Qps: float
+        :param _Type: Node type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Id: Node ID
+        :type Id: str
+        :param _Size: Node size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Size: str
+        :param _IsModule: Indicate whether the node is a component
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsModule: bool
+        :param _Position: Node location information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Position: :class:`tencentcloud.apm.v20210622.models.Position`
+        :param _Tags: Node tags
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of ApmTag
+        :param _CanDrillDown: Whether the node supports drill-down.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CanDrillDown: bool
+        :param _Resource: Resource layer information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resource: :class:`tencentcloud.apm.v20210622.models.Resource`
+        :param _NodeView: Name of the topology node view.
+        :type NodeView: str
+        :param _ConsumerDuration: Message consumption time of the MQ consumer, in ms.
+        :type ConsumerDuration: float
+        :param _ConsumerErrRate: Error rate of the MQ consumers, in %.
+        :type ConsumerErrRate: float
+        :param _ConsumerQps: Throughput of the message queue (MQ) consumer.
+        :type ConsumerQps: float
+        :param _ServiceId: Application ID.
+        :type ServiceId: str
+        """
+        self._ErrRate = None
+        self._Kind = None
+        self._Name = None
+        self._Weight = None
+        self._Color = None
+        self._Duration = None
+        self._Qps = None
+        self._Type = None
+        self._Id = None
+        self._Size = None
+        self._IsModule = None
+        self._Position = None
+        self._Tags = None
+        self._CanDrillDown = None
+        self._Resource = None
+        self._NodeView = None
+        self._ConsumerDuration = None
+        self._ConsumerErrRate = None
+        self._ConsumerQps = None
+        self._ServiceId = None
+
+    @property
+    def ErrRate(self):
+        r"""Error rate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._ErrRate
+
+    @ErrRate.setter
+    def ErrRate(self, ErrRate):
+        self._ErrRate = ErrRate
+
+    @property
+    def Kind(self):
+        r"""Node type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Name(self):
+        r"""Node name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Weight(self):
+        r"""Node weight
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Color(self):
+        r"""Node color
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Duration(self):
+        r"""response time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Qps(self):
+        r"""throughput
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def Type(self):
+        r"""Node type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Id(self):
+        r"""Node ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Size(self):
+        r"""Node size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def IsModule(self):
+        r"""Indicate whether the node is a component
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsModule
+
+    @IsModule.setter
+    def IsModule(self, IsModule):
+        self._IsModule = IsModule
+
+    @property
+    def Position(self):
+        r"""Node location information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Position`
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Tags(self):
+        r"""Node tags
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CanDrillDown(self):
+        r"""Whether the node supports drill-down.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._CanDrillDown
+
+    @CanDrillDown.setter
+    def CanDrillDown(self, CanDrillDown):
+        self._CanDrillDown = CanDrillDown
+
+    @property
+    def Resource(self):
+        r"""Resource layer information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.apm.v20210622.models.Resource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def NodeView(self):
+        r"""Name of the topology node view.
+        :rtype: str
+        """
+        return self._NodeView
+
+    @NodeView.setter
+    def NodeView(self, NodeView):
+        self._NodeView = NodeView
+
+    @property
+    def ConsumerDuration(self):
+        r"""Message consumption time of the MQ consumer, in ms.
+        :rtype: float
+        """
+        return self._ConsumerDuration
+
+    @ConsumerDuration.setter
+    def ConsumerDuration(self, ConsumerDuration):
+        self._ConsumerDuration = ConsumerDuration
+
+    @property
+    def ConsumerErrRate(self):
+        r"""Error rate of the MQ consumers, in %.
+        :rtype: float
+        """
+        return self._ConsumerErrRate
+
+    @ConsumerErrRate.setter
+    def ConsumerErrRate(self, ConsumerErrRate):
+        self._ConsumerErrRate = ConsumerErrRate
+
+    @property
+    def ConsumerQps(self):
+        r"""Throughput of the message queue (MQ) consumer.
+        :rtype: float
+        """
+        return self._ConsumerQps
+
+    @ConsumerQps.setter
+    def ConsumerQps(self, ConsumerQps):
+        self._ConsumerQps = ConsumerQps
+
+    @property
+    def ServiceId(self):
+        r"""Application ID.
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ErrRate = params.get("ErrRate")
+        self._Kind = params.get("Kind")
+        self._Name = params.get("Name")
+        self._Weight = params.get("Weight")
+        self._Color = params.get("Color")
+        self._Duration = params.get("Duration")
+        self._Qps = params.get("Qps")
+        self._Type = params.get("Type")
+        self._Id = params.get("Id")
+        self._Size = params.get("Size")
+        self._IsModule = params.get("IsModule")
+        if params.get("Position") is not None:
+            self._Position = Position()
+            self._Position._deserialize(params.get("Position"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CanDrillDown = params.get("CanDrillDown")
+        if params.get("Resource") is not None:
+            self._Resource = Resource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._NodeView = params.get("NodeView")
+        self._ConsumerDuration = params.get("ConsumerDuration")
+        self._ConsumerErrRate = params.get("ConsumerErrRate")
+        self._ConsumerQps = params.get("ConsumerQps")
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
