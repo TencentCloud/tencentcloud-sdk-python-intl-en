@@ -17168,6 +17168,242 @@ class DescribeTawAreasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTawInstancesRequest(AbstractModel):
+    r"""DescribeTawInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeStatuses: Billing status
+        :type ChargeStatuses: list of int
+        :param _ChargeTypes: Billing type
+        :type ChargeTypes: list of int
+        :param _Limit: Pagination limit
+        :type Limit: int
+        :param _Offset: Pagination offset
+        :type Offset: int
+        :param _AreaIds: Region ID
+        :type AreaIds: list of int
+        :param _InstanceStatuses: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)
+        :type InstanceStatuses: list of int
+        :param _InstanceIds: Instance ID
+        :type InstanceIds: list of str
+        :param _Filters: Filter parameter
+        :type Filters: list of Filter
+        :param _IsDemo: Whether it is in the demo mode. `1`: Yes; `2`: No.
+        :type IsDemo: int
+        """
+        self._ChargeStatuses = None
+        self._ChargeTypes = None
+        self._Limit = None
+        self._Offset = None
+        self._AreaIds = None
+        self._InstanceStatuses = None
+        self._InstanceIds = None
+        self._Filters = None
+        self._IsDemo = None
+
+    @property
+    def ChargeStatuses(self):
+        r"""Billing status
+        :rtype: list of int
+        """
+        return self._ChargeStatuses
+
+    @ChargeStatuses.setter
+    def ChargeStatuses(self, ChargeStatuses):
+        self._ChargeStatuses = ChargeStatuses
+
+    @property
+    def ChargeTypes(self):
+        r"""Billing type
+        :rtype: list of int
+        """
+        return self._ChargeTypes
+
+    @ChargeTypes.setter
+    def ChargeTypes(self, ChargeTypes):
+        self._ChargeTypes = ChargeTypes
+
+    @property
+    def Limit(self):
+        r"""Pagination limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AreaIds(self):
+        r"""Region ID
+        :rtype: list of int
+        """
+        return self._AreaIds
+
+    @AreaIds.setter
+    def AreaIds(self, AreaIds):
+        self._AreaIds = AreaIds
+
+    @property
+    def InstanceStatuses(self):
+        warnings.warn("parameter `InstanceStatuses` is deprecated", DeprecationWarning) 
+
+        r"""Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)
+        :rtype: list of int
+        """
+        return self._InstanceStatuses
+
+    @InstanceStatuses.setter
+    def InstanceStatuses(self, InstanceStatuses):
+        warnings.warn("parameter `InstanceStatuses` is deprecated", DeprecationWarning) 
+
+        self._InstanceStatuses = InstanceStatuses
+
+    @property
+    def InstanceIds(self):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
+        r"""Instance ID
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Filters(self):
+        r"""Filter parameter
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def IsDemo(self):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
+        r"""Whether it is in the demo mode. `1`: Yes; `2`: No.
+        :rtype: int
+        """
+        return self._IsDemo
+
+    @IsDemo.setter
+    def IsDemo(self, IsDemo):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
+        self._IsDemo = IsDemo
+
+
+    def _deserialize(self, params):
+        self._ChargeStatuses = params.get("ChargeStatuses")
+        self._ChargeTypes = params.get("ChargeTypes")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AreaIds = params.get("AreaIds")
+        self._InstanceStatuses = params.get("InstanceStatuses")
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._IsDemo = params.get("IsDemo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTawInstancesResponse(AbstractModel):
+    r"""DescribeTawInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSet: Instance list
+        :type InstanceSet: list of RumInstanceInfo
+        :param _TotalCount: Total number of instances
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def InstanceSet(self):
+        r"""Instance list
+        :rtype: list of RumInstanceInfo
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def TotalCount(self):
+        r"""Total number of instances
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = RumInstanceInfo()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUvListRequest(AbstractModel):
     r"""DescribeUvList request structure.
 
@@ -18523,6 +18759,227 @@ class RumAreaInfo(AbstractModel):
         self._AreaRegionID = params.get("AreaRegionID")
         self._AreaRegionCode = params.get("AreaRegionCode")
         self._AreaAbbr = params.get("AreaAbbr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RumInstanceInfo(AbstractModel):
+    r"""RUM instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceStatus: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)
+        :type InstanceStatus: int
+        :param _AreaId: Region ID
+        :type AreaId: int
+        :param _Tags: Tag list
+        :type Tags: list of Tag
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _ClusterId: Cluster ID
+        :type ClusterId: int
+        :param _InstanceDesc: Instance description
+        :type InstanceDesc: str
+        :param _ChargeStatus: Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)
+        :type ChargeStatus: int
+        :param _ChargeType: Billing type (1: free; 2: prepaid; 3: postpaid)
+        :type ChargeType: int
+        :param _UpdatedAt: Update time
+        :type UpdatedAt: str
+        :param _DataRetentionDays: Data retention period (in days)
+        :type DataRetentionDays: int
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _CreatedAt: Creation time
+        :type CreatedAt: str
+        :param _InstanceType: 
+        :type InstanceType: int
+        """
+        self._InstanceStatus = None
+        self._AreaId = None
+        self._Tags = None
+        self._InstanceId = None
+        self._ClusterId = None
+        self._InstanceDesc = None
+        self._ChargeStatus = None
+        self._ChargeType = None
+        self._UpdatedAt = None
+        self._DataRetentionDays = None
+        self._InstanceName = None
+        self._CreatedAt = None
+        self._InstanceType = None
+
+    @property
+    def InstanceStatus(self):
+        r"""Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)
+        :rtype: int
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def AreaId(self):
+        r"""Region ID
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def Tags(self):
+        r"""Tag list
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceDesc(self):
+        r"""Instance description
+        :rtype: str
+        """
+        return self._InstanceDesc
+
+    @InstanceDesc.setter
+    def InstanceDesc(self, InstanceDesc):
+        self._InstanceDesc = InstanceDesc
+
+    @property
+    def ChargeStatus(self):
+        r"""Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)
+        :rtype: int
+        """
+        return self._ChargeStatus
+
+    @ChargeStatus.setter
+    def ChargeStatus(self, ChargeStatus):
+        self._ChargeStatus = ChargeStatus
+
+    @property
+    def ChargeType(self):
+        r"""Billing type (1: free; 2: prepaid; 3: postpaid)
+        :rtype: int
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def UpdatedAt(self):
+        r"""Update time
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def DataRetentionDays(self):
+        r"""Data retention period (in days)
+        :rtype: int
+        """
+        return self._DataRetentionDays
+
+    @DataRetentionDays.setter
+    def DataRetentionDays(self, DataRetentionDays):
+        self._DataRetentionDays = DataRetentionDays
+
+    @property
+    def InstanceName(self):
+        r"""Instance name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def CreatedAt(self):
+        r"""Creation time
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def InstanceType(self):
+        r"""
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+
+    def _deserialize(self, params):
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._AreaId = params.get("AreaId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceDesc = params.get("InstanceDesc")
+        self._ChargeStatus = params.get("ChargeStatus")
+        self._ChargeType = params.get("ChargeType")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._DataRetentionDays = params.get("DataRetentionDays")
+        self._InstanceName = params.get("InstanceName")
+        self._CreatedAt = params.get("CreatedAt")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

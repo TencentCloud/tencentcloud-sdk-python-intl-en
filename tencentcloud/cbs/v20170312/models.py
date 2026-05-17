@@ -1132,11 +1132,11 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DestinationRegions: Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.
+        :param _DestinationRegions: Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://www.tencentcloud.com/document/product/1271/71925) API. Note that you can only specify regions that support snapshots.
         :type DestinationRegions: list of str
         :param _SnapshotId: Snapshot ID, which can be queried via the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API.
         :type SnapshotId: str
-        :param _SnapshotName: Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”
+        :param _SnapshotName: Name of the snapshot replica. If it is not specified, it defaults to Copied [source snapshot ID from [region name]
         :type SnapshotName: str
         """
         self._DestinationRegions = None
@@ -1145,7 +1145,7 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     @property
     def DestinationRegions(self):
-        r"""Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.
+        r"""Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://www.tencentcloud.com/document/product/1271/71925) API. Note that you can only specify regions that support snapshots.
         :rtype: list of str
         """
         return self._DestinationRegions
@@ -1167,7 +1167,7 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”
+        r"""Name of the snapshot replica. If it is not specified, it defaults to Copied [source snapshot ID from [region name]
         :rtype: str
         """
         return self._SnapshotName
@@ -6402,7 +6402,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
         :type DiskName: str
         :param _Portable: Whether it is an elastic cloud disk. FALSE: non-elastic cloud disk; TRUE: elastic cloud disk. You can only modify non-elastic cloud disks to elastic cloud disks.
         :type Portable: bool
-        :param _ProjectId: The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1).
+        :param _ProjectId: The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://www.tencentcloud.com/document/api/651/54679).
         :type ProjectId: int
         :param _DeleteWithInstance: Whether the cloud disk is terminated with the CVM after it has been successfully mounted. `TRUE` indicates that it is terminated with the CVM. `FALSE` indicates that it is not terminated with the CVM. This is only supported for cloud disks and data disks that are pay-as-you-go.
         :type DeleteWithInstance: bool
@@ -6458,7 +6458,7 @@ Specifies to CANCEL and close.
 
     @property
     def ProjectId(self):
-        r"""The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1).
+        r"""The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://www.tencentcloud.com/document/api/651/54679).
         :rtype: int
         """
         return self._ProjectId

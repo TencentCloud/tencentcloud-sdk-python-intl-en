@@ -367,6 +367,24 @@ class SslClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCompanies(
+            self,
+            request: models.DescribeCompaniesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCompaniesResponse:
+        """
+        Query company list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCompanies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCompaniesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHostTeoInstanceList(
             self,
             request: models.DescribeHostTeoInstanceListRequest,
@@ -452,6 +470,24 @@ class SslClient(AbstractClient):
         kwargs["action"] = "DescribeHostUploadUpdateRecordDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeHostUploadUpdateRecordDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeManagers(
+            self,
+            request: models.DescribeManagersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeManagersResponse:
+        """
+        Query the list of people in charge
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeManagers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeManagersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

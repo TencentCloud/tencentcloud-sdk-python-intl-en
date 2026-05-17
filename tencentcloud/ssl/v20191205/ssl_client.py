@@ -463,6 +463,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCompanies(self, request):
+        r"""Query company list
+
+        :param request: Request instance for DescribeCompanies.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCompaniesRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCompaniesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCompanies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCompaniesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHostTeoInstanceList(self, request):
         r"""This API is used to query the list of EdgeOne instances to which a certificate can be deployed.
 
@@ -569,6 +592,29 @@ class SslClient(AbstractClient):
             body = self.call("DescribeHostUploadUpdateRecordDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeHostUploadUpdateRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeManagers(self, request):
+        r"""Query the list of people in charge
+
+        :param request: Request instance for DescribeManagers.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeManagersRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeManagersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeManagers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeManagersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

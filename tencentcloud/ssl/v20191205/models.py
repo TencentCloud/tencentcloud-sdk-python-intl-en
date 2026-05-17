@@ -4146,6 +4146,188 @@ class CommitCertificateInformationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CompanyInfo(AbstractModel):
+    r"""Company Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompanyName: Company Name
+        :type CompanyName: str
+        :param _CompanyId: company ID
+        :type CompanyId: int
+        :param _CompanyCountry: Country of residence
+        :type CompanyCountry: str
+        :param _CompanyProvince: Company province
+        :type CompanyProvince: str
+        :param _CompanyCity: Company located city
+        :type CompanyCity: str
+        :param _CompanyAddress: Company's detailed address
+        :type CompanyAddress: str
+        :param _CompanyPhone: company phone number
+        :type CompanyPhone: str
+        :param _IdType: Company document type. Valid values:
+TYDMZ (unified social credit code): This field is required only for CFCA certs and not required for other types.
+OTHERS
+        :type IdType: str
+        :param _IdNumber: Company identification number, value ranges from...to...
+TYDMZ (unified social credit code): 11532xxxxxxxx24820
+        :type IdNumber: str
+        :param _Tags: Tag.
+        :type Tags: list of Tags
+        """
+        self._CompanyName = None
+        self._CompanyId = None
+        self._CompanyCountry = None
+        self._CompanyProvince = None
+        self._CompanyCity = None
+        self._CompanyAddress = None
+        self._CompanyPhone = None
+        self._IdType = None
+        self._IdNumber = None
+        self._Tags = None
+
+    @property
+    def CompanyName(self):
+        r"""Company Name
+        :rtype: str
+        """
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def CompanyId(self):
+        r"""company ID
+        :rtype: int
+        """
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def CompanyCountry(self):
+        r"""Country of residence
+        :rtype: str
+        """
+        return self._CompanyCountry
+
+    @CompanyCountry.setter
+    def CompanyCountry(self, CompanyCountry):
+        self._CompanyCountry = CompanyCountry
+
+    @property
+    def CompanyProvince(self):
+        r"""Company province
+        :rtype: str
+        """
+        return self._CompanyProvince
+
+    @CompanyProvince.setter
+    def CompanyProvince(self, CompanyProvince):
+        self._CompanyProvince = CompanyProvince
+
+    @property
+    def CompanyCity(self):
+        r"""Company located city
+        :rtype: str
+        """
+        return self._CompanyCity
+
+    @CompanyCity.setter
+    def CompanyCity(self, CompanyCity):
+        self._CompanyCity = CompanyCity
+
+    @property
+    def CompanyAddress(self):
+        r"""Company's detailed address
+        :rtype: str
+        """
+        return self._CompanyAddress
+
+    @CompanyAddress.setter
+    def CompanyAddress(self, CompanyAddress):
+        self._CompanyAddress = CompanyAddress
+
+    @property
+    def CompanyPhone(self):
+        r"""company phone number
+        :rtype: str
+        """
+        return self._CompanyPhone
+
+    @CompanyPhone.setter
+    def CompanyPhone(self, CompanyPhone):
+        self._CompanyPhone = CompanyPhone
+
+    @property
+    def IdType(self):
+        r"""Company document type. Valid values:
+TYDMZ (unified social credit code): This field is required only for CFCA certs and not required for other types.
+OTHERS
+        :rtype: str
+        """
+        return self._IdType
+
+    @IdType.setter
+    def IdType(self, IdType):
+        self._IdType = IdType
+
+    @property
+    def IdNumber(self):
+        r"""Company identification number, value ranges from...to...
+TYDMZ (unified social credit code): 11532xxxxxxxx24820
+        :rtype: str
+        """
+        return self._IdNumber
+
+    @IdNumber.setter
+    def IdNumber(self, IdNumber):
+        self._IdNumber = IdNumber
+
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._CompanyName = params.get("CompanyName")
+        self._CompanyId = params.get("CompanyId")
+        self._CompanyCountry = params.get("CompanyCountry")
+        self._CompanyProvince = params.get("CompanyProvince")
+        self._CompanyCity = params.get("CompanyCity")
+        self._CompanyAddress = params.get("CompanyAddress")
+        self._CompanyPhone = params.get("CompanyPhone")
+        self._IdType = params.get("IdType")
+        self._IdNumber = params.get("IdNumber")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosInstanceDetail(AbstractModel):
     r"""COS instance description.
 
@@ -8998,6 +9180,135 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCompaniesRequest(AbstractModel):
+    r"""DescribeCompanies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Page limit per page. Default value: 0. Maximum value: 1000.
+        :type Limit: int
+        :param _CompanyId: company ID
+        :type CompanyId: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._CompanyId = None
+
+    @property
+    def Offset(self):
+        r"""Paging offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Page limit per page. Default value: 0. Maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CompanyId(self):
+        r"""company ID
+        :rtype: int
+        """
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CompanyId = params.get("CompanyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCompaniesResponse(AbstractModel):
+    r"""DescribeCompanies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Companies: Company List
+        :type Companies: list of CompanyInfo
+        :param _TotalCount: Total number of companies
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Companies = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Companies(self):
+        r"""Company List
+        :rtype: list of CompanyInfo
+        """
+        return self._Companies
+
+    @Companies.setter
+    def Companies(self, Companies):
+        self._Companies = Companies
+
+    @property
+    def TotalCount(self):
+        r"""Total number of companies
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Companies") is not None:
+            self._Companies = []
+            for item in params.get("Companies"):
+                obj = CompanyInfo()
+                obj._deserialize(item)
+                self._Companies.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostTeoInstanceListRequest(AbstractModel):
     r"""DescribeHostTeoInstanceList request structure.
 
@@ -9785,6 +10096,209 @@ class DescribeHostUploadUpdateRecordResponse(AbstractModel):
                 obj = UploadUpdateRecordInfo()
                 obj._deserialize(item)
                 self._DeployRecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeManagersRequest(AbstractModel):
+    r"""DescribeManagers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompanyId: Company ID, obtain through the API DescribeCompanies
+        :type CompanyId: int
+        :param _Offset: Pagination offset. If not provided, default value is 0.
+        :type Offset: int
+        :param _Limit: Pagination quantity per page. If not provided, the default value is 10. Maximum value is 1000.
+        :type Limit: int
+        :param _ManagerName: Manager name (deprecated). Please use SearchKey.
+        :type ManagerName: str
+        :param _ManagerMail: Fuzzy query manager mailbox (deprecated), please use SearchKey
+        :type ManagerMail: str
+        :param _Status: Filter based on manager status. Valid values:
+'none' pending review
+'audit', reviewing by AsiaInfo
+'CAaudit' CA under review
+'ok' reviewed
+'review failed' for 'invalid'
+expiring soon
+expired
+        :type Status: str
+        :param _SearchKey: Based on the format: manager surname|manager name|mailbox|department, perform accurate matching
+        :type SearchKey: str
+        """
+        self._CompanyId = None
+        self._Offset = None
+        self._Limit = None
+        self._ManagerName = None
+        self._ManagerMail = None
+        self._Status = None
+        self._SearchKey = None
+
+    @property
+    def CompanyId(self):
+        r"""Company ID, obtain through the API DescribeCompanies
+        :rtype: int
+        """
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. If not provided, default value is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Pagination quantity per page. If not provided, the default value is 10. Maximum value is 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ManagerName(self):
+        r"""Manager name (deprecated). Please use SearchKey.
+        :rtype: str
+        """
+        return self._ManagerName
+
+    @ManagerName.setter
+    def ManagerName(self, ManagerName):
+        self._ManagerName = ManagerName
+
+    @property
+    def ManagerMail(self):
+        r"""Fuzzy query manager mailbox (deprecated), please use SearchKey
+        :rtype: str
+        """
+        return self._ManagerMail
+
+    @ManagerMail.setter
+    def ManagerMail(self, ManagerMail):
+        self._ManagerMail = ManagerMail
+
+    @property
+    def Status(self):
+        r"""Filter based on manager status. Valid values:
+'none' pending review
+'audit', reviewing by AsiaInfo
+'CAaudit' CA under review
+'ok' reviewed
+'review failed' for 'invalid'
+expiring soon
+expired
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SearchKey(self):
+        r"""Based on the format: manager surname|manager name|mailbox|department, perform accurate matching
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+
+    def _deserialize(self, params):
+        self._CompanyId = params.get("CompanyId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ManagerName = params.get("ManagerName")
+        self._ManagerMail = params.get("ManagerMail")
+        self._Status = params.get("Status")
+        self._SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeManagersResponse(AbstractModel):
+    r"""DescribeManagers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Managers: List of company managers
+        :type Managers: list of ManagerInfo
+        :param _TotalCount: Total number of company managers
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Managers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Managers(self):
+        r"""List of company managers
+        :rtype: list of ManagerInfo
+        """
+        return self._Managers
+
+    @Managers.setter
+    def Managers(self, Managers):
+        self._Managers = Managers
+
+    @property
+    def TotalCount(self):
+        r"""Total number of company managers
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Managers") is not None:
+            self._Managers = []
+            for item in params.get("Managers"):
+                obj = ManagerInfo()
+                obj._deserialize(item)
+                self._Managers.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -10577,6 +11091,454 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagerInfo(AbstractModel):
+    r"""Administrator information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Status: audit: under review ok: pass invalid: invalid expiring: expiring soon expired: expired
+        :type Status: str
+        :param _ManagerFirstName: Manager name
+        :type ManagerFirstName: str
+        :param _ManagerLastName: Manager name
+        :type ManagerLastName: str
+        :param _ManagerPosition: manager position
+        :type ManagerPosition: str
+        :param _ManagerPhone: Manager phone
+        :type ManagerPhone: str
+        :param _ManagerMail: Manager mailbox
+        :type ManagerMail: str
+        :param _ManagerDepartment: department of the manager
+        :type ManagerDepartment: str
+        :param _CreateTime: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _DomainCount: Number of domains for manager
+        :type DomainCount: int
+        :param _CertCount: Number of manager certificates
+        :type CertCount: int
+        :param _ManagerId: Manager ID
+        :type ManagerId: int
+        :param _ExpireTime: Review valid expiry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param _SubmitAuditTime: Last submission review time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubmitAuditTime: str
+        :param _VerifyTime: Approval Time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VerifyTime: str
+        :param _StatusInfo: Review status info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StatusInfo: list of ManagerStatusInfo
+        :param _Tags: Tag.
+        :type Tags: list of Tags
+        """
+        self._Status = None
+        self._ManagerFirstName = None
+        self._ManagerLastName = None
+        self._ManagerPosition = None
+        self._ManagerPhone = None
+        self._ManagerMail = None
+        self._ManagerDepartment = None
+        self._CreateTime = None
+        self._DomainCount = None
+        self._CertCount = None
+        self._ManagerId = None
+        self._ExpireTime = None
+        self._SubmitAuditTime = None
+        self._VerifyTime = None
+        self._StatusInfo = None
+        self._Tags = None
+
+    @property
+    def Status(self):
+        r"""Status: audit: under review ok: pass invalid: invalid expiring: expiring soon expired: expired
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ManagerFirstName(self):
+        r"""Manager name
+        :rtype: str
+        """
+        return self._ManagerFirstName
+
+    @ManagerFirstName.setter
+    def ManagerFirstName(self, ManagerFirstName):
+        self._ManagerFirstName = ManagerFirstName
+
+    @property
+    def ManagerLastName(self):
+        r"""Manager name
+        :rtype: str
+        """
+        return self._ManagerLastName
+
+    @ManagerLastName.setter
+    def ManagerLastName(self, ManagerLastName):
+        self._ManagerLastName = ManagerLastName
+
+    @property
+    def ManagerPosition(self):
+        r"""manager position
+        :rtype: str
+        """
+        return self._ManagerPosition
+
+    @ManagerPosition.setter
+    def ManagerPosition(self, ManagerPosition):
+        self._ManagerPosition = ManagerPosition
+
+    @property
+    def ManagerPhone(self):
+        r"""Manager phone
+        :rtype: str
+        """
+        return self._ManagerPhone
+
+    @ManagerPhone.setter
+    def ManagerPhone(self, ManagerPhone):
+        self._ManagerPhone = ManagerPhone
+
+    @property
+    def ManagerMail(self):
+        r"""Manager mailbox
+        :rtype: str
+        """
+        return self._ManagerMail
+
+    @ManagerMail.setter
+    def ManagerMail(self, ManagerMail):
+        self._ManagerMail = ManagerMail
+
+    @property
+    def ManagerDepartment(self):
+        r"""department of the manager
+        :rtype: str
+        """
+        return self._ManagerDepartment
+
+    @ManagerDepartment.setter
+    def ManagerDepartment(self, ManagerDepartment):
+        self._ManagerDepartment = ManagerDepartment
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DomainCount(self):
+        r"""Number of domains for manager
+        :rtype: int
+        """
+        return self._DomainCount
+
+    @DomainCount.setter
+    def DomainCount(self, DomainCount):
+        self._DomainCount = DomainCount
+
+    @property
+    def CertCount(self):
+        r"""Number of manager certificates
+        :rtype: int
+        """
+        return self._CertCount
+
+    @CertCount.setter
+    def CertCount(self, CertCount):
+        self._CertCount = CertCount
+
+    @property
+    def ManagerId(self):
+        r"""Manager ID
+        :rtype: int
+        """
+        return self._ManagerId
+
+    @ManagerId.setter
+    def ManagerId(self, ManagerId):
+        self._ManagerId = ManagerId
+
+    @property
+    def ExpireTime(self):
+        r"""Review valid expiry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SubmitAuditTime(self):
+        r"""Last submission review time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubmitAuditTime
+
+    @SubmitAuditTime.setter
+    def SubmitAuditTime(self, SubmitAuditTime):
+        self._SubmitAuditTime = SubmitAuditTime
+
+    @property
+    def VerifyTime(self):
+        r"""Approval Time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VerifyTime
+
+    @VerifyTime.setter
+    def VerifyTime(self, VerifyTime):
+        self._VerifyTime = VerifyTime
+
+    @property
+    def StatusInfo(self):
+        r"""Review status info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ManagerStatusInfo
+        """
+        return self._StatusInfo
+
+    @StatusInfo.setter
+    def StatusInfo(self, StatusInfo):
+        self._StatusInfo = StatusInfo
+
+    @property
+    def Tags(self):
+        r"""Tag.
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ManagerFirstName = params.get("ManagerFirstName")
+        self._ManagerLastName = params.get("ManagerLastName")
+        self._ManagerPosition = params.get("ManagerPosition")
+        self._ManagerPhone = params.get("ManagerPhone")
+        self._ManagerMail = params.get("ManagerMail")
+        self._ManagerDepartment = params.get("ManagerDepartment")
+        self._CreateTime = params.get("CreateTime")
+        self._DomainCount = params.get("DomainCount")
+        self._CertCount = params.get("CertCount")
+        self._ManagerId = params.get("ManagerId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SubmitAuditTime = params.get("SubmitAuditTime")
+        self._VerifyTime = params.get("VerifyTime")
+        if params.get("StatusInfo") is not None:
+            self._StatusInfo = []
+            for item in params.get("StatusInfo"):
+                obj = ManagerStatusInfo()
+                obj._deserialize(item)
+                self._StatusInfo.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagerPreAuditDomain(AbstractModel):
+    r"""Domain name list for manager prereview
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain information for prereview
+        :type Domain: str
+        :param _CreateTime: Prereview domain creation time
+        :type CreateTime: str
+        :param _ExpireTime: Prereview domain expiry time
+        :type ExpireTime: str
+        """
+        self._Domain = None
+        self._CreateTime = None
+        self._ExpireTime = None
+
+    @property
+    def Domain(self):
+        r"""Domain information for prereview
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CreateTime(self):
+        r"""Prereview domain creation time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        r"""Prereview domain expiry time
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagerStatusInfo(AbstractModel):
+    r"""Four types of manager review status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Review type, enumeration value: ov, ev
+        :type Type: str
+        :param _Status: Review status, enumeration value: pending, completed, invalid, submitted, expiring, expired.
+        :type Status: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _ExpireTime: Expiration time
+        :type ExpireTime: str
+        :param _ManagerPreAuditDomains: Domain name list for manager prereview
+        :type ManagerPreAuditDomains: list of ManagerPreAuditDomain
+        """
+        self._Type = None
+        self._Status = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._ManagerPreAuditDomains = None
+
+    @property
+    def Type(self):
+        r"""Review type, enumeration value: ov, ev
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        r"""Review status, enumeration value: pending, completed, invalid, submitted, expiring, expired.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        r"""Expiration time
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ManagerPreAuditDomains(self):
+        r"""Domain name list for manager prereview
+        :rtype: list of ManagerPreAuditDomain
+        """
+        return self._ManagerPreAuditDomains
+
+    @ManagerPreAuditDomains.setter
+    def ManagerPreAuditDomains(self, ManagerPreAuditDomains):
+        self._ManagerPreAuditDomains = ManagerPreAuditDomains
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        if params.get("ManagerPreAuditDomains") is not None:
+            self._ManagerPreAuditDomains = []
+            for item in params.get("ManagerPreAuditDomains"):
+                obj = ManagerPreAuditDomain()
+                obj._deserialize(item)
+                self._ManagerPreAuditDomains.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

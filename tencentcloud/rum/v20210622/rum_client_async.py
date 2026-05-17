@@ -1209,6 +1209,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTawInstances(
+            self,
+            request: models.DescribeTawInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTawInstancesResponse:
+        """
+        This API is used to query instance information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTawInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTawInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUvList(
             self,
             request: models.DescribeUvListRequest,

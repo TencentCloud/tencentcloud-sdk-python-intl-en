@@ -1535,6 +1535,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTawInstances(self, request):
+        r"""This API is used to query instance information.
+
+        :param request: Request instance for DescribeTawInstances.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTawInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTawInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUvList(self, request):
         r"""This API is used to get the list of UVs under a project.
 
